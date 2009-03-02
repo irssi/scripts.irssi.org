@@ -6,12 +6,12 @@ use Irssi; # developed using irssi 0.8.9.CVS
 use vars qw($VERSION %IRSSI);
 $VERSION = '1.03';
 %IRSSI = (
-        authors         => q{David O'Rourke},
-        contact         => q{phyber@#irssi},
-        name            => q{bantime},
-        description     => q{Print time when ban was set in a nicer way. eg. 23m, 40s ago.},
-        license         => q{GPLv2},
-	changed		=> q{28/02/2007},
+	authors		=> "David O\'Rourke",
+	contact		=> "phyber [at] #irssi",
+	name		=> "bantime",
+	description	=> "Print time when ban was set in a nicer way. eg. 23m, 40s ago.",
+	license		=> "GPLv2",
+	changed		=> "02/03/2009",
 );
 
 sub duration {
@@ -46,14 +46,14 @@ sub cmd_bans {
 	foreach my $ban ($witem->bans()) {
 		my $bantime;
 		if (!$ban->{setby} || !$ban->{time}) {
-			$witem->printformat(MSGLEVEL_CLIENTCRAP, 'bantime',  $count, $channel, $ban->{ban});
+			$witem->printformat(MSGLEVEL_CLIENTCRAP, 'bantime', $count, $channel, $ban->{ban});
 		} else {
 			if (Irssi::settings_get_bool('bantime_show_date')) {
 				$bantime = localtime($ban->{time}) . ": ";
 				$bantime =~ s/\s+/ /g;
 			}
 			$bantime .= duration($ban->{time});
-			$witem->printformat(MSGLEVEL_CLIENTCRAP, 'bantime_long',  $count, $channel, $ban->{ban}, $ban->{setby}, $bantime);
+			$witem->printformat(MSGLEVEL_CLIENTCRAP, 'bantime_long', $count, $channel, $ban->{ban}, $ban->{setby}, $bantime);
 		}
 		$count += 1;
 	}
@@ -70,6 +70,8 @@ Irssi::settings_add_bool('bantime', 'bantime_show_date' => 0);
 #############
 # ChangeLog #
 #############
+# 02.03.2009: 1.03
+# Minor cosmetic changes to the script.
 # 28.02.2007: 1.03
 # duration() now returns a nicer string.  Fields arn't visible if they're zero.
 # Random bits cleaned up.
