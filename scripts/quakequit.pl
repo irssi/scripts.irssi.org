@@ -14,28 +14,52 @@ $VERSION = "1.0";
 # Hash to store our temporary ignores in.
 my %quits;
 
+# Return 1 if we should process the tag, otherwise 0.
+sub process_tag {
+	my ($tag) = @_;
+	my $netlist = Irssi::settings_get_str('quakequit_networks');
+	foreach my $network (split / /, $netlist) {
+		if (lc $tag eq lc $network) {
+			return 1;
+		}
+	}
+	return 0;
+}
+
+# Process the 'message join' signal. (/JOIN)
 sub message_join {
 	my ($server_rec, $nick, $addr) = @_;
 	my $tag = $server_rec->{tag};
+	# Return if we don't care about this tag.
+	if (process_tag($tag) == 0) {
+		return 0;
+	}
 	# If the joining nick is in our quit hash, don't show the join.
-	if (($tag eq "QuakeNet") and (defined $quits{$nick})) {
+	if (defined $quits{$nick}) {
 		delete $quits{$nick};
 		Irssi::signal_stop();
 		return 0;
 	}
 }
 
+# Process the 'message quit' signal. (/QUIT)
 sub message_quit {
 	my ($server_rec, $nick, $addr, $reason) = @_;
 	my $tag = $server_rec->{tag};
+	# Return if we don't care about this tag.
+	if (process_tag($tag) == 0) {
+		return 0;
+	}
 	# If the quit message is registered, add the person to our quit hash and abort the signal.
-	if (($tag eq "QuakeNet") and ($reason eq "Registered")) {
+	if ($reason eq "Registered") {
 		$quits{$nick} = 1;
 		Irssi::signal_stop();
 		return 0;
 	}
 }
 
+# Add a networks setting
+Irssi::settings_add_str('quakequit', 'quakequit_networks', 'QuakeNet');
 # Signals to grab
 Irssi::signal_add('message join', 'message_join');
 Irssi::signal_add('message quit', 'message_quit');
