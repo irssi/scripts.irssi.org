@@ -26,6 +26,14 @@ sub process_tag {
 	return 0;
 }
 
+# Remove entries from the quits hash.
+sub purge_nick {
+	my ($nick) = @_;
+	Irssi::print "Purging $nick from the quits list";
+	delete $quits{$nick};
+	return 0;
+}
+
 # Process the 'message join' signal. (/JOIN)
 sub message_join {
 	my ($server_rec, $channel, $nick, $addr) = @_;
@@ -37,7 +45,7 @@ sub message_join {
 	#Irssi::print "Processing JOIN $tag: $nick $addr";
 	# If the joining nick is in our quit hash, don't show the join.
 	if ($quits{$nick} == 1) {
-		delete $quits{$nick};
+		#delete $quits{$nick};
 		Irssi::signal_stop();
 		return 0;
 	}
@@ -55,6 +63,24 @@ sub message_quit {
 	# If the quit message is registered, add the person to our quit hash and abort the signal.
 	if ($reason eq "Registered") {
 		$quits{$nick} = 1;
+		Irssi::timeout_add_once(1000, 'purge_nick', $nick);
+		Irssi::signal_stop();
+		return 0;
+	}
+}
+
+# Sometimes we have to hide server modes on quakenet too.
+sub nick_mode_changed {
+	my ($channel_rec, $nick_rec, $setby, $mode, $type) = @_;
+	my $tag = $channel_rec->{server}->{tag};
+	my $nick = $nick_rec->{nick};
+	# Return if we don't care about this tag
+	if (process_tag($tag) == 0) {
+		return 0;
+	}
+	Irssi::print "Processing MODE $tag: $nick $setby $mode $type";
+	# If the nick exists in the hash and the mode setter is *.quakenet.org, signal_stop.
+	if (($quits{$nick} == 1) and ($setby eq "*.quakenet.org")) {
 		Irssi::signal_stop();
 		return 0;
 	}
@@ -65,3 +91,4 @@ Irssi::settings_add_str('quakequit', 'quakequit_networks', 'QuakeNet');
 # Signals to grab
 Irssi::signal_add('message join', 'message_join');
 Irssi::signal_add('message quit', 'message_quit');
+Irssi::signal_add('nick mode changed', 'nick_mode_changed');
