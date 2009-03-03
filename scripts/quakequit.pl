@@ -28,14 +28,15 @@ sub process_tag {
 
 # Process the 'message join' signal. (/JOIN)
 sub message_join {
-	my ($server_rec, $nick, $addr) = @_;
+	my ($server_rec, $channel, $nick, $addr) = @_;
 	my $tag = $server_rec->{tag};
 	# Return if we don't care about this tag.
 	if (process_tag($tag) == 0) {
 		return 0;
 	}
+	#Irssi::print "Processing JOIN $tag: $nick $addr";
 	# If the joining nick is in our quit hash, don't show the join.
-	if (defined $quits{$nick}) {
+	if ($quits{$nick} == 1) {
 		delete $quits{$nick};
 		Irssi::signal_stop();
 		return 0;
@@ -50,6 +51,7 @@ sub message_quit {
 	if (process_tag($tag) == 0) {
 		return 0;
 	}
+	#Irssi::print "Processing QUIT $tag: $nick $addr $reason";
 	# If the quit message is registered, add the person to our quit hash and abort the signal.
 	if ($reason eq "Registered") {
 		$quits{$nick} = 1;
