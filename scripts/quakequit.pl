@@ -1,3 +1,28 @@
+# scripts/quakequit.pl
+# Gets rid of some of the spam that you may see on quakenet if someone joins a channel
+# before registering with nickserv.
+# eg.
+#####
+# >>> Nick!ident@hos.t has joined #channel
+# +++ Q sets +o Nick #channel
+# <<< Nick!ident@hos.t has quit [Registered]
+# >>> Nick!ident@hos.t has joined #channel
+# +++ *.quakenet.org sets +o Nick #channel
+#####
+# Five lines for a single join, ridiculous.
+# This script would make it so you just saw:
+#####
+# >>> Nick!ident@hos.t has joined #channel
+# +++ Q sets +o Nick #channel
+#####
+# It does this by remembering people who quit with a message of "Registered" for
+# 1 second after they quit.  Any joins or modes set within that one second are ignored.
+#####
+# Settings:
+# quakequit_networks (default: quakenet)
+# - Set the network tags which this script should be looking at.
+# quakequit_servermask (default: *.quakenet.org)
+# - Sets the quakenet mask so we can ignore the modes it sets.
 use strict;
 use Irssi;
 use vars qw($VERSION %IRSSI);
@@ -31,7 +56,7 @@ sub process_tag {
 # Remove entries from the quits hash.
 sub purge_nick {
 	my ($nick) = @_;
-	Irssi::print "Purging $nick from the quits list";
+	Irssi::print "Purging $nick from the quits list" if $debug;
 	delete $quits{$nick};
 	return 0;
 }
@@ -40,13 +65,18 @@ sub purge_nick {
 sub message_join {
 	my ($server_rec, $channel, $nick, $addr) = @_;
 	my $tag = $server_rec->{tag};
+	# Don't proceed if the hash is empty.
+	# hash returns <elements>/<buckets> in scalar context and just 0 if it's empty.
+	if (!%quits) {
+		return 0;
+	}
 	# Return if we don't care about this tag.
 	if (process_tag($tag) == 0) {
 		return 0;
 	}
 	Irssi::print "Processing JOIN $tag: $nick $addr" if $debug;
 	# If the joining nick is in our quit hash, don't show the join.
-	if ($quits{$nick} == 1) {
+	if ($quits{$tag.':'.$nick} == 1) {
 		Irssi::signal_stop();
 		return 0;
 	}
@@ -63,8 +93,8 @@ sub message_quit {
 	Irssi::print "Processing QUIT $tag: $nick $addr $reason" if $debug;
 	# If the quit message is registered, add the person to our quit hash and abort the signal.
 	if ($reason eq "Registered") {
-		$quits{$nick} = 1;
-		Irssi::timeout_add_once(1000, 'purge_nick', $nick);
+		$quits{$tag.':'.$nick} = 1;
+		Irssi::timeout_add_once(1000, 'purge_nick', $tag.':'.$nick);
 		Irssi::signal_stop();
 		return 0;
 	}
@@ -74,6 +104,10 @@ sub message_quit {
 sub message_irc_mode {
 	my ($server_rec, $channel, $nick, $addr, $mode) = @_;
 	my $tag = $server_rec->{tag};
+	# Don't proceed if the hash is empty
+	if (!%quits) {
+		return 0;
+	}
 	# Return if we don't care about this tag.
 	if (process_tag($tag) == 0) {
 		return 0;
@@ -88,7 +122,7 @@ sub message_irc_mode {
 		# If the nick exists in the hash and the mode setter is *.quakenet.org, signal_stop.
 		foreach my $target (@targets) {
 			Irssi::print "Processing $target" if $debug;
-			if ($quits{$target} == 1) {
+			if ($quits{$tag.':'.$target} == 1) {
 				Irssi::print "Found $target in target list, stopping signal" if $debug;
 				Irssi::signal_stop();
 				return 0;
