@@ -65,7 +65,7 @@ $VERSION = '2.0.0';
    name         =>   "Consolidate Irssi Player",
    description  =>   "Controls Audacious2 and MOCP from Irssi",
    license      =>   "GNU General Public License",
-   url          =>   "http://bazaar.launchpad.net/~compengi/%2Bjunk/Cirssi/annotate/head%3A/Cirssi.pl",
+   url          =>   "http://git.peersnode.net/",
    changed      =>   "Thu Aug 14 22:43 CET 2009",
 );
 
