@@ -795,3 +795,4 @@ Irssi::command_bind ('mocp', 'cmd_moc');
 Irssi::command_bind ('audacious search', 'cmd_aud_search');
 
 Irssi::print("Consolidate Irssi Player v$VERSION is loaded successfully.");
+
