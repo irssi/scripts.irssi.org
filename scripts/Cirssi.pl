@@ -1,4 +1,3 @@
-
 use strict;
 use vars qw($VERSION %IRSSI);
 # Consolidate Irssi Player
