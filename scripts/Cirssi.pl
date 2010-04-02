@@ -19,8 +19,7 @@ use vars qw($VERSION %IRSSI);
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
 # Change Log:
-# v2.0.1:
-#       - Adding searching functionality to Audacious.
+# v2.0.1b:
 #       - Cleaning some unusefull code.
 #       - Show an error when a command is executed in a wrong window, instead of exiting silently.
 # v2.0.0:
@@ -63,7 +62,7 @@ use vars qw($VERSION %IRSSI);
 use Irssi;
 use IPC::Open3;
 
-$VERSION = '2.0.1';
+$VERSION = '2.0.1b';
 %IRSSI = (
    authors      =>   "Dani Soufi (compengi)",
    contact      =>   "IRC: Freenode network, #ubuntu-lb",
@@ -370,7 +369,6 @@ sub cmd_aud_playlist {
     my $display = `audtool2 --playlist-display`;
     chomp($display);
 
-    Irssi::print("Playlist:");
     Irssi::print("$display");
    }
    else {
@@ -391,15 +389,14 @@ sub cmd_aud_search {
       push @matches, $_ if /$data/i;
      }
      if (@matches) {
-      $witem->print("Found match(s) to '$data'.");
-      $witem->print("Printing the search result:");
+      $witem->print("Search Results:");
       for (@matches) {
-       $witem->print("Track$_");
+       $_ =~ s/^\s+|\s+$//g;
+       $witem->print("$_");
       }
-      $witem->print("use /audacious jump <Track> to listen to the track you want.");
      }
      else {
-       $witem->print("Couldn't find any match(s) for keyword '$data'.");
+       $witem->print("Couldn't find any match(s) for your keyword '$data'.");
      }
     }
     else {
