@@ -227,7 +227,6 @@ sub expand {
 # but we dont need to recreate the item every time so we first
 # check if something has changed and only then we recreate the string
 # this might just save some cycles
-# FIXME implement $get_size_only check, and user $item->{min|max-size}
 sub chanact {
 	my ($item, $get_size_only) = @_;
 
@@ -263,8 +262,6 @@ sub calculate_levels(@) {
 	my %levels;
 
 	foreach my $win (@windows) {
-		# FIXME we could use the next statements to weed out entries in
-		# @windows that we will not need later on
 		!ref($win) && next;
 
 		my $name = $win->get_active_name;
