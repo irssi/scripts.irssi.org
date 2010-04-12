@@ -5,14 +5,14 @@ use Irssi::TextUI;
 
 use vars qw($VERSION %IRSSI);
 
-$VERSION = "0.5.14";
+$VERSION = "master";
 %IRSSI = (
     authors     => 'BC-bd, Veli',
     contact     => 'bd@bc-bd.org, veli@piipiip.net',
     name        => 'chanact',
     description => 'Adds new powerful and customizable [Act: ...] item (chanelnames,modes,alias). Lets you give alias characters to windows so that you can select those with meta-<char>',
     license     => 'GNU GPLv2 or later',
-    url         => 'https://bc-bd.org/svn/repos/irssi/chanact'
+    url         => 'http://bc-bd.org/blog/irssi/'
 );
 
 # Adds new powerful and customizable [Act: ...] item (chanelnames,modes,alias).
@@ -568,6 +568,9 @@ Irssi::signal_add('nick mode changed', 'chanactHasChanged');
 ###
 #
 # Changelog
+#
+# master
+# 	- fixed URL
 #
 # 0.5.14
 # 	- fix itemless window handling, thx Bazerka
