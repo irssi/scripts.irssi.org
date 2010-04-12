@@ -1,6 +1,8 @@
 use Irssi 20020101.0001 ();
+
 use strict;
-# FIXME use warning;
+use warnings;
+
 use Irssi::TextUI;
 
 use vars qw($VERSION %IRSSI);
@@ -232,8 +234,8 @@ sub chanact {
 	if ($needRemake) {
 		remake();
 	}
-	
-	$item->default_handler($get_size_only, $actString, undef, 1);
+
+	$item->default_handler($get_size_only, $actString, "", 1);
 }
 
 # build a hash to easily access special levels based on
@@ -460,7 +462,7 @@ sub cmd_window_unalias {
 	# we are renumbering, so move the window to the lowest available
 	# refnum.
 	my $refnum = 1;
-	while (Irssi::window_find_refnum($refnum) ne "") {
+	while (Irssi::window_find_refnum($refnum)) {
 		$refnum++;
 	}
 
@@ -505,9 +507,9 @@ sub cmd_window_alias {
 		my $old_refnum = $window->{refnum};
 
 		$winnum = $rn_start;
- 
+
 		# Find the first available slot and move the window
-		while (Irssi::window_find_refnum($winnum) ne "") { $winnum++; }
+		while (Irssi::window_find_refnum($winnum)) { $winnum++; }
 		$window->set_refnum($winnum);
 		
 		Irssi::print("Moved the window from $old_refnum to $winnum");
@@ -571,6 +573,7 @@ Irssi::signal_add('nick mode changed', 'chanactHasChanged');
 #
 # master
 # 	- fixed URL
+# 	- now with 'use warnings'
 #
 # 0.5.14
 # 	- fix itemless window handling, thx Bazerka
