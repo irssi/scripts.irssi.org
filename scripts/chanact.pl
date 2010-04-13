@@ -495,7 +495,7 @@ sub cmd_window_alias {
 		$winname = $window->{name};
 	}
 
-	cmd_window_unalias($data, $server, $witem);
+	cmd_window_unalias("", $server, $witem);
 
 	my $winnum = $window->{refnum};
 	
@@ -571,6 +571,7 @@ Irssi::signal_add('nick mode changed', 'chanactHasChanged');
 # master
 # 	- fixed URL
 # 	- now with 'use warnings'
+# 	- fix cmd_window_unalias call from cmd_window_alias
 #
 # 0.5.14
 # 	- fix itemless window handling, thx Bazerka
