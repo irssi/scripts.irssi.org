@@ -9,8 +9,8 @@ use vars qw($VERSION %IRSSI);
 
 $VERSION = "master";
 %IRSSI = (
-    authors     => 'BC-bd, Veli',
-    contact     => 'bd@bc-bd.org, veli@piipiip.net',
+    authors     => 'BC-bd',
+    contact     => 'bd@bc-bd.org',
     name        => 'chanact',
     description => 'Adds new powerful and customizable [Act: ...] item (chanelnames,modes,alias). Lets you give alias characters to windows so that you can select those with meta-<char>',
     license     => 'GNU GPLv2 or later',
@@ -29,13 +29,15 @@ $VERSION = "master";
 # Contributors
 #########
 #
-# veli@piipiip.net   /window_alias code
-# qrczak@knm.org.pl  chanact_abbreviate_names
-# qerub@home.se      Extra chanact_show_mode and chanact_chop_status
+# veli@piipiip.net    original /window_alias code
+# qrczak@knm.org.pl   chanact_abbreviate_names
+# qerub@home.se       Extra chanact_show_mode and chanact_chop_status
 # madduck@madduck.net Better channel aliasing (case-sensitive, cross-network)
 #                     chanact_filter_windowlist basis
-# Jan 'jast' Krueger <jast@heapsort.de>, 2004-06-22
-# Ivo Timmermans <ivo@o2w.nl>	win->{hilight} patch
+# jast@heapsort.de    Updated documentation
+# ivo@o2w.nl          win->{hilight} patch
+# Bazerka             base patch for sorting by level change
+#                     updated documentation
 # 
 #########
 # USAGE
@@ -467,7 +469,6 @@ sub cmd_window_unalias {
 	Irssi::print("chanact: moved wintow to refnum $refnum");
 }
 
-# function by veli@piipiip.net
 # Make an alias
 sub cmd_window_alias {
 	my ($data, $server, $witem) = @_;
