@@ -440,19 +440,16 @@ sub cmd_window_unalias {
 	my $win = Irssi::active_win();
 	my $name = Irssi::active_win()->{name};
 
-	# chanact'ified windows have a name like this: X:servertag/name
+	# chanact'ified windows have a name like this: X:servertag/name. if we
+	# can't find anything like this we return and do not unbind nor renumber
+	# anything
 	my ($key, $tag) = split(/:/, $name);
-	($tag, $name) = split('/', $tag);
+	return unless $tag;
 
-	# remove alias only of we have a single character keybinding, if we
-	# haven't the name was not set by chanact, so we won't blindly unset
-	# stuff
-	if (length($key) == 1) {
-		$server->command("/bind -delete meta-$key");
-	} else {
-		Irssi::print("chanact: could not determine keybinding. ".
-			"Won't unbind anything");
-	}
+	($tag, $name) = split('/', $tag);
+	return unless (length($key) == 1);
+
+	$server->command("/bind -delete meta-$key");
 
 	# set the windowname back to it's old one. We don't bother checking
 	# for a vaild name here, as we want to remove the current one and if
@@ -578,6 +575,8 @@ Irssi::signal_add('nick mode changed', 'chanactHasChanged');
 # 	- now with 'use warnings'
 # 	- fix cmd_window_unalias call from cmd_window_alias
 # 	- fix Use of uninitialized value $name in hash element warnings
+# 	- return from cmd_window_unalias if the window has no valid
+# 	  chanact'ified name
 #
 # 0.5.14
 # 	- fix itemless window handling, thx Bazerka
