@@ -267,8 +267,10 @@ sub calculate_levels(@) {
 		!ref($win) && next;
 
 		my $name = $win->get_active_name;
+		# skip nameless windows
+		next unless $name;
 
-		if (exists($matches{$name})) {
+		if ($name && exists($matches{$name})) {
 			$levels{$name} = $matches{$name};
 		} else {
 			$levels{$name} = $default;
@@ -311,6 +313,8 @@ sub remake() {
 		$type = $active->{type} if $active;
 
 		my $name = $win->get_active_name;
+		# skip windows without a name
+		next unless $name;
 
 		my $filter_level =
 			$type eq 'QUERY' ? $levels{'@QUERIES'} : $levels{$name};
@@ -573,6 +577,7 @@ Irssi::signal_add('nick mode changed', 'chanactHasChanged');
 # 	- fixed URL
 # 	- now with 'use warnings'
 # 	- fix cmd_window_unalias call from cmd_window_alias
+# 	- fix Use of uninitialized value $name in hash element warnings
 #
 # 0.5.14
 # 	- fix itemless window handling, thx Bazerka
