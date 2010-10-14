@@ -24,17 +24,15 @@ use vars qw(%IRSSI);
 );
  
 # Sort by last_spoke if enabled
-my @last_spoke;
+my %last_spoke;
 sub recentlySpoke
 {
-	my ($windowA, $windowB) = @_;
-	return 0 unless(Irssi::settings_get_bool('ack_use_last_spoke'));
-	my ($refnumA, $refnumB) = ($windowA->{'refnum'}, $windowB->{'refnum'});
-	for my $refnum (@last_spoke)
-	{
-		return -1 if ($refnum == $refnumA);
-		return  1 if ($refnum == $refnumB);
-	}
+	my ($window) = @_;
+	my $refnum = $window->{'refnum'};
+	return 0 unless (Irssi::settings_get_bool('ack_use_last_spoke'));
+	return 0 unless ($last_spoke{$refnum});
+	# Prioritize this refnum if you spoke in it in the last X seconds
+	return 1 if ($last_spoke{$refnum} + Irssi::settings_get_int('ack_last_spoke_timeout') > time);
 	return 0;
 }
 
@@ -51,7 +49,7 @@ sub highPriority
 # Jump to an active channel.
 sub cmd_ack {
   my ($cmd, $server, $window) = @_;
-	my @list = split(/ /, lc(Irssi::settings_get_str('ack_high_priority')));
+	my @list = split(/,/, lc(Irssi::settings_get_str('ack_high_priority')));
  
   # We sort the data_level in reverse order because higher numbers
   # mean "more important".  If the data_level is equal between two
@@ -64,7 +62,7 @@ sub cmd_ack {
   my @windows = sort {
     ($b->{data_level}        <=> $a->{data_level})               ||
 	(highPriority($b, @list) <=> highPriority($a, @list))        ||
-	(recentlySpoke($a, $b))                                      ||
+	(recentlySpoke($b)       <=> recentlySpoke($a))              ||
     ($a->{refnum}            <=> $b->{refnum} )                  ||
     ($a->{last_line}         <=> $b->{last_line} ) 
   }
@@ -75,22 +73,24 @@ sub cmd_ack {
   $windows[0]->set_active() if @windows;
 }
  
+# Add a refnum to the high priority list
 sub cmd_ack_add
 {
 	my ($input, $server, $window) = @_;
-	my @list = split(/ /, lc(Irssi::settings_get_str('ack_high_priority')));
+	my @list = split(/,/, lc(Irssi::settings_get_str('ack_high_priority')));
 	my $num = Irssi::active_win()->{refnum};
 	return if grep {$_ == $num} @list;
-	Irssi::settings_set_str('ack_high_priority', join(' ', @list, $num));
+	Irssi::settings_set_str('ack_high_priority', join(',', @list, $num));
 }
 
+# Remove a refnum from the high priority list
 sub cmd_ack_del
 {
 	my ($input, $server, $window) = @_;
-	my @list = split(/ /, lc(Irssi::settings_get_str('ack_high_priority')));
+	my @list = split(/,/, lc(Irssi::settings_get_str('ack_high_priority')));
 	my $num = Irssi::active_win()->{refnum};
 	@list = grep {$_ != $num} @list;
-	Irssi::settings_set_str('ack_high_priority', join(' ', @list));
+	Irssi::settings_set_str('ack_high_priority', join(',', @list));
 }
 
 # Track the window number you last_spoke in
@@ -100,18 +100,26 @@ sub cmd_own_public
 	my $window = $server->window_find_item($target);
 	my $refnum = $window->{'refnum'};
 	# First remove the refnum from the list if it exists
-	@last_spoke = grep {$_ != $refnum}  @last_spoke;
-	# And shift the refnum back to the start
-	unshift @last_spoke, $refnum;
+	$last_spoke{$refnum} = time;
 }
 
 
 # Usage: /ack ... probably bind it to Meta-A or something.
 Irssi::command_bind("ack", "cmd_ack"); 
+
+# Commands to manipulate the ack_high_priority string
 Irssi::command_bind("ack_del", "cmd_ack_del"); 
 Irssi::command_bind("ack_add", "cmd_ack_add"); 
+
+# Hook to track when you last_spoke in a channel
 Irssi::signal_add("message own_public", "cmd_own_public"); 
+
+# List of channels with elevated sort priority
 Irssi::settings_add_str('misc', 'ack_high_priority', '');
+
+# Toggle is various sort-methods should be used
 Irssi::settings_add_bool('misc', 'ack_use_priority', 0);
 Irssi::settings_add_bool('misc', 'ack_use_last_spoke', 0);
 
+# How long a last_spoke is valid for before "forgotten"
+Irssi::settings_add_int('misc', 'ack_last_spoke_timeout', 300);
