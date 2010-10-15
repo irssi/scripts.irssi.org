@@ -113,6 +113,7 @@ Irssi::command_bind("ack_add", "cmd_ack_add");
 
 # Hook to track when you last_spoke in a channel
 Irssi::signal_add("message own_public", "cmd_own_public"); 
+Irssi::signal_add("message irc own_action", "cmd_own_public"); 
 
 # List of channels with elevated sort priority
 Irssi::settings_add_str('misc', 'ack_high_priority', '');
