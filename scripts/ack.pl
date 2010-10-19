@@ -99,7 +99,13 @@ sub cmd_own_public
 	my ($server, $msg, $target) = @_;
 	my $window = $server->window_find_item($target);
 	my $refnum = $window->{'refnum'};
-	# First remove the refnum from the list if it exists
+	$last_spoke{$refnum} = time;
+}
+
+sub cmd_ack_spoke
+{
+	my ($data, $server, $witem) = @_;
+	my $refnum = $witem->window()->{'refnum'};
 	$last_spoke{$refnum} = time;
 }
 
@@ -110,6 +116,9 @@ Irssi::command_bind("ack", "cmd_ack");
 # Commands to manipulate the ack_high_priority string
 Irssi::command_bind("ack_del", "cmd_ack_del"); 
 Irssi::command_bind("ack_add", "cmd_ack_add"); 
+
+# Command to add a window to the last_spoke hash for temporary priority increase
+Irssi::command_bind("ack_spoke", "cmd_ack_spoke"); 
 
 # Hook to track when you last_spoke in a channel
 Irssi::signal_add("message own_public", "cmd_own_public"); 
