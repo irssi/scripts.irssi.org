@@ -105,6 +105,11 @@ sub cmd_own_public
 sub cmd_ack_spoke
 {
 	my ($data, $server, $witem) = @_;
+	unless ($witem and $witem->window())
+	{
+		Irssi::print("No window here to operate on :(");
+		return;
+	}
 	my $refnum = $witem->window()->{'refnum'};
 	$last_spoke{$refnum} = time;
 }
