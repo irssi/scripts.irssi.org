@@ -36,6 +36,23 @@ sub recentlySpoke
 	return 0;
 }
 
+# Optional wihtelisting of channels to be switched to
+sub whitelist
+{
+	my @windows;
+	# No affect is whitelisting is not in use or the list is empty
+	return @_ unless (Irssi::settings_get_bool('ack_use_whitelist'));
+	return @_ unless (Irssi::settings_get_str('ack_channel_whitelist'));
+
+	# Select the items from the window list that appear on the whitelist
+	my @whitelist = split (/,/, Irssi::settings_get_str('ack_channel_whitelist'));
+	for my $item (@_)
+	{
+		push @windows, $item if (grep {$item->{'refnum'} == $_} @whitelist);
+	}
+	return @windows;
+}
+
  
 # Sort by priority if enabled
 sub highPriority
@@ -68,6 +85,9 @@ sub cmd_ack {
   }
   grep { $_->{data_level} }  # Must have some activity.
   Irssi::windows();
+
+  # Take care of whitelisting channels
+  @windows = whitelist(@windows);
  
   # Jump to the first window.  How hard can it be?
   $windows[0]->set_active() if @windows;
@@ -131,10 +151,12 @@ Irssi::signal_add("message irc own_action", "cmd_own_public");
 
 # List of channels with elevated sort priority
 Irssi::settings_add_str('misc', 'ack_high_priority', '');
+Irssi::settings_add_str('misc', 'ack_channel_whitelist', '');
 
 # Toggle is various sort-methods should be used
 Irssi::settings_add_bool('misc', 'ack_use_priority', 0);
 Irssi::settings_add_bool('misc', 'ack_use_last_spoke', 0);
+Irssi::settings_add_bool('misc', 'ack_use_whitelist', 0);
 
 # How long a last_spoke is valid for before "forgotten"
 Irssi::settings_add_int('misc', 'ack_last_spoke_timeout', 300);
