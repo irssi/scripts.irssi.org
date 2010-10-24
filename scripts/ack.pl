@@ -57,7 +57,8 @@ sub whitelist
 # Sort by priority if enabled
 sub highPriority
 {
-	my ($window, @list) = @_;
+	my ($window) = @_;
+	my @list = split(/,/, lc(Irssi::settings_get_str('ack_high_priority')));
 	return 0 unless(Irssi::settings_get_bool('ack_use_priority'));
 	return 1 if (grep {$window->{refnum} == $_} @list);
 	return 0;
@@ -65,32 +66,31 @@ sub highPriority
 
 # Jump to an active channel.
 sub cmd_ack {
-  my ($cmd, $server, $window) = @_;
-	my @list = split(/,/, lc(Irssi::settings_get_str('ack_high_priority')));
+	my ($cmd, $server, $window) = @_;
  
-  # We sort the data_level in reverse order because higher numbers
-  # mean "more important".  If the data_level is equal between two
-  # windows, then we jump to the window that has been upbated least
-  # recently.
-  #
-  # Currently that's the window with the earliest (oldest) last line
-  # of text.
- 
-  my @windows = sort {
-    ($b->{data_level}        <=> $a->{data_level})               ||
-	(highPriority($b, @list) <=> highPriority($a, @list))        ||
-	(recentlySpoke($b)       <=> recentlySpoke($a))              ||
-    ($a->{refnum}            <=> $b->{refnum} )                  ||
-    ($a->{last_line}         <=> $b->{last_line} ) 
-  }
-  grep { $_->{data_level} }  # Must have some activity.
-  Irssi::windows();
+	# We sort the data_level in reverse order because higher numbers
+	# mean "more important".  If the data_level is equal between two
+	# windows, then we jump to the window that has been upbated least
+	# recently.
+	#
+	# Currently that's the window with the earliest (oldest) last line
+	# of text.
+	
+	my @windows = sort {
+		($b->{data_level}   <=> $a->{data_level})    ||
+		(highPriority($b)   <=> highPriority($a)     ||
+		(recentlySpoke($b)  <=> recentlySpoke($a))   ||
+		($a->{refnum}       <=> $b->{refnum} )       ||
+		($a->{last_line}    <=> $b->{last_line} ) 
+	}
+	grep { $_->{data_level} }  # Must have some activity.
+	Irssi::windows();
 
-  # Take care of whitelisting channels
-  @windows = whitelist(@windows);
- 
-  # Jump to the first window.  How hard can it be?
-  $windows[0]->set_active() if @windows;
+	# Take care of whitelisting channels
+	@windows = whitelist(@windows);
+	
+	# Jump to the first window.  How hard can it be?
+	$windows[0]->set_active() if @windows;
 }
  
 # Add a refnum to the high priority list
