@@ -24,12 +24,12 @@ use vars qw(%IRSSI);
 );
 
 my %sort_methods = (
-	refnum    => \&sort_refnum,    # Sort by window refnum - returns one item
-	level     => \&sort_level,     # Sort by data priority: hilight, PRIVMSG, NICK/JOIN/QUICK - returns a group
-	whitelist => \&sort_whitelist, # Only show whitelisted windows - by refnum
-	lastspoke => \&sort_lastspoke, # Give priority to channels you recently spoke in
-	priority  => \&sort_priority,  # Manually prioritize given windows
-	timestamp => \&sort_timestamp, # Channel most recently with activity
+	refnum    => [ \&sort_refnum,    "Sort by window refnum - returns one item" ],
+	level     => [ \&sort_level,     "Sort by data priority: hilight, PRIVMSG, NICK/JOIN/QUICK - returns a group" ],
+	whitelist => [ \&sort_whitelist, "Only show whitelisted windows - by refnum" ],
+	lastspoke => [ \&sort_lastspoke, "Give priority to channels you recently spoke in" ],
+	priority  => [ \&sort_priority,  "Manually prioritize given windows" ],
+	timestamp => [ \&sort_timestamp, "Channel most recently with activity" ],
 );
 
 
@@ -139,7 +139,7 @@ sub cmd_ack {
 	{
 		my $reverse = ($sort =~ /^-/) ? 1 : 0; # Reverse sort or not
 		$sort = substr($sort, 1) if ($sort =~ /^[+-]/); # ltrim a leading + or -
-		my $func = $sort_methods{$sort};
+		my $func = $sort_methods{$sort}->[0];
 		unless (defined $func)
 		{
 			Irssi::print("No such ack sort method as $sort");
@@ -196,6 +196,14 @@ sub cmd_ack_spoke
 	$last_spoke{$refnum} = time;
 }
 
+sub cmd_ack_sorts_help
+{
+	Irssi::print("Sort methods:");
+	for my $k (keys %sort_methods)
+	{
+		Irssi::print(sprintf("%-12s: %s", $k, $sort_methods{$k}->[1]));
+	}
+}
 
 # Usage: /ack ... probably bind it to Meta-A or something.
 Irssi::command_bind("ack", "cmd_ack"); 
@@ -206,6 +214,7 @@ Irssi::command_bind("ack_add", "cmd_ack_add");
 
 # Command to add a window to the last_spoke hash for temporary priority increase
 Irssi::command_bind("ack_spoke", "cmd_ack_spoke"); 
+Irssi::command_bind("ack_sorts", "cmd_ack_sorts_help"); 
 
 # Hook to track when you last_spoke in a channel
 Irssi::signal_add("message own_public", "cmd_own_public"); 
