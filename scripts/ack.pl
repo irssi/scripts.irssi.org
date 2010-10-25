@@ -22,73 +22,136 @@ use vars qw(%IRSSI);
   license     => 'Perl',
   description => 'Jump to the next active window, with tiebreakers.',
 );
- 
-# Sort by last_spoke if enabled
-my %last_spoke;
-sub recentlySpoke
+
+my %sort_methods = (
+	refnum    => \&sort_refnum,    # Sort by window refnum - returns one item
+	level     => \&sort_level,     # Sort by data priority: hilight, PRIVMSG, NICK/JOIN/QUICK - returns a group
+	whitelist => \&sort_whitelist, # Only show whitelisted windows - by refnum
+	lastspoke => \&sort_lastspoke, # Give priority to channels you recently spoke in
+	priority  => \&sort_priority,  # Manually prioritize given windows
+	timestamp => \&sort_timestamp, # Channel most recently with activity
+);
+
+
+# Sort by window refnum - returns one item
+sub sort_refnum
 {
-	my ($window) = @_;
-	my $refnum = $window->{'refnum'};
-	return 0 unless (Irssi::settings_get_bool('ack_use_last_spoke'));
-	return 0 unless ($last_spoke{$refnum});
-	# Prioritize this refnum if you spoke in it in the last X seconds
-	return 1 if ($last_spoke{$refnum} + Irssi::settings_get_int('ack_last_spoke_timeout') > time);
-	return 0;
+	my ($reverse, @windows) = @_;
+	# Sort by window reference, ascending
+	@windows = sort { $a->{refnum} <=> $b->{refnum} } @windows;
+	# Return the first/last window
+	return $windows[$reverse ? -1 : 0];              
 }
 
-# Optional wihtelisting of channels to be switched to
-sub whitelist
+# Sort by data priority: hilight, PRIVMSG, NICK/JOIN/QUICK - returns a group
+sub sort_level 
 {
-	my @windows;
-	# No affect is whitelisting is not in use or the list is empty
-	return @_ unless (Irssi::settings_get_bool('ack_use_whitelist'));
-	return @_ unless (Irssi::settings_get_str('ack_channel_whitelist'));
+	my ($reverse, @windows) = @_;
+	# Search for windows with the highest/lowest data_level
+	my @levels = qw/1 2 3/;
+	@levels = reverse(@levels) unless ($reverse);
+
+	for my $level (@levels)
+	{
+		my @list = grep {$_->{'data_level'} == $level} @windows;
+		return @list if (@list);
+	}
+}
+
+# Only show whitelisted windows - by refnum 
+# Set reversed to blacklist
+sub sort_whitelist
+{
+	my ($reverse, @windows) = @_;
+	my @list;
+
+	# Do nothing unless a whitelist is set
+	return @windows unless (Irssi::settings_get_str('ack_channel_whitelist'));
 
 	# Select the items from the window list that appear on the whitelist
 	my @whitelist = split (/,/, Irssi::settings_get_str('ack_channel_whitelist'));
-	for my $item (@_)
+	for my $item (@windows)
 	{
-		push @windows, $item if (grep {$item->{'refnum'} == $_} @whitelist);
+		# Push the item to the return list if it is (not) on the whitelist list
+		push @list, $item if (not $reverse and grep {$item->{'refnum'} == $_} @whitelist);
+		push @list, $item if ($reverse and not grep {$item->{'refnum'} == $_} @whitelist);
 	}
+	return @list;
+}
+
+# Give priority to channels you recently spoke in
+# Reversing is ignored
+my %last_spoke;
+sub sort_lastspoke
+{
+	my ($reverse, @windows) = @_;
+	# You must have spoke after this time to get priority
+	my $cutoff = time - Irssi::settings_get_int('ack_last_spoke_timeout');
+	# Windows you spoke in after the cutoff
+	my @list = grep {$last_spoke{$_->{'refnum'}} and $last_spoke{$_->{'refnum'}} > $cutoff} @windows;
+	# If something was found, use it. Otherwise fallback to all the windows
+	return @list if (@list);
 	return @windows;
 }
 
- 
-# Sort by priority if enabled
-sub highPriority
+# Manually prioritize given windows
+sub sort_priority
 {
-	my ($window) = @_;
-	my @list = split(/,/, lc(Irssi::settings_get_str('ack_high_priority')));
-	return 0 unless(Irssi::settings_get_bool('ack_use_priority'));
-	return 1 if (grep {$window->{refnum} == $_} @list);
-	return 0;
+	my ($reverse, @windows) = @_;
+	my @priorities = split(/,/, lc(Irssi::settings_get_str('ack_high_priority')));
+	my @list;
+	for my $item (@windows)
+	{
+		# Push the item to the return list if it is (not) on the priority list
+		push @list, $item if (not $reverse and grep {$item->{'refnum'} == $_} @priorities);
+		push @list, $item if ($reverse and not grep {$item->{'refnum'} == $_} @priorities);
+	}
+	# If something was found, use it. Otherwise fallback to all the windows
+	return @list if (@list);
+	return @windows;
 }
+
+# Channel most recently with activity first (or oldest first with reverse)
+sub sort_timestamp
+{
+	my ($reverse, @windows) = @_;
+	# Sort by activity timestamp, descending
+	@windows = sort { $b->{refnum} <=> $a->{refnum} } @windows;
+	# Return the first/last window
+	return $windows[$reverse ? -1 : 0];              
+}
+
 
 # Jump to an active channel.
 sub cmd_ack {
 	my ($cmd, $server, $window) = @_;
- 
-	# We sort the data_level in reverse order because higher numbers
-	# mean "more important".  If the data_level is equal between two
-	# windows, then we jump to the window that has been upbated least
-	# recently.
-	#
-	# Currently that's the window with the earliest (oldest) last line
-	# of text.
-	
-	my @windows = sort {
-		($b->{data_level}   <=> $a->{data_level})    ||
-		(highPriority($b)   <=> highPriority($a)     ||
-		(recentlySpoke($b)  <=> recentlySpoke($a))   ||
-		($a->{refnum}       <=> $b->{refnum} )       ||
-		($a->{last_line}    <=> $b->{last_line} ) 
-	}
-	grep { $_->{data_level} }  # Must have some activity.
-	Irssi::windows();
 
-	# Take care of whitelisting channels
-	@windows = whitelist(@windows);
-	
+	# There's various methods of sorting activity
+	# The best is to magically see what the user would want to see next
+	# Various sort functions approximate that. The user can select which functions to use and in what order.
+	# The sorts can also be reversed with a - flag or normal with a + flag
+	# Each sort function takes a list of windows and returns another list of equal or smaller size
+
+	my @windows = grep { $_->{data_level} } Irssi::windows(); # Must have some activity.
+
+	# The sort functions to use
+	for my $sort (split(/,/, Irssi::settings_get_str('ack_sorts')))
+	{
+		my $reverse = ($sort =~ /^-/) ? 1 : 0; # Reverse sort or not
+		$sort = substr($sort, 1) if ($sort =~ /^[+-]/); # ltrim a leading + or -
+		my $func = $sort_methods{$sort};
+		unless (defined $func)
+		{
+			Irssi::print("No such ack sort method as $sort");
+			next;
+		}
+
+		# Call the sorting method
+		@windows = &$func($reverse, @windows);
+
+		last if(scalar(@windows) < 2); # Nothing left to sort between
+	}
+
 	# Jump to the first window.  How hard can it be?
 	$windows[0]->set_active() if @windows;
 }
@@ -121,7 +184,6 @@ sub cmd_own_public
 	my $refnum = $window->{'refnum'};
 	$last_spoke{$refnum} = time;
 }
-
 sub cmd_ack_spoke
 {
 	my ($data, $server, $witem) = @_;
@@ -153,10 +215,9 @@ Irssi::signal_add("message irc own_action", "cmd_own_public");
 Irssi::settings_add_str('misc', 'ack_high_priority', '');
 Irssi::settings_add_str('misc', 'ack_channel_whitelist', '');
 
-# Toggle is various sort-methods should be used
-Irssi::settings_add_bool('misc', 'ack_use_priority', 0);
-Irssi::settings_add_bool('misc', 'ack_use_last_spoke', 0);
-Irssi::settings_add_bool('misc', 'ack_use_whitelist', 0);
+# A list of sort methods to apply
+# See the sort_method hash
+Irssi::settings_add_str('misc', 'ack_sorts', '+level,+refnum');
 
 # How long a last_spoke is valid for before "forgotten"
 Irssi::settings_add_int('misc', 'ack_last_spoke_timeout', 300);
