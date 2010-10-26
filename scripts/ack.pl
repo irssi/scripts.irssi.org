@@ -135,7 +135,9 @@ sub cmd_ack {
 	my @windows = grep { $_->{data_level} } Irssi::windows(); # Must have some activity.
 
 	# The sort functions to use
-	for my $sort (split(/,/, Irssi::settings_get_str('ack_sorts')))
+	my $ack_sorts = Irssi::settings_get_str('ack_sorts');
+	$ack_sorts =~ s/ //g;
+	for my $sort (split(/,/, $ack_sorts))
 	{
 		my $reverse = ($sort =~ /^-/) ? 1 : 0; # Reverse sort or not
 		$sort = substr($sort, 1) if ($sort =~ /^[+-]/); # ltrim a leading + or -
