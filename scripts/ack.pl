@@ -203,6 +203,7 @@ sub cmd_ack_sorts_help
 	{
 		Irssi::print(sprintf("%-12s: %s", $k, $sort_methods{$k}->[1]));
 	}
+	Irssi::print("You're ack_sorts setting: " . Irssi::settings_get_str('ack_sorts'));
 }
 
 # Usage: /ack ... probably bind it to Meta-A or something.
@@ -214,6 +215,8 @@ Irssi::command_bind("ack_add", "cmd_ack_add");
 
 # Command to add a window to the last_spoke hash for temporary priority increase
 Irssi::command_bind("ack_spoke", "cmd_ack_spoke"); 
+
+# Display the sort methods available along with a brief description
 Irssi::command_bind("ack_sorts", "cmd_ack_sorts_help"); 
 
 # Hook to track when you last_spoke in a channel
