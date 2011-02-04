@@ -1,7 +1,7 @@
 use strict;
 use vars qw($VERSION %IRSSI);
 
-$VERSION = '0.4';
+$VERSION = '0.41';
 %IRSSI = (
     authors	=> 'Tijmen "timing" Ruizendaal',
     contact	=> 'tijmen.ruizendaal@gmail.com',
@@ -9,7 +9,7 @@ $VERSION = '0.4';
     description	=> '/blist <all|online|offline|away> <word>,  greps <word> from blist for bitlbee',
     license	=> 'GPLv2',
     url		=> 'http://the-timing.nl/stuff/irssi-bitlbee',
-    changed	=> '2006-10-27',
+    changed	=> '2008-09-13', 
 );
 
 my $bitlbee_server_tag = "localhost";
@@ -41,6 +41,13 @@ sub get_channel {
 sub blist {
   my ($args, $server, $winit) = @_;
   ($list, $word) = split(/ /, $args, 2);
+  $list=lc $list;
+  $word=lc $word;
+  if($list ne "all" && $list ne "online" && $list ne "offline" &&
+     $list ne "away" && $list ne "") {
+    $word=$list;
+    $list="";
+  }
   if (Irssi::active_win->{'active'}->{'name'} eq $bitlbee_channel) {
     Irssi::active_win()->command("msg $bitlbee_channel blist $list");
     Irssi::signal_add('event privmsg', 'grep');  
@@ -52,6 +59,7 @@ sub blist {
 sub grep {
   my ($server, $data, $nick, $address) = @_;
   my ($target, $text) = split(/ :/, $data, 2);
+  $text=lc $text;
   if ($text =~ /$word/ && $target =~ /$bitlbee_channel/){
     ##do nothing
   } else {Irssi::signal_stop();}
