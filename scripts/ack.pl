@@ -123,7 +123,8 @@ sub sort_timestamp
 
 
 # Jump to an active channel.
-sub cmd_ack {
+sub cmd_ack
+{
 	my ($cmd, $server, $window) = @_;
 
 	# There's various methods of sorting activity
@@ -136,7 +137,7 @@ sub cmd_ack {
 
 	# The sort functions to use
 	my $ack_sorts = Irssi::settings_get_str('ack_sorts');
-	$ack_sorts =~ s/ //g;
+	$ack_sorts =~ s/\s//g;
 	for my $sort (split(/,/, $ack_sorts))
 	{
 		my $reverse = ($sort =~ /^-/) ? 1 : 0; # Reverse sort or not
