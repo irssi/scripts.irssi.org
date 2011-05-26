@@ -157,7 +157,7 @@ sub cmd_ack
 	}
 
 	# Jump to the first window.  How hard can it be?
-	$windows[0]->set_active() if @windows;
+	$windows[0]->set_active() if (defined $windows[0]);
 }
  
 # Add a refnum to the high priority list
