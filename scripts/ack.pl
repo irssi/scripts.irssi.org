@@ -133,7 +133,8 @@ sub cmd_ack
 	# The sorts can also be reversed with a - flag or normal with a + flag
 	# Each sort function takes a list of windows and returns another list of equal or smaller size
 
-	my @windows = grep { $_->{data_level} } Irssi::windows(); # Must have some activity.
+	my @windows = grep { $_->{data_level} } Irssi::windows(); # Get windows with activity
+	return unless @windows; # Prevent a bunch of function calls when there's no active windows
 
 	# The sort functions to use
 	my $ack_sorts = Irssi::settings_get_str('ack_sorts');
