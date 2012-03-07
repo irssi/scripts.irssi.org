@@ -30,6 +30,7 @@ my %sort_methods = (
 	lastspoke => [ \&sort_lastspoke, "Give priority to channels you recently spoke in" ],
 	priority  => [ \&sort_priority,  "Manually prioritize given windows" ],
 	timestamp => [ \&sort_timestamp, "Channel most recently with activity" ],
+	network   => [ \&sort_network,   "Ordered list of network tags" ],
 );
 
 
@@ -57,6 +58,24 @@ sub sort_level
 		return @list if (@list);
 	}
 }
+
+sub sort_network
+{
+	my ($reverse, @windows) = @_;
+	return @windows unless (Irssi::settings_get_str('ack_networks'));
+	my @networks = split (/,/, lc(Irssi::settings_get_str('ack_networks')));
+	my @list;
+	for my $tag (@networks)
+	{
+		for my $item (@windows)
+		{
+			push @list, $item if ( lc($item->{active_server}->{tag}) eq $tag );
+		}
+		return @list if( @list );
+	}
+	return @windows;
+}
+
 
 # Only show whitelisted windows - by refnum 
 # Set reversed to blacklist
@@ -234,6 +253,9 @@ Irssi::settings_add_str('misc', 'ack_channel_whitelist', '');
 # A list of sort methods to apply
 # See the sort_method hash
 Irssi::settings_add_str('misc', 'ack_sorts', '+level,+refnum');
+
+# Network priority list, eg a,b,c will prioritize a then b then c then the rest
+Irssi::settings_add_str('misc', 'ack_networks', 'FreeNode,EFNet');
 
 # How long a last_spoke is valid for before "forgotten"
 Irssi::settings_add_int('misc', 'ack_last_spoke_timeout', 300);
