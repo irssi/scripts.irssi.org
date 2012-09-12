@@ -3,7 +3,7 @@ use Irssi;
 use Irssi::Irc;
 
 use vars qw($VERSION %IRSSI);
-$VERSION = "1";
+$VERSION = "1.1";
 %IRSSI = (
     authors     => 'Valentin Batz, Nico R. Wohlgemuth',
     contact     => 'senneth@irssi.org, nico@lifeisabug.com',
@@ -44,8 +44,8 @@ sub ban_new() {
       my $newbanmask = $chan->ban_get_mask($banuser, 0);
       my $kickreason = "IRC is serious!";
       $window->printformat(MSGLEVEL_CRAP, 'ban_affects_sd', $banuser);
-      $server->command("kick $channel $banuser $kickreason");
-      $server->command("mode $channel" . " -b+b " . "$banmask $newbanmask");
+      $server->send_raw_now("KICK $channel $banuser :$kickreason");
+      $server->send_raw_now("MODE $channel -b+b $banmask $newbanmask");
    }
 }
 
