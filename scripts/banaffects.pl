@@ -3,7 +3,7 @@ use Irssi;
 use Irssi::Irc;
 
 use vars qw($VERSION %IRSSI);
-$VERSION = "1.1";
+$VERSION = "1.2";
 %IRSSI = (
     authors     => 'Valentin Batz, Nico R. Wohlgemuth',
     contact     => 'senneth@irssi.org, nico@lifeisabug.com',
@@ -17,10 +17,11 @@ $VERSION = "1.1";
 
 Irssi::theme_register([
    'ban_affects' => 'Ban {hilight $0} set by {hilight $1} affects: {hilight $2-}',
+   'ban_affects_t' => 'Ban {hilight $0} would affect: {hilight $1-}',
    'ban_affects_sd', 'Ban affects {hilight you}; taking care of {hilight $0}...'
 ]);
 
-sub ban_new() {
+sub ban_new {
    my ($chan, $ban) = @_;
    return unless $chan;
    my $server = $chan->{server};
@@ -51,7 +52,7 @@ sub ban_new() {
 
 Irssi::signal_add('ban new', \&ban_new);
 
-sub test_ban() {
+sub test_ban {
    my ($arg, $server, $witem) = @_;
    return unless (defined $witem && $witem->{type} eq 'CHANNEL');
    my $chan = $server->channel_find($witem->{name});
@@ -62,7 +63,7 @@ sub test_ban() {
       }
    }
    my $nicks = join(", ", @matches);
-   $witem->printformat(MSGLEVEL_CRAP, 'ban_affects', $arg, $nicks) if ($nicks ne '');
+   $witem->printformat(MSGLEVEL_CRAP, 'ban_affects_t', $arg, $nicks) if ($nicks ne '');
 }
 
 Irssi::command_bind('banaffects', \&test_ban);
