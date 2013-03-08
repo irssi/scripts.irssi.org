@@ -1,4 +1,8 @@
+#!/usr/bin/perl
 # Support extended-joins
+# (C) 2012 Mike Quin <mike@elite.uk.com>
+# Licensed under the GNU General Public License Version 2 ( https://www.gnu.org/licenses/gpl-2.0.html )
+
 
 use Irssi;
 use strict;
