@@ -2,9 +2,10 @@
 #
 # Displays messages in status window, unless a window irssi-feed exists
 # Add one with /window new hidden /window name irssi-feed
+# If a channel parameter is specified when adding a feed, announces it to a channel.
 #
 # Command format:
-# /feed {add|set|list|rm} [--uri <address>] [--id <short name>] [--color %<color>] [--newid <new short name>] [--interval <seconds>]
+# /feed {add|set|list|rm} [--uri <address>] [--id <short name>] [--color %<color>] [--newid <new short name>] [--interval <seconds>] [--channel <channel>]
 #
 # Note: Since XML::Feed's HTTP doesn't support async usage, I implemented an
 # an own HTTP client. It won't do anything sensible when redirected and does
@@ -31,6 +32,8 @@ our %IRSSI = (
 );
 use Irssi qw(command_bind timeout_add INPUT_READ INPUT_WRITE);
 
+{ package Irssi::Nick }
+
 sub save_config {
 	our @feeds;
 	my $str = '';
@@ -40,6 +43,8 @@ sub save_config {
 			$str .= " --uri $feed->{uri}";
 			$str .= " --interval $feed->{configtimeout} " if($feed->{configtimeout});
 			$str .= " --color $feed->{color} " if($feed->{color});
+			$str .= " --channel $feed->{channel} " if($feed->{channel});
+			$str .= " --servtag $feed->{servtag} " if($feed->{servtag});
 			$str .= "\n";
 		}
 	}
@@ -60,12 +65,16 @@ sub feedreader_cmd {
 	my $feed_uri;
 	my $feed_timeout = 0;
 	my $feed_color = 'NOMODIFY';
+	my $feed_channel;
+	my $feed_servtag = $server->{tag};
 	my $feed_newid;
 	if(!GetOptionsFromString($args, 
 		'uri=s' => \$feed_uri,
 		'id=s' => \$feed_id,
 		'interval=i' => \$feed_timeout,
 		'color=s' => \$feed_color,
+		'channel=s' => \$feed_channel,
+		'servtag=s' => \$feed_servtag,
 		'newid=s' => \$feed_newid)
 	) {
 		feedprint("Could not parse options of $data");
@@ -84,7 +93,7 @@ sub feedreader_cmd {
 			feedprint("Failed to add feed. No uri given.");
 		} else {
 			$feed_color = '' if($feed_color eq 'NOMODIFY');
-			$feed = feed_new($feed_uri, $feed_timeout, $feed_id, $feed_color);
+			$feed = feed_new($feed_uri, $feed_timeout, $feed_id, $feed_color, $feed_channel, $feed_servtag);
 			feedprint("Added feed " . feed_stringrepr($feed, 'long')) if($window_item);
 			save_config();
 			check_feeds();
@@ -98,6 +107,8 @@ sub feedreader_cmd {
 			$feed->{timeout} = valid_timeout($feed->{configtimeout});
 			$feed->{uri} = $feed_uri if($feed_uri && $feed_id);
 			$feed->{color} = $feed_color unless($feed_color eq 'NOMODIFY');
+			$feed->{channel} = $feed_channel if($feed_channel);
+			$feed->{servtag} = $feed_servtag if($feed_servtag);
 			$feed->{timeout} = $feed_timeout if($feed_timeout);
 			$feed->{id} = $feed_newid if($feed_newid);
 			save_config();
@@ -177,16 +188,15 @@ sub valid_timeout {
 }
 
 sub feed_new {
-	my $uri = shift;
-	my $timeout = shift;
-	my $id = shift;
-	my $color = shift;
+	my ($uri, $timeout, $id, $color, $channel, $servtag) = @_;
 	state $nextfid = 1;
 	my $feed = {
 		id => $id // "$nextfid",
 		uri => URI->new($uri),
 		name => $uri,
 		color => $color,
+		channel => $channel,
+		servtag => $servtag,
 		lastcheck => clock_gettime(CLOCK_MONOTONIC) - 86400,
 		timeout => valid_timeout($timeout), # next actual timeout. Doubled on error
 		configtimeout => $timeout,
@@ -380,7 +390,7 @@ sub feed_announce_item {
 	$space =~ s//' ' x ((length $feed->{id}) + 3)/e;
 	my $titleline = $news->title;
 	$titleline =~ s/\s*\n\s*/ | /g;
-	feedprint('<' . feed_stringrepr($feed) . '> ' . $titleline . "\n" . $space . $news->link, Irssi::MSGLEVEL_PUBLIC);
+	feed_announce_item_print($feed, '<' . feed_stringrepr($feed) . '> ' . $titleline . "\n" . $space . $news->link, Irssi::MSGLEVEL_PUBLIC);
 }
 
 sub finished_load_message {
@@ -436,6 +446,18 @@ sub feedprint {
 		Irssi::print($msg);
 	}
 }
+
+sub feed_announce_item_print {
+	my ($feed, $msg) = @_;
+	my $channel = $feed->{channel};
+	my $server = Irssi::server_find_tag( $feed->{servtag} );
+	if($channel) {
+		$server->command("/notice $channel $msg");
+	} else {
+		feedprint($msg);
+	}
+}
+
 
 Irssi::command_bind('feed', \&feedreader_cmd);
 Irssi::settings_add_str('feedreader', 'feedlist', '');
