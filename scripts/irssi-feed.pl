@@ -386,11 +386,23 @@ sub feed_get_news {
 
 sub feed_announce_item {
 	my ($feed, $news) = @_;
-	my $space = "";
-	$space =~ s//' ' x ((length $feed->{id}) + 3)/e;
 	my $titleline = $news->title;
 	$titleline =~ s/\s*\n\s*/ | /g;
-	feed_announce_item_print($feed, '<' . feed_stringrepr($feed) . '> ' . $titleline . "\n" . $space . $news->link, Irssi::MSGLEVEL_PUBLIC);
+
+	my $channel = $feed->{channel};
+	if($channel) {
+		my $server = Irssi::server_find_tag($feed->{servtag});
+		if($server) {
+			$server->command("/notice $channel <" . feed_stringrepr($feed, 0, 1) . '> ' . $titleline . " " . $news->link);
+		} else {
+			feedprint('Feed ' . feed_stringrepr($feed) . ' failed to find servertag ' . $feed->{servtag} . '. Deactivated!') if($feed->{active});
+			$feed->{active} = 0;
+		}
+	} else {
+		my $space = "";
+		$space =~ s//' ' x ((length $feed->{id}) + 3)/e;
+		feedprint('<' . feed_stringrepr($feed) . '> ' . $titleline . "\n" . $space . $news->link);
+	}
 }
 
 sub finished_load_message {
@@ -409,7 +421,7 @@ sub feed_delete {
 }
 
 sub feed_stringrepr {
-	my ($feed, $long) = @_;
+	my ($feed, $long, $nocolor) = @_;
 	return unless $feed;
 	if($long) {
 		return "#" .
@@ -420,11 +432,12 @@ sub feed_stringrepr {
 		$feed->{name} . 
 		(($feed->{name} ne $feed->{uri}) ? (" (" .$feed->{uri}. ")") : "") . 
 		($feed->{active} ? " ":" in")."active, " . 
-		$feed->{timeout} ."s";
+		$feed->{timeout} ."s" .
+		($feed->{channel} ? ' (printed to ' . $feed->{channel} . '@' . $feed->{servtag} . ')' : '');
 	} else {
-		return ($feed->{color} ? $feed->{color} : '') .
+		return ($feed->{color} && !$nocolor ? $feed->{color} : '') .
 		$feed->{id} .
-		($feed->{color} ? '%n' : '');
+		($feed->{color} && !$nocolor ? '%n' : '');
 	}
 }
 
@@ -446,18 +459,6 @@ sub feedprint {
 		Irssi::print($msg);
 	}
 }
-
-sub feed_announce_item_print {
-	my ($feed, $msg) = @_;
-	my $channel = $feed->{channel};
-	my $server = Irssi::server_find_tag( $feed->{servtag} );
-	if($channel) {
-		$server->command("/notice $channel $msg");
-	} else {
-		feedprint($msg);
-	}
-}
-
 
 Irssi::command_bind('feed', \&feedreader_cmd);
 Irssi::settings_add_str('feedreader', 'feedlist', '');
