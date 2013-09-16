@@ -20,10 +20,10 @@ use List::Util qw(min);
 use IO::Socket::INET;
 use Errno;
 use Getopt::Long qw(GetOptionsFromString);
-our $VERSION = "20130209";
+our $VERSION = "20130916";
 our %IRSSI = (
 	authors     => 'Julius Michaelis',
-	contact     => 'iRRSi@cserv.dyndns.org', # see also: JCaesar on freenode, probably idling in #irssi
+	contact     => 'iRRSi@liftm.de', # see also: JCaesar on freenode, probably idling in #irssi
 	name        => 'iRSSi feed reader',
 	description => 'Parses and announces XML/Atom feeds',
 	license     => 'GPLv3',
@@ -324,7 +324,7 @@ sub feed_parse_buffer {
 	my $http = HTTP::Response->parse($feed->{io}->{buffer});
 	if($http->is_redirect) {
 		my $location = $http->header('Location');
-		my $uri = URI->new($location);
+		my $uri = URI->new($location, $feed->{uri});
 		if($location) {
 			feedprint('Feed ' . feed_stringrepr($feed) . ' got redirected to ' . $location);
 			$feed->{uri} = $uri;
