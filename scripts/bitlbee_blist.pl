@@ -47,6 +47,7 @@ sub get_channel {
 sub blist {
 	my ($args, $server, $winit) = @_;
 	($list, $word) = split(/ /, $args, 2);
+	($word, $list) = ($list, $word) unless $word;
 	$list=lc $list;
 	$word=lc $word;
 	if($list ne "all" && $list ne "online" && $list ne "offline" &&
