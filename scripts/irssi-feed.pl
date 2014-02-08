@@ -105,7 +105,7 @@ sub feedreader_cmd {
 			$feed->{active} = 1;
 			$feed->{io}->{failed} = 0;
 			$feed->{timeout} = valid_timeout($feed->{configtimeout});
-			$feed->{uri} = $feed_uri if($feed_uri && $feed_id);
+			$feed->{uri} = URI->new($feed_uri) if($feed_uri && $feed_id);
 			$feed->{color} = $feed_color unless($feed_color eq 'NOMODIFY');
 			$feed->{channel} = $feed_channel if($feed_channel);
 			$feed->{servtag} = $feed_servtag if($feed_servtag);
