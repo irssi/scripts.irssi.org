@@ -20,7 +20,7 @@ use List::Util qw(min);
 use IO::Socket::INET;
 use Errno;
 use Getopt::Long qw(GetOptionsFromString);
-our $VERSION = "20130916";
+our $VERSION = "20140514";
 our %IRSSI = (
 	authors     => 'Julius Michaelis',
 	contact     => 'iRRSi@liftm.de', # see also: JCaesar on freenode, probably idling in #irssi
@@ -235,8 +235,8 @@ sub feed_check {
 	if(($now - $feed->{lastcheck}) > $feed->{timeout}) {
 		if($feed->{io}->{failed} >= 3) {
 			$feed->{timeout} = valid_timeout($feed->{timeout} * 2);
+			$feed->{io}->{failed} -= 2;
 			$feed->{generation} += 1; # so the "Skipped n feed entries" message won't hang forever
-			return 0;
 		}
 		feedprint("Warning, stall feed " . feed_stringrepr($feed)) if($feed->{io}->{conn});
 		feed_cleanup_conn($feed, 1);
@@ -433,6 +433,7 @@ sub feed_stringrepr {
 		(($feed->{name} ne $feed->{uri}) ? (" (" .$feed->{uri}. ")") : "") . 
 		($feed->{active} ? " ":" in")."active, " . 
 		$feed->{timeout} ."s" .
+		" (next in " . int($feed->{lastcheck} + $feed->{timeout} - clock_gettime(CLOCK_MONOTONIC)) . "s)" .
 		($feed->{channel} ? ' (printed to ' . $feed->{channel} . '@' . $feed->{servtag} . ')' : '');
 	} else {
 		return ($feed->{color} && !$nocolor ? $feed->{color} : '') .
