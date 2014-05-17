@@ -290,7 +290,7 @@ sub feed_io_event_write {
 		my $req = "GET " . $query . " HTTP/1.0\r\n" .
 				"Host: " . $self->{uri}->host . "\r\n" .
 				"User-Agent: Irssi feed reader " . $VERSION . "\r\n" .
-				"Accept-Encoding: gzip\r\n" .
+				"Accept-Encoding: " . HTTP::Message->decodable() . "\r\n" .
 				"Connection: close\r\n\r\n";
 		$self->{io}->{conn}->send($req);
 		Irssi::input_remove($self->{io}->{writetag}) if $self->{io}->{writetag};
@@ -337,7 +337,12 @@ sub feed_parse_buffer {
 		}
 	}
 	return if not $http->is_success;
-	my $httpcontent = $http->decoded_content;
+	my $httpcontent = $http->decoded_content();
+	my $contenttype = $http->header('Content-Type');
+	if($contenttype and $contenttype =~ /^.*charset\s*=\s*(?<charset>[^;]*)(;|$)/ and $+{charset} !~ /UTF-8/i) {
+		# http specifies a non-utf8 content, but HTTP::Response will convert that to utf-8 for us.
+		$httpcontent =~ s/encoding\s*=\s*("[^"]*"|[^" ]*)\s(?<!\?>)//;
+	}
 	my $data = eval { $feed->{io}->{xml} = XML::Feed->parse(\$httpcontent) };
 	if($data) {
 		$feed->{name} = $data->title;
