@@ -404,8 +404,8 @@ sub feed_announce_item {
 			$feed->{active} = 0;
 		}
 	} else {
-		my $space = "";
-		$space =~ s//' ' x ((length $feed->{id}) + 3)/e;
+		my $space = " ";
+		$space =~ s/ /' ' x ((length $feed->{id}) + 3)/e;
 		feedprint('<' . feed_stringrepr($feed) . '> ' . $titleline . "\n" . $space . $news->link);
 	}
 }
