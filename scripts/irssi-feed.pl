@@ -392,6 +392,9 @@ sub feed_get_news {
 sub feed_announce_item {
 	my ($feed, $news) = @_;
 	my $titleline = $news->title;
+	if(not defined $titleline) {
+		$titleline = "[no title]"
+	}
 	$titleline =~ s/\s*\n\s*/ | /g;
 
 	my $channel = $feed->{channel};
