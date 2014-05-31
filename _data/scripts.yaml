@@ -1,0 +1,2632 @@
+---
+- author: Patrik Jansson
+  description: Dont like to take decisions? Have the 8-ball do it for you instead.
+  filename: 8-ball.pl
+  license: GPL
+  name: 8-ball
+  version: '0.20'
+- author: Dani Soufi (compengi)
+  description: Controls Audacious2 and MOCP from Irssi
+  filename: Cirssi.pl
+  license: GNU General Public License
+  name: Consolidate Irssi Player
+  version: 2.0.0
+- author: Doncho N. Gunchev
+  description: Automaticaly /msg ident NS yourpassword when you connect or services
+    come back from death
+  filename: UNIBG-autoident.pl
+  license: Public Domain
+  name: UNIBG-autoident
+  version: '0.1'
+- author: Tamas SZERB
+  description: This script strips the hungarian accents.
+  filename: accent.pl
+  license: GPL
+  name: accent
+  version: '1.34'
+- author: Jonas Kramer
+  description: IRSSI Mud Plugin, lets you play the textadventure Evermore within Irssi.
+  filename: access_evermore.pl
+  license: GPL
+  name: access_evermore.pl
+  version: '20070110'
+- author: Chris raz Hoogenboezem
+  description: Instead of displaying semi-raw data, a /whois now gives a tidy accountname
+    on Asuka/lain servers (if applicable).
+  filename: accountname.pl
+  license: Feel free to alter anything conform your own liking.
+  name: accountname
+  version: '1.0'
+- author: c0ffee
+  description: Reset window activity status. defines command /act
+  filename: act.pl
+  license: Public Domain
+  name: Reset window activity status
+  version: '0.13'
+- author: Daniel Kalør (Xnybre)
+  description: Print window activity to a fifo
+  filename: act_fifo.pl
+  license: GPLv2
+  name: act_fifo
+  version: '1.1'
+- author: Geert Hauwaerts
+  description: This script shows notices into the active channel unless it has its
+    own window.
+  filename: active_notice.pl
+  license: GNU General Public License
+  name: active_notice.pl
+  version: '1.07'
+- author: Geert Hauwaerts
+  description: This script will display notify messages into the active window or
+    broadcast it so all the windows.
+  filename: active_notify.pl
+  license: GNU General Public License
+  name: active_notify.pl
+  version: '0.07'
+- author: Antti Vähäkotamäki
+  description: Maintains a representation of window activity status in a file
+  filename: activity_file.pl
+  license: GNU General Public License
+  name: activity_file
+  version: '1.00'
+- author: BC-bd
+  description: Puts people on ignore if they do a public away. See source for options.
+  filename: ai.pl
+  license: GPL v2
+  name: ai
+  version: '0.3'
+- author: Maciek fahren Freudenheim
+  description: Antyidler with random time
+  filename: aidle.pl
+  license: GNU GPLv2 or later
+  name: Antyidler
+  version: 1.1b
+- author: ak
+  description: Full configurable FTP advertiser for Irssi
+  filename: akftp.pl
+  license: GPLv2
+  name: ak FTP-Ad
+  version: '1.4'
+- author: Christian mordeth Weber
+  description: Converts towards lame speech
+  filename: alame.pl
+  license: GPL v2
+  name: alame
+  version: 0.0.1
+- author: Tobias camel69 Wulff
+  description: Retrievs song infos and controls amaroK via dcop, optionally running
+    on another computer via ssh
+  filename: amarok_ssh.pl
+  license: Public Domain
+  name: amaroK (via ssh)
+  version: '1.0'
+- author: Tuukka Lukkala
+  description: Shows the song playing in amaroK in the active window (channel or query).
+  filename: amaroknp.pl
+  license: GPL
+  name: amaroknp
+  version: '0.10'
+- author: Stefan tommie Tomanek
+  description: Another auto away script
+  filename: anotherway.pl
+  license: GPLv2
+  name: anotherway
+  version: '2003010201'
+- author: Grigori Goronzy
+  description: notices users who plenk
+  filename: antiplenk.pl
+  license: BSD
+  name: antiplenk
+  version: 0.2.1
+- author: Alexander Wirt
+  description: Shows your battery status in your Statusbar
+  filename: apm.pl
+  license: GNU Public License
+  name: apm
+  version: '0.4'
+- author: Erkki Seppälä
+  description: Ignores people bringin up boring/repeated subjects, plus replies.
+  filename: armeija.pl
+  license: Public Domain
+  name: Armeija Ignore
+  version: '0.4'
+- author: Marcin Rozycki
+  description: 'Ascii-art bassed on figlet. Available commands: /ASCII, /COLSAY, /COLME,
+    /COLTOPIC, /COLKICK, /COLQUIT.'
+  filename: ascii.pl
+  license: GNU GPL v2
+  name: ascii-art
+  version: 1.6.3
+- author: Philipp Haegi
+  description: Adds Text::Aspell suggestions to the list of completions
+  filename: aspell_complete.pl
+  license: Public Domain
+  name: aspell_complete
+  version: '1.00'
+- author: Andreas ads Scherbaum
+  description: /WHOIS all the users who send you a private message.
+  filename: auto_whois.pl
+  license: GPL
+  name: auto_whois
+  version: '0.9'
+- author: Larry Vizzie Daffner
+  description: Automatically goes  away after defined inactivity
+  filename: autoaway.pl
+  license: BSD
+  name: Automagic away setting
+  version: '0.3'
+- author: Peder Stray
+  description: Auto add channels to channel list on join
+  filename: autochannel.pl
+  license: GPL
+  name: autochannel
+  version: '1.2'
+- author: Marcin Rozycki
+  description: Auto regain ops in empty opless channels
+  filename: autocycle.pl
+  license: GNU GPL v2
+  name: autocycle
+  version: '0.4'
+- author: David Leadbeater
+  description: does an autolimit for a channel, set variables in the script
+  filename: autolimit.pl
+  license: GNU GPLv2 or later
+  name: autolimit
+  version: '1.00'
+- author: Timo Sirainen
+  description: Simple auto-op script
+  filename: autoop.pl
+  license: Public Domain
+  name: autoop
+  version: '1.00'
+- author: Toni Salomäki
+  description: Auto-op script with dynamic address support and random delay
+  filename: autoopper.pl
+  license: GNU GPLv2 or later
+  name: autoopper
+  version: '3.7'
+- author: Timo cras Sirainen, Bastian Blank
+  description: Print realname of everyone who join to channels
+  filename: autorealname.pl
+  license: GPLv2 or later
+  name: auto realname
+  version: 0.8.6
+- author: Timo cras Sirainen, Leszek Matok
+  description: Automatically rejoin to channel after being kick, after a (short) user-defined
+    delay
+  filename: autorejoin.pl
+  license: GPLv2
+  name: autorejoin
+  version: 1.0.0
+- author: Paul laaama Raade
+  description: Kickbans or knockouts people who use autorejoin on kick.
+  filename: autorejoinpunish.pl
+  license: BSD
+  name: Autorejoin punisher
+  version: '0.3'
+- author: Terry Lewis
+  description: This script  .                   Reminds people  .                   to
+    do stuff! :)
+  filename: autoreminder.pl
+  license: GPLv2
+  name: Auto Reminder
+  version: '0.01'
+- author: Juerd
+  description: Save current servers, channels and windows for autoconnect and autojoin
+  filename: autostuff.pl
+  license: Public Domain
+  name: autostuff
+  version: '0.02'
+- author: Christian mordeth Weber
+  description: Auto-CTCP Verison on every joining nick
+  filename: autoversion.pl
+  license: GPLv2
+  name: autoversion
+  version: 0.0.1
+- author: aluser
+  description: autovoice
+  filename: autovoice.pl
+  license: GPL
+  name: autovoice
+  version: '0.05'
+- author: Timo cras Sirainen
+  description: /WHOIS all the users who send you a private message.
+  filename: autowhois.pl
+  license: Public Domain
+  name: autowhois
+  version: '1.1'
+- author: Janne Mikola
+  description: /WHOIS anyone querying you automatically.
+  filename: autowhois_simple.pl
+  license: GPL
+  name: autowhois_simple
+  version: '0.1'
+- author: Bitt Faulk,
+  description: Automatically wraps long sent messages into multiple shorter sent messages,
+  filename: autowrap.pl
+  license: BSD,
+  name: autowrap,
+  version: '2007031900'
+- author: Jean-Yves Lefort, Larry Vizzie Daffner, Kees Cook
+  description: Away with reason, unaway, and autoaway
+  filename: away.pl
+  license: BSD
+  name: away
+  version: '0.23'
+- author: Oskari Okko Ojala
+  description: Write /away information to a file to be used on web pages
+  filename: away2web.pl
+  license: BSD
+  name: away2web
+  version: '2003100201'
+- author: Geert Hauwaerts
+  description: This script will notice your away message to the person who just hilighted
+    you.
+  filename: away_hilight_notice.pl
+  license: GNU General Public License
+  name: away_hilight_notice.pl
+  version: '0.10'
+- author: Wouter Coekaerts, Koenraad Heijlen
+  description: A verbose away script, displays a verbose away/back message in the
+    channels you are in. BUT it can limit the channels (not spamming every channel!)
+  filename: away_verbose.pl
+  license: GNU GPL version 2
+  name: away_verbose
+  version: 0.0.7
+- author: Simon Shine
+  description: Provides a menubar item with away message
+  filename: awaybar.pl
+  license: Public domain
+  name: awaybar
+  version: 0.1.1
+- author: Marcin Rozycki
+  description: Displays in statusbar number of messages in awaylog
+  filename: awaylogcnt.pl
+  license: GNU GPL v2
+  name: awalogcnt
+  version: '0.2'
+- author: BCOW
+  description: Sets nick away when client discconects from the. irssi-proxy. If away
+    gathers messages targeted to nick and forwards . them to an email address.
+  filename: awayproxy.pl
+  license: GPLv2
+  name: awayproxy
+  version: 0.2d
+- author: Stefan tommie Tomanek
+  description: translates your messages via Babelfish
+  filename: babelirc.pl
+  license: GPLv2
+  name: babelirc
+  version: '2003020801'
+- author: Jan fissie Sembera
+  description: Configurable badword kickbanning script
+  filename: badword.pl
+  license: GPL v2 and any later
+  name: badword
+  version: 0.0.3
+- author: Maciek fahren Freudenheim
+  description: /BAN [channel] [-normal|-host|-user|-domain|-crap|-ip|-class -before|-after
+    cmd nick|mask] ... - bans several nicks/masks on channel, removes any conflicting
+    bans before banning
+  filename: ban.pl
+  license: GNU GPLv2 or later
+  name: ban
+  version: 1.4d
+- author: Riku Voipio
+  description: shows bandwidth usage in statusbar
+  filename: bandwidth.pl
+  license: GPLv2
+  name: bandwidth
+  version: '1.0'
+- author: David ORourke
+  description: Print time when ban was set in a nicer way. eg. 23 mins, 40 secs ago.
+  filename: bantime.pl
+  license: GPLv2
+  name: bantime
+  version: '0.5'
+- author: Jean-Yves Lefort
+  description: Replaces your terminal bell by a command specified via /set adds a
+    beep_when_not_away setting
+  filename: beep.pl
+  license: BSD
+  name: beep
+  version: '1.01'
+- author: Georg Lukas
+  description: runs arbitrary command instead of system beep, includes flood protection
+  filename: beep_beep.pl
+  license: Public Domain
+  name: beep_beep
+  version: '0.10'
+- author: Simon corecode Schubert
+  description: Only beep when you are away
+  filename: beepaway.pl
+  license: BSD
+  name: beepaway
+  version: '2003011501'
+- author: Stefan tommie Tomanek
+  description: stoibers your messages
+  filename: bestoiber.pl
+  license: GPLv2
+  name: BeStoiber
+  version: '2003020801'
+- author: '[^BgTA^]'
+  description: Bytes Gallery of the TAilor Script
+  filename: bgta.pl
+  license: Public Domain
+  name: BgTA Script
+  version: 0.0.1
+- author: Carl Fischer
+  description: adds /binary command that converts what you type into 2-base string
+    representation, also decodes other peoples binary automatically
+  filename: binary.pl
+  license: GPLv2
+  name: binary
+  version: '1.2'
+- author: Aaron Toponce, Knut Auvor Grythe
+  description: Prints the timestamp in binary format
+  filename: binary_time.pl
+  license: GPL
+  name: binary_time
+  version: '20060826'
+- author: Tijmen timing Ruizendaal
+  description: /blist <all|online|offline|away> <word>,  greps <word> from blist for
+    bitlbee
+  filename: bitlbee_blist.pl
+  license: GPLv2
+  name: bitlbee_blist
+  version: '0.4'
+- author: Tijmen timing Ruizendaal
+  description: '1. Adds an item to the status bar wich shows [joined: <nicks>] when
+    someone is joining &bitlbee.    2. Shows join messages in the query.    (For bitlbee
+    1.2.x)'
+  filename: bitlbee_join_notice-pre-3.0.pl
+  license: GPLv2
+  name: Bitlbee_join_notice-pre-3.0
+  version: '1.2'
+- author: Tijmen timing Ruizendaal
+  description: '1. Adds an item to the status bar wich shows [joined: <nicks>] when
+    someone is joining &bitlbee. 2. Shows join messages in the query. (For bitlbee
+    v3.0+)'
+  filename: bitlbee_join_notice.pl
+  license: GPLv2
+  name: BitlBee_join_notice
+  version: '1.3'
+- author: Tijmen timing Ruizendaal
+  description: Shows an IM nickchange in an Irssi way. (in a query and in the bitlbee
+    channel). (For bitlbee 1.2.x)
+  filename: bitlbee_nick_change-pre-3.0.pl
+  license: GPLv2
+  name: bitlbee_nick_change-pre-3.0
+  version: '1.2'
+- author: Tijmen timing Ruizendaal
+  description: Shows an IM nickchange in an Irssi way. (in a query and in the bitlbee
+    channel). (For bitlbee 3.0+)
+  filename: bitlbee_nick_change.pl
+  license: GPLv2
+  name: BitlBee_nick_change
+  version: '1.3'
+- author: Tijmen timing Ruizendaal & Wilmer van der Gaast
+  description: Intelligent Tab-completion for BitlBee commands.
+  filename: bitlbee_tab_completion.pl
+  license: GPLv2
+  name: BitlBee_tab_completion
+  version: '1.3'
+- author: Tijmen timing Ruizendaal
+  description: Replace Irssis timestamps with those sent by BitlBee
+  filename: bitlbee_timestamp.pl
+  license: GPLv2
+  name: bitlbee_timestamp
+  version: '0.5'
+- author: Tijmen timing Ruizendaal, Matt f0rked Sparks
+  description: 1. Adds an item to the status bar wich shows [typing] when someone
+    is typing a message on the supported IM-networks                    2. Sending
+    typing notices to the supported IM networks (the other way arround)                    (For
+    bitlbee 1.2.x)
+  filename: bitlbee_typing_notice-pre-3.0.pl
+  license: GPLv2
+  name: Bitlbee_typing_notice-pre-3.0
+  version: 1.6.1
+- author: Tijmen timing Ruizendaal, Matt f0rked Sparks
+  description: 1. Adds an item to the status bar wich shows [typing] when someone
+    is typing a message on the supported IM-networks2. Sends typing notices to the
+    supported IM networks (the other way arround). (For bitlbee 3.0+)
+  filename: bitlbee_typing_notice.pl
+  license: GPLv2
+  name: BitlBee_typing_notice
+  version: 1.7.1
+- author: iMil,Skid,Foxmask,reiffert
+  description: 'Crypt IRC communication with blowfish encryption. Supports public
+    #channels, !channels, +channel, querys and dcc chat. Roadmap for Version 1.0.0
+    is to get some feedback and cleanup. Join #blowtest on freenode (irc.debian.org)
+    to get latest stuff available. Note to users upgrading from versions prior to
+    0.8.5: The blowjob.keys format has changed.'
+  filename: blowjob.pl
+  license: GNU GPL
+  name: blowjob
+  version: 0.9.0
+- author: Daniel K. Gebhart, Marcus Rückert
+  description: a simple body mass index calculator for depression )
+  filename: bmi.pl
+  license: GPLv2
+  name: BMI Calculator
+  version: '2002121801'
+- author: Juerd
+  description: Saves the buffer for /upgrade, so that no information is lost
+  filename: buf.pl
+  license: Public Domain
+  name: Scroll buffer restorer
+  version: '2.13'
+- author: Juerd
+  description: Simple /calc mechanism
+  filename: calc.pl
+  license: Public Domain
+  name: Calculator
+  version: '1.10'
+- author: Daniel dubkat Reidy
+  description: Reformats CallerID (+g) Messages               (Also known as Server-Side
+    Ignore)               on Hybrid & Ratbox IRCDs (EFnet)               to be Easier
+    on the Eyes
+  filename: callerid.pl
+  license: GPL
+  name: callerid
+  version: '1.0'
+- author: ZaMz0n
+  description: Find CDs by Artist, Disc name or Track name in CDDB.
+  filename: cddb.pl
+  license: Free
+  name: cddb
+  version: '1.21'
+- author: Joost Garion Vunderink
+  description: Staturbar item which indicates how many new messages you have in your
+    centericq
+  filename: centericq.pl
+  license: Public Domain
+  name: centericq
+  version: 1.0.0
+- author: Pieter-Bas IJdens
+  description: Lists users on the channel matching the specified regexp
+  filename: cgrep.pl
+  license: GPLv2 or later
+  name: cgrep
+  version: 1.0.0
+- author: BC-bd, Veli
+  description: 'Adds new powerful and customizable [Act: ...] item (chanelnames,modes,alias).
+    Lets you give alias characters to windows so that you can select those with meta-<char>'
+  filename: chanact.pl
+  license: GNU GPLv2 or later
+  name: chanact
+  version: 0.5.14
+- author: Joern Wulf Heissler
+  description: Notifies the user when some channel limit is reached
+  filename: chanfull.pl
+  license: GPLv2
+  name: chanfull
+  version: '2003011700'
+- author: Uwe duden Dudenhoeffer
+  description: Notify if Channellimit is reached
+  filename: chanfull_duden.pl
+  license: GPLv2
+  name: chanfull
+  version: '0.1'
+- author: Bjoern fuchs Krombholz
+  description: Log maximum number of people ever been in a channel
+  filename: chanpeak.pl
+  license: Public Domain
+  name: chanpeak
+  version: 0.2.2
+- author: Stefan tommie Tomanek
+  description: searches for specific channels
+  filename: chansearch.pl
+  license: GPLv2
+  name: ChanSearch
+  version: '20021019'
+- author: Timo cras Sirainen
+  description: /CHANSHARE - display people who are in more than one channel with you
+  filename: chanshare.pl
+  license: Public Domain
+  name: chan share
+  version: '0.3'
+- author: Peder Stray
+  description: Sort all channel and query windows
+  filename: chansort.pl
+  license: GPL
+  name: chansort
+  version: '1.4'
+- author: Uwe duden Dudenhoeffer
+  description: /who a channel and optionaly executes a command
+  filename: chansync.pl
+  license: GPLv2
+  name: chansync
+  version: '0.22'
+- author: Jakub Jankowski
+  description: Simulates BitchXs /CHOPS and /NOPS commands.
+  filename: chops.pl
+  license: GNU GPLv2 or later
+  name: chops
+  version: '20020223'
+- author: Jørgen Tjernø
+  description: Simple script that removes colors and other formatting (bold, etc)
+    from public channels
+  filename: cleanpublic.pl
+  license: GPL
+  name: CleanPublic
+  version: '0.3'
+- author: Dominic Battre
+  description: Better quoting of content from clipboard (without leading spaces) --
+    requires Perl/Tk
+  filename: clipboard.pl
+  license: Public Domain
+  name: Quoting from X clipboard
+  version: '1.2'
+- author: Rick (strlen) Jansen
+  description: Parses OperServ notices to make autokill aliases from clonewarnings
+  filename: cloneprot.pl
+  license: GPL/1
+  name: cloneprot
+  version: '1.11'
+- author: From irssi source, modified by David Leadbeater (dg)
+  description: /CLONES - Display clones in the active channel (with added options)
+  filename: clones.pl
+  license: Same as Irssi
+  name: clones
+  version: '2.01'
+- author: Gabor Nyeki
+  description: kicking users for using colors or blinks
+  filename: colorkick.pl
+  license: public domain
+  name: colorkick
+  version: ''
+- author: Timo cras Sirainen
+  description: Swap between green and white format for public messages. I think this
+    helps readability. Assumes you havent changed message formats.
+  filename: colorswap.pl
+  license: Public Domain
+  name: colorswap
+  version: '0.1'
+- author: Daenyth
+  description: When using tab completion on an empty input buffer, complete to the
+    nick of the person who spoke most recently.
+  filename: complete_lastspoke.pl
+  license: GPL2
+  name: Complete Last-Spoke
+  version: '2.1'
+- author: Ian Peters
+  description: run arbitrary shell commands while [dis]connecting to a server
+  filename: connectcmd.pl
+  license: Public Domain
+  name: Connect Command
+  version: '0.1'
+- author: Mikko Quidz Salmi
+  description: adds public channel command for counting down something
+  filename: countdown.pl
+  license: Public Domain
+  name: countdown
+  version: '1.0'
+- author: Timo Sirainen
+  description: Print the country name in /WHOIS replies
+  filename: country.pl
+  license: Public Domain
+  name: country
+  version: 1.0.1
+- author: Tomasz Poradowski
+  description: Kicks people using cp1250 charset
+  filename: cp1250_kick.pl
+  license: GPL
+  name: cp1250_kick
+  version: '1.3'
+- author: Stefan tommie Tomanek
+  description: Removes CRAP or CLIENTCRAP messages from your buffer
+  filename: crapbuster.pl
+  license: GPLv2
+  name: CRAPbuster
+  version: '2003020801'
+- author: Piotr Krukowiecki
+  description: cron implementation, allows to execute commands at given interval/time
+  filename: cron.pl
+  license: GNU GPLv2
+  name: cron aka jobs
+  version: '0.11'
+- author: Maciek fahren Freudenheim
+  description: 'Usage: /CWHO [-a | -l | -o | -v ] [ mask ]'
+  filename: cwho.pl
+  license: GNU GPLv2 or later
+  name: Cached WHO
+  version: '1.1'
+- author: Geert Hauwaerts
+  description: This script will fix the Irssi problem with channel forwarding on the
+    Dancer ircd.
+  filename: dancer_forwardfix.pl
+  license: Public Domain
+  name: dancer_forwardfix.pl
+  version: '0.03'
+- author: Geert Hauwaerts
+  description: This script hides the 477 numerics from the dancer IRCd.
+  filename: dancer_hide_477.pl
+  license: GNU General Public License
+  name: dancer_hide_477.pl
+  version: '0.01'
+- author: Clemens Heidinger
+  description: write like an idiot
+  filename: dau.pl
+  license: BSD
+  name: DAU
+  version: 2.4.3
+- author: ak5
+  description: This script sets dcc_own_ip when starting a DCC send or chat..       set
+    dcc_ip_interface to your external interface, f.e. ppp0..       If you are connecting
+    though a router, set it to router
+  filename: dcc_ip.pl
+  license: Public Domain
+  name: dcc_ip
+  version: '0.5'
+- author: Peder Stray
+  description: Move completed dcc gets to the subfolder done
+  filename: dccmove.pl
+  license: GPL
+  name: dccmove
+  version: '1.4'
+- author: David Leadbeater
+  description: /dccself ip port, starts a dcc chat with yourself on that                host/port,
+    best used with /set dcc_autochat_masks.
+  filename: dccself.pl
+  license: GPL
+  name: dccself
+  version: ''
+- author: Matti qvr Hiljanen
+  description: Shows verbose or short information of dcc send/gets on statusbar (speed,
+    size, eta etc.)
+  filename: dccstat.pl
+  license: GPL, Version 2
+  name: dccstat
+  version: '1.52'
+- author: Jakub Jankowski
+  description: Allows your client to automatically set desired chanmode upon a join
+    to an empty channel.
+  filename: defaultchanmode.pl
+  license: GNU GPLv2 or later
+  name: Default Chanmode
+  version: '1.1'
+- author: Joost Vunderink (Garion)
+  description: Prevents all kinds of junk from showing up
+  filename: dejunk.pl
+  license: Public Domain
+  name: Dejunk
+  version: '1.0'
+- author: Benjamin Reed
+  description: Logs URLs and posts them to del.icio.us
+  filename: deliciousurl.pl
+  license: GPLv2
+  name: deliciousurl
+  version: '0.5'
+- author: Jochem Meyers
+  description: Adds an item which displays the current disk usage.
+  filename: df.pl
+  license: GPL v2 or later
+  name: df
+  version: 0.1.0
+- author: Marcel Kossin
+  description: A Dice Simulator for Roleplaying in Channels or just for fun.
+  filename: dice.pl
+  license: GNU GPL Version 2 or later
+  name: dice
+  version: 0.00.04
+- author: 'Juerd (first version: Timo Sirainen)'
+  description: Caching dictionary based tab completion
+  filename: dictcomplete.pl
+  license: Public Domain
+  name: Dictionary complete
+  version: '1.31'
+- author: Sebastian yath Schmidt
+  description: This scripts sends unknown commands to the server
+  filename: dispatch.pl
+  license: GNU GPLv2
+  name: Command dispatcher
+  version: 0.0.2
+- author: Timo cras Sirainen
+  description: /DNS <nick>|<host>|<ip> ...
+  filename: dns.pl
+  license: Public Domain
+  name: dns
+  version: 2.1.1
+- author: Pieter-Bas IJdens
+  description: Checks for DNS Spam on JOIN
+  filename: dnsspam.pl
+  license: GPLv2 or later
+  name: dnsspam
+  version: 1.0.0
+- author: FoxMaSk
+  description: manage tips  url  help in a doc file in the keyword=definition form
+  filename: doc.pl
+  license: GNU GPL
+  name: doc
+  version: 0.0.3
+- author: Karl Siegemund
+  description: Filters msgs which appear the same on different channels.
+  filename: doublefilter.pl
+  license: GPLv2
+  name: doublefilter
+  version: '0.3'
+- author: Bitt Faulk,
+  description: Put a nick list in a statusbar,
+  filename: dr_who.pl
+  license: BSD,
+  name: dr_who,
+  version: '1.0'
+- author: Espen Holm Nilsen
+  description: Print the real IP address of efnet.org clients when they join/part
+    channels, and whois.
+  filename: efnetorg.pl
+  license: GPLv2 or later
+  name: efnetorg
+  version: '1.2'
+- author: Ilya Cassina
+  description: 'This script allow advanced parametrization  .                   of
+    the /list command. Accepted parameters are  .                   -minusers <#users>
+    and -maxusers <#users>. '
+  filename: elist.pl
+  license: GPLv2
+  name: Enanched LIST
+  version: '1.0'
+- author: Johan Ion Kiviniemi
+  description: Answers to /msgs using Chatbot::Eliza when youre away.
+  filename: eliza.pl
+  license: Public Domain
+  name: Eliza
+  version: '1.0'
+- author: Adam James
+  description: Emails you private messages sent while youre away.  .Useful in combination
+    with screen_away.  .Requires Email::Sender.
+  filename: email_privmsgs.pl
+  license: MIT
+  name: email_privmsgs
+  version: '0.5'
+- author: PrincessLeia2
+  description: a script for accessing an email mysql database through irc
+  filename: emaildb1.0.pl
+  license: GNU GPL v2 or later
+  name: emaildb
+  version: '1.0'
+- author: Harald Nesland
+  description: Very simple script that sends incoming text to freetranslation.com
+    for english->norwegian translation. May be modified to translate other languages.
+  filename: eng_no_translate_dpryo.pl
+  license: Public Domain
+  name: EngNoTranslate
+  version: '0.2'
+- author: Taneli Kaivola
+  description: Expand event mode and emit event mode {channel,user,server} *
+  filename: events.pl
+  license: GPLv2
+  name: Extended events
+  version: '1.0'
+- author: Jean-Yves Lefort
+  description: Adds a setting to automatically terminate a process whose parent window
+    has been closed
+  filename: exec_clean.pl
+  license: BSD
+  name: exec-clean
+  version: '1.01'
+- author: CrazyCat
+  description: Extended Away & Back programm
+  filename: extaway.pl
+  license: GNU GPLv2 or later
+  name: ExtAway
+  version: '1.0'
+- author: Geert Hauwaerts
+  description: This script sends fake ctcp replies to a client using a fake ctcp list.
+  filename: fakectcp.pl
+  license: GNU General Public License
+  name: fakectcp.pl
+  version: '1.03'
+- author: Stefan Jakobs
+  description: Print the country name in /WHOIS replies
+  filename: fcountry.pl
+  license: GPLv2
+  name: fast_country
+  version: 1.0.0
+- author: Juerd
+  description: Safe figlet implementation (with color support!)
+  filename: figlet.pl
+  license: Public Domain
+  name: Figlet
+  version: '1.14'
+- author: David Leadbeater
+  description: A command to output content of files in various ways
+  filename: file.pl
+  license: GNU GPLv2 or later
+  name: file.pl
+  version: '1.0'
+- author: Erkki Seppälä
+  description: Finds a nick by real name, if hes on a channel with you.
+  filename: find.pl
+  license: Public Domain
+  name: Find
+  version: '0.2'
+- author: Thomas Karlsson
+  description: Public command @find script
+  filename: findbot.pl
+  license: GPL
+  name: Findbot
+  version: '1.57'
+- author: Piotr Krukowiecki
+  description: fserve leecher - helps you download files from file servers
+  filename: fleech.pl
+  license: GNU GPL v2,
+  name: fleech
+  version: 0.0.2i
+- author: Juerd
+  description: Automatically switch to active windows
+  filename: follow.pl
+  license: Public Domain
+  name: Follower
+  version: '1.10'
+- author: Juerd, Shiar
+  description: Rot n+i encryption and decryption
+  filename: foo.pl
+  license: Public Domain
+  name: UeberRot encryption
+  version: '3.00'
+- author: David Leadbeater
+  description: 'Extends the /foreach command to have /foreach user        (users in
+    a channel).        Syntax: /foreach user [hostmask] command.'
+  filename: foreach_user.pl
+  license: GNU GPLv2 or later,
+  name: foreach user
+  version: '1.0'
+- author: ResDev (Ben Reser)
+  description: Formats msgs and notices when the identify-msg and/or  .                 identify-ctcp
+    capability is available.
+  filename: format_identify.pl
+  license: GPL2
+  name: format_identify
+  version: 1.5-dev-coekie
+- author: Ivo Marino
+  description: Send a random fortune cookie to an user in channel.
+  filename: fortune.pl
+  license: Public Domain
+  name: fortune
+  version: '1.3'
+- author: Stefan tommie Tomanek
+  description: forward incoming messages to another nick
+  filename: forward.pl
+  license: GPLv2
+  name: Forward
+  version: '2003071904'
+- author: Geert Hauwaerts
+  description: This script will filter some Freenode IRCD (Dancer) servernotices.
+  filename: freenode_filter.pl
+  license: GNU General Public License
+  name: default.pl
+  version: '0.06'
+- author: Peder Stray
+  description: Basicly an autoop script with a nice interface and nick coloring )
+  filename: friends_peder.pl
+  license: GPL
+  name: friends
+  version: '1.34'
+- author: Jakub Jankowski
+  description: Maintains list of people you know.
+  filename: friends_shasta.pl
+  license: GNU GPLv2 or later
+  name: Friends
+  version: 2.4.9
+- author: Piotr Krukowiecki & others
+  description: File server for irssi
+  filename: fserve.pl
+  license: GPL v2
+  name: FServe
+  version: 2.0.0
+- author: Geert Hauwaerts
+  description: Simulates the BitchX /FUCKEM command. Deop/Dehalfop everyone on the
+    channel including you.
+  filename: fuckem.pl
+  license: GNU General Public License
+  name: fuckem.pl
+  version: '0.05'
+- author: Maciek fahren Freudenheim
+  description: Automatically request op from random opped person with specifed command
+    from list after joining channel
+  filename: getop.pl
+  license: GNU GPLv2 or later
+  name: GetOP
+  version: 0.9b
+- author: PrincessLeia2
+  description: 'a bot script, using ! followed by anything the script will say (as
+    an action): gets nickname anything'
+  filename: gimmie.pl
+  license: GNU GPL v2 or later
+  name: gimmie
+  version: '1.0'
+- author: nohar
+  description: Implements /go command that activates a window given a name/partial
+    name. It features a nice completion.
+  filename: go.pl
+  license: GPLv2 or later
+  name: go to window
+  version: '1.00'
+- author: cxreg
+  description: Switch to the window with the given name or item
+  filename: go2.pl
+  license: Public Domain
+  name: go2
+  version: '1.0'
+- author: Oddbjørn Kvalsund
+  description: This script queries google.com and returns the results.
+  filename: google.pl
+  license: Public Domain
+  name: Google
+  version: '1.00'
+- author: original idea by valvoline, irssi porting by pallotron
+  description: Have gpg-based trusting features in your irssi client!
+  filename: gpgvalidator.pl
+  license: GPL v2
+  name: gpgvalidator v. 0.1.2
+  version: 0.1.2
+- author: Timo cras Sirainen, Wouter Coekaerts
+  description: /GREP [-i] [-w] [-v] [-F] <perl-regexp> <command to run>
+  filename: grep.pl
+  license: Public Domain
+  name: grep
+  version: '2.1'
+- author: mistr
+  description: /gsi <phone nr> checks number via http://gulesider.no. Norwegian 8-digit
+    numbers only. Nice if you have caller-ID and are as paranoid as me.
+  filename: gsi.pl
+  license: Public Domain
+  name: gsi
+  version: 220904-04:30:00
+- author: Sven Ulland
+  description: Translation via the Google Language API
+  filename: gtrans.pl
+  license: GPLv2
+  name: GTrans
+  version: 0.0.1
+- author: Juerd
+  description: Adds the uppercased version of the tab completes
+  filename: guts.pl
+  license: Public Domain
+  name: German Uppercased Tab Stuff
+  version: '1.00'
+- author: Valentin Batz
+  description: adds a statusbar item which shows temperatures of harddisks (with multiple
+    hddtemp-hosts support)
+  filename: hddtemp.pl
+  license: GPLv2
+  name: hddtemp
+  version: '0.14'
+- author: Cybertinus
+  description: This script allows  .   you to greet the channel  .   Youre joining
+    with the  .   command /hello. The text  .   it shows depends on the time  .   youre
+    living.
+  filename: hello.pl
+  license: GPL2
+  name: Greeter
+  version: '1.00'
+- author: Marcus Rueckert
+  description: a little interface to irssis activity_hide_* settings
+  filename: hide.pl
+  license: Public Domain
+  name: hide tools
+  version: 0.0.7
+- author: JamesOff
+  description: Stops eggdrop passwords showing up
+  filename: hideauth.pl
+  license: Public Domain
+  name: hideauth
+  version: '1.01'
+- author: Mantis
+  description: shows events happening in all channels you are in that may concern
+    you
+  filename: highlite.pl
+  license: GNU GPL v2
+  name: highlite
+  version: '1.0'
+- author: Geert Hauwaerts
+  description: This script will add the HIGNORE command, if you use this command in
+    a query it will ignore the host.
+  filename: hignore.pl
+  license: Public Domain
+  name: hignore.pl
+  version: '0.02'
+- author: Timo cras Sirainen, Mark znx Sangster
+  description: Print hilighted messages to window named hilight
+  filename: hilightwin.pl
+  license: Public Domain
+  name: hilightwin
+  version: '0.02'
+- author: ''
+  description: Translate nicks to HipChat mention names
+  filename: hipchat_complete.pl
+  license: ''
+  name: hipchat_complete
+  version: '1.0'
+- author: Wouter Coekaerts
+  description: Search within your typed history as you type (like ctrl-R in bash)
+  filename: history_search.pl
+  license: GPLv2 or later
+  name: history_search
+  version: '2.0'
+- author: Riku Shrike Lindblad
+  description: Add a apache page hitcounter to statusbar
+  filename: hitcount.pl
+  license: Free
+  name: hitcount
+  version: '1.3'
+- author: Riku Voipio
+  description: responds to !hl counterstrike.server  command on channels/msgs to query
+    counter-strike servers
+  filename: hl.pl
+  license: GPLv2
+  name: half-life
+  version: '1.2'
+- author: Veli Mankinen
+  description: Floods the channel about things that are hapening in your hl -server.
+    Also enables you to send rcon commands to the server from channel.
+  filename: hlbot.pl
+  license: GPLv2
+  name: HL-log/rcon -bot
+  version: '1.0'
+- author: Jean-Yves Lefort
+  description: Adds a /HOSTNAME command it will list all IP addresses on all interfaces
+    found on your machine, resolve them, and allow you to choose one easily
+  filename: hostname.pl
+  license: BSD
+  name: hostname
+  version: '1.01'
+- author: Santabutthead
+  description: This controls Music Player Daemon from the familiar irssi interface
+  filename: iMPD.pl
+  license: GPL v2
+  name: iMPD
+  version: 0.0.0n
+- author: Eric Jansen
+  description: MD5 NickServ identification script for SorceryNet
+  filename: identify-md5.pl
+  license: GPL
+  name: identify-md5
+  version: '1.05'
+- author: Stefan tommie Tomanek
+  description: Retrieves the idletime of any nick
+  filename: idletime.pl
+  license: GPLv2
+  name: idletime
+  version: '20030208'
+- author: Stefan tommie Tomanek
+  description: equips Irssi with an interface to mldonkey
+  filename: idonkey.pl
+  license: GPLv2
+  name: iDonkey
+  version: '2004051601'
+- author: Dmitry jsn Kim
+  description: script to log ignored messages
+  filename: ignore_log.pl
+  license: GPL
+  name: ignore_log
+  version: '0.1'
+- author: Erkki Seppälä
+  description: Ignore messages from people not on your channels. .   Now people you
+    msg are added to bypass-list.
+  filename: ignoreoc.pl
+  license: Public Domain
+  name: Ignore-OC
+  version: '0.6'
+- author: apic
+  description: script to show ignored message in censored form
+  filename: ignorsula.pl
+  license: 'public domina, #no typo'
+  name: ignorsula
+  version: 1.999999999543675475473856-FDIV-final
+- author: Marcus Rueckert
+  description: adds a statusbar item which show length of the inputline
+  filename: il.pl
+  license: BSD License or something more liberal
+  name: inputlength
+  version: 0.0.5
+- author: Eric Jansen
+  description: Automatically lookup IMDB-numbers in nicknames
+  filename: imdb.pl
+  license: GPL
+  name: imdb
+  version: '1.01'
+- author: c0ffee
+  description: Joins channels with non-utf8 non-ascii names.
+  filename: intjoin.pl
+  license: Public Domain
+  name: i18n /join
+  version: '0.2'
+- author: Geert Hauwaerts
+  description: This script will join a channel if somebody invites you to it.
+  filename: invitejoin.pl
+  license: Public Domain
+  name: invitejoin.pl
+  version: '0.01'
+- author: xlony
+  description: Auto /set dcc_own_ip IP on connect.
+  filename: ipupdate.pl
+  license: GPL
+  name: IPupdate
+  version: '1.2'
+- author: DonRumata,
+  description: IrcNet.ru Auto Identify - changes nick and send identify command, then
+    sets codepage,
+  filename: iraident.pl
+  license: GPLv2,
+  name: iraident,
+  version: 0.6.1
+- author: kodgehopper (kodgehopper@netscape.net)
+  description: Chess server for IRC. Allows for multiple 2-player games to be played
+    simultaneously
+  filename: irc_chess.pl
+  license: GNU GPL
+  name: IRC-Chess
+  version: '0.1'
+- author: Erkki Seppälä
+  description: Adds words from IRC to your tab-completion list, plus fixes typos
+  filename: irccomplete.pl
+  license: Public Domain
+  name: IRC Completion
+  version: '0.1'
+- author: Timo cras Sirainen
+  description: Show IRC gallery (http://irc-galleria.net, finnish only) information
+    on /WHOIS or /GALLERY
+  filename: ircgallery.pl
+  license: Public Domain
+  name: ircgallery
+  version: '1.13'
+- author: BCOW
+  description: Tarkistelee irc-galleria.net:iä ja sanoo kun sinulle on uusia viestejä.
+  filename: ircgmessagenotify.pl
+  license: GPLv2
+  name: ircgmessagenotify
+  version: 0.1b
+- author: BC-bd
+  description: /IRCOPS - Display IrcOps in current channel
+  filename: ircops.pl
+  license: GPL v2
+  name: ircops
+  version: '0.1'
+- author: Stefan tommie Tomanek
+  description: secures your conversation
+  filename: ircsec.pl
+  license: GPLv2
+  name: IRCSec
+  version: '2008051101'
+- author: Julius Michaelis
+  description: Parses and announces XML/Atom feeds
+  filename: irssi-feed.pl
+  license: GPLv3
+  name: iRSSi feed reader
+  version: '20130209'
+- author: legion
+  description: Display the song played by mp3blaster in channels and statusbar. See
+    the top of the file for usage.
+  filename: irssiBlaster.pl
+  license: GNU GPLv2 or later
+  name: irssiBlaster
+  version: '1.6'
+- author: Stefan tommie Tomanek
+  description: integrates ICQ instant-messaging into irssi
+  filename: irssiq.pl
+  license: GPLv2
+  name: IrssiQ
+  version: '2003231101'
+- author: Uli Baumann
+  description: Displays incoming ISDN calls
+  filename: isdn.pl
+  license: GPL
+  name: isdn
+  version: '0.3'
+- author: Johan Ion Kiviniemi
+  description: Internet Time statusbar item. See http://www.timeanddate.com/time/internettime.html
+  filename: itime.pl
+  license: Public Domain
+  name: itime
+  version: '0.9'
+- author: Kristof Korwisi
+  description: '/xmms announces which _file_ is currently playing. E.g.  Currently
+    playing: Kieran Halpin & Band - Mirror Town.mp3'
+  filename: ixmmsa.pl
+  license: GPL
+  name: iXMMSa
+  version: 0.2+1
+- author: Pieter-Bas IJdens
+  description: Reports WHOIS information and channel list for those who join a channel
+  filename: joininfo.pl
+  license: GPLv2 or later
+  name: joininfo
+  version: 1.0.0
+- author: Filippo godog Giunchedi
+  description: Kicks (and bans) people with >= 4 dots in theirs hostname
+  filename: kblamehost.pl
+  license: GNU GPLv2 or later
+  name: kblamehost
+  version: 0.0.1
+- author: Peder Stray
+  description: Try to get your nick back when it becomes available.
+  filename: keepnick.pl
+  license: GPL
+  name: keepnick
+  version: '1.17'
+- author: Gerfried Fuchs
+  description: autodekennyfies /kenny, adds /kenny, /dekenny. Based on Jan-Pieter
+    Cornets signature version
+  filename: kenny.pl
+  license: BSD
+  name: kenny speech
+  version: 2.3.1
+- author: Johan Ion Kiviniemi
+  description: Fetches the version(s) of the latest Linux kernel(s).
+  filename: kernel.pl
+  license: Public Domain
+  name: Kernel
+  version: '0.9'
+- author: Geert Hauwaerts
+  description: This script will set the proper keybindings on /AZERTY and /QWERTY.
+  filename: keybinds.pl
+  license: Public Domain
+  name: keybindings.pl
+  version: '0.01'
+- author: c0ffee
+  description: Enhances /k /kb and /kn with some nice options.
+  filename: kicks.pl
+  license: Public Domain
+  name: Various kick and ban commands
+  version: '0.26'
+- author: Piotr Cvbge Krukowiecki
+  description: When new send arrives checks if there are old identical .sends (ie
+    from the same nick on the same server and with the same .filename) and closes
+    them
+  filename: kill_fake_gets.pl
+  license: Public Domain
+  name: kill_fake_gets
+  version: '1.1'
+- author: Timo Sirainen
+  description: Displays kills with more understandable messages
+  filename: kills.pl
+  license: Public Domain
+  name: kills
+  version: '1.00'
+- author: Geert Hauwaerts
+  description: This script shows a warning in the statuswindow if somebody preforms
+    a /KlINE or /UNKLINE.
+  filename: kline_warning.pl
+  license: GNU General Public License
+  name: kline_warning.pl
+  version: '1.08'
+- author: Mikachu
+  description: A script to show playing xmms song in channel or in a statusbar, and
+    also control xmms. Be sure to read through the script to see all features.
+  filename: l33tmusic.pl
+  license: GPL
+  name: l33t xmms music showing script
+  version: '2.01'
+- author: Simon simmel LundstrÃ¶m
+  description: A now-playing-script which uses Last.fm
+  filename: lastfm.pl
+  license: BSD
+  name: lastfm
+  version: '5.8'
+- author: Sander Smeenk
+  description: Remembers what people said last on what channels
+  filename: lastspoke.pl
+  license: GNU GPLv2 or later
+  name: lastspoke
+  version: '0.2'
+- author: Clemens Heidinger
+  description: If you try to get a nick with 11 characters but only  .                         9
+    are allowed, this script will prevent the           .                         nickchange.
+    The same for too long topics, kickmsgs,   .                         partmsgs and
+    quitmsgs.
+  filename: len.pl
+  license: BSD
+  name: len
+  version: 1.0.0
+- author: Stefan tommie Tomanek
+  description: translates via dict.leo.org
+  filename: leodict.pl
+  license: GPLv2
+  name: leodict
+  version: '20040515'
+- author: Jari Matilainen
+  description: Licq statusbar thingy
+  filename: licq.pl
+  license: Public Domain
+  name: licq
+  version: '0.5'
+- author: Marcin Qrczak Kowalczyk
+  description: Link several channels on serveral networks
+  filename: linkchan.pl
+  license: GNU GPL
+  name: LinkChan
+  version: '1.5'
+- author: Csaba Nagy
+  description: A simple mp3 display script that will display what mp3 you are playing
+    in which software (mpg123, xmms, mp3blaster, etc) to your active channel or to
+    a query window.
+  filename: listen.pl
+  license: GNU GPLv2 or later
+  name: listen
+  version: '0.2'
+- author: aki
+  description: display a loadavg statusbar item using vm.loadavg mib or /proc/loadavg
+  filename: loadavg.pl
+  license: public domain
+  name: loadavg
+  version: '0.4'
+- author: Stefan tommie Tomanek
+  description: Localizes users using traceroute, the localizer database or IP-Atlas
+  filename: localize.pl
+  license: GPLv2
+  name: localize
+  version: '2003112301'
+- author: Peder Stray
+  description: convert mirc color and irssi interal formatting to ansi colors, useful
+    for log filtering
+  filename: log2ansi.pl
+  license: GPL
+  name: log2ansi
+  version: '1.9'
+- author: Timo cras Sirainen
+  description: compress logfiles then theyre rotated
+  filename: logcompress.pl
+  license: Public Domain
+  name: logcompress
+  version: '0.01'
+- author: c0ffee
+  description: Use /ls <regex> to show all nicks (including ident@host) matching regex
+    in the current channel
+  filename: ls.pl
+  license: Public Domain
+  name: List nicks in channel
+  version: '0.02'
+- author: Mika
+  description: Displays users logged on system in current window, simple one
+  filename: lwho.pl
+  license: '-'
+  name: Local who
+  version: 0.01a
+- author: Timo Sirainen, Matti Hiljanen, Joost Vunderink, Bart Matthaei
+  description: Fully customizable mail counter statusbar item with multiple mailbox
+    and multiple Maildir support
+  filename: mail.pl
+  license: Public Domain
+  name: mail
+  version: '2.92'
+- author: David Legooolas Gardner
+  description: Staturbar item which indicates how many new emails you have in the
+    specified IMAP[S] mailbox
+  filename: mailcheck_imap.pl
+  license: GNU GPLv2
+  name: mailcheck_imap
+  version: '0.5'
+- author: Erkki Seppälä
+  description: Polls your unix mailbox for new mail
+  filename: mailcheck_mbox_flux.pl
+  license: Public Domain
+  name: Mail Check
+  version: '0.1'
+- author: Kimmo Lehto
+  description: POP3 new mail notification and listing of mailbox contents. Use /mail
+    help for instructions. Requires Net::POP3.
+  filename: mailcheck_pop3_kimmo.pl
+  license: Public Domain
+  name: Mailcheck-POP3
+  version: '0.5'
+- author: Marcin Rozycki
+  description: Adds statusbar item mailcount and displays info about new mails
+  filename: mailcount.pl
+  license: GNU GPL v2
+  name: mailcount
+  version: 1.4.5
+- author: Szymon Sokol
+  description: translates your messages into Morse code, rot13 and other sillinesses.
+  filename: mangle.pl
+  license: GPLv2
+  name: mangle
+  version: '2004031701'
+- author: Petr Baudis
+  description: Generates simple tree of IRC network based on the output of the LINKS
+    command.
+  filename: map.pl
+  license: GPLv2, not later
+  name: map
+  version: '1.2'
+- author: Uli Baumann
+  description: Disables hilighting for messages containing a lot of nicknames
+  filename: mass_hilight_blocker.pl
+  license: GPL
+  name: mass_hilight_blocker
+  version: '0.2'
+- author: Kaveh Moini,
+  description: DCC MultiGet, for fetching from XDCC bots,
+  filename: mg.pl
+  license: ccBSD, http://creativecommons.org/licenses/BSD/,
+  name: mg,
+  version: '20090813'
+- author: Leszek Matok, Andrzej Jagodziñski
+  description: Simple wordkick system, with extended polish dictionary for channels
+    enforcing correct polish.
+  filename: miodek.pl
+  license: GPLv2
+  name: miodek
+  version: 1.0.2
+- author: Michael Kowalchuk
+  description: Shows a mIRC-style colour popup when you hit ^C.
+  filename: mirc_colour_popup.pl
+  license: Public Domain
+  name: mirc_colour_popup
+  version: '1.0'
+- author: Marcin Rozycki
+  description: 'Masskick, usage: /mkick [-aovdln6 (hostmask)] <[:]reason>'
+  filename: mkick.pl
+  license: GNU GPL v2
+  name: mkick
+  version: '0.9'
+- author: Gergely Nagy
+  description: Automatically filters all http:// links through makeashorterlink.com
+  filename: mkshorterlink.pl
+  license: GPL
+  name: makeashorterlink.com interface
+  version: '0.3'
+- author: Carsten Otto
+  description: Shows your mldonkeys current down- and upload rate
+  filename: mldonkey_bandwidth.pl
+  license: GPLv2
+  name: mldonkey bandwidth script
+  version: '20030712'
+- author: Timo Sirainen
+  description: Channel mode locking
+  filename: mlock.pl
+  license: Public Domain
+  name: mlock
+  version: '1.00'
+- author: Marcin Rozycki
+  description: 'Cache of invites, ban exceptions and reops in channel. Script commands:
+    .                     /si, /se, /sr, /unexcept, /uninvite, /unreop (version only
+    for ircd >= 2.11.0).'
+  filename: modelist-r.pl
+  license: GNU GPL v2
+  name: modelist-r
+  version: 0.8.0-rc4
+- author: Marcin Rozycki
+  description: 'Cache of invites and ban exceptions in channel. Usage: /si, /se, .   /unexcept
+    [indexes], /uninvite [indexes]'
+  filename: modelist.pl
+  license: GNU GPL v2
+  name: modelist
+  version: 0.7.2
+- author: Jilles Tjoelker
+  description: Interface to ratbox 2.1+ /monitor command
+  filename: monitor.pl
+  license: BSD (revised)
+  name: monitor
+  version: '1.0'
+- author: Stefan tommie Tomanek
+  description: Keeps track of the channel mood
+  filename: mood.pl
+  license: GPLv2
+  name: Mood
+  version: '20031207'
+- author: Stefan tommie Tomanek
+  description: turns your messages into morse or spelling code
+  filename: morse.pl
+  license: GPLv2
+  name: morse
+  version: '2004021901'
+- author: Wouter Coekaerts
+  description: control irssi using mouse clicks and gestures
+  filename: mouse.pl
+  license: GPLv2 or later
+  name: mouse
+  version: 1.0.0
+- author: Erik Scharwaechter
+  description: print the song you are listening to
+  filename: mpd.pl
+  license: GPLv2
+  name: mpd
+  version: '0.5'
+- author: Ricardo Mesquita
+  description: Display current mpg123 track
+  filename: mpg123.pl
+  license: GPLv2
+  name: mpg123
+  version: 0.01+1
+- author: Stefan tommie Tomanek
+  description: Helps pasting multiple lines to a channel
+  filename: multipaste.pl
+  license: GPLv2
+  name: multipaste
+  version: '2003120617'
+- author: Remco den Breeje
+  description: runs arbitrary command instead of system beep, includes flood protection
+  filename: my_beep.pl
+  license: Public Domain
+  name: my_beep
+  version: '0.9'
+- author: Tim Van Wassenhove
+  description: Query Google
+  filename: mygoogle.pl
+  license: BSD
+  name: mygoogle
+  version: '1.01'
+- author: Tim Van Wassenhove
+  description: Query imdb
+  filename: myimdb.pl
+  license: BSD
+  name: myimdb
+  version: '1.01'
+- author: Riku Voipio, lite
+  description: logs urls to mysql database
+  filename: mysqlurllogger.pl
+  license: GPLv2
+  name: myssqlurllogger
+  version: '1.0'
+- author: BC-bd
+  description: Adds an item which displays the current network activity. Needs /proc/net/dev.
+  filename: nact.pl
+  license: GPL v2 or later
+  name: nact
+  version: 0.2.6
+- author: Roeland Nieuwenhuis,
+  description: Set all windows not bound to a network to a specified network.,
+  filename: netswitch.pl
+  license: BSD,
+  name: netswitch,
+  version: 1.0.0
+- author: Marcin Rozycki, Mathieu Doidy
+  description: 'News reader, usage:  /article [-s <server>] [-p <port>] [-P <password>
+    -U <login>] [-l <group> <count>] [-a] [-L <index>] <message-id>'
+  filename: news.pl
+  license: GNU GPL v2
+  name: news
+  version: 0.5.9
+- author: Stefan tommie Tomanek
+  description: brings various newstickers to Irssi (Slashdot, Freshmeat, Heise etc.)
+  filename: newsline.pl
+  license: GPLv2
+  name: Newsline
+  version: '2003021101'
+- author: Roeland Trancer Nieuwenhuis
+  description: A simple nick banner. If it encounters a nick it bans its host
+  filename: nickban.pl
+  license: Public Domain
+  name: nickban
+  version: '1.1'
+- author: Timo Sirainen, Ian Peters
+  description: assign a different color for each nick
+  filename: nickcolor.pl
+  license: Public Domain
+  name: Nick Color
+  version: '1'
+- author: Kalle rpr Marjola
+  description: Ignores any nick changes when only the case or special characters are
+    modified, like rpr -> Rpr or rpr_ -> rpr, with optional pattern for more complicated
+    ignores
+  filename: nickignore.pl
+  license: Public Domain
+  name: ignore (minimal) nick changes
+  version: '0.03'
+- author: Wouter Coekaerts
+  description: draws a nicklist to another terminal, or at the right of your irssi
+    in the same terminal
+  filename: nicklist.pl
+  license: GPLv2
+  name: nicklist
+  version: 0.4.6
+- author: c0ffee
+  description: Perturbates your nick, use /nickmix nick/len where len is the number
+    of chars you want to keep from your orig nick. use /stopmix to stop. Always issue
+    the commands in a window of the server you want to mix in.
+  filename: nickmix-c0ffee.pl
+  license: GPLv2, not later
+  name: nickmix-c0ffee
+  version: v0.1
+- author: Petr Baudis
+  description: Perturbates given nick (or just a word) in certain way.
+  filename: nickmix_pasky.pl
+  license: GPLv2, not later
+  name: nickmix
+  version: '1.2'
+- author: Geert Hauwaerts
+  description: This script will authorize you into NickServ.
+  filename: nickserv.pl
+  license: GNU General Public License
+  name: nickserv.pl
+  version: '1.8'
+- author: BC-bd
+  description: BitchX like Nickcompletion at line start plus statusbar
+  filename: niq.pl
+  license: GPL v2
+  name: niq
+  version: 0.5.7
+- author: BC-bd
+  description: right aligned nicks depending on longest nick
+  filename: nm.pl
+  license: GPL v2
+  name: nm
+  version: 0.3.10
+- author: JamesOff, Ion
+  description: Replaces lines in ALL CAPS with something easier on the eyes
+  filename: nocaps.pl
+  license: Public Domain
+  name: nocaps
+  version: '1.01'
+- author: Marcin Rozycki
+  description: Automatically changes nick (to randnick or uid on ircd 2.11) when certain
+    amount of nick colissions.                           takes place on channel
+  filename: nocollide.pl
+  license: GNU GPL v2
+  name: nocollide
+  version: 0.2.3
+- author: unknown
+  description: Prints an info about a newly started Query in your current window and
+    runs a /whois on the nick.
+  filename: noisyquery.pl
+  license: GPL v2
+  name: noisyquery
+  version: 0.1.1
+- author: Adam Wysocki
+  description: Replaces polish national characters with their corresponding letters
+  filename: nopl.pl
+  license: Public Domain
+  name: nopl
+  version: '1.00'
+- author: Marcin Rozycki
+  description: stops public repeating
+  filename: norepeat.pl
+  license: GNU GPL v2
+  name: norepeat
+  version: '0.5'
+- author: vague
+  description: Keeps notes on users and displayes the note in /whois output if the
+    host/nick matches
+  filename: notes.pl
+  license: GPL2
+  name: notes
+  version: '0.31'
+- author: Stefan tommie Tomanek
+  description: Utilizes NoteServ to implement a buddylist
+  filename: noteserve.pl
+  license: GPLv2
+  name: NoteServ
+  version: '2002123101'
+- author: Timo Sirainen
+  description: Prints private notices from people in the channel where they are joined
+    with you. Useful when you get lots of private notices from some bots.
+  filename: noticemove.pl
+  license: Public Domain
+  name: notice move
+  version: '1.01'
+- author: Johan Ion Kiviniemi
+  description: 'Answers $nick: No. if youre away and someone asks are you online on
+    a channel'
+  filename: notonline.pl
+  license: Public Domain
+  name: NotOnline
+  version: '0.9'
+- author: Juerd
+  description: This script really does nothing. Sorry.
+  filename: null.pl
+  license: Public Domain
+  name: Nothing at all
+  version: '1.00'
+- author: Ricardo Mesquita
+  description: Display current ogg123 track
+  filename: ogg123.pl
+  license: GPLv2
+  name: ogg123
+  version: 0.01+1
+- author: darix
+  description: oidentd support for irssi
+  filename: oidenty.pl
+  license: BSD License
+  name: oidenty
+  version: 0.0.2
+- author: David Leadbeater
+  description: /on command - this is very simple and not really designed to be the
+    same as ircII - it tries to fit into Irssis usage style more than emulating ircII.
+  filename: on.pl
+  license: GNU GPLv2 or later
+  name: on.pl
+  version: '1.12'
+- author: Stefan tommie Tomanek
+  description: turns irssi into a tv program guide
+  filename: ontv.pl
+  license: GPLv2
+  name: OnTV
+  version: '20050226'
+- author: ','
+  description: "turns ls in the beginning of a sent line into the names or whois commands,\r"
+  filename: oops.pl
+  license: Public Domain,
+  name: oops,
+  version: '20071209'
+- author: Stefan tommie Tomanek
+  description: Stores URLs in a list and launches mail, web or ftp software
+  filename: openurl.pl
+  license: GPLv2
+  name: OpenURL
+  version: '20030208'
+- author: Petr Baudis
+  description: Perform certain action (invite/op/...) on request authenticated by
+    the IRC operator status.
+  filename: operit.pl
+  license: BSD
+  name: operit
+  version: '1.14'
+- author: Petr Baudis
+  description: Reformats some server notices, which may come i.e. from &clients or
+    &servers at IRCnet. You can turn the script on/off bytoggling variable mangle_server_notices.
+  filename: operview.pl
+  license: GPLv2, not later
+  name: operview
+  version: '1.11'
+- author: Terje xerath Tjeldnes
+  description: ''
+  filename: opnotice.pl
+  license: GNU GPL v2
+  name: Opnotice
+  version: '0.1'
+- author: Maciek fahren Freudenheim
+  description: Hilights window refnumber in statusbar if someone ops/deops you on
+    channel
+  filename: opnotify.pl
+  license: GNU GPLv2 or later
+  name: opnotify
+  version: '1.0'
+- author: Wohmatak
+  description: Displays the song played by orpheus
+  filename: orphamp.pl
+  license: GPL
+  name: orphamp
+  version: '0.9'
+- author: Jeroen Coekaerts, Koenraad Heijlen
+  description: An OnScreenDisplay (osd) it shows who is talking to you, on what IRC
+    Network.
+  filename: osd.pl
+  license: BSD
+  name: osd
+  version: 0.3.3
+- author: ','
+  description: ','
+  filename: ownage.pl
+  license: ','
+  name: ','
+  version: '20071209'
+- author: c0ffee
+  description: Adds the /PAGE command to page a nick (use /page nick <text>)... to
+    ignore pages /set pager_mode off
+  filename: page-c0ffee.pl
+  license: Public Domain
+  name: mIRC pager
+  version: '0.02'
+- author: Thomas Graf
+  description: display and send CTCP PAGE
+  filename: page_reeler.pl
+  license: GNU GPLv2 or later
+  name: page
+  version: '0.2'
+- author: Jean-Yves Lefort
+  description: Notifies people if they send you a private message or a DCC chat offer
+    while you are away runs a shell command configurable via /set if they page you
+  filename: pager.pl
+  license: BSD
+  name: pager
+  version: '1.1'
+- author: Marcin Rozycki, Stanislaw Halik
+  description: 'Usage: /paste [-all|-msgs|-public] [-c|-b] [-s|-l| where] [lines]'
+  filename: paste-derwan.pl
+  license: GNU GPL v2
+  name: paste
+  version: '0.9'
+- author: Marcin Rozycki
+  description: Pasting lines to specified targets, type /paste -help for help
+  filename: paste_derwan.pl
+  license: GNU GPL v2
+  name: paste
+  version: 1.0-rc5
+- author: Simon Huggins
+  description: Paste reformats long pieces of text typically pasted into your client
+    from webpages so that they fit nicely into your channel.  Width of client may
+    be specified
+  filename: paste_huggie.pl
+  license: GPLv2
+  name: Paste
+  version: '0.5'
+- author: Kimmo Lehto
+  description: Provides /start, /stop, /play <-nopack> <-nospace> paste mechanism
+    - start and stop recording and then replay without linebreaks. Also /see to view
+    what was recorded.
+  filename: paste_kimmoke.pl
+  license: Public Domain
+  name: Paste-KimmoKe
+  version: '0.1'
+- author: Mankeli
+  description: This script allows you flood shit.
+  filename: pelix.pl
+  license: GNU/GPL
+  name: '#pelix Helpers'
+  version: '0.3'
+- author: Marcin Qrczak Kowalczyk, Johan ion Kiviniemi
+  description: Userlist with autoopping, autokicking etc.
+  filename: people.pl
+  license: GNU GPL
+  name: People
+  version: '1.7'
+- author: Wouter Coekaerts
+  description: Keeps a prompt per window
+  filename: per_window_prompt.pl
+  license: GPLv2 or later
+  name: per_window_prompt
+  version: '1.0'
+- author: Adam Duck
+  description: does CTCP SOUNDs and other similar things.
+  filename: pggb_sound.pl
+  license: GPLv2
+  name: PGGB_sound
+  version: 0.2.3.23b
+- author: Stefan tommie Tomanek
+  description: equips Irssi with an interface to giFT
+  filename: poison.pl
+  license: GPLv2
+  name: Poison
+  version: '2003020801'
+- author: Stefan tommie Tomanek
+  description: Postpones messages sent to a splitted user and resends them when the
+    nick rejoins
+  filename: postpone.pl
+  license: GPLv2
+  name: postpone
+  version: '20030208'
+- author: Maciek Freudenheim, Marco dItri
+  description: port of asmodeans /ppl command from skuld3
+  filename: ppl.pl
+  license: GPL v2
+  name: ppl
+  version: '20020128'
+- author: Teemu jamov Koskinen
+  description: Prints the Q username in right format
+  filename: q_username.pl
+  license: Public Domain
+  name: q_username
+  version: '0.1'
+- author: Peder Stray
+  description: Give you more control over when to jump to query windows and when to
+    just tell you one has been created. Enhanced autoclose.
+  filename: query.pl
+  license: GPL
+  name: query
+  version: '1.24'
+- author: Stefan tommie Tomanek
+  description: restores the last lines of a query on re-creation
+  filename: queryresume.pl
+  license: GPLv2
+  name: QueryResume
+  version: '2003021201'
+- author: Timo Sirainen
+  description: Random quit messages
+  filename: quitmsg.pl
+  license: Public Domain
+  name: quitmsg
+  version: '1.00'
+- author: Fernando J. Pereda
+  description: Random quit messages - based on quitmsg (Timo Sirainen)
+  filename: quitrand.pl
+  license: GPLv2
+  name: quitrand
+  version: '1.00'
+- author: Simon Huggins
+  description: Turns irssi into a quiz bot
+  filename: quiz.pl
+  license: GPLv2
+  name: Quiz
+  version: '0.7'
+- author: Athanasius Emilius Arvanitis based on Simon Huggins quiz 0.7
+  description: Turns irssi into a quiz bot. Has greek language and many answers support
+  filename: quizgr.pl
+  license: GPLv2
+  name: Quizgr
+  version: 0.7GR02
+- author: Stefan tommie Tomanek
+  description: Un script de quiz pour irssi
+  filename: quizmaster-fr.pl
+  license: GPLv2
+  name: quizmaster
+  version: 20030208+fr
+- author: Stefan tommie Tomanek
+  description: a trivia script for Irssi
+  filename: quizmaster.pl
+  license: GPLv2
+  name: quizmaster
+  version: '20030208'
+- author: Jakub Jankowski
+  description: Prints colored text. Rather simple than sophisticated.
+  filename: rainbow.pl
+  license: GNU GPLv2 or later
+  name: rainbow
+  version: '1.4'
+- author: Lasse Karstensen
+  description: Random away-messages
+  filename: randaway.pl
+  license: Public Domain
+  name: randaway.pl
+  version: '1.13'
+- author: legion
+  description: Random /set real_name taken from a file.
+  filename: randname.pl
+  license: Public Domain
+  name: RandName
+  version: '1.0'
+- author: Thomas Graf
+  description: handle 005 and 010 server messages and reconnect to that server
+  filename: redirect.pl
+  license: GNU GPLv2 or later
+  name: redirect
+  version: '0.1'
+- author: Maciek fahren Freudenheim
+  description: Keeps last 15 messages in cache
+  filename: relm.pl
+  license: GNU GPLv2 or later
+  name: REdirect Last Message
+  version: '1.0'
+- author: David Leadbeater
+  description: Lets you run commands remotely via /msg and a password
+  filename: remote.pl
+  license: GNU GPLv2 or later
+  name: remote
+  version: '1'
+- author: Isaac G,
+  description: Reordering windows based on a textfile.,
+  filename: reorder.pl
+  license: GPL,
+  name: reorder,
+  version: ''
+- author: BC-bd
+  description: Hide duplicate lines
+  filename: repeat.pl
+  license: GPL v2
+  name: repeat
+  version: 0.2.0
+- author: David Leadbeater
+  description: Resizes a split window when it is made active (see comments in script
+    for details)
+  filename: resize_split.pl
+  license: GNU GPLv2 or later
+  name: resize_split
+  version: '1.0'
+- author: Fogel
+  description: Rhythmbox now playing script
+  filename: rhythmbox.pl
+  license: BSD
+  name: rhythmbox
+  version: '1.30'
+- author: Maciek fahren Freudenheim
+  description: /RK [-o | -l | -a] - kicks random nick from ops | lusers | all on channel
+  filename: rk.pl
+  license: GNU GPLv2 or later
+  name: Random kicker
+  version: '0.9'
+- author: Victor Ivanov
+  description: translates romaji to hiragana or katakana in text enclosed in ^R
+  filename: romaji.pl
+  license: BSD 2-clause
+  name: romaji
+  version: 1.0b3
+- author: Victor Ivanov
+  description: Dynamic romaji binds
+  filename: romajibind.pl
+  license: BSD 2-clause
+  name: romajibind
+  version: 1.0b
+- author: Mariusz Craig Ciesla
+  description: ROT13 encoding and reverse :)
+  filename: rot13.pl
+  license: GPLv2
+  name: rot13
+  version: '2003121202'
+- author: BC-bd
+  description: Displaye a small, changeing statusbar item to show irssi is still running
+  filename: rotator.pl
+  license: GPL v2
+  name: rotator
+  version: 0.2.1
+- author: Johan Ion Kiviniemi, idea taken from Riku Voipios sana.pl
+  description: /sana command, translates english-finnish-english.
+  filename: sana_cmd.pl
+  license: Public Domain
+  name: sana-cmd
+  version: '0.1'
+- author: Robert Scheck
+  description: /schwäbisch - translates your messages from german to swabian
+  filename: schwaebisch.pl
+  license: GNU GPL v2
+  name: Schwaebisch
+  version: 1.0.0
+- author: Andreas ads Scherbaum <ads@wars-nicht.de>
+  description: set (un)away, if screen is attached/detached
+  filename: screen_away.pl
+  license: GPL v2
+  name: screen_away
+  version: 0.9.7.1
+- author: Stefan tommie Tomanek
+  description: keeps your scripts on the cutting edge
+  filename: scriptassist.pl
+  license: GPLv2
+  name: scriptassist
+  version: '2003020803'
+- author: Maciek fahren Freudenheim
+  description: Provides access to scripts help
+  filename: scripthelp.pl
+  license: GNU GPLv2 or later
+  name: Scripts help
+  version: '0.9'
+- author: Juerd
+  description: Access script information
+  filename: scriptinfo.pl
+  license: Public Domain
+  name: Script Information
+  version: '1.20'
+- author: jwz, irssified by Mikachu
+  description: wtires lkie tihs
+  filename: scrmable.pl
+  license: as is
+  name: scrmable
+  version: '1.01'
+- author: Demonen
+  description: Scrolls specified text on the status bar
+  filename: scroller.pl
+  license: Public Domain
+  name: scroller
+  version: '0.01'
+- author: Jari Matilainen, a lot of code borrowed from whitelist.pl by David ORourke
+    and Karl Siegemund
+  description: An irssi adaptation of securequery.mrc found in the Acidmax mIRC script.
+    :), now with multiserver support
+  filename: securemsg.pl
+  license: ''
+  name: securemsg
+  version: '2.1'
+- author: Marcin Qrczak Kowalczyk
+  description: Tell people when other people were online
+  filename: seen.pl
+  license: GPL
+  name: Seen
+  version: '1.8'
+- author: David Leadbeater
+  description: Tab complete servers and userhosts (irc. -> irc server, user@ -> user@host).
+    Useful for lazy ircops for /squit and so on :)
+  filename: servercomplete.pl
+  license: GNU GPLv2 or later
+  name: servercomplete
+  version: '2'
+- author: optical
+  description: Tell ppl how far youve gotten with you SETI@home workunit.
+  filename: seti.pl
+  license: GPL
+  name: SETI@home info
+  version: '0.1'
+- author: Marcin Rozycki
+  description: shortenurl
+  filename: shortenurl.pl
+  license: GNU GPL v2
+  name: shortenurl
+  version: 0.7.1
+- author: eo, tsaavik
+  description: Private/Public url reduction script.
+  filename: shorturl.pl
+  license: GPLv2
+  name: shorturl.pl
+  version: '20090904 # Fixed and enhanced by tsaavik (dave000@hellspark.com)'
+- author: Pawe³ Styx Chuchma³a
+  description: Show hilight messages in active window
+  filename: showhilight.pl
+  license: GNU GPLv2
+  name: showhilight
+  version: '0.1'
+- author: Michiel v Vaardegem
+  description: show host kicks
+  filename: showhost.pl
+  license: GPL
+  name: showhost
+  version: '0.2'
+- author: Wouter Coekaerts
+  description: show modes in parts, quits, kicks, topic changes or actions, like show_nickmode
+    does for public messages
+  filename: showmode.pl
+  license: GPLv2 or later
+  name: showmode
+  version: '0.3'
+- author: Jonne Piittinen
+  description: Very useful smiley-flooder
+  filename: smiley.pl
+  license: Public Domain
+  name: Smiley
+  version: '0.69'
+- author: Maciek fahren Freudenheim
+  description: /ADDSMS, /DELSMS, /LISTSMS and /SMS - phone address-book with smssender,
+    for now supports only Polish operators
+  filename: sms.pl
+  license: GNU GPLv2 or later
+  name: SMS
+  version: 1.5b
+- author: Rick (strlen) Jansen
+  description: This script queries remote hosts (/snmpup <host1> <host2> <hostN>)
+    running snmpd for its uptime and cpu usage
+  filename: snmpup.pl
+  license: GPL/2
+  name: snmpup
+  version: '2.00'
+- author: Daemon @ ircd.foxchat.net
+  description: Oper script to kill Spam Bots.
+  filename: spambot.pl
+  license: Public Domain
+  name: Spam Bot Killer
+  version: '1.2'
+- author: Wouter Coekaerts
+  description: (tab)complete irssi special variables (words that start with $) by
+    evaluating them
+  filename: special_complete.pl
+  license: GPLv2
+  name: special_complete
+  version: '1.1'
+- author: Michael Kowalchuk
+  description: A spell checker for irssi.  Hit alt+s and your line will echoed to
+    the active window with mistakes underlined and suggestions noted.  /spell is also
+    provided.  Requires Lingua::Ispell and Ispell.
+  filename: spell.pl
+  license: MIT
+  name: spell
+  version: '1.0'
+- author: Jakub Jankowski
+  description: Checks for spelling errors using Aspell.
+  filename: spellcheck.pl
+  license: GPLv2
+  name: Spellcheck
+  version: '0.3'
+- author: Maciek fahren Freudenheim
+  description: /SPING [server] - checks latency between current server and [server]
+  filename: sping.pl
+  license: GNU GPLv2 or later
+  name: Server Ping
+  version: '0.9'
+- author: Bjoern fuchs Krombholz
+  description: Split overlong PRIVMSGs to msgs with length allowed by ircd
+  filename: splitlong.pl
+  license: ''
+  name: splitlong
+  version: '0.20'
+- author: Marcus darix Rückert, tira, Stefan tommie Tomanek
+  description: prints the stats for german stocks
+  filename: stocks.pl
+  license: Public Domain
+  name: stocks
+  version: '0.9'
+- author: Enno Boland
+  description: Rename XMPP *vz.net network contacts in bitlbee to human-readable names
+    based on http://github.com/avar/irssi-bitlbee-facebook-rename
+  filename: studivz_bitlbee_rename.pl
+  license: GPL
+  name: studivz-bitlbee-rename
+  version: '0.01'
+- author: Marcin Rozycki
+  description: 'Script checking channel synchronization. Usage: /sync-check [channel
+    (servers)|-stop]'
+  filename: synccheck.pl
+  license: GNU GPL v2
+  name: sync-check
+  version: 0.4.9.1
+- author: David Rudie
+  description: Cross-platform/architecture system information script.
+  filename: sysinfo270-irssi.pl
+  license: BSD
+  name: SysInfo
+  version: '2.70'
+- author: David Rudie
+  description: Cross-platform/architecture system information script.
+  filename: sysinfo277-irssi.pl
+  license: BSD
+  name: SysInfo
+  version: '2.77'
+- author: David Leadbeater
+  description: Adds a /sysinfo command which prints system information (linux only).
+  filename: sysinfo_dg.pl
+  license: GNU GPLv2 or later
+  name: sysinfo-dg
+  version: '1.2'
+- author: Juerd, Tronic
+  description: Linux system information (with vPenis and other stuff)
+  filename: sysinfo_juerd.pl
+  license: Public Domain
+  name: SysinfoPlus
+  version: '2.20'
+- author: Juerd, Tronic
+  description: Linux system information (with vPenis and other stuff)
+  filename: sysinfoplus.pl
+  license: Public Domain
+  name: SysinfoPlus
+  version: '2.20'
+- author: Stefan tommie Tomanek
+  description: This script replaces the evil inverted I with a configurable number
+    of whitespaces
+  filename: tab_stop.pl
+  license: GPLv2
+  name: tab_stop
+  version: '2002123102'
+- author: Alexander Mieland
+  description: This script talks to you *g*. It reads the chat-msgs for you.
+  filename: talk.pl
+  license: GPL2
+  name: Talk
+  version: '1.01'
+- author: Stefan tommie Tomanek
+  description: advances IRC warfare to the next level )
+  filename: target.pl
+  license: GPLv2
+  name: Target
+  version: '2003020801'
+- author: BC-bd
+  description: Remembers the last person oping you on a channel
+  filename: thankop.pl
+  license: GPL v2
+  name: thankop
+  version: 0.1.7
+- author: Teemu Hjelt
+  description: Keeps information about the most recent topics of the channels you
+    are on.
+  filename: thistory.pl
+  license: GNU GPLv2 or later
+  name: topic history
+  version: '1.05'
+- author: Kimmo Lehto, Marcus Rueckert
+  description: Provides /timer command for mIRC/BitchX type timer functionality.
+  filename: timer.pl
+  license: Public Domain
+  name: Timer
+  version: '0.5'
+- author: Jari Matilainen
+  description: timezones displayer
+  filename: timezones.pl
+  license: Public Domain
+  name: timezones
+  version: '0.1'
+- author: Atoms
+  description: create a tinyurl from a long one
+  filename: tinyurl.pl
+  license: GPL
+  name: tinyurl
+  version: '1.0'
+- author: Timo Sirainen, David Leadbeater
+  description: Display configurable title as XTerm title
+  filename: title.pl
+  license: GNU GPL
+  name: title
+  version: '3.2'
+- author: Maciek fahren Freudenheim
+  description: /TLOCK [-d] [channel] [topic] - locks current or specified topic on
+    [channel]
+  filename: tlock.pl
+  license: GNU GPLv2 or later
+  name: Topic Lock
+  version: '1.1'
+- author: Stefan tommie Tomanek
+  description: records a topic history and locks the channel topic
+  filename: topics.pl
+  license: GPLv2
+  name: topics
+  version: '2003020801'
+- author: Gabor Nyeki
+  description: editing channel topics by regexps
+  filename: topicsed.pl
+  license: public domain
+  name: topicsed
+  version: ''
+- author: Sebastian yath Schmidt
+  description: This script will automatically detect people using the .                   Tor
+    anonymity network and append .TOR to their .                   hostname, to make
+    things like /ignore -time 3600 .                   *!*@*.TOR possible (e.g. when
+    your favourite .                   channel gets flooded).
+  filename: tordetect.pl
+  license: Public domain
+  name: Tor autodetection for Irssi
+  version: 0.0.1
+- author: Peter kinlo Leurs
+  description: Shows a bar where youve last read a window
+  filename: trackbar.pl
+  license: GPLv2
+  name: trackbar
+  version: '1.4'
+- author: Timo Sirainen
+  description: Are you ever tired of those people who keep changing their nicks? Or
+    maybe you just dont like someones nick? This script lets you see them with the
+    real nick all the time no matter what nick theyre currently using.
+  filename: tracknick.pl
+  license: Public Domain
+  name: track nick
+  version: '0.01'
+- author: dreg
+  description: translitiratar
+  filename: translit.pl
+  license: GPL
+  name: translit
+  version: ''
+- author: Wouter Coekaerts
+  description: execute a command or replace text, triggered by an event in irssi
+  filename: trigger.pl
+  license: GPLv2 or later
+  name: trigger
+  version: '1.0'
+- author: Stefan tommie Tomanek
+  description: Illustrates the trust between ops
+  filename: trustweb.pl
+  license: GPLv2
+  name: TrustWeb
+  version: '2003020801'
+- author: Gabor Nyeki
+  description: asks for the current tv-lineup from http://www.port.hu/
+  filename: tvmusor.pl
+  license: BSDL
+  name: tvmusor
+  version: ''
+- author: John Engelbrecht
+  description: BitchXs CrackRock3 animated prompt bar.
+  filename: twprompt.pl
+  license: Public Domain
+  name: twprompt.pl
+  version: '1.00'
+- author: John Engelbrecht
+  description: IRC version of Social Commands
+  filename: twsocials.pl
+  license: Public Domain
+  name: twsocials.pl
+  version: '1.02'
+- author: John Engelbrecht
+  description: Animated Topic bar.
+  filename: twtopic.pl
+  license: Public Domain
+  name: twtopic.pl
+  version: '1.01'
+- author: Michiel
+  description: BitchX /u clone. Use /u <regex> to show all nicks (including ident@host)
+    matching regex in the current channel.
+  filename: u.pl
+  license: GNU GPL
+  name: List nicks in channel
+  version: '1.2'
+- author: Peder Stray
+  description: Statusbaritem notifying you about updated binary
+  filename: upgradeinfo.pl
+  license: GPL
+  name: upgradeinfo
+  version: '1.7'
+- author: Ivo Schooneman
+  description: Plugin to place text upsidedown
+  filename: upsidedown.pl
+  license: GNU GPLv2
+  name: upsidedown
+  version: '0.2'
+- author: Peder Stray
+  description: Try a little harder to figure out client uptime
+  filename: uptime.pl
+  license: GPL
+  name: uptime
+  version: '1.6'
+- author: Thomas Graf
+  description: logs urls to textfile or/and database, able to list, quote, open or
+    `http head` saved urls.
+  filename: url_log.pl
+  license: GNU GPLv2 or later
+  name: url_log
+  version: '0.2'
+- author: Jakub Jankowski
+  description: Provides RSS feeds with URLs pasted on your channels.
+  filename: urlfeed.pl
+  license: GNU GPLv2 or later
+  name: URLfeed
+  version: '1.28'
+- author: David Leadbeater
+  description: Captures urls said in channel and private messages and saves them to
+    a file, also adds a /url command which loads the last said url into mozilla.
+  filename: urlgrab.pl
+  license: GNU GPLv2 or later
+  name: urlgrab
+  version: '0.2'
+- author: bwolf
+  description: URL grabber with HTML generation and cmd execution
+  filename: urlplot.pl
+  license: BSD
+  name: urlplot
+  version: '1.2'
+- author: David Leadbeater, Timo Sirainen, Georg Lukas
+  description: Adds a usercount for a channel as a statusbar item
+  filename: usercount.pl
+  license: GNU GPLv2 or later
+  name: usercount
+  version: '1.16'
+- author: Jean-Yves Lefort
+  description: Adds a -cmd option to the /USERHOST builtin command
+  filename: userhost.pl
+  license: BSD
+  name: userhost
+  version: '0.23'
+- author: Jean-Yves Lefort
+  description: Implements /USERS
+  filename: users.pl
+  license: BSD
+  name: users
+  version: '2.3'
+- author: c0ffee
+  description: shows top[0-9]+ irc client versions in a channel
+  filename: version-stat.pl
+  license: Public Domain
+  name: version-stats
+  version: '0.1'
+- author: Stefan tommie Tomanek
+  description: Draws a diagram of the used clients in a channel
+  filename: verstats.pl
+  license: GPLv2
+  name: VerStats
+  version: '20030208'
+- author: Jakub Jankowski
+  description: 'Silly script, removes vowels, idea taken from #linuxnews -)'
+  filename: vowels.pl
+  license: GNU GPLv2 or later
+  name: vowels
+  version: '1.0'
+- author: Matti qvr Hiljanen, Piotr Pieta Szymanski,
+  description: shows what WinAmp is playing with /wa command,
+  filename: wa.pl
+  license: Public Domain,
+  name: wa,
+  version: 2.3.1
+- author: Svante Kvarnström
+  description: warns you if someone kicks you out of a channel
+  filename: warnkick.pl
+  license: GPL
+  name: warnkick
+  version: 0.0.3
+- author: ulbkold
+  description: Removes annoying characters from nicks
+  filename: washnicks.pl
+  license: GPL
+  name: washnicks
+  version: '1.01'
+- author: ThEbUtChE
+  description: Uso del comando watch para irssi.
+  filename: watch.pl
+  license: BSD
+  name: Watch script
+  version: '1.0'
+- author: GrayWolf
+  description: Put local weather information in your statusbar as well as add a forecast
+    command
+  filename: weather.pl
+  license: Public Domain
+  name: Weather.pl
+  version: '2.3'
+- author: David ORourke, Karl Siegemund
+  description: Whitelist specific nicks or hosts and ignore messages from anyone else.
+  filename: whitelist.pl
+  license: ''
+  name: whitelist
+  version: '1.0'
+- author: Maciek fahren Freudenheim
+  description: Hilights @ in whois channel reply
+  filename: whois.pl
+  license: GNU GPLv2 or later
+  name: cwhois
+  version: '1.0'
+- author: Michael Kowalchuk
+  description: Every time a WHOIS or WHOWAS is run, this script checks the ident and
+    realname for a hex encoded IP address, then decodes it, reverses it, and adds
+    it to the printed WHOIS/WHOWAS result. Useful for looking at CGI::IRC clients.
+  filename: whois_hexip.pl
+  license: MIT
+  name: whois_hexip
+  version: '1.4'
+- author: Erik Fears
+  description: This script allows  .                   you to view all users  .                   on
+    a specific server.
+  filename: whos.pl
+  license: GPL
+  name: whos
+  version: '1.00'
+- author: Leszek Matok
+  description: Provides /wilm and /wiilm commands, which do a whois on a person who
+    sent you last private message
+  filename: wilm.pl
+  license: Public Domain
+  name: wilm
+  version: 1.0.1
+- author: Wouter Coekaerts
+  description: makes switching windows easy
+  filename: window_switcher.pl
+  license: GPLv2 or later
+  name: window_switcher
+  version: '1.0'
+- author: Antti Ruokomäki
+  description: If timestamp_timeout is used, the text .                 will be indented
+    when the stamp is hidden
+  filename: wisestamp.pl
+  license: Public Domain
+  name: wisestamp
+  version: '1.1'
+- author: Matti qvr Hiljanen
+  description: A simple word kickbanner
+  filename: wkb.pl
+  license: Public Domain
+  name: wkb
+  version: '1.1'
+- author: BC-bd, Veli, Timo cras Sirainen, Wouter Coekaerts, Nei
+  description: Adds a window list in the status area. Based on chanact.pl by above
+    authors.
+  filename: wlstat.pl
+  license: GNU GPLv2 or later
+  name: wlstat
+  version: '0.5'
+- author: Jesper Lindh
+  description: Adds words from IRC to your tab-completion list
+  filename: wordcompletition.pl
+  license: Public Domain
+  name: IRC Completion with mysql-database
+  version: '0.1'
+- author: Koenraad Heijlen
+  description: A script that scrambles all the letters in a word except the first
+    and last.,
+  filename: wordscramble.pl
+  license: GNU GPL version 2
+  name: word_scramble
+  version: 0.0.2
+- author: Toshio R. Spoor
+  description: Undernet X Service Authentication Program
+  filename: xauth.pl
+  license: GNU GPLv2 or later
+  name: xauth
+  version: '1.02'
+- author: Clément nodens Hermann
+  description: makes Undernets X commands easier and faster to use
+  filename: xcmd.pl
+  license: GPLv2
+  name: Xcmd
+  version: '0.2'
+- author: Stefan tommie Tomanek
+  description: advances downloading from XDCC bots
+  filename: xdccget.pl
+  license: GPLv2
+  name: XDCCget
+  version: '20040509'
+- author: Stefan tommie Tomanek
+  description: brings the stock exchanges of the world to your irssi
+  filename: xetra.pl
+  license: GPLv2
+  name: Xetra
+  version: '20030208'
+- author: Matthäus JonnyBG Wander
+  description: Better readable listing of channel names
+  filename: xlist.pl
+  license: GPLv2
+  name: xlist
+  version: '1.00'
+- author: Simon Shine
+  description: XMMS-InfoPipe front-end - allow /np [-help] [dest]
+  filename: xmms.pl
+  license: Public Domain
+  name: xmms
+  version: '2.0'
+- author: simon
+  description: Returns XMMS-InfoPipe data
+  filename: xmms2.pl
+  license: Public Domain
+  name: XMMS-InfoPipe Script
+  version: 1.1.3+1
+- author: Tuomas Jormola
+  description: /xmmsinfo to tell what youre currently playing
+  filename: xmmsinfo.pl
+  license: GPLv2
+  name: XMMSInfo
+  version: 1.1.1.2
+- author: mizerou
+  description: automatically sends xqf data to irssi and optionally licq
+  filename: xqf.pl
+  license: GPLv2
+  name: XQF
+  version: '0.14'
