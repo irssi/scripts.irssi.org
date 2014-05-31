@@ -3,3 +3,5 @@ email: scripts@irssi.org
 
 markdown: kramdown
 permalink: pretty
+
+exclude: ["README.markdown"]
