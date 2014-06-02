@@ -72,7 +72,7 @@
   url: "http://www.penguin-breeder.org/irssi/"
   version: "0.13"
 
-- authors: "Daniel Kalr (Xnybre)"
+- authors: "Daniel Kalør (Xnybre)"
   changed: "2008-08-27"
   contact: "irssi@kalor.dk"
   description: "Print window activity to a fifo"
@@ -105,7 +105,7 @@
   url: "http://irssi.hauwaerts.be/active_notify.pl"
   version: "0.07"
 
-- authors: "Antti Vhkotamki"
+- authors: "Antti Vähäkotamäki"
   changed: "Wed Jul 19 23:59 EET 2006"
   description: "Maintains a representation of window activity status in a file"
   filename: "activity_file.pl"
@@ -208,7 +208,7 @@
   url: "http://www.formorer.de/code"
   version: "0.4"
 
-- authors: "Erkki Seppl"
+- authors: "Erkki Seppälä"
   changed: "Tue Mar  5 00:06:35 EET 2002"
   contact: "flux@inside.org"
   description: "Ignores people bringin up boring/repeated subjects, plus replies."
@@ -310,7 +310,7 @@
   name: "autoop"
   version: "1.00"
 
-- authors: "Toni Salomki"
+- authors: "Toni Salomäki"
   contact: "Toni@IRCNet"
   description: "Auto-op script with dynamic address support and random delay"
   filename: "autoopper.pl"
@@ -741,7 +741,7 @@
   url: "http://ftp.gcu-squad.org/misc/"
   version: "0.9.0"
 
-- authors: "Daniel K. Gebhart, Marcus Rckert"
+- authors: "Daniel K. Gebhart, Marcus Rückert"
   changed: "$VERSION"
   contact: "dkg@con-fuse.org, darix@irssi.org"
   description: "a simple body mass index calculator for depression )"
@@ -921,7 +921,7 @@
   url: "http://irssi.atn.pl/"
   version: "20020223"
 
-- authors: "Jrgen Tjern"
+- authors: "Jørgen Tjernø"
   changed: "Wed Sep 24 13:17:15 CEST 2003"
   contact: "darkthorne@samsen.com"
   description: "Simple script that removes colors and other formatting (bold, etc) from public channels"
@@ -1423,7 +1423,7 @@
   url: "http://irssi.dgl.cx/"
   version: "1.0"
 
-- authors: "Erkki Seppl"
+- authors: "Erkki Seppälä"
   changed: "Mon Mar  4 23:25:18 EET 2002"
   contact: "flux@inside.org"
   description: "Finds a nick by real name, if hes on a channel with you."
@@ -1612,7 +1612,7 @@
   url: "http://genericorp.net/~count/irssi/go"
   version: "1.0"
 
-- authors: "Oddbjrn Kvalsund"
+- authors: "Oddbjørn Kvalsund"
   contact: "oddbjorn.kvalsund@hiof.no"
   description: "This script queries google.com and returns the results."
   filename: "google.pl"
@@ -1882,7 +1882,7 @@
   url: "http://"
   version: "0.1"
 
-- authors: "Erkki Seppl"
+- authors: "Erkki Seppälä"
   changed: "Mon Jun 16 08:10:45 EEST 2008"
   contact: "flux@inside.org"
   description: "Ignore messages from people not on your channels. .   Now people you msg are added to bypass-list."
@@ -1983,7 +1983,7 @@
   url: "none as yet"
   version: "0.1"
 
-- authors: "Erkki Seppl"
+- authors: "Erkki Seppälä"
   changed: "Thu Feb  7 22:45:55 EET 2002"
   contact: "flux@inside.org"
   description: "Adds words from IRC to your tab-completion list, plus fixes typos"
@@ -2226,7 +2226,7 @@
   sbitems: "l33tmusic"
   version: "2.01"
 
-- authors: "Simon simmel Lundstrm"
+- authors: "Simon simmel Lundström"
   contact: "simmel@(freenode|quakenet|efnet) http://last.fm/user/darksoy"
   date: "20110125"
   description: "A now-playing-script which uses Last.fm"
@@ -2391,7 +2391,7 @@
   url: "http://icmfp.com/irssi"
   version: "0.5"
 
-- authors: "Erkki Seppl"
+- authors: "Erkki Seppälä"
   changed: "Mon Mar  4 23:25:18 EET 2002"
   contact: "flux@inside.org"
   description: "Polls your unix mailbox for new mail"
@@ -2467,7 +2467,7 @@
   name: "mg,"
   version: "20090813"
 
-- authors: "Leszek Matok, Andrzej Jagodziski"
+- authors: "Leszek Matok, Andrzej Jagodziñski"
   changed: "10.3.2002 20:10"
   contact: "lam@lac.pl"
   description: "Simple wordkick system, with extended polish dictionary for channels enforcing correct polish."
@@ -3747,7 +3747,7 @@
   name: "splitlong"
   version: "0.20"
 
-- authors: "Marcus darix Rckert, tira, Stefan tommie Tomanek"
+- authors: "Marcus darix Rückert, tira, Stefan tommie Tomanek"
   contact: "darix@irssi.de, tira@isx.de, stefan@pico.ruhr.de"
   description: "prints the stats for german stocks"
   filename: "stocks.pl"
@@ -4237,7 +4237,7 @@
   url: "http://matin.maapallo.org/softa/irssi,"
   version: "2.3.1"
 
-- authors: "Svante Kvarnstrm"
+- authors: "Svante Kvarnström"
   changed: "Tue Sep 28 03:51 CEST 2004"
   contact: "sjk@ankeborg.nu"
   contact: "svarre@undernet.org"
@@ -4345,7 +4345,7 @@
   url: "http://wouter.coekaerts.be/irssi/"
   version: "1.0"
 
-- authors: "Antti Ruokomki"
+- authors: "Antti Ruokomäki"
   changed: "Wed Apr 12 22:46:00 2006"
   contact: "antti.ruokomaki@mbnet.fi"
   description: "If timestamp_timeout is used, the text .                 will be indented when the stamp is hidden"
@@ -4408,7 +4408,7 @@
   name: "xauth"
   version: "1.02"
 
-- authors: "Clment nodens Hermann"
+- authors: "Clément nodens Hermann"
   changed: "$VERSION"
   commands: "xcmd"
   contact: "clement.hermann@free.fr"
@@ -4442,7 +4442,7 @@
   name: "Xetra"
   version: "20030208"
 
-- authors: "Matthus JonnyBG Wander"
+- authors: "Matthäus JonnyBG Wander"
   contact: "jbg@swznet.de"
   description: "Better readable listing of channel names"
   filename: "xlist.pl"
