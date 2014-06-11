@@ -407,7 +407,7 @@ sub make_nicklist {
 	### get & check channel ###
 	my $channel = Irssi::active_win->{active};
 
-	if (!$channel || (ref($channel) ne 'Irssi::Irc::Channel' && ref($channel) ne 'Irssi::Silc::Channel') || $channel->{'type'} ne 'CHANNEL' || ($channel->{chat_type} ne 'SILC' && !$channel->{'names_got'}) ) {
+	if (!$channel || (ref($channel) ne 'Irssi::Irc::Channel' && ref($channel) ne 'Irssi::Silc::Channel' && ref($channel) ne 'Irssi::Xmpp::Channel') || $channel->{'type'} ne 'CHANNEL' || ($channel->{chat_type} ne 'SILC' && !$channel->{'names_got'}) ) {
 		$active_channel = undef;
 		# no nicklist
 	} else {
