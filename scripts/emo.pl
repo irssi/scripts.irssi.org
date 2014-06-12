@@ -3,7 +3,10 @@
 # Irssi script for easy usage of unicode emoticons.
 #
 # Package `unifont` should have to be installed so that 
-# some of these display correctly.
+# some of these display correctly. Depending on the font, some
+# of them may not really work anyway. 
+#
+# Feel free to add your own.
 #
 # Enjoy! (⌐■_■)ノ♪♬
 
@@ -27,6 +30,7 @@ use Irssi::Irc;
 
 %EMOTICONS = (
     happy         => 'ʘ‿ʘ',
+    smile         => '◔ ⌣ ◔',
     flex          => 'ᕙ(⇀‸↼‶)ᕗ',
     shrug         => '¯\_(ツ)_/¯',
     wave          => '(•◡•)/',
@@ -43,7 +47,6 @@ use Irssi::Irc;
     lenny         => '(͡° ͜ʖ ͡°)',
     gift          => '(´・ω・)っ由',
     disapprove    => 'ಠ_ಠ',
-    flex          => 'ᕙ( ͡° ʖ͡°)ᕗ',
     tired         => 'ب_ب',
     handsup       => '╚(•⌂•)╝',
     dance         => '(⌐■_■)ノ♪♬',
@@ -52,7 +55,14 @@ use Irssi::Irc;
     kiss          => '(っ˘з(˘⌣˘ )',
     owl           => '◎▼◎',
     hrm           => '눈_눈',
-    success       => '(•̀ᴗ•́)و'
+    success       => '(•̀ᴗ•́)و',
+    whatever      => '◔_◔',
+    amazed        => '＼(◎o◎)／',
+    suave         => '〜(￣△￣〜)',
+    eyes          => 'Ծ_Ծ',
+    ghost         => '༼✷ɷ✷༽',
+    stoned        => '{◕ ◡ ◕}',
+    angry         => '►_◄',
 );
 
 sub emolist {
