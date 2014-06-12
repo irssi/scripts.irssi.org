@@ -4365,16 +4365,6 @@
   url: "http://matin.maapallo.org/softa/irssi"
   version: "1.1"
 
-- authors: "BC-bd, Veli, Timo cras Sirainen, Wouter Coekaerts, Nei"
-  contact: "bd@bc-bd.org, veli@piipiip.net, tss@iki.fi, wouter@coekaerts.be, Nei@QuakeNet"
-  description: "Adds a window list in the status area. Based on chanact.pl by above authors."
-  filename: "wlstat.pl"
-  modified: "2008-05-17 17:39:11"
-  license: "GNU GPLv2 or later"
-  modules: "Encode"
-  name: "wlstat"
-  version: "0.5"
-
 - authors: "Jesper Lindh"
   changed: "2004-03-12"
   contact: "rakblad@midgard.liu.se"
