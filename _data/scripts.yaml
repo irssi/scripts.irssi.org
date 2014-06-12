@@ -1333,18 +1333,6 @@
   url: "http://www.princessleia.com/"
   version: "1.0"
 
-- authors: "Harald Nesland"
-  changed: "Thu Apr 11 14:15:25 CEST 2002"
-  contact: "hnesland@samsen.com"
-  description: "Very simple script that sends incoming text to freetranslation.com for english->norwegian translation. May be modified to translate other languages."
-  filename: "eng_no_translate_dpryo.pl"
-  modified: "2008-05-17 17:39:09"
-  license: "Public Domain"
-  modules: "LWP::Simple"
-  name: "EngNoTranslate"
-  url: "http://www.satyra.net"
-  version: "0.2"
-
 - authors: "Taneli Kaivola"
   changed: "Mon May 20 04:04:47 EEST 2002"
   contact: "dist@sci.fi"
