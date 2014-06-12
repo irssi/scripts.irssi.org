@@ -1289,6 +1289,15 @@
   url: "http://www.holmnilsen.com/"
   version: "1.2"
 
+- authors: "Ilkka Pale"
+  contact: "ilkka.pale@gmail.com"
+  description: "Outputs various unicode emoticons."
+  filename: "emo.pl"
+  modified: "2014-06-12 19:06:00"
+  license: "Public Domain"
+  name: "emo"
+  version: "0.0.1"  
+
 - authors: "Ilya Cassina"
   contact: "icassina@gmail.com"
   description: "This script allow advanced parametrization  .                   of the /list command. Accepted parameters are  .                   -minusers <#users> and -maxusers <#users>. "
