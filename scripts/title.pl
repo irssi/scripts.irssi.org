@@ -1,5 +1,5 @@
 use Irssi 20020120.0250 ();
-$VERSION = "3.2";
+$VERSION = "3.2b";
 %IRSSI = (
     authors     => 'Timo Sirainen, David Leadbeater',
     contact     => 'tss@iki.fi, dgl@dgl.cx',
@@ -8,7 +8,6 @@ $VERSION = "3.2";
     license     => 'GNU GPL',
     url         => 'http://irssi.dgl.cx/',
 );
-
 
 # Settings:
 # title_string: The string used in the title, see below for explaination
@@ -28,6 +27,11 @@ $VERSION = "3.2";
 # /set title_string $cumode$winname$C$.M$.act$.topic
 # Nickname with usermode
 # /set title_string $N(+$usermode)
+
+# To use this with screen you need some lines in your ~/.screenrc
+# termcap xterm 'hs:ts=\E]2;:fs=\007:ds=\E]2;screen\007'
+# terminfo xterm 'hs:ts=\E]2;:fs=\007:ds=\E]2;screen\007'
+# This probably only works if you have $TERM set to xterm.
 
 my %act;
 use IO::Handle;
