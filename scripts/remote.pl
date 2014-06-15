@@ -7,7 +7,7 @@ $VERSION = "1";
     name        => 'remote',
     description => 'Lets you run commands remotely via /msg and a password',
     license     => 'GNU GPLv2 or later',
-    url         => 'http://irssi.dgl.yi.org/',
+    url         => 'http://irssi.dgl.cx/',
 );
 
 

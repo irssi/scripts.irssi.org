@@ -5,7 +5,7 @@ $VERSION = "2.01";
     name        => 'clones',
     description => '/CLONES - Display clones in the active channel (with added options)',
     license     => 'Same as Irssi',
-    url         => 'http://irssi.dgl.yi.org/',
+    url         => 'http://irssi.dgl.cx/',
 );
 
 use strict;
