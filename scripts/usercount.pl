@@ -6,7 +6,7 @@ $VERSION = "1.16";
     name        => 'usercount',
     description => 'Adds a usercount for a channel as a statusbar item',
     license     => 'GNU GPLv2 or later',
-    url         => 'http://irssi.dgl.yi.org/',
+    url         => 'http://irssi.dgl.cx/',
 );
 
 # Once you have loaded this script run the following command:

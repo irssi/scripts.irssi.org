@@ -298,7 +298,7 @@
   modified: "2008-05-17 17:39:09"
   license: "GNU GPLv2 or later"
   name: "autolimit"
-  url: "http://irssi.dgl.yi.org/"
+  url: "http://irssi.dgl.cx/"
   version: "1.00"
 
 - authors: "Timo Sirainen"
@@ -961,7 +961,7 @@
   modified: "2008-05-17 17:39:09"
   license: "Same as Irssi"
   name: "clones"
-  url: "http://irssi.dgl.yi.org/"
+  url: "http://irssi.dgl.cx/"
   version: "2.01"
 
 - authors: "Gabor Nyeki"
@@ -2965,7 +2965,7 @@
   modified: "2008-05-17 17:39:11"
   license: "GNU GPLv2 or later"
   name: "on.pl"
-  url: "http://irssi.dgl.yi.org/"
+  url: "http://irssi.dgl.cx/"
   version: "1.12"
 
 - authors: "Stefan tommie Tomanek"
@@ -3386,7 +3386,7 @@
   modified: "2008-05-17 17:39:09"
   license: "GNU GPLv2 or later"
   name: "remote"
-  url: "http://irssi.dgl.yi.org/"
+  url: "http://irssi.dgl.cx/"
   version: "1"
 
 - authors: "Isaac G,"
@@ -3593,7 +3593,7 @@
   modified: "2008-05-17 17:39:11"
   license: "GNU GPLv2 or later"
   name: "servercomplete"
-  url: "http://irssi.dgl.yi.org/"
+  url: "http://irssi.dgl.cx/"
   version: "2"
 
 - authors: "optical"
@@ -3819,7 +3819,7 @@
   modified: "2008-05-17 17:39:11"
   license: "GNU GPLv2 or later"
   name: "sysinfo-dg"
-  url: "http://irssi.dgl.yi.org/"
+  url: "http://irssi.dgl.cx/"
   version: "1.2"
 
 - authors: "Juerd, Tronic"
@@ -4154,7 +4154,7 @@
   modified: "2008-05-17 17:39:11"
   license: "GNU GPLv2 or later"
   name: "urlgrab"
-  url: "http://irssi.dgl.yi.org/"
+  url: "http://irssi.dgl.cx/"
   version: "0.2"
 
 - authors: "bwolf"
@@ -4176,7 +4176,7 @@
   modified: "2008-05-17 17:39:11"
   license: "GNU GPLv2 or later"
   name: "usercount"
-  url: "http://irssi.dgl.yi.org/"
+  url: "http://irssi.dgl.cx/"
   version: "1.16"
 
 - authors: "Jean-Yves Lefort"

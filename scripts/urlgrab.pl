@@ -7,7 +7,7 @@ $VERSION = "0.2";
     name        => 'urlgrab',
     description => 'Captures urls said in channel and private messages and saves them to a file, also adds a /url command which loads the last said url into mozilla.',
     license     => 'GNU GPLv2 or later',
-    url         => 'http://irssi.dgl.yi.org/',
+    url         => 'http://irssi.dgl.cx/',
 );
 
 use strict;

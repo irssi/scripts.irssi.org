@@ -6,7 +6,7 @@ $VERSION = "1.00";
     name        => 'autolimit',
     description => 'does an autolimit for a channel, set variables in the script',
     license     => 'GNU GPLv2 or later',
-    url         => 'http://irssi.dgl.yi.org/',
+    url         => 'http://irssi.dgl.cx/',
 );
 
 # Change these!
