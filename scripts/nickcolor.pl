@@ -1,39 +1,32 @@
 use strict;
 use Irssi 20020101.0250 ();
 use vars qw($VERSION %IRSSI); 
-$VERSION = "1";
+$VERSION = "2";
 %IRSSI = (
-    authors     => "Timo Sirainen, Ian Peters",
+    authors     => "Timo Sirainen, Ian Peters, David Leadbeater",
     contact	=> "tss\@iki.fi", 
     name        => "Nick Color",
     description => "assign a different color for each nick",
     license	=> "Public Domain",
     url		=> "http://irssi.org/",
-    changed	=> "2002-03-04T22:47+0100"
+    changed	=> "Sun 15 Jun 19:10:44 BST 2014",
 );
 
-# hm.. i should make it possible to use the existing one..
-Irssi::theme_register([
-  'pubmsg_hilight', '{pubmsghinick $0 $3 $1}$2'
-]);
+# Settings:
+#   nickcolor_colors: List of color codes to use.
+#   e.g. /set nickcolor_colors 2 3 4 5 6 7 9 10 11 12 13
+#   (avoid 8, as used for hilights in the default theme).
 
 my %saved_colors;
 my %session_colors = {};
-my @colors = qw/2 3 4 5 6 7 9 10 11 12 13/;
 
 sub load_colors {
-  open COLORS, "$ENV{HOME}/.irssi/saved_colors";
-
-  while (<COLORS>) {
-    # I don't know why this is necessary only inside of irssi
-    my @lines = split "\n";
-    foreach my $line (@lines) {
-      my($nick, $color) = split ":", $line;
-      $saved_colors{$nick} = $color;
-    }
+  open my $color_fh, "<", "$ENV{HOME}/.irssi/saved_colors";
+  while (<$color_fh>) {
+    chomp;
+    my($nick, $color) = split ":";
+    $saved_colors{$nick} = $color;
   }
-
-  close COLORS;
 }
 
 sub save_colors {
@@ -76,19 +69,14 @@ sub simple_hash {
     $counter += ord $char;
   }
 
-  $counter = $colors[$counter % 11];
+  my @colors = split / /, Irssi::settings_get_str('nickcolor_colors');
+  $counter = $colors[$counter % @colors];
 
   return $counter;
 }
 
-# FIXME: breaks /HILIGHT etc.
 sub sig_public {
   my ($server, $msg, $nick, $address, $target) = @_;
-  my $chanrec = $server->channel_find($target);
-  return if not $chanrec;
-  my $nickrec = $chanrec->nick_find($nick);
-  return if not $nickrec;
-  my $nickmode = $nickrec->{op} ? "@" : $nickrec->{voice} ? "+" : "";
 
   # Has the user assigned this nick a color?
   my $color = $saved_colors{$nick};
@@ -104,8 +92,8 @@ sub sig_public {
     $session_colors{$nick} = $color;
   }
 
-  $color = "0".$color if ($color < 10);
-  $server->command('/^format pubmsg {pubmsgnick $2 {pubnick '.chr(3).$color.'$0}}$1');
+  $color = sprintf "\003%02d", $color;
+  $server->command('/^format pubmsg {pubmsgnick $2 {pubnick ' . $color . '$0}}$1');
 }
 
 sub cmd_color {
@@ -115,7 +103,7 @@ sub cmd_color {
   $op = lc $op;
 
   if (!$op) {
-    Irssi::print ("No operation given");
+    Irssi::print ("No operation given (save/set/clear/list/preview)");
   } elsif ($op eq "save") {
     save_colors;
   } elsif ($op eq "set") {
@@ -150,6 +138,7 @@ sub cmd_color {
 
 load_colors;
 
+Irssi::settings_add_str('misc', 'nickcolor_colors', '2 3 4 5 6 7 9 10 11 12 13');
 Irssi::command_bind('color', 'cmd_color');
 
 Irssi::signal_add('message public', 'sig_public');

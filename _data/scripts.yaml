@@ -2746,11 +2746,11 @@
   contact: "tss@iki.fi,"
   description: "assign a different color for each nick"
   filename: "nickcolor.pl"
-  modified: "2008-05-17 17:39:11"
+  modified: "2014-06-15 19:13"
   license: "Public Domain"
   name: "Nick Color"
   url: "http://irssi.org/"
-  version: "1"
+  version: "2"
 
 - authors: "Kalle rpr Marjola"
   changed: "26.8.2003"
