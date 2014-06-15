@@ -3736,14 +3736,14 @@
   version: "0.3"
 
 - authors: "Maciek fahren Freudenheim"
-  changed: "Fri Mar 15 15:09:42 CET 2002"
+  changed: "Sun Jun 15 19:11:55 BST 2014"
   contact: "fahren@bochnia.pl"
   description: "/SPING [server] - checks latency between current server and [server]"
   filename: "sping.pl"
   modified: "2008-05-17 17:39:09"
   license: "GNU GPLv2 or later"
   name: "Server Ping"
-  version: "0.9"
+  version: "1.0"
 
 - authors: "Bjoern fuchs Krombholz"
   changed: "Wed Jun 25 00:17:00 CET 2003"
