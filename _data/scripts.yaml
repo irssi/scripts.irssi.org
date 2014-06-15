@@ -4173,11 +4173,11 @@
   contact: "dgl@dgl.cx, tss@iki.fi, georg@boerde.de"
   description: "Adds a usercount for a channel as a statusbar item"
   filename: "usercount.pl"
-  modified: "2008-05-17 17:39:11"
+  modified: "2014-06-15 19:03:11"
   license: "GNU GPLv2 or later"
   name: "usercount"
   url: "http://irssi.dgl.cx/"
-  version: "1.16"
+  version: "1.19"
 
 - authors: "Jean-Yves Lefort"
   changed: "$Date: 2002/07/04 13:18:02 $"
