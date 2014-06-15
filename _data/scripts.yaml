@@ -2281,6 +2281,17 @@
   url: "http://irssi.org/scripts/"
   version: "20040515"
 
+- authors: "Nico R. Wohlgemuth"
+  commands: "levelclear"
+  contact: "nico@lifeisabug.com"
+  description: "Similar to crapbuster.pl but uses irssis internal scrollback levelclear functionality and is able to clear the previous window automatically after having switched to a new one when levelclear_autoclear is set to true."
+  filename: "levelclear.pl"
+  modified: "2014-06-15 12:59:00"
+  license: "WTFPL"
+  name: "levelclear"
+  url: "http://scripts.irssi.org/"
+  version: "1.0"
+
 - authors: "Jari Matilainen"
   contact: "jmn98015@student.mdh.se"
   description: "Licq statusbar thingy"
