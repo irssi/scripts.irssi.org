@@ -6,6 +6,11 @@ if [[ $TRAVIS_PULL_REQUEST == false ]] {
     filelist=(scripts)
 }
 
+echo travis_fold:begin:debug.1
+env|grep TRAVIS
+print -l $filelist
+echo travis_fold:end:debug.1
+
 for mod ($(scan-perl-prereqs $filelist)) {
     if [[ $(corelist $mod) == *" not in CORE"* && $mod != Irssi* ]] {
 	mod=${mod%\~*}
