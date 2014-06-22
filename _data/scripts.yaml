@@ -3196,6 +3196,15 @@
   url: "http://www.linux.it/~md/irssi/"
   version: "20020128"
 
+- authors: "Cyprien Debu"
+  contact: "frey@notk.org"
+  description: "Gets new mails from procmail.log file"
+  filename: "procmaillog.pl"
+  modified: "2014-06-20"
+  license: "Public Domain"
+  name: "procmaillog"
+  version: "2.02"
+
 - authors: "Teemu jamov Koskinen"
   contact: "teemu.koskinen@mbnet.fi"
   description: "Prints the Q username in right format"
