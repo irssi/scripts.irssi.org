@@ -27,6 +27,7 @@ $VERSION="0.3.10";
 # thanks to And1 <and1@meinungsverstaerker.de> for a small patch
 # thanks to berber@tzi.de for the save/load patch
 # thanks to Dennis Heimbert <dennis.heimbert@gmail.com> for a bug report/patch
+# thanks to Roy Sigurd Karlsbakk <roy@karlsbakk.net> for an autosave patch
 #
 #########
 # USAGE
@@ -84,7 +85,10 @@ my $help = "
 /set neat_allow_shrinking <ON|OFF>
     * ON  : shrink padding when longest nick disappears
     * OFF : do not shrink, only allow growing
- 
+
+/set neat_autosave <number>
+    * number : autosave after <number> seconds, defaults to 60. Set to 0 to
+               disable.
 ";
 
 #
@@ -93,6 +97,9 @@ my $help = "
 ###
 #
 # Changelog
+#
+# Version 0.3.11
+#  - added autosave, idea from Roy Sigurd Karlsbakk
 #
 # Version 0.3.10
 #  - fix losing of saved color when changing nick shares more than one channel
@@ -179,7 +186,8 @@ my $help = "
 ###
 ################
 
-my ($longestNick, %saved_colors, @colors, $alignment, $sign, %commands);
+my ($longestNick, %saved_colors, @colors, $alignment, $sign, %commands,);
+my ($pending_save);
 
 my $colorize = -1;
 
@@ -248,6 +256,19 @@ sub findLongestNick {
 	reformat();
 }
 
+sub delayed_save
+{
+	# skip if we have already a save pending. we don't reset the timeout
+	# here, else you could end up with changes never being automatically
+	# saved if they happen more often than <neat_autosave> seconds
+	return if $pending_save;
+
+	return unless Irssi::settings_get_int('neat_autosave');
+
+	Irssi::timeout_add_once(Irssi::settings_get_int('neat_autosave') * 1000,
+		\&save_colors, undef);
+}
+
 # a new nick was created
 sub sig_newNick
 {
@@ -263,6 +284,7 @@ sub sig_newNick
 	return if (exists($saved_colors{$nick->{nick}}));
 
 	$saved_colors{$nick->{nick}} = "%".nick_to_color($nick->{nick});
+	delayed_save();
 }
 
 # something changed
@@ -278,6 +300,7 @@ sub sig_changeNick
 	# we need to update the saved colorors hash independent of nick lenght
 	$saved_colors{$nick->{nick}} = $saved_colors{$old_nick};
 	delete $saved_colors{$old_nick};
+	delayed_save();
 
 	my $new = length($nick->{nick});
 
@@ -383,6 +406,7 @@ sub assert_colors() {
 			next if (exists($saved_colors{$_->{nick}}));
 
 			$saved_colors{$_->{nick}} = "%".nick_to_color($_->{nick});
+			delayed_save();
 		}
 	}
 }
@@ -415,6 +439,10 @@ sub save_colors() {
 	print FID $_.":".$saved_colors{$_}."\n" foreach (keys(%saved_colors));
 
 	close(FID);
+
+	# clear possible pending save.
+	Irssi::timeout_remove($pending_save) if $pending_save;
+	$pending_save = undef;
 }
 
 # log a line to a window item
@@ -499,6 +527,7 @@ sub cmd_neatcolor_reset() {
 	}
 
 	$saved_colors{$nick} = "%".nick_to_color($nick);
+	delayed_save();
 	neat_log($witem, "Reset color for ".$saved_colors{$nick}.$nick);
 }
 
@@ -539,6 +568,7 @@ sub cmd_neatcolor_set() {
 	}
 
 	$saved_colors{$nick} = "%".$color;
+	delayed_save();
 	neat_log($witem, "Set color for $saved_colors{$nick}$nick");
 }
 
@@ -641,6 +671,7 @@ Irssi::settings_add_bool('misc', 'neat_colorize', 1);
 Irssi::settings_add_str('misc', 'neat_colors', 'rRgGyYbBmMcC');
 Irssi::settings_add_str('misc', 'neat_ignorechars', '');
 Irssi::settings_add_bool('misc', 'neat_allow_shrinking', 1);
+Irssi::settings_add_int('misc', 'neat_autosave', 60);
 
 Irssi::command_bind('neatcolor', 'cmd_neatcolor');
 
