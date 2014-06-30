@@ -3,6 +3,8 @@
 This repository contains scripts available at
 [scripts.irssi.org](http://scripts.irssi.org).
 
+[![Build Status](https://travis-ci.org/irssi/scripts.irssi.org.svg?branch=gh-pages)](https://travis-ci.org/irssi/scripts.irssi.org)
+
 ### Contributing
 
 To add or modify a script do the following:

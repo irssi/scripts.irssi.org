@@ -1,0 +1,52 @@
+language: c
+before_install:
+- sudo apt-get update -qq
+- sudo apt-get build-dep -qq irssi libperl-prereqscanner-perl libperl-critic-perl
+  cpanminus
+- sudo apt-get install -qq lynx zsh apt-file libyaml-tiny-perl libtest-most-perl libgetopt-long-descriptive-perl
+  libwww-perl liblog-log4perl-perl libdatetime-perl libmodule-runtime-perl libparams-classify-perl
+  libtime-duration-parse-perl
+- perl -V
+- wget -qO- https://raw.githubusercontent.com/miyagawa/cpanminus/master/cpanm | sudo
+  perl - App::cpanminus
+- sudo cpanm -q --skip-satisfied Perl::Critic Perl::PrereqScanner PPIx::XPath
+- git clone -q git://github.com/irssi/irssi irssi-head
+- pushd irssi-head
+- ./autogen.sh --with-perl=module 2>/dev/null | tail -n 17
+- make >/dev/null 2>&1
+- sudo make install >/dev/null
+- popd
+- sudo apt-get install -qq `perl -MYAML::Tiny=LoadFile -e'print qq{@{LoadFile(+shift)->{additional_system_deps}}}'
+  _testing/config.yml`
+- |
+  if [ $TRAVIS_PULL_REQUEST = false ] && [ $USE_ARTEFACTS_CACHE = yes ] && [ $EXTRACT_TEST_ARTEFACTS = yes ]; then
+    ./_testing/travis/load-old-artefacts.zsh
+  fi
+- ./_testing/travis/autoinstall-perl-prereqs.zsh
+install:
+- true
+before_script:
+- ./_testing/run-test.zsh
+- |
+  if [ $TRAVIS_PULL_REQUEST != false ]; then
+    git diff --stat $TRAVIS_BRANCH
+  fi
+script:
+- ./_testing/report-test.zsh
+after_script:
+- ./_testing/travis/show-failures.zsh
+- |
+  if [ $TRAVIS_PULL_REQUEST = false ] && $TRAVIS_SECURE_ENV_VARS; then
+    perl ./_testing/travis/update-scripts-yaml.pl
+  fi
+- |
+  if [ $TRAVIS_PULL_REQUEST = false ] && $TRAVIS_SECURE_ENV_VARS && [ $EXTRACT_TEST_ARTEFACTS = yes ]; then
+    ./_testing/travis/extract-artefacts.zsh
+  fi
+branches:
+  only:
+  - gh-pages
+env:
+  global:
+  - USE_ARTEFACTS_CACHE=yes
+  - EXTRACT_TEST_ARTEFACTS=yes
