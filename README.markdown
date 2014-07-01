@@ -14,6 +14,15 @@ To add or modify a script do the following:
 3. Add or modify your script in the repository. Remember to add it to Git using `git add`.
 4. If you are adding a new script, remember to add script information in `_data/scripts.yaml`. This file is sorted by script filename.
 5. If you are modifying a script, remember to increase the version number and update the last modification date.
+6. If the script has a ChangeLog, remember to include your modifications.
 6. Commit your changes to Git and push them to Github.
 7. Submit pull request.
 8. Await review of your changes by one of our developers.
+
+### Version Numbering
+
+To increase the version numbering, take the following conditions into account:
+
+1. Do not create explicit minor revision numbers if they are not present (1.3 becomes 1.4 or 2.1, not 1.3.1)
+2. When modifying an existing feature, increase the minor revision number (1.3 becomes 1.4, not 2.1)
+3. When adding a new feature, increase the major revision number (1.3 becomes 2.1, not 1.4)
