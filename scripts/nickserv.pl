@@ -24,7 +24,7 @@ use strict;
 use Irssi;
 use vars qw($VERSION %IRSSI);
 
-$VERSION = "1.8";
+$VERSION = "1.9";
 
 %IRSSI = (
     authors     => 'Geert Hauwaerts',
@@ -33,7 +33,7 @@ $VERSION = "1.8";
     description => 'This script will authorize you into NickServ.',
     license     => 'GNU General Public License',
     url         => 'http://irssi.hauwaerts.be/nickserv.pl',
-    changed     => 'Fri Jun  6 12:03:04 CEST 2008',
+    changed     => 'Tue Jul  1 12:41:23 PDT 2014',
 );
 
 my @nickservnet = ();
@@ -290,7 +290,7 @@ sub add_network {
     }
  
     if ($hostname) {
-        if ($hostname !~ /^[.+a-zA-Z0-9_-]{1,9}@[.+a-zA-Z0-9_-]{1,}$/) {
+        if ($hostname !~ /^[.+a-zA-Z0-9_-]{1,}@[.+a-zA-Z0-9_-]{1,}$/) {
             Irssi::printformat(MSGLEVEL_CLIENTCRAP, 'nickserv_wrong_host', $hostname);
             return;
         } else {
