@@ -4210,6 +4210,15 @@
   url: "http://scripts.irssi.org"
   version: "20030208"
 
+- authors: "Olof 'zibri' Johansson, Cyprien Debu"
+  changed: "2014-07"
+  contact: "olof@ethup.se, frey@notk.org"
+  description: "Prints some info of a linked video automatically"
+  filename: "vidinfo.pl"
+  license: "GPL"
+  name: "Vidinfo"
+  version: "1.00"
+
 - authors: "Jakub Jankowski"
   contact: "shasta@atn.pl"
   description: "Silly script, removes vowels, idea taken from #linuxnews -)"
