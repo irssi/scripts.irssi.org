@@ -2880,6 +2880,18 @@
   sbitems: "noteserv"
   version: "2002123101"
 
+- authors: "Ben Klein, based on noticemove by Timo Sirainen"
+  changed: "2014-07-10T09:20+1000"
+  changes: "v2.0 - Rewrite noticemove to prefer active window"
+  contact: "shacklein\@gmail.com", 
+  description: "Print private notices in query/channel where you're talking to them. Prefers active window if they're there with you."
+  filename: "noticelogic.pl"
+  modified: "2014-07-09 23:20"
+  license: "Public Domain"
+  name: "notice logic"
+  url: "http://irssi.org/"
+  version: "2.0"
+
 - authors: "Timo Sirainen"
   changed: "2002-03-04T22:47+0100,"
   changes: "v1.01 - fixed infinite loop when you werent connected to server :)"
