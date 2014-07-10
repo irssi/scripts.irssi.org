@@ -4496,3 +4496,12 @@
   name: "smartfilter"
   url: "none"
   version: "0.1"
+
+- authors: "David Leadbeater"
+  contact: "dgl@dgl.cx"
+  description: "Get infomation about unicode characters"
+  filename: "unicode.pl"
+  modified: "2014-07-06"
+  license: "WTFPL"
+  name: "unicode"
+  version: "1"
