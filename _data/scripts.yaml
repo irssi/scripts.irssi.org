@@ -3960,6 +3960,15 @@
   name: "Topic Lock"
   version: "1.1"
 
+- authors: "Martin Natano"
+  contact: "natano@natano.net"
+  description: "set away when tmux session is detached"
+  filename: "tmux.pl"
+  modified: "2014-08-02 21:47 CEST 2014"
+  license: "ISC"
+  name: "tmux"
+  version: "1.0"
+
 - authors: "Stefan tommie Tomanek"
   changed: "$VERSION"
   commands: "topics"
