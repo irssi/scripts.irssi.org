@@ -231,7 +231,6 @@
   version: "1.00"
 
 - authors: "Andreas ads Scherbaum"
-  changes: "v0.9: dont /WHOIS if query exists for the nick already"
   contact: "ads@ufp.de"
   description: "/WHOIS all the users who send you a private message."
   filename: "auto_whois.pl"
@@ -242,7 +241,6 @@
   version: "0.9"
 
 - authors: "Larry Vizzie Daffner"
-  changes: "Applied multiserver/store config patch from Adam Monsen"
   contact: "vizzie@airmail.net"
   description: "Automatically goes  away after defined inactivity"
   filename: "autoaway.pl"
@@ -322,7 +320,6 @@
   version: "1.0.0"
 
 - authors: "Paul laaama Raade"
-  changes: "Changed signals to be added to the top of the list to make the script work with scripts that stop the signals (autorealname, for example)."
   contact: "paul@raade.org"
   description: "Kickbans or knockouts people who use autorejoin on kick."
   filename: "autorejoinpunish.pl"
@@ -371,7 +368,6 @@
   version: "0.05"
 
 - authors: "Timo cras Sirainen"
-  changes: "v1.1: dont /WHOIS if query exists for the nick already"
   contact: "tss@iki.fi"
   description: "/WHOIS all the users who send you a private message."
   filename: "autowhois.pl"
@@ -382,7 +378,6 @@
   version: "1.1"
 
 - authors: "Janne Mikola"
-  changes: "v0.1: Initial release"
   contact: "janne@mikola.info"
   description: "/WHOIS anyone querying you automatically."
   filename: "autowhois_simple.pl"
@@ -479,7 +474,6 @@
   license: "GPLv2"
   modules: "WWW::Babelfish Unicode::String Data::Dumper"
   name: "babelirc"
-  sbitems: "babelirc_sb"
   url: "http://irssi.org/scripts/"
   version: "2003020801"
 
@@ -677,7 +671,6 @@
   version: "2002121801"
 
 - authors: "Juerd"
-  changes: "Severe formatting bug removed * oops, I exposed Irssi to ircII foolishness * sorry ** removed logging stuff (this is a fix)"
   contact: "juerd@juerd.nl"
   description: "Saves the buffer for /upgrade, so that no information is lost"
   filename: "buf.pl"
@@ -685,8 +678,6 @@
   license: "Public Domain"
   modules: "Data::Dumper"
   name: "Scroll buffer restorer"
-  note1: "This script HAS TO BE in your scripts/autorun!"
-  note2: "Perl support must be static or in startup"
   url: "http://juerd.nl/irssi/"
   version: "2.13"
 
@@ -773,7 +764,6 @@
   version: "0.1"
 
 - authors: "Bjoern fuchs Krombholz"
-  changes: "added header, removed debugging outputs"
   contact: "bjkro@gmx.de"
   description: "Log maximum number of people ever been in a channel"
   filename: "chanpeak.pl"
@@ -794,7 +784,6 @@
   version: "20021019"
 
 - authors: "Timo cras Sirainen"
-  changes: "v0.3 - Timo Sirainen tss@iki.fi: Supports for limiting searches only to specified ircnets and channels. Some cleanups.."
   contact: "tss@iki.fi"
   description: "/CHANSHARE - display people who are in more than one channel with you"
   filename: "chanshare.pl"
@@ -882,7 +871,6 @@
   modified: "2008-05-17 17:39:11"
   license: "public domain"
   name: "colorkick"
-  written: "Thu Dec 26 00:22:54 CET 2002"
 
 - authors: "Timo cras Sirainen"
   contact: "tss@iki.fi"
@@ -999,7 +987,6 @@
   license: "BSD"
   modules: "File::Basename File::Path IPC::Open3 Tie::File Encode"
   name: "DAU"
-  sbitems: "daumode"
   url: "http://dau.pl/"
   version: "2.4.3"
 
@@ -1010,7 +997,6 @@
   modified: "2008-05-17 17:39:11"
   license: "Public Domain"
   name: "dcc_ip"
-  source: "http://hq.kroenk.de/?gnu/irssi/dcc_ip.pl/plaintext"
   url: "http://hq.kroenk.de/?gnu/irssi"
   version: "0.5"
 
@@ -1034,13 +1020,11 @@
 
 - authors: "Matti qvr Hiljanen"
   contact: "matti@hiljanen.com"
-  contributors: "stefan@pico.ruhr.de, dieck@gmx.de, peder@ifi.uio.no"
   description: "Shows verbose or short information of dcc send/gets on statusbar (speed, size, eta etc.)"
   filename: "dccstat.pl"
   modified: "2008-05-17 17:39:11"
   license: "GPL, Version 2"
   name: "dccstat"
-  sbitems: "dccstat"
   url: "http://matin.maapallo.org/softa/irssi"
   version: "1.52"
 
@@ -1098,7 +1082,6 @@
   version: "0.00.04"
 
 - authors: "Juerd (first version: Timo Sirainen)"
-  changes: "Removed a silly mistake"
   contact: "juerd@juerd.nl"
   description: "Caching dictionary based tab completion"
   filename: "dictcomplete.pl"
@@ -1295,7 +1278,6 @@
   version: "1.0.0"
 
 - authors: "Juerd"
-  changes: "No more zombie processes"
   contact: "juerd@juerd.nl"
   description: "Safe figlet implementation (with color support!)"
   filename: "figlet.pl"
@@ -1566,7 +1548,6 @@
   license: "GPLv2"
   modules: "IO::Socket::INET"
   name: "hddtemp"
-  sbitems: "hddtemp"
   url: "http://hurzelgnom.bei.t-online.de/irssi/scripts/hddtemp.pl"
   version: "0.14"
 
@@ -1732,11 +1713,9 @@
   license: "GPLv2"
   modules: "IO::Socket::INET LWP::UserAgent HTML::Entities Data::Dumper"
   name: "iDonkey"
-  sbitems: "idonkey"
   version: "2004051601"
 
 - authors: "Dmitry jsn Kim"
-  changes: "initial version"
   contact: "jason@nichego.net"
   description: "script to log ignored messages"
   filename: "ignore_log.pl"
@@ -1890,7 +1869,6 @@
   license: "GPLv2"
   modules: "Crypt::CBC Digest::MD5"
   name: "IRCSec"
-  sbitems: "ircsec"
   version: "2008051101"
 
 - authors: "Julius Michaelis"
@@ -1922,7 +1900,6 @@
   license: "GPLv2"
   modules: "Net::vICQ Data::Dumper"
   name: "IrssiQ"
-  sbitems: "irssiq"
   version: "2003231101"
 
 - authors: "Uli Baumann"
@@ -1945,7 +1922,6 @@
   version: "0.9"
 
 - authors: "Kristof Korwisi"
-  changes: "added some comments, added $announce_message:_*-stuff"
   contact: "kk@manoli.im-dachgeschoss.de"
   description: "/xmms announces which _file_ is currently playing. E.g.  Currently playing: Kieran Halpin & Band - Mirror Town.mp3"
   filename: "ixmmsa.pl"
@@ -2062,12 +2038,10 @@
   license: "GPL"
   modules: "Xmms Xmms::Remote"
   name: "l33t xmms music showing script"
-  sbitems: "l33tmusic"
   version: "2.01"
 
 - authors: "Simon simmel Lundström"
   contact: "simmel@(freenode|quakenet|efnet) http://last.fm/user/darksoy"
-  date: "20110125"
   description: "A now-playing-script which uses Last.fm"
   filename: "lastfm.pl"
   modified: "2011-01-25 16:13:55"
@@ -2202,7 +2176,6 @@
   version: "0.02"
 
 - authors: "Mika"
-  bugs: "none?"
   contact: "[Mika] @ IRCnet"
   description: "Displays users logged on system in current window, simple one"
   filename: "lwho.pl"
@@ -2400,7 +2373,6 @@
   modified: "2008-05-17 17:39:11"
   license: "GPLv2"
   name: "Mood"
-  sbitems: "moodbar"
   version: "20031207"
 
 - authors: "Stefan tommie Tomanek"
@@ -2533,14 +2505,12 @@
 - authors: "Stefan tommie Tomanek"
   commands: "newsline"
   contact: "stefan@pico.ruhr.de"
-  depends: "openurl"
   description: "brings various newstickers to Irssi (Slashdot, Freshmeat, Heise etc.)"
   filename: "newsline.pl"
   modified: "2008-05-17 17:39:09"
   license: "GPLv2"
   modules: "Data::Dumper XML::RSS LWP::UserAgent Unicode::String Text::Wrap"
   name: "Newsline"
-  sbitems: "newsline_ticker"
   version: "2003021101"
 
 - authors: "Roeland Trancer Nieuwenhuis"
@@ -2701,11 +2671,9 @@
   modified: "2008-05-17 17:39:11"
   license: "GPLv2"
   name: "NoteServ"
-  sbitems: "noteserv"
   version: "2002123101"
 
 - authors: "Ben Klein, based on noticemove by Timo Sirainen"
-  changes: "v2.0 - Rewrite noticemove to prefer active window"
   contact: 'shacklein\@gmail.com'
   description: "Print private notices in query/channel where you're talking to them. Prefers active window if they're there with you."
   filename: "noticelogic.pl"
@@ -2716,7 +2684,6 @@
   version: "2.0"
 
 - authors: "Timo Sirainen"
-  changes: "v1.01 - fixed infinite loop when you werent connected to server :)"
   contact: "tss@iki.fi"
   description: "Prints private notices from people in the channel where they are joined with you. Useful when you get lots of private notices from some bots."
   filename: "noticemove.pl"
@@ -2968,7 +2935,6 @@
   modules: "Time::HiRes"
   name: "People"
   url: "http://qrnik.knm.org.pl/~qrczak/irc/people.pl"
-  url_ion: "http://johan.kiviniemi.name/stuff/irssi/people.pl"
   version: "1.7"
 
 - authors: "Wouter Coekaerts"
@@ -3110,7 +3076,6 @@
   license: "GPLv2"
   modules: "Data::Dumper"
   name: "quizmaster"
-  traduction: "pec"
   url: "http://irssi.org/scripts/ http://pierre.carlot.free.fr/tux/"
   version: "20030208+fr"
 
@@ -3522,7 +3487,6 @@
   version: "1.0"
 
 - authors: "Bjoern fuchs Krombholz"
-  changes: "Actually the real 0.19 (now 0.20), but upload didnt work some month ago, target problem fixed..."
   contact: "bjkro@gmx.de"
   description: "Split overlong PRIVMSGs to msgs with length allowed by ircd"
   filename: "splitlong.pl"
@@ -3549,7 +3513,6 @@
   license: "Public Domain"
   modules: "LWP::Simple HTML::Entities"
   name: "stocks"
-  sbitems: "stocks_ticker"
   url: "http://irssi.org/scripts/"
   version: "0.9"
 
@@ -3573,7 +3536,6 @@
   version: "0.4.9.1"
 
 - authors: "David Rudie"
-  bugs: "Probably some if it cannot read /proc."
   contact: "david@inexistent.com"
   description: "Cross-platform/architecture system information script."
   filename: "sysinfo270-irssi.pl"
@@ -3584,7 +3546,6 @@
   version: "2.70"
 
 - authors: "David Rudie"
-  bugs: "Probably some if it cannot read /proc."
   contact: "david@inexistent.com"
   description: "Cross-platform/architecture system information script."
   filename: "sysinfo277-irssi.pl"
@@ -3650,7 +3611,6 @@
   modified: "2008-05-17 17:39:09"
   license: "GPLv2"
   name: "Target"
-  sbitems: "target"
   url: "http://scripts.irssi.org"
   version: "2003020801"
 
@@ -3703,7 +3663,6 @@
   license: "GPL"
   modules: "IO::Socket LWP::UserAgent"
   name: "tinyurl"
-  patch: "spowers@dimins.com"
   version: "1.0"
 
 - authors: "Timo Sirainen, David Leadbeater"
@@ -3862,7 +3821,6 @@
   modified: "2008-05-17 17:39:09"
   license: "GPL"
   name: "upgradeinfo"
-  sbitems: "upgradeinfo"
   url: "http://ninja.no/irssi/upgradeinfo.pl"
   version: "1.7"
 
@@ -3884,7 +3842,6 @@
   modified: "2008-05-17 17:39:11"
   license: "GPL"
   name: "uptime"
-  sbitems: "uptime"
   url: "http://ninja.no/irssi/uptime.pl"
   version: "1.6"
 
@@ -4002,7 +3959,6 @@
 - authors: "Matti qvr Hiljanen, Piotr Pieta Szymanski"
   commands: "wa"
   contact: "matti@hiljanen.com, pieta@osiedle.net.pl"
-  contributors: "bd@bc-bd.org"
   description: "shows what WinAmp is playing with /wa command"
   filename: "wa.pl"
   modified: "2008-05-25 15:00:42"
@@ -4034,7 +3990,6 @@
   version: "1.01"
 
 - authors: "ThEbUtChE"
-  bugs: "ninguno"
   contact: "thebutche@interec.org"
   description: "Uso del comando watch para irssi."
   filename: "watch.pl"
