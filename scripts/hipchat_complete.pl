@@ -70,11 +70,11 @@ use LWP::UserAgent;
 
 my $VERSION = '1.0';
 my %IRSSI = (
-	author => 'John Morrissey',
+	authors => 'John Morrissey',
 	contact => 'jwm@horde.net',
 	name => 'hipchat_complete',
 	description => 'Translate nicks to HipChat "mention names"',
-	licence => 'BSD',
+	license => 'BSD',
 );
 
 my %NICK_TO_MENTION;
