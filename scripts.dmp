@@ -3,7 +3,7 @@ layout: nil
 ---
 
 {% assign required_attributes = "filename modified version authors contact name description license" | split: ' ' %}
-{% assign optional_attributes = "url changed commands note modules" | split: ' ' %}
+{% assign optional_attributes = "url commands note modules" | split: ' ' %}
 
 $scripts = {
 {% for script in site.data.scripts %}
