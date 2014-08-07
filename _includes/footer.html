@@ -1,5 +1,13 @@
         <script src="assets/js/jquery.min.js"></script>
         <script src="assets/js/bootstrap.min.js"></script>
         <script src="assets/js/sorttable.js"></script>
+        <script src="assets/js/jquery.timeago.js"></script>
+        <script>
+            $(function() {
+              jQuery.timeago.settings.cutoff = 365*24*60*60*1000;
+              jQuery.timeago.settings.localeTitle = true;
+              $("abbr.timeago").timeago();
+            });
+        </script>
     </body>
 </html>

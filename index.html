@@ -17,12 +17,6 @@ layout: default
             <code>/script load</code> to <code>/run</code> in newer versions of
             irssi.</dd>
 
-            <dt>How do I run scripts?</dt>
-            <dd>Put them into ~/.irssi/scripts/ and in irssi do <code>/script
-                load script.pl</code> . There is a default alias for
-            <code>/script load</code> to <code>/run</code> in newer versions of
-            irssi.</dd>
-
             <dt>How do I rerun scripts?</dt>
             <dd>Just do <code>/script load script.pl</code> .</dd>
 
@@ -36,12 +30,12 @@ layout: default
             directory (eg. <code>cd ~/.irssi/scripts/autorun/ ; ln -s
                 ../script.pl .</code>)</dd>
 
-            <dt>Is there an easy way of managing script?</dt> <dd>Try
+            <dt>Is there an easy way of managing scripts?</dt> <dd>Try
             <code>scriptassist.pl</code>, it can update and manage your scripts
             as well as install new ones and search the database.</dt>
 
             <dt>How do I submit a script to this page?</dt>
-            <dd>See information on how to contribute <a href="https://github.com/irssi/scripts">here</a>.</dd>
+            <dd>See information on how to contribute <a href="https://github.com/irssi/scripts.irssi.org">here</a>.</dd>
         </dl>
 
         <hr>
@@ -54,22 +48,28 @@ layout: default
                     <th class="sorttable_alpha">Version</th>
                     <th class="sorttable_alpha">Description</th>
                     <th class="sorttable_alpha">Authors</th>
+                    <th class="sorttable_alpha">Modified</th>
                 </tr>
             </thead>
             <tbody>
             {% for script in site.data.scripts %}
                 <tr>
-                    <td>
+                    <td class="filename">
                         <a href="scripts/{{ script.filename }}">{{ script.filename }}</a>
                         <small>
                            (<a href="https://github.com/irssi/scripts/blob/gh-pages/scripts/{{ script.filename }}">Github</a>)
                         </small>
                     </td>
-                    <td>{{ script.name }}</td>
-                    <td>{{ script.version }}</td>
-                    <td>{{ script.description }}</td>
-                    <td>{{ script.authors }}</td>
-                </td>
+                    <td class="name">{{ script.name }}</td>
+                    <td class="version">{{ script.version }}</td>
+                    <td class="description">{{ script.description }}</td>
+                    <td class="authors">{{ script.authors }}</td>
+                    <td class="modified" sorttable_customkey="{{ script.modified | date: "%Y%m%d%H%M%S" }}">
+                        <abbr class="timeago" title="{{ script.modified | date: "%Y-%m-%dT%H:%M:%SZ" }}">
+                            {{ script.modified | date: "%Y-%m-%d" }}</td>
+                        </abbr>
+                    </td>
+                </tr>
             {% endfor %}
             </tbody>
         </table>

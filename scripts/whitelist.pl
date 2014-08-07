@@ -83,7 +83,7 @@ $VERSION = "1.0";
 	contact		=> "phyber \[at\] #irssi, q \[at\] spuk.de",
 	name		=> "whitelist",
 	description	=> "Whitelist specific nicks or hosts and ignore messages from anyone else.",
-	licence		=> "GPLv2",
+	license		=> "GPLv2",
 	changed		=> "12/03/2007 15:20 GMT"
 );
 

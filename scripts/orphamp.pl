@@ -23,7 +23,7 @@ $VERSION = '0.9';
         license         => 'GPL',
         url             => 'http://irssi.org/',
         changed         => 'Wed',
-        command         => '/np',
+        commands        => '/np',
 	
 ); 
 

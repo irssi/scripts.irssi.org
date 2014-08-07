@@ -1,3 +1,25 @@
 dd {
     margin-bottom: 6px;
 }
+
+.version {
+    max-width: 8em;
+    word-wrap: break-word;
+}
+
+.authors {
+    max-width: 12em;
+}
+
+.modified {
+    max-width: 8em;
+    min-width: 8em;
+}
+
+table.sortable thead {
+    cursor: pointer;
+}
+
+table.sortable thead th:hover {
+    opacity: 0.8;
+}
