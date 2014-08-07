@@ -2,7 +2,7 @@
 layout: nil
 ---
 
-{% assign required_attributes = "filename modified version authors contact name description license" | split: ' ' %}
+{% assign required_attributes = "filename version authors contact name description license" | split: ' ' %}
 {% assign optional_attributes = "url commands note modules" | split: ' ' %}
 
 $scripts = {
@@ -10,6 +10,8 @@ $scripts = {
 	'{{ script.filename }}' => {
 {% for attr in required_attributes %}
 		'{{ attr }}' => '{{ script[attr] }}',{% endfor %}
+
+		'last_modified' => '{{ script.modified }}',
 {% for attr in optional_attributes %}{% if script contains attr %}
 		'{{ attr }}' => '{{ script[attr] }}',{% endif %}{% endfor %}
 	},
