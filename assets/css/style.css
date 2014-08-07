@@ -7,6 +7,15 @@ dd {
     word-wrap: break-word;
 }
 
+.authors {
+    max-width: 12em;
+}
+
+.modified {
+    max-width: 8em;
+    min-width: 8em;
+}
+
 table.sortable thead {
     cursor: pointer;
 }

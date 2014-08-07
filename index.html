@@ -48,6 +48,7 @@ layout: default
                     <th class="sorttable_alpha">Version</th>
                     <th class="sorttable_alpha">Description</th>
                     <th class="sorttable_alpha">Authors</th>
+                    <th class="sorttable_alpha">Modified</th>
                 </tr>
             </thead>
             <tbody>
@@ -63,7 +64,12 @@ layout: default
                     <td class="version">{{ script.version }}</td>
                     <td class="description">{{ script.description }}</td>
                     <td class="authors">{{ script.authors }}</td>
-                </td>
+                    <td class="modified" sorttable_customkey="{{ script.modified | date: "%Y%m%d%H%M%S" }}">
+                        <abbr class="timeago" title="{{ script.modified | date: "%Y-%m-%dT%H:%M:%SZ" }}">
+                            {{ script.modified | date: "%Y-%m-%d" }}</td>
+                        </abbr>
+                    </td>
+                </tr>
             {% endfor %}
             </tbody>
         </table>
