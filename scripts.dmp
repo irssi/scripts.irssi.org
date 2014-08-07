@@ -2,33 +2,16 @@
 layout: nil
 ---
 
+{% assign required_attributes = "filename modified version authors contact name description license" | split: ' ' %}
+{% assign optional_attributes = "url changed commands note modules" | split: ' ' %}
+
 $scripts = {
 {% for script in site.data.scripts %}
 	'{{ script.filename }}' => {
-		'filename'           => '{{ script.filename }}',
-		'last_modified'      => '{{ script.modified }}',
-		'version'            => '{{ script.version }}',
-		'authors'            => '{{ script.authors }}',
-		'contact'            => '{{ script.contact  }}',
-		'name'               => '{{ script.name }}',
-		'description'        => '{{ script.description }}',
-		'license'            => '{{ script.license }}',
-{% if script.url %}
-		'url'                => '{{ script.url }}',
-{% endif %}
-{% if script.changed %}
-		'changed'            => '{{ script.changed }}',
-{% endif %}
-{% if script.commands %}
-		'commands'           => '{{ script.commands }}',
-{% endif %}
-{% if script.note %}
-		'note'               => '{{ script.note }}',
-{% endif %}
-{% if script.modules %}
-		'modules'            => '{{ script.modules }}',
-{% endif %}
-
+{% for attr in required_attributes %}
+		'{{ attr }}' => '{{ script[attr] }}',{% endfor %}
+{% for attr in optional_attributes %}{% if script contains attr %}
+		'{{ attr }}' => '{{ script[attr] }}',{% endif %}{% endfor %}
 	},
 {% endfor %}
 };
