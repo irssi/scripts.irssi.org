@@ -1,3 +1,16 @@
 dd {
     margin-bottom: 6px;
 }
+
+.version {
+    max-width: 8em;
+    word-wrap: break-word;
+}
+
+table.sortable thead {
+    cursor: pointer;
+}
+
+table.sortable thead th:hover {
+    opacity: 0.8;
+}
