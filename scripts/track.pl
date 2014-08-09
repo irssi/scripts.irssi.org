@@ -2,7 +2,6 @@ use Irssi qw(servers);
 use warnings; use strict;
 use vars qw($VERSION %IRSSI); 
 
-my $EMPTY  = qw();
 my $quiet  = 0;
 $VERSION   = "1.3";
   
