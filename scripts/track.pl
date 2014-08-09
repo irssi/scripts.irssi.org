@@ -16,7 +16,7 @@ $VERSION   = "1.3";
                      "ident. To specify which search you'd like to do, use"     .
                      "one of the three types: host, nick, ident\n"              .
                      "Wildcards work, but you need to use perl regex for it"    .
-                     " to work. Use '/search help' for more infor and commands" .
+                     " to work. Use '/search help' for more info and commands"  .
                      "Let me know if you find any bugs by sending me a memo on" .
                      " DALnet. Thanks.\n  -Ziddy",
       license => "Public Domain",
@@ -87,7 +87,7 @@ sub nchange {
     close($fh); close($fh2);
 }
 
-sub search {
+sub track {
     my $input  = $_[0];
     chomp($input);
     my @spl    = split(/\s/, $input);
@@ -111,7 +111,7 @@ sub search {
     }
 
     if ($type eq "help") {
-        Irssi::print("\n%GHelp%n\nUsage: /search [type] [input]\n" .
+        Irssi::print("\n%GHelp%n\nUsage: /track [type] [input]\n" .
                      "       gather  -  Join your channels then run this\n" .
                      "                  to gather nicks already online\n" .
                      "                  This may take a while on first run\n" .
@@ -156,7 +156,7 @@ sub search {
                 $match = 1;
             }
         } else {
-            Irssi::print("%RUsage%n: /search [ident|host|nick] [input]");
+            Irssi::print("%RUsage%n: /track [ident|host|nick] [input]");
             last;
         }
     }
@@ -208,7 +208,7 @@ sub unconv {
     return $data;
 }
 
-Irssi::command_bind('search' => \&search);
+Irssi::command_bind('track' => \&track);
 Irssi::signal_add('message join', 'joining');
 Irssi::signal_add('message nick', 'nchange');
 Irssi::signal_add_first('event 311', 'whois_signal');
