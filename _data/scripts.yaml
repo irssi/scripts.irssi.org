@@ -3716,7 +3716,7 @@
 
 - authors: "Ziddy"
   contact: "DALnet"
-  description: "Keeps track of people and allows you to search the database by nickname, ident, or hostname. Most perl regex works with it and also supports
+  description: "Keeps track of people and allows you to search the database by nickname, ident, or hostname. Most perl regex works with it and also supports IPv6"
   filename: "track.pl"
   modified: "2014-08-09 02:47:31"
   license: "Public Domain"
