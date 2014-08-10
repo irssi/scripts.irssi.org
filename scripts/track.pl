@@ -4,7 +4,7 @@ use vars qw($VERSION %IRSSI);
 
 my $quiet     = 0;
 my $dupcount  = 0;
-$VERSION      = "1.3";
+$VERSION      = "1.4";
   
 %IRSSI = (
       authors => "Ziddy",
