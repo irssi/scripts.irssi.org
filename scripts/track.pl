@@ -2,8 +2,9 @@ use Irssi qw(servers);
 use warnings; use strict;
 use vars qw($VERSION %IRSSI); 
 
-my $quiet  = 0;
-$VERSION   = "1.3";
+my $quiet     = 0;
+my $dupcount  = 0;
+$VERSION      = "1.3";
   
 %IRSSI = (
       authors => "Ziddy",
@@ -28,6 +29,7 @@ sub whois_signal {
     open(my $fh, '>>', "$ENV{HOME}/.irssi/scripts/track.lst");
     open(my $fh2, '<', "$ENV{HOME}/.irssi/scripts/track.lst");
     my @list = <$fh2>;
+    close($fh2);
     $nick    = conv($nick);
     ($ident  = $ident) =~ s/^~//;
     $ident   = conv($ident);
@@ -39,7 +41,7 @@ sub whois_signal {
         if (!$quiet) { Irssi::print("%R$nick exists in the database"); }
     }
 
-    close($fh); close($fh2);
+    close($fh);
 }
 
 sub joining {
@@ -48,11 +50,13 @@ sub joining {
     open(my $fh2, '<', "$ENV{HOME}/.irssi/scripts/track.lst");
     $nick     = conv($nick);
     my @list  = <$fh2>;
+    close($fh2);
     my @spl   = split(/@/, $host);
     my $ident = $spl[0];
     my $mask  = $spl[1];
     ($ident   = $ident) =~ s/^~//;
     $ident    = conv($ident);
+    $dupcount++;
 
     if(!grep(/$nick;$ident;$mask/, @list)) {
         print $fh "$nick;$ident;$mask\n";
@@ -61,7 +65,20 @@ sub joining {
         if (!$quiet) { Irssi::print("%REXIST $nick;$ident;$mask"); }
     }
 
-    close($fh); close($fh2);
+    close($fh);
+    
+    if ($dupcount >= 100) {
+        open(my $fhr, '<', "$ENV{HOME}/.irssi/scripts/track.lst");
+        my @list   = <$fhr>;
+        close($fhr);
+        my @duprem = uniq(@list);
+        open(my $fhw, '>', "$ENV{HOME}/.irssi/scripts/track.lst");
+        print $fhw @duprem;
+        close($fhw);
+        $dupcount = 0;
+    }
+        
+        
 }
 
 sub nchange {
@@ -70,6 +87,7 @@ sub nchange {
     open(my $fh2, '<', "$ENV{HOME}/.irssi/scripts/track.lst");
     $newnick  = conv($newnick);
     my @list  = <$fh2>;
+    close($fh2);
     my @spl   = split(/@/, $host);
     my $ident = $spl[0];
     my $mask  = $spl[1];
@@ -83,7 +101,7 @@ sub nchange {
         if (!$quiet) { Irssi::print("%REXIST $newnick;$ident;$mask"); }
     }
 
-    close($fh); close($fh2);
+    close($fh);
 }
 
 sub track {
@@ -165,6 +183,11 @@ sub track {
     }
 }
 
+sub uniq {
+    my %seen;
+    grep !$seen{$_}++, @_;
+}
+
 sub namechan {
     my $count = 0;
     foreach (Irssi::channels()) {
@@ -173,6 +196,7 @@ sub namechan {
             my $nick  = $_->{nick};
             open(my $fh, '<', "$ENV{HOME}/.irssi/scripts/track.lst");
             my @list  = <$fh>;
+            close($fh);
 
             if(!grep(/$nickc;/, @list)) {
                 Irssi::active_server->send_raw("WHOIS " . $nick);
@@ -181,7 +205,6 @@ sub namechan {
                 if (!$quiet) { Irssi::print("%RAlready gathered $nick"); }
             }
 
-            close($fh);
         }
     }
     Irssi::print("%GGathering complete - Added $count new entries");
