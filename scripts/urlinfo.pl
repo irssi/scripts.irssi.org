@@ -1,9 +1,10 @@
 use 5.014;
 use utf8;
+use Encode;
 use Irssi;
 use POSIX ();
 
-our $VERSION = "1.1";
+our $VERSION = "1.2";
 our %IRSSI = (
     authors     => 'David Leadbeater',
     contact     => 'dgl@dgl.cx',
@@ -242,10 +243,10 @@ sub msg {
 
     fork_wrapper(sub { # Child
       my($fh) = @_;
-      syswrite $fh, "  " . get_info($site, $uri);
+      syswrite $fh, "  " . encode_utf8(get_info($site, $uri));
     },
     sub { # Parent
-      my($in) = @_;
+      my $in = decode_utf8($_[0]);
       if ($in =~ s/^- //) {
         print "\x{3}4urlinfo error:\x{3} $in";
         return;
@@ -325,7 +326,7 @@ sub fork_wrapper {
       $child->($wfh);
     };
     alarm 0;
-    syswrite $wfh, "- $@" if $@;
+    syswrite $wfh, encode_utf8("- $@") if $@;
     POSIX::_exit(1);
   }
 }
