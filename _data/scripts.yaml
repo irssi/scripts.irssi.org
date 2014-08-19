@@ -4229,3 +4229,12 @@
   license: "WTFPL"
   name: "urlinfo"
   version: "1.2"
+
+- authors: "David Leadbeater"
+  contact: "dgl@dgl.cx"
+  description: "Stops those silly mistakes being sent (spaces at start of line, /1/1 for window changes, etc)."
+  filename: "urlinfo.pl"
+  modified: "2014-08-13"
+  license: "WTFPL"
+  name: "oopsie"
+  version: "1.0"
