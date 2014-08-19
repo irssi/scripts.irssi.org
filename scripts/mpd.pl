@@ -22,13 +22,14 @@
 # Type "/np help" for a help page!                                    #
 #######################################################################
 # TODO:                                                               #
-#  - add more format directives                                       #
 #######################################################################
 # CHANGELOG:                                                          #
 #  0.4: First official release                                        #
 #  0.5: Info message if no song is playing                            #
 #       Display alternative text if artist and title are not set      #
 #       Some minor changes                                            #
+#  0.6: Added some more format directives(time, album)                #
+#       Added support for password authentication                     #
 #######################################################################
 
 use strict;
@@ -37,11 +38,11 @@ use Irssi;
 
 use vars qw{$VERSION %IRSSI %MPD};
 
-$VERSION = "0.5";
+$VERSION = "0.6";
 %IRSSI = (
           name        => 'mpd',
-          authors     => 'Erik Scharwaechter',
-          contact     => 'diozaka@gmx.de',
+          authors     => 'Erik Scharwaechter, Tobias Böhm',
+          contact     => 'diozaka@gmx.de, code@aibor.de',
           license     => 'GPLv2',
           description => 'print the song you are listening to',
          );
@@ -64,10 +65,11 @@ sub np {
         return;
     }
 
-    $MPD{'port'}    = Irssi::settings_get_str('mpd_port');
-    $MPD{'host'}    = Irssi::settings_get_str('mpd_host');
-    $MPD{'timeout'} = Irssi::settings_get_str('mpd_timeout');
-    $MPD{'format'}  = Irssi::settings_get_str('mpd_format');
+    $MPD{'port'}     = Irssi::settings_get_str('mpd_port');
+    $MPD{'host'}     = Irssi::settings_get_str('mpd_host');
+    $MPD{'password'} = Irssi::settings_get_str('mpd_password');
+    $MPD{'timeout'}  = Irssi::settings_get_str('mpd_timeout');
+    $MPD{'format'}   = Irssi::settings_get_str('mpd_format');
     $MPD{'alt_text'} = Irssi::settings_get_str('mpd_alt_text');
 
     my $socket = IO::Socket::INET->new(
@@ -82,10 +84,31 @@ sub np {
         return;
     }
 
+
+    my $ans = "";
+
+    if ($MPD{'password'} =~ /^.+$/) {
+        print $socket 'password ' . $MPD{'password'} . "\n";
+
+        while (not $ans =~ /^(OK$|ACK)/) {
+            $ans = <$socket>;
+        }
+
+        if ($ans =~ /^ACK \[...\] {.*?} (.*)$/){
+            my_status_print('Auth Error: '.$1, $witem);
+            close $socket;
+            return;
+        }
+    }
+
+
     $MPD{'status'}   = "";
     $MPD{'artist'}   = "";
+    $MPD{'album'}    = "";
     $MPD{'title'}    = "";
     $MPD{'filename'} = "";
+    $MPD{'elapsed'}  = "";
+    $MPD{'total'}    = "";
 
     my $ans = "";
     my $str = "";
@@ -93,8 +116,15 @@ sub np {
     print $socket "status\n";
     while (not $ans =~ /^(OK$|ACK)/) {
         $ans = <$socket>;
-        if ($ans =~ /state: (.+)$/) {
+        if ($ans =~ /^ACK \[...\] {.*?} (.*)$/){
+            my_status_print($1, $witem);
+            close $socket;
+            return;
+        } elsif ($ans =~ /^state: (.+)$/) {
             $MPD{'status'} = $1;
+        } elsif ($ans =~ /^time: (\d+):(\d+)$/) {
+            $MPD{'elapsed'} = sprintf("%01d:%02d", $1/60,$1%60);
+            $MPD{'total'} = sprintf("%01d:%02d", $2/60,$2%60);
         }
     }
 
@@ -112,9 +142,11 @@ sub np {
             my $filename = $1;
             $filename =~ s/.*\///;
             $MPD{'filename'} = $filename;
-        } elsif ($ans =~ /Artist: (.+)$/) {
+        } elsif ($ans =~ /^Artist: (.+)$/) {
             $MPD{'artist'} = $1;
-        } elsif ($ans =~ /Title: (.+)$/) {
+        } elsif ($ans =~ /^Album: (.+)$/) {
+            $MPD{'album'} = $1;
+        } elsif ($ans =~ /^Title: (.+)$/) {
             $MPD{'title'} = $1;
         }
     }
@@ -128,8 +160,11 @@ sub np {
     }
 
     $str =~ s/\%ARTIST/$MPD{'artist'}/g;
+    $str =~ s/\%ALBUM/$MPD{'album'}/g;
     $str =~ s/\%TITLE/$MPD{'title'}/g;
     $str =~ s/\%FILENAME/$MPD{'filename'}/g;
+    $str =~ s/\%ELAPSED/$MPD{'elapsed'}/g;
+    $str =~ s/\%TOTAL/$MPD{'total'}/g;
 
     if ($witem && ($witem->{type} eq "CHANNEL" ||
                    $witem->{type} eq "QUERY")) {
@@ -150,10 +185,12 @@ sub help {
 ========================
 
 by Erik Scharwaechter (diozaka@gmx.de)
+extended by Tobias Böhm (code@aibor.de)
 
 VARIABLES
   mpd_host      The host that runs MPD (localhost)
   mpd_port      The port MPD is bound to (6600)
+  mpd_password  A password for a profile with at least read permissions - optional ()
   mpd_timeout   Connection timeout in seconds (5)
   mpd_format    The text to display (np: %%ARTIST - %%TITLE)
   mpd_alt_text  The Text to display, if %%ARTIST and %%TITLE are empty (np: %%FILENAME)
@@ -167,6 +204,7 @@ USAGE
 
 Irssi::settings_add_str('mpd', 'mpd_host', 'localhost');
 Irssi::settings_add_str('mpd', 'mpd_port', '6600');
+Irssi::settings_add_str('mpd', 'mpd_password', '');
 Irssi::settings_add_str('mpd', 'mpd_timeout', '5');
 Irssi::settings_add_str('mpd', 'mpd_format', 'np: %ARTIST - %TITLE');
 Irssi::settings_add_str('mpd', 'mpd_alt_text', 'np: %FILENAME');
