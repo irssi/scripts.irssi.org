@@ -2400,7 +2400,7 @@
   contact: "diozaka@gmx.de, code@aibor.de, mk@maero.dk"
   description: "print the song you are listening to"
   filename: "mpd.pl"
-  modified: "2014-08-20 04:23:10"
+  modified: "2014-08-20 21:53:24"
   license: "GPLv2"
   modules: "IO::Socket"
   name: "mpd"

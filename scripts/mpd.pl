@@ -31,6 +31,7 @@
 #  0.6: Added some more format directives(time, album)                #
 #       Added support for password authentication                     #
 #  0.7: Added format directives for bitrate and volume                #
+#       Fixed socket not timing out at specified interval             #
 #######################################################################
 
 use strict;
@@ -77,7 +78,7 @@ sub np {
                           Proto    => 'tcp',
                           PeerPort => $MPD{'port'},
                           PeerAddr => $MPD{'host'},
-                          timeout  => $MPD{'timeout'}
+                          Timeout  => $MPD{'timeout'}
                           );
 
     if (not $socket) {
