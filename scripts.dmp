@@ -9,11 +9,11 @@ $scripts = {
 {% for script in site.data.scripts %}
 	'{{ script.filename }}' => {
 {% for attr in required_attributes %}
-		'{{ attr }}' => '{{ script[attr] }}',{% endfor %}
+		'{{ attr }}' => '{{ script[attr] | replace: "'", "\\'" }}',{% endfor %}
 
 		'last_modified' => '{{ script.modified }}',
 {% for attr in optional_attributes %}{% if script contains attr %}
-		'{{ attr }}' => '{{ script[attr] }}',{% endif %}{% endfor %}
+		'{{ attr }}' => '{{ script[attr] | replace: "'", "\\'" }}',{% endif %}{% endfor %}
 	},
 {% endfor %}
 };
