@@ -1,24 +1,19 @@
 use Irssi qw(servers);
 use warnings; use strict;
-use vars qw($VERSION %IRSSI); 
+use vars qw($VERSION %IRSSI);
 
 my $quiet     = 0;
 my $dupcount  = 0;
-$VERSION      = "1.4";
-  
+$VERSION      = "2.0";
+
 %IRSSI = (
       authors => "Ziddy",
       contact => "DALnet",
       name => "track.pl",
-      description => "Builds a database of users, allowing easy indexing by"    .
-                     " issuing /search [type] [input]. You can find a user "    .
-                     "three ways: by nickname, by host (IP/hostmask) or by"     .
-                     "ident. To specify which search you'd like to do, use"     .
-                     "one of the three types: host, nick, ident\n"              .
-                     "Wildcards work, but you need to use perl regex for it"    .
-                     " to work. Use '/search help' for more info and commands"  .
-                     "Let me know if you find any bugs by sending me a memo on" .
-                     " DALnet. Thanks.\n  -Ziddy",
+      description => "Keeps track of users by building a database" .
+                     "of online, joining and nickchanges. Regex-cabable" .
+                     "for the most part, AKA import available. Search by" .
+                     "ident, nick or host",
       license => "Public Domain",
       url => "none"
 );
@@ -66,7 +61,7 @@ sub joining {
     }
 
     close($fh);
-    
+
     if ($dupcount >= 100) {
         open(my $fhr, '<', "$ENV{HOME}/.irssi/scripts/track.lst");
         my @list   = <$fhr>;
@@ -77,8 +72,8 @@ sub joining {
         close($fhw);
         $dupcount = 0;
     }
-        
-        
+
+
 }
 
 sub nchange {
@@ -128,27 +123,29 @@ sub track {
     }
 
     if ($type eq "help") {
-        Irssi::print("\n%GHelp%n\nUsage: /track [type] [input]\n" .
-                     "       gather  -  Join your channels then run this\n" .
+        Irssi::print("\n%GHelp%n\n" .
+                     "      /gather  -  Join your channels then run this\n" .
                      "                  to gather nicks already online\n" .
                      "                  This may take a while on first run\n" .
-                     "        quiet  -  Toggle quiet. If this is on, it wont\n" .
+                     " /track quiet  -  Toggle quiet. If this is on, it wont\n" .
                      "                  show when a person is added or already\n" .
                      "                  exists in the database\n" .
-                     "        count  -  Print amount of database entries\n" .
-                     "ident [input]  -  Search for entries by supplied ident\n" .
-                     "nick  [input]  -  Search for entries by supplied nick\n" .
-                     "host  [input]  -  Search for entries by supplied " .
-                     "IP address\n" . " " x 18 . "or hostmask, IPv4 or IPv6\n" .
+                     "/track count   -  Print amount of database entries\n" .
+                     "/import [file] -  This allows you to import AKA data-\n" .
+                     "                  bases. AKA is a popular mIRC script\n" .
+                     "                  which allows you to keep track of people\n" .
+                     "                  by nickname and hostmask. This imports\n" .
+                     "                  all of the nicknames and hosts and fills\n" .
+                     "                  in the ident with AKAImport, since AKA does\n" .
+                     "                  not keep track of idents\n\nCommon usage:\n" .
+                     "/track ident [input]  -  Search for entries by supplied ident\n" .
+                     "/track nick  [input]  -  Search for entries by supplied nick\n" .
+                     "/track host  [input]  -  Search for entries by supplied " .
+                     "IP address\n" . " " x 25 . "or hostmask, IPv4 or IPv6\n" .
                      "\n%RNote%n: Regular expressions are acceptable! Be\n" .
                      "careful though. It has no protection to stop you from \n" .
                      "sucking at regex. If you don't match something, it'll\n" .
                      "crash the script (unmatched quantifiers)\nLove,\n  --Ziddy\n");
-        return;
-    }
-
-    if ($type eq "gather") {
-        &namechan;
         return;
     }
 
@@ -189,22 +186,27 @@ sub uniq {
 }
 
 sub namechan {
+    my ($null, $cserv) = @_;
     my $count = 0;
-    foreach (Irssi::channels()) {
-        foreach ($_->nicks()) {
-            my $nickc = conv($_->{nick});
-            my $nick  = $_->{nick};
-            open(my $fh, '<', "$ENV{HOME}/.irssi/scripts/track.lst");
-            my @list  = <$fh>;
-            close($fh);
+    $cserv = $cserv->{tag};
+    foreach my $serv (Irssi::channels()) {
+        my $curserv = $serv->{server}->{tag};
+        if ($cserv eq $curserv) {
+            foreach my $nname ($serv->nicks()) {
+                my $nickc = conv($nname->{nick});
+                my $nick  = $nname->{nick};
+                open(my $fh, '<', "$ENV{HOME}/.irssi/scripts/track.lst");
+                my @list  = <$fh>;
+                close($fh);
 
-            if(!grep(/$nickc;/, @list)) {
-                Irssi::active_server->send_raw("WHOIS " . $nick);
-                $count++;
-            } else {
-                if (!$quiet) { Irssi::print("%RAlready gathered $nick"); }
+                if(!grep(/$nickc;/, @list)) {
+                    Irssi::active_server->send_raw("WHOIS " . $nick);
+                    $count++;
+                } else {
+                    if (!$quiet) { Irssi::print("%RAlready gathered $nick"); }
+                }
+
             }
-
         }
     }
     Irssi::print("%GGathering complete - Added $count new entries");
@@ -230,7 +232,52 @@ sub unconv {
     return $data;
 }
 
+#Messy for now
+sub importAKA {
+    my $input = $_[0];
+    if (-e $input) {
+        open(my $fh, '<', $input);
+        my @list = <$fh>;
+        close($fh);
+        my $ip = 0;
+        my ($string, $import);
+        foreach my $line (@list) {
+            chomp($line);
+            my @nicks;
+            if ($line =~ /(.*?)@(.*+)/g) {
+                $ip = $2;
+            } elsif ($line =~ /(.*)~/g) {
+                my @nicksplit = split(/~/, $1);
+                foreach my $ns (@nicksplit) {
+                    push(@nicks, $ns);
+                }
+            }
+            foreach my $nick (@nicks) {
+                my $snick = conv($nick);
+                if ($snick and $ip) {
+                    if (length($snick) > 1 and length($ip) > 1) {
+                        $string .= "$snick;AKAImport;$ip;;;";
+                    }
+                }
+            }
+        }
+        my @arrn = split(/;;;/, $string);
+        open(my $fh2, '>>', "$ENV{HOME}/.irssi/scripts/track.lst");
+        foreach my $out (@arrn) {
+            if (length($out) > 1) {
+                $out =~ s/\r//g;
+                print $fh2 "$out\n";
+                $import++;
+            }
+        }
+        close($fh2);
+        Irssi::print("%GImported $import users into the database%n");
+    }
+}
+
 Irssi::command_bind('track' => \&track);
+Irssi::command_bind('gather' => \&namechan);
+Irssi::command_bind('import' => \&importAKA);
 Irssi::signal_add('message join', 'joining');
 Irssi::signal_add('message nick', 'nchange');
 Irssi::signal_add_first('event 311', 'whois_signal');
