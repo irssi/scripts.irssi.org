@@ -48,8 +48,8 @@ Usage: (all on one line)
 -add:     Add a new fake ctcp-reply to the list.
 -del:     Delete a fake ctcp-reply from the list.
 -list:    Display the contents of the fake ctcp-reply list.
--help:    Display this usefull little helpfile.
--replace: Replace a excisting fake reply with a new one. If the old one doesn't excists, the new one will be added by default.
+-help:    Display this useful little helpfile.
+-replace: Replace an existing fake reply with a new one. If the old one doesn't exist, the new one will be added by default.
 
 Examples: (all on one line)
 /FCTCP -add CHRISTEL We all love christel, don't we! :)
