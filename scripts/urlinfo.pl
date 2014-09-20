@@ -4,7 +4,7 @@ use Encode;
 use Irssi;
 use POSIX ();
 
-our $VERSION = "1.2";
+our $VERSION = "1.3";
 our %IRSSI = (
     authors     => 'David Leadbeater',
     contact     => 'dgl@dgl.cx',
@@ -43,6 +43,9 @@ BEGIN {
 #
 # /SET urlinfo_ignore_domains example\.org example\.com
 #   Space separated list of regular expressions of domains to ignore
+#
+# /SET urlinfo_ignore_targets freenode #something efnet/#example
+#   Space separated list of targets to ignore.
 #
 # /SET urlinfo_custom_domains my\.domain/thing irssi\.org=description
 #   A limited way of configuring custom domains, if you need something more
@@ -239,7 +242,7 @@ sub msg {
   if (my($url) = $text =~ $URL_RE) {
     my($site, $uri) = get_site(\@sites, $url);
     return unless $site;
-    return if ignored($uri);
+    return if ignored($uri, $server, $target);
 
     fork_wrapper(sub { # Child
       my($fh) = @_;
@@ -283,10 +286,31 @@ sub msg {
 }
 
 sub ignored {
-  my($uri) = @_;
-  my @ignored = split / /, Irssi::settings_get_str('urlinfo_ignore_domains');
+  my($uri, $server, $target) = @_;
+  my @ignored_domains = split / /, Irssi::settings_get_str('urlinfo_ignore_domains');
   my $domain = $uri->host =~ s/^www\.//r;
-  return grep $domain =~ /^$_$/, @ignored;
+  return 1 if grep $domain =~ /^$_$/, @ignored_domains;
+
+  my $chans = $server->isupport("chantypes") || '#&';
+  my $chan_match = qr/^[$chans]/;
+
+  for my $ignored_target (split / /, Irssi::settings_get_str('urlinfo_ignore_targets')) {
+    my($mtag, $mtarget) = split m{/}, $ignored_target;
+    if ($mtag =~ $chan_match) {
+      $mtarget = $mtag;
+      $mtag = "*";
+    }
+    return 1 if _match($mtag, $server->{tag}) &&
+      (!$mtarget || _match($mtarget, $target));
+  }
+
+  return 0;
+}
+
+sub _match {
+  my($pattern, $name) = @_;
+  $pattern =~ s/\*/.*/g;
+  $name =~ /^$pattern$/i;
 }
 
 sub find_window {
@@ -366,6 +390,7 @@ if (caller) {
 
   Irssi::settings_add_str($IRSSI{name}, "urlinfo_custom_domains", "");
   Irssi::settings_add_str($IRSSI{name}, "urlinfo_ignore_domains", "");
+  Irssi::settings_add_str($IRSSI{name}, "urlinfo_ignore_targets", "");
   Irssi::settings_add_int($IRSSI{name}, "urlinfo_timeout", $timeout);
   Irssi::settings_add_bool($IRSSI{name}, "urlinfo_title_unknown", 0);
 
