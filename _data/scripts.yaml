@@ -4238,3 +4238,12 @@
   license: "WTFPL"
   name: "oopsie"
   version: "1.0"
+
+- authors: "Doug Freed"
+  contact: "dwfreed!#irssi@freenode"
+  description: "Authenticates with QuakeNet's Q service upon connection, using their CHALLENGEAUTH protocol"
+  filename: "qchallengeauth.pl"
+  modified: "2014-08-23"
+  license: "GPLv3+"
+  name: "qchallengeauth"
+  version: "1.0"
