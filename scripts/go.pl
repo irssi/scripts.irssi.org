@@ -24,7 +24,7 @@ sub signal_complete_go {
 	my $channel = $window->get_active_name();
 	my $k = Irssi::parse_special('$k');
 
-        return unless ($linestart =~ /^\Q${k}\Ego/i);
+        return unless ($linestart =~ /^\Q${k}\Ego\b/i);
 
 	@$complist = ();
 	foreach my $w (Irssi::windows) {
