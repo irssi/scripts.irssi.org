@@ -1,4 +1,5 @@
 # hipchat_complete.pl - (c) 2013 John Morrissey <jwm@horde.net>
+#                       (c) 2014 Brock Wilcox <awwaiid@thelackthereof.org>
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are
@@ -46,11 +47,11 @@
 # To use
 # ======
 #
-# 1. Install the HTTP::Message, JSON, and LWP Perl modules.
+# 1. Install the WebService::HipChat module from CPAN.
 #
 # 2. /script load hipchat_completion.pl
 #
-# 3. Get a Hipchat auth token (hipchat.com -> Account settings -> API
+# 3. Get a Hipchat auth v2 token (hipchat.com -> Account settings -> API
 #    access). In irssi:
 #
 #    /set hipchat_auth_token some-hex-value
@@ -63,12 +64,10 @@
 
 use strict;
 
-use HTTP::Request;
 use Irssi;
-use JSON;
-use LWP::UserAgent;
+use WebService::HipChat;
 
-my $VERSION = '1.0';
+my $VERSION = '2.0';
 my %IRSSI = (
 	authors => 'John Morrissey',
 	contact => 'jwm@horde.net',
@@ -81,18 +80,13 @@ my %NICK_TO_MENTION;
 my $LAST_MAP_UPDATED = 0;
 
 sub get_hipchat_people {
-	my $ua = LWP::UserAgent->new;
-	$ua->timeout(5);
-
 	my $auth_token = Irssi::settings_get_str('hipchat_auth_token');
 	if (!$auth_token) {
 		return;
 	}
-	my $r = HTTP::Request->new('GET',
-		"https://api.hipchat.com/v1/users/list?auth_token=$auth_token");
-	my $response = $ua->request($r);
+	my $hc = WebService::HipChat->new(auth_token => $auth_token);
 
-	my $hipchat_users = from_json($response->decoded_content)->{users};
+	my $hipchat_users = $hc->get_users->{items};
 	foreach my $user (@{$hipchat_users}) {
 		my $name = $user->{name};
 		$name =~ s/[^A-Za-z]//g;
