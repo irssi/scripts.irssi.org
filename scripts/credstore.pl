@@ -189,9 +189,11 @@ sub event_whois_timeout {
 
 sub dbfile_check () {
 	if ( ! -w $DBFILE ) {
-		open FH, "> $DBFILE" or die $!;
+		open FH,">",$DBFILE or croak $!;
 		print FH "";
-		close FH;
+		if(!close(FH)) {
+			Irssi::print("CREDSTORE Error on $DBFILE",MSGLEVEL_CLIENTCRAP);
+		}
 	}
 }
 
@@ -199,9 +201,11 @@ sub dbfile_check () {
 sub add_to_db($$) {
 	my ($nick,$fingerp) = @_;
 	if ( -w $DBFILE ) {
-		open FH, ">> $DBFILE" or die $!;
+		open FH,">>",$DBFILE or croak $!;
 		print FH "$nick\t$fingerp\n";
-		close FH;
+		if(!close(FH)) {
+			Irssi::print("CREDSTORE Error on $DBFILE",MSGLEVEL_CLIENTCRAP);
+		}
 		Irssi::print("CREDSTORE $nick($fingerp)",MSGLEVEL_CLIENTCRAP);
 	} else {
 		Irssi::print("CREDSTORE Error on $DBFILE",MSGLEVEL_CLIENTCRAP);
@@ -214,8 +218,8 @@ sub del_from_db($) {
 	my $nick2; my $fingerp;
 	my $filetmp = "$DBFILE.tmp";
 	if ( -w $DBFILE && ! -w $filetmp ) {
-		open FHR, "$DBFILE" or die $!;
-		open FHW, "> $filetmp" or die $!;
+		open FHR,"<",$DBFILE or croak $!;
+		open FHW,">",$filetmp or croak $!;
 		while (<FHR>) {
 			my @line = split(/\t/, $_);
 			($nick2,$fingerp) = @line;
@@ -223,8 +227,12 @@ sub del_from_db($) {
 				print FHW "$nick2\t$fingerp";
 			}
 		}
-		close FHR;
-		close FHW;
+		if(!close(FHR)) {
+			Irssi::print("CREDSTORE Error on $DBFILE",MSGLEVEL_CLIENTCRAP);
+		}
+		if(!close(FHW)) {
+			Irssi::print("CREDSTORE Error on $DBFILE",MSGLEVEL_CLIENTCRAP);
+		}
 		unlink($DBFILE);
 		rename($filetmp,$DBFILE);
 		Irssi::print("CREDSTORE $nick removed from DB",MSGLEVEL_CLIENTCRAP);
@@ -239,7 +247,7 @@ sub read_from_db($) {
 	my $nick2; my $fingerp;
 	
 	if ( -w $DBFILE ) {
-		open FH, "$DBFILE" or die $!;
+		open FH,"<",$DBFILE or croak $!;
 		while (<FH>) {
 			my @line = split(/\t/, $_);
 			($nick2,$fingerp) = @line;
@@ -253,6 +261,9 @@ sub read_from_db($) {
 			} else {
 				$fingerp = "";
 			}
+		}
+		if(!close(FH)) {
+			Irssi::print("CREDSTORE Error on $DBFILE",MSGLEVEL_CLIENTCRAP);
 		}
 	} else {
 		Irssi::print("CREDSTORE Error on $DBFILE",MSGLEVEL_CLIENTCRAP);
