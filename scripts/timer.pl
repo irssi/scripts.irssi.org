@@ -75,7 +75,7 @@ sub cmd_timer_help {
     print ( <<EOF
 
 TIMER LIST
-TIMER ADD  <name> <internal in seconds> [<repeat>] <command>
+TIMER ADD  <name> <interval in seconds> [<repeat>] <command>
 TIMER STOP <name>
 
 repeat value of 0 means unlimited too
