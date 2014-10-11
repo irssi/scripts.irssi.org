@@ -18,6 +18,14 @@ $VERSION = '1.0';
 Irssi::settings_add_str('gmail', 'gmail_user', '');
 Irssi::settings_add_str('gmail', 'gmail_pass', '');
 
+sub print_external_format {
+    my ($level, $module, $format, @args) = @_;
+    {
+        local *CORE::GLOBAL::caller = sub { $module };
+        Irssi::printformat($level, $format, @args);
+    }
+}
+
 sub cmd_help {
 	if ($_[0] =~ /^gmail *$/i) {
 		Irssi::print ( <<SCRIPTHELP_EOF
@@ -58,7 +66,7 @@ sub cmd_gmail ($$$) {
 	my $attachments = (defined $options->{attachments}) ? $options->{attachments} : "";
 	
 	if(!$to) {
-		Irssi::print('Not enough parameters given.',MSGLEVEL_CLIENTERROR);
+		print_external_format(Irssi::MSGLEVEL_CLIENTERROR, 'fe-common/core', 'not_enough_params');
 		return;
 	}
 	

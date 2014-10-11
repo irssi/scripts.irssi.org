@@ -4238,12 +4238,21 @@
   license: "WTFPL"
   name: "oopsie"
   version: "1.0"
-  
+
+- authors: "Doug Freed"
+  contact: "dwfreed!#irssi@freenode"
+  description: "Authenticates with QuakeNet's Q service upon connection, using their CHALLENGEAUTH protocol"
+  filename: "qchallengeauth.pl"
+  modified: "2014-08-23"
+  license: "GPLv3+"
+  name: "qchallengeauth"
+  version: "1.0"
+
 - authors: "Pablo Martín Báez Echevarría"
   contact: "pab_24n@outlook.com"
   description: "send email using Google's SMTP server (require Email::Send::SMTP::Gmail)"
   filename: "gmail.pl"
   modified: "2014-09-23"
-  license: "public domain"
+  license: "Public domain"
   name: "gmail"
   version: "1.0"
