@@ -4247,3 +4247,12 @@
   license: "GPLv3+"
   name: "qchallengeauth"
   version: "1.0"
+
+- authors: "Pablo Martín Báez Echevarría"
+  contact: "pab_24n@outlook.com"
+  description: "send email using Google's SMTP server (require Email::Send::SMTP::Gmail)"
+  filename: "gmail.pl"
+  modified: "2014-09-23"
+  license: "Public Domain"
+  name: "gmail"
+  version: "1.0"
