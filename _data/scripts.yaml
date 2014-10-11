@@ -4247,3 +4247,12 @@
   license: "GPLv3+"
   name: "qchallengeauth"
   version: "1.0"
+
+- authors: "lasers"
+  contact: "lasers@freenode"
+  description: "Loads scripts from file instead of autorun directory"
+  filename: "scriptsave.pl"
+  modified: "2014-10-11"
+  license: "WTFPL"
+  name: "scriptsave"
+  version: "0.1"

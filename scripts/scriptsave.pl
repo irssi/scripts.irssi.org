@@ -10,7 +10,7 @@ $VERSION = '0.1';
   contact     => 'lasers on freenode',
   name        => 'scriptsave',
   description => 'Loads scripts from file instead of autorun directory',
-  license     => 'Public Domain',
+  license     => 'WTFPL',
 );
 
 # ──── USAGE ────
