@@ -14,7 +14,7 @@ use POSIX ();
 use Unicode::UCD qw(charblock charblocks charinfo);
 
 use Irssi qw(command_bind command_bind_first);
-our $VERSION = "1";
+our $VERSION = "2";
 our %IRSSI = (
     authors     => 'David Leadbeater',
     contact     => 'dgl@dgl.cx',
@@ -148,6 +148,13 @@ command_bind unicode => sub {
   }
 };
 
+sub hex_str {
+    my $str = shift;
+    use bytes;
+    my @raw_bytes = unpack('C*', $str);
+    return join('', map { '\\x'.sprintf("%02x", $_) } @raw_bytes);
+}
+
 sub print_info {
   my($character, $extra) = @_;
   my $info = charinfo $character;
@@ -166,6 +173,7 @@ sub print_info {
     for(qw(decimal digit numeric upper lower title)) {
       $extra{$_} = $info->{$_} if $info->{$_};
     }
+    $extra{"perl"} = hex_str(chr(hex $info->{code}));
     p " " x (7 + length $info->{code}), join(", ", map { "$_=$extra{$_}" } sort keys %extra);
   }
 }
@@ -203,4 +211,12 @@ sub pipe_input {
   Irssi::input_remove($$pipetag);
   $pipe_in_progress = 0;
   $parent->($line);
+}
+
+command_bind charblocks => sub {
+  my $charblocks_hr = charblocks();
+  my @blocks = sort keys %{$charblocks_hr};
+  foreach(@blocks) {
+    Irssi::print($_,MSGLEVEL_CLIENTCRAP);
+  }
 }
