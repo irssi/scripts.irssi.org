@@ -1,7 +1,7 @@
 use vars qw($VERSION %IRSSI);
 
 use Irssi 20020120;
-$VERSION = "1.2";
+$VERSION = "1.3";
 %IRSSI = (
     authors	=> "Michiel",
     contact	=> "michiel\@dotgeek.org",
@@ -12,7 +12,6 @@ $VERSION = "1.2";
     changed	=> "Thu Jun  3 11:04:27 CEST 2004",
 );
 
-
 sub cmd_u
 {
 	my ($data, $server, $channel) = @_;
@@ -21,12 +20,18 @@ sub cmd_u
 	my $msg;
 	my $match;
 	my $nick;
-
+	
 	if ($channel->{type} ne "CHANNEL")
 	{
 		Irssi::print("You are not on a channel");
 		return;
 	}
+	
+	eval { /$data/ } ;
+	if ($@) {
+		Irssi::print("Not a valid regexp given.",MSGLEVEL_CLIENTERROR);
+		return;
+	}	
 
 	@nicks = $channel->nicks();
 
@@ -60,7 +65,7 @@ sub cmd_u
 		}
 		
 		$match = $nick->{nick}.'!'.$nick->{host}; # For regexp matching
-
+		
 		$channel->print($msg) if $match =~ /$data/i;
 		
 	}
