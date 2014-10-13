@@ -3513,7 +3513,7 @@
   license: "GPLv2"
   name: "spotify"
   url: "https://github.com/op/irssi-spotify"
-  version: "1.0"
+  version: "1.1"
 
 - authors: "Marcus darix Rückert, tira, Stefan tommie Tomanek"
   contact: "darix@irssi.de, tira@isx.de, stefan@pico.ruhr.de"
