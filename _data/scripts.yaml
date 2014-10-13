@@ -3509,11 +3509,11 @@
   contact: "o@42mm.org"
   description: "Lookup spotify uris"
   filename: "spotify.pl"
-  modified: "2014-07-28 18:26:57"
+  modified: "2014-10-13 15:22:00"
   license: "GPLv2"
   name: "spotify"
   url: "https://github.com/op/irssi-spotify"
-  version: "1.0"
+  version: "1.1"
 
 - authors: "Marcus darix Rückert, tira, Stefan tommie Tomanek"
   contact: "darix@irssi.de, tira@isx.de, stefan@pico.ruhr.de"
