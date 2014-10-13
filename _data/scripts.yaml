@@ -261,6 +261,16 @@
   url: "http://ninja.no/irssi/autochannel.pl"
   version: "1.2"
 
+- authors: "Trevor Slocum"
+  contact: "tslocum@gmail.com"
+  description: "Automatically clears pending input when you are away"
+  filename: "autoclearinput.pl"
+  modified: "2014-05-13 10:35:00"
+  license: "GPLv3"
+  name: "autoclearinput"
+  url: "https://github.com/tslocum/irssi-scripts"
+  version: "1.0.1"
+
 - authors: "Marcin Rozycki"
   contact: "derwan@irssi.pl"
   description: "Auto regain ops in empty opless channels"
@@ -4067,6 +4077,16 @@
   name: "window_switcher"
   url: "http://wouter.coekaerts.be/irssi/"
   version: "1.0"
+
+- authors: "Trevor Slocum"
+  contact: "tslocum@gmail.com"
+  description: "Goto a window by its reference number with /##"
+  filename: "winnum.pl"
+  modified: "2014-05-01 16:04:00"
+  license: "GPLv3"
+  name: "winnum"
+  url: "https://github.com/tslocum/irssi-scripts"
+  version: "1.0.0"
 
 - authors: "Antti Ruokomäki"
   contact: "antti.ruokomaki@mbnet.fi"
