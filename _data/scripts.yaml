@@ -3695,6 +3695,15 @@
   name: "Topic Lock"
   version: "1.1"
 
+- authors: "John C. Vernaleo"
+  contact: "john@netpurgatory.com"
+  description: "Set away/unaway based on tmux status"
+  filename: "tmux_away.pl"
+  modified: "2014-08-28 16:50:28"
+  license: "GNU GPLv2"
+  name: "tmux away"
+  version: "2.0"
+
 - authors: "Stefan tommie Tomanek"
   commands: "topics"
   contact: "stefan@pico.ruhr.de"
