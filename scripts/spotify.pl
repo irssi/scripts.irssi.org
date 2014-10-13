@@ -18,7 +18,7 @@
 
 use strict;
 use vars qw($VERSION %IRSSI);
-$VERSION = '1.0';
+$VERSION = '1.1';
 %IRSSI = (
 	authors     => 'Örjan Persson',
 	contact     => 'o@42mm.org',
@@ -413,10 +413,15 @@ sub spotify_lookup {
 	my $writer = shift;
 	my ($uri, $manual) = @{$_[0]};
 
+	# Remove any leading whitespace and trailing whitespace and dots
 	$uri =~ s/^\s+//g;
 	$uri =~ s/[\s\.]+$//g;
-	my $u = URI->new($uri);
-	my @parts = split /[\/:]/, URI->new($uri)->path;
+
+	# Unify how we look at the path, removing leading / to match how path looks
+	# for URIs with : where the path never starts with a :.
+	my $u = URI->new($uri)->path;
+	$u =~ s/^\///;
+	my @parts = split /[\/:]/, $u;
 
 	my $path;
 	my $auth;

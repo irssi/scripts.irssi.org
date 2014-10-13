@@ -3509,7 +3509,7 @@
   contact: "o@42mm.org"
   description: "Lookup spotify uris"
   filename: "spotify.pl"
-  modified: "2014-07-28 18:26:57"
+  modified: "2014-10-13 15:22:00"
   license: "GPLv2"
   name: "spotify"
   url: "https://github.com/op/irssi-spotify"
