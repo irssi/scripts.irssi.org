@@ -148,13 +148,6 @@ command_bind unicode => sub {
   }
 };
 
-sub hex_str {
-    my $str = shift;
-    use bytes;
-    my @raw_bytes = unpack('C*', $str);
-    return join('', map { '\\x'.sprintf("%02x", $_) } @raw_bytes);
-}
-
 sub print_info {
   my($character, $extra) = @_;
   my $info = charinfo $character;
@@ -173,7 +166,7 @@ sub print_info {
     for(qw(decimal digit numeric upper lower title)) {
       $extra{$_} = $info->{$_} if $info->{$_};
     }
-    $extra{"perl"} = hex_str(chr(hex $info->{code}));
+    $extra{"utf-8 (hex)"} = join "", map sprintf("\\x%02x", ord), split //, encode_utf8 chr(hex $info->{code});
     p " " x (7 + length $info->{code}), join(", ", map { "$_=$extra{$_}" } sort keys %extra);
   }
 }
@@ -214,9 +207,6 @@ sub pipe_input {
 }
 
 command_bind charblocks => sub {
-  my $charblocks_hr = charblocks();
-  my @blocks = sort keys %{$charblocks_hr};
-  foreach(@blocks) {
-    Irssi::print($_,MSGLEVEL_CLIENTCRAP);
-  }
+  my @blocks = sort keys %{charblocks()};
+  print for @blocks;
 }
