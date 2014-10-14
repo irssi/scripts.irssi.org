@@ -4248,7 +4248,7 @@
   modified: "2014-07-06"
   license: "WTFPL"
   name: "unicode"
-  version: "1"
+  version: "2"
 
 - authors: "David Leadbeater"
   contact: "dgl@dgl.cx"

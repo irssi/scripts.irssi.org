@@ -14,7 +14,7 @@ use POSIX ();
 use Unicode::UCD qw(charblock charblocks charinfo);
 
 use Irssi qw(command_bind command_bind_first);
-our $VERSION = "1";
+our $VERSION = "2";
 our %IRSSI = (
     authors     => 'David Leadbeater',
     contact     => 'dgl@dgl.cx',
@@ -166,6 +166,7 @@ sub print_info {
     for(qw(decimal digit numeric upper lower title)) {
       $extra{$_} = $info->{$_} if $info->{$_};
     }
+    $extra{"utf-8 (hex)"} = join "", map sprintf("\\x%02x", ord), split //, encode_utf8 chr(hex $info->{code});
     p " " x (7 + length $info->{code}), join(", ", map { "$_=$extra{$_}" } sort keys %extra);
   }
 }
@@ -203,4 +204,9 @@ sub pipe_input {
   Irssi::input_remove($$pipetag);
   $pipe_in_progress = 0;
   $parent->($line);
+}
+
+command_bind charblocks => sub {
+  my @blocks = sort keys %{charblocks()};
+  print for @blocks;
 }
