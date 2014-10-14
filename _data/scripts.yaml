@@ -1180,7 +1180,7 @@
   modified: "2014-06-12 19:06:00"
   license: "Public Domain"
   name: "emo"
-  version: "0.0.1"  
+  version: "0.0.1"
 
 - authors: "Ilya Cassina"
   contact: "icassina@gmail.com"
@@ -4275,4 +4275,13 @@
   modified: "2014-08-23"
   license: "GPLv3+"
   name: "qchallengeauth"
+  version: "1.0"
+
+- authors: "Daniel Dyla"
+  contact: "dyladan@gmail.com"
+  description: "Works just like nickcolor.pl but for messages instead of nicks"
+  filename: "shadow.pl"
+  modified: "2014-10-06"
+  license: "Public Domain"
+  name: "shadow"
   version: "1.0"
