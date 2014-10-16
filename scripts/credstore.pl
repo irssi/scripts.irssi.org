@@ -1,11 +1,11 @@
 #store fingerprints of know users so can verify
-#credstore v1.1
+#/credstore
 use Irssi;
 use warnings;
 use strict;
 use vars qw($VERSION %IRSSI $DBFILE $DEBUG $OPT $FING);
 
-$VERSION = "1.1";
+$VERSION = "1.2";
 %IRSSI = (
     authors     => "Benedetto",
     contact     => "dettox\@gmail.com",
@@ -13,7 +13,7 @@ $VERSION = "1.1";
     description => "store fingerprints of know users so can verify",
     license     => "GPLv3+",
     url         => "http://irssi.org/",
-    changed	=> "Wed Oct  1 13:30:54 GMT 2014",
+    changed	=> "Thu Oct 16 13:30:54 GMT 2014",
 );
 
 $DBFILE = Irssi::get_irssi_dir() . "/credstore.txt";
@@ -317,16 +317,21 @@ sub verify_nickname($$) {
 
 sub cmd_credstore ($$$) {
 	my ($data, $server, $witem) = @_;
-	my $cmd; my $nick;
+	my $cmd; my $nick; my $conn = 0;
 	( $cmd, $nick ) = split(/ /, $data);
+	
+	if (!$server || !$server->{connected}) {
+		$conn = 1;
+		Irssi::print("CREDSTORE Warning: not connected",MSGLEVEL_CLIENTCRAP);
+	}
 	
 	if ( defined $cmd && defined $nick) {
 		$OPT = $cmd;
-		if ($cmd eq 'add') {
+		if ($cmd eq 'add' && !$conn) {
 			add_nickname($nick,$server);
-		} elsif ($cmd eq 'del') {
+		} elsif ($cmd eq 'del' && !$conn) {
 			del_nickname($nick);
-		} elsif ($cmd eq 'verify') {
+		} elsif ($cmd eq 'verify' && !$conn) {
 			verify_nickname($nick,$server);
 		} else {
 			show_help();
