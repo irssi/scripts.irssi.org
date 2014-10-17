@@ -2,7 +2,7 @@
 
 use strict;
 use vars qw($VERSION %IRSSI);
-$VERSION = "1.0";
+$VERSION = "1.1";
 %IRSSI = (
     authors     => "Tobias 'camel69' Wulff",
     contact     => "camel69(at)codeeye.de",
@@ -19,7 +19,7 @@ Irssi::settings_add_bool('amarok', 'amarok_use_ssh', 1);
 Irssi::settings_add_str('amarok', 'amarok_ssh_client', 'localhost');
 Irssi::settings_add_str('amarok', 'amarok_dcop_user', '');
 
-sub show_help() {
+sub show_help {
     my $help = $IRSSI{name}." ".$VERSION."
 /amarok song [loud]
     Prints the artist and title of the song which is currently played.
@@ -65,7 +65,7 @@ my $amarok_use_ssh = Irssi::settings_get_bool('amarok_use_ssh');
 my $ssh_client = Irssi::settings_get_str('amarok_ssh_client');
 my $dcop_user = Irssi::settings_get_str('amarok_dcop_user');
 
-sub cmd ($) {
+sub cmd {
     my ($postcmd) = @_;
     my $dcop_precmd = 'dcop --user '.$dcop_user.' amarok player';
 
@@ -78,7 +78,7 @@ sub cmd ($) {
     }
 }
 
-sub amarokSong ($$) {
+sub amarokSong {
     my($witem, $me_cmd) = @_;
     if ($me_cmd == 1) {
         if (!$witem or $witem->{type} ne 'CHANNEL') {
@@ -99,7 +99,7 @@ sub amarokSong ($$) {
     }
 }
 
-sub amarokTime($$) {
+sub amarokTime {
     my ($witem, $me_cmd) = @_;
     if ($me_cmd == 1 and (!$witem or $witem->{type} ne 'CHANNEL')) {
         print CLIENTCRAP $preprint."The option 'loud' can only be used in channels.";
@@ -142,7 +142,7 @@ sub amarokTime($$) {
     }
 }
 
-sub amarokSeek ($) {
+sub amarokSeek {
     my($time) = @_;
     
     # format correct?
@@ -194,7 +194,7 @@ sub amarokSeek ($) {
     print CLIENTCRAP $preprint.'Seeked to '.$newtime.'.';
 }
 
-sub cmd_amarok ($$$) {
+sub cmd_amarok {
     my ($args, $server, $witem) = @_;
     my @arg = split(/ /, $args);
     
