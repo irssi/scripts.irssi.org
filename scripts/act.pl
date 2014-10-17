@@ -7,7 +7,7 @@
 use vars qw($VERSION %IRSSI);
 
 use Irssi 20020120;
-$VERSION = "0.13";
+$VERSION = "0.14";
 %IRSSI = (
     authors	=> "c0ffee",
     contact	=> "c0ffee\@penguin-breeder.org",
@@ -15,7 +15,7 @@ $VERSION = "0.13";
     description	=> "Reset window activity status. defines command /act",
     license	=> "Public Domain",
     url		=> "http://www.penguin-breeder.org/irssi/",
-    changed	=> "Wed Jun 23 08:34:53 CEST 2004",
+    changed	=> "2014-10-17 13:58",
 );
 #</scriptinfo>
 
@@ -55,7 +55,7 @@ sub cmd_act {
 }
 
 my @arguments = ('public', 'all');
-sub sig_complete ($$$$$) {
+sub sig_complete {
     my ($list, $window, $word, $linestart, $want_space) = @_;
     return unless $linestart =~ /^.act/;
     foreach my $arg (@arguments) {
