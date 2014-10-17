@@ -3,7 +3,7 @@ use vars qw($VERSION %IRSSI);
 
 use Irssi::TextUI;
 
-$VERSION = "0.4";
+$VERSION = "0.5";
 %IRSSI = (
     authors     => "Alexander Wirt",
     contact     => "formorer\@formorer.de",
@@ -47,32 +47,32 @@ exit unless ($apm or $acpi);
 
 
 sub get_apm {
-	open(RC, "/proc/apm");
-		my $line = <RC>;
-	close RC;
+	open(my $apm_file, q{<}, "/proc/apm");
+	my $line = <$apm_file>;
+	close $apm_file;
 	my ($ver1, $ver2, $sysstatus, $acstat, $chargstat, $batstatus, $prozent, $remain) = split(/\s/,$line);
 
 	if ($acstat eq "0x01") { return "+$prozent" } else { return "-$prozent" }
 }
 
 sub get_acpi {
-	open(RC, "/proc/acpi/ac_adapter/ACAD/state");
-		my $line = <RC>;
-	close RC;
+	open(my $ac_state_file, q{<}, "/proc/acpi/ac_adapter/ACAD/state");
+	my $line = <$ac_state_file>;
+	close $ac_state_file;
 	my ($text,$state) = split (/:/,$line);
 	$state =~ s/\s//g;
 
-	open (RC, "/proc/acpi/battery/BAT0/info");
+	open (my $bat_info_file, q{<}, "/proc/acpi/battery/BAT0/info");
 	my ($text,$capa,$ein);
-	while (my $line = <RC>) {
+	while (my $line = <$bat_info_file>) {
 		if ($line =~ /last full capacity/) {
 			($text, $capa,$ein) = split (/:/,$line);
 			$capa =~ s/\s//g;
 		}
 	}
-	open (RC, "/proc/acpi/battery/BAT0/state"); 
+	open (my $bat_state_file, q{<}, "/proc/acpi/battery/BAT0/state"); 
 	my ($text,$remain,$ein);
-	while (my $line = <RC>) {
+	while (my $line = <$bat_state_file>) {
 		if ($line =~ /remaining capacity/) {
 			($text, $remain,$ein) = split (/:/,$line);
 			$remain =~ s/\s//g;
@@ -95,7 +95,7 @@ sub power {
 		$pstate = get_acpi();
 	}
 	$item->default_handler($get_size_only, undef, "BAT:$pstate", 1 );
-	}
+}
 
 
 sub set_power {
