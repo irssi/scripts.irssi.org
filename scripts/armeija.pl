@@ -7,6 +7,7 @@
 
 # check out my other irssi-stuff at http://xulfad.inside.org/~flux/software/irssi/
 
+use strict;
 use Irssi;
 
 use vars qw($VERSION %IRSSI);
@@ -23,7 +24,6 @@ $VERSION = "0.4";
 
 
 use Irssi::Irc;
-use strict;
 
 my $log = 0;
 my $logFile = "$ENV{HOME}/.irssi/armeija.log";
@@ -104,7 +104,7 @@ sub public {
     $why = $msg;
     $who = $nick;
     if ($log) {
-      open(F, ">>$logFile");
+      open(F, q{>>}, $logFile);
       my @t = localtime($now);
       $t[5] += 1900;
       print F "$t[5]-", p0($t[4] + 1), "-", p0($t[3]), " ",
@@ -163,7 +163,7 @@ sub logging {
 sub load {
   local $/ = "\n";
   local *F;
-  if (open(F, "< $wordFile")) {
+  if (open(F, q{<}, $wordFile)) {
     @keywords = ();
     while (<F>) {
       chomp;
@@ -173,7 +173,7 @@ sub load {
   } else {
     Irssi::print("Failed to open wordfile $wordFile\n");
   }
-  if (open(F, "< $channelFile")) {
+  if (open(F, q{<}, $channelFile)) {
     @channels = ();
     while (<F>) {
       chomp;
@@ -185,13 +185,13 @@ sub load {
 
 sub save {
   local *F;
-  if (open(F, "> $wordFile")) {
+  if (open(F, q{>}, $wordFile)) {
     for (my $c = 0; $c < @keywords; ++$c) {
       print F $keywords[$c], "\n";
     }
     close(F);
   }
-  if (open(F, "> $channelFile")) {
+  if (open(F, q{>}, $channelFile)) {
     for (my $c = 0; $c < @channels; ++$c) {
       print F $channels[$c], "\n";
     }

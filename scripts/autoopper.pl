@@ -1,6 +1,6 @@
+use strict;
 use Irssi;
 use POSIX;
-use strict;
 use Socket;
 use vars qw($VERSION %IRSSI);
 

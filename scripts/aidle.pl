@@ -1,3 +1,4 @@
+use strict;
 use Irssi 20020300;
 use Irssi::Irc;
 
@@ -52,15 +53,15 @@ sub antyidlesend {
 
 Irssi::signal_add 'setup changed' => sub {
 	$aidle{'away'} = Irssi::settings_get_bool 'aidle_only_when_away';
-	my $new = Irssi::settings_get_int 'aidle_max_idle_time';
-	if ($new < $aidle{'max'}) {
+	my $max_idle_time = Irssi::settings_get_int 'aidle_max_idle_time';
+	if ($max_idle_time < $aidle{'max'}) {
 		Irssi::timeout_remove $aidle{'timer'};
-		$aidle{'timer'} = Irssi::timeout_add int(rand($new)+1) * 1000, 'antyidlesend', '';
+		$aidle{'timer'} = Irssi::timeout_add int(rand($max_idle_time)+1) * 1000, 'antyidlesend', '';
 	}
-	$aidle{'max'} = $new;
+	$aidle{'max'} = $max_idle_time;
 	@{$aidle{'ircnets'}} = (split(/[\s,|-]+/, Irssi::settings_get_str('aidle_ircnets')));
-	foreach $new (@{$aidle{'ircnets'}}) {
-		Irssi::print("%RWarning%n - no such chatnet \'$new\' !", MSGLEVEL_CLIENTERROR) unless (Irssi::chatnet_find($new));
+	foreach my $ircnet (@{$aidle{'ircnets'}}) {
+		Irssi::print("%RWarning%n - no such chatnet \'$ircnet\' !", MSGLEVEL_CLIENTERROR) unless (Irssi::chatnet_find($ircnet));
 	}
 }; 
 

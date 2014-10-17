@@ -1,6 +1,6 @@
+use strict;
 use Irssi;
 use Irssi::Irc;
-use strict;
 
 use vars qw($VERSION %IRSSI);
 
@@ -141,7 +141,7 @@ sub combineSettings {
 	return 0;
 }
 
-sub sig_action() {
+sub sig_action {
 	my ($server,$msg,$nick,$address,$target) = @_;
 	
 	my $command;

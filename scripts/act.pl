@@ -4,6 +4,7 @@
 #    - http://www.penguin-breeder.org/irssi/
 
 #<scriptinfo>
+use strict;
 use vars qw($VERSION %IRSSI);
 
 use Irssi 20020120;
@@ -32,6 +33,8 @@ $VERSION = "0.13";
 sub cmd_act {
     my ($data, $server, $channel) = @_;
 
+    my $level;
+
     if ($data eq "") {
       $level = 1;
     } elsif ($data =~ /^public$/i) {
@@ -55,7 +58,7 @@ sub cmd_act {
 }
 
 my @arguments = ('public', 'all');
-sub sig_complete ($$$$$) {
+sub sig_complete {
     my ($list, $window, $word, $linestart, $want_space) = @_;
     return unless $linestart =~ /^.act/;
     foreach my $arg (@arguments) {

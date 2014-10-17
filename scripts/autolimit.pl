@@ -1,4 +1,6 @@
+use strict;
 use Irssi 20010920.0000 ();
+use vars qw($VERSION %IRSSI);
 $VERSION = "1.00";
 %IRSSI = (
     authors     => 'David Leadbeater',

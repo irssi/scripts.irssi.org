@@ -147,7 +147,7 @@ sub msgsend_check { # {{{
 sub send_mail { # {{{
 	my $text = shift;
 	debug("Sending mail");
-	open MAIL, "|" . $config{sendmail} . " -t";
+	open MAIL, q{|-}, $config{sendmail} . " -t";
 	print MAIL "To: $config{emailto}\n";
 	print MAIL "From: $config{emailfrom}\n";
 	print MAIL "Subject: $config{emailsubject}\n";

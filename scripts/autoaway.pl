@@ -18,6 +18,7 @@
 
 # Thanks to Adam Monsen for multiserver and config file fix
 
+use strict;
 use Irssi;
 use Irssi::Irc;
 
@@ -130,7 +131,7 @@ sub reset_timer {
 
 Irssi::settings_add_int("misc", "autoaway_timeout", 0);
 
-$autoaway_default = Irssi::settings_get_int("autoaway_timeout");
+my $autoaway_default = Irssi::settings_get_int("autoaway_timeout");
 if ($autoaway_default) {
   $autoaway_to_tag =
     Irssi::timeout_add($autoaway_default*1000, "auto_timeout", "");
