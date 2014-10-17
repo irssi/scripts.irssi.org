@@ -412,10 +412,10 @@
   contact: "jylefort@brutele.be, vizzie@airmail.net, kc@outflux.net"
   description: "Away with reason, unaway, and autoaway"
   filename: "away.pl"
-  modified: "2003-02-25 08:48:56"
+  modified: "2014-10-17 15:58"
   license: "BSD"
   name: "away"
-  version: "0.23"
+  version: "0.24"
 
 - authors: "Oskari Okko Ojala"
   contact: "sorter.irssi-scripts@okko.net"
