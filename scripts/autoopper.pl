@@ -4,7 +4,7 @@ use strict;
 use Socket;
 use vars qw($VERSION %IRSSI);
 
-$VERSION = "3.7";
+$VERSION = "3.8";
 %IRSSI = (
 	authors     => 'Toni Salomäki',
 	name        => 'autoopper',
@@ -159,7 +159,7 @@ sub read_dynamic_hosts {
 # Save data to file
 sub cmd_save_autoop {
 	my $file = Irssi::get_irssi_dir."/autoop";
-	open FILE, "> $file" or return;
+	open FILE, q{>}, $file or return;
 
 	foreach my $item (@opitems) {
 		printf FILE ("%s\t%s\t%s\n", $item->{mask}, $item->{chan}, $item->{dynamic});
@@ -172,7 +172,7 @@ sub cmd_save_autoop {
 # Load data from file
 sub cmd_load_autoop {
 	my $file = Irssi::get_irssi_dir."/autoop";
-	open FILE, "< $file" or return;
+	open FILE, q{<}, $file or return;
 	undef @opitems if (@opitems);
 
 	while (<FILE>) {
