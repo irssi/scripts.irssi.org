@@ -62,11 +62,11 @@
   contact: "c0ffee@penguin-breeder.org"
   description: "Reset window activity status. defines command /act"
   filename: "act.pl"
-  modified: "2004-06-23 08:34:53"
+  modified: "2014-10-17 13:58"
   license: "Public Domain"
   name: "Reset window activity status"
   url: "http://www.penguin-breeder.org/irssi/"
-  version: "0.13"
+  version: "0.14"
 
 - authors: "Daniel Kalør (Xnybre)"
   contact: "irssi@kalor.dk"
