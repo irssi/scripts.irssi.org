@@ -1,14 +1,16 @@
 # $Id: away.pl,v 1.6 2003/02/25 08:48:56 nemesis Exp $
 
+use strict;
 use Irssi 20020121.2020 ();
-$VERSION = "0.23";
+use vars qw($VERSION %IRSSI);
+$VERSION = "0.24";
 %IRSSI = (
 	  authors     => 'Jean-Yves Lefort, Larry "Vizzie" Daffner, Kees Cook',
 	  contact     => 'jylefort@brutele.be, vizzie@airmail.net, kc@outflux.net',
 	  name        => 'away',
 	  description => 'Away with reason, unaway, and autoaway',
 	  license     => 'BSD',
-	  changed     => '$Date: 2003/02/25 08:48:56 $ ',
+	  changed     => '2014-10-17',
 );
 
 # /SET
@@ -65,7 +67,6 @@ $VERSION = "0.23";
 # BUGS:
 #  - This only works for the first server
 
-use strict;
 use Irssi;
 use Irssi::Irc;			# for DCC object
 
