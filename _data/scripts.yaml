@@ -234,11 +234,11 @@
   contact: "ads@ufp.de"
   description: "/WHOIS all the users who send you a private message."
   filename: "auto_whois.pl"
-  modified: "2004-02-10 00:00:00"
+  modified: "2014-10-17 15:45"
   license: "GPL"
   name: "auto_whois"
   url: "http://irssi.org/"
-  version: "0.9"
+  version: "0.10"
 
 - authors: "Larry Vizzie Daffner"
   contact: "vizzie@airmail.net"

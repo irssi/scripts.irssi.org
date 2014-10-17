@@ -1,10 +1,10 @@
 # /WHOIS all the users who send you a private message.
-# v0.9 for irssi by Andreas 'ads' Scherbaum
 # idea and some code taken from autowhois.pl from Timo Sirainen
+use strict;
 use Irssi;
 use vars qw($VERSION %IRSSI); 
 
-$VERSION = "0.9";
+$VERSION = "0.10";
 %IRSSI = (
     authors	=> "Andreas \'ads\' Scherbaum",
     contact	=> "ads\@ufp.de",
@@ -12,13 +12,8 @@ $VERSION = "0.9";
     description	=> "/WHOIS all the users who send you a private message.",
     license	=> "GPL",
     url		=> "http://irssi.org/",
-    changed	=> "2004-02-10",
-    changes	=> "v0.9: don't /WHOIS if query exists for the nick already"
+    changed	=> "2014-10-17",
 );
-
-# History:
-#  v0.9: don't /WHOIS if query exists for the nick already
-#        now we store all nicks we have seen in the last 10 minutes
 
 my @seen = ();
 
