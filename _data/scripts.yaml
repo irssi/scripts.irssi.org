@@ -469,11 +469,11 @@
   contact: "anttip@n0-life.com"
   description: "Sets nick away when client discconects from the irssi-proxy. If away gathers messages targeted to nick and forwards them to an email address."
   filename: "awayproxy.pl"
-  modified: "2008-05-17 17:39:09"
+  modified: "2014-17 16:08"
   license: "GPLv2"
   name: "awayproxy"
   url: "http://www.n0-life.com"
-  version: "0.2d"
+  version: "0.2e"
 
 - authors: "Stefan tommie Tomanek"
   commands: "babelirc"
