@@ -1,8 +1,8 @@
 # /WHOIS all the users who send you a private message.
-# v1.1 for irssi 0.7.98 by Timo Sirainen
+use strict;
 use Irssi;
 use vars qw($VERSION %IRSSI); 
-$VERSION = "1.1";
+$VERSION = "1.2";
 %IRSSI = (
     authors	=> "Timo \'cras\' Sirainen",
     contact	=> "tss\@iki.fi",
@@ -10,14 +10,10 @@ $VERSION = "1.1";
     description	=> "/WHOIS all the users who send you a private message.",
     license	=> "Public Domain",
     url		=> "http://irssi.org/",
-    changed	=> "2002-03-04T22:47+0100",
-    changes	=> "v1.1: don't /WHOIS if query exists for the nick already"
+    changed	=> "2014-10-17",
 );
 
-# History:
-#  v1.1: don't /WHOIS if query exists for the nick already
-
-my $lastfrom, $lastquery;
+my ($lastfrom, $lastquery);
 
 sub msg_private_first {
   my ($server, $msg, $nick, $address) = @_;
