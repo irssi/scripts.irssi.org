@@ -391,11 +391,11 @@
   contact: "janne@mikola.info"
   description: "/WHOIS anyone querying you automatically."
   filename: "autowhois_simple.pl"
-  modified: "2008-07-14 00:00:00"
+  modified: "2014-10-17 15:51"
   license: "GPL"
   name: "autowhois_simple"
   url: "http://www.mikola.info"
-  version: "0.1"
+  version: "0.2"
 
 - authors: "Bitt Faulk"
   contact: "lxsfx3h02@sneakemail.com"
