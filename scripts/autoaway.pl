@@ -18,11 +18,12 @@
 
 # Thanks to Adam Monsen for multiserver and config file fix
 
+use strict;
 use Irssi;
 use Irssi::Irc;
 
 use vars qw($VERSION %IRSSI);
-$VERSION = "0.3";
+$VERSION = "0.4";
 %IRSSI = (
     authors => 'Larry "Vizzie" Daffner',
     contact => 'vizzie@airmail.net',
@@ -30,7 +31,7 @@ $VERSION = "0.3";
     description => 'Automatically goes  away after defined inactivity',
     license => 'BSD',
     url => 'http://www.flamingpackets.net/~vizzie/irssi/',
-    changed => 'Tue Oct 19 14:41:15 CDT 2010',
+    changed => '2014-10-17 15:29',
     changes => 'Applied multiserver/store config patch from Adam Monsen'
 );
 

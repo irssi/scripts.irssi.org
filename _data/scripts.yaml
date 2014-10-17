@@ -244,11 +244,11 @@
   contact: "vizzie@airmail.net"
   description: "Automatically goes  away after defined inactivity"
   filename: "autoaway.pl"
-  modified: "2010-10-19 14:41:15"
+  modified: "2014-10-17 15:29"
   license: "BSD"
   name: "Automagic away setting"
   url: "http://www.flamingpackets.net/~vizzie/irssi/"
-  version: "0.3"
+  version: "0.4"
 
 - authors: "Peder Stray"
   contact: "peder@ninja.no"
