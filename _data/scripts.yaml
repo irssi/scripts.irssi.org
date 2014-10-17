@@ -151,11 +151,11 @@
   contact: "camel69(at)codeeye.de"
   description: "Retrievs song infos and controls amaroK via dcop, optionally running on another computer via ssh"
   filename: "amarok_ssh.pl"
-  modified: "2008-05-17 17:39:11"
+  modified: "2014-10-17 14:32"
   license: "Public Domain"
   name: "amaroK (via ssh)"
   url: "http://www.codeeye.de/irssi/"
-  version: "1.0"
+  version: "1.1"
 
 - authors: "Tuukka Lukkala"
   contact: "ragdim at mbnet dot fi"
