@@ -12,13 +12,13 @@ use Irssi;
 use Fcntl qw(:flock);
 use vars qw($VERSION %IRSSI);
 
-$VERSION = "1.00";
+$VERSION = "1.01";
 %IRSSI = (
     authors     => 'Antti Vähäkotamäki',
     name        => 'activity_file',
     description => 'Maintains a representation of window activity status in a file',
     license     => 'GNU General Public License',
-    changed     => 'Wed Jul 19 23:59 EET 2006'
+    changed     => '2014-10-17'
 );
 
 
@@ -66,22 +66,21 @@ sub store_status {
         }
     }
 
-    if ( open F, "+>>", $filename ) {
+    if ( open my $fh, "+>>", $filename ) {
 
-        flock F, LOCK_EX;
-        seek F, 0, 0;
-        truncate F, 0;
+        flock $fh, LOCK_EX;
+        seek $fh, 0, 0;
+        truncate $fh, 0;
 
         for ( @items ) {
-            print F join(',', $_->{window}, $_->{level}, $_->{name}, $_->{tag});
-            print F "\n";
+            print $fh join(',', $_->{window}, $_->{level}, $_->{name}, $_->{tag});
+            print $fh "\n";
         }
 
-        close F; # buffer is flushed and lock is released on close
+        close $fh; # buffer is flushed and lock is released on close
     }
     else {
-        print 'Error in script '. "'$scriptname'" .': Could not open file '
-            . $filename .' for writing!';
+        print "Error in script '$scriptname': Could not open file $filename for writing!";
     }
 
     $last_values = $new_values;
