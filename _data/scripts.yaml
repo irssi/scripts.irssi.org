@@ -381,11 +381,11 @@
   contact: "tss@iki.fi"
   description: "/WHOIS all the users who send you a private message."
   filename: "autowhois.pl"
-  modified: "2002-03-04 22:47:00"
+  modified: "2014-10-17 15:49"
   license: "Public Domain"
   name: "autowhois"
   url: "http://irssi.org/"
-  version: "1.1"
+  version: "1.2"
 
 - authors: "Janne Mikola"
   contact: "janne@mikola.info"
