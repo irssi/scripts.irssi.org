@@ -7,10 +7,11 @@
 
 # check out my other irssi-stuff at http://xulfad.inside.org/~flux/software/irssi/
 
+use strict;
 use Irssi;
 
 use vars qw($VERSION %IRSSI);
-$VERSION = "0.4";
+$VERSION = "0.5";
 %IRSSI = (
     authors     => "Erkki Seppälä",
     contact     => "flux\@inside.org",
@@ -18,12 +19,10 @@ $VERSION = "0.4";
     description => "Ignores people bringin up boring/repeated subjects, plus replies.",
     license     => "Public Domain",
     url         => "http://xulfad.inside.org/~flux/software/irssi/",
-    changed     => "Tue Mar  5 00:06:35 EET 2002"
+    changed     => "2014-10-17 15:21"
 );
 
-
 use Irssi::Irc;
-use strict;
 
 my $log = 0;
 my $logFile = "$ENV{HOME}/.irssi/armeija.log";
@@ -104,12 +103,11 @@ sub public {
     $why = $msg;
     $who = $nick;
     if ($log) {
-      open(F, ">>$logFile");
+      open(my $file, q{>>}, $logFile);
       my @t = localtime($now);
       $t[5] += 1900;
-      print F "$t[5]-", p0($t[4] + 1), "-", p0($t[3]), " ",
-	p0($t[2]), ":", p0($t[1]), ":", p0($t[0]), " $who/$target: $why\n";
-      close(F);
+      print $file "$t[5]-", p0($t[4] + 1), "-", p0($t[3]), " ", p0($t[2]), ":", p0($t[1]), ":", p0($t[0]), " $who/$target: $why\n";
+      close($file);
     }
     if ($retrigger || !exists $infected{$nick}) {
       $infected{$nick} = $now + $timeout;
@@ -162,40 +160,38 @@ sub logging {
 
 sub load {
   local $/ = "\n";
-  local *F;
-  if (open(F, "< $wordFile")) {
+  if (open(my $wfile, q{<}, $wordFile)) {
     @keywords = ();
-    while (<F>) {
+    while (<$wfile>) {
       chomp;
       push @keywords, $_;
     }
-    close(F);
+    close($wfile);
   } else {
     Irssi::print("Failed to open wordfile $wordFile\n");
   }
-  if (open(F, "< $channelFile")) {
+  if (open(my $chanfile, q{<}, $channelFile)) {
     @channels = ();
-    while (<F>) {
+    while (<$chanfile>) {
       chomp;
       push @channels, $_;
     }
-    close(F);
+    close($chanfile);
   }
 }
 
 sub save {
-  local *F;
-  if (open(F, "> $wordFile")) {
+  if (open(my $wfile, q{>}, $wordFile)) {
     for (my $c = 0; $c < @keywords; ++$c) {
-      print F $keywords[$c], "\n";
+      print $wfile $keywords[$c], "\n";
     }
-    close(F);
+    close($wfile);
   }
-  if (open(F, "> $channelFile")) {
+  if (open(my $chanfile, q{>}, $channelFile)) {
     for (my $c = 0; $c < @channels; ++$c) {
-      print F $channels[$c], "\n";
+      print $chanfile $channels[$c], "\n";
     }
-    close(F);
+    close($chanfile);
   }
 }
 
