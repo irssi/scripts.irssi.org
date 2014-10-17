@@ -3,23 +3,22 @@
 # only when the query window has been created 
 # and therefore works only with irssi with
 # default query window behaviour.
+use strict;
 use Irssi;
 use vars qw($VERSION %IRSSI); 
 
-$VERSION = "0.1";
+$VERSION = "0.2";
 %IRSSI = (
     authors=> "Janne Mikola",
-    contact=> "janne@mikola.info",
+    contact=> "janne\@mikola.info",
     name=> "autowhois_simple",
     description=> "/WHOIS anyone querying you automatically.",
     license=> "GPL",
     url=> "http://www.mikola.info",
-    changed=> "14th of July, 2008",
-    changes=> "v0.1: Initial release"
+    changed=> "2014-10-17",
 );
 
-# Global
-$handle_this_query = 0;
+my $handle_this_query = 0;
 
 # Checks the birth of a new query window.
 sub new_query {
