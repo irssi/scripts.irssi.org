@@ -17,6 +17,7 @@
 #     1.1:  Now also updates fifo when config or window numbers are changed.
 # 
 
+use strict;
 use Irssi qw(
 	settings_get_int settings_get_str
 	settings_add_int settings_add_str
@@ -26,7 +27,7 @@ use Fcntl;
 use IO::Handle;
 use vars qw($VERSION %IRSSI);
 
-$VERSION = "1.1";
+$VERSION = "1.2";
 %IRSSI =
 (
 	authors     => 'Daniel Kalør (Xnybre)',
@@ -34,7 +35,7 @@ $VERSION = "1.1";
 	name        => 'act_fifo',
 	description => 'Print window activity to a fifo',
 	license     => 'GPLv2',
-	changed     => '2008-08-27'
+	changed     => '2014-10-17'
 );
 
 
@@ -153,7 +154,7 @@ unless (-p $path)
 	else
 	{
 		require POSIX;
-		POSIX::mkfifo($path, 0666) or die "can\'t mkfifo $path: $!";
+		POSIX::mkfifo($path, oct(666)) or die "can\'t mkfifo $path: $!";
 		Irssi::print("Fifo created. Start reading it (\"cat $path\") and try again.");
 		return;
 	}
