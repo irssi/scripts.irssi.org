@@ -1,5 +1,5 @@
+use strict;
 use vars qw($VERSION %IRSSI);
-
 use Irssi 20020120;
 $VERSION = "0.02";
 %IRSSI = (

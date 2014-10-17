@@ -17,6 +17,7 @@
 # Kiitokset statusbar ideasta Whiz:ille.. kiitos p‰llist‰ ideasta p‰lliin skriptaan jne.
 # Kiitoksia ei heru Whizille kyll‰k‰‰n toimimattomista regexpeist‰... joutu ihan itse opetteleen keletanatu.
 
+use strict;
 use LWP::UserAgent;
 use HTTP::Cookies;
 use Irssi;

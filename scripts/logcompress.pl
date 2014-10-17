@@ -1,5 +1,6 @@
 # compress log files when they're rotated
 # for irssi 0.7.99 by Timo Sirainen
+use strict;
 use Irssi;
 use vars qw($VERSION %IRSSI); 
 $VERSION = "0.01";

@@ -2,6 +2,7 @@
 # for irssi 0.7.99 by Timo Sirainen
 # Greatly modified by Erkki Seppälä to build dictionary of said words
 
+use strict;
 use Irssi;
 
 use vars qw($VERSION %IRSSI);
@@ -66,11 +67,13 @@ sub sig_complete {
 
   if (exists $typoWords{$word}) {
     my $correctWord = $correctWordsByIndex{$typoWords{$word}->[0]}->[0];
-    @$complist = (@complist, $correctWord);
+    @$complist = (@$complist, $correctWord);
   }
 
+  my $n;
   my %m = map { ($_ => $n++); } @$complist; 
   @$complist = ();
+  my %m2;
   foreach my $key (sort keys %m) { 
     $m2{$m{$key}}=$key; 
   } 

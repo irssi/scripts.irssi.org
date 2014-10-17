@@ -12,6 +12,9 @@
 #	Anyway, this should be fixed. And now it closes stalled gets as well.
 #
 
+use strict;
+use vars qw($VERSION %IRSSI);
+
 $VERSION = "1.1";
 %IRSSI = (
 	authors     => "Piotr 'Cvbge' Krukowiecki",
@@ -28,7 +31,7 @@ my $debug = 0; # set this to 1 to enable A LOT OF debug messages
 
 sub pd {
 	return if (not $debug);
-	$dcc = @_[0];
+	my $dcc = @_[0];
 	Irssi::print("SDC '$dcc->{type}' from '$dcc->{nick}' on '$dcc->{servertag}' arg '$dcc->{arg}'");
 	Irssi::print("SDC created '$dcc->{created}' addr '$dcc->{addr}' port '$dcc->{port}'");
 	Irssi::print("SDC starttime '$dcc->{starttime}' transfd '$dcc->{transfd}'");

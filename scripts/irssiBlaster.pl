@@ -85,7 +85,7 @@
 # - use strict;
 #################################################################################
 
-#use strict;
+use strict;
 use Irssi;
 use Irssi::TextUI;
 use vars qw($VERSION %IRSSI);
@@ -100,13 +100,15 @@ $VERSION = '1.6';
 	changed		=> 'Fri Oct 31 12:22:08 CET 2003',
 );
 
-
+# TODO get rid of all those globals. This script needs some serious rework.
+my (@all, @artist, @title, @album, @year, @name, @status, @comment, @mode, @format, @bitrate, @samplerate, @length, @next, @tot);
+my ($name, $infofile, $status, $artist, $title, $year, $album, $comment, $format, $bitrate, $mode, $samplerate, $length, $next, $min, $sec, $secs, $prefix, $barprefix, $tot);
 
 sub get_info {
 
 	my $infofile = Irssi::settings_get_str('blaster_infos_path');
-	open (FILE, $infofile); # open and read file with infos
-	@all = <FILE>;
+	open (FILE, "<", $infofile); # open and read file with infos
+	my @all = <FILE>;
 	close (FILE);
 
 	@artist = grep (/^artist/, @all); # get the lines with tag infos
@@ -119,8 +121,8 @@ sub get_info {
 
 sub get_allinfo {
 
-	my $infofile = Irssi::settings_get_str('blaster_infos_path');
-	open (FILE, $infofile);
+	$infofile = Irssi::settings_get_str('blaster_infos_path');
+	open (FILE, "<", $infofile);
 	@all = <FILE>;
 	close (FILE);
 
@@ -181,8 +183,8 @@ sub get_allinfo {
 
 sub get_status {
 
-	my $infofile = Irssi::settings_get_str('blaster_infos_path');
-	open (FILE, $infofile);
+	$infofile = Irssi::settings_get_str('blaster_infos_path');
+	open (FILE, "<", $infofile);
 	@all = <FILE>;
 	close (FILE);
 
@@ -225,7 +227,7 @@ sub get_name_info {
 
 sub noinfo_error {
 
-	my $infofile = Irssi::settings_get_str('blaster_infos_path');
+	$infofile = Irssi::settings_get_str('blaster_infos_path');
 	# print help if the info file is not valid
 	Irssi::print(
 	"%9IrssiBlaster:%_ \"$infofile\" is not a valid info file. %9Make sure%_ %Rmp3blaster -f $infofile%n %9is running!!!%_\n".

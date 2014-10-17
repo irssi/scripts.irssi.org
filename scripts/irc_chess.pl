@@ -1,6 +1,7 @@
 #
 #Irssi script to complement chess backend server
 #
+use strict;
 use Irssi;
 use Irssi::Irc;
 use IO::Socket;
@@ -16,6 +17,7 @@ $VERSION="0.1";
 	license     => "GNU GPL",
 	url         => "none as yet",
 );
+my $gameRunning=0;
 
 sub processColors
 {
@@ -63,12 +65,12 @@ sub processColors
 #
 sub processMsgFromServer 
 {
-	($server, $msg, $nick)=@_;
-	$delimiter="<:=:>";
+	my ($server, $msg, $nick)=@_;
+	my $delimiter="<:=:>";
 	$_=$msg;
 
 	#determine the type of message from the number of delimiters
-	$numDelims=(@list=/$delimiter/g);
+	my $numDelims=(my @list=/$delimiter/g);
 
 	if ($numDelims==0)
 	{
@@ -113,7 +115,7 @@ sub processMsgFromServer
 		my @msg1List=split(/\n/, $msg1);
 		my $msg1ListSize=@msg1List;
 
-		for ($j=0; $j<$msg1ListSize; $j++)
+		for (my $j=0; $j<$msg1ListSize; $j++)
 		{
 			$server->command("eval msg $user1 \\cb$msg1List[$j]\\co");
 		}
@@ -121,7 +123,7 @@ sub processMsgFromServer
 		my @msg2List=split(/\n/, $msg2);
 		my $msg2ListSize=@msg2List;
 
-		for ($j=0; $j<$msg2ListSize; $j++)
+		for (my $j=0; $j<$msg2ListSize; $j++)
 		{
 			$server->command("eval msg $user2 \\cb$msg2List[$j]\\co");
 		}
@@ -141,7 +143,7 @@ sub processMsgFromServer
 
 sub processMsgFromClient
 {
-	($server, $msg, $nick)=@_; 
+	my ($server, $msg, $nick)=@_; 
 
 	#Irssi::print("msg from client:\n$msg\n");
 	$msg=lc($msg);	
@@ -166,13 +168,14 @@ sub sig_processPvt
 {
 	my($server, $msg, $nick, $address)=@_;
 
-	$msgToSend=processMsgFromClient($server, $msg, $nick);
+	my $msgToSend=processMsgFromClient($server, $msg, $nick);
 
 	if ($msgToSend !~ /^INVALID$/)
 	{
 		Irssi::print("Sending message now");
 		send(SOCKET,$msgToSend,0);
 		Irssi::print("Waiting for message from server\n");
+		my $buffer;
 		recv(SOCKET,$buffer,32678,0); #read a max of 32k. 
 		processMsgFromServer($server, $buffer, $nick);
 	}
@@ -192,15 +195,15 @@ sub cmd_endGame
 
 BEGIN
 {
-	$PORT=1234;
+	my $PORT=1234;
 	
 	Irssi::print("connecting to server\n");
-	$tcpProtocolNumber = getprotobyname('tcp') || 6; 
+	my $tcpProtocolNumber = getprotobyname('tcp') || 6; 
 
 	socket(SOCKET, PF_INET(), SOCK_STREAM(), $tcpProtocolNumber)
 		or die("socket: $!");
 
-	$internetPackedAddress = pack('S na4 x8', AF_INET(), $PORT, 127.0.0.1); 
+	my $internetPackedAddress = pack('S na4 x8', AF_INET(), $PORT, 127.0.0.1); 
 	connect(SOCKET, $internetPackedAddress) or die("connect: $!");
 
 	Irssi::print("Game is now running");

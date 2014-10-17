@@ -832,7 +832,7 @@ sub load_friends {
 		$all_handles = {};
 
 		local *F;
-		open(F, "<$friendfile") or return -1;
+		open(F, "<", $friendfile) or return -1;
 		local $/ = "\n";
 		while (<F>) {
 			my ($handle, $hosts, $globflags, $chanstr, $password, $comment);
@@ -913,7 +913,7 @@ sub save_friends {
 	# be sane
 	my $old_umask = umask(077);
 
-	if (!defined open(F, ">$tmpfile")) {
+	if (!defined open(F, ">", $tmpfile)) {
 		Irssi::print("Couldn't open $tmpfile for writing");
 		return 0;
 	}

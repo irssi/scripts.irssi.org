@@ -20,10 +20,11 @@
 # guys are calling their software when it's in a buggy and
 # not-so-very-usefull stage of development :P
 # 
+use strict;
 use Irssi;
 use LWP::Simple;
 use vars qw($VERSION %IRSSI);
-$translate =0;
+my $translate =0;
 
 $VERSION = "0.2";
 %IRSSI = (
@@ -37,20 +38,20 @@ $VERSION = "0.2";
 );
 
 sub income {
-my ($server, $data, $nick, $mask, $target) = @_;
-		$eng = $data;
-	if($translate=1) {
+	my ($server, $data, $nick, $mask, $target) = @_;
+	my $eng = $data;
+	if($translate) {
 		$eng =~ s/ /+/ig;
 		chop($eng);
 		Irssi::command("/echo [$nick] $eng");
-		$result = get("http://ets.freetranslation.com:5081/?Sequence=core&Mode=txt&template=TextResults2.htm&Language=English/Norwegian&SrcText=$eng");
+		my $result = get("http://ets.freetranslation.com:5081/?Sequence=core&Mode=txt&template=TextResults2.htm&Language=English/Norwegian&SrcText=$eng");
 		Irssi::command("/echo [$nick] $result");
 	}
 }
 
 sub trans {
-
-	if($translate =0) { $translate=1; } else { $translate =0; }
+	Irssi::print $translate;
+	$translate = 1 - $translate;
 }
 
 Irssi::signal_add("message public", "income");

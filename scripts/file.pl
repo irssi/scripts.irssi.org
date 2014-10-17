@@ -1,3 +1,5 @@
+use strict;
+use vars qw($VERSION %IRSSI);
 
 my $help = <<EOF;
 Usage: (all on one line)
@@ -25,8 +27,6 @@ $VERSION = 1.0;
    license     => "GNU GPLv2 or later",
    url         => "http://irssi.dgl.cx/"
 );
-
-use strict;
 
 Irssi::command_bind('file', sub {
    my $data = shift;
@@ -64,7 +64,7 @@ Irssi::command_bind('file', sub {
    }
 
    # or do borrowed from one of juerd's scripts (needs 5.6 though)
-   open(FILE, "<$data") or do {
+   open(FILE, "<", $data) or do {
       print "Error opening '$data': $!";
       return;
    };
