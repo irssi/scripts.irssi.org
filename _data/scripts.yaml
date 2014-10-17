@@ -4276,3 +4276,12 @@
   license: "GPLv3+"
   name: "qchallengeauth"
   version: "1.0"
+
+- authors: "Pablo Martín Báez Echevarría"
+  contact: "pab_24n@outlook.com"
+  description: "define a permanent text formatting (bold, underline, etc.) for outgoing messages"
+  filename: "frm_outgmsgs.pl"
+  modified: "2014-10-16"
+  license: "Public Domain"
+  name: "frm_outgmsgs"
+  version: "1.0"
