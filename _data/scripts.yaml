@@ -190,11 +190,11 @@
   contact: "formorer@formorer.de"
   description: "Shows your battery status in your Statusbar"
   filename: "apm.pl"
-  modified: "2008-05-17 17:39:09"
+  modified: "2014-10-17 15:11"
   license: "GNU Public License"
   name: "apm"
   url: "http://www.formorer.de/code"
-  version: "0.4"
+  version: "0.5"
 
 - authors: "Erkki Seppälä"
   contact: "flux@inside.org"
