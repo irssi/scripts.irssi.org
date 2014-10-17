@@ -101,11 +101,11 @@
 - authors: "Antti Vähäkotamäki"
   description: "Maintains a representation of window activity status in a file"
   filename: "activity_file.pl"
-  modified: "2006-07-19 23:59:00"
+  modified: "2014-10-17 13:55"
   license: "GNU General Public License"
   modules: "Fcntl"
   name: "activity_file"
-  version: "1.00"
+  version: "1.01"
 
 - authors: "BC-bd"
   contact: "bd@bc-bd.org"
