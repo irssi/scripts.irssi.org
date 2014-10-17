@@ -1,10 +1,10 @@
+use strict;
 use Irssi;
 use Irssi::Irc;
-use strict;
 
 use vars qw($VERSION %IRSSI);
 
-$VERSION="0.3";
+$VERSION="0.4";
 %IRSSI = (
 	authors=> 'BC-bd',
 	contact=> 'bd@bc-bd.org',
@@ -141,7 +141,7 @@ sub combineSettings {
 	return 0;
 }
 
-sub sig_action() {
+sub sig_action {
 	my ($server,$msg,$nick,$address,$target) = @_;
 	
 	my $command;

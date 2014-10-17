@@ -111,11 +111,11 @@
   contact: "bd@bc-bd.org"
   description: "Puts people on ignore if they do a public away. See source for options."
   filename: "ai.pl"
-  modified: "2008-05-22 09:10:50"
+  modified: "2014-10-17 14:24"
   license: "GPL v2"
   name: "ai"
   url: "https://bc-bd.org/svn/repos/irssi/trunk/"
-  version: "0.3"
+  version: "0.4"
 
 - authors: "Maciek fahren Freudenheim"
   contact: "fahren@bochnia.pl"
