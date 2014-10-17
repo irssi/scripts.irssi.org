@@ -1,3 +1,5 @@
+use strict;
+use vars qw($VERSION %IRSSI);
 use Irssi 20010920.0000 ();
 $VERSION = "2.01";
 %IRSSI = (
@@ -7,8 +9,6 @@ $VERSION = "2.01";
     license     => 'Same as Irssi',
     url         => 'http://irssi.dgl.cx/',
 );
-
-use strict;
 
 sub cmd_clones {
   my ($data, $server, $channel) = @_;

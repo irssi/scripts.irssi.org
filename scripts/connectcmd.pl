@@ -17,7 +17,7 @@ my %postconn_actions;
 my %disconn_actions;
 
 sub load_actions {
-  open ACTIONS, "$ENV{HOME}/.irssi/connectcmd_actions";
+  open ACTIONS, q{<}, "$ENV{HOME}/.irssi/connectcmd_actions";
 
   while (<ACTIONS>) {
     my @lines = split "\n";
@@ -37,7 +37,7 @@ sub load_actions {
 }
 
 sub save_actions {
-  open ACTIONS, ">$ENV{HOME}/.irssi/connectcmd_actions";
+  open ACTIONS, q{>}, "$ENV{HOME}/.irssi/connectcmd_actions";
 
   foreach my $server (keys %preconn_actions) {
     print ACTIONS "$server:preconn:$preconn_actions{$server}\n";

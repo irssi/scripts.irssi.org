@@ -9,7 +9,7 @@
 # /statusbar window add join_notice
 # use Data::Dumper;
 
-#use strict;
+use strict;
 use Irssi::TextUI;
 #use Irssi::Themes;
 use Data::Dumper;

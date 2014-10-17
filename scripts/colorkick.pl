@@ -9,7 +9,7 @@
 #  colorkick_blink	int	0: don't kick on blink
 #
 
-
+use strict;
 use Irssi;
 use Irssi::Irc;
 

@@ -1,5 +1,6 @@
 # $Id: centericq.pl,v 1.0.0 2002/10/19 13:15:49 Garion Exp $
-
+use strict;
+use vars qw($VERSION %IRSSI);
 $VERSION = "1.0.0";
 %IRSSI = (
     authors     => "Joost \"Garion\" Vunderink",
@@ -144,7 +145,7 @@ sub update_statusbar_item {
   foreach $key(@keys) {
     if ($numunreads{$key} > 0) {
       #Irssi::print("$friendnick{$key} has $numunreads{$key} unreads.");
-      $status .= $friendnick{$key} . "-" . $numunreads{$key} . ",";
+      $status .= $friendnicks{$key} . "-" . $numunreads{$key} . ",";
     }
   }
   $status =~ s/,$//;
@@ -182,7 +183,7 @@ sub init {
   }
  
   my ($icqfriends, $msnfriends) = (0, 0); 
-  while ($filename = readdir(ICQDIR)) {
+  while (my $filename = readdir(ICQDIR)) {
     # ICQ friends
     if ($filename =~ /^[0-9]+$/ && $filename !~ /^0$/) {
       $icqfriends++;
@@ -209,7 +210,7 @@ sub init_friend {
   $lastreads{$friend}   = get_lastread($friend);
   $numunreads{$friend}  = get_numunreads($friend);
   #$filesizes{$friend}   = get_filesize($friend);
-  $friendnick{$friend}  = get_nickname($friend);
+  $friendnicks{$friend}  = get_nickname($friend);
   $historyts{$friend}   = get_historyts($friend);
   #Irssi::print("Initilialized $friendnick{$friend}.");
 }
@@ -221,7 +222,7 @@ sub get_lastread {
   my ($friend) = @_;
   my $lastreadfile = $icqdir . "/" . $friend . "/lastread"; 
 
-  open(F, "<$lastreadfile") || return 0; #die("Could not open $lastreadfile.");;
+  open(F, "<", $lastreadfile) || return 0; #die("Could not open $lastreadfile.");;
   my $lastrd = <F>;
   close(F);
   chop($lastrd);
@@ -242,7 +243,7 @@ sub get_numunreads {
   }
 
   my $msgfile = $icqdir . "/" . $friend . "/history";
-  open(F, "<$msgfile") || return 0; #die("Could not open $msgfile.");
+  open(F, "<", $msgfile) || return 0; #die("Could not open $msgfile.");
   my @lines = <F>;
   chop(@lines);
   close(F);
@@ -300,7 +301,7 @@ sub get_nickname {
   my ($friend) = @_;
 
   my $infofile = $icqdir . "/" . $friend . "/info";
-  open(F, "<$infofile") || return $friend; #die("Could not open $msgfile.");
+  open(F, "<", $infofile) || return $friend; #die("Could not open $msgfile.");
   my @lines = <F>;
   chop(@lines);
   close(F);

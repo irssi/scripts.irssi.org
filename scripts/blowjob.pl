@@ -96,13 +96,13 @@ sub loadconf
 {
   my $fconf =Irssi::get_irssi_dir()."/blowjob.conf";
   my @conf;
-  open (CONF, "<$fconf");
+  open (CONF, q{<}, $fconf);
 
   if (!( -f CONF)) {
     Irssi::print("\00305> $fconf not found, setting to defaults\n");
     Irssi::print("\00305> creating $fconf with default values\n\n");
     close(CONF);
-    open(CONF,">$fconf");
+    open(CONF, q{>}, $fconf);
     print CONF "key:			$key\n";
     print CONF "header:			$header\n";
     print CONF "wildcardserver:		$enableWildcard\n";
@@ -144,7 +144,7 @@ my $gparanoia=$paranoia;
 sub loadkeys
 {
   if ( -e "$kfile" ) {
-    open (KEYF, "<$kfile");
+    open (KEYF, q{<}, $kfile);
     @keys = <KEYF>;
     close (KEYF);
   }
@@ -203,7 +203,7 @@ sub setkey
   # Note, place of paranoia has changed!
   my $line="$curserv:$curchan:$fparanoia:$key";
 
-  open (KEYF, ">$kfile");
+  open (KEYF, q{>}, $kfile);
   foreach(@keys) {
     s/\n//g;
     if (/^$curserv\:$curchan\:/) {
@@ -231,7 +231,7 @@ sub delkey
   my $serv;
   my $chan;
 
-  open (KEYF, ">$kfile");
+  open (KEYF, q{>}, $kfile);
   foreach(@keys) {
     s/\n//g;
     ($serv,$chan)=/^(.*?)\:(.*?)\:/;

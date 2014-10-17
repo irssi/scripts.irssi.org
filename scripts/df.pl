@@ -76,7 +76,7 @@ sub getDiskInfo()
 	my @list;
 	my $skip_line_one = 1;
 
-	open(FID, "/bin/df -h|");
+	open(FID, "-|", "/bin/df");
 	while (<FID>)
 	{
 		if ($skip_line_one > 0)

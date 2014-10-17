@@ -30,6 +30,7 @@
 #       Supports for limiting searches only to specified ircnets and
 #       channels. Some cleanups..
 
+use strict;
 use Irssi;
 use vars qw($VERSION %IRSSI); 
 $VERSION = "0.3";

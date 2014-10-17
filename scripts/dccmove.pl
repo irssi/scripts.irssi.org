@@ -5,6 +5,7 @@
 # Copyright (C) 2003 by Peder Stray <peder@ninja.no>
 #
 
+use strict;
 use Irssi;
 use vars qw{$VERSION %IRSSI};
 ($VERSION) = '$Revision: 1.4 $' =~ / (\d+\.\d+) /;

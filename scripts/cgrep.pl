@@ -18,6 +18,7 @@
 #
 ################################################################################
 
+use strict;
 use Irssi;
 use vars qw($VERSION %IRSSI);
 use integer;

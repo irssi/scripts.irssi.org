@@ -11,6 +11,8 @@
 # added > /dev/null, thx to Luis Oliveira
 # fixed timeout handling bug, thx to frizop@charter.net
 
+use strict;
+use vars qw($VERSION %IRSSI);
 $VERSION = "0.10";
 %IRSSI = (
     authors	=> "Georg Lukas",
@@ -23,7 +25,8 @@ $VERSION = "0.10";
 
 use Irssi;
 
-my $might_beep = 1, $to_tag;
+my $might_beep = 1;
+my $to_tag;
 
 sub beep_overflow_timeout() {
 	$might_beep = 1;
