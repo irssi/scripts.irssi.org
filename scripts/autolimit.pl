@@ -1,5 +1,7 @@
+use strict;
 use Irssi 20010920.0000 ();
-$VERSION = "1.00";
+use vars qw($VERSION %IRSSI);
+$VERSION = "1.01";
 %IRSSI = (
     authors     => 'David Leadbeater',
     contact     => 'dgl@dgl.cx',
