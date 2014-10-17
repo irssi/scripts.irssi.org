@@ -28,7 +28,7 @@ use vars qw($VERSION %IRSSI);
 
 use Irssi qw(command_bind signal_add);
 use IO::File;
-$VERSION = '0.20';
+$VERSION = '0.21';
 %IRSSI = (
 	authors		=> 'Patrik Jansson',
 	contact		=> 'gein@knivby.nu',
@@ -46,7 +46,7 @@ sub public_question {
 	my ($server, $msg, $nick, $address, $target) = @_;
 	question($server, $msg, $nick.": ", $target);
 }
-sub question($server, $msg, $nick, $target) {
+sub question {
 	my ($server, $msg, $nick, $target) = @_;
 	$_ = $msg;
 	if (!/^8-ball/i) { return 0; }

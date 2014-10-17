@@ -3,11 +3,11 @@
   contact: "gein@knivby.nu"
   description: "Dont like to take decisions? Have the 8-ball do it for you instead."
   filename: "8-ball.pl"
-  modified: "2008-05-22 00:59:07"
+  modified: "2014-10-17 12:37:00"
   license: "GPL"
   modules: "IO::File"
   name: "8-ball"
-  version: "0.20"
+  version: "0.21"
 
 - authors: "Dani Soufi (compengi)"
   contact: "IRC: Freenode network, #ubuntu-lb"
