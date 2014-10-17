@@ -285,11 +285,11 @@
   contact: "dgl@dgl.cx"
   description: "does an autolimit for a channel, set variables in the script"
   filename: "autolimit.pl"
-  modified: "2008-05-17 17:39:09"
+  modified: "2014-10-17 15:31"
   license: "GNU GPLv2 or later"
   name: "autolimit"
   url: "http://irssi.dgl.cx/"
-  version: "1.00"
+  version: "1.01"
 
 - authors: "Timo Sirainen"
   description: "Simple auto-op script"
