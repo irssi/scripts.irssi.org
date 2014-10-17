@@ -2,7 +2,7 @@
 
 use strict;
 use vars qw($VERSION %IRSSI);
-$VERSION = "2003100201";
+$VERSION = "20141017";
 %IRSSI = (
     authors     => "Oskari 'Okko' Ojala",
     contact     => "sorter.irssi-scripts\@okko.net",
@@ -35,7 +35,7 @@ use Irssi 20020324;
 sub catch_away {
 	my $server = shift;
 
-	open(STATUSFILE, '> '.$ENV{'HOME'}.'/.irssi/away2web-status') || die ("away2web.pl: Could not open file for writing:".$!);
+	open(STATUSFILE, q{>}, $ENV{'HOME'}.'/.irssi/away2web-status') || die ("away2web.pl: Could not open file for writing:".$!);
 
 	if ($server->{usermode_away}) {
 	    # User is offline.

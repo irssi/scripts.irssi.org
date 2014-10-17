@@ -421,10 +421,10 @@
   contact: "sorter.irssi-scripts@okko.net"
   description: "Write /away information to a file to be used on web pages"
   filename: "away2web.pl"
-  modified: "2008-05-17 17:39:11"
+  modified: "2014-10-17 15:55"
   license: "BSD"
   name: "away2web"
-  version: "2003100201"
+  version: "20141017"
 
 - authors: "Geert Hauwaerts"
   contact: "geert@irssi.org"
