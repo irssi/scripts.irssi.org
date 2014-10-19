@@ -30,7 +30,7 @@ sub load_colors {
 }
 
 sub save_colors {
-  open COLORS, ">$ENV{HOME}/.irssi/saved_colors";
+  open COLORS, ">", "$ENV{HOME}/.irssi/saved_colors";
 
   foreach my $nick (keys %saved_colors) {
     print COLORS "$nick:$saved_colors{$nick}\n";

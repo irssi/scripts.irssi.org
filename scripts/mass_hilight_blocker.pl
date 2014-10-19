@@ -15,6 +15,7 @@
 # * 30.05.2004
 # first version of the script
 
+use strict;
 use Irssi;
 use vars qw($VERSION %IRSSI); 
 $VERSION = "0.2";
@@ -39,7 +40,7 @@ sub sig_printtext {
       my $server  =  $dest->{server};	# get server and channel for target
       my $channel =  $server->channel_find($dest->{target});
       
-      foreach $nick ($channel->nicks()) # walk through nicks
+      foreach my $nick ($channel->nicks()) # walk through nicks
         {
           $nick = $nick->{nick};
           $nick =~ s/([\]\[])/\\$1/g;	# ']' and '[' need masking

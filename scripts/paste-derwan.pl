@@ -113,7 +113,7 @@ sub paste {
 		return;
 	};
 	if ($where =~ /^-s/) {
-		open (F, ">>$file") or do {
+		open (F, ">>", $file) or do {
 			$window->print("Paste: Cannot write savefile \"$file\"", $paste_use_level);
 			return;
 		};

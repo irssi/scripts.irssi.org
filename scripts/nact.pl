@@ -109,7 +109,7 @@ sub getBytesLinux() {
 	my @list;
 	my $ignore = 2;
 	
-	open(FID, "/proc/net/dev");
+	open(FID, "<", "/proc/net/dev");
 
 	while (<FID>) {
 		if ($ignore > 0) {
@@ -130,7 +130,7 @@ sub getBytesLinux() {
 sub getBytesOBSD() {
 	my @list;
 	
-	open(FID, "/usr/bin/netstat -nib|");
+	open(FID, "-|", "/usr/bin/netstat -nib");
 
 	while (<FID>) {
 		my $line = $_;
@@ -146,7 +146,7 @@ sub getBytesFBSD() {
   my @list;
   my $olddev="";
 
-  open(FID, "/usr/bin/netstat -nib|");
+  open(FID, "-|", "/usr/bin/netstat -nib");
   while (<FID>) {
     my $line = $_;
     @list = split(" ", $line);

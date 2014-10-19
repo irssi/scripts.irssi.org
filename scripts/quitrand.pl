@@ -20,7 +20,7 @@ my $quitfile = glob "~/.irssi/irssi.quit";
 sub cmd_quit {
 	my ($data, $server, $channel) = @_;
 	
-	open(f,$quitfile);
+	open(f,"<",$quitfile);
 	my @contenido = <f>;
 	close(f);
 

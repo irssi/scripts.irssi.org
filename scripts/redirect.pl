@@ -2,8 +2,10 @@
 #
 # 2002 Thomas Graf <irssi@reeler.org>
 
+use strict;
 use Irssi;
 use Irssi::Irc;
+use vars qw($VERSION %IRSSI);
 
 $VERSION = "0.1";
 %IRSSI = (

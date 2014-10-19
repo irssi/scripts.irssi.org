@@ -215,7 +215,7 @@ sub pipe_open {
 	if ( $version =~ /^2.*/ ) {
 		$command .= " --indent=".Irssi::settings_get_str('osd_indent');
 	}
-	open( OSDPIPE, $command ) 
+	open( OSDPIPE, "|-", $command ) 
 		or print "The OSD program can't be started, check if you have osd_cat installed AND in your path.";
 	OSDPIPE->autoflush(1);
 }

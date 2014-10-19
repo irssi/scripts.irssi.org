@@ -351,7 +351,7 @@ sub cmd_monitor_save {
 	#my ($data, $server, $item) = @_;
 	my $file = Irssi::get_irssi_dir."/monitor";
 	my ($net, $n, $k);
-	open FILE, "> $file" or return;
+	open FILE, ">", $file or return;
 	foreach $net (keys %monitorlist) {
 		foreach $n (keys %{$monitorlist{$net}}) {
 			$monitorlist{$net}{$n}{lastseen} = time() if $monitorlist{$net}{$n}{mask_online};
@@ -369,7 +369,7 @@ sub cmd_monitor_load {
 	#my ($data, $server, $item) = @_;
 	my $file = Irssi::get_irssi_dir."/monitor";
 
-	open FILE, "< $file" or return;
+	open FILE, "<", $file or return;
 	%monitorlist = ();
 	while (<FILE>) {
 		chomp;

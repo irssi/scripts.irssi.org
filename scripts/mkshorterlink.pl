@@ -14,8 +14,6 @@ use LWP::UserAgent;
 use strict;
 use vars qw($VERSION %IRSSI);
 
-$VERSION = "0.3";
-
 %IRSSI = (
 	  'authors'	=> 'Gergely Nagy',
 	  'contact'	=> 'algernon\@bonehunter.rulez.org',
@@ -165,7 +163,7 @@ sub load_unshortlist {
 	my $count = 0;
 	local *CONF;
 	
-	open CONF, "< $file";
+	open CONF, "<", $file;
 	while (<CONF>)
 	{
 		$noshort{$_} = 1;
@@ -181,7 +179,7 @@ sub save_unshortlist {
 	my $file = Irssi::get_irssi_dir."/unshortlist";
 	local *CONF;
 
-	open CONF, "> $file";
+	open CONF, ">", $file;
 	foreach (keys %noshort)
 	{
 		print CONF $_ if ($noshort{$_});

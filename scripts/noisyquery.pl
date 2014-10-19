@@ -3,7 +3,9 @@
 
 # 21.08.2001 bd@bc-bd.org :: added automatic whois
 
+use strict;
 use Irssi;
+use vars qw($VERSION %IRSSI);
 
 $VERSION="0.1.1";
 %IRSSI = (

@@ -3,6 +3,7 @@
 # Contains code from centericq.pl (public domain) and imapbiff (GPL) and
 # hence this is also GPL'd.
 
+use strict;
 use vars qw($VERSION %IRSSI);
 $VERSION = "0.5";
 %IRSSI = (
@@ -40,9 +41,6 @@ $VERSION = "0.5";
 
 use Irssi;
 use Irssi::TextUI;
-
-
-use strict;
 use IO::Socket;
 
 # TODO : avoid requiring SSL when it's not in use?

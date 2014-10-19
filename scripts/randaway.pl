@@ -14,8 +14,10 @@
 # get_irssi_dir() instead of $ENV[]. imported.
 #
 
+use strict;
 use Irssi 20011116;
 use Irssi::Irc;
+use vars qw($VERSION %IRSSI);
 
 $VERSION = '1.13';
 %IRSSI = (
@@ -38,7 +40,7 @@ sub readreasons {
         undef @awayreasons;
         if (-f $reasonfile) { 
                 Irssi::print("=> Trying to read awayreasons from $reasonfile");
-		open F, $reasonfile;
+		open F, "<", $reasonfile;
 
 		# this actually makes the while() work like a while and not
 		# like a read() .. ie, stopping at each \n.
@@ -92,7 +94,7 @@ sub add_reason {
 	# adding to current environment.
 	push(@awayreasons, $reason);
 	# and also saving it for later.  
-	open(F, ">> $reasonsfile");
+	open(F, ">>", $reasonsfile);
 	print F $reason;
 	close F;
 	Irssi::print("Added: $reason");

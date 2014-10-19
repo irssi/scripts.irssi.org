@@ -89,13 +89,13 @@ sub load_questions($$) {
 	#the next must be checked
 
 	my $file = Irssi::settings_get_str("quiz_file");
-	if (open(QS, "<$file")) { #open for QS
+	if (open(QS, "<", $file)) { #open for QS
 		@{$game->{'questions'}}=sort <QS>;
 		close(QS);
 		Irssi::print("Loaded questions");
 
 		my $file2 = Irssi::settings_get_str("used_file");
-		if (open(QS2, "<$file2")) { #open for QS2
+		if (open(QS2, "<", $file2)) { #open for QS2
 			@{$game->{'used_questions'}}=sort <QS2>;
 			close(QS2);
 
@@ -288,7 +288,7 @@ sub game_over($) {
 
                 #save used questions
                 my $file2 = Irssi::settings_get_str("used_file");
-                if (open(QS2, ">$file2")) {
+                if (open(QS2, ">", $file2)) {
                         my $line;
 			@{$game->{'used_questions'}}=sort @{$game->{'used_questions'}};
                         foreach $line (@{$game->{'used_questions'}}){

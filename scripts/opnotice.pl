@@ -17,6 +17,7 @@
 #
 # Commands: /o <text> in a channel.
 
+use strict;
 use Irssi;
 
 use vars qw($VERSION %IRSSI);

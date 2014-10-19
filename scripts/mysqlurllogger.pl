@@ -13,7 +13,7 @@
 #| line      | char(255)     | YES  |     | NULL    |       |
 #+-----------+---------------+------+-----+---------+-------+
 
-
+use strict;
 use DBI;
 use Irssi;
 use Irssi::Irc;
@@ -30,13 +30,13 @@ $VERSION = "1.0";
         url         => "http://nchip.ukkosenjyly.mine.nu/irssiscripts/",
     );
 
-$dsn = 'DBI:mysql:ircurl:localhost';
-$db_user_name = 'tunnus';
-$db_password = 'salakala';
+my $dsn = 'DBI:mysql:ircurl:localhost';
+my $db_user_name = 'tunnus';
+my $db_password = 'salakala';
 
 sub cmd_logurl {
 	my ($server, $data, $nick, $mask, $target) = @_;
-        $d = $data;
+        my $d = $data;
         if (($d =~ /(.{1,2}tp\:\/\/.+)/) or ($d =~ /(www\..+)/)) {
 		db_insert($nick, $target, $1);
         }

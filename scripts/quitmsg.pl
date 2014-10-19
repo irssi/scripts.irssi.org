@@ -21,7 +21,7 @@ sub cmd_quit {
 	my ($data, $server, $channel) = @_;
 	return if ($data ne "");
 
-	open (f, $quitfile) || return;
+	open (f, "<", $quitfile) || return;
 	my $lines = 0; while(<f>) { $lines++; };
 
 	my $line = int(rand($lines))+1;

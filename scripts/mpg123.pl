@@ -60,7 +60,7 @@ sub cmd_mpg123 {
 			}
 		}
 		
-		open (f, $mpg123file) || return;
+		open (f, "<", $mpg123file) || return;
 
 		while ($mpg123linha=<f>) {		
 			

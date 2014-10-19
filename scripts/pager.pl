@@ -1,5 +1,6 @@
 # $Id: pager.pl,v 1.23 2003/01/27 09:45:16 jylefort Exp $
 
+use strict;
 use Irssi 20020121.2020 ();
 $VERSION = "1.1";
 %IRSSI = (
