@@ -8,7 +8,7 @@ use Irssi::Irc;
 # If you are in #irssi you can type /go #irssi or /go irssi or even /go ir ...
 # also try /go ir<tab> and /go  <tab> (that's two spaces)
 
-$VERSION = '1.00';
+$VERSION = '1.01';
 
 %IRSSI = (
     authors     => 'nohar',
@@ -16,7 +16,7 @@ $VERSION = '1.00';
     name        => 'go to window',
     description => 'Implements /go command that activates a window given a name/partial name. It features a nice completion.',
     license     => 'GPLv2 or later',
-    changed     => '08-17-04'
+    changed     => '2014-10-19'
 );
 
 sub signal_complete_go {
