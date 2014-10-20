@@ -22,7 +22,7 @@ sub randname {
 
 	my $namefile = glob Irssi::settings_get_str('random_realname_file');
 
-	open (FILE, $namefile) || return;
+	open (FILE, "<", $namefile) || return;
 	my $lines = 0; while(<FILE>) { $lines++; };
 	my $line = int(rand($lines))+1;
 

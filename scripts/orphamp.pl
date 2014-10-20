@@ -9,7 +9,7 @@
 # script painfully made by Wohmatak :)
 # ------------------------------------------------------------------------------
 
-
+use strict;
 use Irssi;
 use vars qw($VERSION %IRSSI);  
 
@@ -30,6 +30,8 @@ $VERSION = '0.9';
 Irssi::settings_add_str("misc", "np_lang", "en");
 Irssi::settings_add_int("misc", "show_npinfo", 1); 
 
+my $message;
+
 sub info {
 ### onload message
 print "--- Wohmatak's Orpheus now playing script loaded! ---\nTo show now playing song, use /np command";
@@ -48,16 +50,16 @@ sub void {
 ### check, whether lsof works
 if (!`lsof -Fc -b -S 2`) { die "lsof command hasn't been found on your computer! Please check whether it is installed & has correct permissions... Orphamp deactivated";}
 ### lsof command
-$raw = `lsof -S 2 -n -P -b | grep mpg123 | grep -i mp3 | grep REG | tail -n 1`;
+my $raw = `lsof -S 2 -n -P -b | grep mpg123 | grep -i mp3 | grep REG | tail -n 1`;
 ### split after /
-@split = split(/\//,$raw);
+my @split = split(/\//,$raw);
 ### count the number of splits
-$pocet = $#split;
+my $pocet = $#split;
 ### filename into one variable & newline department
-$filename = "";
-for ($i=1; $i<=$pocet; ++$i) {
+my $filename = "";
+for (my $i=1; $i<=$pocet; ++$i) {
 $filename .= "/";
-$filename .= @split[$i];
+$filename .= $split[$i];
 }
 chomp($filename);
 
@@ -66,18 +68,18 @@ if (`mp3info` && $filename) {
 
     ## mp3info command, std_err to /dev/null 
     ## (we don't want those ugly error messages in irssi window, do we?:)
-    $artist = `mp3info -p %a "$filename" 2> /dev/null`;
-    $song = `mp3info -p %t "$filename" 2> /dev/null`;
-    $album = `mp3info -p %l "$filename" 2> /dev/null`;
+    my $artist = `mp3info -p %a "$filename" 2> /dev/null`;
+    my $song = `mp3info -p %t "$filename" 2> /dev/null`;
+    my $album = `mp3info -p %l "$filename" 2> /dev/null`;
     if (!$album) { $album = "unknown album";}
-    $year = `mp3info -p %y "$filename" 2> /dev/null`;
+    my $year = `mp3info -p %y "$filename" 2> /dev/null`;
     if (!$year) { $year = "unknown year";}
 
 
     ## if there's no artist and song, display info from orpheus infopipe file (orpheus 1.4 needed)
     if (!$artist && !$song) 
     {
-	    $nazev = `cat ~/.orpheus/currently_playing`;
+	    my $nazev = `cat ~/.orpheus/currently_playing`;
 	    $message = "prehrava ".$nazev.""; 
     }
     
@@ -104,7 +106,7 @@ else {
 		 print "mp3info is not installed! please get it if you want to use orphamp script (http://ibiblio.org/mp3info/)"; 
     }
 
-    $nazev = `cat ~/.orpheus/currently_playing`;
+    my $nazev = `cat ~/.orpheus/currently_playing`;
     	if (Irssi::settings_get_str("np_lang") eq "en") 
 	{
 		     $message = "listens to ".$nazev.""; 

@@ -5,6 +5,7 @@
 # v1.01 - history:
 #   - fixed infinite loop when you weren't connected to server :)
 
+use strict;
 use Irssi;
 use vars qw($VERSION %IRSSI); 
 $VERSION = "1.01";

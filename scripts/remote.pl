@@ -1,5 +1,7 @@
 #!/usr/bin/perl -w
+use strict;
 use Irssi 20010120.0250 ();
+use vars qw($VERSION %IRSSI);
 $VERSION = "1";
 %IRSSI = (
     authors     => 'David Leadbeater',
@@ -20,7 +22,6 @@ $VERSION = "1";
 # so you can do mode #channel +o whoever
 # but it will allow any command, yes it's dangerous if someone knows the
 # password they can access just about anything your user account can....
-use strict;
 # put a crypted password here
 my $password = "pp00000000";
 my($login,$remote);

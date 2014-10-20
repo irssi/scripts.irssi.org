@@ -8,6 +8,7 @@
 # >install Net::POP3
 #
 
+use strict;
 use Irssi;
 use Net::POP3;
 use vars qw($VERSION %IRSSI);
@@ -23,17 +24,16 @@ $VERSION = '0.5';
 );
 
 
-
-
+my (%_mailcount, %_mailchecktimer);
 
 sub cmd_checkmail
 {
 	my $args = shift;
 	my ($user, $pass, $host) = split(/\;/, $args);
-	my $i, $from, $subject, $head;
+	my ($i, $from, $subject, $head);
 	my $POP3TIMEOUT = Irssi::settings_get_int("pop3_timeout");
-        my $pop = Net::POP3->new( $host, Timeout => $POP3TIMEOUT );
-	$count = $pop->login($user, $pass);
+    my $pop = Net::POP3->new( $host, Timeout => $POP3TIMEOUT );
+	my $count = $pop->login($user, $pass);
 
 	if (!$count || !$pop)
 	{
@@ -83,18 +83,18 @@ sub cmd_mail
 	my $args = shift;
 	my (@arg) = split(/\s+/, $args);
 
-	if ((@arg[0] eq "add") && @arg[1] && @arg[2])
+	if (($arg[0] eq "add") && $arg[1] && $arg[2])
 	{
-		if ($_mailchecktimer{@arg[1]})
+		if ($_mailchecktimer{$arg[1]})
 		{
-			Irssi::print("Account " . @arg[1] . " is already being monitored.");
+			Irssi::print("Account " . $arg[1] . " is already being monitored.");
 		}
 		else
 		{
-			start_check(@arg[1], @arg[2]);
+			start_check($arg[1], $arg[2]);
 		}
 	}
-	elsif (@arg[0] eq "list")
+	elsif ($arg[0] eq "list")
 	{
 		Irssi::print("Active POP3 Accounts Being Monitored:");
 		foreach (keys %_mailchecktimer)

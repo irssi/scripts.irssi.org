@@ -2,8 +2,10 @@
 #
 # Thomas Graf <irssi@reeler.org>
 
+use strict;
 use Irssi;
 use Irssi::Irc;
+use vars qw($VERSION %IRSSI);
 $VERSION = "0.2";
 %IRSSI = (
     authors     => 'Thomas Graf',
@@ -13,8 +15,6 @@ $VERSION = "0.2";
     license     => 'GNU GPLv2 or later',
     url         => 'http://irssi.reeler.org/',
 );
-
-use strict;
 
 sub sig_ctcp_msg
 {

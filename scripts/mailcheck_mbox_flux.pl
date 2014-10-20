@@ -1,5 +1,6 @@
 #!/usr/bin/perl -w
 
+use strict;
 use Irssi;
 
 use vars qw($VERSION %IRSSI);
@@ -14,11 +15,9 @@ $VERSION = "0.1";
     changed     => "Mon Mar  4 23:25:18 EET 2002"
 );
 
-use strict;
-
 sub getMessages( $ ) {
   local *F;
-  open(F, $_[0]) or return ();
+  open(F, "<", $_[0]) or return ();
   my $inHeaders = 0;
   my $headers;
   my %result = ();

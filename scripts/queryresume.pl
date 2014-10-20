@@ -44,7 +44,7 @@ sub sig_window_item_new ($$) {
     $filename = strftime($filename, @lt, $zone);
     $filename =~ s/(\[|\])/\\$1/g;
     local *F;
-    open(F, "<".bsd_glob($filename));
+    open(F, "<", bsd_glob($filename));
     my $lines = Irssi::settings_get_int('queryresume_lines');
     foreach (<F>) {
 	unless (/^--- Log/) {

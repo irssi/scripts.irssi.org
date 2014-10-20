@@ -110,7 +110,7 @@ sub load_nickservnet {
 
     if (-e $file) {
         local *F;
-        open(F, "<$file");
+        open(F, "<", $file);
         local $/ = "\n";
 
         while (<F>) {
@@ -134,7 +134,7 @@ sub save_nickservnet {
 
     if (-e $file) {
         local *F;
-        open(F, ">$file");
+        open(F, ">", $file);
 
         for (my $n = 0; $n < @nickservnet; ++$n) {
             print(F join("\t", $nickservnet[$n]->{name}, $nickservnet[$n]->{host}) . "\n");
@@ -151,7 +151,7 @@ sub create_network_file {
     
     my ($file) = @_;
     
-    open(F, ">$file") or die "Can't create $file. Reason: $!";
+    open(F, ">", $file) or die "Can't create $file. Reason: $!";
 }
 
 sub new_nickserv_network {
@@ -172,7 +172,7 @@ sub load_nickservnick {
 
     if (-e $file) {
         local *F;
-        open(F, "<$file");
+        open(F, "<" ,$file);
         local $/ = "\n";
 
         while (<F>) {
@@ -196,7 +196,7 @@ sub save_nickservnick {
 
     if (-e $file) {
         local *F;
-        open(F, ">$file");
+        open(F, ">", $file);
 
         for (my $n = 0; $n < @nickservauth; ++$n) {
             print(F join("\t", $nickservauth[$n]->{ircnet}, $nickservauth[$n]->{nick}, $nickservauth[$n]->{pass}) . "\n");
@@ -214,7 +214,7 @@ sub create_nick_file {
     my ($file) = @_;
     
     my $umask = umask 0077; # save old umask
-    open(F, ">$file") or die "Can't create $file. Reason: $!";
+    open(F, ">", $file) or die "Can't create $file. Reason: $!";
     umask $umask;
 }
 
@@ -231,7 +231,7 @@ sub new_nickserv_nick {
 
 sub add_nickname {
     
-    my ($network, $nickname, $password) = split(" ", @_[0], 3);
+    my ($network, $nickname, $password) = split(" ", $_[0], 3);
     my ($correct_network, $correct_nickname, $correct_password);
 
     if ($network eq "" || $nickname eq "" || $password eq "") {
@@ -267,7 +267,7 @@ sub add_nickname {
 
 sub add_network {
     
-    my ($network, $hostname) = split(" ", @_[0], 2);
+    my ($network, $hostname) = split(" ", $_[0], 2);
     my ($correct_net, $correct_host);
     
     if ($network eq "" || $hostname eq "") {
@@ -471,7 +471,7 @@ sub get_password {
 
 sub del_network {
 
-    my ($ircnet) = split(" ", @_[0], 1);
+    my ($ircnet) = split(" ", $_[0], 1);
     my ($ircnetindex);
 
     if ($ircnet eq "") {
@@ -498,7 +498,7 @@ sub del_network {
 
 sub del_nickname {
     
-    my ($ircnet, $nickname) = split(" ", @_[0], 2);
+    my ($ircnet, $nickname) = split(" ", $_[0], 2);
     my ($nickindex);
     
     if ($ircnet eq "" || $nickname eq "") {

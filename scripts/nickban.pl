@@ -1,3 +1,5 @@
+use strict;
+use vars qw($VERSION %IRSSI);
 $VERSION = "1.1";
 %IRSSI = (
     authors     =>  "Roeland 'Trancer' Nieuwenhuis",
@@ -7,7 +9,6 @@ $VERSION = "1.1";
     license     =>  "Public Domain"
 );
 
-use strict;
 use Irssi;
 
 # The channels the nicks are banned on (on which this script is active)

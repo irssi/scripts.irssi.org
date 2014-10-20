@@ -6,6 +6,7 @@
 ## to redirect last message to current channel/query:
 ## /RELM
 
+use strict;
 use Irssi;
 
 use vars qw($VERSION %IRSSI);
@@ -19,6 +20,8 @@ $VERSION = "1.0";
         changed         => "Fri Mar 15 15:09:42 CET 2002"
 );
 
+my %relm;
+
 sub cmd_relm {
 	my ($args, $server, $winit) = @_;
 	my $ircnet = lc($server->{tag});
@@ -28,7 +31,7 @@ sub cmd_relm {
 
 	$which = scalar(@{$relm{lc($ircnet)}}) unless ($which);
 
-	unless (@relm{$ircnet}) {
+	unless ($relm{$ircnet}) {
 		Irssi::print("%R>>%n Nothing in relm buffer on $ircnet.", MSGLEVEL_CRAP);
 		return;
 	}

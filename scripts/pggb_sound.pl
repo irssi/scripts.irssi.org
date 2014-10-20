@@ -79,9 +79,9 @@ sub find_wave {
   unless ($sound =~ /^.*\.wav$/i) {$sound = $sound . ".*.wav"}
   my $LISTING;
   if ( -r $cachefile ) {
-    if ($cachefile =~ /\.gz$/i)		{ open(LISTING, "zcat $cachefile |") }
-    elsif ($cachefile =~ /\.bz2$/i)	{ open(LISTING, "bzcat $cachefile |") }
-    else				{ open(LISTING, "cat $cachefile |") };
+    if ($cachefile =~ /\.gz$/i)		{ open(LISTING, "-|", "zcat $cachefile") }
+    elsif ($cachefile =~ /\.bz2$/i)	{ open(LISTING, "-|", "bzcat $cachefile") }
+    else				{ open(LISTING, "-|", "cat $cachefile") };
   } else {
     Irssi::print("Cache file not readable. Nani?!?");
     return;}
@@ -206,7 +206,7 @@ sub sound_autoget {
     my $tempsound = $wordlist[1];
     $tempsound =~ s/[\r \001 \n]//;
     IRC::print($tempsound);
-    if (!open(TEMPFILE, $sounddir.$tempsound)) {
+    if (!open(TEMPFILE, "<", $sounddir.$tempsound)) {
       IRC::send_raw("PRIVMSG $name :!$name $tempsound\r\n");
     } else {
       close(TEMPFILE);

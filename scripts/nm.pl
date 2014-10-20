@@ -413,7 +413,7 @@ sub assert_colors() {
 
 # load colors from file
 sub load_colors() {
-	open(FID, "<".$ENV{HOME}."/.irssi/saved_colors") || return;
+	open(FID, "<", $ENV{HOME}."/.irssi/saved_colors") || return;
 
 	while (<FID>) {
 		chomp;
@@ -434,7 +434,7 @@ sub load_colors() {
 
 # save colors to file
 sub save_colors() {
-	open(FID, ">".$ENV{HOME}."/.irssi/saved_colors");
+	open(FID, ">", $ENV{HOME}."/.irssi/saved_colors");
 
 	print FID $_.":".$saved_colors{$_}."\n" foreach (keys(%saved_colors));
 

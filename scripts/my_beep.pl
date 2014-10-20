@@ -12,7 +12,8 @@
 #   $/set beep_msg_level HILIGHT
 #   $/set beep_cmd beep 
 
-
+use strict;
+use vars qw($VERSION %IRSSI);
 $VERSION = "0.9";
 %IRSSI = (
     authors	=> "Remco den Breeje",
@@ -26,6 +27,7 @@ $VERSION = "0.9";
 use Irssi;
 
 my $can_I_beep = 1;
+my ($timeout_tag, $autoaway_to_tag);
 
 sub beep_overflow_timeout() {
 	$can_I_beep = 1;

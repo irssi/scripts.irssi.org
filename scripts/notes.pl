@@ -12,6 +12,7 @@
 # DBM::Deep
 # DBI
 
+use strict;
 use Irssi;
 use DBI;
 use Data::Dumper;
