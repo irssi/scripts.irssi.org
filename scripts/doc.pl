@@ -202,7 +202,7 @@ sub load_doc {
         @doc = ();
 		Irssi::print("Loading doc from $doc_file");
         local *DOC; 
-        open(DOC,"$doc_file");
+        open(DOC, q{<}, $doc_file);
         local $/ = "\n";
         while (<DOC>) { 
             chop(); 
@@ -235,7 +235,7 @@ sub save_doc {
     my $keyword=""; 
     my $definition="";
     if (-e $doc_file) {
-        open(DOC,">$doc_file");
+        open(DOC, q{>}, $doc_file);
         for ($x=0;$x < @doc;$x++) {
             ($keyword,$definition) = split /=/,$doc[$x],2;
             print DOC "$keyword=$definition\n";

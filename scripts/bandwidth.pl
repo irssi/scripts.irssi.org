@@ -43,7 +43,7 @@ sub get_stats
   my ($old_in, $old_out) = ($last_in, $last_out);
 
   my @localstats;
-  if (open my $fh, "$command|") 
+  if (open my $fh, q{-|}, $command) 
   {
      @localstats = <$fh>;
     close $fh;

@@ -24,7 +24,7 @@ my %index;
     my $old = '';
     my $start = 0;
     my $pointer = 0;
-    open(DICT, $file) or die $!;
+    open(DICT, q{<}, $file) or die $!;
     while (<DICT>) {
 	chomp;
 	push @array, $_;

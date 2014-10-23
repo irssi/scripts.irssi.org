@@ -1,6 +1,8 @@
 # $Id: beep.pl,v 1.9 2002/07/04 13:18:02 jylefort Exp $
 
+use strict;
 use Irssi 20020121.2020 ();
+use vars qw($VERSION %IRSSI);
 $VERSION = "1.01";
 %IRSSI = (
 	  authors     => 'Jean-Yves Lefort',
@@ -27,8 +29,6 @@ $VERSION = "1.01";
 #			* increased version number
 #
 #	2002-01-24	initial release
-
-use strict;
 
 sub beep {
   my $server = Irssi::active_server;

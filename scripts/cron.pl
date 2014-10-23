@@ -256,7 +256,7 @@ sub cmd_jobadd {
 }
 
 sub cmd_jobssave {
-	if (not open (FILE, "> $savefile")) {
+	if (not open (FILE, ">", $savefile)) {
 		Irssi::print("Could not open file '$savefile': $!");
 		return;
 	}
@@ -275,7 +275,7 @@ sub cmd_jobssave {
 }
 
 sub cmd_jobsload {
-	if (not open (FILE, "$savefile")) {
+	if (not open (FILE, q{<}, $savefile)) {
 		Irssi::print("Could not open file '$savefile': $!");
 		return;
 	}

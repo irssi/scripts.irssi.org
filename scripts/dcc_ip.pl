@@ -20,6 +20,7 @@
 #
 ##########
 
+use strict;
 use Irssi;
 use vars qw($VERSION %IRSSI);
     $VERSION = '0.5';

@@ -1,3 +1,4 @@
+use strict;
 use Irssi::Irc;
 use Irssi 20020217; # Irssi 0.8.0
 use vars qw($VERSION %IRSSI);
