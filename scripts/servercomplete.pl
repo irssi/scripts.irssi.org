@@ -1,4 +1,6 @@
+use strict;
 use Irssi 20020101.0250 ();
+use vars qw($VERSION %IRSSI);
 $VERSION = "2";
 %IRSSI = (
     authors     => 'David Leadbeater',
@@ -9,7 +11,6 @@ $VERSION = "2";
     url         => 'http://irssi.dgl.cx/',
 );
 
-use strict;
 my %servers;
 
 sub sig_complete {

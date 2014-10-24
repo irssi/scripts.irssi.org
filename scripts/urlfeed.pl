@@ -94,7 +94,7 @@ sub urlfeed_touch_file ($) {
     return 0;
   }
 
-  eval { open(FH, "+<$f"); };
+  eval { open(FH, "+<", $f); };
   if ($@) {
     Irssi::print("URLfeed error: couldn't open $f for writing: $@");
     return 0;

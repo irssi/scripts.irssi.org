@@ -8,6 +8,8 @@
 # or add it to an existing one with
 # /statusbar window add timezones (window is an exaple, see /statusbar and /help statusbar for comprehensive help)
 
+use strict;
+use vars qw($VERSION %IRSSI);
 $VERSION = "0.1";
 %IRSSI = (
     authors     => "Jari Matilainen",
@@ -18,7 +20,6 @@ $VERSION = "0.1";
     url         => "http://vague.se"
 );
 
-use strict;
 use Irssi::TextUI;
 use DateTime;
 

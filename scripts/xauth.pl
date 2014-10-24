@@ -344,7 +344,7 @@ sub read_users() {
         # Lets reset @users so we can call this as a function.
         @users = ();            
                         
-        if (!(open XUSERS, "<$x_passfile")) {
+        if (!(open XUSERS, "<", $x_passfile)) {
                 &create_users;
         };
        	&putlog("Running checks on the userfile.") if ($verbose > 1);
@@ -379,7 +379,7 @@ sub create_users() {
 
         &putlog("Creating basic userfile in $x_passfile. Edit File.");
         
-        if(!(open XUSERS, ">$x_passfile")) {
+        if(!(open XUSERS, ">", $x_passfile)) {
                &putlog("Unable to create file $x_passfile");
         }
 
@@ -394,7 +394,7 @@ sub create_users() {
 
 sub create_chans() {
         &putlog("Creating basic channelfile in $x_chanfile. Edit File.");
-        if(!(open NICKCHANS, ">$x_chanfile")) {
+        if(!(open NICKCHANS, ">", $x_chanfile)) {
                 &putlog("Unable to create file $x_chanfile");
         }
 
@@ -417,7 +417,7 @@ sub read_chans() {
         # Lets reset @users so we can call this as a function.
         @chans = ();
 
-        if (!(open NICKCHANS, "<$x_chanfile")) {
+        if (!(open NICKCHANS, "<", $x_chanfile)) {
                 create_chans;
         };
        	&putlog("Running checks on the channelfile.") if ($verbose > 1);

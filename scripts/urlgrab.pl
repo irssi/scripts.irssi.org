@@ -1,5 +1,7 @@
 #!/usr/bin/perl -w
+use strict;
 use Irssi 20010120.0250 ();
+use vars qw($VERSION %IRSSI);
 $VERSION = "0.2";
 %IRSSI = (
     authors     => 'David Leadbeater',
@@ -10,7 +12,6 @@ $VERSION = "0.2";
     url         => 'http://irssi.dgl.cx/',
 );
 
-use strict;
 my $lasturl;
 
 # Change the file path below if needed
@@ -50,7 +51,7 @@ sub url_log{
    my($where,$channel,$url) = @_;
    return if lc $url eq lc $lasturl; # a tiny bit of protection from spam/flood
    $lasturl = $url;
-   open(URLLOG, ">>$file") or return;
+   open(URLLOG, ">>", $file) or return;
    print URLLOG time." $where $channel $lasturl\n";
    close(URLLOG);
 }

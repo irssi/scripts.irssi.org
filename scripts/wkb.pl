@@ -1,4 +1,6 @@
+use strict;
 use Irssi 20020217; # Irssi 0.8.0
+use vars qw($VERSION %IRSSI);
 $VERSION = "1.1";
 %IRSSI = (
     authors     =>  "Matti 'qvr' Hiljanen",
@@ -9,7 +11,6 @@ $VERSION = "1.1";
     url         =>  "http://matin.maapallo.org/softa/irssi",
 );
 
-use strict;
 use Irssi;
 
 my @channels =

@@ -1,6 +1,5 @@
 #!/usr/bin/perl -w
 # This Irssi script automatically converts incoming http/https links into shorter "tinyurl" style links
-$VERSION = "20090904"; # Fixed and enhanced by tsaavik (dave000@hellspark.com)
 #
 # Irssi /set Options
 # you can view your current settigns by running "/set shorturl" in Irssi
@@ -18,6 +17,7 @@ $VERSION = "20090904"; # Fixed and enhanced by tsaavik (dave000@hellspark.com)
 use strict;
 use vars qw($VERSION %IRSSI);
 
+$VERSION = "20090904"; # Fixed and enhanced by tsaavik (dave000@hellspark.com)
 %IRSSI = (
 	authors					=>	"eo, tsaavik",
 	contact					=>	'irssi@eosin.org, dave001@hellspark.com',

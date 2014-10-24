@@ -22,6 +22,7 @@
 # $4 is current conditions (windy or partly cloudy)
 
 # - You have to modify this line to the path of your LWP-dir
+use strict;
 use lib '/usr/lib/perl5/vendor_perl/5.6.1';
 use Irssi;
 use Irssi::TextUI;
@@ -146,7 +147,7 @@ sub get_weather_for_status {
   chomp($temperature);
   chomp($feelslike);
   chomp($description);
-  open STATUS_FILE, ">.irssi/weather.status" or die "Can't write to status file: $!";
+  open STATUS_FILE, ">", ".irssi/weather.status" or die "Can't write to status file: $!";
   print STATUS_FILE "$temperature,$feelslike,$description";
   close STATUS_FILE;
 }
@@ -154,7 +155,7 @@ sub get_weather_for_status {
 # Status bar information
 
 sub theme_format {
-  open GET_STATUS, "<.irssi/weather.status" or die "Can't open status file: $!";
+  open GET_STATUS, "<", ".irssi/weather.status" or die "Can't open status file: $!";
 
   my $themed = "";
   my $themecmd = "";

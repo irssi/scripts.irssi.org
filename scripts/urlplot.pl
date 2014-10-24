@@ -479,7 +479,7 @@ sub create_chan_template {
 	my ($full_log, $file, $channel) = @_;
 	my $reload = Irssi::settings_get_int(KEY_URL_LOG_FILE_AUTORELOAD_TIME);
 	local *FH;
-	open(FH, "> $file") 
+	open(FH, ">", $file) 
 		|| die "can't create logfile $file: $!";
 	print_chan_log_file_template(\*FH, $reload, $channel, $full_log);
 	print FH LOG_FILE_TAIL;
@@ -490,7 +490,7 @@ sub create_full_template {
 	my $file = shift;
 	my $reload = Irssi::settings_get_int(KEY_URL_LOG_FILE_AUTORELOAD_TIME);
 	local *FH;
-	open(FH, "> $file") 
+	open(FH, ">", $file) 
 		|| die "can't create logfile $file: $!";
 	print_full_log_file_template(\*FH, $reload);
 	print FH LOG_FILE_TAIL;
@@ -499,7 +499,7 @@ sub create_full_template {
 
 sub create_csv_file {
 	my $file = shift;
-	open(FH, "> $file") 
+	open(FH, ">", $file) 
 		|| die "can't create $file: $!";
 	close FH;
 }
@@ -509,7 +509,7 @@ sub log_csv {
 	my $sep = Irssi::settings_get_str(KEY_URL_LOG_CSV_SEPARATOR);
 	my $fields = join $sep, @_;
 	local *FH;
-	open(FH, ">> $csv_log") 
+	open(FH, ">>", $csv_log) 
 		|| die "can't open $csv_log: $!";
 	print FH "$fields\n";
 	close FH;

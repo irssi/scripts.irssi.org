@@ -21,6 +21,7 @@
 # v1.05 - Made the script more consistent with other
 #         Irssi scripts.
 
+use strict;
 use Irssi;
 use Irssi::Irc;
 use vars qw($VERSION %IRSSI);
@@ -34,6 +35,7 @@ my $format = '"%topic" %nick (%address) [%mday.%mon.%year %hour:%min:%sec]';
 # Amount of topics stored.
 my $tamount = 10;
 
+my %topiclist;
 ###### Don't edit below this unless you know what you're doing ######
 
 $VERSION = "1.05";
@@ -115,6 +117,7 @@ sub event_topic {
 	$topic =~ s/%/%%/g;
 	$topic .= '%n';
 
+	my %val;
 	$val{'sec'} = $sec < 10 ? "0$sec" : $sec;
 	$val{'min'} = $min < 10 ? "0$min" : $min;
 	$val{'hour'} = $hour < 10 ? "0$hour" : $hour;

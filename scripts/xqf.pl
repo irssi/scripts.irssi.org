@@ -108,7 +108,7 @@ sub checkLaunchInfo {
 sub fetchLaunchInfo {
   my $reply;
 
-  open(FH, "<".Irssi::settings_get_str('xqfLaunchInfo'));
+  open(FH, "<", Irssi::settings_get_str('xqfLaunchInfo'));
   my @LaunchInfo = <FH>;
   close (FH);
 

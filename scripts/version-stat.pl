@@ -4,6 +4,7 @@
 #    - http://www.penguin-breeder.org/?page=irssi
 
 #<scriptinfo>
+use strict;
 use vars qw($VERSION %IRSSI);
 
 use Irssi 20020120;

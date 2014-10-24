@@ -47,8 +47,10 @@
 #  - don't output "bytes" if content-length is not available
 #  - prefix with http:// if no prefix is given
 
+use strict;
 use Irssi;
 use Irssi::Irc;
+use vars qw($VERSION %IRSSI);
 
 $VERSION = "0.2";
 %IRSSI = (
@@ -66,8 +68,6 @@ use HTTP::Status;
 use DBI;
 
 use POSIX qw(strftime);
-
-use strict;
 
 my @urls;
 my $user_agent = new LWP::UserAgent;
@@ -179,7 +179,7 @@ sub log_to_file
     my ($nick, $target, $text) = @_;
     my ($lfile) = glob Irssi::settings_get_str("url_log_file");
 
-    if ( open(LFD, ">> $lfile") ) {
+    if ( open(LFD, ">>", $lfile) ) {
 
         my %h = {
             time => time,

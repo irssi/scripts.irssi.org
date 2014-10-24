@@ -27,7 +27,8 @@
 # $ident: sysinfo277-irssi.pl,v 2.77 2003/09/01 04:20:02 drudie Exp $
 #
 
-
+use strict;
+use vars qw($VERSION %IRSSI);
 $VERSION = '2.77';
 %IRSSI = (
   authors	=> 'David Rudie',
@@ -43,7 +44,6 @@ $VERSION = '2.77';
 
 use Irssi;
 use POSIX qw(floor);
-use strict;
 
 
 # Set up the arrays and variables first.
@@ -312,7 +312,7 @@ sub cmd_sysinfo {
 
 sub battery {
   $data = "";
-  if(open(FD, '/proc/apm')) {
+  if(open(FD, "<", '/proc/apm')) {
     while($stream = <FD>) {
       $data .= $stream;
       @data = split(/\n/, $data);
@@ -469,7 +469,7 @@ sub networktraffic {
 sub openfile {
   my $string = shift;
   $data = "";
-  if(open(FD, $string)) {
+  if(open(FD, "<", $string)) {
     while($stream = <FD>) {
       $data .= $stream;
       @data = split(/\n/, $data);

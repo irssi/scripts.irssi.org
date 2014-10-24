@@ -1,3 +1,4 @@
+use strict;
 use Irssi 20020300;
 use 5.6.0;
 use Socket;
@@ -198,7 +199,7 @@ sub smsstat {
 
 sub savesms {
 	local *fp;
-	open (fp, ">$smsfile") or die "Couldn't open $smsfile for writing";
+	open (fp, ">", $smsfile) or die "Couldn't open $smsfile for writing";
 	for my $sms (@smslist) {
 		print(fp "$sms->{handle} $sms->{phone}\n");
 	}
@@ -209,7 +210,7 @@ sub loadsms {
 	@smslist = ();
 	return unless (-e $smsfile);
 	local *fp;
-	open(fp, "<$smsfile");
+	open(fp, "<", $smsfile);
 	local $/ = "\n";
 	while (<fp>) {
 		chop;
