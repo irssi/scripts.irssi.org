@@ -50,7 +50,7 @@ sub sig_public {
 			$server->command("msg $target $cinfo");
 		} else
 		{
-			Irssi::print("Error: countdown.pl misc.countdown_target sould be format <year> <month> <day> <hour> <minute> <second>");
+			Irssi::print("Error: countdown.pl misc.countdown_target should be format <year> <month> <day> <hour> <minute> <second>");
 		}
 	}
 }
