@@ -3792,6 +3792,16 @@
   modules: "IO::Socket"
   name: "tvmusor"
 
+- authors: "Sam Stoller"
+  contact: "snstoller@gmail.com"
+  description: "Assign colors to tweet message components"
+  filename: "twitter_theme.pl"
+  modified: "2014-11-10"
+  license: "Public Domain"
+  name: "Twitter Theme"
+  url: "https://github.com/samstoller/irssi-twitter-theme"
+  version: "1.0"
+
 - authors: "John Engelbrecht"
   contact: "jengelbr@yahoo.com"
   description: "BitchXs CrackRock3 animated prompt bar."
