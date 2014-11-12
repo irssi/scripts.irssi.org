@@ -40,6 +40,9 @@
 # 	? should we remember if the server was given with -server
 #
 # Changelog:
+#       0.12 (2014.11.12)
+#       Automatically load jobs when loaded
+#
 #	0.11 (2004.12.12)
 #	Job are executed exactly at the time (+- 1s), not up to 59s late
 #
@@ -69,7 +72,7 @@ use Irssi;
 use strict;
 use vars qw($VERSION %IRSSI);
 
-$VERSION = "0.11";
+$VERSION = "0.12";
 %IRSSI = (
     authors	=> 'Piotr Krukowiecki',
     contact	=> 'piotr \at/ krukowiecki /dot\ net',
