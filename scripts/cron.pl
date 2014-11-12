@@ -290,6 +290,8 @@ sub cmd_jobsload {
 	Irssi::print("Jobs loaded");
 }
 
+cmd_jobsload();
+
 Irssi::command_bind('jobs', 'cmd_jobs', 'Cron');
 Irssi::command_bind('jobadd', 'cmd_jobadd', 'Cron');
 Irssi::command_bind('jobdel', 'cmd_jobdel', 'Cron');
