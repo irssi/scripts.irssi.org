@@ -20,7 +20,7 @@
 use strict;
 use vars qw($VERSION %IRSSI);
 
-$VERSION = "1.4";
+$VERSION = "1.5";
 %IRSSI = (
     authors     => 'Jakub Jankowski',
     contact     => 'shasta@atn.pl',
@@ -47,6 +47,7 @@ my @colors = ('0', '4', '8', '9', '11', '12', '13');
 # returns random-coloured string
 sub make_colors {
 	my ($string) = @_;
+	Encode::_utf8_on($string);
 	my $newstr = "";
 	my $last = 255;
 	my $color = 0;
@@ -144,3 +145,4 @@ Irssi::command_bind("rkick", "rkick");
 # 29.01.2002: /rsay works with dcc chats now (v1.2)
 # 02.02.2002: make_colors() doesn't assign any color to spaces (v1.3)
 # 23.02.2002: /rkick added
+# 26.11.2014: utf-8 support
