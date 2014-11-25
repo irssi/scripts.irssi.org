@@ -186,16 +186,16 @@ $procs = 0;
 );
     
 %ipdb = (
-    d1localizer=>{ name=>'localizer',
+    d1utrace=>{ name=>'utrace',
 		   active=>1,
-		   url=>'http://jan.kneschke.de/projects/localizer/index.php?query=',
-		   city=>'<tr><td><b>City<\/b><\/td><td>(.*?)<\/td>',
-		   province=>'<tr><td><b>Province<\/b><\/td><td>(.*?)<\/td><td>',
-		   country=>'<tr><td><b>Country<\/b><\/td><td>(.*?)<\/td>',
-		   provider=>'<tr><td><b>\(Backbone-\)Provider<\/b><\/td><td>(.*?)<\/td>', 
+		   url=>'http://xml.utrace.de/?query=',
+		   city=>'<region>(.*?)<\/region>',
+		   province=>'<org>(.*?)<\/org>',
+		   country=>'<countrycode>(.*?)<\/countrycode>',
+		   provider=>'<isp>(.*?)<\/isp>', 
 		   failure=>'request-limit-exceeded|Host not found'},
     d2ipatlas=> { name=>'IP-Atlas',
-		  active=>1,
+		  active=>0,
 	          url=>'http://www.xpenguin.com/plot.php?address=',
                   city=>'is located in (.*?),',
 		  province=>'is located in.*, (.*?) \(state\),',
