@@ -1,11 +1,11 @@
 use strict;
 use vars qw($VERSION %IRSSI);
-
 use Irssi;
-$VERSION = '0.0.4';
+
+$VERSION = '0.0.5';
 %IRSSI = (
 	name => 'fnotify',
-	authors => 'Thorsten Leemhuis, James Shubin',
+	authors => 'Thorsten Leemhuis, James Shubin, Serge van Ginderachter',
 	description => 'Write notifications to a file in a consistent format.',
 	license => 'GNU General Public License',
 );
@@ -22,10 +22,17 @@ $VERSION = '0.0.4';
 #
 #	AUTHORS
 #
-# Consistent output formatting by James Shubin:
-# https://ttboj.wordpress.com/
+# Strip non-parsed left over codes (Bitlbee otr messages)
+# version: 0.0.5
+# Serge van Ginderachter <serge@vanginderachter.be>
 #
-# Modified from the Thorsten Leemhuis <fedora@leemhuis.info> version:
+# Consistent output formatting by James Shubin:
+# version: 0.0.4
+# https://ttboj.wordpress.com/
+# note: changed license back to original GPL from Thorsten Leemhuis (svg)
+#
+# Modified from the Thorsten Leemhuis <fedora@leemhuis.info>
+# version: 0.0.3
 # http://www.leemhuis.info/files/fnotify/fnotify
 #
 # In parts based on knotify.pl 0.1.1 by Hugo Haas:
@@ -43,8 +50,9 @@ $VERSION = '0.0.4';
 #
 sub priv_msg {
 	my ($server, $msg, $nick, $address, $target) = @_;
+    my $msg_stripped = Irssi::strip_codes($msg);
 	my $network = $server->{tag};
-	filewrite('' . $network . ' ' . $nick . ' ' . $msg);
+	filewrite('' . $network . ' ' . $nick . ' ' . $msg_stripped);
 }
 
 #
