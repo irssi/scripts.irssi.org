@@ -1091,6 +1091,17 @@
   url: "http://www.enumerator.org/component/option,com_docman/task,view_category/Itemid,34/subcat,7/"
   version: "0.00.04"
 
+- authors: "Marcell Kossin, Makaze"
+  contact: "izaya.orihara@gmail.com"
+  description: "A concise dice simulator for channels."
+  filename: "dice_concise.pl"
+  modified: "2014-03-28 21:15:23"
+  license: "GNU GPL Version 2 or later"
+  modules: "Scalar::Util"
+  name: "dice_concise"
+  url: "https://github.com/Makaze/"
+  version: "0.1.5"
+
 - authors: "Juerd (first version: Timo Sirainen)"
   contact: "juerd@juerd.nl"
   description: "Caching dictionary based tab completion"
