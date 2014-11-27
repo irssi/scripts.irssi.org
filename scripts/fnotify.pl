@@ -51,7 +51,7 @@ $VERSION = '0.0.5';
 #
 sub priv_msg {
 	my ($server, $msg, $nick, $address, $target) = @_;
-    my $msg_stripped = Irssi::strip_codes($msg);
+	my $msg_stripped = Irssi::strip_codes($msg);
 	my $network = $server->{tag};
 	filewrite('' . $network . ' ' . $nick . ' ' . $msg_stripped);
 }
@@ -73,15 +73,15 @@ sub hilight {
 #
 sub filewrite {
 	my ($text) = @_;
-	# FIXME: there is probably a better way to get the irssi-dir...
-    my $fnfile = "$ENV{HOME}/.irssi/fnotify";
-    if (!open(FILE, ">>", $fnfile)) {
-        print_err("cannot open $fnfile: $!");
-    }
-	print FILE $text . "\n";
-    if (!close(FILE)) {
-        print_err("cannot close $fnfile: $!");
-    }
+	my $fnfile = Irssi::get_irssi_dir() . "/fnotify";
+	if (!open(FILE, ">>", $fnfile)) {
+		print CLIENTCRAP "Error: cannot open $fnfile: $!";
+	} else {
+		print FILE $text . "\n";
+		if (!close(FILE)) {
+			print CLIENTCRAP "Error: cannot close $fnfile: $!";
+		}
+	}
 }
 
 #
