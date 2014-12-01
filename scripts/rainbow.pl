@@ -13,6 +13,9 @@
 #
 # /RKICK <nick> [reason]
 #  - kicks nick from the current channel with coloured reason
+#
+# /RKNOCKOUT [time] <nicks> [reason]
+#  - knockouts nicks from the current channel with coloured reason for time
 
 # Written by Jakub Jankowski <shasta@atn.pl>
 # for Irssi 0.7.98.4 and newer
@@ -20,7 +23,7 @@
 use strict;
 use vars qw($VERSION %IRSSI);
 
-$VERSION = "1.5";
+$VERSION = "1.6";
 %IRSSI = (
     authors     => 'Jakub Jankowski',
     contact     => 'shasta@atn.pl',
@@ -133,10 +136,30 @@ sub rkick {
 	}
 }
 
+# void rknockout($text, $server, $destination)
+# handles /rknockout
+sub rknockout {
+    my ($text, $server, $dest) = @_;
+
+    if (!$server || !$server->{connected}) {
+        Irssi::print("Not connected to server");
+        return;
+    }
+
+    if ($dest && $dest->{type} eq "CHANNEL") {
+        my ($time, $nick, $reason) = split(/ +/, $text, 3);
+        ($time, $nick, $reason) = (300, $time, $nick . " " . $reason) if ($time !~ m/^\d+$/);
+        return unless $nick;
+        $reason = "See you in " . $time . " seconds!" if ($reason =~ /^[\ ]*$/);
+        $dest->command("/knockout " . $time . " " . $nick . " " . make_colors($reason));
+    }
+}
+
 Irssi::command_bind("rsay", "rsay");
 Irssi::command_bind("rtopic", "rtopic");
 Irssi::command_bind("rme", "rme");
 Irssi::command_bind("rkick", "rkick");
+Irssi::command_bind("rknockout", "rknockout");
 
 # changes:
 #
@@ -146,3 +169,4 @@ Irssi::command_bind("rkick", "rkick");
 # 02.02.2002: make_colors() doesn't assign any color to spaces (v1.3)
 # 23.02.2002: /rkick added
 # 26.11.2014: utf-8 support
+# 01.12.2014: /rknockout added (v1.6)

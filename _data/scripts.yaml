@@ -3126,11 +3126,11 @@
   contact: "shasta@atn.pl"
   description: "Prints colored text. Rather simple than sophisticated."
   filename: "rainbow.pl"
-  modified: "2008-05-17 17:39:09"
+  modified: "2014-12-01 13:04:09"
   license: "GNU GPLv2 or later"
   name: "rainbow"
   url: "http://irssi.atn.pl/"
-  version: "1.4"
+  version: "1.6"
 
 - authors: "Lasse Karstensen"
   contact: "lkarsten@stud.ntnu.no"
