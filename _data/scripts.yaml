@@ -1348,6 +1348,16 @@
   url: "http://www.krukowiecki.net/code/irssi/"
   version: "0.0.2i"
 
+- authors: "Thorsten Leemhuis, James Shubin, Serge van Ginderachter"
+  contact: "fedora@leemhuis.info, serge@vanginderachter.be"
+  description: "Write notifications to a file in a consistent format."
+  filename: "fnotify.pl"
+  modified: "2014-11-25 21:02"
+  license: "GNU General Public License"
+  name: "fnotify"
+  url: "http://www.leemhuis.info/files/fnotify/fnotify https://ttboj.wordpress.com/"
+  version: "0.0.5"
+
 - authors: "Juerd"
   contact: "juerd@juerd.nl"
   description: "Automatically switch to active windows"
