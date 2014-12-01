@@ -5,7 +5,7 @@ use Scalar::Util qw(looks_like_number);
 use Irssi;
 use vars qw($VERSION %IRSSI);
 
-$VERSION = '1.0';
+$VERSION = '1.1';
 %IRSSI = (
 	authors     => 'Pablo Martín Báez Echevarría',
 	contact     => 'pab_24n@outlook.com',
@@ -95,7 +95,7 @@ sub cmd_colors {
 }
 
 sub is_mIRC_color {
-  my $num = @_;
+  my ( $num ) = @_;
   return (looks_like_number($num)) ? ((0 <= $num) && ($num <= 15)) : 0;
 }
            
