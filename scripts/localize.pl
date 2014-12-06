@@ -52,11 +52,15 @@
 #
 # 03.07.2002
 # *switched to Data::Dumper
+#
+# 25.11.2014
+# Added utrace.de as a localizer
+# http://www.utrace.de/
 
 use strict;
 use vars qw($VERSION %IRSSI);
 
-$VERSION = "2003112301";
+$VERSION = "2014112501";
 %IRSSI = (
     authors     => "Stefan 'tommie' Tomanek",
     contact     => "stefan\@pico.ruhr.de",
@@ -186,6 +190,7 @@ $procs = 0;
 );
     
 %ipdb = (
+    # For utrace.de API documentation, see http://en.utrace.de/api.php
     d1utrace=>{ name=>'utrace',
 		   active=>1,
 		   url=>'http://xml.utrace.de/?query=',
