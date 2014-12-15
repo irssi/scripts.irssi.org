@@ -291,13 +291,13 @@
   url: "http://irssi.dgl.cx/"
   version: "1.00"
 
-- authors: "Timo Sirainen"
+- authors: "Timo Sirainen & Jostein Kjønigsen"
   description: "Simple auto-op script"
   filename: "autoop.pl"
-  modified: "2002-03-10 23:18:00"
+  modified: "2014-10-24 12:55:00"
   license: "Public Domain"
   name: "autoop"
-  version: "1.00"
+  version: "1.10"
 
 - authors: "Toni Salomäki"
   contact: "Toni@IRCNet"
