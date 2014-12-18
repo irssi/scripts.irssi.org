@@ -711,6 +711,18 @@
   url: "http://scripts.irssi.org/"
   version: "1.0"
 
+- authors: "Michael Tharp (gxti), Jilles Tjoelker (jilles), Mantas Mikulėnas (grawity)"
+  commands: "sasl"
+  contact: "grawity@gmail.com"
+  description: "Implements SASL authentication (and multi-prefix as free bonus)"
+  filename: "cap_sasl.pl"
+  modified: "2014-12-18 05:37:00"
+  modules: "Crypt::PK::ECC MIME::Base64"
+  license: "GPLv2"
+  name: "cap_sasl"
+  url: "https://nullroute.eu.org/~grawity/irssi.html"
+  version: "1.8"
+
 - authors: "ZaMz0n"
   commands: "cddb"
   contact: "zamzon@freakpower.com"
