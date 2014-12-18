@@ -230,6 +230,17 @@
   url: "http://www.mimir.ch/ph/"
   version: "1.00"
 
+- authors: "Mantas Mikulėnas"
+  contact: "grawity@gmail.com"
+  description: "Implements QuakeNet's CHALLENGE authentication"
+  filename: "auth_quakenet.pl"
+  modified: "2014-12-18 06:38"
+  license: "WTFPL v2 <http://sam.zoy.org/wtfpl/>"
+  modules: "Digest::HMAC Digest::SHA Digest::SHA1 Digest::MD5"
+  name: "auth_quakenet"
+  url: "https://nullroute.eu.org/~grawity/irssi.html"
+  version: "1.0"
+
 - authors: "Andreas ads Scherbaum"
   contact: "ads@ufp.de"
   description: "/WHOIS all the users who send you a private message."
