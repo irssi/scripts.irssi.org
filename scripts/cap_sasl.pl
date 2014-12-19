@@ -4,7 +4,7 @@ use MIME::Base64;
 use vars qw($VERSION %IRSSI);
 use constant CHALLENGE_SIZE => 32;
 
-$VERSION = "1.8a";
+$VERSION = "1.9";
 %IRSSI = (
     authors     => 'Michael Tharp (gxti), Jilles Tjoelker (jilles), Mantas Mikulėnas (grawity)',
     contact     => 'grawity@gmail.com',
@@ -340,7 +340,9 @@ if (eval {require Crypt::PK::ECC}) {
 
 		my $priv = $pk->export_key_pem("private");
 		my $pub = encode_base64($pk->export_key_raw("public_compressed"), "");
-		my $cmd = "/msg NickServ SET PROPERTY pubkey $pub";
+
+		my $cmdchar = substr(Irssi::settings_get_str("cmdchars"), 0, 1);
+		my $cmd = "msg NickServ SET PROPERTY pubkey $pub";
 
 		if (open(my $fh, ">", $f_priv)) {
 			chmod(0600, $f_priv);
@@ -370,10 +372,10 @@ if (eval {require Crypt::PK::ECC}) {
 			$server->command($cmd);
 		} else {
 			$print->("SASL: update your Irssi settings:");
-			$print->("%P/sasl set $net <nick> $f_name.key $mech");
+			$print->("%P".$cmdchar."sasl set $net <nick> $f_name.key $mech");
 
 			$print->("SASL: submit your public key to $net:");
-			$print->("%P$cmd");
+			$print->("%P".$cmdchar.$cmd);
 		}
 	}
 
