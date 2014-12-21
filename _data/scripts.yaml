@@ -886,6 +886,16 @@
   url: "http://irssi.dgl.cx/"
   version: "2.01"
 
+- authors: "Pablo Martín Báez Echevarría"
+  contact: "pab_24n@outlook.com"
+  description: "when a nick joins #channel, notifies you if there is (or there has been) someone in #channel with the same hostname"
+  filename: "clones_scanner.pl"
+  modified: "2014-12-20 22:30:25"
+  license: "Public domain"
+  name: "clones_scannner"
+  url: "http://reirssi.wordpress.com"
+  version: "1.5"
+
 - authors: "Gabor Nyeki"
   contact: "bigmac@vim.hu"
   description: "kicking users for using colors or blinks"
