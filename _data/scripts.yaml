@@ -905,7 +905,7 @@
   license: "Public domain"
   name: "clones_scannner"
   url: "http://reirssi.wordpress.com"
-  version: "1.5"
+  version: "1.6"
 
 - authors: "Gabor Nyeki"
   contact: "bigmac@vim.hu"

@@ -7,9 +7,11 @@ use warnings;
 use Irssi;
 use vars qw($VERSION %IRSSI);
 
-# Thanks to noi_esportista!#Girona@chathispano for his suggestions about how this script should work.
+# Thanks to:
+# -noi_esportista!#Girona@chathispano for his suggestions about how this script should work.
+# -dg!#irssi@freenode (David Leadbeater) for the several code style issues that he pointed out and that helped me to improve my Perl.
 
-$VERSION = '1.5';
+$VERSION = '1.6';
 %IRSSI = (
 	authors     => 'Pablo Martín Báez Echevarría',
 	contact     => 'pab_24n@outlook.com',
@@ -266,15 +268,12 @@ Irssi::theme_register([
 
 if ($have_devel_size) {
   
-  sub clones_scanner_size_cmd {
-    #use Data::Dumper;
-    #print Dumper(\%hosts_hash);
+  Irssi::command_bind('clones_scanner_size' , sub {
     my $bytes = Devel::Size::total_size(\%hosts_hash);
     print "Number of entries in \%hosts_hash: ", $total_entries;
-    print "Size in bytes: ".$bytes;
+    print "Size in bytes: ", $bytes;
     print int($bytes/1024/1024)."MB ".int($bytes/1024%1024)."kB ".int($bytes%1024)."B of data";
-  }
-  Irssi::command_bind('clones_scanner_size' , \&clones_scanner_size_cmd);
+  });
 
 } else {
 
