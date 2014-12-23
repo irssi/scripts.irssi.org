@@ -1269,17 +1269,6 @@
   name: "emo"
   version: "0.0.1"  
 
-- authors: "Harald Nesland"
-  contact: "hnesland@samsen.com"
-  description: "Very simple script that sends incoming text to freetranslation.com for english->norwegian translation. May be modified to translate other languages."
-  filename: "eng_no_translate_dpryo.pl"
-  modified: "2002-04-11 14:15:25"
-  license: "Public Domain"
-  modules: "LWP::Simple"
-  name: "EngNoTranslate"
-  url: "http://www.satyra.net"
-  version: "0.2"
-
 - authors: "Taneli Kaivola"
   contact: "dist@sci.fi"
   description: "Expand event mode and emit event mode {channel,user,server} *"
