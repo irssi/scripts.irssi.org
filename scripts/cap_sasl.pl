@@ -4,7 +4,7 @@ use MIME::Base64;
 use vars qw($VERSION %IRSSI);
 use constant CHALLENGE_SIZE => 32;
 
-$VERSION = "1.9";
+$VERSION = "1.10";
 %IRSSI = (
     authors     => 'Michael Tharp (gxti), Jilles Tjoelker (jilles), Mantas Mikulėnas (grawity)',
     contact     => 'grawity@gmail.com',
@@ -16,6 +16,15 @@ $VERSION = "1.9";
 
 my %sasl_auth = ();
 my %mech = ();
+
+sub irssi_abspath {
+	my $f = shift;
+	$f =~ s!^~/!$ENV{HOME}/!;
+	if ($f !~ m!^/!) {
+		$f = Irssi::get_irssi_dir()."/".$f;
+	}
+	return $f;
+}
 
 sub timeout;
 
@@ -269,20 +278,20 @@ $mech{EXTERNAL} = sub {
 };
 
 if (eval {require Crypt::PK::ECC}) {
+	my $mech = "ECDSA-NIST256P-CHALLENGE";
+
 	$mech{'ECDSA-NIST256P-CHALLENGE'} = sub {
 		my ($sasl, $data) = @_;
 		my $u = $sasl->{user};
-		my $k = $sasl->{password};
-		if ($k !~ m!^/!) {
-			$k = Irssi::get_irssi_dir()."/".$k;
-		}
-		if (!-f $k) {
-			Irssi::print("SASL: key file '$k' not found", MSGLEVEL_CLIENTERROR);
+		my $f = $sasl->{password};
+		$f = irssi_abspath($f);
+		if (!-f $f) {
+			Irssi::print("SASL: key file '$f' not found", MSGLEVEL_CLIENTERROR);
 			return;
 		}
-		my $pk = eval {Crypt::PK::ECC->new($k)};
+		my $pk = eval {Crypt::PK::ECC->new($f)};
 		if ($@ || !$pk || !$pk->is_private) {
-			Irssi::print("SASL: no private key in file '$k'", MSGLEVEL_CLIENTERROR);
+			Irssi::print("SASL: no private key in file '$f'", MSGLEVEL_CLIENTERROR);
 			return;
 		}
 		my $step = ++$sasl->{step};
@@ -308,20 +317,14 @@ if (eval {require Crypt::PK::ECC}) {
 	sub cmd_sasl_keygen {
 		my ($data, $server, $witem) = @_;
 
-		my $mech = "ECDSA-NIST256P-CHALLENGE";
-		my $net;
-		my $print;
+		my $print = $server
+				? sub { $server->print("", shift, shift // MSGLEVEL_CLIENTNOTICE) }
+				: sub { Irssi::print(shift, shift // MSGLEVEL_CLIENTNOTICE) };
 
-		if ($server) {
-			$net = $server->{tag};
-			$print = sub { $server->print("", shift) };
-		} else {
-			$net = $data;
-			$print = sub { Irssi::print(shift) };
-		}
-
+		my $net = $server ? $server->{tag} : $data;
 		if (!length $net) {
-			$print->("Please connect to a server first.");
+			Irssi::print("SASL: please connect to a server first",
+						MSGLEVEL_CLIENTERROR);
 			return;
 		}
 
@@ -330,7 +333,7 @@ if (eval {require Crypt::PK::ECC}) {
 		my $f_priv = Irssi::get_irssi_dir()."/$f_name.key";
 		my $f_pub  = Irssi::get_irssi_dir()."/$f_name.pub";
 		if (-e $f_priv) {
-			$print->("SASL: refusing to overwrite '$f_priv'");
+			$print->("SASL: refusing to overwrite '$f_priv'", MSGLEVEL_CLIENTERROR);
 			return;
 		}
 
@@ -341,16 +344,13 @@ if (eval {require Crypt::PK::ECC}) {
 		my $priv = $pk->export_key_pem("private");
 		my $pub = encode_base64($pk->export_key_raw("public_compressed"), "");
 
-		my $cmdchar = substr(Irssi::settings_get_str("cmdchars"), 0, 1);
-		my $cmd = "msg NickServ SET PROPERTY pubkey $pub";
-
 		if (open(my $fh, ">", $f_priv)) {
 			chmod(0600, $f_priv);
 			print $fh $priv;
 			close($fh);
 			$print->("SASL: wrote private key to '$f_priv'");
 		} else {
-			$print->("SASL: could not write '$f_priv': $!");
+			$print->("SASL: could not write '$f_priv': $!", MSGLEVEL_CLIENTERROR);
 			return;
 		}
 
@@ -358,8 +358,12 @@ if (eval {require Crypt::PK::ECC}) {
 			print $fh $pub."\n";
 			close($fh);
 		} else {
-			$print->("SASL: could not write '$f_pub': $!");
+			$print->("SASL: could not write '$f_pub': $!", MSGLEVEL_CLIENTERROR);
 		}
+
+		my $cmdchar = substr(Irssi::settings_get_str("cmdchars"), 0, 1);
+		my $cmd = "msg NickServ SET PROPERTY pubkey $pub";
+		# TODO: change to 'SET PUBKEY' when freenode gets support for that
 
 		if ($server) {
 			$print->("SASL: updating your Irssi settings...");
@@ -367,19 +371,59 @@ if (eval {require Crypt::PK::ECC}) {
 			$sasl_auth{$net}{password} = "$f_name.key";
 			$sasl_auth{$net}{mech} = $mech;
 			cmd_sasl_save(@_);
-
-			$print->("SASL: submitting key to NickServ...");
+			$print->("SASL: submitting pubkey to NickServ...");
 			$server->command($cmd);
 		} else {
 			$print->("SASL: update your Irssi settings:");
 			$print->("%P".$cmdchar."sasl set $net <nick> $f_name.key $mech");
-
-			$print->("SASL: submit your public key to $net:");
+			$print->("SASL: submit your pubkey to $net:");
 			$print->("%P".$cmdchar.$cmd);
 		}
 	}
 
+	sub cmd_sasl_pubkey {
+		my ($data, $server, $witem) = @_;
+
+		my $arg = $server ? $server->{tag} : $data;
+
+		my $f;
+		if (!length $arg) {
+			Irssi::print("SASL: please select a server or specify a keyfile path",
+						MSGLEVEL_CLIENTERROR);
+			return;
+		} elsif ($arg =~ m![/.]!) {
+			$f = $arg;
+		} else {
+			if ($sasl_auth{$arg}{mech} eq $mech) {
+				$f = $sasl_auth{$arg}{password};
+			} else {
+				$f = lc "sasl-ecdsa-$arg";
+				$f =~ s![ /]+!_!g;
+				$f = "$f.key";
+			}
+		}
+
+		$f = irssi_abspath($f);
+		if (!-e $f) {
+			Irssi::print("SASL: keyfile '$f' not found", MSGLEVEL_CLIENTERROR);
+			return;
+		}
+
+		my $pk = eval {Crypt::PK::ECC->new($f)};
+		if ($@ || !$pk || !$pk->is_private) {
+			Irssi::print("SASL: no private key in file '$f'", MSGLEVEL_CLIENTERROR);
+			Irssi::print("(keys using named parameters or PKCS#8 are not yet supported)",
+						MSGLEVEL_CLIENTERROR);
+			return;
+		}
+
+		my $pub = encode_base64($pk->export_key_raw("public_compressed"), "");
+		Irssi::print("SASL: loaded keyfile '$f'");
+		Irssi::print("SASL: your pubkey is $pub");
+	}
+
 	Irssi::command_bind('sasl keygen', \&cmd_sasl_keygen);
+	Irssi::command_bind('sasl pubkey', \&cmd_sasl_pubkey);
 };
 
 cmd_sasl_load();
