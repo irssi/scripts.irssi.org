@@ -52,22 +52,34 @@ sub dprint {
 # Hash to store our temporary ignores in.
 my %quits;
 
+# Returns 1 if there are entrys in the quits hash, otherwise 0.
+sub has_quitlist {
+	if (%quits) {
+		return 1;
+	}
+	return 0;
+}
+
+# Returns either 1 (from the entry in the hash) or undef.
 sub in_quitlist {
 	my ($tag, $nick) = @_;
 	return $quits{$tag . ':' . $nick};
 }
 
+# Adds an entry to the quitlist.
 sub quitlist_add {
 	my ($tag, $nick) = @_;
 	dprint("Adding $tag/$nick to the quitlist");
 	$quits{$tag . ':' . $nick} = 1;
 }
 
-# Remove entries from the quits hash.
+# Remove entries from the quits hash, this function takes only a single
+# argument since it's called by Irssi::timeout_add_once. The argument is
+# the concatinated $tag .':' $nick that the other functions use.
 sub quitlist_del {
-	my ($nick) = @_;
-	dprint("Purging $nick from the quits list");
-	delete $quits{$nick};
+	my ($tagnick) = @_;
+	dprint("Purging $tagnick from the quits list");
+	delete $quits{$tagnick};
 	return 0;
 }
 
@@ -91,7 +103,7 @@ sub message_join {
 	# Don't proceed if the hash is empty.
 	# hash returns <elements>/<buckets> in scalar context and just 0 if
 	# it's empty.
-	if (!%quits) {
+	if (!has_quitlist()) {
 		return 0;
 	}
 
@@ -144,7 +156,7 @@ sub message_irc_mode {
 	my $tag = $server_rec->{tag};
 
 	# Don't proceed if the hash is empty
-	if (!%quits) {
+	if (!has_quitlist()) {
 		return 0;
 	}
 
