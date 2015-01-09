@@ -59,11 +59,12 @@ sub in_quitlist {
 
 sub quitlist_add {
 	my ($tag, $nick) = @_;
+	dprint("Adding $tag/$nick to the quitlist");
 	$quits{$tag . ':' . $nick} = 1;
 }
 
 # Remove entries from the quits hash.
-sub purge_nick {
+sub quitlist_del {
 	my ($nick) = @_;
 	dprint("Purging $nick from the quits list");
 	delete $quits{$nick};
@@ -130,8 +131,10 @@ sub message_quit {
 	# If the quit message is registered, add the person to our quit hash
 	# and abort the signal.
 	quitlist_add($tag, $nick);
-	Irssi::timeout_add_once(1000, 'purge_nick', $tag.':'.$nick);
 	Irssi::signal_stop();
+
+	# Setup a timeout to delete the entry in 1 second.
+	Irssi::timeout_add_once(1000, 'quitlist_del', $tag.':'.$nick);
 	return 0;
 }
 
