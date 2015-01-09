@@ -41,15 +41,33 @@ $VERSION = "1.0";
 # any errors that might happen.
 my $debug = 0;
 
-# Hash to store our temporary ignores in.
-my %quits;
-
 # Debug line output.
 sub dprint {
 	my ($msg) = @_;
 	if ($debug) {
 		Irssi::print $msg;
 	}
+}
+
+# Hash to store our temporary ignores in.
+my %quits;
+
+sub in_quitlist {
+	my ($tag, $nick) = @_;
+	return $quits{$tag . ':' . $nick};
+}
+
+sub quitlist_add {
+	my ($tag, $nick) = @_;
+	$quits{$tag . ':' . $nick} = 1;
+}
+
+# Remove entries from the quits hash.
+sub purge_nick {
+	my ($nick) = @_;
+	dprint("Purging $nick from the quits list");
+	delete $quits{$nick};
+	return 0;
 }
 
 # Return 1 if we should process the tag, otherwise 0.
@@ -61,14 +79,6 @@ sub process_tag {
 			return 1;
 		}
 	}
-	return 0;
-}
-
-# Remove entries from the quits hash.
-sub purge_nick {
-	my ($nick) = @_;
-	dprint("Purging $nick from the quits list");
-	delete $quits{$nick};
 	return 0;
 }
 
@@ -91,11 +101,14 @@ sub message_join {
 
 	dprint("Processing JOIN $tag: $nick $addr");
 
-	# If the joining nick is in our quit hash, don't show the join.
-	if ($quits{$tag.':'.$nick}) {
-		Irssi::signal_stop();
+	# Return if they're not in the quitlist.
+	if (!in_quitlist($tag, $nick)) {
 		return 0;
 	}
+
+	# Finally, stop the signal. They are in the quitlist.
+	Irssi::signal_stop();
+	return 0;
 }
 
 # Process the 'message quit' signal. (/QUIT)
@@ -116,7 +129,7 @@ sub message_quit {
 
 	# If the quit message is registered, add the person to our quit hash
 	# and abort the signal.
-	$quits{$tag.':'.$nick} = 1;
+	quitlist_add($tag, $nick);
 	Irssi::timeout_add_once(1000, 'purge_nick', $tag.':'.$nick);
 	Irssi::signal_stop();
 	return 0;
@@ -157,11 +170,14 @@ sub message_irc_mode {
 	foreach my $target (@targets) {
 		dprint("Processing $target");
 
-		if ($quits{$tag.':'.$target}) {
-			dprint("Found $target in target list, stopping signal");
-			Irssi::signal_stop();
-			return 0;
+		# Proceed to next if target isn't in the quitlist.
+		if (!in_quitlist($tag, $target)) {
+			next;
 		}
+
+		dprint("Found $target in target list, stopping signal");
+		Irssi::signal_stop();
+		return 0;
 	}
 }
 
