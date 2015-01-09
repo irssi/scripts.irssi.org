@@ -22,7 +22,7 @@ sub duration {
 	my $hrs = int($diff / 3600); $diff -= ($hrs * 3600);
 	my $min = int($diff / 60); $diff -= ($min * 60);
 	my $sec = $diff;
-	
+
 	my $str;
 	$str .= "${day}d " if $day;
 	$str .= "${hrs}h " if $day or $hrs;
@@ -36,26 +36,42 @@ sub cmd_bans {
 	my ($args, $server, $witem) = @_;
 	return if not ($witem && $witem->{type} eq "CHANNEL");
 	my $channel = $witem->{name};
-	my $count = 1;
 
-	if (!$witem->bans()) { 
-		$witem->printformat(MSGLEVEL_CLIENTCRAP, 'bantime_nobans', $channel);
+	if (!$witem->bans()) {
+		$witem->printformat(
+			MSGLEVEL_CLIENTCRAP,
+			'bantime_nobans',
+			$channel);
 		return;
 	}
 
+	my $count = 1;
 	foreach my $ban ($witem->bans()) {
-		my $bantime;
 		if (!$ban->{setby} || !$ban->{time}) {
-			$witem->printformat(MSGLEVEL_CLIENTCRAP, 'bantime', $count, $channel, $ban->{ban});
-		} else {
+			$witem->printformat(
+				MSGLEVEL_CLIENTCRAP,
+				'bantime',
+				$count,
+				$channel,
+				$ban->{ban});
+		}
+		else {
+			my $bantime;
 			if (Irssi::settings_get_bool('bantime_show_date')) {
 				$bantime = localtime($ban->{time}) . ": ";
 				$bantime =~ s/\s+/ /g;
 			}
 			$bantime .= duration($ban->{time});
-			$witem->printformat(MSGLEVEL_CLIENTCRAP, 'bantime_long', $count, $channel, $ban->{ban}, $ban->{setby}, $bantime);
+			$witem->printformat(
+				MSGLEVEL_CLIENTCRAP,
+				'bantime_long',
+				$count,
+				$channel,
+				$ban->{ban},
+				$ban->{setby},
+				$bantime);
 		}
-		$count += 1;
+		$count++;
 	}
 }
 
@@ -67,6 +83,7 @@ Irssi::theme_register([
 Irssi::command_bind('bantime', 'cmd_bans');
 Irssi::print("Loaded $IRSSI{name} $VERSION");
 Irssi::settings_add_bool('bantime', 'bantime_show_date' => 0);
+
 #############
 # ChangeLog #
 #############
