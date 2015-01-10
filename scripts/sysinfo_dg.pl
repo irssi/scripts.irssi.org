@@ -2,7 +2,7 @@
 use strict;
 use Irssi 20011210.0250 ();
 use vars qw($VERSION %IRSSI);
-$VERSION = "1.2";
+$VERSION = "1.3";
 %IRSSI = (
     authors     => 'David Leadbeater',
     contact     => 'dgl@dgl.cx',
@@ -294,12 +294,12 @@ sub cpuinfo{
 
 sub pciinfo{
    my($videocard,$ethernet);
-   open(PCI, "<", "/proc/pci") or return undef;
+   open(PCI, "-|", "/sbin/lspci") or return undef;
    while(<PCI>){
       chomp;
       if(/VGA compatible controller: (.*?)$/){
          $videocard .= "${1}+ ";
-      }elsif(/Ethernet controller: (.*?)$/){
+      }elsif(/(Ethernet|Network) controller: (.*?)$/){
 	     $ethernet = $1;
       }
    }
