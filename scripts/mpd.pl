@@ -30,6 +30,8 @@
 #       Some minor changes                                            #
 #  0.6: Added some more format directives(time, album)                #
 #       Added support for password authentication                     #
+#  0.7: Added format directives for bitrate and volume                #
+#       Fixed socket not timing out at specified interval             #
 #######################################################################
 
 use strict;
@@ -38,11 +40,11 @@ use Irssi;
 
 use vars qw{$VERSION %IRSSI %MPD};
 
-$VERSION = "0.6";
+$VERSION = "0.7";
 %IRSSI = (
           name        => 'mpd',
-          authors     => 'Erik Scharwaechter, Tobias Böhm',
-          contact     => 'diozaka@gmx.de, code@aibor.de',
+          authors     => 'Erik Scharwaechter, Tobias Böhm, Mikkel Kroman',
+          contact     => 'diozaka@gmx.de, code@aibor.de, mk@maero.dk',
           license     => 'GPLv2',
           description => 'print the song you are listening to',
          );
@@ -76,7 +78,7 @@ sub np {
                           Proto    => 'tcp',
                           PeerPort => $MPD{'port'},
                           PeerAddr => $MPD{'host'},
-                          timeout  => $MPD{'timeout'}
+                          Timeout  => $MPD{'timeout'}
                           );
 
     if (not $socket) {
@@ -109,6 +111,8 @@ sub np {
     $MPD{'filename'} = "";
     $MPD{'elapsed'}  = "";
     $MPD{'total'}    = "";
+    $MPD{'volume'}   = "";
+    $MPD{'bitrate'}  = "";
 
     my $ans = "";
     my $str = "";
@@ -125,6 +129,10 @@ sub np {
         } elsif ($ans =~ /^time: (\d+):(\d+)$/) {
             $MPD{'elapsed'} = sprintf("%01d:%02d", $1/60,$1%60);
             $MPD{'total'} = sprintf("%01d:%02d", $2/60,$2%60);
+        } elsif ($ans =~ /^volume: (\d+)$/) {
+            $MPD{'volume'} = $1
+        } elsif ($ans =~ /^bitrate: (\d+)$/) {
+            $MPD{'bitrate'} = $1
         }
     }
 
@@ -165,6 +173,8 @@ sub np {
     $str =~ s/\%FILENAME/$MPD{'filename'}/g;
     $str =~ s/\%ELAPSED/$MPD{'elapsed'}/g;
     $str =~ s/\%TOTAL/$MPD{'total'}/g;
+    $str =~ s/\%BITRATE/$MPD{'bitrate'}/g;
+    $str =~ s/\%VOLUME/$MPD{'volume'}/g;
 
     if ($witem && ($witem->{type} eq "CHANNEL" ||
                    $witem->{type} eq "QUERY")) {
