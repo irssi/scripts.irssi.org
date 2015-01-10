@@ -1,3 +1,7 @@
+use strict;
+use Irssi;
+use vars qw($VERSION %IRSSI);
+
 $VERSION = "2.3.1";
 %IRSSI = (
     authors     => "Matti 'qvr' Hiljanen, Piotr 'Pieta' Szymanski",
@@ -44,7 +48,6 @@ $VERSION = "2.3.1";
 #
 
 use Socket;
-use strict;
 
 my($waport, $wahost, $wapass, $di);
 
@@ -55,15 +58,15 @@ sub getstat($$$) {
    if (socket(SOCK, PF_INET, SOCK_STREAM, getprotobyname('tcp'))) {
         if (connect(SOCK, sockaddr_in($port, inet_aton($host)))) {
               unless (send(SOCK, $data, 0)) {
-              Irssi::print("Unable to write to the socket: $!", Irssi::MSGLEVEL_CLIENTERROR);
+              Irssi::print("Unable to write to the socket: $!", MSGLEVEL_CLIENTERROR);
               return;
               }
         } else {
-              Irssi::print("Unable to connect to the socket: $!", Irssi::MSGLEVEL_CLIENTERROR);
+              Irssi::print("Unable to connect to the socket: $!", MSGLEVEL_CLIENTERROR);
               return;
         }
         } else {
-        Irssi::print("Connection to $host failed: $!", Irssi::MSGLEVEL_CLIENTERROR);
+        Irssi::print("Connection to $host failed: $!", MSGLEVEL_CLIENTERROR);
         return;
         }
 

@@ -30,14 +30,16 @@
 # OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 # SUCH DAMAGE.
 
+use strict;
 use Irssi;
 use Irssi::Irc;
 use IO::Socket;
 
+use vars qw($VERSION %IRSSI); 
 use vars %IRSSI;
 %IRSSI = (
 	authors		=> "Gabor Nyeki",
-	contact		=> "bigmac@home.sirklabs.hu",
+	contact		=> "bigmac\@home.sirklabs.hu",
 	name		=> "tvmusor",
 	description	=> "asks for the current tv-lineup from http://www.port.hu/",
 	license		=> "BSDL",
@@ -62,8 +64,8 @@ sub tvmusor {
 	my ($args) = @_;
 
 	split / /, $args;
-	$chan = @_[0];
-	$list = @_[1];
+	my $chan = @_[0];
+	my $list = @_[1];
 
 	if (!$chan) {
 		Irssi::print "Hasznalat: /tvmusor list|csatorna [lista hossza]";
@@ -71,7 +73,7 @@ sub tvmusor {
 	}
 	if ($chan eq "list") {
 		Irssi::print "Elerheto csatornak listaja:";
-		foreach $buf (sort(keys %chans)) {
+		foreach my $buf (sort(keys %chans)) {
 			Irssi::print "-> $buf";
 		}
 		return;
@@ -82,6 +84,7 @@ sub tvmusor {
 		return;
 	}
 
+	my $num;
 	if (!$list) {
 		$num = 5;
 	} else {
@@ -89,7 +92,7 @@ sub tvmusor {
 	}
 
 
-	$sd = IO::Socket::INET->new(Proto => "tcp",
+	my $sd = IO::Socket::INET->new(Proto => "tcp",
 				    PeerAddr => "www.port.hu",
 				    PeerPort => "80") or die;
 	print $sd "GET /pls/tv/tv.prog?i_days=1&i_ch=$chans{$chan}&i_ch_nr=1 HTTP/1.0\n";
@@ -99,7 +102,8 @@ sub tvmusor {
 
 	Irssi::print "$chan:";
 
-	$i = 0;
+	my $i = 0;
+	my ($x, $y);
 	while (<$sd>) {
 		if ($_ =~ /<tr><td align="right" valign="top" bgcolor="/) {
 			split /<strong>/, $_;

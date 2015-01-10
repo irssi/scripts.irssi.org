@@ -1,6 +1,8 @@
 # $Id: users.pl,v 1.22 2003/01/11 14:54:35 jylefort Exp $
 
+use strict;
 use Irssi 20020121.2020 ();
+use vars qw($VERSION %IRSSI);
 $VERSION = "2.3";
 %IRSSI = (
 	  authors     => 'Jean-Yves Lefort',
@@ -97,8 +99,6 @@ $VERSION = "2.3";
 #	2002-01-28	release 0.11
 #
 #	2002-01-23	initial release
-
-use strict;
 
 ### sort algorithms table #####################################################
 

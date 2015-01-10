@@ -26,6 +26,7 @@
 #  - support for runtime configuration + multiple nicks
 #  - support for /whois and some other commands? private messages?
 
+use strict;
 use Irssi;
 use Irssi::Irc;
 use vars qw($VERSION %IRSSI); 
@@ -89,11 +90,11 @@ sub find_realnick {
 
 	my @nicks = $channel->nicks();
 	$fakenick = '';
-	foreach $nick (@nicks) {
+	foreach my $nick (@nicks) {
 		my $realname = $nick->{realname};
 		if ($realname =~ /$realname_regexp/i) {
 			$fakenick = $nick->{nick};
-			break;
+			last;
 		}
 	}
 }

@@ -1,5 +1,7 @@
 #!/usr/bin/perl
+use strict;
 use Irssi 20011210.0250 ();
+use vars qw($VERSION %IRSSI);
 $VERSION = "1.2";
 %IRSSI = (
     authors     => 'David Leadbeater',
@@ -15,7 +17,6 @@ $VERSION = "1.2";
 #if you edit it and think the change is worthwhile tell me and i may add it into
 #the script and credit you
 
-use strict;
 use vars qw/$colour $graphs $graphs2 $colour2 $style/;
 Irssi::command_bind("sysinfo","sysinfo");
 
@@ -136,7 +137,7 @@ sub ircbit{
 }
 
 sub percent{
-   my $percent = sprintf("%.1f",(($_[0]/$_[1])*100));
+   my $percent = ($_[1] != 0) ? sprintf("%.1f",(($_[0]/$_[1])*100)) : 0;
    if($graphs){
 	  my $tmp = "[";
 	  for(1..10){
@@ -170,7 +171,7 @@ sub uptime{
 
 sub meminfo{
    my($memsize,$memfree);
-   open(MEMINFO, "/proc/meminfo") or return undef;
+   open(MEMINFO, "<", "/proc/meminfo") or return undef;
    while(<MEMINFO>){
       chomp;
       if(/^MemTotal:\s+(\d+)/){
@@ -185,7 +186,7 @@ sub meminfo{
 
 sub swapinfo{
    my($swapsize,$swapused);
-   open(SWAPINFO, "/proc/swaps");
+   open(SWAPINFO, "<", "/proc/swaps");
    while(<SWAPINFO>){
 	  chomp;
 	  next if !/^\//;
@@ -201,7 +202,7 @@ sub swapinfo{
 
 sub netinfo{
    my(%netinfo);
-   open(NETINFO, "/proc/net/dev") or return undef;
+   open(NETINFO, "<", "/proc/net/dev") or return undef;
    while(<NETINFO>){
 	  chomp;
 	  next if /^(\s+)?(Inter|face|lo)/;
@@ -267,7 +268,7 @@ sub basicinfo{
 
 sub cpuinfo{
    my($cpumodel,$cpusmp,$cpumhz,$cpucache,$bogomips);
-   open(CPUINFO, "/proc/cpuinfo") or return undef;
+   open(CPUINFO, "<", "/proc/cpuinfo") or return undef;
    while(<CPUINFO>){
       if(/^model name\s+\:\s+(.*?)$/){
 	     if(defined $cpumodel){
@@ -293,7 +294,7 @@ sub cpuinfo{
 
 sub pciinfo{
    my($videocard,$ethernet);
-   open(PCI, "/proc/pci") or return undef;
+   open(PCI, "<", "/proc/pci") or return undef;
    while(<PCI>){
       chomp;
       if(/VGA compatible controller: (.*?)$/){
@@ -321,7 +322,7 @@ sub screenres{
 
 sub firstline{
    my $file = shift;
-   open(FILE, "$file") or return undef;
+   open(FILE, "<", $file) or return undef;
    chomp(my $line = <FILE>);
    close(FILE);
    return $line;

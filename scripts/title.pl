@@ -1,3 +1,5 @@
+use strict;
+use vars qw($VERSION %IRSSI);
 use Irssi 20020120.0250 ();
 $VERSION = "3.2b";
 %IRSSI = (

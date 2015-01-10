@@ -1,5 +1,6 @@
 # -*- CPerl -*-
 #       $Id$
+use strict;
 use Irssi;
 use vars qw($VERSION %IRSSI);
 $VERSION = '1.01';

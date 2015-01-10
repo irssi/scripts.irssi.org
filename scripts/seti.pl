@@ -1,5 +1,5 @@
 # This is not a well written script, but it works. I hope.
-
+use strict;
 use Irssi;
 use vars qw($VERSION %IRSSI);
 
@@ -18,18 +18,18 @@ $VERSION = '0.1';
 
 sub seti_info {
 
-  $WHERES_SETI_STATE_SAH = Irssi::settings_get_str('seti_state_sah');
+  my $WHERES_SETI_STATE_SAH = Irssi::settings_get_str('seti_state_sah');
 
   my ($data, $server, $witem) = @_;
-  $args =~ s/\s+$//; 
 
-  open(INFO, "$WHERES_SETI_STATE_SAH");
-  for($tmp = 0; $tmp < 5; $tmp++) {
+  my $line;
+  open(INFO, "<", $WHERES_SETI_STATE_SAH);
+  for(my $tmp = 0; $tmp < 5; $tmp++) {
     $line = <INFO>;
   }
   close(INFO);
-  $proc = substr($line, 7, 4)/100;
-  my $output = "progress of this SETI@home workunit: $proc%";
+  my $proc = substr($line, 7, 4)/100;
+  my $output = "progress of this SETI\@home workunit: $proc%";
 
   if($data)
   {

@@ -26,7 +26,8 @@
 # $ident: sysinfo270-irssi.pl,v 2.70 2003/07/30 22:52:24 drudie Exp $
 #
 
-
+use strict;
+use vars qw($VERSION %IRSSI);
 $VERSION = '2.70';
 %IRSSI = (
  authors	=> 'David Rudie',
@@ -45,33 +46,33 @@ use POSIX qw(floor);
 
 
 sub cmd_sysinfo {
- $nic_1			= Irssi::settings_get_str('sysinfo_nic_1');
- $nic_2			= Irssi::settings_get_str('sysinfo_nic_2');
- $nic_3			= Irssi::settings_get_str('sysinfo_nic_3');
- $nic_1_name		= Irssi::settings_get_str('sysinfo_nic_1_name');
- $nic_2_name		= Irssi::settings_get_str('sysinfo_nic_2_name');
- $nic_3_name		= Irssi::settings_get_str('sysinfo_nic_3_name');
+ my $nic_1			= Irssi::settings_get_str('sysinfo_nic_1');
+ my $nic_2			= Irssi::settings_get_str('sysinfo_nic_2');
+ my $nic_3			= Irssi::settings_get_str('sysinfo_nic_3');
+ my $nic_1_name	= Irssi::settings_get_str('sysinfo_nic_1_name');
+ my $nic_2_name	= Irssi::settings_get_str('sysinfo_nic_2_name');
+ my $nic_3_name	= Irssi::settings_get_str('sysinfo_nic_3_name');
 
-
+ my($n1,$n2,$n3);
  if($nic_1 ne '') { $n1 = 1; }
  if($nic_2 ne '') { $n2 = 1; }
  if($nic_3 ne '') { $n3 = 1; }
 
 
- $os			= `uname -s`; chop($os);
- $osn			= `uname -n`; chop($osn);
- $osv			= `uname -r`; chop($osv);
- $osm			= `uname -m`; chop($osm);
- $uname			= "$os $osv/$osm";
+ my $os			= `uname -s`; chop($os);
+ my $osn		= `uname -n`; chop($osn);
+ my $osv		= `uname -r`; chop($osv);
+ my $osm		= `uname -m`; chop($osm);
+ my $uname	= "$os $osv/$osm";
 
-
+ my($darwin, $freebsd, $linux, $netbsd, $openbsd);
  if($os =~ /^Darwin$/)	{ $darwin	= 1; }
  if($os =~ /^FreeBSD$/)	{ $freebsd	= 1; }
  if($os =~ /^Linux$/)	{ $linux	= 1; }
  if($os =~ /^NetBSD$/)	{ $netbsd	= 1; }
  if($os =~ /^OpenBSD$/)	{ $openbsd	= 1; }
 
-
+ my($alpha, $armv4l, $i586, $i686, $ia64, $mips, $parisc64, $ppc);
  if($osm =~ /^alpha$/)	 { $alpha	= 1; }
  if($osm =~ /^armv4l$/)	 { $armv4l	= 1; }
  if($osm =~ /^i586$/)	 { $i586	= 1; }
@@ -81,45 +82,45 @@ sub cmd_sysinfo {
  if($osm =~ /^parisc64$/){ $parisc64	= 1; }
  if($osm =~ /^ppc$/)	 { $ppc		= 1; }
 
-
- if($osv =~ /^2\.6/)	{ $l26		= 1; }
-
-
- $cpuinfo	= "";
- $meminfo	= "";
- $netdev	= "";
- $uptime	= "";
- $dmesgboot	= "";
+ my $l26;
+ if($osv >= 2.6)	{ $l26		= 1; }
 
 
+ my $cpuinfo	= "";
+ my $meminfo	= "";
+ my $netdev	= "";
+ my $uptime	= "";
+ my $dmesgboot	= "";
+ 
+ my (@cpuinfo, @meminfo, @netdev, @uptime, @dmesgboot, @netstat, $sysctl);
  if($linux) {
-  open(CPUINFO, "/proc/cpuinfo");
-  while($data = <CPUINFO>) {
+  open(CPUINFO, "<", "/proc/cpuinfo");
+  while(my $data = <CPUINFO>) {
    $cpuinfo		.= $data;
    @cpuinfo		= split(/\n/, $cpuinfo);
   }
   close(CPUINFO);
-  open(MEMINFO, "/proc/meminfo");
-  while($data = <MEMINFO>) {
+  open(MEMINFO, "<", "/proc/meminfo");
+  while(my $data = <MEMINFO>) {
    $meminfo		.= $data;
    @meminfo		= split(/\n/, $meminfo);
   }
   close(MEMINFO);
-  open(NETDEV, "/proc/net/dev");
-  while($data = <NETDEV>) {
+  open(NETDEV, "<", "/proc/net/dev");
+  while(my $data = <NETDEV>) {
    $netdev		.= $data;
    @netdev		= split(/\n/, $netdev);
   }
   close(NETDEV);
-  open(UPTIME, "/proc/uptime");
-  while($data = <UPTIME>) {
+  open(UPTIME, "<", "/proc/uptime");
+  while(my $data = <UPTIME>) {
    $uptime		.= $data;
    @uptime		= split(/\n/, $uptime);
   }
   close(UPTIME);
  } else {
-  open(DMESG, "/var/run/dmesg.boot");
-  while($data = <DMESG>) {
+  open(DMESG, "<", "/var/run/dmesg.boot");
+  while(my $data = <DMESG>) {
    $dmesgboot		.= $data;
    @dmesgboot		= split(/\n/, $dmesgboot);
   }
@@ -132,14 +133,14 @@ sub cmd_sysinfo {
   }
  }
 
-
+ my $df;
  if($armv4l) {
   $df			= 'df -k';
  } else {
   $df			= 'df -lk';
  }
 
-
+ my (@cpu, $cpu, @smp, $smp, @model, $model, @mhz, $mhz);
  if($freebsd) {
   if($alpha) {
    @cpu			= grep(/^COMPAQ/, @dmesgboot);
@@ -284,12 +285,12 @@ sub cmd_sysinfo {
  }
 
 
- $procs			= `ps ax | grep -v PID | wc -l`; chop($procs);
+ my $procs	= `ps ax | grep -v PID | wc -l`; chop($procs);
  $procs			= $procs;
  $procs			=~ s/^\s+//;
  $procs			=~ s/\s+$//;
 
-
+ my ($boottime, $ticks, $currenttime, $days, $hours, $mins);
  if($freebsd) {
   $boottime		= `$sysctl -n kern.boottime | awk '{print \$4}'`;
  }
@@ -316,7 +317,7 @@ sub cmd_sysinfo {
  if($mins  eq 0) { $mins  = ''; } elsif($mins  >= 1) { $mins  = $mins.  'm';  }
  $uptime = $days . $hours . $mins;
 
-
+ my ($load, @load);
  $load			= `uptime`; chop($load);
  if($linux) {
   @load			= split(/average: /,  $load, 2);
@@ -327,6 +328,7 @@ sub cmd_sysinfo {
  $load			= $load[0];
 
 
+ my (@memtotal, $memtotal, @membuffers, $membuffers, @memcached, $memcached, @memused, $memused);
  if($linux) {
   if($l26) {
    @memtotal		= grep(/MemTotal:/, @meminfo);
@@ -359,18 +361,20 @@ sub cmd_sysinfo {
   $memused		= `vmstat -s | grep 'pages active' | awk '{print \$1}'` * `vmstat -s | grep 'per page' | awk '{print \$1}'`;
   $memtotal		= `$sysctl -n hw.physmem`;
  }
- $mempused		= sprintf("%.2f", $memused / $memtotal * 100);
+ my $mempused		= sprintf("%.2f", $memused / $memtotal * 100);
  $memtotal		= sprintf("%.2f", $memtotal / 1024 / 1024);
  $memused		= sprintf("%.2f", $memused / 1024 / 1024);
 
 
- $hddtotal		= `$df | grep -v Filesystem | awk '{ sum+=\$2 / 1024 / 1024}; END { print sum }'`; chop($hddtotal);
- $hddused		= `$df | grep -v Filesystem | awk '{ sum+=\$3 / 1024 / 1024}; END { print sum }'`; chop($hddused);
- $hddpused		= sprintf("%.2f", $hddused / $hddtotal * 100);
+ my $hddtotal	= `$df | grep -v Filesystem | awk '{ sum+=\$2 / 1024 / 1024}; END { print sum }'`; chop($hddtotal);
+ my $hddused	= `$df | grep -v Filesystem | awk '{ sum+=\$3 / 1024 / 1024}; END { print sum }'`; chop($hddused);
+ my $hddpused	= sprintf("%.2f", $hddused / $hddtotal * 100);
  $hddtotal		= sprintf("%.2f", $hddtotal);
- $hddused		= sprintf("%.2f", $hddused);
+ $hddused		  = sprintf("%.2f", $hddused);
 
-
+ my (@lan_in_1, $lan_in_1, @lan_out_1, $lan_out_1,
+     @lan_in_2, $lan_in_2, @lan_out_2, $lan_out_2,
+     @lan_in_3, $lan_in_3, @lan_out_3, $lan_out_3);
  if($n1) {
   if($darwin || $freebsd) {
    @lan_in_1		= grep(/$nic_1/, @netstat);
@@ -515,7 +519,7 @@ sub cmd_sysinfo {
  }
 
 
- $output  = "Hostname: $osn - ";
+ my $output  = "Hostname: $osn - ";
  $output .= "OS: $uname - ";
  $output .= "CPU: $cpu - ";
  $output .= "Processes: $procs - ";

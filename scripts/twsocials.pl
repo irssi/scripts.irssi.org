@@ -1,3 +1,4 @@
+use strict;
 use vars qw($VERSION %IRSSI);
 use Irssi;
 use Irssi::Irc;
@@ -68,7 +69,8 @@ sub message_public {
   if(!Irssi::settings_get_bool('twsocials_remote')) { return; }
   $home_chan=$target;
   $data =~ s/\r//;
-  @data_arr = split " ", $data;
+  my $socname;
+  my @data_arr = split " ", $data;
   if(@data_arr[0] eq "!social") {
      if(!$#data_arr) {
         syntax($server,$target);
@@ -110,8 +112,8 @@ sub message_public {
            return; 
            }
         $socname = @data_arr[2];
-        $set = @data_arr[3];
-        $cutstr = "@data_arr[0] @data_arr[1] @data_arr[2] @data_arr[3] ";
+        my $set = @data_arr[3];
+        my $cutstr = "@data_arr[0] @data_arr[1] @data_arr[2] @data_arr[3] ";
         $data =~ s/$cutstr//;
         setsoc($server,$target,$socname,$set,$data);
         return; 
@@ -124,11 +126,12 @@ sub message_public {
      soclist($server,$target);
      return; 
      }
-  $chr="!";
+  my $chr="!";
   $socname = @data_arr[0];
-  @socname_arr = split //, $socname;
+  my @socname_arr = split //, $socname;
   if(@socname_arr[0] ne $chr) { return; }
   $socname =~ s/$chr//;
+  my ($nick2,$msgsw);
   if(!ifexist_social($socname)) { return; }
   if($#data_arr == 0) {
      $nick2 = "UNSET";
@@ -142,8 +145,8 @@ sub message_public {
      $nick2 = @data_arr[1];
      $msgsw=1;
      }  
-  $chan = Irssi::Irc::Server->channel_find($home_chan);
-  $nick_obj = $chan->nick_find($nick2);
+  my $chan = Irssi::Irc::Server->channel_find($home_chan);
+  my $nick_obj = $chan->nick_find($nick2);
   if($nick_obj->{nick} eq "" && $nick2 ne "UNSET") { 
      $server->command("msg $target nickname does not exist.");
      return;
@@ -154,10 +157,11 @@ sub message_public {
 sub message_private {
   my($server, $data, $nick, $address) = @_;
   if(!Irssi::settings_get_bool('twsocials_remote')) { return; }
-  $target=$nick;
+  my $target=$nick;
   $home_chan=$target;
   $data =~ s/\r//;
-  @data_arr = split " ", $data;
+  my $socname;
+  my @data_arr = split " ", $data;
   if(@data_arr[0] eq "!social") {
      if(!$#data_arr) {
         syntax($server,$target);
@@ -199,8 +203,8 @@ sub message_private {
            return; 
            }
         $socname = @data_arr[2];
-        $set = @data_arr[3];
-        $cutstr = "@data_arr[0] @data_arr[1] @data_arr[2] @data_arr[3] ";
+        my $set = @data_arr[3];
+        my $cutstr = "@data_arr[0] @data_arr[1] @data_arr[2] @data_arr[3] ";
         $data =~ s/$cutstr//;
         setsoc($server,$target,$socname,$set,$data);
         return; 
@@ -213,11 +217,12 @@ sub message_private {
      soclist($server,$target);
      return; 
      }
-  $chr="!";
+  my $chr="!";
   $socname = @data_arr[0];
-  @socname_arr = split //, $socname;
+  my @socname_arr = split //, $socname;
   if(@socname_arr[0] ne $chr) { return; }
   $socname =~ s/$chr//;
+  my ($nick2,$msgsw);
   if(!ifexist_social($socname)) { return; }
   if($#data_arr == 0) {
      $nick2 = "UNSET";
@@ -231,7 +236,7 @@ sub message_private {
      $nick2 = @data_arr[1];
      $msgsw=1;
      }  
-  $nick1 = $nick;
+  my $nick1 = $nick;
   do_social($server,$target,$socname,$nick1,$nick2,$msgsw);
 }
 
@@ -243,7 +248,8 @@ sub on_public {
   $target=Irssi::active_win()->{active}->{name};
   $home_chan=$target;
   $data =~ s/\r//;
-  @data_arr = split " ", $data;
+  my $socname;
+  my @data_arr = split " ", $data;
   if(@data_arr[0] eq "!social") {
      if(!$#data_arr) {
         syntax($server,$target);
@@ -285,8 +291,8 @@ sub on_public {
            return;
            }
         $socname = @data_arr[2];
-        $set = @data_arr[3];
-        $cutstr = "@data_arr[0] @data_arr[1] @data_arr[2] @data_arr[3] ";
+        my $set = @data_arr[3];
+        my $cutstr = "@data_arr[0] @data_arr[1] @data_arr[2] @data_arr[3] ";
         $data =~ s/$cutstr//;
         setsoc($server,$target,$socname,$set,$data);
         return; 
@@ -299,11 +305,12 @@ sub on_public {
      soclist($server,$target);
      return; 
      }
-  $chr="!";  
+  my $chr="!";  
   $socname = @data_arr[0];
-  @socname_arr = split //, $socname;
+  my @socname_arr = split //, $socname;
   if(@socname_arr[0] ne $chr) { return; }
   $socname =~ s/$chr//;
+  my ($nick2,$msgsw);
   if(!ifexist_social($socname)) {
      return;
      }
@@ -319,9 +326,9 @@ sub on_public {
      $nick2 = @data_arr[1];
      $msgsw=1;
      }  
-  $nick1 = $server->{nick};
-  $chan = Irssi::Irc::Server->channel_find($home_chan);
-  $nick_obj = $chan->nick_find($nick2);
+  my $nick1 = $server->{nick};
+  my $chan = Irssi::Irc::Server->channel_find($home_chan);
+  my $nick_obj = $chan->nick_find($nick2);
   if($nick_obj->{nick} eq "" && $nick2 ne "UNSET") { 
      $server->command("msg $target nickname does not exist.");
      return;
@@ -336,7 +343,8 @@ sub on_private {
   $home_chan=$nick;
   $target=$nick;
   $data =~ s/\r//;
-  @data_arr = split " ", $data;
+  my $socname;
+  my @data_arr = split " ", $data;
   if(@data_arr[0] eq "!social") {
      if(!$#data_arr) {
         syntax($server,$target);
@@ -378,8 +386,8 @@ sub on_private {
            return;
            }
         $socname = @data_arr[2];
-        $set = @data_arr[3];
-        $cutstr = "@data_arr[0] @data_arr[1] @data_arr[2] @data_arr[3] ";
+        my $set = @data_arr[3];
+        my $cutstr = "@data_arr[0] @data_arr[1] @data_arr[2] @data_arr[3] ";
         $data =~ s/$cutstr//;
         setsoc($server,$target,$socname,$set,$data);
         return; 
@@ -392,11 +400,12 @@ sub on_private {
      soclist($server,$target);
      return; 
      }
-  $chr="!";  
+  my $chr="!";  
   $socname = @data_arr[0];
-  @socname_arr = split //, $socname;
+  my @socname_arr = split //, $socname;
   if(@socname_arr[0] ne $chr) { return; }
   $socname =~ s/$chr//;
+  my ($msgsw,$nick2);
   if(!ifexist_social($socname)) {
      return;
      }
@@ -412,7 +421,7 @@ sub on_private {
      $nick2 = @data_arr[1];
      $msgsw=1;
      }  
-  $nick1 = $server->{nick};
+  my $nick1 = $server->{nick};
   $target = $nick;
   do_social($server,$target,$socname,$nick1,$nick2,$msgsw);
 }
@@ -420,30 +429,30 @@ sub on_private {
 sub addsoc {
    my ($server,$target,$socname) = @_;
    if(ifexist_social($socname)) {
-      $server->command("msg $target $r3social: $rs$socname already exist.");
+      $server->command("msg $target r3social: $rs$socname already exist.");
       return;
       }
    #write_social($socname,$fpriv,$fself,$fnobody,$fpublic,$fyou,$fthem) 
    write_social($socname,"0","UNSET","UNSET","UNSET","UNSET","UNSET");
-   irssicmd_socials();
+   irssicmd_socials($socname);
    $server->command("msg $target $r2 done.");   
    return;
 }
 
 sub irssi_addsoc {
    my ($data, $server, $witem) = @_;
-   @data_arr = split / /, $data;
+   my @data_arr = split / /, $data;
    if(@data_arr[0] eq "") { 
       irssi_syntax();
       return;
       }
-   $socname = @data_arr[0];
+   my $socname = @data_arr[0];
    if(ifexist_social($socname)) {
       print "$rs$socname already exist.";
       return;
       }
    write_social($socname,"0","UNSET","UNSET","UNSET","UNSET","UNSET");
-   irssicmd_socials();
+   irssicmd_socials($socname);
    print "$r2 done.";
    return;
 }
@@ -454,28 +463,28 @@ sub delsoc {
       $server->command("msg $target $r3 DELETE $socname: $rs$socname social does not exist.");
       return;
       }
-   $filename ="$path/$socname.txt";
+   my $filename ="$path/$socname.txt";
    unlink($filename);
-   irssicmd_socials();
+   irssicmd_socials($socname);
    $server->command("msg $target $r2 done.");   
    return;
 }
 
 sub irssi_delsoc {
    my ($data, $server, $witem) = @_;
-   @data_arr = split / /, $data;
+   my @data_arr = split / /, $data;
    if(@data_arr[0] eq "") { 
       irssi_syntax();
       return;
       }
-   $socname = @data_arr[0];
+   my $socname = @data_arr[0];
    if(!ifexist_social($socname)) {
       print "$r3 DELETE $socname: $rs$socname social does not exist.";
       return;
       }
-   $filename ="$path/$socname.txt";
+   my $filename ="$path/$socname.txt";
    unlink($filename);
-   irssicmd_socials();
+   irssicmd_socials($socname);
    print "$r2 done.";
    return;
 }
@@ -484,20 +493,21 @@ sub setsoc {
    my ($server,$target,$socname,$set,$data) = @_;
    my @sets = ("priv","nobody","public","self","them","you");
    if(!ifexist_social($socname)) {
-      $server->command("msg $target $r3 SET $social: $rs$socname does not exist.");
+      $server->command("msg $target $r3 SET social: $rs$socname does not exist.");
       return;
       }
    $set = "\L$set";
-   $found=0;
+   my $found=0;
    foreach(@sets) { if($set eq $_) { $found=1; } }
    if(!$found) {
       $server->command("msg $target $r3 social:$rs invalid field name.");
       return;
       }  
-   $filename = "$path/$socname.txt";
-   $cx=0;
-   open(FILE,"<$filename") or do {
-      print "File ".$filename." Not found.";
+   my $filename = "$path/$socname.txt";
+   my $cx=0;
+   my ($fpriv, $fnobody, $fpublic, $fself, $fthem, $fyou);
+   open(FILE,"<", $filename) or do {
+      print "File $filename not found.";
       return;
       };
    while (<FILE>) {
@@ -519,38 +529,39 @@ sub setsoc {
    $fyou    = $data if($set eq "you");
    write_social($socname,$fpriv,$fself,$fnobody,$fpublic,$fyou,$fthem);
    $server->command("msg $target $r2 done.");   
-   irssicmd_socials();
+   irssicmd_socials($socname);
    return;   
 }
 
 sub irssi_setsoc {
    my ($data, $server, $witem) = @_;
-   @data_arr = split / /, $data;
+   my @data_arr = split / /, $data;
    if($#data_arr <=1) { 
       irssi_set_syntax();
       return;
       }
-   $cutstr = "/";
-   $socname = @data_arr[0];
-   $set = @data_arr[1];
+   my $cutstr = "/";
+   my $socname = @data_arr[0];
+   my $set = @data_arr[1];
    $cutstr = "$socname $set ";
    $data =~ s/$cutstr//g;
    my @sets = ("priv","nobody","public","self","them","you");
    if(!ifexist_social($socname)) {
-      print "$r3 SET $social: $rs$socname does not exist.";
+      print "$r3 SET social: $rs$socname does not exist.";
       return;
       }
    $set = "\L$set";
-   $found=0;
+   my $found=0;
    foreach(@sets) { if($set eq $_) { $found=1; } }
    if(!$found) {
       print "$r3 social:$rs invalid field name.";
       return;
       }  
-   $filename = "$path/$socname.txt";
-   $cx=0;
-   open(FILE,"<$filename") or do {
-      print "File ".$filename." Not found.";
+   my $filename = "$path/$socname.txt";
+   my $cx=0;
+   my ($fpriv, $fnobody, $fpublic, $fself, $fthem, $fyou);
+   open(FILE,"<", $filename) or do {
+      print "File $filename not found.";
       return;
       };
    while (<FILE>) {
@@ -572,7 +583,7 @@ sub irssi_setsoc {
    $fyou    = $data if($set eq "you");
    write_social($socname,$fpriv,$fself,$fnobody,$fpublic,$fyou,$fthem);
    print "$r2 done.";
-   irssicmd_socials();
+   irssicmd_socials($socname);
    return;   
 }
 
@@ -610,13 +621,14 @@ sub colorlist {
    my $spc = ' 'x50;
    my $text = "";
    my $tmp = "";
-   $cx=0;
-   $bar = "------------------------------------------------------------------";
+   my $cx=0;
+   my $bar = "------------------------------------------------------------------";
    $bar = ".".substr($bar,0,int(($maxsize-13)/2)).$title.substr($bar,0,int(($maxsize-13)/2)).".";
    $server->command("msg $target $bc$bar$rs");
 
+   my ($text,$blah);
    foreach (@colname)  {
-   $col = substr("@mirc_color_name[$cx] = @colname[$cx]$spc",0,20);
+   my $col = substr("@mirc_color_name[$cx] = @colname[$cx]$spc",0,20);
       $tmp = $text.$col;
       if(strsize($tmp) >= $maxsize) {
          $text.=' 'x50;
@@ -638,14 +650,16 @@ sub colorlist {
 
 sub irssi_colorlist {
    my ($server,$target) = @_;
-   $spc = ' 'x50;
+   my $spc = ' 'x50;
    my $title = "$bc($bt Color List $bc)";
-   $bar = "------------------------------------------------------------------";
+   my $bar = "------------------------------------------------------------------";
    $bar = ".".substr($bar,0,int(($maxsize-13)/2)).$title.substr($bar,0,int(($maxsize-13)/2)).".";
    print "$bc$bar$rs";
+   my $cx=0;
+   my ($text,$blah);
    foreach (@colname)  {
-   $col = substr("@mirc_color_name[$cx] = @colname[$cx]$spc",0,20);
-      $tmp = $text.$col;
+   my $col = substr("@mirc_color_name[$cx] = @colname[$cx]$spc",0,20);
+      my $tmp = $text.$col;
       if(strsize($tmp) >= $maxsize) {
          $text.=' 'x50;
          $blah =~ s/\003//;
@@ -693,7 +707,7 @@ sub soclist{
    opendir(DIR,$path) or return 0;
    while (defined(my $file = readdir(DIR))) {
       if($file =~ m".txt") { 
-         $tmp=$file;
+         my $tmp=$file;
          $tmp =~ s/$cutstr//;
          push(@array,$tmp); 
          }
@@ -711,15 +725,15 @@ sub socblist {
    my $text="";
    opendir(DIR,$path) or return 0;
    my $title = "$bc($bt Social List $bc)";
-   $bar = "------------------------------------------------------------------";
+   my $bar = "------------------------------------------------------------------";
    $bar = ".".substr($bar,0,int(($maxsize-15)/2)).$title.substr($bar,0,int(($maxsize-15)/2)+1).".";
    $server->command("msg $target $bc$bar$rs");
-   $spc = "                                ";
-   $cutstr=".txt";
+   my $spc = "                                ";
+   my $cutstr=".txt";
    opendir(DIR,$path) or return 0;
    while (defined(my $file = readdir(DIR))) {
       if($file =~ m".txt") { 
-         $tmp=$file;
+         my $tmp=$file;
          $tmp =~ s/$cutstr//;
          push(@array,$tmp); 
          }
@@ -727,7 +741,8 @@ sub socblist {
    closedir(DIR);
    @array = sort(@array);
    foreach(@array) {
-     $socname=$_;
+     my $name;
+     my $socname=$_;
      $socname =~ s/$cutstr//;
      if(!get_social_str($socname,"priv")) { 
         $name = substr(" $socname$spc",0,10); 
@@ -761,15 +776,15 @@ sub irssi_socblist {
    my $text="";
    opendir(DIR,$path) or return 0;
    my $title = "$bc($bt Social List $bc)";
-   $bar = "------------------------------------------------------------------";
+   my $bar = "------------------------------------------------------------------";
    $bar = ".".substr($bar,0,int(($maxsize-15)/2)).$title.substr($bar,0,int(($maxsize-15)/2)+1).".";
    print "$bc$bar$rs";
-   $spc = "                                ";
-   $cutstr=".txt";
+   my $spc = "                                ";
+   my $cutstr=".txt";
    opendir(DIR,$path) or return 0;
    while (defined(my $file = readdir(DIR))) {
       if($file =~ m".txt") { 
-         $tmp=$file;
+         my $tmp=$file;
          $tmp =~ s/$cutstr//;
          push(@array,$tmp); 
          }
@@ -777,7 +792,8 @@ sub irssi_socblist {
    closedir(DIR);
    @array = sort(@array);
    foreach(@array) {
-     $socname=$_;
+     my $name;
+     my $socname=$_;
      $socname =~ s/$cutstr//;
      if(!get_social_str($socname,"priv")) { 
         $name = substr(" $socname$spc",0,10); 
@@ -807,6 +823,7 @@ sub irssi_socblist {
 
 sub do_social {
    my ($server,$target,$socname,$name1,$name2,$msgsw) = @_;
+   my $text;
    if($name1 eq $name2) {
       $text = get_social_str($socname,"self");
       $text= social_parse($name1,$name2,$text);
@@ -846,9 +863,10 @@ sub do_social {
 sub print_social {
    my ($server,$target,$socname) = @_;
    my $text="";
-   $filename = "$path/$socname.txt";
-   $cx=0;
-   open(FILE,"<$filename") or do {
+   my $filename = "$path/$socname.txt";
+   my $cx=0;
+   my ($fpriv, $fnobody, $fpublic, $fself, $fthem, $fyou);
+   open(FILE,"<", $filename) or do {
       $server->command("msg $target $socname does not exist.");   
       return;
       };
@@ -874,18 +892,19 @@ sub print_social {
 }
 
 sub irssi_print_social {
-   my ($data, $server, $witem) = @_;
-   @data_arr = split / /, $data;
-   $cutstr = "/";
+   my ($data, $server, $item) = @_;
+   my @data_arr = split / /, $data;
+   my $cutstr = "/";
    if (@data_arr[0] =~ m/^[(set)|(blist)|(add)|(list)|(del)|(color)]/i && !ifexist_social(@data_arr[0])) {
     Irssi::command_runsub ('social', $data, $server, $item);
     return;
     }
-   $socname = @data_arr[0];
+   my $socname = @data_arr[0];
    my $text="";
-   $filename = "$path/$socname.txt";
-   $cx=0;
-   open(FILE,"<$filename") or do {
+   my $filename = "$path/$socname.txt";
+   my $cx=0;
+   my ($fpriv, $fnobody, $fpublic, $fself, $fthem, $fyou);
+   open(FILE,"<", $filename) or do {
       print "$socname does not exist."; 
       return;
       };
@@ -921,8 +940,8 @@ sub color_parse {
     my ($str) = @_;
     my $cx=0;
     foreach(@mirc_color_name) { 
-       $old = @mirc_color_name[$cx];
-       $new = @mirc_color_arr[$cx];
+       my $old = @mirc_color_name[$cx];
+       my $new = @mirc_color_arr[$cx];
        $str =~ s/$old/$new/g;
        $cx++;
        }
@@ -940,9 +959,10 @@ sub social_parse {
 
 sub get_social_str {
    my ($social,$colum) = @_;
-   $filename = "$path/$social.txt";
-   $cx=0;
-   open(FILE,"<$filename");
+   my $filename = "$path/$social.txt";
+   my $cx=0;
+   my ($fpriv, $fnobody, $fpublic, $fself, $fthem, $fyou);
+   open(FILE,"<", $filename);
    while (<FILE>) {
       chomp;
       $fpriv = color_parse($_) if($cx == 0);
@@ -952,7 +972,7 @@ sub get_social_str {
       $fthem = color_parse($_) if($cx == 4);
       $fyou = color_parse($_) if($cx == 5);
       $cx++;
-      }
+   }
    close FILE;
    return $fpriv if($colum eq "priv");
    return $fself if($colum eq "self");
@@ -964,15 +984,15 @@ sub get_social_str {
 }
 
 sub ifexist_social {
-   my ($social) = @_;
+   my ($socname) = @_;
    my $cutstr= ".txt";
-   $filename = "$path/$socname.txt";
+   my $filename = "$path/$socname.txt";
    opendir(DIR,$path) or return 0;
    while (defined(my $file = readdir(DIR))) {
       if($file =~ m".txt") { 
-         $tmp=$file;
+         my $tmp=$file;
          $tmp =~ s/$cutstr//;
-         return 1 if($social eq $tmp);
+         return 1 if($socname eq $tmp);
          }
       }
    return 0;
@@ -980,14 +1000,14 @@ sub ifexist_social {
 
 sub strsize {
    my ($word) = @_;
-   @word_arr = split //, $word;
+   my @word_arr = split //, $word;
    return $#word_arr+1;
 }
 
 sub write_social {
    my ($socname,$fpriv,$fself,$fnobody,$fpublic,$fyou,$fthem) = @_;
-   $filename = "$path/$socname.txt";
-   open(FILE,">$filename");
+   my $filename = "$path/$socname.txt";
+   open(FILE,">", $filename);
    print FILE "$fpriv\n";
    print FILE "$fnobody\n";
    print FILE "$fpublic\n";
@@ -1001,36 +1021,37 @@ sub write_social {
 sub irssicmd_reset {
    for my $cmd (Irssi::commands()) {
       if($cmd->{category} eq "Social Commands") {
-         $tmp=$cmd->{cmd};
-         Irssi::command_unbind($tmp,on_cmd);
-         }
+         my $tmp=$cmd->{cmd};
+         Irssi::command_unbind($tmp,'on_cmd');
       }
+   }
 }
 
 sub irssicmd_socials {
-   my ($social) = @_;
+   my ($socname) = @_;
    irssicmd_reset();
    my $cutstr= ".txt";
-   $filename = "$path/$socname.txt";
+   my $filename = "$path/$socname.txt";
    opendir(DIR,$path) or return 0;
    while (defined(my $file = readdir(DIR))) {
       if($file =~ m".txt") { 
-         $tmp=$file;
+         my $tmp=$file;
          $tmp =~ s/$cutstr//;
-         Irssi::command_bind($tmp,on_cmd,'Social Commands');
+         Irssi::command_bind($tmp,'on_cmd','Social Commands');
          }
       }
 }
 
 sub on_cmd {
    my ($data, $server, $witem) = @_;
-   @data_arr = split / /, $lastcmd;
-   $cutstr = "/";
-   $socname = @data_arr[0];
+   my @data_arr = split / /, $lastcmd;
+   my $cutstr = "/";
+   my $socname = @data_arr[0];
    $socname =~ s/$cutstr//;
-   $target=Irssi::active_win()->{active}->{name};
+   my $target=Irssi::active_win()->{active}->{name};
    $home_chan=$target;
-   $nick = "TechWizard";
+   my $nick = "TechWizard";
+   my ($msgsw, $nick2);
    if($#data_arr == 0) {
       $nick2 = "UNSET";
       $msgsw=0;
@@ -1044,8 +1065,8 @@ sub on_cmd {
       $msgsw=1;
       }  
    if($home_chan =~ /^#/) {
-      $chan = Irssi::Irc::Server->channel_find($home_chan);
-      $nick_obj = $chan->nick_find($nick2);
+      my $chan = Irssi::Irc::Server->channel_find($home_chan);
+      my $nick_obj = $chan->nick_find($nick2);
       if($nick_obj->{nick} eq "" && $nick2 ne "UNSET") { 
          $server->command("msg $target nickname does not exist.");
          return;
@@ -1061,7 +1082,7 @@ sub cmd_sig {
 }
 
 sub check_dir {
-    $sw=1;
+    my $sw=1;
     opendir(DIR,$path) or $sw=0;
     closedir(DIR);
     return $sw;
@@ -1069,11 +1090,11 @@ sub check_dir {
 
 sub init_socpath {
    if(check_dir()) { return; }
-   @socnam_arr = ("beer","bslap","chains","cut","drp","fart","french","halo",
+   my @socnam_arr = ("beer","bslap","chains","cut","drp","fart","french","halo",
                   "hug","hump","kiss","smacks","smooch","spank","stab","staple",
                   "strip","trout","whips","yawn"
    );
-   @socline_arr = (
+   my @socline_arr = (
                "0\nWho wants Beer!?!?!?\nname1 throws name2 a fresh cold beer out of the fridge.\nname1 opens up a nice cold beer, and drinks it.\nname1 tosses you a nice cold beer, better catch it!!\nyou just tossed name2 a nice cold beer.\n",
                "0\nLook OUT!!!! name1 is ready to Bitch slap someone!!!!\nname1 Bitch slaps name2 Violently, OUWWW that gotta hurt!\nname1 Bitch Slaps themself hard, Are they Crazy or what???\nyou gotten Bitch Slapped by name1, can you call 911?.\nyou violently bitch slap name2.\n",
                "0\nname1 looks around swinging the chains around, who shall be my victim?\nname1 chains name2 up, Ohh... Boy, name2 is gonna get it...\nname1 chain themself up, and swallowed the keys.\nname1 chained you up, aren't you wondering what they will do next?\nyou just chained up name2, whats next? torchure?\n",
@@ -1099,13 +1120,13 @@ sub init_socpath {
    print "Mkdir $path.";
    mkdir($path);
    print "Inserting socials into $path.";
-   foreach $socname (@socnam_arr) {
-      $filename = "$path/$socname.txt";
-      open(FILE,">$filename");
+   foreach my $socname (@socnam_arr) {
+      my $filename = "$path/$socname.txt";
+      open(FILE,">", $filename);
       print FILE @socline_arr[$cx];
       close FILE;
       $cx++;
-      }
+   }
 }
 
 Irssi::command_bind('social','irssi_print_social','tech_addon');

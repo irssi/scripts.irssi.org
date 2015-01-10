@@ -1,3 +1,4 @@
+use strict;
 use vars qw($VERSION %IRSSI);
 use Irssi;
 use Irssi::Irc;
@@ -33,7 +34,7 @@ my $instrut =
   "|  /toggle twtopic_instruct |Startup instructions  |\n".
   "\`--------------------------------------------------'";
 
-
+my $timeout;
 my $start_pos=0;
 my $flipflop=0; 
 my @mirc_color_arr = ("\0031","\0035","\0033","\0037","\0032","\0036","\00310","\0030","\00314","\0034","\0039","\0038","\00312","\00313","\00311","\00315","\017");
@@ -47,41 +48,41 @@ sub setup {
  
 sub show { 
    my ($item, $get_size_only) = @_;  
-   $text = get();
+   my $text = get();
    $text="[".$text."]";
    $item->default_handler($get_size_only,$text, undef, 1);
 }
  
 sub get_topic {
-   $topic = "";
-   $name = Irssi::active_win()->{active}->{name};
-   $type = Irssi::active_win()->{active}->{type};
+   my $topic = "";
+   my $name = Irssi::active_win()->{active}->{name};
+   my $type = Irssi::active_win()->{active}->{type};
    $name = "Status" if($name eq "");
    if($name eq "Status") { return "Irssi website: http://www.irssi.org, Irssi IRC channel: #irssi @ irc://irc.freenode:6667, twtopic has been written by Tech Wizard"; }
    if($type eq "QUERY") {
-      $text = "You are now talking too...... ".$name;
+      my $text = "You are now talking too...... ".$name;
       return $text;
       }
-   $channel = Irssi::Irc::Server->channel_find($name);
+   my $channel = Irssi::Irc::Server->channel_find($name);
    $topic = $channel->{topic};
    foreach (@mirc_color_arr) { $topic =~ s/$_//g; }
    return $topic;
 }
 
 sub get {
-   $str=get_topic();
+   my $str=get_topic();
    $str =~ s/(\00313)+//;
    $str =~ s/(\002)+//;
    $str =~ s/(\001)+//;
-   $extra_str= "                                                                                                         ";
-   $size    = Irssi::settings_get_int('twtopic_size');
+   my $extra_str= "                                                                                                         ";
+   my $size    = Irssi::settings_get_int('twtopic_size');
    if($str eq "") {
       my $str = "=-=-=-=-= No Topic=-=-=-=-=-=-=-";
       }
-   @str_arr = split //, $str;
+   my @str_arr = split //, $str;
    my $total = $#str_arr;
    $str=substr($extra_str,0,$size).$str.$extra_str;
-   $text = substr($str,$start_pos,$size);
+   my $text = substr($str,$start_pos,$size);
    if($start_pos > $total+$size) {
       $start_pos=0;
       }

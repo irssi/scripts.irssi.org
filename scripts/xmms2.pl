@@ -45,7 +45,7 @@ sub cmd_xmms {
   $args =~ s/\s+$//; #fix unneeded whitespaces after output dest.
 
   my (@t, $t, $ttotal, @pos, $pos, $postotal, $title);
-  open xmms, '/tmp/xmms-info' || die; # if nothing happens, it probably
+  open xmms, "<", '/tmp/xmms-info' || die; # if nothing happens, it probably
                                       # failed here!
 
   while(<xmms>) {

@@ -1,8 +1,10 @@
+use strict;
 use vars qw($VERSION %IRSSI);
 use Irssi;
 use Irssi::Irc;
+use Irssi::TextUI;
  
-$instrut =
+my $instrut =
   ".--------------------------------------------------.\n".
   "| 1.) shell> mkdir ~/.irssi/scripts                |\n".
   "| 2.) shell> cp twprompt.pl ~/.irssi/scripts/      |\n".
@@ -38,6 +40,7 @@ $VERSION = '1.00';
 my $twprompt_file = "$ENV{HOME}/.irssi/twprompt.data";
 my $num = 1;
 my $jk=0;
+my $timeout;
 
 sub reload { Irssi::statusbar_items_redraw('twprompt'); }
  
@@ -49,7 +52,7 @@ sub setup {
  
 sub show {
    my ($item, $get_size_only) = @_;
-   $text = get();
+   my $text = get();
    $item->default_handler($get_size_only, "{prompt ".$text."}", undef, 1);
 }
  

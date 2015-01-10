@@ -1,6 +1,7 @@
 # $Id: userhost.pl,v 1.18 2002/07/04 13:18:02 jylefort Exp $
-
+use strict;
 use Irssi 20020121.2020 ();
+use vars qw($VERSION %IRSSI);
 $VERSION = "0.23";
 %IRSSI = (
 	  authors     => 'Jean-Yves Lefort',
@@ -45,8 +46,6 @@ $VERSION = "0.23";
 #			* now replaces builtin /USERHOST
 #
 #	2002-01-23	initial release
-
-use strict;
 
 # -verbatim- import expand
 sub expand {

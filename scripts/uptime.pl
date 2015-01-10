@@ -37,11 +37,11 @@ sub uptime_linux {
     my($irssi_start);
     local(*FILE);
 
-    open FILE, "< /proc/uptime";
+    open FILE, "<", "/proc/uptime";
     $sys_uptime = (split " ", <FILE>)[0];
     close FILE;
 
-    open FILE, "< /proc/$$/stat";
+    open FILE, "<", "/proc/$$/stat";
     $irssi_start = (split " ", <FILE>)[21];
     close FILE;
 

@@ -83,7 +83,7 @@ Example: /set xmms_format_time %%m minutes, %%s seconds
 
     my %xi;
 
-    open(XMMS, $xf);
+    open(XMMS, "<", $xf);
     while (<XMMS>) {
         chomp;
         my ($key, $value) = split /: /, $_, 2;
