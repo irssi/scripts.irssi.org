@@ -1,6 +1,8 @@
 # $Id: away.pl,v 1.6 2003/02/25 08:48:56 nemesis Exp $
 
+use strict;
 use Irssi 20020121.2020 ();
+use vars qw($VERSION %IRSSI);
 $VERSION = "0.23";
 %IRSSI = (
 	  authors     => 'Jean-Yves Lefort, Larry "Vizzie" Daffner, Kees Cook',
@@ -65,7 +67,6 @@ $VERSION = "0.23";
 # BUGS:
 #  - This only works for the first server
 
-use strict;
 use Irssi;
 use Irssi::Irc;			# for DCC object
 

@@ -47,7 +47,7 @@ exit unless ($apm or $acpi);
 
 
 sub get_apm {
-	open(RC, "/proc/apm");
+	open(RC, q{<}, "/proc/apm");
 		my $line = <RC>;
 	close RC;
 	my ($ver1, $ver2, $sysstatus, $acstat, $chargstat, $batstatus, $prozent, $remain) = split(/\s/,$line);
@@ -56,13 +56,13 @@ sub get_apm {
 }
 
 sub get_acpi {
-	open(RC, "/proc/acpi/ac_adapter/ACAD/state");
+	open(RC, q{<}, "/proc/acpi/ac_adapter/ACAD/state");
 		my $line = <RC>;
 	close RC;
 	my ($text,$state) = split (/:/,$line);
 	$state =~ s/\s//g;
 
-	open (RC, "/proc/acpi/battery/BAT0/info");
+	open (RC, q{<}, "/proc/acpi/battery/BAT0/info");
 	my ($text,$capa,$ein);
 	while (my $line = <RC>) {
 		if ($line =~ /last full capacity/) {
@@ -70,7 +70,7 @@ sub get_acpi {
 			$capa =~ s/\s//g;
 		}
 	}
-	open (RC, "/proc/acpi/battery/BAT0/state"); 
+	open (RC, q{<}, "/proc/acpi/battery/BAT0/state"); 
 	my ($text,$remain,$ein);
 	while (my $line = <RC>) {
 		if ($line =~ /remaining capacity/) {
@@ -95,7 +95,7 @@ sub power {
 		$pstate = get_acpi();
 	}
 	$item->default_handler($get_size_only, undef, "BAT:$pstate", 1 );
-	}
+}
 
 
 sub set_power {

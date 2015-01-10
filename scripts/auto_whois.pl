@@ -1,6 +1,7 @@
 # /WHOIS all the users who send you a private message.
 # v0.9 for irssi by Andreas 'ads' Scherbaum
 # idea and some code taken from autowhois.pl from Timo Sirainen
+use strict;
 use Irssi;
 use vars qw($VERSION %IRSSI); 
 
