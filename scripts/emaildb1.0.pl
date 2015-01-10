@@ -49,7 +49,7 @@
 # ... That's about it, enjoy!
 # 
 
-
+use strict;
 use Irssi;
 use DBI;
 use vars qw($VERSION %IRSSI);
@@ -71,9 +71,9 @@ $VERSION = "1.0";
 #  chomp( @user = <LIST> );
 #         close LIST;
 
-$d = ('database');
-$u = ('user');
-$p = ('password');
+my $d = ('database');
+my $u = ('user');
+my $p = ('password');
 
 
 sub event_privmsg {
@@ -87,18 +87,18 @@ my ($target, $text) = $data =~ /^(\S*)\s:(.*)/;
 
 		my ($nickname) = $text =~ /^~search (.*)/;
 
-        $dbh = DBI->connect("DBI:mysql:$d","$u","$p")
+        my $dbh = DBI->connect("DBI:mysql:$d","$u","$p")
                 or die "Couldn't connect to database: " . DBI->errstr;
-        $sth = $dbh->prepare("SELECT * FROM 13th where nickname like \"\%$nickname\%\";")
-                or die "Cant prepare $statement: $dbh->errstr\n";
-        $rv = $sth->execute
+        my $sth = $dbh->prepare("SELECT * FROM 13th where nickname like \"\%$nickname\%\";")
+                or die "Cant prepare statement: $dbh->errstr\n";
+        my $rv = $sth->execute
                 or die "cant execute the query: $sth->errstr\n";
 if ($rv >= 1) {
   my @row;
   while ( @row = $sth->fetchrow_array(  ) ) {
-	$n = "$row[0]\n";
- 	$e = "$row[1]\n";
- 	$b = "$row[2]\n";
+	my $n = "$row[0]\n";
+ 	my $e = "$row[1]\n";
+ 	my $b = "$row[2]\n";
                 $server->command ( "msg $nick Nickname : $n" );
                 $server->command ( "msg $nick Email : $e" );
                 $server->command ( "msg $nick Birthday : $b" );

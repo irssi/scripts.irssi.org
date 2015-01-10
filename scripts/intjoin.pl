@@ -4,6 +4,7 @@
 #     - http://penguin-breeder.org/irssi/
 
 #<scriptinfo>
+use strict;
 use vars qw($VERSION %IRSSI);
 
 use Irssi 20020120;
@@ -35,12 +36,12 @@ sub cmd_join18n {
 		return;
 	}
 
-	$enc = Irssi::settings_get_str("join18n_encoding");
+	my $enc = Irssi::settings_get_str("join18n_encoding");
 
 	$enc = $1 if $data =~ /^\s*-enc\s+(\S+)/;
 	$data =~ s/^\s*-enc\s+(\S+)//;
 
-	$converter = Text::Iconv->new("UTF-8", $enc);
+	my $converter = Text::Iconv->new("UTF-8", $enc);
 	
 	if (!$converter) {
 		Irssi::print("Invalid encoding specified: $enc");
@@ -63,14 +64,14 @@ sub cmd_msg18n {
 		return;
 	}
 
-	$name = $channel->{name};
+	my $name = $channel->{name};
 
-	$enc = Irssi::settings_get_str("join18n_encoding");
+	my $enc = Irssi::settings_get_str("join18n_encoding");
 
 	$enc = $1 if $data =~ /^\s*-enc\s+(\S+)/;
 	$data =~ s/^\s*-enc\s+(\S+)//;
 
-	$converter = Text::Iconv->new("UTF-8", $enc);
+	my $converter = Text::Iconv->new("UTF-8", $enc);
 	
 	if (!$converter) {
 		Irssi::print("Invalid encoding specified: $enc");
@@ -94,14 +95,14 @@ sub cmd_part18n {
 		return;
 	}
 
-	$name = $channel->{name};
+	my $name = $channel->{name};
 
-	$enc = Irssi::settings_get_str("join18n_encoding");
+	my $enc = Irssi::settings_get_str("join18n_encoding");
 
 	$enc = $1 if $data =~ /^\s*-enc\s+(\S+)/;
 	$data =~ s/^\s*-enc\s+(\S+)//;
 
-	$converter = Text::Iconv->new("UTF-8", $enc);
+	my $converter = Text::Iconv->new("UTF-8", $enc);
 	
 	if (!$converter) {
 		Irssi::print("Invalid encoding specified: $enc");

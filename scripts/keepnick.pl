@@ -81,7 +81,7 @@ sub load_nicks {
     local(*CONF);
     
     %keepnick = ();
-    open CONF, "< $file";
+    open CONF, "<", $file;
     while (<CONF>) {
 	my($net,$nick) = split;
 	if ($net && $nick) {
@@ -105,7 +105,7 @@ sub save_nicks {
     
     return if $auto && !Irssi::settings_get_bool('keepnick_autosave');
     
-    open CONF, "> $file";
+    open CONF, ">", $file;
     for my $net (sort keys %keepnick) {
 	print CONF "$net\t$keepnick{$net}\n";
 	$count++;

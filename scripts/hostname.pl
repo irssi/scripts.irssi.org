@@ -1,6 +1,8 @@
 # $Id: hostname.pl,v 1.8 2002/07/04 13:18:02 jylefort Exp $
 
+use strict;
 use Irssi 20020121.2020 ();
+use vars qw($VERSION %IRSSI);
 $VERSION = "1.01";
 %IRSSI = (
 	  authors     => 'Jean-Yves Lefort',
@@ -96,7 +98,6 @@ $VERSION = "1.01";
 #
 #	2002-02-01	initial release
 
-use strict;
 use Socket;
 use Socket6;
 
@@ -116,7 +117,7 @@ sub hostname {
 sub get_addresses {
   Irssi::print("Resolving IP addresses...");
   %addresses = ();
-  open(IFCONFIG, "ifconfig|");
+  open(IFCONFIG, "-|", "ifconfig");
   while (<IFCONFIG>) {
     $addresses{$2} = resolve($2)
       if (/(inet addr:|inet6 addr: |inet |inet6 )([0-9a-f.:]*)/

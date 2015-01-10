@@ -1,3 +1,4 @@
+use strict;
 use Irssi;
 use Irssi::Irc;
 
@@ -37,7 +38,10 @@ $VERSION = "0.2";
 # list of supported mp3 players
 # if you would like to use the script with other players, just type these
 # name into the list below... it will probably work :)
-@mp3players=("mpg123", "mpg321", "xmms", "mp3blaster", "alsaplayer");
+my @mp3players=("mpg123", "mpg321", "xmms", "mp3blaster", "alsaplayer", "audacious");
+my ($mp3player, $mp3file);
+my @line;
+my %idtag;
 
 ################## PLZ DON'T CHANGE ANYTHING BELOW THIS LINE ##################
 # or do it on your own risk!! 
@@ -53,13 +57,13 @@ sub default_values {
 }
 
 sub getmp3filename {
-	open(CSOCS,$_[0]);
+	open(CSOCS, "-|", $_[0]);
 	GECMO: while (<CSOCS>) {
 		chop;
 		(@line) = split(/\s/,$_);
 		# we check wheter the mp3file returned by lsof has been opened
 		# with a known mp3player or not
-		HMM: foreach $w (@mp3players) {
+		HMM: foreach my $w (@mp3players) {
 			# if yes we save it, and leave
 			if ($w =~ /^$line[0]/) {
 				$mp3player=$w;
@@ -79,10 +83,10 @@ sub getmp3filename {
 sub getmp3proces {
 	# most of the players put the file into the memory at first,
 	# let's try to catch it there, first
-	getmp3filename("/usr/sbin/lsof -d mem | grep -i .mp3|");
+	getmp3filename("lsof -d mem | grep -i .mp3");
 	# if we didn't find anything there, we check the fds for mp3s
 	if ($mp3player eq "nope") {
-		getmp3filename("/usr/sbin/lsof -d 1-15 | grep -i .mp3|");
+		getmp3filename("lsof -d 1-15 | grep -i \\.mp3");
 	}
 	
 	# hmm are we listening to anything?
@@ -103,10 +107,10 @@ sub getmp3proces {
 
 sub getmp3idtags {
 	# getting the idtags from file
-	open(ID3GECMO, "/usr/bin/id3 -R -l \"$mp3file\" |");
+	open(ID3GECMO, "-|", "id3 -R -l \"$mp3file\"");
 	while (<ID3GECMO>) {
 		chop;
-		foreach $kulcs (keys %idtag) {
+		foreach my $kulcs (keys %idtag) {
 			if ($_=~ /^$kulcs/) {
 		        	s/^$kulcs://; s/\s*$//;	s/^\s*//;
 				if ($_)	{ $idtag{$kulcs}=$_; }
@@ -117,26 +121,26 @@ sub getmp3idtags {
 }
 
 sub do_listen {
-
 	#setting up variables
 	my ($data, $server, $witem) = @_;
 	default_values();
 	if (!getmp3proces()) { return };
 	getmp3idtags();
+	my $outtext;
 
 	# if there's no usable idtag in the mp3 we use the filename
 	if (($idtag{"Artist"} eq "Unknow Artist") && ($idtag{"Title"} eq "Unknown Title")) { 
-		$outtext=$mp3filename;
+		$outtext=$mp3file;
 	} else {
 		# if the file is tagged we parse over the tagorder
 		$outtext=Irssi::settings_get_str("listen_tagorder");
-		foreach $w (keys %idtag) {
+		foreach my $w (keys %idtag) {
 			$outtext=~s/%$w/$idtag{$w}/i;
 			}
 		$outtext=~s/%player/$mp3player/i;
 	}
 	
-	$prefix=Irssi::settings_get_str("listen_prefix");
+	my $prefix=Irssi::settings_get_str("listen_prefix");
 	
 	if (Irssi::settings_get_bool("listen_use_action")) {
 		$outtext="ME ".$prefix." ".$outtext;

@@ -347,9 +347,9 @@ sub debugprint {
 		$win->set_name($IRSSI{name});	# Select the window
 		$win->print($debugmessage,MSGLEVEL_CLIENTCRAP);
 		my $debugtid = localtime(time);
-		open (LOGFILE,">> $logfile");
-                print LOGFILE "$debugtid: $debugmessage\n";
-                close (LOGFILE);
+		open (LOGFILE,">>", $logfile);
+		print LOGFILE "$debugtid: $debugmessage\n";
+		close (LOGFILE);
 	}
 }
 
@@ -583,7 +583,7 @@ sub admin_activesends {
 
 sub admin_reload {
 	if ( -r Irssi::settings_get_str('findbot_summaryfile') ) {
-	        open (FINDFILE,Irssi::settings_get_str('findbot_summaryfile')); # Open the file
+	        open (FINDFILE, "<", Irssi::settings_get_str('findbot_summaryfile')); # Open the file
 	        @bigarray = <FINDFILE>;                         # Load it whole into memory :)
 	        close (FINDFILE);
 		debugprint(10,"[ADMIN] Summary file has been reloaded into memory.");
@@ -841,7 +841,7 @@ Irssi::command_bind('findbotactivesends', 'admin_activesends');
 
 check_vital_configuration();	# Run a subroutine to check all variables before starting
 if ( -r Irssi::settings_get_str('findbot_summaryfile') ) {
-	open (FINDFILE,Irssi::settings_get_str('findbot_summaryfile'));	# Open the file
+	open (FINDFILE, "<", Irssi::settings_get_str('findbot_summaryfile'));	# Open the file
 	@bigarray = <FINDFILE>; 			# Load it whole into memory :)
 	close (FINDFILE);
 } else {

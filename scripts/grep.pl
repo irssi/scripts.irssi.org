@@ -57,7 +57,7 @@ sub cmd_grep {
 	$cmd = join(' ',@args);
 
 	# check if the regexp is valid
-	eval("'' =~ /$match/");
+	eval { qr/$match/ };
 	if($@) { # there was an error
 		chomp $@;
 		Irssi::print($@,MSGLEVEL_CLIENTERROR);

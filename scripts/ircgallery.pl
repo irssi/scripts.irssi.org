@@ -3,6 +3,7 @@
 
 # version 1.13
 # for irssi 0.8.0 by Timo Sirainen
+use strict;
 use Symbol;
 use vars qw($VERSION %IRSSI); 
 $VERSION = "1.13";
@@ -42,6 +43,7 @@ sub get_view_url {
 
 # print the gallery information - assumes the file is in cache directory
 sub print_gallery {
+  my %print_notfound;
   my $nick = shift;
 
   my $found = 0;
@@ -50,7 +52,7 @@ sub print_gallery {
 
   $. = "\n";
   my $f = gensym;
-  if (!open($f, "$cache_path/$nick")) {
+  if (!open($f, "<", "$cache_path/$nick")) {
     Irssi::print("Couldn't open file $cache_path/$nick: $!", MSGLEVEL_CLIENTERROR);
     return;
   }
@@ -204,7 +206,7 @@ sub parse_nicks {
   $gallery_nicks_time = time();
 
   my $f = gensym;
-  if (!open($f, $filename)) {
+  if (!open($f, "<", $filename)) {
     Irssi::print("Couldn't open file $filename: $!", MSGLEVEL_CLIENTERROR);
     return;
   }
@@ -243,7 +245,7 @@ sub download_nicklist {
 if (-d $cache_path) {
   unlink(<$cache_path/*>);
 } else {
-  mkdir($cache_path, 0700) || die "Can't create cache directory $cache_dir";
+  mkdir($cache_path, 0700) || die "Can't create cache directory $cache_path";
 }
 
 # we need the nick list, get it once per hour

@@ -343,7 +343,7 @@ sub channel_sync {
 
 sub savegetop {
 	local *fp;
-	open (fp, ">$getopfile") or die "Couldn't open $getopfile for writing";
+	open (fp, ">", $getopfile) or die "Couldn't open $getopfile for writing";
 
 	for my $ircnet (keys %getop) {
 		for my $chan (keys %{$getop{$ircnet}}) {
@@ -361,7 +361,7 @@ sub loadgetop {
 	return unless (-e $getopfile);
 	local *fp;
 
-	open (fp, "<$getopfile") or die "Couldn't open $getopfile for reading";
+	open (fp, "<", $getopfile) or die "Couldn't open $getopfile for reading";
 	local $/ = "\n";
 	
 	while (<fp>) {

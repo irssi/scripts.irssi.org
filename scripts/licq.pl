@@ -1,3 +1,5 @@
+use strict;
+use vars qw($VERSION %IRSSI);
 $VERSION = "0.5";
 %IRSSI = (
     authors     => "Jari Matilainen",
@@ -25,7 +27,7 @@ sub licq {
 
 		my $filename = "$rdir" . "$_";
 		if(-e $filename) {
-			open(FILE, $filename);
+			open(FILE, "<", $filename);
   			$_ = "";
   			$_ = <FILE> until /NewMessages/;
   			my @total = split / /, $_;

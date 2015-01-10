@@ -8,6 +8,7 @@
 # Script now runs for several days without any
 # problems. Added documentation.
 
+use strict;
 use Irssi;
 use vars qw($VERSION %IRSSI); 
 $VERSION = "0.3";
@@ -20,9 +21,11 @@ $VERSION = "0.3";
 	changed	        => "Thu Jun 17 12:49:55 CEST 2004",
 );
 
+my $timer;
+
 sub incoming_call()	# triggered by a timer; use of input_add
   {			# caused crash
-  while ($message = <ISDNLOG>)
+  while (my $message = <ISDNLOG>)
     {
     chomp($message);
     if ($message =~ / Call to tei .* RING/)	# just incoming calls
@@ -40,7 +43,7 @@ sub incoming_call()	# triggered by a timer; use of input_add
 
 sub isdn_unload()	# for a clean unload
   {
-  close $ISDNLOG;
+  close ISDNLOG;
   Irssi::timeout_remove($timer);
   }
 

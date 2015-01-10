@@ -59,7 +59,7 @@ sub	write_log {
     	my	($nick, $msg, $tgt) = @_ ;
 	$tgt ||= "->" ;
 	my	($lfile) = glob Irssi::settings_get_str("ignore_log");
-	if (open(LF, ">>$lfile")) {
+	if (open(LF, ">>", $lfile)) {
 	    my	$ts = strftime("%D %H:%M", localtime()) ;
 	    print LF "[$ts] $tgt $nick $msg\n" ;
 	    close LF ;
