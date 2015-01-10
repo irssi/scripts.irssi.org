@@ -52,11 +52,15 @@
 #
 # 03.07.2002
 # *switched to Data::Dumper
+#
+# 25.11.2014
+# Added utrace.de as a localizer
+# http://www.utrace.de/
 
 use strict;
 use vars qw($VERSION %IRSSI);
 
-$VERSION = "2003112301";
+$VERSION = "2014112501";
 %IRSSI = (
     authors     => "Stefan 'tommie' Tomanek",
     contact     => "stefan\@pico.ruhr.de",
@@ -186,16 +190,17 @@ $procs = 0;
 );
     
 %ipdb = (
-    d1localizer=>{ name=>'localizer',
+    # For utrace.de API documentation, see http://en.utrace.de/api.php
+    d1utrace=>{ name=>'utrace',
 		   active=>1,
-		   url=>'http://jan.kneschke.de/projects/localizer/index.php?query=',
-		   city=>'<tr><td><b>City<\/b><\/td><td>(.*?)<\/td>',
-		   province=>'<tr><td><b>Province<\/b><\/td><td>(.*?)<\/td><td>',
-		   country=>'<tr><td><b>Country<\/b><\/td><td>(.*?)<\/td>',
-		   provider=>'<tr><td><b>\(Backbone-\)Provider<\/b><\/td><td>(.*?)<\/td>', 
+		   url=>'http://xml.utrace.de/?query=',
+		   city=>'<region>(.*?)<\/region>',
+		   province=>'<org>(.*?)<\/org>',
+		   country=>'<countrycode>(.*?)<\/countrycode>',
+		   provider=>'<isp>(.*?)<\/isp>', 
 		   failure=>'request-limit-exceeded|Host not found'},
     d2ipatlas=> { name=>'IP-Atlas',
-		  active=>1,
+		  active=>0,
 	          url=>'http://www.xpenguin.com/plot.php?address=',
                   city=>'is located in (.*?),',
 		  province=>'is located in.*, (.*?) \(state\),',

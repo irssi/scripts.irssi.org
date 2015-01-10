@@ -4,7 +4,7 @@ use FileHandle;
 
 use vars qw($VERSION %IRSSI);
 
-$VERSION = "0.9.7.1";
+$VERSION = "0.9.8.1";
 %IRSSI = (
     authors     => 'Andreas \'ads\' Scherbaum <ads@wars-nicht.de>',
     name        => 'screen_away',
@@ -18,6 +18,7 @@ $VERSION = "0.9.7.1";
 # written by Andreas 'ads' Scherbaum <ads@ufp.de>
 #
 # changes:
+#  20.12.2014 fix the bug when screenname is changed during the session
 #  07.02.2004 fix error with away mode
 #             thanks to Michael Schiansky for reporting and fixing this one
 #  07.08.2004 new function for changing nick on away
@@ -83,7 +84,7 @@ if (!defined($ENV{STY})) {
   return;
 }
 
-my ($socket_name, $socket_path);
+my ($socket_pid, $socket_name, $socket_path);
 
 # search for socket
 # normal we could search the socket file, ... if we know the path
@@ -99,9 +100,13 @@ my $running_in_screen = 0;
 # locale doesnt seems to be an problem (yet)
 if ($socket !~ /^No Sockets found/s) {
   # ok, should have only one socket
-  $socket_name = $ENV{'STY'};
+  # $STY won't change if sessionname is changed during session
+  # therefore first find the pid and use that to find the actual sessionname
+  $socket_pid = substr($ENV{'STY'}, 0, index($ENV{'STY'}, '.'));
   $socket_path = $socket;
   $socket_path =~ s/^.+\d+ Sockets? in ([^\n]+)\.\n.+$/$1/s;
+  $socket_name = $socket;
+  $socket_name =~ s/^.+?($socket_pid\.\S+).+$/$1/s;
   if (length($socket_path) != length($socket)) {
     # only activate, if string length is different
     # (to make sure, we really got a dir name)

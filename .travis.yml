@@ -20,21 +20,21 @@ before_install:
   _testing/config.yml`
 - |
   if [ $TRAVIS_PULL_REQUEST = false ] && [ $USE_ARTEFACTS_CACHE = yes ] && [ $EXTRACT_TEST_ARTEFACTS = yes ]; then
-    ./_testing/travis/load-old-artefacts.zsh
+    env -u REPO_LOGIN_TOKEN ./_testing/travis/load-old-artefacts.zsh
   fi
-- ./_testing/travis/autoinstall-perl-prereqs.zsh
+- env -u REPO_LOGIN_TOKEN ./_testing/travis/autoinstall-perl-prereqs.zsh
 install:
 - true
 before_script:
-- ./_testing/run-test.zsh
+- env -u REPO_LOGIN_TOKEN ./_testing/run-test.zsh
 - |
   if [ $TRAVIS_PULL_REQUEST != false ]; then
     git diff --stat $TRAVIS_BRANCH
   fi
 script:
-- ./_testing/report-test.zsh
+- env -u REPO_LOGIN_TOKEN ./_testing/report-test.zsh
 after_script:
-- ./_testing/travis/show-failures.zsh
+- env -u REPO_LOGIN_TOKEN ./_testing/travis/show-failures.zsh
 - |
   if [ $TRAVIS_PULL_REQUEST = false ] && $TRAVIS_SECURE_ENV_VARS; then
     perl ./_testing/travis/update-scripts-yaml.pl
