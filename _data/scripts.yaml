@@ -1558,6 +1558,16 @@
   url: "http://www.freaknet.org/~pallotron"
   version: "0.1.2"
 
+- authors: "David O'Rourke, Nico R. Wohlgemuth"
+  changed: "2012-09-14"
+  contact: "nico@lifeisabug.com"
+  description: "Hide the stupid \"greet messages\" posted by some bots after someone joins a channel."
+  filename: "greetignore.pl"
+  modified: "2014-09-07 12:10"
+  license: "GPLv2"
+  name: "greetignore"
+  version: "1.1"
+
 - authors: "Timo cras Sirainen, Wouter Coekaerts"
   contact: "tss@iki.fi, wouter@coekaerts.be"
   description: "/GREP [-i] [-w] [-v] [-F] <perl-regexp> <command to run>"
