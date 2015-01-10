@@ -35,7 +35,7 @@ my ($oldnick, $t_away);
 
 sub init {
 	# verifying if settings file exists
-	if (!(open xa_settings, "<$xa_confile")) {
+	if (!(open xa_settings, q{<}, $xa_confile)) {
 		putlog("No config file: /xahelp for help");
 		return 0;
 	};
@@ -135,7 +135,7 @@ sub xa_add {
 	# Adding the keyword and the reason in the config file
 	# may create double entries...
 	my($kw, $reason) = @_;
-	if(!(open xa_settings, ">>$xa_confile")) {
+	if(!(open xa_settings, q{>>}, $xa_confile)) {
 		&putlog("Unable to open file $xa_confile");
 	}
 	print xa_settings "$kw:$reason\n";
@@ -146,7 +146,7 @@ sub xa_add {
 sub xa_save {
 	# save the temp infos (might correct the double entries)
 	my ($data,$server,$channel) = @_;
-	if(!(open xa_settings, ">$xa_confile")) {
+	if(!(open xa_settings, q{>}, $xa_confile)) {
 		&putlog("Unable to create file $xa_confile");
 	}
 	print xa_settings "bnick:$infos{'bnick'}\n";

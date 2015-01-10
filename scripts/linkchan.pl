@@ -92,7 +92,7 @@ Irssi::command_bind "link list", sub
 
 sub save_config()
 {
-    open CONFIG, ">$config";
+    open CONFIG, ">", $config;
     foreach my $chatnet1 (keys %links)
     {
         foreach my $channel1 (keys %{$links{$chatnet1}})
@@ -113,7 +113,7 @@ Irssi::signal_add "setup saved", sub
 sub load_config()
 {
     %links = ();
-    open CONFIG, $config or return;
+    open CONFIG, "<", $config or return;
     while (<CONFIG>)
     {
         chomp;

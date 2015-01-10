@@ -4,7 +4,9 @@
 # /statusbar window add loadavg
 # /set loadavg_refresh
 
+use strict;
 use Irssi;
+use Irssi::TextUI;
 use vars qw($VERSION %IRSSI);
 
 $VERSION="0.4";
@@ -15,6 +17,8 @@ $VERSION="0.4";
 	description => 'display a loadavg statusbar item using vm.loadavg mib or /proc/loadavg',
 	license	    => 'public domain',
 );
+
+my ($timeout, $lavg);
 
 sub reload { Irssi::statusbar_items_redraw('loadavg'); }
 

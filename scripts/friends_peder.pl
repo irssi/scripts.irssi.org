@@ -56,7 +56,7 @@ sub load_friends {
     local(*FILE);
 
     %friends = ();
-    open FILE, "< $file";
+    open FILE, "<", $file;
     while (<FILE>) {
 	($mask,$net,$channel,$flags) = split;
 	for (split //, $flags) {
@@ -81,7 +81,7 @@ sub save_friends {
 
     return if $auto && !Irssi::settings_get_bool('friends_autosave');
 
-    open FILE, "> $file";
+    open FILE, ">", $file;
     for my $mask (keys %friends) {
 	$count++;
 	for my $net (keys %{$friends{$mask}}) {

@@ -1,6 +1,7 @@
 # /FIND - display people who are in more than one channel with you
 # (it's ugly code)
 
+use strict;
 use Irssi;
 
 use vars qw($VERSION %IRSSI);

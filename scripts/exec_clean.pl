@@ -1,6 +1,8 @@
 # $Id: exec-clean.pl,v 1.6 2002/07/04 13:18:02 jylefort Exp $
 
+use strict;
 use Irssi 20020121.2020 ();
+use vars qw($VERSION %IRSSI);
 $VERSION = "1.01";
 %IRSSI = (
 	  authors     => 'Jean-Yves Lefort',
@@ -32,7 +34,6 @@ $VERSION = "1.01";
 #
 #	* kill the process using a better method (TERM -> sleep -> KILL etc)
 
-use strict;
 use Irssi::UI;
 
 sub window_destroyed {

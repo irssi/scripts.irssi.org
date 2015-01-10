@@ -1,7 +1,9 @@
 #!/usr/bin/perl
 
+use strict;
 use Irssi;
 use Irssi::Irc;
+use vars qw($VERSION %IRSSI); 
 
 $VERSION = "0.0.1";
 %IRSSI = (
@@ -45,7 +47,7 @@ sub event_join
 										  # hostname, but array counts from 0 so element's count is number of dots
 		my $is_friend = 0;
 		
-		foreach $exclude (@excludes)
+		foreach my $exclude (@excludes)
 		{
 			$is_friend = 1 if ($hostname =~ $exclude);
 		}

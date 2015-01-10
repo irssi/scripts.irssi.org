@@ -1,7 +1,8 @@
 # This script adds command /lwho that shows 
 # locally logged users in current window
 
-
+use strict;
+use vars qw($VERSION %IRSSI);
 $VERSION = '0.01a';
 %IRSSI = (
  authors     => 'Mika',

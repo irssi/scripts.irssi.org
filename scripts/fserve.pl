@@ -591,7 +591,7 @@ sub sig_dcc_connected
 			if ($motdfile_modified < $lm) {
 				$motdfile_modified = $lm;
 				@motd = ();
-				open(FILE, $f);
+				open(FILE, "<", $f);
 				while(<FILE>) {
 					chomp;
 					s/\t/       /g;
@@ -2937,7 +2937,7 @@ sub display_file ($$) {
 		return;
 	}
 
-	unless (open (RFILE, $filepath)) {
+	unless (open (RFILE, "<", $filepath)) {
 		send_user_msg($server_tag, $irc_nick, "Couldn't open file: " .
 			"'$fs_prefs{clr_hi}$ufile$fs_prefs{clr_txt}'!");
 		print_msg("Could not open file $filepath");
@@ -3263,7 +3263,7 @@ sub save_config
 {
 	my $f = $conffile; 
 	$f =~ s/\$IRSSI/Irssi::get_irssi_dir()/e or $f =~ s/~/$ENV{"HOME"}/; 
-	if (!open(FILE, ">$f")) {
+	if (!open(FILE, ">", $f)) {
 		print_msg("Unable to open $f for writing!");
 		return 1;
 	}
@@ -3301,7 +3301,7 @@ sub save_config
 ###############################################################################
 sub load_distro {
 	my $file = $_[0];
-	if (!open(FILE, "<$file")) {
+	if (!open(FILE, "<", $file)) {
 		print_msg("Unable to open $file for reading!");
 		return 0;
 	}
@@ -3336,7 +3336,7 @@ sub save_distro
 	my $f = $fs_prefs{distro_file}; 
 	$f =~ s/\$IRSSI/Irssi::get_irssi_dir()/e or $f =~ s/~/$ENV{"HOME"}/; 
 
-	if (!open(FILE, ">$f")) {
+	if (!open(FILE, ">", $f)) {
 		print_msg("Unable to open $f for writing!");
 		return 1;
 	}
@@ -3359,7 +3359,7 @@ sub load_config
 
 	my $f = $conffile; 
 	$f =~ s/\$IRSSI/Irssi::get_irssi_dir()/e or $f =~ s/~/$ENV{"HOME"}/; 
-	if (!open(FILE, "<$f")) {
+	if (!open(FILE, "<", $f)) {
 		print_msg("Unable to open $f for reading!");
 		return 1;
 	}
@@ -3418,7 +3418,7 @@ sub save_queue
 	my $f = $fs_prefs{queuefile}; 
 	$f =~ s/\$IRSSI/Irssi::get_irssi_dir()/e or $f =~ s/~/$ENV{"HOME"}/; 
 
-	if (!open(FILE, ">$f")) {
+	if (!open(FILE, ">", $f)) {
 		print_msg("Unable to open $f for writing!");
 		return 1;
 	}
@@ -3468,7 +3468,7 @@ sub load_queue
 	my $f = $fs_prefs{queuefile}; 
 	$f =~ s/\$IRSSI/Irssi::get_irssi_dir()/e or $f =~ s/~/$ENV{"HOME"}/; 
 	
-	if (!open(FILE, "<$f")) {
+	if (!open(FILE, "<", $f)) {
 		print_msg("Unable to open $f for reading!");
 		return 1;
 	}
@@ -3565,7 +3565,7 @@ sub print_log
 {
 	my $f = $fs_prefs{log_name}; 
 	$f =~ s/\$IRSSI/Irssi::get_irssi_dir()/e or $f =~ s/~/$ENV{"HOME"}/; 
-	if (!$logfp && $fs_prefs{log_name} && open(LOGFP, ">>$f")) {
+	if (!$logfp && $fs_prefs{log_name} && open(LOGFP, ">>", $f)) {
 		$logfp = \*LOGFP;
 		select((select($logfp), $|++)[0]);
 	}

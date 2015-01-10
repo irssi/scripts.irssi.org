@@ -20,8 +20,10 @@
 #
 # Triggers on !lastspoke <nick>, !seen <nick> and !lastseen <nick>
 # 
+use strict;
 use Irssi;
 use Irssi::Irc;
+use vars qw($VERSION %IRSSI);
 
 $VERSION = "0.2";
 %IRSSI = (
@@ -32,6 +34,8 @@ $VERSION = "0.2";
     license     => 'GNU GPLv2 or later',
     url         => 'http://irssi.freshdot.net/',
 );
+
+my $target;
 
 # Storage for the data.
 my %lasthash;
@@ -83,7 +87,7 @@ sub on_join {
 	my ($server, $channel, $nick, $address) = @_;
 	
 	my $allowedChans = lc(Irssi::settings_get_str("lastspoke_channels")) || "(null)";
-	if (index($allowedChans, $target) >= 0) {
+	if (index($allowedChans, $channel) >= 0) {
     	$lasthash{lc($nick)}{'last'} = time();
 		$lasthash{lc($nick)}{'words'} = "$nick joined $channel";	
 	}
@@ -94,7 +98,7 @@ sub on_part {
 	my ($server, $channel, $nick, $address, $reason) = @_;
 
 	my $allowedChans = lc(Irssi::settings_get_str("lastspoke_channels")) || "(null)";
-	if (index($allowedChans, $target) >= 0) {
+	if (index($allowedChans, $channel) >= 0) {
 		$lasthash{lc($nick)}{'last'} = time();
 		if (! $reason) {
 			$lasthash{lc($nick)}{'words'} = "$nick left from $channel with no reason";
@@ -107,9 +111,9 @@ sub on_part {
 # Hook for public messages.
 # Only act on channels we are supposed to act on (settings_get_str)
 sub on_public {
-	my ($server, $msg, $nick, $addr, $target) = @_;
+	my ($server, $msg, $nick, $addr, $_target) = @_;
 
-	$target = $nick if ( ! $target );
+	$_target = $nick if ( ! $_target );
 	$nick = $server->{'nick'} if ($nick =~ /^#/);
 	$target = lc($target);
 

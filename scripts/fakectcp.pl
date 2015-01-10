@@ -139,7 +139,7 @@ sub load_fakectcplist {
 
     if (-e $file) {
         local *F;
-        open(F, "<$file");
+        open(F, "<", $file);
         local $/ = "\n";
 
         while (<F>) {
@@ -162,7 +162,7 @@ sub save_fakectcplist {
     my ($file) = @_;
 
     local *F;
-    open(F, ">$file") or die "Could not load the fake ctcpreply list for writing";
+    open(F, ">", $file) or die "Could not load the fake ctcpreply list for writing";
 
     for (my $n = 0; $n < @fakectcp; ++$n) {
         print(F join("\t", $fakectcp[$n]->{item}, $fakectcp[$n]->{reply}) . "\n");

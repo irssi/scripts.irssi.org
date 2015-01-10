@@ -1,4 +1,5 @@
 #!/usr/bin/perl -w
+use strict;
 use Irssi;
 use vars qw($VERSION %IRSSI);
 $VERSION = "0.6";

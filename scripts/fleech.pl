@@ -744,7 +744,7 @@ sub print_dbg {
 	my ($txt, $mlvl) = @_;
 	my $lvl = Irssi::settings_get_int('fleech_verbose_level');
 if ($dbglog) {
-	if (not open (DBGLOG, ">> $dbglog")) {
+	if (not open (DBGLOG, ">>", $dbglog)) {
 		$dbglog = "";
 	} else {
 	#	print_dbg("fleech.pl $VERSION loaded");		

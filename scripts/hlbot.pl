@@ -32,7 +32,7 @@
 #
 ##
 
-
+use strict;
 use Socket;
 use Sys::Hostname;
 use IO::Handle;
@@ -78,10 +78,11 @@ my $log_on = 1;
 
 sub run_bot {	
 	my $server = Irssi::active_server();
+	my $msg;
 	
-	($hispaddr = recv(S, $msg, 1000, 0)) or print "$!\n";
-	($port, $hisiaddr) = sockaddr_in($hispaddr);
-	$host = inet_ntoa($hisiaddr); 
+	(my $hispaddr = recv(S, $msg, 1000, 0)) or print "$!\n";
+	my ($port, $hisiaddr) = sockaddr_in($hispaddr);
+	my $host = inet_ntoa($hisiaddr); 
 
 	$msg =~ s/\n.$//s;
 	$msg =~ s/\n..$//s;
@@ -113,7 +114,7 @@ sub run_bot {
 	# Received challenge rcon reply..
 	elsif ($msg =~ /^ÿÿÿÿchallenge rcon (\d+)$/ && $rcon_msg) {
 		$challenge = $1;
-		$data = "ÿÿÿÿrcon $challenge $rcon_pass $rcon_msg";
+		my $data = "ÿÿÿÿrcon $challenge $rcon_pass $rcon_msg";
 		defined(send(S, $data, 0, $serv_paddr)) or
 			$server->command("/notice $channel Error sending rcon: $!");
 	}
@@ -127,8 +128,8 @@ sub run_bot {
 		
 		# Multiline rcon responses
 		if ($msg =~ /\n/s) {
-			@rows = split /\n/, $msg;
-			foreach $row (@rows) {
+			my @rows = split /\n/, $msg;
+			foreach my $row (@rows) {
 				# We don't want to see these
 				if ($row =~ /^[\t \n]*$/ ||
 					$row =~ /^[ADMIN] Load/ ||
@@ -199,7 +200,7 @@ sub msg_command {
 #########[ MAIN ]###########
 
 # Open the logfile.
-open LOG, ">>$logfile" or die "Cannot open logfile!\n";
+open LOG, ">>", $logfile or die "Cannot open logfile!\n";
 LOG->autoflush(1);
 
 # Start listening the socket for udp messages.

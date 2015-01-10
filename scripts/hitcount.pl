@@ -1,5 +1,6 @@
 # $Id: hitcount.pl,v 1.3.2.2 2002/03/05 18:19:28 shrike Exp shrike $
 
+use strict;
 use vars qw($VERSION %IRSSI);
 my @rev = split(/ /, "$Revision: 1.3.2.2 $n");
 $VERSION = "1.3";
@@ -49,7 +50,6 @@ $VERSION = "1.3";
 # Add ignore regexp, to prevent f.ex. css-files from increasing counter
 
 use Irssi::TextUI;
-use strict;
 
 # Debug level - higher levels print out more crap
 my $debug_level = 0;
@@ -73,7 +73,7 @@ sub get_hitcount {
     ($total_hitcount, $my_hitcount) = (0);
     
     # Go through the access log and count matches to the given regexp
-    if(open STUFF, "$filename")
+    if(open STUFF, "<", $filename)
     {
    	while (<STUFF>) 
 	{

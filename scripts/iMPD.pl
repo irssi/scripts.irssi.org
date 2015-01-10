@@ -262,7 +262,7 @@ sub addShufflePlay {
 sub cleanup {
     my ($file) = Irssi::get_irssi_dir."/iMPD.conf";
 
-    open CONF, "> $file";
+    open CONF, ">", $file;
     for my $net (sort keys %SAVE_VARS) {
 	print CONF "$net\t$SAVE_VARS{$net}\n";
 	close CONF;
@@ -489,7 +489,7 @@ print $mpd_help_advanced;
 sub load_settings {
     my ($file) = Irssi::get_irssi_dir."/iMPD.conf";
     
-    open CONF, "< $file";
+    open CONF, "<", $file;
     while (<CONF>) {
 	my($net,$val) = split;
 	if ($net && $val) {
