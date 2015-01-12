@@ -41,7 +41,9 @@ $VERSION = "0.0.2";
     name        => 'oidenty',
     description => 'oidentd support for irssi',
     license     => 'BSD License',
-    url         => 'http://www.irssi.de'
+    url         => 'http://www.irssi.de',
+
+	changed     => "2008-05-17 17:39:09"
 );
 #
 use strict;

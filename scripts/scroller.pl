@@ -39,6 +39,8 @@ $VERSION="0.01";
 	name=> 'scroller',
 	description=> 'Scrolls specified text on the status bar',
 	license=> 'Public Domain',
+
+	changed => "2008-05-17 17:39:09"
 );
 
 

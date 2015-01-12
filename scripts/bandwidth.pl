@@ -29,6 +29,8 @@ $VERSION = "1.0";
 	description => "shows bandwidth usage in statusbar",
         license     => "GPLv2",
         url         => "http://nchip.ukkosenjyly.mine.nu/irssiscripts/",
+
+	changed     => "2008-05-17 17:39:11"
     );
 
 my ($refresh, $last_refresh, $refresh_tag) = (10);

@@ -12,7 +12,9 @@ $VERSION = "0.5.14";
     name        => 'chanact',
     description => 'Adds new powerful and customizable [Act: ...] item (chanelnames,modes,alias). Lets you give alias characters to windows so that you can select those with meta-<char>',
     license     => 'GNU GPLv2 or later',
-    url         => 'https://bc-bd.org/svn/repos/irssi/chanact'
+    url         => 'https://bc-bd.org/svn/repos/irssi/chanact',
+
+	changed     => "2010-04-10 21:18:08"
 );
 
 # Adds new powerful and customizable [Act: ...] item (chanelnames,modes,alias).

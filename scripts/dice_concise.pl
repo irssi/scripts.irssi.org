@@ -81,7 +81,9 @@ $VERSION = '0.1.5';
 	contact			=> 'izaya.orihara@gmail',
 	name			=> 'dice_concise',
 	description		=> 'A concise dice simulator for channels.',
-	license			=> 'GNU GPL v2 or later'
+	license			=> 'GNU GPL v2 or later',
+
+	changed         => "2014-03-28 21:15:23"
 );
 
 sub own_question {

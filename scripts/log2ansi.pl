@@ -21,6 +21,8 @@ use vars qw{$VERSION %IRSSI};
           url         => 'http://ninja.no/irssi/log2ansi',
           license     => 'GPL',
           description => 'convert mirc color and irssi interal formatting to ansi colors, useful for log filtering',
+
+		  changed     => "2008-05-22 13:14:17"
          );
 
 if (__PACKAGE__ =~ /^Irssi/) {

@@ -9,6 +9,8 @@ use Irssi qw(command_bind active_server);
 	description => "/dccself ip port, starts a dcc chat with yourself on that 
 	                host/port, best used with /set dcc_autochat_masks.",
 	license     => "GPL",
+
+	changed     => "2008-05-17 17:39:11",
 );
 
 # I tried using Juerd's style for this script - seems to make it easier to read

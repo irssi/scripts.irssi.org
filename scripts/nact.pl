@@ -12,6 +12,8 @@ $VERSION="0.2.6";
 	description=> 'Adds an item which displays the current network activity. Needs /proc/net/dev.',
 	license=> 'GPL v2 or later',
 	url=> 'https://bc-bd.org/svn/repos/irssi/trunk/',
+
+	changed => "2008-05-22 09:10:50"
 );
 
 #########

@@ -35,6 +35,8 @@ $VERSION = "1.0";
     name       => "monitor",
     description=> "Interface to ratbox 2.1+ /monitor command",
     license    => "BSD (revised)",
+
+	changed    => "2011-02-16 23:34:22"
 );
 
 # Track the nicks in our monitor list

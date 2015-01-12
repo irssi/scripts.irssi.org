@@ -16,6 +16,9 @@ our %IRSSI = (
 		name => 'autovoice',
 		description => 'autovoice',
 		license => 'GPL',
+
+		changed => "2008-05-22 01:47:56",
+		contact => "-"
 	);
 
 our %bad;

@@ -15,7 +15,9 @@ $rcsid = '$Id: nickmix.pl,v 1.2 2002/02/09 22:13:12 pasky Exp pasky $';
           contact     => 'pasky@ji.cz',
           url         => 'http://pasky.ji.cz/~pasky/dev/irssi/',
           license     => 'GPLv2, not later',
-          description => 'Perturbates given nick (or just a word) in certain way.'
+          description => 'Perturbates given nick (or just a word) in certain way.',
+
+		  changed     => "2008-05-17 17:39:09"
          );
 
 

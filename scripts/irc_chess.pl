@@ -16,6 +16,8 @@ $VERSION="0.1";
 	description => "Chess server for IRC. Allows for multiple 2-player games to be played simultaneously",
 	license     => "GNU GPL",
 	url         => "none as yet",
+
+	changed     => "2008-05-17 17:39:11"
 );
 my $gameRunning=0;
 

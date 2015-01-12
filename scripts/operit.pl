@@ -91,7 +91,8 @@ $rcsid = '$Id: operit.pl,v 1.14 2003/09/06 12:27:11 pasky Exp pasky $';
           contact     => 'pasky@ucw.cz',
           url         => 'http://pasky.ji.cz/~pasky/dev/irssi/',
           license     => 'BSD',
-          description => 'Perform certain action (invite/op/...) on request authenticated by the IRC operator status.'
+          description => 'Perform certain action (invite/op/...) on request authenticated by the IRC operator status.',
+		  changed     => "2008-05-17 17:39:09"
          );
 
 

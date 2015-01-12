@@ -15,7 +15,9 @@ $VERSION = 'v0.1';
           contact     => 'c0ffee@penguin-breeder.org',
           url         => 'http://www.penguin-breeder.org/irssi/',
           license     => 'GPLv2, not later',
-          description => 'Perturbates your nick, use /nickmix nick/len where len is the number of chars you want to keep from your orig nick. use /stopmix to stop. Always issue the commands in a window of the server you want to mix in.'
+          description => 'Perturbates your nick, use /nickmix nick/len where len is the number of chars you want to keep from your orig nick. use /stopmix to stop. Always issue the commands in a window of the server you want to mix in.',
+
+		  changed     => "2008-06-18 00:09:21"
          );
 
 

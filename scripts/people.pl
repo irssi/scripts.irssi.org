@@ -21,6 +21,8 @@ $VERSION = "1.7";
     license     => 'GNU GPL',
     url         => 'http://qrnik.knm.org.pl/~qrczak/irc/people.pl',
     url_ion     => 'http://johan.kiviniemi.name/stuff/irssi/people.pl',
+
+	changed     => "2008-05-23 19:14:57"
 );
 
 ######## STATE ########

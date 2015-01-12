@@ -10,6 +10,8 @@ $VERSION = "1.3";
     description => 'Adds a /sysinfo command which prints system information (linux only).',
     license     => 'GNU GPLv2 or later',
     url         => 'http://irssi.dgl.cx/',
+
+	changed     => "2008-05-17 17:39:11"
 );
 
 #This script is mostly my own work but some ideas where taken from /sinfo by

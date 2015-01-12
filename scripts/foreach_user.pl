@@ -11,6 +11,8 @@ $VERSION = "1.0";
       description => "Extends the /foreach command to have /foreach user 
         (users in a channel).
         Syntax: /foreach user [hostmask] command.",
+
+	  changed     => "2008-05-17 17:39:11"
 );
 
 # Examples:

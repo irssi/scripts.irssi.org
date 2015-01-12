@@ -14,6 +14,8 @@ our %IRSSI = (
     name => 'studivz-bitlbee-rename',
     description => 'Rename XMPP *vz.net network contacts in bitlbee to human-readable names based on http://github.com/avar/irssi-bitlbee-facebook-rename',
     license => 'GPL',
+
+	changed => "2010-07-08 23:39:58"
 );
 
 my $bitlbeeChannel = "&bitlbee";

@@ -11,7 +11,9 @@ $VERSION = "3.7";
 	contact     => 'Toni@IRCNet',
 	description => 'Auto-op script with dynamic address support and random delay',
 	license     => 'GNU GPLv2 or later',
-	url         => 'http://vinku.dyndns.org/irssi_scripts/'
+	url         => 'http://vinku.dyndns.org/irssi_scripts/',
+
+	changed     => "2008-05-25 14:57:49"
 );
 
 # This is a script to auto-op people on a certain channel (all or, represented with *).

@@ -10,6 +10,8 @@ $VERSION = '1.01';
     name        => 'Talk',
     description => 'This script talks to you *g*. It reads the chat-msgs for you.',
     license     => 'GPL2',
+
+	changed     => "2008-05-17 17:39:11"
 );
 
 ##########################################################################

@@ -21,6 +21,8 @@ $VERSION = "0.10";
     description	=> "runs arbitrary command instead of system beep, includes flood protection",
     license	=> "Public Domain",
     url		=> "http://op-co.de/irssi/",
+
+	changed => "2008-08-10 21:30:32"
 );
 
 use Irssi;

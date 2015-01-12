@@ -24,7 +24,9 @@ $VERSION = "1.1";
 		'filename) and closes them',
 	license     => 'Public Domain',
 	changed     => '2003.02.11', 
-	url         => 'http://pingu.ii.uj.edu.pl/~piotr/irssi/'
+	url         => 'http://pingu.ii.uj.edu.pl/~piotr/irssi/',
+
+	contact     => "-"
 );
 
 my $debug = 0; # set this to 1 to enable A LOT OF debug messages

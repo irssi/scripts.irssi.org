@@ -27,6 +27,8 @@ $VERSION = '1.13';
     description => "Random away-messages",
     license	=> "Public Domain",
     url		=> "http://www.stud.ntnu.no/~lkarsten/irssi/",
+
+	changed => "2008-05-17 17:39:09"
 );
 
 # file to read random reasons from. It should contain one

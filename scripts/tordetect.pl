@@ -14,7 +14,9 @@ $VERSION = "0.0.1";
                    "hostname, to make things like /ignore -time 3600 ".
                    "*!*\@*.TOR possible (e.g. when your favourite ".
                    "channel gets flooded).",
-    license     => "Public domain"
+    license     => "Public domain",
+
+	changed     => "2008-06-16 10:12:13"
 );
 
 use constant {

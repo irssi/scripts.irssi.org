@@ -56,6 +56,8 @@ $VERSION = "0.0.3";
     description =>  "Configurable badword kickbanning script",
     license     =>  "GPL v2 and any later",
     url         =>  "http://fis.bofh.cz/devel/irssi/",
+
+	changed     =>  "2008-05-17 17:39:09"
 );
 
 my %nick_dbase;

@@ -35,6 +35,8 @@ $VERSION = "20020223";
     description => 'Simulates BitchX\'s /CHOPS and /NOPS commands.',
     license     => 'GNU GPLv2 or later',
     url         => 'http://irssi.atn.pl/',
+
+	changed		=> $VERSION
 );
 
 use Irssi;

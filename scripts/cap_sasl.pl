@@ -12,6 +12,8 @@ $VERSION = "1.10";
     description => 'Implements SASL authentication and enables CAP "multi-prefix"',
     license     => 'GPLv2',
     url         => 'http://ircv3.atheme.org/extensions/sasl-3.1',
+
+	changed     => "2015-01-07 06:03"
 );
 
 my %sasl_auth = ();

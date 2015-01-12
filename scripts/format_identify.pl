@@ -25,6 +25,8 @@ $VERSION = '1.5-dev-coekie';
                  'identify-ctcp capability is available.',
   license => 'GPL2',
   url   => 'http://ben.reser.org/irssi/',
+
+  changed => "2014-04-09 00:18:24"
 );
 
 # Additional credit to ch for his wash-imsg script which was a starting place

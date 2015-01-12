@@ -8,6 +8,8 @@ $VERSION = "0.5";
     description => "Licq statusbar thingy",
     license     => "Public Domain",
     url         => "http://jari.cjb.net,http://irssi.org,http://scripts.irssi.de",
+
+	changed     => "2008-05-17 17:39:11"
 );
 
 use Irssi::TextUI;

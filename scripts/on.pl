@@ -7,6 +7,8 @@ $VERSION = "1.12";
     description => '/on command - this is very simple and not really designed to be the same as ircII - it tries to fit into Irssi\'s usage style more than emulating ircII.',
     license     => 'GNU GPLv2 or later',
     url         => 'http://irssi.dgl.cx/',
+
+	changed     => "2008-05-17 17:39:11"
 );
 
 use strict;

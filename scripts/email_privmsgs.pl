@@ -32,13 +32,15 @@ $VERSION = '0.5';
 %IRSSI = (
 	authors => 'Adam James',
 	contact => 'atj@pulsewidth.org.uk',
-	url => 'http://git.pulsewidth.org.uk/?p=irssi-scripts.git;a=summary'
+	url => 'http://git.pulsewidth.org.uk/?p=irssi-scripts.git;a=summary',
 	name => 'email_privmsgs',
 	description =>
 		"Emails you private messages sent while you're away. " .
 		"Useful in combination with screen_away. " .
 		"Requires Email::Sender.",
 	license => 'MIT',
+
+	changed => "2010-06-04 22:08:32" 
 );
 
 my $FORMAT = $IRSSI{'name'} . '_crap';

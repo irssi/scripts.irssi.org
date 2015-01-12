@@ -20,6 +20,8 @@ use vars qw{$VERSION %IRSSI};
           url         => 'http://ninja.no/irssi/keepnick.pl',
           license     => 'GPL',
           description => 'Try to get your nick back when it becomes available.',
+
+		  changed     => "2008-05-17 17:39:11"
          );
 
 # ======[ Variables ]===================================================

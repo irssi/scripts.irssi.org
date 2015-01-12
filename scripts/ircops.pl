@@ -11,6 +11,8 @@ $VERSION = "0.1";
     description => '/IRCOPS - Display IrcOps in current channel',
     license     => 'GPL v2',
     url         => 'https://bc-bd.org/svn/repos/irssi/trunk/',
+
+	changed     => "2008-06-16 10:46:07"
 );
 
 sub cmd_ircops {

@@ -9,6 +9,8 @@ $VERSION = "1.1";
     description =>  "A simple word kickbanner",
     license     =>  "Public Domain",
     url         =>  "http://matin.maapallo.org/softa/irssi",
+
+	changed     =>  "2008-05-17 17:39:09"
 );
 
 use Irssi;

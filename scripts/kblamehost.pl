@@ -13,6 +13,8 @@ $VERSION = "0.0.1";
     description => 'Kicks (and bans) people with >= 4 dots in theirs hostname',
     license     => 'GNU GPLv2 or later',
     url         => 'http://esaurito.net',
+
+	changed     => "2008-05-17 17:39:11"
 );
 
 # TODO

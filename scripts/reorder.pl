@@ -27,6 +27,8 @@ use vars qw($VERSION %IRSSI);
 	name        => "reorder",
 	description => "Reordering windows based on a textfile.",
 	license     => "GPL",
+
+	changed     => "2010-02-12 22:42:13"
 );
 
 sub doFilenameFixing

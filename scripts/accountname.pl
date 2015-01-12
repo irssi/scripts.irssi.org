@@ -10,6 +10,8 @@ $VERSION = "1.0";
     name=> "accountname",
     description=> "Instead of displaying semi-raw data, a /whois now gives a tidy accountname on Asuka/lain servers (if applicable).",
     license=> "Feel free to alter anything conform your own liking.",
+
+	changed => "2008-05-17 17:39:09"
 );
 
 Irssi::theme_register([tidyaccount => ' account  : $0']);

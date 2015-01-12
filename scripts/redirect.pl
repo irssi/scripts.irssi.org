@@ -15,6 +15,8 @@ $VERSION = "0.1";
     description => 'handle 005 and 010 server messages and reconnect to that server',
     license     => 'GNU GPLv2 or later',
     url         => 'http://irssi.reeler.org/',
+
+	changed     => "2008-05-17 17:39:11"
 );
 
 sub sig_servermsg

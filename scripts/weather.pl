@@ -37,7 +37,9 @@ $VERSION = '2.3';
     contact     => 'graywolf@i-differ.net',
     name        => 'Weather.pl',
     description => 'Put local weather information in your statusbar as well as add a forecast command',
-    license     => 'Public Domain'
+    license     => 'Public Domain',
+
+	changed     => "2008-05-17 17:39:09"
 );
 
 #

@@ -28,6 +28,8 @@ $VERSION = "1.0";
         description => "logs url's to mysql database",
         license     => "GPLv2",
         url         => "http://nchip.ukkosenjyly.mine.nu/irssiscripts/",
+
+		changed     => "2008-05-17 17:39:11"
     );
 
 my $dsn = 'DBI:mysql:ircurl:localhost';

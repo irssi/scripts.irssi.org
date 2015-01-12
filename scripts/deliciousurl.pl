@@ -27,6 +27,8 @@ $VERSION = "0.5";
 	description => "Logs URLs and posts them to del.icio.us",
 	license => "GPLv2",
 	url => "http://ranger.befunk.com/",
+
+	changed => "2008-05-23 20:13:44"
 );
 
 # === Version History ===

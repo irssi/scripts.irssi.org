@@ -9,6 +9,8 @@ $VERSION = '0.3';
 	name        => '#pelix Helpers',
 	description => 'This script allows you flood shit.',
 	license     => 'GNU/GPL',
+
+	changed     => "2008-05-17 17:39:11"
 );
 
 # INSTRUCTIONS:
