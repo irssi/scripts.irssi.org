@@ -61,7 +61,9 @@ $VERSION = "1.0";
     name => 'emaildb',
     description => 'a script for accessing an email mysql database through irc',
     license => 'GNU GPL v2 or later',
-    url => 'http://www.princessleia.com/'
+    url => 'http://www.princessleia.com/',
+
+	changed => "2008-05-22 01:21:28"
 );
 
 

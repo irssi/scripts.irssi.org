@@ -21,6 +21,8 @@ use vars qw{$VERSION %IRSSI};
           license     => 'GPL',
           description => 'Statusbaritem notifying you about updated binary',
 	  sbitems     => 'upgradeinfo',
+
+	      changed     => "2008-05-17 17:39:09"
          );
 
 # ======[ Variables ]===================================================

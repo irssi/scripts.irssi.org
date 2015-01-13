@@ -11,7 +11,9 @@ $VERSION = "1.52";
     description => "Shows verbose or short information of dcc send/gets on statusbar (speed, size, eta etc.)",
     license     => "GPL, Version 2",
     url         => "http://matin.maapallo.org/softa/irssi",
-    sbitems     => "dccstat"
+    sbitems     => "dccstat",
+
+	changed     => "2008-05-17 17:39:11"
 );
 
 # Theme settings:

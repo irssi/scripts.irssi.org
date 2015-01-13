@@ -21,7 +21,7 @@ use vars qw($VERSION %IRSSI);
 
 $VERSION = "220904-04:30:00";
 
-my %IRSSI = (
+%IRSSI = (
     authors     => "mistr",
     contact     => "mistr\@sensewave.com",
     name        => "gsi",

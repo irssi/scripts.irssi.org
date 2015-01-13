@@ -11,6 +11,9 @@ $VERSION = "2.0";
     description => 'set (un)away if tmux session is attached/detached',
     license     => 'GPL v2',
     url         => 'http://www.netpurgatory.com/tmux_away.html',
+
+	changed     => "2014-08-28 16:50:28",
+	contact     => 'john@netpurgatory.com'
 );
 
 # tmux_away irssi module

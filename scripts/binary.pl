@@ -31,6 +31,8 @@ $VERSION = "1.2";
         name        => "binary",
         description => "adds /binary command that converts what you type into 2-base string representation, also decodes other peoples binary automatically",
         license     => "GPLv2",
+
+		changed     => "2008-05-17 17:39:09"
 	  );
 
 

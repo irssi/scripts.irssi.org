@@ -20,6 +20,8 @@ use vars qw{$VERSION %IRSSI};
           url         => 'http://ninja.no/irssi/chansort.pl',
           license     => 'GPL',
           description => 'Sort all channel and query windows',
+
+		  changed     => "2008-05-17 17:39:09"
          );
 
 # ======[ Hooks ]=======================================================

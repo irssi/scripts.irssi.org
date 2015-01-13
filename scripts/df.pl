@@ -12,6 +12,8 @@ $VERSION="0.1.0";
 	description=> 'Adds an item which displays the current disk usage.',
 	license=> 'GPL v2 or later',
 	url=> 'http://kaede.kicks-ass.net/irssi.html',
+
+	changed => "2008-05-17 17:39:11"
 );
 
 #########

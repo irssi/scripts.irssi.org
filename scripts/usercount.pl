@@ -10,6 +10,8 @@ $VERSION = "1.19";
     license     => 'GNU GPLv2 or later',
     url         => 'http://irssi.dgl.cx/',
     changes     => 'Only show halfops if server supports them',
+
+	changed     => "2014-06-15 19:03:11"
 );
 
 # Once you have loaded this script run the following command:

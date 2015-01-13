@@ -9,6 +9,8 @@ $VERSION = "2";
     description => 'Tab complete servers and userhosts (irc. -> irc server, user@ -> user@host). Useful for lazy ircops for /squit and so on :)',
     license     => 'GNU GPLv2 or later',
     url         => 'http://irssi.dgl.cx/',
+
+	changed     => "2008-05-17 17:39:11"
 );
 
 my %servers;

@@ -10,6 +10,8 @@ $VERSION = "0.2";
     description => 'Captures urls said in channel and private messages and saves them to a file, also adds a /url command which loads the last said url into mozilla.',
     license     => 'GNU GPLv2 or later',
     url         => 'http://irssi.dgl.cx/',
+
+	changed     => "2008-05-17 17:39:11"
 );
 
 my $lasturl;

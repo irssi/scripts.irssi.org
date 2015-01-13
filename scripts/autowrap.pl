@@ -11,6 +11,8 @@ $VERSION = '2007031900';
 	license		=> 'BSD',
 	url		=> 'none',
 	modules		=> 'Text::Wrap',
+
+	changed		=> "2008-05-25 14:51:58"
 );
 
 sub event_send_text () {

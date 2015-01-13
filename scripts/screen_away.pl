@@ -11,6 +11,9 @@ $VERSION = "0.9.8.1";
     description => 'set (un)away, if screen is attached/detached',
     license     => 'GPL v2',
     url         => 'none',
+
+	changed     => "2014-12-20 20:30:00",
+	contact     => "-"
 );
 
 # screen_away irssi module

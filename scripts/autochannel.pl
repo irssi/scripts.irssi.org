@@ -23,6 +23,8 @@ use vars qw{$VERSION %IRSSI};
           url         => 'http://ninja.no/irssi/autochannel.pl',
           license     => 'GPL',
           description => 'Auto add channels to channel list on join',
+
+		  changed     => "2007-09-20 08:58:11"
          );
 
 # ======[ Signal hooks ]================================================

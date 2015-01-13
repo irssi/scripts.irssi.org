@@ -39,6 +39,8 @@ $VERSION = '$Id: fortune.pl,v 1.3 2004/12/17 19:39:19 eim Exp $';
     name        => 'fortune',
     description => 'Send a random fortune cookie to an user in channel.',
     license     => 'Public Domain',
+
+	changed     => "2008-05-17 17:39:09"
 );
 
 sub fortune {

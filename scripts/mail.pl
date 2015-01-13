@@ -8,6 +8,8 @@ $VERSION = "2.92";
     description => "Fully customizable mail counter statusbar item with multiple mailbox and multiple Maildir support",
     license     => "Public Domain",
     url         => "http://irssi.org, http://scripts.irssi.de",
+
+	changed     => "2008-05-17 17:39:11"
 );
 
 # Mail counter statusbar item

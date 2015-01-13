@@ -12,6 +12,8 @@ $VERSION="0.3";
 	description=> 'Puts people on ignore if they do a public away. See source for options.',
 	license=> 'GPL v2',
 	url=> 'https://bc-bd.org/svn/repos/irssi/trunk/',
+
+	changed => "2008-05-22 09:10:50"
 );
 
 # $Id: ai.pl,v 1.4 2002/06/02 15:20:03 bd Exp $

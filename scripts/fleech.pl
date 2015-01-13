@@ -91,7 +91,9 @@ $VERSION = "0.0.2i";
 	contact	=> 'piotr //at// krukowiecki //dot// net',
 	description	=> 'fserve leecher - helps you download files from file servers',
 	license	=> 'GNU GPL v2', 
-	url	=> 'http://www.krukowiecki.net/code/irssi/'
+	url	=> 'http://www.krukowiecki.net/code/irssi/',
+
+	changed => "2008-05-25 15:09:31"
 );
 
 

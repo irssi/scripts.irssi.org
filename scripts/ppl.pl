@@ -27,6 +27,8 @@ $VERSION = '20020128';
 	description	=> 'port of asmodean\'s /ppl command from skuld3',
 	license		=> 'GPL v2',
 	url			=> 'http://www.linux.it/~md/irssi/',
+
+	changed     => "2008-05-17 17:39:09"
 );
 
 my $ServerRewrite = '\.openprojects\.net$';

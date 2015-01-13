@@ -9,6 +9,10 @@ $VERSION = '0.0.5';
 	authors => 'Thorsten Leemhuis, James Shubin, Serge van Ginderachter',
 	description => 'Write notifications to a file in a consistent format.',
 	license => 'GNU General Public License',
+
+	contact => 'fedora@leemhuis.info, serge@vanginderachter.be',
+	changed => "2014-11-25 21:02",
+	url     => 'http://www.leemhuis.info/files/fnotify/fnotify https://ttboj.wordpress.com/'
 );
 
 #

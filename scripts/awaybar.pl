@@ -13,6 +13,8 @@ $VERSION = "0.1.1";
     name        => 'awaybar',
     description => 'Provides a menubar item with away message',
     license     => 'Public domain',
+
+	changed     => "2008-05-17 17:39:11"
 );
 
 Irssi::statusbar_item_register('awaybar', 0, 'awaybar');

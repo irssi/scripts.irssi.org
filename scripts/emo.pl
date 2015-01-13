@@ -22,7 +22,9 @@ $VERSION = "0.0.1";
     name         =>     "emo",
     description  =>     "Outputs various unicode emoticons",
     commands     =>     "emo",
-    licence      =>     "Public Domain"
+    license      =>     "Public Domain",
+
+	changed      =>     "2014-06-12 19:06:00"
 );
 
 use Irssi;

@@ -8,6 +8,8 @@ use Irssi;
   name        => 'translit',
   description => 'translitiratar',
   license     => 'GPL',
+
+  changed     => "2008-05-17 17:39:11"
 );
 
 my $stripped_out = 0;

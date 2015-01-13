@@ -11,6 +11,8 @@ $VERSION="0.1.7";
 	description=> 'Remembers the last person oping you on a channel',
 	license=> 'GPL v2',
 	url=> 'https://bc-bd.org/svn/repos/irssi/trunk/',
+
+	changed => "2008-05-22 09:10:50"
 );
 
 # $Id #

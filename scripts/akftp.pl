@@ -35,6 +35,8 @@ use vars qw($VERSION %IRSSI);
 	        description => "Full configurable FTP advertiser for Irssi",
 	        license     => "GPLv2",
 	        url         => "http://members.tripod.com.br/archiv/",
+
+			changed     => "2008-05-17 17:39:09"
 	);
 
 

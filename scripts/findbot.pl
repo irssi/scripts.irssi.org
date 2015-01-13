@@ -144,6 +144,8 @@ $VERSION = "1.57";
     description =>  "Public command \@find script",
     license     =>  "GPL",
     url         =>  "http://hem.passagen.se/thka2315/",
+
+	changed     =>  "2008-05-17 17:39:11"
 );
 
 my %nickqueue = ();	# Queuenumber + nickname

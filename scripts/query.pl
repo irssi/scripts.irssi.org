@@ -24,6 +24,8 @@ use vars qw{$VERSION %IRSSI};
 	  url	      => 'http://ninja.no/irssi/query.pl',
 	  license     => 'GPL',
 	  description => 'Give you more control over when to jump to query windows and when to just tell you one has been created. Enhanced autoclose.',
+
+	  changed     => "2009-04-25 11:27:28"
 	 );
 
 # ======[ Variables ]===================================================

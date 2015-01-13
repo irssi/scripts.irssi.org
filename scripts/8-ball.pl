@@ -35,6 +35,8 @@ $VERSION = '0.21';
 	name		=> '8-ball',
 	description	=> 'Dont like to take decisions? Have the 8-ball do it for you instead.',
 	license		=> 'GPL',
+
+	changed     => "2014-10-17 12:37:00"
 );
 
 sub own_question {

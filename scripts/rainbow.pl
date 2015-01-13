@@ -31,6 +31,8 @@ $VERSION = "1.6";
     description => 'Prints colored text. Rather simple than sophisticated.',
     license     => 'GNU GPLv2 or later',
     url         => 'http://irssi.atn.pl/',
+
+	changed     => "2014-12-01 13:04:09"
 );
 
 use Irssi;

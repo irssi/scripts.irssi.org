@@ -11,6 +11,8 @@ $VERSION="0.2.0";
 	description=> 'Hide duplicate lines',
 	license=> 'GPL v2',
 	url=> 'http://bc-bd.org/blog/irssi/',
+
+	changed => "2012-08-30 11:52:40"
 );
 
 # repeal.pl: ignore repeated messages

@@ -14,7 +14,9 @@ $VERSION = '0.9';
     description => 'prints the stats for german stocks',
     license     => 'Public Domain',
     url         => 'http://irssi.org/scripts/',
-    sbitems     => 'stocks_ticker'
+    sbitems     => 'stocks_ticker',
+
+	changed     => "2008-05-17 17:39:11"
 );
 
 my %stocklist = (

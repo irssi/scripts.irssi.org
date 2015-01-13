@@ -16,6 +16,8 @@ use vars qw{$VERSION %IRSSI};
           url         => 'http://ninja.no/irssi/dccmove.pl',
           license     => 'GPL',
           description => 'Move completed dcc gets to the subfolder done',
+
+		  changed     => "2008-05-22 13:14:17"
          );
 
 sub sig_dcc_closed {

@@ -22,6 +22,8 @@ $VERSION = "0.2.3.23b";
 	  description	=> 'does CTCP SOUNDs and other similar things.',
 	  license	=> 'GPLv2',
 	  url		=> '',
+
+	  changed   => "2008-05-17 17:39:11"
 	 );
 
 Irssi::settings_add_bool('PGGB', 'SOUND_autosend',	1);

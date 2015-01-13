@@ -13,6 +13,8 @@ $VERSION = "1.999999999543675475473856-FDIV-final";
 	description	=> 'script to show ignored message in censored form',
 	license		=> 'public domina', #no typo
 	url		=> 'http://irssi.apic.name/ignorsula.pl',
+
+	changed      => "2009-07-26 16:00:03"
 );
 
 Irssi::theme_register(['stopp', "\02\03" . "0,4STOPP\03\02 {msgnick \$0}"]);

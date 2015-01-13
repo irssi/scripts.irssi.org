@@ -11,6 +11,8 @@ $VERSION = "0.4";
     description => "Shows your battery status in your Statusbar",
     license     => "GNU Public License",
     url         => "http://www.formorer.de/code",
+
+	changed     => "2008-05-17 17:39:09"
 );
 
 

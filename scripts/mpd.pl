@@ -47,6 +47,8 @@ $VERSION = "0.7";
           contact     => 'diozaka@gmx.de, code@aibor.de, mk@maero.dk',
           license     => 'GPLv2',
           description => 'print the song you are listening to',
+
+		  changed     => "2014-08-09 13:19:26"
          );
 
 sub my_status_print {

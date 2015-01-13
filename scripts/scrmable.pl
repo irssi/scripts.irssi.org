@@ -27,7 +27,9 @@ $VERSION = '1.01';
   contact => 'Mikachu @ freenode',
   description => 'wtires lkie tihs',
   name => 'scrmable',
-  license => 'as is'
+  license => 'as is',
+
+  changed => "2008-05-17 17:39:11"
 );
 
 sub atuo_scrmable {

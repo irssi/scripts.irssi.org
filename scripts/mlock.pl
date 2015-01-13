@@ -17,7 +17,9 @@ $VERSION = "1.00";
     name        => 'mlock',
     description => 'Channel mode locking',
     license     => 'Public Domain',
-    changed	=> 'Sun Mar 10 23:18 EET 2002'
+    changed	=> 'Sun Mar 10 23:18 EET 2002',
+
+	contact     => '-'
 );
 
 my %keep_channels;

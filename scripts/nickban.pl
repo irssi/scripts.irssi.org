@@ -6,7 +6,9 @@ $VERSION = "1.1";
     contact     =>  "irssi\@trancer.nl",
     name        =>  "nickban",
     description =>  "A simple nick banner. If it encounters a nick it bans its host",
-    license     =>  "Public Domain"
+    license     =>  "Public Domain",
+
+	changed     => "2008-05-17 17:39:09"
 );
 
 use Irssi;

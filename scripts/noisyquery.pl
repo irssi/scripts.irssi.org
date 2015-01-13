@@ -15,6 +15,8 @@ $VERSION="0.1.1";
 	description=> 'Prints an info about a newly started Query in your current window and runs a /whois on the nick.',
 	license=> 'GPL v2',
 	url=> 'http://bc-bd.org/software.php3#irssi',
+
+	changed => "2008-05-17 17:39:11"
 );
 
 sub sig_query() {

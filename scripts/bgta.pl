@@ -15,6 +15,8 @@ $VERSION = '0.0.1';
 	name		=> 'BgTA Script',
 	description	=> 'Byte\'s Gallery of the TAilor Script',
 	license		=> 'Public Domain',
+
+	changed     => "2008-05-17 17:39:11"
 );
 
 # /bgversion command

@@ -14,7 +14,9 @@ $VERSION = '2.01';
 	name => 'l33t xmms music showing script',
 	license => 'GPL',
 	modules => 'Bundle::Xmms',
-	sbitems => 'l33tmusic'
+	sbitems => 'l33tmusic',
+
+	changed => "2008-09-04 21:12:26"
 );
 
 #Stuff i've added recently that i can remember:

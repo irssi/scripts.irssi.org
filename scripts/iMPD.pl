@@ -87,7 +87,9 @@ $VERSION = '0.0.0n';
 	  name        => 'iMPD',
 	  description => 'This controls Music Player Daemon from the familiar irssi interface',
 	  license     => 'GPL v2',
-	  url         => 'http://www.musicpd.org'
+	  url         => 'http://www.musicpd.org',
+
+	  changed     => "2008-05-17 17:39:09"
 	  );
 
 # Create $SET{'mpc_override'}="/outside/path" if mpc's not in your path

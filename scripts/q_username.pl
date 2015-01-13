@@ -10,6 +10,8 @@ $VERSION = "0.1";
     name=> "q_username",
     description=> "Prints the Q username in right format",
     license=> "Public Domain",
+
+	changed => "2008-05-17 17:39:11"
 );
 
 Irssi::theme_register([whois_auth => ' authnick : $1']);

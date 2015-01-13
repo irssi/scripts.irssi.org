@@ -17,6 +17,8 @@ $VERSION = '1.00';
     name        => 'Google',
     description => 'This script queries google.com and returns the results.',
     license     => 'Public Domain',
+
+	changed     => "2008-05-17 17:39:09"
 );
 
 ## Usage:

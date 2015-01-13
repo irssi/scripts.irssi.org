@@ -20,13 +20,15 @@ use DBM::Deep;
 
 use vars qw($VERSION %IRSSI);
 
-my $VERSION = '0.31';
-my %IRSSI = (
+$VERSION = '0.31';
+%IRSSI = (
     authors     => 'vague',
     contact     => 'vague!#irssi\@freenode',
     name        => 'notes',
     description => 'Keeps notes on users and displayes the note in /whois output if the host/nick matches',
     license     => 'GPL2',
+
+	changed		=> "2011-12-13 22:24:39"
 );
 
 my $notes;

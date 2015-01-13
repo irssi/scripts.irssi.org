@@ -35,6 +35,8 @@ $VERSION="20060826";
 	name		=> 'binary_time',
 	description	=> 'Prints the timestamp in binary format',
 	license		=> 'GPL',
+
+	changed     => "2008-06-16 10:12:35"
 );
 
 my $old_timestamp_format = Irssi::settings_get_str('timestamp_format');

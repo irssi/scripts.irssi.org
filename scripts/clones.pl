@@ -8,6 +8,9 @@ $VERSION = "2.01";
     description => '/CLONES - Display clones in the active channel (with added options)',
     license     => 'Same as Irssi',
     url         => 'http://irssi.dgl.cx/',
+
+	changed     => "2008-05-17 17:39:09",
+	contact     => "-"
 );
 
 sub cmd_clones {

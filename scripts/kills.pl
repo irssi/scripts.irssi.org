@@ -20,7 +20,9 @@ $VERSION = "1.00";
     name	=> 'kills',
     description	=> 'Displays kills with more understandable messages',
     license	=> 'Public Domain',
-    changed	=> 'Sun Mar 10 23:18 EET 2002'
+    changed	=> 'Sun Mar 10 23:18 EET 2002',
+
+	contact => "-"
 );
 
 Irssi::theme_register([

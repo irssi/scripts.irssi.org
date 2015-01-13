@@ -12,6 +12,8 @@ our %IRSSI = (
     description => 'Print short summaries about URLs from known services that are mentioned on IRC. (Including YouTube, etc.)',
     license     => 'WTFPL <http://dgl.cx/licence>',
     url         => 'http://dgl.cx/irssi',
+
+	changed     => "2014-08-22"
 );
 
 # This is needed so it can still run standalone for testing.
