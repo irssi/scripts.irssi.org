@@ -1964,6 +1964,17 @@
   name: "IrssiQ"
   version: "2003231101"
 
+- authors: "mniip"
+  commands: "isbanned ismuted islisted isreset"
+  contact: "mniip @ freenode"
+  description: "freenode-specific script that checks whether someone is banned on some channel"
+  filename: "isbanned.pl"
+  modified: "2015-01-13"
+  modules: "Socket"
+  license: "Public domain"
+  name: "isbanned"
+  version: "0.6.1"
+
 - authors: "Uli Baumann"
   contact: "f-zappa@irc-muenster.de"
   description: "Displays incoming ISDN calls"
