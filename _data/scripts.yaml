@@ -3823,6 +3823,15 @@
   name: "Tor autodetection for Irssi"
   version: "0.0.1"
 
+- authors: "Ziddy"
+  contact: "DALnet"
+  description: "Keeps track of people and allows you to search the database by nickname, ident, or hostname. Most perl regex works with it and also supports IPv6"
+  filename: "track.pl"
+  modified: "2014-08-23 16:49:47"
+  license: "Public Domain"
+  name: "track"
+  version: "2.0"
+
 - authors: "Peter kinlo Leurs"
   contact: "peter@pfoe.be"
   description: "Shows a bar where youve last read a window"
