@@ -16,6 +16,8 @@ $VERSION="0.4";
 	name	    => 'loadavg',
 	description => 'display a loadavg statusbar item using vm.loadavg mib or /proc/loadavg',
 	license	    => 'public domain',
+
+    changed     => "2008-05-17 17:39:11"
 );
 
 my ($timeout, $lavg);

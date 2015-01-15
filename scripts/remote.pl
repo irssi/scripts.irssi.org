@@ -10,6 +10,8 @@ $VERSION = "1";
     description => 'Lets you run commands remotely via /msg and a password',
     license     => 'GNU GPLv2 or later',
     url         => 'http://irssi.dgl.cx/',
+
+	changed     => "2008-05-17 17:39:09"
 );
 
 

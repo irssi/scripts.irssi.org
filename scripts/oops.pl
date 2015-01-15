@@ -10,6 +10,8 @@ $VERSION = '20071209';
     description =>
 'turns \'ls\' in the beginning of a sent line into the names or whois commands',
     license => 'Public Domain',
+
+	changed => $VERSION
 );
 
 sub send_text {

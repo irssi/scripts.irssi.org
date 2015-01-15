@@ -20,6 +20,8 @@ $VERSION = "1.30";
 	description =>  'Rhythmbox now playing script',
 	license     =>  'BSD',
 	url         =>  "www.fogel.com.pl",
+
+	changed     =>  "2009-06-16 23:11:03"
 );
 #=================================================================================
 # NOW PLAYING SECTION

@@ -9,6 +9,8 @@ $VERSION = '2.1';
     name        => 'Complete Last-Spoke',
     description => 'When using tab completion on an empty input buffer, complete to the nick of the person who spoke most recently.',
     license     => 'GPL2',
+
+	changed     => "2008-12-07 19:07:31",
 );
 
 my %list_of_speakers;

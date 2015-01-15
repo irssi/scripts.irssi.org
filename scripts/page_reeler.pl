@@ -14,6 +14,8 @@ $VERSION = "0.2";
     description => 'display and send CTCP PAGE',
     license     => 'GNU GPLv2 or later',
     url         => 'http://irssi.reeler.org/',
+
+	changed     => "2008-05-17 17:39:11"
 );
 
 sub sig_ctcp_msg

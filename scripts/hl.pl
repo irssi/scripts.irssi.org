@@ -15,6 +15,8 @@ $VERSION = "1.2";
         description => "responds to \"!hl counterstrike.server \" command on channels/msg's to query counter-strike servers",
         license     => "GPLv2",
         url         => "http://nchip.ukkosenjyly.mine.nu/irssiscripts/",
+
+		changed     => "2008-05-17 17:39:11"
     );
 
 

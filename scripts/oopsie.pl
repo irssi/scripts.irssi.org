@@ -10,6 +10,8 @@ our %IRSSI = (
                  'line, /1/1 for window changes, etc).',
   license     => 'WTFPL <http://dgl.cx/licence>',
   url         => 'http://dgl.cx/irssi',
+
+  changed     => "2014-08-13"
 );
 
 # /SET oopsie_chars_regexp [0-9]

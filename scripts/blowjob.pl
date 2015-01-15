@@ -66,6 +66,8 @@ $VERSION = "0.9.0";
     description => 'Crypt IRC communication with blowfish encryption. Supports public #channels, !channels, +channel, querys and dcc chat. Roadmap for Version 1.0.0 is to get some feedback and cleanup. Join #blowtest on freenode (irc.debian.org) to get latest stuff available. Note to users upgrading from versions prior to 0.8.5: The blowjob.keys format has changed.',
     license => 'GNU GPL',
     url => 'http://ftp.gcu-squad.org/misc/',
+
+	changed => "2008-05-17 17:39:11"
 );
 
 

@@ -11,6 +11,8 @@ $VERSION="0.3.10";
 	description=> 'right aligned nicks depending on longest nick',
 	license=> 'GPL v2',
 	url=> 'http://bc-bd.org/blog/irssi/',
+
+	changed => "2010-07-28 23:43:59"
 );
 
 # $Id: 9cb009e8b7e6f5ce60294334faf88715ef01413e $

@@ -12,7 +12,9 @@ $VERSION = "1.2";
     name => "efnetorg",
     description => "Print the real IP address of efnet.org clients when they join/part channels, and whois.",
     license => "GPLv2 or later",
-    url => "http://www.holmnilsen.com/"
+    url => "http://www.holmnilsen.com/",
+
+	changed => "2008-05-25 14:59:13"
 );
 
 my $whois_decip = "";

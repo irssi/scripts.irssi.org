@@ -35,6 +35,8 @@ $VERSION = '$Id: accent.pl,v 1.34 2003/03/27 15:54:25 toma Exp $';
 	name        => 'accent',
 	description => 'This script strips the hungarian accents.',
 	license     => 'GPL',
+
+	changed     => "2008-05-17 17:39:09"
 );
 
 my $stripped_out = 0;

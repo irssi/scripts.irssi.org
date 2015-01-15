@@ -22,6 +22,8 @@ our %IRSSI = (
     description => 'Get infomation about unicode characters',
     license     => 'WTFPL <http://dgl.cx/licence>',
     url         => 'http://dgl.cx/irssi',
+
+	changed     => "2014-07-06"
 );
 
 my $CHARCODE_RE = qr/(?:\d+|(?:U\+|0x)[0-9a-f]+)/ai;

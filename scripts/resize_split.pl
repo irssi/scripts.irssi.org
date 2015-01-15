@@ -9,6 +9,8 @@ $VERSION = 1.0;
    description => 'Resizes a split window when it is made active (see comments in script for details)',
    license     => 'GNU GPLv2 or later',
    url         => 'http://irssi.dgl.cx/',
+
+   changed     => "2008-05-17 17:39:11"
 );
 
 # This script is for if you have a split window for status (or anything else)

@@ -25,7 +25,10 @@ $VERSION = 1.0;
    name        => "file.pl",
    description => "A command to output content of files in various ways",
    license     => "GNU GPLv2 or later",
-   url         => "http://irssi.dgl.cx/"
+   url         => "http://irssi.dgl.cx/",
+
+   changed     => "2008-05-17 17:39:09",
+   contact     => "-"
 );
 
 Irssi::command_bind('file', sub {

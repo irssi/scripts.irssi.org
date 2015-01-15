@@ -35,7 +35,9 @@ $VERSION = '1.0b3';
     name	=> 'romaji',
     description => 'translates romaji to hiragana or katakana in text enclosed in ^R',
     license	=> 'BSD 2-clause',
-    url		=> 'http://irssi.org/scripts/'
+    url		=> 'http://irssi.org/scripts/',
+
+	changed => "2008-05-17 17:39:11"
 );
 
 

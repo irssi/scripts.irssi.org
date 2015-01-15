@@ -22,6 +22,8 @@ $VERSION = '1.0';
                    'of the /list command. Accepted parameters are ' .
                    '-minusers <#users> and -maxusers <#users>. ',
     license     => 'GPLv2',
+
+	changed     => "2008-05-25 14:42:28"
 );
 
 use Irssi qw(

@@ -10,6 +10,8 @@ $VERSION = "5.8";
         description => 'A now-playing-script which uses Last.fm',
         license     => "BSD",
         url         => "http://soy.se/code/",
+
+        changed     => "2011-01-25 16:13:55"
 );
 # USAGE
 # For details on how to use each setting, scroll down to the SETTINGS section.

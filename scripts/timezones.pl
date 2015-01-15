@@ -17,7 +17,9 @@ $VERSION = "0.1";
     name        => "timezones",
     description => "timezones displayer",
     license     => "Public Domain",
-    url         => "http://vague.se"
+    url         => "http://vague.se",
+
+	changed     => "2011-02-16 22:50:23"
 );
 
 use Irssi::TextUI;

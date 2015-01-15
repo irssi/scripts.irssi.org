@@ -30,7 +30,11 @@ $VERSION = "0.1";
 	name	=> "Opnotice",
 	url	=> "http://palantir.darkrealm.no/opnotice.pl",
 	license	=> "GNU GPL v2",
-	changed	=> "Thu Jul 25 00:19:09 CEST 2002"
+	changed	=> "Thu Jul 25 00:19:09 CEST 2002",
+
+	description => 'Opnotice script, by Terje Tjeldnes (terje@darkrealm.no)'.
+					'Compatible with bahamut (DALnet ircd) or any other ircd with'.
+					'support for the /notice @#channel syntax.'
 );
 
 

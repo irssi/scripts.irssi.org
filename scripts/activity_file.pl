@@ -18,7 +18,9 @@ $VERSION = "1.00";
     name        => 'activity_file',
     description => 'Maintains a representation of window activity status in a file',
     license     => 'GNU General Public License',
-    changed     => 'Wed Jul 19 23:59 EET 2006'
+    changed     => 'Wed Jul 19 23:59 EET 2006',
+
+	contact     => "-"
 );
 
 

@@ -9,6 +9,8 @@ $VERSION = "3.2b";
     description => 'Display configurable title as XTerm title',
     license     => 'GNU GPL',
     url         => 'http://irssi.dgl.cx/',
+
+	changed     => "2008-05-17 17:39:09"
 );
 
 # Settings:

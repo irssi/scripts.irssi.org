@@ -15,6 +15,8 @@ $VERSION = '1.00';
     description => 'Better readable listing of channel names',
     license => 'GPLv2',
     url => 'http://jbg.swznet.de/xlist/',
+
+	changed => "2008-05-17 17:39:09"
 );
 
 use Irssi;

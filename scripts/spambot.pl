@@ -21,8 +21,12 @@ use vars qw($VERSION %IRSSI $SCRIPT_NAME);
     authors       => 'Daemon @ ircd.foxchat.net',
     name          => 'Spam Bot Killer',
     description   => 'Oper script to kill Spam Bots.',
-    license       => 'Public Domain'
+    license       => 'Public Domain',
+
+	changed       => "2008-05-17 17:39:09",
+	contact       => "-"
 );
+
 ($VERSION) = '$Revision: 1.2 $' =~ / (\d+\.\d+) /;
 
 $SCRIPT_NAME = 'Spam Bot Killer';

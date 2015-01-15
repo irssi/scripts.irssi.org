@@ -13,6 +13,8 @@ $VERSION = "1.0";
     name        => 'qchallengeauth.pl',
     description => 'Authenticates you to QuakeNet\'s Q immediately on connect using CHALLENGEAUTH',
     license     => 'GPLv3+',
+
+	changed     => "2014-08-23"
 );
 
 Irssi::settings_add_str('misc', 'quakenet_server_tag', 'QuakeNet');

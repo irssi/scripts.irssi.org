@@ -270,7 +270,9 @@ my $conffile = '$IRSSI/fserve.conf';
 	name		=> 'FServe',
 	description	=> 'File server for irssi',
 	license		=> 'GPL v2',
-	url			=> 'http://pingu.ii.uj.edu.pl/~piotr/irssi'
+	url			=> 'http://pingu.ii.uj.edu.pl/~piotr/irssi',
+
+	changed		=> "2008-05-17 17:39:11"
 );
 
 

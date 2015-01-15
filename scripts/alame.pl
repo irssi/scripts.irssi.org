@@ -11,6 +11,8 @@ $VERSION="0.0.1";
 	description	=> 'Converts towards lame speech',
 	license	=> 'GPL v2',
 	url	=> 'http://',
+
+	changed => "2008-05-17 17:39:09"
 );
 
 

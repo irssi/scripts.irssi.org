@@ -12,6 +12,8 @@ $VERSION = "2.3.1";
     license     => "Public Domain",
     commands    => "wa",
     url         => "http://matin.maapallo.org/softa/irssi",
+
+	changed     => "2008-05-25 15:00:42"
 );
 #
 # Requires httpQ >= 1.8 (http://www.kostaa.com/)

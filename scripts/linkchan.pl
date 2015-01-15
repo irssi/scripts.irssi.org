@@ -10,6 +10,8 @@ $VERSION = "1.5";
     description => 'Link several channels on serveral networks',
     license     => 'GNU GPL',
     url         => 'http://qrnik.knm.org.pl/~qrczak/irssi/linkchan.pl',
+
+	changed     => "2008-05-17 17:39:11"
 );
 
 our %links;

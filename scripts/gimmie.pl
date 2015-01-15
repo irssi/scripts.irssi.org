@@ -9,7 +9,9 @@ $VERSION = "1.0";
     name => 'gimmie',
     description => 'a bot script, using ! followed by anything the script will say (as an action): gets nickname anything',
     license => 'GNU GPL v2 or later',
-    url => 'http://www.princessleia.com/'
+    url => 'http://www.princessleia.com/',
+
+	changed => "2008-05-22 01:21:39"
 );
 
 sub event_privmsg {

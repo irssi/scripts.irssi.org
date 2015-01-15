@@ -43,7 +43,9 @@ $VERSION = '0.00.04';
 	name			=> 'dice',
 	description		=> 'A Dice Simulator for Roleplaying in Channels or just for fun.',
 	license			=> 'GNU GPL Version 2 or later',
-	url			=> 'http://www.enumerator.org/component/option,com_docman/task,view_category/Itemid,34/subcat,7/'	
+	url			=> 'http://www.enumerator.org/component/option,com_docman/task,view_category/Itemid,34/subcat,7/',
+
+	changed         => "2008-05-17 17:39:09"
 );
 
 sub own_question {

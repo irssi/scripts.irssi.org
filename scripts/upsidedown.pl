@@ -17,6 +17,8 @@ $VERSION = "0.2";
     description => "Plugin to place text upsidedown",
     license     => "GNU GPLv2",
     url         => "https://github.com/Ivo-tje/Irssi-plugin-upsidedown",
+
+	changed     => "2012-11-08 23:16:14"
 );
 
 sub ume {

@@ -70,7 +70,9 @@ $VERSION = "0.0.3";
     name => 'doc',
     description => 'manage tips ; url ; help in a doc file in the keyword=definition form',
     license => 'GNU GPL',
-    url => 'http://team.gcu-squad.org/~odemah/'
+    url => 'http://team.gcu-squad.org/~odemah/',
+
+	changed => "2008-05-17 17:39:11"
 );
 
 #name of the channel where this feature will be used

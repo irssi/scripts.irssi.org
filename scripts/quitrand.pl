@@ -13,6 +13,8 @@ $VERSION = "1.00";
     name        => 'quitrand',
     description => 'Random quit messages - based on quitmsg (Timo Sirainen)',
     license     => 'GPLv2',
+
+	changed     => "2008-05-17 17:39:09"
 );
 
 my $quitfile = glob "~/.irssi/irssi.quit";

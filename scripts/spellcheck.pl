@@ -68,6 +68,8 @@ $VERSION = '0.3';
     description => 'Checks for spelling errors using Aspell.',
     license     => 'GPLv2',
     url         => 'http://toxcorp.com/irc/irssi/spellcheck/',
+
+	changed     => "2008-05-29 00:32:04"
 );
 
 my %speller;

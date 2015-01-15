@@ -33,6 +33,8 @@ $VERSION = "0.2";
 	description => 'Remembers what people said last on what channels',
     license     => 'GNU GPLv2 or later',
     url         => 'http://irssi.freshdot.net/',
+
+	changed     => "2008-05-17 17:39:11"
 );
 
 my $target;
