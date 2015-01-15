@@ -64,6 +64,7 @@
 #     Wohlgemuth (22 Sep 2012)
 #
 # Version history:
+#  1.8: - sub draw_bar
 #  1.7: - Added /tb scroll, trackbar_hide_windows, trackbar_timestamp_timestamp
 #         and trackbar_timestamp_styled
 #  1.6: - Work around Irssi resize bug, please do /upgrade! (see below)
@@ -98,7 +99,6 @@
 #  - <@coekie> kinlo: if i switch to another window, in another split window, i 
 #              want the trackbar to go down in the previouswindow in  that splitwindow :)
 #  - < bob_2> anyway to clear the line once the window is read?
-#  - < elho> kinlo: wishlist item: a string that gets prepended to the repeating pattern
 #
 # BTW: when you have feature requests, mailing a patch that works is the fastest way
 # to get it added :p
@@ -128,9 +128,9 @@ use Irssi::TextUI;
 use POSIX qw(strftime);
 use utf8;
 
-my $VERSION = "1.7";
+our $VERSION = "1.8";
 
-my %IRSSI = (
+our %IRSSI = (
     authors     => "Peter 'kinlo' Leurs, Uwe Dudenhoeffer, " .
                    "Michiel Holtkamp, Nico R. Wohlgemuth",
     contact     => "irssi-trackbar\@supermind.nl",
@@ -138,7 +138,7 @@ my %IRSSI = (
     description => "Shows a bar where you've last read a window",
     license     => "GPLv2",
     url         => "http://github.com/mjholtkamp/irssi-trackbar/",
-    changed     => "Tue, 22 Sep 2012 14:33:31 +0000",
+    changed     => "2015-01-15 08:00", 
 );
 
 my %config;
@@ -184,19 +184,30 @@ Irssi::signal_add(
     'window changed' => sub {
         my (undef, $oldwindow) = @_;
 
-        my @hidden = split(',', $config{'trackbar_hide_windows'});
-
-        # remove whitespace around window names
-        s{^\s+|\s+$}{}g foreach @hidden;
-
-        if ($oldwindow && !($oldwindow->{'name'} ~~ @hidden)) {
-            my $line = $oldwindow->view()->get_bookmark('trackbar');
-            $oldwindow->view()->remove_line($line) if defined $line;
-            $oldwindow->print(line($oldwindow->{'width'}), MSGLEVEL_NEVER);
-            $oldwindow->view()->set_bookmark_bottom('trackbar');
-        }
+		draw_bar($oldwindow);
     }
 );
+
+# handel the line creation and the removing of the old lines
+sub draw_bar ($) {
+	(my $window) =  @_;
+	if ($window) {
+		my $line = $window->view()->get_bookmark('trackbar');
+
+		if (defined $line) {
+			$window->view()->remove_line($line);
+			$window->view()->redraw();
+		}
+
+		my $hidden =$config{'trackbar_hide_windows'};
+		my $wname   =$window->{'name'};
+
+		if ($wname eq ""  || $hidden !~ $wname) {
+			$window->print(line($window->{'width'}), MSGLEVEL_NEVER);
+			$window->view()->set_bookmark_bottom('trackbar');
+		}
+	}
+}
 
 # terminal resize code inspired on nicklist.pl
 sub sig_terminal_resized {
@@ -310,12 +321,10 @@ Irssi::signal_add_first('session save' => sub {
 
 sub cmd_mark {
     my $window = Irssi::active_win();
-    my $line = $window->view()->get_bookmark('trackbar');
-    $window->view()->remove_line($line) if defined $line;
-    $window->print(line($window->{'width'}), MSGLEVEL_NEVER);
-    $window->view()->set_bookmark_bottom('trackbar');
-    Irssi::active_win()->view()->redraw();
+
+	draw_bar($window);
 }
+
 
 # mark all visible windows with a line
 sub cmd_mark_visual {
