@@ -23,6 +23,8 @@ $VERSION = "1.0";
     description => 'Silly script, removes vowels, idea taken from #linuxnews ;-)',
     license     => 'GNU GPLv2 or later',
     url         => 'http://irssi.atn.pl/',
+
+	changed     => "2008-05-17 17:39:11"
 );
 
 use Irssi;

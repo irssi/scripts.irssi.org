@@ -66,6 +66,8 @@ $VERSION = "0.2d";
 		. "them to an email address.",
 	license => "GPLv2",
 	url => "http://www.n0-life.com",
+
+	changed => "2008-05-17 17:39:09" 
 );
 
 # After how much seconds we can check if there are any messages to send?

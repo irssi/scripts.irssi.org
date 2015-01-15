@@ -60,6 +60,8 @@ $VERSION = "0.2";
     description => 'logs urls to textfile or/and database, able to list, quote, open or `http head` saved urls.',
     license     => 'GNU GPLv2 or later',
     url         => 'http://irssi.reeler.org/url/',
+
+	changed     => "2008-05-17 17:39:11"
 );
 
 use LWP;

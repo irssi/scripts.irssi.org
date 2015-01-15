@@ -11,7 +11,9 @@ $VERSION = "1.10";
     name        => 'autoop',
     description => 'Simple auto-op script',
     license     => 'Public Domain',
-    changed	=> 'Fri Nov 24 12:55 GMT+1 2014'
+    changed	=> 'Fri Nov 24 12:55 GMT+1 2014',
+
+	contact     => "-"
 );
 
 my (%opnicks, %temp_opped);

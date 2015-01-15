@@ -24,6 +24,8 @@ use vars qw{$VERSION %IRSSI};
           url         => 'http://ninja.no/irssi/friends.pl',
           license     => 'GPL',
           description => 'Basicly an autoop script with a nice interface and nick coloring ;)',
+		  
+		  changed     => "2008-05-17 17:39:09"
          );
 
 # ======[ Variables ]===================================================

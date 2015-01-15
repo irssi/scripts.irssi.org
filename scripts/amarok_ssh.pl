@@ -10,7 +10,9 @@ $VERSION = "1.0";
     description => "Retrievs song infos and controls amaroK via dcop, optionally running on another computer via ssh",
     license     => "Public Domain",
     commands	=> "amarok",
-    url		=> "http://www.codeeye.de/irssi/"
+    url		=> "http://www.codeeye.de/irssi/",
+
+	changed     => "2008-05-17 17:39:11"
 );
 
 use Irssi;

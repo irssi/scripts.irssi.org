@@ -9,6 +9,8 @@ $VERSION = "1.0.0";
     description => "Staturbar item which indicates how many new messages you have in your centericq",
     license     => "Public Domain",
     url         => "http://irssi.org, http://scripts.irssi.org",
+
+	changed		=> "2008-05-17 17:39:11"
 );
 
 # centericq new messages statusbar item

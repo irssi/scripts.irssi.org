@@ -29,14 +29,14 @@ use strict;
 use Irssi;
 use vars qw($VERSION %IRSSI);
 $VERSION = "2.0";
-%IRSSI = {
+%IRSSI = (
     authors     => 'Simon Shine',
     contact     => 'simon@blueshell.dk',
     name        => 'xmms',
     description => 'XMMS-InfoPipe front-end - allow /np [-help] [dest]',
     license     => 'Public Domain',
     changed     => '2004-01-15'
-};
+);
 
 Irssi::settings_add_str('xmms', 'xmms_fifo', '/tmp/xmms-info');
 Irssi::settings_add_str('xmms', 'xmms_format', 'np: %title at %bitrate [%pos of %length]');

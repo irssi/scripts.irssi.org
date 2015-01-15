@@ -25,7 +25,9 @@ $VERSION = '1.1';
 	name        => 'spotify',
 	description => 'Lookup spotify uris',
 	license     => 'GPLv2',
-	url         => 'https://github.com/op/irssi-spotify'
+	url         => 'https://github.com/op/irssi-spotify',
+
+	changed     => "2014-10-13 15:22:00"
 );
 
 use Irssi;

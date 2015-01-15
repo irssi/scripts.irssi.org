@@ -21,6 +21,8 @@ $VERSION = "1.1";
     description => 'Allows your client to automatically set desired chanmode upon a join to an empty channel.',
     license     => 'GNU GPLv2 or later',
     url         => 'http://irssi.atn.pl/',
+
+	changed		=> "2008-05-17 17:39:11"
 );
 
 use Irssi 20011211.0107 ();

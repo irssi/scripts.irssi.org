@@ -22,6 +22,8 @@ $VERSION = "0.9";
     description	=> "runs arbitrary command instead of system beep, includes flood protection",
     license	=> "Public Domain",
     url		=> "http://www.xs4all.nl/~stacium/irssi/my_beep.html",
+
+	changed => "2008-05-17 17:39:11"
 );
 
 use Irssi;

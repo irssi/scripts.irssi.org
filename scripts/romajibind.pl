@@ -34,7 +34,9 @@ $VERSION = "1.0b";
     name	=> 'romajibind',
     description	=> 'Dynamic romaji binds',
     license	=> 'BSD 2-clause',
-    url		=> 'http://irssi.org/scripts/'
+    url		=> 'http://irssi.org/scripts/',
+
+	changed => "2008-05-17 17:39:11"
 );
 
 # Some help...

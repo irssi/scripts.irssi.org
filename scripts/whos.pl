@@ -11,6 +11,8 @@ $VERSION = '1.00';
                    'you to view all users ' .
                    'on a specific server.',
     license     => 'GPL',
+
+	changed     => "2008-05-17 17:39:09"
 );
 
 Irssi::command_bind('whos', \&cmd_whos);

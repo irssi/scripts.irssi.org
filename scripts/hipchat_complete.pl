@@ -67,13 +67,15 @@ use strict;
 use Irssi;
 use WebService::HipChat;
 
-my $VERSION = '2.0';
-my %IRSSI = (
+our $VERSION = '2.0';
+our %IRSSI = (
 	authors => 'John Morrissey',
 	contact => 'jwm@horde.net',
 	name => 'hipchat_complete',
 	description => 'Translate nicks to HipChat "mention names"',
 	license => 'BSD',
+
+	changed => "2014-02-08 15:15:24"
 );
 
 my %NICK_TO_MENTION;

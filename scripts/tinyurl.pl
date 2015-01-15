@@ -17,6 +17,8 @@ $VERSION = '1.0';
     name	=> 'tinyurl',
     description	=> 'create a tinyurl from a long one',
     license	=> 'GPL',
+
+	changed => "2008-08-29 13:51:48"
 );
 
 command_bind(

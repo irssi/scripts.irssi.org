@@ -10,10 +10,13 @@ $VERSION = '20071209';
 %IRSSI = (
     authors     => '',
     contact     => '',
-    name        => '',
-    description => '',
+    name        => 'ownage',
+    description => "shows how many channels you're joined and how many in them you're op, and"
+					."how many nicks are in those channels (not including you)",
     license     => '',
     commands    => 'ownage',
+
+	changed     => "2008-05-25 14:29:31"
 );
 
 sub cmd_ownage {

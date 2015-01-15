@@ -58,6 +58,8 @@ $VERSION = '0.01';
                    'Reminds people ' .
                    'to do stuff! :)',
     license     => 'GPLv2',
+
+	changed     => "2008-05-17 17:39:11"
 );
 
 my($timeout_tag, $timeout, $state, @opts, $date, @time, @hour, $start_hour, $end_hour);

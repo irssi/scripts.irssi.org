@@ -75,6 +75,8 @@ $VERSION = "0.1.2";
 	description=> 'Have gpg-based trusting features in your irssi client!',
 	license=> 'GPL v2',
 	url=> 'http://www.freaknet.org/~pallotron',
+
+	changed => "2008-05-17 17:39:11"
 );
 
 Irssi::print("Loading irssi pallotron's porting of valvoline gpgvalidator 0.1.2");

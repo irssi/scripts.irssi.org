@@ -64,6 +64,8 @@ $VERSION = "1.0";
 	description => "Floods the channel about things that are hapening in your hl -server. Also enables you to send rcon commands to the server from channel.",
 	license => "GPLv2",
 	url => "http://piipiip.net/",
+
+	changed => "2008-05-17 17:39:11"
 );
 
 #####################

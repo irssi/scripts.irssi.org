@@ -128,6 +128,8 @@ $VERSION="0.5.7";
 	description=> 'BitchX like Nickcompletion at line start plus statusbar',
 	license=> 'GPL v2',
 	url=> 'https://bc-bd.org/cgi-bin/gitweb.cgi?p=irssi.git;a=summary',
+
+	changed => "2009-08-11 12:35:49"
 );
 
 my($lastword,$lastcomp,$niqString);

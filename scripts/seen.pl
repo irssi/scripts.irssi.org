@@ -11,6 +11,8 @@ $VERSION = "1.8";
     description => 'Tell people when other people were online',
     license     => 'GPL',
     url         => 'http://qrnik.knm.org.pl/~qrczak/irssi/seen.pl',
+
+    changed     => "2008-05-17 17:39:11"
 );
 
 ######## User interface ########

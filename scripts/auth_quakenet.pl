@@ -41,6 +41,8 @@ $VERSION = "1.0";
 	description => "Implements QuakeNet's CHALLENGE authentication",
 	license     => 'WTFPL v2 <http://sam.zoy.org/wtfpl/>',
 	url         => 'http://purl.net/net/grawity/irssi.html',
+
+	changed     => "2014-12-18 06:38"
 );
 
 require Digest::HMAC;

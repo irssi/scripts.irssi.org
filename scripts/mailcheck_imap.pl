@@ -13,6 +13,8 @@ $VERSION = "0.5";
     description => "Staturbar item which indicates how many new emails you have in the specified IMAP[S] mailbox",
     license     => "GNU GPLv2",
     url         => "http://icmfp.com/irssi",
+
+	changed     => "2008-05-17 17:39:09"
 );
 
 

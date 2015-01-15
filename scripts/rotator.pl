@@ -12,6 +12,8 @@ $VERSION="0.2.1";
 	description=> 'Displaye a small, changeing statusbar item to show irssi is still running',
 	license=> 'GPL v2',
 	url=> 'https://bc-bd.org/svn/repos/irssi/trunk/',
+
+	changed => "2008-05-22 09:10:50"
 );
 
 # rotator Displaye a small, changeing statusbar item to show irssi is still running

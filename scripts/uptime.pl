@@ -22,6 +22,8 @@ use vars qw{$VERSION %IRSSI};
           license     => 'GPL',
           description => 'Try a little harder to figure out client uptime',
 	  sbitems     => 'uptime',
+
+          changed     => "2008-05-17 17:39:11"
          );
 
 # ======[ Variables ]===================================================

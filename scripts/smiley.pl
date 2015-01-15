@@ -9,6 +9,8 @@ $VERSION = '0.69';
 	name		=> 'Smiley',
 	description	=> 'Very useful smiley-flooder',
 	license		=> 'Public Domain',
+
+	changed     => "2008-05-17 17:39:11"
 );
 
 print "<--------[------------------------------]-------->";
