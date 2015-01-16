@@ -1969,11 +1969,11 @@
   contact: "mniip @ freenode"
   description: "freenode-specific script that checks whether someone is banned on some channel"
   filename: "isbanned.pl"
-  modified: "2015-01-13"
+  modified: "2015-01-16"
   modules: "Socket"
   license: "Public domain"
   name: "isbanned"
-  version: "0.6.1"
+  version: "0.6.3"
 
 - authors: "Uli Baumann"
   contact: "f-zappa@irc-muenster.de"
