@@ -202,7 +202,7 @@ sub draw_bar ($) {
 		my $hidden =$config{'trackbar_hide_windows'};
 		my $wname   =$window->{'name'};
 
-		if ($wname eq ""  || $hidden !~ $wname) {
+		if ($wname eq ""  || $hidden !~ m/\Q$wname\E/) {
 			$window->print(line($window->{'width'}), MSGLEVEL_NEVER);
 			$window->view()->set_bookmark_bottom('trackbar');
 		}
