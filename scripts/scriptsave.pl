@@ -4,7 +4,7 @@ use Irssi;
 use File::Basename;
 use vars qw($VERSION %IRSSI);
 
-$VERSION = '0.05';
+$VERSION = '0.2';
 %IRSSI = (
   authors     => 'lasers',
   contact     => 'lasers on freenode',
