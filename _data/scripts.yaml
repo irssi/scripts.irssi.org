@@ -4348,3 +4348,13 @@
   name: "XQF"
   url: "none"
   version: "0.14"
+
+- authors: "lasers"
+  contact: "lasers on freenode"
+  description: "Loads scripts from file instead of autorun directory"
+  filename: "scriptsave.pl"
+  modified: "2015-01-16 20:00:00"
+  license: "WTFPL"
+  name: "scriptsave"
+  version: "0.2"
+
