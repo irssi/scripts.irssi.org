@@ -8,9 +8,13 @@ local T=
 
 if [[ $MARKDOWN_REPORT == 1 ]] {
     echo '## Irssi Scripts Test Report'
-    failmark=:x:
-    passmark=:white_check_mark:
-    skipmark=:construction:
+    # github started to block excess use of emojis
+    #failmark=:x:
+    #passmark=:white_check_mark:
+    #skipmark=:construction:
+    failmark=✘
+    passmark=✔
+    skipmark=☡
     T="|"
 } \
 else {
