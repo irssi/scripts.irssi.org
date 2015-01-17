@@ -1,5 +1,21 @@
 use strict; use warnings;
 use YAML::Tiny;
+use Scalar::Util;
+BEGIN {
+    sub YAML::Tiny::_has_internal_string_value {
+	!Scalar::Util::looks_like_number($_[0])
+    }
+}
+
+my @config;
+if (open my $ef, '<:utf8', '_testing/config.yml') {
+    @config = Load(do { local $/; <$ef> });
+}
+my @yaml_keys;
+if (@config) {
+    @yaml_keys = @{ $config[0]{scripts_yaml_keys}//[] };
+}
+die "no keys defined in config.yaml\n" unless @yaml_keys;
 
 my @docs;
 { open my $ef, '<:utf8', '_data/scripts.yaml' or die $!;
@@ -49,15 +65,20 @@ for my $file (<scripts/*.pl>) {
 	print "MISSING META FOR $base\n";
     }
 }
-my @newdoc = map { $newmeta{$_} } sort keys %newmeta;
+my @newdoc = map {
+    my $v = $newmeta{$_};
+    +{
+        map {
+            exists $v->{$_}
+                ? ($_ => $v->{$_})
+                : ()
+        } sort @yaml_keys
+    }
+} sort keys %newmeta;
 { open my $ef, '>:utf8', '_data/scripts.yaml' or die $!;
   print $ef Dump \@newdoc;
 }
 
-my @config;
-if (open my $ef, '<:utf8', '_testing/config.yml') {
-    @config = Load(do { local $/; <$ef> });
-}
 if (@config && @{$config[0]{whitelist}//[]}) {
     my $changed;
     my @wl;
