@@ -243,7 +243,7 @@
 
 - authors: "Larry Vizzie Daffner"
   contact: "vizzie@airmail.net"
-  description: "Automatically goes  away after defined inactivity"
+  description: "Automatically goes away after defined inactivity"
   filename: "autoaway.pl"
   modified: "2010-10-19 14:41:15"
   license: "BSD"
@@ -1257,7 +1257,7 @@
   modified: "2014-06-12 19:06:00"
   license: "Public Domain"
   name: "emo"
-  version: "0.0.1"  
+  version: "0.0.1"
 
 - authors: "Taneli Kaivola"
   contact: "dist@sci.fi"
@@ -3391,6 +3391,15 @@
   url: "http://juerd.nl/irssi/"
   version: "1.20"
 
+- authors: "lasers"
+  contact: "lasers on freenode"
+  description: "Loads scripts from file instead of autorun directory"
+  filename: "scriptsave.pl"
+  modified: "2015-01-16 20:00:00"
+  license: "WTFPL"
+  name: "scriptsave"
+  version: "0.2"
+
 - authors: "jwz, irssified by Mikachu"
   contact: "Mikachu @ freenode"
   description: "wtires lkie tihs"
@@ -4348,13 +4357,3 @@
   name: "XQF"
   url: "none"
   version: "0.14"
-
-- authors: "lasers"
-  contact: "lasers on freenode"
-  description: "Loads scripts from file instead of autorun directory"
-  filename: "scriptsave.pl"
-  modified: "2015-01-16 20:00:00"
-  license: "WTFPL"
-  name: "scriptsave"
-  version: "0.2"
-
