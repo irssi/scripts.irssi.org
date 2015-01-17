@@ -3827,11 +3827,11 @@
   contact: "peter@pfoe.be"
   description: "Shows a bar where youve last read a window"
   filename: "trackbar.pl"
-  modified: "2013-11-19 13:44:07"
+  modified: "2015-01-15 08:00"
   license: "GPLv2"
   name: "trackbar"
   url: "http://www.pfoe.be/~peter/trackbar/"
-  version: "1.7"
+  version: "1.8"
 
 - authors: "Timo Sirainen"
   contact: "tss@iki.fi"
