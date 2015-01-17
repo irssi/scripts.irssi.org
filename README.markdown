@@ -12,12 +12,12 @@ To add or modify a script do the following:
 1. Fork this repository on Github.
 2. Create a feature branch for your set of patches using `git checkout -b foobar`.
 3. Add or modify your script in the repository. Remember to add it to Git using `git add`.
-4. If you are adding a new script, remember to add script information in `_data/scripts.yaml`. This file is sorted by script filename.
-5. If you are modifying a script, remember to increase the version number and update the last modification date.
-6. If the script has a ChangeLog, remember to include your modifications.
+4. If you are modifying a script, remember to increase the version number and update the last modification date.
+5. If the script has a ChangeLog, remember to include your modifications.
 6. Commit your changes to Git and push them to Github.
 7. Submit pull request.
-8. Await review of your changes by one of our developers.
+8. Review the travis report once it is done.
+9. Await review of your changes by one of our developers.
 
 ### Version Numbering
 
