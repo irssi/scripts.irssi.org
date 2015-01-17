@@ -4,13 +4,13 @@ use Irssi;
 use File::Basename;
 use vars qw($VERSION %IRSSI);
 
-$VERSION = '0.1';
+$VERSION = '0.05';
 %IRSSI = (
   authors     => 'lasers',
   contact     => 'lasers on freenode',
   name        => 'scriptsave',
   description => 'Loads scripts from file instead of autorun directory',
-  license     => 'WTFPL',
+  license     => 'Public Domain',
 );
 
 # ──── USAGE ────
@@ -24,6 +24,17 @@ $VERSION = '0.1';
 #
 # ──── NOTE ────
 # Scripts will be saved to ~/.irssi/config.scriptsave
+#
+# ──── LIMITATION #1 ────
+# This script will not work with scripts with a dash
+# in their filenames. Remember to omit them or replace
+# them with an underscore when adding new scripts.
+#   ✖ Script-name.pl
+#   ✔ Script_name.pl
+#   ✔ Scriptname.pl
+#
+# ──── LIMITATION #2 ────
+# This script will not work with /script exec -permanent
 
 my $name = basename(__FILE__);
 $name =~ s/\.[^.]+$//;
@@ -44,7 +55,7 @@ sub cmd_save_scripts {
   unlink $lst;
   foreach (sort grep(s/::$//, keys %Irssi::Script::)){
     open(my $fh, ">>", $lst);
-      if ($_ ne $name){
+      if (($_ ne $name) && ($_ !~ m/data+(\d)/)){
         print $fh "$_\n";
       }
     close $fh;
