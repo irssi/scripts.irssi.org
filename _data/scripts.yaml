@@ -4107,8 +4107,7 @@
   version: "2.3.1"
 
 - authors: "Svante Kvarnström"
-  contact: "sjk@ankeborg.nu"
-  contact: "svarre@undernet.org"
+  contact: "sjk@ankeborg.nu, svarre@undernet.org"
   description: "warns you if someone kicks you out of a channel"
   filename: "warnkick.pl"
   modified: "2004-09-28 03:51:00"
