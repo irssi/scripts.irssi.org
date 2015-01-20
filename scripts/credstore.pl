@@ -5,7 +5,7 @@ use warnings;
 use strict;
 use vars qw($VERSION %IRSSI $DBFILE $DEBUG $OPT $FING);
 
-$VERSION = "1.2";
+$VERSION = "1.3";
 %IRSSI = (
     authors     => "Benedetto",
     contact     => "dettox\@gmail.com",
@@ -13,7 +13,7 @@ $VERSION = "1.2";
     description => "store fingerprints of know users so can verify",
     license     => "GPLv3+",
     url         => "http://irssi.org/",
-    changed	=> "Thu Oct 16 13:30:54 GMT 2014",
+    changed	=> "Thu Jan 20 13:07:49 GMT 2014",
 );
 
 $DBFILE = Irssi::get_irssi_dir() . "/credstore.txt";
@@ -187,7 +187,7 @@ sub event_whois_timeout {
     Irssi::print("CREDSTORE WHOIS whois_timeout", MSGLEVEL_CLIENTCRAP);
 }
 
-sub dbfile_check () {
+sub dbfile_check {
 	if ( ! -w $DBFILE ) {
 		open FH,">",$DBFILE or croak $!;
 		print FH "";
@@ -198,7 +198,7 @@ sub dbfile_check () {
 }
 
 #add nick,fingerprint to DB
-sub add_to_db($$) {
+sub add_to_db {
 	my ($nick,$fingerp) = @_;
 	if ( -w $DBFILE ) {
 		open FH,">>",$DBFILE or croak $!;
@@ -213,7 +213,7 @@ sub add_to_db($$) {
 }
 
 #del nick,fingerprint from DB
-sub del_from_db($) {
+sub del_from_db {
 	my ($nick) = @_;
 	my $nick2; my $fingerp;
 	my $filetmp = "$DBFILE.tmp";
@@ -242,7 +242,7 @@ sub del_from_db($) {
 }
 
 #read nick,fingerprint from DB
-sub read_from_db($) {
+sub read_from_db {
 	my ($nick) = @_;
 	my $nick2; my $fingerp;
 	
@@ -272,7 +272,7 @@ sub read_from_db($) {
 }
 
 #get fingerprint from input
-sub get_fingerprint($) {
+sub get_fingerprint {
 	my ($output) = @_;
 	my $fingerp;
 
@@ -284,7 +284,7 @@ sub get_fingerprint($) {
 }
 
 #add fingerprint for nick
-sub add_nickname($$) {
+sub add_nickname {
 	my ($nick,$server) = @_;
 	my $exfingerp = read_from_db($nick);
 	if ( defined $exfingerp && $exfingerp ne "" ) {
@@ -296,14 +296,14 @@ sub add_nickname($$) {
 }
 
 #del nick from db
-sub del_nickname($) {
+sub del_nickname {
 	my ($nick) = @_;
 	Irssi::print("CREDSTORE Deleting $nick ...",MSGLEVEL_CLIENTCRAP);
 	del_from_db($nick);
 }
 
 #verify nick, fingerprint
-sub verify_nickname($$) {
+sub verify_nickname {
 	my ($nick,$server) = @_;
 	Irssi::print("CREDSTORE Verify $nick ...",MSGLEVEL_CLIENTCRAP);
 
@@ -315,7 +315,7 @@ sub verify_nickname($$) {
 	}
 }
 
-sub cmd_credstore ($$$) {
+sub cmd_credstore {
 	my ($data, $server, $witem) = @_;
 	my $cmd; my $nick; my $conn = 0;
 	( $cmd, $nick ) = split(/ /, $data);
