@@ -982,6 +982,15 @@
   url: "http://www.krukowiecki.net/code/irssi/"
   version: "0.11"
 
+- authors: "Benedetto"
+  contact: "dettox@gmail.com"
+  description: "store fingerprints of know users so can verify",
+  filename: "credstore.pl"
+  modified: "2015-19-01"
+  license: "GPLv3+"
+  name: "credstore"
+  version: "1.3"
+
 - authors: "Maciek fahren Freudenheim"
   contact: "fahren@bochnia.pl"
   description: "Usage: /CWHO [-a | -l | -o | -v ] [ mask ]"
