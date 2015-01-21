@@ -4274,6 +4274,17 @@
   name: "Xcmd"
   version: "0.2"
 
+- authors: "Julie Lala"
+  commands: "xdcc"
+  contact: "ryz@asdf.us"
+  description: "Run an XDCC file server. People can request DCC sends over CTCP. Trusted users can also upload files."
+  filename: "xdcc.pl"
+  modified: "2015-01-21 10:02:04"
+  license: "Jollo LNT License"
+  name: "xdcc"
+  url: "http://asdf.us/xdcc/"
+  version: "1.0"
+
 - authors: "Stefan tommie Tomanek"
   commands: "xdccget"
   contact: "stefan@pico.ruhr.de"
