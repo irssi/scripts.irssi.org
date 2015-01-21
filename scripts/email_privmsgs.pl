@@ -45,9 +45,9 @@ my $FORMAT = $IRSSI{'name'} . '_crap';
 my $msgs = {};
 
 Irssi::settings_add_str('misc', $IRSSI{'name'} . '_from_address',
-	'irssi@' . (%ENV->{'HOST'} || 'localhost'));
+	'irssi@' . ($ENV{'HOST'} || 'localhost'));
 Irssi::settings_add_str('misc', $IRSSI{'name'} . '_to_address',
-	%ENV->{'USER'});
+	$ENV{'USER'});
 Irssi::settings_add_str('misc', $IRSSI{'name'} . '_subject',
 	'IRC Private Messages from Irssi');
 
