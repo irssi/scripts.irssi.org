@@ -2015,6 +2015,16 @@
   url: "http://pieter-bas.ijdens.com/irssi/"
   version: "1.0.0"
 
+- authors: "Linostar"
+  contact: "linostar@sdf.org"
+  description: "A script that kickban users who post referral URLs."
+  filename: "kban-referrals.pl"
+  modified: "2015-01-25 11:10:00"
+  license: "New BSD"
+  name: "kban-referrals"
+  url: "https://github.com/linostar/irssi-scripts/blob/master/kban-referrals.pl"
+  version: "1.02"
+  
 - authors: "Filippo godog Giunchedi"
   contact: "filippo@esaurito.net"
   description: "Kicks (and bans) people with >= 4 dots in theirs hostname"
