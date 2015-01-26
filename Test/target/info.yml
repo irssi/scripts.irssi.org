@@ -1,0 +1,13 @@
+---
+-
+  authors: "Stefan 'tommie' Tomanek"
+  changed: 2003020801
+  commands: target
+  contact: stefan@pico.ruhr.de
+  default_package: target
+  description: 'advances IRC warfare to the next level ;)'
+  license: GPLv2
+  name: Target
+  sbitems: target
+  url: http://scripts.irssi.org
+  version: 2003020801

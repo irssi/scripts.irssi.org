@@ -1,0 +1,11 @@
+---
+-
+  authors: 'Wouter Coekaerts, Koenraad Heijlen'
+  changed: 2004-01-01
+  contact: 'vipie@ulyssis.org, wouter@coekaerts.be'
+  default_package: away_verbose
+  description: 'A verbose away script, displays a verbose away/back message in the channels you are in. BUT it can limit the channels (not spamming every channel!)'
+  license: 'GNU GPL version 2'
+  name: away_verbose
+  url: http://vipie.studentenweb.org/dev/irssi/
+  version: 0.0.7

@@ -1,0 +1,13 @@
+---
+-
+  authors: "Stefan 'tommie' Tomanek"
+  changed: 2003071904
+  commands: forward
+  contact: stefan@pico.ruhr.de
+  default_package: forward
+  description: 'forward incoming messages to another nick'
+  license: GPLv2
+  modules: ''
+  name: Forward
+  url: http://irssi.org/scripts/
+  version: 2003071904

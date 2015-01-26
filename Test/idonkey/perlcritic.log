@@ -1,0 +1,6 @@
+Code before warnings are enabled at line 9, column 1.  See page 431 of PBP.  (Severity: 4)
+Return value of "close" ignored at line 172, column 9.  Check the return value of "close" for success.  (Severity: 2)
+Return value of "close" ignored at line 227, column 6.  Check the return value of "close" for success.  (Severity: 2)
+Expression form of "eval" at line 243, column 18.  See page 161 of PBP.  (Severity: 5)
+Capture variable used outside conditional at line 851, column 16.  See page 253 of PBP.  (Severity: 3)
+Capture variable used outside conditional at line 1136, column 22.  See page 253 of PBP.  (Severity: 3)

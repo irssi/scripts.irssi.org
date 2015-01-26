@@ -1,0 +1,9 @@
+* --- Wohmatak's Orpheus now playing script loaded! ---
+* To show now playing song, use /np command
+* You need lsof and mp3info in order to use orphamp script.
+* Feedback appreciated at wohmatak <at> iglu.cz, ICQ 70713105 or on IRCnet...
+* -----------------------------------------------------
+* If you don't want to see this welcome message anymore, check show_npinfo irssi setting
+* If you want now playing sentence in czech, check np_land irssi setting (currently en/cz supported)
+* -----------------------------------------------------
+* -!- Irssi: Loaded script orphamp

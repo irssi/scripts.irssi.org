@@ -1,0 +1,7 @@
+* Scalar value @_[0] better written as $_[0] at mg.pl line 82.
+* 
+* Scalar value @_[1] better written as $_[1] at mg.pl line 89.
+* 
+* Scalar value @_[2] better written as $_[2] at mg.pl line 90.
+* 
+* -!- Irssi: Loaded script mg

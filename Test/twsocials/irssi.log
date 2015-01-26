@@ -1,0 +1,289 @@
+* Scalar value @data_arr[0] better written as $data_arr[0] at twsocials.pl line 74.
+* 
+* Scalar value @data_arr[1] better written as $data_arr[1] at twsocials.pl line 79.
+* 
+* Scalar value @data_arr[1] better written as $data_arr[1] at twsocials.pl line 83.
+* 
+* Scalar value @data_arr[1] better written as $data_arr[1] at twsocials.pl line 87.
+* 
+* Scalar value @data_arr[1] better written as $data_arr[1] at twsocials.pl line 91.
+* 
+* Scalar value @data_arr[2] better written as $data_arr[2] at twsocials.pl line 96.
+* 
+* Scalar value @data_arr[1] better written as $data_arr[1] at twsocials.pl line 100.
+* 
+* Scalar value @data_arr[2] better written as $data_arr[2] at twsocials.pl line 105.
+* 
+* Scalar value @data_arr[1] better written as $data_arr[1] at twsocials.pl line 109.
+* 
+* Scalar value @data_arr[2] better written as $data_arr[2] at twsocials.pl line 114.
+* 
+* Scalar value @data_arr[3] better written as $data_arr[3] at twsocials.pl line 115.
+* 
+* Scalar value @data_arr[0] better written as $data_arr[0] at twsocials.pl line 116.
+* 
+* Scalar value @data_arr[1] better written as $data_arr[1] at twsocials.pl line 116.
+* 
+* Scalar value @data_arr[2] better written as $data_arr[2] at twsocials.pl line 116.
+* 
+* Scalar value @data_arr[3] better written as $data_arr[3] at twsocials.pl line 116.
+* 
+* Scalar value @data_arr[1] better written as $data_arr[1] at twsocials.pl line 121.
+* 
+* Scalar value @data_arr[0] better written as $data_arr[0] at twsocials.pl line 125.
+* 
+* Scalar value @data_arr[0] better written as $data_arr[0] at twsocials.pl line 130.
+* 
+* Scalar value @socname_arr[0] better written as $socname_arr[0] at twsocials.pl line 132.
+* 
+* Scalar value @data_arr[1] better written as $data_arr[1] at twsocials.pl line 141.
+* 
+* Scalar value @data_arr[1] better written as $data_arr[1] at twsocials.pl line 145.
+* 
+* Scalar value @data_arr[0] better written as $data_arr[0] at twsocials.pl line 165.
+* 
+* Scalar value @data_arr[1] better written as $data_arr[1] at twsocials.pl line 170.
+* 
+* Scalar value @data_arr[1] better written as $data_arr[1] at twsocials.pl line 174.
+* 
+* Scalar value @data_arr[1] better written as $data_arr[1] at twsocials.pl line 178.
+* 
+* Scalar value @data_arr[1] better written as $data_arr[1] at twsocials.pl line 182.
+* 
+* Scalar value @data_arr[2] better written as $data_arr[2] at twsocials.pl line 187.
+* 
+* Scalar value @data_arr[1] better written as $data_arr[1] at twsocials.pl line 191.
+* 
+* Scalar value @data_arr[2] better written as $data_arr[2] at twsocials.pl line 196.
+* 
+* Scalar value @data_arr[1] better written as $data_arr[1] at twsocials.pl line 200.
+* 
+* Scalar value @data_arr[2] better written as $data_arr[2] at twsocials.pl line 205.
+* 
+* Scalar value @data_arr[3] better written as $data_arr[3] at twsocials.pl line 206.
+* 
+* Scalar value @data_arr[0] better written as $data_arr[0] at twsocials.pl line 207.
+* 
+* Scalar value @data_arr[1] better written as $data_arr[1] at twsocials.pl line 207.
+* 
+* Scalar value @data_arr[2] better written as $data_arr[2] at twsocials.pl line 207.
+* 
+* Scalar value @data_arr[3] better written as $data_arr[3] at twsocials.pl line 207.
+* 
+* Scalar value @data_arr[1] better written as $data_arr[1] at twsocials.pl line 212.
+* 
+* Scalar value @data_arr[0] better written as $data_arr[0] at twsocials.pl line 216.
+* 
+* Scalar value @data_arr[0] better written as $data_arr[0] at twsocials.pl line 221.
+* 
+* Scalar value @socname_arr[0] better written as $socname_arr[0] at twsocials.pl line 223.
+* 
+* Scalar value @data_arr[1] better written as $data_arr[1] at twsocials.pl line 232.
+* 
+* Scalar value @data_arr[1] better written as $data_arr[1] at twsocials.pl line 236.
+* 
+* Scalar value @data_arr[0] better written as $data_arr[0] at twsocials.pl line 253.
+* 
+* Scalar value @data_arr[1] better written as $data_arr[1] at twsocials.pl line 258.
+* 
+* Scalar value @data_arr[1] better written as $data_arr[1] at twsocials.pl line 262.
+* 
+* Scalar value @data_arr[1] better written as $data_arr[1] at twsocials.pl line 266.
+* 
+* Scalar value @data_arr[1] better written as $data_arr[1] at twsocials.pl line 270.
+* 
+* Scalar value @data_arr[2] better written as $data_arr[2] at twsocials.pl line 275.
+* 
+* Scalar value @data_arr[1] better written as $data_arr[1] at twsocials.pl line 279.
+* 
+* Scalar value @data_arr[2] better written as $data_arr[2] at twsocials.pl line 284.
+* 
+* Scalar value @data_arr[1] better written as $data_arr[1] at twsocials.pl line 288.
+* 
+* Scalar value @data_arr[2] better written as $data_arr[2] at twsocials.pl line 293.
+* 
+* Scalar value @data_arr[3] better written as $data_arr[3] at twsocials.pl line 294.
+* 
+* Scalar value @data_arr[0] better written as $data_arr[0] at twsocials.pl line 295.
+* 
+* Scalar value @data_arr[1] better written as $data_arr[1] at twsocials.pl line 295.
+* 
+* Scalar value @data_arr[2] better written as $data_arr[2] at twsocials.pl line 295.
+* 
+* Scalar value @data_arr[3] better written as $data_arr[3] at twsocials.pl line 295.
+* 
+* Scalar value @data_arr[1] better written as $data_arr[1] at twsocials.pl line 300.
+* 
+* Scalar value @data_arr[0] better written as $data_arr[0] at twsocials.pl line 304.
+* 
+* Scalar value @data_arr[0] better written as $data_arr[0] at twsocials.pl line 309.
+* 
+* Scalar value @socname_arr[0] better written as $socname_arr[0] at twsocials.pl line 311.
+* 
+* Scalar value @data_arr[1] better written as $data_arr[1] at twsocials.pl line 322.
+* 
+* Scalar value @data_arr[1] better written as $data_arr[1] at twsocials.pl line 326.
+* 
+* Scalar value @data_arr[0] better written as $data_arr[0] at twsocials.pl line 348.
+* 
+* Scalar value @data_arr[1] better written as $data_arr[1] at twsocials.pl line 353.
+* 
+* Scalar value @data_arr[1] better written as $data_arr[1] at twsocials.pl line 357.
+* 
+* Scalar value @data_arr[1] better written as $data_arr[1] at twsocials.pl line 361.
+* 
+* Scalar value @data_arr[1] better written as $data_arr[1] at twsocials.pl line 365.
+* 
+* Scalar value @data_arr[2] better written as $data_arr[2] at twsocials.pl line 370.
+* 
+* Scalar value @data_arr[1] better written as $data_arr[1] at twsocials.pl line 374.
+* 
+* Scalar value @data_arr[2] better written as $data_arr[2] at twsocials.pl line 379.
+* 
+* Scalar value @data_arr[1] better written as $data_arr[1] at twsocials.pl line 383.
+* 
+* Scalar value @data_arr[2] better written as $data_arr[2] at twsocials.pl line 388.
+* 
+* Scalar value @data_arr[3] better written as $data_arr[3] at twsocials.pl line 389.
+* 
+* Scalar value @data_arr[0] better written as $data_arr[0] at twsocials.pl line 390.
+* 
+* Scalar value @data_arr[1] better written as $data_arr[1] at twsocials.pl line 390.
+* 
+* Scalar value @data_arr[2] better written as $data_arr[2] at twsocials.pl line 390.
+* 
+* Scalar value @data_arr[3] better written as $data_arr[3] at twsocials.pl line 390.
+* 
+* Scalar value @data_arr[1] better written as $data_arr[1] at twsocials.pl line 395.
+* 
+* Scalar value @data_arr[0] better written as $data_arr[0] at twsocials.pl line 399.
+* 
+* Scalar value @data_arr[0] better written as $data_arr[0] at twsocials.pl line 404.
+* 
+* Scalar value @socname_arr[0] better written as $socname_arr[0] at twsocials.pl line 406.
+* 
+* Scalar value @data_arr[1] better written as $data_arr[1] at twsocials.pl line 417.
+* 
+* Scalar value @data_arr[1] better written as $data_arr[1] at twsocials.pl line 421.
+* 
+* Scalar value @data_arr[0] better written as $data_arr[0] at twsocials.pl line 445.
+* 
+* Scalar value @data_arr[0] better written as $data_arr[0] at twsocials.pl line 449.
+* 
+* Scalar value @data_arr[0] better written as $data_arr[0] at twsocials.pl line 476.
+* 
+* Scalar value @data_arr[0] better written as $data_arr[0] at twsocials.pl line 480.
+* 
+* Scalar value @data_arr[0] better written as $data_arr[0] at twsocials.pl line 544.
+* 
+* Scalar value @data_arr[1] better written as $data_arr[1] at twsocials.pl line 545.
+* 
+* "my" variable $text masks earlier declaration in same scope at twsocials.pl line 629.
+* 
+* Scalar value @mirc_color_name[$cx] better written as $mirc_color_name[$cx] at twsocials.pl line 631.
+* 
+* Scalar value @colname[$cx] better written as $colname[$cx] at twsocials.pl line 631.
+* 
+* Scalar value @mirc_color_arr[$cx] better written as $mirc_color_arr[$cx] at twsocials.pl line 636.
+* 
+* Scalar value @mirc_color_name[$cx] better written as $mirc_color_name[$cx] at twsocials.pl line 661.
+* 
+* Scalar value @colname[$cx] better written as $colname[$cx] at twsocials.pl line 661.
+* 
+* Scalar value @mirc_color_arr[$cx] better written as $mirc_color_arr[$cx] at twsocials.pl line 666.
+* 
+* Scalar value @data_arr[0] better written as $data_arr[0] at twsocials.pl line 898.
+* 
+* Scalar value @data_arr[0] better written as $data_arr[0] at twsocials.pl line 898.
+* 
+* Scalar value @data_arr[0] better written as $data_arr[0] at twsocials.pl line 902.
+* 
+* Scalar value @mirc_color_name[$cx] better written as $mirc_color_name[$cx] at twsocials.pl line 943.
+* 
+* Scalar value @mirc_color_arr[$cx] better written as $mirc_color_arr[$cx] at twsocials.pl line 944.
+* 
+* Scalar value @data_arr[0] better written as $data_arr[0] at twsocials.pl line 1049.
+* 
+* Scalar value @data_arr[1] better written as $data_arr[1] at twsocials.pl line 1060.
+* 
+* Scalar value @data_arr[1] better written as $data_arr[1] at twsocials.pl line 1064.
+* 
+* Scalar value @socline_arr[$cx] better written as $socline_arr[$cx] at twsocials.pl line 1126.
+* 
+* closedir() attempted on invalid dirhandle DIR at twsocials.pl line 1087.
+* 
+* Mkdir /home/travis/.irssi/socials.
+* Inserting socials into /home/travis/.irssi/socials.
+* print() on closed filehandle FILE at twsocials.pl line 1126.
+* 
+* print() on closed filehandle FILE at twsocials.pl line 1126.
+* 
+* print() on closed filehandle FILE at twsocials.pl line 1126.
+* 
+* print() on closed filehandle FILE at twsocials.pl line 1126.
+* 
+* print() on closed filehandle FILE at twsocials.pl line 1126.
+* 
+* print() on closed filehandle FILE at twsocials.pl line 1126.
+* 
+* print() on closed filehandle FILE at twsocials.pl line 1126.
+* 
+* print() on closed filehandle FILE at twsocials.pl line 1126.
+* 
+* print() on closed filehandle FILE at twsocials.pl line 1126.
+* 
+* print() on closed filehandle FILE at twsocials.pl line 1126.
+* 
+* print() on closed filehandle FILE at twsocials.pl line 1126.
+* 
+* print() on closed filehandle FILE at twsocials.pl line 1126.
+* 
+* print() on closed filehandle FILE at twsocials.pl line 1126.
+* 
+* print() on closed filehandle FILE at twsocials.pl line 1126.
+* 
+* print() on closed filehandle FILE at twsocials.pl line 1126.
+* 
+* print() on closed filehandle FILE at twsocials.pl line 1126.
+* 
+* print() on closed filehandle FILE at twsocials.pl line 1126.
+* 
+* print() on closed filehandle FILE at twsocials.pl line 1126.
+* 
+* print() on closed filehandle FILE at twsocials.pl line 1126.
+* 
+* print() on closed filehandle FILE at twsocials.pl line 1126.
+* 
+* Use of uninitialized value $socname in concatenation (.) or string at twsocials.pl line 1034.
+* 
+* .------------------------------------------------------.
+* | 1.) shell> mkdir ~/.irssi/scripts                    |
+* | 2.) shell> cp twsocials.pl ~/.irssi/scripts/         |
+* | 3.) shell> mkdir ~/.irssi/scripts/autorun            |
+* | 4.) shell> ln -s ~/.irssi/scripts/twsocials.pl \     |
+* |            ~/.irssi/scripts/autorun/twsocials.pl     |
+* | 5.) /help            (Will list all your socials)    |
+* |     /socials         (Shows you a list of arguments) |
+* |     /socials list    (Shows a list of socials)       |
+* |     /socials <social>(Contents of the Social command)|
+* | 6.) /toggle twsocials_instruct and last /save        |
+* |------------------------------------------------------|
+* |  Options:                                   Default: |
+* |  /toggle twsocials_remote                     OFF    |
+* |  /toggle twtopic_instruct     |Startup instructions  |
+* |------------------------------------------------------|
+* |  Note:                                               |
+* |  If twsocials_remote is ON, that will enable public  |
+* |  and private social commands to work, such as the    |
+* |  the following.                                      |
+* |                                                      |
+* |  < TechWizard> !social                               |
+* |  < TechWizard> !social list                          |
+* |  < TechWizard> !social blist                         |
+* |  < TechWizard> !hug                                  |
+* |  < TechWizard> !hug JohnDoe                          |
+* |  < TechWizard> !hug JohnDoe 1                        |
+* `------------------------------------------------------'
+* -!- Irssi: Loaded script twsocials
+* Use of uninitialized value $socname in concatenation (.) or string at twsocials.pl line 1034.
+* 

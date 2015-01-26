@@ -1,0 +1,11 @@
+---
+-
+  authors: 'Svante Kvarnström'
+  changed: 'Tue Sep 28 03:51 CEST 2004'
+  contact: sjk@ankeborg.nu
+  default_package: warnkick
+  description: 'warns you if someone kicks you out of a channel'
+  license: GPL
+  name: warnkick
+  url: http://ankeborg.nu
+  version: 0.0.3

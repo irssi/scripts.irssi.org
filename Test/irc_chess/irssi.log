@@ -1,0 +1,5 @@
+* -!- Irssi: connecting to server
+* -!- Irssi: 
+* -!- Irssi: Error in script irc_chess:
+* connect: Connection refused at irc_chess.pl line 207.
+* BEGIN failed--compilation aborted at irc_chess.pl line 211.

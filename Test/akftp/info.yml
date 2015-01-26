@@ -1,0 +1,10 @@
+---
+-
+  authors: ak
+  contact: ocb23@freenet.removethis.de
+  default_package: akftp
+  description: 'Full configurable FTP advertiser for Irssi'
+  license: GPLv2
+  name: 'ak FTP-Ad'
+  url: http://members.tripod.com.br/archiv/
+  version: 1.4

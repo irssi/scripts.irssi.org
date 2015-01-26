@@ -1,0 +1,5 @@
+* "my" variable $nick masks earlier declaration in same scope at country.pl line 24.
+* 
+* "my" variable $host masks earlier declaration in same scope at country.pl line 24.
+* 
+* -!- Irssi: Loaded script country

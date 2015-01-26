@@ -1,0 +1,10 @@
+---
+-
+  authors: 'Peder Stray'
+  contact: peder@ninja.no
+  default_package: autochannel
+  description: 'Auto add channels to channel list on join'
+  license: GPL
+  name: autochannel
+  url: http://ninja.no/irssi/autochannel.pl
+  version: 1.2

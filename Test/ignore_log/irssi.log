@@ -1,0 +1,6 @@
+* -!- Irssi: *****
+* -!- Irssi: * ignore_log 0.1 loaded.
+* -!- Irssi: *  use `/set ignore_log <filename>' to configure
+* -!- Irssi: *  use `/set ignore_log none' to disable ignore logging
+* -!- Irssi: *  logging ignored users to `~/.irssi/ignore.log'
+* -!- Irssi: Loaded script ignore_log

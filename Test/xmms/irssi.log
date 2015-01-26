@@ -1,0 +1,5 @@
+* Scalar value @_[0] better written as $_[0] at xmms.pl line 156.
+* 
+* Argument "yes" isn't numeric in subroutine entry at xmms.pl line 45.
+* 
+* -!- Irssi: Loaded script xmms

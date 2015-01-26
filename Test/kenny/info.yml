@@ -1,0 +1,11 @@
+---
+-
+  authors: 'Gerfried Fuchs'
+  changed: 2002-06-13
+  contact: alfie@channel.debian.de
+  default_package: kenny
+  description: 'autodekennyfies /kenny, adds /kenny, /dekenny. Based on Jan-Pieter Cornets signature version'
+  license: BSD
+  name: 'kenny speech'
+  url: http://alfie.ist.org/projects/irssi/scripts/kenny.pl
+  version: 2.3.1

@@ -1,0 +1,10 @@
+---
+-
+  authors: 'Tomasz Poradowski'
+  changed: 'Sat Sep 28 12:58:26 CEST 2002'
+  contact: batonik@irc.pl
+  default_package: cp1250_kick
+  description: 'Kicks people using cp1250 charset'
+  license: GPL
+  name: cp1250_kick
+  version: 1.3

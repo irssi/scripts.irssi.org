@@ -1,0 +1,11 @@
+---
+-
+  authors: "Stefan 'tommie' Tomanek"
+  changed: 20030208
+  commands: postpone
+  contact: stefan@pico.ruhr.de
+  default_package: postpone
+  description: 'Postpones messages sent to a splitted user and resends them when the nick rejoins'
+  license: GPLv2
+  name: postpone
+  version: 20030208

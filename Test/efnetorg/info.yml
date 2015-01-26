@@ -1,0 +1,10 @@
+---
+-
+  authors: 'Espen Holm Nilsen'
+  contact: holm@blackedge.org
+  default_package: efnetorg
+  description: 'Print the real IP address of efnet.org clients when they join/part channels, and whois.'
+  license: 'GPLv2 or later'
+  name: efnetorg
+  url: http://www.holmnilsen.com/
+  version: 1.2

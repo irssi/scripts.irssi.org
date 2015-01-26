@@ -1,0 +1,2 @@
+* -!- Irssi: Error in script quizgr:
+* Can't declare scalar dereference in "my" at quizgr.pl line 543, near "}="

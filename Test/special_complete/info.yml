@@ -1,0 +1,11 @@
+---
+-
+  authors: 'Wouter Coekaerts'
+  changed: 28/07/03
+  contact: 'wouter@coekaerts.be, coekie@#irssi'
+  default_package: special_complete
+  description: '(tab)complete irssi special variables (words that start with $) by evaluating them'
+  license: GPLv2
+  name: special_complete
+  url: http://wouter.coekaerts.be/irssi/
+  version: 1.1

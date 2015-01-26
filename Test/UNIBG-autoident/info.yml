@@ -1,0 +1,11 @@
+---
+-
+  authors: 'Doncho N. Gunchev'
+  changed: 'Sat Jan 25 02:35:40 EET 2003'
+  contact: mr_700@yahoo.com
+  default_package: UNIBG_autoident
+  description: "Automaticaly \x02/msg ident NS yourpassword\x02 when you connect or services come back from death"
+  license: 'Public Domain'
+  name: UNIBG-autoident
+  url: http://not.available.yet/
+  version: 0.1

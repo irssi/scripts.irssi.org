@@ -1,0 +1,12 @@
+---
+-
+  authors: 'Teemu Hjelt'
+  changed: 'Sun Mar 10 14:53:59 EET 2002'
+  contact: temex@iki.fi
+  default_package: thistory
+  description: 'Keeps information about the most recent topics of the channels you are on.'
+  license: 'GNU GPLv2 or later'
+  modified: '2014-10-24 23:01:30'
+  name: 'topic history'
+  url: http://www.iki.fi/temex/
+  version: 1.05

@@ -1,0 +1,10 @@
+---
+-
+  authors: BC-bd
+  contact: bd@bc-bd.org
+  default_package: niq
+  description: 'BitchX like Nickcompletion at line start plus statusbar'
+  license: 'GPL v2'
+  name: niq
+  url: https://bc-bd.org/cgi-bin/gitweb.cgi?p=irssi.git;a=summary
+  version: 0.5.7

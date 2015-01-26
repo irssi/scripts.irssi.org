@@ -1,0 +1,9 @@
+---
+-
+  authors: "Teemu 'jamov' Koskinen"
+  contact: teemu.koskinen@mbnet.fi
+  default_package: q_username
+  description: 'Prints the Q username in right format'
+  license: 'Public Domain'
+  name: q_username
+  version: 0.1

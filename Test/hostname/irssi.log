@@ -1,0 +1,7 @@
+* Subroutine Irssi::Script::hostname::pack_sockaddr_in6 redefined at /usr/share/perl/5.14/Exporter.pm line 67.
+* 
+* Subroutine Irssi::Script::hostname::unpack_sockaddr_in6 redefined at /usr/share/perl/5.14/Exporter.pm line 67.
+* 
+* Subroutine Irssi::Script::hostname::sockaddr_in6 redefined at /usr/share/perl/5.14/Exporter.pm line 67.
+* 
+* -!- Irssi: Loaded script hostname

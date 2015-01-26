@@ -1,0 +1,16 @@
+---
+-
+  authors: 'Philipp Haegi'
+  changed: 2004-02-05
+  commands: rotate_dict
+  contact: phaegi\@mimir.ch
+  default_package: aspell_complete
+  description: 'Adds Text::Aspell suggestions to the list of completions'
+  license: 'Public Domain'
+  modified: '2014-06-10 19:24:09'
+  modules:
+    - Text::Aspell
+  name: aspell_complete
+  note: ''
+  url: http://www.mimir.ch/ph/
+  version: 1.00

@@ -1,0 +1,4 @@
+"die" used instead of "croak" at line 70, column 2.  See page 283 of PBP.  (Severity: 3)
+"die" used instead of "croak" at line 121, column 3.  See page 283 of PBP.  (Severity: 3)
+"die" used instead of "croak" at line 132, column 3.  See page 283 of PBP.  (Severity: 3)
+Subroutine name is a homonym for builtin function reset at line 331, column 1.  See page 177 of PBP.  (Severity: 4)

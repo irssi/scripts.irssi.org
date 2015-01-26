@@ -1,0 +1,11 @@
+* Unquoted string "fp" may clash with future reserved word at sms.pl line 202.
+* 
+* Unquoted string "fp" may clash with future reserved word at sms.pl line 204.
+* 
+* Unquoted string "fp" may clash with future reserved word at sms.pl line 206.
+* 
+* Unquoted string "fp" may clash with future reserved word at sms.pl line 213.
+* 
+* Unquoted string "fp" may clash with future reserved word at sms.pl line 221.
+* 
+* -!- Irssi: Loaded script sms

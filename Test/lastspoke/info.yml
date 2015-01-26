@@ -1,0 +1,11 @@
+---
+-
+  authors: 'Sander Smeenk'
+  contact: irssi@freshdot.net
+  default_package: lastspoke
+  description: 'Remembers what people said last on what channels'
+  license: 'GNU GPLv2 or later'
+  modified: '2014-10-17 22:54:13'
+  name: lastspoke
+  url: http://irssi.freshdot.net/
+  version: 0.2

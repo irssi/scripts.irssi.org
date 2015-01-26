@@ -1,0 +1,17 @@
+* \1 better written as $1 at getop.pl line 115.
+* 
+* "my" variable $channel masks earlier declaration in same scope at getop.pl line 135.
+* 
+* "my" variable $channel masks earlier declaration in same scope at getop.pl line 174.
+* 
+* Unquoted string "fp" may clash with future reserved word at getop.pl line 346.
+* 
+* Unquoted string "fp" may clash with future reserved word at getop.pl line 351.
+* 
+* Unquoted string "fp" may clash with future reserved word at getop.pl line 356.
+* 
+* Unquoted string "fp" may clash with future reserved word at getop.pl line 364.
+* 
+* Unquoted string "fp" may clash with future reserved word at getop.pl line 375.
+* 
+* -!- Irssi: Loaded script getop

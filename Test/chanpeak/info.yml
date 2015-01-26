@@ -1,0 +1,11 @@
+---
+-
+  authors: "Bjoern 'fuchs' Krombholz"
+  changed: 'Wed Jun  2 17:00:00 CET 2002'
+  changes: 'added header, removed debugging outputs'
+  contact: bjkro@gmx.de
+  default_package: chanpeak
+  description: 'Log maximum number of people ever been in a channel'
+  license: 'Public Domain'
+  name: chanpeak
+  version: 0.2.2

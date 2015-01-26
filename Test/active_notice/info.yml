@@ -1,0 +1,11 @@
+---
+-
+  authors: 'Geert Hauwaerts'
+  changed: 'Wed Sep 17 23:00:11 CEST 2003'
+  contact: geert@irssi.org
+  default_package: active_notice
+  description: 'This script shows notices into the active channel unless it has its own window.'
+  license: 'GNU General Public License'
+  name: active_notice.pl
+  url: http://irssi.hauwaerts.be/active_notice.pl
+  version: 1.07

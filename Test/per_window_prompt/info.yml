@@ -1,0 +1,11 @@
+---
+-
+  authors: 'Wouter Coekaerts'
+  changed: 04/08/07
+  contact: coekie@irssi.org
+  default_package: per_window_prompt
+  description: 'Keeps a prompt per window'
+  license: 'GPLv2 or later'
+  name: per_window_prompt
+  url: http://wouter.coekaerts.be/irssi/
+  version: 1.0

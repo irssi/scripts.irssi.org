@@ -1,0 +1,11 @@
+---
+-
+  authors: "Timo 'cras' Sirainen"
+  changed: 2002-03-04T22:47+0100
+  contact: tss@iki.fi
+  default_package: dns
+  description: '/DNS <nick>|<host>|<ip> ...'
+  license: 'Public Domain'
+  name: dns
+  url: http://irssi.org/
+  version: 2.1.1

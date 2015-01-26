@@ -1,0 +1,11 @@
+---
+-
+  authors: 'David Leadbeater'
+  contact: dgl@dgl.cx
+  default_package: urlgrab
+  description: 'Captures urls said in channel and private messages and saves them to a file, also adds a /url command which loads the last said url into mozilla.'
+  license: 'GNU GPLv2 or later'
+  modified: '2014-10-24 23:01:30'
+  name: urlgrab
+  url: http://irssi.dgl.cx/
+  version: 0.2

@@ -1,0 +1,14 @@
+---
+-
+  authors: 'John Engelbrecht'
+  changed: 'Sat Nov 20 18:25:12 CST 2004'
+  contact: jengelbr@yahoo.com
+  default_package: twsocials
+  description: 'IRC version of Social Commands'
+  license: 'Public Domain'
+  modified: '2014-10-24 23:01:30'
+  modules:
+    - DBI
+  name: twsocials.pl
+  url: http://irssi.darktalker.net/
+  version: 1.02

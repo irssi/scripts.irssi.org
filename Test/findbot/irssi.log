@@ -1,0 +1,32 @@
+* Argument "" isn't numeric in subroutine entry at findbot.pl line 815.
+* 
+* Argument "" isn't numeric in subroutine entry at findbot.pl line 817.
+* 
+* Argument "" isn't numeric in subroutine entry at findbot.pl line 818.
+* 
+* Argument "" isn't numeric in subroutine entry at findbot.pl line 819.
+* 
+* Argument "" isn't numeric in subroutine entry at findbot.pl line 820.
+* 
+* Argument "" isn't numeric in subroutine entry at findbot.pl line 821.
+* 
+* Argument "" isn't numeric in subroutine entry at findbot.pl line 822.
+* 
+* Argument "" isn't numeric in subroutine entry at findbot.pl line 823.
+* 
+* Argument "" isn't numeric in subroutine entry at findbot.pl line 824.
+* 
+* Argument "" isn't numeric in subroutine entry at findbot.pl line 825.
+* 
+* Argument "" isn't numeric in subroutine entry at findbot.pl line 827.
+* 
+* -!- Irssi: The setting findbot_channels is empty.
+* -!- Irssi: Please correct the settings first. The server will be disabled
+* -!- Irssi: You have to reload the script when the settings are correct
+* Use of uninitialized value in subroutine entry at findbot.pl line 804.
+* 
+* Use of uninitialized value in subroutine entry at findbot.pl line 805.
+* 
+* -!- Irssi: Findbot script v1.57 by Thomas Karlsson loaded!
+* -!- Irssi: Findserver is Offline
+* -!- Irssi: Loaded script findbot

@@ -1,0 +1,11 @@
+---
+-
+  authors: 'Bitt Faulk'
+  contact: lxsfx3h02@sneakemail.com
+  default_package: autowrap
+  description: 'Automatically wraps long sent messages into multiple shorter sent messages'
+  license: BSD
+  modules: Text::Wrap
+  name: autowrap
+  url: none
+  version: 2007031900

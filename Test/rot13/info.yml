@@ -1,0 +1,11 @@
+---
+-
+  authors: "Mariusz 'Craig' Ciesla"
+  changed: 2003121202
+  commands: 'rot13 unrot13'
+  contact: craig@fish.mac.edu.pl
+  default_package: rot13
+  description: 'ROT13 encoding and reverse :)'
+  license: GPLv2
+  name: rot13
+  version: 2003121202

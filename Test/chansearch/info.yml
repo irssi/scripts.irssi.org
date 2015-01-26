@@ -1,0 +1,13 @@
+---
+-
+  authors: "Stefan 'tommie' Tomanek"
+  changed: 20021019
+  contact: stefan@pico.ruhr.de
+  default_package: chansearch
+  description: 'searches for specific channels'
+  license: GPLv2
+  modules:
+    - LWP::UserAgent
+  name: ChanSearch
+  url: http://scripts.irssi.org/
+  version: 20021019

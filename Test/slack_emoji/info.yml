@@ -1,0 +1,10 @@
+---
+-
+  authors: 'Lars Djerf'
+  contact: lars.djerf@gmail.com
+  default_package: slack_emoji
+  description: 'This script converts Slack emoji to smileys.'
+  license: GPLv3
+  modified: '2015-01-03 19:42:44'
+  name: slack_emoji
+  version: 0.03

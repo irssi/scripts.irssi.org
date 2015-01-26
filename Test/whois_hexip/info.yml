@@ -1,0 +1,11 @@
+---
+-
+  authors: 'Michael Kowalchuk'
+  changed: 12.24.2005
+  contact: michael_kowalchuk@umanitoba.ca
+  default_package: whois_hexip
+  description: 'Every time a WHOIS or WHOWAS is run, this script checks the ident and realname for a hex encoded IP address, then decodes it, reverses it, and adds it to the printed WHOIS/WHOWAS result. Useful for looking at CGI::IRC clients.'
+  license: MIT
+  name: whois_hexip
+  url: http://home.cc.umanitoba.ca/~umkowa17/junk/whois_hexip.pl
+  version: 1.4

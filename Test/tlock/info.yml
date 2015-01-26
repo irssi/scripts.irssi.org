@@ -1,0 +1,10 @@
+---
+-
+  authors: "Maciek 'fahren' Freudenheim"
+  changed: 'Fri Mar 15 15:09:42 CET 2002'
+  contact: fahren@bochnia.pl
+  default_package: tlock
+  description: '/TLOCK [-d] [channel] [topic] - locks current or specified topic on [channel]'
+  license: 'GNU GPLv2 or later'
+  name: 'Topic Lock'
+  version: 1.1

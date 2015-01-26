@@ -1,0 +1,11 @@
+---
+-
+  authors: "Stefan 'tommie' Tomanek"
+  changed: 20040509
+  commands: xdccget
+  contact: stefan@pico.ruhr.de
+  default_package: xdccget
+  description: 'advances downloading from XDCC bots'
+  license: GPLv2
+  name: XDCCget
+  version: 20040509

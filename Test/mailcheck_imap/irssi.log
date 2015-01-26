@@ -1,0 +1,40 @@
+* Use of uninitialized value $1 in concatenation (.) or string at mailcheck_imap.pl line 80.
+* 
+* Use of uninitialized value $1 in concatenation (.) or string at mailcheck_imap.pl line 80.
+* 
+* Use of uninitialized value $1 in concatenation (.) or string at mailcheck_imap.pl line 80.
+* 
+* Use of uninitialized value $1 in concatenation (.) or string at mailcheck_imap.pl line 80.
+* 
+* ,--[mailcheck_imap]
+* | mailcheck_imap 0.5
+* | /mailcheck_imap_help
+* |     Display this help.
+* | /mailcheck_imap
+* |     Check for new mail immediately, opening the connection if required.
+* | /mailcheck_imap_stop
+* |     Close connection to server and stop checking for new mail.
+* | /set mailcheck_imap
+* |     Show all mailcheck_imap settings.
+* |     Note: You need to set at least host, user and password.
+* | /statusbar <name> add mailcheck_imap
+* |     Add statusbar item for mailcheck.
+* | 
+* | 
+* | Formats in theme for statusbar item:
+* | (number of new mails in -e, total number of message in )
+* |   sb_mailcheck_imap = "{sb Mail: -e new,  total}";
+* |   sb_mailcheck_imap_zero = "{sb Mail: None new,  total}";
+* | 
+* | Format in theme for 'new mail arrived' message in current window:
+* | (number of new mails in -e, total number of message in )
+* |       mailcheck_imap_echo = "You have -e new message(s)!";
+* | 
+* | Note: You have to set at least the mailcheck_imap_host, user,
+* |       and password settings.
+* | 
+* | IMPORTANT NOTE: As this stores the password in your irssi config
+* | file, you should really set the mode of the file to 0600 so that
+* | it's only readable by your user.
+* `--<Help>->
+* -!- Irssi: Loaded script mailcheck_imap

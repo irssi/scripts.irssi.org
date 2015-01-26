@@ -1,0 +1,11 @@
+---
+-
+  authors: Juerd
+  changed: 'Tue Mar 19 11:00 CET 2002'
+  contact: juerd@juerd.nl
+  default_package: scriptinfo
+  description: 'Access script information'
+  license: 'Public Domain'
+  name: 'Script Information'
+  url: http://juerd.nl/irssi/
+  version: 1.20

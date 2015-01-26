@@ -1,0 +1,3 @@
+* readline() on closed filehandle FILE at query.pl line 48.
+* 
+* -!- Irssi: Loaded script query

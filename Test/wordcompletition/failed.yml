@@ -1,0 +1,6 @@
+---
+-
+  failed: 1
+  modules:
+    - DBI
+  name: wordcompletition

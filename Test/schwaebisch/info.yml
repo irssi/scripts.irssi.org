@@ -1,0 +1,13 @@
+---
+-
+  authors: 'Robert Scheck'
+  changed: 1.0.0
+  commands: schwäbisch
+  contact: irssi@robert-scheck.de
+  default_package: schwaebisch
+  description: '/schwäbisch - translates your messages from german to swabian'
+  license: 'GNU GPL v2'
+  modules: ''
+  name: Schwaebisch
+  url: http://ftp.robert-scheck.de/linux/irssi/scripts/
+  version: 1.0.0

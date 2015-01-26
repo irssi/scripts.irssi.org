@@ -1,0 +1,12 @@
+---
+-
+  authors: '[^BgTA^]'
+  contact: raul@bgta.net
+  default_package: bgta
+  description: "Byte's Gallery of the TAilor Script"
+  license: 'Public Domain'
+  modules:
+    - LWP
+    - Net::Google
+  name: 'BgTA Script'
+  version: 0.0.1

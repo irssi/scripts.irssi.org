@@ -1,0 +1,3 @@
+* !=~ should be !~ at autoop.pl line 101.
+* 
+* -!- Irssi: Loaded script autoop

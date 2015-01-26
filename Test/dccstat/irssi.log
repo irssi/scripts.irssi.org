@@ -1,0 +1,10 @@
+* Scalar value @results[$displaying] better written as $results[$displaying] at dccstat.pl line 400.
+* 
+* Use of uninitialized value in subroutine entry at dccstat.pl line 479.
+* 
+* Use of uninitialized value in string eq at dccstat.pl line 137.
+* 
+* Use of uninitialized value in string eq at dccstat.pl line 137.
+* 
+* -!- Irssi: Dccstat.pl loaded - /dccstat for help
+* -!- Irssi: Loaded script dccstat

@@ -1,0 +1,10 @@
+---
+-
+  authors: 'From irssi source, modified by David Leadbeater (dg)'
+  default_package: clones
+  description: '/CLONES - Display clones in the active channel (with added options)'
+  license: 'Same as Irssi'
+  modified: '2014-10-17 20:34:00'
+  name: clones
+  url: http://irssi.dgl.cx/
+  version: 2.01

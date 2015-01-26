@@ -1,0 +1,2 @@
+* -!- Irssi: Netswitcher 1.0.0 loaded. Use /netswitch <netname> to switch all windows that are not CHANNEL or QUERY to <netname>. If you call /netswitch without arguments it will switch to the network of the active window.
+* -!- Irssi: Loaded script netswitch

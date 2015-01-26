@@ -1,0 +1,13 @@
+---
+-
+  authors: "Johan \"Ion\" Kiviniemi"
+  changed: 'Thu Mar 14 05:29 EET 2002'
+  contact: 'ion at hassers.org'
+  default_package: eliza
+  description: "Answers to /msg's using Chatbot::Eliza when you're away."
+  license: 'Public Domain'
+  modules:
+    - Chatbot::Eliza
+  name: Eliza
+  url: http://ion.amigafin.org/scripts/
+  version: 1.0

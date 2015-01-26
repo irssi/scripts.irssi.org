@@ -1,0 +1,5 @@
+* Parentheses missing around "my" list at find.pl line 28.
+* 
+* Useless use of private variable in void context at find.pl line 28.
+* 
+* -!- Irssi: Loaded script find

@@ -1,0 +1,10 @@
+---
+-
+  authors: 'Timo Sirainen'
+  changed: 'Mon Oct 28 00:29:26 EET 2002'
+  contact: tss@iki.fi
+  default_package: country
+  description: 'Print the country name in /WHOIS replies'
+  license: 'Public Domain'
+  name: country
+  version: 1.0.1

@@ -1,0 +1,9 @@
+---
+-
+  authors: ''
+  contact: ''
+  default_package: oops
+  description: "turns 'ls' in the beginning of a sent line into the names or whois commands"
+  license: 'Public Domain'
+  name: oops
+  version: 20071209

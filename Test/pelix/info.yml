@@ -1,0 +1,9 @@
+---
+-
+  authors: Mankeli
+  contact: mankeli@einari.org
+  default_package: pelix
+  description: 'This script allows you flood shit.'
+  license: GNU/GPL
+  name: '#pelix Helpers'
+  version: 0.3

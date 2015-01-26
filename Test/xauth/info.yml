@@ -1,0 +1,11 @@
+---
+-
+  authors: 'Toshio R. Spoor'
+  changed: '$Date: 2004/12/17 08:39:47 $'
+  contact: t.spoor@gmail.com
+  default_package: xauth
+  description: 'Undernet X Service Authentication Program'
+  license: 'GNU GPLv2 or later'
+  modified: '2014-10-24 23:01:30'
+  name: xauth
+  version: 1.02

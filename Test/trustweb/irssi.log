@@ -1,0 +1,7 @@
+* Irssi::Script::trustweb::walk() called too early to check prototype at trustweb.pl line 285.
+* 
+* Irssi::Script::trustweb::walk() called too early to check prototype at trustweb.pl line 292.
+* 
+* >> Trustweb database loaded from ../trustweb_database
+* >> TrustWeb 2003020801 loaded: /trustweb help for help
+* -!- Irssi: Loaded script trustweb

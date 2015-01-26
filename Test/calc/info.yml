@@ -1,0 +1,11 @@
+---
+-
+  authors: Juerd
+  changed: 'Thu Mar 19 11:00 CET 2002'
+  contact: juerd@juerd.nl
+  default_package: calc
+  description: 'Simple /calc mechanism'
+  license: 'Public Domain'
+  name: Calculator
+  url: http://juerd.nl/irssi/
+  version: 1.10

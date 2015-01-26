@@ -1,0 +1,6 @@
+* Use of uninitialized value in subroutine entry at nact.pl line 263.
+* 
+* -!- Irssi: nact.pl, running on Linux, using /proc/net/dev
+* Use of uninitialized value in subroutine entry at nact.pl line 238.
+* 
+* -!- Irssi: Loaded script nact

@@ -1,0 +1,9 @@
+---
+-
+  authors: 'Jonne Piittinen'
+  contact: jip@loota.org
+  default_package: smiley
+  description: 'Very useful smiley-flooder'
+  license: 'Public Domain'
+  name: Smiley
+  version: 0.69

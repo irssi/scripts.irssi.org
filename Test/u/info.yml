@@ -1,0 +1,12 @@
+---
+-
+  authors: Michiel
+  changed: 'Thu Jun  3 11:04:27 CEST 2004'
+  contact: michiel@dotgeek.org
+  default_package: u
+  description: 'BitchX /u clone. Use /u <regex> to show all nicks (including ident@host) matching regex in the current channel.'
+  license: 'GNU GPL'
+  modified: '2014-10-24 23:01:30'
+  name: 'List nicks in channel'
+  url: http://otoria.freecode.nl/~michiel/u.pl
+  version: 1.3

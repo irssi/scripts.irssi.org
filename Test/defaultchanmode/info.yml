@@ -1,0 +1,10 @@
+---
+-
+  authors: 'Jakub Jankowski'
+  contact: shasta@atn.pl
+  default_package: defaultchanmode
+  description: 'Allows your client to automatically set desired chanmode upon a join to an empty channel.'
+  license: 'GNU GPLv2 or later'
+  name: 'Default Chanmode'
+  url: http://irssi.atn.pl/
+  version: 1.1

@@ -1,0 +1,4 @@
+* "my" variable %downloads masks earlier declaration in same scope at poison.pl line 233.
+* 
+* >> Poison 2003020801 loaded, /poison help
+* -!- Irssi: Loaded script poison

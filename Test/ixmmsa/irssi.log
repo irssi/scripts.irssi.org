@@ -1,0 +1,3 @@
+* -!- Irssi: Error in script ixmmsa:
+* Can't locate Xmms.pm in @INC  at ixmmsa.pl line 20.
+* BEGIN failed--compilation aborted at ixmmsa.pl line 20.

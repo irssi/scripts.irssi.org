@@ -1,0 +1,13 @@
+---
+-
+  authors: 'Ben Klein, based on noticemove by Timo Sirainen'
+  changed: 2014-07-10T09:20+1000
+  changes: 'v2.0 - Rewrite noticemove to prefer active window'
+  contact: shacklein@gmail.com
+  default_package: noticelogic
+  description: "Print private notices in query/channel where you're talking to them. Prefers active window if they're there with you."
+  license: 'Public Domain'
+  modified: '2014-07-10 09:21:39'
+  name: 'notice logic'
+  url: http://irssi.org/
+  version: 2.0

@@ -1,0 +1,11 @@
+---
+-
+  authors: "Timo 'cras' Sirainen, Bastian Blank"
+  changed: 'Fri, 24 Jan 2003 15:40:22 +0100'
+  contact: 'tss@iki.fi, waldi@debian.org'
+  default_package: autorealname
+  description: 'Print realname of everyone who join to channels'
+  license: 'GPLv2 or later'
+  name: 'auto realname'
+  url: http://irssi.org/
+  version: 0.8.6

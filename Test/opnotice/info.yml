@@ -1,0 +1,11 @@
+---
+-
+  authors: "Terje \"xerath\" Tjeldnes"
+  changed: 'Thu Jul 25 00:19:09 CEST 2002'
+  contact: terje@darkrealm.no
+  default_package: opnotice
+  license: 'GNU GPL v2'
+  modified: '2014-10-19 11:54:16'
+  name: Opnotice
+  url: http://palantir.darkrealm.no/opnotice.pl
+  version: 0.1

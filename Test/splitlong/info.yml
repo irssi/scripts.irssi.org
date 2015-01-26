@@ -1,0 +1,12 @@
+---
+-
+  authors: "Bjoern 'fuchs' Krombholz"
+  changed: 'Wed Jun 25 00:17:00 CET 2003'
+  changes: "Actually the real 0.19 (now 0.20), but upload didn't work some month ago, target problem fixed..."
+  contact: bjkro@gmx.de
+  default_package: splitlong
+  description: 'Split overlong PRIVMSGs to msgs with length allowed by ircd'
+  license: 'Public Domain'
+  modified: '2014-08-07 02:00:52'
+  name: splitlong
+  version: 0.20

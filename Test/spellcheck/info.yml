@@ -1,0 +1,12 @@
+---
+-
+  authors: 'Jakub Jankowski'
+  contact: shasta@toxcorp.com
+  default_package: spellcheck
+  description: 'Checks for spelling errors using Aspell.'
+  license: GPLv2
+  modules:
+    - Text::Aspell
+  name: Spellcheck
+  url: http://toxcorp.com/irc/irssi/spellcheck/
+  version: 0.3

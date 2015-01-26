@@ -1,0 +1,10 @@
+---
+-
+  authors: 'Petr Baudis'
+  contact: pasky@ji.cz
+  default_package: operview
+  description: 'Reformats some server notices, which may come i.e. from &clients or &servers at IRCnet. You can turn the script on/off bytoggling variable mangle_server_notices.'
+  license: 'GPLv2, not later'
+  name: operview
+  url: http://pasky.ji.cz/~pasky/dev/irssi/
+  version: 1.11

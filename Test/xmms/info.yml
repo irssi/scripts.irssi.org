@@ -1,0 +1,11 @@
+---
+-
+  authors: 'Simon Shine'
+  changed: 2004-01-15
+  contact: simon@blueshell.dk
+  default_package: xmms
+  description: 'XMMS-InfoPipe front-end - allow /np [-help] [dest]'
+  license: 'Public Domain'
+  modified: '2015-01-18 02:15:41'
+  name: xmms
+  version: 2.0

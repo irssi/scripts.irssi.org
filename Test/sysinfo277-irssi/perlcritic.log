@@ -1,0 +1,7 @@
+Code before warnings are enabled at line 32, column 1.  See page 431 of PBP.  (Severity: 4)
+Mismatched operator at line 290, column 21.  Numeric/string operators and operands should match.  (Severity: 3)
+Return value of "close" ignored at line 320, column 5.  Check the return value of "close" for success.  (Severity: 2)
+Return value of "close" ignored at line 477, column 5.  Check the return value of "close" for success.  (Severity: 2)
+Mismatched operator at line 530, column 14.  Numeric/string operators and operands should match.  (Severity: 3)
+Mismatched operator at line 531, column 14.  Numeric/string operators and operands should match.  (Severity: 3)
+Mismatched operator at line 532, column 14.  Numeric/string operators and operands should match.  (Severity: 3)

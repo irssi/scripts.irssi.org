@@ -1,0 +1,9 @@
+---
+-
+  authors: Daenyth
+  contact: 'Daenyth /at/ gmail /dot/ com'
+  default_package: complete_lastspoke
+  description: 'When using tab completion on an empty input buffer, complete to the nick of the person who spoke most recently.'
+  license: GPL2
+  name: 'Complete Last-Spoke'
+  version: 2.1

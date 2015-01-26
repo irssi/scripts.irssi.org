@@ -1,0 +1,12 @@
+---
+-
+  authors: "Christian 'mordeth' Weber"
+  changed: 20020821
+  contact: chris@mac.ruhr.de
+  default_package: autoversion
+  description: 'Auto-CTCP Verison on every joining nick'
+  license: GPLv2
+  modules: ''
+  name: autoversion
+  url: ''
+  version: 0.0.1

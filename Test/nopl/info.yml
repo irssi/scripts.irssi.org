@@ -1,0 +1,11 @@
+---
+-
+  authors: 'Adam Wysocki'
+  changed: '10 May 2005 16.12.32'
+  contact: 'gophi <at> efnet.pl'
+  default_package: nopl
+  description: 'Replaces polish national characters with their corresponding letters'
+  license: 'Public Domain'
+  name: nopl
+  url: http://www.gophi.rotfl.pl/
+  version: 1.00

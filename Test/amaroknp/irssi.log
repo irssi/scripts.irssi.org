@@ -1,0 +1,4 @@
+* Can't exec "dcop": No such file or directory at amaroknp.pl line 37.
+* 
+* -!- Irssi: Error in script amaroknp:
+* Couldn't find dcop executable.. Make sure dcop is in your PATH or edit dcoppath in the script at amaroknp.pl line 38.

@@ -1,0 +1,11 @@
+---
+-
+  authors: 'Thorsten Leemhuis, James Shubin, Serge van Ginderachter'
+  contact: 'fedora@leemhuis.info, serge@vanginderachter.be'
+  default_package: fnotify
+  description: 'Write notifications to a file in a consistent format.'
+  license: 'GNU General Public License'
+  modified: '2015-01-18 02:15:41'
+  name: fnotify
+  url: 'http://www.leemhuis.info/files/fnotify/fnotify https://ttboj.wordpress.com/'
+  version: 0.0.5

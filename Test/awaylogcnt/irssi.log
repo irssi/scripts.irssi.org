@@ -1,0 +1,5 @@
+* Use of uninitialized value in subroutine entry at awaylogcnt.pl line 58.
+* 
+* -!- Irssi: Loaded script awaylogcnt
+* Use of uninitialized value $Irssi::Script::awaylogcnt::fname in string eq at awaylogcnt.pl line 42.
+* 

@@ -1,0 +1,11 @@
+---
+-
+  authors: 'Remco den Breeje'
+  contact: 'stacium or stek (most of the time) @ quakenet.org'
+  default_package: my_beep
+  description: 'runs arbitrary command instead of system beep, includes flood protection'
+  license: 'Public Domain'
+  modified: '2014-10-19 11:54:16'
+  name: my_beep
+  url: http://www.xs4all.nl/~stacium/irssi/my_beep.html
+  version: 0.9

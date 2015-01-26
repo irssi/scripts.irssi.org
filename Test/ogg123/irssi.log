@@ -1,0 +1,11 @@
+* Unquoted string "f" may clash with future reserved word at ogg123.pl line 67.
+* 
+* \2 better written as $2 at ogg123.pl line 73.
+* 
+* \2 better written as $2 at ogg123.pl line 79.
+* 
+* \2 better written as $2 at ogg123.pl line 85.
+* 
+* Unquoted string "f" may clash with future reserved word at ogg123.pl line 89.
+* 
+* -!- Irssi: Loaded script ogg123

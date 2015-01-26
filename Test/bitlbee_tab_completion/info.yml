@@ -1,0 +1,11 @@
+---
+-
+  authors: "Tijmen \"timing\" Ruizendaal & Wilmer van der Gaast"
+  changed: 2009-08-11
+  contact: tijmen.ruizendaal@gmail.com
+  default_package: bitlbee_tab_completion
+  description: 'Intelligent Tab-completion for BitlBee commands.'
+  license: GPLv2
+  name: BitlBee_tab_completion
+  url: http://the-timing.nl/stuff/irssi-bitlbee
+  version: 1.3

@@ -1,0 +1,10 @@
+---
+-
+  authors: 'Timo Sirainen'
+  changed: 'Sun Mar 10 23:18 EET 2002'
+  default_package: quitmsg
+  description: 'Random quit messages'
+  license: 'Public Domain'
+  modified: '2014-10-19 11:54:16'
+  name: quitmsg
+  version: 1.00

@@ -1,0 +1,9 @@
+---
+-
+  authors: 'Aaron Toponce, Knut Auvor Grythe'
+  contact: 'aaron.toponce@gmail.com, irssi@auvor.no'
+  default_package: binary_time
+  description: 'Prints the timestamp in binary format'
+  license: GPL
+  name: binary_time
+  version: 20060826

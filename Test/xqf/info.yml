@@ -1,0 +1,14 @@
+---
+-
+  authors: mizerou
+  changed: 'Sat June 05 05:12 MST 2004'
+  commands: xqf
+  contact: mizerou@telus.net
+  default_package: xqf
+  description: 'automatically sends xqf data to irssi and optionally licq'
+  license: GPLv2
+  modified: '2014-10-24 23:01:30'
+  modules: Socket
+  name: XQF
+  url: none
+  version: 0.14

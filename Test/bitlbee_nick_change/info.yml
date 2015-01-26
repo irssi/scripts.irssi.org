@@ -1,0 +1,11 @@
+---
+-
+  authors: "Tijmen \"timing\" Ruizendaal"
+  changed: 2010-07-28
+  contact: tijmen.ruizendaal@gmail.com
+  default_package: bitlbee_nick_change
+  description: 'Shows an IM nickchange in an Irssi way. (in a query and in the bitlbee channel). (For bitlbee 3.0+)'
+  license: GPLv2
+  name: BitlBee_nick_change
+  url: http://the-timing.nl/stuff/irssi-bitlbee
+  version: 1.3

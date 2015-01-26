@@ -1,0 +1,18 @@
+* "my" variable @all_colors masks earlier declaration in same scope at dau.pl line 2465.
+* 
+* Use of /c modifier is meaningless in s/// at dau.pl line 3673.
+* 
+* Use of /c modifier is meaningless in s/// at dau.pl line 3677.
+* 
+* Variable "$np" will not stay shared at (re_eval 26) line 2.
+* 
+* Can't exec "figlet": No such file or directory at dau.pl line 5145.
+* 
+* Use of uninitialized value $figlet in scalar chomp at dau.pl line 5146.
+* 
+* Use of uninitialized value in subroutine entry at dau.pl line 129.
+* 
+* dau.pl 2.4.3 loaded. For help type /dau --help or /dau --long_help
+* Use of uninitialized value $Irssi::Script::dau::signal{"channel joined"} in numeric ne (!=) at dau.pl line 5659.
+* 
+* -!- Irssi: Loaded script dau

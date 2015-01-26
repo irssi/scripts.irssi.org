@@ -1,0 +1,11 @@
+---
+-
+  authors: c0ffee
+  changed: 'Tue Nov 14 23:19:19 CET 2006'
+  contact: c0ffee@penguin-breeder.org
+  default_package: kicks
+  description: 'Enhances /k /kb and /kn with some nice options.'
+  license: 'Public Domain'
+  name: 'Various kick and ban commands'
+  url: http://www.penguin-breeder.org/irssi/
+  version: 0.26

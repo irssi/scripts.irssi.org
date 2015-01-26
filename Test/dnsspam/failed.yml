@@ -1,0 +1,6 @@
+---
+-
+  failed: 1
+  modules:
+    - spamcalc::SpamCalc
+  name: dnsspam

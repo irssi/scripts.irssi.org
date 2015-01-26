@@ -1,0 +1,2 @@
+Code before warnings are enabled at line 26, column 1.  See page 431 of PBP.  (Severity: 4)
+Private subroutine/method used at line 53, column 2.  Use published APIs.  (Severity: 3)

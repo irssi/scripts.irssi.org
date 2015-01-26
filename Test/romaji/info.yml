@@ -1,0 +1,10 @@
+---
+-
+  authors: 'Victor Ivanov'
+  contact: v0rbiz@yahoo.com
+  default_package: romaji
+  description: 'translates romaji to hiragana or katakana in text enclosed in ^R'
+  license: 'BSD 2-clause'
+  name: romaji
+  url: http://irssi.org/scripts/
+  version: 1.0b3

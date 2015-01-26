@@ -1,0 +1,6 @@
+* "my" variable $nick masks earlier declaration in same scope at fcountry.pl line 66, <DATA> line 290.
+* 
+* "my" variable $host masks earlier declaration in same scope at fcountry.pl line 66, <DATA> line 290.
+* 
+* >> fast_country 1.0.0 loaded: '/fcountry help' for help
+* -!- Irssi: Loaded script fcountry

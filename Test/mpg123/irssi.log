@@ -1,0 +1,17 @@
+* Unquoted string "f" may clash with future reserved word at mpg123.pl line 63.
+* 
+* \2 better written as $2 at mpg123.pl line 69.
+* 
+* \3 better written as $3 at mpg123.pl line 69.
+* 
+* \1 better written as $1 at mpg123.pl line 75.
+* 
+* \1 better written as $1 at mpg123.pl line 76.
+* 
+* \2 better written as $2 at mpg123.pl line 76.
+* 
+* \3 better written as $3 at mpg123.pl line 76.
+* 
+* Unquoted string "f" may clash with future reserved word at mpg123.pl line 80.
+* 
+* -!- Irssi: Loaded script mpg123

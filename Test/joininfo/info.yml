@@ -1,0 +1,11 @@
+---
+-
+  authors: 'Pieter-Bas IJdens'
+  changed: 2005-03-10
+  contact: irssi-scripts@nospam.mi4.org.uk
+  default_package: joininfo
+  description: 'Reports WHOIS information and channel list for those who join a channel'
+  license: 'GPLv2 or later'
+  name: joininfo
+  url: http://pieter-bas.ijdens.com/irssi/
+  version: 1.0.0

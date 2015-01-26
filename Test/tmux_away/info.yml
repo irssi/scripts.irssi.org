@@ -1,0 +1,11 @@
+---
+-
+  authors: 'John C. Vernaleo'
+  contact: john@netpurgatory.com
+  default_package: tmux_away
+  description: 'set (un)away if tmux session is attached/detached'
+  license: 'GPL v2'
+  modified: '2015-01-18 02:15:41'
+  name: tmux_away
+  url: http://www.netpurgatory.com/tmux_away.html
+  version: 2.0

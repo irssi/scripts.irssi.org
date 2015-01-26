@@ -1,0 +1,10 @@
+---
+-
+  authors: 'original idea by valvoline, irssi porting by pallotron'
+  contact: pallotron@freaknet.org
+  default_package: gpgvalidator
+  description: 'Have gpg-based trusting features in your irssi client!'
+  license: 'GPL v2'
+  name: 'gpgvalidator v. 0.1.2'
+  url: http://www.freaknet.org/~pallotron
+  version: 0.1.2

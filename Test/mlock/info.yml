@@ -1,0 +1,9 @@
+---
+-
+  authors: 'Timo Sirainen'
+  changed: 'Sun Mar 10 23:18 EET 2002'
+  default_package: mlock
+  description: 'Channel mode locking'
+  license: 'Public Domain'
+  name: mlock
+  version: 1.00

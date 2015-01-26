@@ -1,0 +1,13 @@
+---
+-
+  authors: 'Janne Mikola'
+  changed: '14th of July, 2008'
+  changes: 'v0.1: Initial release'
+  contact: janne@mikola.info
+  default_package: autowhois_simple
+  description: '/WHOIS anyone querying you automatically.'
+  license: GPL
+  modified: '2014-10-17 18:30:46'
+  name: autowhois_simple
+  url: http://www.mikola.info
+  version: 0.1

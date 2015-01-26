@@ -1,0 +1,10 @@
+---
+-
+  authors: 'Petr Baudis'
+  contact: pasky@ji.cz
+  default_package: map
+  description: 'Generates simple tree of IRC network based on the output of the LINKS command.'
+  license: 'GPLv2, not later'
+  name: map
+  url: http://pasky.ji.cz/~pasky/dev/irssi/
+  version: 1.2

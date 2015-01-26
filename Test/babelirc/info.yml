@@ -1,0 +1,16 @@
+---
+-
+  authors: "Stefan 'tommie' Tomanek"
+  changed: 2003020801
+  commands: babelirc
+  contact: stefan@pico.ruhr.de
+  default_package: babelirc
+  description: 'translates your messages via Babelfish'
+  license: GPLv2
+  modules:
+    - Unicode::String
+    - WWW::Babelfish
+  name: babelirc
+  sbitems: babelirc_sb
+  url: http://irssi.org/scripts/
+  version: 2003020801

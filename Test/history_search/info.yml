@@ -1,0 +1,11 @@
+---
+-
+  authors: 'Wouter Coekaerts'
+  changed: 17/01/09
+  contact: coekie@irssi.org
+  default_package: history_search
+  description: 'Search within your typed history as you type (like ctrl-R in bash)'
+  license: 'GPLv2 or later'
+  name: history_search
+  url: http://wouter.coekaerts.be/irssi/
+  version: 2.0

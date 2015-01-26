@@ -1,0 +1,3 @@
+* -!- Irssi: Error in script xmmsinfo:
+* Can't locate Irssi/XMMSInfo.pm in @INC  at xmmsinfo.pl line 30.
+* BEGIN failed--compilation aborted at xmmsinfo.pl line 30.

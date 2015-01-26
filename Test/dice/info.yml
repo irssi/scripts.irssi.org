@@ -1,0 +1,10 @@
+---
+-
+  authors: 'Marcel Kossin'
+  contact: mkossin@enumerator.org
+  default_package: dice
+  description: 'A Dice Simulator for Roleplaying in Channels or just for fun.'
+  license: 'GNU GPL Version 2 or later'
+  name: dice
+  url: http://www.enumerator.org/component/option,com_docman/task,view_category/Itemid,34/subcat,7/
+  version: 0.00.04

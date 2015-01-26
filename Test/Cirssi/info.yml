@@ -1,0 +1,11 @@
+---
+-
+  authors: 'Dani Soufi (compengi)'
+  changed: 'Thu Aug 14 22:43 CET 2009'
+  contact: 'IRC: Freenode network, #ubuntu-lb'
+  default_package: Cirssi
+  description: 'Controls Audacious2 and MOCP from Irssi'
+  license: 'GNU General Public License'
+  name: 'Consolidate Irssi Player'
+  url: http://bazaar.launchpad.net/~compengi/%2Bjunk/Cirssi/annotate/head%3A/Cirssi.pl
+  version: 2.0.0

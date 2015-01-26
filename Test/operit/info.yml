@@ -1,0 +1,10 @@
+---
+-
+  authors: 'Petr Baudis'
+  contact: pasky@ucw.cz
+  default_package: operit
+  description: 'Perform certain action (invite/op/...) on request authenticated by the IRC operator status.'
+  license: BSD
+  name: operit
+  url: http://pasky.ji.cz/~pasky/dev/irssi/
+  version: 1.14

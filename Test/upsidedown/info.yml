@@ -1,0 +1,12 @@
+---
+-
+  authors: 'Ivo Schooneman'
+  contact: ivo@schooneman.net
+  default_package: upsidedown
+  description: 'Plugin to place text upsidedown'
+  license: 'GNU GPLv2'
+  modules:
+    - Text::UpsideDown
+  name: upsidedown
+  url: https://github.com/Ivo-tje/Irssi-plugin-upsidedown
+  version: 0.2

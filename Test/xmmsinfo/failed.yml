@@ -1,0 +1,6 @@
+---
+-
+  failed: 1
+  modules:
+    - Irssi::XMMSInfo
+  name: xmmsinfo

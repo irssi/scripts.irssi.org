@@ -1,0 +1,11 @@
+---
+-
+  authors: "Joost \"Garion\" Vunderink"
+  contact: joost@carnique.nl
+  default_package: centericq
+  description: 'Staturbar item which indicates how many new messages you have in your centericq'
+  license: 'Public Domain'
+  modified: '2014-10-17 20:34:00'
+  name: centericq
+  url: 'http://irssi.org, http://scripts.irssi.org'
+  version: 1.0.0

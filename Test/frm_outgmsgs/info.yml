@@ -1,0 +1,12 @@
+---
+-
+  authors: 'Pablo MartÃ­n BÃ¡ez EchevarrÃ­a'
+  changed: '14:20:15, Oct 16th, 2014 UYT'
+  contact: pab_24n@outlook.com
+  default_package: frm_outgmsgs
+  description: 'define a permanent text formatting (bold, underline, etc.) for outgoing messages'
+  license: 'Public Domain'
+  modified: '2014-11-07 13:00:08'
+  name: frm_outgmsgs
+  url: http://reirssi.wordpress.com
+  version: 1.1

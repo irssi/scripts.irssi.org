@@ -1,0 +1,11 @@
+---
+-
+  authors: 'Geert Hauwaerts'
+  changed: 'Wed Dec 31 15:37:24 2003'
+  contact: geert@irssi.org
+  default_package: away_hilight_notice
+  description: 'This script will notice your away message to the person who just hilighted you.'
+  license: 'GNU General Public License'
+  name: away_hilight_notice.pl
+  url: http://irssi.hauwaerts.be/away_hilight_notice.pl
+  version: 0.10

@@ -1,0 +1,11 @@
+---
+-
+  authors: CrazyCat
+  changed: '$Date: 2005/01/12 03:04:01$'
+  contact: crazycat@c-p-f.org
+  default_package: extaway
+  description: 'Extended Away & Back programm'
+  license: 'GNU GPLv2 or later'
+  modified: '2014-10-17 22:54:13'
+  name: ExtAway
+  version: 1.0

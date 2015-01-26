@@ -1,0 +1,11 @@
+---
+-
+  authors: "Stefan 'tommie' Tomanek"
+  changed: 2004021901
+  commands: 'morse spell'
+  contact: stefan@pico.ruhr.de
+  default_package: morse
+  description: 'turns your messages into morse or spelling code'
+  license: GPLv2
+  name: morse
+  version: 2004021901

@@ -1,0 +1,12 @@
+---
+-
+  authors: "Timo 'cras' Sirainen, Wouter Coekaerts"
+  changed: 2008-01-13
+  contact: 'tss@iki.fi, wouter@coekaerts.be'
+  default_package: grep
+  description: '/GREP [-i] [-w] [-v] [-F] <perl-regexp> <command to run>'
+  license: 'Public Domain'
+  modified: '2014-10-17 22:54:13'
+  name: grep
+  url: http://wouter.coekaerts.be/irssi/
+  version: 2.1

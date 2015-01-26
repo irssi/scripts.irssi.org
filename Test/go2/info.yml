@@ -1,0 +1,11 @@
+---
+-
+  authors: cxreg
+  changed: 2008-02-22
+  contact: cxreg@pobox.com
+  default_package: go2
+  description: 'Switch to the window with the given name or item'
+  license: 'Public Domain'
+  name: go2
+  url: http://genericorp.net/~count/irssi/go
+  version: 1.0

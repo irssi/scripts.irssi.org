@@ -1,0 +1,11 @@
+---
+-
+  authors: 'Rick (strlen) Jansen'
+  changed: 'Wed Mar 13 20:26:46 CET 2002'
+  contact: strlen@shellz.nl
+  default_package: cloneprot
+  description: 'Parses OperServ notices to make autokill aliases from clonewarnings'
+  license: GPL/1
+  name: cloneprot
+  url: http://www.shellz.nl/
+  version: 1.11

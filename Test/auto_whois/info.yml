@@ -1,0 +1,13 @@
+---
+-
+  authors: "Andreas 'ads' Scherbaum"
+  changed: 2004-02-10
+  changes: "v0.9: don't /WHOIS if query exists for the nick already"
+  contact: ads@ufp.de
+  default_package: auto_whois
+  description: '/WHOIS all the users who send you a private message.'
+  license: GPL
+  modified: '2014-10-17 18:30:46'
+  name: auto_whois
+  url: http://irssi.org/
+  version: 0.9

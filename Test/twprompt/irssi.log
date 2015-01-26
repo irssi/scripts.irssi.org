@@ -1,0 +1,20 @@
+* .--------------------------------------------------.
+* | 1.) shell> mkdir ~/.irssi/scripts                |
+* | 2.) shell> cp twprompt.pl ~/.irssi/scripts/      |
+* | 3.) shell> cp twprompt.pl ~/.irssi/scripts/      |
+* | 4.) shell> mkdir ~/.irssi/scripts/autorun        |
+* | 5.) shell> ln -s ~/.irssi/scripts/twprompt.pl \  |
+* |            ~/.irssi/scripts/autorun/twprompt.pl  |
+* | 6.) /sbar prompt remove prompt                   |
+* | 7.) /sbar prompt remove prompt_empty             |
+* | 8.) /sbar prompt add -before input -priority 100 |
+* |           -alignment left twprompt               |
+* | 9.) /toggle twprompt_instruct and last /save     |
+* |--------------------------------------------------|
+* |  Options:                               Default: |
+* |  /set twprompt_refresh <speed>              100  |
+* |  /set twprompt_color_a <string>             %C   |
+* |  /set twprompt_color_b <string>             %c   |
+* |  /toggle twprompt_instruct |Startup instructions |
+* `--------------------------------------------------'
+* -!- Irssi: Loaded script twprompt

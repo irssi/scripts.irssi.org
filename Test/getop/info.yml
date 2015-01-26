@@ -1,0 +1,11 @@
+---
+-
+  authors: "Maciek 'fahren' Freudenheim"
+  changed: 'Fri Jan 10 03:54:07 CET 2003'
+  contact: fahren@bochnia.pl
+  default_package: getop
+  description: 'Automatically request op from random opped person with specifed command from list after joining channel'
+  license: 'GNU GPLv2 or later'
+  modified: '2014-10-17 22:54:13'
+  name: GetOP
+  version: 0.9b

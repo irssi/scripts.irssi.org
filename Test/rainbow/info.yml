@@ -1,0 +1,11 @@
+---
+-
+  authors: 'Jakub Jankowski'
+  contact: shasta@atn.pl
+  default_package: rainbow
+  description: 'Prints colored text. Rather simple than sophisticated.'
+  license: 'GNU GPLv2 or later'
+  modified: '2014-12-01 13:04:58'
+  name: rainbow
+  url: http://irssi.atn.pl/
+  version: 1.6

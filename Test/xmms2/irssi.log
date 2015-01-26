@@ -1,0 +1,9 @@
+* Unquoted string "xmms" may clash with future reserved word at xmms2.pl line 48.
+* 
+* \1 better written as $1 at xmms2.pl line 55.
+* 
+* \2 better written as $2 at xmms2.pl line 55.
+* 
+* Unquoted string "xmms" may clash with future reserved word at xmms2.pl line 64.
+* 
+* -!- Irssi: Loaded script xmms2

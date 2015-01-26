@@ -1,0 +1,11 @@
+---
+-
+  authors: "Stefan 'tommie' Tomanek"
+  changed: 20031207
+  contact: stefan@pico.ruhr.de
+  default_package: mood
+  description: 'Keeps track of the channel mood'
+  license: GPLv2
+  name: Mood
+  sbitems: moodbar
+  version: 20031207

@@ -1,0 +1,10 @@
+---
+-
+  authors: "Christian 'mordeth' Weber"
+  contact: mordeth\@mac.com
+  default_package: alame
+  description: 'Converts towards lame speech'
+  license: 'GPL v2'
+  name: alame
+  url: http://
+  version: 0.0.1

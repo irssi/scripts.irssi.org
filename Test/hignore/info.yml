@@ -1,0 +1,11 @@
+---
+-
+  authors: 'Geert Hauwaerts'
+  changed: 'Wed Sep 17 23:51:38 CEST 2003'
+  contact: geert@irssi.org
+  default_package: hignore
+  description: 'This script will add the HIGNORE command, if you use this command in a query it will ignore the host.'
+  license: 'Public Domain'
+  name: hignore.pl
+  url: http://irssi.hauwaerts.be/hignore.pl
+  version: 0.02

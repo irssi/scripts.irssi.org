@@ -1,0 +1,11 @@
+---
+-
+  authors: 'Marcin Rozycki'
+  changed: 'Fri Aug  9 23:00:00 CEST 2002'
+  contact: derwan@irssi.pl
+  default_package: synccheck
+  description: 'Script checking channel synchronization. Usage: /sync-check [channel (servers)|-stop]'
+  license: 'GNU GPL v2'
+  name: sync-check
+  url: http://derwan.irssi.pl
+  version: 0.4.9.1

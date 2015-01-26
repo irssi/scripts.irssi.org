@@ -1,0 +1,11 @@
+---
+-
+  authors: 'Peder Stray'
+  contact: peder@ninja.no
+  default_package: upgradeinfo
+  description: 'Statusbaritem notifying you about updated binary'
+  license: GPL
+  name: upgradeinfo
+  sbitems: upgradeinfo
+  url: http://ninja.no/irssi/upgradeinfo.pl
+  version: 1.7

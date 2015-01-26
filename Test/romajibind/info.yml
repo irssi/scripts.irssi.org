@@ -1,0 +1,10 @@
+---
+-
+  authors: 'Victor Ivanov'
+  contact: v0rbiz@yahoo.com
+  default_package: romajibind
+  description: 'Dynamic romaji binds'
+  license: 'BSD 2-clause'
+  name: romajibind
+  url: http://irssi.org/scripts/
+  version: 1.0b

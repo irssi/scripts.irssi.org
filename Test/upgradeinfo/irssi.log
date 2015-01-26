@@ -1,0 +1,3 @@
+* Use of uninitialized value in subroutine entry at upgradeinfo.pl line 118.
+* 
+* -!- Irssi: Loaded script upgradeinfo

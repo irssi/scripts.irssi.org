@@ -1,0 +1,12 @@
+---
+-
+  authors: 'David Leadbeater, Timo Sirainen, Georg Lukas'
+  changes: 'Only show halfops if server supports them'
+  contact: 'dgl@dgl.cx, tss@iki.fi, georg@boerde.de'
+  default_package: usercount
+  description: 'Adds a usercount for a channel as a statusbar item'
+  license: 'GNU GPLv2 or later'
+  modified: '2014-10-24 23:01:30'
+  name: usercount
+  url: http://irssi.dgl.cx/
+  version: 1.19

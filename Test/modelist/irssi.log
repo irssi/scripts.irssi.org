@@ -1,0 +1,5 @@
+* Scalar value @_[0] better written as $_[0] at modelist.pl line 36.
+* 
+* Unrecognized escape \s passed through at modelist.pl line 109.
+* 
+* -!- Irssi: Loaded script modelist

@@ -1,0 +1,12 @@
+---
+-
+  authors: 'John Engelbrecht'
+  changed: 'Wed Sep 29 02:58:28 CDT 2004'
+  contact: jengelbr@yahoo.com
+  default_package: twprompt
+  description: "BitchX's CrackRock3 animated prompt bar."
+  license: 'Public Domain'
+  modified: '2014-10-24 23:01:30'
+  name: twprompt.pl
+  url: "http://irssi.darktalker.net\n"
+  version: 1.00

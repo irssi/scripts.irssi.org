@@ -1,0 +1,10 @@
+---
+-
+  authors: "Sebastian 'yath' Schmidt"
+  changed: 'Tue Mar  5 14:55:29 CET 2002'
+  contact: yathen@web.de
+  default_package: dispatch
+  description: 'This scripts sends unknown commands to the server'
+  license: 'GNU GPLv2'
+  name: 'Command dispatcher'
+  version: 0.0.2

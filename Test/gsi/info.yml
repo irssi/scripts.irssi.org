@@ -1,0 +1,15 @@
+---
+-
+  authors: mistr
+  changed: 220904-04:30:00
+  contact: mistr@sensewave.com
+  default_package: gsi
+  description: '/gsi <phone nr> checks number via http://gulesider.no. Norwegian 8-digit numbers only. Nice if you have caller-ID and are as paranoid as me.'
+  license: 'Public Domain'
+  modified: '2015-01-18 02:15:41'
+  modules:
+    - LWP::UserAgent
+    - URI::Heuristic
+  name: gsi
+  url: http://irssi.org/scripts
+  version: 220904-04:30:00

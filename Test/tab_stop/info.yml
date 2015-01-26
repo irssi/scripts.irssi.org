@@ -1,0 +1,10 @@
+---
+-
+  authors: "Stefan 'tommie' Tomanek"
+  changed: 2002123102
+  contact: stefan@pico.ruhr.de
+  default_package: tab_stop
+  description: "This script replaces the evil inverted 'I' with a configurable number of whitespaces "
+  license: GPLv2
+  name: tab_stop
+  version: 2002123102

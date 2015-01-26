@@ -1,0 +1,9 @@
+---
+-
+  authors: 'Terry Lewis'
+  contact: terry@kryogenic.co.uk
+  default_package: autoreminder
+  description: 'This script Reminds people to do stuff! :)'
+  license: GPLv2
+  name: 'Auto Reminder'
+  version: 0.01

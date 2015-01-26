@@ -1,0 +1,10 @@
+---
+-
+  authors: 'Erik Scharwaechter, Tobias BÃ¶hm, Mikkel Kroman'
+  contact: 'diozaka@gmx.de, code@aibor.de, mk@maero.dk'
+  default_package: mpd
+  description: 'print the song you are listening to'
+  license: GPLv2
+  modified: '2014-08-20 21:54:33'
+  name: mpd
+  version: 0.7

@@ -1,0 +1,8 @@
+* "my" variable $text masks earlier declaration in same scope at apm.pl line 66.
+* 
+* "my" variable $text masks earlier declaration in same scope at apm.pl line 74.
+* 
+* "my" variable $ein masks earlier declaration in same scope at apm.pl line 74.
+* 
+* -!- Irssi: Error in script apm:
+* script tried to call exit  at apm.pl line 46

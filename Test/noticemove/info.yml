@@ -1,0 +1,13 @@
+---
+-
+  authors: 'Timo Sirainen'
+  changed: 2002-03-04T22:47+0100
+  changes: "v1.01 - fixed infinite loop when you weren't connected to server :)"
+  contact: tss@iki.fi
+  default_package: noticemove
+  description: 'Prints private notices from people in the channel where they are joined with you. Useful when you get lots of private notices from some bots.'
+  license: 'Public Domain'
+  modified: '2014-10-19 11:54:16'
+  name: 'notice move'
+  url: http://irssi.org/
+  version: 1.01

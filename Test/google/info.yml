@@ -1,0 +1,11 @@
+---
+-
+  authors: 'Oddbjørn Kvalsund'
+  contact: oddbjorn.kvalsund@hiof.no
+  default_package: google
+  description: 'This script queries google.com and returns the results.'
+  license: 'Public Domain'
+  modules:
+    - LWP::UserAgent
+  name: Google
+  version: 1.00

@@ -1,0 +1,11 @@
+---
+-
+  authors: Juerd
+  changed: 'Sun Mar 10 02:14 CET 2002'
+  contact: juerd@juerd.nl
+  default_package: 'null'
+  description: 'This script really does nothing. Sorry.'
+  license: 'Public Domain'
+  name: 'Nothing at all'
+  url: http://juerd.nl/irssi/
+  version: 1.00

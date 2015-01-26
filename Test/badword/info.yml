@@ -1,0 +1,10 @@
+---
+-
+  authors: "Jan 'fissie' Sembera"
+  contact: fis@ji.cz
+  default_package: badword
+  description: 'Configurable badword kickbanning script'
+  license: 'GPL v2 and any later'
+  name: badword
+  url: http://fis.bofh.cz/devel/irssi/
+  version: 0.0.3

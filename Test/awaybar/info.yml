@@ -1,0 +1,9 @@
+---
+-
+  authors: 'Simon Shine'
+  contact: http://shine.eu.org/
+  default_package: awaybar
+  description: 'Provides a menubar item with away message'
+  license: 'Public domain'
+  name: awaybar
+  version: 0.1.1

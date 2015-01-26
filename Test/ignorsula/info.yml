@@ -1,0 +1,10 @@
+---
+-
+  authors: apic
+  contact: apic@IRCnet
+  default_package: ignorsula
+  description: 'script to show ignored message in censored form'
+  license: 'public domina'
+  name: ignorsula
+  url: http://irssi.apic.name/ignorsula.pl
+  version: 1.999999999543675475473856-FDIV-final

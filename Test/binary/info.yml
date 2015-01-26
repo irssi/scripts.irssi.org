@@ -1,0 +1,9 @@
+---
+-
+  authors: 'Carl Fischer'
+  contact: carl.fischer@netcourrier.com
+  default_package: binary
+  description: 'adds /binary command that converts what you type into 2-base string representation, also decodes other peoples binary automatically'
+  license: GPLv2
+  name: binary
+  version: 1.2

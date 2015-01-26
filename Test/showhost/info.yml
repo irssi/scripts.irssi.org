@@ -1,0 +1,10 @@
+---
+-
+  authors: 'Michiel v Vaardegem'
+  changed: 'Mon Dec  8 19:23:51 CET 2003'
+  contact: michielv@zeelandnet.nl
+  default_package: showhost
+  description: 'show host kicks'
+  license: GPL
+  name: showhost
+  version: 0.2

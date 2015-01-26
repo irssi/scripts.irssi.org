@@ -1,0 +1,11 @@
+---
+-
+  authors: 'Geert Hauwaerts'
+  changed: 'Wed Sep 17 23:00:11 CEST 2003'
+  contact: geert@irssi.org
+  default_package: kline_warning
+  description: 'This script shows a warning in the statuswindow if somebody preforms a /KlINE or /UNKLINE.'
+  license: 'GNU General Public License'
+  name: kline_warning.pl
+  url: http://irssi.hauwaerts.be/kline_warning.pl
+  version: 1.08

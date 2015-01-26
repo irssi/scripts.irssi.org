@@ -1,0 +1,8 @@
+---
+-
+  authors: 'Isaac G'
+  contact: irssi@isaac.otherinbox.com
+  default_package: reorder
+  description: 'Reordering windows based on a textfile.'
+  license: GPL
+  name: reorder

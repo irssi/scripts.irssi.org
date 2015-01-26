@@ -1,0 +1,9 @@
+---
+-
+  authors: 'Gabor Nyeki'
+  changed: 'Fri Aug 13 19:27:38 CEST 2004'
+  contact: bigmac@vim.hu
+  default_package: topicsed
+  description: 'editing channel topics by regexps'
+  license: 'public domain'
+  name: topicsed

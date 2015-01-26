@@ -1,0 +1,8 @@
+* -!- Irssi: [xauth] Creating basic userfile in ../x.users. Edit File.
+* readline() on closed filehandle XUSERS at xauth.pl line 366.
+* 
+* -!- Irssi: [xauth] Creating basic channelfile in ../x.channels. Edit File.
+* readline() on closed filehandle NICKCHANS at xauth.pl line 439.
+* 
+* -!- Irssi: [xauth] Script v1.02 loaded ...
+* -!- Irssi: Loaded script xauth

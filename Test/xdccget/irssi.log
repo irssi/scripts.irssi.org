@@ -1,0 +1,4 @@
+* Using an array as a reference is deprecated at xdccget.pl line 271.
+* 
+* >> XDCCget 20040509 loaded: /xdccget help for help
+* -!- Irssi: Loaded script xdccget

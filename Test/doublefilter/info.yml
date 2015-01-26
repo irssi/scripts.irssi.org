@@ -1,0 +1,10 @@
+---
+-
+  authors: 'Karl Siegemund'
+  changed: '22.04.2005 9:50GMT'
+  contact: 'q [at] spuk.de'
+  default_package: doublefilter
+  description: 'Filters msgs which appear the same on different channels.'
+  license: GPLv2
+  name: doublefilter
+  version: 0.3

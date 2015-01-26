@@ -1,0 +1,4 @@
+* -!- Irssi: Use /back, /gone <reason>, or the toggle /awe [<reason>]
+* -!- Irssi: Use /away [<reason>] for silent away
+* -!- Irssi: Use /help back or gone or awe for more information.
+* -!- Irssi: Loaded script away_verbose

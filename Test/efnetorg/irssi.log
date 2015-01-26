@@ -1,0 +1,5 @@
+* "my" variable $nick masks earlier declaration in same scope at efnetorg.pl line 22.
+* 
+* "my" variable $host masks earlier declaration in same scope at efnetorg.pl line 22.
+* 
+* -!- Irssi: Loaded script efnetorg

@@ -1,0 +1,14 @@
+---
+-
+  authors: "Stefan 'tommie' Tomanek"
+  changed: 2008051101
+  commands: ircsec
+  contact: stefan@pico.ruhr.de
+  default_package: ircsec
+  description: 'secures your conversation'
+  license: GPLv2
+  modules:
+    - Crypt::CBC
+  name: IRCSec
+  sbitems: ircsec
+  version: 2008051101

@@ -1,0 +1,11 @@
+---
+-
+  authors: Santabutthead
+  contact: starz@antisocial.com
+  default_package: iMPD
+  description: 'This controls Music Player Daemon from the familiar irssi interface'
+  license: 'GPL v2'
+  modified: '2014-10-17 22:54:13'
+  name: iMPD
+  url: http://www.musicpd.org
+  version: 0.0.0n

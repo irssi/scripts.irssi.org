@@ -1,0 +1,12 @@
+---
+-
+  authors: "Stefan 'tommie' Tomanek"
+  changed: 2003020801
+  commands: trustweb
+  contact: stefan@pico.ruhr.de
+  default_package: trustweb
+  description: 'Illustrates the trust between ops'
+  license: GPLv2
+  modules: 'Data::Dumper IO::File POSIX'
+  name: TrustWeb
+  version: 2003020801

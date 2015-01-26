@@ -1,0 +1,13 @@
+---
+-
+  authors: 'Gergely Nagy'
+  changed: 2002-12-20
+  contact: algernon\@bonehunter.rulez.org
+  default_package: mkshorterlink
+  description: 'Automatically filters all http:// links through makeashorterlink.com'
+  license: GPL
+  modified: '2014-10-19 11:54:16'
+  modules:
+    - LWP::UserAgent
+  name: 'makeashorterlink.com interface'
+  url: ftp://bonehunter.rulez.org/pub/irssi/mkshorterlink.pl

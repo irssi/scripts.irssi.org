@@ -1,0 +1,10 @@
+---
+-
+  authors: "Timo 'cras' Sirainen, Leszek Matok"
+  changed: '10.3.2002 14:00'
+  contact: lam@lac.pl
+  default_package: autorejoin
+  description: 'Automatically rejoin to channel after being kick, after a (short) user-defined delay'
+  license: GPLv2
+  name: autorejoin
+  version: 1.0.0

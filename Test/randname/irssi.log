@@ -1,0 +1,3 @@
+* Unquoted string "f" may clash with future reserved word at randname.pl line 37.
+* 
+* -!- Irssi: Loaded script randname

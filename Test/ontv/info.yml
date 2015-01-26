@@ -1,0 +1,14 @@
+---
+-
+  authors: "Stefan 'tommie' Tomanek"
+  changed: 20050226
+  commands: ontv
+  contact: stefan@pico.ruhr.de
+  default_package: ontv
+  description: 'turns irssi into a tv program guide'
+  license: GPLv2
+  modules:
+    - HTML::Entities
+    - LWP::Simple
+  name: OnTV
+  version: 20050226

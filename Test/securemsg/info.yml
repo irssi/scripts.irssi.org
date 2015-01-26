@@ -1,0 +1,11 @@
+---
+-
+  authors: "Jari Matilainen, a lot of code borrowed from whitelist.pl by David O'Rourke and Karl Siegemund"
+  changed: '10.09.2007 11:30pm GST'
+  contact: 'vague`!#irssi@freenode on irc '
+  default_package: securemsg
+  description: 'An irssi adaptation of securequery.mrc found in the Acidmax mIRC script. :), now with multiserver support'
+  license: GPLv2
+  modified: '2014-08-07 02:00:52'
+  name: securemsg
+  version: 2.1

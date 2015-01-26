@@ -1,0 +1,11 @@
+---
+-
+  authors: "Kalle 'rpr' Marjola"
+  changed: 26.8.2003
+  contact: marjola@iki.fi
+  default_package: nickignore
+  description: "Ignores any nick changes when only the case or special characters are modified, like 'rpr -> Rpr' or 'rpr_ -> rpr', with optional pattern for more complicated ignores"
+  license: 'Public Domain'
+  name: 'ignore (minimal) nick changes'
+  url: http://iki.fi/rpr/irssi/nickignore.pl
+  version: 0.03

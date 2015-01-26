@@ -1,0 +1,18 @@
+* Scalar value @_[0] better written as $_[0] at binary.pl line 70.
+* 
+* Scalar value @_[0] better written as $_[0] at binary.pl line 72.
+* 
+* -!- Irssi: binary obfuscator vanity script loaded
+* -!- Irssi: written by nchip and updated by carl
+* -!- Irssi: --------------------------------------
+* -!- Irssi: /binary message
+* -!- Irssi: will send binary text to the current channel
+* -!- Irssi: 
+* -!- Irssi: /unbinary obfuscated_text
+* -!- Irssi: will print the unobfuscated equivalent to your window (and not to the channel)
+* -!- Irssi: 
+* -!- Irssi: /set show_binary_too on
+* -!- Irssi: will make this script print the binary equivalent as well as the translation to your screen whenever someone uses binary on the channel
+* -!- Irssi: /set binary_spaces off
+* -!- Irssi: will make the binary be printed as a single word with no spaces
+* -!- Irssi: Loaded script binary

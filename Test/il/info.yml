@@ -1,0 +1,11 @@
+---
+-
+  authors: 'Marcus Rueckert'
+  changed: 2003-01-13T13:17:44Z
+  contact: darix@irssi.org
+  default_package: il
+  description: 'adds a statusbar item which show length of the inputline'
+  license: 'BSD License or something more liberal'
+  name: inputlength
+  url: http://www.irssi.de./
+  version: 0.0.5

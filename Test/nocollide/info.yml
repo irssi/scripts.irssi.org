@@ -1,0 +1,11 @@
+---
+-
+  authors: 'Marcin Rozycki'
+  changed: 'Mon Feb 16 10:08:59 CET 2004'
+  contact: derwan@irssi.pl
+  default_package: nocollide
+  description: 'Automatically changes nick (to randnick or uid on ircd 2.11) when certain amount of nick colissionstakes place on channel'
+  license: 'GNU GPL v2'
+  name: nocollide
+  url: http://derwan.irssi.pl
+  version: 0.2.3

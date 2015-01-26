@@ -1,0 +1,10 @@
+---
+-
+  authors: BC-bd
+  contact: bd@bc-bd.org
+  default_package: repeat
+  description: 'Hide duplicate lines'
+  license: 'GPL v2'
+  name: repeat
+  url: http://bc-bd.org/blog/irssi/
+  version: 0.2.0

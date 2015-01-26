@@ -1,0 +1,12 @@
+---
+-
+  authors: DonRumata
+  changed: 0.6.1
+  commands: none
+  contact: rumata@dragons.ru
+  default_package: iraident
+  description: 'IrcNet.ru Auto Identify - changes nick and send identify command, then sets codepage'
+  license: GPLv2
+  name: iraident
+  url: http://rumata.dragons.ru
+  version: 0.6.1

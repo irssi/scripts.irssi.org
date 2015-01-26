@@ -1,0 +1,2 @@
+Code before warnings are enabled at line 13, column 1.  See page 431 of PBP.  (Severity: 4)
+Mismatched operator at line 35, column 21.  Numeric/string operators and operands should match.  (Severity: 3)

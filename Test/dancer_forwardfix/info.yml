@@ -1,0 +1,11 @@
+---
+-
+  authors: 'Geert Hauwaerts'
+  changed: 'Sun May  9 01:19:25 2004'
+  contact: geert@irssi.org
+  default_package: dancer_forwardfix
+  description: 'This script will fix the Irssi problem with channel forwarding on the Dancer ircd.'
+  license: 'Public Domain'
+  name: dancer_forwardfix.pl
+  url: http://irssi.hauwaerts.be/dancer_forwardfix.pl
+  version: 0.03

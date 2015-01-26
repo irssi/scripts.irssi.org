@@ -1,0 +1,13 @@
+---
+-
+  authors: 'Dominic Battre'
+  changed: 'Fri Dec  6 23:23:31 CET 2002'
+  contact: dominic@battre.de
+  default_package: clipboard
+  description: 'Better quoting of content from clipboard (without leading spaces) -- requires Perl/Tk'
+  license: 'Public Domain'
+  modules:
+    - Tk
+  name: 'Quoting from X clipboard'
+  url: http://www.battre.de
+  version: 1.2

@@ -1,0 +1,18 @@
+* .--------------------------------------------------.
+* | 1.) shell> mkdir ~/.irssi/scripts                |
+* | 2.) shell> cp twtopic.pl ~/.irssi/scripts/       |
+* | 3.) shell> mkdir ~/.irssi/scripts/autorun        |
+* | 4.) shell> ln -s ~/.irssi/scripts/twtopic.pl \   |
+* |            ~/.irssi/scripts/autorun/twtopic.pl   |
+* | 5.) /sbar topic remove topic                     |
+* | 6.) /sbar topic remove topic_empty               |
+* | 7.) /sbar topic add -after topicbarstart         |
+* |        -priority 100 -alignment left twtopic     |
+* | 9.) /toggle twtopic_instruct and last /save      |
+* |--------------------------------------------------|
+* |  Options:                               Default: |
+* |  /set twtopic_refresh <speed>              150   |
+* |  /set twtopic_size <size>                  20    |
+* |  /toggle twtopic_instruct |Startup instructions  |
+* `--------------------------------------------------'
+* -!- Irssi: Loaded script twtopic

@@ -1,0 +1,12 @@
+---
+-
+  authors: "Stefan 'tommie' Tomanek"
+  changed: 20030208
+  commands: idle
+  contact: stefan@pico.ruhr.de
+  default_package: idletime
+  description: 'Retrieves the idletime of any nick'
+  license: GPLv2
+  name: idletime
+  url: ''
+  version: 20030208

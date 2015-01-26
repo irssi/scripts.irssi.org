@@ -1,0 +1,11 @@
+---
+-
+  authors: 'Jørgen Tjernø'
+  changed: 'Wed Sep 24 13:17:15 CEST 2003'
+  contact: darkthorne@samsen.com
+  default_package: cleanpublic
+  description: 'Simple script that removes colors and other formatting (bold, etc) from public channels'
+  license: GPL
+  name: CleanPublic
+  url: http://mental.mine.nu
+  version: 0.3

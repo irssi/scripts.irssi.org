@@ -1,0 +1,14 @@
+---
+-
+  authors: 'Clemens Heidinger'
+  changed: '$LastChangedDate: 2008-02-03 16:27:25 +0100 (Sun, 03 Feb 2008) $'
+  commands: dau
+  contact: heidinger@dau.pl
+  default_package: dau
+  description: 'write like an idiot'
+  license: BSD
+  modules: 'File::Basename File::Path IPC::Open3 POSIX Tie::File'
+  name: DAU
+  sbitems: daumode
+  url: http://dau.pl/
+  version: 2.4.3

@@ -1,0 +1,10 @@
+---
+-
+  authors: 'Jakub Jankowski'
+  contact: shasta@atn.pl
+  default_package: chops
+  description: "Simulates BitchX's /CHOPS and /NOPS commands."
+  license: 'GNU GPLv2 or later'
+  name: chops
+  url: http://irssi.atn.pl/
+  version: 20020223

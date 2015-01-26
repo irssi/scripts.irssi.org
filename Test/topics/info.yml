@@ -1,0 +1,12 @@
+---
+-
+  authors: "Stefan 'tommie' Tomanek"
+  changed: 2003020801
+  commands: topics
+  contact: stefan@pico.ruhr.de
+  default_package: topics
+  description: 'records a topic history and locks the channel topic'
+  license: GPLv2
+  name: topics
+  url: http://irssi.org/scripts/
+  version: 2003020801

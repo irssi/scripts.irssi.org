@@ -1,0 +1,11 @@
+---
+-
+  authors: "Tijmen \"timing\" Ruizendaal"
+  changed: 2006-10-27
+  contact: tijmen.ruizendaal@gmail.com
+  default_package: bitlbee_blist
+  description: '/blist <all|online|offline|away> <word>,  greps <word> from blist for bitlbee'
+  license: GPLv2
+  name: bitlbee_blist
+  url: http://the-timing.nl/stuff/irssi-bitlbee
+  version: 0.4

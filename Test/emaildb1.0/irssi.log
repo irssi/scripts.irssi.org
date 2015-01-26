@@ -1,0 +1,3 @@
+* "my" variable $target masks earlier declaration in same scope at emaildb1.0.pl line 81.
+* 
+* -!- Irssi: Loaded script emaildb1_0

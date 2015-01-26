@@ -1,0 +1,5 @@
+* Using a hash as a reference is deprecated at email_privmsgs.pl line 48.
+* 
+* Using a hash as a reference is deprecated at email_privmsgs.pl line 50.
+* 
+* -!- Irssi: Loaded script email_privmsgs

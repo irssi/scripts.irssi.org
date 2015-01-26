@@ -1,0 +1,14 @@
+---
+-
+  authors: 'Pablo MartÃ­n BÃ¡ez EchevarrÃ­a'
+  changed: '22:30:25, Dec 20th, 2014 UYT'
+  contact: pab_24n@outlook.com
+  default_package: clones_scanner
+  description: 'when a nick joins #channel, notifies you if there is (or there has been) someone in #channel with the same hostname'
+  license: 'Public Domain'
+  modified: '2014-12-21 19:39:13'
+  modules:
+    - Devel::Size
+  name: clones_scanner
+  url: http://reirssi.wordpress.com
+  version: 1.6

@@ -1,0 +1,7 @@
+* Scalar value @_[0] better written as $_[0] at kill_fake_gets.pl line 34.
+* 
+* Scalar value @_[0] better written as $_[0] at kill_fake_gets.pl line 42.
+* 
+* Scalar value @_[0] better written as $_[0] at kill_fake_gets.pl line 64.
+* 
+* -!- Irssi: Loaded script kill_fake_gets

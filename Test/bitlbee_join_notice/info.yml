@@ -1,0 +1,12 @@
+---
+-
+  authors: "Tijmen \"timing\" Ruizendaal"
+  changed: 2010-08-10
+  contact: tijmen.ruizendaal@gmail.com
+  default_package: bitlbee_join_notice
+  description: '1. Adds an item to the status bar wich shows [joined: <nicks>] when someone is joining &bitlbee. 2. Shows join messages in the query. (For bitlbee v3.0+)'
+  license: GPLv2
+  modified: '2014-10-17 20:34:00'
+  name: BitlBee_join_notice
+  url: http://the-timing.nl/stuff/irssi-bitlbee
+  version: 1.3

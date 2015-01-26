@@ -1,0 +1,5 @@
+* "my" variable $nick masks earlier declaration in same scope at norepeat.pl line 31.
+* 
+* "my" variable $target masks earlier declaration in same scope at norepeat.pl line 31.
+* 
+* -!- Irssi: Loaded script norepeat

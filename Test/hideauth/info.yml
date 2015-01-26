@@ -1,0 +1,11 @@
+---
+-
+  authors: JamesOff
+  changed: '04 June 2002 20:56:00'
+  contact: james@jamesoff.net
+  default_package: hideauth
+  description: 'Stops eggdrop passwords showing up'
+  license: 'Public Domain'
+  name: hideauth
+  url: http://www.jamesoff.net
+  version: 1.01

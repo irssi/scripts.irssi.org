@@ -1,0 +1,13 @@
+---
+-
+  authors: 'Riku Voipio, lite'
+  contact: riku.voipio@iki.fi
+  default_package: mysqlurllogger
+  description: "logs url's to mysql database"
+  license: GPLv2
+  modified: '2014-10-19 11:54:16'
+  modules:
+    - DBI
+  name: myssqlurllogger
+  url: http://nchip.ukkosenjyly.mine.nu/irssiscripts/
+  version: 1.0

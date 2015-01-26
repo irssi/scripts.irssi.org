@@ -1,0 +1,10 @@
+---
+-
+  authors: 'Leszek Matok, Andrzej Jagodziñski'
+  changed: '10.3.2002 20:10'
+  contact: lam@lac.pl
+  default_package: miodek
+  description: 'Simple wordkick system, with extended polish dictionary for channels enforcing correct polish.'
+  license: GPLv2
+  name: miodek
+  version: 1.0.2

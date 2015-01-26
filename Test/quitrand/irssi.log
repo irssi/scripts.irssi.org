@@ -1,0 +1,5 @@
+* Unquoted string "f" may clash with future reserved word at quitrand.pl line 23.
+* 
+* Unquoted string "f" may clash with future reserved word at quitrand.pl line 25.
+* 
+* -!- Irssi: Loaded script quitrand

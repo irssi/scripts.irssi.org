@@ -1,0 +1,13 @@
+---
+-
+  authors: "Stefan 'tommie' Tomanek"
+  changed: 2003021201
+  contact: stefan@pico.ruhr.de
+  default_package: queryresume
+  description: 'restores the last lines of a query on re-creation'
+  license: GPLv2
+  modified: '2014-10-19 11:54:16'
+  modules:
+    - Date::Format
+  name: QueryResume
+  version: 2003021201

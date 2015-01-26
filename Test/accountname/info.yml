@@ -1,0 +1,9 @@
+---
+-
+  authors: "Chris 'raz' Hoogenboezem"
+  contact: chrish@carrier6.com
+  default_package: accountname
+  description: 'Instead of displaying semi-raw data, a /whois now gives a tidy accountname on Asuka/lain servers (if applicable).'
+  license: 'Feel free to alter anything conform your own liking.'
+  name: accountname
+  version: 1.0

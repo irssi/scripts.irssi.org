@@ -1,0 +1,12 @@
+---
+-
+  authors: 'Rick (strlen) Jansen'
+  changed: 'Sun Apr 6 17:57:28 CET 2002'
+  contact: strlen@shellz.nl
+  default_package: snmpup
+  description: "This script queries remote hosts (/snmpup <host1> <host2> <hostN>) running snmpd for it's uptime and cpu usage"
+  license: GPL/2
+  modules:
+    - Net::SNMP
+  name: snmpup
+  version: 2.00

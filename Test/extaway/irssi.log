@@ -1,0 +1,6 @@
+* -!- Irssi: [ExtAway] No config file: /xahelp for help
+* Use of uninitialized value $infos{"bnick"} in string eq at extaway.pl line 185.
+* 
+* -!- Irssi: [ExtAway] Please, give a base nick with /xanick <base_nick>
+* -!- Irssi: [ExtAway] Use /xahelp to get some help
+* -!- Irssi: Loaded script extaway

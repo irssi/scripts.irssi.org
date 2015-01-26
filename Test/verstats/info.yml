@@ -1,0 +1,12 @@
+---
+-
+  authors: "Stefan 'tommie' Tomanek"
+  changed: 20030208
+  commands: verstats
+  contact: stefan@pico.ruhr.de
+  default_package: verstats
+  description: 'Draws a diagram of the used clients in a channel'
+  license: GPLv2
+  name: VerStats
+  url: http://scripts.irssi.org
+  version: 20030208

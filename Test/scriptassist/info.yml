@@ -1,0 +1,15 @@
+---
+-
+  authors: "Stefan 'tommie' Tomanek"
+  changed: 2003020803
+  commands: scriptassist
+  contact: stefan@pico.ruhr.de
+  default_package: scriptassist
+  description: 'keeps your scripts on the cutting edge'
+  license: GPLv2
+  modified: '2014-06-12 10:31:51'
+  modules:
+    - LWP::UserAgent
+  name: scriptassist
+  url: http://irssi.org/scripts/
+  version: 2003020803

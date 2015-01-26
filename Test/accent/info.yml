@@ -1,0 +1,9 @@
+---
+-
+  authors: 'Tamas SZERB'
+  contact: toma@rulez.org
+  default_package: accent
+  description: 'This script strips the hungarian accents.'
+  license: GPL
+  name: accent
+  version: '$Id: accent.pl,v 1.34 2003/03/27 15:54:25 toma Exp $'

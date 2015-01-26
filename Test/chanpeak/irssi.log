@@ -1,0 +1,8 @@
+* Scalar value @_[0] better written as $_[0] at chanpeak.pl line 50.
+* 
+* Scalar value @_[0] better written as $_[0] at chanpeak.pl line 122.
+* 
+* -!- Irssi: Chanpeak: datafile not found, creating...
+* -!- Irssi: Chanpeak: Couldn't create datafile `/home/travis/.irssi/peak.data'!
+* -!- Irssi: chanpeak.pl loaded...
+* -!- Irssi: Loaded script chanpeak

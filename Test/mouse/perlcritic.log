@@ -1,0 +1,2 @@
+Code before warnings are enabled at line 26, column 1.  See page 431 of PBP.  (Severity: 4)
+"die" used instead of "croak" at line 136, column 2.  See page 283 of PBP.  (Severity: 3)

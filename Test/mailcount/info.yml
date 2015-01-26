@@ -1,0 +1,13 @@
+---
+-
+  authors: 'Marcin Rozycki'
+  changed: 'Sat Oct 18 14:43:27 CEST 2003'
+  contact: derwan@irssi.pl
+  default_package: mailcount
+  description: 'Adds statusbar item mailcount and displays info about new mails'
+  license: 'GNU GPL v2'
+  modules:
+    - Mail::MboxParser
+  name: mailcount
+  url: http://derwan.irssi.pl
+  version: 1.4.5

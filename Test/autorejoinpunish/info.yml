@@ -1,0 +1,12 @@
+---
+-
+  authors: "Paul 'laaama' Raade"
+  changed: 'Thu 02 May 2002, 22:04:48 EEST'
+  changes: 'Changed signals to be added to the top of the list to make the script work with scripts that stop the signals (autorealname, for example).'
+  contact: paul\@raade.org
+  default_package: autorejoinpunish
+  description: 'Kickbans or knockouts people who use autorejoin on kick.'
+  license: BSD
+  name: 'Autorejoin punisher'
+  url: http://www.raade.org/~paul/irssi/scripts/
+  version: 0.3

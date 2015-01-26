@@ -1,0 +1,11 @@
+---
+-
+  authors: 'Pieter-Bas IJdens'
+  changed: 2005-03-10
+  contact: irssi-scripts@nospam.mi4.org.uk
+  description: 'Lists users on the channel matching the specified regexp'
+  license: 'GPLv2 or later'
+  modified: '2014-10-17 20:34:00'
+  name: cgrep
+  url: http://pieter-bas.ijdens.com/irssi/
+  version: 1.0.0

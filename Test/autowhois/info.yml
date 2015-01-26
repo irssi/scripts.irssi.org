@@ -1,0 +1,13 @@
+---
+-
+  authors: "Timo 'cras' Sirainen"
+  changed: 2002-03-04T22:47+0100
+  changes: "v1.1: don't /WHOIS if query exists for the nick already"
+  contact: tss@iki.fi
+  default_package: autowhois
+  description: '/WHOIS all the users who send you a private message.'
+  license: 'Public Domain'
+  modified: '2014-10-17 18:30:46'
+  name: autowhois
+  url: http://irssi.org/
+  version: 1.1

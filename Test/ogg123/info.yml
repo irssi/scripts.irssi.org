@@ -1,0 +1,11 @@
+---
+-
+  authors: 'Ricardo Mesquita'
+  changed: 'Mon Nov 27 18:00:00 CET 2006'
+  contact: ricardomesquita@netcabo.pt
+  default_package: ogg123
+  description: 'Display current ogg123 track'
+  license: GPLv2
+  name: ogg123
+  url: http://pwp.netcabo.pt/ricardomesquita/irssi
+  version: 0.01+1

@@ -1,0 +1,10 @@
+---
+-
+  authors: BC-bd
+  contact: bd@bc-bd.org
+  default_package: rotator
+  description: 'Displaye a small, changeing statusbar item to show irssi is still running'
+  license: 'GPL v2'
+  name: rotator
+  url: https://bc-bd.org/svn/repos/irssi/trunk/
+  version: 0.2.1

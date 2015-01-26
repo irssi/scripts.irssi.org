@@ -1,0 +1,10 @@
+---
+-
+  authors: BC-bd
+  contact: bd@bc-bd.org
+  default_package: ircops
+  description: '/IRCOPS - Display IrcOps in current channel'
+  license: 'GPL v2'
+  name: ircops
+  url: https://bc-bd.org/svn/repos/irssi/trunk/
+  version: 0.1

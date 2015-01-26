@@ -1,0 +1,10 @@
+---
+-
+  authors: 'David Leadbeater'
+  contact: dgl@dgl.cx
+  default_package: resize_split
+  description: 'Resizes a split window when it is made active (see comments in script for details)'
+  license: 'GNU GPLv2 or later'
+  name: resize_split
+  url: http://irssi.dgl.cx/
+  version: 1

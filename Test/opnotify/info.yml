@@ -1,0 +1,10 @@
+---
+-
+  authors: "Maciek 'fahren' Freudenheim"
+  changed: 'Fri Mar 15 15:09:42 CET 2002'
+  contact: fahren@bochnia.pl
+  default_package: opnotify
+  description: 'Hilights window refnumber in statusbar if someone ops/deops you on channel'
+  license: 'GNU GPLv2 or later'
+  name: opnotify
+  version: 1.0

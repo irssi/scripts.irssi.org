@@ -1,0 +1,7 @@
+* -!- Dejunk: Status report:
+* -!- Dejunk: Join/part hiding enabled.
+* -!- Dejunk: Joins, parts, nickchanges, and quits are only shown for clients that have been active in the past 15 minutes (setting 'dejunk_joinpart_idle_time').
+* -!- Dejunk: Joins, parts, nickchanges, and quits are always shown for channels with fewer than 40 clients (setting 'dejunk_joinpart_min_size').
+* -!- Dejunk: Currently, there is activity data on 0 hostmask(s) in 0 tag(s).
+* -!- Dejunk: Type /dejunk help for help.
+* -!- Irssi: Loaded script dejunk

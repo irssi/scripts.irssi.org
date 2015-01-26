@@ -1,0 +1,5 @@
+* False [] range "\w-" in regex; marked by <-- HERE in m/([\w- <-- HERE ._]+)/ at people.pl line 54.
+* 
+* "our" variable $mask_re redeclared at people.pl line 57.
+* 
+* -!- Irssi: Loaded script people

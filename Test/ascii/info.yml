@@ -1,0 +1,11 @@
+---
+-
+  authors: 'Marcin Rozycki'
+  changed: 'Fri Jun 21 17:17:53 CEST 2002'
+  contact: derwan@irssi.pl
+  default_package: ascii
+  description: 'Ascii-art bassed on figlet. Available commands: /ASCII, /COLSAY, /COLME, /COLTOPIC, /COLKICK, /COLQUIT.'
+  license: 'GNU GPL v2'
+  name: ascii-art
+  url: http://derwan.irssi.pl
+  version: 1.6.3

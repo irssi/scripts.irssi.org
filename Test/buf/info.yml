@@ -1,0 +1,15 @@
+---
+-
+  authors: Juerd
+  changed: 'Mon May 13 19:41 CET 2002'
+  changes: 'Severe formatting bug removed * oops, I exposed Irssi to ircII foolishness * sorry ** removed logging stuff (this is a fix)'
+  contact: juerd@juerd.nl
+  default_package: buf
+  description: 'Saves the buffer for /upgrade, so that no information is lost'
+  license: 'Public Domain'
+  modified: '2014-10-17 20:34:00'
+  name: 'Scroll buffer restorer'
+  note1: 'This script HAS TO BE in your scripts/autorun!'
+  note2: 'Perl support must be static or in startup'
+  url: http://juerd.nl/irssi/
+  version: 2.13

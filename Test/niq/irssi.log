@@ -1,0 +1,3 @@
+* Useless use of sort in void context at niq.pl line 210.
+* 
+* -!- Irssi: Loaded script niq

@@ -1,0 +1,11 @@
+---
+-
+  authors: 'Geert Hauwaerts'
+  changed: 'Sun Apr 11 12:38:18 2004'
+  contact: geert@irssi.org
+  default_package: invitejoin
+  description: 'This script will join a channel if somebody invites you to it.'
+  license: 'Public Domain'
+  name: invitejoin.pl
+  url: http://irssi.hauwaerts.be/invitejoin.pl
+  version: 0.01

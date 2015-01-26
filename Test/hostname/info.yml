@@ -1,0 +1,14 @@
+---
+-
+  authors: 'Jean-Yves Lefort'
+  changed: '$Date: 2002/07/04 13:18:02 $ '
+  contact: 'jylefort\@brutele.be, decadix on IRCNet'
+  default_package: hostname
+  description: 'Adds a /HOSTNAME command; it will list all IP addresses on all interfaces found on your machine, resolve them, and allow you to choose one easily'
+  license: BSD
+  modified: '2014-10-17 22:54:13'
+  modules:
+    - Socket6
+  name: hostname
+  url: http://void.adminz.be/irssi.shtml
+  version: 1.01

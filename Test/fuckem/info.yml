@@ -1,0 +1,11 @@
+---
+-
+  authors: 'Geert Hauwaerts'
+  changed: 'Wed Sep 17 23:00:11 CEST 2003'
+  contact: geert@irssi.org
+  default_package: fuckem
+  description: 'Simulates the BitchX /FUCKEM command. Deop/Dehalfop everyone on the channel including you.'
+  license: 'GNU General Public License'
+  name: fuckem.pl
+  url: http://irssi.hauwaerts.be/fuckem.pl
+  version: 0.05

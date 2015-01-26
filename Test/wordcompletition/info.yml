@@ -1,0 +1,12 @@
+---
+-
+  authors: 'Jesper Lindh'
+  changed: 2004-03-12
+  contact: rakblad@midgard.liu.se
+  description: 'Adds words from IRC to your tab-completion list'
+  license: 'Public Domain'
+  modules:
+    - DBI
+  name: 'IRC Completion with mysql-database'
+  url: http://midgard.liu.se/~n02jesli/perl/
+  version: 0.1

@@ -1,0 +1,13 @@
+---
+-
+  authors: "Tijmen \"timing\" Ruizendaal"
+  changed: 2010-05-01
+  contact: tijmen.ruizendaal@gmail.com
+  default_package: bitlbee_timestamp
+  description: "Replace Irssi's timestamps with those sent by BitlBee"
+  license: GPLv2
+  modules:
+    - DateTime
+  name: bitlbee_timestamp
+  url: http://the-timing.nl/stuff/irssi-bitlbee
+  version: 0.5

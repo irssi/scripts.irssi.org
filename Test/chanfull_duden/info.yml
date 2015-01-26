@@ -1,0 +1,11 @@
+---
+-
+  authors: "Uwe 'duden' Dudenhoeffer"
+  changed: 'Sat Feb  8 18:08:54 CET 2003'
+  contact: script@duden.eu.org
+  default_package: chanfull_duden
+  description: 'Notify if Channellimit is reached'
+  license: GPLv2
+  name: chanfull
+  url: ''
+  version: 0.1

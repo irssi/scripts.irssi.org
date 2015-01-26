@@ -1,0 +1,10 @@
+---
+-
+  authors: darix
+  contact: darix@irssi.org
+  default_package: oidenty
+  description: 'oidentd support for irssi'
+  license: 'BSD License'
+  name: oidenty
+  url: http://www.irssi.de
+  version: 0.0.2

@@ -1,0 +1,11 @@
+---
+-
+  authors: 'Juerd, Shiar'
+  changed: 'Tue Jan 21 01:40 CET 2003'
+  contact: 'juerd@juerd.nl, shiar@shiar.org'
+  default_package: foo
+  description: 'Rot n+i encryption and decryption'
+  license: 'Public Domain'
+  name: 'UeberRot encryption'
+  url: http://juerd.nl/site.plp/irssi
+  version: 3.00

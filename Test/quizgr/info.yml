@@ -1,0 +1,11 @@
+---
+-
+  authors: 'Athanasius Emilius Arvanitis based on Simon Huggins quiz 0.7'
+  changed: 'Tue Nov 26 13:37:59 EET 2002'
+  contact: arvan
+  description: 'Turns irssi into a quiz bot. Has greek language and many answers support'
+  license: GPLv2
+  modified: '2014-10-19 11:54:16'
+  name: Quizgr
+  url: http://kronos.eng.auth.gr/~arvan/irssi/
+  version: 0.7GR02

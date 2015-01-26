@@ -1,0 +1,10 @@
+---
+-
+  authors: "Maciek Freudenheim, Marco d'Itri"
+  contact: 'fahren@bochnia.pl, md@linux.it'
+  default_package: ppl
+  description: "port of asmodean's /ppl command from skuld3"
+  license: 'GPL v2'
+  name: ppl
+  url: http://www.linux.it/~md/irssi/
+  version: 20020128

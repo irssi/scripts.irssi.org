@@ -1,0 +1,11 @@
+---
+-
+  authors: 'Taneli Kaivola'
+  changed: 'Mon May 20 04:04:47 EEST 2002'
+  contact: dist@sci.fi
+  default_package: events
+  description: "Expand \"event mode\" and emit \"event mode {channel,user,server} *\""
+  license: GPLv2
+  name: 'Extended events'
+  url: http://scripts.irssi.de
+  version: 1.0

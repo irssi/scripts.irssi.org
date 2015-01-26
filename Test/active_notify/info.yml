@@ -1,0 +1,11 @@
+---
+-
+  authors: 'Geert Hauwaerts'
+  changed: 'Wed Sep 17 23:00:11 CEST 2003'
+  contact: geert@irssi.org
+  default_package: active_notify
+  description: 'This script will display notify messages into the active window or broadcast it so all the windows.'
+  license: 'GNU General Public License'
+  name: active_notify.pl
+  url: http://irssi.hauwaerts.be/active_notify.pl
+  version: 0.07

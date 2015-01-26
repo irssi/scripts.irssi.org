@@ -1,0 +1,11 @@
+---
+-
+  authors: ulbkold
+  changed: '12 April 2002 14:44:11'
+  contact: solaris@sundevil.de
+  default_package: washnicks
+  description: 'Removes annoying characters from nicks'
+  license: GPL
+  name: washnicks
+  url: n/a
+  version: 1.01

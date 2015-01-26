@@ -1,0 +1,10 @@
+---
+-
+  authors: 'Timo Sirainen, Matti Hiljanen, Joost Vunderink, Bart Matthaei'
+  contact: 'tss@iki.fi, matti@hiljanen.com, joost@carnique.nl, bart@dreamflow.nl'
+  description: 'Fully customizable mail counter statusbar item with multiple mailbox and multiple Maildir support'
+  license: 'Public Domain'
+  modified: '2014-10-19 11:54:16'
+  name: mail
+  url: 'http://irssi.org, http://scripts.irssi.de'
+  version: 2.92

@@ -1,0 +1,12 @@
+---
+-
+  authors: 'Marcin Rozycki'
+  changed: 'Wed Oct 27 19:46:28 CEST 2004'
+  contact: derwan@irssi.pl
+  default_package: awaylogcnt
+  description: 'Displays in statusbar number of messages in awaylog'
+  license: 'GNU GPL v2'
+  modules: ''
+  name: awalogcnt
+  url: http://derwan.irssi.pl
+  version: 0.2

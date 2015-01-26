@@ -1,0 +1,11 @@
+---
+-
+  authors: 'JamesOff, Ion'
+  changed: '22 March 2002 12:34:38'
+  contact: james@jamesoff.net
+  default_package: nocaps
+  description: 'Replaces lines in ALL CAPS with something easier on the eyes'
+  license: 'Public Domain'
+  name: nocaps
+  url: http://www.jamesoff.net
+  version: 1.01

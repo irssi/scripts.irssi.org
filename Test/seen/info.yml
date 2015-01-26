@@ -1,0 +1,10 @@
+---
+-
+  authors: "Marcin 'Qrczak' Kowalczyk"
+  contact: qrczak@knm.org.pl
+  default_package: seen
+  description: 'Tell people when other people were online'
+  license: GPL
+  name: Seen
+  url: http://qrnik.knm.org.pl/~qrczak/irssi/seen.pl
+  version: 1.8

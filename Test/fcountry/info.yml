@@ -1,0 +1,14 @@
+---
+-
+  authors: 'Stefan Jakobs'
+  changed: 'Son May 11 20:20: CET 2008'
+  commands: fcountry
+  contact: stefan.jakobs@rus.uni-stuttgart.de
+  default_package: fcountry
+  description: 'Print the country name in /WHOIS replies'
+  license: GPLv2
+  modules:
+    - Geography::Countries
+    - IP::Country::Fast
+  name: fast_country
+  version: 1.0.0

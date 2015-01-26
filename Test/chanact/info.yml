@@ -1,0 +1,10 @@
+---
+-
+  authors: 'BC-bd, Veli'
+  contact: 'bd@bc-bd.org, veli@piipiip.net'
+  default_package: chanact
+  description: 'Adds new powerful and customizable [Act: ...] item (chanelnames,modes,alias). Lets you give alias characters to windows so that you can select those with meta-<char>'
+  license: 'GNU GPLv2 or later'
+  name: chanact
+  url: https://bc-bd.org/svn/repos/irssi/chanact
+  version: 0.5.14

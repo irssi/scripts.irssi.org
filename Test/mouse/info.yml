@@ -1,0 +1,11 @@
+---
+-
+  authors: 'Wouter Coekaerts'
+  changed: 2009-05-16
+  contact: wouter@coekaerts.be
+  default_package: mouse
+  description: 'control irssi using mouse clicks and gestures'
+  license: 'GPLv2 or later'
+  name: mouse
+  url: http://wouter.coekaerts.be/irssi/
+  version: 1.0.0

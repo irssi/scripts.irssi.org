@@ -1,0 +1,2 @@
+* -!- Irssi: Error in script mangle:
+* Undefined subroutine &Irssi::statusbar_item_register called at mangle.pl line 302.

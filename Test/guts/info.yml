@@ -1,0 +1,11 @@
+---
+-
+  authors: Juerd
+  changed: 'Sat May 18 21:40 CET 2002'
+  contact: juerd@juerd.nl
+  default_package: guts
+  description: 'Adds the uppercased version of the tab completes'
+  license: 'Public Domain'
+  name: 'German Uppercased Tab Stuff'
+  url: http://juerd.nl/irssi/
+  version: 1.00
