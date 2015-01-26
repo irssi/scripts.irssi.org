@@ -20,8 +20,8 @@ use DBM::Deep;
 
 use vars qw($VERSION %IRSSI);
 
-my $VERSION = '0.31';
-my %IRSSI = (
+$VERSION = '0.31';
+%IRSSI = (
     authors     => 'vague',
     contact     => 'vague!#irssi\@freenode',
     name        => 'notes',

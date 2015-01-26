@@ -127,10 +127,10 @@ use Irssi;
 use Irssi::TextUI;
 use POSIX qw(strftime);
 use utf8;
+use vars qw(%IRSSI $VERSION);
+$VERSION = "1.7";
 
-my $VERSION = "1.7";
-
-my %IRSSI = (
+%IRSSI = (
     authors     => "Peter 'kinlo' Leurs, Uwe Dudenhoeffer, " .
                    "Michiel Holtkamp, Nico R. Wohlgemuth",
     contact     => "irssi-trackbar\@supermind.nl",

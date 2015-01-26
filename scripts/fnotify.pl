@@ -7,8 +7,10 @@ $VERSION = '0.0.5';
 %IRSSI = (
 	name => 'fnotify',
 	authors => 'Thorsten Leemhuis, James Shubin, Serge van Ginderachter',
+	contact => 'fedora@leemhuis.info, serge@vanginderachter.be',
 	description => 'Write notifications to a file in a consistent format.',
 	license => 'GNU General Public License',
+	url => 'http://www.leemhuis.info/files/fnotify/fnotify https://ttboj.wordpress.com/',
 );
 
 #
