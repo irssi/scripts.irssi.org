@@ -2959,6 +2959,15 @@
   name: "pager"
   version: "1.1"
 
+- authors: "fprintf"
+  contact: "fprintf@github.com"
+  description: "Creates an /rsay command that allows you to color your text with simple commands like: <rainbow>text></rainbow> here is a checkered <checker>flag</checker> only a few are supported right now but I will update as I think of more improvements."
+  filename: "pangotext.pl"
+  modified: "2014-01-25 08:00:00"
+  license: "GNU GPLv2 or later"
+  name: "pangotext"
+  version: "0.1"
+
 - authors: "Marcin Rozycki, Stanislaw Halik"
   contact: "derwan@irssi.pl"
   description: "Usage: /paste [-all|-msgs|-public] [-c|-b] [-s|-l| where] [lines]"
