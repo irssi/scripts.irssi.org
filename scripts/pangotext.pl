@@ -8,7 +8,7 @@
 # send a rainbow-colored message where only part of the message is rainbow colored easily.
 #
 # USAGE
-# /rsay <message text here>
+# /pango <message text here>
 # NOTE: You can't put tags inside tags marked 'no inner tags' below
 # all other tags are fully nestable
 # inverse,inv   Reverse foreground and background of text 
@@ -22,12 +22,12 @@
 # This script makes most sense if you just use it and see how awesome it is. Here
 # are some example usages you should check out.
 #   # Send a message with a colorful rainbow
-#   /rsay Hi guys, here's a <rainbow>rainbow</rainbow> for you.
-#   /rsay Hi guys, here's a <inverse><rainbow>rainbow</rainbow></inverse> for you. # Shows an inverse rainbow
-#   /rsay Hi guys, here's a <bold><rainbow>rainbow</rainbow></bold> for you.       # Shows a bright rainbow
+#   /pango Hi guys, here's a <rainbow>rainbow</rainbow> for you.
+#   /pango Hi guys, here's a <inverse><rainbow>rainbow</rainbow></inverse> for you. # Shows an inverse rainbow
+#   /pango Hi guys, here's a <bold><rainbow>rainbow</rainbow></bold> for you.       # Shows a bright rainbow
 #
 #   # Send a message with a checker pattern and a rainbow and underlined text also
-#   /rsay <b>Let's play a game</b> <ul>of</ul> <checker>checkers</checker>! Or do you like
+#   /pango <b>Let's play a game</b> <ul>of</ul> <checker>checkers</checker>! Or do you like
 #     it better inversed <inverse><checker>inversed checkers</checker></inverse>!
 # 
 ##############################################################################################
