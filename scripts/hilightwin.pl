@@ -11,7 +11,7 @@ use Irssi;
 use POSIX;
 use vars qw($VERSION %IRSSI); 
 
-$VERSION = "0.02";
+$VERSION = "0.03";
 %IRSSI = (
     authors     => "Timo \'cras\' Sirainen, Mark \'znx\' Sangster",
     contact     => "tss\@iki.fi, znxster\@gmail.com", 
@@ -44,6 +44,7 @@ sub sig_printtext {
             Irssi::settings_get_str('timestamp_format')." ",
             localtime
         ).$text;
+        $text =~ s/%/%%/g;
         $window->print($text, MSGLEVEL_NEVER) if ($window);
     }
 }
