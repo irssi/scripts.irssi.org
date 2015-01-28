@@ -3134,7 +3134,7 @@
   description: 'Prints colored text. Rather simple than sophisticated.'
   filename: rainbow.pl
   license: 'GNU GPLv2 or later'
-  modified: '2014-12-01 13:04:58'
+  modified: '2015-01-20 13:16:39'
   name: rainbow
   url: http://irssi.atn.pl/
   version: 1.6
