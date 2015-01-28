@@ -44,7 +44,7 @@ use warnings;
 use Irssi;
 use Irssi::Irc;
 
-$VERSION = "1.0";
+$VERSION = "1.1";
 %IRSSI = (
     authors     => 'fprintf',
     contact     => 'fprintf@github.com',
@@ -53,6 +53,7 @@ $VERSION = "1.0";
     license     => 'GNU GPLv2 or later',
 );
 
+# Color metadata
 my %color = (
     white => 0,
     black => 1,
@@ -81,6 +82,24 @@ my %color_ordermap;
 for (my $i = 0; $i < @color_order; ++$i) {
     $color_ordermap{$color_order[$i]} = $i;
 }
+
+# Allowed tags
+my %tag_registry = (
+    'rb' => \&rainbow,
+    'rainbow' => \&rainbow,
+    'checker' => \&checker,
+
+    'gradiant' => \&gradiant,
+    'gradient' => \&gradiant,
+    'grad' => \&gradiant,
+
+    'ul' => \&underline,
+    'underline' => \&underline,
+    'bold' => \&bold,
+    'b' => \&bold,
+    'inverse' => \&inverse,
+    'inv' => \&inverse,
+);
 
 
 ##############################################################################################
@@ -113,7 +132,6 @@ sub rainbow
     );
     return palettize($text, \@palette);
 }
-sub rb { return rainbow($_[0]); }
 
 sub gradiant
 {
@@ -135,7 +153,6 @@ sub gradiant
     # Palettize the text
     return palettize($text, \@palette);
 }
-sub grad { return gradiant(@_); }
 
 sub checker
 {
@@ -156,30 +173,24 @@ sub bold
     my $text = shift;
     return sprintf("\002%s\002", $text);
 }
-# Alias for bold
-sub b { return bold($_[0]); }
 
-# Alias for underline
 sub underline
 {
     my $text = shift;
     return sprintf("\037%s\037", $text);
 }
-sub ul { return underline($_[0]); }
 
-# Inverse colors of text
 sub inverse
 {
     my $text = shift;
     return sprintf("\026%s\026", $text);
 }
-sub inv { return inverse($_[0]); }
 
 ##############################################################################################
 # Renderer function
 ##############################################################################################
 
-sub replaceTags
+sub render
 {
     my ($text) = @_; 
 
@@ -191,13 +202,13 @@ sub replaceTags
 
         (%attribs) = $extra =~ /(\S+)\s*=\s*(\S+)/g;
 
-        if (!defined &{$action}) {
+        if (!exists($tag_registry{$action})) {
             Irssi::print("[/pango error] invalid action: $action");
             next;
         }
 
         # Render our text
-        $msg = &{$action}($msg,\%attribs);
+        $msg = $tag_registry{$action}->($msg,\%attribs);
         my $len = $mend - $mstart;
         my $index = $mend - $len;
         # Insert it
@@ -224,7 +235,7 @@ sub pango {
     return unless $dest;
 
     if ($dest->{type} eq "CHANNEL" || $dest->{type} eq "QUERY") {
-        $dest->command("/msg " . $dest->{name} . " " . replaceTags($text));
+        $dest->command("/msg " . $dest->{name} . " " . render($text));
     }
 }
 
