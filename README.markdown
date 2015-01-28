@@ -167,7 +167,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                            hide ](Test/hide/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        highlite ](Test/highlite/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                         hignore ](Test/hignore/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                      hilightwin ](Test/hilightwin/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                      hilightwin ](Test/hilightwin/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                hipchat_complete ](Test/hipchat_complete/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                  history_search ](Test/history_search/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                        hitcount ](Test/hitcount/)|  ✘   |  ✔   |  ✔   |  4   |  ☡   | (c)
@@ -341,7 +341,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                        scroller ](Test/scroller/)|  ✘   |  ✔   |  ✔   |  3   |  ☡   | (c)
 [                       securemsg ](Test/securemsg/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                            seen ](Test/seen/)|  ✔   |  ✔   |  ✔   |103   |  ✔   | (c)
-[                     send_scroll ](Test/send_scroll/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
+[                     send_scroll ](Test/send_scroll/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                  servercomplete ](Test/servercomplete/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
 [                            seti ](Test/seti/)|  ✔   |  ✔   |  ✔   | 10   |  ✔   | (c)
 [                      shortenurl ](Test/shortenurl/)|  ✔   |  ✔   |  ✔   | 20   |  ✔   | (c)
@@ -436,4 +436,4 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                            xmms ](Test/xmms/)|  ✔   |  ✔   |  ✔   |  8   |  ✔   | (c)
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 
-75cea409a6fd8d26ea059b31b842dad27616106b | 258
+5409e84f3540126acec9fe0f05d7794504a46c55 | 260
