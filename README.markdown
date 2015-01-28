@@ -316,7 +316,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                      quizmaster ](Test/quizmaster/)|  ✔   |  ✔   |  ✘   | 27   |  ☡   | (c)
 [                            quiz ](Test/quiz/)|  ✔   |  ✔   |  ✘   |  8   |  ☡   | (c)
 [                      q_username ](Test/q_username/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                         rainbow ](Test/rainbow/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   
+[                         rainbow ](Test/rainbow/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                        randaway ](Test/randaway/)|  ✘   |  ✔   |  ✔   |  9   |  ☡   | (c)
 [                        randname ](Test/randname/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
 [                        redirect ](Test/redirect/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -341,6 +341,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                        scroller ](Test/scroller/)|  ✘   |  ✔   |  ✔   |  3   |  ☡   | (c)
 [                       securemsg ](Test/securemsg/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                            seen ](Test/seen/)|  ✔   |  ✔   |  ✔   |103   |  ✔   | (c)
+[                     send_scroll ](Test/send_scroll/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
 [                  servercomplete ](Test/servercomplete/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
 [                            seti ](Test/seti/)|  ✔   |  ✔   |  ✔   | 10   |  ✔   | (c)
 [                      shortenurl ](Test/shortenurl/)|  ✔   |  ✔   |  ✔   | 20   |  ✔   | (c)
@@ -435,4 +436,4 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                            xmms ](Test/xmms/)|  ✔   |  ✔   |  ✔   |  8   |  ✔   | (c)
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 
-fa5b6140241ebf5d8f216e2e1b17ce94563373b1 | 257
+75cea409a6fd8d26ea059b31b842dad27616106b | 258
