@@ -10,12 +10,15 @@
 # USAGE
 # /pango <message text here>
 # NOTE: You can't put tags inside tags marked 'no inner tags' below
-# all other tags are fully nestable
+# all other tags are fully nestable. Tags noted below with 'attributes'
+# also have attributes that can be specified (ie <tag attrib=value>) no spaces
+# are allowed in attribute names or values.
 # inverse,inv   Reverse foreground and background of text 
 # bold,b        Bold text 
 # underline,ul  Underlines text
 # rainbow,rb    Colorizes text with a rainbow (no inner tags)
 # checker       Colorizes text with a checker pattern (no inner tags)
+# gradiant      Colorizes text with a gradiant (no inner tags, attribs { start, end })
 # ...more to if you can think of any add more functions...
 #
 # EXAMPLES
@@ -29,6 +32,11 @@
 #   # Send a message with a checker pattern and a rainbow and underlined text also
 #   /pango <b>Let's play a game</b> <ul>of</ul> <checker>checkers</checker>! Or do you like
 #     it better inversed <inverse><checker>inversed checkers</checker></inverse>!
+#
+#   # Gradiants allow start and end range specifier in by color name:
+#   /pango <gradiant start=green end=red>some gradiant text here</gradiant>
+#   /pango <gradiant>default gradiant range</gradiant>
+#   /pango <gradiant start=lightcyan end=white>a light gradiant</gradiant>
 # 
 ##############################################################################################
 use warnings;
@@ -36,7 +44,7 @@ use warnings;
 use Irssi;
 use Irssi::Irc;
 
-$VERSION = "0.2";
+$VERSION = "1.0";
 %IRSSI = (
     authors     => 'fprintf',
     contact     => 'fprintf@github.com',
@@ -44,6 +52,55 @@ $VERSION = "0.2";
     description => 'Render text with various color modifications using HTML tag syntax.',
     license     => 'GNU GPLv2 or later',
 );
+
+my %color = (
+    white => 0,
+    black => 1,
+    blue => 2,
+    green => 3,
+    lightred => 4,
+    red => 5,
+    purple => 6,
+    orange => 7,
+    yellow => 8,
+    lightgreen => 9,
+    cyan => 10,
+    lightcyan => 11,
+    lightblue => 12,
+    lightpurple => 13,
+    gray => 14,
+    lightgray => 15,
+);
+
+my @color_order = (
+    'white', 'lightgray', 'lightcyan', 'lightblue', 'lightgreen',
+    'lightpurple', 'yellow', 'lightred', 'orange', 'red', 'purple',
+    'cyan', 'blue', 'green', 'gray', 'black' 
+);
+my %color_ordermap;
+for (my $i = 0; $i < @color_order; ++$i) {
+    $color_ordermap{$color_order[$i]} = $i;
+}
+
+
+##############################################################################################
+# Utils
+##############################################################################################
+
+sub palettize
+{
+    my ($text, $palette) = @_;
+    return $text if (!$palette || ref($palette) ne 'ARRAY');
+
+    # Colorize the text using the given palette
+    my $count = 0;
+    my $render = '';
+    foreach my $let (split(//,$text)) {
+        $let .= ',' if ($let eq ','); 
+        $render .= $let =~ /\s/ ? $let : sprintf("\003%02d%s", $$palette[$count++ % scalar(@$palette)], $let);
+    }
+    return sprintf("%s\003", $render);
+}
 
 ##############################################################################################
 # Render tags
@@ -54,15 +111,31 @@ sub rainbow
     my @palette = (
         2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13
     );
-    my $rainbow = '';
-    my $count = 0;
-    foreach my $let (split(//,$text)) {
-        $let .= ',' if ($let eq ',');
-        $rainbow .= $let =~ /\s/ ? $let : sprintf("\003%02d%s", $palette[$count++ % scalar(@palette)], $let);
-    }
-    return sprintf("%s\003", $rainbow);
+    return palettize($text, \@palette);
 }
 sub rb { return rainbow($_[0]); }
+
+sub gradiant
+{
+    my ($text, $attribs) = @_;
+    $attribs ||= {};
+    $attribs->{start} ||= 'white';
+    $attribs->{end} ||= 'lightpurple';
+
+    # Build the palette based on the given color range
+    my @palette = ();
+    my ($start,$end) = ($color_ordermap{$attribs->{start}},$color_ordermap{$attribs->{end}});
+    # Fancy way to find min and max 
+    my $min = ($start,$end)[$start > $end];
+    my $max = ($start,$end)[$start < $end];
+    for (my $i = $min; $i <= $max; ++$i) {
+        push(@palette, $color{$color_order[$i % scalar(@color_order)]}); # Wrap colors around if they overlap
+    }
+
+    # Palettize the text
+    return palettize($text, \@palette);
+}
+sub grad { return gradiant(@_); }
 
 sub checker
 {
@@ -102,12 +175,21 @@ sub inverse
 }
 sub inv { return inverse($_[0]); }
 
+##############################################################################################
+# Renderer function
+##############################################################################################
+
 sub replaceTags
 {
     my ($text) = @_; 
 
-    while ($text =~ /<([^>]+)>(.+?)<\/\1>/g) {
-        my ($action,$msg) = ($1,$2);
+    while ($text =~ /<\s*([^>\s]+)\s*([^>]*)>(.+?)<\/?\1>/g) {
+        my ($action,$extra,$msg) = ($1,$2,$3);
+        my $mstart = $-[0];
+        my $mend = pos($text);
+        my %attribs = ();
+
+        (%attribs) = $extra =~ /(\S+)\s*=\s*(\S+)/g;
 
         if (!defined &{$action}) {
             Irssi::print("[/pango error] invalid action: $action");
@@ -115,15 +197,18 @@ sub replaceTags
         }
 
         # Render our text
-        $msg = &{$action}($msg);
-        my $len = pos($text) - $-[0]; # $-[0] is the position of the start of the last rgex match
-        my $index = pos($text) - $len;
+        $msg = &{$action}($msg,\%attribs);
+        my $len = $mend - $mstart;
+        my $index = $mend - $len;
         # Insert it
         substr($text, $index, $len, $msg);
     }
     return $text;
 }
 
+##############################################################################################
+# Irssi interface
+##############################################################################################
 # /pango
 # Send message to current channel
 # with rendered text
