@@ -36,7 +36,7 @@ use warnings;
 use Irssi;
 use Irssi::Irc;
 
-$VERSION = "0.1";
+$VERSION = "0.2";
 %IRSSI = (
     authors     => 'fprintf',
     contact     => 'fprintf@github.com',
@@ -110,7 +110,7 @@ sub replaceTags
         my ($action,$msg) = ($1,$2);
 
         if (!defined &{$action}) {
-#            print STDERR "invalid action; $action no such subroutine\n";
+            Irssi::print("[/pango error] invalid action: $action");
             next;
         }
 
@@ -132,7 +132,7 @@ sub pango {
     my ($text, $server, $dest) = @_;
 
     if (!$server || !$server->{connected}) {
-        Irssi::print("Not connected to server");
+        Irssi::print("[/pango error] not connected to server");
         return;
     }
 
