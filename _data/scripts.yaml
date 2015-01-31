@@ -7,7 +7,7 @@
   license: GPL
   modified: '2014-10-17 12:34:27'
   name: 8-ball
-  version: 0.21
+  version: '0.21'
 -
   authors: 'Dani Soufi (compengi)'
   contact: 'IRC: Freenode network, #ubuntu-lb'
@@ -27,16 +27,16 @@
   modified: '2003-01-25 02:35:40'
   name: UNIBG-autoident
   url: http://not.available.yet/
-  version: 0.1
+  version: '0.1'
 -
   authors: 'Tamas SZERB'
   contact: toma@rulez.org
   description: 'This script strips the hungarian accents.'
   filename: accent.pl
   license: GPL
-  modified: '2008-05-17 17:39:09'
+  modified: '2015-01-26 22:59:40'
   name: accent
-  version: '$Id: accent.pl,v 1.34 2003/03/27 15:54:25 toma Exp $'
+  version: '1.34'
 -
   authors: "Chris 'raz' Hoogenboezem"
   contact: chrish@carrier6.com
@@ -45,7 +45,7 @@
   license: 'Feel free to alter anything conform your own liking.'
   modified: '2008-05-17 17:39:09'
   name: accountname
-  version: 1.0
+  version: '1.0'
 -
   authors: c0ffee
   contact: c0ffee@penguin-breeder.org
@@ -55,7 +55,7 @@
   modified: '2014-10-17 18:30:46'
   name: 'Reset window activity status'
   url: http://www.penguin-breeder.org/irssi/
-  version: 0.13
+  version: '0.13'
 -
   authors: 'Daniel Kalør (Xnybre)'
   contact: irssi@kalor.dk
@@ -64,7 +64,7 @@
   license: GPLv2
   modified: '2014-10-17 18:30:46'
   name: act_fifo
-  version: 1.1
+  version: '1.1'
 -
   authors: 'Geert Hauwaerts'
   contact: geert@irssi.org
@@ -74,7 +74,7 @@
   modified: '2003-09-17 23:00:11'
   name: active_notice.pl
   url: http://irssi.hauwaerts.be/active_notice.pl
-  version: 1.07
+  version: '1.07'
 -
   authors: 'Geert Hauwaerts'
   contact: geert@irssi.org
@@ -84,7 +84,7 @@
   modified: '2003-09-17 23:00:11'
   name: active_notify.pl
   url: http://irssi.hauwaerts.be/active_notify.pl
-  version: 0.07
+  version: '0.07'
 -
   authors: 'Antti Vähäkotamäki'
   description: 'Maintains a representation of window activity status in a file'
@@ -92,7 +92,7 @@
   license: 'GNU General Public License'
   modified: '2006-07-19 23:59:00'
   name: activity_file
-  version: 1.00
+  version: '1.00'
 -
   authors: BC-bd
   contact: bd@bc-bd.org
@@ -102,7 +102,7 @@
   modified: '2014-10-17 18:30:46'
   name: ai
   url: https://bc-bd.org/svn/repos/irssi/trunk/
-  version: 0.3
+  version: '0.3'
 -
   authors: "Maciek 'fahren' Freudenheim"
   contact: fahren@bochnia.pl
@@ -121,7 +121,7 @@
   modified: '2008-05-17 17:39:09'
   name: 'ak FTP-Ad'
   url: http://members.tripod.com.br/archiv/
-  version: 1.4
+  version: '1.4'
 -
   authors: "Christian 'mordeth' Weber"
   contact: mordeth\@mac.com
@@ -142,7 +142,7 @@
   modified: '2014-10-17 18:30:46'
   name: 'amaroK (via ssh)'
   url: http://www.codeeye.de/irssi/
-  version: 1.0
+  version: '1.0'
 -
   authors: 'Tuukka Lukkala'
   contact: 'ragdim at mbnet dot fi'
@@ -152,7 +152,7 @@
   modified: '2004-03-30 23:20:00'
   name: amaroknp
   url: http://koti.mbnet.fi/ragdim/amaroknp/
-  version: 0.10
+  version: '0.10'
 -
   authors: "Stefan 'tommie' Tomanek"
   contact: stefan@pico.ruhr.de
@@ -161,11 +161,11 @@
   license: GPLv2
   modified: '2008-05-17 17:39:11'
   name: anotherway
-  version: 2003010201
+  version: '2003010201'
 -
   authors: 'Grigori Goronzy'
   contact: greg@chown.ath.cx
-  description: "notices users who \"plenk\""
+  description: 'notices users who "plenk"'
   filename: antiplenk.pl
   license: BSD
   modified: '2003-02-12 07:00:05'
@@ -181,7 +181,7 @@
   modified: '2014-10-17 18:30:46'
   name: apm
   url: http://www.formorer.de/code
-  version: 0.4
+  version: '0.4'
 -
   authors: 'Erkki Seppälä'
   contact: flux@inside.org
@@ -191,7 +191,7 @@
   modified: '2014-10-17 18:30:46'
   name: 'Armeija Ignore'
   url: http://xulfad.inside.org/~flux/software/irssi/
-  version: 0.4
+  version: '0.4'
 -
   authors: 'Marcin Rozycki'
   contact: derwan@irssi.pl
@@ -214,7 +214,7 @@
   name: aspell_complete
   note: ''
   url: http://www.mimir.ch/ph/
-  version: 1.00
+  version: '1.00'
 -
   authors: 'Mantas Mikulėnas'
   contact: grawity@gmail.com
@@ -225,7 +225,7 @@
   modules: 'Digest::HMAC Digest::SHA1'
   name: auth_quakenet_challenge.pl
   url: http://purl.net/net/grawity/irssi.html
-  version: 1.0
+  version: '1.0'
 -
   authors: "Andreas 'ads' Scherbaum"
   contact: ads@ufp.de
@@ -235,9 +235,9 @@
   modified: '2014-10-17 18:30:46'
   name: auto_whois
   url: http://irssi.org/
-  version: 0.9
+  version: '0.9'
 -
-  authors: "Larry \"Vizzie\" Daffner"
+  authors: 'Larry "Vizzie" Daffner'
   contact: vizzie@airmail.net
   description: 'Automatically goes  away after defined inactivity'
   filename: autoaway.pl
@@ -245,7 +245,7 @@
   modified: '2014-10-17 18:30:46'
   name: 'Automagic away setting'
   url: http://www.flamingpackets.net/~vizzie/irssi/
-  version: 0.3
+  version: '0.3'
 -
   authors: 'Peder Stray'
   contact: peder@ninja.no
@@ -255,9 +255,9 @@
   modified: '2007-09-20 08:58:11'
   name: autochannel
   url: http://ninja.no/irssi/autochannel.pl
-  version: 1.2
+  version: '1.2'
 -
-  authors: "Trevor \"tee\" Slocum"
+  authors: 'Trevor "tee" Slocum'
   contact: tslocum@gmail.com
   description: 'Automatically clears pending input when you are away.'
   filename: autoclearinput.pl
@@ -275,7 +275,7 @@
   modified: '2003-01-03 23:20:06'
   name: autocycle
   url: http://derwan.irssi.pl
-  version: 0.4
+  version: '0.4'
 -
   authors: 'David Leadbeater'
   contact: dgl@dgl.cx
@@ -285,7 +285,7 @@
   modified: '2014-10-17 18:30:46'
   name: autolimit
   url: http://irssi.dgl.cx/
-  version: 1.00
+  version: '1.00'
 -
   authors: 'Timo Sirainen & Jostein Kjønigsen'
   description: 'Simple auto-op script'
@@ -293,7 +293,7 @@
   license: 'Public Domain'
   modified: '2014-10-24 12:54:12'
   name: autoop
-  version: 1.10
+  version: '1.10'
 -
   authors: 'Toni Salomäki'
   contact: Toni@IRCNet
@@ -303,7 +303,7 @@
   modified: '2014-10-17 18:30:46'
   name: autoopper
   url: http://vinku.dyndns.org/irssi_scripts/
-  version: 3.7
+  version: '3.7'
 -
   authors: "Timo 'cras' Sirainen, Bastian Blank"
   contact: 'tss@iki.fi, waldi@debian.org'
@@ -332,7 +332,7 @@
   modified: '2002-05-02 22:04:48'
   name: 'Autorejoin punisher'
   url: http://www.raade.org/~paul/irssi/scripts/
-  version: 0.3
+  version: '0.3'
 -
   authors: 'Terry Lewis'
   contact: terry@kryogenic.co.uk
@@ -341,7 +341,7 @@
   license: GPLv2
   modified: '2008-05-17 17:39:11'
   name: 'Auto Reminder'
-  version: 0.01
+  version: '0.01'
 -
   authors: Juerd
   contact: '#####@juerd.nl'
@@ -351,7 +351,7 @@
   modified: '2010-10-24 14:35:00'
   name: autostuff
   url: http://juerd.nl/site.plp/irssi
-  version: 0.02
+  version: '0.02'
 -
   authors: "Christian 'mordeth' Weber"
   contact: chris@mac.ruhr.de
@@ -369,7 +369,7 @@
   license: GPL
   modified: '2008-05-22 01:47:56'
   name: autovoice
-  version: 0.05
+  version: '0.05'
 -
   authors: "Timo 'cras' Sirainen"
   contact: tss@iki.fi
@@ -379,7 +379,7 @@
   modified: '2014-10-17 18:30:46'
   name: autowhois
   url: http://irssi.org/
-  version: 1.1
+  version: '1.1'
 -
   authors: 'Janne Mikola'
   contact: janne@mikola.info
@@ -389,7 +389,7 @@
   modified: '2014-10-17 18:30:46'
   name: autowhois_simple
   url: http://www.mikola.info
-  version: 0.1
+  version: '0.1'
 -
   authors: 'Bitt Faulk'
   contact: lxsfx3h02@sneakemail.com
@@ -399,16 +399,16 @@
   modified: '2008-05-25 14:51:58'
   name: autowrap
   url: none
-  version: 2007031900
+  version: '2007031900'
 -
-  authors: "Jean-Yves Lefort, Larry \"Vizzie\" Daffner, Kees Cook"
+  authors: 'Jean-Yves Lefort, Larry "Vizzie" Daffner, Kees Cook'
   contact: 'jylefort@brutele.be, vizzie@airmail.net, kc@outflux.net'
   description: 'Away with reason, unaway, and autoaway'
   filename: away.pl
   license: BSD
   modified: '2014-10-17 18:30:46'
   name: away
-  version: 0.23
+  version: '0.23'
 -
   authors: "Oskari 'Okko' Ojala"
   contact: sorter.irssi-scripts@okko.net
@@ -417,7 +417,7 @@
   license: BSD
   modified: '2014-10-17 18:30:46'
   name: away2web
-  version: 2003100201
+  version: '2003100201'
 -
   authors: 'Geert Hauwaerts'
   contact: geert@irssi.org
@@ -427,7 +427,7 @@
   modified: '2003-12-31 15:37:24'
   name: away_hilight_notice.pl
   url: http://irssi.hauwaerts.be/away_hilight_notice.pl
-  version: 0.10
+  version: '0.10'
 -
   authors: 'Wouter Coekaerts, Koenraad Heijlen'
   contact: 'vipie@ulyssis.org, wouter@coekaerts.be'
@@ -456,7 +456,7 @@
   modified: '2004-10-27 19:46:28'
   name: awalogcnt
   url: http://derwan.irssi.pl
-  version: 0.2
+  version: '0.2'
 -
   authors: BCOW
   contact: anttip@n0-life.com
@@ -478,7 +478,7 @@
   modules: 'Unicode::String WWW::Babelfish'
   name: babelirc
   url: http://irssi.org/scripts/
-  version: 2003020801
+  version: '2003020801'
 -
   authors: "Jan 'fissie' Sembera"
   contact: fis@ji.cz
@@ -492,7 +492,7 @@
 -
   authors: "Maciek 'fahren' Freudenheim"
   contact: fahren@bochnia.pl
-  description: "/BAN [channel] [-normal|-host|-user|-domain|-crap|-ip|-class -before|-after \"cmd\" nick|mask] ... - bans several nicks/masks on channel, removes any conflicting bans before banning"
+  description: '/BAN [channel] [-normal|-host|-user|-domain|-crap|-ip|-class -before|-after "cmd" nick|mask] ... - bans several nicks/masks on channel, removes any conflicting bans before banning'
   filename: ban.pl
   license: 'GNU GPLv2 or later'
   modified: '2002-11-19 18:11:09'
@@ -507,7 +507,7 @@
   modified: '2014-10-17 20:34:00'
   name: bandwidth
   url: http://nchip.ukkosenjyly.mine.nu/irssiscripts/
-  version: 1.0
+  version: '1.0'
 -
   authors: "David O'Rourke"
   contact: phyber@#irssi
@@ -517,7 +517,7 @@
   modified: '2004-08-01 02:46:00'
   modules: Time::Duration
   name: bantime
-  version: 0.5
+  version: '0.5'
 -
   authors: 'Jean-Yves Lefort'
   contact: 'jylefort\@brutele.be, decadix on IRCNet'
@@ -527,7 +527,7 @@
   modified: '2014-10-17 20:34:00'
   name: beep
   url: http://void.adminz.be/irssi.shtml
-  version: 1.01
+  version: '1.01'
 -
   authors: 'Georg Lukas'
   contact: georg@op-co.de
@@ -537,7 +537,7 @@
   modified: '2014-10-17 20:34:00'
   name: beep_beep
   url: http://op-co.de/irssi/
-  version: 0.10
+  version: '0.10'
 -
   authors: "Simon 'corecode' Schubert"
   contact: corecode@corecode.ath.cx
@@ -546,7 +546,7 @@
   license: BSD
   modified: '2008-05-17 17:39:11'
   name: beepaway
-  version: 2003011501
+  version: '2003011501'
 -
   authors: "Stefan 'tommie' Tomanek"
   commands: bestoiber
@@ -557,7 +557,7 @@
   modified: '2008-05-17 17:39:09'
   name: BeStoiber
   url: ''
-  version: 2003020801
+  version: '2003020801'
 -
   authors: '[^BgTA^]'
   contact: raul@bgta.net
@@ -576,7 +576,7 @@
   license: GPLv2
   modified: '2008-05-17 17:39:11'
   name: binary
-  version: 1.2
+  version: '1.2'
 -
   authors: 'Aaron Toponce, Knut Auvor Grythe'
   contact: 'aaron.toponce@gmail.com, irssi@auvor.no'
@@ -585,9 +585,9 @@
   license: GPL
   modified: '2008-06-16 10:12:35'
   name: binary_time
-  version: 20060826
+  version: '20060826'
 -
-  authors: "Tijmen \"timing\" Ruizendaal"
+  authors: 'Tijmen "timing" Ruizendaal'
   contact: tijmen.ruizendaal@gmail.com
   description: '/blist <all|online|offline|away> <word>,  greps <word> from blist for bitlbee'
   filename: bitlbee_blist.pl
@@ -595,9 +595,9 @@
   modified: '2006-10-27 00:00:00'
   name: bitlbee_blist
   url: http://the-timing.nl/stuff/irssi-bitlbee
-  version: 0.4
+  version: '0.4'
 -
-  authors: "Tijmen \"timing\" Ruizendaal"
+  authors: 'Tijmen "timing" Ruizendaal'
   contact: tijmen.ruizendaal@gmail.com
   description: '1. Adds an item to the status bar wich shows [joined: <nicks>] when someone is joining &bitlbee. 2. Shows join messages in the query. (For bitlbee v3.0+)'
   filename: bitlbee_join_notice.pl
@@ -605,9 +605,9 @@
   modified: '2014-10-17 20:34:00'
   name: BitlBee_join_notice
   url: http://the-timing.nl/stuff/irssi-bitlbee
-  version: 1.3
+  version: '1.3'
 -
-  authors: "Tijmen \"timing\" Ruizendaal"
+  authors: 'Tijmen "timing" Ruizendaal'
   contact: tijmen.ruizendaal@gmail.com
   description: 'Shows an IM nickchange in an Irssi way. (in a query and in the bitlbee channel). (For bitlbee 3.0+)'
   filename: bitlbee_nick_change.pl
@@ -615,9 +615,9 @@
   modified: '2010-07-28 00:00:00'
   name: BitlBee_nick_change
   url: http://the-timing.nl/stuff/irssi-bitlbee
-  version: 1.3
+  version: '1.3'
 -
-  authors: "Tijmen \"timing\" Ruizendaal & Wilmer van der Gaast"
+  authors: 'Tijmen "timing" Ruizendaal & Wilmer van der Gaast'
   contact: tijmen.ruizendaal@gmail.com
   description: 'Intelligent Tab-completion for BitlBee commands.'
   filename: bitlbee_tab_completion.pl
@@ -625,9 +625,9 @@
   modified: '2009-08-11 00:00:00'
   name: BitlBee_tab_completion
   url: http://the-timing.nl/stuff/irssi-bitlbee
-  version: 1.3
+  version: '1.3'
 -
-  authors: "Tijmen \"timing\" Ruizendaal"
+  authors: 'Tijmen "timing" Ruizendaal'
   contact: tijmen.ruizendaal@gmail.com
   description: "Replace Irssi's timestamps with those sent by BitlBee"
   filename: bitlbee_timestamp.pl
@@ -636,11 +636,11 @@
   modules: DateTime
   name: bitlbee_timestamp
   url: http://the-timing.nl/stuff/irssi-bitlbee
-  version: 0.5
+  version: '0.5'
 -
-  authors: "Tijmen \"timing\" Ruizendaal, Matt \"f0rked\" Sparks"
+  authors: 'Tijmen "timing" Ruizendaal, Matt "f0rked" Sparks'
   contact: 'tijmen.ruizendaal@gmail.com, root@f0rked.com'
-  description: '1. Adds an item to the status bar wich shows [typing] when someone is typing a message on the supported IM-networks	2. Sends typing notices to the supported IM networks (the other way arround). (For bitlbee 3.0+)'
+  description: "1. Adds an item to the status bar wich shows [typing] when someone is typing a message on the supported IM-networks\t2. Sends typing notices to the supported IM networks (the other way arround). (For bitlbee 3.0+)"
   filename: bitlbee_typing_notice.pl
   license: GPLv2
   modified: '2010-08-09 00:00:00'
@@ -667,7 +667,7 @@
   modified: '2008-05-17 17:39:09'
   name: 'BMI Calculator'
   url: http://dkg.con-fuse.org/irssi/scripts/
-  version: 2002121801
+  version: '2002121801'
 -
   authors: Juerd
   contact: juerd@juerd.nl
@@ -677,7 +677,7 @@
   modified: '2014-10-17 20:34:00'
   name: 'Scroll buffer restorer'
   url: http://juerd.nl/irssi/
-  version: 2.13
+  version: '2.13'
 -
   authors: Juerd
   contact: juerd@juerd.nl
@@ -687,9 +687,9 @@
   modified: '2002-03-19 11:00:00'
   name: Calculator
   url: http://juerd.nl/irssi/
-  version: 1.10
+  version: '1.10'
 -
-  authors: "Daniel \"dubkat\" Reidy"
+  authors: 'Daniel "dubkat" Reidy'
   contact: 'dubkat@dubkat.org (www.dubkat.org)'
   description: "Reformats CallerID (+g) Messages\n               (Also known as Server-Side Ignore)\n               on Hybrid & Ratbox IRCDs (EFnet)\n               to be Easier on the Eyes"
   filename: callerid.pl
@@ -697,18 +697,18 @@
   modified: '2008-05-17 17:39:11'
   name: callerid
   url: http://scripts.irssi.org/
-  version: 1.0
+  version: '1.0'
 -
   authors: 'Michael Tharp (gxti), Jilles Tjoelker (jilles), Mantas Mikulėnas (grawity)'
   contact: grawity@gmail.com
-  description: "Implements SASL authentication and enables CAP \"multi-prefix\""
+  description: 'Implements SASL authentication and enables CAP "multi-prefix"'
   filename: cap_sasl.pl
   license: GPLv2
   modified: '2015-01-07 07:47:22'
   modules: Crypt::PK::ECC
   name: cap_sasl.pl
   url: http://ircv3.atheme.org/extensions/sasl-3.1
-  version: 1.10
+  version: '1.10'
 -
   authors: ZaMz0n
   commands: cddb
@@ -720,9 +720,9 @@
   modules: LWP::Simple
   name: cddb
   url: http://www.gracenote.com/music/
-  version: 1.21
+  version: '1.21'
 -
-  authors: "Joost \"Garion\" Vunderink"
+  authors: 'Joost "Garion" Vunderink'
   contact: joost@carnique.nl
   description: 'Staturbar item which indicates how many new messages you have in your centericq'
   filename: centericq.pl
@@ -760,7 +760,7 @@
   modified: '2008-05-17 17:39:09'
   name: chanfull
   url: ''
-  version: 2003011700
+  version: '2003011700'
 -
   authors: "Uwe 'duden' Dudenhoeffer"
   contact: script@duden.eu.org
@@ -770,7 +770,7 @@
   modified: '2003-02-08 18:08:54'
   name: chanfull
   url: ''
-  version: 0.1
+  version: '0.1'
 -
   authors: "Bjoern 'fuchs' Krombholz"
   contact: bjkro@gmx.de
@@ -790,7 +790,7 @@
   modules: LWP::UserAgent
   name: ChanSearch
   url: http://scripts.irssi.org/
-  version: 20021019
+  version: '20021019'
 -
   authors: "Timo 'cras' Sirainen"
   contact: tss@iki.fi
@@ -800,7 +800,7 @@
   modified: '2014-10-17 20:34:00'
   name: 'chan share'
   url: http://irssi.org/
-  version: 0.3
+  version: '0.3'
 -
   authors: 'Peder Stray'
   contact: peder@ninja.no
@@ -810,7 +810,7 @@
   modified: '2008-05-17 17:39:09'
   name: chansort
   url: http://ninja.no/irssi/chansort.pl
-  version: 1.4
+  version: '1.4'
 -
   authors: "Uwe 'duden' Dudenhoeffer"
   commands: chansync
@@ -821,7 +821,7 @@
   modified: '2003-02-09 18:27:51'
   name: chansync
   url: ''
-  version: 0.22
+  version: '0.22'
 -
   authors: 'Jakub Jankowski'
   contact: shasta@atn.pl
@@ -831,7 +831,7 @@
   modified: '2008-05-17 17:39:11'
   name: chops
   url: http://irssi.atn.pl/
-  version: 20020223
+  version: '20020223'
 -
   authors: 'Jørgen Tjernø'
   contact: darkthorne@samsen.com
@@ -841,7 +841,7 @@
   modified: '2003-09-24 13:17:15'
   name: CleanPublic
   url: http://mental.mine.nu
-  version: 0.3
+  version: '0.3'
 -
   authors: 'Dominic Battre'
   contact: dominic@battre.de
@@ -852,7 +852,7 @@
   modules: Tk
   name: 'Quoting from X clipboard'
   url: http://www.battre.de
-  version: 1.2
+  version: '1.2'
 -
   authors: 'Rick (strlen) Jansen'
   contact: strlen@shellz.nl
@@ -862,7 +862,7 @@
   modified: '2002-03-13 20:26:46'
   name: cloneprot
   url: http://www.shellz.nl/
-  version: 1.11
+  version: '1.11'
 -
   authors: 'From irssi source, modified by David Leadbeater (dg)'
   description: '/CLONES - Display clones in the active channel (with added options)'
@@ -871,7 +871,7 @@
   modified: '2014-10-17 20:34:00'
   name: clones
   url: http://irssi.dgl.cx/
-  version: 2.01
+  version: '2.01'
 -
   authors: 'Pablo Martín Báez Echevarría'
   contact: pab_24n@outlook.com
@@ -882,7 +882,7 @@
   modules: Devel::Size
   name: clones_scanner
   url: http://reirssi.wordpress.com
-  version: 1.6
+  version: '1.6'
 -
   authors: 'Gabor Nyeki'
   contact: bigmac@vim.hu
@@ -900,7 +900,7 @@
   modified: '2002-03-04 22:47:00'
   name: colorswap
   url: http://irssi.org/
-  version: 0.1
+  version: '0.1'
 -
   authors: Daenyth
   contact: 'Daenyth /at/ gmail /dot/ com'
@@ -909,7 +909,7 @@
   license: GPL2
   modified: '2008-12-07 19:07:31'
   name: 'Complete Last-Spoke'
-  version: 2.1
+  version: '2.1'
 -
   authors: 'Ian Peters'
   contact: itp@ximian.com
@@ -919,7 +919,7 @@
   modified: '2014-10-17 20:34:00'
   name: 'Connect Command'
   url: http://irssi.org/
-  version: 0.1
+  version: '0.1'
 -
   authors: "Mikko 'Quidz' Salmi"
   contact: mikko@quidz.net
@@ -928,7 +928,7 @@
   license: 'Public Domain'
   modified: '2014-11-06 21:34:32'
   name: countdown
-  version: 1.0
+  version: '1.0'
 -
   authors: 'Timo Sirainen'
   contact: tss@iki.fi
@@ -946,7 +946,7 @@
   license: GPL
   modified: '2002-09-28 12:58:26'
   name: cp1250_kick
-  version: 1.3
+  version: '1.3'
 -
   authors: "Stefan 'tommie' Tomanek"
   commands: crapbuster
@@ -956,7 +956,7 @@
   license: GPLv2
   modified: '2008-05-17 17:39:09'
   name: CRAPbuster
-  version: 2003020801
+  version: '2003020801'
 -
   authors: 'Piotr Krukowiecki'
   contact: 'piotr \at/ krukowiecki /dot\ net'
@@ -966,7 +966,7 @@
   modified: '2014-11-12 12:23:06'
   name: 'cron aka jobs'
   url: http://www.krukowiecki.net/code/irssi/
-  version: 0.12
+  version: '0.12'
 -
   authors: "Maciek 'fahren' Freudenheim"
   contact: fahren@bochnia.pl
@@ -975,7 +975,7 @@
   license: 'GNU GPLv2 or later'
   modified: '2002-05-06 14:02:25'
   name: 'Cached WHO'
-  version: 1.1
+  version: '1.1'
 -
   authors: 'Geert Hauwaerts'
   contact: geert@irssi.org
@@ -985,7 +985,7 @@
   modified: '2004-05-09 01:19:25'
   name: dancer_forwardfix.pl
   url: http://irssi.hauwaerts.be/dancer_forwardfix.pl
-  version: 0.03
+  version: '0.03'
 -
   authors: 'Geert Hauwaerts'
   contact: geert@irssi.org
@@ -995,7 +995,7 @@
   modified: '2004-03-12 19:46:24'
   name: dancer_hide_477.pl
   url: http://irssi.hauwaerts.be/dancer_hide_477.pl
-  version: 0.01
+  version: '0.01'
 -
   authors: 'Clemens Heidinger'
   commands: dau
@@ -1010,13 +1010,13 @@
 -
   authors: ak5
   contact: meister@hq.kroenk.remove-this-because-of-spam.de
-  description: "This script sets dcc_own_ip when starting a DCC send or chat.set dcc_ip_interface to your external interface, f.e. ppp0.If you are connecting though a router, set it to \"router\""
+  description: 'This script sets dcc_own_ip when starting a DCC send or chat.set dcc_ip_interface to your external interface, f.e. ppp0.If you are connecting though a router, set it to "router"'
   filename: dcc_ip.pl
   license: 'Public Domain'
   modified: '2014-10-17 20:34:00'
   name: dcc_ip
   url: http://hq.kroenk.de/?gnu/irssi
-  version: 0.5
+  version: '0.5'
 -
   authors: 'Peder Stray'
   contact: peder@ninja.no
@@ -1026,7 +1026,7 @@
   modified: '2014-10-17 20:34:00'
   name: dccmove
   url: http://ninja.no/irssi/dccmove.pl
-  version: 1.4
+  version: '1.4'
 -
   authors: 'David Leadbeater'
   contact: dgl@dgl.cx
@@ -1044,7 +1044,7 @@
   modified: '2014-10-17 20:34:00'
   name: dccstat
   url: http://matin.maapallo.org/softa/irssi
-  version: 1.52
+  version: '1.52'
 -
   authors: 'Jakub Jankowski'
   contact: shasta@atn.pl
@@ -1054,7 +1054,7 @@
   modified: '2008-05-17 17:39:11'
   name: 'Default Chanmode'
   url: http://irssi.atn.pl/
-  version: 1.1
+  version: '1.1'
 -
   authors: 'Joost Vunderink (Garion)'
   contact: joost@vunderink.net
@@ -1064,7 +1064,7 @@
   modified: '2013-10-09 23:19:48'
   name: Dejunk
   url: http://www.garion.org/irssi/
-  version: 1.0
+  version: '1.0'
 -
   authors: 'Benjamin Reed'
   contact: ranger@befunk.com
@@ -1075,7 +1075,7 @@
   modules: 'Log::Dispatch Log::Dispatch::File Net::Delicious URI::Find::Rule'
   name: deliciousurl
   url: http://ranger.befunk.com/
-  version: 0.5
+  version: '0.5'
 -
   authors: 'Jochem Meyers'
   contact: jochem.meyers@gmail.com
@@ -1114,7 +1114,7 @@
   modified: '2014-10-17 20:34:00'
   name: 'Dictionary complete'
   url: http://juerd.nl/irssi/
-  version: 1.31
+  version: '1.31'
 -
   authors: "Sebastian 'yath' Schmidt"
   contact: yathen@web.de
@@ -1163,7 +1163,7 @@
   license: GPLv2
   modified: '2005-04-22 09:50:00'
   name: doublefilter
-  version: 0.3
+  version: '0.3'
 -
   authors: 'Bitt Faulk'
   contact: lxsfx3h02@sneakemail.com
@@ -1173,7 +1173,7 @@
   modified: '2005-01-17 00:00:00'
   name: dr_who
   url: http://beaglebros.com
-  version: 1.0
+  version: '1.0'
 -
   authors: 'Espen Holm Nilsen'
   contact: holm@blackedge.org
@@ -1183,7 +1183,7 @@
   modified: '2008-05-25 14:59:13'
   name: efnetorg
   url: http://www.holmnilsen.com/
-  version: 1.2
+  version: '1.2'
 -
   authors: 'Ilya Cassina'
   contact: icassina@gmail.com
@@ -1192,9 +1192,9 @@
   license: GPLv2
   modified: '2008-05-25 14:42:28'
   name: 'Enanched LIST'
-  version: 1.0
+  version: '1.0'
 -
-  authors: "Johan \"Ion\" Kiviniemi"
+  authors: 'Johan "Ion" Kiviniemi'
   contact: 'ion at hassers.org'
   description: "Answers to /msg's using Chatbot::Eliza when you're away."
   filename: eliza.pl
@@ -1203,7 +1203,7 @@
   modules: Chatbot::Eliza
   name: Eliza
   url: http://ion.amigafin.org/scripts/
-  version: 1.0
+  version: '1.0'
 -
   authors: 'Adam James'
   contact: atj@pulsewidth.org.uk
@@ -1214,7 +1214,7 @@
   modules: 'Email::Sender::Simple Email::Simple Email::Simple::Creator'
   name: email_privmsgs
   url: http://git.pulsewidth.org.uk/?p=irssi-scripts.git;a=summary
-  version: 0.5
+  version: '0.5'
 -
   authors: PrincessLeia2
   contact: 'lyz\@princessleia.com '
@@ -1225,7 +1225,7 @@
   modules: DBI
   name: emaildb
   url: http://www.princessleia.com/
-  version: 1.0
+  version: '1.0'
 -
   authors: 'Ilkka Pale'
   commands: emo
@@ -1239,13 +1239,13 @@
 -
   authors: 'Taneli Kaivola'
   contact: dist@sci.fi
-  description: "Expand \"event mode\" and emit \"event mode {channel,user,server} *\""
+  description: 'Expand "event mode" and emit "event mode {channel,user,server} *"'
   filename: events.pl
   license: GPLv2
   modified: '2002-05-20 04:04:47'
   name: 'Extended events'
   url: http://scripts.irssi.de
-  version: 1.0
+  version: '1.0'
 -
   authors: 'Jean-Yves Lefort'
   contact: 'jylefort\@brutele.be, decadix on IRCNet'
@@ -1255,7 +1255,7 @@
   modified: '2014-10-17 22:54:13'
   name: exec-clean
   url: http://void.adminz.be/irssi.shtml
-  version: 1.01
+  version: '1.01'
 -
   authors: CrazyCat
   contact: crazycat@c-p-f.org
@@ -1264,7 +1264,7 @@
   license: 'GNU GPLv2 or later'
   modified: '2014-10-17 22:54:13'
   name: ExtAway
-  version: 1.0
+  version: '1.0'
 -
   authors: 'Geert Hauwaerts'
   contact: geert@irssi.org
@@ -1274,7 +1274,7 @@
   modified: '2014-10-17 22:54:13'
   name: fakectcp.pl
   url: http://irssi.hauwaerts.be/default.pl
-  version: 1.03
+  version: '1.03'
 -
   authors: 'Stefan Jakobs'
   commands: fcountry
@@ -1295,7 +1295,7 @@
   modified: '2002-03-10 14:46:00'
   name: Figlet
   url: http://juerd.nl/irssi/
-  version: 1.14
+  version: '1.14'
 -
   authors: 'David Leadbeater'
   description: 'A command to output content of files in various ways'
@@ -1304,7 +1304,7 @@
   modified: '2014-10-17 22:54:13'
   name: file.pl
   url: http://irssi.dgl.cx/
-  version: 1
+  version: '1'
 -
   authors: 'Erkki Seppälä'
   contact: flux@inside.org
@@ -1314,7 +1314,7 @@
   modified: '2014-10-17 22:54:13'
   name: Find
   url: http://xulfad.inside.org/~flux/software/irssi/
-  version: 0.2
+  version: '0.2'
 -
   authors: 'Thomas Karlsson'
   contact: findbot@planet.eu.org
@@ -1324,7 +1324,7 @@
   modified: '2014-10-17 22:54:13'
   name: Findbot
   url: http://hem.passagen.se/thka2315/
-  version: 1.57
+  version: '1.57'
 -
   authors: 'Piotr Krukowiecki'
   contact: 'piotr //at// krukowiecki //dot// net'
@@ -1354,7 +1354,7 @@
   modified: '2002-03-19 11:00:00'
   name: Follower
   url: http://juerd.nl/irssi/
-  version: 1.10
+  version: '1.10'
 -
   authors: 'Juerd, Shiar'
   contact: 'juerd@juerd.nl, shiar@shiar.org'
@@ -1364,7 +1364,7 @@
   modified: '2003-01-21 01:40:00'
   name: 'UeberRot encryption'
   url: http://juerd.nl/site.plp/irssi
-  version: 3.00
+  version: '3.00'
 -
   authors: 'David Leadbeater'
   contact: dgl@dgl.cx
@@ -1374,7 +1374,7 @@
   modified: '2008-05-17 17:39:11'
   name: 'foreach user'
   url: http://irssi.dgl.cx/
-  version: 1.0
+  version: '1.0'
 -
   authors: 'ResDev (Ben Reser)'
   contact: ben@reser.org
@@ -1391,9 +1391,9 @@
   description: 'Send a random fortune cookie to an user in channel.'
   filename: fortune.pl
   license: 'Public Domain'
-  modified: '2008-05-17 17:39:09'
+  modified: '2015-01-26 22:59:40'
   name: fortune
-  version: '$Id: fortune.pl,v 1.3 2004/12/17 19:39:19 eim Exp $'
+  version: '1.3'
 -
   authors: "Stefan 'tommie' Tomanek"
   commands: forward
@@ -1404,7 +1404,7 @@
   modified: '2008-05-17 17:39:09'
   name: Forward
   url: http://irssi.org/scripts/
-  version: 2003071904
+  version: '2003071904'
 -
   authors: 'Geert Hauwaerts'
   contact: geert@irssi.org
@@ -1414,7 +1414,7 @@
   modified: '2003-09-17 23:00:11'
   name: default.pl
   url: http://irssi.hauwaerts.be/freenode_filter.pl
-  version: 0.06
+  version: '0.06'
 -
   authors: 'Peder Stray'
   contact: peder@ninja.no
@@ -1424,7 +1424,7 @@
   modified: '2014-10-17 22:54:13'
   name: friends
   url: http://ninja.no/irssi/friends.pl
-  version: 1.34
+  version: '1.34'
 -
   authors: 'Jakub Jankowski'
   contact: shasta@toxcorp.com
@@ -1444,7 +1444,7 @@
   modified: '2014-11-07 13:00:08'
   name: frm_outgmsgs
   url: http://reirssi.wordpress.com
-  version: 1.1
+  version: '1.1'
 -
   authors: 'Piotr Krukowiecki & others'
   contact: 'piotr at pingu.ii.uj.edu.pl'
@@ -1464,7 +1464,7 @@
   modified: '2003-09-17 23:00:11'
   name: fuckem.pl
   url: http://irssi.hauwaerts.be/fuckem.pl
-  version: 0.05
+  version: '0.05'
 -
   authors: "Maciek 'fahren' Freudenheim"
   contact: fahren@bochnia.pl
@@ -1483,7 +1483,7 @@
   modified: '2014-10-17 22:54:13'
   name: gimmie
   url: http://www.princessleia.com/
-  version: 1.0
+  version: '1.0'
 -
   authors: nohar
   contact: nohar@freenode
@@ -1492,7 +1492,7 @@
   license: 'GPLv2 or later'
   modified: '2014-10-19 15:12:04'
   name: 'go to window'
-  version: 1.01
+  version: '1.01'
 -
   authors: cxreg
   contact: cxreg@pobox.com
@@ -1502,7 +1502,7 @@
   modified: '2014-05-27 21:08:34'
   name: go2
   url: http://genericorp.net/~count/irssi/go
-  version: 1.0
+  version: '1.0'
 -
   authors: 'Oddbjørn Kvalsund'
   contact: oddbjorn.kvalsund@hiof.no
@@ -1512,7 +1512,7 @@
   modified: '2008-05-17 17:39:09'
   modules: LWP::UserAgent
   name: Google
-  version: 1.00
+  version: '1.00'
 -
   authors: 'original idea by valvoline, irssi porting by pallotron'
   contact: pallotron@freaknet.org
@@ -1526,12 +1526,12 @@
 -
   authors: "David O'Rourke, Nico R. Wohlgemuth"
   contact: nico@lifeisabug.com
-  description: "Hide the stupid \"greet messages\" posted by some bots after someone joins a channel."
+  description: 'Hide the stupid "greet messages" posted by some bots after someone joins a channel.'
   filename: greetignore.pl
   license: GPLv2
   modified: '2015-01-18 02:15:41'
   name: greetignore
-  version: 1.1
+  version: '1.1'
 -
   authors: "Timo 'cras' Sirainen, Wouter Coekaerts"
   contact: 'tss@iki.fi, wouter@coekaerts.be'
@@ -1541,7 +1541,7 @@
   modified: '2014-10-17 22:54:13'
   name: grep
   url: http://wouter.coekaerts.be/irssi/
-  version: 2.1
+  version: '2.1'
 -
   authors: mistr
   contact: mistr@sensewave.com
@@ -1574,7 +1574,7 @@
   modified: '2002-05-18 21:40:00'
   name: 'German Uppercased Tab Stuff'
   url: http://juerd.nl/irssi/
-  version: 1.00
+  version: '1.00'
 -
   authors: 'Valentin Batz'
   contact: vb@g-23.org
@@ -1584,7 +1584,7 @@
   modified: '2004-06-21 00:00:00'
   name: hddtemp
   url: http://hurzelgnom.bei.t-online.de/irssi/scripts/hddtemp.pl
-  version: 0.14
+  version: '0.14'
 -
   authors: Cybertinus
   contact: cybertinus@cybertinus.nl
@@ -1593,7 +1593,7 @@
   license: GPL2
   modified: '2005-05-25 13:42:00'
   name: Greeter
-  version: 1.00
+  version: '1.00'
 -
   authors: 'Marcus Rueckert'
   contact: darix@irssi.de
@@ -1613,7 +1613,7 @@
   modified: '2002-06-04 20:56:00'
   name: hideauth
   url: http://www.jamesoff.net
-  version: 1.01
+  version: '1.01'
 -
   authors: Mantis
   contact: mantis@inta-link.com
@@ -1623,7 +1623,7 @@
   modified: '2003-01-03 00:00:00'
   name: highlite
   url: http://www.inta-link.com/
-  version: 1.0
+  version: '1.0'
 -
   authors: 'Geert Hauwaerts'
   contact: geert@irssi.org
@@ -1633,27 +1633,27 @@
   modified: '2003-09-17 23:51:38'
   name: hignore.pl
   url: http://irssi.hauwaerts.be/hignore.pl
-  version: 0.02
+  version: '0.02'
 -
   authors: "Timo 'cras' Sirainen, Mark 'znx' Sangster"
   contact: 'tss@iki.fi, znxster@gmail.com'
-  description: "Print hilighted messages to window named \"hilight\""
+  description: 'Print hilighted messages to window named "hilight"'
   filename: hilightwin.pl
   license: 'Public Domain'
   modified: '2015-01-28 14:40:37'
   name: hilightwin
   url: http://irssi.org/
-  version: 0.03
+  version: '0.03'
 -
   authors: 'John Morrissey'
   contact: jwm@horde.net
-  description: "Translate nicks to HipChat \"mention names\""
+  description: 'Translate nicks to HipChat "mention names"'
   filename: hipchat_complete.pl
   license: BSD
   modified: '2015-01-18 02:15:41'
   modules: WebService::HipChat
   name: hipchat_complete
-  version: 2.0
+  version: '2.0'
 -
   authors: 'Wouter Coekaerts'
   contact: coekie@irssi.org
@@ -1663,16 +1663,16 @@
   modified: '2009-01-17 00:00:00'
   name: history_search
   url: http://wouter.coekaerts.be/irssi/
-  version: 2.0
+  version: '2.0'
 -
-  authors: "Riku \"Shrike\" Lindblad"
+  authors: 'Riku "Shrike" Lindblad'
   contact: 'shrike\@addiktit.net, Shrike on IRCNet/QNet/EFNet/DALNet'
   description: 'Add a apache page hitcounter to statusbar'
   filename: hitcount.pl
   license: Free
   modified: '2014-10-17 22:54:13'
   name: hitcount
-  version: 1.3
+  version: '1.3'
 -
   authors: 'Riku Voipio'
   contact: riku.voipio@iki.fi
@@ -1682,7 +1682,7 @@
   modified: '2014-10-17 22:54:13'
   name: half-life
   url: http://nchip.ukkosenjyly.mine.nu/irssiscripts/
-  version: 1.2
+  version: '1.2'
 -
   authors: 'Veli Mankinen'
   contact: veli@piipiip.net
@@ -1692,7 +1692,7 @@
   modified: '2014-10-17 22:54:13'
   name: 'HL-log/rcon -bot'
   url: http://piipiip.net/
-  version: 1.0
+  version: '1.0'
 -
   authors: 'Jean-Yves Lefort'
   contact: 'jylefort\@brutele.be, decadix on IRCNet'
@@ -1703,7 +1703,7 @@
   modules: Socket6
   name: hostname
   url: http://void.adminz.be/irssi.shtml
-  version: 1.01
+  version: '1.01'
 -
   authors: Santabutthead
   contact: starz@antisocial.com
@@ -1723,7 +1723,7 @@
   modified: '2003-03-01 13:32:30'
   name: identify-md5
   url: http://xyrion.org/irssi/
-  version: 1.05
+  version: '1.05'
 -
   authors: "Stefan 'tommie' Tomanek"
   commands: idle
@@ -1734,7 +1734,7 @@
   modified: '2008-05-17 17:39:11'
   name: idletime
   url: ''
-  version: 20030208
+  version: '20030208'
 -
   authors: "Stefan 'tommie' Tomanek"
   commands: idonkey
@@ -1745,9 +1745,9 @@
   modified: '2008-05-17 17:39:11'
   modules: 'HTML::Entities LWP::UserAgent'
   name: iDonkey
-  version: 2004051601
+  version: '2004051601'
 -
-  authors: "Dmitry \"jsn\" Kim"
+  authors: 'Dmitry "jsn" Kim'
   contact: jason@nichego.net
   description: 'script to log ignored messages'
   filename: ignore_log.pl
@@ -1755,7 +1755,7 @@
   modified: '2014-10-17 22:54:13'
   name: ignore_log
   url: http://
-  version: 0.1
+  version: '0.1'
 -
   authors: 'Erkki Seppälä'
   contact: flux@inside.org
@@ -1765,7 +1765,7 @@
   modified: '2014-10-17 22:54:13'
   name: Ignore-OC
   url: http://www.inside.org/~flux/software/irssi/
-  version: 0.6
+  version: '0.6'
 -
   authors: apic
   contact: apic@IRCnet
@@ -1796,7 +1796,7 @@
   modules: LWP::UserAgent
   name: imdb
   url: http://xyrion.org/irssi/
-  version: 1.01
+  version: '1.01'
 -
   authors: c0ffee
   contact: c0ffee@penguin-breeder.org
@@ -1807,7 +1807,7 @@
   modules: Text::Iconv
   name: 'i18n /join'
   url: http://www.penguin-breeder.org/irssi/
-  version: 0.2
+  version: '0.2'
 -
   authors: 'Geert Hauwaerts'
   contact: geert@irssi.org
@@ -1817,17 +1817,17 @@
   modified: '2004-04-11 12:38:18'
   name: invitejoin.pl
   url: http://irssi.hauwaerts.be/invitejoin.pl
-  version: 0.01
+  version: '0.01'
 -
   authors: xlony
   contact: anderfdez@yahoo.es
-  description: "Auto \"/set dcc_own_ip IP\" on connect."
+  description: 'Auto "/set dcc_own_ip IP" on connect.'
   filename: ipupdate.pl
   license: GPL
   modified: '2006-01-03 18:33:56'
   modules: 'HTTP::Request::Common LWP::UserAgent'
   name: IPupdate
-  version: 1.2
+  version: '1.2'
 -
   authors: DonRumata
   commands: none
@@ -1848,7 +1848,7 @@
   modified: '2014-10-17 22:54:13'
   name: IRC-Chess
   url: 'none as yet'
-  version: 0.1
+  version: '0.1'
 -
   authors: 'Erkki Seppälä'
   contact: flux@inside.org
@@ -1858,7 +1858,7 @@
   modified: '2014-10-17 22:54:13'
   name: 'IRC Completion'
   url: http://xulfad.inside.org/~flux/software/irssi/
-  version: 0.1
+  version: '0.1'
 -
   authors: "Timo 'cras' Sirainen"
   contact: tss@iki.fi
@@ -1868,7 +1868,7 @@
   modified: '2014-10-17 22:54:13'
   name: ircgallery
   url: http://irssi.org/
-  version: 1.13
+  version: '1.13'
 -
   authors: BCOW
   contact: bcow@iki.fi
@@ -1889,7 +1889,7 @@
   modified: '2008-06-16 10:46:07'
   name: ircops
   url: https://bc-bd.org/svn/repos/irssi/trunk/
-  version: 0.1
+  version: '0.1'
 -
   authors: "Stefan 'tommie' Tomanek"
   commands: ircsec
@@ -1900,7 +1900,7 @@
   modified: '2008-05-25 13:44:01'
   modules: Crypt::CBC
   name: IRCSec
-  version: 2008051101
+  version: '2008051101'
 -
   authors: 'Julius Michaelis'
   contact: iRRSi@cserv.dyndns.org
@@ -1911,7 +1911,7 @@
   modules: XML::Feed
   name: 'iRSSi feed reader'
   url: https://github.com/jcaesar/irssi-feed
-  version: 20130209
+  version: '20130209'
 -
   authors: legion
   contact: a.lepore@email.it
@@ -1920,7 +1920,7 @@
   license: 'GNU GPLv2 or later'
   modified: '2014-10-17 22:54:13'
   name: irssiBlaster
-  version: 1.6
+  version: '1.6'
 -
   authors: "Stefan 'tommie' Tomanek"
   commands: irssiq
@@ -1931,7 +1931,7 @@
   modified: '2008-05-17 17:39:11'
   modules: Net::vICQ
   name: IrssiQ
-  version: 2003231101
+  version: '2003231101'
 -
   authors: mniip
   commands: 'isbanned ismuted islisted isreset'
@@ -1950,9 +1950,9 @@
   license: GPL
   modified: '2014-10-17 22:54:13'
   name: isdn
-  version: 0.3
+  version: '0.3'
 -
-  authors: "Johan \"Ion\" Kiviniemi"
+  authors: 'Johan "Ion" Kiviniemi'
   contact: 'ion at hassers.org'
   description: 'Internet Time statusbar item. See http://www.timeanddate.com/time/internettime.html'
   filename: itime.pl
@@ -1960,11 +1960,11 @@
   modified: '2002-03-12 22:20:00'
   name: itime
   url: http://ion.amigafin.org/scripts/
-  version: 0.9
+  version: '0.9'
 -
   authors: 'Kristof Korwisi'
   contact: kk@manoli.im-dachgeschoss.de
-  description: "/xmms announces which _file_ is currently playing. E.g.  Currently playing: \"Kieran Halpin & Band - Mirror Town.mp3\""
+  description: '/xmms announces which _file_ is currently playing. E.g.  Currently playing: "Kieran Halpin & Band - Mirror Town.mp3"'
   filename: ixmmsa.pl
   license: GPL
   modified: '2006-10-27 00:00:00'
@@ -2001,7 +2001,7 @@
   modified: '2014-10-17 22:54:13'
   name: keepnick
   url: http://ninja.no/irssi/keepnick.pl
-  version: 1.17
+  version: '1.17'
 -
   authors: 'Gerfried Fuchs'
   contact: alfie@channel.debian.de
@@ -2013,7 +2013,7 @@
   url: http://alfie.ist.org/projects/irssi/scripts/kenny.pl
   version: 2.3.1
 -
-  authors: "Johan \"Ion\" Kiviniemi"
+  authors: 'Johan "Ion" Kiviniemi'
   contact: 'ion at hassers.org'
   description: 'Fetches the version(s) of the latest Linux kernel(s).'
   filename: kernel.pl
@@ -2021,7 +2021,7 @@
   modified: '2002-03-12 22:20:00'
   name: Kernel
   url: http://ion.amigafin.org/irssi/
-  version: 0.9
+  version: '0.9'
 -
   authors: 'Geert Hauwaerts'
   contact: geert@irssi.org
@@ -2031,7 +2031,7 @@
   modified: '2003-11-04 16:49:20'
   name: keybindings.pl
   url: http://irssi.hauwaerts.be/keybindings.pl
-  version: 0.01
+  version: '0.01'
 -
   authors: c0ffee
   contact: c0ffee@penguin-breeder.org
@@ -2041,7 +2041,7 @@
   modified: '2006-11-14 23:19:19'
   name: 'Various kick and ban commands'
   url: http://www.penguin-breeder.org/irssi/
-  version: 0.26
+  version: '0.26'
 -
   authors: "Piotr 'Cvbge' Krukowiecki"
   description: 'When new send arrives checks if there are old identical sends (ie from the same nick on the same server and with the same filename) and closes them'
@@ -2050,7 +2050,7 @@
   modified: '2014-10-17 22:54:13'
   name: kill_fake_gets
   url: http://pingu.ii.uj.edu.pl/~piotr/irssi/
-  version: 1.1
+  version: '1.1'
 -
   authors: 'Timo Sirainen'
   description: 'Displays kills with more understandable messages'
@@ -2058,7 +2058,7 @@
   license: 'Public Domain'
   modified: '2014-10-17 22:54:13'
   name: kills
-  version: 1.00
+  version: '1.00'
 -
   authors: 'Geert Hauwaerts'
   contact: geert@irssi.org
@@ -2068,7 +2068,7 @@
   modified: '2003-09-17 23:00:11'
   name: kline_warning.pl
   url: http://irssi.hauwaerts.be/kline_warning.pl
-  version: 1.08
+  version: '1.08'
 -
   authors: Mikachu
   contact: 'Mikachu @ quakenet|freenode|arcnet|oftc'
@@ -2078,7 +2078,7 @@
   modified: '2008-09-04 21:12:26'
   modules: 'Xmms Xmms::Remote'
   name: 'l33t xmms music showing script'
-  version: 2.01
+  version: '2.01'
 -
   authors: "Simon 'simmel' Lundström"
   contact: 'simmel@(freenode|quakenet|efnet) http://last.fm/user/darksoy'
@@ -2089,7 +2089,7 @@
   modules: 'HTML::Entities LWP::UserAgent'
   name: lastfm
   url: http://soy.se/code/
-  version: 5.8
+  version: '5.8'
 -
   authors: 'Sander Smeenk'
   contact: irssi@freshdot.net
@@ -2099,7 +2099,7 @@
   modified: '2014-10-17 22:54:13'
   name: lastspoke
   url: http://irssi.freshdot.net/
-  version: 0.2
+  version: '0.2'
 -
   authors: 'Clemens Heidinger'
   commands: len
@@ -2121,7 +2121,7 @@
   modules: LWP::Simple
   name: leodict
   url: http://irssi.org/scripts/
-  version: 20040515
+  version: '20040515'
 -
   authors: 'Nico R. Wohlgemuth'
   contact: nico@lifeisabug.com
@@ -2131,7 +2131,7 @@
   modified: '2014-06-15 17:10:05'
   name: levelclear
   url: http://scripts.irssi.org/
-  version: 1.1
+  version: '1.1'
 -
   authors: 'Jari Matilainen'
   contact: jmn98015@student.mdh.se
@@ -2141,7 +2141,7 @@
   modified: '2014-10-17 22:54:13'
   name: licq
   url: http://jari.cjb.net,http://irssi.org,http://scripts.irssi.de
-  version: 0.5
+  version: '0.5'
 -
   authors: "Marcin 'Qrczak' Kowalczyk"
   contact: qrczak@knm.org.pl
@@ -2151,7 +2151,7 @@
   modified: '2014-10-17 22:54:13'
   name: LinkChan
   url: http://qrnik.knm.org.pl/~qrczak/irssi/linkchan.pl
-  version: 1.5
+  version: '1.5'
 -
   authors: 'Csaba Nagy'
   contact: lordpyre@negerno.hu
@@ -2160,7 +2160,7 @@
   license: 'GNU GPLv2 or later'
   modified: '2014-10-17 22:54:13'
   name: listen
-  version: 0.2
+  version: '0.2'
 -
   authors: aki
   contact: aki@evilbsd.info
@@ -2169,7 +2169,7 @@
   license: 'public domain'
   modified: '2014-10-17 22:54:13'
   name: loadavg
-  version: 0.4
+  version: '0.4'
 -
   authors: "Stefan 'tommie' Tomanek"
   commands: localize
@@ -2181,7 +2181,7 @@
   modules: 'HTML::Entities LWP::UserAgent'
   name: localize
   url: ''
-  version: 2014112501
+  version: '2014112501'
 -
   authors: 'Peder Stray'
   contact: peder@ninja.no
@@ -2191,7 +2191,7 @@
   modified: '2008-05-22 13:14:17'
   name: log2ansi
   url: http://ninja.no/irssi/log2ansi
-  version: 1.9
+  version: '1.9'
 -
   authors: "Timo 'cras' Sirainen"
   contact: tss@iki.fi
@@ -2201,7 +2201,7 @@
   modified: '2014-10-17 22:54:13'
   name: logcompress
   url: http://irssi.org/
-  version: 0.01
+  version: '0.01'
 -
   authors: c0ffee
   contact: c0ffee@penguin-breeder.org
@@ -2211,7 +2211,7 @@
   modified: '2014-10-17 22:54:13'
   name: 'List nicks in channel'
   url: http://www.penguin-breeder.org/irssi/
-  version: 0.02
+  version: '0.02'
 -
   authors: Mika
   contact: '[Mika] @ IRCnet'
@@ -2231,9 +2231,9 @@
   modified: '2014-10-19 11:54:16'
   name: mail
   url: 'http://irssi.org, http://scripts.irssi.de'
-  version: 2.92
+  version: '2.92'
 -
-  authors: "David \"Legooolas\" Gardner"
+  authors: 'David "Legooolas" Gardner'
   contact: irssi@icmfp.com
   description: 'Staturbar item which indicates how many new emails you have in the specified IMAP[S] mailbox'
   filename: mailcheck_imap.pl
@@ -2242,7 +2242,7 @@
   modules: IO::Socket::SSL
   name: mailcheck_imap
   url: http://icmfp.com/irssi
-  version: 0.5
+  version: '0.5'
 -
   authors: 'Erkki Seppälä'
   contact: flux@inside.org
@@ -2252,16 +2252,16 @@
   modified: '2014-10-19 11:54:16'
   name: 'Mail Check'
   url: http://xulfad.inside.org/~flux/software/irssi/
-  version: 0.1
+  version: '0.1'
 -
   authors: 'Kimmo Lehto'
   contact: kimmo@a-men.org
-  description: "POP3 new mail notification and listing of mailbox contents. Use \"/mail help\" for instructions. Requires Net::POP3."
+  description: 'POP3 new mail notification and listing of mailbox contents. Use "/mail help" for instructions. Requires Net::POP3.'
   filename: mailcheck_pop3_kimmo.pl
   license: 'Public Domain'
   modified: '2014-10-19 11:54:16'
   name: Mailcheck-POP3
-  version: 0.5
+  version: '0.5'
 -
   authors: 'Marcin Rozycki'
   contact: derwan@irssi.pl
@@ -2282,7 +2282,7 @@
   modified: '2008-05-17 17:39:11'
   name: mangle
   url: http://irssi.org/scripts/
-  version: 2004031701
+  version: '2004031701'
 -
   authors: 'Petr Baudis'
   contact: pasky@ji.cz
@@ -2292,7 +2292,7 @@
   modified: '2008-05-17 17:39:09'
   name: map
   url: http://pasky.ji.cz/~pasky/dev/irssi/
-  version: 1.2
+  version: '1.2'
 -
   authors: 'Uli Baumann'
   contact: f-zappa@irc-muenster.de
@@ -2301,7 +2301,7 @@
   license: GPL
   modified: '2014-10-19 11:54:16'
   name: mass_hilight_blocker
-  version: 0.2
+  version: '0.2'
 -
   authors: 'Kaveh Moini'
   contact: campanastra@gmail.com
@@ -2310,7 +2310,7 @@
   license: 'ccBSD, http://creativecommons.org/licenses/BSD/'
   modified: '2009-08-13 21:43:12'
   name: mg
-  version: 20090813
+  version: '20090813'
 -
   authors: 'Leszek Matok, Andrzej Jagodziñski'
   contact: lam@lac.pl
@@ -2328,7 +2328,7 @@
   license: 'Public Domain'
   modified: '2008-09-26 00:00:00'
   name: mirc_colour_popup
-  version: 1.0
+  version: '1.0'
 -
   authors: 'Marcin Rozycki'
   contact: derwan@irssi.pl
@@ -2338,7 +2338,7 @@
   modified: '2004-10-06 20:58:38'
   name: mkick
   url: http://derwan.irssi.pl
-  version: 0.9
+  version: '0.9'
 -
   authors: 'Gergely Nagy'
   contact: algernon\@bonehunter.rulez.org
@@ -2349,7 +2349,7 @@
   modules: LWP::UserAgent
   name: 'makeashorterlink.com interface'
   url: ftp://bonehunter.rulez.org/pub/irssi/mkshorterlink.pl
-  version: 0.3
+  version: '0.3'
 -
   authors: 'Carsten Otto'
   commands: mlbw
@@ -2361,7 +2361,7 @@
   modules: 'HTTP::Request::Common LWP::UserAgent'
   name: 'mldonkey bandwidth script'
   url: http://www.c-otto.de
-  version: 20030712
+  version: '20030712'
 -
   authors: 'Timo Sirainen'
   description: 'Channel mode locking'
@@ -2369,7 +2369,7 @@
   license: 'Public Domain'
   modified: '2002-03-10 23:18:00'
   name: mlock
-  version: 1.00
+  version: '1.00'
 -
   authors: 'Marcin Rozycki'
   contact: derwan@irssi.pl
@@ -2398,7 +2398,7 @@
   license: 'BSD (revised)'
   modified: '2014-10-19 11:54:16'
   name: monitor
-  version: 1.0
+  version: '1.0'
 -
   authors: "Stefan 'tommie' Tomanek"
   contact: stefan@pico.ruhr.de
@@ -2407,7 +2407,7 @@
   license: GPLv2
   modified: '2008-05-17 17:39:11'
   name: Mood
-  version: 20031207
+  version: '20031207'
 -
   authors: "Stefan 'tommie' Tomanek"
   commands: 'morse spell'
@@ -2417,7 +2417,7 @@
   license: GPLv2
   modified: '2008-05-17 17:39:11'
   name: morse
-  version: 2004021901
+  version: '2004021901'
 -
   authors: 'Wouter Coekaerts'
   contact: wouter@coekaerts.be
@@ -2436,7 +2436,7 @@
   license: GPLv2
   modified: '2014-08-20 21:54:33'
   name: mpd
-  version: 0.7
+  version: '0.7'
 -
   authors: 'Ricardo Mesquita'
   contact: ricardomesquita@netcabo.pt
@@ -2457,7 +2457,7 @@
   modified: '2008-05-17 17:39:11'
   name: multipaste
   url: ''
-  version: 2003120617
+  version: '2003120617'
 -
   authors: 'Remco den Breeje'
   contact: 'stacium or stek (most of the time) @ quakenet.org'
@@ -2467,7 +2467,7 @@
   modified: '2014-10-19 11:54:16'
   name: my_beep
   url: http://www.xs4all.nl/~stacium/irssi/my_beep.html
-  version: 0.9
+  version: '0.9'
 -
   authors: 'Tim Van Wassenhove'
   contact: timvw@users.sourceforge.net
@@ -2478,7 +2478,7 @@
   modules: LWP::UserAgent
   name: mygoogle
   url: http://home.mysth.be/~timvw
-  version: 1.01
+  version: '1.01'
 -
   authors: 'Tim Van Wassenhove'
   contact: timvw@users.sourceforge.net
@@ -2489,7 +2489,7 @@
   modules: LWP::UserAgent
   name: myimdb
   url: http://home.mysth.be/~timvw
-  version: 1.01
+  version: '1.01'
 -
   authors: 'Riku Voipio, lite'
   contact: riku.voipio@iki.fi
@@ -2500,7 +2500,7 @@
   modules: DBI
   name: myssqlurllogger
   url: http://nchip.ukkosenjyly.mine.nu/irssiscripts/
-  version: 1.0
+  version: '1.0'
 -
   authors: BC-bd
   contact: bd@bc-bd.org
@@ -2542,7 +2542,7 @@
   modified: '2008-05-17 17:39:09'
   modules: 'LWP::UserAgent Unicode::String XML::RSS'
   name: Newsline
-  version: 2003021101
+  version: '2003021101'
 -
   authors: "Roeland 'Trancer' Nieuwenhuis"
   contact: irssi@trancer.nl
@@ -2551,7 +2551,7 @@
   license: 'Public Domain'
   modified: '2014-10-19 11:54:16'
   name: nickban
-  version: 1.1
+  version: '1.1'
 -
   authors: 'Timo Sirainen, Ian Peters, David Leadbeater'
   contact: tss@iki.fi
@@ -2561,7 +2561,7 @@
   modified: '2014-10-19 11:54:16'
   name: 'Nick Color'
   url: http://irssi.org/
-  version: 2
+  version: '2'
 -
   authors: "Kalle 'rpr' Marjola"
   contact: marjola@iki.fi
@@ -2571,7 +2571,7 @@
   modified: '2003-08-26 00:00:00'
   name: 'ignore (minimal) nick changes'
   url: http://iki.fi/rpr/irssi/nickignore.pl
-  version: 0.03
+  version: '0.03'
 -
   authors: 'Wouter Coekaerts'
   contact: coekie@irssi.org
@@ -2601,7 +2601,7 @@
   modified: '2008-05-17 17:39:09'
   name: nickmix
   url: http://pasky.ji.cz/~pasky/dev/irssi/
-  version: 1.2
+  version: '1.2'
 -
   authors: 'Geert Hauwaerts'
   contact: geert@irssi.org
@@ -2611,7 +2611,7 @@
   modified: '2014-10-19 11:54:16'
   name: nickserv.pl
   url: http://irssi.hauwaerts.be/nickserv.pl
-  version: 1.9
+  version: '1.9'
 -
   authors: BC-bd
   contact: bd@bc-bd.org
@@ -2641,7 +2641,7 @@
   modified: '2002-03-22 12:34:38'
   name: nocaps
   url: http://www.jamesoff.net
-  version: 1.01
+  version: '1.01'
 -
   authors: 'Marcin Rozycki'
   contact: derwan@irssi.pl
@@ -2671,7 +2671,7 @@
   modified: '2005-05-10 16:12:32'
   name: nopl
   url: http://www.gophi.rotfl.pl/
-  version: 1.00
+  version: '1.00'
 -
   authors: 'Marcin Rozycki'
   contact: derwan@irssi.pl
@@ -2681,7 +2681,7 @@
   modified: '2003-09-09 16:34:44'
   name: norepeat
   url: http://derwan.irssi.pl
-  version: 0.5
+  version: '0.5'
 -
   authors: vague
   contact: vague!#irssi\@freenode
@@ -2691,7 +2691,7 @@
   modified: '2015-01-18 02:15:41'
   modules: 'DBI DBM::Deep'
   name: notes
-  version: 0.31
+  version: '0.31'
 -
   authors: "Stefan 'tommie' Tomanek"
   contact: stefan@pico.ruhr.de
@@ -2700,7 +2700,7 @@
   license: GPLv2
   modified: '2008-05-17 17:39:11'
   name: NoteServ
-  version: 2002123101
+  version: '2002123101'
 -
   authors: 'Ben Klein, based on noticemove by Timo Sirainen'
   contact: shacklein@gmail.com
@@ -2710,7 +2710,7 @@
   modified: '2014-07-10 09:21:39'
   name: 'notice logic'
   url: http://irssi.org/
-  version: 2.0
+  version: '2.0'
 -
   authors: 'Timo Sirainen'
   contact: tss@iki.fi
@@ -2720,9 +2720,9 @@
   modified: '2014-10-19 11:54:16'
   name: 'notice move'
   url: http://irssi.org/
-  version: 1.01
+  version: '1.01'
 -
-  authors: "Johan \"Ion\" Kiviniemi"
+  authors: 'Johan "Ion" Kiviniemi'
   contact: 'ion at hassers.org'
   description: "Answers \"$nick: No.\" if you're away and someone asks are you online on a channel"
   filename: notonline.pl
@@ -2730,7 +2730,7 @@
   modified: '2002-03-12 22:20:00'
   name: NotOnline
   url: http://ion.amigafin.org/irssi/
-  version: 0.9
+  version: '0.9'
 -
   authors: Juerd
   contact: juerd@juerd.nl
@@ -2740,7 +2740,7 @@
   modified: '2002-03-10 02:14:00'
   name: 'Nothing at all'
   url: http://juerd.nl/irssi/
-  version: 1.00
+  version: '1.00'
 -
   authors: 'Ricardo Mesquita'
   contact: ricardomesquita@netcabo.pt
@@ -2770,7 +2770,7 @@
   modified: '2014-06-15 18:53:08'
   name: on.pl
   url: http://irssi.dgl.cx/
-  version: 1.12
+  version: '1.12'
 -
   authors: "Stefan 'tommie' Tomanek"
   commands: ontv
@@ -2781,7 +2781,7 @@
   modified: '2008-05-17 17:39:11'
   modules: 'HTML::Entities LWP::Simple'
   name: OnTV
-  version: 20050226
+  version: '20050226'
 -
   authors: ''
   contact: ''
@@ -2790,7 +2790,7 @@
   license: 'Public Domain'
   modified: '2008-05-25 14:29:31'
   name: oops
-  version: 20071209
+  version: '20071209'
 -
   authors: 'David Leadbeater'
   contact: dgl@dgl.cx
@@ -2800,7 +2800,7 @@
   modified: '2014-08-13 20:54:58'
   name: oopsie
   url: http://dgl.cx/irssi
-  version: 1.0
+  version: '1.0'
 -
   authors: "Stefan 'tommie' Tomanek"
   commands: openurl
@@ -2811,7 +2811,7 @@
   modified: '2008-05-17 17:39:11'
   name: OpenURL
   url: http://scripts.irssi.org
-  version: 20030208
+  version: '20030208'
 -
   authors: 'Petr Baudis'
   contact: pasky@ucw.cz
@@ -2821,7 +2821,7 @@
   modified: '2008-05-17 17:39:09'
   name: operit
   url: http://pasky.ji.cz/~pasky/dev/irssi/
-  version: 1.14
+  version: '1.14'
 -
   authors: 'Petr Baudis'
   contact: pasky@ji.cz
@@ -2831,16 +2831,16 @@
   modified: '2008-05-17 17:39:09'
   name: operview
   url: http://pasky.ji.cz/~pasky/dev/irssi/
-  version: 1.11
+  version: '1.11'
 -
-  authors: "Terje \"xerath\" Tjeldnes"
+  authors: 'Terje "xerath" Tjeldnes'
   contact: terje@darkrealm.no
   filename: opnotice.pl
   license: 'GNU GPL v2'
   modified: '2014-10-19 11:54:16'
   name: Opnotice
   url: http://palantir.darkrealm.no/opnotice.pl
-  version: 0.1
+  version: '0.1'
 -
   authors: "Maciek 'fahren' Freudenheim"
   contact: fahren@bochnia.pl
@@ -2849,10 +2849,10 @@
   license: 'GNU GPLv2 or later'
   modified: '2002-03-15 15:09:42'
   name: opnotify
-  version: 1.0
+  version: '1.0'
 -
   authors: Wohmatak
-  commands: '/np'
+  commands: /np
   contact: wohmatak@iglu.cz
   description: 'Displays the song played by orpheus'
   filename: orphamp.pl
@@ -2860,7 +2860,7 @@
   modified: '2014-10-19 11:54:16'
   name: orphamp
   url: http://irssi.org/
-  version: 0.9
+  version: '0.9'
 -
   authors: 'Jeroen Coekaerts, Koenraad Heijlen'
   contact: 'vipie@ulyssis.org, jeroen@coekaerts.be'
@@ -2880,7 +2880,7 @@
   license: ''
   modified: '2008-05-25 14:29:31'
   name: ''
-  version: 20071209
+  version: '20071209'
 -
   authors: c0ffee
   contact: c0ffee@penguin-breeder.org
@@ -2890,7 +2890,7 @@
   modified: '2014-10-19 11:54:16'
   name: 'mIRC pager'
   url: http://www.penguin-breeder.org/?page=irssi
-  version: 0.02
+  version: '0.02'
 -
   authors: 'Thomas Graf'
   contact: irssi@reeler.org
@@ -2900,7 +2900,7 @@
   modified: '2014-10-19 11:54:16'
   name: page
   url: http://irssi.reeler.org/
-  version: 0.2
+  version: '0.2'
 -
   authors: 'Jean-Yves Lefort'
   contact: jylefort\@brutele.be
@@ -2909,7 +2909,7 @@
   license: BSD
   modified: '2014-10-19 11:54:16'
   name: pager
-  version: 1.1
+  version: '1.1'
 -
   authors: 'Marcin Rozycki, Stanislaw Halik'
   contact: derwan@irssi.pl
@@ -2919,11 +2919,11 @@
   modified: '2014-10-19 11:54:16'
   name: paste
   url: http://derwan.irssi.pl
-  version: 0.9
+  version: '0.9'
 -
   authors: 'Marcin Rozycki'
   contact: derwan@irssi.pl
-  description: "Pasting lines to specified targets, type \"/paste -help\" for help"
+  description: 'Pasting lines to specified targets, type "/paste -help" for help'
   filename: paste_derwan.pl
   license: 'GNU GPL v2'
   modified: '2004-11-13 14:32:13'
@@ -2939,7 +2939,7 @@
   modified: '2002-03-09 10:59:49'
   name: Paste
   url: http://the.earth.li/~huggie/irssi/
-  version: 0.5
+  version: '0.5'
 -
   authors: 'Kimmo Lehto'
   contact: kimmo@a-men.org
@@ -2948,7 +2948,7 @@
   license: 'Public Domain'
   modified: '2014-10-19 11:54:16'
   name: Paste-KimmoKe
-  version: 0.1
+  version: '0.1'
 -
   authors: Mankeli
   contact: mankeli@einari.org
@@ -2957,7 +2957,7 @@
   license: GNU/GPL
   modified: '2008-05-17 17:39:11'
   name: '#pelix Helpers'
-  version: 0.3
+  version: '0.3'
 -
   authors: "Marcin 'Qrczak' Kowalczyk, Johan 'ion' Kiviniemi"
   contact: qrczak@knm.org.pl
@@ -2968,7 +2968,7 @@
   modules: Crypt::PasswdMD5
   name: People
   url: http://qrnik.knm.org.pl/~qrczak/irc/people.pl
-  version: 1.7
+  version: '1.7'
 -
   authors: 'Wouter Coekaerts'
   contact: coekie@irssi.org
@@ -2978,7 +2978,7 @@
   modified: '2007-04-08 00:00:00'
   name: per_window_prompt
   url: http://wouter.coekaerts.be/irssi/
-  version: 1.0
+  version: '1.0'
 -
   authors: 'Adam Duck'
   contact: duck@cs.uni-frankfurt.de
@@ -2999,7 +2999,7 @@
   license: GPLv2
   modified: '2008-05-17 17:39:09'
   name: Poison
-  version: 2003020801
+  version: '2003020801'
 -
   authors: "Stefan 'tommie' Tomanek"
   commands: postpone
@@ -3009,7 +3009,7 @@
   license: GPLv2
   modified: '2008-05-17 17:39:11'
   name: postpone
-  version: 20030208
+  version: '20030208'
 -
   authors: "Maciek Freudenheim, Marco d'Itri"
   contact: 'fahren@bochnia.pl, md@linux.it'
@@ -3019,7 +3019,7 @@
   modified: '2008-05-17 17:39:09'
   name: ppl
   url: http://www.linux.it/~md/irssi/
-  version: 20020128
+  version: '20020128'
 -
   authors: 'Cyprien Debu'
   contact: frey@notk.org
@@ -3030,7 +3030,7 @@
   modules: 'Log::Procmail MIME::Words'
   name: procmaillog
   url: ''
-  version: 2.02
+  version: '2.02'
 -
   authors: "Teemu 'jamov' Koskinen"
   contact: teemu.koskinen@mbnet.fi
@@ -3039,7 +3039,7 @@
   license: 'Public Domain'
   modified: '2008-05-17 17:39:11'
   name: q_username
-  version: 0.1
+  version: '0.1'
 -
   authors: 'Doug Freed'
   contact: dwfreed!#irssi@freenode
@@ -3048,7 +3048,7 @@
   license: GPLv3+
   modified: '2014-08-23 12:23:44'
   name: qchallengeauth.pl
-  version: 1.0
+  version: '1.0'
 -
   authors: 'Peder Stray'
   contact: peder@ninja.no
@@ -3058,7 +3058,7 @@
   modified: '2009-04-25 11:27:28'
   name: query
   url: http://ninja.no/irssi/query.pl
-  version: 1.24
+  version: '1.24'
 -
   authors: "Stefan 'tommie' Tomanek"
   contact: stefan@pico.ruhr.de
@@ -3068,7 +3068,7 @@
   modified: '2014-10-19 11:54:16'
   modules: Date::Format
   name: QueryResume
-  version: 2003021201
+  version: '2003021201'
 -
   authors: 'Timo Sirainen'
   description: 'Random quit messages'
@@ -3076,7 +3076,7 @@
   license: 'Public Domain'
   modified: '2014-10-19 11:54:16'
   name: quitmsg
-  version: 1.00
+  version: '1.00'
 -
   authors: 'Fernando J. Pereda'
   contact: ferdy@ferdyx.org
@@ -3085,7 +3085,7 @@
   license: GPLv2
   modified: '2014-10-19 11:54:16'
   name: quitrand
-  version: 1.00
+  version: '1.00'
 -
   authors: 'Simon Huggins'
   contact: huggie-irssi@earth.li
@@ -3095,7 +3095,7 @@
   modified: '2002-04-24 01:12:01'
   name: Quiz
   url: http://the.earth.li/~huggie/irssi/
-  version: 0.7
+  version: '0.7'
 -
   authors: 'Athanasius Emilius Arvanitis based on Simon Huggins quiz 0.7'
   contact: arvan
@@ -3127,7 +3127,7 @@
   modified: '2008-06-16 10:14:51'
   name: quizmaster
   url: http://irssi.org/scripts/
-  version: 20030208
+  version: '20030208'
 -
   authors: 'Jakub Jankowski'
   contact: shasta@atn.pl
@@ -3137,7 +3137,7 @@
   modified: '2015-01-20 13:16:39'
   name: rainbow
   url: http://irssi.atn.pl/
-  version: 1.6
+  version: '1.6'
 -
   authors: 'Lasse Karstensen'
   contact: lkarsten@stud.ntnu.no
@@ -3147,16 +3147,16 @@
   modified: '2014-10-19 11:54:16'
   name: randaway.pl
   url: http://www.stud.ntnu.no/~lkarsten/irssi/
-  version: 1.13
+  version: '1.13'
 -
   authors: legion
   contact: a.lepore(at)email.it
-  description: "Random \"/set real_name\" taken from a file."
+  description: 'Random "/set real_name" taken from a file.'
   filename: randname.pl
   license: 'Public Domain'
   modified: '2014-10-19 11:54:16'
   name: RandName
-  version: 1.0
+  version: '1.0'
 -
   authors: 'Thomas Graf'
   contact: irssi@reeler.org
@@ -3166,7 +3166,7 @@
   modified: '2014-10-19 11:54:16'
   name: redirect
   url: http://irssi.reeler.org/
-  version: 0.1
+  version: '0.1'
 -
   authors: "Maciek 'fahren' Freudenheim"
   contact: fahren@bochnia.pl
@@ -3175,7 +3175,7 @@
   license: 'GNU GPLv2 or later'
   modified: '2014-10-19 11:54:16'
   name: 'REdirect Last Message'
-  version: 1.0
+  version: '1.0'
 -
   authors: 'David Leadbeater'
   contact: dgl@dgl.cx
@@ -3185,7 +3185,7 @@
   modified: '2014-10-19 11:54:16'
   name: remote
   url: http://irssi.dgl.cx/
-  version: 1
+  version: '1'
 -
   authors: 'Isaac G'
   contact: irssi@isaac.otherinbox.com
@@ -3213,7 +3213,7 @@
   modified: '2008-05-17 17:39:11'
   name: resize_split
   url: http://irssi.dgl.cx/
-  version: 1
+  version: '1'
 -
   authors: Fogel
   contact: fogel@fogel.netmark.pl
@@ -3223,7 +3223,7 @@
   modified: '2009-06-16 23:11:03'
   name: rhythmbox
   url: www.fogel.com.pl
-  version: 1.30
+  version: '1.30'
 -
   authors: "Maciek 'fahren' Freudenheim"
   contact: fahren@bochnia.pl
@@ -3232,7 +3232,7 @@
   license: 'GNU GPLv2 or later'
   modified: '2002-03-15 15:09:42'
   name: 'Random kicker'
-  version: 0.9
+  version: '0.9'
 -
   authors: 'Victor Ivanov'
   contact: v0rbiz@yahoo.com
@@ -3262,7 +3262,7 @@
   license: GPLv2
   modified: '2008-05-17 17:39:09'
   name: rot13
-  version: 2003121202
+  version: '2003121202'
 -
   authors: BC-bd
   contact: bd@bc-bd.org
@@ -3283,7 +3283,7 @@
   modules: 'HTML::Entities LWP::Simple'
   name: sana-cmd
   url: http://ion.amigafin.org/irssi/
-  version: 0.1
+  version: '0.1'
 -
   authors: 'Robert Scheck'
   commands: schwäbisch
@@ -3315,7 +3315,7 @@
   modules: LWP::UserAgent
   name: scriptassist
   url: http://irssi.org/scripts/
-  version: 2003020803
+  version: '2003020803'
 -
   authors: "Maciek 'fahren' Freudenheim"
   contact: fahren@bochnia.pl
@@ -3324,7 +3324,7 @@
   license: 'GNU GPLv2 or later'
   modified: '2014-10-24 23:01:30'
   name: 'Scripts help'
-  version: 0.9
+  version: '0.9'
 -
   authors: Juerd
   contact: juerd@juerd.nl
@@ -3334,7 +3334,7 @@
   modified: '2002-03-19 11:00:00'
   name: 'Script Information'
   url: http://juerd.nl/irssi/
-  version: 1.20
+  version: '1.20'
 -
   authors: 'jwz, irssified by Mikachu'
   contact: 'Mikachu @ freenode'
@@ -3343,7 +3343,7 @@
   license: 'as is'
   modified: '2008-05-17 17:39:11'
   name: scrmable
-  version: 1.01
+  version: '1.01'
 -
   authors: Demonen
   contact: demmydemon@gmail.com
@@ -3352,7 +3352,7 @@
   license: 'Public Domain'
   modified: '2008-05-17 17:39:09'
   name: scroller
-  version: 0.01
+  version: '0.01'
 -
   authors: "Jari Matilainen, a lot of code borrowed from whitelist.pl by David O'Rourke and Karl Siegemund"
   contact: 'vague`!#irssi@freenode on irc '
@@ -3361,7 +3361,7 @@
   license: GPLv2
   modified: '2014-08-07 02:00:52'
   name: securemsg
-  version: 2.1
+  version: '2.1'
 -
   authors: "Marcin 'Qrczak' Kowalczyk"
   contact: qrczak@knm.org.pl
@@ -3371,7 +3371,7 @@
   modified: '2008-05-17 17:39:11'
   name: Seen
   url: http://qrnik.knm.org.pl/~qrczak/irssi/seen.pl
-  version: 1.8
+  version: '1.8'
 -
   contact: 'Nei @ anti@conference.jabber.teamidiot.de'
   description: 'Scroll down on enter'
@@ -3380,7 +3380,7 @@
   modified: '2015-01-26 23:46:22'
   name: send_scroll
   url: http://anti.teamidiot.de/
-  version: 0.1
+  version: '0.1'
 -
   authors: 'David Leadbeater'
   contact: dgl@dgl.cx
@@ -3390,7 +3390,7 @@
   modified: '2014-10-24 23:01:30'
   name: servercomplete
   url: http://irssi.dgl.cx/
-  version: 2
+  version: '2'
 -
   authors: optical
   commands: '/seti <#channel>|<nick>'
@@ -3402,7 +3402,7 @@
   name: 'SETI@home info'
   note: 'Make sure you set the seti_state_sah with /set'
   url: http://optical.kapitalet.org/seti/
-  version: 0.1
+  version: '0.1'
 -
   authors: 'Marcin Rozycki'
   contact: derwan@irssi.pl
@@ -3423,7 +3423,7 @@
   modified: '2014-10-24 23:01:30'
   modules: 'LWP::Simple LWP::UserAgent'
   name: shorturl.pl
-  version: 20090904
+  version: '20090904'
 -
   authors: "Pawe³ 'Styx' Chuchma³a"
   contact: styx@irc.pl
@@ -3432,7 +3432,7 @@
   license: 'GNU GPLv2'
   modified: '2014-10-24 23:01:30'
   name: showhilight
-  version: 0.1
+  version: '0.1'
 -
   authors: 'Michiel v Vaardegem'
   contact: michielv@zeelandnet.nl
@@ -3441,7 +3441,7 @@
   license: GPL
   modified: '2003-12-08 19:23:51'
   name: showhost
-  version: 0.2
+  version: '0.2'
 -
   authors: 'Wouter Coekaerts'
   contact: wouter@coekaerts.be
@@ -3450,7 +3450,7 @@
   license: 'GPLv2 or later'
   modified: '2007-07-28 00:00:00'
   name: showmode
-  version: 0.3
+  version: '0.3'
 -
   authors: 'Lars Djerf'
   contact: lars.djerf@gmail.com
@@ -3459,7 +3459,7 @@
   license: GPLv3
   modified: '2015-01-03 19:42:44'
   name: slack_emoji
-  version: 0.03
+  version: '0.03'
 -
   authors: 'Christian Brassat'
   contact: crshd@mail.com
@@ -3469,7 +3469,7 @@
   modified: '2014-06-26 18:46:20'
   name: smartfilter.pl
   url: http://crshd.github.io
-  version: 0.1
+  version: '0.1'
 -
   authors: 'Jonne Piittinen'
   contact: jip@loota.org
@@ -3478,7 +3478,7 @@
   license: 'Public Domain'
   modified: '2008-05-17 17:39:11'
   name: Smiley
-  version: 0.69
+  version: '0.69'
 -
   authors: "Maciek 'fahren' Freudenheim"
   contact: fahren@bochnia.pl
@@ -3497,7 +3497,7 @@
   modified: '2002-04-06 17:57:28'
   modules: Net::SNMP
   name: snmpup
-  version: 2.00
+  version: '2.00'
 -
   authors: 'Daemon @ ircd.foxchat.net'
   description: 'Oper script to kill Spam Bots.'
@@ -3505,7 +3505,7 @@
   license: 'Public Domain'
   modified: '2008-05-17 17:39:09'
   name: 'Spam Bot Killer'
-  version: 1.2
+  version: '1.2'
 -
   authors: 'Wouter Coekaerts'
   contact: 'wouter@coekaerts.be, coekie@#irssi'
@@ -3515,7 +3515,7 @@
   modified: '2003-07-28 00:00:00'
   name: special_complete
   url: http://wouter.coekaerts.be/irssi/
-  version: 1.1
+  version: '1.1'
 -
   authors: 'Michael Kowalchuk'
   contact: michael_kowalchuk@umanitoba.ca
@@ -3526,7 +3526,7 @@
   modules: Lingua::Ispell
   name: spell
   url: http://home.cc.umanitoba.ca/~umkowa17/
-  version: 1.0
+  version: '1.0'
 -
   authors: 'Jakub Jankowski'
   contact: shasta@toxcorp.com
@@ -3537,7 +3537,7 @@
   modules: Text::Aspell
   name: Spellcheck
   url: http://toxcorp.com/irc/irssi/spellcheck/
-  version: 0.3
+  version: '0.3'
 -
   authors: "Maciek 'fahren' Freudenheim, David Leadbeater"
   contact: fahren@bochnia.pl
@@ -3546,7 +3546,7 @@
   license: 'GNU GPLv2 or later'
   modified: '2014-06-15 19:18:39'
   name: 'Server Ping'
-  version: 1.0
+  version: '1.0'
 -
   authors: "Bjoern 'fuchs' Krombholz"
   contact: bjkro@gmx.de
@@ -3555,7 +3555,7 @@
   license: 'Public Domain'
   modified: '2014-08-07 02:00:52'
   name: splitlong
-  version: 0.20
+  version: '0.20'
 -
   authors: 'Örjan Persson'
   contact: o@42mm.org
@@ -3566,7 +3566,7 @@
   modules: 'HTTP::Request HTTP::Request::Common JSON LWP::UserAgent URI'
   name: spotify
   url: https://github.com/op/irssi-spotify
-  version: 1.1
+  version: '1.1'
 -
   authors: "Marcus 'darix' Rückert, tira, Stefan 'tommie' Tomanek"
   contact: 'darix@irssi.de, tira@isx.de, stefan@pico.ruhr.de'
@@ -3577,7 +3577,7 @@
   modules: 'HTML::Entities LWP::Simple'
   name: stocks
   url: http://irssi.org/scripts/
-  version: 0.9
+  version: '0.9'
 -
   authors: 'Enno Boland'
   contact: g@s01.de
@@ -3586,7 +3586,7 @@
   license: GPL
   modified: '2010-07-08 23:39:58'
   name: studivz-bitlbee-rename
-  version: 0.01
+  version: '0.01'
 -
   authors: 'Marcin Rozycki'
   contact: derwan@irssi.pl
@@ -3606,7 +3606,7 @@
   modified: '2014-10-24 23:01:30'
   name: SysInfo
   url: http://www.inexistent.com/
-  version: 2.70
+  version: '2.70'
 -
   authors: 'David Rudie'
   contact: david@inexistent.com
@@ -3616,7 +3616,7 @@
   modified: '2014-10-24 23:01:30'
   name: SysInfo
   url: http://www.inexistent.com/
-  version: 2.77
+  version: '2.77'
 -
   authors: 'David Leadbeater'
   contact: dgl@dgl.cx
@@ -3626,7 +3626,7 @@
   modified: '2015-01-10 18:02:02'
   name: sysinfo-dg
   url: http://irssi.dgl.cx/
-  version: 1.3
+  version: '1.3'
 -
   authors: 'Juerd, Tronic'
   contact: trn@iki.fi
@@ -3636,7 +3636,7 @@
   modified: '2002-11-04 15:17:30'
   name: SysinfoPlus
   url: http://juerd.nl/irssi/
-  version: 2.20
+  version: '2.20'
 -
   authors: "Stefan 'tommie' Tomanek"
   contact: stefan@pico.ruhr.de
@@ -3645,7 +3645,7 @@
   license: GPLv2
   modified: '2008-05-17 17:39:11'
   name: tab_stop
-  version: 2002123102
+  version: '2002123102'
 -
   authors: 'Alexander Mieland'
   contact: dma147\@mieland-programming.de
@@ -3654,7 +3654,7 @@
   license: GPL2
   modified: '2014-10-24 23:01:30'
   name: Talk
-  version: 1.01
+  version: '1.01'
 -
   authors: "Stefan 'tommie' Tomanek"
   commands: target
@@ -3665,7 +3665,7 @@
   modified: '2008-05-17 17:39:09'
   name: Target
   url: http://scripts.irssi.org
-  version: 2003020801
+  version: '2003020801'
 -
   authors: BC-bd
   contact: bd@bc-bd.org
@@ -3685,7 +3685,7 @@
   modified: '2014-10-24 23:01:30'
   name: 'topic history'
   url: http://www.iki.fi/temex/
-  version: 1.05
+  version: '1.05'
 -
   authors: 'Kimmo Lehto, Marcus Rueckert'
   contact: 'kimmo@a-men.org, darix@irssi.org'
@@ -3694,7 +3694,7 @@
   license: 'Public Domain'
   modified: '2014-09-14 22:49:20'
   name: Timer
-  version: 0.5
+  version: '0.5'
 -
   authors: 'Jari Matilainen'
   contact: 'irc: vague`@freenode'
@@ -3705,7 +3705,7 @@
   modules: DateTime
   name: timezones
   url: http://vague.se
-  version: 0.1
+  version: '0.1'
 -
   authors: Atoms
   contact: atoms@tups.lv
@@ -3715,7 +3715,7 @@
   modified: '2008-08-29 13:51:48'
   modules: LWP::UserAgent
   name: tinyurl
-  version: 1.0
+  version: '1.0'
 -
   authors: 'Timo Sirainen, David Leadbeater'
   contact: 'tss@iki.fi, dgl@dgl.cx'
@@ -3734,7 +3734,7 @@
   license: 'GNU GPLv2 or later'
   modified: '2002-03-15 15:09:42'
   name: 'Topic Lock'
-  version: 1.1
+  version: '1.1'
 -
   authors: 'John C. Vernaleo'
   contact: john@netpurgatory.com
@@ -3744,7 +3744,7 @@
   modified: '2015-01-18 02:15:41'
   name: tmux_away
   url: http://www.netpurgatory.com/tmux_away.html
-  version: 2.0
+  version: '2.0'
 -
   authors: "Stefan 'tommie' Tomanek"
   commands: topics
@@ -3755,7 +3755,7 @@
   modified: '2008-05-17 17:39:11'
   name: topics
   url: http://irssi.org/scripts/
-  version: 2003020801
+  version: '2003020801'
 -
   authors: 'Gabor Nyeki'
   contact: bigmac@vim.hu
@@ -3767,7 +3767,7 @@
 -
   authors: "Sebastian 'yath' Schmidt"
   contact: yath+irssiscripts@yath.de
-  description: "This script will automatically detect people using the Tor anonymity network and append \".TOR\" to their hostname, to make things like /ignore -time 3600 *!*@*.TOR possible (e.g. when your favourite channel gets flooded)."
+  description: 'This script will automatically detect people using the Tor anonymity network and append ".TOR" to their hostname, to make things like /ignore -time 3600 *!*@*.TOR possible (e.g. when your favourite channel gets flooded).'
   filename: tordetect.pl
   license: 'Public domain'
   modified: '2008-06-16 10:12:13'
@@ -3783,7 +3783,7 @@
   modified: '2015-01-18 02:15:41'
   name: trackbar
   url: http://github.com/mjholtkamp/irssi-trackbar/
-  version: 1.7
+  version: '1.7'
 -
   authors: 'Timo Sirainen'
   contact: tss@iki.fi
@@ -3793,7 +3793,7 @@
   modified: '2014-10-24 23:01:30'
   name: 'track nick'
   url: http://irssi.org/
-  version: 0.01
+  version: '0.01'
 -
   authors: dreg
   contact: dreg@fine.lv
@@ -3811,7 +3811,7 @@
   modified: '2006-01-23 13:10:19'
   name: trigger
   url: http://wouter.coekaerts.be/irssi/
-  version: 1.0
+  version: '1.0'
 -
   authors: "Stefan 'tommie' Tomanek"
   commands: trustweb
@@ -3821,7 +3821,7 @@
   license: GPLv2
   modified: '2008-05-17 17:39:11'
   name: TrustWeb
-  version: 2003020801
+  version: '2003020801'
 -
   authors: 'Gabor Nyeki'
   contact: bigmac@home.sirklabs.hu
@@ -3839,7 +3839,7 @@
   modified: '2014-11-10 12:02:36'
   name: 'Twitter Theme'
   url: http://github.com/samstoller/irssi-twitter-theme
-  version: 0.4
+  version: '0.4'
 -
   authors: 'John Engelbrecht'
   contact: jengelbr@yahoo.com
@@ -3849,7 +3849,7 @@
   modified: '2014-10-24 23:01:30'
   name: twprompt.pl
   url: "http://irssi.darktalker.net\n"
-  version: 1.00
+  version: '1.00'
 -
   authors: 'John Engelbrecht'
   contact: jengelbr@yahoo.com
@@ -3860,7 +3860,7 @@
   modules: DBI
   name: twsocials.pl
   url: http://irssi.darktalker.net/
-  version: 1.02
+  version: '1.02'
 -
   authors: 'John Engelbrecht'
   contact: jengelbr@yahoo.com
@@ -3870,7 +3870,7 @@
   modified: '2014-10-24 23:01:30'
   name: twtopic.pl
   url: "http://irssi.darktalker.net\n"
-  version: 1.01
+  version: '1.01'
 -
   authors: Michiel
   contact: michiel@dotgeek.org
@@ -3880,7 +3880,7 @@
   modified: '2014-10-24 23:01:30'
   name: 'List nicks in channel'
   url: http://otoria.freecode.nl/~michiel/u.pl
-  version: 1.3
+  version: '1.3'
 -
   authors: 'David Leadbeater'
   contact: dgl@dgl.cx
@@ -3890,7 +3890,7 @@
   modified: '2014-10-13 14:00:00'
   name: unicode
   url: http://dgl.cx/irssi
-  version: 2
+  version: '2'
 -
   authors: 'Peder Stray'
   contact: peder@ninja.no
@@ -3900,7 +3900,7 @@
   modified: '2008-05-17 17:39:09'
   name: upgradeinfo
   url: http://ninja.no/irssi/upgradeinfo.pl
-  version: 1.7
+  version: '1.7'
 -
   authors: 'Ivo Schooneman'
   contact: ivo@schooneman.net
@@ -3911,7 +3911,7 @@
   modules: Text::UpsideDown
   name: upsidedown
   url: https://github.com/Ivo-tje/Irssi-plugin-upsidedown
-  version: 0.2
+  version: '0.2'
 -
   authors: 'Peder Stray'
   contact: peder@ninja.no
@@ -3921,7 +3921,7 @@
   modified: '2014-10-24 23:01:30'
   name: uptime
   url: http://ninja.no/irssi/uptime.pl
-  version: 1.6
+  version: '1.6'
 -
   authors: 'Thomas Graf'
   contact: irssi@reeler.org
@@ -3932,7 +3932,7 @@
   modules: 'DBI HTTP::Status LWP LWP::UserAgent'
   name: url_log
   url: http://irssi.reeler.org/url/
-  version: 0.2
+  version: '0.2'
 -
   authors: 'Jakub Jankowski'
   contact: shasta@toxcorp.com
@@ -3943,7 +3943,7 @@
   modules: XML::RSS
   name: URLfeed
   url: http://toxcorp.com/irc/irssi/urlfeed/
-  version: 1.28
+  version: '1.28'
 -
   authors: 'David Leadbeater'
   contact: dgl@dgl.cx
@@ -3953,7 +3953,7 @@
   modified: '2014-10-24 23:01:30'
   name: urlgrab
   url: http://irssi.dgl.cx/
-  version: 0.2
+  version: '0.2'
 -
   authors: 'David Leadbeater'
   contact: dgl@dgl.cx
@@ -3964,7 +3964,7 @@
   modules: 'HTML::TreeBuilder URI'
   name: urlinfo
   url: http://dgl.cx/irssi
-  version: 1.3
+  version: '1.3'
 -
   authors: bwolf
   contact: bwolf@geekmind.org
@@ -3974,7 +3974,7 @@
   modified: '2014-10-24 23:01:30'
   name: urlplot
   url: http://www.geekmind.net
-  version: 1.2
+  version: '1.2'
 -
   authors: 'David Leadbeater, Timo Sirainen, Georg Lukas'
   contact: 'dgl@dgl.cx, tss@iki.fi, georg@boerde.de'
@@ -3984,7 +3984,7 @@
   modified: '2014-10-24 23:01:30'
   name: usercount
   url: http://irssi.dgl.cx/
-  version: 1.19
+  version: '1.19'
 -
   authors: 'Jean-Yves Lefort'
   contact: 'jylefort\@brutele.be, decadix on IRCNet'
@@ -3994,7 +3994,7 @@
   modified: '2014-10-24 23:01:30'
   name: userhost
   url: http://void.adminz.be/irssi.shtml
-  version: 0.23
+  version: '0.23'
 -
   authors: 'Jean-Yves Lefort'
   contact: 'jylefort\@brutele.be, decadix on IRCnet'
@@ -4003,7 +4003,7 @@
   license: BSD
   modified: '2014-10-24 23:01:30'
   name: users
-  version: 2.3
+  version: '2.3'
 -
   authors: c0ffee
   contact: c0ffee@penguin-breeder.org
@@ -4013,7 +4013,7 @@
   modified: '2014-10-24 23:01:30'
   name: version-stats
   url: http://www.penguin-breeder.org/?page=irssi
-  version: 0.1
+  version: '0.1'
 -
   authors: "Stefan 'tommie' Tomanek"
   commands: verstats
@@ -4024,9 +4024,9 @@
   modified: '2008-05-17 17:39:11'
   name: VerStats
   url: http://scripts.irssi.org
-  version: 20030208
+  version: '20030208'
 -
-  authors: "Olof \"zibri\" Johansson, Cyprien Debu"
+  authors: 'Olof "zibri" Johansson, Cyprien Debu'
   contact: 'olof@ethup.se, frey@notk.org'
   description: 'Prints some info of a linked video automatically'
   filename: vidinfo.pl
@@ -4034,7 +4034,7 @@
   modified: '2014-07-05 17:57:51'
   modules: 'HTML::Entities JSON::Parse LWP::UserAgent Regexp::Common URI URI::QueryParam XML::Simple'
   name: vidinfo
-  version: 1.00
+  version: '1.00'
 -
   authors: 'Jakub Jankowski'
   contact: shasta@atn.pl
@@ -4044,7 +4044,7 @@
   modified: '2008-05-17 17:39:11'
   name: vowels
   url: http://irssi.atn.pl/
-  version: 1.0
+  version: '1.0'
 -
   authors: "Matti 'qvr' Hiljanen, Piotr 'Pieta' Szymanski"
   commands: wa
@@ -4075,7 +4075,7 @@
   modified: '2002-04-12 14:44:11'
   name: washnicks
   url: n/a
-  version: 1.01
+  version: '1.01'
 -
   authors: ThEbUtChE
   contact: thebutche@interec.org
@@ -4085,7 +4085,7 @@
   modified: '2014-10-24 23:01:30'
   name: 'Watch script'
   url: http://www.nebulosa.org
-  version: 1.0
+  version: '1.0'
 -
   authors: GrayWolf
   contact: graywolf@i-differ.net
@@ -4095,7 +4095,7 @@
   modified: '2014-10-24 23:01:30'
   modules: Geo::Weather
   name: Weather.pl
-  version: 2.3
+  version: '2.3'
 -
   authors: "David O'Rourke, Karl Siegemund"
   contact: 'phyber [at] #irssi, q [at] spuk.de'
@@ -4104,7 +4104,7 @@
   license: GPLv2
   modified: '2014-08-07 02:00:52'
   name: whitelist
-  version: 1.0
+  version: '1.0'
 -
   authors: "Maciek 'fahren' Freudenheim"
   contact: fahren@bochnia.pl
@@ -4113,7 +4113,7 @@
   license: 'GNU GPLv2 or later'
   modified: '2002-03-15 15:09:42'
   name: cwhois
-  version: 1.0
+  version: '1.0'
 -
   authors: 'Michael Kowalchuk'
   contact: michael_kowalchuk@umanitoba.ca
@@ -4123,7 +4123,7 @@
   modified: '2005-12-24 00:00:00'
   name: whois_hexip
   url: http://home.cc.umanitoba.ca/~umkowa17/junk/whois_hexip.pl
-  version: 1.4
+  version: '1.4'
 -
   authors: 'Erik Fears'
   contact: strtok@softhome.net
@@ -4132,7 +4132,7 @@
   license: GPL
   modified: '2008-05-17 17:39:09'
   name: whos
-  version: 1.00
+  version: '1.00'
 -
   authors: 'Leszek Matok'
   contact: lam@lac.pl
@@ -4151,9 +4151,9 @@
   modified: '2007-07-29 00:00:00'
   name: window_switcher
   url: http://wouter.coekaerts.be/irssi/
-  version: 1.0
+  version: '1.0'
 -
-  authors: "Trevor \"tee\" Slocum"
+  authors: 'Trevor "tee" Slocum'
   contact: tslocum@gmail.com
   description: 'Goto a window by its reference number with /##'
   filename: winnum.pl
@@ -4170,7 +4170,7 @@
   license: 'Public Domain'
   modified: '2006-04-12 22:46:00'
   name: wisestamp
-  version: 1.1
+  version: '1.1'
 -
   authors: "Matti 'qvr' Hiljanen"
   contact: matti@hiljanen.com
@@ -4180,7 +4180,7 @@
   modified: '2014-10-24 23:01:30'
   name: wkb
   url: http://matin.maapallo.org/softa/irssi
-  version: 1.1
+  version: '1.1'
 -
   authors: 'Jesper Lindh'
   contact: rakblad@midgard.liu.se
@@ -4191,7 +4191,7 @@
   modules: DBI
   name: 'IRC Completion with mysql-database'
   url: http://midgard.liu.se/~n02jesli/perl/
-  version: 0.1
+  version: '0.1'
 -
   authors: 'Koenraad Heijlen'
   contact: vipie@ulyssis.org
@@ -4210,9 +4210,9 @@
   license: 'GNU GPLv2 or later'
   modified: '2014-10-24 23:01:30'
   name: xauth
-  version: 1.02
+  version: '1.02'
 -
-  authors: "Clément \"nodens\" Hermann"
+  authors: 'Clément "nodens" Hermann'
   commands: xcmd
   contact: clement.hermann@free.fr
   description: "makes Undernet's X commands easier and faster to use"
@@ -4220,7 +4220,7 @@
   license: GPLv2
   modified: '2008-05-17 17:39:11'
   name: Xcmd
-  version: 0.2
+  version: '0.2'
 -
   authors: "Stefan 'tommie' Tomanek"
   commands: xdccget
@@ -4230,7 +4230,7 @@
   license: GPLv2
   modified: '2008-05-17 17:39:09'
   name: XDCCget
-  version: 20040509
+  version: '20040509'
 -
   authors: "Stefan 'tommie' Tomanek"
   commands: xetra
@@ -4241,7 +4241,7 @@
   modified: '2008-05-17 17:39:11'
   modules: LWP::Simple
   name: Xetra
-  version: 20030208
+  version: '20030208'
 -
   authors: "Matthäus 'JonnyBG' Wander"
   contact: jbg@swznet.de
@@ -4251,7 +4251,7 @@
   modified: '2008-05-17 17:39:09'
   name: xlist
   url: http://jbg.swznet.de/xlist/
-  version: 1.00
+  version: '1.00'
 -
   authors: 'Simon Shine'
   contact: simon@blueshell.dk
@@ -4260,10 +4260,10 @@
   license: 'Public Domain'
   modified: '2015-01-18 02:15:41'
   name: xmms
-  version: 2.0
+  version: '2.0'
 -
   authors: simon
-  commands: '/np'
+  commands: /np
   contact: simon\@blueshell.dk
   description: 'Returns XMMS-InfoPipe data'
   filename: xmms2.pl
@@ -4283,7 +4283,7 @@
   modules: Irssi::XMMSInfo
   name: XMMSInfo
   url: http://shakti.tky.hut.fi/stuff.xml#irssi
-  version: 1.01
+  version: '1.01'
 -
   authors: mizerou
   commands: xqf
@@ -4294,4 +4294,4 @@
   modified: '2014-10-24 23:01:30'
   name: XQF
   url: none
-  version: 0.14
+  version: '0.14'
