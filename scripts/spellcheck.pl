@@ -60,7 +60,7 @@ use vars qw($VERSION %IRSSI);
 use Irssi 20070804;
 use Text::Aspell;
 
-$VERSION = '0.3';
+$VERSION = '0.4';
 %IRSSI = (
     authors     => 'Jakub Jankowski',
     contact     => 'shasta@toxcorp.com',
@@ -171,10 +171,11 @@ sub spellcheck_key_pressed
     my $inputline = Irssi::parse_special('$L');
 
     # check if inputline starts with any of cmdchars
-    # we shouldn't spellcheck commands
+    # or contains protocols, we shouldn't spellcheck either
     my $cmdchars = Irssi::settings_get_str('cmdchars');
-    my $re = qr/^[$cmdchars]/;
-    return if ($inputline =~ $re);
+    my $cmdre = qr/^[$cmdchars]/;
+    my $protocolre = qr/[a-zA-Z]+:\/\/\S+/;
+    return if ($inputline =~ $cmdre or $inputline =~ $protocolre);
 
     # get last bit from the inputline
     my ($word) = $inputline =~ /\s*([^\s]+)$/;
