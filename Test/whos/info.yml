@@ -6,4 +6,4 @@
   description: 'This script allows you to view all users on a specific server.'
   license: GPL
   name: whos
-  version: 1.00
+  version: '1.00'

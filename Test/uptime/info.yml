@@ -9,4 +9,4 @@
   name: uptime
   sbitems: uptime
   url: http://ninja.no/irssi/uptime.pl
-  version: 1.6
+  version: '1.6'

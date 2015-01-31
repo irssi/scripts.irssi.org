@@ -11,4 +11,4 @@
     - Socket6
   name: hostname
   url: http://void.adminz.be/irssi.shtml
-  version: 1.01
+  version: '1.01'

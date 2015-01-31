@@ -10,4 +10,4 @@
     - DBI
     - DBM::Deep
   name: notes
-  version: 0.31
+  version: '0.31'

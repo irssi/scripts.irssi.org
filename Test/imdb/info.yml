@@ -10,4 +10,4 @@
     - LWP::UserAgent
   name: imdb
   url: http://xyrion.org/irssi/
-  version: 1.01
+  version: '1.01'

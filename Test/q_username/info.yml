@@ -6,4 +6,4 @@
   description: 'Prints the Q username in right format'
   license: 'Public Domain'
   name: q_username
-  version: 0.1
+  version: '0.1'

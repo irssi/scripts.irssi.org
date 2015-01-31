@@ -1,6 +1,6 @@
 ---
 -
-  authors: "Olof \"zibri\" Johansson, Cyprien Debu"
+  authors: 'Olof "zibri" Johansson, Cyprien Debu'
   changed: 2014-07
   contact: 'olof@ethup.se, frey@notk.org'
   default_package: vidinfo
@@ -16,4 +16,4 @@
     - URI::QueryParam
     - XML::Simple
   name: vidinfo
-  version: 1.00
+  version: '1.00'

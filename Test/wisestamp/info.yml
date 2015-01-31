@@ -7,4 +7,4 @@
   description: 'If timestamp_timeout is used, the text will be indented when the stamp is hidden'
   license: 'Public Domain'
   name: wisestamp
-  version: 1.1
+  version: '1.1'

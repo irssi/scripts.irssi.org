@@ -9,4 +9,4 @@
     - Text::Aspell
   name: Spellcheck
   url: http://toxcorp.com/irc/irssi/spellcheck/
-  version: 0.3
+  version: '0.3'

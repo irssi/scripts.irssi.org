@@ -1,7 +1,7 @@
 ---
 -
   authors: "Stefan 'tommie' Tomanek"
-  changed: 20030208
+  changed: '20030208'
   commands: quizmaster
   contact: stefan@pico.ruhr.de
   default_package: quizmaster
@@ -10,4 +10,4 @@
   modules: Data::Dumper
   name: quizmaster
   url: http://irssi.org/scripts/
-  version: 20030208
+  version: '20030208'

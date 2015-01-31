@@ -7,4 +7,4 @@
   description: 'Filters msgs which appear the same on different channels.'
   license: GPLv2
   name: doublefilter
-  version: 0.3
+  version: '0.3'

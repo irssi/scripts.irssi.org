@@ -1,6 +1,6 @@
 ---
 -
-  authors: "Dmitry \"jsn\" Kim"
+  authors: 'Dmitry "jsn" Kim'
   changed: 2004-09-10
   changes: 'initial version'
   contact: jason@nichego.net
@@ -10,4 +10,4 @@
   modified: '2014-10-17 22:54:13'
   name: ignore_log
   url: http://
-  version: 0.1
+  version: '0.1'

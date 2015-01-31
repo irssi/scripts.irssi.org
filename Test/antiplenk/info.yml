@@ -4,7 +4,7 @@
   changed: 'Mi 12 Feb 2003 07:00:05 CET'
   contact: greg@chown.ath.cx
   default_package: antiplenk
-  description: "notices users who \"plenk\""
+  description: 'notices users who "plenk"'
   license: BSD
   name: antiplenk
   url: http://chown.ath.cx/~greg/antiplenk/

@@ -1,7 +1,7 @@
 ---
 -
   authors: "Stefan 'tommie' Tomanek"
-  changed: 2003020801
+  changed: '2003020801'
   commands: bestoiber
   contact: stefan@pico.ruhr.de
   default_package: bestoiber
@@ -10,4 +10,4 @@
   modules: ''
   name: BeStoiber
   url: ''
-  version: 2003020801
+  version: '2003020801'

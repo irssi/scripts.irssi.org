@@ -6,4 +6,4 @@
   description: 'Prints the timestamp in binary format'
   license: GPL
   name: binary_time
-  version: 20060826
+  version: '20060826'

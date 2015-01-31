@@ -7,4 +7,4 @@
   description: "This script allows you to greet the channel You're joining with the command /hello. The text it shows depends on the time you're living."
   license: GPL2
   name: Greeter
-  version: 1.00
+  version: '1.00'

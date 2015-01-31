@@ -4,8 +4,8 @@
   changed: 'Sat Dec  6 12:28:04 CET 2003'
   contact: a.lepore(at)email.it
   default_package: randname
-  description: "Random \"/set real_name\" taken from a file."
+  description: 'Random "/set real_name" taken from a file.'
   license: 'Public Domain'
   modified: '2014-10-19 11:54:16'
   name: RandName
-  version: 1.0
+  version: '1.0'

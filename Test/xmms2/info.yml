@@ -2,7 +2,7 @@
 -
   authors: simon
   changed: 'Mon Nov 27 18:00:00 CET 2006'
-  commands: '/np'
+  commands: /np
   contact: simon\@blueshell.dk
   default_package: xmms2
   description: 'Returns XMMS-InfoPipe data'

@@ -1,7 +1,7 @@
 ---
 -
   authors: "Stefan 'tommie' Tomanek"
-  changed: 2003020801
+  changed: '2003020801'
   commands: trustweb
   contact: stefan@pico.ruhr.de
   default_package: trustweb
@@ -9,4 +9,4 @@
   license: GPLv2
   modules: 'Data::Dumper IO::File POSIX'
   name: TrustWeb
-  version: 2003020801
+  version: '2003020801'

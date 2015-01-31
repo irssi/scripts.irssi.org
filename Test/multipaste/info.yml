@@ -1,7 +1,7 @@
 ---
 -
   authors: "Stefan 'tommie' Tomanek"
-  changed: 2003120617
+  changed: '2003120617'
   commands: multipaste
   contact: stefan@pico.ruhr.de
   default_package: multipaste
@@ -10,4 +10,4 @@
   modules: ''
   name: multipaste
   url: ''
-  version: 2003120617
+  version: '2003120617'

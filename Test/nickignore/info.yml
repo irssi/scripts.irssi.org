@@ -8,4 +8,4 @@
   license: 'Public Domain'
   name: 'ignore (minimal) nick changes'
   url: http://iki.fi/rpr/irssi/nickignore.pl
-  version: 0.03
+  version: '0.03'

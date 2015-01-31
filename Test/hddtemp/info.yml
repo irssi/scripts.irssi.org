@@ -8,4 +8,4 @@
   name: hddtemp
   sbitems: hddtemp
   url: http://hurzelgnom.bei.t-online.de/irssi/scripts/hddtemp.pl
-  version: 0.14
+  version: '0.14'

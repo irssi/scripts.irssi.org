@@ -1,10 +1,10 @@
 ---
 -
-  authors: 'Timo Sirainen & Jostein KjÃ¸nigsen'
+  authors: 'Timo Sirainen & Jostein Kjønigsen'
   changed: 'Fri Nov 24 12:55 GMT+1 2014'
   default_package: autoop
   description: 'Simple auto-op script'
   license: 'Public Domain'
   modified: '2014-10-24 12:54:12'
   name: autoop
-  version: 1.10
+  version: '1.10'

@@ -1,10 +1,10 @@
 ---
 -
   authors: "Stefan 'tommie' Tomanek"
-  changed: 2003010201
+  changed: '2003010201'
   contact: stefan@pico.ruhr.de
   default_package: anotherway
   description: 'Another auto away script'
   license: GPLv2
   name: anotherway
-  version: 2003010201
+  version: '2003010201'

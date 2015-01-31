@@ -8,4 +8,4 @@
   modules:
     - Geo::Weather
   name: Weather.pl
-  version: 2.3
+  version: '2.3'

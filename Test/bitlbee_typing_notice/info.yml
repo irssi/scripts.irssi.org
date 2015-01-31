@@ -1,10 +1,10 @@
 ---
 -
-  authors: "Tijmen \"timing\" Ruizendaal, Matt \"f0rked\" Sparks"
+  authors: 'Tijmen "timing" Ruizendaal, Matt "f0rked" Sparks'
   changed: 2010-08-09
   contact: 'tijmen.ruizendaal@gmail.com, root@f0rked.com'
   default_package: bitlbee_typing_notice
-  description: '1. Adds an item to the status bar wich shows [typing] when someone is typing a message on the supported IM-networks	2. Sends typing notices to the supported IM networks (the other way arround). (For bitlbee 3.0+)'
+  description: "1. Adds an item to the status bar wich shows [typing] when someone is typing a message on the supported IM-networks\t2. Sends typing notices to the supported IM networks (the other way arround). (For bitlbee 3.0+)"
   license: GPLv2
   name: BitlBee_typing_notice
   url: 'http://the-timing.nl/stuff/irssi-bitlbee, http://f0rked.com'

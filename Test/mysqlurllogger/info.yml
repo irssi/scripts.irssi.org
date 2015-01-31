@@ -10,4 +10,4 @@
     - DBI
   name: myssqlurllogger
   url: http://nchip.ukkosenjyly.mine.nu/irssiscripts/
-  version: 1.0
+  version: '1.0'

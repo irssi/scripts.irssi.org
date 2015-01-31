@@ -1,7 +1,7 @@
 ---
 -
   authors: "Christian 'mordeth' Weber"
-  changed: 20020821
+  changed: '20020821'
   contact: chris@mac.ruhr.de
   default_package: autoversion
   description: 'Auto-CTCP Verison on every joining nick'

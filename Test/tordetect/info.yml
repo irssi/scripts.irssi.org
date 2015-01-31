@@ -3,7 +3,7 @@
   authors: "Sebastian 'yath' Schmidt"
   contact: yath+irssiscripts@yath.de
   default_package: tordetect
-  description: "This script will automatically detect people using the Tor anonymity network and append \".TOR\" to their hostname, to make things like /ignore -time 3600 *!*@*.TOR possible (e.g. when your favourite channel gets flooded)."
+  description: 'This script will automatically detect people using the Tor anonymity network and append ".TOR" to their hostname, to make things like /ignore -time 3600 *!*@*.TOR possible (e.g. when your favourite channel gets flooded).'
   license: 'Public domain'
   modules:
     - Net::DNS

@@ -9,4 +9,4 @@
   modules: Digest::MD5
   name: identify-md5
   url: http://xyrion.org/irssi/
-  version: 1.05
+  version: '1.05'

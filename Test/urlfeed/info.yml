@@ -11,4 +11,4 @@
     - XML::RSS
   name: URLfeed
   url: http://toxcorp.com/irc/irssi/urlfeed/
-  version: 1.28
+  version: '1.28'

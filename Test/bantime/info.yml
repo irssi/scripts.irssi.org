@@ -9,4 +9,4 @@
   modules:
     - Time::Duration
   name: bantime
-  version: 0.5
+  version: '0.5'

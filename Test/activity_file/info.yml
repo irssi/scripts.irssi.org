@@ -6,4 +6,4 @@
   description: 'Maintains a representation of window activity status in a file'
   license: 'GNU General Public License'
   name: activity_file
-  version: 1.00
+  version: '1.00'

@@ -9,4 +9,4 @@
   modules:
     - Net::SNMP
   name: snmpup
-  version: 2.00
+  version: '2.00'

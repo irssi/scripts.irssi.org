@@ -1,6 +1,6 @@
 ---
 -
-  authors: "Joost \"Garion\" Vunderink"
+  authors: 'Joost "Garion" Vunderink'
   contact: joost@carnique.nl
   default_package: centericq
   description: 'Staturbar item which indicates how many new messages you have in your centericq'

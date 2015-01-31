@@ -12,4 +12,4 @@
     - Email::Simple::Creator
   name: email_privmsgs
   url: http://git.pulsewidth.org.uk/?p=irssi-scripts.git;a=summary
-  version: 0.5
+  version: '0.5'

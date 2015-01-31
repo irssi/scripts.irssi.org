@@ -1,6 +1,6 @@
 ---
 -
-  authors: 'Mantas MikulÄnas'
+  authors: 'Mantas Mikulėnas'
   contact: grawity@gmail.com
   default_package: auth_quakenet
   description: "Implements QuakeNet's CHALLENGE authentication"
@@ -11,4 +11,4 @@
     - Digest::SHA1
   name: auth_quakenet_challenge.pl
   url: http://purl.net/net/grawity/irssi.html
-  version: 1.0
+  version: '1.0'

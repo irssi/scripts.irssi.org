@@ -4,7 +4,7 @@
   changed: 'Tue Nov 19 18:11:09 CET 2002'
   contact: fahren@bochnia.pl
   default_package: ban
-  description: "/BAN [channel] [-normal|-host|-user|-domain|-crap|-ip|-class -before|-after \"cmd\" nick|mask] ... - bans several nicks/masks on channel, removes any conflicting bans before banning"
+  description: '/BAN [channel] [-normal|-host|-user|-domain|-crap|-ip|-class -before|-after "cmd" nick|mask] ... - bans several nicks/masks on channel, removes any conflicting bans before banning'
   license: 'GNU GPLv2 or later'
   name: ban
   version: 1.4d

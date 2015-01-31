@@ -1,11 +1,11 @@
 ---
 -
   authors: "Joern 'Wulf' Heissler"
-  changed: 2003011700
+  changed: '2003011700'
   contact: wulf@wulf.eu.org
   default_package: chanfull
   description: 'Notifies the user when some channel limit is reached'
   license: GPLv2
   name: chanfull
   url: ''
-  version: 2003011700
+  version: '2003011700'

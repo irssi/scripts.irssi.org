@@ -4,10 +4,10 @@
   changed: 'Tue Jan  3 18:33:56 CET 2006'
   contact: anderfdez@yahoo.es
   default_package: ipupdate
-  description: "Auto \"/set dcc_own_ip IP\" on connect."
+  description: 'Auto "/set dcc_own_ip IP" on connect.'
   license: GPL
   modules:
     - HTTP::Request::Common
     - LWP::UserAgent
   name: IPupdate
-  version: 1.2
+  version: '1.2'

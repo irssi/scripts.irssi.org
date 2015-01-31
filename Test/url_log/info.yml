@@ -13,4 +13,4 @@
     - LWP::UserAgent
   name: url_log
   url: http://irssi.reeler.org/url/
-  version: 0.2
+  version: '0.2'

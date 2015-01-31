@@ -2,7 +2,7 @@
 -
   authors: Wohmatak
   changed: Wed
-  commands: '/np'
+  commands: /np
   contact: wohmatak@iglu.cz
   default_package: orphamp
   description: 'Displays the song played by orpheus'
@@ -10,4 +10,4 @@
   modified: '2014-10-19 11:54:16'
   name: orphamp
   url: http://irssi.org/
-  version: 0.9
+  version: '0.9'

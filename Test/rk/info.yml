@@ -7,4 +7,4 @@
   description: '/RK [-o | -l | -a] - kicks random nick from ops | lusers | all on channel'
   license: 'GNU GPLv2 or later'
   name: 'Random kicker'
-  version: 0.9
+  version: '0.9'

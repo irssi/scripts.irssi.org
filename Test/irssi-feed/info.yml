@@ -1,7 +1,7 @@
 ---
 -
   authors: 'Julius Michaelis'
-  changed: '$VERSION'
+  changed: $VERSION
   contact: iRRSi@cserv.dyndns.org
   default_package: irssi_feed
   description: 'Parses and announces XML/Atom feeds'
@@ -10,4 +10,4 @@
     - XML::Feed
   name: 'iRSSi feed reader'
   url: https://github.com/jcaesar/irssi-feed
-  version: 20130209
+  version: '20130209'

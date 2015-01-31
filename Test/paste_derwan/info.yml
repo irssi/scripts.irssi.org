@@ -4,7 +4,7 @@
   changed: 'Sat Nov 13 14:32:13 2004'
   contact: derwan@irssi.pl
   default_package: paste_derwan
-  description: "Pasting lines to specified targets, type \"/paste -help\" for help"
+  description: 'Pasting lines to specified targets, type "/paste -help" for help'
   license: 'GNU GPL v2'
   modules: ''
   name: paste

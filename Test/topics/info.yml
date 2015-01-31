@@ -1,7 +1,7 @@
 ---
 -
   authors: "Stefan 'tommie' Tomanek"
-  changed: 2003020801
+  changed: '2003020801'
   commands: topics
   contact: stefan@pico.ruhr.de
   default_package: topics
@@ -9,4 +9,4 @@
   license: GPLv2
   name: topics
   url: http://irssi.org/scripts/
-  version: 2003020801
+  version: '2003020801'

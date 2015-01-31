@@ -1,6 +1,6 @@
 ---
 -
-  authors: "Johan \"Ion\" Kiviniemi"
+  authors: 'Johan "Ion" Kiviniemi'
   changed: 'Tue Mar 12 22:20 EET 2002'
   contact: 'ion at hassers.org'
   default_package: itime
@@ -8,4 +8,4 @@
   license: 'Public Domain'
   name: itime
   url: http://ion.amigafin.org/scripts/
-  version: 0.9
+  version: '0.9'

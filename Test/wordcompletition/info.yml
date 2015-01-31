@@ -9,4 +9,4 @@
     - DBI
   name: 'IRC Completion with mysql-database'
   url: http://midgard.liu.se/~n02jesli/perl/
-  version: 0.1
+  version: '0.1'

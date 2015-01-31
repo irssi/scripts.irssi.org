@@ -1,6 +1,6 @@
 ---
 -
-  authors: "Johan \"Ion\" Kiviniemi"
+  authors: 'Johan "Ion" Kiviniemi'
   changed: 'Thu Mar 14 05:29 EET 2002'
   contact: 'ion at hassers.org'
   default_package: eliza
@@ -10,4 +10,4 @@
     - Chatbot::Eliza
   name: Eliza
   url: http://ion.amigafin.org/scripts/
-  version: 1.0
+  version: '1.0'

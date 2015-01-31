@@ -1,7 +1,7 @@
 ---
 -
   authors: "Stefan 'tommie' Tomanek"
-  changed: 2003021101
+  changed: '2003021101'
   commands: newsline
   contact: stefan@pico.ruhr.de
   default_package: newsline
@@ -14,4 +14,4 @@
     - XML::RSS
   name: Newsline
   sbitems: newsline_ticker
-  version: 2003021101
+  version: '2003021101'

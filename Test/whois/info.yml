@@ -7,4 +7,4 @@
   description: "Hilights '@' in whois channel reply"
   license: 'GNU GPLv2 or later'
   name: cwhois
-  version: 1.0
+  version: '1.0'

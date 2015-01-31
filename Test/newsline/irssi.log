@@ -5,3 +5,17 @@
 * >> Newsline sites loaded from ../newsline_sites
 * >> Newsline 2003021101 loaded: /newsline help for help
 * -!- Irssi: Loaded script newsline
+* Data outside latin1 range (pos=4, ch=U+201c) at newsline.pl line 418.
+* 
+* Data outside latin1 range (pos=14, ch=U+201d) at newsline.pl line 418.
+* 
+* Data outside latin1 range (pos=96, ch=U+2013) at newsline.pl line 418.
+* 
+* Data outside latin1 range (pos=129, ch=U+2013) at newsline.pl line 418.
+* 
+* Data outside latin1 range (pos=183, ch=U+2013) at newsline.pl line 418.
+* 
+* Data outside latin1 range (pos=153, ch=U+2013) at newsline.pl line 418.
+* 
+* Data outside latin1 range (pos=221, ch=U+2013) at newsline.pl line 418.
+* 

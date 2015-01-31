@@ -11,4 +11,4 @@
     - Text::Iconv
   name: 'i18n /join'
   url: http://www.penguin-breeder.org/irssi/
-  version: 0.2
+  version: '0.2'

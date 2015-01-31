@@ -1,10 +1,10 @@
 ---
 -
-  authors: "Daniel \"dubkat\" Reidy"
+  authors: 'Daniel "dubkat" Reidy'
   contact: 'dubkat@dubkat.org (www.dubkat.org)'
   default_package: callerid
   description: "Reformats CallerID (+g) Messages\n               (Also known as Server-Side Ignore)\n               on Hybrid & Ratbox IRCDs (EFnet)\n               to be Easier on the Eyes"
   license: GPL
   name: callerid
   url: http://scripts.irssi.org/
-  version: 1.0
+  version: '1.0'

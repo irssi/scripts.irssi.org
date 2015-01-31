@@ -1,11 +1,11 @@
 ---
 -
-  authors: "Clément \"nodens\" Hermann"
-  changed: 0.2
+  authors: 'Clément "nodens" Hermann'
+  changed: '0.2'
   commands: xcmd
   contact: clement.hermann@free.fr
   default_package: xcmd
   description: "makes Undernet's X commands easier and faster to use"
   license: GPLv2
   name: Xcmd
-  version: 0.2
+  version: '0.2'

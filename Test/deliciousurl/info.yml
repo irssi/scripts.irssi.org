@@ -13,4 +13,4 @@
     - URI::Find::Rule
   name: deliciousurl
   url: http://ranger.befunk.com/
-  version: 0.5
+  version: '0.5'

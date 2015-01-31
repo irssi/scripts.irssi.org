@@ -10,4 +10,4 @@
   name: stocks
   sbitems: stocks_ticker
   url: http://irssi.org/scripts/
-  version: 0.9
+  version: '0.9'

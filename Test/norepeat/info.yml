@@ -9,4 +9,4 @@
   modules: Digest::MD5
   name: norepeat
   url: http://derwan.irssi.pl
-  version: 0.5
+  version: '0.5'

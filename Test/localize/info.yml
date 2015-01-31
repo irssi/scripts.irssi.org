@@ -1,7 +1,7 @@
 ---
 -
   authors: "Stefan 'tommie' Tomanek"
-  changed: 2014112501
+  changed: '2014112501'
   commands: localize
   contact: stefan@pico.ruhr.de
   default_package: localize
@@ -13,4 +13,4 @@
     - LWP::UserAgent
   name: localize
   url: ''
-  version: 2014112501
+  version: '2014112501'

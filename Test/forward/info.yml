@@ -1,7 +1,7 @@
 ---
 -
   authors: "Stefan 'tommie' Tomanek"
-  changed: 2003071904
+  changed: '2003071904'
   commands: forward
   contact: stefan@pico.ruhr.de
   default_package: forward
@@ -10,4 +10,4 @@
   modules: ''
   name: Forward
   url: http://irssi.org/scripts/
-  version: 2003071904
+  version: '2003071904'

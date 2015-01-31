@@ -1,7 +1,7 @@
 ---
 -
   authors: "Stefan 'tommie' Tomanek"
-  changed: 2003020801
+  changed: '2003020801'
   commands: target
   contact: stefan@pico.ruhr.de
   default_package: target
@@ -10,4 +10,4 @@
   name: Target
   sbitems: target
   url: http://scripts.irssi.org
-  version: 2003020801
+  version: '2003020801'

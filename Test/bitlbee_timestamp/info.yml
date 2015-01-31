@@ -1,6 +1,6 @@
 ---
 -
-  authors: "Tijmen \"timing\" Ruizendaal"
+  authors: 'Tijmen "timing" Ruizendaal'
   changed: 2010-05-01
   contact: tijmen.ruizendaal@gmail.com
   default_package: bitlbee_timestamp
@@ -10,4 +10,4 @@
     - DateTime
   name: bitlbee_timestamp
   url: http://the-timing.nl/stuff/irssi-bitlbee
-  version: 0.5
+  version: '0.5'

@@ -1,7 +1,7 @@
 ---
 -
   authors: "Stefan 'tommie' Tomanek"
-  changed: 2003021201
+  changed: '2003021201'
   contact: stefan@pico.ruhr.de
   default_package: queryresume
   description: 'restores the last lines of a query on re-creation'
@@ -10,4 +10,4 @@
   modules:
     - Date::Format
   name: QueryResume
-  version: 2003021201
+  version: '2003021201'

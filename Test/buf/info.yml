@@ -12,4 +12,4 @@
   note1: 'This script HAS TO BE in your scripts/autorun!'
   note2: 'Perl support must be static or in startup'
   url: http://juerd.nl/irssi/
-  version: 2.13
+  version: '2.13'

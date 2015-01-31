@@ -1,7 +1,7 @@
 ---
 -
   authors: "Stefan 'tommie' Tomanek"
-  changed: 20021019
+  changed: '20021019'
   contact: stefan@pico.ruhr.de
   default_package: chansearch
   description: 'searches for specific channels'
@@ -10,4 +10,4 @@
     - LWP::UserAgent
   name: ChanSearch
   url: http://scripts.irssi.org/
-  version: 20021019
+  version: '20021019'

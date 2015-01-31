@@ -10,4 +10,4 @@
     - DateTime
   name: timezones
   url: http://vague.se
-  version: 0.1
+  version: '0.1'

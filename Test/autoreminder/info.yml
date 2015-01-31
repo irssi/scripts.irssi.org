@@ -6,4 +6,4 @@
   description: 'This script Reminds people to do stuff! :)'
   license: GPLv2
   name: 'Auto Reminder'
-  version: 0.01
+  version: '0.01'

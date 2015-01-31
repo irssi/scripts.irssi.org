@@ -1,7 +1,7 @@
 ---
 -
   authors: "Stefan 'tommie' Tomanek"
-  changed: 2003020801
+  changed: '2003020801'
   commands: babelirc
   contact: stefan@pico.ruhr.de
   default_package: babelirc
@@ -13,4 +13,4 @@
   name: babelirc
   sbitems: babelirc_sb
   url: http://irssi.org/scripts/
-  version: 2003020801
+  version: '2003020801'

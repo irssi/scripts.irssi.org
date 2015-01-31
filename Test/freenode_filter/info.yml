@@ -8,4 +8,4 @@
   license: 'GNU General Public License'
   name: default.pl
   url: http://irssi.hauwaerts.be/freenode_filter.pl
-  version: 0.06
+  version: '0.06'

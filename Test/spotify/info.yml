@@ -1,6 +1,6 @@
 ---
 -
-  authors: 'Ãrjan Persson'
+  authors: 'Örjan Persson'
   contact: o@42mm.org
   default_package: spotify
   description: 'Lookup spotify uris'
@@ -14,4 +14,4 @@
     - URI
   name: spotify
   url: https://github.com/op/irssi-spotify
-  version: 1.1
+  version: '1.1'

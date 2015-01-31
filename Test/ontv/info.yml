@@ -1,7 +1,7 @@
 ---
 -
   authors: "Stefan 'tommie' Tomanek"
-  changed: 20050226
+  changed: '20050226'
   commands: ontv
   contact: stefan@pico.ruhr.de
   default_package: ontv
@@ -11,4 +11,4 @@
     - HTML::Entities
     - LWP::Simple
   name: OnTV
-  version: 20050226
+  version: '20050226'

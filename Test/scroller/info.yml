@@ -5,4 +5,4 @@
   description: 'Scrolls specified text on the status bar'
   license: 'Public Domain'
   name: scroller
-  version: 0.01
+  version: '0.01'

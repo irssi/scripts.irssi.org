@@ -1,7 +1,7 @@
 ---
 -
   authors: "Stefan 'tommie' Tomanek"
-  changed: 2003020803
+  changed: '2003020803'
   commands: scriptassist
   contact: stefan@pico.ruhr.de
   default_package: scriptassist
@@ -12,4 +12,4 @@
     - LWP::UserAgent
   name: scriptassist
   url: http://irssi.org/scripts/
-  version: 2003020803
+  version: '2003020803'

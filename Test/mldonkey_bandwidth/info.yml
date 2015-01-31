@@ -1,7 +1,7 @@
 ---
 -
   authors: 'Carsten Otto'
-  changed: 20030712
+  changed: '20030712'
   commands: mlbw
   contact: c-otto@gmx.de
   default_package: mldonkey_bandwidth
@@ -12,4 +12,4 @@
     - LWP::UserAgent
   name: 'mldonkey bandwidth script'
   url: http://www.c-otto.de
-  version: 20030712
+  version: '20030712'

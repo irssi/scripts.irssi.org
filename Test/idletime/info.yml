@@ -1,7 +1,7 @@
 ---
 -
   authors: "Stefan 'tommie' Tomanek"
-  changed: 20030208
+  changed: '20030208'
   commands: idle
   contact: stefan@pico.ruhr.de
   default_package: idletime
@@ -9,4 +9,4 @@
   license: GPLv2
   name: idletime
   url: ''
-  version: 20030208
+  version: '20030208'

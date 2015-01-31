@@ -1,7 +1,7 @@
 ---
 -
   authors: "Stefan 'tommie' Tomanek"
-  changed: 20040515
+  changed: '20040515'
   commands: leodict
   contact: stefan@pico.ruhr.de
   default_package: leodict
@@ -11,4 +11,4 @@
     - LWP::Simple
   name: leodict
   url: http://irssi.org/scripts/
-  version: 20040515
+  version: '20040515'

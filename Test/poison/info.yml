@@ -1,7 +1,7 @@
 ---
 -
   authors: "Stefan 'tommie' Tomanek"
-  changed: 2003020801
+  changed: '2003020801'
   commands: poison
   contact: stefan@pico.ruhr.de
   default_package: poison
@@ -9,4 +9,4 @@
   license: GPLv2
   modules: 'IO::Socket::INET Data::Dumper'
   name: Poison
-  version: 2003020801
+  version: '2003020801'

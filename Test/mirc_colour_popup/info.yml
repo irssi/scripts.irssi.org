@@ -7,4 +7,4 @@
   description: 'Shows a mIRC-style colour popup when you hit ^C.'
   license: 'Public Domain'
   name: mirc_colour_popup
-  version: 1.0
+  version: '1.0'

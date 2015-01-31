@@ -1,6 +1,6 @@
 ---
 -
-  authors: "Larry \"Vizzie\" Daffner"
+  authors: 'Larry "Vizzie" Daffner'
   changed: 'Tue Oct 19 14:41:15 CDT 2010'
   changes: 'Applied multiserver/store config patch from Adam Monsen'
   contact: vizzie@airmail.net
@@ -10,4 +10,4 @@
   modified: '2014-10-17 18:30:46'
   name: 'Automagic away setting'
   url: http://www.flamingpackets.net/~vizzie/irssi/
-  version: 0.3
+  version: '0.3'

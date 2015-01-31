@@ -1,6 +1,6 @@
 ---
 -
-  authors: 'Pablo MartÃ­n BÃ¡ez EchevarrÃ­a'
+  authors: 'Pablo Martín Báez Echevarría'
   changed: '22:30:25, Dec 20th, 2014 UYT'
   contact: pab_24n@outlook.com
   default_package: clones_scanner
@@ -11,4 +11,4 @@
     - Devel::Size
   name: clones_scanner
   url: http://reirssi.wordpress.com
-  version: 1.6
+  version: '1.6'

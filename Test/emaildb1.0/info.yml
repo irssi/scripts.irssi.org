@@ -10,4 +10,4 @@
     - DBI
   name: emaildb
   url: http://www.princessleia.com/
-  version: 1.0
+  version: '1.0'

@@ -1,6 +1,6 @@
 ---
 -
-  authors: "Tijmen \"timing\" Ruizendaal"
+  authors: 'Tijmen "timing" Ruizendaal'
   changed: 2010-07-28
   contact: tijmen.ruizendaal@gmail.com
   default_package: bitlbee_nick_change
@@ -8,4 +8,4 @@
   license: GPLv2
   name: BitlBee_nick_change
   url: http://the-timing.nl/stuff/irssi-bitlbee
-  version: 1.3
+  version: '1.3'

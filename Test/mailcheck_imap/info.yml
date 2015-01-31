@@ -1,6 +1,6 @@
 ---
 -
-  authors: "David \"Legooolas\" Gardner"
+  authors: 'David "Legooolas" Gardner'
   contact: irssi@icmfp.com
   default_package: mailcheck_imap
   description: 'Staturbar item which indicates how many new emails you have in the specified IMAP[S] mailbox'
@@ -10,4 +10,4 @@
     - IO::Socket::SSL
   name: mailcheck_imap
   url: http://icmfp.com/irssi
-  version: 0.5
+  version: '0.5'

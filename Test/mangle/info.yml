@@ -1,11 +1,11 @@
 ---
 -
   authors: 'Szymon Sokol'
-  changed: 2004031701
+  changed: '2004031701'
   contact: szymon@hell.pl
   description: 'translates your messages into Morse code, rot13 and other sillinesses.'
   license: GPLv2
   modules: Data::Dumper
   name: mangle
   url: http://irssi.org/scripts/
-  version: 2004031701
+  version: '2004031701'
