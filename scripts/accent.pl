@@ -28,7 +28,7 @@ use strict;
 use vars qw($VERSION %IRSSI);
 
 use Irssi;
-$VERSION = '$Id: accent.pl,v 1.34 2003/03/27 15:54:25 toma Exp $';
+($VERSION) = '$Id: accent.pl,v 1.34 2003/03/27 15:54:25 toma Exp $' =~ / (\d+\.\d+) /;
 %IRSSI = (
 	authors     => 'Tamas SZERB',
 	contact     => 'toma@rulez.org',
