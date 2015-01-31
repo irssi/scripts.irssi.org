@@ -1,19 +1,10 @@
 use strict; use warnings;
-use YAML::Tiny;
-use Scalar::Util;
-BEGIN {
-    sub YAML::Tiny::_has_internal_string_value {
-	!Scalar::Util::looks_like_number($_[0])
-    }
-}
+use YAML::Tiny 1.59;
 
-my @config;
-if (open my $ef, '<:utf8', '_testing/config.yml') {
-    @config = Load(do { local $/; <$ef> });
-}
+my $config = YAML::Tiny::LoadFile('_testing/config.yml');
 my @yaml_keys;
-if (@config) {
-    @yaml_keys = @{ $config[0]{scripts_yaml_keys}//[] };
+if ($config) {
+    @yaml_keys = @{ $config->{scripts_yaml_keys}//[] };
 }
 die "no keys defined in config.yaml\n" unless @yaml_keys;
 
@@ -75,14 +66,12 @@ my @newdoc = map {
         } sort @yaml_keys
     }
 } sort keys %newmeta;
-{ open my $ef, '>:utf8', '_data/scripts.yaml' or die $!;
-  print $ef Dump \@newdoc;
-}
+YAML::Tiny::DumpFile('_data/scripts.yaml', \@newdoc);
 
-if (@config && @{$config[0]{whitelist}//[]}) {
+if ($config && @{$config->{whitelist}//[]}) {
     my $changed;
     my @wl;
-    for my $sf (@{$config[0]{whitelist}}) {
+    for my $sf (@{$config->{whitelist}}) {
 	if (-s "Test/$sf:passed") {
 	    $changed = 1;
 	}
@@ -91,10 +80,8 @@ if (@config && @{$config[0]{whitelist}//[]}) {
 	}
     }
     if ($changed) {
-	$config[0]{whitelist} = \@wl;
-	{ open my $ef, '>:utf8', '_testing/config.yml' or die $!;
-	  print $ef Dump @config;
-        }
+	$config->{whitelist} = \@wl;
+	YAML::Tiny::DumpFile('_testing/config.yml', $config);
     }
 }
 
