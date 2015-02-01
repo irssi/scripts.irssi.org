@@ -3336,6 +3336,15 @@
   url: http://juerd.nl/irssi/
   version: '1.20'
 -
+  authors: lasers
+  contact: 'lasers on freenode'
+  description: 'Loads scripts from file instead of autorun directory'
+  filename: scriptsave.pl
+  license: WTFPL
+  modified: '2015-01-16 19:38:47'
+  name: scriptsave
+  version: '0.2'
+-
   authors: 'jwz, irssified by Mikachu'
   contact: 'Mikachu @ freenode'
   description: 'wtires lkie tihs'
