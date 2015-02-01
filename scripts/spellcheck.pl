@@ -171,20 +171,23 @@ sub spellcheck_key_pressed
     my $inputline = Irssi::parse_special('$L');
 
     # check if inputline starts with any of cmdchars
-    # or contains protocols, we shouldn't spellcheck either
+    # we shouldn't spellcheck commands
     my $cmdchars = Irssi::settings_get_str('cmdchars');
-    my $cmdre = qr/^[$cmdchars]/;
-    my $protocolre = qr/[a-zA-Z]+:\/\/\S+/;
-    return if ($inputline =~ $cmdre or $inputline =~ $protocolre);
+    my $re = qr/^[$cmdchars]/;
+    return if ($inputline =~ $re);
 
     # get last bit from the inputline
     my ($word) = $inputline =~ /\s*([^\s]+)$/;
+
+    # do not spellcheck urls
+    my $re = qr/([a-zA-Z]+:\/\/\S+)|(^www)/;
+    return if ($word =~ $re);
 
     # find appropriate language for current window item
     my $lang = spellcheck_find_language($win->{active_server}->{tag}, $win->{active}->{name});
 
     my @suggestions = spellcheck_check_word($lang, $word, 0);
-    # Irssi::print("Debug: spellcheck_check_word($word) returned array of " . scalar @suggestions);
+    #Irssi::print("Debug: spellcheck_check_word($word) returned array of " . scalar @suggestions);
     return if (scalar @suggestions == 0);
 
     # we found a mistake, print suggestions
