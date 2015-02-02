@@ -1003,7 +1003,7 @@
   description: 'write like an idiot'
   filename: dau.pl
   license: BSD
-  modified: '2008-02-03 16:27:25'
+  modified: '2015-02-02 14:02:20'
   name: DAU
   url: http://dau.pl/
   version: 2.4.3
@@ -1061,7 +1061,7 @@
   description: 'Prevents all kinds of junk from showing up'
   filename: dejunk.pl
   license: 'Public Domain'
-  modified: '2013-10-09 23:19:48'
+  modified: '2015-02-02 14:02:20'
   name: Dejunk
   url: http://www.garion.org/irssi/
   version: '1.0'
@@ -1689,7 +1689,7 @@
   description: 'Floods the channel about things that are hapening in your hl -server. Also enables you to send rcon commands to the server from channel.'
   filename: hlbot.pl
   license: GPLv2
-  modified: '2014-10-17 22:54:13'
+  modified: '2015-02-02 14:02:20'
   name: 'HL-log/rcon -bot'
   url: http://piipiip.net/
   version: '1.0'
@@ -1865,7 +1865,7 @@
   description: 'Show IRC gallery (http://irc-galleria.net, finnish only) information on /WHOIS or /GALLERY'
   filename: ircgallery.pl
   license: 'Public Domain'
-  modified: '2014-10-17 22:54:13'
+  modified: '2015-02-02 14:02:20'
   name: ircgallery
   url: http://irssi.org/
   version: '1.13'
@@ -2527,7 +2527,7 @@
   description: 'News reader, usage:  /article [-s <server>] [-p <port>] [-P <password> -U <login>] [-l <group> <count>] [-a] [-L <index>] <message-id>'
   filename: news.pl
   license: 'GNU GPL v2'
-  modified: '2004-02-06 21:26:57'
+  modified: '2015-02-02 14:02:20'
   modules: News::NNTPClient
   name: news
   url: http://derwan.irssi.pl
@@ -4217,7 +4217,7 @@
   description: 'Undernet X Service Authentication Program'
   filename: xauth.pl
   license: 'GNU GPLv2 or later'
-  modified: '2014-10-24 23:01:30'
+  modified: '2015-02-02 14:02:20'
   name: xauth
   version: '1.02'
 -
