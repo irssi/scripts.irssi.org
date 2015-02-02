@@ -274,7 +274,7 @@ sub load_activity_data {
         error("Could not read dejunk activity data from $fn: $!");
         return;
     }
-    $/ = undef;
+    local $/;
     my $file_contents = <$fh>;
     eval {
         my $data = eval $file_contents;

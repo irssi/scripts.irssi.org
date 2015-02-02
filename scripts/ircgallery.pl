@@ -50,7 +50,7 @@ sub print_gallery {
   my $next_channels = 0;
   my $channels;
 
-  $. = "\n";
+  local $/ = "\n";
   my $f = gensym;
   if (!open($f, "<", "$cache_path/$nick")) {
     Irssi::print("Couldn't open file $cache_path/$nick: $!", MSGLEVEL_CLIENTERROR);

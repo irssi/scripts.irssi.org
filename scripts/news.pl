@@ -46,8 +46,6 @@ my $news_window_name = 'news';
 my @colors = (15, 12, 03, 06, 05, 07, 14);
 my @articles = ();
 
-$| = 1;
-
 Irssi::command_bind article => sub {
 	my $usage = '/article [-s <server>] [-p <port>] [-P <password> -U <login>] [-l <group> <count>] [-a] [-L <index>] <Message-ID>';
 
