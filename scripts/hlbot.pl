@@ -209,7 +209,6 @@ my $proto = getprotobyname('udp');
 my $paddr = sockaddr_in($listen_port, $iaddr);
 socket(S, PF_INET, SOCK_DGRAM, $proto)   || die "socket: $!\n";
 bind(S, $paddr)                          || die "bind: $!\n";
-$| = 1;
 
 # Set input and signals etc. irssi related stuff.
 Irssi::input_add(fileno(S), INPUT_READ, "run_bot", "");

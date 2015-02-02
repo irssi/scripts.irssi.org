@@ -362,7 +362,7 @@ sub read_users() {
         # and then we read the userfile.
         # apparently Irssi resets $/, so we set it here.
 
-        $/ = "\n";
+        local $/ = "\n";
         while( my $line = <XUSERS>) {
                 if( $line !~ /^(#|\s*$)/ ) { 
                         my ($nick, $ircnet, $password) = 
@@ -435,7 +435,7 @@ sub read_chans() {
         # and then we read the channelfile.
         # apparently Irssi resets $/, so we set it here.
 
-        $/ = "\n";
+        local $/ = "\n";
         while( my $line = <NICKCHANS>) {
                 if( $line !~ /^(#|\s*$)/ ) { 
                         my ($channel, $ircnet) = 
