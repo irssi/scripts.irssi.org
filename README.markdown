@@ -103,13 +103,13 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                            cwho ](Test/cwho/)|  ✔   |  ✔   |  ✔   | 18   |  ✔   | (c)
 [               dancer_forwardfix ](Test/dancer_forwardfix/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                 dancer_hide_477 ](Test/dancer_hide_477/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                             dau ](Test/dau/)|  ✔   |  ✔   |  ✘   | 58   |  ☡   | (c)
+[                             dau ](Test/dau/)|  ✔   |  ✔   |  ✘   | 58   |  ☡   
 [                          dcc_ip ](Test/dcc_ip/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                         dccmove ](Test/dccmove/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                         dccself ](Test/dccself/)|  ✔   |  ✘   |  ✔   |  8   |  ☡   | (c)
 [                         dccstat ](Test/dccstat/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
 [                 defaultchanmode ](Test/defaultchanmode/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                          dejunk ](Test/dejunk/)|  ✔   |  ✔   |  ✔   | 10   |  ✔   | (c)
+[                          dejunk ](Test/dejunk/)|  ✔   |  ✔   |  ✔   | 10   |  ✔   
 [                    deliciousurl ](Test/deliciousurl/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                              df ](Test/df/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                    dice_concise ](Test/dice_concise/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -171,7 +171,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                hipchat_complete ](Test/hipchat_complete/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                  history_search ](Test/history_search/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                        hitcount ](Test/hitcount/)|  ✘   |  ✔   |  ✔   |  4   |  ☡   | (c)
-[                           hlbot ](Test/hlbot/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
+[                           hlbot ](Test/hlbot/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   
 [                              hl ](Test/hl/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                        hostname ](Test/hostname/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                    identify-md5 ](Test/identify-md5/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -189,7 +189,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                        iraident ](Test/iraident/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
 [                       irc_chess ](Test/irc_chess/)|  ✘   |  ✔   |  ✔   |  8   |  ☡   | (c)
 [                     irccomplete ](Test/irccomplete/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                      ircgallery ](Test/ircgallery/)|  ✘   |  ✔   |  ✔   |  7   |  ☡   | (c)
+[                      ircgallery ](Test/ircgallery/)|  ✘   |  ✔   |  ✔   |  7   |  ☡   
 [               ircgmessagenotify ](Test/ircgmessagenotify/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                          ircops ](Test/ircops/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                          ircsec ](Test/ircsec/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
@@ -256,7 +256,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                            nact ](Test/nact/)|  ✔   |  ✔   |  ✔   | 12   |  ✔   | (c)
 [                       netswitch ](Test/netswitch/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        newsline ](Test/newsline/)|  ✔   |  ✔   |  ✘   | 34   |  ☡   | (c)
-[                            news ](Test/news/)|  ✔   |  ✔   |  ✔   | 79   |  ✔   | (c)
+[                            news ](Test/news/)|  ✔   |  ✔   |  ✔   | 79   |  ✔   
 [                         nickban ](Test/nickban/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       nickcolor ](Test/nickcolor/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
 [                      nickignore ](Test/nickignore/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -299,7 +299,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                    paste_huggie ](Test/paste_huggie/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                   paste_kimmoke ](Test/paste_kimmoke/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                           pelix ](Test/pelix/)|  ✔   |  ✔   |  ✔   | 25   |  ✔   | (c)
-[                          people ](Test/people/)|  ✔   |  ✔   |  ✔   | 75   |  ✔   
+[                          people ](Test/people/)|  ✔   |  ✔   |  ✔   | 75   |  ✔   | (c)
 [               per_window_prompt ](Test/per_window_prompt/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                      pggb_sound ](Test/pggb_sound/)|  ✔   |  ✔   |  ✔   | 33   |  ✔   | (c)
 [                          poison ](Test/poison/)|  ✔   |  ✔   |  ✔   | 12   |  ✔   | (c)
@@ -427,7 +427,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                             wkb ](Test/wkb/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                wordcompletition ](Test/wordcompletition/)|  ✘   |  ✔   |  ✔   |  9   |  ☡   | (c)
 [                    wordscramble ](Test/wordscramble/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                           xauth ](Test/xauth/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
+[                           xauth ](Test/xauth/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   
 [                            xcmd ](Test/xcmd/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                         xdccget ](Test/xdccget/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                           xetra ](Test/xetra/)|  ✘   |  ✔   |  ✔   | 11   |  ☡   | (c)
@@ -437,4 +437,4 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                            xmms ](Test/xmms/)|  ✔   |  ✔   |  ✔   |  8   |  ✔   | (c)
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 
-f2465c3b8bd82878ac02c9324173e74017bf0c89 | 268
+8c57dd74f36b0429b725ff2a511ea951376680dd | 270
