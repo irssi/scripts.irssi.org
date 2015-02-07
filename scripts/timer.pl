@@ -19,14 +19,14 @@ use warnings;
 use vars  qw ($VERSION %IRSSI);
 use Irssi 20020325 qw (command_bind command_runsub command timeout_add timeout_remove signal_add_first);
 
-$VERSION = '0.5';
+$VERSION = '0.6';
 %IRSSI = (
     authors     => 'Kimmo Lehto, Marcus Rueckert',
     contact     => 'kimmo@a-men.org, darix@irssi.org' ,
     name        => 'Timer',
     description => 'Provides /timer command for mIRC/BitchX type timer functionality.',
     license     => 'Public Domain',
-    changed     => '2003-08-27'
+    changed     => '2015-02-07'
 );
 
 our %timers;
@@ -88,11 +88,11 @@ command_bind 'timer add' => sub {
     my ( $data, $server, $item ) = @_;
     my ( $name, $interval, $times, $command );
 
-    if ( $data =~ /^\s*(\w+)\s+(\d+)\s+(-?\d+)\s+(.*)$/ ) {
+    if ( $data =~ /^\s*(\w+)\s+(\d+(?:\.\d+)?)\s+(-?\d+)\s+(.*)$/ ) {
         ( $name, $interval, $times, $command ) = ( $1, $2, $3, $4 );
         $times = -1 if ( $times == 0 );
     }
-    elsif ( $data =~ /^\s*(\w+)\s+(\d+)\s+(.*)$/ )
+    elsif ( $data =~ /^\s*(\w+)\s+(\d+(?:\.\d+)?)\s+(.*)$/ )
     {
         ( $name, $interval, $times, $command ) = ( $1, $2, -1, $3 );
     }
