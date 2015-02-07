@@ -1,11 +1,11 @@
 ---
 -
   authors: 'Kimmo Lehto, Marcus Rueckert'
-  changed: 2003-08-27
+  changed: 2015-02-07
   contact: 'kimmo@a-men.org, darix@irssi.org'
   default_package: timer
   description: 'Provides /timer command for mIRC/BitchX type timer functionality.'
   license: 'Public Domain'
-  modified: '2014-09-14 22:49:20'
+  modified: '2015-02-07 16:12:59'
   name: Timer
-  version: '0.5'
+  version: '0.6'
