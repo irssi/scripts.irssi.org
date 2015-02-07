@@ -3701,7 +3701,7 @@
   description: 'Provides /timer command for mIRC/BitchX type timer functionality.'
   filename: timer.pl
   license: 'Public Domain'
-  modified: '2015-02-07 16:11'
+  modified: '2015-02-07 16:12:59'
   name: Timer
   version: '0.6'
 -
