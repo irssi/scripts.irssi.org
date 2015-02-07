@@ -18,11 +18,12 @@ use vars qw($VERSION %IRSSI);
 
 use Irssi qw(command_bind signal_add signal_add_first settings_add_str settings_get_str settings_set_str);
 
-our $VERSION = '1.02';
+our $VERSION = '1.03';
 our %IRSSI = (authors => 'Linostar',
-          contact => 'lino.star@outlook.com',
+          contact => 'linostar@sdf.org',
           name => 'KickBan Referrals Script',
           description => 'Script for kickbanning those who post referral links in a channel',
+          commands => 'kbanref',
           license => 'New BSD');
 
 our %tickets = ();
@@ -35,18 +36,22 @@ sub kbanref {
   my $blacklist = settings_get_str('kbanreferrals_blacklist');
   my $stripped = '';
   my $thelist;
+  my $subcommand = '';
+  my ($command, @args) = split(/\s+/, $data);
+  $command = lc($command);
+  $_ = lc for @args; #apply lc to all elements in @args
+  $subcommand = $args[0] if ($args[0]);
   # mode command
-  if ($data =~ m/^mode/i) {
-    $data =~ s/mode\s*$/mode get/i;
-    $data =~ /(mode)\s+(.+)/i;
-    if ($2 eq 'get') {
+  if ($command eq 'mode') {
+    $subcommand = 'get' unless ($subcommand);
+    if ($subcommand eq 'get') {
       print('KBan-Referrals: current mode is set to ' . uc(settings_get_str('kbanreferrals_mode')) . '.');
     }
-    elsif ($2 =~ m/normal\s*/i) {
+    elsif ($subcommand eq 'normal') {
       settings_set_str('kbanreferrals_mode', 'normal');
       print('KBan-Referrals: mode set to NORMAL. Whitelist and Blacklist will be used, along with a somewhat smart referral URL detection.');
     }
-    elsif ($2 =~ m/paranoid\s*/i) {
+    elsif ($subcommand eq 'paranoid') {
       settings_set_str('kbanreferrals_mode', 'paranoid');
       print('KBan-Referrals: mode set to PARANOID. Every URL that does not match a website in the whitelist will trigger a kickban.');
     }
@@ -55,19 +60,19 @@ sub kbanref {
     }
   }
   # whitelist or blacklist add command
-  elsif ($data =~ m/^(black|white)list add/i) {
-    $data =~ /(black|white)list add\s+(.+)/i;
+  elsif ($command =~ m/^(white|black)list$/ && $subcommand eq 'add') {
     my $newlist = '';
-    my $type = $1;
-    my $args = $2;
-    if ($type =~ m/black/i) {
+    my $type = substr($command, 0, 5);
+    if ($type eq 'black') {
       $thelist = \$blacklist;
     }
     else {
       $thelist = \$whitelist;
     }
-    foreach(split(/\s+/, $args)) {
-      if ($$thelist =~ m/\b$_\b/i) {
+    my @list_arr = split(/\s+/, lc($$thelist));
+    splice(@args, 0, 1);
+    foreach (@args) {
+      if ($_ ~~ @list_arr) {
         print("KBan-Referrals: site $_ is already in the list."); 
       }
       else {
@@ -78,7 +83,7 @@ sub kbanref {
       $$thelist .= $newlist;
       print('KBan-Referrals: the following sites were added to ' . $type . 'list:');
       print($newlist);
-      if ($type =~ m/black/i) {
+      if ($type eq 'black') {
         settings_set_str('kbanreferrals_blacklist', $$thelist);
       }
       else {
@@ -90,31 +95,31 @@ sub kbanref {
     }
   }
   # whitelist or blacklist remove command
-  elsif ($data =~ m/(black|white)list remove/i) {
+  elsif ($command =~ m/^(white|black)list$/ && $subcommand eq 'remove') {
     my $rmlist = '';
-    $data =~ /(black|white)list remove\s+(.+)/i;
-    my $type = $1;
-    my $args = $2;
-    if ($type =~ m/black/i) {
+    my $type = substr($command, 0, 5);
+    if ($type eq 'black') {
       $thelist = \$blacklist;
     }
     else {
       $thelist = \$whitelist;
     }
-    foreach (split(/\s+/, $args)) {
-      if ($$thelist !~ m/\b$_\b/i) {
-        print('KBan-Referrals: site is not in ' . $type . 'list.');
+    my @list_arr = split(/\s+/, lc($$thelist));
+    splice(@args, 0, 1);
+    foreach (@args) {
+      unless ($_ ~~ @list_arr) {
+        print("KBan-Referrals: site $_ is not in " . $type . 'list.');
       }
       else {
         $rmlist .= ' ' . $_;
-        $$thelist =~ s/\b$_\b//i;
+        $$thelist =~ s/(\s|^)$_(\s|$)/ /i;
       }
     }
     $$thelist =~ s/\s{2,}/ /g;
     if ($rmlist && $rmlist !~ m/^\s+$/) {
       print('KBan-Referrals: the following sites were removed from ' . $type . 'list:');
       print($rmlist);
-      if ($type =~ m/black/i) {
+      if ($type eq 'black') {
         settings_set_str('kbanreferrals_blacklist', $$thelist);
       }
       else {
@@ -126,9 +131,9 @@ sub kbanref {
     }
   }
   # whitelist or blacklist list command
-  elsif ($data =~ m/(black|white)list list/i) {
+  elsif ($command =~ m/^(white|black)list$/ && $subcommand eq 'list') {
     print('KBan-Referrals ' . $1 . 'list:');
-    if ($1 =~ m/black/i) {
+    if ($1 eq 'black') {
       $thelist = \$blacklist;
     }
     else {
@@ -139,9 +144,9 @@ sub kbanref {
     }
   }
   # whitelist or blacklist clear command
-  elsif ($data =~ m/(black|white)list clear/i) {
+  elsif ($command =~ m/^(white|black)list$/ && $subcommand eq 'clear') {
     print('KBan-Referrals: ' . $1 . 'list is cleared.');
-    if ($1 =~ m/black/i) {
+    if ($1 eq 'black') {
       settings_set_str('kbanreferrals_blacklist', '');
     }
     else {
@@ -149,20 +154,18 @@ sub kbanref {
     }
   }
   # chan add command
-  elsif ($data =~ m/^chan add/i) {
+  elsif ($command eq 'chan' && $subcommand eq 'add') {
     my $newchans = '';
-    $data =~ /(chan add)\s+(.+)/i;
-    foreach(split(/\s+/, $2)) {
-      $stripped = $_;
-      $stripped =~ s/\#+//;
-      if ($chans =~ m/\b$stripped\b/i) {
-        print("KBan-Referrals: channel $_ is already in the list.");
-      }
-      elsif ($_ !~ m/^\#/) {
-        $newchans .= ' #' . $_;
+    my $ch = '';
+    my @chans_arr = split(/\s+/, lc($chans));
+    splice(@args, 0, 1);
+    foreach(@args) {
+      $ch = (substr($_, 0, 1) eq '#') ? $_ : '#' . $_;
+      if ($ch ~~ @chans_arr) {
+        print("KBan-Referrals: channel $ch is already in the list.");
       }
       else {
-        $newchans .= ' ' . $_;
+        $newchans .= ' ' . $ch;
       }
     }
     if ($newchans && $newchans !~ m/^\s+$/) {  
@@ -175,29 +178,20 @@ sub kbanref {
     }
   }
   # chan remove command
-  elsif ($data =~ m/^chan remove/i) {
+  elsif ($command eq 'chan' && $subcommand eq 'remove') {
     my $rmchans = '';
     my $ch = '';
-    $data =~ /(chan remove)\s+(.+)/i;
-    foreach (split(/\s+/, $2)) {
-      $ch = $_;
-      if ($ch !~ m/^\#/ && $chans !~ m/^\#$ch\b/i && $chans !~ m/\s\#$ch\b/i) {
-        print("KBan-Referrals: channel \#$ch is not in the list.");
-        next;
-      }
-      elsif ($ch !~ m/^\#/) {
-        $rmchans .= ' #' . $ch;
-        $chans =~ s/^\#$ch\b//i;
-        $chans =~ s/\s\#$ch\b//i;
-        next;
-      }
-      if ($chans !~ m/^$ch\b/i && $chans !~ m/\s$ch\b/i) {
+    my @chans_arr = split(/\s+/, lc($chans));
+    splice(@args, 0, 1);
+    foreach (@args) {
+      $ch = (substr($_, 0, 1) eq '#') ? $_ : '#' . $_;
+      unless ($ch ~~ @chans_arr) {
         print("KBan-Referrals: channel $ch is not in the list.");
+        next;
       }
       else {
         $rmchans .= ' ' . $ch;
-        $chans =~ s/\s$ch\b//i;
-        $chans =~ s/^$ch\b//i;
+        $chans =~ s/(\s|^)($ch)(\s|$)/ /i;
       }
     }
     $chans =~ s/\s{2,}/ /g; #remove extra spaces
@@ -211,19 +205,19 @@ sub kbanref {
     }
   }
   # chan list command
-  elsif ($data =~ m/^chan list/i) {
+  elsif ($command eq 'chan' && $subcommand eq 'list') {
     print('KBan-Referrals Channel List:');
     foreach (split(/\s+/, $chans)) {
       print($_) if ($_);
     }
   }
   # chan clear command
-  elsif ($data =~ m/^chan clear/i) {
+  elsif ($command eq 'chan' && $subcommand eq 'clear') {
     settings_set_str('kbanreferrals_channels', '');
     print('KBan-Referrals: channel list cleared.');
   }
   # help command
-  elsif ($data =~ m/^help/i) {
+  elsif ($command eq 'help') {
     print('KBan-Referrals Command Syntax (case insensitive):');
     print('-------------------------------------------------');
     print('Change KBan-Referrals mode: /KBANREF MODE [normal|paranoid]');
@@ -273,12 +267,14 @@ sub kban_action {
   my $whitelist = settings_get_str('kbanreferrals_whitelist');
   my $blacklist = settings_get_str('kbanreferrals_blacklist');
   my $chans = settings_get_str('kbanreferrals_channels');
-  # add big ticket value to users who post messages without urls so they don't get punished
-  $tickets{ $nick . $target } += 10 if (exists($tickets{ $nick . $target }) && $chans =~ m/$target\b/i && !contains_url($msg));
+  my @chans_arr = split(/\s+/, lc($chans));
+  $mode = 'normal' unless ($mode eq 'paranoid');
+  # add a high ticket value to users who post messages without urls so they don't get punished
+  $tickets{ $nick . $target } += 10 if (exists($tickets{ $nick . $target }) && $target ~~ @chans_arr && !contains_url($msg));
   # otherwise, start the real investigation
-  if ($chans =~ m/$target\b/i && contains_url($msg)) {
+  if ($target ~~ @chans_arr && contains_url($msg)) {
     # paranoid mode
-    if ($mode eq 'paranoid') {
+    if ($mode =~ m/^paranoid$/i) {
       my $bad = 1;
       foreach (split(/\s+/, $whitelist)) {
         if ($msg =~ m/$_/i) {
@@ -289,7 +285,7 @@ sub kban_action {
       kb($server, $target, $nick, $nick_addr) if ($bad);
     }
     # normal mode
-    else {
+    elsif ($mode =~ m/^normal$/i) {
       # if it is in the blacklist, always ban and stop here
       my $stop = 0;
       foreach (split(/\s+/, $blacklist)) {
@@ -323,7 +319,8 @@ sub kban_action {
 sub ticket_start {
   my ($server, $channel, $nick, $nick_addr) = @_;
   my $chans = settings_get_str('kbanreferrals_channels');
-  if ($chans =~ m/$channel\b/i) {
+  my @chans_arr = split(/\s+/, lc($chans));
+  if ($channel ~~ @chans_arr) {
     $tickets{ $nick . $channel } = 1;
   }
 }
@@ -331,7 +328,8 @@ sub ticket_start {
 sub increase_ticket {
   my ($server, $channel, $nick, $nick_addr, $reason) = @_;
   my $chans = settings_get_str('kbanreferrals_channels');
-  if (exists($tickets{ $nick . $channel }) && $chans =~ m/$channel\b/i) {
+  my @chans_arr = split(/\s+/, lc($chans));
+  if (exists($tickets{ $nick . $channel }) && $channel ~~ @chans_arr) {
     # if the poor bastard only posted one sole message containing a url before leaving
     # then it's probably a referral url, so ban him/her
     if ($tickets{ $nick . $channel } == 2) {
