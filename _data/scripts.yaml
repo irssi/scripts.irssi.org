@@ -1983,6 +1983,16 @@
   url: http://pieter-bas.ijdens.com/irssi/
   version: 1.0.0
 -
+  authors: Linostar
+  commands: kbanref
+  contact: linostar@sdf.org
+  description: 'Script for kickbanning those who post referral links in a channel'
+  filename: kban-referrals.pl
+  license: 'New BSD'
+  modified: '2015-02-07 16:26:24'
+  name: 'KickBan Referrals Script'
+  version: '1.03'
+-
   authors: "Filippo 'godog' Giunchedi"
   contact: filippo\@esaurito.net
   description: 'Kicks (and bans) people with >= 4 dots in theirs hostname'
