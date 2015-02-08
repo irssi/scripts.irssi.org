@@ -1,0 +1,11 @@
+---
+-
+  authors: Linostar
+  commands: kbanref
+  contact: linostar@sdf.org
+  default_package: kban_referrals
+  description: 'Script for kickbanning those who post referral links in a channel'
+  license: 'New BSD'
+  modified: '2015-02-07 16:26:24'
+  name: 'KickBan Referrals Script'
+  version: '1.03'
