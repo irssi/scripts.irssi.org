@@ -201,7 +201,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                           itime ](Test/itime/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                          ixmmsa ](Test/ixmmsa/)|  ✘   |  ✔   |  ✔   |  3   |  ☡   | (c)
 [                        joininfo ](Test/joininfo/)|  ✔   |  ✔   |  ✔   | 11   |  ✔   | (c)
-[                  kban-referrals ](Test/kban-referrals/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
+[                  kban-referrals ](Test/kban-referrals/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                      kblamehost ](Test/kblamehost/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        keepnick ](Test/keepnick/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
 [                           kenny ](Test/kenny/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -335,7 +335,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                        sana_cmd ](Test/sana_cmd/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                     schwaebisch ](Test/schwaebisch/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                     screen_away ](Test/screen_away/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                    scriptassist ](Test/scriptassist/)|  ✔   |  ✔   |  ✘   | 61   |  ☡   | (c)
+[                    scriptassist ](Test/scriptassist/)|  ✔   |  ✔   |  ✘   | 61   |  ☡   
 [                      scripthelp ](Test/scripthelp/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                      scriptinfo ](Test/scriptinfo/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                      scriptsave ](Test/scriptsave/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -438,4 +438,4 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                            xmms ](Test/xmms/)|  ✔   |  ✔   |  ✔   |  8   |  ✔   | (c)
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 
-29a98982ce8f2e26398fe4a7c6fdc403b51ba86d | 274
+ec3a6ad83528d3e93cdab3b18a68688bdf398665 | 276
