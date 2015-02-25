@@ -316,7 +316,6 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                   quizmaster-fr ](Test/quizmaster-fr/)|  ✔   |  ✔   |  ✘   | 27   |  ☡   | (c)
 [                      quizmaster ](Test/quizmaster/)|  ✔   |  ✔   |  ✘   | 27   |  ☡   | (c)
 [                            quiz ](Test/quiz/)|  ✔   |  ✔   |  ✘   |  8   |  ☡   | (c)
-[                      q_username ](Test/q_username/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                         rainbow ](Test/rainbow/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                        randaway ](Test/randaway/)|  ✘   |  ✔   |  ✔   |  9   |  ☡   | (c)
 [                        randname ](Test/randname/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
@@ -335,7 +334,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                        sana_cmd ](Test/sana_cmd/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                     schwaebisch ](Test/schwaebisch/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                     screen_away ](Test/screen_away/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                    scriptassist ](Test/scriptassist/)|  ✔   |  ✔   |  ✘   | 61   |  ☡   
+[                    scriptassist ](Test/scriptassist/)|  ✔   |  ✔   |  ✘   | 61   |  ☡   | (c)
 [                      scripthelp ](Test/scripthelp/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                      scriptinfo ](Test/scriptinfo/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                      scriptsave ](Test/scriptsave/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -438,4 +437,4 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                            xmms ](Test/xmms/)|  ✔   |  ✔   |  ✔   |  8   |  ✔   | (c)
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 
-ec3a6ad83528d3e93cdab3b18a68688bdf398665 | 276
+3ace4555457e7e82fda452676b78b9c3eb8c4a94 | 278
