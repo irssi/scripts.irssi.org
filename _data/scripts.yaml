@@ -3042,15 +3042,6 @@
   url: ''
   version: '2.02'
 -
-  authors: "Teemu 'jamov' Koskinen"
-  contact: teemu.koskinen@mbnet.fi
-  description: 'Prints the Q username in right format'
-  filename: q_username.pl
-  license: 'Public Domain'
-  modified: '2008-05-17 17:39:11'
-  name: q_username
-  version: '0.1'
--
   authors: 'Doug Freed'
   contact: dwfreed!#irssi@freenode
   description: "Authenticates you to QuakeNet's Q immediately on connect using CHALLENGEAUTH"
