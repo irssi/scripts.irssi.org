@@ -15,7 +15,7 @@ use vars qw($VERSION %IRSSI);
 	license => "Public domain",
 	modified => "2015-01-16"
 );
-$VERSION = "0.6.3";
+$VERSION = "0.6.4";
 
 #	Commands:
 #		/isbanned <channel> <user>
@@ -57,6 +57,9 @@ $VERSION = "0.6.3";
 #		0.6.3 (2015.01.16)
 #			Improve command argument parsing. Display usage on incorrect use.
 #			Support multiple modes at once in islisted.
+#
+#		0.6.4 (2015.03.22)
+#			Fix translation from python: fix bans containing the letter Z not matching
 
 my $active = 0;
 my $user;
@@ -150,7 +153,7 @@ my %char_classes =
 		"?" => "."
 	);
 $char_classes{$_} = $_ foreach split //, '-_`^0123456789';
-for(my $c = 0; $c < 25; $c++)
+for(my $c = 0; $c <= 25; $c++)
 {
 	my $lc = chr($c + ord "a");
 	my $uc = chr($c + ord "A");
