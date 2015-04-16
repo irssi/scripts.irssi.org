@@ -52,10 +52,10 @@
   description: 'Reset window activity status. defines command /act'
   filename: act.pl
   license: 'Public Domain'
-  modified: '2014-10-17 18:30:46'
+  modified: '2015-04-16 16:01:59'
   name: 'Reset window activity status'
   url: http://www.penguin-breeder.org/irssi/
-  version: '0.13'
+  version: '0.14'
 -
   authors: 'Daniel Kalør (Xnybre)'
   contact: irssi@kalor.dk
