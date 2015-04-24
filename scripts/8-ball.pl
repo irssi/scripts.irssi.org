@@ -30,8 +30,8 @@ use Irssi qw(command_bind signal_add);
 use IO::File;
 $VERSION = '0.21';
 %IRSSI = (
-	authors		=> 'Patrik Jansson',
-	contact		=> 'gein@knivby.nu',
+	authors		=> 'Patrik Akerfeldt',
+	contact		=> 'patrik.akerfeldt@gmail.com',
 	name		=> '8-ball',
 	description	=> 'Dont like to take decisions? Have the 8-ball do it for you instead.',
 	license		=> 'GPL',
