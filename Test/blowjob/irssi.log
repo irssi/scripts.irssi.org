@@ -1,4 +1,4 @@
-* -f on closed filehandle CONF at blowjob.pl line 101.
+* -f on closed filehandle CONF at blowjob.pl line 102.
 * 
 * -!- Irssi: > ../blowjob.conf not found, setting to defaults
 * -!- Irssi: 
@@ -7,7 +7,7 @@
 * -!- Irssi: 
 * -!- Irssi: - keys reloaded (Total: 0)
 * -!- Irssi: 
-* Reference found where even-sized list expected at blowjob.pl line 478.
+* Reference found where even-sized list expected at blowjob.pl line 475.
 * 
 * -!- Irssi: blowjob script 0.9.0
 * -!- Irssi: 
