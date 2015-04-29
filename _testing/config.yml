@@ -1,4 +1,20 @@
 ---
+scripts_yaml_keys:
+  # required
+  - filename
+  - version
+  - authors
+  - contact
+  - name
+  - description
+  - license
+  # optional
+  - url
+  - commands
+  - note
+  - modules
+  # explicit
+  - modified
 additional_system_deps:
   - libconfig-simple-perl
   - libyaml-perl

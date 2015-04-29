@@ -8,7 +8,7 @@ use strict;
 use vars qw($VERSION %IRSSI);
 
 use Irssi 20020120;
-$VERSION = "0.13";
+$VERSION = "0.14";
 %IRSSI = (
     authors	=> "c0ffee",
     contact	=> "c0ffee\@penguin-breeder.org",
@@ -16,10 +16,9 @@ $VERSION = "0.13";
     description	=> "Reset window activity status. defines command /act",
     license	=> "Public Domain",
     url		=> "http://www.penguin-breeder.org/irssi/",
-    changed	=> "Wed Jun 23 08:34:53 CEST 2004",
+    changed	=> "Thu Apr 16 15:55:05 BST 2015",
 );
 #</scriptinfo>
-
 
 #
 # /ACT [PUBLIC|ALL]
@@ -30,46 +29,16 @@ $VERSION = "0.13";
 # /ACT PUBLIC also removes those where no nick hilight was triggered
 #
 # /ACT ALL sets all windows as non-active
-sub cmd_act {
-    my ($data, $server, $channel) = @_;
 
-    my $level;
+Irssi::command_bind('act', sub { _act(1); });
+Irssi::command_bind('act public', sub { _act(2); });
+Irssi::command_bind('act all', sub { _act(3); });
 
-    if ($data eq "") {
-      $level = 1;
-    } elsif ($data =~ /^public$/i) {
-      $level = 2;
-    } elsif ($data =~ /^all$/i) {
-      $level = 3;
-    } else {
-      Irssi::signal_emit("error command", -3, $data);
-      return;
+sub _act {
+  my($level) = @_;
+  for (Irssi::windows()) {
+    if ($_->{data_level} <= $level) {
+      Irssi::signal_emit("window dehilight", $_);
     }
-
-    foreach (Irssi::windows()) {
-
-      if ($_->{data_level} <= $level) {
-
-        Irssi::signal_emit("window dehilight", $_);
-
-      }
-
-    }
+  }
 }
-
-my @arguments = ('public', 'all');
-sub sig_complete {
-    my ($list, $window, $word, $linestart, $want_space) = @_;
-    return unless $linestart =~ /^.act/;
-    foreach my $arg (@arguments) {
-      if ($arg =~ /^$word/i) {
-        $$want_space = 0;
-        push @$list, $arg;
-      }
-    }
-    Irssi::signal_stop();
-}
-
-
-Irssi::command_bind("act", "cmd_act");
-Irssi::signal_add_first('complete word', \&sig_complete);

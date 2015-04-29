@@ -42,3 +42,4 @@ The following keys are recognised in config.yml:
   * broken_modules: - modules to never auto-install, for example
                       because they hang Travis
 * whitelist: - list of scripts that are allowed to fail
+* scripts_yaml_keys: - list of keys to copy from irssi header to scripts.dmp
