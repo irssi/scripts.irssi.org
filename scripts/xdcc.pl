@@ -329,9 +329,9 @@ sub xdcc_get_info {
   my $ymd = sprintf "%d-%s-%d %d:%02d", $d, $months[$n], 1900+$y, $h, $m;
 
   my $bytes;
-  if ($size < 1024) { $bytes = $size + " b." }
-  elsif ($size < 1024*1024) { $bytes = int($size/1024) + " kb." }
-  elsif ($size < 1024*1024*1024) { $bytes = sprintf("%0.1d",int((10*$size)/(1024*1024))) + " kb." }
+  if ($size < 1024) { $bytes = $size . " b." }
+  elsif ($size < 1024*1024) { $bytes = int($size/1024) . " kb." }
+  elsif ($size < 1024*1024*1024) { $bytes = sprintf("%0.1d",int((10*$size)/(1024*1024))) . " kb." }
 
   return {
     id => $id+1,
