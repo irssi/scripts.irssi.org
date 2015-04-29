@@ -72,15 +72,18 @@ sub load_nicks {
     my($mask,$net,$channel,$flags,$flag);
     local(*FILE);
 
-	%nicks = ();
-    open FILE, "< $file";
-    while (<FILE>) {
-        add_nick($_);
-    }
-    close FILE;
-    $count = keys %nicks;
+    %nicks = ();
+    if (open FILE, "<", $file) {
+        while (<FILE>) {
+            add_nick($_);
+        }
+        close FILE;
+        $count = keys %nicks;
 
-    crap("Loaded $count nicks");
+        crap("Loaded $count nicks");
+    } else {
+        crap("Unable to open $file for loading: $!");
+    }
 }
 
 # --------[ save_nicks ]------------------------------------------------
@@ -93,15 +96,18 @@ sub save_nicks {
 
     return if $auto && !Irssi::settings_get_bool('msg2notice_autosave');
 
-    open FILE, "> $file";
-    for my $nick (keys %nicks) {
-        $count++;
-		print FILE "$nick\n";
-    }
-    close FILE;
+    if (open FILE, ">", $file) {
+        for my $nick (keys %nicks) {
+            $count++;
+            print FILE "$nick\n";
+        }
+        close FILE;
 
-    crap("Saved $count nicks to $file")
-      unless $auto;
+        crap("Saved $count nicks to $file")
+          unless $auto;
+    } else {
+        crap("Unable to open $file for saving: $!");
+    }
 }
 
 # ======[ Hooks ]=======================================================
