@@ -1,15 +1,13 @@
-use strict;
-use Irssi 20040119.2359 ();
-use vars qw($VERSION %IRSSI);
-$VERSION = "1.19";
+use Irssi 20150430.1453 ();
+$VERSION = "1.20";
 %IRSSI = (
-    authors     => 'David Leadbeater, Timo Sirainen, Georg Lukas',
+    authors     => 'David Leadbeater, Timo Sirainen, Georg Lukas, Florian Simon',
     contact     => 'dgl@dgl.cx, tss@iki.fi, georg@boerde.de',
     name        => 'usercount',
     description => 'Adds a usercount for a channel as a statusbar item',
     license     => 'GNU GPLv2 or later',
     url         => 'http://irssi.dgl.cx/',
-    changes     => 'Only show halfops if server supports them',
+    changes     => 'Using nick prefixes to count instead of incomplete Irssi variables',
 );
 
 # Once you have loaded this script run the following command:
@@ -31,9 +29,10 @@ $VERSION = "1.19";
 #  sb_uc_space = " ";
 
 
+use strict;
 use Irssi::TextUI;
 
-my ($ircops, $ops, $halfops, $voices, $normal, $total);
+my ($ircops, $admin, $ops, $halfops, $voices, $normal, $total);
 my ($timeout_tag, $recalc);
 
 # Called to make the status bar item
@@ -55,23 +54,25 @@ sub usercount {
   my $theme = Irssi::current_theme();
   my $format = $theme->format_expand("{sb_usercount}");
   if ($format) {
-    # use theme-specific look
     my $ircopstr = $theme->format_expand("{sb_uc_ircops $ircops}",
+          Irssi::EXPAND_FLAG_IGNORE_EMPTY);
+    my $adminstr = $theme->format_expand("{sb_uc_admin $admin}",
           Irssi::EXPAND_FLAG_IGNORE_EMPTY);
     my $opstr = $theme->format_expand("{sb_uc_ops $ops}",
           Irssi::EXPAND_FLAG_IGNORE_EMPTY);
     my $halfopstr = $theme->format_expand("{sb_uc_halfops $halfops}",
           Irssi::EXPAND_FLAG_IGNORE_EMPTY);
-    my $voicestr = $theme->format_expand("{sb_uc_voices $voices}", 
+    my $voicestr = $theme->format_expand("{sb_uc_voices $voices}",
           Irssi::EXPAND_FLAG_IGNORE_EMPTY);
     my $normalstr = $theme->format_expand("{sb_uc_normal $normal}",
           Irssi::EXPAND_FLAG_IGNORE_EMPTY);
-	my $space = $theme->format_expand('{sb_uc_space}',
+  my $space = $theme->format_expand('{sb_uc_space}',
          Irssi::EXPAND_FLAG_IGNORE_EMPTY);
-	$space = " " unless $space;
+  $space = " " unless $space;
 
     my $str = "";
     $str .= $ircopstr.$space if defined $ircops;
+    $str .= $adminstr.$space if defined $admin;
     $str .= $opstr.$space  if defined $ops;
     $str .= $halfopstr.$space if defined $halfops;
     $str .= $voicestr.$space if defined $voices;
@@ -79,11 +80,11 @@ sub usercount {
     $str =~ s/\Q$space\E$//;
 
     $format = $theme->format_expand("{sb_usercount $total $str}",
-				    Irssi::EXPAND_FLAG_IGNORE_REPLACES);
+            Irssi::EXPAND_FLAG_IGNORE_REPLACES);
   } else {
-    # use the default look
     $format = "{sb \%_$total\%_ nicks \%c(\%n";
-    $format .= '*'.$ircops.' ' if (defined $ircops);
+    $format .= '~'.$ircops.' ' if (defined $ircops);
+    $format .= '&'.$admin.' ' if (defined $admin);
     $format .= '@'.$ops.' ' if (defined $ops);
     $format .= '%%'.$halfops.' ' if (defined $halfops);
     $format .= "+$voices " if (defined $voices);
@@ -99,40 +100,40 @@ sub calc_users() {
   my $channel = shift;
   my $server = $channel->{server};
 
-  $ircops = $ops = $halfops = $voices = $normal = 0;
+  $ircops = $admin = $ops = $halfops = $voices = $normal = 0;
   for ($channel->nicks()) {
-    if ($_->{serverop}) {
+      if (index($_->{prefixes}, '~') != -1) {
       $ircops++;
-	}
-
-    if ($_->{op}) {
+    } elsif (index($_->{prefixes}, '&') != -1) {
+      $admin++;
+    } elsif (index($_->{prefixes}, '@') != -1) {
       $ops++;
-	} elsif ($_->{halfop}) {
-	   $halfops++;
-    } elsif ($_->{voice}) {
+    } elsif (index($_->{prefixes}, '%') != -1) {
+      $halfops++;
+    } elsif (index($_->{prefixes}, '+') != -1) {
       $voices++;
     } else {
       $normal++;
     }
   }
 
-  $total = $ops+$halfops+$voices+$normal;
-  
+  $total = $admin+$ops+$halfops+$voices+$normal;
+
   if (!Irssi::settings_get_bool('usercount_show_zero')) {
     $ircops = undef if ($ircops == 0);
+    $admin = undef if ($admin == 0);
     $ops = undef if ($ops == 0);
     $halfops = undef if ($halfops == 0);
     $voices = undef if ($voices == 0);
     $normal = undef if ($normal == 0);
   }
 
-  # Server doesn't support halfops? 
+  # Server doesn't support halfops?
   if($server->isupport("PREFIX") !~ /\%/) {
      $halfops = undef;
-  } else {
-     $halfops = undef unless Irssi::settings_get_bool('usercount_show_halfops');
+    } else {
+      $halfops = undef unless Irssi::settings_get_bool('usercount_show_halfops');
   }
-
   $ircops = undef unless Irssi::settings_get_bool('usercount_show_ircops');
 }
 
@@ -152,7 +153,7 @@ sub refresh_check {
    return if $wi->{name} ne $channel->{name};
    return if $wi->{server}->{tag} ne $channel->{server}->{tag};
 
-   # don't refresh immediately, or we'll end up refreshing 
+   # don't refresh immediately, or we'll end up refreshing
    # a lot around netsplits
    $recalc = 1;
    Irssi::timeout_remove($timeout_tag) if ($timeout_tag > 0);
@@ -168,7 +169,7 @@ $recalc = 1;
 $timeout_tag = 0;
 
 Irssi::settings_add_bool('usercount', 'usercount_show_zero', 1);
-Irssi::settings_add_bool('usercount', 'usercount_show_ircops', 0);
+Irssi::settings_add_bool('usercount', 'usercount_show_ircops', 1);
 Irssi::settings_add_bool('usercount', 'usercount_show_halfops', 1);
 
 Irssi::statusbar_item_register('usercount', undef, 'usercount');
@@ -180,4 +181,3 @@ Irssi::signal_add_last('nick mode changed', 'refresh_check');
 Irssi::signal_add_last('setup changed', 'refresh_recalc');
 Irssi::signal_add_last('window changed', 'refresh_recalc');
 Irssi::signal_add_last('window item changed', 'refresh_recalc');
-
