@@ -1,7 +1,7 @@
 #!/usr/bin/perl -w
 use strict;
 
-# BlowJob 0.9.0, a crypto script - ported from xchat
+# BlowJob 0.9.1, a crypto script - ported from xchat
 # was based on rodney mulraney's crypt
 # changed crypting method to Blowfish+Base64+randomness+Z-compression
 # needs :
@@ -13,6 +13,7 @@ use strict;
 # crypted format is :
 # HEX(Base64((paranoia-factor)*(blowfish(RANDOM+Zcomp(string))+RANDOM)))
 #
+# 04-22-2015 Updated for compatibility with current Crypt::CBC
 # 10-03-2004 Removed seecrypt, fixed two minor bugs
 # 09-03-2004 Supporting multiline messages now.
 # 08-03-2004 Lots of bugfixes on the irssi version by Thomas Reifferscheid
@@ -175,7 +176,7 @@ sub getkey
     $key=$gkey;
     $paranoia=$gparanoia;
   }
-  $cipher=new Crypt::CBC($key,'Blowfish',undef);
+  $cipher=new Crypt::CBC(-key=> $key, -cipher=> 'Blowfish', -header => 'randomiv');
 }
 
 sub setkey
@@ -281,8 +282,6 @@ sub enc
     $tbout = $prng1.$tbout;
     $tbout = $cipher->encrypt($tbout);
     $tbout .= $prng2;
-    # don't wan't to see "RandomIV"
-    $tbout =~ s/^.{8}//;
   }
 
   $tbout = encode_base64($tbout);
@@ -450,8 +449,6 @@ sub infoline
     my $i;
     for ($i=0;$i<$paranoia;$i++) {
       $out = substr($out,0,(length($out)-4));
-      # restore RandomIV
-      $out = 'RandomIV'.$out;
       $out = $cipher->decrypt($out);
       $out = substr($out,4);
     }

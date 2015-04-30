@@ -30,7 +30,7 @@ $VERSION = "1.1";
 	name			=> "greetignore",
 	description	=> "Hide the stupid \"greet messages\" posted by some bots".
 						" after someone joins a channel.",
-	licence		=> "GPLv2",
+	license		=> "GPLv2",
 	changed		=> "20120914",
 );
 

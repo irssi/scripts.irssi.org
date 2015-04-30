@@ -32,7 +32,7 @@ $VERSION = '0.5';
 %IRSSI = (
 	authors => 'Adam James',
 	contact => 'atj@pulsewidth.org.uk',
-	url => 'http://git.pulsewidth.org.uk/?p=irssi-scripts.git;a=summary'
+	url => 'http://git.pulsewidth.org.uk/?p=irssi-scripts.git;a=summary',
 	name => 'email_privmsgs',
 	description =>
 		"Emails you private messages sent while you're away. " .

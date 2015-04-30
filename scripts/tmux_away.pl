@@ -6,7 +6,8 @@ use vars qw($VERSION %IRSSI);
 
 $VERSION = "2.0";
 %IRSSI = (
-    authors     => 'jcv',
+    authors     => 'John C. Vernaleo',
+    contact     => 'john@netpurgatory.com',
     name        => 'tmux_away',
     description => 'set (un)away if tmux session is attached/detached',
     license     => 'GPL v2',

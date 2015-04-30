@@ -18,6 +18,21 @@ Irssi::command('^window log off');
 my ($package) = grep { !/^_/ } keys %Irssi::Script::;
 
 require YAML::Tiny;
+YAML::Tiny->VERSION("1.59");
+require Encode;
+{
+    # This is an ugly hack to be `lax' about the encoding. We try to
+    # read everything as UTF-8 regardless of declared file encoding
+    # and fall back to Latin-1.
+    my $orig = YAML::Tiny->can("_has_internal_string_value");
+    *YAML::Tiny::_has_internal_string_value = sub {
+	my $ret = $orig->(@_);
+	use bytes;
+	$_[0] = Encode::decode_utf8($_[0], sub{pack 'U', +shift})
+	    unless Encode::is_utf8($_[0]);
+	$ret
+    }
+}
 require Module::CoreList;
 require CPAN::Meta::Requirements;
 require Perl::PrereqScanner;
@@ -32,8 +47,7 @@ my (%info, $version);
 unless (defined $package) {
     my %fail = (failed => 1, name => $CURRENT_SCRIPT);
     $fail{modules} = \@modules if @modules;
-    { open my $ef, '>:utf8', "failed.yml";
-      print $ef YAML::Tiny::Dump([\%fail]); }
+    YAML::Tiny::DumpFile("failed.yml", [\%fail]);
     # Grep for the code instead
     require PPI;
     require PPIx::XPath;
@@ -74,5 +88,4 @@ if ($loginfo) {
 }
 $info{modules} = \@modules if @modules;
 $info{default_package} = $package =~ s/::$//r if $package;
-{ open my $ef, '>:utf8', "info.yml";
-  print $ef YAML::Tiny::Dump([\%info]); }
+YAML::Tiny::DumpFile("info.yml", [\%info]);

@@ -11,7 +11,7 @@ unless ($@) {
     import Crypt::PasswdMD5;
 }
 
-$VERSION = "1.7";
+$VERSION = "1.8";
 %IRSSI =
 (
     authors     => "Marcin 'Qrczak' Kowalczyk, Johan 'ion' Kiviniemi",
@@ -1427,6 +1427,7 @@ sub load_config() {
     %user_flags = ();
     %channel_flags = ();
     %user_channel_flags = ();
+    local $/ = "\n";
     open CONFIG, $config or return;
     while (<CONFIG>) {
         chomp;

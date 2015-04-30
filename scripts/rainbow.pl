@@ -35,6 +35,7 @@ $VERSION = "1.6";
 
 use Irssi;
 use Irssi::Irc;
+use Encode;
 
 # colors list
 #  0 == white

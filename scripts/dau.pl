@@ -2686,7 +2686,7 @@ sub switch_cool {
 	} elsif ($style eq 'suffixes') {
 		my $suffix;
 		if (-e $file && -r $file) {
-			$/ = "\n";
+			local $/ = "\n";
 			@ARGV = ($file);
 			srand;
 			rand($.) < 1 && ($suffix = switch_parse_special($_, $channel)) while <>;

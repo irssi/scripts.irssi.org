@@ -3,13 +3,13 @@ before_install:
 - sudo apt-get update -qq
 - sudo apt-get build-dep -qq irssi libperl-prereqscanner-perl libperl-critic-perl
   cpanminus
-- sudo apt-get install -qq lynx zsh apt-file libyaml-tiny-perl libtest-most-perl libgetopt-long-descriptive-perl
+- sudo apt-get install -qq lynx zsh apt-file libtest-most-perl libgetopt-long-descriptive-perl
   libwww-perl liblog-log4perl-perl libdatetime-perl libmodule-runtime-perl libparams-classify-perl
   libtime-duration-parse-perl
 - perl -V
 - wget -qO- https://raw.githubusercontent.com/miyagawa/cpanminus/master/cpanm | sudo
   perl - App::cpanminus
-- sudo cpanm -q --skip-satisfied Perl::Critic Perl::PrereqScanner PPIx::XPath
+- sudo cpanm -q --skip-satisfied YAML::Tiny Perl::Critic Perl::PrereqScanner PPIx::XPath
 - git clone -q git://github.com/irssi/irssi irssi-head
 - pushd irssi-head
 - ./autogen.sh --with-perl=module 2>/dev/null | tail -n 17
