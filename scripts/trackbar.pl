@@ -123,7 +123,7 @@
 
 use strict;
 use 5.6.1;
-use Irssi;
+use Irssi 20140701;
 use Irssi::TextUI;
 use POSIX qw(strftime);
 use utf8;
