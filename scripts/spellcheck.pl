@@ -60,7 +60,7 @@ use vars qw($VERSION %IRSSI);
 use Irssi 20070804;
 use Text::Aspell;
 
-$VERSION = '0.3';
+$VERSION = '0.4';
 %IRSSI = (
     authors     => 'Jakub Jankowski',
     contact     => 'shasta@toxcorp.com',
@@ -173,11 +173,15 @@ sub spellcheck_key_pressed
     # check if inputline starts with any of cmdchars
     # we shouldn't spellcheck commands
     my $cmdchars = Irssi::settings_get_str('cmdchars');
-    my $re = qr/^[$cmdchars]/;
-    return if ($inputline =~ $re);
+    my $cmdre = qr/^[$cmdchars]/;
+    return if ($inputline =~ $cmdre);
 
     # get last bit from the inputline
     my ($word) = $inputline =~ /\s*([^\s]+)$/;
+
+    # do not spellcheck urls
+    my $urlre = qr/(^[a-zA-Z]+:\/\/\S+)|(^www)/;
+    return if ($word =~ $urlre);
 
     # find appropriate language for current window item
     my $lang = spellcheck_find_language($win->{active_server}->{tag}, $win->{active}->{name});
