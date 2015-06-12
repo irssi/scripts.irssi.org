@@ -3,7 +3,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 ## Irssi Scripts Test Report
                                  | LOAD | HDR | CRIT | SCORE | PASS
 ----: | :--: | :-: | :--: | ----: | :---:
-[                          8-ball ](Test/8-ball/)|  ✔   |  ✔   |  ✔   | 12   |  ✔   
+[                          8-ball ](Test/8-ball/)|  ✔   |  ✔   |  ✔   | 12   |  ✔   | (c)
 [                          accent ](Test/accent/)|  ✔   |  ✔   |  ✔   | 11   |  ✔   | (c)
 [                     accountname ](Test/accountname/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        act_fifo ](Test/act_fifo/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
@@ -126,7 +126,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                           elist ](Test/elist/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                           eliza ](Test/eliza/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                      emaildb1.0 ](Test/emaildb1.0/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
-[                      email_msgs ](Test/email_msgs/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                      email_msgs ](Test/email_msgs/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
 [                  email_privmsgs ](Test/email_privmsgs/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                             emo ](Test/emo/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                          events ](Test/events/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -441,4 +441,4 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                            xmms ](Test/xmms/)|  ✔   |  ✔   |  ✔   |  8   |  ✔   | (c)
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 
-ba921abe623ca47dfb74c417c40c9e979e2fdfbf | 298
+f0d62f2021bcd611939f84e15033ae9549331731 | 296

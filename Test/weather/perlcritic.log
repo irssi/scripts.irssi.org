@@ -1,0 +1,8 @@
+Code before warnings are enabled at line 34, column 1.  See page 431 of PBP.  (Severity: 4)
+Subroutine "new" called using indirect syntax at line 87, column 13.  See page 349 of PBP.  (Severity: 4)
+Mismatched operator at line 94, column 17.  Numeric/string operators and operands should match.  (Severity: 3)
+"die" used instead of "croak" at line 150, column 53.  See page 283 of PBP.  (Severity: 3)
+Return value of "close" ignored at line 152, column 3.  Check the return value of "close" for success.  (Severity: 2)
+"die" used instead of "croak" at line 158, column 52.  See page 283 of PBP.  (Severity: 3)
+Return value of "close" ignored at line 173, column 3.  Check the return value of "close" for success.  (Severity: 2)
+Mismatched operator at line 228, column 25.  Numeric/string operators and operands should match.  (Severity: 3)
