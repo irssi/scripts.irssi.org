@@ -3,7 +3,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 ## Irssi Scripts Test Report
                                  | LOAD | HDR | CRIT | SCORE | PASS
 ----: | :--: | :-: | :--: | ----: | :---:
-[                          8-ball ](Test/8-ball/)|  ✔   |  ✔   |  ✔   | 12   |  ✔   
+[                          8-ball ](Test/8-ball/)|  ✔   |  ✔   |  ✔   | 12   |  ✔   | (c)
 [                          accent ](Test/accent/)|  ✔   |  ✔   |  ✔   | 11   |  ✔   | (c)
 [                     accountname ](Test/accountname/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        act_fifo ](Test/act_fifo/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
@@ -252,7 +252,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                           mouse ](Test/mouse/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                             mpd ](Test/mpd/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
 [                          mpg123 ](Test/mpg123/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
-[                      msg2notice ](Test/msg2notice/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   
+[                      msg2notice ](Test/msg2notice/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                      multipaste ](Test/multipaste/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                         my_beep ](Test/my_beep/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        mygoogle ](Test/mygoogle/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
@@ -299,7 +299,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                     page-c0ffee ](Test/page-c0ffee/)|  ✘   |  ✔   |  ✔   |  5   |  ☡   | (c)
 [                     page_reeler ](Test/page_reeler/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                           pager ](Test/pager/)|  ✘   |  ✔   |  ✔   |  3   |  ☡   | (c)
-[                       pangotext ](Test/pangotext/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
+[                       pangotext ](Test/pangotext/)|  ✔   |  ✔   |  ✘   |  4   |  ✘   
 [                    paste_derwan ](Test/paste_derwan/)|  ✔   |  ✔   |  ✔   | 53   |  ✔   | (c)
 [                    paste-derwan ](Test/paste-derwan/)|  ✔   |  ✔   |  ✔   | 37   |  ✔   | (c)
 [                    paste_huggie ](Test/paste_huggie/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
@@ -355,7 +355,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                     showhilight ](Test/showhilight/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        showhost ](Test/showhost/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        showmode ](Test/showmode/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                  slack_complete ](Test/slack_complete/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[                  slack_complete ](Test/slack_complete/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                     slack_emoji ](Test/slack_emoji/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                     smartfilter ](Test/smartfilter/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                          smiley ](Test/smiley/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -389,7 +389,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                        topicsed ](Test/topicsed/)|  ✔   |  ✘   |  ✘   | 18   |  ☡   | (c)
 [                          topics ](Test/topics/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       tordetect ](Test/tordetect/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
-[                        trackbar ](Test/trackbar/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[                        trackbar ](Test/trackbar/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       tracknick ](Test/tracknick/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        translit ](Test/translit/)|  ✔   |  ✘   |  ✔   |  8   |  ☡   | (c)
 [                         trigger ](Test/trigger/)|  ✔   |  ✔   |  ✔   | 16   |  ✔   | (c)
@@ -422,7 +422,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                       washnicks ](Test/washnicks/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                           watch ](Test/watch/)|  ✔   |  ✔   |  ✔   | 33   |  ✔   | (c)
 [                       whitelist ](Test/whitelist/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
-[                        whocount ](Test/whocount/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
+[                        whocount ](Test/whocount/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                     whois_hexip ](Test/whois_hexip/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
 [                           whois ](Test/whois/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                            whos ](Test/whos/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -435,7 +435,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                    wordscramble ](Test/wordscramble/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                           xauth ](Test/xauth/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
 [                            xcmd ](Test/xcmd/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                         xdccget ](Test/xdccget/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                         xdccget ](Test/xdccget/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
 [                            xdcc ](Test/xdcc/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
 [                           xetra ](Test/xetra/)|  ✘   |  ✔   |  ✔   | 11   |  ☡   | (c)
 [                           xlist ](Test/xlist/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -444,4 +444,4 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                            xmms ](Test/xmms/)|  ✔   |  ✔   |  ✔   |  8   |  ✔   | (c)
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 
-09de7f76aef249e426b83113779ca4cea45f4e3a | 302
+f491b33b8587c786cb39021093b274b74682fa1f | 305

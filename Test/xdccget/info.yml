@@ -1,11 +1,12 @@
 ---
 -
-  authors: "Stefan 'tommie' Tomanek"
-  changed: '20040509'
+  authors: "Stefan 'tommie' Tomanek, Obfuscoder"
+  changed: '20141016'
   commands: xdccget
-  contact: stefan@pico.ruhr.de
+  contact: obfuscoder@obfusco.de
   default_package: xdccget
-  description: 'advances downloading from XDCC bots'
+  description: 'enhanced downloading, queing, searching from XDCC bots'
   license: GPLv2
-  name: XDCCget
-  version: '20040509'
+  modified: '2014-10-16 14:47:21'
+  name: xdccget
+  version: '20141016'
