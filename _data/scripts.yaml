@@ -3543,11 +3543,11 @@
   description: 'Checks for spelling errors using Aspell.'
   filename: spellcheck.pl
   license: GPLv2
-  modified: '2008-05-29 00:32:04'
+  modified: '2015-02-01 12:23:25'
   modules: Text::Aspell
   name: Spellcheck
   url: http://toxcorp.com/irc/irssi/spellcheck/
-  version: '0.3'
+  version: '0.4'
 -
   authors: "Maciek 'fahren' Freudenheim, David Leadbeater"
   contact: fahren@bochnia.pl
