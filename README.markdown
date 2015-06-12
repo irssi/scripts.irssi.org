@@ -126,7 +126,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                           elist ](Test/elist/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                           eliza ](Test/eliza/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                      emaildb1.0 ](Test/emaildb1.0/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
-[                      email_msgs ](Test/email_msgs/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[                      email_msgs ](Test/email_msgs/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                  email_privmsgs ](Test/email_privmsgs/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                             emo ](Test/emo/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                          events ](Test/events/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -197,7 +197,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                          ircsec ](Test/ircsec/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
 [                    irssiBlaster ](Test/irssiBlaster/)|  ✔   |  ✔   |  ✔   | 12   |  ✔   | (c)
 [                      irssi-feed ](Test/irssi-feed/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
-[                    irssi_logger ](Test/irssi_logger/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[                    irssi_logger ](Test/irssi_logger/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
 [                          irssiq ](Test/irssiq/)|  ✘   |  ✔   |  ✘   | 50   |  ☡   | (c)
 [                        isbanned ](Test/isbanned/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
 [                            isdn ](Test/isdn/)|  ✘   |  ✔   |  ✘   | 10   |  ☡   | (c)
@@ -252,7 +252,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                           mouse ](Test/mouse/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                             mpd ](Test/mpd/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
 [                          mpg123 ](Test/mpg123/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
-[                      msg2notice ](Test/msg2notice/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   
+[                      msg2notice ](Test/msg2notice/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
 [                      multipaste ](Test/multipaste/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                         my_beep ](Test/my_beep/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        mygoogle ](Test/mygoogle/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
@@ -354,7 +354,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                     showhilight ](Test/showhilight/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        showhost ](Test/showhost/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        showmode ](Test/showmode/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                  slack_complete ](Test/slack_complete/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[                  slack_complete ](Test/slack_complete/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
 [                     slack_emoji ](Test/slack_emoji/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                     smartfilter ](Test/smartfilter/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                          smiley ](Test/smiley/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -441,4 +441,4 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                            xmms ](Test/xmms/)|  ✔   |  ✔   |  ✔   |  8   |  ✔   | (c)
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 
-8a36b86ca39588dbc4eed16b00e95e749e3e94f4 | 301
+ba921abe623ca47dfb74c417c40c9e979e2fdfbf | 298
