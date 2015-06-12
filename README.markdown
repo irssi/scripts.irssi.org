@@ -67,7 +67,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [          bitlbee_tab_completion ](Test/bitlbee_tab_completion/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [               bitlbee_timestamp ](Test/bitlbee_timestamp/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [           bitlbee_typing_notice ](Test/bitlbee_typing_notice/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                         blowjob ](Test/blowjob/)|  ✔   |  ✔   |  ✔   | 22   |  ✔   
+[                         blowjob ](Test/blowjob/)|  ✔   |  ✔   |  ✔   | 22   |  ✔   | (c)
 [                             bmi ](Test/bmi/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                             buf ](Test/buf/)|  ✔   |  ✔   |  ✔   |  8   |  ✔   | (c)
 [                            calc ](Test/calc/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
@@ -357,7 +357,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                          snmpup ](Test/snmpup/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                         spambot ](Test/spambot/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                special_complete ](Test/special_complete/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                      spellcheck ](Test/spellcheck/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                      spellcheck ](Test/spellcheck/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                           spell ](Test/spell/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                           sping ](Test/sping/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       splitlong ](Test/splitlong/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -437,4 +437,4 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                            xmms ](Test/xmms/)|  ✔   |  ✔   |  ✔   |  8   |  ✔   | (c)
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 
-9e4cb3828ae1cedb61df56a41cc89df1d53d03a9 | 283
+930d70258e48949bf7c675d3f4c60744a5217e2a | 294

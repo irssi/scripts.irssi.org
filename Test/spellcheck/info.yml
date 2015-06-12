@@ -5,8 +5,9 @@
   default_package: spellcheck
   description: 'Checks for spelling errors using Aspell.'
   license: GPLv2
+  modified: '2015-02-01 12:23:25'
   modules:
     - Text::Aspell
   name: Spellcheck
   url: http://toxcorp.com/irc/irssi/spellcheck/
-  version: '0.3'
+  version: '0.4'
