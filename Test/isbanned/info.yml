@@ -6,6 +6,6 @@
   default_package: isbanned
   description: 'freenode-specific script that checks whether someone is banned on some channel'
   license: 'Public domain'
-  modified: '2015-01-13 17:01:18'
+  modified: '2015-06-12 21:43:19'
   name: isbanned
-  version: 0.6.2
+  version: 0.6.4
