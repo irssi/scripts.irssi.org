@@ -1,0 +1,12 @@
+---
+-
+  authors: 'Julie LaLa'
+  changed: 'Tue Jan 21 09:57:55 EST 2015'
+  contact: ryz@asdf.us
+  default_package: xdcc
+  description: 'Run an XDCC file server from irssi.'
+  license: 'Jollo LNT license'
+  modified: '2015-06-12 22:16:41'
+  name: xdcc.pl
+  url: http://asdf.us/xdcc/
+  version: '1.0'
