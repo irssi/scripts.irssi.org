@@ -13,9 +13,9 @@ use vars qw($VERSION %IRSSI);
 	authors => "mniip",
 	contact => "mniip \@ freenode",
 	license => "Public domain",
-	modified => "2015-01-13"
+	modified => "2015-01-16"
 );
-$VERSION = "0.6.2";
+$VERSION = "0.6.4";
 
 #	Commands:
 #		/isbanned <channel> <user>
@@ -53,6 +53,13 @@ $VERSION = "0.6.2";
 #
 #		0.6.2 (2015.01.13)
 #			Fixed a few warnings.
+#
+#		0.6.3 (2015.01.16)
+#			Improve command argument parsing. Display usage on incorrect use.
+#			Support multiple modes at once in islisted.
+#
+#		0.6.4 (2015.03.22)
+#			Fix translation from python: fix bans containing the letter Z not matching
 
 my $active = 0;
 my $user;
@@ -146,7 +153,7 @@ my %char_classes =
 		"?" => "."
 	);
 $char_classes{$_} = $_ foreach split //, '-_`^0123456789';
-for(my $c = 0; $c < 25; $c++)
+for(my $c = 0; $c <= 25; $c++)
 {
 	my $lc = chr($c + ord "a");
 	my $uc = chr($c + ord "A");
@@ -157,6 +164,7 @@ for(my $c = 0; $c < 25; $c++)
 sub match_pattern
 {
 	my ($string, $pattern) = @_;
+	$string = "" if !defined $string;
 	$pattern =~ s|[?*]+|"?" x ($& =~ tr/?/?/) . ($& =~ /\*/ ? "*" : "")|ge;
 
 	my $last_pos = 0;
@@ -336,6 +344,7 @@ sub reset
 sub lookup_host
 {
 	my ($host) = @_;
+	$host = "" if !defined $host;
 	Irssi::print("\x0302Resolving <$host>");
 	my @addresses = gethostbyname($host);
 	if(@addresses)
@@ -355,15 +364,19 @@ sub lookup_host
 
 sub query_list
 {
-	$lists_left++;
 	my ($server, $channel, $mode) = @_;
 	$server->command("quote MODE $channel");
-	$server->command("quote MODE $channel $mode");
+	for my $m(split //, $mode)
+	{
+		$lists_left++;
+		$server->command("quote MODE $channel $m");
+	}
 }
 
 sub query_whois
 {
 	my ($server, $nick) = @_;
+	$nick =~ s/\s+//g;
 	$server->command("quote WHOIS $nick");
 }
 
@@ -477,7 +490,6 @@ sub no_list
 		my ($server, $data, $nick, $address) = @_;
 		my @w = split / /, $data;
 		Irssi::print("\x0304Could not obtain modes for $w[1], report may be incomplete");
-		Irssi::print("eq nolist");
 		if(nick_eq($w[1], $channel) && !$modes)
 		{
 			$modes = "+";
@@ -576,23 +588,46 @@ sub start_search
 sub isbanned
 {
 	my ($arg, $server, $witem) = @_;
-	my ($chan, $user) = split / /, $arg, 2;
-	start_search($server, $chan, $user, "b");
+	if($arg =~ /^\s*(\S+)\s+(.*\S)\s*/)
+	{
+		my $chan = $1;
+		my $user = $2;
+		return start_search($server, $chan, $user, "b") if $chan ne "" && $user ne "";
+	}
+	Irssi::print("Usage: /isbanned <channel> <user>");
 }
 
 sub ismuted
 {
 	my ($arg, $server, $witem) = @_;
 	my ($chan, $user) = split / /, $arg, 2;
-	start_search($server, $chan, $user, "q");
-	query_list($server, $chan, "b");
+	if($arg =~ /^\s*(\S+)\s+(.*\S)\s*/)
+	{
+		my $chan = $1;
+		my $user = $2;
+		if($chan ne "" && $user ne "")
+		{
+			start_search($server, $chan, $user, "q");
+			query_list($server, $chan, "b");
+			return;
+		}
+	}
+	Irssi::print("Usage: /ismuted <channel> <user>");
 }
 
 sub islisted
 {
 	my ($arg, $server, $witem) = @_;
 	my ($chan, $mode, $user) = split / /, $arg, 3;
-	start_search($server, $chan, $user, $mode =~ s/^\+//r);
+	if($arg =~ /^\s*(\S+)\s+(\S+)\s+(.*\S)\s*/)
+	{
+		my $chan = $1;
+		my $mode = $2;
+		my $user = $3;
+		$mode =~ s/\+//g;
+		return start_search($server, $chan, $user, $mode) if $chan ne "" && $mode ne "" && $user ne "";
+	}
+	Irssi::print("Usage: /islisted <channel> <mode> <user>");
 }
 
 Irssi::signal_add("event 329", \&ignored);
