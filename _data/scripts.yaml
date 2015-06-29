@@ -2962,6 +2962,15 @@
   name: pager
   version: '1.1'
 -
+  authors: fprintf
+  contact: fprintf@github.com
+  description: 'Render text with various color modifications using HTML tag syntax.'
+  filename: pangotext.pl
+  license: 'GNU GPLv2 or later'
+  modified: '2015-06-12 22:08:46'
+  name: pangotext
+  version: '1.1'
+-
   authors: 'Marcin Rozycki, Stanislaw Halik'
   contact: derwan@irssi.pl
   description: 'Usage: /paste [-all|-msgs|-public] [-c|-b] [-s|-l| where] [lines]'
@@ -3840,10 +3849,10 @@
   description: "Shows a bar where you've last read a window"
   filename: trackbar.pl
   license: GPLv2
-  modified: '2015-06-12 22:03:44'
+  modified: '2015-06-29 20:02:06'
   name: trackbar
   url: http://github.com/mjholtkamp/irssi-trackbar/
-  version: '1.8'
+  version: '1.9'
 -
   authors: 'Timo Sirainen'
   contact: tss@iki.fi
@@ -4156,6 +4165,16 @@
   name: whitelist
   version: '1.0'
 -
+  authors: 'Svante Kvarnström'
+  contact: sjk@ankeborg.nu
+  description: 'Counts the number of matches in /who lists'
+  filename: whocount.pl
+  license: GPL
+  modified: '2015-03-24 12:50:11'
+  name: whocount.pl
+  url: http://sjk.ankeborg.nu
+  version: 0.0.2
+-
   authors: "Maciek 'fahren' Freudenheim"
   contact: fahren@bochnia.pl
   description: "Hilights '@' in whois channel reply"
@@ -4272,15 +4291,25 @@
   name: Xcmd
   version: '0.2'
 -
-  authors: "Stefan 'tommie' Tomanek"
+  authors: 'Julie LaLa'
+  contact: ryz@asdf.us
+  description: 'Run an XDCC file server from irssi.'
+  filename: xdcc.pl
+  license: 'Jollo LNT license'
+  modified: '2015-06-12 22:16:41'
+  name: xdcc.pl
+  url: http://asdf.us/xdcc/
+  version: '1.0'
+-
+  authors: "Stefan 'tommie' Tomanek, Obfuscoder"
   commands: xdccget
-  contact: stefan@pico.ruhr.de
-  description: 'advances downloading from XDCC bots'
+  contact: obfuscoder@obfusco.de
+  description: 'enhanced downloading, queing, searching from XDCC bots'
   filename: xdccget.pl
   license: GPLv2
-  modified: '2008-05-17 17:39:09'
-  name: XDCCget
-  version: '20040509'
+  modified: '2014-10-16 14:47:21'
+  name: xdccget
+  version: '20141016'
 -
   authors: "Stefan 'tommie' Tomanek"
   commands: xetra
