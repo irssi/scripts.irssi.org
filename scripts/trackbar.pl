@@ -64,6 +64,7 @@
 #     Wohlgemuth (22 Sep 2012)
 #
 # Version history:
+#  1.9: - add version guard
 #  1.8: - sub draw_bar
 #  1.7: - Added /tb scroll, trackbar_hide_windows, trackbar_timestamp_timestamp
 #         and trackbar_timestamp_styled
@@ -123,12 +124,12 @@
 
 use strict;
 use 5.6.1;
-use Irssi;
+use Irssi 20140701;
 use Irssi::TextUI;
 use POSIX qw(strftime);
 use utf8;
 
-our $VERSION = "1.8";
+our $VERSION = "1.9";
 
 our %IRSSI = (
     authors     => "Peter 'kinlo' Leurs, Uwe Dudenhoeffer, " .
