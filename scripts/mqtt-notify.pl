@@ -124,8 +124,8 @@ sub sig_message_private ($$$$) {
   if ((Irssi::settings_get_bool('mqtt_reveal_privmsg'))) {
     $body = '(PM: '.$nick.")\n".$data;
   }
-  utf8::decode($body);
   $body = Irssi::strip_codes($body);
+  utf8::decode($body);
   my @message_args = @args;
   push(@message_args, "-m", $body);
   mosquitto_pub(@message_args);
@@ -138,8 +138,8 @@ sub sig_print_text ($$$) {
 
   if ($dest->{level} & MSGLEVEL_HILIGHT) {
     my $body = '['.$dest->{target}."]\n".$stripped;
-    utf8::decode($body);
     $body = Irssi::strip_codes($body);
+    utf8::decode($body);
     my @message_args = @args;
     push(@message_args, "-m", $body);
     mosquitto_pub(@message_args);
@@ -173,8 +173,8 @@ sub sig_message_topic {
   my($server, $channel, $topic, $nick, $address) = @_;
 
   my $body = 'Topic for '.$channel."\n".$topic;
-  utf8::decode($body);
   $body = Irssi::strip_codes($body);
+  utf8::decode($body);
   my @message_args = @args;
   push(@message_args, "-m", $body);
   mosquitto_pub(@message_args);
