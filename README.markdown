@@ -252,7 +252,6 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                           mouse ](Test/mouse/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                             mpd ](Test/mpd/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
 [                          mpg123 ](Test/mpg123/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
-[                     mqtt-notify ](Test/mqtt-notify/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                      msg2notice ](Test/msg2notice/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                      multipaste ](Test/multipaste/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                         my_beep ](Test/my_beep/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -443,7 +442,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                           xmms2 ](Test/xmms2/)|  ✔   |  ✔   |  ✔   | 10   |  ✔   | (c)
 [                        xmmsinfo ](Test/xmmsinfo/)|  ✘   |  ✔   |  ✔   |  3   |  ☡   | (c)
 [                            xmms ](Test/xmms/)|  ✔   |  ✔   |  ✔   |  8   |  ✔   | (c)
-[                     xmpp-notify ](Test/xmpp-notify/)|  ✔   |  ✔   |  ✔   | 21   |  ✔   
+[                     xmpp-notify ](Test/xmpp-notify/)|  ✔   |  ✔   |  ✔   | 21   |  ✔   | (c)
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 
-7fe5e0fd9892018dc7a9852777a48a11d98e2298 | 314
+f0cec202d8ba147524ca7061045f4c6819f719cb | 313
