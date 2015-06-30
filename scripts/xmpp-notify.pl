@@ -176,8 +176,8 @@ sub sig_message_private ($$$$) {
   if ((Irssi::settings_get_bool('xmpp_reveal_privmsg'))) {
     $body = '(PM: '.$nick.') '.$data;
   }
-  utf8::decode($body);
   $body = Irssi::strip_codes($body);
+  utf8::decode($body);
   $message->SetMessage(to=>$XMPPRecv);
   $message->SetMessage(
     type=>"chat",
@@ -194,8 +194,8 @@ sub sig_print_text ($$$) {
   if ($dest->{level} & MSGLEVEL_HILIGHT) {
     my $message = new Net::Jabber::Message();
     my $body = '['.$dest->{target}.'] '.$stripped;
-    utf8::decode($body);
     $body = Irssi::strip_codes($body);
+    utf8::decode($body);
     $message->SetMessage(to=>$XMPPRecv);
     $message->SetMessage(
       type=>"chat",
@@ -239,8 +239,8 @@ sub sig_message_topic {
 
   my $message = new Net::Jabber::Message();
   my $body = 'Topic for '.$channel.': '.$topic;
-  utf8::decode($body);
   $body = Irssi::strip_codes($body);
+  utf8::decode($body);
   $message->SetMessage(to=>$XMPPRecv);
   $message->SetMessage(
     type=>"chat",
