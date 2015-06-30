@@ -2490,6 +2490,16 @@
   url: http://pwp.netcabo.pt/ricardomesquita/irssi
   version: 0.01+1
 -
+  authors: 'Thomas B. Ruecker'
+  contact: 'thomas@ruecker.fi, tbr on irc.freenode.net'
+  description: 'Sends out notifications via MQTT'
+  filename: mqtt-notify.pl
+  license: BSD-3-Clause
+  modified: '2015-06-30 12:01:33'
+  name: MQTT-notify
+  url: http://github.com/dm8tbr/irssi-mqtt-notify/
+  version: '1.0'
+-
   authors: 'Morten Lied Johansen'
   contact: mortenjo@ifi.uio.no
   description: 'For a configured list of nicks, convert all their messages to a notice'
@@ -4363,6 +4373,17 @@
   name: XMMSInfo
   url: http://shakti.tky.hut.fi/stuff.xml#irssi
   version: '1.01'
+-
+  authors: 'Thomas B. Ruecker'
+  contact: 'thomas@ruecker.fi, tbr on irc.freenode.net'
+  description: 'Sends out notifications via XMPP. Based on a script by Peter Krenesky.'
+  filename: xmpp-notify.pl
+  license: BSD-3-Clause
+  modified: '2015-06-30 12:00:46'
+  modules: Net::Jabber
+  name: XMPP-notify
+  url: http://github.com/dm8tbr/irssi-xmpp-notify/
+  version: '1.0'
 -
   authors: mizerou
   commands: xqf
