@@ -252,6 +252,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                           mouse ](Test/mouse/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                             mpd ](Test/mpd/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
 [                          mpg123 ](Test/mpg123/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
+[                     mqtt-notify ](Test/mqtt-notify/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                      msg2notice ](Test/msg2notice/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                      multipaste ](Test/multipaste/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                         my_beep ](Test/my_beep/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -389,7 +390,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                        topicsed ](Test/topicsed/)|  ✔   |  ✘   |  ✘   | 18   |  ☡   | (c)
 [                          topics ](Test/topics/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       tordetect ](Test/tordetect/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
-[                        trackbar ](Test/trackbar/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[                        trackbar ](Test/trackbar/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       tracknick ](Test/tracknick/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        translit ](Test/translit/)|  ✔   |  ✘   |  ✔   |  8   |  ☡   | (c)
 [                         trigger ](Test/trigger/)|  ✔   |  ✔   |  ✔   | 16   |  ✔   | (c)
@@ -442,6 +443,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                           xmms2 ](Test/xmms2/)|  ✔   |  ✔   |  ✔   | 10   |  ✔   | (c)
 [                        xmmsinfo ](Test/xmmsinfo/)|  ✘   |  ✔   |  ✔   |  3   |  ☡   | (c)
 [                            xmms ](Test/xmms/)|  ✔   |  ✔   |  ✔   |  8   |  ✔   | (c)
+[                     xmpp-notify ](Test/xmpp-notify/)|  ✔   |  ✔   |  ✔   | 21   |  ✔   
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 
-48e4db3528c8ad0007e49b90e701022441c71ddf | 308
+7fe5e0fd9892018dc7a9852777a48a11d98e2298 | 314
