@@ -3361,7 +3361,7 @@
   description: 'set (un)away, if screen is attached/detached'
   filename: screen_away.pl
   license: 'GPL v2'
-  modified: '2014-12-20 20:38:24'
+  modified: '2015-08-20 10:46:58'
   name: screen_away
   url: none
   version: 0.9.8.1
