@@ -104,7 +104,7 @@ if ($socket !~ /^No Sockets found/s) {
   # therefore first find the pid and use that to find the actual sessionname
   $socket_pid = substr($ENV{'STY'}, 0, index($ENV{'STY'}, '.'));
   $socket_path = $socket;
-  $socket_path =~ s/^.+\d+ Sockets? in ([^\n]+)\.\n.+$/$1/s;
+  $socket_path =~ s/^.*\d+ Sockets? in ([^\n]+)\..*$/$1/s;
   $socket_name = $socket;
   $socket_name =~ s/^.+?($socket_pid\.\S+).+$/$1/s;
   if (length($socket_path) != length($socket)) {
