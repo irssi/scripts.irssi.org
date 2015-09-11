@@ -509,6 +509,19 @@
   url: http://nchip.ukkosenjyly.mine.nu/irssiscripts/
   version: '1.0'
 -
+  authors:
+    - 'Nathan Handler'
+    - 'Joseph Price'
+  contact:
+    - nathan.handler@gmail.com
+    - pricechild@ubuntu.com
+  description: 'Searches for bans, quiets, and channel modes affecting a user'
+  filename: bansearch.pl
+  license: GPLv3+
+  modified: '2015-09-11 05:01:40'
+  name: bansearch
+  version: '1.1'
+-
   authors: "David O'Rourke"
   contact: phyber@#irssi
   description: 'Print time when ban was set in a nicer way. eg. 23 mins, 40 secs ago.'
@@ -1563,6 +1576,15 @@
   name: grep
   url: http://wouter.coekaerts.be/irssi/
   version: '2.1'
+-
+  authors: 'Nathan Handler'
+  contact: nathan.handler@gmail.com
+  description: 'Greps the ban list for the specified pattern'
+  filename: grepbans.pl
+  license: GPLv3+
+  modified: '2015-09-11 05:11:39'
+  name: grepbans
+  version: '1.0'
 -
   authors: mistr
   contact: mistr@sensewave.com
