@@ -13,9 +13,9 @@ use vars qw($VERSION %IRSSI);
 	authors => "mniip",
 	contact => "mniip \@ freenode",
 	license => "Public domain",
-	modified => "2015-01-16"
+	modified => "2015-09-14"
 );
-$VERSION = "0.6.4";
+$VERSION = "0.7.0";
 
 #	Commands:
 #		/isbanned <channel> <user>
@@ -60,6 +60,9 @@ $VERSION = "0.6.4";
 #
 #		0.6.4 (2015.03.22)
 #			Fix translation from python: fix bans containing the letter Z not matching
+#
+#		0.7.0 (2015.09.14)
+#			Support trailing characters in CIDR bans.
 
 my $active = 0;
 my $user;
@@ -277,24 +280,31 @@ sub analyze
 				if(!$found)
 				{
 					my ($ip, $width) = split /\//, $bhost, 2;
-					if(defined $width && $width =~ /^[0-9]+$/)
+					if(defined $width)
 					{
-						my $is_v4 = !($ip =~ /:/);
-						$width = ($is_v4 ? 32 : 128) - $width;
-						$width = 0 if $width < 0;
-						$ip = parse_ip($ip);
-						for my $h(@$host)
+						$width =~ s/^([0-9]*).*/$1/g;
+						$width = int("0" . $width);
+						if($width > 0)
 						{
-							if(!($h =~ /:/) == $is_v4)
+							my $is_v4 = !($ip =~ /:/);
+							$width = ($is_v4 ? 32 : 128) - $width;
+							$width = 0 if $width < 0;
+							$ip = parse_ip($ip);
+							for my $h(@$host)
 							{
-								eval
+								if(!($h =~ /:/) == $is_v4)
 								{
-									my $h = parse_ip($h, 1);
-									if(($ip >> $width) == ($h >> $width))
+									my $last;
+									eval
 									{
-										add_ban(@$b);
-										last;
-									}
+										my $h = parse_ip($h, 1);
+										if(($ip >> $width) == ($h >> $width))
+										{
+											add_ban(@$b);
+											$last = 1;
+										}
+									};
+									last if $last;
 								}
 							}
 						}

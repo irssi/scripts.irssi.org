@@ -1993,9 +1993,9 @@
   description: 'freenode-specific script that checks whether someone is banned on some channel'
   filename: isbanned.pl
   license: 'Public domain'
-  modified: '2015-06-12 21:43:19'
+  modified: '2015-09-14 14:11:01'
   name: isbanned
-  version: 0.6.4
+  version: 0.7.0
 -
   authors: 'Uli Baumann'
   contact: f-zappa@irc-muenster.de
