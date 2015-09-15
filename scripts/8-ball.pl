@@ -24,11 +24,12 @@
 #
 #
 use strict;
+use warnings;
 use vars qw($VERSION %IRSSI);
 
 use Irssi qw(command_bind signal_add);
 use IO::File;
-$VERSION = '0.21';
+$VERSION = '0.22';
 %IRSSI = (
 	authors		=> 'Patrik Akerfeldt',
 	contact		=> 'patrik.akerfeldt@gmail.com',
@@ -52,29 +53,31 @@ sub question {
 	if (!/^8-ball/i) { return 0; }
 
 	if (/^8-ball:.+\?$/i) {
-		my $ia = int(rand(16));
-		my $answer = "";
-		SWITCH: {
-		 if ($ia==0) { $answer = "Yes"; last SWITCH; }
-		 if ($ia==1) { $answer = "No"; last SWITCH; }
- 		 if ($ia==2) { $answer = "Outlook so so"; last SWITCH; }
-		 if ($ia==3) { $answer = "Absolutely"; last SWITCH; }
-		 if ($ia==4) { $answer = "My sources say no"; last SWITCH; }
-	 	 if ($ia==5) { $answer = "Yes definitely"; last SWITCH; }
-		 if ($ia==6) { $answer = "Very doubtful"; last SWITCH; }
-	 	 if ($ia==7) { $answer = "Most likely"; last SWITCH; }
-		 if ($ia==8) { $answer = "Forget about it"; last SWITCH; }
-		 if ($ia==9) { $answer = "Are you kidding?"; last SWITCH; }
-		 if ($ia==10) { $answer = "Go for it"; last SWITCH; }
-		 if ($ia==11) { $answer = "Not now"; last SWITCH; }
-		 if ($ia==12) { $answer = "Looking good"; last SWITCH; }
-		 if ($ia==13) { $answer = "Who knows"; last SWITCH; }
-		 if ($ia==14) { $answer = "A definite yes"; last SWITCH; }
-		 if ($ia==15) { $answer = "You will have to wait"; last SWITCH; }
-		 if ($ia==16) { $answer = "Yes, in due time"; last SWITCH; }
-       		 if ($ia==17) { $answer = "I have my doubts"; last SWITCH; }
-		}
-		$server->command('msg '.$target.' '.$nick.'8-ball says: '.$answer);
+		# From: "The 8-Ball Answers", http://8ball.ofb.net/answers.html
+		my @answers = (
+				'Signs point to yes.',
+				'Yes.',
+				'Reply hazy, try again.',
+				'Without a doubt.',
+				'My sources say no.',
+				'As I see it, yes.',
+				'You may rely on it.',
+				'Concentrate and ask again.',
+				'Outlook not so good.',
+				'It is decidedly so.',
+				'Better not tell you now.',
+				'Very doubtful.',
+				'Yes - definitely.',
+				'It is certain.',
+				'Cannot predict now.',
+				'Most likely.',
+				'Ask again later.',
+				'My reply is no.',
+				'Outlook good.',
+				'Don\'t count on it.'
+		);
+
+		$server->command('msg '.$target.' '.$nick.'8-ball says: '.$answers[rand @answers]);
 	  
                 my ($fh, $count);
                 $fh = new IO::File;
