@@ -1,13 +1,4 @@
--
-  authors: 'Ziddy'
-  contact: 'irc.dal.net @ Ziddy'
-  description: 'Builds a database on users; search by hostmask/ip/nick/ident - Can import AKA-users (mIRC script) and export to AKA as well'
-  filename: 'track.pl'
-  license: 'Public Domain'
-  modified: '9-19-2015 02:11:00'
-  name: 'track'
-  url: 'none'
-  version: '2.1'
+---
 -
   authors: 'Patrik Akerfeldt'
   contact: patrik.akerfeldt@gmail.com
@@ -3884,6 +3875,16 @@
   modules: Net::DNS
   name: 'Tor autodetection for Irssi'
   version: 0.0.1
+-
+  authors: Ziddy
+  contact: DALnet
+  description: 'Keeps track of users by building a databaseof online, joining and nickchanges. Regex-cabablefor the most part, AKA import available. Search byident, nick or host'
+  filename: track.pl
+  license: 'Public Domain'
+  modified: '9-19-2015 02:11:00'
+  name: track.pl
+  url: none
+  version: '2.1'
 -
   authors: "Peter 'kinlo' Leurs, Uwe Dudenhoeffer, Michiel Holtkamp, Nico R. Wohlgemuth"
   contact: irssi-trackbar@supermind.nl
