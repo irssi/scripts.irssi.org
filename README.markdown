@@ -3,7 +3,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 ## Irssi Scripts Test Report
                                  | LOAD | HDR | CRIT | SCORE | PASS
 ----: | :--: | :-: | :--: | ----: | :---:
-[                          8-ball ](Test/8-ball/)|  ✔   |  ✔   |  ✔   | 12   |  ✔   | (c)
+[                          8-ball ](Test/8-ball/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   
 [                          accent ](Test/accent/)|  ✔   |  ✔   |  ✔   | 11   |  ✔   | (c)
 [                     accountname ](Test/accountname/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        act_fifo ](Test/act_fifo/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
@@ -53,7 +53,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                         badword ](Test/badword/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       bandwidth ](Test/bandwidth/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
 [                             ban ](Test/ban/)|  ✔   |  ✔   |  ✔   | 38   |  ✔   | (c)
-[                       bansearch ](Test/bansearch/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   
+[                       bansearch ](Test/bansearch/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                         bantime ](Test/bantime/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        beepaway ](Test/beepaway/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       beep_beep ](Test/beep_beep/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -201,7 +201,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                      irssi-feed ](Test/irssi-feed/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                    irssi_logger ](Test/irssi_logger/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                          irssiq ](Test/irssiq/)|  ✘   |  ✔   |  ✘   | 50   |  ☡   | (c)
-[                        isbanned ](Test/isbanned/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   
+[                        isbanned ](Test/isbanned/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
 [                            isdn ](Test/isdn/)|  ✘   |  ✔   |  ✘   | 10   |  ☡   | (c)
 [                           itime ](Test/itime/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                          ixmmsa ](Test/ixmmsa/)|  ✘   |  ✔   |  ✔   |  3   |  ☡   | (c)
@@ -448,4 +448,4 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                     xmpp-notify ](Test/xmpp-notify/)|  ✔   |  ✔   |  ✔   | 21   |  ✔   | (c)
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 
-17e097d2016669514cb45d6a42eb21da7b389d22 | 324
+eeebe89c4e53b13d6e449d11b529edda753b9685 | 327
