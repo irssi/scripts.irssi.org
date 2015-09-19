@@ -3,7 +3,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 ## Irssi Scripts Test Report
                                  | LOAD | HDR | CRIT | SCORE | PASS
 ----: | :--: | :-: | :--: | ----: | :---:
-[                          8-ball ](Test/8-ball/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   
+[                          8-ball ](Test/8-ball/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
 [                          accent ](Test/accent/)|  ✔   |  ✔   |  ✔   | 11   |  ✔   | (c)
 [                     accountname ](Test/accountname/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        act_fifo ](Test/act_fifo/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
@@ -302,7 +302,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                     page-c0ffee ](Test/page-c0ffee/)|  ✘   |  ✔   |  ✔   |  5   |  ☡   | (c)
 [                     page_reeler ](Test/page_reeler/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                           pager ](Test/pager/)|  ✘   |  ✔   |  ✔   |  3   |  ☡   | (c)
-[                       pangotext ](Test/pangotext/)|  ✔   |  ✔   |  ✘   |  4   |  ✘   | (c)
+[                       pangotext ](Test/pangotext/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
 [                    paste_derwan ](Test/paste_derwan/)|  ✔   |  ✔   |  ✔   | 53   |  ✔   | (c)
 [                    paste-derwan ](Test/paste-derwan/)|  ✔   |  ✔   |  ✔   | 37   |  ✔   | (c)
 [                    paste_huggie ](Test/paste_huggie/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
@@ -448,4 +448,4 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                     xmpp-notify ](Test/xmpp-notify/)|  ✔   |  ✔   |  ✔   | 21   |  ✔   | (c)
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 
-eeebe89c4e53b13d6e449d11b529edda753b9685 | 327
+1a66c3e73fa84fead9bf0dbf6b4121e6a3b62536 | 330
