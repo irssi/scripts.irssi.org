@@ -45,8 +45,8 @@ use warnings;
 use Irssi;
 use Irssi::Irc;
 
-$VERSION = "1.1";
-%IRSSI = (
+our $VERSION = "1.1";
+our %IRSSI = (
     authors     => 'fprintf',
     contact     => 'fprintf@github.com',
     name        => 'pangotext',
