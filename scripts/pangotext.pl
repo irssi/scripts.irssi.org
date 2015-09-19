@@ -39,6 +39,7 @@
 #   /pango <gradiant start=lightcyan end=white>a light gradiant</gradiant>
 # 
 ##############################################################################################
+use strict;
 use warnings;
 
 use Irssi;
