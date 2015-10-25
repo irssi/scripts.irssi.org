@@ -52,9 +52,9 @@ Irssi::settings_add_str($IRSSI{'name'}, "ag_xdcc_send_prefix", "xdcc send");
 Irssi::settings_add_str($IRSSI{'name'}, "ag_xdcc_cancel_prefix", "xdcc cancel");
 Irssi::settings_add_str($IRSSI{'name'}, "ag_find_prefix", "!find");
 Irssi::settings_add_str($IRSSI{'name'}, "ag_format", "");
-Irssi::settings_add_str($IRSSI{'name'}, "ag_bot_file", File::HomeDir->my_home . "/.irssi/bots.txt");
-Irssi::settings_add_str($IRSSI{'name'}, "ag_search_file", File::HomeDir->my_home . "/.irssi/searches.txt");
-Irssi::settings_add_str($IRSSI{'name'}, "ag_cache_file", File::HomeDir->my_home . "/.irssi/finished.txt");
+Irssi::settings_add_str($IRSSI{'name'}, "ag_bot_file", File::HomeDir->my_home . "/bots.txt");
+Irssi::settings_add_str($IRSSI{'name'}, "ag_search_file", File::HomeDir->my_home . "/searches.txt");
+Irssi::settings_add_str($IRSSI{'name'}, "ag_cache_file", File::HomeDir->my_home . "/finished.txt");
 
 my @totags = ();	#timeout tags (need to be purged between send requests maybe)
 my @msgtags = ();	#timeout tags for search results
