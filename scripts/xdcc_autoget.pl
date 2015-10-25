@@ -52,9 +52,9 @@ Irssi::settings_add_str($IRSSI{'name'}, "ag_xdcc_send_prefix", "xdcc send");
 Irssi::settings_add_str($IRSSI{'name'}, "ag_xdcc_cancel_prefix", "xdcc cancel");
 Irssi::settings_add_str($IRSSI{'name'}, "ag_find_prefix", "!find");
 Irssi::settings_add_str($IRSSI{'name'}, "ag_format", "");
-Irssi::settings_add_str($IRSSI{'name'}, "ag_bot_file", File::HomeDir->my_home . "/.irssi/scripts/bots.txt");
-Irssi::settings_add_str($IRSSI{'name'}, "ag_search_file", File::HomeDir->my_home . "/.irssi/scripts/searches.txt");
-Irssi::settings_add_str($IRSSI{'name'}, "ag_cache_file", File::HomeDir->my_home . "/.irssi/scripts/finished.txt");
+Irssi::settings_add_str($IRSSI{'name'}, "ag_bot_file", File::HomeDir->my_home . "/.irssi/bots.txt");
+Irssi::settings_add_str($IRSSI{'name'}, "ag_search_file", File::HomeDir->my_home . "/.irssi/searches.txt");
+Irssi::settings_add_str($IRSSI{'name'}, "ag_cache_file", File::HomeDir->my_home . "/.irssi/finished.txt");
 
 my @totags = ();	#timeout tags (need to be purged between send requests maybe)
 my @msgtags = ();	#timeout tags for search results
@@ -207,7 +207,7 @@ sub ag_skip
 		elsif ($#terms != $termcounter)
 		{
 			
-			Irssi::print "AG | No new and unfinished packs found or bot " . $bots[$botcounter] . " unresponsive or nonexistent. Skipping to next search";
+			Irssi::print "AG | No new and unfinished packs found while searching ". $terms[$termcounter] . " or bot " . $bots[$botcounter] . " unresponsive or nonexistent. Skipping to next search";
 			Irssi::signal_remove("message irc notice", "ag_getmsg");
 			$episode = 1;
 			$termcounter++;
@@ -215,7 +215,7 @@ sub ag_skip
 		}
 		elsif ($#bots != $botcounter)
 		{
-			Irssi::print "AG | No new and unfinished packs found or bot " . $bots[$botcounter] . " unresponsive or nonexistent. Skipping to next bot";
+			Irssi::print "AG | No new and unfinished packs found while searching ". $terms[$termcounter] . " or bot " . $bots[$botcounter] . " unresponsive or nonexistent. Skipping to next bot";
 			Irssi::signal_remove("message irc notice", "ag_getmsg");
 			$termcounter = 0;
 			$episode = 1;
@@ -224,7 +224,7 @@ sub ag_skip
 		}
 		else
 		{
-			Irssi::print "AG | No new and unfinished packs found or bot " . $bots[$botcounter] . " unresponsive or nonexistent. End of list";
+			Irssi::print "AG | No new and unfinished packs found while searching ". $terms[$termcounter] . " or bot " . $bots[$botcounter] . " unresponsive or nonexistent. End of list";
 			Irssi::signal_remove("message irc notice", "ag_getmsg");
 			$botcounter = 0;
 			$termcounter = 0;
