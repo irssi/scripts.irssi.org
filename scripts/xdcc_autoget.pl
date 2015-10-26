@@ -176,8 +176,12 @@ sub ag_search		#searches current bot for current term
 	if($episodeflag)
 	{
 		my $ep = sprintf("%.2d", $episode);
-		$server->command("msg $bots[$botcounter] $findprefix $terms[$termcounter] $ep $format" );
-		push(@msgtags, Irssi::timeout_add_once($botdelay * 1000, sub { &ag_formatlessepisodicsearch; } , []));		#retry search if no results given, but without the format
+		if ($format ne "")
+		{
+			$server->command("msg $bots[$botcounter] $findprefix $terms[$termcounter] $ep $format" );
+			push(@msgtags, Irssi::timeout_add_once($botdelay * 1000, sub { &ag_formatlessepisodicsearch; } , []));		#retry search if no results given, but without the format
+		}
+		else {&ag_formatlessepisodicsearch;}
 
 	}
 	else 
@@ -242,16 +246,17 @@ sub ag_getmsg		#runs when bot sends privmsg. Avoid talking to bots to keep this 
 	my $botname = @_[2];
 	$botname =~ tr/[A-Z]/[a-z]/;
 	$bots[$botcounter] =~ tr/[A-Z]/[a-z]/;
+
+	foreach my $to (@msgtags)	#remove timeouts for skipping if a pack has been recieved
+	{
+		Irssi::timeout_remove($to);
+	}
+	@msgtags = ();
+
 	if ($botname == $bots[$botcounter])
 	{
 		$msgflag = 1;
 		&ag_parseresponse($message);
-		foreach my $to (@msgtags)	#reset timeouts for skipping if a message has been recieved
-		{
-			Irssi::timeout_remove($to);
-		}
-		@msgtags = ();
-		push(@msgtags, Irssi::timeout_add_once($botdelay * 1000, sub { &ag_skip; } , []));		#skip search if no results given
 	}
 }
 
@@ -280,12 +285,6 @@ sub ag_parseresponse	#takes a single message and finds all instances of "#[XDCC 
 	
 	if ($pact == 0 and $#packs >= 0 and $packs[$packcounter] ne "")		#initiallizes the actual xdcc get system only once per search term/bot (pact should be >0 until the whole process is finished)
 	{
-		foreach my $to (@msgtags)	#remove timeouts for skipping if a pack has been recieved
-		{
-			Irssi::timeout_remove($to);
-		}
-		@msgtags = ();
-
 		$msgflag = 1;
 		$pact = 1;
 		&ag_reqpack();
@@ -293,11 +292,6 @@ sub ag_parseresponse	#takes a single message and finds all instances of "#[XDCC 
 	elsif ($#packs <= 0)
 	{
 		$msgflag = 0;
-		foreach my $to (@msgtags)	#remove timeouts for skipping and skip if no packs found
-		{
-			Irssi::timeout_remove($to);
-		}
-		@msgtags = ();
 		push(@msgtags, Irssi::timeout_add_once($nexdelay * 1000, sub { &ag_skip(); }, []));
 	}
 }
