@@ -1,0 +1,11 @@
+---
+-
+  authors: 'Wouter Coekaerts, Emanuele Giaquinta'
+  changed: $LastChangedDate$
+  contact: 'wouter@coekaerts.be, exg@irssi.org'
+  default_package: sb_search
+  description: 'search in your scrollback, scroll to a match'
+  license: 'GPLv2 or later'
+  name: sb_search
+  url: http://wouter.coekaerts.be/irssi/
+  version: '1.1'
