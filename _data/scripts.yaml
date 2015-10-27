@@ -3368,6 +3368,15 @@
   url: http://ion.amigafin.org/irssi/
   version: '0.1'
 -
+  authors: 'Wouter Coekaerts, Emanuele Giaquinta'
+  contact: 'wouter@coekaerts.be, exg@irssi.org'
+  description: 'search in your scrollback, scroll to a match'
+  filename: sb_search.pl
+  license: 'GPLv2 or later'
+  name: sb_search
+  url: http://wouter.coekaerts.be/irssi/
+  version: '1.1'
+-
   authors: 'Robert Scheck'
   commands: schwäbisch
   contact: irssi@robert-scheck.de
