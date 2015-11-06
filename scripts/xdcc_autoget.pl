@@ -193,7 +193,7 @@ sub ag_clearcache		#clears cache of saved packs
 
 sub ag_search		#searches bots for packs
 {
-	$msgflag = 0;	#unset message flag so that ag_skip knows no important message has arrived
+ 	$msgflag = 0;	#unset message flag so that ag_skip knows no important message has arrived
 	if($episodicflag)	#episodic searches are complicated
 	{
 		my $ep = sprintf("%.2d", $episode);
@@ -220,6 +220,7 @@ sub ag_search		#searches bots for packs
 		&ag_message("msg $bots[$botcounter] $findprefix $terms[$termcounter]" );
 		push(@totags, Irssi::timeout_add_once($botdelay * 1000, sub { &ag_skip; } , []));
 	}
+	Irssi::signal_add("message irc notice", "ag_getmsg");
 }
 
 sub ag_remtimeouts	#remove timeouts to avoid multiple instances of everything
@@ -238,7 +239,7 @@ sub ag_getmsg		#runs when bot sends privmsg. Avoid talking to bots to keep this 
 	$botname =~ tr/[A-Z]/[a-z]/;
 	$bots[$botcounter] =~ tr/[A-Z]/[a-z]/;
 	
-	if ($botname == $bots[$botcounter])	#if it's your bot
+	if ($botname == $bots[$botcounter] and !$msgflag)	#if it's your bot
 	{
 		&ag_remtimeouts;	#stop any skips from happening
 		&ag_getpacks($message);	#and check for any new packs in the message
@@ -272,6 +273,7 @@ sub ag_getpacks
 
 sub ag_packrequest	#sends the xdcc send request, and retries on failure
 {
+	&ag_remtimeouts;
 	if (!$reqpackflag)
 	{
 		$reqpackflag = 1;
@@ -290,26 +292,28 @@ sub ag_opendcc	#runs on DCC recieve init
 
 	if ($botname eq $bots[$botcounter])	#if it's our bot, let user know, and stop any further AG pack requests until finished
 	{
+		Irssi::signal_remove("message irc notice", "ag_getmsg");
 		Irssi::signal_remove("dcc get receive", "ag_opendcc");		#stops any suplicate sends (there should only ever be one)
+		&ag_remtimeouts;
 		$dccflag = 0;
 		$downloadflag = 1;
-		&ag_remtimeouts;
 		Irssi::print "AG | received connection for bot: " . $botname . ", #" . $packs[$packcounter]; 
-	}
-	foreach my $n (@finished)		#don't redownload finished packs
-	{
-		if ($n eq $gdcc->{'arg'})	#if file already downloaded, emulate an already finished dcc transfer (in case file deleted) and cancel
+		foreach my $n (@finished)		#don't redownload finished packs
 		{
-			$gdcc->{'transfd'} = $gdcc->{'size'};
-			$gdcc->{'skipped'} = $gdcc->{'size'};
-			&ag_closedcc(@_);	
+			if ($n eq $gdcc->{'arg'})	#if file already downloaded, emulate an already finished dcc transfer (in case file deleted) and cancel
+			{
+				$gdcc->{'transfd'} = $gdcc->{'size'};
+				$gdcc->{'skipped'} = $gdcc->{'size'};
+				&ag_closedcc(@_);	
+			}
+			last if ($n eq $gdcc->{'arg'});
 		}
-		last if ($n eq "$bots[$botcounter] $1");
 	}
 }
 
 sub ag_skip
 {
+#	Irssi::print "AG | SKIP $msgflag $episodicflag $episode $#packs $packcounter $#terms $termcounter $#bots $botcounter"; 
 	&ag_remtimeouts;	#stop any other skips
 	$reqpackflag = 0;		#allow pack requests now that transfer is finished
 	if($episodicflag)
@@ -346,7 +350,6 @@ sub ag_skip
 			$botcounter = 0;
 			$termcounter = 0;
 			$packcounter = 0;
-			Irssi::signal_remove("message irc notice", "ag_getmsg");
 			Irssi::print "AG | Waiting " . $exedelay . " minutes until next search";
 			Irssi::timeout_add_once($exedelay * 1000 * 60, sub { &ag_run; } , []);
 			$runningflag = 0;
@@ -380,7 +383,6 @@ sub ag_skip
 		$botcounter = 0;
 		$termcounter = 0;
 		$packcounter = 0;
-		Irssi::signal_remove("message irc notice", "ag_getmsg");
 		Irssi::print "AG | Waiting " . $exedelay . " minutes until next search";
 		Irssi::timeout_add_once($exedelay * 1000 * 60, sub { &ag_run; } , []);
 		$runningflag = 0;
@@ -396,6 +398,7 @@ sub ag_closedcc
 
 	if ($botname eq $bots[$botcounter])	#checks if the is the bot
 	{ 
+		$reqpackflag = 0;
 		if ($dccflag == 0) {Irssi::signal_add("dcc get receive", "ag_opendcc");}	#if so, reinits DCC get signal for the next pack
 		$dccflag = 1;
 
@@ -423,14 +426,12 @@ sub ag_closedcc
 		{
 			if ($packcounter < $#packs)
 			{
-				$reqpackflag = 0;		#allow pack requests now that transfer is finished
 				$packcounter++;
 				Irssi::print "AG | Getting next pack in list in " . $nexdelay . " seconds ";
 				push(@totags, Irssi::timeout_add_once($nexdelay * 1000, sub { &ag_reqpack(); }, []));
 			}
 			elsif ($termcounter < $#terms)
 			{
-				$reqpackflag = 0;
 				@packs = ();		#delete last terms packlist
 				$termcounter++;
 				$packcounter = 0;
@@ -439,7 +440,6 @@ sub ag_closedcc
 			}
 			elsif ($botcounter < $#bots)
 			{
-				$reqpackflag = 0;
 				@packs = ();		#delete last bots packlist
 				$botcounter++;
 				$termcounter = 0;
@@ -449,12 +449,10 @@ sub ag_closedcc
 			}
 			else	#if last pack on last search on last bot finished, then resets counters and starts over
 			{
-				$reqpackflag = 0;
 				@packs = ();
 				$botcounter = 0;
 				$termcounter = 0;
 				$packcounter = 0;
-				Irssi::signal_remove("message irc notice", "ag_getmsg");
 				Irssi::print "AG | Waiting " . $exedelay . " minutes until next search";
 				Irssi::timeout_add_once($exedelay * 1000 * 60, sub { &ag_run; } , []);
 				$runningflag = 0;
@@ -618,7 +616,6 @@ sub ag_run	#main loop
 {
 	if($runningflag == 0)
 	{
-		Irssi::signal_add("message irc notice", "ag_getmsg");
 		$runningflag = 1;
 		&ag_getbots;
 		&ag_getterms;
