@@ -4,6 +4,7 @@
 
 # Version history:
 #  1.1: - Added support for multiple networks: /set slack_network slack flowdock gitter
+#         or all networks: /set slack_network *
 
 use strict;
 
@@ -32,7 +33,7 @@ my ($complist, $window, $word, $linestart, $want_space) = @_;
 	my $wi = Irssi::active_win()->{active};
 	return unless ref $wi and $wi->{type} eq 'CHANNEL';
 	my %chatnets = map { $_ => 1 } split(/\s+/, Irssi::settings_get_str('slack_network'));
-	return unless exists $chatnets{$wi->{server}->{chatnet}};
+	return unless exists $chatnets{'*'} || exists $chatnets{$wi->{server}->{chatnet}};
 
 	if ($word =~ /^@/) {
 		$word =~ s/^@//;
