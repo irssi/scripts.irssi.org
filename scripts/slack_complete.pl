@@ -20,7 +20,7 @@ use vars qw{$VERSION %IRSSI};
           authors     => 'Morten Lied Johansen, Jonas Berlin',
           contact     => 'mortenjo@ifi.uio.no',
           license     => 'GPL',
-          description => 'Convert to slack-mention when completing nicks',
+          description => 'Prefix nicks with @ when completing nicks to match conventions on networks like Slack, Flowdock, Gitter etc',
          );
 
 # ======[ Hooks ]=======================================================
