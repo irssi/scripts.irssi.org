@@ -33,8 +33,6 @@ my ($complist, $window, $word, $linestart, $want_space) = @_;
 	return unless ref $wi and $wi->{type} eq 'CHANNEL';
 	my %chatnets = map { $_ => 1 } split(/\s+/, Irssi::settings_get_str('slack_network'));
 	return unless exists $chatnets{$wi->{server}->{chatnet}};
-	return unless $wi->{server}->{chatnet} eq
-		Irssi::settings_get_str('slack_network');
 
 	if ($word =~ /^@/) {
 		$word =~ s/^@//;
