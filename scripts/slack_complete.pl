@@ -2,6 +2,9 @@
 # Copyright (C) 2015 by Morten Lied Johansen <mortenjo@ifi.uio.no>
 #
 
+# Version history:
+#  1.1: - Added support for multiple networks: /set slack_network slack flowdock gitter
+
 use strict;
 
 use Irssi;
@@ -10,10 +13,10 @@ use Irssi::Irc;
 # ======[ Script Header ]===============================================
 
 use vars qw{$VERSION %IRSSI};
-($VERSION) = '$Revision: 1.0 $' =~ / (\d+\.\d+) /;
+($VERSION) = '$Revision: 1.1 $' =~ / (\d+\.\d+) /;
 %IRSSI = (
           name        => 'slack_complete',
-          authors     => 'Morten Lied Johansen',
+          authors     => 'Morten Lied Johansen, Jonas Berlin',
           contact     => 'mortenjo@ifi.uio.no',
           license     => 'GPL',
           description => 'Convert to slack-mention when completing nicks',
@@ -28,6 +31,8 @@ my ($complist, $window, $word, $linestart, $want_space) = @_;
 
 	my $wi = Irssi::active_win()->{active};
 	return unless ref $wi and $wi->{type} eq 'CHANNEL';
+	my %chatnets = map { $_ => 1 } split(/\s+/, Irssi::settings_get_str('slack_network'));
+	return unless exists $chatnets{$wi->{server}->{chatnet}};
 	return unless $wi->{server}->{chatnet} eq
 		Irssi::settings_get_str('slack_network');
 
