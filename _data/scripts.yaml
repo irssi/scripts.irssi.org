@@ -1686,7 +1686,7 @@
   modified: '2015-01-28 14:40:37'
   name: hilightwin
   url: http://irssi.org/
-  version: '0.03'
+  version: '0.04'
 -
   authors: 'John Morrissey'
   contact: jwm@horde.net
@@ -3931,7 +3931,7 @@
   modified: '2006-01-23 13:10:19'
   name: trigger
   url: http://wouter.coekaerts.be/irssi/
-  version: '1.0'
+  version: 1.0+
 -
   authors: "Stefan 'tommie' Tomanek"
   commands: trustweb
