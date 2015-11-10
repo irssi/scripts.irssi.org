@@ -3553,14 +3553,14 @@
   name: showmode
   version: '0.3'
 -
-  authors: 'Morten Lied Johansen'
+  authors: 'Morten Lied Johansen, Jonas Berlin'
   contact: mortenjo@ifi.uio.no
-  description: 'Convert to slack-mention when completing nicks'
+  description: 'Prefix nicks with @ when completing nicks to match conventions on networks like Slack, Flowdock, Gitter etc'
   filename: slack_complete.pl
   license: GPL
   modified: '2015-04-29 11:11:15'
   name: slack_complete
-  version: '1.0'
+  version: '1.1'
 -
   authors: 'Lars Djerf'
   contact: lars.djerf@gmail.com
