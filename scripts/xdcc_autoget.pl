@@ -234,8 +234,8 @@ sub ag_remtimeouts	#remove timeouts to avoid multiple instances of everything
 
 sub ag_getmsg		#runs when bot sends privmsg. Avoid talking to bots to keep this from sending useless shit that breaks things
 {	
-	my $message = @_[1];
-	my $botname = @_[2];
+	my $message = $_[1];
+	my $botname = $_[2];
 	$botname =~ tr/[A-Z]/[a-z]/;
 	$bots[$botcounter] =~ tr/[A-Z]/[a-z]/;
 	
@@ -469,7 +469,7 @@ sub ag_closedcc
 
 sub ag_message
 {
-	(my $message) = @_[0];
+	(my $message) = $_[0];
 	if ($server != Irssi::active_server()) {&ag_server;}
 	$server->command("$message");
 }
@@ -477,12 +477,12 @@ sub ag_message
 sub ag_uniq		#only returns unique entries
 {
 	my %seen;
-	grep !$seen{$_}++, @_;
+	grep !$seen{$_}++, _;
 }
 
 sub ag_addfinished		#save finished downloads
 {
-	my $filename = @_[0];
+	my $filename = $_[0];
 	open(finished, ">>", $cachefilename);
 	print finished $bots[$botcounter] . " " . $packs[$packcounter] . "\n";		#print pack to file	
 	print finished $filename . "\n";		#print name to file	
@@ -547,7 +547,6 @@ sub ag_parserem		#parses remove arguments for deletion from file
 	unlink "$file";
 	open(temp, "<", "/tmp/temp");
 	open(searches, ">", $file);
-	my %hTmp;
 	while (my $sLine = <temp>)		#remove duplicate lines
 	{
 		next if $sLine =~ m/^\s*$/;  #remove empty lines. Without this, still destroys empty lines except for the first one.
@@ -563,7 +562,7 @@ sub ag_parserem		#parses remove arguments for deletion from file
 sub ag_add	#add search terms
 {
 	&ag_server;
-	my @args = quotewords('\s+', 0, @_[0]);	#split arguments (words in brackets not seperated)
+	my @args = quotewords('\s+', 0, $_[0]);	#split arguments (words in brackets not seperated)
 	if ($#args < 0)
 	{
 		Irssi::print "AG | too few arguments";
@@ -576,7 +575,7 @@ sub ag_add	#add search terms
 sub ag_rem	#remove ssearch terms
 {
 	&ag_server;
-	my @args = quotewords('\s+', 0, @_[0]);
+	my @args = quotewords('\s+', 0, $_[0]);
 	if ($#args < 0)
 	{
 		Irssi::print "AG | too few arguments";
@@ -589,7 +588,7 @@ sub ag_rem	#remove ssearch terms
 sub ag_botadd	#add bots
 {
 	&ag_server;
-	my @args = quotewords('\s+', 0, @_[0]);
+	my @args = quotewords('\s+', 0, $_[0]);
 	if ($#args < 0)
 	{
 		Irssi::print "AG | too few arguments";
@@ -602,7 +601,7 @@ sub ag_botadd	#add bots
 sub ag_botrem	#remove bots
 {
 	&ag_server;
-	my @args = quotewords('\s+', 0, @_[0]);
+	my @args = quotewords('\s+', 0, $_[0]);
 	if ($#args < 0)
 	{
 		Irssi::print "AG | too few arguments";
