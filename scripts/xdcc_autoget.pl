@@ -477,7 +477,7 @@ sub ag_message
 sub ag_uniq		#only returns unique entries
 {
 	my %seen;
-	grep !$seen{$_}++, _;
+	grep !$seen{$_}++, $_;
 }
 
 sub ag_addfinished		#save finished downloads
