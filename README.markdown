@@ -171,7 +171,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                            hide ](Test/hide/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        highlite ](Test/highlite/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                         hignore ](Test/hignore/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                      hilightwin ](Test/hilightwin/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                      hilightwin ](Test/hilightwin/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                hipchat_complete ](Test/hipchat_complete/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                  history_search ](Test/history_search/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                        hitcount ](Test/hitcount/)|  ✘   |  ✔   |  ✔   |  4   |  ☡   | (c)
@@ -340,7 +340,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                           rot13 ](Test/rot13/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                         rotator ](Test/rotator/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        sana_cmd ](Test/sana_cmd/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
-[                       sb_search ](Test/sb_search/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[                       sb_search ](Test/sb_search/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                     schwaebisch ](Test/schwaebisch/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                     screen_away ](Test/screen_away/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                    scriptassist ](Test/scriptassist/)|  ✔   |  ✔   |  ✘   | 61   |  ☡   | (c)
@@ -397,7 +397,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                       tracknick ](Test/tracknick/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                           track ](Test/track/)|  ✔   |  ✔   |  ✔   | 36   |  ✔   | (c)
 [                        translit ](Test/translit/)|  ✔   |  ✘   |  ✔   |  8   |  ☡   | (c)
-[                         trigger ](Test/trigger/)|  ✔   |  ✔   |  ✔   | 16   |  ✔   | (c)
+[                         trigger ](Test/trigger/)|  ✔   |  ✔   |  ✔   | 16   |  ✔   
 [                        trustweb ](Test/trustweb/)|  ✔   |  ✔   |  ✔   | 20   |  ✔   | (c)
 [                         tvmusor ](Test/tvmusor/)|  ✔   |  ✘   |  ✔   | 17   |  ☡   | (c)
 [                   twitter_theme ](Test/twitter_theme/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
@@ -450,4 +450,4 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                     xmpp-notify ](Test/xmpp-notify/)|  ✔   |  ✔   |  ✔   | 21   |  ✔   | (c)
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 
-09dcaf4831908a37de47b9646004272bc1949dc6 | 341
+7d726b792ccc3bc47a7ce785b31be605045309c5 | 355

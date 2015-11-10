@@ -1,15 +1,7 @@
-* \1 better written as $1 at trigger.pl line 664.
+* \1 better written as $1 at trigger.pl line 687.
 * 
-* \1 better written as $1 at trigger.pl line 677.
+* \1 better written as $1 at trigger.pl line 700.
 * 
-* defined(%hash) is deprecated at trigger.pl line 716.
-* 
-* 	(Maybe you should just omit the defined()?)
-* 
-* defined(%hash) is deprecated at trigger.pl line 725.
-* 
-* 	(Maybe you should just omit the defined()?)
-* 
-* "my" variable $trigger masks earlier declaration in same scope at trigger.pl line 922.
+* "my" variable $trigger masks earlier declaration in same scope at trigger.pl line 939.
 * 
 * -!- Irssi: Loaded script trigger
