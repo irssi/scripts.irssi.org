@@ -23,6 +23,7 @@
 #      ag_search_file                : where your search list is stored
 
 use strict;
+use warnings;
 
 use Irssi;
 use Text::ParseWords;
@@ -124,7 +125,7 @@ sub ag_init		#init system
 
 sub ag_initserver	#init server
 {
-	$server = "";
+	$server = " ";
 	$server = Irssi::active_server();	#keep trying to get server until it works, then continue after 5 seconds
 	if ($server !~ m/^Irssi::Irc::Server=HASH/) {Irssi::timeout_add_once(1000, sub {&ag_initserver;} , []);}
 	else {Irssi::timeout_add_once(5000, sub {&ag_run;} , []);}
