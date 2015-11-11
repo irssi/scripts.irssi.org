@@ -100,7 +100,7 @@ sub ag_init		#init system
 	Irssi::print "AG | /ag_help for help";
 	&ag_initserver;
 	&ag_getbots;
-	my $m;
+	my $m = "";
 	foreach my $n (@bots)
 	{
 		$m = $m . $n . ", ";
@@ -124,6 +124,7 @@ sub ag_init		#init system
 
 sub ag_initserver	#init server
 {
+	$server = "";
 	$server = Irssi::active_server();	#keep trying to get server until it works, then continue after 5 seconds
 	if ($server !~ m/^Irssi::Irc::Server=HASH/) {Irssi::timeout_add_once(1000, sub {&ag_initserver;} , []);}
 	else {Irssi::timeout_add_once(5000, sub {&ag_run;} , []);}
@@ -169,26 +170,26 @@ sub ag_getbots		#reads in bot list
 
 sub ag_getterms		#reads in search term list
 {
-	open(searches, "<", $searchesfilename);
-	@terms = <searches>;
+	open(SEARCHES, "<", $searchesfilename);
+	@terms = <SEARCHES>;
 	chomp(@terms);
-	close(searches);
+	close(SEARCHES);
 }
 
 sub ag_getfinished		#reads in finished packs list
 {
-	open(finished, "<", $cachefilename);
-	@finished = <finished>;
+	open(FINISHED, "<", $cachefilename);
+	@finished = <FINISHED>;
 	chomp(@finished);
 	@finished = ag_uniq(@finished);
-	close(finished);
+	close(FINISHED);
 }
 
 sub ag_clearcache		#clears cache of saved packs
 {
 	unlink $cachefilename;
-	open(finished, ">>", $cachefilename);
-	close(finished);
+	open(FINISHED, ">>", $cachefilename);
+	close(FINISHED);
 }
 
 sub ag_search		#searches bots for packs
@@ -477,86 +478,87 @@ sub ag_message
 sub ag_uniq		#only returns unique entries
 {
 	my %seen;
-	grep !$seen{$_}++, $_;
+	grep !$seen{$_}++, @_;
 }
 
 sub ag_addfinished		#save finished downloads
 {
 	my $filename = $_[0];
-	open(finished, ">>", $cachefilename);
-	print finished $bots[$botcounter] . " " . $packs[$packcounter] . "\n";		#print pack to file	
-	print finished $filename . "\n";		#print name to file	
-	close(finished);	
+	open(FINISHED, ">>", $cachefilename);
+	print FINISHED $bots[$botcounter] . " " . $packs[$packcounter] . "\n";		#print pack to file	
+	print FINISHED $filename . "\n";		#print name to file	
+	close(FINISHED);	
 }
 
 
 sub ag_parseadd		#parses add arguments for storage
 {
 	my ($file, @args) = @_;
-	open(file, ">>", $file);
+	open(FILE, ">>", $file);
 	foreach my $arg (@args)
 	{
-		print file $arg . "\n";		#print to file
+		print FILE $arg . "\n";		#print to file
 	}
-	close(file);
-	copy($file, "/tmp/temp") or die "COPY FAILED";	#copy to temp file so that duplicate lines [searches/bots] can be removed
+	close(FILE);
+	copy($file, "/tmp/temp") or croak "COPY FAILED";	#copy to temp file so that duplicate lines [searches/bots] can be removed
 	unlink "$file";
-	open(temp, "<", "/tmp/temp");
-	open(file, ">", $file);
+	open(TEMP, "<", "/tmp/temp");
+	open(FILE, ">", $file);
 	my %hTmp;
-	while (my $sLine = <temp>)	#remove duplicate lines
+	while (my $sLine = <TEMP>)	#remove duplicate lines
 	{
 		next if $sLine =~ m/^\s*$/;  #remove empty lines. Without this, still destroys empty lines except for the first one.
 		$sLine=~s/^\s+//;            #strip leading/trailing whitespace
 		$sLine=~s/\s+$//;
-		print file qq{$sLine\n} unless ($hTmp{$sLine}++);
+		print FILE qq{$sLine\n} unless ($hTmp{$sLine}++);
 	}
 	unlink "/tmp/temp";
-	close(file);
+	close(FILE);
 }
 
 sub ag_parserem		#parses remove arguments for deletion from file
 {
 	my ($file, @args) = @_;
-	open(temp, ">>", "/tmp/temp");
+	open(TEMP, ">>", "/tmp/temp");
 	foreach my $arg (@args)
 	{
 		Irssi::print "AG | removing term: " . $arg;
-		print temp $arg . "\n";
+		print TEMP $arg . "\n";
 	}
-	close(temp);
-	open(temp2, ">", "/tmp/temp2");
-	open(file, "<", $file);
+	close(TEMP);
+	open(TEMP2, ">", "/tmp/temp2");
+	open(FILE, "<", $file);
 	my %hTmp;
-	while( my $fileLine = file->getline() )		#get each entry already stored
+	while( my $fileLine = FILE->getline() )		#get each entry already stored
 	{
-		open(temp, "<", "/tmp/temp");
-		while( my $tempLine = temp->getline() )
+		open(TEMP, "<", "/tmp/temp");
+		while( my $tempLine = TEMP->getline() )
 		{
 			if ($fileLine eq $tempLine)	#if entry in file and arguments
 			{
 				$hTmp{$fileLine}++;	#set flag to not copy
 			}
-			print temp2 qq{$fileLine} unless $hTmp{$fileLine};	#copy other lines to other temp file
+			print TEMP2 qq{$fileLine} unless $hTmp{$fileLine};	#copy other lines to other temp file
 		}
-		close(temp);
+		close(TEMP);
 	}
-	close(temp2);
-	copy("/tmp/temp2", $file) or die "COPY FAILED";	#rewrite old file
-	copy($file, "/tmp/temp") or die "COPY FAILED";
+	close(TEMP2);
+	copy("/tmp/temp2", $file) or croak "COPY FAILED";	#rewrite old file
+	copy($file, "/tmp/temp") or croak "COPY FAILED";
 	unlink "$file";
-	open(temp, "<", "/tmp/temp");
-	open(searches, ">", $file);
-	while (my $sLine = <temp>)		#remove duplicate lines
+	open(TEMP, "<", "/tmp/temp");
+	open(SEARCHES, ">", $file);
+	%hTmp = ();
+	while (my $sLine = <TEMP>)		#remove duplicate lines
 	{
 		next if $sLine =~ m/^\s*$/;  #remove empty lines. Without this, still destroys empty lines except for the first one.
 		$sLine=~s/^\s+//;            #strip leading/trailing whitespace
 		$sLine=~s/\s+$//;
-		print file qq{$sLine\n} unless ($hTmp{$sLine}++);
+		print FILE qq{$sLine\n} unless ($hTmp{$sLine}++);
 	}
 	unlink "/tmp/temp";
 	unlink "/tmp/temp2";
-	close(file);
+	close(FILE);
 }
 
 sub ag_add	#add search terms
@@ -687,10 +689,10 @@ sub ag_reset
 
 open(bots, ">>", $botsfilename);		#makes bots, searches, and finished file if they don't exist
 close(bots);
-open(searches, ">>", $searchesfilename);
-close(searches);
-open(finished, ">>", $cachefilename);
-close(finished);
+open(SEARCHES, ">>", $searchesfilename);
+close(SEARCHES);
+open(FINISHED, ">>", $cachefilename);
+close(FINISHED);
 if ($initflag) {&ag_init();}
 
 Irssi::signal_add("dcc closed", "ag_closedcc");
@@ -704,4 +706,5 @@ Irssi::command_bind("ag_rem", "ag_rem");
 Irssi::command_bind("ag_botadd", "ag_botadd");
 Irssi::command_bind("ag_botrem", "ag_botrem");
 Irssi::command_bind("ag_clearcache", "ag_clearcache");
+
 
