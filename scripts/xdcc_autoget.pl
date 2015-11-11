@@ -500,7 +500,7 @@ sub ag_parseadd		#parses add arguments for storage
 		print FILE $arg . "\n";		#print to file
 	}
 	close(FILE);
-	copy($file, "/tmp/temp") or croak "COPY FAILED";	#copy to temp file so that duplicate lines [searches/bots] can be removed
+	copy($file, "/tmp/temp");	#copy to temp file so that duplicate lines [searches/bots] can be removed
 	unlink "$file";
 	open(TEMP, "<", "/tmp/temp");
 	open(FILE, ">", $file);
@@ -543,8 +543,8 @@ sub ag_parserem		#parses remove arguments for deletion from file
 		close(TEMP);
 	}
 	close(TEMP2);
-	copy("/tmp/temp2", $file) or croak "COPY FAILED";	#rewrite old file
-	copy($file, "/tmp/temp") or croak "COPY FAILED";
+	copy("/tmp/temp2", $file);	#rewrite old file
+	copy($file, "/tmp/temp");
 	unlink "$file";
 	open(TEMP, "<", "/tmp/temp");
 	open(SEARCHES, ">", $file);
