@@ -126,11 +126,16 @@ sub ag_init		#init system
 	Irssi::print "AG | Data folder: $folder";
 }
 
-sub ag_server	#init server
+sub ag_initserver	#init server
 {
 	Irssi::signal_remove("server connected", "ag_server");
 	$server = $_[0];
-	if ($initflag and !$runningflag) {push(@totags, Irssi::timeout_add_once(5000, sub { &ag_run; }, []));}
+	if (!$runningflag) {push(@totags, Irssi::timeout_add_once(5000, sub { &ag_run; }, []));}
+}
+
+sub ag_server	#init server
+{
+	$server = Irssi::active_server();
 }
 
 sub ag_help
@@ -700,7 +705,7 @@ open(FINISHED, ">>", $cachefilename);
 close(FINISHED);
 
 &ag_init;
-Irssi::signal_add("server connected", "ag_server");
+if ($initflag) {Irssi::signal_add("server connected", "ag_initserver");}
 
 Irssi::signal_add("dcc closed", "ag_closedcc");
 Irssi::signal_add("setup changed", "ag_setsettings");
