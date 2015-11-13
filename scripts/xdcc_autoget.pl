@@ -103,7 +103,6 @@ sub ag_init		#init system
 {
 	Irssi::print "AG | Autoget initiated";
 	Irssi::print "AG | /ag_help for help";
-	&ag_initserver;
 	&ag_getbots;
 	my $m = "";
 	foreach my $n (@bots)
@@ -127,11 +126,11 @@ sub ag_init		#init system
 	Irssi::print "AG | Data folder: $folder";
 }
 
-sub ag_initserver	#init server
+sub ag_server	#init server
 {
-	$server = Irssi::active_server();	#keep trying to get server until it works, then continue after 5 seconds
-	if (ref $server && $server->isa("Irssi::Irc::Server")) {Irssi::timeout_add_once(1000, sub {&ag_initserver;} , []);}
-	else {Irssi::timeout_add_once(5000, sub {&ag_run;} , []);}
+	Irssi::signal_remove("server connected", "ag_server");
+	$server = $_[0];
+	if ($initflag and !$runningflag) {push(@totags, Irssi::timeout_add_once(5000, sub { &ag_run; }, []));}
 }
 
 sub ag_help
@@ -157,12 +156,6 @@ sub ag_help
 	Irssi::print "ag_xdcc_find_prefix      : the xdcc message before the search term";
 	Irssi::print "ag_format                : universal string appended to the end of each search in episodic. Use if more than one format exists";
 	Irssi::print "ag_folder                : Location for data files. ~/.irssi/ reccomended";
-}
-
-sub ag_server	#sets the current server
-{
-	$server = Irssi::active_server();	#keep trying to get server until it works
-	if (ref $server && $server->isa("Irssi::Irc::Server=HASH")) {Irssi::timeout_add_once(1000, sub {&ag_server;} , []);}	
 }
 
 sub ag_getbots		#reads in bot list
@@ -476,7 +469,6 @@ sub ag_closedcc
 sub ag_message
 {
 	(my $message) = $_[0];
-	if (!(ref $server) || !($server->isa(Irssi::active_server()))) {&ag_server;}
 	$server->command("$message");
 }
 
@@ -620,11 +612,10 @@ sub ag_botrem	#remove bots
 
 sub ag_run	#main loop
 {
+	if (!$initflag) {ag_server(Irssi::active_server());}
 	if($runningflag == 0)
 	{
 		$runningflag = 1;
-		&ag_getbots;
-		&ag_getterms;
 		if($#bots < 0 or $#terms < 0) {Irssi::print "AG | No bots or no search terms added. Halting"; &ag_stop;}
 		else 
 		{
@@ -708,7 +699,8 @@ close(SEARCHES);
 open(FINISHED, ">>", $cachefilename);
 close(FINISHED);
 
-if ($initflag) {&ag_init;}
+&ag_init;
+Irssi::signal_add("server connected", "ag_server");
 
 Irssi::signal_add("dcc closed", "ag_closedcc");
 Irssi::signal_add("setup changed", "ag_setsettings");
@@ -723,5 +715,4 @@ Irssi::command_bind("ag_rem", "ag_rem");
 Irssi::command_bind("ag_botadd", "ag_botadd");
 Irssi::command_bind("ag_botrem", "ag_botrem");
 Irssi::command_bind("ag_clearcache", "ag_clearcache");
-
 
