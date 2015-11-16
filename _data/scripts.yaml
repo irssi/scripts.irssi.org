@@ -4352,6 +4352,15 @@
   url: http://asdf.us/xdcc/
   version: '1.0'
 -
+  authors: MarshalMeatball
+  contact: mobilegundamseed@hotmail.com
+  description: 'XDCC Autoget, for automated searching and downloading of xdcc packs'
+  filename: xdcc_autoget.pl
+  license: 'BeerWare Version 42'
+  modules: File::HomeDir
+  name: autoget
+  version: '1.2'
+-
   authors: "Stefan 'tommie' Tomanek, Obfuscoder"
   commands: xdccget
   contact: obfuscoder@obfusco.de
