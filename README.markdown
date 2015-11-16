@@ -359,7 +359,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                     showhilight ](Test/showhilight/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        showhost ](Test/showhost/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        showmode ](Test/showmode/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                  slack_complete ](Test/slack_complete/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[                  slack_complete ](Test/slack_complete/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                     slack_emoji ](Test/slack_emoji/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                     smartfilter ](Test/smartfilter/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                          smiley ](Test/smiley/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -440,6 +440,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                    wordscramble ](Test/wordscramble/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                           xauth ](Test/xauth/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
 [                            xcmd ](Test/xcmd/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                    xdcc_autoget ](Test/xdcc_autoget/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
 [                         xdccget ](Test/xdccget/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                            xdcc ](Test/xdcc/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
 [                           xetra ](Test/xetra/)|  ✘   |  ✔   |  ✔   | 11   |  ☡   | (c)
@@ -450,4 +451,4 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                     xmpp-notify ](Test/xmpp-notify/)|  ✔   |  ✔   |  ✔   | 21   |  ✔   | (c)
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 
-5ce20fdd409ed1e052e33f3612268e3e31dc7778 | 356
+a45c9be9c762cce731c101278abc52df788757e4 | 366

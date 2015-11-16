@@ -1,0 +1,12 @@
+---
+-
+  authors: MarshalMeatball
+  changed: '1.2'
+  contact: mobilegundamseed@hotmail.com
+  default_package: xdcc_autoget
+  description: 'XDCC Autoget, for automated searching and downloading of xdcc packs'
+  license: 'BeerWare Version 42'
+  modules:
+    - File::HomeDir
+  name: autoget
+  version: '1.2'
