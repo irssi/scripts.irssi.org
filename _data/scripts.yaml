@@ -1683,7 +1683,7 @@
   description: 'Print hilighted messages to window named "hilight"'
   filename: hilightwin.pl
   license: 'Public Domain'
-  modified: '2015-01-28 14:40:37'
+  modified: '2015-11-07 14:09:15'
   name: hilightwin
   url: http://irssi.org/
   version: '0.04'
@@ -3373,6 +3373,7 @@
   description: 'search in your scrollback, scroll to a match'
   filename: sb_search.pl
   license: 'GPLv2 or later'
+  modified: '2015-10-01 18:41:05'
   name: sb_search
   url: http://wouter.coekaerts.be/irssi/
   version: '1.1'
@@ -3558,7 +3559,7 @@
   description: 'Prefix nicks with @ when completing nicks to match conventions on networks like Slack, Flowdock, Gitter etc'
   filename: slack_complete.pl
   license: GPL
-  modified: '2015-04-29 11:11:15'
+  modified: '2015-11-09 13:04:58'
   name: slack_complete
   version: '1.1'
 -
@@ -3890,7 +3891,7 @@
   description: 'Keeps track of users by building a databaseof online, joining and nickchanges. Regex-cabablefor the most part, AKA import available. Search byident, nick or host'
   filename: track.pl
   license: 'Public Domain'
-  modified: '9-19-2015 02:11:00'
+  modified: '2015-09-19 02:21:41'
   name: track.pl
   url: none
   version: '2.1'
@@ -3928,7 +3929,7 @@
   description: 'execute a command or replace text, triggered by an event in irssi'
   filename: trigger.pl
   license: 'GPLv2 or later'
-  modified: '2006-01-23 13:10:19'
+  modified: '2015-11-07 13:45:20'
   name: trigger
   url: http://wouter.coekaerts.be/irssi/
   version: 1.0+
@@ -4357,6 +4358,7 @@
   description: 'XDCC Autoget, for automated searching and downloading of xdcc packs'
   filename: xdcc_autoget.pl
   license: 'BeerWare Version 42'
+  modified: '2015-11-13 14:39:50'
   modules: File::HomeDir
   name: autoget
   version: '1.2'
