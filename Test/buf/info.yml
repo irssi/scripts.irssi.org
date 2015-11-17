@@ -7,7 +7,6 @@
   default_package: buf
   description: 'Saves the buffer for /upgrade, so that no information is lost'
   license: 'Public Domain'
-  modified: '2014-10-17 20:34:00'
   name: 'Scroll buffer restorer'
   note1: 'This script HAS TO BE in your scripts/autorun!'
   note2: 'Perl support must be static or in startup'

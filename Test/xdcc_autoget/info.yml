@@ -6,6 +6,7 @@
   default_package: xdcc_autoget
   description: 'XDCC Autoget, for automated searching and downloading of xdcc packs'
   license: 'BeerWare Version 42'
+  modified: '2015-11-13 14:39:50'
   modules:
     - File::HomeDir
   name: autoget

@@ -5,7 +5,6 @@
   default_package: notes
   description: 'Keeps notes on users and displayes the note in /whois output if the host/nick matches'
   license: GPL2
-  modified: '2015-01-18 02:15:41'
   modules:
     - DBI
     - DBM::Deep

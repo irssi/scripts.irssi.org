@@ -6,7 +6,6 @@
   default_package: fakectcp
   description: 'This script sends fake ctcp replies to a client using a fake ctcp list.'
   license: 'GNU General Public License'
-  modified: '2014-10-17 22:54:13'
   name: fakectcp.pl
   url: http://irssi.hauwaerts.be/default.pl
   version: '1.03'

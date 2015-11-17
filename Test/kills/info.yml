@@ -5,6 +5,5 @@
   default_package: kills
   description: 'Displays kills with more understandable messages'
   license: 'Public Domain'
-  modified: '2014-10-17 22:54:13'
   name: kills
   version: '1.00'

@@ -6,6 +6,5 @@
   default_package: mass_hilight_blocker
   description: 'Disables hilighting for messages containing a lot of nicknames'
   license: GPL
-  modified: '2014-10-19 11:54:16'
   name: mass_hilight_blocker
   version: '0.2'

@@ -5,7 +5,6 @@
   default_package: deliciousurl
   description: 'Logs URLs and posts them to del.icio.us'
   license: GPLv2
-  modified: '2014-10-17 20:34:00'
   modules:
     - Log::Dispatch
     - Log::Dispatch::File

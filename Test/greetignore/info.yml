@@ -6,6 +6,5 @@
   default_package: greetignore
   description: 'Hide the stupid "greet messages" posted by some bots after someone joins a channel.'
   license: GPLv2
-  modified: '2015-01-18 02:15:41'
   name: greetignore
   version: '1.1'

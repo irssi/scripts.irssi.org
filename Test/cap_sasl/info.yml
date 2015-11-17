@@ -5,7 +5,6 @@
   default_package: cap_sasl
   description: 'Implements SASL authentication and enables CAP "multi-prefix"'
   license: GPLv2
-  modified: '2015-01-07 07:47:22'
   modules:
     - Crypt::PK::ECC
   name: cap_sasl.pl

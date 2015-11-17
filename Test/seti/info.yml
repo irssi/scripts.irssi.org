@@ -7,7 +7,6 @@
   default_package: seti
   description: "Tell ppl how far you've gotten with you SETI\\@home workunit."
   license: GPL
-  modified: '2014-10-24 23:01:30'
   name: 'SETI@home info'
   note: 'Make sure you set the seti_state_sah with /set'
   url: http://optical.kapitalet.org/seti/

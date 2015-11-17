@@ -5,7 +5,6 @@
   default_package: findbot
   description: 'Public command @find script'
   license: GPL
-  modified: '2014-10-17 22:54:13'
   name: Findbot
   url: http://hem.passagen.se/thka2315/
   version: '1.57'

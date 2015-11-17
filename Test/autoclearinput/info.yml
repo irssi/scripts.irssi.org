@@ -6,7 +6,6 @@
   default_package: autoclearinput
   description: 'Automatically clears pending input when you are away.'
   license: GPLv3
-  modified: '2014-08-01 15:27:47'
   name: AutoClearInput
   url: https://github.com/tslocum/irssi-scripts
   version: 1.0.1
