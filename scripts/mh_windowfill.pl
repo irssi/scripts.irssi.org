@@ -1,6 +1,6 @@
 ##############################################################################
 #
-# mh_windowfill.pl v1.00 (20151116)
+# mh_windowfill.pl v1.01 (20151116)
 #
 # Copyright (c) 2015  Michael Hansen
 #
@@ -22,12 +22,18 @@
 #
 # fill windows so scrolling starts bottom-up instead of top-down
 #
+# screenshots:
+#	without script: http://picpaste.com/cfda32a34ea96e16dcb3f2d956655ff6.png
+#	with script:    http://picpaste.com/e3b84ead852e3e77b12ed69383f1f80c.png
+#
 # known issues:
 # 	- /CLEAR will reset to top-down
 #	- it is possible to confuse the script into not filling with a combination
 #	  of script load/unloads and window resizes. but it requires effort
 #
 # history:
+#	v1.01 (20151116)
+#		source cleanup
 #	v1.00 (20151116)
 #		initial release
 #
@@ -45,11 +51,11 @@ use strict;
 use Irssi 20100403;
 use Irssi::TextUI;
 
-our $VERSION = '1.00';
+our $VERSION = '1.01';
 our %IRSSI   =
 (
 	'name'        => 'mh_windowfill',
-	'description' => 'fill windows so scrolling starts bottom-up instead of top-down',
+	'description' => 'fill windows so scrolling starts bottom-up instead of top-down (screenshots in source)',
 	'license'     => 'BSD',
 	'authors'     => 'Michael Hansen',
 	'contact'     => 'mh on IRCnet #help',
@@ -63,29 +69,6 @@ our %IRSSI   =
 ##############################################################################
 
 our $windowfill_running = 0;
-
-##############################################################################
-#
-# common support functions
-#
-##############################################################################
-
-sub trim_spacelike($)
-{
-   my ($string) = @_;
-
-   if (defined($string))
-   {
-      $string =~ s/^\s+//g;
-      $string =~ s/\s+$//g;
-
-   } else {
-
-      $string = '';
-   }
-
-   return($string);
-}
 
 ##############################################################################
 #
@@ -107,7 +90,6 @@ sub windowfill($)
 	#
 	if (($window->view()->{'ypos'} + 2) <= $window->{'height'})
 	{
-
 		while (($window->view()->{'ypos'} + 2) <= $window->{'height'})
 		{
 			$window->print('', MSGLEVEL_CLIENTCRAP | MSGLEVEL_NEVER | MSGLEVEL_NO_ACT | MSGLEVEL_NOHILIGHT);
