@@ -1,6 +1,6 @@
 ##############################################################################
 #
-# mh_windowfill.pl v1.01 (20151116)
+# mh_windowfill.pl v1.02 (20151118)
 #
 # Copyright (c) 2015  Michael Hansen
 #
@@ -26,12 +26,10 @@
 #	without script: http://picpaste.com/cfda32a34ea96e16dcb3f2d956655ff6.png
 #	with script:    http://picpaste.com/e3b84ead852e3e77b12ed69383f1f80c.png
 #
-# known issues:
-# 	- /CLEAR will reset to top-down
-#	- it is possible to confuse the script into not filling with a combination
-#	  of script load/unloads and window resizes. but it requires effort
-#
 # history:
+#	v1.02 (20151118)
+#		new windowfill routine
+#		fixed /clear
 #	v1.01 (20151116)
 #		source cleanup
 #	v1.00 (20151116)
@@ -51,7 +49,7 @@ use strict;
 use Irssi 20100403;
 use Irssi::TextUI;
 
-our $VERSION = '1.01';
+our $VERSION = '1.02';
 our %IRSSI   =
 (
 	'name'        => 'mh_windowfill',
@@ -64,80 +62,67 @@ our %IRSSI   =
 
 ##############################################################################
 #
-# global variables
-#
-##############################################################################
-
-our $windowfill_running = 0;
-
-##############################################################################
-#
 # script functions
 #
 ##############################################################################
 
-sub windowfill($)
+sub windowfill_fill
 {
 	my ($window) = @_;
 
-	if (ref($window) ne 'Irssi::UI::Window')
+	while ($window->view()->{'empty_linecount'})
 	{
-		die();
+		$window->print('', MSGLEVEL_NEVER);
 	}
+}
+
+sub windowfill_fill_all
+{
+	for my $window (Irssi::windows())
+	{
+		windowfill_fill($window);
+	}
+}
+
+sub windowfill
+{
+	my ($window) = @_;
 
 	#
 	# fill window with empty lines and move already printed lines to the bottom
 	#
-	if (($window->view()->{'ypos'} + 2) <= $window->{'height'})
+	if ($window->view()->{'empty_linecount'})
 	{
-		while (($window->view()->{'ypos'} + 2) <= $window->{'height'})
+		my $line      = $window->view()->get_lines();
+		my $linecount = 0;
+
+		while ($line)
 		{
-			$window->print('', MSGLEVEL_CLIENTCRAP | MSGLEVEL_NEVER | MSGLEVEL_NO_ACT | MSGLEVEL_NOHILIGHT);
+			$linecount++;
+			$line = $line->next();
 		}
 
-		my $linecount  = $window->{'height'};
-		my $line       = $window->view()->get_lines();
+		windowfill_fill($window);
 
-		while ((ref($line) eq 'Irssi::TextUI::Line') and $linecount)
+		$line = $window->view()->get_lines();
+
+		while ($linecount)
 		{
 			my $linetext = $line->get_text(1);
-
-			if ($linetext ne '')
-			{
-				# reprint line
-				$window->print($linetext, MSGLEVEL_CLIENTCRAP | MSGLEVEL_NEVER | MSGLEVEL_NO_ACT | MSGLEVEL_NOHILIGHT);
-				$line = $line->next();
-				$window->view()->remove_line($line->prev());
-
-			} else {
-
-				# skip empty line
-				$line = $line->next();
-			}
-
+			$line        = $line->next();
+			$window->print($linetext, MSGLEVEL_NEVER);
+			$window->view()->remove_line($line->prev());
 			$linecount--;
 		}
 	}
-
-	return(1);
 }
 
-sub windowfill_all()
+sub windowfill_all
 {
-	#
-	# fill all windows with empty lines
-	#
 	for my $window (Irssi::windows())
 	{
-		if (ref($window) ne 'Irssi::UI::Window')
-		{
-			die();
-		}
-
 		windowfill($window);
 	}
-
-	return(1);
 }
 
 ##############################################################################
@@ -146,42 +131,39 @@ sub windowfill_all()
 #
 ##############################################################################
 
-sub signal_mainwindow_resized_last()
+sub signal_mainwindow_resized_last
 {
-	if ($windowfill_running)
-	{
-		#
-		# fill all windows with empty lines
-		#
-		windowfill_all();
-	}
-
-	return(1);
+	windowfill_all();
 }
 
-Irssi::signal_add_last('mainwindow resized', 'signal_mainwindow_resized_last');
-
-sub signal_window_created_last($)
+sub signal_window_created_last
 {
 	my ($window) = @_;
 
-	if (ref($window) ne 'Irssi::UI::Window')
-	{
-		die();
-	}
-
-	if ($windowfill_running)
-	{
-		#
-		# fill created window with empty lines
-		#
-		windowfill($window);
-	}
-
-	return(1);
+	windowfill($window);
 }
 
-Irssi::signal_add_last('window created', 'signal_window_created_last');
+##############################################################################
+#
+# irssi command functions
+#
+##############################################################################
+
+sub command_clear
+{
+	my ($data, $server, $windowitem) = @_;
+
+	if (not ($data =~ s/^!{3} //))
+	{
+		Irssi::active_win()->command('CLEAR !!! ' . $data);
+		windowfill_fill_all();
+		Irssi::signal_stop();
+
+	} else {
+
+		Irssi::signal_continue($data, $server, $windowitem);
+	}
+}
 
 ##############################################################################
 #
@@ -189,33 +171,20 @@ Irssi::signal_add_last('window created', 'signal_window_created_last');
 #
 ##############################################################################
 
-sub script_on_load($)
+sub script_on_load
 {
-	my ($undef) = @_;
+	Irssi::signal_add_last('mainwindow resized', 'signal_mainwindow_resized_last');
+	Irssi::signal_add_last('window created', 'signal_window_created_last');
 
-	if (defined($undef))
-	{
-		die();
-	}
-
-	if ($windowfill_running)
-	{
-		die();
-	}
+	Irssi::command_bind('clear', 'command_clear');
 
 	windowfill_all();
-	$windowfill_running = 1;
-
-	return(1);
 }
 
 #
 # start script in a timeout to avoid printing before irssis "loaded script"
 #
-if (not Irssi::timeout_add_once(10, 'script_on_load', undef))
-{
-	die();
-}
+Irssi::timeout_add_once(10, 'script_on_load', undef);
 
 1;
 
