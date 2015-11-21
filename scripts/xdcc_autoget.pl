@@ -34,7 +34,7 @@ use File::Copy;
 use Irssi 20090331;
 use vars qw($VERSION %IRSSI);
 
-$VERSION = 1.2;
+$VERSION = 1.3;
 %IRSSI = (
 	name => "autoget", 
 	description => "XDCC Autoget, for automated searching and downloading of xdcc packs",
@@ -521,7 +521,7 @@ sub ag_parseadd		#parses add arguments for storage
 sub ag_parserem		#parses remove arguments for deletion from file
 {
 	my ($file, @args) = @_;
-	open(TEMP, ">>", "/tmp/temp");
+	open(TEMP, ">", "/tmp/temp");
 	foreach my $arg (@args)
 	{
 		Irssi::print "AG | removing term: " . $arg;
@@ -549,7 +549,7 @@ sub ag_parserem		#parses remove arguments for deletion from file
 	copy($file, "/tmp/temp");
 	unlink "$file";
 	open(TEMP, "<", "/tmp/temp");
-	open(SEARCHES, ">", $file);
+	open(FILE, ">", $file);
 	%hTmp = ();
 	while (my $sLine = <TEMP>)		#remove duplicate lines
 	{
@@ -666,6 +666,33 @@ sub ag_stop
 	$episode = 1;
 }
 
+sub ag_restart
+{
+	Irssi::print "AG | Connection lost";
+	Irssi::signal_remove("dcc get receive", "ag_opendcc");
+	Irssi::signal_remove("message irc notice", "ag_getmsg");
+
+	foreach my $to (@totags)
+	{
+		Irssi::timeout_remove($to);
+	}
+	@totags = ();
+
+	ag_message("msg $bots[$botcounter] $cancelprefix");
+
+	if($runningflag == 1)
+	{
+		$runningflag = 0;
+	}
+	$msgflag = 1;
+	$termisepisodicflag = 0;
+	$formatflag = 1;
+	$reqpackflag = 0;
+	$downloadflag = 0;
+	$newpackflag = 1;
+	$dccflag = 0;
+	Irssi::signal_add("server connected", "ag_initserver");
+}
 sub ag_reset
 {
 	Irssi::settings_set_int("ag_next_delay", 10);
@@ -707,6 +734,7 @@ close(FINISHED);
 &ag_init;
 if ($initflag) {Irssi::signal_add("server connected", "ag_initserver");}
 
+Irssi::signal_add("server disconnected", "ag_restart");
 Irssi::signal_add("dcc closed", "ag_closedcc");
 Irssi::signal_add("setup changed", "ag_setsettings");
 

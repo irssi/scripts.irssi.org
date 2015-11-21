@@ -1,0 +1,1 @@
+/home/alex/.irssi/scripts/xdcc_autoget.pl
