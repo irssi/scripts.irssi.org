@@ -748,7 +748,7 @@ open(FINISHED, ">>", $cachefilename);
 close(FINISHED);
 
 Irssi::statusbar_item_register('ag_statusbar', 0, 'ag_bar');
-Irssi::timeout_add(1000, sub { Irssi::statusbar_items_redraw("ag_bar"); } , []);
+Irssi::timeout_add(100, sub { Irssi::statusbars_recreate_items(); Irssi::statusbar_items_redraw("ag_bar"); } , []);
 
 &ag_init;
 if ($initflag) {Irssi::signal_add("server connected", "ag_initserver");}
