@@ -4,14 +4,13 @@ use FileHandle;
 
 use vars qw($VERSION %IRSSI);
 
-$VERSION = "2.0";
+$VERSION = "2.1"; # e8934ed1ce04461
 %IRSSI = (
-    authors     => 'John C. Vernaleo',
-    contact     => 'john@netpurgatory.com',
+    authors     => 'cdidier',
     name        => 'tmux_away',
     description => 'set (un)away if tmux session is attached/detached',
     license     => 'GPL v2',
-    url         => 'http://www.netpurgatory.com/tmux_away.html',
+    url         => 'http://cybione.org',
 );
 
 # tmux_away irssi module
@@ -32,6 +31,7 @@ $VERSION = "2.0";
 #
 # /set tmux_away_active ON/OFF/TOGGLE
 # /set tmux_away_repeat <integer>
+# /set tmux_away_grace <integer>
 # /set tmux_away_message <string>
 # /set tmux_away_window <string>
 # /set tmux_away_nick <string>
@@ -40,6 +40,8 @@ $VERSION = "2.0";
 #   flag is set, default is ON
 # repeat is the number of seconds, after the script will check the
 #   tmux session status again, default is 5 seconds
+# grace is the number of seconds, to wait additionally, before
+#   setting you away, default is disabled (0)
 # message is the away message sent to the server, default: not here ...
 # window is a window number or name, if set, the script will switch
 #   to this window, if it sets you away, default is '1'
@@ -70,15 +72,12 @@ if (!defined($ENV{TMUX})) {
 }
 
 my @args_env = split(',', $ENV{TMUX});
-
-# Get session name.  Must be connected for this to work, but since this either
-# happens at startup or based on user command, should be okay.
-my $tmux_session = `tmux display-message -p '#S'`;
-chomp($tmux_session);
+my $tmux_socket = $args_env[0];
 
 # register config variables
 Irssi::settings_add_bool('misc', $IRSSI{'name'} . '_active', 1);
 Irssi::settings_add_int('misc', $IRSSI{'name'} . '_repeat', 5);
+Irssi::settings_add_int('misc', $IRSSI{'name'} . '_grace', 0);
 Irssi::settings_add_str('misc', $IRSSI{'name'} . '_message', "not here...");
 Irssi::settings_add_str('misc', $IRSSI{'name'} . '_window', "1");
 Irssi::settings_add_str('misc', $IRSSI{'name'} . '_nick', "");
@@ -86,6 +85,7 @@ Irssi::settings_add_str('misc', $IRSSI{'name'} . '_nick', "");
 
 # check, set or reset the away status
 sub tmux_away {
+    my ($immediate) = @_;
   my ($status, @res);
 
   # only run, if activated
@@ -94,25 +94,37 @@ sub tmux_away {
   } else {
     if ($away_status == 0) {
       # display init message at first time
+	my $grace = Irssi::settings_get_int($IRSSI{'name'} . '_grace');
+	$grace = ", $grace seconds grace" if $grace;
       Irssi::printformat(MSGLEVEL_CLIENTCRAP, 'tmux_away_crap',
-        "activating $IRSSI{'name'} (interval: " . Irssi::settings_get_int($IRSSI{'name'} . '_repeat') . " seconds)");
+        "activating $IRSSI{'name'} (interval: " . Irssi::settings_get_int($IRSSI{'name'} . '_repeat') . " seconds$grace)");
       $away_status = 2;
     }
 
     # get actual tmux session status
-    @res = `tmux list-clients -t $tmux_session`;
-    if (@res[0] =~ /^failed to connect to server/) {
-      Irssi::printformat(MSGLEVEL_CLIENTCRAP, 'tmux_away_crap',
-        "error getting tmux session status.");
-      return;
+    chomp(@res = `tmux -S '$tmux_socket' lsc 2>&1`);
+    chomp(my $tmux_session = `tmux -S '$tmux_socket' display -p '#S' 2>/dev/null`);
+    if ($res[0] =~ /^server not found/ || $? >> 8) {
+      die "error getting tmux session status.";
     }
     $status = 1; # away, assumes the session is detached
-    if ($#res != -1) {
-	$status = 2; # unaway
+    foreach (@res) {
+      my @args_st = split(' ');
+      if ($args_st[1] eq $tmux_session) {
+        $status = 2; # unaway
+      }
     }
 
     # unaway -> away
     if ($status == 1 and $away_status != 1) {
+	if (my $grace = Irssi::settings_get_int($IRSSI{'name'} . '_grace')) {
+	    if (!$immediate) {
+		Irssi::timeout_add_once($grace * 1000, 'tmux_away', '1');
+		Irssi::printformat(MSGLEVEL_CLIENTCRAP, 'tmux_away_crap',
+				   "(in grace for away: $grace seconds)");
+		return 1;
+	    }
+	}
       if (length(Irssi::settings_get_str($IRSSI{'name'} . '_window')) > 0) {
         # if length of window is greater then 0, make this window active
         Irssi::command('window goto ' . Irssi::settings_get_str($IRSSI{'name'} . '_window'));
@@ -127,7 +139,7 @@ sub tmux_away {
         if (!$_->{usermode_away}) {
 	  # user isn't yet away
 	  $away{$_->{'tag'}} = 0;
-	  $_->command("AWAY " . ($_->{chat_type} ne 'SILC' ? "-one " : "") . "$message");
+	  $_->command("^AWAY " . ($_->{chat_type} ne 'SILC' ? "-one " : "") . "$message");
 	  if ($_->{chat_type} ne 'XMPP' and length(Irssi::settings_get_str($IRSSI{'name'} . '_nick')) > 0) {
             # only change if actual nick isn't already the away nick
             if (Irssi::settings_get_str($IRSSI{'name'} . '_nick') ne $_->{nick}) {
@@ -146,6 +158,14 @@ sub tmux_away {
 
     # away -> unaway
     } elsif ($status == 2 and $away_status != 2) {
+	if (my $grace = Irssi::settings_get_int($IRSSI{'name'} . '_grace')) {
+	    if (!$immediate) {
+		Irssi::timeout_add_once($grace * 1000, 'tmux_away', '1');
+		Irssi::printformat(MSGLEVEL_CLIENTCRAP, 'tmux_away_crap',
+				   "(in grace for unaway: $grace seconds)");
+		return 1;
+	    }
+	}
       # unset away
       Irssi::printformat(MSGLEVEL_CLIENTCRAP, 'tmux_away_crap', "Reset away");
       foreach (Irssi::servers()) {
@@ -154,7 +174,7 @@ sub tmux_away {
           $away{$_->{'tag'}} = 0;
           next;
         }
-        $_->command("AWAY" . (($_->{chat_type} ne 'SILC') ? " -one" : "")) if ($_->{usermode_away});
+        $_->command("^AWAY" . (($_->{chat_type} ne 'SILC') ? " -one" : "")) if ($_->{usermode_away});
         if ($_->{chat_type} ne 'XMPP' and defined($old_nicks{$_->{'tag'}}) and length($old_nicks{$_->{'tag'}}) > 0) {
           # set old nick
           $_->command("NICK " . $old_nicks{$_->{'tag'}});
@@ -162,6 +182,9 @@ sub tmux_away {
         }
       }
       $away_status = $status;
+    } elsif ($immediate) {
+	Irssi::printformat(MSGLEVEL_CLIENTCRAP, 'tmux_away_crap',
+				   "in grace aborted");
     }
   }
   # but everytimes install a new timer
@@ -171,11 +194,8 @@ sub tmux_away {
 
 # remove old timer and install a new one
 sub register_tmux_away_timer {
-  if (defined($timer_name)) {
-    Irssi::timeout_remove($timer_name);
-  }
   # add new timer with new timeout (maybe the timeout has been changed)
-  $timer_name = Irssi::timeout_add(Irssi::settings_get_int($IRSSI{'name'} . '_repeat') * 1000, 'tmux_away', '');
+  Irssi::timeout_add_once(Irssi::settings_get_int($IRSSI{'name'} . '_repeat') * 1000, 'tmux_away', '');
 }
 
 # init process
