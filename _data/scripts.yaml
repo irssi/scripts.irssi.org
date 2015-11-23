@@ -4603,10 +4603,10 @@
   description: 'XDCC Autoget, for automated searching and downloading of xdcc packs'
   filename: xdcc_autoget.pl
   license: 'BeerWare Version 42'
-  modified: '2015-11-13 14:39:50'
+  modified: '2015-11-23 13:40:02'
   modules: File::HomeDir
   name: autoget
-  version: '1.2'
+  version: '1.4'
 -
   authors: "Stefan 'tommie' Tomanek, Obfuscoder"
   commands: xdccget
