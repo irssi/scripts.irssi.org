@@ -510,25 +510,26 @@ sub ag_addfinished		#save finished downloads
 sub ag_parseadd		#parses add arguments for storage
 {
 	my ($file, @args) = @_;
-	open(FILE, ">>", $file);
+	my @temp;
+	my @fil;
 	foreach my $arg (@args)
 	{
-		print FILE $arg . "\n";		#print to file
+		push (@temp, $arg); 
 	}
-	close(FILE);
-	copy($file, "/tmp/temp");	#copy to temp file so that duplicate lines [searches/bots] can be removed
+	open(FILE, "<", $file);
+	@fil = <FILE>;
+	chomp(@fil);
 	unlink "$file";
-	open(TEMP, "<", "/tmp/temp");
 	open(FILE, ">", $file);
+	push(@fil, @temp);
 	my %hTmp;
-	while (my $sLine = <TEMP>)	#remove duplicate lines
+	foreach my $sLine (@fil)		#remove duplicate lines
 	{
 		next if $sLine =~ m/^\s*$/;  #remove empty lines. Without this, still destroys empty lines except for the first one.
 		$sLine=~s/^\s+//;            #strip leading/trailing whitespace
 		$sLine=~s/\s+$//;
 		print FILE qq{$sLine\n} unless ($hTmp{$sLine}++);
 	}
-	unlink "/tmp/temp";
 	close(FILE);
 	&ag_getbots;
 	&ag_getterms;
@@ -537,45 +538,39 @@ sub ag_parseadd		#parses add arguments for storage
 sub ag_parserem		#parses remove arguments for deletion from file
 {
 	my ($file, @args) = @_;
-	open(TEMP, ">", "/tmp/temp");
+	my @temp;
+	my @temp2;
+	my @fil;
 	foreach my $arg (@args)
 	{
-		Irssi::print "AG | removing term: " . $arg;
-		print TEMP $arg . "\n";
+		push (@temp, $arg); 
 	}
-	close(TEMP);
-	open(TEMP2, ">", "/tmp/temp2");
 	open(FILE, "<", $file);
+	@fil = <FILE>;
+	chomp(@fil);
 	my %hTmp;
-	while( my $fileLine = FILE->getline() )		#get each entry already stored
+	foreach my $fileLine (@fil)		#get each entry already stored
 	{
-		open(TEMP, "<", "/tmp/temp");
-		while( my $tempLine = TEMP->getline() )
+		foreach my $tempLine (@temp)
 		{
 			if ($fileLine eq $tempLine)	#if entry in file and arguments
 			{
 				$hTmp{$fileLine}++;	#set flag to not copy
 			}
-			print TEMP2 qq{$fileLine} unless $hTmp{$fileLine};	#copy other lines to other temp file
+			push(@temp2, qq{$fileLine}) unless $hTmp{$fileLine};	#copy other lines to other temp file
 		}
-		close(TEMP);
 	}
-	close(TEMP2);
-	copy("/tmp/temp2", $file);	#rewrite old file
-	copy($file, "/tmp/temp");
+	@fil = @temp2;	#rewrite old file
 	unlink "$file";
-	open(TEMP, "<", "/tmp/temp");
 	open(FILE, ">", $file);
 	%hTmp = ();
-	while (my $sLine = <TEMP>)		#remove duplicate lines
+	foreach my $sLine (@fil)		#remove duplicate lines
 	{
 		next if $sLine =~ m/^\s*$/;  #remove empty lines. Without this, still destroys empty lines except for the first one.
 		$sLine=~s/^\s+//;            #strip leading/trailing whitespace
 		$sLine=~s/\s+$//;
 		print FILE qq{$sLine\n} unless ($hTmp{$sLine}++);
 	}
-	unlink "/tmp/temp";
-	unlink "/tmp/temp2";
 	close(FILE);
 }
 
