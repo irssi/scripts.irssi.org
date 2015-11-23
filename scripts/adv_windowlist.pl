@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-our $VERSION = '1.0a2'; # 185124f561a65ff
+our $VERSION = '1.0a3'; # f5bd5232c9f9f34
 our %IRSSI = (
     authors     => 'Nei',
     contact     => 'Nei @ anti@conference.jabber.teamidiot.de',
@@ -643,7 +643,7 @@ sub remove_uniform {
 sub remove_uniform_vars {
     my $win = shift;
     my $name = __PACKAGE__ . '::custom_xform::' . $win->{active}{type}
-	if $win->{active} && $win->{active}{type};
+	if ref $win->{active} && $win->{active}{type};
     no strict 'refs';
     local ${$name} = 1 if $name;
     remove_uniform(+shift);
@@ -2352,8 +2352,9 @@ UNITCHECK
 
 # Changelog
 # =========
-# 1.0a2
+# 1.0a3
 # - new awl_viewer_launch setting and an array of related settings
+# - fixed regression bug /exec -interactive
 #
 # 0.9
 # - fix endless loop in awin detection code!
