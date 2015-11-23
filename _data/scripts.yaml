@@ -94,6 +94,17 @@
   name: activity_file
   version: '1.00'
 -
+  authors: Nei
+  contact: 'Nei @ anti@conference.jabber.teamidiot.de'
+  description: 'Adds a permanent advanced window list on the right or in a status bar.'
+  filename: adv_windowlist.pl
+  license: 'GNU GPLv2 or later'
+  modified: '2015-11-16 19:32:11'
+  modules: Text::CharWidth
+  name: adv_windowlist
+  url: http://anti.teamidiot.de/
+  version: 1.0a2
+-
   authors: BC-bd
   contact: bd@bc-bd.org
   description: 'Puts people on ignore if they do a public away. See source for options.'
@@ -202,6 +213,16 @@
   name: ascii-art
   url: http://derwan.irssi.pl
   version: 1.6.3
+-
+  authors: 'Isaac Good (yitz_), Tom Feist (shabble)'
+  contact: 'irssi@isaacgood.com, shabble+irssi@metavore.org'
+  description: 'ASpell spellchecking system for Irssi'
+  filename: aspell.pl
+  license: MIT
+  modified: '2015-11-16 19:36:52'
+  modules: Text::Aspell
+  name: aspell
+  version: 1.6.1
 -
   authors: 'Philipp Haegi'
   commands: rotate_dict
@@ -856,6 +877,15 @@
   url: http://mental.mine.nu
   version: '0.3'
 -
+  contact: 'Nei @ anti@conference.jabber.teamidiot.de'
+  description: 'make some command output clearable'
+  filename: clearable.pl
+  license: ISC
+  modified: '2015-11-16 19:32:11'
+  name: clearable
+  url: http://anti.teamidiot.de/
+  version: '0.1'
+-
   authors: 'Dominic Battre'
   contact: dominic@battre.de
   description: 'Better quoting of content from clipboard (without leading spaces) -- requires Perl/Tk'
@@ -897,6 +927,26 @@
   url: http://reirssi.wordpress.com
   version: '1.6'
 -
+  authors: 'Jari Matilainen, init[1]@irc.freenode.net'
+  contact: vague@vague.se
+  description: 'Compare nicks in two channels'
+  filename: cmpchans.pl
+  license: 'Public Domain'
+  modified: '2015-11-16 19:36:52'
+  name: cmpchans
+  url: http://vague.se
+  version: '0.5'
+-
+  authors: Nei
+  contact: 'Nei @ anti@conference.jabber.teamidiot.de'
+  description: 'Colourise mention of nicks in the message body.'
+  filename: colorize_nicks.pl
+  license: 'GNU GPLv2 or later'
+  modified: '2015-11-16 19:32:11'
+  name: colorize_nicks
+  url: http://anti.teamidiot.de/
+  version: 0.3.6
+-
   authors: 'Gabor Nyeki'
   contact: bigmac@vim.hu
   description: 'kicking users for using colors or blinks'
@@ -914,6 +964,16 @@
   name: colorswap
   url: http://irssi.org/
   version: '0.1'
+-
+  authors: Nei
+  contact: 'Nei @ anti@conference.jabber.teamidiot.de'
+  description: 'Complete nicks after @ (twitter-style)'
+  filename: complete_at.pl
+  license: ISC
+  modified: '2015-11-16 19:32:11'
+  name: complete_at
+  url: http://anti.teamidiot.de/
+  version: '0.2'
 -
   authors: Daenyth
   contact: 'Daenyth /at/ gmail /dot/ com'
@@ -1138,6 +1198,16 @@
   name: 'Dictionary complete'
   url: http://juerd.nl/irssi/
   version: '1.31'
+-
+  authors: Nei
+  contact: 'Nei @ anti@conference.jabber.teamidiot.de'
+  description: 'Dims nicks that are not in channel anymore.'
+  filename: dim_nicks.pl
+  license: 'GNU GPLv2 or later'
+  modified: '2015-11-16 19:32:11'
+  name: dim_nicks
+  url: http://anti.teamidiot.de/
+  version: 0.4.6
 -
   authors: "Sebastian 'yath' Schmidt"
   contact: yathen@web.de
@@ -1658,6 +1728,16 @@
   url: http://www.jamesoff.net
   version: '1.01'
 -
+  authors: Nei
+  contact: 'Nei @ anti@conference.jabber.teamidiot.de'
+  description: 'Removes and re-adds lines to the Irssi buffer view.'
+  filename: hideshow.pl
+  license: 'GNU GPLv2 or later'
+  modified: '2015-11-16 19:32:11'
+  name: hideshow
+  url: http://anti.teamidiot.de/
+  version: 0.4.4
+-
   authors: Mantis
   contact: mantis@inta-link.com
   description: 'shows events happening in all channels you are in that may concern you'
@@ -1737,6 +1817,16 @@
   url: http://piipiip.net/
   version: '1.0'
 -
+  authors: 'Juerd, Eevee'
+  contact: '#####@juerd.nl'
+  description: 'Scrolls to previous or next highlight'
+  filename: hlscroll.pl
+  license: 'Public Domain'
+  modified: '2015-11-16 19:36:52'
+  name: 'Scroll to hilights'
+  url: http://juerd.nl/site.plp/irssi
+  version: '0.02'
+-
   authors: 'Jean-Yves Lefort'
   contact: 'jylefort\@brutele.be, decadix on IRCNet'
   description: 'Adds a /HOSTNAME command; it will list all IP addresses on all interfaces found on your machine, resolve them, and allow you to choose one easily'
@@ -1778,6 +1868,16 @@
   name: idletime
   url: ''
   version: '20030208'
+-
+  authors: 'Tom Feist, Wouter Coekaerts'
+  contact: 'shabble+irssi@metavore.org, shabble@#irssi/freenode'
+  description: 'Select window[-items] using an ido-mode like search interface'
+  filename: ido_switcher.pl
+  license: 'GPLv2 or later'
+  modified: '2015-11-16 19:36:52'
+  name: ido_switcher
+  url: http://github.com/shabble/irssi-scripts/tree/master/ido-mode/
+  version: '2.3'
 -
   authors: "Stefan 'tommie' Tomanek"
   commands: idonkey
@@ -1944,6 +2044,16 @@
   modules: Crypt::CBC
   name: IRCSec
   version: '2008051101'
+-
+  authors: 'Valentin Batz'
+  contact: vb\@g-23.org
+  description: 'show the accountname (330) and real host on ircu'
+  filename: ircuwhois.pl
+  license: GPLv2
+  modified: '2015-11-16 19:36:52'
+  name: ircuwhois
+  url: http://www.hurzelgnom.homepage.t-online.de/irssi/scripts/quakenet.pl
+  version: '1.2'
 -
   authors: 'Julius Michaelis'
   contact: iRRSi@cserv.dyndns.org
@@ -2207,6 +2317,16 @@
   url: http://jari.cjb.net,http://irssi.org,http://scripts.irssi.de
   version: '0.5'
 -
+  authors: Nei
+  contact: 'Nei @ anti@conference.jabber.teamidiot.de'
+  description: 'dump the linebuffer content'
+  filename: linebuffer.pl
+  license: 'GNU GPLv2 or later'
+  modified: '2015-11-16 19:32:11'
+  name: linebuffer
+  url: http://anti.teamidiot.de/
+  version: '0.2'
+-
   authors: "Marcin 'Qrczak' Kowalczyk"
   contact: qrczak@knm.org.pl
   description: 'Link several channels on serveral networks'
@@ -2367,6 +2487,16 @@
   name: mass_hilight_blocker
   version: '0.2'
 -
+  authors: 'Wouter Coekaerts'
+  contact: coekie@irssi.org
+  description: 'makes all window text start at the bottom of windows'
+  filename: messages_bottom.pl
+  license: "send-me-beer-or-i'll-sue-you-if-you-use-it license"
+  modified: '2015-11-16 19:36:52'
+  name: messages_bottom
+  url: http://bugs.irssi.org/index.php?do=details&id=290
+  version: '1.0'
+-
   authors: 'Kaveh Moini'
   contact: campanastra@gmail.com
   description: 'DCC MultiGet, for fetching from XDCC bots'
@@ -2486,12 +2616,32 @@
   authors: 'Wouter Coekaerts'
   contact: wouter@coekaerts.be
   description: 'control irssi using mouse clicks and gestures'
+  filename: mouse-awl.pl
+  license: 'GPLv2 or later'
+  modified: '2015-11-16 19:36:52'
+  name: mouse
+  url: http://wouter.coekaerts.be/irssi/
+  version: 1.0.0-awl
+-
+  authors: 'Wouter Coekaerts'
+  contact: wouter@coekaerts.be
+  description: 'control irssi using mouse clicks and gestures'
   filename: mouse.pl
   license: 'GPLv2 or later'
   modified: '2009-05-16 00:00:00'
   name: mouse
   url: http://wouter.coekaerts.be/irssi/
   version: 1.0.0
+-
+  authors: 'Wouter Coekaerts'
+  contact: wouter@coekaerts.be
+  description: 'experimental perl version of the irssi mouse patch'
+  filename: mouse_soliton.pl
+  license: GPLv2
+  modified: '2015-11-16 19:36:52'
+  name: trigger
+  url: http://wouter.coekaerts.be/irssi/
+  version: 0.0.0
 -
   authors: 'Erik Scharwaechter, Tobias Böhm, Mikkel Kroman'
   contact: 'diozaka@gmx.de, code@aibor.de, mk@maero.dk'
@@ -2646,6 +2796,21 @@
   url: http://irssi.org/
   version: '2'
 -
+  authors: Nei
+  description: 'colourise nicks'
+  filename: nickcolor_expando.pl
+  license: 'GPL v2'
+  modified: '2015-11-16 19:32:11'
+  name: nickcolor_expando
+  version: 0.3.7
+-
+  description: 'colourise nicks'
+  filename: nickcolor_gay.pl
+  license: ISC
+  modified: '2015-11-16 19:36:52'
+  name: nickcolor_gay
+  version: '0.1'
+-
   authors: "Kalle 'rpr' Marjola"
   contact: marjola@iki.fi
   description: "Ignores any nick changes when only the case or special characters are modified, like 'rpr -> Rpr' or 'rpr_ -> rpr', with optional pattern for more complicated ignores"
@@ -2715,6 +2880,16 @@
   name: nm
   url: http://bc-bd.org/blog/irssi/
   version: 0.3.10
+-
+  authors: Nei
+  contact: 'Nei @ anti@conference.jabber.teamidiot.de'
+  description: 'right aligned nicks depending on longest nick'
+  filename: nm2.pl
+  license: 'GPL v2'
+  modified: '2015-11-16 19:32:11'
+  name: nm2
+  url: http://anti.teamidiot.de/
+  version: 2.0-dev
 -
   authors: 'JamesOff, Ion'
   contact: james@jamesoff.net
@@ -3241,6 +3416,16 @@
   name: RandName
   version: '1.0'
 -
+  authors: 'Matthew Sytsma'
+  contact: spiderpigy@yahoo.com
+  description: "Filters quit/part/join/nick notices based on time since last message. (Similar to weechat's smartfilter)."
+  filename: recentdepart.pl
+  license: 'GNU GPLv2 or later'
+  modified: '2015-11-16 19:36:52'
+  name: 'Recently Departed'
+  url: ''
+  version: '0.6'
+-
   authors: 'Thomas Graf'
   contact: irssi@reeler.org
   description: 'handle 005 and 010 server messages and reconnect to that server'
@@ -3368,6 +3553,15 @@
   url: http://ion.amigafin.org/irssi/
   version: '0.1'
 -
+  authors: 'Simon Ruderich, Tom Feist'
+  contact: 'simon@ruderich.org, shabble+irssi@metavore.org'
+  description: 'Displays current position in scrollback.'
+  filename: sb_position.pl
+  license: 'GPLv3 or later'
+  modified: '2015-11-16 19:36:52'
+  name: sb_position
+  version: '0.1'
+-
   authors: 'Wouter Coekaerts, Emanuele Giaquinta'
   contact: 'wouter@coekaerts.be, exg@irssi.org'
   description: 'search in your scrollback, scroll to a match'
@@ -3377,6 +3571,16 @@
   name: sb_search
   url: http://wouter.coekaerts.be/irssi/
   version: '1.1'
+-
+  authors: Nei
+  contact: 'Nei @ anti@conference.jabber.teamidiot.de'
+  description: 'clear matching lines in scrollback'
+  filename: sbclearmatch.pl
+  license: 'GPLv2 or later'
+  modified: '2015-11-16 19:32:11'
+  name: sbclearmatch
+  url: http://anti.teamidiot.de/
+  version: '0.2'
 -
   authors: 'Robert Scheck'
   commands: schwäbisch
@@ -3847,6 +4051,15 @@
   name: 'Topic Lock'
   version: '1.1'
 -
+  authors: 'Thiago de Arruda'
+  contact: tpadilha84@gmail.com
+  description: 'displays a list of nicks in a separate tmux pane'
+  filename: tmux-nicklist-portable.pl
+  license: WTFPL
+  modified: '2015-11-16 19:36:52'
+  name: tmux-nicklist
+  version: 0.1.3
+-
   authors: 'John C. Vernaleo'
   contact: john@netpurgatory.com
   description: 'set (un)away if tmux session is attached/detached'
@@ -3905,6 +4118,18 @@
   name: trackbar
   url: http://github.com/mjholtkamp/irssi-trackbar/
   version: '1.9'
+-
+  authors: 'Peter Leurs and Geert Hauwaerts'
+  commands: trackbar
+  contact: peter@pfoe.be
+  description: 'Shows a bar where you have last read a window.'
+  filename: trackbar22.pl
+  license: 'GNU General Public License'
+  modified: '2015-11-16 19:36:52'
+  modules: Text::CharWidth
+  name: trackbar
+  url: http://www.pfoe.be/~peter/trackbar/
+  version: '2.2'
 -
   authors: 'Timo Sirainen'
   contact: tss@iki.fi
@@ -3993,6 +4218,17 @@
   url: "http://irssi.darktalker.net\n"
   version: '1.01'
 -
+  authors: 'Juerd (first version: Timo Sirainen, additions by: Qrczak)'
+  contact: 'tss@iki.fi, juerd@juerd.nl, qrczak@knm.org.pl'
+  description: 'When someone uses s/foo/bar/, this really modifies the text'
+  filename: typofix.pl
+  license: 'Same as Irssi'
+  modified: '2015-11-16 19:36:52'
+  modules: Algorithm::Diff
+  name: Typofix
+  url: http://juerd.nl/irssi/
+  version: '1.12'
+-
   authors: Michiel
   contact: michiel@dotgeek.org
   description: 'BitchX /u clone. Use /u <regex> to show all nicks (including ident@host) matching regex in the current channel.'
@@ -4002,6 +4238,15 @@
   name: 'List nicks in channel'
   url: http://otoria.freecode.nl/~michiel/u.pl
   version: '1.3'
+-
+  authors: shabble
+  contact: 'shabble+irssi@metavore.org, shabble@#irssi/Freenode'
+  description: 'Helper script for dynamically adding text into the input-bar prompt.'
+  filename: uberprompt.pl
+  license: MIT
+  modified: '2015-11-16 19:36:52'
+  name: uberprompt
+  version: '0.2'
 -
   authors: 'David Leadbeater'
   contact: dgl@dgl.cx
