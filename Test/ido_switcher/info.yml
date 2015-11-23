@@ -1,0 +1,12 @@
+---
+-
+  authors: 'Tom Feist, Wouter Coekaerts'
+  changed: 24/7/2010
+  contact: 'shabble+irssi@metavore.org, shabble@#irssi/freenode'
+  default_package: ido_switcher
+  description: 'Select window[-items] using an ido-mode like search interface'
+  license: 'GPLv2 or later'
+  modified: '2015-11-16 19:36:52'
+  name: ido_switcher
+  url: http://github.com/shabble/irssi-scripts/tree/master/ido-mode/
+  version: '2.3'

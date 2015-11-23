@@ -1,0 +1,11 @@
+---
+-
+  authors: 'Jari Matilainen, init[1]@irc.freenode.net'
+  contact: vague@vague.se
+  default_package: cmpchans
+  description: 'Compare nicks in two channels'
+  license: 'Public Domain'
+  modified: '2015-11-16 19:36:52'
+  name: cmpchans
+  url: http://vague.se
+  version: '0.5'

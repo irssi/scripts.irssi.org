@@ -1,0 +1,11 @@
+---
+-
+  authors: Nei
+  contact: 'Nei @ anti@conference.jabber.teamidiot.de'
+  default_package: nm2
+  description: 'right aligned nicks depending on longest nick'
+  license: 'GPL v2'
+  modified: '2015-11-16 19:32:11'
+  name: nm2
+  url: http://anti.teamidiot.de/
+  version: 2.0-dev

@@ -1,0 +1,16 @@
+---
+-
+  NOTE1: 'you need irssi 0.8.17'
+  authors: 'Juerd (first version: Timo Sirainen, additions by: Qrczak)'
+  changed: 'Sat Jun 28 16:24:26 CEST 2014'
+  contact: 'tss@iki.fi, juerd@juerd.nl, qrczak@knm.org.pl'
+  default_package: typofix
+  description: 'When someone uses s/foo/bar/, this really modifies the text'
+  license: 'Same as Irssi'
+  modified: '2015-11-16 19:36:52'
+  modules:
+    - Algorithm::Diff
+  name: Typofix
+  upgrade_info: '/set typofix_modify_string %wold%gnew%n'
+  url: http://juerd.nl/irssi/
+  version: '1.12'

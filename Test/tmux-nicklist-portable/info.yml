@@ -1,0 +1,10 @@
+---
+-
+  authors: 'Thiago de Arruda'
+  contact: tpadilha84@gmail.com
+  default_package: tmux_nicklist_portable
+  description: 'displays a list of nicks in a separate tmux pane'
+  license: WTFPL
+  modified: '2015-11-16 19:36:52'
+  name: tmux-nicklist
+  version: 0.1.3

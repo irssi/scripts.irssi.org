@@ -1,0 +1,11 @@
+---
+-
+  authors: Nei
+  contact: 'Nei @ anti@conference.jabber.teamidiot.de'
+  default_package: dim_nicks
+  description: 'Dims nicks that are not in channel anymore.'
+  license: 'GNU GPLv2 or later'
+  modified: '2015-11-16 19:32:11'
+  name: dim_nicks
+  url: http://anti.teamidiot.de/
+  version: 0.4.6
