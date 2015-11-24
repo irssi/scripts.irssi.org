@@ -1,4 +1,2 @@
-* Scalar value @res[0] better written as $res[0] at tmux_away.pl line 104.
-* 
-* -!- tmux_away: no tmux session!
-* -!- Irssi: Loaded script tmux_away
+*-!- tmux_away: no tmux session!
+*-!- Irssi: Loaded script tmux_away
