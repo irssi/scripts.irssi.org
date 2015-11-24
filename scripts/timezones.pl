@@ -8,18 +8,18 @@
 # or add it to an existing one with
 # /statusbar window add timezones (window is an exaple, see /statusbar and /help statusbar for comprehensive help)
 
-use strict;
-use vars qw($VERSION %IRSSI);
-$VERSION = "0.1";
+$VERSION = "0.2";
 %IRSSI = (
     authors     => "Jari Matilainen",
-    contact     => "irc: vague`\@freenode",
+    contact     => 'vague!#irssi@freenode on irc',
     name        => "timezones",
     description => "timezones displayer",
     license     => "Public Domain",
-    url         => "http://vague.se"
+    url         => "http://gplus.to/vague",
+    changed     => "Tue 24 November 16:00:00 CET 2015",
 );
 
+use strict;
 use Irssi::TextUI;
 use DateTime;
 
@@ -36,8 +36,17 @@ sub timezones {
   foreach(@timezones) {
     if(length($result)) { $result .= $div; }
     my ($nick, $timezone) = split /:/, $_;
-    my $now = DateTime->now(time_zone => $timezone);
-    $result .= $nick . ": " . $now->strftime("$datetime");
+    my $now;
+    eval {
+      $now = DateTime->now(time_zone => "$timezone") or die $!;
+    };
+
+    if($@) {
+      $result .= $nick . ": INVALID";
+    }
+    else {
+      $result .= $nick . ": " . $now->strftime("$datetime");
+    }
   }
 
   $item->default_handler($get_size_only, undef, $result, 1);
