@@ -114,7 +114,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                             dau ](Test/dau/)|  ✔   |  ✔   |  ✘   | 58   |  ☡   | (c)
 [                          dcc_ip ](Test/dcc_ip/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                         dccmove ](Test/dccmove/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                        dccrelay ](Test/dccrelay/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   
+[                        dccrelay ](Test/dccrelay/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
 [                         dccself ](Test/dccself/)|  ✔   |  ✘   |  ✔   |  8   |  ☡   | (c)
 [                         dccstat ](Test/dccstat/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
 [                 defaultchanmode ](Test/defaultchanmode/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -478,4 +478,4 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                     xmpp-notify ](Test/xmpp-notify/)|  ✔   |  ✔   |  ✔   | 21   |  ✔   | (c)
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 
-57347849b5f48f84b0382612e395afa3c039b55a | 393
+1ac9ddc547a033156dfc046edb02ef8bac6eaf00 | 392
