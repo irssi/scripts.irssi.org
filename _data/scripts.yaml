@@ -1111,6 +1111,16 @@
   url: http://ninja.no/irssi/dccmove.pl
   version: '1.4'
 -
+  authors: Nei
+  contact: 'Nei @ anti@conference.jabber.teamidiot.de'
+  description: 'Relays DCC messages. Originally written by greeny & mute for NoNameScript.'
+  filename: dccrelay.pl
+  license: 'GNU GPLv2 or later'
+  modified: '2015-11-23 21:36:07'
+  name: dccrelay
+  url: http://anti.teamidiot.de/
+  version: '0.1'
+-
   authors: 'David Leadbeater'
   contact: dgl@dgl.cx
   description: "/dccself ip port, starts a dcc chat with yourself on that \n\t                host/port, best used with /set dcc_autochat_masks."
@@ -1360,6 +1370,15 @@
   name: exec-clean
   url: http://void.adminz.be/irssi.shtml
   version: '1.01'
+-
+  authors: 'unknown, Nei'
+  contact: 'Nei @ anti@conference.jabber.teamidiot.de'
+  description: 'Permit to use /EXEC with arbitrary irssi commands.'
+  filename: execcmd.pl
+  modified: '2015-11-23 21:39:34'
+  name: execcmd
+  url: http://anti.teamidiot.de/
+  version: '0.1'
 -
   authors: CrazyCat
   contact: crazycat@c-p-f.org
@@ -4060,15 +4079,14 @@
   name: tmux-nicklist
   version: 0.1.3
 -
-  authors: 'John C. Vernaleo'
-  contact: john@netpurgatory.com
+  authors: cdidier
   description: 'set (un)away if tmux session is attached/detached'
   filename: tmux_away.pl
   license: 'GPL v2'
-  modified: '2015-01-18 02:15:41'
+  modified: '2015-11-23 21:28:44'
   name: tmux_away
-  url: http://www.netpurgatory.com/tmux_away.html
-  version: '2.0'
+  url: http://cybione.org
+  version: '2.1'
 -
   authors: "Stefan 'tommie' Tomanek"
   commands: topics
