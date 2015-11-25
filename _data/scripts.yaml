@@ -1965,10 +1965,10 @@
   description: 'Intercept misprinted commands and offer to remove the first character before sending it on'
   filename: intercept.pl
   license: 'Public Domain'
-  modified: '2015-11-25 11:42:09'
+  modified: '2015-11-25 14:54:47'
   name: intercept
   url: http://gplus.to/vague
-  version: '0.1'
+  version: '0.2'
 -
   authors: c0ffee
   contact: c0ffee@penguin-breeder.org
