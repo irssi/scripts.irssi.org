@@ -3,10 +3,13 @@
 use strict;
 use warnings;
 use Data::Dumper;
+use Carp qw( croak );
 use Irssi;
 
-our $VERSION = "0.1";
-our %IRSSI = (
+use vars qw($VERSION %IRSSI);
+
+$VERSION = "0.1";
+%IRSSI = (
               authors     => "Jari Matilainen",
               contact     => 'vague!#irssi@freenode on irc',
               name        => "intercept",
@@ -50,7 +53,7 @@ sub load_uberprompt_failed {
   print "https://github.com/shabble/irssi-scripts/raw/master/"
       . "prompt_info/uberprompt.pl";
 
-  die "Script Load Failed: " . join(" ", @_);
+  croak "Script Load Failed: " . join(" ", @_);
 }
 
 sub sig_send_text {

@@ -8,6 +8,14 @@
 # or add it to an existing one with
 # /statusbar window add timezones (window is an exaple, see /statusbar and /help statusbar for comprehensive help)
 
+use strict;
+use warnings;
+use Irssi;
+use DateTime;
+use Carp qw/croak/;
+
+use vars qw($VERSION %IRSSI);
+
 $VERSION = "0.2";
 %IRSSI = (
     authors     => "Jari Matilainen",
@@ -18,10 +26,6 @@ $VERSION = "0.2";
     url         => "http://gplus.to/vague",
     changed     => "Tue 24 November 16:00:00 CET 2015",
 );
-
-use strict;
-use Irssi::TextUI;
-use DateTime;
 
 my $refresh_tag;
 
@@ -38,7 +42,7 @@ sub timezones {
     my ($nick, $timezone) = split /:/, $_;
     my $now;
     eval {
-      $now = DateTime->now(time_zone => "$timezone") or die $!;
+      $now = DateTime->now(time_zone => "$timezone") or croak $!;
     };
 
     if($@) {

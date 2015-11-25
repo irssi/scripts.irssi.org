@@ -102,10 +102,14 @@ So, add them on quit/kick/part, and remove them after a tiemout.
 
 use strict;
 use warnings;
+use Irssi;
+use Carp qw( croak );
 use Data::Dumper;
 
-our $VERSION = "0.3";
-our %IRSSI = (
+use vars qw($VERSION %IRSSI);
+
+$VERSION = "0.3";
+%IRSSI = (
               authors     => "Jari Matilainen",
               contact     => 'vague!#irssi@freenode on irc',
               name        => "notifyquit",
@@ -113,7 +117,7 @@ our %IRSSI = (
               license     => "Public Domain",
               url         => "http://gplus.to/vague",
               changed     => "24 Nov 16:00:00 CET 2015",
-             );
+         );
 
 my $active = 0;
 my $permit_pending = 0;
@@ -150,7 +154,7 @@ sub load_uberprompt_failed {
     print "https://github.com/shabble/irssi-scripts/raw/master/"
         . "prompt_info/uberprompt.pl";
 
-    die "Script Load Failed: " . join(" ", @_);
+    croak "Script Load Failed: " . join(" ", @_);
 }
 
 sub extract_nick {
@@ -224,7 +228,7 @@ sub sig_send_text {
                      win_item => $witem,
                     };
 
-                Irssi::signal_stop;
+                Irssi::signal_stop();
                 require_confirmation($text);
             }
         }
@@ -241,7 +245,7 @@ sub sig_gui_keypress {
     # Enter, y, or Y.
     if ($char =~ m/^y?$/i) {
         $permit_pending = 1;
-        Irssi::signal_stop;
+        Irssi::signal_stop();
         Irssi::signal_emit('send text',
                            $pending_input->{text},
                            $pending_input->{server},
@@ -252,7 +256,7 @@ sub sig_gui_keypress {
     } elsif ($char =~ m/^n?$/i or $key == 3 or $key == 7) {
         # we support n, N, Ctrl-C, and Ctrl-G for no.
 
-        Irssi::signal_stop;
+        Irssi::signal_stop();
         set_prompt('');
 
         $permit_pending = 0;
@@ -260,7 +264,7 @@ sub sig_gui_keypress {
         $pending_input  = {};
 
     } else {
-        Irssi::signal_stop;
+        Irssi::signal_stop();
         return;
     }
 }
@@ -421,14 +425,13 @@ sub app_init {
 }
 
 sub cmd_show_exceptions {
-
     foreach my $e (@match_exceptions) {
         print "Exception: $e";
     }
 }
 
 sub cmd_show_watchlist {
-    Irssi::print Dumper($watchlist);
+    Irssi::print(Dumper($watchlist));
 }
 
 sub sig_setup_changed {
