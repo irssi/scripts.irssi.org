@@ -1,12 +1,14 @@
 ---
 -
   authors: 'Jari Matilainen'
-  contact: 'irc: vague`@freenode'
+  changed: 'Tue 24 November 16:00:00 CET 2015'
+  contact: 'vague!#irssi@freenode on irc'
   default_package: timezones
   description: 'timezones displayer'
   license: 'Public Domain'
+  modified: '2015-11-25 14:03:48'
   modules:
     - DateTime
   name: timezones
-  url: http://vague.se
-  version: '0.1'
+  url: http://gplus.to/vague
+  version: '0.2'
