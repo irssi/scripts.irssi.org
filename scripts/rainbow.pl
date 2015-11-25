@@ -66,7 +66,7 @@ sub make_colors {
 		$last = $color;
 		$newstr .= "\003";
 		$newstr .= sprintf("%02d", $colors[$color]);
-		$newstr .= (($char eq ",") ? ",," : $char);
+		$newstr .= $char;
 	}
 
 	return $newstr;
