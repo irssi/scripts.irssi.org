@@ -14,8 +14,10 @@ use Data::Dumper;
 
 { package Irssi::Nick; }
 
-my $VERSION = '1.0';
-my %IRSSI = (
+use vars qw($VERSION %IRSSI);
+
+$VERSION = '1.1';
+%IRSSI = (
     authors     => 'vague',
     contact     => 'vague!#irssi@freenode on irc',
     name        => 'tabcompletenick',
