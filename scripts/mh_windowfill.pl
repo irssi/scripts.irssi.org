@@ -1,6 +1,6 @@
 ##############################################################################
 #
-# mh_windowfill.pl v1.02 (20151118)
+# mh_windowfill.pl v1.03 (20151125)
 #
 # Copyright (c) 2015  Michael Hansen
 #
@@ -27,6 +27,10 @@
 #	with script:    http://picpaste.com/e3b84ead852e3e77b12ed69383f1f80c.png
 #
 # history:
+#	v1.03 (20151125)
+#		cleaned up /clear
+#		added view()->redraw() to windowfill()
+#		optimistically changed url
 #	v1.02 (20151118)
 #		new windowfill routine
 #		fixed /clear
@@ -49,7 +53,7 @@ use strict;
 use Irssi 20100403;
 use Irssi::TextUI;
 
-our $VERSION = '1.02';
+our $VERSION = '1.03';
 our %IRSSI   =
 (
 	'name'        => 'mh_windowfill',
@@ -57,7 +61,7 @@ our %IRSSI   =
 	'license'     => 'BSD',
 	'authors'     => 'Michael Hansen',
 	'contact'     => 'mh on IRCnet #help',
-	'url'         => 'irc://open.ircnet.net',
+	'url'         => 'http://scripts.irssi.org',
 );
 
 ##############################################################################
@@ -114,6 +118,8 @@ sub windowfill
 			$window->view()->remove_line($line->prev());
 			$linecount--;
 		}
+
+		$window->view()->redraw();
 	}
 }
 
@@ -153,16 +159,8 @@ sub command_clear
 {
 	my ($data, $server, $windowitem) = @_;
 
-	if (not ($data =~ s/^!{3} //))
-	{
-		Irssi::active_win()->command('CLEAR !!! ' . $data);
-		windowfill_fill_all();
-		Irssi::signal_stop();
-
-	} else {
-
 		Irssi::signal_continue($data, $server, $windowitem);
-	}
+		windowfill_fill_all();
 }
 
 ##############################################################################
@@ -174,7 +172,7 @@ sub command_clear
 sub script_on_load
 {
 	Irssi::signal_add_last('mainwindow resized', 'signal_mainwindow_resized_last');
-	Irssi::signal_add_last('window created', 'signal_window_created_last');
+	Irssi::signal_add_last('window created',     'signal_window_created_last');
 
 	Irssi::command_bind('clear', 'command_clear');
 
