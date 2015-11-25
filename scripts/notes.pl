@@ -23,10 +23,11 @@ use vars qw($VERSION %IRSSI);
 $VERSION = '0.31';
 %IRSSI = (
     authors     => 'vague',
-    contact     => 'vague!#irssi\@freenode',
+    contact     => 'vague!#irssi@freenode',
     name        => 'notes',
     description => 'Keeps notes on users and displayes the note in /whois output if the host/nick matches',
     license     => 'GPL2',
+    changed     => "24 Nov 16:00:00 CET 2015",
 );
 
 my $notes;
