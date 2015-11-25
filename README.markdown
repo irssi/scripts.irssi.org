@@ -114,7 +114,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                             dau ](Test/dau/)|  ✔   |  ✔   |  ✘   | 58   |  ☡   | (c)
 [                          dcc_ip ](Test/dcc_ip/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                         dccmove ](Test/dccmove/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                        dccrelay ](Test/dccrelay/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   
+[                        dccrelay ](Test/dccrelay/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
 [                         dccself ](Test/dccself/)|  ✔   |  ✘   |  ✔   |  8   |  ☡   | (c)
 [                         dccstat ](Test/dccstat/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
 [                 defaultchanmode ](Test/defaultchanmode/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -140,7 +140,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                             emo ](Test/emo/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                          events ](Test/events/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                      exec_clean ](Test/exec_clean/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                         execcmd ](Test/execcmd/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
+[                         execcmd ](Test/execcmd/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                         extaway ](Test/extaway/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                        fakectcp ](Test/fakectcp/)|  ✔   |  ✔   |  ✔   | 10   |  ✔   | (c)
 [                        fcountry ](Test/fcountry/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -301,10 +301,10 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                            nopl ](Test/nopl/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        norepeat ](Test/norepeat/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                       noteserve ](Test/noteserve/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                           notes ](Test/notes/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[                           notes ](Test/notes/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                     noticelogic ](Test/noticelogic/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                      noticemove ](Test/noticemove/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                      notifyquit ](Test/notifyquit/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
+[                      notifyquit ](Test/notifyquit/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                       notonline ](Test/notonline/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                            null ](Test/null/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                          ogg123 ](Test/ogg123/)|  ✔   |  ✔   |  ✘   |  8   |  ☡   | (c)
@@ -404,14 +404,14 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                sysinfo277-irssi ](Test/sysinfo277-irssi/)|  ✔   |  ✔   |  ✔   | 13   |  ✔   | (c)
 [                      sysinfo_dg ](Test/sysinfo_dg/)|  ✔   |  ✔   |  ✔   | 40   |  ✔   | (c)
 [                     sysinfoplus ](Test/sysinfoplus/)|  ✔   |  ✔   |  ✘   | 27   |  ☡   | (c)
-[                 tabcompletenick ](Test/tabcompletenick/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
+[                 tabcompletenick ](Test/tabcompletenick/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                        tab_stop ](Test/tab_stop/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                            talk ](Test/talk/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                          target ](Test/target/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                         thankop ](Test/thankop/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        thistory ](Test/thistory/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                           timer ](Test/timer/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
-[                       timezones ](Test/timezones/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
+[                       timezones ](Test/timezones/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                         tinyurl ](Test/tinyurl/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                           title ](Test/title/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                           tlock ](Test/tlock/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -481,4 +481,4 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                     xmpp-notify ](Test/xmpp-notify/)|  ✔   |  ✔   |  ✔   | 21   |  ✔   | (c)
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 
-d70336c2bb088470954318241aac6268b20a43ea | 398
+43aa412ae782064f5d9bca61a3c7ba787dbed6d6 | 400
