@@ -199,7 +199,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                              il ](Test/il/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                            imdb ](Test/imdb/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
 [                            iMPD ](Test/iMPD/)|  ✔   |  ✔   |  ✔   | 22   |  ✔   | (c)
-[                       intercept ](Test/intercept/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
+[                       intercept ](Test/intercept/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                         intjoin ](Test/intjoin/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
 [                      invitejoin ](Test/invitejoin/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        ipupdate ](Test/ipupdate/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -256,6 +256,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [            mass_hilight_blocker ](Test/mass_hilight_blocker/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                 messages_bottom ](Test/messages_bottom/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                              mg ](Test/mg/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                   mh_windowfill ](Test/mh_windowfill/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                          miodek ](Test/miodek/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [               mirc_colour_popup ](Test/mirc_colour_popup/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
 [                           mkick ](Test/mkick/)|  ✔   |  ✔   |  ✔   | 30   |  ✔   | (c)
@@ -346,7 +347,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                   quizmaster-fr ](Test/quizmaster-fr/)|  ✔   |  ✔   |  ✘   | 27   |  ☡   | (c)
 [                      quizmaster ](Test/quizmaster/)|  ✔   |  ✔   |  ✘   | 27   |  ☡   | (c)
 [                            quiz ](Test/quiz/)|  ✔   |  ✔   |  ✘   |  8   |  ☡   | (c)
-[                         rainbow ](Test/rainbow/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
+[                         rainbow ](Test/rainbow/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   
 [                        randaway ](Test/randaway/)|  ✘   |  ✔   |  ✔   |  9   |  ☡   | (c)
 [                        randname ](Test/randname/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
 [                    recentdepart ](Test/recentdepart/)|  ✔   |  ✔   |  ✔   |  2   |  ✔   | (c)
@@ -481,4 +482,4 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                     xmpp-notify ](Test/xmpp-notify/)|  ✔   |  ✔   |  ✔   | 21   |  ✔   | (c)
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 
-43aa412ae782064f5d9bca61a3c7ba787dbed6d6 | 400
+faed3b20dd658937714be15afd70507c7d053136 | 404

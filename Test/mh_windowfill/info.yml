@@ -1,0 +1,11 @@
+---
+-
+  authors: 'Michael Hansen'
+  contact: 'mh on IRCnet #help'
+  default_package: mh_windowfill
+  description: 'fill windows so scrolling starts bottom-up instead of top-down (screenshots in source)'
+  license: BSD
+  modified: '2015-11-25 20:46:02'
+  name: mh_windowfill
+  url: http://scripts.irssi.org
+  version: '1.03'
