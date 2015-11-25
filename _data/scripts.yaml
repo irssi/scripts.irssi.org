@@ -1960,6 +1960,16 @@
   url: http://xyrion.org/irssi/
   version: '1.01'
 -
+  authors: 'Jari Matilainen'
+  contact: 'vague!#irssi@freenode on irc'
+  description: 'Intercept misprinted commands and offer to remove the first character before sending it on'
+  filename: intercept.pl
+  license: 'Public Domain'
+  modified: '2015-11-25 11:42:09'
+  name: intercept
+  url: http://gplus.to/vague
+  version: '0.1'
+-
   authors: c0ffee
   contact: c0ffee@penguin-breeder.org
   description: 'Joins channels with non-utf8 non-ascii names.'
@@ -2961,11 +2971,11 @@
   version: '0.5'
 -
   authors: vague
-  contact: vague!#irssi\@freenode
+  contact: vague!#irssi@freenode
   description: 'Keeps notes on users and displayes the note in /whois output if the host/nick matches'
   filename: notes.pl
   license: GPL2
-  modified: '2015-01-18 02:15:41'
+  modified: '2015-11-25 11:42:09'
   modules: 'DBI DBM::Deep'
   name: notes
   version: '0.31'
@@ -2998,6 +3008,15 @@
   name: 'notice move'
   url: http://irssi.org/
   version: '1.01'
+-
+  authors: shabble
+  contact: 'shabble+irssi@metavore.org, shabble@#irssi/Freenode'
+  description: 'Helper script for dynamically adding text into the input-bar prompt.'
+  filename: notifyquit.pl
+  license: MIT
+  modified: '2015-11-25 11:42:09'
+  name: uberprompt
+  version: '0.2'
 -
   authors: 'Johan "Ion" Kiviniemi'
   contact: 'ion at hassers.org'
@@ -3981,6 +4000,16 @@
   name: tab_stop
   version: '2002123102'
 -
+  authors: vague
+  contact: 'vague!#irssi@freenode on irc'
+  description: 'tabcomplete, on an empty input buffer, over /set completion_keep_publics nicks in channel, parts for any reason(kick, part, quit) are removed from the tabcomplete list'
+  filename: tabcompletenick.pl
+  license: GPL2
+  modified: '2015-11-25 11:47:05'
+  name: tabcompletenick
+  url: http://gplus.to/vague
+  version: '1.1'
+-
   authors: 'Alexander Mieland'
   contact: dma147\@mieland-programming.de
   description: 'This script talks to you *g*. It reads the chat-msgs for you.'
@@ -4031,15 +4060,15 @@
   version: '0.6'
 -
   authors: 'Jari Matilainen'
-  contact: 'irc: vague`@freenode'
+  contact: 'vague!#irssi@freenode on irc'
   description: 'timezones displayer'
   filename: timezones.pl
   license: 'Public Domain'
-  modified: '2014-10-24 23:01:30'
+  modified: '2015-11-25 14:03:48'
   modules: DateTime
   name: timezones
-  url: http://vague.se
-  version: '0.1'
+  url: http://gplus.to/vague
+  version: '0.2'
 -
   authors: Atoms
   contact: atoms@tups.lv
