@@ -1,4 +1,15 @@
 # Some elements borrowed from ideas developed by shabble@freenode(https://github.com/shabble/irssi-docs/wiki )
+#
+# You can change what intercept.pl considers a linestart by setting
+# /set intercept_linestart to a regular expression that fits your needs.
+# For most, a simple whitespace or . pattern will stop most accidental
+# inputs.
+#
+# You can also tell which patterns should be ignored, for example
+# /set intercept_exceptions s/\w+/[\w\s\d]+/ wouldn't consider
+# s/word a mistyped command if it is followed by a slash, string of
+# valid characters and a final slash.
+# You can enter several patterns separated by a space.
 
 use strict;
 use warnings;
@@ -8,7 +19,7 @@ use Irssi;
 
 use vars qw($VERSION %IRSSI);
 
-$VERSION = "0.1";
+$VERSION = "0.2";
 %IRSSI = (
               authors     => "Jari Matilainen",
               contact     => 'vague!#irssi@freenode on irc',
