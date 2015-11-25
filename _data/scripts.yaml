@@ -2535,6 +2535,16 @@
   name: mg
   version: '20090813'
 -
+  authors: 'Michael Hansen'
+  contact: 'mh on IRCnet #help'
+  description: 'fill windows so scrolling starts bottom-up instead of top-down (screenshots in source)'
+  filename: mh_windowfill.pl
+  license: BSD
+  modified: '2015-11-25 20:46:02'
+  name: mh_windowfill
+  url: http://scripts.irssi.org
+  version: '1.03'
+-
   authors: 'Leszek Matok, Andrzej Jagodziñski'
   contact: lam@lac.pl
   description: 'Simple wordkick system, with extended polish dictionary for channels enforcing correct polish.'
@@ -3430,7 +3440,7 @@
   description: 'Prints colored text. Rather simple than sophisticated.'
   filename: rainbow.pl
   license: 'GNU GPLv2 or later'
-  modified: '2015-01-20 13:16:39'
+  modified: '2015-11-25 15:47:52'
   name: rainbow
   url: http://irssi.atn.pl/
   version: '1.6'
