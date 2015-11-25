@@ -10,7 +10,7 @@
 
 use strict;
 use warnings;
-use Irssi;
+use Irssi::TextUI;
 use DateTime;
 use Carp qw/croak/;
 
@@ -37,23 +37,25 @@ sub timezones {
 
   my $result = "";
 
-  foreach(@timezones) {
+  for my $tz (@timezones) {
     if(length($result)) { $result .= $div; }
-    my ($nick, $timezone) = split /:/, $_;
+
+    my ($nick, $timezone) = split /:/, $tz;
     my $now;
+
     eval {
-      $now = DateTime->now(time_zone => "$timezone") or croak $!;
+      $now = DateTime->now(time_zone => $timezone) or croak $!;
     };
 
     if($@) {
       $result .= $nick . ": INVALID";
     }
     else {
-      $result .= $nick . ": " . $now->strftime("$datetime");
+      $result .= $nick . ": " . $now->strftime($datetime);
     }
   }
 
-  $item->default_handler($get_size_only, undef, $result, 1);
+  $item->default_handler($get_size_only, "", $result, 0);
 }
 
 sub refresh_timezones {
@@ -69,7 +71,7 @@ Irssi::statusbar_item_register('timezones', '{sb $0-}', 'timezones');
 Irssi::settings_add_str('timezones', 'timezones_clock_format', '%H:%M:%S');
 Irssi::settings_add_str('timezones', 'timezones_divider', ' ');
 Irssi::settings_add_str('timezones', 'timezones', 'Mike:GMT Sergey:EST');
+Irssi::signal_add('setup changed', \&init_timezones);
 
 init_timezones();
-Irssi::signal_add('setup changed', \&init_timezones);
 refresh_timezones();
