@@ -1,6 +1,6 @@
 ##############################################################################
 #
-# mh_sbuserinfo.pl v1.00 (20151126)
+# mh_sbuserinfo.pl v1.01 (20151127)
 #
 # Copyright (c) 2015  Michael Hansen
 #
@@ -20,7 +20,7 @@
 #
 ##############################################################################
 #
-# statusbar item that shows userinfo in channels
+# statusbar item that shows users and limit info in channels
 #
 # displays in the statusbar the number of users and the limit of the channel,
 # with several settings for finetuning:
@@ -55,6 +55,10 @@
 # see '/help statusbar' for more details and do not forget to '/save'
 #
 # history:
+#	v1.01 (20151127)
+#		call statusbar_redraw directly in signals
+#		now using elsif
+#		removed timeout on load
 #	v1.00 (20151126)
 #		initial release
 #
@@ -72,11 +76,11 @@ use strict;
 use Irssi 20100403;
 use Irssi::TextUI;
 
-our $VERSION = '1.00';
+our $VERSION = '1.01';
 our %IRSSI   =
 (
 	'name'        => 'mh_sbuserinfo',
-	'description' => 'statusbar item that shows userinfo in channels',
+	'description' => 'statusbar item that shows users and limit info in channels',
 	'license'     => 'BSD',
 	'authors'     => 'Michael Hansen',
 	'contact'     => 'mh on IRCnet #help',
@@ -119,41 +123,6 @@ sub statusbar_redraw
 # irssi signal handlers
 #
 ##############################################################################
-
-sub signal_channel_sync_last
-{
-	my ($channel) = @_;
-
-	statusbar_redraw($channel);
-}
-
-sub signal_channel_mode_changed_last
-{
-	my ($channel, $setby) = @_;
-
-	statusbar_redraw($channel);
-}
-
-sub signal_nick_mode_changed_last
-{
-	my ($channel, $nick, $setby, $mode, $type) = @_;
-
-	statusbar_redraw($channel);
-}
-
-sub signal_nicklist_new_last
-{
-	my ($channel, $nick) = @_;
-
-	statusbar_redraw($channel);
-}
-
-sub signal_nicklist_remove_last
-{
-	my ($channel, $nick) = @_;
-
-	statusbar_redraw($channel);
-}
 
 sub signal_setup_changed_last
 {
@@ -199,19 +168,13 @@ sub statusbar_userinfo
 				{
 					$users_op++;
 
-				} else {
+				} elsif ($nick->{'halfop'})
+				{
+					$users_ho++;
 
-					if ($nick->{'halfop'})
-					{
-						$users_ho++;
-
-					} else {
-
-						if ($nick->{'voice'})
-						{
-							$users_vo++;
-						}
-					}
+				} elsif ($nick->{'voice'})
+				{
+					$users_vo++;
 				}
 			}
 
@@ -269,9 +232,8 @@ sub statusbar_userinfo
 					if ($setting_percent > 100)
 					{
 						$setting_percent = 100;
-					}
 
-					if ($setting_percent < 0)
+					} elsif  ($setting_percent < 0)
 					{
 						$setting_percent = 0;
 					}
@@ -309,31 +271,23 @@ sub statusbar_userinfo
 #
 ##############################################################################
 
-sub script_on_load
-{
-	Irssi::settings_add_bool('mh_sbuserinfo', 'mh_sbuserinfo_show_details', 1);
-	Irssi::settings_add_bool('mh_sbuserinfo', 'mh_sbuserinfo_show_details_mode', 0);
-	Irssi::settings_add_bool('mh_sbuserinfo', 'mh_sbuserinfo_show_details_halfop', 0);
-	Irssi::settings_add_bool('mh_sbuserinfo', 'mh_sbuserinfo_show_warning_opless', 1);
-	Irssi::settings_add_bool('mh_sbuserinfo', 'mh_sbuserinfo_show_warning_limit', 1);
-	Irssi::settings_add_int( 'mh_sbuserinfo', 'mh_sbuserinfo_show_warning_limit_percent', 90);
-	Irssi::settings_add_str( 'mh_sbuserinfo', 'mh_sbuserinfo_warning_format', '%Y');
+Irssi::settings_add_bool('mh_sbuserinfo', 'mh_sbuserinfo_show_details', 1);
+Irssi::settings_add_bool('mh_sbuserinfo', 'mh_sbuserinfo_show_details_mode', 0);
+Irssi::settings_add_bool('mh_sbuserinfo', 'mh_sbuserinfo_show_details_halfop', 0);
+Irssi::settings_add_bool('mh_sbuserinfo', 'mh_sbuserinfo_show_warning_opless', 1);
+Irssi::settings_add_bool('mh_sbuserinfo', 'mh_sbuserinfo_show_warning_limit', 1);
+Irssi::settings_add_int( 'mh_sbuserinfo', 'mh_sbuserinfo_show_warning_limit_percent', 90);
+Irssi::settings_add_str( 'mh_sbuserinfo', 'mh_sbuserinfo_warning_format', '%Y');
 
-	Irssi::statusbar_item_register('mh_sbuserinfo', undef, 'statusbar_userinfo');
+Irssi::statusbar_item_register('mh_sbuserinfo', '', 'statusbar_userinfo');
 
-	Irssi::signal_add_last('channel sync',         'signal_channel_sync_last');
-	Irssi::signal_add_last('channel mode changed', 'signal_channel_mode_changed_last');
-	Irssi::signal_add_last('nick mode changed',    'signal_nick_mode_changed_last');
-	Irssi::signal_add_last('nicklist new',         'signal_nicklist_new_last');
-	Irssi::signal_add_last('nicklist remove',      'signal_nicklist_remove_last');
-	Irssi::signal_add_last('setup changed',        'signal_setup_changed_last');
-	Irssi::signal_add_last('window changed',       'signal_window_changed_last');
-}
-
-#
-# start script in a timeout to avoid printing before irssis "loaded script"
-#
-Irssi::timeout_add_once(10, 'script_on_load', undef);
+Irssi::signal_add_last('channel sync',         'statusbar_redraw');
+Irssi::signal_add_last('channel mode changed', 'statusbar_redraw');
+Irssi::signal_add_last('nick mode changed',    'statusbar_redraw');
+Irssi::signal_add_last('nicklist new',         'statusbar_redraw');
+Irssi::signal_add_last('nicklist remove',      'statusbar_redraw');
+Irssi::signal_add_last('setup changed',        'signal_setup_changed_last');
+Irssi::signal_add_last('window changed',       'signal_window_changed_last');
 
 1;
 
