@@ -2537,6 +2537,16 @@
 -
   authors: 'Michael Hansen'
   contact: 'mh on IRCnet #help'
+  description: 'statusbar item that shows users and limit info in channels'
+  filename: mh_sbuserinfo.pl
+  license: BSD
+  modified: '2015-11-27 14:10:13'
+  name: mh_sbuserinfo
+  url: http://scripts.irssi.org
+  version: '1.01'
+-
+  authors: 'Michael Hansen'
+  contact: 'mh on IRCnet #help'
   description: 'fill windows so scrolling starts bottom-up instead of top-down (screenshots in source)'
   filename: mh_windowfill.pl
   license: BSD
