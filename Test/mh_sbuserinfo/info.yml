@@ -1,0 +1,11 @@
+---
+-
+  authors: 'Michael Hansen'
+  contact: 'mh on IRCnet #help'
+  default_package: mh_sbuserinfo
+  description: 'statusbar item that shows users and limit info in channels'
+  license: BSD
+  modified: '2015-11-27 14:10:13'
+  name: mh_sbuserinfo
+  url: http://scripts.irssi.org
+  version: '1.01'
