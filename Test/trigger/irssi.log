@@ -1,7 +1,7 @@
-* \1 better written as $1 at trigger.pl line 687.
-* 
-* \1 better written as $1 at trigger.pl line 700.
-* 
-* "my" variable $trigger masks earlier declaration in same scope at trigger.pl line 939.
-* 
-* -!- Irssi: Loaded script trigger
+*\1 better written as $1 at trigger.pl line 687.
+*
+*\1 better written as $1 at trigger.pl line 700.
+*
+*"my" variable $trigger masks earlier declaration in same scope at trigger.pl line 939.
+*
+*-!- Irssi: Loaded script trigger

@@ -1,1 +1,2 @@
-* -!- Irssi: Loaded script cap_sasl
+*-!- Irssi: Error in script cap_sasl:
+*cap_sasl has been unloaded from Irssi 20151127.0007 because it conflicts with the built-in SASL support. See /help network for configuring SASL or read the ChangeLog for more information. at (eval 17) line 52.

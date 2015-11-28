@@ -1,28 +1,28 @@
-* Scalar value @_[0] better written as $_[0] at fserve.pl line 494.
-* 
-* Scalar value @_[1] better written as $_[1] at fserve.pl line 494.
-* 
-* Scalar value @_[0] better written as $_[0] at fserve.pl line 494.
-* 
-* Scalar value @_[1] better written as $_[1] at fserve.pl line 494.
-* 
-* Scalar value @_[0] better written as $_[0] at fserve.pl line 495.
-* 
-* Scalar value @_[1] better written as $_[1] at fserve.pl line 495.
-* 
-* Scalar value @_[0] better written as $_[0] at fserve.pl line 495.
-* 
-* Scalar value @_[1] better written as $_[1] at fserve.pl line 495.
-* 
-* Scalar value @_[0] better written as $_[0] at fserve.pl line 506.
-* 
-* Scalar value @_[0] better written as $_[0] at fserve.pl line 523.
-* 
-* Useless use of a constant (FILE) in void context at fserve.pl line 600.
-* 
-* Scalar value @_[0] better written as $_[0] at fserve.pl line 745.
-* 
-* -!- Irssi:  FServe version 2.0.0
-* -!- Irssi:  If this is your first time using this fserve
-* -!- Irssi:  I advise you to read help (/fs help)
-* -!- Irssi: Loaded script fserve
+*Scalar value @_[0] better written as $_[0] at fserve.pl line 494.
+*
+*Scalar value @_[1] better written as $_[1] at fserve.pl line 494.
+*
+*Scalar value @_[0] better written as $_[0] at fserve.pl line 494.
+*
+*Scalar value @_[1] better written as $_[1] at fserve.pl line 494.
+*
+*Scalar value @_[0] better written as $_[0] at fserve.pl line 495.
+*
+*Scalar value @_[1] better written as $_[1] at fserve.pl line 495.
+*
+*Scalar value @_[0] better written as $_[0] at fserve.pl line 495.
+*
+*Scalar value @_[1] better written as $_[1] at fserve.pl line 495.
+*
+*Scalar value @_[0] better written as $_[0] at fserve.pl line 506.
+*
+*Scalar value @_[0] better written as $_[0] at fserve.pl line 523.
+*
+*Useless use of a constant (FILE) in void context at fserve.pl line 600.
+*
+*Scalar value @_[0] better written as $_[0] at fserve.pl line 745.
+*
+*-!- Irssi:  FServe version 2.0.0
+*-!- Irssi:  If this is your first time using this fserve
+*-!- Irssi:  I advise you to read help (/fs help)
+*-!- Irssi: Loaded script fserve

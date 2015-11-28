@@ -1,11 +1,17 @@
-* defined(%hash) is deprecated at newsline.pl line 290.
-* 
-* 	(Maybe you should just omit the defined()?)
-* 
-* >> Newsline sites loaded from ../newsline_sites
-* >> Newsline 2003021101 loaded: /newsline help for help
-* -!- Irssi: Loaded script newsline
-* Data outside latin1 range (pos=116, ch=U+2013) at newsline.pl line 418.
-* 
-* Data outside latin1 range (pos=186, ch=U+2013) at newsline.pl line 418.
-* 
+*defined(%hash) is deprecated at newsline.pl line 290.
+*
+*	(Maybe you should just omit the defined()?)
+*
+*>> Newsline sites loaded from ../newsline_sites
+*>> Newsline 2003021101 loaded: /newsline help for help
+*-!- Irssi: Loaded script newsline
+*Data outside latin1 range (pos=131, ch=U+2013) at newsline.pl line 418.
+*
+*Data outside latin1 range (pos=120, ch=U+2013) at newsline.pl line 418.
+*
+*Data outside latin1 range (pos=35, ch=U+2013) at newsline.pl line 418.
+*
+*Data outside latin1 range (pos=119, ch=U+2013) at newsline.pl line 418.
+*
+*Data outside latin1 range (pos=24, ch=U+2013) at newsline.pl line 418.
+*

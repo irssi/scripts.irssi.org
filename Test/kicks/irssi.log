@@ -1,5 +1,5 @@
-* Unquoted string "true" may clash with future reserved word at kicks.pl line 171.
-* 
-* -!- Irssi: Could not find configuration file for kicks...
-* -!- Irssi: ... use /set kicks_configuration <file>
-* -!- Irssi: Loaded script kicks
+*Unquoted string "true" may clash with future reserved word at kicks.pl line 171.
+*
+*-!- Irssi: Could not find configuration file for kicks...
+*-!- Irssi: ... use /set kicks_configuration <file>
+*-!- Irssi: Loaded script kicks

@@ -1,8 +1,8 @@
-* False [] range "\w-" in regex; marked by <-- HERE in m/[^\w- <-- HERE \']/ at dictcomplete.pl line 53.
-* 
-* False [] range "\w-" in regex; marked by <-- HERE in m/^[^\w- <-- HERE \']/ at dictcomplete.pl line 54.
-* 
-* Useless use of a constant (20) in void context at dictcomplete.pl line 70.
-* 
-* -!- Irssi: Error in script dictcomplete:
-* No such file or directory at dictcomplete.pl line 27.
+*False [] range "\w-" in regex; marked by <-- HERE in m/[^\w- <-- HERE \']/ at dictcomplete.pl line 53.
+*
+*False [] range "\w-" in regex; marked by <-- HERE in m/^[^\w- <-- HERE \']/ at dictcomplete.pl line 54.
+*
+*Useless use of a constant (20) in void context at dictcomplete.pl line 70.
+*
+*-!- Irssi: Error in script dictcomplete:
+*No such file or directory at dictcomplete.pl line 27.

@@ -1,2 +1,2 @@
-* -!- Irssi: Error in script dnsspam:
-* Can't locate spamcalc/SpamCalc.pm in @INC  at dnsspam.pl line 16.
+*-!- Irssi: Error in script dnsspam:
+*Can't locate spamcalc/SpamCalc.pm in @INC  at dnsspam.pl line 16.

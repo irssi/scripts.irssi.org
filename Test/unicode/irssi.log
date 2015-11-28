@@ -1,3 +1,3 @@
-* unicode.pl: Loose unicode matching not supported on this version of Perl.
-* Upgrade to 5.16 or newer for case-insensitive names.
-* -!- Irssi: Loaded script unicode
+*unicode.pl: Loose unicode matching not supported on this version of Perl.
+*Upgrade to 5.16 or newer for case-insensitive names.
+*-!- Irssi: Loaded script unicode

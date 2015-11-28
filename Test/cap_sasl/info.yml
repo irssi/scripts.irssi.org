@@ -2,7 +2,6 @@
 -
   authors: 'Michael Tharp (gxti), Jilles Tjoelker (jilles), Mantas Mikulėnas (grawity)'
   contact: grawity@gmail.com
-  default_package: cap_sasl
   description: 'Implements SASL authentication and enables CAP "multi-prefix"'
   license: GPLv2
   modules:

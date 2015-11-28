@@ -1,3 +1,3 @@
-* -!- Irssi: Error in script page_c0ffee:
-* Global symbol "$pid" requires explicit package name at page-c0ffee.pl line 48.
-* Bareword "true" not allowed while "strict subs" in use at page-c0ffee.pl line 101.
+*-!- Irssi: Error in script page_c0ffee:
+*Global symbol "$pid" requires explicit package name at page-c0ffee.pl line 48.
+*Bareword "true" not allowed while "strict subs" in use at page-c0ffee.pl line 101.
