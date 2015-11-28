@@ -1,6 +1,6 @@
 ##############################################################################
 #
-# mh_sbuserinfo.pl v1.01 (20151127)
+# mh_sbuserinfo.pl v1.02 (20151127)
 #
 # Copyright (c) 2015  Michael Hansen
 #
@@ -55,6 +55,9 @@
 # see '/help statusbar' for more details and do not forget to '/save'
 #
 # history:
+#	v1.02 (20151127)
+#		only show item when channel is synced
+#		cleaned out redundant code
 #	v1.01 (20151127)
 #		call statusbar_redraw directly in signals
 #		now using elsif
@@ -76,7 +79,7 @@ use strict;
 use Irssi 20100403;
 use Irssi::TextUI;
 
-our $VERSION = '1.01';
+our $VERSION = '1.02';
 our %IRSSI   =
 (
 	'name'        => 'mh_sbuserinfo',
@@ -248,21 +251,10 @@ sub statusbar_userinfo
 
 				$format = $format . $limit . '%n';
 			}
-
-		} else {
-
-			$format = '?'
 		}
 	}
 
-	if ($format ne '')
-	{
-		$statusbaritem->default_handler($get_size_only, '{sb ' . $format . '}', '', 0);
-
-	} else {
-
-		$statusbaritem->default_handler($get_size_only, '{sb }', '', 0);
-	}
+	$statusbaritem->default_handler($get_size_only, '{sb ' . $format . '}', '', 0);
 }
 
 ##############################################################################
