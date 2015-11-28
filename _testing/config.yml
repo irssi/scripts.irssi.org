@@ -56,6 +56,7 @@ whitelist:
   - bitlbee_join_notice-pre-3.0
   - blowjob
   - buf
+  - cap_sasl
   - centericq
   - cgrep
   - chanshare
