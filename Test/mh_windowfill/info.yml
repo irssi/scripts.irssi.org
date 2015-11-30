@@ -5,7 +5,7 @@
   default_package: mh_windowfill
   description: 'fill windows so scrolling starts bottom-up instead of top-down (screenshots in source)'
   license: BSD
-  modified: '2015-11-25 20:46:02'
+  modified: '2015-11-30 17:05:34'
   name: mh_windowfill
-  url: http://scripts.irssi.org
-  version: '1.03'
+  url: 'http://scripts.irssi.org / https://github.com/mh-source/irssi-scripts'
+  version: '1.04'
