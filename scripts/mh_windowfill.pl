@@ -1,6 +1,6 @@
 ##############################################################################
 #
-# mh_windowfill.pl v1.03 (20151125)
+# mh_windowfill.pl v1.04 (20151128)
 #
 # Copyright (c) 2015  Michael Hansen
 #
@@ -27,6 +27,9 @@
 #	with script:    http://picpaste.com/e3b84ead852e3e77b12ed69383f1f80c.png
 #
 # history:
+#	v1.04 (20151128)
+#		call windowfill* directly from signals
+#		removed on load timeout
 #	v1.03 (20151125)
 #		cleaned up /clear
 #		added view()->redraw() to windowfill()
@@ -53,7 +56,7 @@ use strict;
 use Irssi 20100403;
 use Irssi::TextUI;
 
-our $VERSION = '1.03';
+our $VERSION = '1.04';
 our %IRSSI   =
 (
 	'name'        => 'mh_windowfill',
@@ -61,7 +64,7 @@ our %IRSSI   =
 	'license'     => 'BSD',
 	'authors'     => 'Michael Hansen',
 	'contact'     => 'mh on IRCnet #help',
-	'url'         => 'http://scripts.irssi.org',
+	'url'         => 'http://scripts.irssi.org / https://github.com/mh-source/irssi-scripts',
 );
 
 ##############################################################################
@@ -133,24 +136,6 @@ sub windowfill_all
 
 ##############################################################################
 #
-# irssi signal handlers
-#
-##############################################################################
-
-sub signal_mainwindow_resized_last
-{
-	windowfill_all();
-}
-
-sub signal_window_created_last
-{
-	my ($window) = @_;
-
-	windowfill($window);
-}
-
-##############################################################################
-#
 # irssi command functions
 #
 ##############################################################################
@@ -159,8 +144,8 @@ sub command_clear
 {
 	my ($data, $server, $windowitem) = @_;
 
-		Irssi::signal_continue($data, $server, $windowitem);
-		windowfill_fill_all();
+	Irssi::signal_continue($data, $server, $windowitem);
+	windowfill_fill_all();
 }
 
 ##############################################################################
@@ -169,20 +154,12 @@ sub command_clear
 #
 ##############################################################################
 
-sub script_on_load
-{
-	Irssi::signal_add_last('mainwindow resized', 'signal_mainwindow_resized_last');
-	Irssi::signal_add_last('window created',     'signal_window_created_last');
+Irssi::signal_add_last('mainwindow resized', 'windowfill_all');
+Irssi::signal_add_last('window created',     'windowfill');
 
-	Irssi::command_bind('clear', 'command_clear');
+Irssi::command_bind('clear', 'command_clear');
 
-	windowfill_all();
-}
-
-#
-# start script in a timeout to avoid printing before irssis "loaded script"
-#
-Irssi::timeout_add_once(10, 'script_on_load', undef);
+windowfill_all();
 
 1;
 
