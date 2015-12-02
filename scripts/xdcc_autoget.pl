@@ -14,6 +14,8 @@
 #      to remove a bot      : ag_botrem BOT1 BOT2 *** BOTN
 #      to add string        : ag_add "[TEXT STRING OF TV SHOW/CHINESE CARTOON/ETC]","[ETC]",***,"[ETC]" 
 #      to remove strings    : ag_rem "[TEXT STRING OF TV SHOW/CHINESE CARTOON/ETC]","[ETC]",***,"[ETC]" 
+#      to see terms and bots: ag_list
+#      to clear     cache   : ag_clearcache
 #      ag_next_delay                 : delay between full transfers
 #      ag_dcc_closed_retry_delay     : delay after premature transfer
 #      ag_bot_delay: delay between request and when you "SHOULD" get it
@@ -36,7 +38,7 @@ use File::Copy;
 use Irssi 20090331;
 use vars qw($VERSION %IRSSI);
 
-$VERSION = 1.4;
+$VERSION = 1.5;
 %IRSSI = (
 	name => "autoget", 
 	description => "XDCC Autoget, for automated searching and downloading of xdcc packs",
@@ -106,6 +108,18 @@ sub ag_init		#init system
 {
 	Irssi::print "AG | Autoget initiated";
 	Irssi::print "AG | /ag_help for help";
+	&ag_list;
+	if ($episodicflag)
+	{
+		Irssi::print "AG | Episodic: Yes";
+		Irssi::print "AG | Preffered format: $format";
+	}
+	else {Irssi::print "AG | Episodic: No";}
+	Irssi::print "AG | Data folder: $folder";
+}
+
+sub ag_list
+{
 	&ag_getbots;
 	my $m = "";
 	foreach my $n (@bots)
@@ -120,13 +134,7 @@ sub ag_init		#init system
 		$m = $m . $n . ", ";
 	}
 	Irssi::print "AG | Terms: " . $m;
-	if ($episodicflag)
-	{
-		Irssi::print "AG | Episodic: Yes";
-		Irssi::print "AG | Preffered format: $format";
-	}
-	else {Irssi::print "AG | Episodic: No";}
-	Irssi::print "AG | Data folder: $folder";
+
 }
 
 sub ag_initserver	#init server
@@ -153,6 +161,7 @@ sub ag_help
 	Irssi::print "to remove a bot      : ag_botrem BOT1 BOT2 *** BOTN";
 	Irssi::print "to add string        : ag_add \"[TEXT STRING OF SEARCH]\",\"[ETC]\",***,\"[ETC]\"";
 	Irssi::print "to remove strings    : ag_rem \"[TEXT STRING OF SEARCH]\",\"[ETC]\",***,\"[ETC]\"";
+	Irssi::print "to see terms and bots: ag_list";
 	Irssi::print "to clear cache       : ag_clearcache";
 	Irssi::print "ag_next_delay            : delay between full transfers";
 	Irssi::print "ag_dcc_closed_retry_delay: delay after premature transfer";
@@ -585,6 +594,7 @@ sub ag_add	#add search terms
 		return;
 	}
 	ag_parseadd($searchesfilename, @args);
+	&ag_list;
 }
 
 sub ag_rem	#remove ssearch terms
@@ -598,6 +608,7 @@ sub ag_rem	#remove ssearch terms
 		return;
 	}
 	ag_parserem($searchesfilename, @args);
+	&ag_list;
 }
 
 sub ag_botadd	#add bots
@@ -611,6 +622,7 @@ sub ag_botadd	#add bots
 		return;
 	}
 	ag_parseadd($botsfilename, @args);
+	&ag_list;
 }
 
 sub ag_botrem	#remove bots
@@ -624,6 +636,7 @@ sub ag_botrem	#remove bots
 		return;
 	}
 	ag_parserem($botsfilename, @args);
+	&ag_list;
 }
 
 sub ag_run	#main loop
@@ -762,5 +775,6 @@ Irssi::command_bind("ag_add", "ag_add");
 Irssi::command_bind("ag_rem", "ag_rem");
 Irssi::command_bind("ag_botadd", "ag_botadd");
 Irssi::command_bind("ag_botrem", "ag_botrem");
+Irssi::command_bind("ag_list", "ag_list");
 Irssi::command_bind("ag_clearcache", "ag_clearcache");
 
