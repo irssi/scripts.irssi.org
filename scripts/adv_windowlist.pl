@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-our $VERSION = '1.0a3'; # f5bd5232c9f9f34
+our $VERSION = '1.0a4'; # add219076dbc8f6
 our %IRSSI = (
     authors     => 'Nei',
     contact     => 'Nei @ anti@conference.jabber.teamidiot.de',
@@ -705,7 +705,7 @@ sub _format_display {
 	    $hilight = 'sb_act_hilight_color %X'.$act_last_line_shades{$1}[$time_delta];
 	}
     }
-    $cformat = '$0' unless defined $cformat && length $cformat;
+    $cformat = '$0' unless length $cformat;
     my %map = ('$C' => $cformat, '$N' => '$1', '$Q' => '$2');
     $format =~ s<(\$.)><$map{$1}//$1>ge;
     $format =~ s<\$H((?:\$.|[^\$])*?)\$S><{$hilight $1%n}>g;
@@ -1032,11 +1032,11 @@ sub start_viewer {
     $viewer{server_tag} = Irssi::input_add($viewer{server}->fileno, INPUT_READ, 'vi_connected', undef);
 
     if ($S{viewer_launch}) {
-	if ((defined $ENV{TMUX_PANE} && length $ENV{TMUX_PANE}) && (defined $ENV{TMUX} && length $ENV{TMUX}) && lc $S{viewer_tmux_position} ne 'custom') {
+	if (length $ENV{TMUX_PANE} && length $ENV{TMUX} && lc $S{viewer_tmux_position} ne 'custom') {
 	    my $cmd = _viewer_command_replace_format('%qA', '-p', lc $S{viewer_tmux_position});
 	    Irssi::command("exec - tmux neww -d $cmd 2>&1 &");
 	}
-	elsif ((defined $ENV{WINDOWID} && length $ENV{WINDOWID}) && (defined $ENV{DISPLAY} && length $ENV{DISPLAY}) && length $S{viewer_xwin_command} && $S{viewer_xwin_command} =~ /\S/) {
+	elsif (length $ENV{WINDOWID} && length $ENV{DISPLAY} && length $S{viewer_xwin_command} && $S{viewer_xwin_command} =~ /\S/) {
 	    my $cmd = _viewer_command_replace_format($S{viewer_xwin_command});
 	    Irssi::command("exec - $cmd 2>&1 &");
 	}
@@ -1153,10 +1153,10 @@ sub syncViewer {
 	}
 	unless ($viewer{client_env}) {
 	    $str .= _encode_var(irssienv => +{
-		(defined $ENV{TMUX_PANE} && length $ENV{TMUX_PANE}) && (defined $ENV{TMUX} && length $ENV{TMUX}) ?
+		length $ENV{TMUX_PANE} && length $ENV{TMUX} ?
 		     (tmux_pane => $ENV{TMUX_PANE},
 		      tmux_srv => $ENV{TMUX}) : (),
-		(defined $ENV{WINDOWID} && length $ENV{WINDOWID}) ?
+		length $ENV{WINDOWID} ?
 		     (xwinid => $ENV{WINDOWID}) : (),
 	       });
 	    $viewer{client_env} = 1;
@@ -1426,12 +1426,11 @@ sub mouse_escape {
     }
 }
 
-{ sub UNLOAD {
+sub UNLOAD {
     @actString = ();
     killOldStatus();
     stop_viewer() if $VIEWER_MODE;
     uninstall_mouse() if $MOUSE_ON;
-  }
 }
 
 sub addPrintTextHook { # update on print text
@@ -1447,56 +1446,54 @@ sub block_event_window_change {
 }
 
 sub update_awins {
-    {
-	my @wins = Irssi::windows;
-	local $BLOCK_ALL = 1;
-	Irssi::signal_add_first('window changed' => 'block_event_window_change');
-	my $bwin =
-	    my $awin = Irssi::active_win;
-	my $lwin;
-	my $defer_irssi_broken_last;
-	unless ($wins[0]{refnum} == $awin->{refnum}) {
-	    # special case: more than 1 last win, so /win last;
-	    # /win last doesn't come back to the current window. eg. after
-	    # connect & autojoin; we can't handle this situation, bail out
-	    $defer_irssi_broken_last = 1;
-	}
-	else {
-	    $awin->command('window last');
-	    $lwin = Irssi::active_win;
-	    $lwin->command('window last');
-	    $defer_irssi_broken_last = $lwin->{refnum} == $bwin->{refnum};
-	}
-	my $awin_counter = 0;
+    my @wins = Irssi::windows;
+    local $BLOCK_ALL = 1;
+    Irssi::signal_add_first('window changed' => 'block_event_window_change');
+    my $bwin =
+	my $awin = Irssi::active_win;
+    my $lwin;
+    my $defer_irssi_broken_last;
+    unless ($wins[0]{refnum} == $awin->{refnum}) {
+	# special case: more than 1 last win, so /win last;
+	# /win last doesn't come back to the current window. eg. after
+	# connect & autojoin; we can't handle this situation, bail out
+	$defer_irssi_broken_last = 1;
+    }
+    else {
+	$awin->command('window last');
+	$lwin = Irssi::active_win;
+	$lwin->command('window last');
+	$defer_irssi_broken_last = $lwin->{refnum} == $bwin->{refnum};
+    }
+    my $awin_counter = 0;
+    Irssi::signal_remove('window changed' => 'block_event_window_change');
+    unless ($defer_irssi_broken_last) {
+	# we need to keep the fe-windows code running here
+	Irssi::signal_add_priority('window changed' => 'block_event_window_change', -99);
+	%awins = %wnmap_exp = ();
+	do {
+	    Irssi::active_win->command('window up');
+	    $awin = Irssi::active_win;
+	    $awins{$awin->{refnum}} = undef;
+	    ++$awin_counter;
+	} until ($awin->{refnum} == $bwin->{refnum} || $awin_counter >= @wins);
 	Irssi::signal_remove('window changed' => 'block_event_window_change');
-	unless ($defer_irssi_broken_last) {
-	    # we need to keep the fe-windows code running here
-	    Irssi::signal_add_priority('window changed' => 'block_event_window_change', -99);
-	    %awins = %wnmap_exp = ();
-	    do {
-		Irssi::active_win->command('window up');
-		$awin = Irssi::active_win;
-		$awins{$awin->{refnum}} = undef;
-		++$awin_counter;
-	    } until ($awin->{refnum} == $bwin->{refnum} || $awin_counter >= @wins);
-	    Irssi::signal_remove('window changed' => 'block_event_window_change');
 
-	    Irssi::signal_add_first('window changed' => 'block_event_window_change');
-	    for my $key (keys %wnmap) {
-		next unless Irssi::window_find_name($key) || Irssi::window_find_item($key);
-		$awin->command("window goto $key");
-		my $cwin = Irssi::active_win;
-		$wnmap_exp{ $cwin->{refnum} } = $wnmap{$key};
-		$cwin->command('window last')
-		    if $cwin->{refnum} != $awin->{refnum};
-	    }
-	    for my $win (reverse @wins) { # restore original window order
-		Irssi::active_win->command('window '.$win->{refnum});
-	    }
-	    $awin->command('window '.$lwin->{refnum}); # restore last win
-	    Irssi::active_win->command('window last');
-	    Irssi::signal_remove('window changed' => 'block_event_window_change');
+	Irssi::signal_add_first('window changed' => 'block_event_window_change');
+	for my $key (keys %wnmap) {
+	    next unless Irssi::window_find_name($key) || Irssi::window_find_item($key);
+	    $awin->command("window goto $key");
+	    my $cwin = Irssi::active_win;
+	    $wnmap_exp{ $cwin->{refnum} } = $wnmap{$key};
+	    $cwin->command('window last')
+		if $cwin->{refnum} != $awin->{refnum};
 	}
+	for my $win (reverse @wins) { # restore original window order
+	    Irssi::active_win->command('window '.$win->{refnum});
+	}
+	$awin->command('window '.$lwin->{refnum}); # restore last win
+	Irssi::active_win->command('window last');
+	Irssi::signal_remove('window changed' => 'block_event_window_change');
     }
     $CHANGED{WL} = 1;
 }
@@ -1675,6 +1672,15 @@ sub string_LCSS {
 }
 
 { package Irssi::Nick }
+
+BEGIN {
+    if ($] < 5.012) {
+	*CORE::GLOBAL::length = *CORE::GLOBAL::length = sub (_) {
+	    defined $_[0] ? CORE::length($_[0]) : undef
+	};
+	*Irssi::active_win = {}; # hide incorrect warning
+    }
+}
 
 UNITCHECK
 { package AwlViewer;
@@ -2074,7 +2080,7 @@ UNITCHECK
   }
 
   sub _match_tmux {
-      (defined $ENV{TMUX} && length $ENV{TMUX}) && exists $vars{irssienv}{tmux_srv} && length $vars{irssienv}{tmux_pane}
+      length $ENV{TMUX} && exists $vars{irssienv}{tmux_srv} && length $vars{irssienv}{tmux_pane}
 	  && $ENV{TMUX} eq $vars{irssienv}{tmux_srv}
   }
 
@@ -2352,9 +2358,10 @@ UNITCHECK
 
 # Changelog
 # =========
-# 1.0a3
+# 1.0a4
 # - new awl_viewer_launch setting and an array of related settings
 # - fixed regression bug /exec -interactive
+# - fixed some warnings in perl 5.10 reported by kl3
 #
 # 0.9
 # - fix endless loop in awin detection code!
