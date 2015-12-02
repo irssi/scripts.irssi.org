@@ -1,6 +1,6 @@
 ##############################################################################
 #
-# mh_userstatus.pl v1.00 (20151129)
+# mh_userstatus.pl v1.01 (20151201)
 #
 # Copyright (c) 2015  Michael Hansen
 #
@@ -20,9 +20,9 @@
 #
 ##############################################################################
 #
-# Show in channels when users go away/back or oper/deoper
+# show in channels when users go away/back or oper/deoper
 #
-# Will periodically check the channels you are on for users changing their
+# will periodically check the channels you are on for users changing their
 # away/oper status and print a line like:
 #
 # -!- <nick> [<userhost>] is now gone
@@ -30,10 +30,10 @@
 # -!- <nick> [<userhost>] is now oper
 # -!- <nick> [<userhost>] is now not oper
 #
-# You can also list the currently away or opered users with the commands /whoa
+# you can also list the currently away or opered users with the commands /whoa
 # and /whoo respectively
 #
-# The following settings can finetune the scripts behavior:
+# the following settings can finetune the scripts behavior:
 #
 # mh_userstatus_delay (default 5): aproximate delay between checking the
 # channel (in minutes). you can set this to 0 to disable running /who if you
@@ -45,7 +45,26 @@
 #
 # mh_userstatus_show_host (default ON): enable/disable showing userhosts
 #
+# mh_userstatus_show_mode (default ON): enable/disable showing modes (@%+) on
+# nicks
+#
+# mh_userstatus_noact_gone (default OFF): enable/disable window activity when
+# a user is gone
+#
+# mh_userstatus_noact_here (default OFF): enable/disable window activity when
+# a user is here
+#
+# mh_userstatus_noact_oper (default OFF): enable/disable window activity when
+# a user is opered
+#
+# mh_userstatus_noact_deop (default OFF): enable/disable window activity when
+# a user is deoppered
+#
 # history:
+#	v1.01 (20151201)
+#		fixed bug when /whois spammed with status updates
+#		added _noact_* and supporting code
+#		added _show_mode and supporting code
 #	v1.00 (20151129)
 #		initial release
 #
@@ -64,11 +83,11 @@ use Irssi 20100403;
 
 { package Irssi::Nick }
 
-our $VERSION = '1.00';
+our $VERSION = '1.01';
 our %IRSSI   =
 (
 	'name'        => 'mh_userstatus',
-	'description' => 'Show in channels when users go away/back or oper/deoper',
+	'description' => 'show in channels when users go away/back or oper/deoper',
 	'license'     => 'BSD',
 	'authors'     => 'Michael Hansen',
 	'contact'     => 'mh on IRCnet #help',
@@ -81,7 +100,8 @@ our %IRSSI   =
 #
 ##############################################################################
 
-our $userstatus_timeouts = undef;
+our $userstatus_timeouts;
+our $whois_in_progress;
 
 ##############################################################################
 #
@@ -125,6 +145,29 @@ sub get_delay
 	$delay = $delay + (int(rand(30000)) + 1);
 
 	return($delay);
+}
+
+sub nick_prefix
+{
+	my ($nick) = @_;
+
+	if (Irssi::settings_get_bool('mh_userstatus_show_mode'))
+	{
+		if ($nick->{'op'})
+		{
+			return('@');
+
+		} elsif ($nick->{'halfop'})
+		{
+			return('%');
+
+		}  elsif ($nick->{'voice'})
+		{
+			return('+');
+		}
+	}
+
+	return('');
 }
 
 ##############################################################################
@@ -217,6 +260,16 @@ sub signal_nicklist_gone_changed_last
 {
 	my ($channel, $nick) = @_;
 
+	my $servertag = lc($channel->{'server'}->{'tag'});
+
+	if (exists($whois_in_progress->{$servertag}))
+	{
+		if ($whois_in_progress->{$servertag})
+		{
+			return(1);
+		}
+	}
+
 	if ($channel->{'synced'})
 	{
 		if ($nick->{'nick'} ne $channel->{'server'}->{'nick'})
@@ -228,13 +281,27 @@ sub signal_nicklist_gone_changed_last
 				$format = '_host'
 			}
 
+			my $msglevel = 0;
+
 			if ($nick->{'gone'})
 			{
-				$channel->printformat(Irssi::MSGLEVEL_PARTS, 'mh_userstatus_gone' . $format, $nick->{'nick'}, $nick->{'host'});
+				if (Irssi::settings_get_bool('mh_userstatus_noact_gone'))
+				{
+					$msglevel = $msglevel | Irssi::MSGLEVEL_NO_ACT;
+				}
+
+				$msglevel = $msglevel | Irssi::MSGLEVEL_PARTS;
+				$channel->printformat($msglevel, 'mh_userstatus_gone' . $format, $nick->{'nick'}, $nick->{'host'}, nick_prefix($nick));
 
 			} else {
 
-				$channel->printformat(Irssi::MSGLEVEL_JOINS, 'mh_userstatus_here' . $format, $nick->{'nick'}, $nick->{'host'});
+				if (Irssi::settings_get_bool('mh_userstatus_noact_here'))
+				{
+					$msglevel = $msglevel | Irssi::MSGLEVEL_NO_ACT;
+				}
+
+				$msglevel = $msglevel | Irssi::MSGLEVEL_JOINS;
+				$channel->printformat($msglevel, 'mh_userstatus_here' . $format, $nick->{'nick'}, $nick->{'host'}, nick_prefix($nick));
 			}
 		}
 	}
@@ -244,6 +311,16 @@ sub signal_nicklist_serverop_changed_last
 {
 	my ($channel, $nick) = @_;
 
+	my $servertag = lc($channel->{'server'}->{'tag'});
+
+	if (exists($whois_in_progress->{$servertag}))
+	{
+		if ($whois_in_progress->{$servertag})
+		{
+			return(1);
+		}
+	}
+
 	if ($channel->{'synced'})
 	{
 		if ($nick->{'nick'} ne $channel->{'server'}->{'nick'})
@@ -255,15 +332,49 @@ sub signal_nicklist_serverop_changed_last
 				$format = '_host'
 			}
 
+			my $msglevel = 0;
+
 			if ($nick->{'serverop'})
 			{
-				$channel->printformat(Irssi::MSGLEVEL_JOINS, 'mh_userstatus_oper' . $format, $nick->{'nick'}, $nick->{'host'});
+				if (Irssi::settings_get_bool('mh_userstatus_noact_oper'))
+				{
+					$msglevel = $msglevel | Irssi::MSGLEVEL_NO_ACT;
+				}
+
+				$msglevel = $msglevel | Irssi::MSGLEVEL_JOINS;
+				$channel->printformat($msglevel, 'mh_userstatus_oper' . $format, $nick->{'nick'}, $nick->{'host'}, nick_prefix($nick));
 
 			} else {
 
-				$channel->printformat(Irssi::MSGLEVEL_PARTS, 'mh_userstatus_deop' . $format, $nick->{'nick'}, $nick->{'host'});
+				if (Irssi::settings_get_bool('mh_userstatus_noact_deop'))
+				{
+					$msglevel = $msglevel | Irssi::MSGLEVEL_NO_ACT;
+				}
+
+				$msglevel = $msglevel | Irssi::MSGLEVEL_PARTS;
+				$channel->printformat($msglevel, 'mh_userstatus_deop' . $format, $nick->{'nick'}, $nick->{'host'}, nick_prefix($nick));
 			}
 		}
+	}
+}
+
+sub signal_event_311
+{
+	my ($server) = @_;
+
+	if ($server)
+	{
+		$whois_in_progress->{lc($server->{'tag'})} = 1;
+	}
+}
+
+sub signal_event_318
+{
+	my ($server) = @_;
+
+	if ($server)
+	{
+		$whois_in_progress->{lc($server->{'tag'})} = 0;
 	}
 }
 
@@ -305,7 +416,7 @@ sub command_whoa
 			if ($nick->{'gone'})
 			{
 				$count++;
-				$windowitem->printformat(Irssi::MSGLEVEL_PARTS, 'mh_userstatus_whoa_gone' . $format, $nick->{'nick'}, $nick->{'host'});
+				$windowitem->printformat(Irssi::MSGLEVEL_PARTS, 'mh_userstatus_whoa_gone' . $format, $nick->{'nick'}, $nick->{'host'}, nick_prefix($nick));
 			}
 		}
 	}
@@ -345,7 +456,7 @@ sub command_whoo
 			if ($nick->{'serverop'})
 			{
 				$count++;
-				$windowitem->printformat(Irssi::MSGLEVEL_JOINS, 'mh_userstatus_whoo_oper' . $format, $nick->{'nick'}, $nick->{'host'});
+				$windowitem->printformat(Irssi::MSGLEVEL_JOINS, 'mh_userstatus_whoo_oper' . $format, $nick->{'nick'}, $nick->{'host'}, nick_prefix($nick));
 			}
 		}
 	}
@@ -359,26 +470,26 @@ sub command_help
 
 	$data = lc(trim_space($data));
 
-	if ($data =~ m/^whoa$/)
+	if ($data =~ m/^whoa$/i)
 	{
 		Irssi::print('', Irssi::MSGLEVEL_CLIENTCRAP);
 		Irssi::print('WHOA', Irssi::MSGLEVEL_CLIENTCRAP);
 		Irssi::print('', Irssi::MSGLEVEL_CLIENTCRAP);
 		Irssi::print('Shows all users in the current channel who are away.', Irssi::MSGLEVEL_CLIENTCRAP);
 		Irssi::print('', Irssi::MSGLEVEL_CLIENTCRAP);
-		Irssi::print('See also: WHO, WHOO', Irssi::MSGLEVEL_CLIENTCRAP);
+		Irssi::print('See also: SET ' . uc('mh_userstatus') . ', WHO, WHOO', Irssi::MSGLEVEL_CLIENTCRAP);
 		Irssi::print('', Irssi::MSGLEVEL_CLIENTCRAP);
 
 		Irssi::signal_stop();
 
-	} elsif ($data =~ m/^whoo$/)
+	} elsif ($data =~ m/^whoo$/i)
 	{
 		Irssi::print('', Irssi::MSGLEVEL_CLIENTCRAP);
 		Irssi::print('WHOO', Irssi::MSGLEVEL_CLIENTCRAP);
 		Irssi::print('', Irssi::MSGLEVEL_CLIENTCRAP);
 		Irssi::print('Shows all users in the current channel who are opers.', Irssi::MSGLEVEL_CLIENTCRAP);
 		Irssi::print('', Irssi::MSGLEVEL_CLIENTCRAP);
-		Irssi::print('See also: WHO, WHOA', Irssi::MSGLEVEL_CLIENTCRAP);
+		Irssi::print('See also: SET ' . uc('mh_userstatus') . ', WHO, WHOA', Irssi::MSGLEVEL_CLIENTCRAP);
 		Irssi::print('', Irssi::MSGLEVEL_CLIENTCRAP);
 
 		Irssi::signal_stop();
@@ -392,26 +503,31 @@ sub command_help
 ##############################################################################
 
 Irssi::theme_register([
-  'mh_userstatus_gone',           '{channick $0} is now {hilight gone}',
-  'mh_userstatus_here',           '{channick_hilight $0} is now {hilight here}',
-  'mh_userstatus_oper',           '{channick_hilight $0} is now {hilight oper}',
-  'mh_userstatus_deop',           '{channick $0} is now {hilight not oper}',
-  'mh_userstatus_gone_host',      '{channick $0} {chanhost $1} is now {hilight gone}',
-  'mh_userstatus_here_host',      '{channick_hilight $0} {chanhost_hilight $1} is now {hilight here}',
-  'mh_userstatus_oper_host',      '{channick_hilight $0} {chanhost_hilight $1} is now {hilight oper}',
-  'mh_userstatus_deop_host',      '{channick $0} {chanhost $1} is now {hilight not oper}',
+  'mh_userstatus_gone',           '$2{channick $0} is now {hilight gone}',
+  'mh_userstatus_here',           '$2{channick_hilight $0} is now {hilight here}',
+  'mh_userstatus_oper',           '$2{channick_hilight $0} is now {hilight oper}',
+  'mh_userstatus_deop',           '$2{channick $0} is now {hilight not oper}',
+  'mh_userstatus_gone_host',      '$2{channick $0} {chanhost $1} is now {hilight gone}',
+  'mh_userstatus_here_host',      '$2{channick_hilight $0} {chanhost_hilight $1} is now {hilight here}',
+  'mh_userstatus_oper_host',      '$2{channick_hilight $0} {chanhost_hilight $1} is now {hilight oper}',
+  'mh_userstatus_deop_host',      '$2{channick $0} {chanhost $1} is now {hilight not oper}',
   'mh_userstatus_error',          '{error $0}',
   'mh_userstatus_whoa',           'A total of $0 users are {hilight gone}',
   'mh_userstatus_whoo',           'A total of $0 users are {hilight oper}',
-  'mh_userstatus_whoa_gone',      '{channick $0} is {hilight gone}',
-  'mh_userstatus_whoo_oper',      '{channick_hilight $0} is {hilight oper}',
-  'mh_userstatus_whoa_gone_host', '{channick $0} {chanhost $1} is {hilight gone}',
-  'mh_userstatus_whoa_oper_host', '{channick_hilight $0} {chanhost_hilight $1} is {hilight oper}',
+  'mh_userstatus_whoa_gone',      '$2{channick $0} is {hilight gone}',
+  'mh_userstatus_whoo_oper',      '$2{channick_hilight $0} is {hilight oper}',
+  'mh_userstatus_whoa_gone_host', '$2{channick $0} {chanhost $1} is {hilight gone}',
+  'mh_userstatus_whoa_oper_host', '$2{channick_hilight $0} {chanhost_hilight $1} is {hilight oper}',
 ]);
 
 Irssi::settings_add_int('mh_userstatus',  'mh_userstatus_delay',     5);
 Irssi::settings_add_int('mh_userstatus',  'mh_userstatus_lag_limit', 5);
 Irssi::settings_add_bool('mh_userstatus', 'mh_userstatus_show_host', 1);
+Irssi::settings_add_bool('mh_userstatus', 'mh_userstatus_show_mode', 1);
+Irssi::settings_add_bool('mh_userstatus', 'mh_userstatus_noact_here', 0);
+Irssi::settings_add_bool('mh_userstatus', 'mh_userstatus_noact_gone', 0);
+Irssi::settings_add_bool('mh_userstatus', 'mh_userstatus_noact_oper', 0);
+Irssi::settings_add_bool('mh_userstatus', 'mh_userstatus_noact_deop', 0);
 
 for my $channel (Irssi::channels())
 {
@@ -424,6 +540,8 @@ for my $channel (Irssi::channels())
 Irssi::signal_add_last('channel sync',              'signal_channel_sync_last');
 Irssi::signal_add_last('nicklist gone changed',     'signal_nicklist_gone_changed_last');
 Irssi::signal_add_last('nicklist serverop changed', 'signal_nicklist_serverop_changed_last');
+Irssi::signal_add('event 311',                      'signal_event_311');
+Irssi::signal_add('event 318',                      'signal_event_318');
 
 Irssi::command_bind('whoa', 'command_whoa', 'mh_userstatus');
 Irssi::command_bind('whoo', 'command_whoo', 'mh_userstatus');
