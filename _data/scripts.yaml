@@ -2540,10 +2540,10 @@
   description: 'statusbar item that shows users and limit info in channels'
   filename: mh_sbuserinfo.pl
   license: BSD
-  modified: '2015-11-27 20:31:05'
+  modified: '2015-12-01 16:48:49'
   name: mh_sbuserinfo
-  url: http://scripts.irssi.org
-  version: '1.02'
+  url: 'http://scripts.irssi.org / https://github.com/mh-source/irssi-scripts'
+  version: '1.03'
 -
   authors: 'Michael Hansen'
   contact: 'mh on IRCnet #help'
