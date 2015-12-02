@@ -1,6 +1,6 @@
 ##############################################################################
 #
-# mh_sbuserinfo.pl v1.02 (20151127)
+# mh_sbuserinfo.pl v1.03 (20151201)
 #
 # Copyright (c) 2015  Michael Hansen
 #
@@ -25,13 +25,16 @@
 # displays in the statusbar the number of users and the limit of the channel,
 # with several settings for finetuning:
 #
-# default settings: [<users>(<users_op>:<users_voice>:<users_rest>)/<limit>]
+# default settings: [Users: <users>(@<users_op>:+<users_voice>:<users_rest>)/<limit>]
 # "/<limit>" will only show when there is a limit set
+#
+# setting mh_sbuserinfo_show_prefix (default 'Users: '): set/unset the prefix
+# in the window item
 #
 # setting mh_sbuserinfo_show_details (default ON): enable/disable showing a
 # detailed breakout of users into ops, halfops, voice and normal
 #
-# setting mh_sbuserinfo_show_details_mode (default OFF): enable/disable
+# setting mh_sbuserinfo_show_details_mode (default ON): enable/disable
 # prefixing ops, halfops and voice with @%+ when details are enabled
 #
 # setting mh_sbuserinfo_show_details_halfop (default OFF): enable/disable
@@ -55,6 +58,10 @@
 # see '/help statusbar' for more details and do not forget to '/save'
 #
 # history:
+#	v1.03 (20151201)
+#		added setting _show_prefix and supporting code
+#		changed setting _show_details_mode default to ON
+#		updated documentation
 #	v1.02 (20151127)
 #		only show item when channel is synced
 #		cleaned out redundant code
@@ -79,7 +86,7 @@ use strict;
 use Irssi 20100403;
 use Irssi::TextUI;
 
-our $VERSION = '1.02';
+our $VERSION = '1.03';
 our %IRSSI   =
 (
 	'name'        => 'mh_sbuserinfo',
@@ -87,7 +94,7 @@ our %IRSSI   =
 	'license'     => 'BSD',
 	'authors'     => 'Michael Hansen',
 	'contact'     => 'mh on IRCnet #help',
-	'url'         => 'http://scripts.irssi.org',
+	'url'         => 'http://scripts.irssi.org / https://github.com/mh-source/irssi-scripts',
 );
 
 ##############################################################################
@@ -157,6 +164,7 @@ sub statusbar_userinfo
 	{
 		if ($channel->{'synced'})
 		{
+			$format            = Irssi::settings_get_str('mh_sbuserinfo_show_prefix');
 			my $users          = 0;
 			my $users_op       = 0;
 			my $users_ho       = 0;
@@ -181,7 +189,7 @@ sub statusbar_userinfo
 				}
 			}
 
-			$format = $users;
+			$format = $format . $users;
 
 			if (Irssi::settings_get_bool('mh_sbuserinfo_show_details'))
 			{
@@ -263,13 +271,14 @@ sub statusbar_userinfo
 #
 ##############################################################################
 
-Irssi::settings_add_bool('mh_sbuserinfo', 'mh_sbuserinfo_show_details', 1);
-Irssi::settings_add_bool('mh_sbuserinfo', 'mh_sbuserinfo_show_details_mode', 0);
-Irssi::settings_add_bool('mh_sbuserinfo', 'mh_sbuserinfo_show_details_halfop', 0);
-Irssi::settings_add_bool('mh_sbuserinfo', 'mh_sbuserinfo_show_warning_opless', 1);
-Irssi::settings_add_bool('mh_sbuserinfo', 'mh_sbuserinfo_show_warning_limit', 1);
+Irssi::settings_add_bool('mh_sbuserinfo', 'mh_sbuserinfo_show_details',               1);
+Irssi::settings_add_bool('mh_sbuserinfo', 'mh_sbuserinfo_show_details_mode',          1);
+Irssi::settings_add_bool('mh_sbuserinfo', 'mh_sbuserinfo_show_details_halfop',        0);
+Irssi::settings_add_bool('mh_sbuserinfo', 'mh_sbuserinfo_show_warning_opless',        1);
+Irssi::settings_add_bool('mh_sbuserinfo', 'mh_sbuserinfo_show_warning_limit',         1);
 Irssi::settings_add_int( 'mh_sbuserinfo', 'mh_sbuserinfo_show_warning_limit_percent', 90);
-Irssi::settings_add_str( 'mh_sbuserinfo', 'mh_sbuserinfo_warning_format', '%Y');
+Irssi::settings_add_str( 'mh_sbuserinfo', 'mh_sbuserinfo_warning_format',             '%Y');
+Irssi::settings_add_str('mh_sbuserinfo',  'mh_sbuserinfo_show_prefix',                'Users: ');
 
 Irssi::statusbar_item_register('mh_sbuserinfo', '', 'statusbar_userinfo');
 
