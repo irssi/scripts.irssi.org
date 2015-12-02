@@ -2547,13 +2547,13 @@
 -
   authors: 'Michael Hansen'
   contact: 'mh on IRCnet #help'
-  description: 'Show in channels when users go away/back or oper/deoper'
+  description: 'show in channels when users go away/back or oper/deoper'
   filename: mh_userstatus.pl
   license: BSD
-  modified: '2015-11-30 20:54:25'
+  modified: '2015-12-02 19:28:11'
   name: mh_userstatus
   url: 'http://scripts.irssi.org / https://github.com/mh-source/irssi-scripts'
-  version: '1.00'
+  version: '1.01'
 -
   authors: 'Michael Hansen'
   contact: 'mh on IRCnet #help'
@@ -4680,10 +4680,10 @@
   description: 'XDCC Autoget, for automated searching and downloading of xdcc packs'
   filename: xdcc_autoget.pl
   license: 'BeerWare Version 42'
-  modified: '2015-11-23 13:40:02'
+  modified: '2015-12-02 15:14:49'
   modules: File::HomeDir
   name: autoget
-  version: '1.4'
+  version: '1.5'
 -
   authors: "Stefan 'tommie' Tomanek, Obfuscoder"
   commands: xdccget
