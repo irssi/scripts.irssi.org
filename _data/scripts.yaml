@@ -2540,10 +2540,10 @@
   description: 'provides a statusbar item showing if your server is in splitmode and /splitmode to show details'
   filename: mh_sbsplitmode.pl
   license: BSD
-  modified: '2015-12-03 11:04:31'
+  modified: '2015-12-03 19:43:37'
   name: mh_sbsplitmode
-  url: irc://open.ircnet.net
-  version: '1.00'
+  url: 'http://scripts.irssi.org / https://github.com/mh-source/irssi-scripts'
+  version: '1.01'
 -
   authors: 'Michael Hansen'
   contact: 'mh on IRCnet #help'
