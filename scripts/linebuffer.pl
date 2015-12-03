@@ -3,7 +3,7 @@ use warnings;
 use Irssi;
 use Irssi::TextUI;
 use Hash::Util qw();
-our $VERSION = '0.2'; # c1eddc6a0d6385a
+our $VERSION = '0.3'; # 8a7f8770be646c3
 our %IRSSI = (
     authors     => 'Nei',
     contact     => 'Nei @ anti@conference.jabber.teamidiot.de',
@@ -109,7 +109,7 @@ HELP
 	my ($sig, $chr) = @_;
 	my ($bg, $off) = @{ $ext_color_off{$sig} };
 	my $color = $off - 0x3f + ord $chr;
-	$color += 10 if $color > 213;
+	$color += 10 if $color > 214;
 	($bg ? 'x' : 'X') . (1+int($color / 36)) . $ext_color_al[$color % 36];
     };
     sub control2format {
