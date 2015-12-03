@@ -1,6 +1,6 @@
 ##############################################################################
 #
-# mh_sbsplitmode.pl v1.00 (20151201)
+# mh_sbsplitmode.pl v1.01 (20151203)
 #
 # Copyright (c) 2015  Michael Hansen
 #
@@ -41,11 +41,17 @@
 # mh_sbsplitmode_show_details (default ON): show how many servers (s:) and/or
 # users (u:) are missing before we go out of splitmode
 #
+# mh_sbsplitmode_lag_limit (default 5): amount of lag (in seconds) where we skip
+# checking the server for splitmode
+#
 # to configure irssi to show the new statusbar item in a default irssi
 # installation type '/statusbar window add -after window_empty mh_sbsplitmode'.
 # see '/help statusbar' for more details and do not forget to '/save'
 #
 # history:
+#	v1.01 (20151203)
+#		added _lag_limit and supporting code to skip /stats d on lag
+#		will now print server is in splitmode in all relevant windows
 #	v1.00 (20151201)
 #		initial release
 #
@@ -53,8 +59,6 @@
 use v5.14.2;
 
 use strict;
-use warnings;
-use Data::Dumper;
 
 ##############################################################################
 #
@@ -65,7 +69,7 @@ use Data::Dumper;
 use Irssi 20100403;
 use Irssi::TextUI;
 
-our $VERSION = '1.00';
+our $VERSION = '1.01';
 our %IRSSI   =
 (
 	'name'        => 'mh_sbsplitmode',
@@ -73,7 +77,7 @@ our %IRSSI   =
 	'license'     => 'BSD',
 	'authors'     => 'Michael Hansen',
 	'contact'     => 'mh on IRCnet #help',
-	'url'         => 'irc://open.ircnet.net',
+	'url'         => 'http://scripts.irssi.org / https://github.com/mh-source/irssi-scripts',
 );
 
 ##############################################################################
@@ -125,19 +129,29 @@ sub request_stats_d
 			{
 				if (lc($networkname) eq lc($server->{'chatnet'}))
 				{
-					$server->redirect_event('mh_sbsplitmode stats d',
-						1,  # count
-						'', # arg
-						-1, # remote
-						'', # failure signal
-						{   # signals
-							'event 248' => 'redir mh_sbsplitmode stats d',
-							'event 481' => 'redir mh_sbsplitmode stats d',
-							''          => 'event empty',
-						}
-					);
-					$server->send_raw("stats d");
-					last;
+					my $lag_limit = Irssi::settings_get_int('mh_sbsplitmode_lag_limit');
+
+					if ($lag_limit)
+					{
+						$lag_limit = $lag_limit * 1000; # seconds to milliseconds
+					}
+
+					if ((not $lag_limit) or ($lag_limit > $server->{'lag'}))
+					{
+						$server->redirect_event('mh_sbsplitmode stats d',
+							1,  # count
+							'', # arg
+							-1, # remote
+							'', # failure signal
+							{   # signals
+								'event 248' => 'redir mh_sbsplitmode stats d',
+								'event 481' => 'redir mh_sbsplitmode stats d',
+								''          => 'event empty',
+							}
+						);
+						$server->send_raw("stats d");
+						last;
+					}
 				}
 			}
 		}
@@ -230,8 +244,16 @@ sub signal_redir_stats_d
 				$format_data = 'is no longer in';
 			}
 
-			Irssi::active_win->printformat(MSGLEVEL_CRAP, 'mh_sbsplitmode_info', $format_server, $format_data);
-
+			for my $window (Irssi::windows())
+			{
+				if (exists($window->{'active_server'}))
+				{
+					if (lc($window->{'active_server'}->{'tag'}) eq $servertag)
+					{
+						$window->printformat(Irssi::MSGLEVEL_CRAP | Irssi::MSGLEVEL_NO_ACT, 'mh_sbsplitmode_info', $format_server, $format_data);
+					}
+				}
+			}
 		}
 
 	} elsif ($data =~ /.*permission.*/i)
@@ -389,6 +411,7 @@ sub statusbar_splitmode
 Irssi::settings_add_int('mh_sbsplitmode',  'mh_sbsplitmode_delay',        5);
 Irssi::settings_add_str('mh_sbsplitmode',  'mh_sbsplitmode_networks',     'IRCnet');
 Irssi::settings_add_bool('mh_sbsplitmode', 'mh_sbsplitmode_show_details', 1);
+Irssi::settings_add_int('mh_sbsplitmode',  'mh_sbsplitmode_lag_limit',    5);
 
 Irssi::theme_register([
 	'mh_sbsplitmode_line',  '{server $0}: $1 {comment $2}',
@@ -419,7 +442,7 @@ Irssi::signal_add_last('setup changed',           'signal_setup_changed_last');
 Irssi::command_bind('splitmode', 'command_splitmode', 'mh_sbsplitmode');
 Irssi::command_bind('help',      'command_help');
 
-Irssi::timeout_add_once(10, 'timeout_request_stats_d', undef);
+request_stats_d_all();
 
 1;
 
