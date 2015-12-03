@@ -1,0 +1,11 @@
+---
+-
+  authors: 'Michael Hansen'
+  contact: 'mh on IRCnet #help'
+  default_package: mh_sbsplitmode
+  description: 'provides a statusbar item showing if your server is in splitmode and /splitmode to show details'
+  license: BSD
+  modified: '2015-12-03 11:04:31'
+  name: mh_sbsplitmode
+  url: irc://open.ircnet.net
+  version: '1.00'
