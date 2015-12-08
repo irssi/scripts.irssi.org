@@ -1,6 +1,6 @@
 ##############################################################################
 #
-# mh_windowfill.pl v1.04 (20151128)
+# mh_windowfill.pl v1.05 (20151206)
 #
 # Copyright (c) 2015  Michael Hansen
 #
@@ -27,6 +27,8 @@
 #	with script:    http://picpaste.com/e3b84ead852e3e77b12ed69383f1f80c.png
 #
 # history:
+#	v1.05 (20151206)
+#		added a few comments
 #	v1.04 (20151128)
 #		call windowfill* directly from signals
 #		removed on load timeout
@@ -56,7 +58,7 @@ use strict;
 use Irssi 20100403;
 use Irssi::TextUI;
 
-our $VERSION = '1.04';
+our $VERSION = '1.05';
 our %IRSSI   =
 (
 	'name'        => 'mh_windowfill',
@@ -103,6 +105,9 @@ sub windowfill
 		my $line      = $window->view()->get_lines();
 		my $linecount = 0;
 
+		#
+		# count lines we need to move
+		#
 		while ($line)
 		{
 			$linecount++;
@@ -113,6 +118,9 @@ sub windowfill
 
 		$line = $window->view()->get_lines();
 
+		#
+		# move lines down
+		#
 		while ($linecount)
 		{
 			my $linetext = $line->get_text(1);
@@ -154,12 +162,12 @@ sub command_clear
 #
 ##############################################################################
 
+windowfill_all();
+
 Irssi::signal_add_last('mainwindow resized', 'windowfill_all');
 Irssi::signal_add_last('window created',     'windowfill');
 
 Irssi::command_bind('clear', 'command_clear');
-
-windowfill_all();
 
 1;
 
