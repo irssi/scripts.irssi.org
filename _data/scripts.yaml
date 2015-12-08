@@ -738,11 +738,11 @@
   description: 'Implements SASL authentication and enables CAP "multi-prefix"'
   filename: cap_sasl.pl
   license: GPLv2
-  modified: '2015-01-07 07:47:22'
+  modified: '2015-12-04 19:04:00'
   modules: Crypt::PK::ECC
   name: cap_sasl.pl
   url: http://ircv3.atheme.org/extensions/sasl-3.1
-  version: '1.10'
+  version: '1.11'
 -
   authors: ZaMz0n
   commands: cddb
