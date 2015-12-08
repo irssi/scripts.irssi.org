@@ -99,11 +99,11 @@
   description: 'Adds a permanent advanced window list on the right or in a status bar.'
   filename: adv_windowlist.pl
   license: 'GNU GPLv2 or later'
-  modified: '2015-12-03 00:32:32'
+  modified: '2015-12-08 20:28:44'
   modules: Text::CharWidth
   name: adv_windowlist
   url: http://anti.teamidiot.de/
-  version: 1.0a4
+  version: 1.0a5
 -
   authors: BC-bd
   contact: bd@bc-bd.org
@@ -2570,10 +2570,10 @@
   description: 'fill windows so scrolling starts bottom-up instead of top-down (screenshots in source)'
   filename: mh_windowfill.pl
   license: BSD
-  modified: '2015-11-30 17:05:34'
+  modified: '2015-12-06 16:38:01'
   name: mh_windowfill
   url: 'http://scripts.irssi.org / https://github.com/mh-source/irssi-scripts'
-  version: '1.04'
+  version: '1.05'
 -
   authors: 'Leszek Matok, Andrzej Jagodziñski'
   contact: lam@lac.pl
