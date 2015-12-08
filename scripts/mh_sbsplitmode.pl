@@ -1,6 +1,6 @@
 ##############################################################################
 #
-# mh_sbsplitmode.pl v1.01 (20151203)
+# mh_sbsplitmode.pl v1.02 (20151207)
 #
 # Copyright (c) 2015  Michael Hansen
 #
@@ -49,6 +49,9 @@
 # see '/help statusbar' for more details and do not forget to '/save'
 #
 # history:
+#	v1.02 (20151207)
+#		fixed bug where the timeout never got started
+#		added a few comments
 #	v1.01 (20151203)
 #		added _lag_limit and supporting code to skip /stats d on lag
 #		will now print server is in splitmode in all relevant windows
@@ -69,7 +72,7 @@ use strict;
 use Irssi 20100403;
 use Irssi::TextUI;
 
-our $VERSION = '1.01';
+our $VERSION = '1.02';
 our %IRSSI   =
 (
 	'name'        => 'mh_sbsplitmode',
@@ -197,7 +200,8 @@ sub timeout_request_stats_d
 		$delay = 1;
 	}
 
-	$delay = ($delay * 60000) + (int(rand(30000)) + 1);
+	$delay = ($delay * 60000); # in minutes
+	$delay = $delay + (int(rand(30000)) + 1);
 
 	Irssi::timeout_add_once($delay, 'timeout_request_stats_d', undef);
 }
@@ -230,10 +234,14 @@ sub signal_redir_stats_d
 
 		Irssi::statusbar_items_redraw('mh_sbsplitmode');
 
+		#
+		# print to all relevant windows when server enters/leaves splitmode
+		#
+
 		if ($old_s != $state->{$servertag}->{'s'})
 		{
- 			my $format_server = $server->{'tag'} . '/' . $server->{'real_address'};
-            my $format_data   = '';
+			my $format_server = $server->{'tag'} . '/' . $server->{'real_address'};
+           	my $format_data   = '';
 
 			if ($state->{$servertag}->{'s'})
 			{
@@ -255,7 +263,6 @@ sub signal_redir_stats_d
 				}
 			}
 		}
-
 	} elsif ($data =~ /.*permission.*/i)
 	{
 		my $servertag                    = lc($server->{'tag'});
@@ -311,7 +318,6 @@ sub command_splitmode
 							$format_data = $format_data . ' since ' . localtime($state->{$servertag}->{'s'});
 						}
 
-
 					} else {
 
 						$format_data = 'Not in splitmode';
@@ -330,6 +336,18 @@ sub command_splitmode
 
 	}
 }
+
+Irssi::timeout_add_once(10, 'timeout_request_stats_d', undef);
+
+Irssi::signal_add('redir mh_sbsplitmode stats d', 'signal_redir_stats_d');
+
+Irssi::signal_add_last('event connected', 'request_stats_d');
+
+Irssi::signal_add('server disconnected', 'state_remove_server');
+
+Irssi::signal_add_last('setup changed', 'signal_setup_changed_last');
+
+Irssi::command_bind('splitmode', 'command_splitmode', 'mh_sbsplitmode');
 
 sub command_help
 {
@@ -440,10 +458,9 @@ Irssi::signal_add('server disconnected',          'state_remove_server');
 Irssi::signal_add_last('setup changed',           'signal_setup_changed_last');
 
 Irssi::command_bind('splitmode', 'command_splitmode', 'mh_sbsplitmode');
-Irssi::command_bind('help',      'command_help');
+Irssi::command_bind('help',     'command_help');
 
-request_stats_d_all();
-
+Irssi::timeout_add_once(10, 'timeout_request_stats_d', undef);
 1;
 
 ##############################################################################
