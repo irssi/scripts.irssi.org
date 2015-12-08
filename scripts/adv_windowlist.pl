@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-our $VERSION = '1.0a5'; # e03ad26d0bb6d80
+our $VERSION = '1.0a6'; # 08b7b7c2b872a05
 our %IRSSI = (
     authors     => 'Nei',
     contact     => 'Nei @ anti@conference.jabber.teamidiot.de',
@@ -1443,6 +1443,7 @@ sub UNLOAD {
 }
 
 sub addPrintTextHook { # update on print text
+    return unless defined $^S;
     return if $BLOCK_ALL;
     return unless $print_text_activity;
     return if $_[0]->{level} == 262144 and $_[0]->{target} eq ''
@@ -2358,10 +2359,12 @@ UNITCHECK
 
 # Changelog
 # =========
-# 1.0a4
+# 1.0a6
 # - new awl_viewer_launch setting and an array of related settings
 # - fixed regression bug /exec -interactive
 # - fixed some warnings in perl 5.10 reported by kl3
+# - workaround for crash due to infinite recursion in irssi's Perl
+#   error handling
 #
 # 0.9
 # - fix endless loop in awin detection code!
