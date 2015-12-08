@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-our $VERSION = '1.0a4'; # add219076dbc8f6
+our $VERSION = '1.0a5'; # e03ad26d0bb6d80
 our %IRSSI = (
     authors     => 'Nei',
     contact     => 'Nei @ anti@conference.jabber.teamidiot.de',
@@ -279,6 +279,15 @@ use IO::Socket::UNIX;
 use List::Util qw(min max reduce);
 use Hash::Util qw(lock_keys);
 use Text::ParseWords qw(shellwords);
+
+BEGIN {
+    if ($] < 5.012) {
+	*CORE::GLOBAL::length = *CORE::GLOBAL::length = sub (_) {
+	    defined $_[0] ? CORE::length($_[0]) : undef
+	};
+	*Irssi::active_win = {}; # hide incorrect warning
+    }
+}
 
 unless (IN_IRSSI) {
     local *_ = \@ARGV;
@@ -1672,15 +1681,6 @@ sub string_LCSS {
 }
 
 { package Irssi::Nick }
-
-BEGIN {
-    if ($] < 5.012) {
-	*CORE::GLOBAL::length = *CORE::GLOBAL::length = sub (_) {
-	    defined $_[0] ? CORE::length($_[0]) : undef
-	};
-	*Irssi::active_win = {}; # hide incorrect warning
-    }
-}
 
 UNITCHECK
 { package AwlViewer;
