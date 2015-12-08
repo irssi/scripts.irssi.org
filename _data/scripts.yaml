@@ -738,7 +738,7 @@
   description: 'Implements SASL authentication and enables CAP "multi-prefix"'
   filename: cap_sasl.pl
   license: GPLv2
-  modified: '2015-12-04 19:04:00'
+  modified: '2015-12-04 19:11:05'
   modules: Crypt::PK::ECC
   name: cap_sasl.pl
   url: http://ircv3.atheme.org/extensions/sasl-3.1
@@ -2540,10 +2540,10 @@
   description: 'provides a statusbar item showing if your server is in splitmode and /splitmode to show details'
   filename: mh_sbsplitmode.pl
   license: BSD
-  modified: '2015-12-03 19:43:37'
+  modified: '2015-12-08 21:52:52'
   name: mh_sbsplitmode
   url: 'http://scripts.irssi.org / https://github.com/mh-source/irssi-scripts'
-  version: '1.01'
+  version: '1.03'
 -
   authors: 'Michael Hansen'
   contact: 'mh on IRCnet #help'
