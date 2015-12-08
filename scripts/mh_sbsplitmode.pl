@@ -1,6 +1,6 @@
 ##############################################################################
 #
-# mh_sbsplitmode.pl v1.02 (20151207)
+# mh_sbsplitmode.pl v1.03 (20151208)
 #
 # Copyright (c) 2015  Michael Hansen
 #
@@ -49,6 +49,8 @@
 # see '/help statusbar' for more details and do not forget to '/save'
 #
 # history:
+#	v1.03 (20151208)
+#		cleaned up useless code.
 #	v1.02 (20151207)
 #		fixed bug where the timeout never got started
 #		added a few comments
@@ -72,7 +74,7 @@ use strict;
 use Irssi 20100403;
 use Irssi::TextUI;
 
-our $VERSION = '1.02';
+our $VERSION = '1.03';
 our %IRSSI   =
 (
 	'name'        => 'mh_sbsplitmode',
@@ -337,18 +339,6 @@ sub command_splitmode
 	}
 }
 
-Irssi::timeout_add_once(10, 'timeout_request_stats_d', undef);
-
-Irssi::signal_add('redir mh_sbsplitmode stats d', 'signal_redir_stats_d');
-
-Irssi::signal_add_last('event connected', 'request_stats_d');
-
-Irssi::signal_add('server disconnected', 'state_remove_server');
-
-Irssi::signal_add_last('setup changed', 'signal_setup_changed_last');
-
-Irssi::command_bind('splitmode', 'command_splitmode', 'mh_sbsplitmode');
-
 sub command_help
 {
 	my ($data, $server, $windowitem) = @_;
@@ -458,9 +448,10 @@ Irssi::signal_add('server disconnected',          'state_remove_server');
 Irssi::signal_add_last('setup changed',           'signal_setup_changed_last');
 
 Irssi::command_bind('splitmode', 'command_splitmode', 'mh_sbsplitmode');
-Irssi::command_bind('help',     'command_help');
+Irssi::command_bind('help',      'command_help');
 
-Irssi::timeout_add_once(10, 'timeout_request_stats_d', undef);
+timeout_request_stats_d();
+
 1;
 
 ##############################################################################
