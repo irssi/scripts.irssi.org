@@ -251,7 +251,7 @@ use Irssi::TextUI;
 use Data::Dumper;
 
 
-our $VERSION = '2.3'; # 1dc0a53a2df38e9
+our $VERSION = '2.4'; # 7c9e42560a2f4a1
 our %IRSSI   =
   (
    authors     => 'Tom Feist, Wouter Coekaerts',
@@ -260,7 +260,6 @@ our %IRSSI   =
    description => 'Select window[-items] using an ido-mode like search interface',
    license     => 'GPLv2 or later',
    url         => 'http://github.com/shabble/irssi-scripts/tree/master/ido-mode/',
-   changed     => '24/7/2010'
   );
 
 
@@ -980,7 +979,7 @@ sub handle_keypress {
         Irssi::signal_stop();
     }
 
-    if ($key == 10) {       # enter
+    if ($key == 10 || $key == 13) {       # enter
         _debug_print "selecting history and quitting";
         my $selected_win = get_window_match();
         ido_switch_select($selected_win);
