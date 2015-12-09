@@ -1,6 +1,6 @@
 ##############################################################################
 #
-# mh_userstatus.pl v1.01 (20151201)
+# mh_userstatus.pl v1.02 (20151208)
 #
 # Copyright (c) 2015  Michael Hansen
 #
@@ -61,6 +61,9 @@
 # a user is deoppered
 #
 # history:
+#	v1.02 (20151208)
+#		fixed issue with disabling/enabling periodical /who
+#		/whois bug was not entirely fixed, should be now
 #	v1.01 (20151201)
 #		fixed bug when /whois spammed with status updates
 #		added _noact_* and supporting code
@@ -83,7 +86,7 @@ use Irssi 20100403;
 
 { package Irssi::Nick }
 
-our $VERSION = '1.01';
+our $VERSION = '1.02';
 our %IRSSI   =
 (
 	'name'        => 'mh_userstatus',
@@ -272,6 +275,9 @@ sub signal_nicklist_gone_changed_last
 
 	if ($channel->{'synced'})
 	{
+		#
+		# skip our own nick
+		#
 		if ($nick->{'nick'} ne $channel->{'server'}->{'nick'})
 		{
 			my $format = '';
@@ -291,7 +297,7 @@ sub signal_nicklist_gone_changed_last
 				}
 
 				$msglevel = $msglevel | Irssi::MSGLEVEL_PARTS;
-				$channel->printformat($msglevel, 'mh_userstatus_gone' . $format, $nick->{'nick'}, $nick->{'host'}, nick_prefix($nick));
+				$channel->printformat($msglevel, 'mh_userstatus_gone' . $format, $nick->{'nick'} , $nick->{'host'}, nick_prefix($nick));
 
 			} else {
 
@@ -323,6 +329,9 @@ sub signal_nicklist_serverop_changed_last
 
 	if ($channel->{'synced'})
 	{
+		#
+		# skip our own nick
+		#
 		if ($nick->{'nick'} ne $channel->{'server'}->{'nick'})
 		{
 			my $format = '';
@@ -358,7 +367,7 @@ sub signal_nicklist_serverop_changed_last
 	}
 }
 
-sub signal_event_311
+sub signal_event_311_first
 {
 	my ($server) = @_;
 
@@ -368,13 +377,27 @@ sub signal_event_311
 	}
 }
 
-sub signal_event_318
+sub signal_event_318_last
 {
 	my ($server) = @_;
 
 	if ($server)
 	{
 		$whois_in_progress->{lc($server->{'tag'})} = 0;
+	}
+}
+
+sub signal_setup_changed_last
+{
+	if (Irssi::settings_get_int('mh_userstatus_delay'))
+	{
+		for my $channel (Irssi::channels())
+		{
+			if ($channel->{'synced'})
+			{
+				signal_channel_sync_last($channel);
+			}
+		}
 	}
 }
 
@@ -404,6 +427,9 @@ sub command_whoa
 
 	for my $nick (sort({ lc($a->{'nick'}) cmp lc($b->{'nick'}) } $windowitem->nicks()))
 	{
+		#
+		# skip our own nick
+		#
 		if ($nick->{'nick'} ne $windowitem->{'server'}->{'nick'})
 		{
 			my $format = '';
@@ -444,6 +470,9 @@ sub command_whoo
 
 	for my $nick (sort({ lc($a->{'nick'}) cmp lc($b->{'nick'}) } $windowitem->nicks()))
 	{
+		#
+		# skip our own nick
+		#
 		if ($nick->{'nick'} ne $windowitem->{'server'}->{'nick'})
 		{
 			my $format = '';
@@ -529,23 +558,18 @@ Irssi::settings_add_bool('mh_userstatus', 'mh_userstatus_noact_gone', 0);
 Irssi::settings_add_bool('mh_userstatus', 'mh_userstatus_noact_oper', 0);
 Irssi::settings_add_bool('mh_userstatus', 'mh_userstatus_noact_deop', 0);
 
-for my $channel (Irssi::channels())
-{
-	if ($channel->{'synced'})
-	{
-		signal_channel_sync_last($channel);
-	}
-}
-
 Irssi::signal_add_last('channel sync',              'signal_channel_sync_last');
 Irssi::signal_add_last('nicklist gone changed',     'signal_nicklist_gone_changed_last');
 Irssi::signal_add_last('nicklist serverop changed', 'signal_nicklist_serverop_changed_last');
-Irssi::signal_add('event 311',                      'signal_event_311');
-Irssi::signal_add('event 318',                      'signal_event_318');
+Irssi::signal_add_first('event 311',                'signal_event_311_first');
+Irssi::signal_add_last('event 318',                 'signal_event_318_last');
+Irssi::signal_add_last('setup changed',             'signal_setup_changed_last');
 
 Irssi::command_bind('whoa', 'command_whoa', 'mh_userstatus');
 Irssi::command_bind('whoo', 'command_whoo', 'mh_userstatus');
 Irssi::command_bind('help', 'command_help');
+
+signal_setup_changed_last();
 
 1;
 
