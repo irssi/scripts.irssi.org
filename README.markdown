@@ -11,7 +11,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                   active_notify ](Test/active_notify/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                   activity_file ](Test/activity_file/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
 [                             act ](Test/act/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                  adv_windowlist ](Test/adv_windowlist/)|  ✔   |  ✔   |  ✔   | 28   |  ✔   
+[                  adv_windowlist ](Test/adv_windowlist/)|  ✔   |  ✔   |  ✔   | 28   |  ✔   | (c)
 [                           aidle ](Test/aidle/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                              ai ](Test/ai/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
 [                           akftp ](Test/akftp/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -258,7 +258,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                              mg ](Test/mg/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                  mh_sbsplitmode ](Test/mh_sbsplitmode/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
 [                   mh_sbuserinfo ](Test/mh_sbuserinfo/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                   mh_userstatus ](Test/mh_userstatus/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                   mh_userstatus ](Test/mh_userstatus/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                   mh_windowfill ](Test/mh_windowfill/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                          miodek ](Test/miodek/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [               mirc_colour_popup ](Test/mirc_colour_popup/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
@@ -485,4 +485,4 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                     xmpp-notify ](Test/xmpp-notify/)|  ✔   |  ✔   |  ✔   | 21   |  ✔   | (c)
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 
-173596c12be87dd54da4fff3bb33074b61f0ccdc | 448
+9a32503b864b97d3bbeca35ed827de001fe6c04d | 450
