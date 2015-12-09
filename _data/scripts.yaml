@@ -2560,10 +2560,10 @@
   description: 'show in channels when users go away/back or oper/deoper'
   filename: mh_userstatus.pl
   license: BSD
-  modified: '2015-12-02 19:28:11'
+  modified: '2015-12-09 09:56:28'
   name: mh_userstatus
   url: 'http://scripts.irssi.org / https://github.com/mh-source/irssi-scripts'
-  version: '1.01'
+  version: '1.02'
 -
   authors: 'Michael Hansen'
   contact: 'mh on IRCnet #help'
