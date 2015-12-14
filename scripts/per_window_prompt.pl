@@ -21,7 +21,7 @@ use Irssi 20070804;
 use Irssi::TextUI;
 
 use vars qw($VERSION %IRSSI);
-$VERSION = '1.0';
+$VERSION = '1.1';
 %IRSSI = (
     authors     => 'Wouter Coekaerts',
     contact     => 'coekie@irssi.org',
@@ -29,7 +29,6 @@ $VERSION = '1.0';
     description => 'Keeps a prompt per window',
     license     => 'GPLv2 or later',
     url         => 'http://wouter.coekaerts.be/irssi/',
-    changed     => '04/08/07'
 );
 
 my %prompts;
@@ -80,7 +79,7 @@ sub UNLOAD {
 Irssi::signal_add_first 'gui key pressed' => sub {
 	my ($key) = @_;
 	
-	if ($key == 10 && ! $in_command) {
+	if (($key == 10 || $key == 13) && ! $in_command) {
 		$win_before_command = winkey(Irssi::active_win);
 		$win_before_command_deleted = 0;
 		$in_command = 1;
