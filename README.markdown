@@ -183,7 +183,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                         hignore ](Test/hignore/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                      hilightwin ](Test/hilightwin/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                hipchat_complete ](Test/hipchat_complete/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                  history_search ](Test/history_search/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   
+[                  history_search ](Test/history_search/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                        hitcount ](Test/hitcount/)|  ✘   |  ✔   |  ✔   |  4   |  ☡   | (c)
 [                           hlbot ](Test/hlbot/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
 [                              hl ](Test/hl/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
@@ -192,7 +192,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                    identify-md5 ](Test/identify-md5/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        idletime ](Test/idletime/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                         idonkey ](Test/idonkey/)|  ✔   |  ✔   |  ✔   | 13   |  ✔   | (c)
-[                    ido_switcher ](Test/ido_switcher/)|  ✔   |  ✔   |  ✔   |  1   |  ✔   
+[                    ido_switcher ](Test/ido_switcher/)|  ✔   |  ✔   |  ✔   |  1   |  ✔   | (c)
 [                      ignore_log ](Test/ignore_log/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
 [                        ignoreoc ](Test/ignoreoc/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       ignorsula ](Test/ignorsula/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -256,6 +256,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [            mass_hilight_blocker ](Test/mass_hilight_blocker/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                 messages_bottom ](Test/messages_bottom/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                              mg ](Test/mg/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                    mh_hold_mode ](Test/mh_hold_mode/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                  mh_sbsplitmode ](Test/mh_sbsplitmode/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
 [                   mh_sbuserinfo ](Test/mh_sbuserinfo/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                   mh_userstatus ](Test/mh_userstatus/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -335,7 +336,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                   paste_kimmoke ](Test/paste_kimmoke/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                           pelix ](Test/pelix/)|  ✔   |  ✔   |  ✔   | 25   |  ✔   | (c)
 [                          people ](Test/people/)|  ✔   |  ✔   |  ✔   | 75   |  ✔   | (c)
-[               per_window_prompt ](Test/per_window_prompt/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[               per_window_prompt ](Test/per_window_prompt/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                      pggb_sound ](Test/pggb_sound/)|  ✔   |  ✔   |  ✔   | 33   |  ✔   | (c)
 [                          poison ](Test/poison/)|  ✔   |  ✔   |  ✔   | 12   |  ✔   | (c)
 [                        postpone ](Test/postpone/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -485,4 +486,4 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                     xmpp-notify ](Test/xmpp-notify/)|  ✔   |  ✔   |  ✔   | 21   |  ✔   | (c)
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 
-bc2aed9695ddf98e0c54918021b16b89ebe8074c | 457
+8a646904c4c5a1cb7cbed5dd82406b351a6425b3 | 458
