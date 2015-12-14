@@ -2537,6 +2537,16 @@
 -
   authors: 'Michael Hansen'
   contact: 'mh on IRCnet #help'
+  description: 'Emulation of ircII per-window hold_mode'
+  filename: mh_hold_mode.pl
+  license: BSD
+  modified: '2015-12-10 16:24:53'
+  name: mh_hold_mode
+  url: https://github.com/mh-source/irssi-scripts
+  version: '1.02'
+-
+  authors: 'Michael Hansen'
+  contact: 'mh on IRCnet #help'
   description: 'provides a statusbar item showing if your server is in splitmode and /splitmode to show details'
   filename: mh_sbsplitmode.pl
   license: BSD
