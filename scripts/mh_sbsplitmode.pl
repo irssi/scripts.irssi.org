@@ -1,6 +1,6 @@
 ##############################################################################
 #
-# mh_sbsplitmode.pl v1.03 (20151208)
+# mh_sbsplitmode.pl v1.04 (20151210)
 #
 # Copyright (c) 2015  Michael Hansen
 #
@@ -41,6 +41,9 @@
 # mh_sbsplitmode_show_details (default ON): show how many servers (s:) and/or
 # users (u:) are missing before we go out of splitmode
 #
+# mh_sbsplitmode_show_detail_trend (default ON): show a + or - if s: or u:
+# is increasing or decreasing
+#
 # mh_sbsplitmode_lag_limit (default 5): amount of lag (in seconds) where we skip
 # checking the server for splitmode
 #
@@ -49,6 +52,9 @@
 # see '/help statusbar' for more details and do not forget to '/save'
 #
 # history:
+#	v1.04 (20151210)
+#		added setting _show_details_trend and supporting code
+#		fixed warning about experimental feature (keys($var)) in perl v5.20.2
 #	v1.03 (20151208)
 #		cleaned up useless code.
 #	v1.02 (20151207)
@@ -74,7 +80,7 @@ use strict;
 use Irssi 20100403;
 use Irssi::TextUI;
 
-our $VERSION = '1.03';
+our $VERSION = '1.04';
 our %IRSSI   =
 (
 	'name'        => 'mh_sbsplitmode',
@@ -222,17 +228,23 @@ sub signal_redir_stats_d
 	{
 		my $servertag = lc($server->{'tag'});
 		my $old_s     = 0;
+		my $old_ss    = 0;
+		my $old_su    = 0;
 
 		if (exists($state->{$servertag}))
 		{
-			$old_s = $state->{$servertag}->{'s'}
+			$old_s  = $state->{$servertag}->{'s'};
+			$old_ss = $state->{$servertag}->{'ss_cur'};
+			$old_su = $state->{$servertag}->{'su_cur'};
 		}
 
 		$state->{$servertag}->{'s'}      = int($1);
 		$state->{$servertag}->{'ss_min'} = int($2);
 		$state->{$servertag}->{'ss_cur'} = int($3);
+		$state->{$servertag}->{'ss_old'} = $old_ss;
 		$state->{$servertag}->{'su_min'} = int($4);
 		$state->{$servertag}->{'su_cur'} = int($5);
+		$state->{$servertag}->{'su_old'} = $old_su;
 
 		Irssi::statusbar_items_redraw('mh_sbsplitmode');
 
@@ -243,7 +255,7 @@ sub signal_redir_stats_d
 		if ($old_s != $state->{$servertag}->{'s'})
 		{
 			my $format_server = $server->{'tag'} . '/' . $server->{'real_address'};
-           	my $format_data   = '';
+			my $format_data   = '';
 
 			if ($state->{$servertag}->{'s'})
 			{
@@ -295,7 +307,7 @@ sub command_splitmode
 
 	if ($state)
 	{
-		for my $servertag (keys($state))
+		for my $servertag (keys(%{$state}))
 		{
 			$server = Irssi::server_find_tag($servertag);
 
@@ -392,14 +404,48 @@ sub statusbar_splitmode
 
 					if (Irssi::settings_get_bool('mh_sbsplitmode_show_details'))
 					{
+						my $old_char = '';
+
+						if (Irssi::settings_get_bool('mh_sbsplitmode_show_detail_trend'))
+						{
+							if ($state->{$servertag}->{'ss_old'})
+							{
+								if ($state->{$servertag}->{'ss_old'} > $state->{$servertag}->{'ss_cur'})
+								{
+									$old_char = '+';
+
+								} elsif ($state->{$servertag}->{'ss_old'} < $state->{$servertag}->{'ss_cur'})
+								{
+									$old_char = '-';
+								}
+							}
+						}
+
 						if ($state->{$servertag}->{'ss_cur'} < $state->{$servertag}->{'ss_min'})
 						{
-							$format = $format . ' s:' . ($state->{$servertag}->{'ss_min'} - $state->{$servertag}->{'ss_cur'});
+							$format = $format . ' s:' . ($state->{$servertag}->{'ss_min'} - $state->{$servertag}->{'ss_cur'} . $old_char);
+						}
+
+						$old_char = '';
+
+						if (Irssi::settings_get_bool('mh_sbsplitmode_show_detail_trend'))
+						{
+							if ($state->{$servertag}->{'su_old'})
+							{
+								if ($state->{$servertag}->{'su_old'} > $state->{$servertag}->{'su_cur'})
+								{
+									$old_char = '+';
+
+								} elsif ($state->{$servertag}->{'su_old'} < $state->{$servertag}->{'su_cur'})
+								{
+									$old_char = '-';
+								}
+							}
 						}
 
 						if ($state->{$servertag}->{'su_cur'} < $state->{$servertag}->{'su_min'})
 						{
-							$format = $format . ' u:' . ($state->{$servertag}->{'su_min'} - $state->{$servertag}->{'su_cur'});
+							$format = $format . ' u:' . ($state->{$servertag}->{'su_min'} - $state->{$servertag}->{'su_cur'} . $old_char);
 						}
 					}
 				}
@@ -416,10 +462,11 @@ sub statusbar_splitmode
 #
 ##############################################################################
 
-Irssi::settings_add_int('mh_sbsplitmode',  'mh_sbsplitmode_delay',        5);
-Irssi::settings_add_str('mh_sbsplitmode',  'mh_sbsplitmode_networks',     'IRCnet');
-Irssi::settings_add_bool('mh_sbsplitmode', 'mh_sbsplitmode_show_details', 1);
-Irssi::settings_add_int('mh_sbsplitmode',  'mh_sbsplitmode_lag_limit',    5);
+Irssi::settings_add_int('mh_sbsplitmode',  'mh_sbsplitmode_delay',             5);
+Irssi::settings_add_str('mh_sbsplitmode',  'mh_sbsplitmode_networks',          'IRCnet');
+Irssi::settings_add_bool('mh_sbsplitmode', 'mh_sbsplitmode_show_details',      1);
+Irssi::settings_add_bool('mh_sbsplitmode', 'mh_sbsplitmode_show_detail_trend', 1);
+Irssi::settings_add_int('mh_sbsplitmode',  'mh_sbsplitmode_lag_limit',         5);
 
 Irssi::theme_register([
 	'mh_sbsplitmode_line',  '{server $0}: $1 {comment $2}',
