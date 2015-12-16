@@ -1,6 +1,6 @@
 ##############################################################################
 #
-# mh_userstatus.pl v1.02 (20151208)
+# mh_userstatus.pl v1.03 (20151213)
 #
 # Copyright (c) 2015  Michael Hansen
 #
@@ -61,6 +61,8 @@
 # a user is deoppered
 #
 # history:
+#	v1.03 (20151213)
+#		added indents to /help
 #	v1.02 (20151208)
 #		fixed issue with disabling/enabling periodical /who
 #		/whois bug was not entirely fixed, should be now
@@ -86,7 +88,7 @@ use Irssi 20100403;
 
 { package Irssi::Nick }
 
-our $VERSION = '1.02';
+our $VERSION = '1.03';
 our %IRSSI   =
 (
 	'name'        => 'mh_userstatus',
@@ -504,9 +506,9 @@ sub command_help
 		Irssi::print('', Irssi::MSGLEVEL_CLIENTCRAP);
 		Irssi::print('WHOA', Irssi::MSGLEVEL_CLIENTCRAP);
 		Irssi::print('', Irssi::MSGLEVEL_CLIENTCRAP);
-		Irssi::print('Shows all users in the current channel who are away.', Irssi::MSGLEVEL_CLIENTCRAP);
+		Irssi::print('%|Shows all users in the current channel who are away.', Irssi::MSGLEVEL_CLIENTCRAP);
 		Irssi::print('', Irssi::MSGLEVEL_CLIENTCRAP);
-		Irssi::print('See also: SET ' . uc('mh_userstatus') . ', WHO, WHOO', Irssi::MSGLEVEL_CLIENTCRAP);
+		Irssi::print('See also: %|SET ' . uc('mh_userstatus') . ', WHO, WHOO', Irssi::MSGLEVEL_CLIENTCRAP);
 		Irssi::print('', Irssi::MSGLEVEL_CLIENTCRAP);
 
 		Irssi::signal_stop();
@@ -516,9 +518,9 @@ sub command_help
 		Irssi::print('', Irssi::MSGLEVEL_CLIENTCRAP);
 		Irssi::print('WHOO', Irssi::MSGLEVEL_CLIENTCRAP);
 		Irssi::print('', Irssi::MSGLEVEL_CLIENTCRAP);
-		Irssi::print('Shows all users in the current channel who are opers.', Irssi::MSGLEVEL_CLIENTCRAP);
+		Irssi::print('%|Shows all users in the current channel who are opers.', Irssi::MSGLEVEL_CLIENTCRAP);
 		Irssi::print('', Irssi::MSGLEVEL_CLIENTCRAP);
-		Irssi::print('See also: SET ' . uc('mh_userstatus') . ', WHO, WHOA', Irssi::MSGLEVEL_CLIENTCRAP);
+		Irssi::print('See also: %|SET ' . uc('mh_userstatus') . ', WHO, WHOA', Irssi::MSGLEVEL_CLIENTCRAP);
 		Irssi::print('', Irssi::MSGLEVEL_CLIENTCRAP);
 
 		Irssi::signal_stop();
@@ -549,10 +551,10 @@ Irssi::theme_register([
   'mh_userstatus_whoa_oper_host', '$2{channick_hilight $0} {chanhost_hilight $1} is {hilight oper}',
 ]);
 
-Irssi::settings_add_int('mh_userstatus',  'mh_userstatus_delay',     5);
-Irssi::settings_add_int('mh_userstatus',  'mh_userstatus_lag_limit', 5);
-Irssi::settings_add_bool('mh_userstatus', 'mh_userstatus_show_host', 1);
-Irssi::settings_add_bool('mh_userstatus', 'mh_userstatus_show_mode', 1);
+Irssi::settings_add_int('mh_userstatus',  'mh_userstatus_delay',      5);
+Irssi::settings_add_int('mh_userstatus',  'mh_userstatus_lag_limit',  5);
+Irssi::settings_add_bool('mh_userstatus', 'mh_userstatus_show_host',  1);
+Irssi::settings_add_bool('mh_userstatus', 'mh_userstatus_show_mode',  1);
 Irssi::settings_add_bool('mh_userstatus', 'mh_userstatus_noact_here', 0);
 Irssi::settings_add_bool('mh_userstatus', 'mh_userstatus_noact_gone', 0);
 Irssi::settings_add_bool('mh_userstatus', 'mh_userstatus_noact_oper', 0);
