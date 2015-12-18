@@ -1,6 +1,6 @@
 ##############################################################################
 #
-# mh_sbsplitmode.pl v1.04 (20151210)
+# mh_sbsplitmode.pl v1.05 (20151217)
 #
 # Copyright (c) 2015  Michael Hansen
 #
@@ -52,6 +52,8 @@
 # see '/help statusbar' for more details and do not forget to '/save'
 #
 # history:
+#	v1.05 (20151217)
+#		added indents to /help
 #	v1.04 (20151210)
 #		added setting _show_details_trend and supporting code
 #		fixed warning about experimental feature (keys($var)) in perl v5.20.2
@@ -80,7 +82,7 @@ use strict;
 use Irssi 20100403;
 use Irssi::TextUI;
 
-our $VERSION = '1.04';
+our $VERSION = '1.05';
 our %IRSSI   =
 (
 	'name'        => 'mh_sbsplitmode',
@@ -362,11 +364,11 @@ sub command_help
 		Irssi::print('', Irssi::MSGLEVEL_CLIENTCRAP);
 		Irssi::print('SPLITMODE', Irssi::MSGLEVEL_CLIENTCRAP);
 		Irssi::print('', Irssi::MSGLEVEL_CLIENTCRAP);
-		Irssi::print('Shows the splitmode status of all watched servers.', Irssi::MSGLEVEL_CLIENTCRAP);
+		Irssi::print('%|Shows the splitmode status of all watched servers.', Irssi::MSGLEVEL_CLIENTCRAP);
 		Irssi::print('', Irssi::MSGLEVEL_CLIENTCRAP);
-		Irssi::print('Splitmode occurs when a servers users or server links goes below a predefined value.', Irssi::MSGLEVEL_CLIENTCRAP);
+		Irssi::print('%|Splitmode occurs when a servers users or server links goes below a predefined value.', Irssi::MSGLEVEL_CLIENTCRAP);
 		Irssi::print('', Irssi::MSGLEVEL_CLIENTCRAP);
-		Irssi::print('See also: SET ' . uc('mh_sbsplitmode') .', STATS', Irssi::MSGLEVEL_CLIENTCRAP);
+		Irssi::print('See also: %|SET ' . uc('mh_sbsplitmode') .', STATS', Irssi::MSGLEVEL_CLIENTCRAP);
 		Irssi::print('', Irssi::MSGLEVEL_CLIENTCRAP);
 
 		Irssi::signal_stop();
@@ -497,7 +499,7 @@ Irssi::signal_add_last('setup changed',           'signal_setup_changed_last');
 Irssi::command_bind('splitmode', 'command_splitmode', 'mh_sbsplitmode');
 Irssi::command_bind('help',      'command_help');
 
-timeout_request_stats_d();
+Irssi::timeout_add_once(10, 'timeout_request_stats_d', undef);
 
 1;
 
