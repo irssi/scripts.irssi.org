@@ -2594,14 +2594,14 @@
   name: miodek
   version: 1.0.2
 -
-  authors: 'Michael Kowalchuk'
+  authors: 'Michael Kowalchuk, Nei'
   contact: michael.kowalchuk@gmail.com
   description: 'Shows a mIRC-style colour popup when you hit ^C.'
   filename: mirc_colour_popup.pl
   license: 'Public Domain'
-  modified: '2008-09-26 00:00:00'
+  modified: '2015-12-10 14:46:55'
   name: mirc_colour_popup
-  version: '1.0'
+  version: '1.1'
 -
   authors: 'Marcin Rozycki'
   contact: derwan@irssi.pl
