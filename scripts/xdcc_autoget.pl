@@ -38,7 +38,7 @@ use File::Copy;
 use Irssi 20090331;
 use vars qw($VERSION %IRSSI);
 
-$VERSION = 1.5;
+$VERSION = 1.6;
 %IRSSI = (
 	name => "autoget", 
 	description => "XDCC Autoget, for automated searching and downloading of xdcc packs",
@@ -70,6 +70,7 @@ my $exedelay;		#delay (in minutes) between finishing one run and starting anothe
 my $initflag;			#flag controls whether AG starts on IRSSI boot (if in autorun), or on LOAD
 my $runningflag = 0;		#flag keeps ag from running more than one instance of itself at a time
 my $msgflag = 1;		#flag controls whether bot has responded to search request
+my $getmsgflag = 0;		#flag keeps track of getmsg signals
 my $termisepisodicflag = 0;	#flag controls whether 
 my $episodicflag;		#flag controls whether to search episode by episode (eg instead of searching boku no pice, it'll search for boku no pico 1, then boku no pico 2, etc as long as results show up)
 my $formatflag = 1;		#flag controls whether a format is appended to the end of an episodic search string
@@ -240,7 +241,11 @@ sub ag_search		#searches bots for packs
 		ag_message("msg $bots[$botcounter] $findprefix $terms[$termcounter]" );
 		push(@totags, Irssi::timeout_add_once($botdelay * 1000, sub { &ag_skip; } , []));
 	}
-	Irssi::signal_add("message irc notice", "ag_getmsg");
+	if (!$getmsgflag)
+	{
+		$getmsgflag = 1;
+		Irssi::signal_add("message irc notice", "ag_getmsg");
+	}
 }
 
 sub ag_remtimeouts	#remove timeouts to avoid multiple instances of everything
@@ -297,7 +302,7 @@ sub ag_packrequest	#sends the xdcc send request, and retries on failure
 	if (!$reqpackflag)
 	{
 		$reqpackflag = 1;
-		Irssi::signal_add("dcc get receive", "ag_opendcc");		#init DCC recieve init flag
+		Irssi::signal_add("dcc request", "ag_opendcc");		#init DCC recieve init flag
 		$statusbarmessage = "Getting pack #$packs[$packcounter] on $bots[$botcounter]";
 		ag_message("msg $bots[$botcounter] $sendprefix $packs[$packcounter]");
 		push(@totags, Irssi::timeout_add_once($botdelay * 1000, sub { if (!$downloadflag) { &ag_packrequest; } } , []));
@@ -306,6 +311,7 @@ sub ag_packrequest	#sends the xdcc send request, and retries on failure
 
 sub ag_opendcc	#runs on DCC recieve init
 {
+	&Irssi::signal_continue;
 	my ($gdcc) = @_;	#current pack
 	my $botname = $gdcc->{'nick'};
 	my $filename = $gdcc->{'arg'};
@@ -314,19 +320,24 @@ sub ag_opendcc	#runs on DCC recieve init
 
 	if ($botname eq $bots[$botcounter])	#if it's our bot, let user know, and stop any further AG pack requests until finished
 	{
+		Irssi::signal_add("dcc destroyed", "ag_closedcc");
+		Irssi::signal_remove("dcc request", "ag_opendcc");		#stops any suplicate sends (there should only ever be one)
 		Irssi::signal_remove("message irc notice", "ag_getmsg");
-		Irssi::signal_remove("dcc get receive", "ag_opendcc");		#stops any suplicate sends (there should only ever be one)
+		$getmsgflag = 0;
+
 		&ag_remtimeouts;
 		$dccflag = 0;
 		$downloadflag = 1;
 		$statusbarmessage = "Downloading $filename from $botname, #$packs[$packcounter]"; 
 		foreach my $n (@finished)		#don't redownload finished packs
 		{
-			if ($n eq $gdcc->{'arg'})	#if file already downloaded, emulate an already finished dcc transfer (in case file deleted) and cancel
+			if ($n eq $gdcc->{'arg'})	#if file already downloaded, cancel
 			{
-				$gdcc->{'transfd'} = $gdcc->{'size'};
+				Irssi::signal_remove("dcc destroyed", "ag_closedcc");
+				$gdcc->close;
 				$gdcc->{'skipped'} = $gdcc->{'size'};
-				ag_closedcc(@_);	
+				$gdcc->{'transfd'} = $gdcc->{'size'};
+				ag_closedcc($gdcc);				
 			}
 			last if ($n eq $gdcc->{'arg'});
 		}
@@ -418,12 +429,13 @@ sub ag_closedcc
 	$botname =~ tr/[A-Z]/[a-z]/;
 	$bots[$botcounter] =~ tr/[A-Z]/[a-z]/;
 
-	if ($botname eq $bots[$botcounter])	#checks if the is the bot
+	if ($botname eq $bots[$botcounter] and $reqpackflag)	#checks if the is the bot
 	{ 
+		Irssi::signal_remove("dcc destroyed", "ag_opendcc");
 		$reqpackflag = 0;
-		if ($dccflag == 0) {Irssi::signal_add("dcc get receive", "ag_opendcc");}	#if so, reinits DCC get signal for the next pack
+#		if ($dccflag == 0) {Irssi::signal_add("dcc request", "ag_opendcc");}	#if so, reinits DCC get signal for the next pack
 		$dccflag = 1;
-
+		
 		&ag_remtimeouts;
 				
 		if ($dcc->{'skipped'} == $dcc->{'size'})
@@ -657,8 +669,9 @@ sub ag_run	#main loop
 
 sub ag_stop
 {
-	Irssi::signal_remove("dcc get receive", "ag_opendcc");
+	Irssi::signal_remove("dcc request", "ag_opendcc");
 	Irssi::signal_remove("message irc notice", "ag_getmsg");
+	$getmsgflag = 0;
 
 	foreach my $to (@totags)
 	{
@@ -693,8 +706,9 @@ sub ag_stop
 sub ag_restart
 {
 	$statusbarmessage = "No connection";
-	Irssi::signal_remove("dcc get receive", "ag_opendcc");
+	Irssi::signal_remove("dcc request", "ag_opendcc");
 	Irssi::signal_remove("message irc notice", "ag_getmsg");
+	$getmsgflag = 0;
 
 	foreach my $to (@totags)
 	{
@@ -763,7 +777,6 @@ if ($initflag) {Irssi::signal_add("server connected", "ag_initserver");}
 
 Irssi::signal_add("server disconnected", "ag_restart");
 Irssi::signal_add("server lag disconnect", "ag_restart");
-Irssi::signal_add("dcc closed", "ag_closedcc");
 Irssi::signal_add("setup changed", "ag_setsettings");
 
 Irssi::command_bind("ag_help", "ag_help");
