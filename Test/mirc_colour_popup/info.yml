@@ -1,10 +1,10 @@
 ---
 -
-  authors: 'Michael Kowalchuk'
-  changed: 9.26.2008
+  authors: 'Michael Kowalchuk, Nei'
   contact: michael.kowalchuk@gmail.com
   default_package: mirc_colour_popup
   description: 'Shows a mIRC-style colour popup when you hit ^C.'
   license: 'Public Domain'
+  modified: '2015-12-10 14:46:55'
   name: mirc_colour_popup
-  version: '1.0'
+  version: '1.1'
