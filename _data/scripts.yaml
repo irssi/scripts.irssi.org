@@ -2550,10 +2550,10 @@
   description: 'provides a statusbar item showing if your server is in splitmode and /splitmode to show details'
   filename: mh_sbsplitmode.pl
   license: BSD
-  modified: '2015-12-15 16:44:28'
+  modified: '2015-12-18 07:12:54'
   name: mh_sbsplitmode
   url: 'http://scripts.irssi.org / https://github.com/mh-source/irssi-scripts'
-  version: '1.04'
+  version: '1.05'
 -
   authors: 'Michael Hansen'
   contact: 'mh on IRCnet #help'
@@ -4700,10 +4700,10 @@
   description: 'XDCC Autoget, for automated searching and downloading of xdcc packs'
   filename: xdcc_autoget.pl
   license: 'BeerWare Version 42'
-  modified: '2015-12-02 15:14:49'
+  modified: '2015-12-17 19:41:56'
   modules: File::HomeDir
   name: autoget
-  version: '1.5'
+  version: '1.6'
 -
   authors: "Stefan 'tommie' Tomanek, Obfuscoder"
   commands: xdccget
