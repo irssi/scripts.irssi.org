@@ -5,7 +5,7 @@
   default_package: mh_sbsplitmode
   description: 'provides a statusbar item showing if your server is in splitmode and /splitmode to show details'
   license: BSD
-  modified: '2015-12-15 16:44:28'
+  modified: '2015-12-18 07:12:54'
   name: mh_sbsplitmode
   url: 'http://scripts.irssi.org / https://github.com/mh-source/irssi-scripts'
-  version: '1.04'
+  version: '1.05'
