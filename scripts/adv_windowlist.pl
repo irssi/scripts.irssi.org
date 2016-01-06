@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-our $VERSION = '1.0a6'; # 08b7b7c2b872a05
+our $VERSION = '1.1'; # 29104182e11c798
 our %IRSSI = (
     authors     => 'Nei',
     contact     => 'Nei @ anti@conference.jabber.teamidiot.de',
@@ -840,15 +840,16 @@ sub _calculate_items {
 				    $ulen;
 		    my $first = 1;
 		    while (length $name > 1) {
-			my $cp = $middle2 > -1 ? $middle2/2 : -1; # check position for double width
+			my $cp = $middle2 >= 0 ? $middle2/2 : -1; # clearing position
 			my $rm = 2;
+			# if character at end is wider than 1 cell -> replace it with ~
 			if (screen_length(as_tc(substr $name, $cp, 1)) > 1) {
 			    if ($first || $cp < 0) {
 				$rm = 1;
 				$first = undef;
 			    }
 			}
-			elsif ($cp < 0) {
+			elsif ($cp < 0) { # elsif at end -> replace last 2 characters
 			    --$cp;
 			}
 			(substr $name, $cp, $rm) = '~';
@@ -2359,7 +2360,10 @@ UNITCHECK
 
 # Changelog
 # =========
-# 1.0a6
+# 1.1
+# - infinite loop on shortening certain window names reported by Kalan
+#
+# 1.0
 # - new awl_viewer_launch setting and an array of related settings
 # - fixed regression bug /exec -interactive
 # - fixed some warnings in perl 5.10 reported by kl3
