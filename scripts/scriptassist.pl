@@ -182,6 +182,10 @@ sub bg_do ($) {
 	    my $data = $dumper->Dump;
 	    print($wh $data);
 	};
+	if ($@) {
+	    print($wh Data::Dumper->new([+{data=>+{error=>$@}}])
+		      ->Purity(1)->Deepcopy(1)->Indent(0)->Dump);
+	}
 	close($wh);
 	POSIX::_exit(1);
     }
@@ -446,6 +450,10 @@ sub pipe_input {
     }
     if ($result{unknown}) {
         print_unknown($result{unknown});
+    }
+    if (defined $result{error}) {
+	print CLIENTCRAP "%R<<%n There was an error in background processing:"; chomp($result{error});
+	print CLIENTERROR $result{error};
     }
 
 }
@@ -793,13 +801,17 @@ sub get_scripts {
     my %sites_db;
     my $fetched = 0;
     my @sources;
+    my $error;
     foreach my $site (@mirrors) {
 	my $request = HTTP::Request->new('GET', $site);
 	if ($remote_db{timestamp}) {
 	    $request->if_modified_since($remote_db{timestamp});
 	}
 	my $response = $ua->request($request);
-	next unless $response->is_success;
+	unless ($response->is_success) {
+	    $error = join "\n", $response->status_line(), (grep / at .* line \d+/, split "\n", $response->content()), '';
+	    next;
+	}
 	$fetched = 1;
 	my $data = $response->content();
 	my ($src, $type);
@@ -826,7 +838,7 @@ sub get_scripts {
 		$sites_db{$_}{source} = $src;
 	    }
 	} else {
-	    ## FIXME Panic?!
+	    die("Unknown script database type ($type).\n");
 	}
 	
     }
@@ -842,6 +854,10 @@ sub get_scripts {
 	}
 	$remote_db{db}{$_} = $sites_db{$_} foreach (keys %sites_db);
 	$remote_db{timestamp} = time();
+    } else {
+	die("No script database sources defined in /set scriptassist_script_sources\n") unless @mirrors;
+	die("Fetching script database failed: $error") if $error;
+	die("Unknown error while fetching script database\n");
     }
     return $remote_db{db};
 }
