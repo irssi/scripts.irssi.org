@@ -3696,7 +3696,7 @@
   description: 'keeps your scripts on the cutting edge'
   filename: scriptassist.pl
   license: GPLv2
-  modified: '2015-02-20 14:05:58'
+  modified: '2015-12-27 23:18:52'
   modules: LWP::UserAgent
   name: scriptassist
   url: http://irssi.org/scripts/
