@@ -7,6 +7,7 @@
   default_package: scriptassist
   description: 'keeps your scripts on the cutting edge'
   license: GPLv2
+  modified: '2015-12-27 23:18:52'
   modules:
     - LWP::UserAgent
   name: scriptassist
