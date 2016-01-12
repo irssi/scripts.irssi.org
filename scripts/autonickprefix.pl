@@ -1,3 +1,5 @@
+use strict;
+
 our $VERSION = '1.00';
 our %IRSSI = (
     authors     => 'Juerd',
