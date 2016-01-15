@@ -378,7 +378,7 @@ sub ag_skip
 {
 	my($botcounter) = @_;
 	my @packlist = ();
-	try {my @packlist = @{$packs[$botcounter]} or die;}	#workaround for @{} being dumb if an array inside of an array is empty 
+	try {my @packlist = @{$packs[$botcounter]};}	#workaround for @{} being dumb if an array inside of an array is empty 
 	catch {};
 	#Irssi::print "ag_skip $msgflag $episodicflag $episode $#packs $packcounter $#terms $termcounter $#bots $botcounter"; 
 	&ag_remtimeouts($botcounter);	#stop any other skips
@@ -745,7 +745,7 @@ sub ag_stop
 
 sub ag_restart
 {
-	$statusbarmessage = "Inactive";
+	$statusbarmessage = "No Connection";
 	Irssi::signal_remove("dcc request", "ag_opendcc");
 	Irssi::signal_remove("message irc notice", "ag_getmsg");
 	
