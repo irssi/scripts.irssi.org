@@ -677,10 +677,10 @@
   description: "1. Adds an item to the status bar wich shows [typing] when someone is typing a message on the supported IM-networks\t2. Sends typing notices to the supported IM networks (the other way arround). (For bitlbee 3.0+)"
   filename: bitlbee_typing_notice.pl
   license: GPLv2
-  modified: '2010-08-09 00:00:00'
+  modified: '2016-01-08 16:59:55'
   name: BitlBee_typing_notice
   url: 'http://the-timing.nl/stuff/irssi-bitlbee, http://f0rked.com'
-  version: 1.7.1
+  version: 1.7.2
 -
   authors: iMil,Skid,Foxmask,reiffert
   contact: imil@gcu-squad.org,blowjob@reifferscheid.org,#blowtest@freenode
@@ -2580,10 +2580,10 @@
   description: 'fill windows so scrolling starts bottom-up instead of top-down (screenshots in source)'
   filename: mh_windowfill.pl
   license: BSD
-  modified: '2015-12-06 16:38:01'
+  modified: '2015-12-20 05:12:37'
   name: mh_windowfill
   url: 'http://scripts.irssi.org / https://github.com/mh-source/irssi-scripts'
-  version: '1.05'
+  version: '1.06'
 -
   authors: 'Leszek Matok, Andrzej Jagodziñski'
   contact: lam@lac.pl
