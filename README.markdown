@@ -69,7 +69,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [             bitlbee_nick_change ](Test/bitlbee_nick_change/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [          bitlbee_tab_completion ](Test/bitlbee_tab_completion/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [               bitlbee_timestamp ](Test/bitlbee_timestamp/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[           bitlbee_typing_notice ](Test/bitlbee_typing_notice/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[           bitlbee_typing_notice ](Test/bitlbee_typing_notice/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                         blowjob ](Test/blowjob/)|  ✔   |  ✔   |  ✔   | 22   |  ✔   | (c)
 [                             bmi ](Test/bmi/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                             buf ](Test/buf/)|  ✔   |  ✔   |  ✔   |  8   |  ✔   | (c)
@@ -260,7 +260,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                  mh_sbsplitmode ](Test/mh_sbsplitmode/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
 [                   mh_sbuserinfo ](Test/mh_sbuserinfo/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                   mh_userstatus ](Test/mh_userstatus/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                   mh_windowfill ](Test/mh_windowfill/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                   mh_windowfill ](Test/mh_windowfill/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                          miodek ](Test/miodek/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [               mirc_colour_popup ](Test/mirc_colour_popup/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                           mkick ](Test/mkick/)|  ✔   |  ✔   |  ✔   | 30   |  ✔   | (c)
@@ -373,7 +373,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                       sb_search ](Test/sb_search/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                     schwaebisch ](Test/schwaebisch/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                     screen_away ](Test/screen_away/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                    scriptassist ](Test/scriptassist/)|  ✔   |  ✔   |  ✘   | 64   |  ☡   
+[                    scriptassist ](Test/scriptassist/)|  ✔   |  ✔   |  ✘   | 64   |  ☡   | (c)
 [                      scripthelp ](Test/scripthelp/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                      scriptinfo ](Test/scriptinfo/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                      scriptsave ](Test/scriptsave/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -486,4 +486,4 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                     xmpp-notify ](Test/xmpp-notify/)|  ✔   |  ✔   |  ✔   | 21   |  ✔   | (c)
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 
-097c7ba54b26f08c8e8c7887e5bd9a4c4d99e537 | 475
+9a6b9dc6bdd12a164403be0ab5eaf6032f2ad685 | 480
