@@ -1,9 +1,18 @@
-# xdcc autogetter, to automate searching and downloading xdcc packs based on chosen search strings
-# requires that you enable dcc_autoget and dcc_autoresume. Also requires File::Dir which can be installed with the command >>> sudo perl -MCPAN -e 'install "File::HomeDir"'
-# made because torrents are watched by the feds, but xdcc lacks RSS feeds.
+# xdcc autoget, to automate searching and downloading xdcc packs from xdcc bots based on chosen search strings
+# 
+# long description: You add a bunch of xdcc bots and search terms, as well as an optional format string (for TV shows that have multiple releases or formats (basically gets appended to the end of a search after the episode #)).
+#                   The script will go through each bot simultaneously, and download any packs it finds that matches. 
+#                   It stores the name and bot and pack number of each downloaded file to avoid redownloading, and incorporates automated (and sane default) timeouts to avoid flooding bots (and getting ignored/muted/kicked/banned).
+#                   There is also a statusbar that you can add.
+#                   It used to give a lot of detailed information on what was happening, but since the program now does all bots simultaneously it would be a clusterfuck, so now it gives only basic info on whether autoget is running.
+# 
+# requires that you enable dcc_autoget and dcc_autoresume. Also requires File::Dir and Try::Tiny which can be installed with the command >>> sudo perl -MCPAN -e 'install "File::HomeDir"' && sudo perl -MCPAN -e 'install "Try::Tiny"'
+# made because torrents are watched by the feds, but xdcc lacks an RSS feed equivalent.
 # if you encounter any problems, fix it yourself you lazy bastard (or get me to), then contact me so I can add your fix and bump that version #
+# 
 # BeerWare License. Use any part you want, but buy me a beer if you ever meet me and liked this hacked together broken PoS
 # Somewhat based off of DCC multiget by Kaveh Moini.
+# 
 # USE: to add the statusbar : /statusbar [name] add ag_statusbar
 #      for help             : ag_help
 #      to run               : ag_run
@@ -29,16 +38,17 @@
 use strict;
 use warnings;
 
+use Irssi 20090331;
 use Irssi;
 use Irssi::TextUI;
 use Text::ParseWords;
-use autodie; # die if problem reading or writing a file
+use autodie; 		# die if problem reading or writing a file
 use File::HomeDir;
 use File::Copy;
-use Irssi 20090331;
+use Try::Tiny;
 use vars qw($VERSION %IRSSI);
 
-$VERSION = 1.6;
+$VERSION = 2.0;
 %IRSSI = (
 	name => "autoget", 
 	description => "XDCC Autoget, for automated searching and downloading of xdcc packs",
@@ -51,7 +61,7 @@ $VERSION = 1.6;
 Irssi::settings_add_int($IRSSI{'name'}, "ag_next_delay", 10);
 Irssi::settings_add_int($IRSSI{'name'}, "ag_dcc_closed_retry_delay", 10);
 Irssi::settings_add_int($IRSSI{'name'}, "ag_bot_delay", 30);
-Irssi::settings_add_int($IRSSI{'name'}, "ag_interrun_delay", 15);
+Irssi::settings_add_int($IRSSI{'name'}, "ag_interrun_delay", 2);
 Irssi::settings_add_bool($IRSSI{'name'}, "ag_autorun", 1);
 Irssi::settings_add_bool($IRSSI{'name'}, "ag_episodic", 0);
 Irssi::settings_add_str($IRSSI{'name'}, "ag_xdcc_send_prefix", "xdcc send");
@@ -69,14 +79,12 @@ my $exedelay;		#delay (in minutes) between finishing one run and starting anothe
 
 my $initflag;			#flag controls whether AG starts on IRSSI boot (if in autorun), or on LOAD
 my $runningflag = 0;		#flag keeps ag from running more than one instance of itself at a time
-my $msgflag = 1;		#flag controls whether bot has responded to search request
-my $getmsgflag = 0;		#flag keeps track of getmsg signals
-my $termisepisodicflag = 0;	#flag controls whether 
+my @msgflag = ();		#flag controls whether bot has responded to search request
+my @getmsgflag = ();		#flag keeps track of getmsg signals
 my $episodicflag;		#flag controls whether to search episode by episode (eg instead of searching boku no pice, it'll search for boku no pico 1, then boku no pico 2, etc as long as results show up)
-my $formatflag = 1;		#flag controls whether a format is appended to the end of an episodic search string
-my $reqpackflag = 0;		#flag to avoid multiple download requests
-my $downloadflag = 0;		#flag to avoid multiple download requests
-my $newpackflag = 1;
+my @formatflag = ();		#flag controls whether a format is appended to the end of an episodic search string
+my @reqpackflag = ();		#flag to avoid multiple download requests
+my @downloadflag = ();		#flag to avoid multiple download requests
 
 my $sendprefix;		#virtually universal xdcc send, cancel, and find prefixes
 my $cancelprefix;
@@ -96,18 +104,18 @@ my @terms;		#lists of search terms, bots, and pack numbers (for current bot only
 my @bots;
 my @packs;
 my @finished;		#list of packs already downloaded and their filenames
-my $statusbarmessage = "Inactive";
+my @filenames;		#list of filenames of files currently being downloaded
+my $statusbarmessage = "No connection";
 
-my $termcounter = 0;	#counters for array position
-my $botcounter = 0;	
-my $packcounter = 0;
-my $episode = 1;
+my @termcounter = ();	#counters for array position
+my @packcounter = ();
+my @episode = ();
 
 my $server;		#current server
 
 sub ag_init		#init system
 {
-	Irssi::print "AG | Autoget initiated";
+	Irssi::print "AG | Autoget V$VERSION initiated";
 	Irssi::print "AG | /ag_help for help";
 	&ag_list;
 	if ($episodicflag)
@@ -141,8 +149,10 @@ sub ag_list
 sub ag_initserver	#init server
 {
 	Irssi::signal_remove("server connected", "ag_server");
+	$statusbarmessage = "Connected";
 	$server = $_[0];
-	if (!$runningflag) {push(@totags, Irssi::timeout_add_once(5000, sub { &ag_run; }, []));}
+	if (!$runningflag) {Irssi::timeout_add_once(5000, sub { &ag_run; }, []);}
+	else {Irssi::timeout_add_once(5000, sub { $statusbarmessage = "Inactive"; }, []);}
 }
 
 sub ag_server	#init server
@@ -211,50 +221,44 @@ sub ag_clearcache		#clears cache of saved packs
 
 sub ag_search		#searches bots for packs
 {
- 	$msgflag = 0;	#unset message flag so that ag_skip knows no important message has arrived
+	(my $botcounter) = $_[0];
+	$msgflag[$botcounter] = 0;	#unset message flag so that ag_skip knows no important message has arrived
 	if($episodicflag)	#episodic searches are complicated
 	{
-		my $ep = sprintf("%.2d", $episode);
-		$statusbarmessage = "Searching $bots[$botcounter] for \"$terms[$termcounter]\" episode $ep in $format";
-		if ($format ne "" and $formatflag)
+		my $ep = sprintf("%.2d", $episode[$botcounter]);
+		if ($format ne "" and $formatflag[$botcounter])
 		{
-			ag_message("msg $bots[$botcounter] $findprefix $terms[$termcounter] $ep $format");	#first search with format
-			if ($episode == 1)
+			ag_message("msg $bots[$botcounter] $findprefix $terms[$termcounter[$botcounter]] $ep $format");	#first search with format
+			if ($episode[$botcounter] == 1)	#if no formated version found, try again with just the search string + ep#
 			{
-				push(@totags, Irssi::timeout_add_once($botdelay * 1000, sub { $formatflag = 0; &ag_search; } , []));	#if no formated version found, try again with just the search string + ep#
-			}
+ 				push(@{$totags[$botcounter]}, Irssi::timeout_add_once($botdelay * 1000, sub { $formatflag[$botcounter] = 0; &ag_search($botcounter); } , []));
+ 			}
 			else
 			{
-				push(@totags, Irssi::timeout_add_once($botdelay * 1000, sub { &ag_skip; } , []));	
+ 				push(@{$totags[$botcounter]}, Irssi::timeout_add_once($botdelay * 1000, sub { &ag_skip($botcounter); } , []));	
 			}
 		}
 		else
 		{
-			$statusbarmessage = "Searching $bots[$botcounter] for \"$terms[$termcounter]\" episode $ep";
-			ag_message("msg $bots[$botcounter] $findprefix $terms[$termcounter] $ep" );
-			push(@totags, Irssi::timeout_add_once($botdelay * 1000, sub { &ag_skip; } , []));
+			ag_message("msg $bots[$botcounter] $findprefix $terms[$termcounter[$botcounter]] $ep" );
+ 			push(@{$totags[$botcounter]}, Irssi::timeout_add_once($botdelay * 1000, sub { &ag_skip($botcounter); } , []));
 		}
 	}
 	else		#if not episodic, just search and skip
 	{
-		$statusbarmessage = "Searching $bots[$botcounter] for \"$terms[$termcounter]\"";
-		ag_message("msg $bots[$botcounter] $findprefix $terms[$termcounter]" );
-		push(@totags, Irssi::timeout_add_once($botdelay * 1000, sub { &ag_skip; } , []));
-	}
-	if (!$getmsgflag)
-	{
-		$getmsgflag = 1;
-		Irssi::signal_add("message irc notice", "ag_getmsg");
+		ag_message("msg $bots[$botcounter] $findprefix $terms[$termcounter[$botcounter]]" );
+		push(@{$totags[$botcounter]}, Irssi::timeout_add_once($botdelay * 1000, sub { &ag_skip($botcounter); } , []));
 	}
 }
 
 sub ag_remtimeouts	#remove timeouts to avoid multiple instances of everything
 {
-	foreach my $to (@totags)	#remove timeouts and clear array
+	my($botcounter) = @_;
+	foreach my $to (@{$totags[$botcounter]})	#remove timeouts and clear array
 	{
 		Irssi::timeout_remove($to);
 	}
-	@totags = ();
+	$totags[$botcounter] = ();
 }
 
 sub ag_getmsg		#runs when bot sends privmsg. Avoid talking to bots to keep this from sending useless shit that breaks things
@@ -262,27 +266,37 @@ sub ag_getmsg		#runs when bot sends privmsg. Avoid talking to bots to keep this 
 	my $message = $_[1];
 	my $botname = $_[2];
 	$botname =~ tr/[A-Z]/[a-z]/;
-	$bots[$botcounter] =~ tr/[A-Z]/[a-z]/;
 	
-	if ($botname eq $bots[$botcounter] and !$msgflag)	#if it's your bot
+	my $botcounter = 0;
+	foreach my $bot (@bots)
 	{
-		&ag_remtimeouts;	#stop any skips from happening
-		ag_getpacks($message);	#and check for any new packs in the message
-		if ($#packs < 0) { push(@totags, Irssi::timeout_add_once($nexdelay * 1000, sub { &ag_skip; } , [])); }	#set up only one possible skip per search
-		if($#packs >= 0){ &ag_packrequest; }	#if there are any packs,
-		$msgflag = 1;		#let everyone know that the current bot has replied
+		$bot =~ tr/[A-Z]/[a-z]/;
+		if ($botname eq $bots[$botcounter])	#if it's your bot
+		{
+			&ag_remtimeouts($botcounter);	#stop any skips from happening
+			ag_getpacks($message, $botcounter);	#and check for any new packs in the message
+			my @packlist = @{$packs[$botcounter]};
+			if ($#packlist < 0 and !$msgflag[$botcounter])	#set up only one possible skip per search
+			{
+				my $temp = $botcounter;
+				push(@{$totags[$botcounter]}, Irssi::timeout_add_once($nexdelay * 1000, sub { &ag_skip($temp); } , []));
+			}
+			if($#packlist >= 0){ &ag_packrequest($botcounter); }	#if there are any packs,
+			$msgflag[$botcounter] = 1;		#let everyone know that the current bot has replied
+		}
+		$botcounter++;
 	}
 }
 
 sub ag_getpacks
 {
-	my($message) = @_;
+	my($message, $botcounter) = @_;
 	my @temp = split(' ', $message);	#split up the message into 'words'
 	&ag_getfinished;
 	
+	my $newpackflag = 1;
 	foreach my $m (@temp)		#find packs (#[NUMBER]: format)
 	{ 
-		$newpackflag = 1;
 		if ($m =~ m{#(\d+):})
 		{
 			foreach my $n (@finished)		#don't redownload finished packs
@@ -290,22 +304,21 @@ sub ag_getpacks
 				if ($n eq "$bots[$botcounter] $1") {$newpackflag = 0;}
 				last if ($n eq "$bots[$botcounter] $1");
 			}
-			if($newpackflag){push(@packs, $1);}	#push all new pack numbers to list of packs
+			if($newpackflag){push(@{$packs[$botcounter]}, $1);}	#push all new pack numbers to list of packs
 		}
 	}
-	@packs = ag_uniq(@packs);	#remove duplicates
+	@{$packs[$botcounter]} = ag_uniq(@{$packs[$botcounter]});	#remove duplicates
 }
 
 sub ag_packrequest	#sends the xdcc send request, and retries on failure
 {
-	&ag_remtimeouts;
-	if (!$reqpackflag)
+	my($botcounter) = @_;
+	&ag_remtimeouts($botcounter);
+	if (!$reqpackflag[$botcounter])
 	{
-		$reqpackflag = 1;
-		Irssi::signal_add("dcc request", "ag_opendcc");		#init DCC recieve init flag
-		$statusbarmessage = "Getting pack #$packs[$packcounter] on $bots[$botcounter]";
-		ag_message("msg $bots[$botcounter] $sendprefix $packs[$packcounter]");
-		push(@totags, Irssi::timeout_add_once($botdelay * 1000, sub { if (!$downloadflag) { &ag_packrequest; } } , []));
+		$reqpackflag[$botcounter] = 1;
+		ag_message("msg $bots[$botcounter] $sendprefix $packs[$botcounter][$packcounter[$botcounter]]");
+		push(@{$totags[$botcounter]}, Irssi::timeout_add_once($botdelay * 1000, sub { if (!$downloadflag[$botcounter]) { &ag_packrequest($botcounter); } } , []));
 	}
 }
 
@@ -315,190 +328,200 @@ sub ag_opendcc	#runs on DCC recieve init
 	my ($gdcc) = @_;	#current pack
 	my $botname = $gdcc->{'nick'};
 	my $filename = $gdcc->{'arg'};
+	my $filedownloadflag = 0;
 	$botname =~ tr/[A-Z]/[a-z]/;
-	$bots[$botcounter] =~ tr/[A-Z]/[a-z]/;
 
-	if ($botname eq $bots[$botcounter])	#if it's our bot, let user know, and stop any further AG pack requests until finished
+	foreach my $file (@filenames)
 	{
-		Irssi::signal_add("dcc destroyed", "ag_closedcc");
-		Irssi::signal_remove("dcc request", "ag_opendcc");		#stops any suplicate sends (there should only ever be one)
-		Irssi::signal_remove("message irc notice", "ag_getmsg");
-		$getmsgflag = 0;
+		if ($file eq $filename) {$filedownloadflag = 1;}
+	}
 
-		&ag_remtimeouts;
-		$dccflag = 0;
-		$downloadflag = 1;
-		$statusbarmessage = "Downloading $filename from $botname, #$packs[$packcounter]"; 
-		foreach my $n (@finished)		#don't redownload finished packs
+	my $botcounter = 0;	
+	foreach my $bot (@bots)
+	{
+		$bot =~ tr/[A-Z]/[a-z]/;
+		if ($botname eq $bot and !$filedownloadflag)	#if it's our bot and the file is not already being downloaded, let user know, and stop any further AG pack requests until finished
 		{
-			if ($n eq $gdcc->{'arg'})	#if file already downloaded, cancel
+			$getmsgflag[$botcounter] = 0;
+	
+			&ag_remtimeouts($botcounter);
+			$dccflag = 0;
+			$downloadflag[$botcounter] = 1;
+			foreach my $n (@finished)		#don't redownload finished packs
 			{
-				Irssi::signal_remove("dcc destroyed", "ag_closedcc");
-				$gdcc->close;
-				$gdcc->{'skipped'} = $gdcc->{'size'};
-				$gdcc->{'transfd'} = $gdcc->{'size'};
-				ag_closedcc($gdcc);				
+				if ($n eq $gdcc->{'arg'})	#if file already downloaded, cancel
+				{
+					Irssi::signal_remove("dcc destroyed", "ag_closedcc");
+					$gdcc->close;
+					$gdcc->{'skipped'} = $gdcc->{'size'};
+					$gdcc->{'transfd'} = $gdcc->{'size'};
+					ag_closedcc($gdcc);				
+					Irssi::signal_add("dcc destroyed", "ag_closedcc");
+				}
+				last if ($n eq $gdcc->{'arg'});
 			}
-			last if ($n eq $gdcc->{'arg'});
+			push(@filenames, $filename);
 		}
+		elsif ($botname eq $bot and $filedownloadflag)
+		{
+			Irssi::signal_remove("dcc destroyed", "ag_closedcc");
+			Irssi::signal_add("dcc destroyed", "ag_dummyclosedcc");
+			ag_message("msg $bots[$botcounter] $cancelprefix");
+			$gdcc->close;
+			ag_skip($botcounter);			
+		}
+		$botcounter++;
 	}
 }
 
 sub ag_skip
 {
-#	Irssi::print "AG | SKIP $msgflag $episodicflag $episode $#packs $packcounter $#terms $termcounter $#bots $botcounter"; 
-	&ag_remtimeouts;	#stop any other skips
-	$reqpackflag = 0;		#allow pack requests now that transfer is finished
+	my($botcounter) = @_;
+	my @packlist = ();
+	try {my @packlist = @{$packs[$botcounter]} or die;}	#workaround for @{} being dumb if an array inside of an array is empty 
+	catch {};
+	#Irssi::print "ag_skip $msgflag $episodicflag $episode $#packs $packcounter $#terms $termcounter $#bots $botcounter"; 
+	&ag_remtimeouts($botcounter);	#stop any other skips
+	$reqpackflag[$botcounter] = 0;		#allow pack requests now that transfer is finished
 	if($episodicflag)
 	{
-		@packs = ();		#delete and reset packlist
-		$packcounter = 0;
+		$packs[$botcounter] = ();		#delete and reset packlist
+		$packcounter[$botcounter] = 0;
 		
-		if ($msgflag)	#if the bot replied, then that means there were episodes, but we already have them
+		if ($msgflag[$botcounter])	#if the bot replied, then that means there were episodes, but we already have them
 		{
-			$episode++;
-			&ag_search;
+			$episode[$botcounter]++;
+			&ag_search($botcounter);
 		}
-		elsif ($termcounter < $#terms)	#otherwise just increment terms or bots
+		elsif ($termcounter[$botcounter] < $#terms)	#otherwise just increment terms
 		{
-			$episode = 1;
-			$formatflag = 1;
-			$termcounter++;
-			$packcounter = 0;
-			&ag_search;
+			$episode[$botcounter] = 1;
+			$formatflag[$botcounter] = 1;
+			$termcounter[$botcounter]++;
+			$packcounter[$botcounter] = 0;
+			&ag_search($botcounter);
 		}
-		elsif ($botcounter < $#bots)
+		else	#if last episode on last search on last term finished, then resets counters and starts over
 		{
-			$episode = 1;
-			$formatflag = 1;
-			$botcounter++;
-			$termcounter = 0;
-			$packcounter = 0;
-			&ag_search;
-		}
-		else	#if last episode on last search on last bot finished, then resets counters and starts over
-		{
-			$episode = 1;
-			$formatflag = 1;
-			$botcounter = 0;
-			$termcounter = 0;
-			$packcounter = 0;
-			$statusbarmessage = "Waiting $exedelay minutes"; 
-			Irssi::timeout_add_once($exedelay * 1000 * 60, sub { &ag_run; } , []);
+			$episode[$botcounter] = 1;
+			$formatflag[$botcounter] = 1;
+			$termcounter[$botcounter] = 0;
+			$packcounter[$botcounter] = 0;
+			push(@{$totags[$botcounter]}, Irssi::timeout_add_once($exedelay * 1000 * 60, sub { &ag_search($botcounter); } , []));
 			$runningflag = 0;
 		}
 	}
-	elsif ($packcounter < $#packs)
+	elsif ($packcounter[$botcounter] < $#packlist)
 	{
-		$packcounter++;
-		&ag_search;
+		$packcounter[$botcounter]++;
+		&ag_search($botcounter);
 	}
-	elsif ($termcounter < $#terms)
+	elsif ($termcounter[$botcounter] < $#terms)
 	{
-		@packs = ();		#delete last terms packlist
-		$termcounter++;
-		$packcounter = 0;
-		&ag_search;
+		$packs[$botcounter] = ();		#delete last terms packlist
+		$termcounter[$botcounter]++;
+		$packcounter[$botcounter] = 0;
+		&ag_search($botcounter);
 	}
-	elsif ($botcounter < $#bots)
+	else	#if last pack on last search on last term finished, then resets counters and starts over
 	{
-		@packs = ();		#delete last bots packlist
-		$botcounter++;
-		$termcounter = 0;
-		$packcounter = 0;
-		&ag_search;
-	}
-	else	#if last pack on last search on last bot finished, then resets counters and starts over
-	{
-		$episode = 1;
-		$formatflag = 1;
-		@packs = ();		#delete last bots packlist
-		$botcounter = 0;
-		$termcounter = 0;
-		$packcounter = 0;
-		$statusbarmessage = "Waiting $exedelay minutes"; 
-		Irssi::timeout_add_once($exedelay * 1000 * 60, sub { &ag_run; } , []);
+		$episode[$botcounter] = 1;
+		$formatflag[$botcounter] = 1;
+		$packs[$botcounter] = ();		#delete last bots packlist
+		$termcounter[$botcounter] = 0;
+		$packcounter[$botcounter] = 0;
+		push(@{$totags[$botcounter]}, Irssi::timeout_add_once($exedelay * 1000 * 60, sub { &ag_search($botcounter); } , []));
 		$runningflag = 0;
 	}
+}
+
+sub ag_dummyclosedcc
+{
+	Irssi::signal_remove("dcc destroyed", "ag_dummyclosedcc");
+	Irssi::signal_add("dcc destroyed", "ag_closedcc");
 }
 
 sub ag_closedcc
 {
 	my ($dcc) = @_;	#current pack
 	my $botname = $dcc->{'nick'};	#get the bots name, and checks if it's the one we want
+	my $filename = $dcc->{'arg'};
 	$botname =~ tr/[A-Z]/[a-z]/;
-	$bots[$botcounter] =~ tr/[A-Z]/[a-z]/;
 
-	if ($botname eq $bots[$botcounter] and $reqpackflag)	#checks if the is the bot
-	{ 
-		Irssi::signal_remove("dcc destroyed", "ag_opendcc");
-		$reqpackflag = 0;
-#		if ($dccflag == 0) {Irssi::signal_add("dcc request", "ag_opendcc");}	#if so, reinits DCC get signal for the next pack
-		$dccflag = 1;
-		
-		&ag_remtimeouts;
-				
-		if ($dcc->{'skipped'} == $dcc->{'size'})
-		{
-			ag_message("msg $bots[$botcounter] $cancelprefix");		#workaround because IRSSI doesn't actually 'get' packs if they're already downloaded, causing long stalls if left unattended.
-		}
-		if ($dcc->{'transfd'} == $dcc->{'size'})
-		{
-			ag_addfinished($dcc->{'arg'});
-		}
-		
-		if($episodicflag and $dcc->{'transfd'} == $dcc->{'size'})
-		{
-			@packs = ();		#delete packlist
-			$packcounter = 0;
-			$episode++;
-			$statusbarmessage = "Waiting $nexdelay seconds"; 
-			push(@totags, Irssi::timeout_add_once($nexdelay * 1000, sub { &ag_search; }, []));
-		}
-		elsif ($dcc->{'transfd'} == $dcc->{'size'})	
-		{
-			if ($packcounter < $#packs)
+	my $botcounter = 0;
+	foreach my $bot (@bots)
+	{
+		$bot =~ tr/[A-Z]/[a-z]/;
+
+		if ($botname eq $bot and $reqpackflag[$botcounter])	#checks if the is the bot
+		{ 
+			my $temp = $botcounter;
+			my @packlist = $packs[$botcounter];
+			my @termlist = $terms[$botcounter];
+
+			@filenames = grep { $_ ne $filename } @filenames;			#remove the file from the list of files being transferred
+			$reqpackflag[$botcounter] = 0;
+	#		if ($dccflag == 0) {Irssi::signal_add("dcc request", "ag_opendcc");}	#if so, reinits DCC get signal for the next pack
+			$dccflag = 1;
+			
+			&ag_remtimeouts($botcounter);
+					
+			if ($dcc->{'skipped'} == $dcc->{'size'})
 			{
-				$packcounter++;
-				$statusbarmessage = "Waiting $nexdelay seconds"; 
-				push(@totags, Irssi::timeout_add_once($nexdelay * 1000, sub { &ag_reqpack; }, []));
+				ag_message("msg $bots[$botcounter] $cancelprefix");		#workaround because IRSSI doesn't actually 'get' packs if they're already downloaded, causing long stalls if left unattended.
 			}
-			elsif ($termcounter < $#terms)
+			if ($dcc->{'transfd'} == $dcc->{'size'})
 			{
-				@packs = ();		#delete last terms packlist
-				$termcounter++;
-				$packcounter = 0;
-				$statusbarmessage = "Waiting $nexdelay seconds"; 
-				push(@totags, Irssi::timeout_add_once($nexdelay * 1000, sub { &ag_search; }, []));
+				ag_addfinished($dcc->{'arg'}, $botcounter);
+
+				if($episodicflag)
+				{
+					if ($packcounter[$botcounter] < $#packlist)
+					{
+						$packcounter[$botcounter]++;
+						push(@{$totags[$botcounter]}, Irssi::timeout_add_once($nexdelay * 1000, sub { &packrequest($temp); }, []));
+					}
+					else
+					{
+						$packs[$botcounter] = ();		#delete packlist
+						$packcounter[$botcounter] = 0;
+						$episode[$botcounter]++;
+						push(@{$totags[$botcounter]}, Irssi::timeout_add_once($nexdelay * 1000, sub { &ag_search($temp); }, []));
+					}
+				}
+				else
+				{
+					if ($packcounter[$botcounter] < $#packlist)
+					{
+						$packcounter[$botcounter]++;
+						push(@{$totags[$botcounter]}, Irssi::timeout_add_once($nexdelay * 1000, sub { &ag_search($temp); }, []));
+					}
+					elsif ($termcounter[$botcounter] < $#termlist)
+					{
+						$packs[$botcounter] = ();		#delete last terms packlist
+						$termcounter[$botcounter]++;
+						$packcounter[$botcounter] = 0;
+						push(@{$totags[$botcounter]}, Irssi::timeout_add_once($nexdelay * 1000, sub { &ag_search($temp); }, []));
+					}
+					else	#if last pack on last search on last bot finished, then resets counters and starts over
+					{
+						$packs[$botcounter] = ();
+						$termcounter[$botcounter] = 0;
+						$packcounter[$botcounter] = 0;
+						push(@{$totags[$botcounter]}, Irssi::timeout_add_once($exedelay * 1000 * 60, sub { &ag_search($botcounter); } , []));
+						$runningflag = 0;
+					}
+				}
 			}
-			elsif ($botcounter < $#bots)
+			else
 			{
-				@packs = ();		#delete last bots packlist
-				$botcounter++;
-				$termcounter = 0;
-				$packcounter = 0;
-				$statusbarmessage = "Waiting $nexdelay seconds"; 
-				push(@totags, Irssi::timeout_add_once($nexdelay * 1000, sub { &ag_search; }, []));
-			}
-			else	#if last pack on last search on last bot finished, then resets counters and starts over
-			{
-				@packs = ();
-				$botcounter = 0;
-				$termcounter = 0;
-				$packcounter = 0;
-				$statusbarmessage = "Waiting $nexdelay seconds"; 
-				Irssi::timeout_add_once($exedelay * 1000 * 60, sub { &ag_run; } , []);
-				$runningflag = 0;
+				push(@{$totags[$botcounter]}, Irssi::timeout_add_once($dcrdelay * 1000, sub { &ag_packrequest($temp); }, []));
 			}
 		}
-		else	#if not, retry transfer
-		{
-			$statusbarmessage = "File incomplete. Retrying in $nexdelay seconds"; 
-			push(@totags, Irssi::timeout_add_once($dcrdelay * 1000, sub { &ag_packrequest; }, []));
-		}
+		$botcounter++;
 	}
 }
-
+	
 sub ag_message
 {
 	(my $message) = $_[0];
@@ -520,9 +543,9 @@ sub ag_bar		#prints the message to the statusbar
 
 sub ag_addfinished		#save finished downloads
 {
-	my $filename = $_[0];
+	my ($filename, $botcounter) = @_;
 	open(FINISHED, ">>", $cachefilename);
-	print FINISHED $bots[$botcounter] . " " . $packs[$packcounter] . "\n";		#print pack to file	
+	print FINISHED $bots[$botcounter] . " " . $packs[$botcounter][$packcounter[$botcounter]] . "\n";		#print pack to file	
 	print FINISHED $filename . "\n";		#print name to file	
 	close(FINISHED);	
 }
@@ -653,16 +676,35 @@ sub ag_botrem	#remove bots
 
 sub ag_run	#main loop
 {
+	Irssi::signal_add("dcc request", "ag_opendcc");		#init DCC recieve init flag
+	Irssi::signal_add("message irc notice", "ag_getmsg");
 	if (!$initflag) {ag_server(Irssi::active_server());}
 	if($runningflag == 0)
 	{
 		$runningflag = 1;
 		&ag_getbots;
 		&ag_getterms;
-		if($#bots < 0 or $#terms < 0) {	$statusbarmessage = "No bots or no search terms."; push(@totags, Irssi::timeout_add_once(1000, sub { &ag_run; }, []));}
+				
+		if($#bots < 0 or $#terms < 0) {	$statusbarmessage = "No bots or no search terms."; Irssi::timeout_add_once(1000, sub { &ag_run; }, []);}
 		else 
 		{
-			&ag_search;
+			$statusbarmessage = "Active";
+			my $botcounter = 0;
+			foreach my $bot (@bots)
+			{
+				$totags[$botcounter] = ();
+				$msgflag[$botcounter] = 1;			#flag controls whether bot has responded to search request
+				$getmsgflag[$botcounter] = 0;		#flag keeps track of getmsg signals
+				$formatflag[$botcounter] = 1;		#flag controls whether a format is appended to the end of an episodic search string
+				$reqpackflag[$botcounter] = 0;		#flag to avoid multiple download requests
+				$downloadflag[$botcounter] = 0;		#flag to avoid multiple download requests
+				$termcounter[$botcounter] = 0;
+				$packcounter[$botcounter] = 0;
+				$episode[$botcounter] = 1;
+				$packs[$botcounter] = ();
+				&ag_search($botcounter);
+				$botcounter++;
+			}
 		}
 	}
 }
@@ -671,63 +713,59 @@ sub ag_stop
 {
 	Irssi::signal_remove("dcc request", "ag_opendcc");
 	Irssi::signal_remove("message irc notice", "ag_getmsg");
-	$getmsgflag = 0;
-
-	foreach my $to (@totags)
+	
+	my $botcounter = 0;
+	foreach my $bot (@bots)
 	{
-		Irssi::timeout_remove($to);
+		&ag_remtimeouts($botcounter);	#stop any skips from happening
+		ag_message("msg $bot $cancelprefix");
+		$getmsgflag[$botcounter] = 0;
+		$botcounter++;
+		@msgflag = ();
+		@formatflag = ();
+		@reqpackflag = ();
+		@downloadflag = ();
+		@termcounter = ();
+		@packcounter = ();
+		@episode = ();
 	}
-	@totags = ();
-
-	ag_message("msg $bots[$botcounter] $cancelprefix");
 
 	if($runningflag == 1)
 	{
 		$runningflag = 0;
 		$statusbarmessage = "Inactive";
 	}
-	$msgflag = 1;
-	$termisepisodicflag = 0;
-	$formatflag = 1;
-	$reqpackflag = 0;
-	$downloadflag = 0;
-	$newpackflag = 1;
 	$dccflag = 0;
 	@terms = ();
 	@bots = ();
 	@packs = ();
 	@finished = ();
-	$termcounter = 0;
 	$botcounter = 0;	
-	$packcounter = 0;
-	$episode = 1;
 }
 
 sub ag_restart
 {
-	$statusbarmessage = "No connection";
+	$statusbarmessage = "Inactive";
 	Irssi::signal_remove("dcc request", "ag_opendcc");
 	Irssi::signal_remove("message irc notice", "ag_getmsg");
-	$getmsgflag = 0;
-
-	foreach my $to (@totags)
+	
+	my $botcounter = 0;
+	foreach my $bot (@bots)
 	{
-		Irssi::timeout_remove($to);
+		$getmsgflag[$botcounter] = 0;
+		&ag_remtimeouts($botcounter);
+		ag_message("msg $bot $cancelprefix");
+		$botcounter++;
 	}
-	@totags = ();
-
-	ag_message("msg $bots[$botcounter] $cancelprefix");
 
 	if($runningflag == 1)
 	{
 		$runningflag = 0;
 	}
-	$msgflag = 1;
-	$termisepisodicflag = 0;
-	$formatflag = 1;
-	$reqpackflag = 0;
-	$downloadflag = 0;
-	$newpackflag = 1;
+	@msgflag = ();
+	@formatflag = ();
+	@reqpackflag = ();
+	@downloadflag = ();
 	$dccflag = 0;
 	Irssi::signal_add("server connected", "ag_initserver");
 }
@@ -778,6 +816,7 @@ if ($initflag) {Irssi::signal_add("server connected", "ag_initserver");}
 Irssi::signal_add("server disconnected", "ag_restart");
 Irssi::signal_add("server lag disconnect", "ag_restart");
 Irssi::signal_add("setup changed", "ag_setsettings");
+Irssi::signal_add("dcc destroyed", "ag_closedcc");
 
 Irssi::command_bind("ag_help", "ag_help");
 Irssi::command_bind("ag_run", "ag_run");
