@@ -1,6 +1,6 @@
 ##############################################################################
 #
-# mh_windowfill.pl v1.05 (20151206)
+# mh_windowfill.pl v1.06 (20151220)
 #
 # Copyright (c) 2015  Michael Hansen
 #
@@ -27,6 +27,8 @@
 #	with script:    http://picpaste.com/e3b84ead852e3e77b12ed69383f1f80c.png
 #
 # history:
+#	v1.06 (20151220)
+#		added changed field to irssi header
 #	v1.05 (20151206)
 #		added a few comments
 #	v1.04 (20151128)
@@ -58,7 +60,7 @@ use strict;
 use Irssi 20100403;
 use Irssi::TextUI;
 
-our $VERSION = '1.05';
+our $VERSION = '1.06';
 our %IRSSI   =
 (
 	'name'        => 'mh_windowfill',
@@ -67,6 +69,7 @@ our %IRSSI   =
 	'authors'     => 'Michael Hansen',
 	'contact'     => 'mh on IRCnet #help',
 	'url'         => 'http://scripts.irssi.org / https://github.com/mh-source/irssi-scripts',
+	'changed'     => 'Sun Dec 20 05:07:00 CET 2015',
 );
 
 ##############################################################################
@@ -162,12 +165,12 @@ sub command_clear
 #
 ##############################################################################
 
-windowfill_all();
-
 Irssi::signal_add_last('mainwindow resized', 'windowfill_all');
 Irssi::signal_add_last('window created',     'windowfill');
 
 Irssi::command_bind('clear', 'command_clear');
+
+windowfill_all();
 
 1;
 
