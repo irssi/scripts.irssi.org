@@ -18,7 +18,7 @@
 # USE: to add the statusbar : /statusbar [name] add ag_statusbar
 #      for help             : ag_help
 #      to run               : ag_run
-#      to halt at next      : ag_stop
+#      to halt              : ag_stop
 #      to reset all settings: ag_reset
 #      to set the server    : ag_server 
 #      to add a bot         : ag_botadd BOT1 BOT2 *** BOTN
@@ -26,16 +26,16 @@
 #      to add string        : ag_add "[TEXT STRING OF TV SHOW/CHINESE CARTOON/ETC]","[ETC]",***,"[ETC]" 
 #      to remove strings    : ag_rem "[TEXT STRING OF TV SHOW/CHINESE CARTOON/ETC]","[ETC]",***,"[ETC]" 
 #      to see terms and bots: ag_list
-#      to clear     cache   : ag_clearcache
-#      ag_next_delay                 : delay between full transfers
-#      ag_dcc_closed_retry_delay     : delay after premature transfer
-#      ag_bot_delay                  : delay between request and when you "SHOULD" get it
-#      ag_interrun_delay             : delay (in minutes, the rest seconds) between finishing a round and starting another
-#      ag_autorun                    : whether to run on startup
-#      ag_xdcc_send_prefix           : the xdcc message before the pack #
-#      ag_xdcc_find_prefix           : the xdcc message before the search term
-#      ag_bot_file                   : where your bot list is stored
-#      ag_search_file                : where your search list is stored
+#      to clear cache       : ag_clearcache
+#      ag_next_delay             : delay between full transfers
+#      ag_dcc_closed_retry_delay : delay after premature transfer
+#      ag_bot_delay              : delay between request and when you "SHOULD" get it
+#      ag_interrun_delay         : delay (in minutes, the rest seconds) between finishing a round and starting another
+#      ag_autorun                : whether to run on startup
+#      ag_xdcc_send_prefix       : the xdcc message before the pack #
+#      ag_xdcc_find_prefix       : the xdcc message before the search term
+#      ag_bot_file               : where your bot list is stored
+#      ag_search_file            : where your search list is stored
 
 use strict;
 use warnings;
@@ -159,27 +159,26 @@ sub ag_server	#init server
 sub ag_help
 {
 	Irssi::print "to add the statusbar : /statusbar [name] add ag_statusbar";
-	Irssi::print "for this help        : ag_help";
+	Irssi::print "for help             : ag_help";
 	Irssi::print "to run               : ag_run";
-	Irssi::print "to halt at next      : ag_stop";
+	Irssi::print "to halt              : ag_stop";
 	Irssi::print "to reset all settings: ag_reset";
-	Irssi::print "to set the server    : ag_server";
+	Irssi::print "to set the server    : ag_server ";
 	Irssi::print "to add a bot         : ag_botadd BOT1 BOT2 *** BOTN";
 	Irssi::print "to remove a bot      : ag_botrem BOT1 BOT2 *** BOTN";
-	Irssi::print "to add string        : ag_add \"[TEXT STRING OF SEARCH]\",\"[ETC]\",***,\"[ETC]\"";
-	Irssi::print "to remove strings    : ag_rem \"[TEXT STRING OF SEARCH]\",\"[ETC]\",***,\"[ETC]\"";
+	Irssi::print "to add string        : ag_add \"[TEXT STRING OF TV SHOW/CHINESE CARTOON/ETC]\",\"[ETC]\",***,\"[ETC]\" ";
+	Irssi::print "to remove strings    : ag_rem \"[TEXT STRING OF TV SHOW/CHINESE CARTOON/ETC]\",\"[ETC]\",***,\"[ETC]\" ";
 	Irssi::print "to see terms and bots: ag_list";
 	Irssi::print "to clear cache       : ag_clearcache";
-	Irssi::print "ag_next_delay            : delay between full transfers";
-	Irssi::print "ag_dcc_closed_retry_delay: delay after premature transfer";
-	Irssi::print "ag_bot_delay             : max time to wait for the bot to respond";
-	Irssi::print "ag_interrun_delay        : delay (in minutes, the rest seconds) between finishing a round and starting another";
-	Irssi::print "ag_autorun               : whether to run on startup";
-	Irssi::print "ag_episodic              : search ep 1, if found then search ep 2. Use for series if bot limits search results. Results may vary depending on bot and search term";
-	Irssi::print "ag_xdcc_send_prefix      : the xdcc message before the pack #";
-	Irssi::print "ag_xdcc_cancel_prefix    : the xdcc message to cancel a transfer";
-	Irssi::print "ag_xdcc_find_prefix      : the xdcc message before the search term";
-	Irssi::print "ag_folder                : Location for data files. ~/.irssi/ reccomended";
+	Irssi::print "ag_next_delay             : delay between full transfers";
+	Irssi::print "ag_dcc_closed_retry_delay : delay after premature transfer";
+	Irssi::print "ag_bot_delay              : delay between request and when you \"SHOULD\" get it";
+	Irssi::print "ag_interrun_delay         : delay (in minutes, the rest seconds) between finishing a round and starting another";
+	Irssi::print "ag_autorun                : whether to run on startup";
+	Irssi::print "ag_xdcc_send_prefix       : the xdcc message before the pack #";
+	Irssi::print "ag_xdcc_find_prefix       : the xdcc message before the search term";
+	Irssi::print "ag_bot_file               : where your bot list is stored";
+	Irssi::print "ag_search_file            : where your search list is stored";
 }
 
 sub ag_getbots		#reads in bot list
@@ -221,7 +220,7 @@ sub ag_search		#searches bots for packs
 	if($episodicflag)	
 	{
 		my $searchterm;
-		my @words = split('#', $terms[$termcounter[$botcounter]]);
+		my @words = split(/#/, $terms[$termcounter[$botcounter]]);
 		my $ep = sprintf("%.2d", $episode[$botcounter]);
 		if ($#words > 0){$searchterm = "$words[0]$ep$words[1]";}
 		else {$searchterm = "$words[0] $ep";}
