@@ -166,8 +166,8 @@ sub ag_help
 	Irssi::print "to set the server    : ag_server ";
 	Irssi::print "to add a bot         : ag_botadd BOT1 BOT2 *** BOTN";
 	Irssi::print "to remove a bot      : ag_botrem BOT1 BOT2 *** BOTN";
-	Irssi::print "to add string        : ag_add \"[TEXT STRING OF TV SHOW/CHINESE CARTOON/ETC]\",\"[ETC]\",***,\"[ETC]\" ";
-	Irssi::print "to remove strings    : ag_rem \"[TEXT STRING OF TV SHOW/CHINESE CARTOON/ETC]\",\"[ETC]\",***,\"[ETC]\" ";
+	Irssi::print "to add string        : ag_add \"[TEXT STRING OF SEARCH]\",\"[ETC]\",***,\"[ETC]\" ";
+	Irssi::print "to remove strings    : ag_rem \"[TEXT STRING OF SEARCH]\",\"[ETC]\",***,\"[ETC]\" ";
 	Irssi::print "to see terms and bots: ag_list";
 	Irssi::print "to clear cache       : ag_clearcache";
 	Irssi::print "ag_next_delay             : delay between full transfers";
