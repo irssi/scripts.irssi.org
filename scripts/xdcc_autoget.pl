@@ -517,7 +517,6 @@ sub ag_closedcc
 						$packs[$botcounter] = ();		#delete packlist
 						$packcounter[$botcounter] = 0;
 						$episode[$botcounter]++;
-						Irssi::print"$bots[$botcounter] $filename ag_search()";
 						Irssi::timeout_add_once($nexdelay * 1000 * $delayoverride, sub { &ag_search($temp); }, []);
 					}
 				}
