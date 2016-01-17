@@ -85,6 +85,7 @@ my @getmsgflag = ();		#flag keeps track of getmsg signals
 my $episodicflag;		#flag controls whether to search episode by episode (eg instead of searching boku no pice, it'll search for boku no pico 1, then boku no pico 2, etc as long as results show up)
 my @reqpackflag = ();		#flag to avoid multiple download requests
 my @downloadflag = ();		#flag to avoid multiple download requests
+my @skipunfinishedflag = ();	#flag to tell ag_closedcc to not redownload an unfinished file
 
 my $sendprefix;		#virtually universal xdcc send, cancel, and find prefixes
 my $cancelprefix;
@@ -115,10 +116,7 @@ sub ag_init		#init system
 	Irssi::print "AG | Autoget V$VERSION initiated";
 	Irssi::print "AG | /ag_help for help";
 	&ag_list;
-	if ($episodicflag)
-	{
-		Irssi::print "AG | Episodic: Yes";
-	}
+	if ($episodicflag) {Irssi::print "AG | Episodic: Yes";}
 	else {Irssi::print "AG | Episodic: No";}
 	Irssi::print "AG | Data folder: $folder";
 }
@@ -314,6 +312,7 @@ sub ag_opendcc	#runs on DCC recieve init
 	my $botname = $gdcc->{'nick'};
 	my $filename = $gdcc->{'arg'};
 	my $filedownloadflag = 0;
+	
 	$botname =~ tr/[A-Z]/[a-z]/;
 	
 	foreach my $file (@filenames){ if ($file eq $filename){ $filedownloadflag = 1; }}
@@ -324,20 +323,21 @@ sub ag_opendcc	#runs on DCC recieve init
 		$bot =~ tr/[A-Z]/[a-z]/;
 		if ($botname eq $bot and !$filedownloadflag)	#if it's our bot and the file is not already being downloaded, let user know, and stop any further AG pack requests until finished
 		{
+			&ag_remtimeouts($botcounter);	#stop any other skips
 			$getmsgflag[$botcounter] = 0;
-	
-			&ag_remtimeouts($botcounter);
+			
+			my $size = $gdcc->{'size'};
+			my $skipped = $gdcc->{'skipped'};
+			
 			$downloadflag[$botcounter] = 1;
 			foreach my $n (@finished)		#don't redownload finished packs
 			{
 				if ($n eq $gdcc->{'arg'})	#if file already downloaded, cancel
 				{
-					Irssi::signal_remove("dcc destroyed", "ag_closedcc");
+					ag_message("msg $bots[$botcounter] $cancelprefix" );
+					ag_addfinished($gdcc->{'arg'}, $botcounter);
+					$skipunfinishedflag[$botcounter] = 1;
 					$gdcc->close;
-					$gdcc->{'skipped'} = $gdcc->{'size'};
-					$gdcc->{'transfd'} = $gdcc->{'size'};
-					ag_closedcc($gdcc);				
-					Irssi::signal_add("dcc destroyed", "ag_closedcc");
 				}
 				last if ($n eq $gdcc->{'arg'});
 			}
@@ -345,11 +345,9 @@ sub ag_opendcc	#runs on DCC recieve init
 		}
 		elsif ($botname eq $bot and $filedownloadflag)	#don't download packs that are being downloaded by other bots
 		{
-			Irssi::signal_remove("dcc destroyed", "ag_closedcc");
+			ag_message("msg $bots[$botcounter] $cancelprefix" );
+			$skipunfinishedflag[$botcounter] = 1;
 			$gdcc->close;
-			$gdcc->{'skipped'} = $gdcc->{'size'};
-			ag_closedcc($gdcc);				
-			Irssi::signal_add("dcc destroyed", "ag_closedcc");
 		}
 		$botcounter++;
 	}
@@ -445,26 +443,28 @@ sub ag_closedcc
 				$delayoverride = 2;						#doubles the delay for next message to make up for prematurely sending xdcc cancel
 				ag_message("msg $bots[$botcounter] $cancelprefix");		#workaround because IRSSI doesn't get and then cancel packs on its own if they're already downloaded, causing stalls if left unattended.
 			}
-			if ($dcc->{'transfd'} == $dcc->{'size'})
+			if ($dcc->{'transfd'} == $dcc->{'size'} or $skipunfinishedflag[$botcounter])
 			{
-				@filenames = grep { $_ ne $filename } @filenames;			#remove the file from the list of files being transferred
-				ag_addfinished($dcc->{'arg'}, $botcounter);
-			}
-			if ($dcc->{'skipped'} == $dcc->{'size'} or $dcc->{'transfd'} == $dcc->{'size'})
-			{
+				if (!$skipunfinishedflag[$botcounter])
+				{
+					@filenames = grep { $_ ne $filename } @filenames;		#remove the file from the list of files being transferred
+	 				ag_addfinished($dcc->{'arg'}, $botcounter);
+	 			}
+				$skipunfinishedflag[$botcounter] = 0;				#reset any skip flags
 				if($episodicflag)
 				{
 					if ($packcounter[$botcounter] < $#packlist)
 					{
 						$packcounter[$botcounter]++;
-						push(@{$totags[$botcounter]}, Irssi::timeout_add_once($nexdelay * 1000 * $delayoverride, sub { &packrequest($temp); }, []));
+						Irssi::timeout_add_once($nexdelay * 1000 * $delayoverride, sub { &ag_packrequest($temp); }, []);
 					}
 					else
 					{
 						$packs[$botcounter] = ();		#delete packlist
 						$packcounter[$botcounter] = 0;
 						$episode[$botcounter]++;
-						push(@{$totags[$botcounter]}, Irssi::timeout_add_once($nexdelay * 1000 * $delayoverride, sub { &ag_search($temp); }, []));
+						Irssi::print"$bots[$botcounter] $filename ag_search()";
+						Irssi::timeout_add_once($nexdelay * 1000 * $delayoverride, sub { &ag_search($temp); }, []);
 					}
 				}
 				else
@@ -472,21 +472,21 @@ sub ag_closedcc
 					if ($packcounter[$botcounter] < $#packlist)
 					{
 						$packcounter[$botcounter]++;
-						push(@{$totags[$botcounter]}, Irssi::timeout_add_once($nexdelay * 1000 * $delayoverride, sub { &ag_search($temp); }, []));
+						Irssi::timeout_add_once($nexdelay * 1000 * $delayoverride, sub { &ag_search($temp); }, []);
 					}
 					elsif ($termcounter[$botcounter] < $#termlist)
 					{
 						$packs[$botcounter] = ();		#delete last terms packlist
 						$termcounter[$botcounter]++;
 						$packcounter[$botcounter] = 0;
-						push(@{$totags[$botcounter]}, Irssi::timeout_add_once($nexdelay * 1000 * $delayoverride, sub { &ag_search($temp); }, []));
+						Irssi::timeout_add_once($nexdelay * 1000 * $delayoverride, sub { &ag_search($temp); }, []);
 					}
 					else	#if last pack on last search on last bot finished, then resets counters and starts over
 					{
 						$packs[$botcounter] = ();
 						$termcounter[$botcounter] = 0;
 						$packcounter[$botcounter] = 0;
-						push(@{$totags[$botcounter]}, Irssi::timeout_add_once($exedelay * 1000 * 60, sub { &ag_search($temp); } , []));
+						Irssi::timeout_add_once($exedelay * 1000 * 60, sub { &ag_search($temp); } , []);
 						$runningflag = 0;
 					}
 				}
@@ -675,6 +675,7 @@ sub ag_run	#main loop
 				$getmsgflag[$botcounter] = 0;		#flag keeps track of getmsg signals
 				$reqpackflag[$botcounter] = 0;		#flag to avoid multiple download requests
 				$downloadflag[$botcounter] = 0;		#flag to avoid multiple download requests
+				$skipunfinishedflag[$botcounter] = 0;
 				$termcounter[$botcounter] = 0;
 				$packcounter[$botcounter] = 0;
 				$episode[$botcounter] = 1;
@@ -701,6 +702,7 @@ sub ag_stop
 		@msgflag = ();
 		@reqpackflag = ();
 		@downloadflag = ();
+		@skipunfinishedflag = ();
 		@termcounter = ();
 		@packcounter = ();
 		@episode = ();
