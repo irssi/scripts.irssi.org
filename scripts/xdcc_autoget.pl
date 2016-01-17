@@ -116,6 +116,7 @@ sub ag_init		#init system
 	Irssi::print "AG | Autoget V$VERSION initiated";
 	Irssi::print "AG | /ag_help for help";
 	&ag_list;
+	&ag_getfinished;
 	if ($episodicflag) {Irssi::print "AG | Episodic: Yes";}
 	else {Irssi::print "AG | Episodic: No";}
 	Irssi::print "AG | Data folder: $folder";
@@ -202,6 +203,59 @@ sub ag_getfinished		#reads in finished packs list
 	chomp(@finished);
 	@finished = ag_uniq(@finished);
 	close(FINISHED);
+	&ag_clearcache;
+	@finished = &ag_uniq(@finished);
+	@finished = nsort(@finished);	#sort normally
+	open(FINISHED, ">", $cachefilename);
+	foreach my $finish (@finished)
+	{
+		print FINISHED $finish . "\n";		#print name to file	
+	}	
+		close(FINISHED);	
+}
+
+sub nsort {		#shamelessly ripped from Sort::Naturally
+	my($cmp, $lc);
+	return @_ if @_ < 2;   # Just to be CLEVER.
+
+	my($x, $i);  # scratch vars
+
+	map
+		$_->[0],
+
+	sort {
+		# Uses $i as the index variable, $x as the result.
+		$x = 0;
+		$i = 1;
+
+		while($i < @$a and $i < @$b) {
+			last if ($x = ($a->[$i] cmp $b->[$i])); # lexicographic
+			++$i;
+
+			last if ($x = ($a->[$i] <=> $b->[$i])); # numeric
+			++$i;
+		}
+
+		$x || (@$a <=> @$b) || ($a->[0] cmp $b->[0]);
+	}
+
+	map {
+		my @bit = ($x = defined($_) ? $_ : '');
+
+		if($x =~ m/^[+-]?(?=\d|\.\d)\d*(?:\.\d*)?(?:[Ee](?:[+-]?\d+))?\z/s) {
+			# It's entirely purely numeric, so treat it specially:
+			push @bit, '', $x;
+		} else {
+			# Consume the string.
+			while(length $x) {
+				push @bit, ($x =~ s/^(\D+)//s) ? lc($1) : '';
+				push @bit, ($x =~ s/^(\d+)//s) ?    $1  :  0;
+			}
+		}
+
+		\@bit;
+	}
+	@_;
 }
 
 sub ag_clearcache		#clears cache of saved packs
@@ -269,7 +323,6 @@ sub ag_getpacks			#if ($m =~ m{#(\d+):})
 	my($message, $botcounter) = @_;
 	my @temp = split(/[#,]/, $message);	#split up the message into 'words'
 	my $timeoutscleared = 0;
-	&ag_getfinished;
 	
 	my $newpackflag = 1;
 	foreach my $m (@temp)		#find packs (#[NUMBER]: format)
@@ -284,7 +337,9 @@ sub ag_getpacks			#if ($m =~ m{#(\d+):})
 			}
 			foreach my $n (@finished)		#don't redownload finished packs
 			{
-				if ($n eq "$bots[$botcounter] $1" or $n eq $2) {$newpackflag = 0;}
+				my $filename = $2;
+				$filename =~ tr/[ ']/[__]/;
+				if ($n eq "$bots[$botcounter] $1" or $n eq $filename) {$newpackflag = 0;}
 				last if ($n eq "$bots[$botcounter] $1");
 			}
 			if($newpackflag){push(@{$packs[$botcounter]}, $1);}	#push all new pack numbers to list of packs
@@ -313,6 +368,7 @@ sub ag_opendcc	#runs on DCC recieve init
 	my $filename = $gdcc->{'arg'};
 	my $filedownloadflag = 0;
 	
+	$filename =~ tr/[ ']/[__]/;
 	$botname =~ tr/[A-Z]/[a-z]/;
 	
 	foreach my $file (@filenames){ if ($file eq $filename){ $filedownloadflag = 1; }}
@@ -325,10 +381,7 @@ sub ag_opendcc	#runs on DCC recieve init
 		{
 			&ag_remtimeouts($botcounter);	#stop any other skips
 			$getmsgflag[$botcounter] = 0;
-			
-			my $size = $gdcc->{'size'};
-			my $skipped = $gdcc->{'skipped'};
-			
+						
 			$downloadflag[$botcounter] = 1;
 			foreach my $n (@finished)		#don't redownload finished packs
 			{
@@ -441,12 +494,13 @@ sub ag_closedcc
 			if ($dcc->{'skipped'} == $dcc->{'size'})
 			{
 				$delayoverride = 2;						#doubles the delay for next message to make up for prematurely sending xdcc cancel
-				ag_message("msg $bots[$botcounter] $cancelprefix");		#workaround because IRSSI doesn't get and then cancel packs on its own if they're already downloaded, causing stalls if left unattended.
+				if (!$skipunfinishedflag[$botcounter]) {ag_message("msg $bots[$botcounter] $cancelprefix");}		#workaround to cancel packs avoiding stalls if left unattended.
 			}
 			if ($dcc->{'transfd'} == $dcc->{'size'} or $skipunfinishedflag[$botcounter])
 			{
 				if (!$skipunfinishedflag[$botcounter])
 				{
+					$filename =~ tr/[ ']/[__]/;
 					@filenames = grep { $_ ne $filename } @filenames;		#remove the file from the list of files being transferred
 	 				ag_addfinished($dcc->{'arg'}, $botcounter);
 	 			}
@@ -524,6 +578,7 @@ sub ag_addfinished		#save finished downloads
 	my ($filename, $botcounter) = @_;
 	open(FINISHED, ">>", $cachefilename);
 	print FINISHED $bots[$botcounter] . " " . $packs[$botcounter][$packcounter[$botcounter]] . "\n";		#print pack to file	
+	$filename =~ tr/[ ']/[__]/;
 	print FINISHED $filename . "\n";		#print name to file	
 	close(FINISHED);	
 }
