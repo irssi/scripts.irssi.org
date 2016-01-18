@@ -760,6 +760,7 @@ sub ag_stop
 		@termcounter = ();
 		@packcounter = ();
 		@episode = ();
+		@filenames = ();
 	}
 
 	if($runningflag == 1)
