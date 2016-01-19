@@ -711,8 +711,6 @@ sub ag_botrem	#remove bots
 
 sub ag_run	#main loop
 {
-	Irssi::signal_add("dcc request", "ag_opendcc");		#init DCC recieve init flag
-	Irssi::signal_add("message irc notice", "ag_getmsg");
 	if (!$initflag) {ag_server(Irssi::active_server());}
 	if($runningflag == 0)
 	{
@@ -745,10 +743,7 @@ sub ag_run	#main loop
 }
 
 sub ag_stop
-{
-	Irssi::signal_remove("dcc request", "ag_opendcc");
-	Irssi::signal_remove("message irc notice", "ag_getmsg");
-	
+{	
 	my $botcounter = 0;
 	foreach my $bot (@bots)
 	{
@@ -774,15 +769,12 @@ sub ag_stop
 	@terms = ();
 	@bots = ();
 	@packs = ();
-	@finished = ();
 	$botcounter = 0;	
 }
 
 sub ag_restart
 {
 	$statusbarmessage = "No Connection";
-	Irssi::signal_remove("dcc request", "ag_opendcc");
-	Irssi::signal_remove("message irc notice", "ag_getmsg");
 	&ag_stop();
 	Irssi::signal_add("server connected", "ag_initserver");
 }
@@ -828,6 +820,8 @@ Irssi::timeout_add(100, sub { Irssi::statusbars_recreate_items(); Irssi::statusb
 &ag_init;
 if ($initflag) {Irssi::signal_add("server connected", "ag_initserver");}
 
+Irssi::signal_add("dcc request", "ag_opendcc");
+Irssi::signal_add("message irc notice", "ag_getmsg");
 Irssi::signal_add("server disconnected", "ag_restart");
 Irssi::signal_add("server lag disconnect", "ag_restart");
 Irssi::signal_add("setup changed", "ag_setsettings");
