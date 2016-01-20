@@ -58,7 +58,7 @@ use vars qw($VERSION %IRSSI);
 # Declare the administrative information.
 ##
 
-$VERSION = '15.01.01';
+$VERSION = '18.01.01';
 
 %IRSSI = (
     authors     => 'Geert Hauwaerts',
@@ -67,7 +67,7 @@ $VERSION = '15.01.01';
     description => 'This script shows incoming notices into the active channel.',
     license     => 'GNU General Public License',
     url         => 'https://github.com/GeertHauwaerts/irssi-scripts/blob/master/src/active_notice.pl',
-    changed     => 'Thu Jun 25 20:46:51 UTC 2015',
+    changed     => '2018-07-27',
 );
 
 
@@ -136,7 +136,12 @@ sub notice_move {
             return;
         }
         
+        ##
+        # replace a single % with %%. (by  Dwarf <dwarf@rizon.net>) 
+        ##
         
+		$text =~ s/%/%%/g;
+
         ##
         # Print the notice in the active window.
         ###
