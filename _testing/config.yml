@@ -83,3 +83,4 @@ whitelist:
   - wordcompletition
   - xetra
   - xmmsinfo
+  - desktop-notify # fails test due to missing gobject-introspection in travis
