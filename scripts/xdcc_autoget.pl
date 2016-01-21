@@ -361,7 +361,7 @@ sub ag_packrequest	#sends the xdcc send request, and retries on failure
 
 sub ag_opendcc	#runs on DCC recieve init
 {
-	Irssi::signal_continue;
+	&Irssi::signal_continue;
 	my ($gdcc) = @_;	#current pack
 	my $botname = $gdcc->{'nick'};
 	my $filename = $gdcc->{'arg'};
