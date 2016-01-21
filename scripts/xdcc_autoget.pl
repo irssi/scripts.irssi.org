@@ -408,9 +408,7 @@ sub ag_opendcc	#runs on DCC recieve init
 sub ag_skip
 {
 	my($botcounter) = @_;
-	my @packlist = ();
-	try {my @packlist = @{$packs[$botcounter]};}	#workaround for @{} being dumb if an array inside of an array is empty 
-	catch {};
+	my @packlist = @{$packs[$botcounter]//[]};	#if $packs[botcounter] is undefined, pass an empty array reference
 	ag_remtimeouts($botcounter);	#stop any other skips
 	$reqpackflag[$botcounter] = 0;		#allow pack requests now that transfer is finished
 	if($episodicflag)
