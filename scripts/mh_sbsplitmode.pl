@@ -1,6 +1,6 @@
 ##############################################################################
 #
-# mh_sbsplitmode.pl v1.05 (20151217)
+# mh_sbsplitmode.pl v1.06 (20151227)
 #
 # Copyright (c) 2015  Michael Hansen
 #
@@ -26,7 +26,7 @@
 # optional details. there is also a command /splitmode that will list
 # the status of all servers being watched. since /stats d is disabled
 # for regular users on most irc networks, i have provided a setting to
-# tell which networks we will çheck - currently only IRCnet is in the
+# tell which networks we will check - currently only IRCnet is in the
 # list. if you do not have the privileges it will tell you that splitmode
 # is unavailable.
 #
@@ -47,11 +47,24 @@
 # mh_sbsplitmode_lag_limit (default 5): amount of lag (in seconds) where we skip
 # checking the server for splitmode
 #
+# mh_sbsplitmode_print (default ON): enable/disable printing "* is in splitmode ..."
+# or "* is no longer in splitmode" in all relevant (server/channel/query) windows
+# of the server
+#
+# mh_sbsplitmode_print_details (default ON): enable/disable showing the server/user
+# details in "* is in splitmode [servers:<current>/<min> users:<current>/<min>]"
+#
 # to configure irssi to show the new statusbar item in a default irssi
 # installation type '/statusbar window add -after window_empty mh_sbsplitmode'.
 # see '/help statusbar' for more details and do not forget to '/save'
 #
 # history:
+#	v1.06 (20151227)
+#		added _print/_print_details and supporting code
+#		/splitmode now prints stats d unavailable in a bit nicer way
+#		now using individual redir numeric events for stats d
+#		now does a stats d on netsplit/join
+#		added changed field to irssi header
 #	v1.05 (20151217)
 #		added indents to /help
 #	v1.04 (20151210)
@@ -82,7 +95,7 @@ use strict;
 use Irssi 20100403;
 use Irssi::TextUI;
 
-our $VERSION = '1.05';
+our $VERSION = '1.06';
 our %IRSSI   =
 (
 	'name'        => 'mh_sbsplitmode',
@@ -91,6 +104,7 @@ our %IRSSI   =
 	'authors'     => 'Michael Hansen',
 	'contact'     => 'mh on IRCnet #help',
 	'url'         => 'http://scripts.irssi.org / https://github.com/mh-source/irssi-scripts',
+	'changed'     => 'Sun Dec 27 11:50:52 CET 2015',
 );
 
 ##############################################################################
@@ -142,6 +156,9 @@ sub request_stats_d
 			{
 				if (lc($networkname) eq lc($server->{'chatnet'}))
 				{
+					#
+					# lag-protect stats d request
+					#
 					my $lag_limit = Irssi::settings_get_int('mh_sbsplitmode_lag_limit');
 
 					if ($lag_limit)
@@ -157,12 +174,12 @@ sub request_stats_d
 							-1, # remote
 							'', # failure signal
 							{   # signals
-								'event 248' => 'redir mh_sbsplitmode stats d',
-								'event 481' => 'redir mh_sbsplitmode stats d',
+								'event 248' => 'redir mh_sbsplitmode event 248', # RPL_STATSDEFINE
+								'event 481' => 'redir mh_sbsplitmode event 481', # ERR_NOPRIVILEGES
 								''          => 'event empty',
 							}
 						);
-						$server->send_raw("stats d");
+						$server->send_raw('STATS d');
 						last;
 					}
 				}
@@ -222,11 +239,11 @@ sub timeout_request_stats_d
 #
 ##############################################################################
 
-sub signal_redir_stats_d
+sub signal_redir_event_248
 {
 	my ($server, $data, $sender) = @_;
 
-	if ($data =~ /.* S:([0-9]*).* SS:[0-9]*\/([0-9]*)\/([0-9]*).* SU:[0-9]*\/([0-9]*)\/([0-9]*).*/)
+	if ($data =~ m/.* S:([0-9]*).* SS:[0-9]*\/([0-9]*)\/([0-9]*).* SU:[0-9]*\/([0-9]*)\/([0-9]*).*/)
 	{
 		my $servertag = lc($server->{'tag'});
 		my $old_s     = 0;
@@ -254,10 +271,11 @@ sub signal_redir_stats_d
 		# print to all relevant windows when server enters/leaves splitmode
 		#
 
-		if ($old_s != $state->{$servertag}->{'s'})
+		if (Irssi::settings_get_bool('mh_sbsplitmode_print') and ($old_s != $state->{$servertag}->{'s'}))
 		{
 			my $format_server = $server->{'tag'} . '/' . $server->{'real_address'};
 			my $format_data   = '';
+			my $details       = Irssi::settings_get_bool('mh_sbsplitmode_print_details');
 
 			if ($state->{$servertag}->{'s'})
 			{
@@ -265,6 +283,7 @@ sub signal_redir_stats_d
 
 			} else {
 
+				$details = 0;
 				$format_data = 'is no longer in';
 			}
 
@@ -274,12 +293,28 @@ sub signal_redir_stats_d
 				{
 					if (lc($window->{'active_server'}->{'tag'}) eq $servertag)
 					{
-						$window->printformat(Irssi::MSGLEVEL_CRAP | Irssi::MSGLEVEL_NO_ACT, 'mh_sbsplitmode_info', $format_server, $format_data);
+						if ($details)
+						{
+							my $format_details = 'servers:' . $state->{$servertag}->{'ss_cur'} . '/' . $state->{$servertag}->{'ss_min'} . ' users:' . $state->{$servertag}->{'su_cur'} . '/' . $state->{$servertag}->{'su_min'};
+
+							$window->printformat(Irssi::MSGLEVEL_CRAP | Irssi::MSGLEVEL_NO_ACT, 'mh_sbsplitmode_info_details', $format_server, $format_data, $format_details);
+
+						} else
+						{
+							$window->printformat(Irssi::MSGLEVEL_CRAP | Irssi::MSGLEVEL_NO_ACT, 'mh_sbsplitmode_info', $format_server, $format_data);
+						}
 					}
 				}
 			}
 		}
-	} elsif ($data =~ /.*permission.*/i)
+	}
+}
+
+sub signal_redir_event_481
+{
+	my ($server, $data, $sender) = @_;
+
+	if ($data =~ m/.*permission.*/i)
 	{
 		my $servertag                    = lc($server->{'tag'});
 		$state->{$servertag}->{'s'}      = -1;
@@ -290,6 +325,13 @@ sub signal_redir_stats_d
 
 		Irssi::statusbar_items_redraw('mh_sbsplitmode');
 	}
+}
+
+sub signal_netsplit_server_new
+{
+	my ($server, $netsplitserver) = @_;
+
+	request_stats_d($server);
 }
 
 sub signal_setup_changed_last
@@ -342,7 +384,14 @@ sub command_splitmode
 					$format_detail = 'servers:' . $state->{$servertag}->{'ss_cur'} . '/' . $state->{$servertag}->{'ss_min'} . ' users:' . $state->{$servertag}->{'su_cur'} . '/' . $state->{$servertag}->{'su_min'};
 				}
 
-				Irssi::active_win->printformat(MSGLEVEL_CRAP, 'mh_sbsplitmode_line', $format_server, $format_data, $format_detail);
+				if ($format_detail ne '')
+				{
+					Irssi::active_win->printformat(MSGLEVEL_CRAP, 'mh_sbsplitmode_line', $format_server, $format_data, $format_detail);
+
+				} else {
+
+					Irssi::active_win->printformat(MSGLEVEL_CRAP, 'mh_sbsplitmode_line_no_detail', $format_server, $format_data);
+				}
 			}
 		}
 
@@ -468,12 +517,16 @@ Irssi::settings_add_int('mh_sbsplitmode',  'mh_sbsplitmode_delay',             5
 Irssi::settings_add_str('mh_sbsplitmode',  'mh_sbsplitmode_networks',          'IRCnet');
 Irssi::settings_add_bool('mh_sbsplitmode', 'mh_sbsplitmode_show_details',      1);
 Irssi::settings_add_bool('mh_sbsplitmode', 'mh_sbsplitmode_show_detail_trend', 1);
+Irssi::settings_add_bool('mh_sbsplitmode', 'mh_sbsplitmode_print',             1);
+Irssi::settings_add_bool('mh_sbsplitmode', 'mh_sbsplitmode_print_details',     1);
 Irssi::settings_add_int('mh_sbsplitmode',  'mh_sbsplitmode_lag_limit',         5);
 
 Irssi::theme_register([
-	'mh_sbsplitmode_line',  '{server $0}: $1 {comment $2}',
-	'mh_sbsplitmode_info',  '{server $0} $1 {hilight splitmode}',
-	'mh_sbsplitmode_error', '{error $0}',
+	'mh_sbsplitmode_line',           '{server $0}: $1 {comment $2}',
+	'mh_sbsplitmode_line_no_detail', '{server $0}: {error $1}',
+	'mh_sbsplitmode_info',           '{server $0} $1 {hilight splitmode}',
+	'mh_sbsplitmode_info_details',   '{server $0} $1 {hilight splitmode} {comment $2}',
+	'mh_sbsplitmode_error',          '{error $0}',
 ]);
 
 Irssi::Irc::Server::redirect_register('mh_sbsplitmode stats d',
@@ -491,15 +544,18 @@ Irssi::Irc::Server::redirect_register('mh_sbsplitmode stats d',
 
 Irssi::statusbar_item_register('mh_sbsplitmode', '', 'statusbar_splitmode');
 
-Irssi::signal_add('redir mh_sbsplitmode stats d', 'signal_redir_stats_d');
-Irssi::signal_add_last('event connected',         'request_stats_d');
-Irssi::signal_add('server disconnected',          'state_remove_server');
-Irssi::signal_add_last('setup changed',           'signal_setup_changed_last');
+Irssi::signal_add('redir mh_sbsplitmode event 248', 'signal_redir_event_248');
+Irssi::signal_add('redir mh_sbsplitmode event 481', 'signal_redir_event_481');
+Irssi::signal_add_last('event connected',           'request_stats_d');
+Irssi::signal_add('server disconnected',            'state_remove_server');
+Irssi::signal_add('netsplit server new',            'signal_netsplit_server_new');
+Irssi::signal_add('netsplit server remove',         'signal_netsplit_server_new');
+Irssi::signal_add_last('setup changed',             'signal_setup_changed_last');
 
 Irssi::command_bind('splitmode', 'command_splitmode', 'mh_sbsplitmode');
 Irssi::command_bind('help',      'command_help');
 
-Irssi::timeout_add_once(10, 'timeout_request_stats_d', undef);
+timeout_request_stats_d();
 
 1;
 
