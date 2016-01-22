@@ -1,11 +1,12 @@
 ---
 -
   authors: 'Geert Hauwaerts'
-  changed: 'Wed Sep 17 23:00:11 CEST 2003'
+  changed: 'Wed Jan 20 22:57:37 CEST 2016'
   contact: geert@irssi.org
   default_package: active_notice
   description: 'This script shows notices into the active channel unless it has its own window.'
   license: 'GNU General Public License'
+  modified: '2016-01-20 22:59:49'
   name: active_notice.pl
   url: http://irssi.hauwaerts.be/active_notice.pl
-  version: '1.07'
+  version: '1.08'
