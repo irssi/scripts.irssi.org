@@ -1,6 +1,6 @@
 ##############################################################################
 #
-# mh_sbuserinfo.pl v1.03 (20151201)
+# mh_sbuserinfo.pl v1.04 (20151225)
 #
 # Copyright (c) 2015  Michael Hansen
 #
@@ -25,8 +25,10 @@
 # displays in the statusbar the number of users and the limit of the channel,
 # with several settings for finetuning:
 #
-# default settings: [Users: <users>(@<users_op>:+<users_voice>:<users_rest>)/<limit>]
-# "/<limit>" will only show when there is a limit set
+# default settings: [Users: <users>(@<users_op>:+<users_voice>:<users_rest>)/<limit>(<limitusers>)]
+# "/<limit>(<limitusers>)" will only show when there is a limit set.
+# "(<limitusers>)" shows the difference between the limit and current
+# users (this can be negative if the limit is lower than users)
 #
 # setting mh_sbuserinfo_show_prefix (default 'Users: '): set/unset the prefix
 # in the window item
@@ -40,13 +42,16 @@
 # setting mh_sbuserinfo_show_details_halfop (default OFF): enable/disable
 # showing halfops when details are enabled
 #
+# setting mh_sbuserinfo_show_details_difference (default ON): enable/disable
+# showing the "(<limitusers>)"
+#
 # setting mh_sbuserinfo_show_warning_opless' (default ON): change the colour
 # of "<users_op>" if channel is opless
 #
 # setting mh_sbuserinfo_show_warning_limit (default ON): change the colour
 # of "<limit>" if channel is above, at or close to the limited amount of users
 #
-# setting mh_sbuserinfo_show_warning_limit_percent (default 90): number in
+# setting mh_sbuserinfo_show_warning_limit_percent (default 95): number in
 # percent (0-100) of users relative to the limit before a limit warning is
 # triggered
 #
@@ -58,6 +63,11 @@
 # see '/help statusbar' for more details and do not forget to '/save'
 #
 # history:
+#	v1.04 (20151225)
+#		added setting _show_details_difference and supporting code
+#		changed _show_warning_limit_percent default from 90 to 95
+#		added changed field to irssi header
+#		added a few comments
 #	v1.03 (20151201)
 #		added setting _show_prefix and supporting code
 #		changed setting _show_details_mode default to ON
@@ -86,7 +96,7 @@ use strict;
 use Irssi 20100403;
 use Irssi::TextUI;
 
-our $VERSION = '1.03';
+our $VERSION = '1.04';
 our %IRSSI   =
 (
 	'name'        => 'mh_sbuserinfo',
@@ -95,6 +105,7 @@ our %IRSSI   =
 	'authors'     => 'Michael Hansen',
 	'contact'     => 'mh on IRCnet #help',
 	'url'         => 'http://scripts.irssi.org / https://github.com/mh-source/irssi-scripts',
+	'changed'     => 'Fri Dec 25 17:14:34 CET 2015',
 );
 
 ##############################################################################
@@ -114,6 +125,9 @@ sub statusbar_redraw
 
 		if (ref($channelactive) eq 'Irssi::Irc::Channel')
 		{
+			#
+			# only redraw if triggered by active channel
+			#
 			if (lc($channelactive->{'server'}->{'tag'}) eq lc($channel->{'server'}->{'tag'}))
 			{
 				if (lc($channel->{'name'}) eq lc($channelactive->{'name'}))
@@ -211,7 +225,9 @@ sub statusbar_userinfo
 
 				if (Irssi::settings_get_bool('mh_sbuserinfo_show_details_halfop'))
 				{
+					#
 					# add halfops to ops so users calculation below matches
+					#
 					$users_op = $users_op + $users_ho;
 
 					if ($showmode)
@@ -257,6 +273,11 @@ sub statusbar_userinfo
 					}
 				}
 
+				if (Irssi::settings_get_bool('mh_sbuserinfo_show_details_difference'))
+				{
+					$limit = $limit . '(' . ($limit - $users) . ')';
+				}
+
 				$format = $format . $limit . '%n';
 			}
 		}
@@ -276,9 +297,10 @@ Irssi::settings_add_bool('mh_sbuserinfo', 'mh_sbuserinfo_show_details_mode',    
 Irssi::settings_add_bool('mh_sbuserinfo', 'mh_sbuserinfo_show_details_halfop',        0);
 Irssi::settings_add_bool('mh_sbuserinfo', 'mh_sbuserinfo_show_warning_opless',        1);
 Irssi::settings_add_bool('mh_sbuserinfo', 'mh_sbuserinfo_show_warning_limit',         1);
-Irssi::settings_add_int( 'mh_sbuserinfo', 'mh_sbuserinfo_show_warning_limit_percent', 90);
+Irssi::settings_add_int( 'mh_sbuserinfo', 'mh_sbuserinfo_show_warning_limit_percent', 95);
 Irssi::settings_add_str( 'mh_sbuserinfo', 'mh_sbuserinfo_warning_format',             '%Y');
-Irssi::settings_add_str('mh_sbuserinfo',  'mh_sbuserinfo_show_prefix',                'Users: ');
+Irssi::settings_add_str( 'mh_sbuserinfo', 'mh_sbuserinfo_show_prefix',                'Users: ');
+Irssi::settings_add_bool('mh_sbuserinfo', 'mh_sbuserinfo_show_details_difference',    1);
 
 Irssi::statusbar_item_register('mh_sbuserinfo', '', 'statusbar_userinfo');
 
