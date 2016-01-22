@@ -1170,6 +1170,16 @@
   url: http://ranger.befunk.com/
   version: '0.5'
 -
+  authors: 'Felipe F. Tonello'
+  contact: eu@felipetonello.com
+  description: 'Sends notification using the Desktop Notifications Specification.'
+  filename: desktop-notify.pl
+  license: 'GPL v3+'
+  modified: '2016-01-21 16:48:26'
+  modules: 'Glib::Object::Introspection HTML::Entities'
+  name: desktop-notify
+  version: 1.0.0
+-
   authors: 'Jochem Meyers'
   contact: jochem.meyers@gmail.com
   description: 'Adds an item which displays the current disk usage.'
@@ -4700,10 +4710,10 @@
   description: 'XDCC Autoget, for automated searching and downloading of xdcc packs'
   filename: xdcc_autoget.pl
   license: 'BeerWare Version 42'
-  modified: '2015-12-17 19:41:56'
-  modules: File::HomeDir
+  modified: '2016-01-20 20:51:15'
+  modules: 'File::HomeDir Try::Tiny'
   name: autoget
-  version: '1.6'
+  version: '2.0'
 -
   authors: "Stefan 'tommie' Tomanek, Obfuscoder"
   commands: xdccget
