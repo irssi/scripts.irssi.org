@@ -1,1 +1,1 @@
-scripts/xdcc_autoget.pl source OK
+Capture variable used outside conditional at line 251, column 41.  See page 253 of PBP.  (Severity: 3)
