@@ -2,6 +2,7 @@
 -
   authors: 'Alexander Wirt'
   contact: formorer@formorer.de
+  default_package: apm
   description: 'Shows your battery status in your Statusbar'
   license: 'GNU Public License'
   name: apm

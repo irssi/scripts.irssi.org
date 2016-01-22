@@ -4,5 +4,6 @@
 *
 *"my" variable $ein masks earlier declaration in same scope at apm.pl line 74.
 *
-*-!- Irssi: Error in script apm:
-*script tried to call exit  at apm.pl line 46
+*Use of uninitialized value $last_refresh in numeric eq (==) at apm.pl line 104.
+*
+*-!- Irssi: Loaded script apm

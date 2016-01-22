@@ -1,0 +1,3 @@
+*-!- Irssi: Error in script desktop_notify:
+*Can't locate Glib/Object/Introspection.pm in @INC  at desktop-notify.pl line 26.
+*BEGIN failed--compilation aborted at desktop-notify.pl line 26.
