@@ -1,6 +1,6 @@
 ##############################################################################
 #
-# mh_hold_mode.pl v1.02 (20151210)
+# mh_hold_mode.pl v1.03 (20151226)
 #
 # Copyright (c) 2007, 2015  Michael Hansen
 #
@@ -21,11 +21,6 @@
 ##############################################################################
 #
 # Emulation of ircII per-window hold_mode
-#
-# known issues:
-#
-# in the github version of irssi this script will not accept the
-# keypad enter key
 #
 # upgrading from v0.xx to v1.xx:
 #
@@ -69,8 +64,15 @@
 # (i hope i didn't forget anything :-)
 #
 # history:
+#	v1.03 (20151226)
+#		now using 'key send_line' instead of 'gui key pressed'
+#		added /help
+#		fixed '/hold_mode toggle', it didnt do anything before
+#		code cleanup
+#		added changed field to irssi header
+#		changed url
 #	v1.02 (20151210)
-#		now accepts both 10 and 13 as keycode for enter, required to work in upcomming irssi
+#		now accepts both 10 and 13 as keycode for enter, required to work in upcoming irssi
 #	v1.01 (20151204)
 #		nicer (imho) mh_sbmore
 #	v1.00 (20151201)
@@ -96,7 +98,7 @@ use strict;
 use Irssi 20100403;
 use Irssi::TextUI;
 
-our $VERSION = '1.02';
+our $VERSION = '1.03';
 our %IRSSI   =
 (
 	'name'        => 'mh_hold_mode',
@@ -104,7 +106,8 @@ our %IRSSI   =
 	'license'     => 'BSD',
 	'authors'     => 'Michael Hansen',
 	'contact'     => 'mh on IRCnet #help',
-	'url'         => 'https://github.com/mh-source/irssi-scripts',
+	'url'         => 'http://scripts.irssi.org / https://github.com/mh-source/irssi-scripts',
+	'changed'     => 'Sat Dec 26 11:50:57 CET 2015',
 );
 
 ##############################################################################
@@ -113,12 +116,9 @@ our %IRSSI   =
 #
 ##############################################################################
 
-our $KEYCODE_ENTER1 = 10;
-our $KEYCODE_ENTER2 = 13;
-
 our %config;
 $config{'DEFAULT'}{'hold_mode'}     = 0; # default: 0
-$config{'DEFAULT'}{'scroll_always'} = 0; # default: 1
+$config{'DEFAULT'}{'scroll_always'} = 1; # default: 1
 
 our $lastcommand = '';
 our $more        = 0;
@@ -156,39 +156,37 @@ sub config_window_get
 {
 	my ($windowrec) = @_;
 
-	if (!$windowrec)
+	if ($windowrec)
 	{
-		return(undef);
-	}
+		my $windowid = $windowrec->{'_irssi'};
 
-	my $windowid = $windowrec->{'_irssi'};
-
-	if (!exists($config{'WINDOW'}{$windowid}))
-	{
-		for my $setting (keys(%{$config{'DEFAULT'}}))
+		if (!exists($config{'WINDOW'}{$windowid}))
 		{
-			$config{'WINDOW'}{$windowid}{$setting} = $config{'DEFAULT'}{$setting};
+			for my $setting (keys(%{$config{'DEFAULT'}}))
+			{
+				$config{'WINDOW'}{$windowid}{$setting} = $config{'DEFAULT'}{$setting};
+			}
 		}
+
+		return(\%{$config{'WINDOW'}{$windowid}});
 	}
 
-	return(\%{$config{'WINDOW'}{$windowid}});
+	return(undef);
 }
 
 sub config_window_del
 {
 	my ($windowrec) = @_;
 
-	if (!$windowrec)
+	if ($windowrec)
 	{
-		return(undef);
-	}
+		my $windowid = $windowrec->{'_irssi'};
 
-	my $windowid = $windowrec->{'_irssi'};
-
-	if (exists($config{'WINDOW'}{$windowid}))
-	{
-		delete($config{'WINDOW'}{$windowid});
-		return(1);
+		if (exists($config{'WINDOW'}{$windowid}))
+		{
+			delete($config{'WINDOW'}{$windowid});
+			return(1);
+		}
 	}
 
 	return(undef);
@@ -198,14 +196,12 @@ sub window_bookmark_compare
 {
 	my ($bookmark1, $bookmark2) = @_;
 
-	if (!$bookmark1 or !$bookmark2)
+	if ($bookmark1 and $bookmark2)
 	{
-		return(0);
-	}
-
-	if ($bookmark1->{'_irssi'} == $bookmark2->{'_irssi'})
-	{
-		return(1);
+		if ($bookmark1->{'_irssi'} == $bookmark2->{'_irssi'})
+		{
+			return(1);
+		}
 	}
 
 	return(0);
@@ -215,26 +211,24 @@ sub window_refresh
 {
 	my $windowrec = Irssi::active_win();
 
-	if ($windowrec->view()->{'empty_linecount'})
+	if (not $windowrec->view()->{'empty_linecount'})
 	{
-		return;
-	}
-
-	my $bookmark = $windowrec->view()->get_bookmark('mh_hold_mode');
-
-	if (not $bookmark)
-	{
-		$windowrec->view()->set_bookmark('mh_hold_mode', $windowrec->view()->{'startline'});
-		$bookmark = $windowrec->view()->get_bookmark('mh_hold_mode');
+		my $bookmark = $windowrec->view()->get_bookmark('mh_hold_mode');
 
 		if (not $bookmark)
 		{
-			return;
-		}
-   }
+			$windowrec->view()->set_bookmark('mh_hold_mode', $windowrec->view()->{'startline'});
+			$bookmark = $windowrec->view()->get_bookmark('mh_hold_mode');
 
-   $windowrec->view()->scroll_line($bookmark);
-   statusbar_more_redraw();
+			if (not $bookmark)
+			{
+				return(0);
+			}
+		}
+
+		$windowrec->view()->scroll_line($bookmark);
+		statusbar_more_redraw();
+	}
 }
 
 sub window_scroll
@@ -273,35 +267,23 @@ sub statusbar_more_redraw
 #
 ##############################################################################
 
-sub signal_gui_key_pressed_first
+sub signal_key_send_line_first
 {
-	my ($keycode) = @_;
+	$lastcommand  = Irssi::parse_special('$L');
+	my $windowrec = Irssi::active_win();
 
-	if (($keycode == $KEYCODE_ENTER1) or ($keycode == $KEYCODE_ENTER2))
+	if (($lastcommand eq '' or config_window_get($windowrec)->{'scroll_always'}) and $more)
 	{
-		$lastcommand  = Irssi::parse_special('$L');
-		my $windowrec = Irssi::active_win();
-
-		if (($lastcommand eq '' or config_window_get($windowrec)->{'scroll_always'}) and $more)
-		{
-			window_scroll();
-		}
+		window_scroll();
 	}
 }
 
-sub signal_gui_key_pressed_last
+sub signal_key_send_line_last
 {
-	my ($keycode) = @_;
+	my $windowrec = Irssi::active_win();
 
-	if (($keycode == $KEYCODE_ENTER1) or ($keycode == $KEYCODE_ENTER2))
+	if  (config_window_get($windowrec)->{'hold_mode'})
 	{
-		my $windowrec = Irssi::active_win();
-
-		if  (not config_window_get($windowrec)->{'hold_mode'})
-		{
-			return;
-		}
-
 		if ($windowrec->view()->{'bottom'})
 		{
 			$windowrec->view()->set_bookmark_bottom('mh_hold_mode');
@@ -362,10 +344,16 @@ sub command_hold_mode
 
 		if ($data ne '')
 		{
-
 			if ($data =~ m/^toggle$/i)
 			{
-				$data = (($window->{'hold_mode'}) ? 'off' : 'on' );
+				if (not $window->{'hold_mode'})
+				{
+					$window->{'hold_mode'} = 1;
+
+				} else {
+
+					$window->{'hold_mode'} = 0;
+				}
 
 			} elsif ($data =~ m/^on$/i)
 			{
@@ -416,6 +404,25 @@ sub command_hold_mode
 	if ($showstatus)
 	{
 		$windowrec->print('hold_mode is ' . (($window->{'hold_mode'}) ? 'on' : 'off' ), MSGLEVEL_CLIENTCRAP);
+	}
+}
+
+sub command_help
+{
+	my ($data, $server, $windowitem) = @_;
+
+	$data = lc(trim_space($data));
+
+	if ($data =~ m/^hold_mode$/i)
+	{
+		Irssi::print('', Irssi::MSGLEVEL_CLIENTCRAP);
+		Irssi::print('HOLD_MODE %|[on|off|toggle|flush]', Irssi::MSGLEVEL_CLIENTCRAP);
+		Irssi::print('HOLD_MODE %|scroll_always [on|off|toggle]', Irssi::MSGLEVEL_CLIENTCRAP);
+		Irssi::print('', Irssi::MSGLEVEL_CLIENTCRAP);
+		Irssi::print('%|Show/enable/disable/toggle/flush status of window hold_mode or show/enable/disable/toggle the scroll_always setting.', Irssi::MSGLEVEL_CLIENTCRAP);
+		Irssi::print('', Irssi::MSGLEVEL_CLIENTCRAP);
+
+		Irssi::signal_stop();
 	}
 }
 
@@ -472,12 +479,13 @@ Irssi::timeout_add(1000, 'statusbar_more_redraw', undef);
 
 Irssi::command('^REDRAW');
 
-Irssi::signal_add_first('gui key pressed', 'signal_gui_key_pressed_first');
-Irssi::signal_add_last('gui key pressed',  'signal_gui_key_pressed_last');
-Irssi::signal_add_last('window changed',   'signal_window_changed_last');
-Irssi::signal_add_last('print text',       'signal_print_text_last');
+Irssi::signal_add_first('key send_line', 'signal_key_send_line_first');
+Irssi::signal_add_last('key send_line',  'signal_key_send_line_last');
+Irssi::signal_add_last('window changed', 'signal_window_changed_last');
+Irssi::signal_add_last('print text',     'signal_print_text_last');
 
 Irssi::command_bind('hold_mode', 'command_hold_mode', 'mh_hold_mode');
+Irssi::command_bind('help',      'command_help');
 
 1;
 
