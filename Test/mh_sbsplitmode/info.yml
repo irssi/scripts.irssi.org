@@ -1,11 +1,12 @@
 ---
 -
   authors: 'Michael Hansen'
+  changed: 'Sun Dec 27 11:50:52 CET 2015'
   contact: 'mh on IRCnet #help'
   default_package: mh_sbsplitmode
   description: 'provides a statusbar item showing if your server is in splitmode and /splitmode to show details'
   license: BSD
-  modified: '2015-12-18 07:12:54'
+  modified: '2016-01-22 16:38:05'
   name: mh_sbsplitmode
   url: 'http://scripts.irssi.org / https://github.com/mh-source/irssi-scripts'
-  version: '1.05'
+  version: '1.06'
