@@ -24,7 +24,7 @@ use strict;
 use Irssi;
 use vars qw($VERSION %IRSSI);
 
-$VERSION = "1.07";
+$VERSION = "1.08";
 
 %IRSSI = (
     authors     => 'Geert Hauwaerts',
@@ -33,7 +33,7 @@ $VERSION = "1.07";
     description => 'This script shows notices into the active channel unless it has its own window.',
     license     => 'GNU General Public License',
     url         => 'http://irssi.hauwaerts.be/active_notice.pl',
-    changed     => 'Wed Sep 17 23:00:11 CEST 2003',
+    changed     => 'Wed Jan 20 22:57:37 CEST 2016',
 );
 
 Irssi::theme_register([
@@ -52,6 +52,7 @@ sub notice_move {
 
     return if $witem;
 
+    $text =~ s/%/%%/g;
     $awin->print($text, MSGLEVEL_NOTICES);
   
     Irssi::signal_stop();
