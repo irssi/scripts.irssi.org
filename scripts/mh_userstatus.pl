@@ -1,6 +1,6 @@
 ##############################################################################
 #
-# mh_userstatus.pl v1.03 (20151213)
+# mh_userstatus.pl v1.04 (20151224)
 #
 # Copyright (c) 2015  Michael Hansen
 #
@@ -61,6 +61,8 @@
 # a user is deoppered
 #
 # history:
+#	v1.04 (20151224)
+#		added changed field to irssi header
 #	v1.03 (20151213)
 #		added indents to /help
 #	v1.02 (20151208)
@@ -88,7 +90,7 @@ use Irssi 20100403;
 
 { package Irssi::Nick }
 
-our $VERSION = '1.03';
+our $VERSION = '1.04';
 our %IRSSI   =
 (
 	'name'        => 'mh_userstatus',
@@ -97,6 +99,7 @@ our %IRSSI   =
 	'authors'     => 'Michael Hansen',
 	'contact'     => 'mh on IRCnet #help',
 	'url'         => 'http://scripts.irssi.org / https://github.com/mh-source/irssi-scripts',
+	'changed'     => 'Thu Dec 24 10:22:22 CET 2015',
 );
 
 ##############################################################################
