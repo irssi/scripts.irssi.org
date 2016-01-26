@@ -1,8 +1,8 @@
 ##############################################################################
 #
-# mh_hold_mode.pl v1.03 (20151226)
+# mh_hold_mode.pl v1.04 (20160126)
 #
-# Copyright (c) 2007, 2015  Michael Hansen
+# Copyright (c) 2007, 2015, 2016  Michael Hansen
 #
 # Permission to use, copy, modify, and distribute this software
 # for any purpose with or without fee is hereby granted, provided
@@ -27,6 +27,9 @@
 # the statusbar item have changed name from mh_more to mh_sbmore, you
 # can remove the old item with '/statusbar window remove mh_more' and
 # follow the instructions below to add the new item
+#
+# should you not like the new item look, you can revert it back to the
+# old style with the setting mh_hold_mode_more_oldstyle
 #
 # instructions:
 #
@@ -63,7 +66,16 @@
 #
 # (i hope i didn't forget anything :-)
 #
+# settings:
+#
+# mh_hold_mode_more_oldstyle (default OFF): switch between old and new
+# style more statusbar item
+#
 # history:
+#	v1.04 (20160126)
+#		added mh_hold_mode_more_oldstyle and supporting code
+#		added namespace to MSGLEVEL
+#		code cleanup
 #	v1.03 (20151226)
 #		now using 'key send_line' instead of 'gui key pressed'
 #		added /help
@@ -98,7 +110,7 @@ use strict;
 use Irssi 20100403;
 use Irssi::TextUI;
 
-our $VERSION = '1.03';
+our $VERSION = '1.04';
 our %IRSSI   =
 (
 	'name'        => 'mh_hold_mode',
@@ -107,7 +119,7 @@ our %IRSSI   =
 	'authors'     => 'Michael Hansen',
 	'contact'     => 'mh on IRCnet #help',
 	'url'         => 'http://scripts.irssi.org / https://github.com/mh-source/irssi-scripts',
-	'changed'     => 'Sat Dec 26 11:50:57 CET 2015',
+	'changed'     => 'Tue Jan 26 18:55:23 CET 2016',
 );
 
 ##############################################################################
@@ -131,19 +143,19 @@ our $more        = 0;
 
 sub trim_space
 {
-   my ($string) = @_;
+	my ($string) = @_;
 
-   if (defined($string))
-   {
-      $string =~ s/^\s+//g;
-      $string =~ s/\s+$//g;
+	if (defined($string))
+	{
+		$string =~ s/^\s+//g;
+		$string =~ s/\s+$//g;
 
-   } else {
+	} else
+	{
+		$string = '';
+	}
 
-      $string = '';
-   }
-
-   return($string);
+	return($string);
 }
 
 ##############################################################################
@@ -247,8 +259,8 @@ sub window_scroll
 		{
 			$windowrec->view()->set_bookmark_bottom('mh_hold_mode');
 
-		} else {
-
+		} else
+		{
 			$windowrec->view()->set_bookmark('mh_hold_mode', $windowrec->view()->{'startline'});
 		}
 	}
@@ -294,8 +306,8 @@ sub signal_key_send_line_last
 				window_refresh();
 			}
 
-		} else {
-
+		} else
+		{
 			window_refresh();
 		}
 	}
@@ -350,8 +362,8 @@ sub command_hold_mode
 				{
 					$window->{'hold_mode'} = 1;
 
-				} else {
-
+				} else
+				{
 					$window->{'hold_mode'} = 0;
 				}
 
@@ -396,14 +408,14 @@ sub command_hold_mode
 					}
 				}
 
-				$windowrec->print('hold_mode (' . (($window->{'hold_mode'}) ? 'on' : 'off' ) . '): scroll_always is ' . (($window->{'scroll_always'}) ? 'on' : 'off' ), MSGLEVEL_CLIENTCRAP);
+				$windowrec->print('hold_mode (' . (($window->{'hold_mode'}) ? 'on' : 'off' ) . '): scroll_always is ' . (($window->{'scroll_always'}) ? 'on' : 'off' ), Irssi::MSGLEVEL_CLIENTCRAP);
 			}
 		}
 	}
 
 	if ($showstatus)
 	{
-		$windowrec->print('hold_mode is ' . (($window->{'hold_mode'}) ? 'on' : 'off' ), MSGLEVEL_CLIENTCRAP);
+		$windowrec->print('hold_mode is ' . (($window->{'hold_mode'}) ? 'on' : 'off' ), Irssi::MSGLEVEL_CLIENTCRAP);
 	}
 }
 
@@ -445,10 +457,17 @@ sub statusbar_more
 
 	if ($more)
 	{
-		$statusbaritem->default_handler($get_size_only, "{sb $more more}", '', 0);
+		my $format = "{sb $more more}";
 
-	} else {
+		if (Irssi::settings_get_bool('mh_hold_mode_more_oldstyle'))
+		{
+				$format = "-- $more more --";
+		}
 
+		$statusbaritem->default_handler($get_size_only, $format, '', 0);
+
+	} else
+	{
 		$statusbaritem->default_handler($get_size_only, '', '', 0);
 	}
 }
@@ -458,6 +477,8 @@ sub statusbar_more
 # script on load
 #
 ##############################################################################
+
+Irssi::settings_add_bool('mh_hold_mode', 'mh_hold_mode_more_oldstyle', 0);
 
 Irssi::command('^SET SCROLL ON');
 
