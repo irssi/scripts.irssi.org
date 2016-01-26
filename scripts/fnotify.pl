@@ -59,6 +59,12 @@ my %config;
 Irssi::settings_add_int('fnotify', 'fnotify_ignore_hilight' => -1);
 $config{'ignore_hilight'} = Irssi::settings_get_int('fnotify_ignore_hilight');
 
+Irssi::signal_add(
+    'setup changed' => sub {
+        $config{'ignore_hilight'} = Irssi::settings_get_int('fnotify_ignore_hilight');
+    }
+);
+
 #
 #	catch private messages
 #
@@ -75,7 +81,7 @@ sub priv_msg {
 sub hilight {
 	my ($dest, $text, $stripped) = @_;
     my $ihl = $config{'ignore_hilight'};
-	if ($dest->{level} & MSGLEVEL_HILIGHT && $dest->{hilight_priority} > $ihl) {
+	if ($dest->{level} & MSGLEVEL_HILIGHT && $dest->{hilight_priority} != $ihl) {
 		my $server = $dest->{server};
 		my $network = $server->{tag};
 		filewrite($network . ' ' . $dest->{target} . ' ' . $stripped);
