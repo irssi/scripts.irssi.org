@@ -1,11 +1,12 @@
 ---
 -
   authors: 'Michael Hansen'
+  changed: 'Thu Dec 24 10:22:22 CET 2015'
   contact: 'mh on IRCnet #help'
   default_package: mh_userstatus
   description: 'show in channels when users go away/back or oper/deoper'
   license: BSD
-  modified: '2015-12-16 11:22:02'
+  modified: '2016-01-24 23:49:51'
   name: mh_userstatus
   url: 'http://scripts.irssi.org / https://github.com/mh-source/irssi-scripts'
-  version: '1.03'
+  version: '1.04'
