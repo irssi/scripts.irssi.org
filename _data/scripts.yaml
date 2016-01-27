@@ -1469,15 +1469,15 @@
   url: http://www.krukowiecki.net/code/irssi/
   version: 0.0.2i
 -
-  authors: 'Thorsten Leemhuis, James Shubin, Serge van Ginderachter'
+  authors: 'Tyler Abair, Thorsten Leemhuis, James Shubin, Serge van Ginderachter'
   contact: 'fedora@leemhuis.info, serge@vanginderachter.be'
   description: 'Write notifications to a file in a consistent format.'
   filename: fnotify.pl
   license: 'GNU General Public License'
-  modified: '2015-01-18 02:15:41'
+  modified: '2016-01-26 17:14:23'
   name: fnotify
   url: 'http://www.leemhuis.info/files/fnotify/fnotify https://ttboj.wordpress.com/'
-  version: 0.0.5
+  version: 0.0.6
 -
   authors: Juerd
   contact: juerd@juerd.nl
