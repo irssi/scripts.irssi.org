@@ -230,12 +230,12 @@
   description: 'Adds Text::Aspell suggestions to the list of completions'
   filename: aspell_complete.pl
   license: 'Public Domain'
-  modified: '2014-06-10 19:24:09'
+  modified: '2016-01-29 08:59:40'
   modules: Text::Aspell
   name: aspell_complete
   note: ''
   url: http://www.mimir.ch/ph/
-  version: '1.00'
+  version: '1.01'
 -
   authors: 'Mantas Mikulėnas'
   contact: grawity@gmail.com
