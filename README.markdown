@@ -23,7 +23,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                             apm ](Test/apm/)|  ✔   |  ✔   |  ✔   | 13   |  ✔   | (c)
 [                         armeija ](Test/armeija/)|  ✔   |  ✔   |  ✔   | 10   |  ✔   | (c)
 [                           ascii ](Test/ascii/)|  ✔   |  ✔   |  ✔   | 69   |  ✔   | (c)
-[                 aspell_complete ](Test/aspell_complete/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
+[                 aspell_complete ](Test/aspell_complete/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   
 [                          aspell ](Test/aspell/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                   auth_quakenet ](Test/auth_quakenet/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        autoaway ](Test/autoaway/)|  ✔   |  ✔   |  ✔   | 11   |  ✔   | (c)
@@ -257,7 +257,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [            mass_hilight_blocker ](Test/mass_hilight_blocker/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                 messages_bottom ](Test/messages_bottom/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                              mg ](Test/mg/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                    mh_hold_mode ](Test/mh_hold_mode/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[                    mh_hold_mode ](Test/mh_hold_mode/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                  mh_sbsplitmode ](Test/mh_sbsplitmode/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
 [                   mh_sbuserinfo ](Test/mh_sbuserinfo/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                   mh_userstatus ](Test/mh_userstatus/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -487,4 +487,4 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                     xmpp-notify ](Test/xmpp-notify/)|  ✔   |  ✔   |  ✔   | 21   |  ✔   | (c)
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 
-b0652ec6e4354c0bb0ee3f00d0e195a20a0ae139 | 511
+3e9b54b03b03763b29ea9b0025de914c140498e8 | 514
