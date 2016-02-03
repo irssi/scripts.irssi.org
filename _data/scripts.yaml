@@ -2426,6 +2426,16 @@
   url: http://irssi.org/
   version: '0.01'
 -
+  authors: vague
+  contact: vague!#irssi@fgreenode
+  description: "compress logfiles then they're rotated, modified from original logcompress.pl to use perl modules instead"
+  filename: logcompress_perl.pl
+  license: 'Public Domain'
+  modified: '2016-01-31 01:51:39'
+  name: logcompress_perl
+  url: http://irssi.org/
+  version: '0.01'
+-
   authors: c0ffee
   contact: c0ffee@penguin-breeder.org
   description: 'Use /ls <regex> to show all nicks (including ident@host) matching regex in the current channel'
