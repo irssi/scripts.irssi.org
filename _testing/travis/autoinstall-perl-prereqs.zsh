@@ -6,6 +6,8 @@ local -a modlist
 modlist=($(scan-perl-prereqs $filelist))
 echo -n ... >&2
 
+# fixing shitty broken apt-file
+sudo sed -i -e 's,",,g' `find /etc/apt -type f -name sources.list\*` `find /etc/apt/sources.list.d -type f`
 sudo apt-file update
 
 local -a ubu_pkgs
