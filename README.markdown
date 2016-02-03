@@ -23,7 +23,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                             apm ](Test/apm/)|  ✔   |  ✔   |  ✔   | 13   |  ✔   | (c)
 [                         armeija ](Test/armeija/)|  ✔   |  ✔   |  ✔   | 10   |  ✔   | (c)
 [                           ascii ](Test/ascii/)|  ✔   |  ✔   |  ✔   | 69   |  ✔   | (c)
-[                 aspell_complete ](Test/aspell_complete/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   
+[                 aspell_complete ](Test/aspell_complete/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                          aspell ](Test/aspell/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                   auth_quakenet ](Test/auth_quakenet/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        autoaway ](Test/autoaway/)|  ✔   |  ✔   |  ✔   | 11   |  ✔   | (c)
@@ -244,6 +244,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                         loadavg ](Test/loadavg/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        localize ](Test/localize/)|  ✔   |  ✔   |  ✘   | 37   |  ☡   | (c)
 [                        log2ansi ](Test/log2ansi/)|  ✘   |  ✘   |  ✔   | 15   |  ☡   | (c)
+[                logcompress_perl ](Test/logcompress_perl/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
 [                     logcompress ](Test/logcompress/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                              ls ](Test/ls/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                            lwho ](Test/lwho/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -487,4 +488,4 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                     xmpp-notify ](Test/xmpp-notify/)|  ✔   |  ✔   |  ✔   | 21   |  ✔   | (c)
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 
-3e9b54b03b03763b29ea9b0025de914c140498e8 | 514
+b3865985899271daf4b2370d61283b9bb7b6234b | 516
