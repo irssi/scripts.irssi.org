@@ -3716,11 +3716,11 @@
   description: 'keeps your scripts on the cutting edge'
   filename: scriptassist.pl
   license: GPLv2
-  modified: '2015-12-27 23:18:52'
+  modified: '2016-02-04 00:38:58'
   modules: LWP::UserAgent
   name: scriptassist
   url: http://irssi.org/scripts/
-  version: '2003020803'
+  version: '2003020804'
 -
   authors: "Maciek 'fahren' Freudenheim"
   contact: fahren@bochnia.pl
