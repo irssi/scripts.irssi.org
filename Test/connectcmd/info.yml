@@ -5,6 +5,7 @@
   contact: itp@ximian.com
   description: 'run arbitrary shell commands while [dis]connecting to a server'
   license: 'Public Domain'
+  modified: '2014-10-17 20:34:00'
   name: 'Connect Command'
   url: http://irssi.org/
   version: '0.1'

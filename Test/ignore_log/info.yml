@@ -7,6 +7,7 @@
   default_package: ignore_log
   description: 'script to log ignored messages'
   license: GPL
+  modified: '2014-10-17 22:54:13'
   name: ignore_log
   url: http://
   version: '0.1'

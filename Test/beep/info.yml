@@ -6,6 +6,7 @@
   default_package: beep
   description: 'Replaces your terminal bell by a command specified via /set; adds a beep_when_not_away setting'
   license: BSD
+  modified: '2014-10-17 20:34:00'
   name: beep
   url: http://void.adminz.be/irssi.shtml
   version: '1.01'

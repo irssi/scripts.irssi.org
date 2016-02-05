@@ -7,6 +7,7 @@
   default_package: noticelogic
   description: "Print private notices in query/channel where you're talking to them. Prefers active window if they're there with you."
   license: 'Public Domain'
+  modified: '2014-07-10 09:21:39'
   name: 'notice logic'
   url: http://irssi.org/
   version: '2.0'

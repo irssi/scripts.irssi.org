@@ -5,6 +5,7 @@
   default_package: kill_fake_gets
   description: 'When new send arrives checks if there are old identical sends (ie from the same nick on the same server and with the same filename) and closes them'
   license: 'Public Domain'
+  modified: '2014-10-17 22:54:13'
   name: kill_fake_gets
   url: http://pingu.ii.uj.edu.pl/~piotr/irssi/
   version: '1.1'

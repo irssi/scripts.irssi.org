@@ -1,3 +1,11 @@
+*Use of my $_ is experimental at vidinfo.pl line 156.
+*
+*Use of my $_ is experimental at vidinfo.pl line 163.
+*
+*when is experimental at vidinfo.pl line 318.
+*
+*when is experimental at vidinfo.pl line 322.
+*
 *Reference found where even-sized list expected at vidinfo.pl line 52.
 *
 *-!- Irssi: Loaded script vidinfo

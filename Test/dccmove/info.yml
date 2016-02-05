@@ -5,6 +5,7 @@
   default_package: dccmove
   description: 'Move completed dcc gets to the subfolder done'
   license: GPL
+  modified: '2014-10-17 20:34:00'
   name: dccmove
   url: http://ninja.no/irssi/dccmove.pl
   version: '1.4'

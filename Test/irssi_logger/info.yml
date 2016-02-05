@@ -5,6 +5,7 @@
   default_package: irssi_logger
   description: 'Logs chats to a PostgreSQL database.'
   license: BSD
+  modified: '2015-02-04 11:16:03'
   modules:
     - DBI
   name: irssi_logger

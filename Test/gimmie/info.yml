@@ -5,6 +5,7 @@
   default_package: gimmie
   description: 'a bot script, using ! followed by anything the script will say (as an action): gets nickname anything'
   license: 'GNU GPL v2 or later'
+  modified: '2014-10-17 22:54:13'
   name: gimmie
   url: http://www.princessleia.com/
   version: '1.0'

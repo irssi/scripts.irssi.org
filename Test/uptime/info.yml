@@ -5,6 +5,7 @@
   default_package: uptime
   description: 'Try a little harder to figure out client uptime'
   license: GPL
+  modified: '2014-10-24 23:01:30'
   name: uptime
   sbitems: uptime
   url: http://ninja.no/irssi/uptime.pl

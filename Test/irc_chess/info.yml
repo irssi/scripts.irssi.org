@@ -4,6 +4,7 @@
   contact: kodgehopper@netscape.net
   description: 'Chess server for IRC. Allows for multiple 2-player games to be played simultaneously'
   license: 'GNU GPL'
+  modified: '2014-10-17 22:54:13'
   name: IRC-Chess
   url: 'none as yet'
   version: '0.1'

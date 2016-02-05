@@ -6,5 +6,6 @@
   default_package: act_fifo
   description: 'Print window activity to a fifo'
   license: GPLv2
+  modified: '2014-10-17 18:30:46'
   name: act_fifo
   version: '1.1'

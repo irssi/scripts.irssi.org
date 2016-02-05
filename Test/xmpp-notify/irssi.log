@@ -1,5 +1,3 @@
-*Use of uninitialized value $args{"file"} in lc at /usr/share/perl5/Net/XMPP/Debug.pm line 154.
-*
 *Use of uninitialized value in subroutine entry at xmpp-notify.pl line 96.
 *
 *Use of uninitialized value in subroutine entry at xmpp-notify.pl line 102.

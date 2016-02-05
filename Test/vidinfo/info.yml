@@ -6,6 +6,7 @@
   default_package: vidinfo
   description: 'Prints some info of a linked video automatically'
   license: GPL
+  modified: '2014-07-05 17:57:51'
   modules:
     - HTML::Entities
     - JSON::Parse

@@ -6,6 +6,7 @@
   default_package: logcompress
   description: "compress logfiles then they're rotated"
   license: 'Public Domain'
+  modified: '2014-10-17 22:54:13'
   name: logcompress
   url: http://irssi.org/
   version: '0.01'

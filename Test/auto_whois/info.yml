@@ -7,6 +7,7 @@
   default_package: auto_whois
   description: '/WHOIS all the users who send you a private message.'
   license: GPL
+  modified: '2014-10-17 18:30:46'
   name: auto_whois
   url: http://irssi.org/
   version: '0.9'

@@ -5,6 +5,7 @@
   contact: c0ffee@penguin-breeder.org
   description: 'Adds the /PAGE command to page a nick (use /page nick <text>)... to ignore pages /set pager_mode off'
   license: 'Public Domain'
+  modified: '2014-10-19 11:54:16'
   name: 'mIRC pager'
   url: http://www.penguin-breeder.org/?page=irssi
   version: '0.02'

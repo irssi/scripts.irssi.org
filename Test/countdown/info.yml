@@ -6,5 +6,6 @@
   default_package: countdown
   description: 'adds public channel command for counting down something'
   license: 'Public Domain'
+  modified: '2014-11-06 21:34:32'
   name: countdown
   version: '1.0'
