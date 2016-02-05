@@ -63,7 +63,7 @@ use Irssi;
 use strict;
 use vars qw($VERSION %IRSSI);
 
-$VERSION = "0.0.3"; 
+$VERSION = "0.0.4"; 
 %IRSSI = (
     authors => 'FoxMaSk',
     contact => 'foxmask@phpfr.org ',
@@ -137,10 +137,12 @@ sub doc_find {
         }
 
         else {
+        my $code = Irssi::Script::friends::->can('get_idx') || Irssi::Script::friends_shasta::->can('get_idx');
+        if ($code && $code->($nick,$address) != -1) {
         #call of friends.pl script to determine if the current
         #$nick can manage the doc file
         #to add
-            if ($cmd eq $cmd_add and Irssi::Script::friends::get_idx($channel,$nick,$address) != -1) {
+            if ($cmd eq $cmd_add) {
                 ($keyword,$new_definition) = split /=/,$line,2;
                 ($find,$definition) = exist_doc($keyword);
             
@@ -158,7 +160,7 @@ sub doc_find {
                 }
             }
             #to modify
-            elsif ($cmd eq $cmd_mod and Irssi::Script::friends::get_idx($channel,$nick,$address) != -1) {
+            elsif ($cmd eq $cmd_mod) {
                 ($keyword,$new_definition) = split /=/,$line,2;
                 ($find,$definition) = exist_doc($keyword);
                  
@@ -175,7 +177,7 @@ sub doc_find {
                 }
             }
             #to delete
-            elsif ($cmd eq $cmd_del and Irssi::Script::friends::get_idx($channel,$nick,$address) != -1) {
+            elsif ($cmd eq $cmd_del) {
                     $keyword = $line;
                     ($find,$definition) = exist_doc($keyword);
                     if ($find ne '') {
@@ -189,7 +191,7 @@ sub doc_find {
                         info_doc($server,$info);
                     }
             }
-
+        }
         }
     }
 }
