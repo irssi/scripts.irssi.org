@@ -1970,13 +1970,14 @@
   url: http://xyrion.org/irssi/
   version: '1.01'
 -
-  authors: shabble
-  contact: 'shabble+irssi@metavore.org, shabble@#irssi/Freenode'
-  description: 'Helper script for dynamically adding text into the input-bar prompt.'
+  authors: 'Jari Matilainen'
+  contact: 'vague!#irssi@freenode on irc'
+  description: 'Intercept misprinted commands and offer to remove the first character before sending it on'
   filename: intercept.pl
-  license: MIT
+  license: 'Public Domain'
   modified: '2015-11-25 14:54:47'
-  name: uberprompt
+  name: intercept
+  url: http://gplus.to/vague
   version: '0.2'
 -
   authors: c0ffee
@@ -3078,14 +3079,15 @@
   url: http://irssi.org/
   version: '1.01'
 -
-  authors: shabble
-  contact: 'shabble+irssi@metavore.org, shabble@#irssi/Freenode'
-  description: 'Helper script for dynamically adding text into the input-bar prompt.'
+  authors: 'Jari Matilainen'
+  contact: 'vague!#irssi@freenode on irc'
+  description: 'Notify if user has left the channel'
   filename: notifyquit.pl
-  license: MIT
+  license: 'Public Domain'
   modified: '2015-11-25 11:42:09'
-  name: uberprompt
-  version: '0.2'
+  name: notifyquit
+  url: http://gplus.to/vague
+  version: '0.3'
 -
   authors: 'Johan "Ion" Kiviniemi'
   contact: 'ion at hassers.org'
