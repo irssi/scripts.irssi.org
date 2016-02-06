@@ -308,6 +308,15 @@
   url: http://irssi.dgl.cx/
   version: '1.00'
 -
+  authors: Juerd
+  contact: '#####@juerd.nl'
+  description: "Change 'nick: ' prefix if the nick is changed while you're still editing."
+  filename: autonickprefix.pl
+  license: 'Any OSI'
+  modified: '2016-01-12 15:36:17'
+  name: autonickprefix
+  version: '1.00'
+-
   authors: 'Timo Sirainen & Jostein Kjønigsen'
   description: 'Simple auto-op script'
   filename: autoop.pl
