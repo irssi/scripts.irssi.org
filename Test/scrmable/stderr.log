@@ -1,5 +1,5 @@
 Subroutine YAML::Tiny::_has_internal_string_value redefined at
-	/home/travis/build/irssi/scripts.irssi.org/_testing/_irssi_test.pl line 35 (#1)
+	/home/travis/build/irssi/scripts.irssi.org/_testing/_irssi_test.pl line 40 (#1)
     (W redefine) You redefined a subroutine.  To suppress this warning, say
     
         {

@@ -1,11 +1,12 @@
 ---
 -
-  authors: shabble
-  changed: 24/7/2010
-  contact: 'shabble+irssi@metavore.org, shabble@#irssi/Freenode'
-  default_package: uberprompt
-  description: 'Helper script for dynamically adding text into the input-bar prompt.'
-  license: MIT
+  authors: 'Jari Matilainen'
+  changed: '24 Nov 16:00:00 CET 2015'
+  contact: 'vague!#irssi@freenode on irc'
+  default_package: notifyquit
+  description: 'Notify if user has left the channel'
+  license: 'Public Domain'
   modified: '2015-11-25 11:42:09'
-  name: uberprompt
-  version: '0.2'
+  name: notifyquit
+  url: http://gplus.to/vague
+  version: '0.3'

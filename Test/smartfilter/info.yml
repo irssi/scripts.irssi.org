@@ -6,7 +6,6 @@
   default_package: smartfilter
   description: 'This script hides join/part messages.'
   license: BSD
-  modified: '2014-06-26 18:46:20'
   name: smartfilter.pl
   url: http://crshd.github.io
   version: '0.1'

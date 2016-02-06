@@ -488,4 +488,4 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                     xmpp-notify ](Test/xmpp-notify/)|  ✔   |  ✔   |  ✔   | 21   |  ✔   
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   
 
-01fd6cda3c7c2f27adedd241630060021e3ae127 | 528
+5837ced71fb13a7f0bd3e8deab728e19b81875c1 | 531
