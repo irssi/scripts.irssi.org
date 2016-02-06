@@ -1,0 +1,6 @@
+*-!- Irssi: Error in script autonickprefix:
+*"gui_input_get_pos" is not exported by the Irssi module
+* "gui_input_set" is not exported by the Irssi module
+* "gui_input_set_pos" is not exported by the Irssi module
+*Can't continue after import errors at autonickprefix.pl line 12.
+*BEGIN failed--compilation aborted at autonickprefix.pl line 15.
