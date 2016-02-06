@@ -9,6 +9,7 @@ our %IRSSI = (
     license     => 'Any OSI',
 );
 
+use Irssi::TextUI;
 use Irssi qw(
     signal_add active_win settings_get_str parse_special 
     gui_input_get_pos gui_input_set gui_input_set_pos
