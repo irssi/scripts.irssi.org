@@ -31,7 +31,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                  autoclearinput ](Test/autoclearinput/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       autocycle ](Test/autocycle/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       autolimit ](Test/autolimit/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                  autonickprefix ](Test/autonickprefix/)|  ✘   |  ✔   |  ✔   |  3   |  ✘   
+[                  autonickprefix ](Test/autonickprefix/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                       autoopper ](Test/autoopper/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
 [                          autoop ](Test/autoop/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
 [                    autorealname ](Test/autorealname/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -489,4 +489,4 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                     xmpp-notify ](Test/xmpp-notify/)|  ✔   |  ✔   |  ✔   | 21   |  ✔   | (c)
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 
-b6067e38d6f3ae8580798e6dab1afbbf3fecad5d | 532
+b2ec4ac24f6fcf0ad79e539dbe66ffdbeea2a20f | 534
