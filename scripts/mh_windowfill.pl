@@ -1,8 +1,8 @@
 ##############################################################################
 #
-# mh_windowfill.pl v1.06 (20151220)
+# mh_windowfill.pl v1.07 (20160207)
 #
-# Copyright (c) 2015  Michael Hansen
+# Copyright (c) 2015, 2016  Michael Hansen
 #
 # Permission to use, copy, modify, and distribute this software
 # for any purpose with or without fee is hereby granted, provided
@@ -23,10 +23,20 @@
 # fill windows so scrolling starts bottom-up instead of top-down
 #
 # screenshots:
-#	without script: http://picpaste.com/cfda32a34ea96e16dcb3f2d956655ff6.png
-#	with script:    http://picpaste.com/e3b84ead852e3e77b12ed69383f1f80c.png
+#
+#	without script: http://escaflowne.hro.nl/~mh/mh_windowfill_without.png
+#	                or
+#	                http://rud0lf.webatu.com/mh_windowfill_without.png
+#
+#	with script:    http://escaflowne.hro.nl/~mh/mh_windowfill_with.png
+#	                or
+#	                http://rud0lf.webatu.com/mh_windowfill_with.png
 #
 # history:
+#
+#	v1.07 (20160207)
+#		changed url of screenshots because picpaste have a weird definition of forever
+#		added namespace to MSGLEVEL
 #	v1.06 (20151220)
 #		added changed field to irssi header
 #	v1.05 (20151206)
@@ -60,16 +70,16 @@ use strict;
 use Irssi 20100403;
 use Irssi::TextUI;
 
-our $VERSION = '1.06';
+our $VERSION = '1.07';
 our %IRSSI   =
 (
 	'name'        => 'mh_windowfill',
-	'description' => 'fill windows so scrolling starts bottom-up instead of top-down (screenshots in source)',
+	'description' => 'fill windows so scrolling starts bottom-up instead of top-down (screenshots linked in source)',
 	'license'     => 'BSD',
 	'authors'     => 'Michael Hansen',
 	'contact'     => 'mh on IRCnet #help',
 	'url'         => 'http://scripts.irssi.org / https://github.com/mh-source/irssi-scripts',
-	'changed'     => 'Sun Dec 20 05:07:00 CET 2015',
+	'changed'     => 'Sun Feb  7 18:24:50 CET 2016',
 );
 
 ##############################################################################
@@ -84,7 +94,7 @@ sub windowfill_fill
 
 	while ($window->view()->{'empty_linecount'})
 	{
-		$window->print('', MSGLEVEL_NEVER);
+		$window->print('', Irssi::MSGLEVEL_NEVER);
 	}
 }
 
@@ -128,7 +138,7 @@ sub windowfill
 		{
 			my $linetext = $line->get_text(1);
 			$line        = $line->next();
-			$window->print($linetext, MSGLEVEL_NEVER);
+			$window->print($linetext, Irssi::MSGLEVEL_NEVER);
 			$window->view()->remove_line($line->prev());
 			$linecount--;
 		}
