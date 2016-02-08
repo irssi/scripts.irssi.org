@@ -31,7 +31,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                  autoclearinput ](Test/autoclearinput/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       autocycle ](Test/autocycle/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       autolimit ](Test/autolimit/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                  autonickprefix ](Test/autonickprefix/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[                  autonickprefix ](Test/autonickprefix/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       autoopper ](Test/autoopper/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
 [                          autoop ](Test/autoop/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
 [                    autorealname ](Test/autorealname/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -263,7 +263,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                  mh_sbsplitmode ](Test/mh_sbsplitmode/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
 [                   mh_sbuserinfo ](Test/mh_sbuserinfo/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                   mh_userstatus ](Test/mh_userstatus/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                   mh_windowfill ](Test/mh_windowfill/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                   mh_windowfill ](Test/mh_windowfill/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                          miodek ](Test/miodek/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [               mirc_colour_popup ](Test/mirc_colour_popup/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                           mkick ](Test/mkick/)|  ✔   |  ✔   |  ✔   | 30   |  ✔   | (c)
@@ -489,4 +489,4 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                     xmpp-notify ](Test/xmpp-notify/)|  ✔   |  ✔   |  ✔   | 21   |  ✔   | (c)
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 
-b2ec4ac24f6fcf0ad79e539dbe66ffdbeea2a20f | 534
+4f6993e779d2dfbaa6211f472139682653ed797b | 536
