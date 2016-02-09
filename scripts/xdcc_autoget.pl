@@ -439,7 +439,6 @@ sub ag_skip
 			$termcounter[$botcounter] = 0;
 			$packcounter[$botcounter] = 0;
 			push(@{$totags[$botcounter]}, Irssi::timeout_add_once($exedelay * 1000 * 60, sub { ag_search($botcounter); } , []));
-			$runningflag = 0;
 		}
 	}
 	elsif ($packcounter[$botcounter] < $#packlist)
@@ -461,7 +460,6 @@ sub ag_skip
 		$termcounter[$botcounter] = 0;
 		$packcounter[$botcounter] = 0;
 		push(@{$totags[$botcounter]}, Irssi::timeout_add_once($exedelay * 1000 * 60, sub { ag_search($botcounter); } , []));
-		$runningflag = 0;
 	}
 }
 
@@ -490,7 +488,7 @@ sub ag_closedcc
 			{
 				$filename =~ tr/[ ']/[__]/;
 				@filenames = grep { $_ ne $filename } @filenames;		#remove the file from the list of files being transferred
- 			}
+			}
 			ag_remtimeouts($botcounter);
 					
 			if ($dcc->{'skipped'} == $dcc->{'size'})
@@ -540,7 +538,6 @@ sub ag_closedcc
 						$termcounter[$botcounter] = 0;
 						$packcounter[$botcounter] = 0;
 						Irssi::timeout_add_once($exedelay * 1000 * 60, sub { ag_search($temp); } , []);
-						$runningflag = 0;
 					}
 				}
 			}
@@ -579,7 +576,8 @@ sub ag_addfinished		#save finished downloads
 	print FINISHED $bots[$botcounter] . " " . $packs[$botcounter][$packcounter[$botcounter]] . "\n";		#print pack to file	
 	$filename =~ tr/[ ']/[__]/;
 	print FINISHED $filename . "\n";		#print name to file	
-	close(FINISHED);	
+	close(FINISHED);
+	ag_getfinished;
 }
 
 
