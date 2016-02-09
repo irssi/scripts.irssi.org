@@ -4730,7 +4730,7 @@
   description: 'XDCC Autoget, for automated searching and downloading of xdcc packs'
   filename: xdcc_autoget.pl
   license: 'BeerWare Version 42'
-  modified: '2016-01-20 20:51:15'
+  modified: '2016-02-09 01:27:46'
   modules: 'File::HomeDir Try::Tiny'
   name: autoget
   version: '2.0'
