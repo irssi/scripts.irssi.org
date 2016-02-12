@@ -1,6 +1,6 @@
 ##############################################################################
 #
-# mh_hold_mode.pl v1.04 (20160126)
+# mh_hold_mode.pl v1.05 (20160211)
 #
 # Copyright (c) 2007, 2015, 2016  Michael Hansen
 #
@@ -30,6 +30,9 @@
 #
 # should you not like the new item look, you can revert it back to the
 # old style with the setting mh_hold_mode_more_oldstyle
+#
+# previously the default window hold_mode and scroll_always were hardcoded
+# they are now setable in irssi (see settings below)
 #
 # instructions:
 #
@@ -71,7 +74,16 @@
 # mh_hold_mode_more_oldstyle (default OFF): switch between old and new
 # style more statusbar item
 #
+# mh_hold_mode_default_hold_mode (default OFF): change the default hold_mode
+# setting for new windows
+#
+# mh_hold_mode_default_scroll_always (default ON): change the default scroll_always
+# setting for new windows
+#
 # history:
+#
+#	v1.05 (20160211)
+#		moved default settings from hardcoded to irssi settings _default_hold_mode and _default_scroll_always
 #	v1.04 (20160126)
 #		added mh_hold_mode_more_oldstyle and supporting code
 #		added namespace to MSGLEVEL
@@ -110,7 +122,7 @@ use strict;
 use Irssi 20100403;
 use Irssi::TextUI;
 
-our $VERSION = '1.04';
+our $VERSION = '1.05';
 our %IRSSI   =
 (
 	'name'        => 'mh_hold_mode',
@@ -119,7 +131,7 @@ our %IRSSI   =
 	'authors'     => 'Michael Hansen',
 	'contact'     => 'mh on IRCnet #help',
 	'url'         => 'http://scripts.irssi.org / https://github.com/mh-source/irssi-scripts',
-	'changed'     => 'Tue Jan 26 18:55:23 CET 2016',
+	'changed'     => 'Thu Feb 11 17:26:34 CET 2016',
 );
 
 ##############################################################################
@@ -129,8 +141,6 @@ our %IRSSI   =
 ##############################################################################
 
 our %config;
-$config{'DEFAULT'}{'hold_mode'}     = 0; # default: 0
-$config{'DEFAULT'}{'scroll_always'} = 1; # default: 1
 
 our $lastcommand = '';
 our $more        = 0;
@@ -174,10 +184,24 @@ sub config_window_get
 
 		if (!exists($config{'WINDOW'}{$windowid}))
 		{
-			for my $setting (keys(%{$config{'DEFAULT'}}))
+			if (Irssi::settings_get_bool('mh_hold_mode_default_hold_mode'))
 			{
-				$config{'WINDOW'}{$windowid}{$setting} = $config{'DEFAULT'}{$setting};
+				$config{'WINDOW'}{$windowid}{'hold_mode'} = 1;
+
+			} else
+			{
+				$config{'WINDOW'}{$windowid}{'hold_mode'} = 0;
 			}
+
+			if (Irssi::settings_get_bool('mh_hold_mode_default_scroll_always'))
+			{
+				$config{'WINDOW'}{$windowid}{'scroll_always'} = 1;
+
+			} else
+			{
+				$config{'WINDOW'}{$windowid}{'scroll_always'} = 0;
+			}
+
 		}
 
 		return(\%{$config{'WINDOW'}{$windowid}});
@@ -478,12 +502,24 @@ sub statusbar_more
 #
 ##############################################################################
 
-Irssi::settings_add_bool('mh_hold_mode', 'mh_hold_mode_more_oldstyle', 0);
-
-Irssi::command('^SET SCROLL ON');
+Irssi::settings_add_bool('mh_hold_mode', 'mh_hold_mode_more_oldstyle',         0);
+Irssi::settings_add_bool('mh_hold_mode', 'mh_hold_mode_default_hold_mode',     0);
+Irssi::settings_add_bool('mh_hold_mode', 'mh_hold_mode_default_scroll_always', 1);
 
 Irssi::signal_add_last('window created',   'config_window_get');
 Irssi::signal_add_last('window destroyed', 'config_window_del');
+Irssi::signal_add_first('key send_line',   'signal_key_send_line_first');
+Irssi::signal_add_last('key send_line',    'signal_key_send_line_last');
+Irssi::signal_add_last('window changed',   'signal_window_changed_last');
+Irssi::signal_add_last('print text',       'signal_print_text_last');
+
+Irssi::command_bind('hold_mode', 'command_hold_mode', 'mh_hold_mode');
+Irssi::command_bind('help',      'command_help');
+
+Irssi::statusbar_item_register('mh_sbmore', '', 'statusbar_more');
+Irssi::statusbars_recreate_items();
+
+Irssi::command('^SET SCROLL ON');
 
 for my $window (Irssi::windows)
 {
@@ -492,21 +528,10 @@ for my $window (Irssi::windows)
 	config_window_get($window);
 }
 
-Irssi::statusbar_item_register('mh_sbmore', '', 'statusbar_more');
-Irssi::statusbars_recreate_items();
-
 statusbar_more_redraw();
-Irssi::timeout_add(1000, 'statusbar_more_redraw', undef);
-
 Irssi::command('^REDRAW');
 
-Irssi::signal_add_first('key send_line', 'signal_key_send_line_first');
-Irssi::signal_add_last('key send_line',  'signal_key_send_line_last');
-Irssi::signal_add_last('window changed', 'signal_window_changed_last');
-Irssi::signal_add_last('print text',     'signal_print_text_last');
-
-Irssi::command_bind('hold_mode', 'command_hold_mode', 'mh_hold_mode');
-Irssi::command_bind('help',      'command_help');
+Irssi::timeout_add(1000, 'statusbar_more_redraw', undef);
 
 1;
 
