@@ -1,8 +1,8 @@
 ##############################################################################
 #
-# mh_sbsplitmode.pl v1.06 (20151227)
+# mh_sbsplitmode.pl v1.07 (20160213)
 #
-# Copyright (c) 2015  Michael Hansen
+# Copyright (c) 2015, 2016  Michael Hansen
 #
 # Permission to use, copy, modify, and distribute this software
 # for any purpose with or without fee is hereby granted, provided
@@ -59,6 +59,10 @@
 # see '/help statusbar' for more details and do not forget to '/save'
 #
 # history:
+#
+#	v1.07 (20160213)
+#		added namespace to MSGLEVEL
+#		code cleanup
 #	v1.06 (20151227)
 #		added _print/_print_details and supporting code
 #		/splitmode now prints stats d unavailable in a bit nicer way
@@ -95,7 +99,7 @@ use strict;
 use Irssi 20100403;
 use Irssi::TextUI;
 
-our $VERSION = '1.06';
+our $VERSION = '1.07';
 our %IRSSI   =
 (
 	'name'        => 'mh_sbsplitmode',
@@ -104,7 +108,7 @@ our %IRSSI   =
 	'authors'     => 'Michael Hansen',
 	'contact'     => 'mh on IRCnet #help',
 	'url'         => 'http://scripts.irssi.org / https://github.com/mh-source/irssi-scripts',
-	'changed'     => 'Sun Dec 27 11:50:52 CET 2015',
+	'changed'     => 'Sat Feb 13 14:18:00 CET 2016',
 );
 
 ##############################################################################
@@ -123,19 +127,19 @@ our $state;
 
 sub trim_space
 {
-   my ($string) = @_;
+	my ($string) = @_;
 
-   if (defined($string))
-   {
-      $string =~ s/^\s+//g;
-      $string =~ s/\s+$//g;
+	if (defined($string))
+	{
+		$string =~ s/^\s+//g;
+		$string =~ s/\s+$//g;
 
-   } else {
+	} else
+	{
+		$string = '';
+	}
 
-      $string = '';
-   }
-
-   return($string);
+	return($string);
 }
 
 ##############################################################################
@@ -281,8 +285,8 @@ sub signal_redir_event_248
 			{
 				$format_data = 'is in';
 
-			} else {
-
+			} else
+			{
 				$details = 0;
 				$format_data = 'is no longer in';
 			}
@@ -365,8 +369,8 @@ sub command_splitmode
 				{
 					$format_data = 'Splitmode unavailable';
 
-				} else {
-
+				} else
+				{
 					if ($state->{$servertag}->{'s'})
 					{
 						$format_data = 'In splitmode';
@@ -376,8 +380,8 @@ sub command_splitmode
 							$format_data = $format_data . ' since ' . localtime($state->{$servertag}->{'s'});
 						}
 
-					} else {
-
+					} else
+					{
 						$format_data = 'Not in splitmode';
 					}
 
@@ -386,19 +390,18 @@ sub command_splitmode
 
 				if ($format_detail ne '')
 				{
-					Irssi::active_win->printformat(MSGLEVEL_CRAP, 'mh_sbsplitmode_line', $format_server, $format_data, $format_detail);
+					Irssi::active_win->printformat(Irssi::MSGLEVEL_CRAP, 'mh_sbsplitmode_line', $format_server, $format_data, $format_detail);
 
-				} else {
-
-					Irssi::active_win->printformat(MSGLEVEL_CRAP, 'mh_sbsplitmode_line_no_detail', $format_server, $format_data);
+				} else
+				{
+					Irssi::active_win->printformat(Irssi::MSGLEVEL_CRAP, 'mh_sbsplitmode_line_no_detail', $format_server, $format_data);
 				}
 			}
 		}
 
-	} else {
-
-		Irssi::active_win->printformat(MSGLEVEL_CRAP, 'mh_sbsplitmode_error', 'No servers');
-
+	} else
+	{
+		Irssi::active_win->printformat(Irssi::MSGLEVEL_CRAP, 'mh_sbsplitmode_error', 'No servers');
 	}
 }
 
