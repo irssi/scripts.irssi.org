@@ -2579,10 +2579,10 @@
   description: 'provides a statusbar item showing if your server is in splitmode and /splitmode to show details'
   filename: mh_sbsplitmode.pl
   license: BSD
-  modified: '2016-01-22 16:38:05'
+  modified: '2016-02-13 14:25:22'
   name: mh_sbsplitmode
   url: 'http://scripts.irssi.org / https://github.com/mh-source/irssi-scripts'
-  version: '1.06'
+  version: '1.07'
 -
   authors: 'Michael Hansen'
   contact: 'mh on IRCnet #help'
