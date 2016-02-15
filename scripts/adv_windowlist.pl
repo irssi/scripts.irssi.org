@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-our $VERSION = '1.1'; # 29104182e11c798
+our $VERSION = '1.2'; # 762850b0c2c1d5a
 our %IRSSI = (
     authors     => 'Nei',
     contact     => 'Nei @ anti@conference.jabber.teamidiot.de',
@@ -74,6 +74,10 @@ our %IRSSI = (
 # * string : Character to use between the channel entries
 # variant 2 can be used for alternating separators (only in status bar
 # without block display)
+#
+# /format awl_abbrev_chars <string>
+# * string : Character to use when shortening long names. The second character
+#   will be used if two blocks need to be filled.
 #
 # /format awl_viewer_item_bg <string>
 # * string : Format String specifying the viewer's item background colour
@@ -727,6 +731,8 @@ sub _calculate_items {
 
     my $display_header = Irssi::current_theme->get_format(__PACKAGE__, set 'display_header');
     my $name_format = Irssi::current_theme->get_format(__PACKAGE__, set 'name_display');
+    my $abbrev_chars = as_uni(Irssi::current_theme->get_format(__PACKAGE__, set 'abbrev_chars'));
+
     my %displays;
 
     my $active = Irssi::active_win;
@@ -739,6 +745,27 @@ sub _calculate_items {
 	$keyPad = length((sort { length $b <=> length $a } values %keymap)[0]) // 0;
     }
     my $last_net;
+    my ($abbrev1, $abbrev2) = $abbrev_chars =~ /(\X)(.*)/;
+    my @abbrev_chars = ('~', "\x{301c}");
+    unless (defined $abbrev1 && screen_length(as_tc($abbrev1)) == 1) { $abbrev1 = $abbrev_chars[0] }
+    unless (length $abbrev2) {
+	$abbrev2 = $abbrev1;
+	if ($abbrev1 eq $abbrev_chars[0]) {
+	    $abbrev2 = $abbrev_chars[1];
+	}
+	else {
+	    $abbrev2 = $abbrev1;
+	}
+    }
+    if (screen_length(as_tc($abbrev2)) == 1) {
+	$abbrev2 x= 2;
+    }
+    while (screen_length(as_tc($abbrev2)) > 2) {
+	chop $abbrev2;
+    }
+    unless (screen_length(as_tc($abbrev2)) == 2) {
+	$abbrev2 = $abbrev_chars[1];
+    }
     for my $win (@$wins) {
 	my $global_hack_alert_tag_header;
 
@@ -852,13 +879,13 @@ sub _calculate_items {
 			elsif ($cp < 0) { # elsif at end -> replace last 2 characters
 			    --$cp;
 			}
-			(substr $name, $cp, $rm) = '~';
+			(substr $name, $cp, $rm) = $abbrev1;
 			if ($cp > -1 && $rm > 1) {
 			    --$middle2;
 			}
 			my $sl = screen_length(as_tc($name));
 			if ($sl + $baseLength < abs $S{block}) {
-			    (substr $name, ($middle2+1)/2, 1) = "\x{301c}";
+			    (substr $name, ($middle2+1)/2, 1) = $abbrev2;
 			    last;
 			}
 			elsif ($sl + $baseLength == abs $S{block}) {
@@ -1573,6 +1600,7 @@ Irssi::signal_register({
     set 'name_display'		=> '$0',
     set 'separator'		=> ' ',
     set 'separator2'		=> '',
+    set 'abbrev_chars'		=> "~\x{301c}",
     set 'viewer_item_bg'	=> sb_format_expand('{sb_background}'),
    ]);
 }
@@ -2360,8 +2388,8 @@ UNITCHECK
 
 # Changelog
 # =========
-# 1.1
-# - infinite loop on shortening certain window names reported by Kalan
+# 1.2 - new format to choose abbreviation character
+# 1.1 - infinite loop on shortening certain window names reported by Kalan
 #
 # 1.0
 # - new awl_viewer_launch setting and an array of related settings
