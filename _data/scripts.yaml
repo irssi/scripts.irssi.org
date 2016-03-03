@@ -1796,6 +1796,16 @@
   url: http://irssi.hauwaerts.be/hignore.pl
   version: '0.02'
 -
+  authors: ramnes
+  contact: contact@ramnes.eu
+  description: 'Call a system command when receiving a hilight'
+  filename: hilightcmd.pl
+  license: GPLv3
+  modified: '2016-02-29 11:44:16'
+  name: hilightcmd
+  url: https://github.com/ramnes/hilightcmd
+  version: 0.1
+-
   authors: "Timo 'cras' Sirainen, Mark 'znx' Sangster"
   contact: 'tss@iki.fi, znxster@gmail.com'
   description: 'Print hilighted messages to window named "hilight"'
