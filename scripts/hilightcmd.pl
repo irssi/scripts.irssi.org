@@ -7,6 +7,7 @@
 # /set hilightcmd_systemcmd ssh user@host beep &
 #
 
+use strict;
 use Irssi;
 use POSIX;
 use vars qw($VERSION %IRSSI);
