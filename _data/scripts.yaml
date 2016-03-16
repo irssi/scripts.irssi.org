@@ -640,6 +640,16 @@
   url: http://the-timing.nl/stuff/irssi-bitlbee
   version: '0.4'
 -
+  authors: 'Ævar Arnfjörð Bjarmason'
+  contact: avarab@gmail.com
+  description: 'Hide your REGISTER and IDENTIFY password lines in &bitlbee from screen & logs '
+  filename: bitlbee_hide_password.pl
+  license: 'Public Domain'
+  modified: '2016-03-15 17:52:13'
+  name: bitlbee_hide_password.pl
+  url: 'http://scripts.irssi.org & https://github.com/avar/dotfiles/blob/master/.irssi/scripts/bitlbee_hide_password.pl'
+  version: '1.0'
+-
   authors: 'Tijmen "timing" Ruizendaal'
   contact: tijmen.ruizendaal@gmail.com
   description: '1. Adds an item to the status bar wich shows [joined: <nicks>] when someone is joining &bitlbee. 2. Shows join messages in the query. (For bitlbee v3.0+)'
@@ -854,6 +864,16 @@
   name: chansort
   url: http://ninja.no/irssi/chansort.pl
   version: '1.4'
+-
+  authors: 'Ævar Arnfjörð Bjarmason'
+  contact: avarab@gmail.com
+  description: "Sort channels & query windows in a configurable way, based on Peder Stray's chansort.pl"
+  filename: chansort_configurable.pl
+  license: GPL
+  modified: '2016-03-15 17:52:13'
+  name: chansort_configurable
+  url: 'http://scripts.irssi.org & https://github.com/avar/dotfiles/blob/master/.irssi/scripts/chansort_configurable.pl'
+  version: '1.0'
 -
   authors: "Uwe 'duden' Dudenhoeffer"
   commands: chansync
@@ -2799,6 +2819,16 @@
   name: msg2notice
   version: '1.0'
 -
+  authors: 'Fernando Vezzosi & Ævar Arnfjörð Bjarmason'
+  contact: 'irssi@repnz.net & avarab@gmail.com'
+  description: 'For a configured list of nicks or nicks matching a regex, convert all their messages to a notices'
+  filename: msg2notice_regex.pl
+  license: 'Public Domain'
+  modified: '2016-03-15 17:52:13'
+  name: msg2notice_regex.pl
+  url: 'http://scripts.irssi.org & https://github.com/avar/dotfiles/blob/master/.irssi/scripts/msg2notice_regex.pl & https://github.com/bucciarati/irssi-script-msg_to_notice'
+  version: '1.0'
+-
   authors: "Stefan 'tommie' Tomanek"
   commands: multipaste
   contact: stefan@pico.ruhr.de
@@ -2809,6 +2839,16 @@
   name: multipaste
   url: ''
   version: '2003120617'
+-
+  authors: 'Ævar Arnfjörð Bjarmason'
+  contact: avarab@gmail.com
+  description: 'Changes messages from myself to appear to come from my username, not my nickname'
+  filename: munge_own_nickname_to_username.pl
+  license: 'Public Domain'
+  modified: '2016-03-15 17:52:13'
+  name: munge_own_nickname_to_username.pl
+  url: 'http://scripts.irssi.org & https://github.com/avar/dotfiles/blob/master/.irssi/scripts/munge_own_nickname_to_username.pl'
+  version: '1.0'
 -
   authors: 'Remco den Breeje'
   contact: 'stacium or stek (most of the time) @ quakenet.org'
@@ -3903,6 +3943,16 @@
   modified: '2015-01-03 19:42:44'
   name: slack_emoji
   version: '0.03'
+-
+  authors: 'Ævar Arnfjörð Bjarmason'
+  contact: avarab@gmail.com
+  description: 'Strips the annoying mentions of your nickname on Slack via [cc: <you>]'
+  filename: slack_strip_auto_cc.pl
+  license: 'Public Domain'
+  modified: '2016-03-15 17:52:13'
+  name: slack_strip_auto_cc.pl
+  url: 'http://scripts.irssi.org & https://github.com/avar/dotfiles/blob/master/.irssi/scripts/slack_strip_auto_cc.pl'
+  version: '1.0'
 -
   authors: 'Christian Brassat'
   contact: crshd@mail.com
