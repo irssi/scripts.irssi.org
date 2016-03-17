@@ -2,7 +2,7 @@ use strict;
 use warnings;
 use Irssi;
 
-our $VERSION = '1.0';
+our $VERSION = '1.1';
 our %IRSSI = (
     authors     => 'Ævar Arnfjörð Bjarmason',
     contact     => 'avarab@gmail.com',
@@ -35,10 +35,10 @@ our %IRSSI = (
 # what you're username is, and automatically substitute
 # s/nick/username/ if applicable.
 #
-# Note that if your theme adjusts the msgnick rendering this may not
-# work, because we try to match "< yournick>" in the line. We could
-# potentially do better, please contact the author if you run into
-# issues with this.
+# Note that if your theme adjusts the msgnick or action_core rendering
+# this may not work, because we try to match "< yournick> " or " *
+# yournick " in the line, respectively. We could potentially do
+# better, please contact the author if you run into issues with this.
 
 sub msg_rename_myself_in_printed_text {
     my ($tdest, $data, $stripped) = @_;
@@ -69,7 +69,13 @@ sub msg_rename_myself_in_printed_text {
     # The illusion here isn't complete, e.g. if you do /NAMES your
     # nick will show up and not your username, but I consider that a
     # feature.
-    if ($stripped =~ /^<.?\Q$server_nick\E> /s) {
+    if (
+        # Normal PRIVMSG
+        $stripped =~ /^<.?\Q$server_nick\E> /s
+        or
+        # /me PRIVMSG
+        $stripped =~ /^ \* \Q$server_nick\E /s
+    ) {
         s/\Q$server_nick\E/$server_username/ for $data, $stripped;
 
         Irssi::signal_continue($tdest, $data, $stripped);
