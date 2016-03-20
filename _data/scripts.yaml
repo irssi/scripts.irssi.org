@@ -602,6 +602,15 @@
   url: ''
   version: '2003020801'
 -
+  authors: 'Liam Hopkins'
+  contact: we.hopkins@gmail.com
+  description: '/list <perl-regexp>'
+  filename: betterlist.pl
+  license: GPL
+  modified: '2016-03-19 19:58:23'
+  name: betterlist
+  version: '2.1'
+-
   authors: '[^BgTA^]'
   contact: raul@bgta.net
   description: "Byte's Gallery of the TAilor Script"
