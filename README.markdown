@@ -50,7 +50,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [             away_hilight_notice ](Test/away_hilight_notice/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                      awaylogcnt ](Test/awaylogcnt/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                            away ](Test/away/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                       awayproxy ](Test/awayproxy/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
+[                       awayproxy ](Test/awayproxy/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   
 [                    away_verbose ](Test/away_verbose/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        babelirc ](Test/babelirc/)|  ✔   |  ✔   |  ✘   | 36   |  ☡   | (c)
 [                         badword ](Test/badword/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -62,7 +62,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                       beep_beep ](Test/beep_beep/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                            beep ](Test/beep/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       bestoiber ](Test/bestoiber/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                      betterlist ](Test/betterlist/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
+[                      betterlist ](Test/betterlist/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                            bgta ](Test/bgta/)|  ✔   |  ✔   |  ✔   | 22   |  ✔   | (c)
 [                          binary ](Test/binary/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                     binary_time ](Test/binary_time/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -496,4 +496,4 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                     xmpp-notify ](Test/xmpp-notify/)|  ✔   |  ✔   |  ✔   | 21   |  ✔   | (c)
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 
-ccce6d5b5b6b3a7680d9ab29029839679ed0f45b | 561
+468f4669b4b5c8eae603eb609b140481cfb3ae45 | 563
