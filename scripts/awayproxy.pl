@@ -43,6 +43,8 @@
 #  * New logging expansion capability, either time or line based.
 # 0.2d
 #  * Micro fix to get back only when needed
+# 0.2e
+#  * Changed default values for $config{script_mode} and $config{emailto} for IRC-only and a non-existing placeholder respectively.
 #### To come / planned / wanted:
 #  * Make expansion system log several channels at once.
 #  * Make this script server based.
@@ -56,7 +58,7 @@ use Irssi;
 use Irssi::Irc;
 use vars qw($VERSION %IRSSI %config);
 
-$VERSION = "0.2d";
+$VERSION = "0.2e";
 %IRSSI = (
 	authors => "BCOW",
 	contact => "anttip\@n0-life.com",
@@ -91,13 +93,13 @@ $config{expansion_timeout} = 90;
 #  1 - only email
 #  2 - only irc
 #  3 - off
-$config{script_mode} = 1;
+$config{script_mode} = 2;
 # email address where to send the email
-$config{emailto} = 'email@email.org';
+$config{emailto} = 'recipient@domain.tld';
 # sendmail location
 $config{sendmail} = '/usr/sbin/sendmail';
 # who is the sender of the email
-$config{emailfrom} = 'email@email.org';
+$config{emailfrom} = 'sender@domain.tld';
 # Subject of email
 $config{emailsubject} = '[irssi-proxy]';
 # and the awayreason setting (Thanx Wulf)
