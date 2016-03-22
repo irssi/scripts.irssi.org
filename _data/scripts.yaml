@@ -3650,6 +3650,16 @@
   url: http://bc-bd.org/blog/irssi/
   version: 0.2.0
 -
+  authors: 'Jere Toivonen'
+  contact: jere@flamero.fi
+  description: 'Replaces regexps with predefined strings'
+  filename: replace.pl
+  license: MIT
+  modified: '2016-03-22 03:23:12'
+  name: replace
+  url: http://flamero.fi
+  version: '1.0'
+-
   authors: 'David Leadbeater'
   contact: dgl@dgl.cx
   description: 'Resizes a split window when it is made active (see comments in script for details)'
