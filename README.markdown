@@ -50,7 +50,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [             away_hilight_notice ](Test/away_hilight_notice/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                      awaylogcnt ](Test/awaylogcnt/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                            away ](Test/away/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                       awayproxy ](Test/awayproxy/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   
+[                       awayproxy ](Test/awayproxy/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
 [                    away_verbose ](Test/away_verbose/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        babelirc ](Test/babelirc/)|  ✔   |  ✔   |  ✘   | 36   |  ☡   | (c)
 [                         badword ](Test/badword/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -369,6 +369,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                          remote ](Test/remote/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                         reorder ](Test/reorder/)|  ✔   |  ✘   |  ✔   | 10   |  ☡   | (c)
 [                          repeat ](Test/repeat/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                         replace ](Test/replace/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                    resize_split ](Test/resize_split/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       rhythmbox ](Test/rhythmbox/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                              rk ](Test/rk/)|  ✔   |  ✔   |  ✔   | 14   |  ✔   | (c)
@@ -496,4 +497,4 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                     xmpp-notify ](Test/xmpp-notify/)|  ✔   |  ✔   |  ✔   | 21   |  ✔   | (c)
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 
-468f4669b4b5c8eae603eb609b140481cfb3ae45 | 563
+1b23c139073f37fbde62ad1278b8805b5f066557 | 565
