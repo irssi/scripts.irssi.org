@@ -1,0 +1,9 @@
+---
+-
+  authors: Nei
+  default_package: cap_sasl_fail
+  description: 'Disconnect from server if SASL authentication fails.'
+  license: 'GNU GPLv2 or later'
+  modified: '2016-03-24 11:01:05'
+  name: cap_sasl_fail
+  version: '2.0'

@@ -78,6 +78,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                             buf ](Test/buf/)|  ✔   |  ✔   |  ✔   |  8   |  ✔   | (c)
 [                            calc ](Test/calc/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
 [                        callerid ](Test/callerid/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                   cap_sasl_fail ](Test/cap_sasl_fail/)|  ✔   |  ✔   |  ✔   |  2   |  ✔   
 [                        cap_sasl ](Test/cap_sasl/)|  ✘   |  ✔   |  ✔   |  7   |  ☡   | (c)
 [                            cddb ](Test/cddb/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       centericq ](Test/centericq/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
@@ -369,7 +370,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                          remote ](Test/remote/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                         reorder ](Test/reorder/)|  ✔   |  ✘   |  ✔   | 10   |  ☡   | (c)
 [                          repeat ](Test/repeat/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                         replace ](Test/replace/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[                         replace ](Test/replace/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                    resize_split ](Test/resize_split/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       rhythmbox ](Test/rhythmbox/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                              rk ](Test/rk/)|  ✔   |  ✔   |  ✔   | 14   |  ✔   | (c)
@@ -497,4 +498,4 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                     xmpp-notify ](Test/xmpp-notify/)|  ✔   |  ✔   |  ✔   | 21   |  ✔   | (c)
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 
-1b23c139073f37fbde62ad1278b8805b5f066557 | 565
+8857a8bbd039a208861f8eafa5b42506de1c5465 | 568
