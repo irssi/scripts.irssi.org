@@ -887,10 +887,10 @@
   description: "Sort channels & query windows in a configurable way, based on Peder Stray's chansort.pl"
   filename: chansort_configurable.pl
   license: GPL
-  modified: '2016-03-15 17:52:13'
+  modified: '2016-03-31 14:41:44'
   name: chansort_configurable
   url: 'http://scripts.irssi.org & https://github.com/avar/dotfiles/blob/master/.irssi/scripts/chansort_configurable.pl'
-  version: '1.0'
+  version: '1.1'
 -
   authors: "Uwe 'duden' Dudenhoeffer"
   commands: chansync
