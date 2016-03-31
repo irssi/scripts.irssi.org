@@ -3,7 +3,7 @@ use warnings;
 use Irssi;
 use File::Spec::Functions qw(catdir catfile);
 
-our $VERSION = '1.0';
+our $VERSION = '1.1';
 our %IRSSI = (
     authors     => 'Ævar Arnfjörð Bjarmason',
     contact     => 'avarab@gmail.com',
@@ -72,8 +72,52 @@ our %IRSSI = (
 #     };
 #
 # The above sorter will sort channels before queries, and networks
-# alphabetically, but will sort make the #irssi channel be the first
+# alphabetically, but will make the #irssi channel be the first
 # channel on the freenode network.
+#
+# I actually prefer to have my CHANNEL windows sorted in a particular
+# order, but have the QUERY windows accumulate at the end of the list
+# so I can page backwards through the window list through my most
+# recent QUERY chats, so this is a modification of the above that does
+# that:
+#
+#    sub {
+#        # This sorts the status window before anything else
+#        exists($a->{chatnet}) <=> exists($b->{chatnet})
+#        ||
+#        # "CHANNEL" will sort before "QUERY"
+#        $a->{type} cmp $b->{type}
+#        ||
+#        # For the rest of this I want channels to be ordered by chatnet
+#        # and have hardcoded positions or an alphabetical sort, but for
+#        # QUERY I don't want any further sorting, I just want a stable
+#        # sort, this is so I can page back from the back of the list to
+#        # find my most recent queries.
+#        (
+#            ($a->{type} eq 'CHANNEL' and $b->{type} eq 'CHANNEL')
+#            ?
+#            (
+#                # Cluster chatnets alphabetically
+#                $a->{chatnet} cmp $b->{chatnet}
+#                ||
+#                # Put & channels like &bitlbee before normal channels
+#                ($b->{name} =~ /^&/) <=> ($a->{name} =~ /^&/)
+#                ||
+#                # Allow for hardcoding the positioning of channels
+#                # within a network
+#                ($hardcoded_positioning{$a->{chatnet}}->{$a->{name}} || 0) <=> ($hardcoded_positioning{$b->{chatnet}}->{$b->{name}} || 0)
+#                ||
+#                # Default to sorting alphabetically
+#                $a->{name} cmp $b->{name}
+#            )
+#            : 0
+#        )
+#    };
+#
+# Note that you can return "0" to just keep the existing order the
+# windows are in now. We guarantee that the the sort is stable,
+# i.e. if you return 0 from the comparison of $a and $b we'll leave
+# the windows in the order they're already in.
 
 my $sort_callback_file = catfile(catdir(Irssi::get_irssi_dir(), 'scripts'), 'chansort_configurable_callback.pl');
 my $sort_callback = do $sort_callback_file;
@@ -99,6 +143,11 @@ sub cmd_chansort_configurable {
             window => $window,
         };
     }
+
+    # Because Irssi::windows() doesn't return these in the existing
+    # order they're in we first have to sort them by their existing
+    # order to make sure that we have a stable sort.
+    @windows = sort { $a->{refnum} <=> $b->{refnum} } @windows;
 
     @windows = sort {
         (
