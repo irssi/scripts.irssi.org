@@ -2482,6 +2482,16 @@
   url: http://irssi.org/
   version: '0.01'
 -
+  authors: ferret
+  commands: 'logtail, logview'
+  contact: 'ferret(tA)explodingferret(moCtoD), ferret on irc.freenode.net'
+  description: 'print last n lines of logs when opening queries/channels'
+  filename: logresume.pl
+  modified: '2016-04-04 08:02:24'
+  name: logresume
+  url: http://explodingferret.com/linux/irssi/logresume.pl
+  version: '0.6'
+-
   authors: c0ffee
   contact: c0ffee@penguin-breeder.org
   description: 'Use /ls <regex> to show all nicks (including ident@host) matching regex in the current channel'
