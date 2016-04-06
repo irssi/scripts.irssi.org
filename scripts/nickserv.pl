@@ -24,7 +24,7 @@ use strict;
 use Irssi;
 use vars qw($VERSION %IRSSI);
 
-$VERSION = "1.9";
+$VERSION = "1.10";
 
 %IRSSI = (
     authors     => 'Geert Hauwaerts',
@@ -33,7 +33,6 @@ $VERSION = "1.9";
     description => 'This script will authorize you into NickServ.',
     license     => 'GNU General Public License',
     url         => 'http://irssi.hauwaerts.be/nickserv.pl',
-    changed     => 'Tue Jul  1 12:41:23 PDT 2014',
 );
 
 my @nickservnet = ();
@@ -389,7 +388,9 @@ sub nickserv_notice {
     my ($target, $text) = $data =~ /^(\S*)\s:(.*)/;
 
     if (is_nickserv($server->{tag}, $address)) {
-        if ($text =~ /^If this is your nickname, type \/msg NickServ/ || $text =~ /^This nickname is registered and protected.  If it is your/ || $text =~ /This nickname is registered\. Please choose a different nickname,/ || $text =~ /^This nickname is registered. Please choose a different nickname/) {
+        $text =~ s/[[:cntrl:]]+//g; # remove control crap
+
+        if ($text =~ /^(?:If this is your nickname, type|Please identify via|Type) \/msg NickServ (?i:identify)/ || $text =~ /^This nickname is registered and protected.  If it is your/ || $text =~ /This nickname is registered\. Please choose a different nickname/) {
             my $password = get_password($server->{tag}, $server->{nick});
             
             if ($password == -1) {
@@ -436,9 +437,9 @@ sub nickserv_notice {
             Irssi::signal_stop();
         } elsif ($text =~ /^please choose a different nick./) {
             Irssi::signal_stop();
-        } elsif ($text =~ /^You have already identified/ || $text =~ /^This nick is already identified./) {
+        } elsif ($text =~ /^You have already identified/ || $text =~ /^This nick is already identified./ || $text =~ /^You are already logged in as/) {
             Irssi::signal_stop();
-        } elsif ($text =~ /^Password accepted - you are now recognized/) {
+        } elsif ($text =~ /^Password accepted - you are now recognized/ || $text =~ /^You are now identified for/) {
             Irssi::signal_stop();
             Irssi::printformat(MSGLEVEL_CLIENTCRAP, 'password_accepted', $server->{tag});
         } elsif ($text =~ /^Password Incorrect/ || $text =~ /^Password incorrect./) {
