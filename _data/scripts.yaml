@@ -4109,15 +4109,6 @@
   url: http://irssi.org/scripts/
   version: '0.9'
 -
-  authors: 'Enno Boland'
-  contact: g@s01.de
-  description: 'Rename XMPP *vz.net network contacts in bitlbee to human-readable names based on http://github.com/avar/irssi-bitlbee-facebook-rename'
-  filename: studivz_bitlbee_rename.pl
-  license: GPL
-  modified: '2010-07-08 23:39:58'
-  name: studivz-bitlbee-rename
-  version: '0.01'
--
   authors: 'Marcin Rozycki'
   contact: derwan@irssi.pl
   description: 'Script checking channel synchronization. Usage: /sync-check [channel (servers)|-stop]'
