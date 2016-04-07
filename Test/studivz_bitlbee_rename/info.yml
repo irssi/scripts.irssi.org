@@ -1,9 +1,0 @@
----
--
-  authors: 'Enno Boland'
-  contact: g@s01.de
-  default_package: studivz_bitlbee_rename
-  description: 'Rename XMPP *vz.net network contacts in bitlbee to human-readable names based on http://github.com/avar/irssi-bitlbee-facebook-rename'
-  license: GPL
-  name: studivz-bitlbee-rename
-  version: '0.01'

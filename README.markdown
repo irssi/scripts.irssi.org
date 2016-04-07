@@ -251,7 +251,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                        log2ansi ](Test/log2ansi/)|  ✘   |  ✘   |  ✔   | 15   |  ☡   | (c)
 [                logcompress_perl ](Test/logcompress_perl/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                     logcompress ](Test/logcompress/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                       logresume ](Test/logresume/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[                       logresume ](Test/logresume/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                              ls ](Test/ls/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                            lwho ](Test/lwho/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                  mailcheck_imap ](Test/mailcheck_imap/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
@@ -416,7 +416,6 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                       splitlong ](Test/splitlong/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                         spotify ](Test/spotify/)|  ✔   |  ✔   |  ✔   | 14   |  ✔   | (c)
 [                          stocks ](Test/stocks/)|  ✘   |  ✔   |  ✔   | 12   |  ☡   | (c)
-[          studivz_bitlbee_rename ](Test/studivz_bitlbee_rename/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                       synccheck ](Test/synccheck/)|  ✔   |  ✔   |  ✔   | 37   |  ✔   | (c)
 [                sysinfo270-irssi ](Test/sysinfo270-irssi/)|  ✔   |  ✔   |  ✔   | 26   |  ✔   | (c)
 [                sysinfo277-irssi ](Test/sysinfo277-irssi/)|  ✔   |  ✔   |  ✔   | 13   |  ✔   | (c)
@@ -499,4 +498,4 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                     xmpp-notify ](Test/xmpp-notify/)|  ✔   |  ✔   |  ✔   | 21   |  ✔   | (c)
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 
-f417e51532b8b9ebfe90b74fe29cfeb171f8e9d6 | 572
+7595e365a17cc1b899e5143d012a44554f03a546 | 576
