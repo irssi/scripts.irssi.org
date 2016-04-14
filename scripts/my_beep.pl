@@ -5,7 +5,7 @@
 # inspired by Georg Lukas
 
 # howtoinstall:
-#  copy this file to ~/.irssi/script/
+#  copy this file to ~/.irssi/scripts/
 #  in irssi:
 #   $/script load my_beep.pl
 #  change the settings
