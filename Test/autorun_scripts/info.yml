@@ -1,0 +1,13 @@
+---
+-
+  authors: 'Jari Matilainen, original script by nightfrog'
+  changed: '18/04/2016 15:10:00 CEST'
+  contact: 'vague!#irssi@freenode on irc'
+  default_package: autorun_scripts
+  description: 'Autorun scripts/symlinks created in the scripts/autorun directory'
+  license: GPLv2
+  modified: '2016-04-18 15:11:40'
+  modules:
+    - File::ChangeNotify
+  name: autorun_scripts
+  version: '0.1'
