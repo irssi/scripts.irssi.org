@@ -373,6 +373,16 @@
   name: 'Auto Reminder'
   version: '0.01'
 -
+  authors: 'Jari Matilainen, original script by nightfrog'
+  contact: 'vague!#irssi@freenode on irc'
+  description: 'Autorun scripts/symlinks created in the scripts/autorun directory'
+  filename: autorun_scripts.pl
+  license: GPLv2
+  modified: '2016-04-18 15:11:40'
+  modules: File::ChangeNotify
+  name: autorun_scripts
+  version: '0.1'
+-
   authors: Juerd
   contact: '#####@juerd.nl'
   description: 'Save current servers, channels and windows for autoconnect and autojoin'
