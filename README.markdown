@@ -38,7 +38,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                      autorejoin ](Test/autorejoin/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                autorejoinpunish ](Test/autorejoinpunish/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                    autoreminder ](Test/autoreminder/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                 autorun_scripts ](Test/autorun_scripts/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
+[                 autorun_scripts ](Test/autorun_scripts/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                       autostuff ](Test/autostuff/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                     autoversion ](Test/autoversion/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       autovoice ](Test/autovoice/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -499,4 +499,4 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                     xmpp-notify ](Test/xmpp-notify/)|  ✔   |  ✔   |  ✔   | 21   |  ✔   | (c)
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 
-f815cfb8390b6a1cf35a1b8541a38bfce54fcebb | 581
+d8bfa624decc0af22e3f552a3b07a496c0b1c448 | 582
