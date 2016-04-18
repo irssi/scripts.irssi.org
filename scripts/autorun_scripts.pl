@@ -34,6 +34,17 @@ use File::ChangeNotify;
 use File::Basename qw( basename );
 use Irssi qw(timeout_add command get_irssi_dir);
 
+use vars qw($VERSION %IRSSI);
+$VERSION = "0.1";
+%IRSSI = (
+          authors       => "Jari Matilainen, original script by nightfrog",
+          contact       => 'vague!#irssi@freenode on irc',
+          name          => "autorun_scripts",
+          description   => "Autorun scripts/symlinks created in the scripts/autorun directory",
+          license       => "GPLv2",
+          changed       => "18/04/2016 15:10:00 CEST"
+);
+
 my $watch = File::ChangeNotify->instantiate_watcher(
     directories => [
         File::Spec->catdir( get_irssi_dir() . '/scripts/autorun' ),
