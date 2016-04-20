@@ -3051,10 +3051,10 @@
   description: 'This script will authorize you into NickServ.'
   filename: nickserv.pl
   license: 'GNU General Public License'
-  modified: '2014-10-19 11:54:16'
+  modified: '2016-04-06 16:03:28'
   name: nickserv.pl
   url: http://irssi.hauwaerts.be/nickserv.pl
-  version: '1.9'
+  version: '1.10'
 -
   authors: BC-bd
   contact: bd@bc-bd.org
