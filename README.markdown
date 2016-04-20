@@ -308,7 +308,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                        nicklist ](Test/nicklist/)|  ✔   |  ✔   |  ✘   | 17   |  ☡   | (c)
 [                  nickmix-c0ffee ](Test/nickmix-c0ffee/)|  ✔   |  ✔   |  ✔   | 18   |  ✔   | (c)
 [                   nickmix_pasky ](Test/nickmix_pasky/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                        nickserv ](Test/nickserv/)|  ✔   |  ✔   |  ✔   | 21   |  ✔   | (c)
+[                        nickserv ](Test/nickserv/)|  ✔   |  ✔   |  ✔   | 21   |  ✔   
 [                             niq ](Test/niq/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
 [                             nm2 ](Test/nm2/)|  ✔   |  ✔   |  ✔   | 14   |  ✔   | (c)
 [                              nm ](Test/nm/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
@@ -499,4 +499,4 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                     xmpp-notify ](Test/xmpp-notify/)|  ✔   |  ✔   |  ✔   | 21   |  ✔   | (c)
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 
-d8bfa624decc0af22e3f552a3b07a496c0b1c448 | 582
+80ced1d77b83416a9d473aed58486697b935bfd1 | 584
