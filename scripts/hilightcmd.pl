@@ -12,6 +12,7 @@ use Irssi;
 use POSIX;
 use vars qw($VERSION %IRSSI);
 use Text::Sprintf::Named qw(named_sprintf);
+use String::ShellQuote qw(shell_quote_best_effort);
 
 $VERSION = "0.1";
 %IRSSI = (authors     => "Guillaume Gelin",
@@ -38,7 +39,7 @@ Irssi::signal_add('print text' => sub {
         $stripped =~ s/"/\\"/g;
         system(named_sprintf(
             Irssi::settings_get_str('hilightcmd_systemcmd'),
-            message => $stripped
+            message => shell_quote_best_effort $stripped
         ));
     }
 });
