@@ -4,7 +4,7 @@ use v5.14;
 use List::Util qw(min max);
 use Hash::Util qw(lock_keys);
 
-our $VERSION = '2.0-dev'; # cb10e88bcd58d0c
+our $VERSION = '2.1'; # a42b713aaa38823
 our %IRSSI = (
     authors	=> 'Nei',
     contact	=> 'Nei @ anti@conference.jabber.teamidiot.de',
@@ -116,6 +116,13 @@ my $format_re = qr/ %(?=[}%{])
 sub update_expando {
     my ($mode, $server, $target, $nick, $space) = @_;
     my $t_add;
+    if (exists $Irssi::Script::{'realnames::'}
+	    && (my $code = 'Irssi::Script::realnames'->can('_get_nick_chan'))) {
+	if (my $i = $code->($server, $target, $nick)) {
+	    $nick = $i->{n}{realname}
+		if length $i->{n}{realname};
+	}
+    }
     my $nl = length $nick;
     my $pad_len = max(0, $space - $nl);
     if ($S{truncate_nick}) {
@@ -554,7 +561,9 @@ init();
 
 # Changelog
 # =========
-# 2.0-dev
+# 2.1 - support realnames script
+#
+# 2.0
 # - fix crash if xmpp action signal is not registered (just ignore it)
 # - do not grow either when using no-shrink with maxlength
 # - hopefully fix alignment in xmpp muc
