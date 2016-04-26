@@ -3,8 +3,11 @@
 # Originally based on hilightwin.pl work and djcraven5's idea for making remote
 # computer beep through ssh.
 #
-# Example of use, assuming you got a ssh and beep on your remote:
-# /set hilightcmd_systemcmd ssh user@host beep &
+# Example of use, assuming you have ssh and beep on your remote:
+#   /set hilightcmd_systemcmd ssh user@host beep &
+#
+# The hilighted text may be passed as a quoted string:
+#   /set hilightcmd_systemcmd printf "%s\n" %(message)s >> ~/hilights
 #
 
 use strict;
@@ -36,7 +39,7 @@ Irssi::signal_add('print text' => sub {
 	&& (Irssi::active_win()->{refnum} != $dest->{window}->{refnum}
             || Irssi::settings_get_bool('hilightcmd_currentwin'))) {
 
-        $stripped =~ s/"/\\"/g;
+        $stripped =~ s/^\s+|\s+$//g;
         system(named_sprintf(
             Irssi::settings_get_str('hilightcmd_systemcmd'),
             message => shell_quote_best_effort $stripped
