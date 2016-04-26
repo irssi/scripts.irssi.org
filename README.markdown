@@ -84,7 +84,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                            cddb ](Test/cddb/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       centericq ](Test/centericq/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                           cgrep ](Test/cgrep/)|  ✘   |  ✔   |  ✔   |  3   |  ☡   | (c)
-[                         chanact ](Test/chanact/)|  ✔   |  ✔   |  ✔   |  8   |  ✔   
+[                         chanact ](Test/chanact/)|  ✔   |  ✔   |  ✔   |  8   |  ✔   | (c)
 [                  chanfull_duden ](Test/chanfull_duden/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        chanfull ](Test/chanfull/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        chanpeak ](Test/chanpeak/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
@@ -188,6 +188,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                        hideshow ](Test/hideshow/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                        highlite ](Test/highlite/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                         hignore ](Test/hignore/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                      hilightcmd ](Test/hilightcmd/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                      hilightwin ](Test/hilightwin/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                hipchat_complete ](Test/hipchat_complete/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                  history_search ](Test/history_search/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
@@ -499,4 +500,4 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                     xmpp-notify ](Test/xmpp-notify/)|  ✔   |  ✔   |  ✔   | 21   |  ✔   | (c)
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 
-fc8e2878120c834d106dbca6838cb9ab635a5ba6 | 587
+0e27c2df21881ab503ebd327aa6b755e28deaef8 | 589
