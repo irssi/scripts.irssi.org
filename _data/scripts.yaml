@@ -611,6 +611,16 @@
   name: beepaway
   version: '2003011501'
 -
+  authors: Nei
+  contact: 'Nei @ anti@conference.jabber.teamidiot.de'
+  description: 'Rebind certain keys so that they are inserted before the space'
+  filename: beforespace.pl
+  license: ISC
+  modified: '2016-04-26 23:42:54'
+  name: beforespace
+  url: http://anti.teamidiot.de/
+  version: '0.1'
+-
   authors: "Stefan 'tommie' Tomanek"
   commands: bestoiber
   contact: stefan@pico.ruhr.de
@@ -1002,6 +1012,15 @@
   name: cmpchans
   url: http://vague.se
   version: '0.5'
+-
+  authors: 'Lars Djerf, Nei'
+  contact: 'lars.djerf@gmail.com, Nei @ anti@conference.jabber.teamidiot.de'
+  description: 'Replace words between :...: in messages according to a text file. Was intended for Unicode Emoji on certain proprietary platforms.'
+  filename: colon_emoji.pl
+  license: GPLv3
+  modified: '2016-04-26 23:53:02'
+  name: colon_emoji
+  version: '0.1'
 -
   authors: Nei
   contact: 'Nei @ anti@conference.jabber.teamidiot.de'
@@ -3112,10 +3131,10 @@
   description: 'right aligned nicks depending on longest nick'
   filename: nm2.pl
   license: 'GPL v2'
-  modified: '2015-11-16 19:32:11'
+  modified: '2016-04-26 23:30:46'
   name: nm2
   url: http://anti.teamidiot.de/
-  version: 2.0-dev
+  version: '2.1'
 -
   authors: 'JamesOff, Ion'
   contact: james@jamesoff.net
@@ -3955,6 +3974,15 @@
   note: 'Make sure you set the seti_state_sah with /set'
   url: http://optical.kapitalet.org/seti/
   version: '0.1'
+-
+  authors: 'Rocco Caputo (dngor), Nei'
+  contact: 'rcaputo@cpan.org, Nei @ anti@conference.jabber.teamidiot.de'
+  description: 'Irssi 0.8.10 settings notes and documentation'
+  filename: settingshelp.pl
+  license: 'CC BY-SA 2.5, http://creativecommons.org/licenses/by-sa/2.5/'
+  modified: '2016-04-27 00:09:59'
+  name: settingshelp
+  version: 0.8.10
 -
   authors: 'Marcin Rozycki'
   contact: derwan@irssi.pl
