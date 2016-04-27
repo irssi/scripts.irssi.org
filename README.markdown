@@ -45,7 +45,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                      auto_whois ](Test/auto_whois/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       autowhois ](Test/autowhois/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                autowhois_simple ](Test/autowhois_simple/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                         autowho ](Test/autowho/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
+[                         autowho ](Test/autowho/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                        autowrap ](Test/autowrap/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        away2web ](Test/away2web/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                         awaybar ](Test/awaybar/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -63,6 +63,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                        beepaway ](Test/beepaway/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       beep_beep ](Test/beep_beep/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                            beep ](Test/beep/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                     beforespace ](Test/beforespace/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
 [                       bestoiber ](Test/bestoiber/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                      betterlist ](Test/betterlist/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                            bgta ](Test/bgta/)|  ✔   |  ✔   |  ✔   | 22   |  ✔   | (c)
@@ -103,6 +104,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                          clones ](Test/clones/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                  clones_scanner ](Test/clones_scanner/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                        cmpchans ](Test/cmpchans/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
+[                     colon_emoji ](Test/colon_emoji/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
 [                  colorize_nicks ](Test/colorize_nicks/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                       colorkick ](Test/colorkick/)|  ✘   |  ✘   |  ✔   | 14   |  ☡   | (c)
 [                       colorswap ](Test/colorswap/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -313,7 +315,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                   nickmix_pasky ](Test/nickmix_pasky/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        nickserv ](Test/nickserv/)|  ✔   |  ✔   |  ✔   | 21   |  ✔   | (c)
 [                             niq ](Test/niq/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
-[                             nm2 ](Test/nm2/)|  ✔   |  ✔   |  ✔   | 14   |  ✔   | (c)
+[                             nm2 ](Test/nm2/)|  ✔   |  ✔   |  ✔   | 14   |  ✔   
 [                              nm ](Test/nm/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
 [                          nocaps ](Test/nocaps/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       nocollide ](Test/nocollide/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -502,4 +504,4 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                     xmpp-notify ](Test/xmpp-notify/)|  ✔   |  ✔   |  ✔   | 21   |  ✔   | (c)
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 
-66c18b3bec7bc742b62d134cdbb01c5d7a05535c | 602
+4667723f748700c7fca75fd9f7f0320bd3093135 | 605
