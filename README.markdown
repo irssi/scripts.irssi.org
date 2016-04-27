@@ -45,6 +45,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                      auto_whois ](Test/auto_whois/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       autowhois ](Test/autowhois/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                autowhois_simple ](Test/autowhois_simple/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                         autowho ](Test/autowho/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
 [                        autowrap ](Test/autowrap/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        away2web ](Test/away2web/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                         awaybar ](Test/awaybar/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -155,7 +156,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                            file ](Test/file/)|  ✔   |  ✔   |  ✔   | 16   |  ✔   | (c)
 [                         findbot ](Test/findbot/)|  ✔   |  ✔   |  ✔   | 15   |  ✔   | (c)
 [                            find ](Test/find/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                    fix_slackirc ](Test/fix_slackirc/)|  ✔   |  ✔   |  ✔   |  1   |  ✔   
+[                    fix_slackirc ](Test/fix_slackirc/)|  ✔   |  ✔   |  ✔   |  1   |  ✔   | (c)
 [                          fleech ](Test/fleech/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                         fnotify ](Test/fnotify/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                          follow ](Test/follow/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -501,4 +502,4 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                     xmpp-notify ](Test/xmpp-notify/)|  ✔   |  ✔   |  ✔   | 21   |  ✔   | (c)
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 
-b1a4f1a7680364084a67e1b86d80b5021da72668 | 600
+66c18b3bec7bc742b62d134cdbb01c5d7a05535c | 602
