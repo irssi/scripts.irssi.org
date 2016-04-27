@@ -23,7 +23,7 @@ use Irssi;
 use Irssi::Irc;
 
 use vars qw($VERSION %IRSSI);
-$VERSION = "0.3";
+$VERSION = "0.4";
 %IRSSI = (
     authors => 'Larry "Vizzie" Daffner',
     contact => 'vizzie@airmail.net',
@@ -31,7 +31,7 @@ $VERSION = "0.3";
     description => 'Automatically goes  away after defined inactivity',
     license => 'BSD',
     url => 'http://www.flamingpackets.net/~vizzie/irssi/',
-    changed => 'Tue Oct 19 14:41:15 CDT 2010',
+    changed => 'Tue Apr 26 19:30:00 CDT 2016',
     changes => 'Applied multiserver/store config patch from Adam Monsen'
 );
 
@@ -76,16 +76,6 @@ sub cmd_away {
   
   if ($data eq "") {
     $autoaway_state = 0;
-    # If $autoaway_state is 2, we went away by typing /away, and need
-    # to restart autoaway ourselves. Otherwise, we were autoaway, and
-    # we'll let the autoaway return take care of business.
-
-    if ($autoaway_state eq 2) {
-      if ($autoaway_sec) {
-	$autoaway_to_tag =
-	  Irssi::timeout_add($autoaway_sec*1000, "auto_timeout", "");
-      }
-    }
   } else {
     if ($autoaway_state eq 0) {
       Irssi::timeout_remove($autoaway_to_tag);
