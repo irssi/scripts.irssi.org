@@ -1,0 +1,11 @@
+---
+-
+  authors: Nei
+  contact: 'Nei @ anti@conference.jabber.teamidiot.de'
+  default_package: fix_slackirc
+  description: 'Some workarounds to improve irssi experience on the Slack IRC gateway'
+  license: ISC
+  modified: '2016-04-27 00:01:16'
+  name: fix_slackirc
+  url: http://anti.teamidiot.de/
+  version: '0.1'

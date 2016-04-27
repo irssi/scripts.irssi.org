@@ -26,7 +26,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                 aspell_complete ](Test/aspell_complete/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                          aspell ](Test/aspell/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                   auth_quakenet ](Test/auth_quakenet/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                        autoaway ](Test/autoaway/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   
+[                        autoaway ](Test/autoaway/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
 [                     autochannel ](Test/autochannel/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                  autoclearinput ](Test/autoclearinput/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       autocycle ](Test/autocycle/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -155,6 +155,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                            file ](Test/file/)|  ✔   |  ✔   |  ✔   | 16   |  ✔   | (c)
 [                         findbot ](Test/findbot/)|  ✔   |  ✔   |  ✔   | 15   |  ✔   | (c)
 [                            find ](Test/find/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                    fix_slackirc ](Test/fix_slackirc/)|  ✔   |  ✔   |  ✔   |  1   |  ✔   
 [                          fleech ](Test/fleech/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                         fnotify ](Test/fnotify/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                          follow ](Test/follow/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -263,7 +264,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                            mail ](Test/mail/)|  ✘   |  ✔   |  ✔   |  4   |  ☡   | (c)
 [                          mangle ](Test/mangle/)|  ✘   |  ✔   |  ✘   | 23   |  ☡   | (c)
 [                             map ](Test/map/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[            mass_hilight_blocker ](Test/mass_hilight_blocker/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[            mass_hilight_blocker ](Test/mass_hilight_blocker/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                 messages_bottom ](Test/messages_bottom/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                              mg ](Test/mg/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                    mh_hold_mode ](Test/mh_hold_mode/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -367,7 +368,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                         rainbow ](Test/rainbow/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                        randaway ](Test/randaway/)|  ✘   |  ✔   |  ✔   |  9   |  ☡   | (c)
 [                        randname ](Test/randname/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
-[                    recentdepart ](Test/recentdepart/)|  ✔   |  ✔   |  ✔   |  2   |  ✔   
+[                    recentdepart ](Test/recentdepart/)|  ✔   |  ✔   |  ✔   |  2   |  ✔   | (c)
 [                        redirect ](Test/redirect/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                            relm ](Test/relm/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                          remote ](Test/remote/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -500,4 +501,4 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                     xmpp-notify ](Test/xmpp-notify/)|  ✔   |  ✔   |  ✔   | 21   |  ✔   | (c)
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 
-75123a679752eb367dabfe5083991391af301101 | 599
+b1a4f1a7680364084a67e1b86d80b5021da72668 | 600
