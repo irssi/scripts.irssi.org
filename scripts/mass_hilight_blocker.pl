@@ -18,14 +18,14 @@
 use strict;
 use Irssi;
 use vars qw($VERSION %IRSSI); 
-$VERSION = "0.2";
+$VERSION = "0.3";
 %IRSSI = (
         authors         => "Uli Baumann",
 	contact         => "f-zappa\@irc-muenster.de",
 	name            => "mass_hilight_blocker",
 	description     => "Disables hilighting for messages containing a lot of nicknames",
 	license         => "GPL",
-	changed	        => "Tue Jun  1 13:32:20 CEST 2004",
+	changed	        => "Wed Apr 27 02:30:00 CEST 2016",
 );
 
 
@@ -43,8 +43,7 @@ sub sig_printtext {
       foreach my $nick ($channel->nicks()) # walk through nicks
         {
           $nick = $nick->{nick};
-          $nick =~ s/([\]\[])/\\$1/g;	# ']' and '[' need masking
-          if ($text =~ /$nick/)		# does line contain this nick?
+          if ($text =~ /\Q$nick/)		# does line contain this nick?
             {$num_nicks++;}		# then increase counter
         }
       

@@ -56,7 +56,7 @@ use warnings;
 use Irssi;
 use Irssi::Irc;
 
-our $VERSION = "0.6";
+our $VERSION = "0.7";
 our %IRSSI = (
     authors     => 'Matthew Sytsma',
     contact     => 'spiderpigy@yahoo.com',
@@ -204,7 +204,7 @@ sub on_part
         }
 	elsif (check_channel($server, $channel))
         {
-            if (time() - $nickhash{$server->{'tag'}}{lc($nick)}{$channel} > Irssi::settings_get_int("recdep_period"))
+            if (!defined $nickhash{$server->{'tag'}}{lc($nick)}{$channel} || time() - $nickhash{$server->{'tag'}}{lc($nick)}{$channel} > Irssi::settings_get_int("recdep_period"))
             {
                 $use_hide ? $Irssi::scripts::hideshow::hide_next = 1
 		    : Irssi::signal_stop();
@@ -251,7 +251,7 @@ sub on_join
 
 	if (check_channel($server, $channel))
         {
-            if (time() - $joinwatch{$server->{'tag'}}{$channel}{lc($nick)} > Irssi::settings_get_int("recdep_rejoin"))
+            if (!defined $joinwatch{$server->{'tag'}}{$channel}{lc($nick)} || time() - $joinwatch{$server->{'tag'}}{$channel}{lc($nick)} > Irssi::settings_get_int("recdep_rejoin"))
             {
                 $use_hide ? $Irssi::scripts::hideshow::hide_next = 1
 		    : Irssi::signal_stop();
