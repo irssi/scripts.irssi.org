@@ -263,10 +263,10 @@
   description: 'Automatically goes  away after defined inactivity'
   filename: autoaway.pl
   license: BSD
-  modified: '2014-10-17 18:30:46'
+  modified: '2016-04-26 17:34:00'
   name: 'Automagic away setting'
   url: http://www.flamingpackets.net/~vizzie/irssi/
-  version: '0.3'
+  version: '0.4'
 -
   authors: 'Peder Stray'
   contact: peder@ninja.no
@@ -2609,9 +2609,9 @@
   description: 'Disables hilighting for messages containing a lot of nicknames'
   filename: mass_hilight_blocker.pl
   license: GPL
-  modified: '2014-10-19 11:54:16'
+  modified: '2016-04-26 17:27:32'
   name: mass_hilight_blocker
-  version: '0.2'
+  version: '0.3'
 -
   authors: 'Wouter Coekaerts'
   contact: coekie@irssi.org
@@ -3637,10 +3637,10 @@
   description: "Filters quit/part/join/nick notices based on time since last message. (Similar to weechat's smartfilter)."
   filename: recentdepart.pl
   license: 'GNU GPLv2 or later'
-  modified: '2015-11-16 19:36:52'
+  modified: '2016-04-26 18:00:41'
   name: 'Recently Departed'
   url: ''
-  version: '0.6'
+  version: '0.7'
 -
   authors: 'Thomas Graf'
   contact: irssi@reeler.org
