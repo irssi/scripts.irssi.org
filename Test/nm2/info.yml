@@ -5,7 +5,7 @@
   default_package: nm2
   description: 'right aligned nicks depending on longest nick'
   license: 'GPL v2'
-  modified: '2016-04-26 23:30:46'
+  modified: '2015-11-16 19:32:11'
   name: nm2
   url: http://anti.teamidiot.de/
-  version: '2.1'
+  version: 2.0-dev
