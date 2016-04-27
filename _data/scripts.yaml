@@ -411,6 +411,16 @@
   name: autovoice
   version: '0.05'
 -
+  authors: Nei
+  contact: 'Nei @ anti@conference.jabber.teamidiot.de'
+  description: 'Periodically sends /who on configured channels to update away state.'
+  filename: autowho.pl
+  license: ISC
+  modified: '2016-04-26 23:37:32'
+  name: autowho
+  url: http://anti.teamidiot.de/
+  version: '0.1'
+-
   authors: "Timo 'cras' Sirainen"
   contact: tss@iki.fi
   description: '/WHOIS all the users who send you a private message.'
@@ -1514,6 +1524,16 @@
   name: Findbot
   url: http://hem.passagen.se/thka2315/
   version: '1.57'
+-
+  authors: Nei
+  contact: 'Nei @ anti@conference.jabber.teamidiot.de'
+  description: 'Some workarounds to improve irssi experience on the Slack IRC gateway'
+  filename: fix_slackirc.pl
+  license: ISC
+  modified: '2016-04-27 00:01:16'
+  name: fix_slackirc
+  url: http://anti.teamidiot.de/
+  version: '0.1'
 -
   authors: 'Piotr Krukowiecki'
   contact: 'piotr //at// krukowiecki //dot// net'
