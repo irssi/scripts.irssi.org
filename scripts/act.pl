@@ -30,6 +30,12 @@ $VERSION = "0.14";
 #
 # /ACT ALL sets all windows as non-active
 
+Irssi::command_bind 'act' => sub {
+    my ( $data, $server, $item ) = @_;
+    $data =~ s/\s+$//g;
+    Irssi::command_runsub('act', $data, $server, $item);
+};
+
 Irssi::command_bind('act', sub { _act(1); });
 Irssi::command_bind('act public', sub { _act(2); });
 Irssi::command_bind('act all', sub { _act(3); });
