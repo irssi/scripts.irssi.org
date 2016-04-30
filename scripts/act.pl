@@ -8,7 +8,7 @@ use strict;
 use vars qw($VERSION %IRSSI);
 
 use Irssi 20020120;
-$VERSION = "0.14";
+$VERSION = "0.15";
 %IRSSI = (
     authors	=> "c0ffee",
     contact	=> "c0ffee\@penguin-breeder.org",
