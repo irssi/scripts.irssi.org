@@ -10,7 +10,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                   active_notice ](Test/active_notice/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                   active_notify ](Test/active_notify/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                   activity_file ](Test/activity_file/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
-[                             act ](Test/act/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                             act ](Test/act/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                  adv_windowlist ](Test/adv_windowlist/)|  ✔   |  ✔   |  ✔   | 28   |  ✔   | (c)
 [                           aidle ](Test/aidle/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                              ai ](Test/ai/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
@@ -63,7 +63,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                        beepaway ](Test/beepaway/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       beep_beep ](Test/beep_beep/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                            beep ](Test/beep/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                     beforespace ](Test/beforespace/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
+[                     beforespace ](Test/beforespace/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                       bestoiber ](Test/bestoiber/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                      betterlist ](Test/betterlist/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                            bgta ](Test/bgta/)|  ✔   |  ✔   |  ✔   | 22   |  ✔   | (c)
@@ -315,7 +315,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                   nickmix_pasky ](Test/nickmix_pasky/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        nickserv ](Test/nickserv/)|  ✔   |  ✔   |  ✔   | 21   |  ✔   | (c)
 [                             niq ](Test/niq/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
-[                             nm2 ](Test/nm2/)|  ✔   |  ✔   |  ✔   | 14   |  ✔   
+[                             nm2 ](Test/nm2/)|  ✔   |  ✔   |  ✔   | 14   |  ✔   | (c)
 [                              nm ](Test/nm/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
 [                          nocaps ](Test/nocaps/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       nocollide ](Test/nocollide/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -402,7 +402,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                     send_scroll ](Test/send_scroll/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                  servercomplete ](Test/servercomplete/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
 [                            seti ](Test/seti/)|  ✔   |  ✔   |  ✔   | 10   |  ✔   | (c)
-[                    settingshelp ](Test/settingshelp/)|  ✔   |  ✔   |  ✔   |  1   |  ✔   
+[                    settingshelp ](Test/settingshelp/)|  ✔   |  ✔   |  ✔   |  1   |  ✔   | (c)
 [                      shortenurl ](Test/shortenurl/)|  ✔   |  ✔   |  ✔   | 20   |  ✔   | (c)
 [                        shorturl ](Test/shorturl/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                     showhilight ](Test/showhilight/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -505,4 +505,4 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                     xmpp-notify ](Test/xmpp-notify/)|  ✔   |  ✔   |  ✔   | 21   |  ✔   | (c)
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 
-6455a8e468e35fff13e4587ea720266aa77ef70e | 606
+ad9f6f1a94f4516141164bcc88833b4f920d2346 | 612
