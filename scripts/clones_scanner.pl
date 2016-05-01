@@ -79,6 +79,7 @@ $VERSION = '1.6';
 
 
 Irssi::settings_add_time('clones_scanner', 'clones_scanner_maxtime', 900);
+Irssi::settings_add_bool('clones_scanner', 'clones_scanner_include_ident', 0);
 
 # global variables
 my $have_devel_size = eval { require Devel::Size };
@@ -222,7 +223,7 @@ sub join_method {
   Irssi::signal_continue(@_);
   
   my $servtag  =  $server->{tag};
-  (my $host    = $address) =~ s/^[^@]+@//;
+  (my $host    = $address) =~ (Irssi::settings_get_bool('clones_scanner_include_ident') ? s/^[^!]+!// : s/^[^@]+@//);
   my $chan_rec = $server->channel_find($channel);
 
   # ==== find clones ====
@@ -230,7 +231,7 @@ sub join_method {
   my $str_clones = "";
   my @clones;
   foreach my $ni ($chan_rec->nicks()) {
-    ($ni_host = "$ni->{host}") =~ s/^[^@]+@//;
+    ($ni_host = "$ni->{host}") =~ (Irssi::settings_get_bool('clones_scanner_include_ident') ? s/^[^!]+!// : s/^[^@]+@//);
     if ( ($ni->{nick} ne $nick)&&($ni_host eq $host) ) {
       $str_clones .= "$ni->{nick}".", ";
       push @clones, $ni->{nick};
