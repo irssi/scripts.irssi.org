@@ -1,4 +1,4 @@
-#!/usr/bin/perl -w
+#!/usr/bin/perl
 # resets window activity status
 #  by c0ffee 
 #    - http://www.penguin-breeder.org/irssi/
@@ -8,7 +8,7 @@ use strict;
 use vars qw($VERSION %IRSSI);
 
 use Irssi 20020120;
-$VERSION = "0.15";
+$VERSION = "0.14";
 %IRSSI = (
     authors	=> "c0ffee",
     contact	=> "c0ffee\@penguin-breeder.org",
@@ -33,12 +33,17 @@ $VERSION = "0.15";
 Irssi::command_bind 'act' => sub {
     my ( $data, $server, $item ) = @_;
     $data =~ s/\s+$//g;
-    Irssi::command_runsub('act', $data, $server, $item);
+    if ($data) {
+      Irssi::command_runsub('act', $data, $server, $item);
+    }
+    else {
+      _act(1);
+    }
 };
 
-Irssi::command_bind('act', sub { _act(1); });
 Irssi::command_bind('act public', sub { _act(2); });
 Irssi::command_bind('act all', sub { _act(3); });
+Irssi::command_bind('act', sub { _act(1); });
 
 sub _act {
   my($level) = @_;
