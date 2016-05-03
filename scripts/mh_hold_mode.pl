@@ -1,6 +1,6 @@
 ##############################################################################
 #
-# mh_hold_mode.pl v1.05 (20160211)
+# mh_hold_mode.pl v1.06 (20160503)
 #
 # Copyright (c) 2007, 2015, 2016  Michael Hansen
 #
@@ -82,6 +82,8 @@
 #
 # history:
 #
+#	v1.06 (20160503)
+#		fixed call to missing sub
 #	v1.05 (20160211)
 #		moved default settings from hardcoded to irssi settings _default_hold_mode and _default_scroll_always
 #	v1.04 (20160126)
@@ -122,7 +124,7 @@ use strict;
 use Irssi 20100403;
 use Irssi::TextUI;
 
-our $VERSION = '1.05';
+our $VERSION = '1.06';
 our %IRSSI   =
 (
 	'name'        => 'mh_hold_mode',
@@ -131,7 +133,7 @@ our %IRSSI   =
 	'authors'     => 'Michael Hansen',
 	'contact'     => 'mh on IRCnet #help',
 	'url'         => 'http://scripts.irssi.org / https://github.com/mh-source/irssi-scripts',
-	'changed'     => 'Thu Feb 11 17:26:34 CET 2016',
+	'changed'     => 'Tue May  3 20:30:06 CEST 2016',
 );
 
 ##############################################################################
@@ -337,7 +339,7 @@ sub signal_key_send_line_last
 	}
 }
 
-sub signal_window_changed
+sub signal_window_changed_last
 {
 	my ($windowrec_new, $windowrec_old) = @_;
 
@@ -532,6 +534,7 @@ statusbar_more_redraw();
 Irssi::command('^REDRAW');
 
 Irssi::timeout_add(1000, 'statusbar_more_redraw', undef);
+
 
 1;
 
