@@ -3,7 +3,7 @@ use warnings;
 use Irssi;
 use File::Spec::Functions qw(catdir catfile);
 
-our $VERSION = '1.1';
+our $VERSION = '1.2';
 our %IRSSI = (
     authors     => 'Ævar Arnfjörð Bjarmason',
     contact     => 'avarab@gmail.com',
@@ -27,49 +27,77 @@ our %IRSSI = (
 # but you can create a
 # ~/.irssi/scripts/chansort_configurable_callback.pl file with a
 # subroutine that we'll call inside sort() (so the $a and $b sort
-# variables are available). E.g. creating the file as:
+# variables are available).
 #
-#     use strict;
-#     use warnings;
+# The values of $a and $b are going to be hashes like:
 #
-#     sub {
-#         rand() <=> rand()
-#     }
+#    {
+#        refnum  => Int,    # e.g. 1, 50, ...
+#        type    => Str,    # e.g. "SERVER", "CHANNEL"
+#        chatnet => Str,    # e.g. "freenode", "oftc", ...
+#        name    => Str,    # e.g. "(status)", "#irssi", "", ...
+#        window  => Object, # The Irssi::Window object
+#    }
+#
+# The "window" object contains the refnum/type/chatnet/name data
+# somewhere, but we've extracted it for convenience since depending on
+# the state & type of the window the values can be anywhere in
+# window.active.*, window.active.server.*, window.active_server.* or
+# window.*
+#
+# Note that you can return "0" to just keep the existing order the
+# windows are in now. We guarantee that the the sort is stable,
+# i.e. if you return 0 from the comparison of $a and $b we'll leave
+# the windows in the order they're already in. In other words, the
+# window objects passed to your sort() routine will be pre-sorted in
+# "refnum" order.
+#
+# Below we have examples of how you might create the
+# ~/.irssi/scripts/chansort_configurable_callback.pl
+# file. E.g. creating it as:
+#
+#    use strict;
+#    use warnings;
+#
+#    sub {
+#        rand() <=> rand()
+#    };
 #
 # Would sort your windows in a random order. This would be somewhat
 # more useful:
 #
-#     use strict;
-#     use warnings;
+#    use strict;
+#    use warnings;
 #
-#     my $n = -9001;
-#     my %hardcoded_positioning = (
-#         freenode => {
-#             '#irssi'         => $n++, # 2
-#             '#freenode'      => $n++, # 3
-#         },
-#     );
+#    my $n = -9001;
+#    my %hardcoded_positioning = (
+#        freenode => {
+#            '#irssi'         => $n++, # 2
+#            '#freenode'      => $n++, # 3
+#        },
+#    );
 #
-#     sub {
-#         # Provide a default sorter with some sane defaults
-#         exists($a->{chatnet}) <=> exists($b->{chatnet})
-#         ||
-#         # "CHANNEL" will sort before "QUERY"
-#         $a->{type} cmp $b->{type}
-#         ||
-#         # Cluster chatnets alphabetically
-#         $a->{chatnet} cmp $b->{chatnet}
-#         ||
-#         # Put & channels like &bitlbee before normal channels
-#         ($b->{name} =~ /^&/) <=> ($a->{name} =~ /^&/)
-#         ||
-#         # Allow for hardcoding the positioning of channels
-#         # within a network
-#         ($hardcoded_positioning{$a->{chatnet}}->{$a->{name}} || 0) <=> ($hardcoded_positioning{$b->{chatnet}}->{$b->{name}} || 0)
-#         ||
-#         # Default to sorting alphabetically
-#         $a->{name} cmp $b->{name}
-#     };
+#    sub {
+#        # We sort the "(status) window first before anything else
+#        ($b->{name} eq "(status)") <=> ($a->{name} eq "(status)")
+#        ||
+#        # We want "CHANNEL" at the beginning and "QUERY" at the end
+#        # regardless of chatnet.
+#        $a->{type} cmp $b->{type}
+#        ||
+#        # Cluster chatnets alphabetically
+#        $a->{chatnet} cmp $b->{chatnet}
+#        ||
+#        # Put & channels like &bitlbee before normal channels
+#        ($b->{name} =~ /^&/) <=> ($a->{name} =~ /^&/)
+#        ||
+#        # Allow for hardcoding the positioning of channels
+#        # within a network
+#        ($hardcoded_positioning{$a->{chatnet}}->{$a->{name}} || 0) <=> ($hardcoded_positioning{$b->{chatnet}}->{$b->{name}} || 0)
+#        ||
+#        # Default to sorting alphabetically
+#        $a->{name} cmp $b->{name}
+#    };
 #
 # The above sorter will sort channels before queries, and networks
 # alphabetically, but will make the #irssi channel be the first
@@ -81,11 +109,18 @@ our %IRSSI = (
 # recent QUERY chats, so this is a modification of the above that does
 # that:
 #
+#    use strict;
+#    use warnings;
+#
+#    # See above for how this might be defined.
+#    my %hardcoded_positioning;
+#
 #    sub {
-#        # This sorts the status window before anything else
-#        exists($a->{chatnet}) <=> exists($b->{chatnet})
+#        # We sort the "(status) window first before anything else
+#        ($b->{name} eq "(status)") <=> ($a->{name} eq "(status)")
 #        ||
-#        # "CHANNEL" will sort before "QUERY"
+#        # We want "CHANNEL" at the beginning and "QUERY" at the end
+#        # regardless of chatnet.
 #        $a->{type} cmp $b->{type}
 #        ||
 #        # For the rest of this I want channels to be ordered by chatnet
@@ -114,11 +149,12 @@ our %IRSSI = (
 #        )
 #    };
 #
-# Note that you can return "0" to just keep the existing order the
-# windows are in now. We guarantee that the the sort is stable,
-# i.e. if you return 0 from the comparison of $a and $b we'll leave
-# the windows in the order they're already in.
-
+# The last example here is the default sorter you'll get if you don't
+# create your own by creating the
+# ~/.irssi/scripts/chansort_configurable_callback.pl file. Obviously
+# the use of %hardcoded_positioning here is a no-op, but you could
+# copy the example to your own file and fill it up to hardcode the
+# sorting of certain channels.
 my $sort_callback_file = catfile(catdir(Irssi::get_irssi_dir(), 'scripts'), 'chansort_configurable_callback.pl');
 my $sort_callback = do $sort_callback_file;
 
@@ -127,18 +163,37 @@ sub cmd_chansort_configurable {
 
     for my $window (Irssi::windows()) {
         my $active = $window->{active};
+        my $active_server = $window->{active_server};
 
         push @windows => {
-            # Extract these to the top-level for easy extraction
-            refnum       => $window->{refnum},
-            (exists $active->{server}
-             # This is for everything except the (status) window
-             ? (
-                 name    => $active->{name},
-                 type    => $active->{type},
-                 chatnet => $active->{server}->{chatnet},
-             )
-             : ()),
+            # We extract some values to the top-level for ease of use,
+            # i.e. you don't have to go and unpack values from
+            # window.active.*, window.active.server.*,
+            # window.active_server.* or window.* which are often
+            # logically the same sort of thing, e.g. the name of the
+            # window.
+            refnum => $window->{refnum},
+
+            # We have a window.active for windows that are not
+            # type=SERVER and *connected* to a server, but if we're
+            # disconnected or have some otherwise disowned window we
+            # might also not have window.active, but will have
+            # window.active_server.
+            (
+                type => ($active->{type} || $active_server->{type}),
+
+                # Sometimes window.active.server.chatnet won't be
+                # there, but window.active_server.chatnet is always
+                # there, and these seem to be a reference to the same
+                # object.
+                chatnet => ($active_server->{chatnet}),
+
+                # If we have a window.active.name it'll be
+                # e.g. "#irssi", but otherwise we'll have
+                # e.g. window.name as "(status)" or just "".
+                name => ($active->{name} || $window->{name}),
+            ),
+
             # The raw window object with all the details.
             window => $window,
         };
@@ -150,24 +205,47 @@ sub cmd_chansort_configurable {
     @windows = sort { $a->{refnum} <=> $b->{refnum} } @windows;
 
     @windows = sort {
+        # Dummy lexical just so I can copy/paste the default sort
+        # example here and it'll compile.
+        my %hardcoded_positioning;
         (
             $sort_callback
             ? ($sort_callback->())
             : (
-                # Provide a default sorter with some sane defaults
-                exists($a->{chatnet}) <=> exists($b->{chatnet})
+                # We sort the "(status) window first before anything
+                # else
+                ($b->{name} eq "(status)") <=> ($a->{name} eq "(status)")
                 ||
-                # "CHANNEL" will sort before "QUERY"
+                # We want "CHANNEL" at the beginning and "QUERY" at
+                # the end regardless of chatnet.
                 $a->{type} cmp $b->{type}
                 ||
-                # Cluster chatnets alphabetically
-                $a->{chatnet} cmp $b->{chatnet}
-                ||
-                # Put & channels like &bitlbee before normal channels
-                ($b->{name} =~ /^&/) <=> ($a->{name} =~ /^&/)
-                ||
-                # Default to sorting alphabetically
-                $a->{name} cmp $b->{name}
+                # For the rest of this I want channels to be ordered
+                # by chatnet and have hardcoded positions or an
+                # alphabetical sort, but for QUERY I don't want any
+                # further sorting, I just want a stable sort, this is
+                # so I can page back from the back of the list to find
+                # my most recent queries.
+                (
+                    ($a->{type} eq 'CHANNEL' and $b->{type} eq 'CHANNEL')
+                    ?
+                    (
+                        # Cluster chatnets alphabetically
+                        $a->{chatnet} cmp $b->{chatnet}
+                        ||
+                        # Put & channels like &bitlbee before normal
+                        # channels
+                        ($b->{name} =~ /^&/) <=> ($a->{name} =~ /^&/)
+                        ||
+                        # Allow for hardcoding the positioning of
+                        # channels within a network
+                        ($hardcoded_positioning{$a->{chatnet}}->{$a->{name}} || 0) <=> ($hardcoded_positioning{$b->{chatnet}}->{$b->{name}} || 0)
+                        ||
+                        # Default to sorting alphabetically
+                        $a->{name} cmp $b->{name}
+                    )
+                    : 0
+                )
             )
         )
     } @windows;
