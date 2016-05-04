@@ -92,7 +92,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                        chanpeak ](Test/chanpeak/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                      chansearch ](Test/chansearch/)|  ✔   |  ✔   |  ✔   | 10   |  ✔   | (c)
 [                       chanshare ](Test/chanshare/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[           chansort_configurable ](Test/chansort_configurable/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
+[           chansort_configurable ](Test/chansort_configurable/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
 [                        chansort ](Test/chansort/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        chansync ](Test/chansync/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                           chops ](Test/chops/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -270,7 +270,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [            mass_hilight_blocker ](Test/mass_hilight_blocker/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                 messages_bottom ](Test/messages_bottom/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                              mg ](Test/mg/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                    mh_hold_mode ](Test/mh_hold_mode/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[                    mh_hold_mode ](Test/mh_hold_mode/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       mh_invite ](Test/mh_invite/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                  mh_sbsplitmode ](Test/mh_sbsplitmode/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
 [                   mh_sbuserinfo ](Test/mh_sbuserinfo/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -505,4 +505,4 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                     xmpp-notify ](Test/xmpp-notify/)|  ✔   |  ✔   |  ✔   | 21   |  ✔   | (c)
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 
-9dc4b66fcee6a984e0515b93181c8fdd9625664b | 614
+7b954dcac88a5df86051b513225e3f41c308b6e7 | 616
