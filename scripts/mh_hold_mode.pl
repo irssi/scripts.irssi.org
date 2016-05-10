@@ -1,6 +1,6 @@
 ##############################################################################
 #
-# mh_hold_mode.pl v1.06 (20160503)
+# mh_hold_mode.pl v1.07 (20160510)
 #
 # Copyright (c) 2007, 2015, 2016  Michael Hansen
 #
@@ -51,7 +51,7 @@
 # can jump to the bottom with '/HOLD_MODE FLUSH' (although '/CLEAR'
 # will do the same)
 #
-# when hold_mode is on, it will scroll untill the last line you said or
+# when hold_mode is on, it will scroll until the last line you said or
 # command you send, then hold untill you press enter (and depending on
 # the 'scroll_always' value it will either scroll on any enter, or only on
 # enter with empty commandline). enter will scroll by 1 page (minus 1 line)
@@ -82,6 +82,9 @@
 #
 # history:
 #
+#	v1.07 (20160510)
+#		corrected typo in instructions
+#		added space to old-style more so it looks better
 #	v1.06 (20160503)
 #		fixed call to missing sub
 #	v1.05 (20160211)
@@ -124,7 +127,7 @@ use strict;
 use Irssi 20100403;
 use Irssi::TextUI;
 
-our $VERSION = '1.06';
+our $VERSION = '1.07';
 our %IRSSI   =
 (
 	'name'        => 'mh_hold_mode',
@@ -133,7 +136,7 @@ our %IRSSI   =
 	'authors'     => 'Michael Hansen',
 	'contact'     => 'mh on IRCnet #help',
 	'url'         => 'http://scripts.irssi.org / https://github.com/mh-source/irssi-scripts',
-	'changed'     => 'Tue May  3 20:30:06 CEST 2016',
+	'changed'     => 'Tue May 10 19:09:32 CEST 2016',
 );
 
 ##############################################################################
@@ -487,7 +490,7 @@ sub statusbar_more
 
 		if (Irssi::settings_get_bool('mh_hold_mode_more_oldstyle'))
 		{
-				$format = "-- $more more --";
+				$format = " -- $more more --";
 		}
 
 		$statusbaritem->default_handler($get_size_only, $format, '', 0);
@@ -534,7 +537,6 @@ statusbar_more_redraw();
 Irssi::command('^REDRAW');
 
 Irssi::timeout_add(1000, 'statusbar_more_redraw', undef);
-
 
 1;
 
