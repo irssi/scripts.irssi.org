@@ -6,7 +6,6 @@
   default_package: trackbar
   description: "Shows a bar where you've last read a window"
   license: GPLv2
-  modified: '2015-06-29 20:02:06'
   name: trackbar
   url: http://github.com/mjholtkamp/irssi-trackbar/
   version: '1.9'

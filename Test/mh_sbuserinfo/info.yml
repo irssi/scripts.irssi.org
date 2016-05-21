@@ -6,7 +6,6 @@
   default_package: mh_sbuserinfo
   description: 'statusbar item that shows users and limit info in channels'
   license: BSD
-  modified: '2016-01-23 00:22:49'
   name: mh_sbuserinfo
   url: 'http://scripts.irssi.org / https://github.com/mh-source/irssi-scripts'
   version: '1.04'

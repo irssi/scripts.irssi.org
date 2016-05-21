@@ -5,7 +5,6 @@
   default_package: aspell
   description: 'ASpell spellchecking system for Irssi'
   license: MIT
-  modified: '2015-11-16 19:36:52'
   modules:
     - Text::Aspell
   name: aspell

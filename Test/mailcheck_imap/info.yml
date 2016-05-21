@@ -5,7 +5,6 @@
   default_package: mailcheck_imap
   description: 'Staturbar item which indicates how many new emails you have in the specified IMAP[S] mailbox'
   license: 'GNU GPLv2'
-  modified: '2014-10-19 11:54:16'
   modules:
     - IO::Socket::SSL
   name: mailcheck_imap

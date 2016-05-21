@@ -1,3 +1,3 @@
-*-!- Irssi: Error in script l33tmusic:
-*Can't locate Xmms.pm in @INC (you may need to install the Xmms module)  at l33tmusic.pl line 5.
-*BEGIN failed--compilation aborted at l33tmusic.pl line 5.
+* -!- Irssi: Error in script l33tmusic:
+* Can't locate Xmms.pm in @INC (you may need to install the Xmms module)  at l33tmusic.pl line 5.
+* BEGIN failed--compilation aborted at l33tmusic.pl line 5.

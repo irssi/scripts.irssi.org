@@ -1,4 +1,4 @@
-*-!- Irssi: Error in script hitcount:
-*Global symbol "$Revision" requires explicit package name at hitcount.pl line 5.
-*Global symbol "$n" requires explicit package name at hitcount.pl line 5.
-*BEGIN not safe after errors--compilation aborted at hitcount.pl line 52.
+* -!- Irssi: Error in script hitcount:
+* Global symbol "$Revision" requires explicit package name at hitcount.pl line 5.
+* Global symbol "$n" requires explicit package name at hitcount.pl line 5.
+* BEGIN not safe after errors--compilation aborted at hitcount.pl line 52.

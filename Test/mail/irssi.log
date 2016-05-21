@@ -1,39 +1,6 @@
-*Parentheses missing around "my" list at mail.pl line 40.
-*
-*-!- Irssi: Error in script mail:
-*Global symbol "$last_mtime" requires explicit package name at mail.pl line 40.
-*Global symbol "$last_mailcount" requires explicit package name at mail.pl line 40.
-*Global symbol "$last_mode" requires explicit package name at mail.pl line 40.
-*Global symbol "$total" requires explicit package name at mail.pl line 104.
-*Global symbol "$last_mailcount" requires explicit package name at mail.pl line 114.
-*Global symbol "$last_mtime" requires explicit package name at mail.pl line 114.
-*Global symbol "$last_mtime" requires explicit package name at mail.pl line 116.
-*Global symbol "$last_mailcount" requires explicit package name at mail.pl line 191.
-*Global symbol "$name" requires explicit package name at mail.pl line 208.
-*Global symbol "$name" requires explicit package name at mail.pl line 209.
-*Global symbol "$name" requires explicit package name at mail.pl line 226.
-*Global symbol "$name" requires explicit package name at mail.pl line 235.
-*Global symbol "$new_mails" requires explicit package name at mail.pl line 236.
-*Global symbol "$name" requires explicit package name at mail.pl line 236.
-*Global symbol "$new_mails" requires explicit package name at mail.pl line 238.
-*Global symbol "$new_mails" requires explicit package name at mail.pl line 238.
-*Global symbol "$new_mails" requires explicit package name at mail.pl line 240.
-*Global symbol "$new_mails" requires explicit package name at mail.pl line 240.
-*Global symbol "$name" requires explicit package name at mail.pl line 240.
-*Global symbol "$name" requires explicit package name at mail.pl line 244.
-*Global symbol "$dbox" requires explicit package name at mail.pl line 266.
-*Global symbol "$dbox" requires explicit package name at mail.pl line 267.
-*Global symbol "$dbox" requires explicit package name at mail.pl line 268.
-*Global symbol "$dbox" requires explicit package name at mail.pl line 268.
-*Global symbol "$dbox" requires explicit package name at mail.pl line 269.
-*Global symbol "$dbox" requires explicit package name at mail.pl line 270.
-*Global symbol "$dbox" requires explicit package name at mail.pl line 270.
-*Global symbol "$dbox" requires explicit package name at mail.pl line 270.
-*Global symbol "$name" requires explicit package name at mail.pl line 309.
-*Global symbol "$name" requires explicit package name at mail.pl line 310.
-*Global symbol "$name" requires explicit package name at mail.pl line 310.
-*Global symbol "$box" requires explicit package name at mail.pl line 348.
-*Global symbol "$box" requires explicit package name at mail.pl line 349.
-*Global symbol "$box" requires explicit package name at mail.pl line 349.
-*Global symbol "$last_mode" requires explicit package name at mail.pl line 380.
-*Global symbol "$last_mode" requires explicit package name at mail.pl line 381.
+* Use of uninitialized value $last_refresh_time in numeric eq (==) at mail.pl line 374.
+* 
+* Use of uninitialized value $last_mode in numeric eq (==) at mail.pl line 379.
+* 
+* -!- Mailbox 1 added: /var/mail/travis
+* -!- Irssi: Loaded script mail

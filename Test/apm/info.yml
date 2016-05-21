@@ -5,7 +5,6 @@
   default_package: apm
   description: 'Shows your battery status in your Statusbar'
   license: 'GNU Public License'
-  modified: '2014-10-17 18:30:46'
   name: apm
   url: http://www.formorer.de/code
   version: '0.4'

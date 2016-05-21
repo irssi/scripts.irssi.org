@@ -1,7 +1,7 @@
-*Bareword "Irssi::Script::friends::" refers to nonexistent package at doc.pl line 140.
-*
-*Bareword "Irssi::Script::friends_shasta::" refers to nonexistent package at doc.pl line 140.
-*
-*-!- Irssi: Cannot load ../doc
-*-!- Irssi: Doc Management 0.0.4 loaded!
-*-!- Irssi: Loaded script doc
+* Bareword "Irssi::Script::friends::" refers to nonexistent package at doc.pl line 140.
+* 
+* Bareword "Irssi::Script::friends_shasta::" refers to nonexistent package at doc.pl line 140.
+* 
+* -!- Irssi: Cannot load ../doc
+* -!- Irssi: Doc Management 0.0.4 loaded!
+* -!- Irssi: Loaded script doc

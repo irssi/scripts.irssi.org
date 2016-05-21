@@ -6,7 +6,6 @@
   default_package: timezones
   description: 'timezones displayer'
   license: 'Public Domain'
-  modified: '2015-11-25 14:03:48'
   modules:
     - DateTime
   name: timezones

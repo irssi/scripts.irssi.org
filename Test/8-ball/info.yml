@@ -5,6 +5,5 @@
   default_package: 8_ball
   description: 'Dont like to take decisions? Have the 8-ball do it for you instead.'
   license: GPL
-  modified: '2015-09-15 19:05:29'
   name: 8-ball
   version: '0.22'

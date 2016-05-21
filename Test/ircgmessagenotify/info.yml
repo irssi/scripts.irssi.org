@@ -6,7 +6,6 @@
   default_package: ircgmessagenotify
   description: 'Tarkistelee irc-galleria.net:iä ja sanoo kun sinulle on uusia viestejä.'
   license: GPLv2
-  modified: '2014-10-17 22:54:13'
   modules:
     - HTTP::Cookies
     - LWP::UserAgent

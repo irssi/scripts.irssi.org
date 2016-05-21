@@ -1,5 +1,5 @@
-*"my" variable $data masks earlier declaration in same scope at mh_userstatus.pl line 442.
-*
-*"my" variable $data masks earlier declaration in same scope at mh_userstatus.pl line 510.
-*
-*-!- Irssi: Loaded script mh_userstatus
+* "my" variable $data masks earlier declaration in same scope at mh_userstatus.pl line 442.
+* 
+* "my" variable $data masks earlier declaration in same scope at mh_userstatus.pl line 510.
+* 
+* -!- Irssi: Loaded script mh_userstatus

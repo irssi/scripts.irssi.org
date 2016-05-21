@@ -6,7 +6,6 @@
   default_package: mailcheck_mbox_flux
   description: 'Polls your unix mailbox for new mail'
   license: 'Public Domain'
-  modified: '2014-10-19 11:54:16'
   name: 'Mail Check'
   url: http://xulfad.inside.org/~flux/software/irssi/
   version: '0.1'

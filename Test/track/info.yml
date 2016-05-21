@@ -5,7 +5,6 @@
   default_package: track
   description: 'Keeps track of users by building a databaseof online, joining and nickchanges. Regex-cabablefor the most part, AKA import available. Search byident, nick or host'
   license: 'Public Domain'
-  modified: '2015-09-19 02:21:41'
   name: track.pl
   url: none
   version: '2.1'

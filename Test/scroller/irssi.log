@@ -1,2 +1,2 @@
-*-!- Irssi: Error in script scroller:
-*Undefined subroutine &Irssi::statusbar_item_register called at scroller.pl line 86.
+* -!- Irssi: Error in script scroller:
+* Undefined subroutine &Irssi::statusbar_item_register called at scroller.pl line 86.

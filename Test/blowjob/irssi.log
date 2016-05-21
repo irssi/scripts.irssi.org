@@ -1,26 +1,26 @@
-*-f on closed filehandle CONF at blowjob.pl line 102.
-*
-*-!- Irssi: > ../blowjob.conf not found, setting to defaults
-*-!- Irssi: 
-*-!- Irssi: > creating ../blowjob.conf with default values
-*-!- Irssi: 
-*-!- Irssi: 
-*-!- Irssi: - keys reloaded (Total: 0)
-*-!- Irssi: 
-*Reference found where even-sized list expected at blowjob.pl line 475.
-*
-*-!- Irssi: blowjob script 0.9.0
-*-!- Irssi: 
-*-!- Irssi: [bl0wjob] v0.9.0 script loaded
-*-!- Irssi: 
-*-!- Irssi: 
-*-!- Irssi: - type /blowhelp for options
-*-!- Irssi: 
-*-!- Irssi: - paranoia level is      : 1
-*-!- Irssi: 
-*-!- Irssi: - generic key is         : very poor key
-*-!- Irssi: 
-*-!- Irssi: 
-*-!- Irssi: * please read script itself for documentation
-*-!- Irssi: 
-*-!- Irssi: Loaded script blowjob
+* -f on closed filehandle CONF at blowjob.pl line 102.
+* 
+* -!- Irssi: > ../blowjob.conf not found, setting to defaults
+* -!- Irssi: 
+* -!- Irssi: > creating ../blowjob.conf with default values
+* -!- Irssi: 
+* -!- Irssi: 
+* -!- Irssi: - keys reloaded (Total: 0)
+* -!- Irssi: 
+* Reference found where even-sized list expected at blowjob.pl line 475.
+* 
+* -!- Irssi: blowjob script 0.9.0
+* -!- Irssi: 
+* -!- Irssi: [bl0wjob] v0.9.0 script loaded
+* -!- Irssi: 
+* -!- Irssi: 
+* -!- Irssi: - type /blowhelp for options
+* -!- Irssi: 
+* -!- Irssi: - paranoia level is      : 1
+* -!- Irssi: 
+* -!- Irssi: - generic key is         : very poor key
+* -!- Irssi: 
+* -!- Irssi: 
+* -!- Irssi: * please read script itself for documentation
+* -!- Irssi: 
+* -!- Irssi: Loaded script blowjob

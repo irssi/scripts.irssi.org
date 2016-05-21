@@ -9,6 +9,5 @@
   default_package: bansearch
   description: 'Searches for bans, quiets, and channel modes affecting a user'
   license: GPLv3+
-  modified: '2015-09-11 05:01:40'
   name: bansearch
   version: '1.1'

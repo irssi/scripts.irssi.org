@@ -3,6 +3,5 @@
   default_package: nickcolor_gay
   description: 'colourise nicks'
   license: ISC
-  modified: '2015-11-16 19:36:52'
   name: nickcolor_gay
   version: '0.1'
