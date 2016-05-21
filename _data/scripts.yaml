@@ -2248,7 +2248,7 @@
   description: 'freenode-specific script that checks whether someone is banned on some channel'
   filename: isbanned.pl
   license: 'Public domain'
-  modified: '2015-09-14 14:11:01'
+  modified: 2015-09-14
   name: isbanned
   version: 0.7.0
 -
@@ -2577,7 +2577,7 @@
   description: 'Fully customizable mail counter statusbar item with multiple mailbox and multiple Maildir support'
   filename: mail.pl
   license: 'Public Domain'
-  modified: '2014-10-19 11:54:16'
+  modified: '2016-05-20 19:45:17'
   name: mail
   url: 'http://irssi.org, http://scripts.irssi.de'
   version: '2.92'
