@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-our $VERSION = '0.1'; # 258918adc08e622
+our $VERSION = '0.2'; # d8eac6db52159b2
 our %IRSSI = (
     authors     => 'Nei',
     contact     => 'Nei @ anti@conference.jabber.teamidiot.de',
@@ -85,6 +85,10 @@ sub fix_incoming {
     }
     # fix "null" realnames
     elsif ($raw =~ s/:$SLACK_ADDRESS 352 .* :\d+ \Knull$//) {
+	$continue = 1;
+    }
+    # support self msgs
+    elsif ($raw =~ s/^:(?:(\S+)!(\S+\@$SLACK_ADDRESS)) PRIVMSG ([^#\s]\S*) :\[\3\] /:$3!$2 PRIVMSG $1 :/) {
 	$continue = 1;
     }
     if ($continue) {
