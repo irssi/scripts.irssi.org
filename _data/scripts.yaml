@@ -4610,11 +4610,11 @@
   description: 'Print short summaries about URLs from known services that are mentioned on IRC. (Including YouTube, etc.)'
   filename: urlinfo.pl
   license: 'WTFPL <http://dgl.cx/licence>'
-  modified: '2014-08-22 14:08:05'
+  modified: '2016-05-21 20:22:57'
   modules: 'HTML::TreeBuilder URI'
   name: urlinfo
   url: http://dgl.cx/irssi
-  version: '1.3'
+  version: '1.4'
 -
   authors: bwolf
   contact: bwolf@geekmind.org
