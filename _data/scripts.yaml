@@ -1309,10 +1309,10 @@
   description: 'Dims nicks that are not in channel anymore.'
   filename: dim_nicks.pl
   license: 'GNU GPLv2 or later'
-  modified: '2016-05-16 23:30:35'
+  modified: '2016-06-10 17:23:10'
   name: dim_nicks
   url: http://anti.teamidiot.de/
-  version: 0.4.7
+  version: 0.4.8
 -
   authors: "Sebastian 'yath' Schmidt"
   contact: yathen@web.de
@@ -1549,10 +1549,10 @@
   description: 'Some workarounds to improve irssi experience on the Slack IRC gateway'
   filename: fix_slackirc.pl
   license: ISC
-  modified: '2016-04-27 00:01:16'
+  modified: '2016-06-05 11:00:12'
   name: fix_slackirc
   url: http://anti.teamidiot.de/
-  version: '0.1'
+  version: '0.2'
 -
   authors: 'Piotr Krukowiecki'
   contact: 'piotr //at// krukowiecki //dot// net'
