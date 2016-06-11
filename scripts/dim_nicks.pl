@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-our $VERSION = '0.4.7'; # 1cc0249a11b3fc9
+our $VERSION = '0.4.8'; # baf75f08d3d32c9
 our %IRSSI = (
     authors     => 'Nei',
     contact     => 'Nei @ anti@conference.jabber.teamidiot.de',
@@ -31,6 +31,9 @@ our %IRSSI = (
 # /set dim_nicks_history_lines <num>
 # * only this many lines of messages are remembered/rewritten (per
 #   window)
+#
+# /set dim_nicks_ignore_hilights <ON|OFF>
+# * ignore lines with hilight when dimming
 #
 # /set dim_nicks_forms_skip <num>
 # /set dim_nicks_forms_search_max <num>
@@ -64,6 +67,7 @@ sub set ($) {
 my $history_lines = 100;
 my $skip_forms = 1;
 my $search_forms_max = 5;
+my $ignore_hilights = 1;
 my $color_letter = 'K';
 
 # nick object cache, chan object cache, line id cache, line id -> window map, -> channel, -> nick, -> nickname, channel -> line ids, channel->nickname->departure time, channel->nickname->{parts of line}
@@ -100,6 +104,7 @@ sub setup_changed {
     $history_lines = Irssi::settings_get_int( set 'history_lines' );
     $skip_forms = Irssi::settings_get_int( set 'forms_skip' );
     $search_forms_max = Irssi::settings_get_int( set 'forms_search_max' );
+    $ignore_hilights = Irssi::settings_get_bool( set 'ignore_hilights' );
     my $new_color = Irssi::settings_get_str( set 'color' );
     if ($new_color ne $color_letter) {
 	$color_letter = $new_color;
@@ -133,6 +138,7 @@ sub prt_text_ref {
     return unless $nickref;
     return unless $dest && defined $dest->{target};
     return unless $dest->{level} & MSGLEVEL_PUBLIC;
+    return if $ignore_hilights && $dest->{level} & MSGLEVEL_HILIGHT;
 
     my ($win) = @_;
     my $view = $win->view;
@@ -373,6 +379,7 @@ sub chan_del {
 }
 
 Irssi::settings_add_int( setc, set 'history_lines',     $history_lines);
+Irssi::settings_add_bool( setc, set 'ignore_hilights',  $ignore_hilights);
 Irssi::signal_add_last({
     'setup changed'    => 'setup_changed',
 });
@@ -415,6 +422,8 @@ init_dim_nicks();
 
 # Changelog
 # =========
+# 0.4.8
+# - optionally ignore hilighted lines
 # 0.4.7
 # - fix useless re-reading of settings colour
 # 0.4.6
