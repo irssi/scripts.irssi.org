@@ -3,13 +3,12 @@
 # by Atoms
 
 use strict;
-use IO::Socket;
-use LWP::UserAgent;
+use HTTP::Tiny;
 
 use vars qw($VERSION %IRSSI);
 
 use Irssi qw(command_bind active_win);
-$VERSION = '1.0';
+$VERSION = '1.1';
 %IRSSI = (
     authors	=> 'Atoms',
     contact	=> 'atoms@tups.lv',
@@ -33,24 +32,32 @@ command_bind(
 );
 
 sub tinyurl {
-	my $url = shift;
+  my $url = shift;
+  my $content = "url=$url";    
         
-        #added to fix URLs containing a '&'
-        $url=url_encode($url);
+  #added to fix URLs containing a '&'
+  $url=url_encode($url);
 
-  my $ua = LWP::UserAgent->new;
-  $ua->agent("tinyurl for irssi/1.0 ");
-  my $req = HTTP::Request->new(POST => 'http://tinyurl.com/create.php');
-  $req->content_type('application/x-www-form-urlencoded');
-  $req->content("url=$url");
-  my $res = $ua->request($req);
+  my %options = (
+    agent => "tinyurl for irssi/1.0 "
+  );
 
-  if ($res->is_success) {
-	  return get_tiny_url($res->content);
+  my %form_params = (
+    url => $url
+  );
+  
+  my $ua = HTTP::Tiny->new(%options);
+  my $res = $ua->request('POST', 'http://tinyurl.com/create.php', { 
+      content => $content,
+      headers => { 'content-type' => 'application/x-www-form-urlencoded' },
+  });
+
+  if ($res->{success}) {
+    return get_tiny_url($res->{content});
   } else {
     print CLIENTCRAP "ERROR: tinyurl: tinyurl is down or not pingable";
-		return "";
-	}
+    return "";
+  }
 }
 
 #added because the URL was not being url_encoded. This would cause only 
@@ -64,7 +71,7 @@ sub url_encode {
 sub get_tiny_url($) {
 	
 	my $tiny_url_body = shift;
-	$tiny_url_body =~ /(.*)(tinyurl\svalue=\")(.*)(\")(.*)/;
+	$tiny_url_body =~ /(.*)(data\-clipboard\-text=\")(.*)(\")(.*)/;
 
 	return $3;
 }
