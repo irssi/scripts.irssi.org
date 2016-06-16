@@ -4312,8 +4312,8 @@
   description: 'create a tinyurl from a long one'
   filename: tinyurl.pl
   license: GPL
-  modified: '2016-06-15 22:48:48'
-  modules: WWW::Shorten
+  modified: '2016-06-16 10:07:39'
+  modules: 'WWW::Shorten WWW::Shorten::TinyURL'
   name: tinyurl
   version: '1.1'
 -
