@@ -4312,10 +4312,10 @@
   description: 'create a tinyurl from a long one'
   filename: tinyurl.pl
   license: GPL
-  modified: '2008-08-29 13:51:48'
-  modules: LWP::UserAgent
+  modified: '2016-06-15 22:48:48'
+  modules: WWW::Shorten
   name: tinyurl
-  version: '1.0'
+  version: '1.1'
 -
   authors: 'Timo Sirainen, David Leadbeater'
   contact: 'tss@iki.fi, dgl@dgl.cx'
