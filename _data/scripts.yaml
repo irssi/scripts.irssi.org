@@ -4313,7 +4313,7 @@
   filename: tinyurl.pl
   license: GPL
   modified: '2016-06-15 22:48:48'
-  modules: HTTP::Tiny
+  modules: WWW::Shorten
   name: tinyurl
   version: '1.1'
 -
