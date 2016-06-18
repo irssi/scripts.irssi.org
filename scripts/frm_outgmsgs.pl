@@ -27,7 +27,7 @@ $VERSION = '1.1';
 #
 # OPTIONS
 # =======
-# settings can be resetted to defaults with /set -default
+# settings can be reset to defaults with /set -default
 #
 #
 # /set outgmsgs_use_formatting <ON|OFF>
@@ -66,7 +66,7 @@ $VERSION = '1.1';
 # * defines background color
 #
 # the last two settings only make sense if outgmsgs_use_color is ON
-# if they are setted to any other value that doesn't belong to mIRC color range [0..15], they will be ignored
+# if they are set to any other value that doesn't belong to the mIRC color range [0..15], they will be ignored
 #
 #
 # COMMANDS
