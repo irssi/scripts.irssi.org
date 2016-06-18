@@ -771,6 +771,16 @@
   url: http://juerd.nl/irssi/
   version: '2.13'
 -
+  authors: 'Pablo Martín Báez Echevarría'
+  contact: pab_24n@outlook.com
+  description: 'pastes a buffer into a channel or query window line by line with a specific delay between lines'
+  filename: buffer.pl
+  license: 'Public Domain'
+  modified: '2016-06-17 15:30:56'
+  name: buffer
+  url: http://reirssi.wordpress.com
+  version: '1.0'
+-
   authors: Juerd
   contact: juerd@juerd.nl
   description: 'Simple /calc mechanism'
