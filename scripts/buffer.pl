@@ -4,16 +4,17 @@ use warnings;
 { package Irssi::Nick }
 
 use Irssi qw(command_bind command_bind_first command_runsub 
-settings_add_str settings_get_str settings_add_int settings_get_int 
-command_set_options command_parse_options server_find_tag signal_stop
-timeout_add timeout_remove);
+settings_add_str settings_add_int command_set_options 
+command_parse_options server_find_tag signal_stop signal_continue 
+timeout_add timeout_remove signal_add_first signal_add_last 
+current_theme);
 use Irssi::TextUI;
 
-use Scalar::Util qw(looks_like_number);
+use Scalar::Util 'looks_like_number';
 use List::Util qw(min max);
-use POSIX qw(strftime);
+use POSIX 'strftime';
 
-our $VERSION = '1.0';
+our $VERSION = '1.1';
 our %IRSSI = (
 	authors     => 'Pablo Martín Báez Echevarría',
 	contact     => 'pab_24n@outlook.com',
@@ -28,13 +29,45 @@ my $buffer = [];
 my $pastings = {};
 my $regex = '^';
 
+my $theme = Irssi::settings_get_str('theme');
+my $timestamp_format = current_theme->get_format('fe-common/core', 'timestamp'); 
+my $timestamp_setting = Irssi::settings_get_str('timestamp_format');
+
+{ # copied from Nei's adv_windowlist.pl
+	my %strip_table = (
+		# fe-common::core::formats.c:format_expand_styles
+		#      delete                format_backs  format_fores bold_fores   other stuff
+		(map { $_ => '' } (split //, '04261537' .  'kbgcrmyw' . 'KBGCRMYW' . 'U9_8I:|FnN>#[' . 'pP')),
+		#      escape
+		(map { $_ => $_ } (split //, '{}%')),
+	);
+	sub ir_strip_codes { # strip %codes
+		my $o = shift;
+		$o =~ s/(%(%|Z.{6}|z.{6}|X..|x..|.))/exists $strip_table{$2} ? $strip_table{$2} :
+		$2 =~ m{x(?:0[a-f]|[1-6][0-9a-z]|7[a-x])|z[0-9a-f]{6}}i ? '' : $1/gex;
+		$o
+	}
+}
+sub get_expanded_timestamp {
+	my $theme = current_theme;
+	my $timestamp_format = $theme->get_format('fe-common/core', 'timestamp'); 
+	(my $timestamp_setting = Irssi::settings_get_str('timestamp_format')) =~ s/%/%%/g;
+	$timestamp_format =~ s/\$Z/$timestamp_setting/g;
+	ir_strip_codes( $theme->format_expand($timestamp_format) ); 
+}
+push my @expanded_timestamps, { 
+	unix_time          => time, 
+	expanded_timestamp => get_expanded_timestamp 
+};
+
+
 sub cmd_buffer_help {
 	print CLIENTCRAP <<HELP
 
 %9Syntax%9:
    
-BUFFER SEARCH [-filename <file>] [-regexp] [-case] [-word] [<pattern>]
-BUFFER LOAD [-filename <file>] [-start <first line>] [-end <last line>]
+BUFFER SEARCH [-file <filename>] [-regexp] [-case] [-word] [<pattern>]
+BUFFER LOAD [-file <filename>] [-striptime] [-begin <first line>] [-end <last line>]
 BUFFER CLEAR
 BUFFER PRINT
 BUFFER PLAY [-delay <seconds>] [-continue [<id>]]
@@ -55,7 +88,7 @@ BUFFER RESUME
               displays the matching lines with its corresponding line
               number, in order to make easy to load the desired text.
 
-              -filename   Name of the file where to look at. If omitted,
+              -file       Name of the file where to look at. If omitted,
                           searchs the scrollback buffer of the current 
                           window.
               -regexp     The given pattern is a regexp.
@@ -68,9 +101,12 @@ BUFFER RESUME
     LOAD:     Loads the buffer and gets it ready to be pasted into a
               location.
 
-              -filename   Name of the file whose lines will be loaded. If
+              -file       Name of the file whose lines will be loaded. If
                           omitted, loads lines from the current window.
-              -start      Number of the first line to be loaded. If
+              -striptime  Tries to strip the timestamp when loading lines
+                          from a window. If it is used together with 
+                          -file, it has no effect.
+              -begin      Number of the first line to be loaded. If
                           omitted, it will be 1.
               -end        Number of the last line to be loaded. If
                           omitted, it will be the total number of lines
@@ -115,7 +151,7 @@ BUFFER RESUME
                             to be pasted.
 HELP
 ;
-	signal_stop(); # To avoid 'No help for buffer' at the end
+	signal_stop; # To avoid 'No help for buffer' at the end
 }
 
 sub open_file {
@@ -155,7 +191,7 @@ sub timeout_function {
 	
 	# Check server and target
 	my $server = server_find_tag( $servtag );
-	unless ( $server && $server->{connected} ) {
+	unless ( $server && $server->{'connected'} ) {
 		printf CLIENTERROR "Not connected to server '%s'. Paste <%d> will be paused", $servtag, $timeout_tag;
 		timeout_remove( $timeout_tag );
 		$pastings->{$timeout_tag}{'status'} = 'paused';
@@ -180,14 +216,27 @@ sub buffer_context_range {
 	$first..$last;
 }
 
+sub get_timestamp_regexp { 
+	my $unix_time = shift;
+	my $last = 0;
+        foreach my $i (0..$#expanded_timestamps) {
+		$last = $i if ($expanded_timestamps[$i]->{'unix_time'} <= $unix_time) or last;
+	}
+	my $frm1 = $expanded_timestamps[$last]->{'expanded_timestamp'};
+	my $frm2 = $expanded_timestamps[$last-1]->{'expanded_timestamp'} if $last >= 1;
+	my $timestamp1 = strftime($frm1, localtime($unix_time));
+	my $timestamp2 = (defined $frm2) ? strftime($frm2, localtime($unix_time)) : '';
+	qr/\Q$timestamp1\E|\Q$timestamp2\E/;
+}
+
 sub cmd_buffer_search {
 	my ( $args, $server, $witem ) = @_;
 	my ($options, $pattern) = command_parse_options('buffer search', $args);
 	
 	if ($pattern) {
-		my $flags = defined($options->{case}) ? '' : '(?i)';
-		my $b = defined($options->{word}) ? '\b' : '';
-		if (defined $options->{regexp} ) {
+		my $flags = defined($options->{'case'}) ? '' : '(?i)';
+		my $b = defined($options->{'word'}) ? '\b' : '';
+		if (defined $options->{'regexp'} ) {
 			local $@;
 			eval {
 				$regex = qr/$flags$b$pattern$b/;
@@ -202,8 +251,8 @@ sub cmd_buffer_search {
 		}
 	}
 	my @results;
-	if ( defined $options->{filename} ) {
-		my $filename = $options->{filename};
+	if ( defined $options->{'file'} ) {
+		my $filename = $options->{'file'};
 		my $fh;
 		eval { $fh = open_file($filename) };
 		if ($@) {
@@ -222,7 +271,7 @@ sub cmd_buffer_search {
 	} else {
 		my $current_win = ref $witem ? $witem->window : Irssi::active_win;
 		my $view = $current_win->view;
-		my $line = $view->{buffer}->{first_line};
+		my $line = $view->{'buffer'}->{'first_line'};
 		my $num = 1;
 		while ( defined $line ) {
 			push @results, [$num, $`, $&, $'] if $line->get_text(0) =~ $regex;
@@ -241,11 +290,11 @@ sub cmd_buffer_search {
 sub cmd_buffer_load {
 	my ( $args, $server, $witem ) = @_;
 	my ($options) = command_parse_options('buffer load', $args);
-	my $start = $options->{start} // 1;
+	my $start = $options->{'begin'} // 1;
 	my $end;
 	my @new_buffer;
-	if ( defined $options->{filename} ) {
-		my $filename = $options->{filename};
+	if ( defined $options->{'file'} ) {
+		my $filename = $options->{'file'};
 		my $fh;
 		eval { $fh = open_file($filename) };
 		if ($@) {
@@ -256,7 +305,7 @@ sub cmd_buffer_load {
 		my @dump = <$fh>;
 		close $fh;
 		my $lines_count = @dump;
-		$end = $options->{end} // $lines_count; 
+		$end = $options->{'end'} // $lines_count; 
 		
 		if ($start<1 || $end>$lines_count || $start>$end) {
 			print CLIENTERROR 'Wrong -start or -end parameters (out of range)';
@@ -266,9 +315,9 @@ sub cmd_buffer_load {
 	} else {
 		my $current_win = ref $witem ? $witem->window : Irssi::active_win;
 		my $view = $current_win->view;
-		my $line = $view->{buffer}->{first_line};
-		my $lines_count = $view->{buffer}->{lines_count};
-		$end = $options->{end} // $lines_count;
+		my $line = $view->{'buffer'}->{'first_line'};
+		my $lines_count = $view->{'buffer'}->{'lines_count'};
+		$end = $options->{'end'} // $lines_count;
 		
 		if ($start<1 || $end>$lines_count || $start>$end) {
 			print CLIENTERROR 'Wrong -start or -end parameters (out of range)';
@@ -277,7 +326,11 @@ sub cmd_buffer_load {
 		my $num = 1;
 		while ( defined $line ) {
 			if ( $start<=$num && $num<=$end ) {
-				chomp(my $line_text = $line->get_text(0)); 
+				chomp(my $line_text = $line->get_text(0));
+				if ( defined $options->{'striptime'} ) {
+					my $timestamp_regex = get_timestamp_regexp($line->{'info'}{'time'});
+					$line_text =~ s/^$timestamp_regex//;
+				}
 				push @new_buffer, $line_text;
 				last if $num == $end;
 			}
@@ -303,7 +356,7 @@ sub cmd_buffer_play {
 	my ( $args, $server, $witem ) = @_;
 	
 	my ($options) = command_parse_options('buffer play', $args);
-	my $delay = $options->{delay} // settings_get_str('buffer_delay');
+	my $delay = $options->{'delay'} // Irssi::settings_get_str('buffer_delay');
 	unless (looks_like_number($delay)) {
 		print CLIENTERROR 'Delay must be a number';
 		return;
@@ -312,12 +365,12 @@ sub cmd_buffer_play {
 		print CLIENTERROR 'Delay cannot be less than 0.010 seconds (10 milliseconds)';
 		return;
 	}
-	if ( defined $options->{continue} ) {
-		my $id = $options->{continue};
+	if ( defined $options->{'continue'} ) {
+		my $id = $options->{'continue'};
 		if ( $id =~ /^\s*$/ ) { # Empty id. Wake up every paused paste
 			foreach my $inner_id (keys %$pastings) {
 				if ( $pastings->{$inner_id}{'status'} eq 'paused' ) {
-					wake_sleeping_paste( $inner_id, ($options->{delay} ? $delay : undef) );
+					wake_sleeping_paste( $inner_id, $options->{'delay'} );
 				}
 			}
 		} else { # Not empty id
@@ -325,14 +378,14 @@ sub cmd_buffer_play {
 				print CLIENTERROR 'Not recognized id. See /BUFFER RESUME';
 				return;
 			}
-			wake_sleeping_paste( $id, ($options->{delay} ? $delay : undef) );
+			wake_sleeping_paste( $id, $options->{'delay'} );
 		}
 	} else {
-		unless ( $server && $server->{connected} ) {
+		unless ( $server && $server->{'connected'} ) {
 			print CLIENTERROR 'Not connected to server';
 			return;
 		}
-		unless ( $witem && ($witem->{type} eq "CHANNEL" || $witem->{type} eq "QUERY") ) {
+		unless ( $witem && ($witem->{'type'} eq 'CHANNEL' || $witem->{'type'} eq 'QUERY') ) {
 			print CLIENTERROR 'No active channel/query in window';
 			return;
 		}
@@ -340,8 +393,8 @@ sub cmd_buffer_play {
 			print CLIENTERROR 'Buffer is empty. Nothing to paste';
 			return;
 		}
-		my $servtag = $server->{tag};
-		my $target = $witem->{name};
+		my $servtag = $server->{'tag'};
+		my $target = $witem->{'name'};
 		my $counter = 0;
 		
 		my $timeout_tag;
@@ -371,7 +424,7 @@ sub wake_sleeping_paste {
 	
 	# Check server and target
 	my $server = server_find_tag( $servtag );
-	unless ( $server && $server->{connected} ) {
+	unless ( $server && $server->{'connected'} ) {
 		printf CLIENTERROR "Not connected to server '%s'. Paste <%d> will continue to be paused", $servtag, $id;
 		return;
 	};
@@ -435,7 +488,7 @@ sub cmd_buffer_remove {
 sub cmd_buffer_resume {
 	if ( keys %$pastings ) {
 		
-		my $context_lines = settings_get_int('buffer_context_lines');
+		my $context_lines = Irssi::settings_get_int('buffer_context_lines');
 		if ($context_lines < 0) {
 			print CLIENTERROR 'The number of context lines (surrounding the next line to be sent) must be a positive integer';
 			return;
@@ -541,6 +594,35 @@ sub cmd_buffer_resume {
 	}
 }
 
+signal_add_first 'send command' => sub {
+	signal_continue(@_);
+	my $command = shift;
+	my $cmdchars = Irssi::settings_get_str('cmdchars');
+	if ( $command =~ /^\Q$cmdchars\Eformat\s+timestamp/i ) {
+		my $current_timestamp_format = current_theme->get_format('fe-common/core', 'timestamp');
+		if ( $current_timestamp_format ne $timestamp_format ) {
+			push @expanded_timestamps, {
+				unix_time          => time, 
+				expanded_timestamp => get_expanded_timestamp 
+			};
+			$timestamp_format = $current_timestamp_format; 
+		}
+	}
+};
+
+signal_add_last 'setup changed' => sub { 
+	my $current_theme = Irssi::settings_get_str('theme');
+	my $current_timestamp_setting = Irssi::settings_get_str('timestamp_format');
+	if ( $current_theme ne $theme || $current_timestamp_setting ne $timestamp_setting ) {
+		push @expanded_timestamps, {
+			unix_time          => time, 
+			expanded_timestamp => get_expanded_timestamp 
+		};
+		$theme = $current_theme;
+		$timestamp_setting = $current_timestamp_setting;
+	}
+};
+
 command_bind 'buffer' => sub {
 	my ( $data, $server, $item ) = @_;
 	$data =~ s/\s+$//g;
@@ -548,9 +630,9 @@ command_bind 'buffer' => sub {
 };
 command_bind_first help => sub { &cmd_buffer_help if $_[0] =~ /^buffer\s*$/i };
 command_bind 'buffer search' => 'cmd_buffer_search';
-command_set_options 'buffer search' => '-filename regexp case word';
+command_set_options 'buffer search' => '-file regexp case word';
 command_bind 'buffer load' => 'cmd_buffer_load';
-command_set_options 'buffer load' => '-filename @start @end';
+command_set_options 'buffer load' => '-file striptime @begin @end';
 command_bind 'buffer clear' => 'cmd_buffer_clear';
 command_bind 'buffer print' => 'cmd_buffer_print';
 command_bind 'buffer play' => 'cmd_buffer_play';
