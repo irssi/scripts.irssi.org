@@ -6,7 +6,7 @@
   default_package: buffer
   description: 'pastes a buffer into a channel or query window line by line with a specific delay between lines'
   license: 'Public Domain'
-  modified: '2016-06-17 15:30:56'
+  modified: '2016-06-22 01:36:04'
   name: buffer
   url: http://reirssi.wordpress.com
-  version: '1.0'
+  version: '1.1'
