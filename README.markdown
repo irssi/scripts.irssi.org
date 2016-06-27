@@ -103,7 +103,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                       clipboard ](Test/clipboard/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       cloneprot ](Test/cloneprot/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                          clones ](Test/clones/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                  clones_scanner ](Test/clones_scanner/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
+[                  clones_scanner ](Test/clones_scanner/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                        cmpchans ](Test/cmpchans/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                     colon_emoji ](Test/colon_emoji/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                  colorize_nicks ](Test/colorize_nicks/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
@@ -171,7 +171,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                 freenode_filter ](Test/freenode_filter/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                   friends_peder ](Test/friends_peder/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
 [                  friends_shasta ](Test/friends_shasta/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
-[                    frm_outgmsgs ](Test/frm_outgmsgs/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
+[                    frm_outgmsgs ](Test/frm_outgmsgs/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                          fserve ](Test/fserve/)|  ✔   |  ✔   |  ✔   | 44   |  ✔   | (c)
 [                          fuckem ](Test/fuckem/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                           getop ](Test/getop/)|  ✔   |  ✔   |  ✔   | 16   |  ✔   | (c)
@@ -458,7 +458,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                       twsocials ](Test/twsocials/)|  ✔   |  ✔   |  ✔   | 16   |  ✔   | (c)
 [                         twtopic ](Test/twtopic/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                         typofix ](Test/typofix/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
-[                      uberprompt ](Test/uberprompt/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
+[                      uberprompt ](Test/uberprompt/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
 [                 UNIBG-autoident ](Test/UNIBG-autoident/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                         unicode ](Test/unicode/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
 [                     upgradeinfo ](Test/upgradeinfo/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -506,4 +506,4 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                     xmpp-notify ](Test/xmpp-notify/)|  ✔   |  ✔   |  ✔   | 21   |  ✔   | (c)
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 
-9ed898732bc512f95347ad61dae0dc60c7da0461 | 640
+de064f2e9c8c0a0e5186290e719498895cd77125 | 649
