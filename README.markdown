@@ -506,4 +506,4 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                     xmpp-notify ](Test/xmpp-notify/)|  ✔   |  ✔   |  ✔   | 21   |  ✔   | (c)
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 
-3bef2a5ba5c521e11efaeeff5fca3e7971735062 | 650
+a562b859aa0a380b43b27278b8456ee49eab3284 | 653
