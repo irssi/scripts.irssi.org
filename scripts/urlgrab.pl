@@ -38,7 +38,7 @@ sub url_cmd{
    # Debian version: system("iceweasel --new-tab $lasturl &>/dev/null"); tmp added.
    my $osname = $^O;
    if($osname eq 'linux'){
-     system("iceweasel --new-tab $lasturl &>/dev/null");
+     system("firefox --new-tab $lasturl &>/dev/null");
    } else {
      system("netscape-remote -remote 'openURL($lasturl)' &>/dev/null");
    }
