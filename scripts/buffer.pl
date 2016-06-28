@@ -138,7 +138,7 @@ BUFFER RESUME
                           remove. If omitted, it will remove all the
                           existing pastes.
 
-    RESUME:   Lists the existings pastes and shows information about each
+    RESUME:   Lists the existing pastes and shows information about each
               one.
 
    
