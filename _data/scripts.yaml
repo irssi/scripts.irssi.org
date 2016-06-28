@@ -776,7 +776,7 @@
   description: 'pastes a buffer into a channel or query window line by line with a specific delay between lines'
   filename: buffer.pl
   license: 'Public Domain'
-  modified: '2016-06-22 01:36:04'
+  modified: '2016-06-28 00:45:27'
   name: buffer
   url: http://reirssi.wordpress.com
   version: '1.1'
