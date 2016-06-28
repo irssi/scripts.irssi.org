@@ -34,7 +34,14 @@ sub url_cmd{
 	  Irssi::print("No url captured yet");
 	  return;
    }
-   system("netscape-remote -remote 'openURL($lasturl)' &>/dev/null");
+   # @TODO make this command system undepended or provide user info for required alias
+   # Debian version: system("iceweasel --new-tab $lasturl &>/dev/null"); tmp added.
+   my $osname = $^O;
+   if($osname eq 'linux'){
+     system("firefox --new-tab $lasturl &>/dev/null");
+   } else {
+     system("netscape-remote -remote 'openURL($lasturl)' &>/dev/null");
+   }
 }
 
 sub find_url {
