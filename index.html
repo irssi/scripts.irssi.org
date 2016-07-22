@@ -41,39 +41,41 @@ layout: default
         <hr>
 
         <input type="search" class="light-table-filter form-control" data-table="sortable" data-name="q" placeholder="Filter" style="width: 100%">
-        <table class="table table-striped table-condensed sortable">
-            <thead>
-                <tr>
-                    <th class="sorttable_alpha">Filename</th>
-                    <th class="sorttable_alpha">Name</th>
-                    <th class="sorttable_alpha">Version</th>
-                    <th class="sorttable_alpha">Description</th>
-                    <th class="sorttable_alpha">Authors</th>
-                    <th class="sorttable_alpha">Modified</th>
-                </tr>
-            </thead>
-            <tbody>
-            {% for script in site.data.scripts %}
-                <tr>
-                    <td class="filename">
-                        <a href="scripts/{{ script.filename }}">{{ script.filename }}</a>
-                        <small>
-                           (<a href="https://github.com/irssi/scripts/blob/gh-pages/scripts/{{ script.filename }}">Github</a>)
-                        </small>
-                    </td>
-                    <td class="name">{{ script.name }}</td>
-                    <td class="version">{{ script.version }}</td>
-                    <td class="description">{{ script.description | xml_escape }}</td>
-                    <td class="authors">{{ script.authors }}</td>
-                    <td class="modified" sorttable_customkey="{{ script.modified | date: "%Y%m%d%H%M%S" }}">
-                        <abbr class="timeago" title="{{ script.modified | date: "%Y-%m-%dT%H:%M:%SZ" }}">
-                            {{ script.modified | date: "%Y-%m-%d" }}
-                        </abbr>
-                    </td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
+        <div class="table-responsive">
+            <table class="table table-striped table-condensed sortable">
+                <thead>
+                    <tr>
+                        <th class="sorttable_alpha">Filename</th>
+                        <th class="sorttable_alpha">Name</th>
+                        <th class="sorttable_alpha">Version</th>
+                        <th class="sorttable_alpha">Description</th>
+                        <th class="sorttable_alpha">Authors</th>
+                        <th class="sorttable_alpha">Modified</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for script in site.data.scripts %}
+                    <tr>
+                        <td class="filename">
+                            <a href="scripts/{{ script.filename }}">{{ script.filename }}</a>
+                            <small>
+                                (<a href="https://github.com/irssi/scripts/blob/gh-pages/scripts/{{ script.filename }}">Github</a>)
+                            </small>
+                        </td>
+                        <td class="name">{{ script.name }}</td>
+                        <td class="version">{{ script.version }}</td>
+                        <td class="description">{{ script.description | xml_escape }}</td>
+                        <td class="authors">{{ script.authors }}</td>
+                        <td class="modified" sorttable_customkey="{{ script.modified | date: "%Y%m%d%H%M%S" }}">
+                            <abbr class="timeago" title="{{ script.modified | date: "%Y-%m-%dT%H:%M:%SZ" }}">
+                                {{ script.modified | date: "%Y-%m-%d" }}
+                            </abbr>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 
