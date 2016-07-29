@@ -467,7 +467,7 @@ sub cmd_window_unalias {
 	}
 
 	$win->set_refnum($refnum);
-	Irssi::print("chanact: moved wintow to refnum $refnum");
+	Irssi::print("chanact: moved window to refnum $refnum");
 }
 
 # Make an alias
