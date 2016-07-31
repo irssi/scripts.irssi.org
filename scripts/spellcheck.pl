@@ -1,5 +1,5 @@
 # Copyright © 2008 Jakub Jankowski <shasta@toxcorp.com>
-# Copyright © 2012-2015 Jakub Wilk <jwilk@jwilk.net>
+# Copyright © 2012-2016 Jakub Wilk <jwilk@jwilk.net>
 # Copyright © 2012 Gabriel Pettier <gabriel.pettier@gmail.com>
 #
 # This program is free software; you can redistribute it and/or modify
@@ -18,7 +18,7 @@ use vars qw($VERSION %IRSSI);
 use Irssi 20070804;
 use Text::Aspell;
 
-$VERSION = '0.7';
+$VERSION = '0.8';
 %IRSSI = (
     authors     => 'Jakub Wilk, Jakub Jankowski, Gabriel Pettier',
     name        => 'spellcheck',
@@ -45,15 +45,18 @@ sub spellcheck_setup
 # spell-checking it) to the suggestions returned"
 sub spellcheck_check_word
 {
-    my ($lang, $word, $add_rest) = @_;
+    my ($langs, $word, $add_rest) = @_;
     my $win = Irssi::active_win();
     my $prefix = '';
     my $suffix = '';
 
-    my $speller = spellcheck_setup($lang);
-    if (not defined $speller) {
-        $win->print('%R' . "Error while setting up spell-checker for $lang" . '%N', MSGLEVEL_CLIENTERROR);
-        return;
+    my @langs = split(/[+]/, $langs);
+    for my $lang (@langs) {
+        my $speller = spellcheck_setup($lang);
+        if (not defined $speller) {
+            $win->print('%R' . "Error while setting up spell-checker for $lang" . '%N', MSGLEVEL_CLIENTERROR);
+            return;
+        }
     }
 
     return if $word =~ m{^/}; # looks like a path
@@ -61,20 +64,24 @@ sub spellcheck_check_word
     $prefix = $1 if $add_rest;
     $word =~ s/([[:punct:]]*)$//; # ...and trailing ones, too
     $suffix = $1 if $add_rest;
-    return if $word =~ m{^\w+://}; # looks like an URL
+    return if $word =~ m{^\w+://}; # looks like a URL
     return if $word =~ m{^[^@]+@[^@]+$}; # looks like an e-mail
     return if $word =~ m{^[[:digit:][:punct:]]+$}; # looks like a number
 
-    my $ok = $speller{$lang}->check($word);
-    if (not defined $ok) {
-        $win->print('%R' . "Error while spell-checking for $lang" . '%N', MSGLEVEL_CLIENTERROR);
-        return;
+    my @result;
+    for my $lang (@langs) {
+        my $ok = $speller{$lang}->check($word);
+        if (not defined $ok) {
+            $win->print('%R' . "Error while spell-checking for $lang" . '%N', MSGLEVEL_CLIENTERROR);
+            return;
+        }
+        if ($ok) {
+            return;
+        } else {
+            push @result, map { "$prefix$_$suffix" } $speller{$lang}->suggest($word);
+        }
     }
-    unless ($ok) {
-        my @result =  map { "$prefix$_$suffix" } $speller{$lang}->suggest($word);
-        return \@result;
-    }
-    return;
+    return \@result;
 }
 
 sub _spellcheck_find_language
@@ -92,7 +99,7 @@ sub _spellcheck_find_language
     # possible settings: network/channel/lang  or  channel/lang
     my @languages = split(/[ ,]+/, Irssi::settings_get_str('spellcheck_languages'));
     for my $langstr (@languages) {
-        my ($t, $c, $l) = $langstr =~ m,^(?:([^/]+)/)?([^/]+)/([^/]+)/*$,;
+        my ($t, $c, $l) = $langstr =~ m{^(?:([^/]+)/)?([^/]+)/([^/]+)/*$};
         $t //= $network;
         if (lc($c) eq $target and lc($t) eq $network) {
             return $l;
@@ -133,7 +140,7 @@ sub spellcheck_key_pressed
     # because printing suggestions is our only choice.
 
     # hide correction window when message is sent
-    if ($key eq 10 && $correction_window) {
+    if (chr($key) =~ /\A[\r\n]\z/ && $correction_window) {
         $correction_window->command("window hide $window_name");
     }
 
@@ -150,7 +157,7 @@ sub spellcheck_key_pressed
     return if ($inputline =~ $re);
 
     # get last bit from the inputline
-    my ($word) = $inputline =~ /\s*([^\s]+)$/;
+    my ($word) = $inputline =~ /\s*(\S+)$/;
     defined $word or return;
 
     my $lang = spellcheck_find_language($win);
@@ -175,10 +182,12 @@ sub spellcheck_key_pressed
     $word =~ s/%/%%/g;
     my $color = Irssi::settings_get_str('spellcheck_word_color');
     if (scalar @$suggestions > 0) {
-        $correction_window->print("Suggestions for $color$word%N - " . join(", ", @$suggestions));
+        $correction_window->print("Suggestions for $color$word%N - " . join(', ', @$suggestions));
     } else {
         $correction_window->print("No suggestions for $color$word%N");
     }
+
+    return;
 }
 
 sub spellcheck_complete_word
@@ -192,16 +201,18 @@ sub spellcheck_complete_word
     # add suggestions to the completion list
     my $suggestions = spellcheck_check_word($lang, $word, 1);
     push(@$complist, @$suggestions) if defined $suggestions;
+
+    return;
 }
 
 sub spellcheck_add_word
 {
-    my $win = Irssi::active_win();
     my ($cmd_line, $server, $win_item) = @_;
+    my $win = Irssi::active_win();
     my @args = split(' ', $cmd_line);
 
     if (@args <= 0) {
-        $win->print("SPELLCHECK_ADD <word>...    add word(s) to personal dictionary");
+        $win->print('SPELLCHECK_ADD <word>...    add word(s) to personal dictionary');
         return;
     }
 
@@ -221,6 +232,8 @@ sub spellcheck_add_word
     if (not $ok) {
         $win->print('%R' . "Error while saving $lang dictionary" . '%N', MSGLEVEL_CLIENTERROR);
     }
+
+    return;
 }
 
 Irssi::command_bind('spellcheck_add', 'spellcheck_add_word');
