@@ -17,7 +17,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 # NOTE:
-# This program requires libnofity, perl-glib-object-introspection and
+# This program requires libnotify, perl-glib-object-introspection and
 # perl-html-parser packages
 
 use strict;
