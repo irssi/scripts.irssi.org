@@ -130,7 +130,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                 defaultchanmode ](Test/defaultchanmode/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                          dejunk ](Test/dejunk/)|  ✔   |  ✔   |  ✔   | 10   |  ✔   | (c)
 [                    deliciousurl ](Test/deliciousurl/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
-[                  desktop-notify ](Test/desktop-notify/)|  ✘   |  ✔   |  ✔   |  3   |  ☡   | (c)
+[                  desktop-notify ](Test/desktop-notify/)|  ✘   |  ✔   |  ✔   |  3   |  ☡   
 [                              df ](Test/df/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                    dice_concise ](Test/dice_concise/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                            dice ](Test/dice/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
@@ -466,7 +466,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                      upsidedown ](Test/upsidedown/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                          uptime ](Test/uptime/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
 [                         urlfeed ](Test/urlfeed/)|  ✔   |  ✔   |  ✔   | 12   |  ✔   | (c)
-[                         urlgrab ](Test/urlgrab/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   
+[                         urlgrab ](Test/urlgrab/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
 [                         urlinfo ](Test/urlinfo/)|  ✔   |  ✔   |  ✔   | 11   |  ✔   | (c)
 [                         url_log ](Test/url_log/)|  ✔   |  ✔   |  ✔   | 12   |  ✔   | (c)
 [                         urlplot ](Test/urlplot/)|  ✔   |  ✔   |  ✔   | 86   |  ✔   | (c)
@@ -506,4 +506,4 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                     xmpp-notify ](Test/xmpp-notify/)|  ✔   |  ✔   |  ✔   | 21   |  ✔   | (c)
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 
-431a41d9d6c054be5384ad08047b972b7b4c6d5f | 657
+af8d7b0b3a84fbcc69069ff18912d887346e3941 | 660

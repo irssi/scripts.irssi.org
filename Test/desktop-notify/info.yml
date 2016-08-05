@@ -4,6 +4,7 @@
   contact: eu@felipetonello.com
   description: 'Sends notification using the Desktop Notifications Specification.'
   license: 'GPL v3+'
+  modified: '2016-08-04 19:09:35'
   modules:
     - Glib::Object::Introspection
     - HTML::Entities
