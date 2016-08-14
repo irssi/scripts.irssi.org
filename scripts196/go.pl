@@ -47,7 +47,7 @@ sub cmd_go
 	$chan =~ s/ *//g;
 	foreach my $w (Irssi::windows) {
 		my $name = $w->get_active_name();
-		if ($name =~ /^#?\Q${chan}\E/) {
+		if ($name =~ /^(##?|\&|\*)?\Q${chan}\E/) {
 			$w->set_active();
 			return;
 		}
