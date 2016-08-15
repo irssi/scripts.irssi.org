@@ -5,6 +5,9 @@
 # Thanks to Dirm and Chris62vw for the Perl help and coekie for writing the
 # evil code to sort the nicklist by the alphabet and rank in nicklist.pl
 #
+# 1.6   - optional support for unicode nicknames, realnames script,
+#         formattable summary line (Nei)
+#
 # 1.5   - Fixed halfop display bug (patch by epinephrine), 20100712
 #
 # 1.4   - Merged changes from VMiklos and readded /who redirection to prevent
@@ -39,7 +42,7 @@ use POSIX;
 
 use vars qw($VERSION %IRSSI);
 
-$VERSION = '1.5';
+$VERSION = '1.6'; # d34833f077fa302
 %IRSSI = (
   authors     => 'Matt "f0rked" Sparks, Miklos Vajna',
   contact     => 'ms+irssi@quadpoint.org',
@@ -56,6 +59,9 @@ $VERSION = '1.5';
 my $tmp_server;
 my $tmp_chan;
 
+Irssi::theme_register([
+  'endofanames', '{channel $0}: Total of {hilight $1} nicks {comment {hilight $2} ops, {hilight $3} halfops, {hilight $4} voices, {hilight $5} normal, {hilight $6} away}',
+]);
 
 sub cmd_anames
 {
@@ -82,6 +88,32 @@ sub cmd_anames
   $tmp_server->command("who $tmp_chan");
 }
 
+local $@;
+eval { require Text::CharWidth; };
+unless ($@) {
+    *screen_length = sub { Text::CharWidth::mbswidth($_[0]) };
+} else {
+    *screen_length = sub { length($_[0]); }
+}
+
+sub object_printformat_module {
+    my ($object, $level, $module, $format, @args) = @_;
+    {
+        # deeeeeeep black magic.
+        local *CORE::GLOBAL::caller = sub { $module };
+        $object->printformat($level, $format, @args);
+    }
+}
+
+sub core_printformat_module {
+    my ($level, $module, $format, @args) = @_;
+    {
+        # deeeeeeep black magic.
+        local *CORE::GLOBAL::caller = sub { $module };
+        Irssi::printformat($level, $format, @args);
+    }
+}
+
 
 sub print_anames
 {
@@ -92,16 +124,25 @@ sub print_anames
 
   if (!$channel) {
     # no nicklist
-    Irssi::print("Not joined to any channel", MSGLEVEL_CLIENTERROR);
+    core_printformat_module(MSGLEVEL_CLIENTERROR, 'fe-common/core', 'not_joined');
   } else {
     # Loop through each nick and display
     my @nicks;
     my($ops, $halfops, $voices, $normal, $away) = (0, 0, 0, 0, 0);
 
     # sorting from nicklist.pl
-    foreach my $nick (sort {(($a->{'op'}?'1':$a->{'halfop'}?'2':$a->{'voice'}?'3':'4').lc($a->{'nick'}))
-                      cmp (($b->{'op'}?'1':$b->{'halfop'}?'2':$b->{'voice'}?'3':'4').lc($b->{'nick'}))} $channel->nicks()) {
-      my $realnick = $nick->{'nick'};
+    my $prefer_real;
+    if (exists $Irssi::Script::{'realnames::'}) {
+	my $code = "Irssi::Script::realnames"->can('use_realnames');
+	$prefer_real = $code && $code->($channel);
+    }
+    my $_real = sub {
+	my $nick = shift;
+	$prefer_real && length $nick->{'realname'} ? $nick->{'realname'} : $nick->{'nick'}
+    };
+    foreach my $nick (sort {($a->{'op'}?'1':$a->{'halfop'}?'2':$a->{'voice'}?'3':$a->{'other'}>32?'0':'4').lc($_real->($a))
+        cmp ($b->{'op'}?'1':$b->{'halfop'}?'2':$b->{'voice'}?'3':$b->{'other'}>32?'0':'4').lc($_real->($b))} $channel->nicks()) {
+      my $realnick = $_real->($nick);
       my $gone = $nick->{'gone'};
 
       my $prefix;
@@ -129,13 +170,10 @@ sub print_anames
     }
 
     my $total = @nicks;
-    $channel->print("%K[%n%gUsers%n %G" . $chan . "%n%K]%n",
-                    MSGLEVEL_CLIENTCRAP);
+    object_printformat_module($channel, MSGLEVEL_CLIENTCRAP, 'fe-common/core', 'names', $chan);
     columnize_nicks($channel,@nicks);
-    $channel->print("%W$chan%n: Total of %W$total%n nicks %K[%W$ops%n ops, " .
-                    "%W$halfops%n halfops, %W$voices%n voices, %W$normal%n " .
-                    "normal, %W$away%n away%K]%n",
-                    MSGLEVEL_CLIENTNOTICE);
+    $channel->printformat(MSGLEVEL_CLIENTNOTICE, 'endofanames', $chan, $total, $ops,
+			  $halfops, $voices, $normal, $away);
   }
 }
 
@@ -181,7 +219,7 @@ sub fill_spaces
 {
   my($text, $max_length) = @_;
   $text =~ s/%[a-zA-Z]//g;
-  return " " x ($max_length - length($text));
+  return " " x ($max_length - screen_length($text));
 }
 
 
@@ -191,8 +229,8 @@ sub find_max_length
   for (my $i = 0; $i < @_; $i++) {
     my $nick = $_[$i];
     $nick =~ s/%[a-zA-Z]//g;
-    if (length($nick) > $max_length) {
-      $max_length = length($nick);
+    if (screen_length($nick) > $max_length) {
+      $max_length = screen_length($nick);
     }
   }
   return $max_length;
