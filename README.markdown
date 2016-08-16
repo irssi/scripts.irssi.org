@@ -160,7 +160,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                            file ](Test/file/)|  ✔   |  ✔   |  ✔   | 16   |  ✔   | (c)
 [                         findbot ](Test/findbot/)|  ✔   |  ✔   |  ✔   | 15   |  ✔   | (c)
 [                            find ](Test/find/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                    fix_slackirc ](Test/fix_slackirc/)|  ✔   |  ✔   |  ✔   |  1   |  ✔   | (c)
+[                    fix_slackirc ](Test/fix_slackirc/)|  ✔   |  ✔   |  ✔   |  1   |  ✔   
 [                          fleech ](Test/fleech/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                         fnotify ](Test/fnotify/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                          follow ](Test/follow/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -442,7 +442,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                           title ](Test/title/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                           tlock ](Test/tlock/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       tmux_away ](Test/tmux_away/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
-[          tmux-nicklist-portable ](Test/tmux-nicklist-portable/)|  ✔   |  ✔   |  ✔   |  8   |  ✔   
+[          tmux-nicklist-portable ](Test/tmux-nicklist-portable/)|  ✔   |  ✔   |  ✔   |  8   |  ✔   | (c)
 [                        topicsed ](Test/topicsed/)|  ✔   |  ✘   |  ✘   | 18   |  ☡   | (c)
 [                          topics ](Test/topics/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       tordetect ](Test/tordetect/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
@@ -507,4 +507,4 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                     xmpp-notify ](Test/xmpp-notify/)|  ✔   |  ✔   |  ✔   | 21   |  ✔   | (c)
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 
-51a84274537839a0006a8956b348a338c1a35ed3 | 668
+a56f10d547fc97de3165f31cd5a2f4ab2479f182 | 669
