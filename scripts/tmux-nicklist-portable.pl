@@ -36,6 +36,9 @@
 #
 # For better integration, unrecognized sequences will be sent to irssi and
 # its pane will be focused.
+#
+# to toggle the nicklist if it is in the way you can make a key binding:
+# /bind meta-Z /script exec Irssi::Script::tmux_nicklist_portable::toggle_nicklist
 ################################################################################
 
 use strict;
@@ -45,7 +48,7 @@ use IO::Select;
 use POSIX;
 use File::Temp qw/ :mktemp  /;
 use File::Basename;
-our $VERSION = '0.1.4'; # f969473d9e99a9a
+our $VERSION = '0.1.5'; # a58bc1253b0a191
 our %IRSSI = (
   authors     => 'Thiago de Arruda',
   contact     => 'tpadilha84@gmail.com',
@@ -62,6 +65,7 @@ if ($#ARGV == -1) {
 require Irssi;
 
 my $enabled = 0;
+my $nicklist_toggle = 1;
 my $script_path = __FILE__;
 my $tmpdir;
 my $fifo_path;
@@ -135,7 +139,8 @@ sub reset_nicklist {
     $channel_pattern = qr/(?!)/ if $@;
   }
   my $smallest_main = Irssi::settings_get_int('nicklist_smallest_main');
-  if (!$channel || !ref($channel)
+  if (!$nicklist_toggle
+      || !$channel || !ref($channel)
       || !$channel->isa('Irssi::Channel')
       || !$channel->{'names_got'}
       || $channel->{'name'} !~ $channel_pattern
@@ -185,6 +190,15 @@ sub reset_nicklist {
       print($fifo "END\n");
     }
   }
+}
+
+sub toggle_nicklist {
+    if ($enabled) {
+	$nicklist_toggle = undef
+    } else {
+	$nicklist_toggle = 1;
+    }
+    reset_nicklist;
 }
 
 sub switch_channel {
