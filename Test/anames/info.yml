@@ -1,0 +1,13 @@
+---
+-
+  authors: 'Matt "f0rked" Sparks, Miklos Vajna'
+  contact: ms+irssi@quadpoint.org
+  default_package: anames
+  description: 'a /names display with away nicks coloured'
+  license: GPLv2
+  modified: '2016-08-16 15:48:00'
+  modules:
+    - Text::CharWidth
+  name: anames
+  url: http://quadpoint.org
+  version: '1.6'

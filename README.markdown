@@ -18,6 +18,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                           alame ](Test/alame/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                        amaroknp ](Test/amaroknp/)|  ✘   |  ✔   |  ✔   |  5   |  ☡   | (c)
 [                      amarok_ssh ](Test/amarok_ssh/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                          anames ](Test/anames/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
 [                      anotherway ](Test/anotherway/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       antiplenk ](Test/antiplenk/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                             apm ](Test/apm/)|  ✔   |  ✔   |  ✔   | 13   |  ✔   | (c)
@@ -130,7 +131,7 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                 defaultchanmode ](Test/defaultchanmode/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                          dejunk ](Test/dejunk/)|  ✔   |  ✔   |  ✔   | 10   |  ✔   | (c)
 [                    deliciousurl ](Test/deliciousurl/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
-[                  desktop-notify ](Test/desktop-notify/)|  ✘   |  ✔   |  ✔   |  3   |  ☡   
+[                  desktop-notify ](Test/desktop-notify/)|  ✘   |  ✔   |  ✔   |  3   |  ☡   | (c)
 [                              df ](Test/df/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                    dice_concise ](Test/dice_concise/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                            dice ](Test/dice/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
@@ -506,4 +507,4 @@ See [the testing read-me](../gh-pages/_testing/) for details.
 [                     xmpp-notify ](Test/xmpp-notify/)|  ✔   |  ✔   |  ✔   | 21   |  ✔   | (c)
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 
-af8d7b0b3a84fbcc69069ff18912d887346e3941 | 660
+6bd98bdce33f933846c1fb7e373a92a0f930dc45 | 665
