@@ -1,7 +1,25 @@
 # anames.pl
-# Irssi script that adds an /anames command, a clone of /names, with away nicks
-# grayed out.
+
+# Commands
+# ========
+# /anames
+# * a clone of /names, with away nicks greyed out.
+
+# Options
+# =======
+# /format endofanames
+# * equivalent of /format endofnames, the final summary line of /anames command
 #
+# /format names_awaynick
+# * colour for the nicks that are away, example: %w$0
+#
+# /set anames_force_sync <ON|OFF>
+# * whether to use -sync by default (request fresh /who list)
+#   if you do not turn this on you will have to manually refresh the
+#   away list using /who #channel, /anames -sync or you can turn it
+#   off if you are running the autowho script to automatically update
+#   the who list periodically
+
 # Thanks to Dirm and Chris62vw for the Perl help and coekie for writing the
 # evil code to sort the nicklist by the alphabet and rank in nicklist.pl
 #
@@ -36,13 +54,13 @@
 # 0.9   - Initial test release
 
 use strict;
+use warnings;
 use Irssi 20140918;
-use POSIX;
-use List::Util 'max';
+use List::Util qw(min max);
 
 use vars qw($VERSION %IRSSI);
 
-$VERSION = '1.6'; # f200e871df81c77
+$VERSION = '1.6'; # 6eb152135b1bc6d
 %IRSSI = (
   authors     => 'Matt "f0rked" Sparks, Miklos Vajna',
   contact     => 'ms+irssi@quadpoint.org',
@@ -50,14 +68,12 @@ $VERSION = '1.6'; # f200e871df81c77
   description => 'a /names display with away nicks coloured',
   license     => 'GPLv2',
   url         => 'http://quadpoint.org',
-  changed     => '2010-07-12',
 );
 
-# How often to do a /who of all channels (in seconds)
-#my $who_timer = 300;
 
 my $tmp_server;
 my $tmp_chan;
+my $tmp_count;
 
 
 Irssi::theme_register([
@@ -66,30 +82,60 @@ Irssi::theme_register([
 ]);
 
 
-local $@;
-eval { require Text::CharWidth; };
-unless ($@) {
+sub cmd_help {
+    my ($args) = @_;
+    if ($args =~ /^anames *$/i) {
+        print CLIENTCRAP <<HELP
+%9Syntax:%9
+
+ANAMES [-sync | -cached] [-count] [-<server tag>] [<channel>]
+
+%9Parameters:%9
+
+    -sync:       Synchronise the away state of the channel.
+    -cached:     Do not synchronise the away state, use cached info.
+    -count:      Displays the amount of users away in the channel.
+
+    If no arguments are given, the users in the active channel will be
+    displayed.
+
+%9Description:%9
+
+    Display the users who are in channel and grey out those who are away.
+
+%9See also:%9 NAMES, WHO, WHOIS
+HELP
+
+    }
+}
+
+
+{
+  local $@;
+  eval { require Text::CharWidth; };
+  unless ($@) {
     *screen_length = sub { Text::CharWidth::mbswidth($_[0]) };
-} else {
+  } else {
     *screen_length = sub { length($_[0]); }
+  }
 }
 
 
 sub object_printformat_module {
-    my ($object, $level, $module, $format, @args) = @_;
-    {
-        local *CORE::GLOBAL::caller = sub { $module };
-        $object->printformat($level, $format, @args);
-    }
+  my ($object, $level, $module, $format, @args) = @_;
+  {
+    local *CORE::GLOBAL::caller = sub { $module };
+    $object->printformat($level, $format, @args);
+  }
 }
 
 
 sub core_printformat_module {
-    my ($level, $module, $format, @args) = @_;
-    {
-        local *CORE::GLOBAL::caller = sub { $module };
-        Irssi::printformat($level, $format, @args);
-    }
+  my ($level, $module, $format, @args) = @_;
+  {
+    local *CORE::GLOBAL::caller = sub { $module };
+    Irssi::printformat($level, $format, @args);
+  }
 }
 
 
@@ -99,13 +145,33 @@ sub cmd_anames
   my $channel = $item;
   $tmp_server = $server->{"tag"};
   $tmp_chan = $channel->{"name"};
+  $tmp_count = undef;
 
-  if ($args ne "") {
-    my @args = split ' ', $args;
+  my ($force_sync, $force_cache);
+  my @args = split ' ', $args;
+  while (@args && $args[0] =~ /^-/) {
+    if (lc $args[0] eq '-sync') {
+      $force_sync = 1; shift @args;
+    }
+    elsif (lc $args[0] eq '-cached') {
+      $force_cache = 1; shift @args;
+    }
+    elsif (lc $args[0] eq '-count') {
+      $tmp_count = 1; shift @args;
+    }
+    else {
+      last;
+    }
+  }
+  if (@args) {
     if ($args[0] =~ /-(.*)/) {
       $tmp_server = $1;
       $server = Irssi::server_find_tag($tmp_server);
       shift @args;
+    }
+    unless (@args) {
+      core_printformat_module(MSGLEVEL_CLIENTERROR, 'fe-common/core', 'not_enough_params');
+      return;
     }
     $tmp_chan = $args[0];
   }
@@ -116,13 +182,21 @@ sub cmd_anames
   }
 
   # set up redirection
-  $server->redirect_event("who", 1, $tmp_chan, 0, undef,
+  my $sync = Irssi::settings_get_bool('anames_force_sync');
+  my $irc = $server->isa('Irssi::Irc::Server');
+  if ($irc && ($force_sync || ($sync && !$force_cache))) {
+    $server->redirect_event("who", 1, $tmp_chan, 0, "",
                               {
                                 "event 352" => "silent event who",
                                 "event 315" => "redir who_reply_end",
                               });
 
-  $server->command("who $tmp_chan");
+    $server->command("who $tmp_chan");
+  } elsif ($force_sync) {
+    print CLIENTERROR "anames -sync is not supported for the chat protocol of the target server";
+  } else { 
+    print_anames();
+  }
 }
 
 
@@ -195,11 +269,67 @@ sub print_anames
     }
 
     my $total = @nicks;
-    object_printformat_module($channel, MSGLEVEL_CLIENTCRAP, 'fe-common/core', 'names', $chan);
-    columnize_nicks($channel,@nicks);
+    unless ($tmp_count) {
+      object_printformat_module($channel, MSGLEVEL_CLIENTCRAP, 'fe-common/core', 'names', $chan);
+      columnize_nicks($channel, @nicks);
+    }
     $channel->printformat(MSGLEVEL_CLIENTNOTICE, 'endofanames', $chan, $total, $ops,
                           $halfops, $voices, $normal, $away);
   }
+}
+
+# src/core/misc.c
+sub get_max_column_count {
+  my $max_width = pop(@_) - 1;
+  my @item_info = @_;
+
+  my $items_count = @item_info;
+  if ($items_count == 0) {
+    return;
+  }
+
+  my $min_len = max 1, min map { $_->[-1] } @item_info;
+  my $max_columns = max 1, int($max_width/$min_len);
+
+  my (@columns, @columns_width, @columns_rows);
+
+  for my $n (1 .. $max_columns - 1) {
+    $columns_rows[$n] = $items_count <= $n+1 ? 1 :
+                        ($items_count+$n)/($n+1);
+  }
+
+  # for each possible column count, save the column widths and
+  # find the biggest column count that fits to screen.
+  my $item_pos = 0;
+  my $max_len = max 1, map { $_->[-1] } @item_info;
+  for my $tmp (@item_info) {
+    my $len = $tmp->[-1];
+
+    for my $n (1 .. $max_columns - 1) {
+      no warnings 'uninitialized';
+      if ($columns_width[$n] > $max_width) {
+	next; # too wide
+      }
+
+      my $col = $item_pos/$columns_rows[$n];
+      if ($columns[$n][$col] < $len) {
+	$columns_width[$n] += $len - $columns[$n][$col];
+	$columns[$n][$col] = $len;
+      }
+    }
+
+    $item_pos++;
+  }
+
+  for my $n (reverse 1 .. $max_columns - 1) {
+    no warnings 'uninitialized';
+    if ($columns_width[$n] <= $max_width &&
+	$columns[$n][$n] > 0) {
+      return $n + 1;
+    }
+  }
+
+  return 1;
 }
 
 
@@ -211,10 +341,10 @@ sub print_anames
     (map { $_ => $_ } (split //, '{}%')),
    );
   sub ir_strip_codes { # strip %codes
-      my $o = shift;
-      $o =~ s/(%(%|Z.{6}|z.{6}|X..|x..|.))/exists $strip_table{$2} ? $strip_table{$2} :
-	  $2 =~ m{x(?:0[a-f]|[1-6][0-9a-z]|7[a-x])|z[0-9a-f]{6}}i ? '' : $1/gex;
-      $o
+    my $o = shift;
+    $o =~ s/(%(%|Z.{6}|z.{6}|X..|x..|.))/exists $strip_table{$2} ? $strip_table{$2} :
+	$2 =~ m{x(?:0[a-f]|[1-6][0-9a-z]|7[a-x])|z[0-9a-f]{6}}i ? '' : $1/gex;
+    $o
   }
 }
 
@@ -227,35 +357,40 @@ sub columnize_nicks
   my $total = @nicks;
 
   # determine max columns
-  # FIXME: this could be more intelligent (i.e., read window size)
   my $cols = Irssi::settings_get_int("names_max_columns");
-  if ($cols == 0) {
-      my $width = $channel->window->{width};
-      my $ts_format = Irssi::settings_get_str('timestamp_format');
-      my $render_str = Irssi::current_theme->format_expand(
-        Irssi::current_theme->get_format('fe-common/core', 'timestamp'));
-      (my $ts_escaped = $ts_format) =~ s/([%\$])/$1$1/g;
-      $render_str =~ s/(?|\$(.)(?!\w)|\$\{(\w+)\})/$1 eq 'Z' ? $ts_escaped : $1/ge;
-      $render_str = ir_strip_codes($render_str);
-      $width -= screen_length($render_str);
-      $cols = max(1, int( $width / max(1, map { 1+ $_->[-1] } @nicks) ));
+  my $width = $channel->window->{width};
+  {
+    my $ts_format = Irssi::settings_get_str('timestamp_format');
+    my $render_str = Irssi::current_theme->format_expand(
+      Irssi::current_theme->get_format('fe-common/core', 'timestamp'));
+    (my $ts_escaped = $ts_format) =~ s/([%\$])/$1$1/g;
+    $render_str =~ s/(?|\$(.)(?!\w)|\$\{(\w+)\})/$1 eq 'Z' ? $ts_escaped : $1/ge;
+    $render_str = ir_strip_codes($render_str);
+    $width -= screen_length($render_str);
   }
+  $width = max 10, $width;
+  my $max_cols = get_max_column_count(@nicks, $width - 1);
+  return unless $max_cols;
+  if ($cols < 1) {
+    $cols = $max_cols;
+  }
+  $cols = min $max_cols, $cols;
 
   # determine number of rows
-  my $rows = round(ceil($total / $cols));
+  my $rows = int($total / $cols) + !!($total % $cols);
 
   # array of rows
   my @r;
   for (my $i = 0; $i < $cols; $i++) {
     # peek at next $rows items, determine max length
-    my $max_length = max map { $_->[-1] } @nicks[0 .. $rows - 1];
+    my $max_length = max map { $_->[-1] } grep { defined } @nicks[0 .. $rows - 1];
 
     # fill rows
     for (my $j = 0; $j < $rows; $j++) {
       my $n = shift @nicks;  # single nick
       if ($n->[-1]) {
         $r[$j] .= $channel->window->format_get_text('fe-common/core', $channel->{server}, $channel->{visible_name},
-          $n->[2], $n->[0], $n->[1] . fill_spaces($n->[-1],$max_length) );
+          $n->[2], $n->[0], $n->[1] . fill_spaces($n->[-1], $max_length) );
       }
     }
   }
@@ -285,7 +420,7 @@ sub round
 sub who_reply_end
 {
   print_anames();
-  Irssi::signal_emit('chanquery who end', @_);
+#  Irssi::signal_emit('chanquery who end', @_);
   $tmp_chan = "";
 }
 
@@ -297,4 +432,7 @@ Irssi::Irc::Server::redirect_register("who", 0, 0,
 Irssi::signal_register({'chanquery who end' => [qw[iobject string]]});
 Irssi::signal_add("redir who_reply", 'who_reply');
 Irssi::signal_add("redir who_reply_end", 'who_reply_end');
+Irssi::settings_add_bool("anames", "anames_force_sync", 0);
 Irssi::command_bind("anames", 'cmd_anames');
+Irssi::command_set_options("anames", "sync cached count");
+Irssi::command_bind_last('help' => 'cmd_help');
