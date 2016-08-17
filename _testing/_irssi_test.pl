@@ -91,6 +91,15 @@ git log -1 --format=%d%m%ai -- "$SWD/scripts/$CURRENT_SCRIPT.pl" | grep -v graft
 if ($loginfo) {
     my ($date, $time) = split ' ', $loginfo;
     $info{modified} = "$date $time";
+} else {
+    chomp(my $git1 = `git log 2d0759e6... -1 --format=%ai -- "$SWD/scripts/$CURRENT_SCRIPT.pl"`);
+    chomp(my $git2 = `git log -1 --format=%d%m%ai -- "$SWD/scripts/$CURRENT_SCRIPT.pl"`);
+    print STDERR "
+name    <$CURRENT_SCRIPT>
+loginfo <$loginfo>
+git1    <$git1>
+git2    <$git2>
+";
 }
 $info{modules} = \@modules if @modules;
 $info{default_package} = $package =~ s/::$//r if $package;
