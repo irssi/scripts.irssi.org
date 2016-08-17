@@ -6,7 +6,6 @@
   default_package: xdcc_autoget
   description: 'XDCC Autoget, for automated searching and downloading of xdcc packs'
   license: 'BeerWare Version 42'
-  modified: '2016-02-09 01:27:46'
   modules:
     - File::HomeDir
     - Try::Tiny
