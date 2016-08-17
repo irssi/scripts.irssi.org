@@ -49,7 +49,7 @@ after_script:
   fi
 branches:
   only:
-  - gh-pages
+  - master
 env:
   global:
   - USE_ARTEFACTS_CACHE=yes

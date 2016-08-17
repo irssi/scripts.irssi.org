@@ -18,7 +18,7 @@ git config credential.helper store
 git rm -qrf .
 
 echo "This branch stores the travis-ci results for $TRAVIS_REPO_SLUG
-See [the testing read-me](../gh-pages/_testing/) for details." > README.markdown
+See [the testing read-me](../master/_testing/) for details." > README.markdown
 pushd ..
 MARKDOWN_REPORT=1 ./_testing/report-test.zsh >> artefacts/README.markdown
 popd
