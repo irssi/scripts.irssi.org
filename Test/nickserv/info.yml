@@ -5,7 +5,6 @@
   default_package: nickserv
   description: 'This script will authorize you into NickServ.'
   license: 'GNU General Public License'
-  modified: '2016-04-06 16:03:28'
   name: nickserv.pl
   url: http://irssi.hauwaerts.be/nickserv.pl
   version: '1.10'

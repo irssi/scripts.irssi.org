@@ -1,7 +1,0 @@
----
--
-  failed: 1
-  modules:
-    - Glib::Object::Introspection
-    - HTML::Entities
-  name: desktop-notify

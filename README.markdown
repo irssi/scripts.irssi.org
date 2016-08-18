@@ -131,7 +131,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                 defaultchanmode ](Test/defaultchanmode/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                          dejunk ](Test/dejunk/)|  ✔   |  ✔   |  ✔   | 10   |  ✔   
 [                    deliciousurl ](Test/deliciousurl/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   
-[                  desktop-notify ](Test/desktop-notify/)|  ✘   |  ✔   |  ✔   |  3   |  ☡   
+[                  desktop-notify ](Test/desktop-notify/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                              df ](Test/df/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   
 [                    dice_concise ](Test/dice_concise/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                            dice ](Test/dice/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   
@@ -507,4 +507,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                     xmpp-notify ](Test/xmpp-notify/)|  ✔   |  ✔   |  ✔   | 21   |  ✔   
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   
 
-22060fc4669627a9859c92efa2d6651e3673d494 | 671
+4b000512ec85c183d58320a03bc93f3e72f9d5fb | 673

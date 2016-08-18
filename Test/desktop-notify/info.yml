@@ -2,6 +2,7 @@
 -
   authors: 'Felipe F. Tonello'
   contact: eu@felipetonello.com
+  default_package: desktop_notify
   description: 'Sends notification using the Desktop Notifications Specification.'
   license: 'GPL v3+'
   modified: '2016-08-04 19:09:35'
