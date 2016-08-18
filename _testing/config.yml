@@ -26,6 +26,7 @@ additional_system_deps:
   - libtest-script-perl
   - libtext-glob-perl
   - libterm-readline-perl-perl
+  - gir1.2-notify-0.7 # for desktop-notify
 cpan:
   broken_tests:
     - Geo::Weather
@@ -34,7 +35,6 @@ cpan:
 # testing. They should be fixed and then removed from the whitelist.
 whitelist:
   - amaroknp
-  - apm
   - babelirc
   - cap_sasl
   - cgrep
@@ -42,7 +42,6 @@ whitelist:
   - connectcmd
   - dau
   - dccself
-  - dictcomplete
   - dnsspam
   - hddtemp
   - hitcount
@@ -72,7 +71,6 @@ whitelist:
   - quiz
   - randaway
   - reorder
-  - scriptassist
   - scroller
   - stocks
   - sysinfoplus
@@ -82,4 +80,3 @@ whitelist:
   - wordcompletition
   - xetra
   - xmmsinfo
-  - desktop-notify # fails test due to missing gobject-introspection in travis
