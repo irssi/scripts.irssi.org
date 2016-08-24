@@ -37,7 +37,7 @@ layout: default
             <dt>How do I submit a script to this page?</dt>
             <dd>See information on how to contribute <a href="https://github.com/irssi/scripts.irssi.org">here</a>.</dd>
         </dl>
-
+	
         <hr>
 
         <input type="search" class="light-table-filter form-control" data-table="sortable" data-name="q" placeholder="Filter" style="width: 100%">
@@ -50,11 +50,12 @@ layout: default
                     <th class="sorttable_alpha">Description</th>
                     <th class="sorttable_alpha">Authors</th>
                     <th class="sorttable_alpha">Modified</th>
+                    <th class="sorttable_numeric" id="th-votes">&hellip;</th>
                 </tr>
             </thead>
             <tbody>
             {% for script in site.data.scripts %}
-                <tr>
+                <tr id="script-{{ script.filename | replace: ".", "_" }}">
                     <td class="filename">
                         <a href="scripts/{{ script.filename }}">{{ script.filename }}</a>
                         <small>
@@ -70,6 +71,7 @@ layout: default
                             {{ script.modified | date: "%Y-%m-%d" }}
                         </abbr>
                     </td>
+		    <td class="votes"></td>
                 </tr>
             {% endfor %}
             </tbody>
