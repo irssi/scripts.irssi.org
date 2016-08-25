@@ -11,7 +11,7 @@ $VERSION = '1.31';
     description => 'Caching dictionary based tab completion',
     license     => 'Public Domain',
     url         => 'http://juerd.nl/irssi/',
-    changed     => 'Fri Dec 6 11:12 CET 2002',
+    changed     => 'Thu Aug 25 19:29:30 CEST 2016',
     changes     => 'Removed a silly mistake'
 );
 
@@ -56,7 +56,7 @@ sub sig_complete {
 	: $index{lc substr $word, 0, 1});
     eval {
 	for ($index->[0] .. $index->[1]) {
-    	    if ($array[$_] =~ /^$word/i) {
+    	    if ($array[$_] =~ /^\Q$word\E/i) {
 		$found = 1;
     		push @$complist, $array[$_];
 	        push @$mylist, $array[$_];
