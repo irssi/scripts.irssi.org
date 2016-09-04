@@ -1715,6 +1715,16 @@
   url: http://irssi.hauwaerts.be/fuckem.pl
   version: '0.05'
 -
+  authors: prussian
+  contact: genunrest@gmail.com
+  description: 'talk like some vaporwave cool kid'
+  filename: fullwidth.pl
+  license: 'Apache 2.0'
+  modified: '2016-09-03 21:27:52'
+  name: fullwidth
+  url: http://github.com/GeneralUnRest/
+  version: 1.1.0
+-
   authors: "Maciek 'fahren' Freudenheim"
   contact: fahren@bochnia.pl
   description: 'Automatically request op from random opped person with specifed command from list after joining channel'
