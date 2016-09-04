@@ -175,6 +175,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                    frm_outgmsgs ](Test/frm_outgmsgs/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                          fserve ](Test/fserve/)|  ✔   |  ✔   |  ✔   | 44   |  ✔   | (c)
 [                          fuckem ](Test/fuckem/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                       fullwidth ](Test/fullwidth/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                           getop ](Test/getop/)|  ✔   |  ✔   |  ✔   | 16   |  ✔   | (c)
 [                          gimmie ](Test/gimmie/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                             go2 ](Test/go2/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -507,4 +508,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                     xmpp-notify ](Test/xmpp-notify/)|  ✔   |  ✔   |  ✔   | 21   |  ✔   | (c)
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 
-bdb78460c58bee1236e5c118a8f58a76e84e466a | 676
+2966e7b40442a9deefafcc180112f6603786de90 | 680
