@@ -812,6 +812,16 @@
   url: http://scripts.irssi.org/
   version: '1.0'
 -
+  authors: dwfreed
+  contact: dwfreed@mtu.edu
+  description: 'Prints caps; derived from cap_sasl.pl by Michael Tharp (gxti), Jilles Tjoelker (jilles), and Mantas Mikulėnas (grawity)'
+  filename: cap.pl
+  license: GPLv2
+  modified: '2016-09-13 03:32:53'
+  name: cap
+  url: 'none yet'
+  version: '1.0'
+-
   authors: 'Michael Tharp (gxti), Jilles Tjoelker (jilles), Mantas Mikulėnas (grawity)'
   contact: grawity@gmail.com
   description: 'Implements SASL authentication and enables CAP "multi-prefix"'
