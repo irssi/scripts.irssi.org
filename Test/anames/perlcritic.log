@@ -1,1 +1,1 @@
-scripts/anames.pl source OK
+String delimiter used with "split" at line 214, column 23.  Express it as a regex instead.  (Severity: 2)
