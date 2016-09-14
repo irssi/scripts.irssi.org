@@ -23,6 +23,8 @@
 # Thanks to Dirm and Chris62vw for the Perl help and coekie for writing the
 # evil code to sort the nicklist by the alphabet and rank in nicklist.pl
 #
+# 1.7   - Improved nick prefix sorting (tslocum)
+#
 # 1.6   - optional support for unicode nicknames, realnames script,
 #         formattable summary line (default away colour changed!) (Nei)
 #
@@ -60,7 +62,7 @@ use List::Util qw(min max);
 
 use vars qw($VERSION %IRSSI);
 
-$VERSION = '1.6'; # 6eb152135b1bc6d
+$VERSION = '1.7';
 %IRSSI = (
   authors     => 'Matt "f0rked" Sparks, Miklos Vajna',
   contact     => 'ms+irssi@quadpoint.org',
@@ -199,6 +201,27 @@ sub cmd_anames
   }
 }
 
+sub prefix_index
+{
+  my ($nick) = @_;
+  my $index = 999;
+  my $prefixes = Irssi::server_find_tag($tmp_server)->get_nick_flags();
+  if (!$prefixes) {
+    $prefixes = "~&@%+";
+  }
+
+  my $prefix_index;
+  foreach my $prefix (split("", $nick->{'prefixes'})) {
+    if ($prefix) {
+      $prefix_index = index($prefixes, $prefix);
+      if ($prefix_index > -1) {
+        $index = min($prefix_index, $index);
+      }
+    }
+  }
+
+  return $index;
+}
 
 sub print_anames
 {
@@ -224,22 +247,11 @@ sub print_anames
         my $nick = shift;
         $prefer_real && length $nick->{'realname'} ? $nick->{'realname'} : $nick->{'nick'}
     };
-    # sorting from nicklist.pl
-    foreach my $nick (sort {($a->{'op'}?'1':$a->{'halfop'}?'2':$a->{'voice'}?'3':$a->{'other'}>32?'0':'4').lc($_real->($a))
-        cmp ($b->{'op'}?'1':$b->{'halfop'}?'2':$b->{'voice'}?'3':$b->{'other'}>32?'0':'4').lc($_real->($b))} $channel->nicks()) {
+    foreach my $nick (sort {prefix_index($a) <=> prefix_index($b) || lc($a->{'nick'}) cmp lc($b->{'nick'})} $channel->nicks()) {
       my $realnick = $_real->($nick);
       my $gone = $nick->{'gone'};
-
-      my $prefix;
-      if ($nick->{'other'}) {
-        $prefix = chr $nick->{'other'};
-      } elsif ($nick->{'op'}) {
-        $prefix = "@";
-      } elsif ($nick->{'halfop'}) {
-        $prefix = "%";
-      } elsif ($nick->{'voice'}) {
-        $prefix = "+";
-      } else {
+      my $prefix = substr($nick->{'prefixes'}, 0, 1);
+      if (!$prefix) {
         $prefix = " ";
       }
 
