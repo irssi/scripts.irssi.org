@@ -170,11 +170,11 @@
   description: 'a /names display with away nicks coloured'
   filename: anames.pl
   license: GPLv2
-  modified: '2016-08-16 15:48:00'
+  modified: '2016-09-11 15:19:57'
   modules: Text::CharWidth
   name: anames
   url: http://quadpoint.org
-  version: '1.6'
+  version: '1.7'
 -
   authors: "Stefan 'tommie' Tomanek"
   contact: stefan@pico.ruhr.de
