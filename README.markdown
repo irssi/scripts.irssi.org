@@ -18,7 +18,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                           alame ](Test/alame/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                        amaroknp ](Test/amaroknp/)|  ✘   |  ✔   |  ✔   |  5   |  ☡   | (c)
 [                      amarok_ssh ](Test/amarok_ssh/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                          anames ](Test/anames/)|  ✔   |  ✔   |  ✔   |  1   |  ✔   
+[                          anames ](Test/anames/)|  ✔   |  ✔   |  ✔   |  1   |  ✔   | (c)
 [                      anotherway ](Test/anotherway/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       antiplenk ](Test/antiplenk/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                             apm ](Test/apm/)|  ✔   |  ✔   |  ✔   | 13   |  ✔   | (c)
@@ -80,7 +80,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                         blowjob ](Test/blowjob/)|  ✔   |  ✔   |  ✔   | 22   |  ✔   | (c)
 [                             bmi ](Test/bmi/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                          buffer ](Test/buffer/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
-[                             buf ](Test/buf/)|  ✔   |  ✔   |  ✔   |  8   |  ✔   | (c)
+[                             buf ](Test/buf/)|  ✔   |  ✔   |  ✔   | 12   |  ✔   
 [                            calc ](Test/calc/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
 [                        callerid ](Test/callerid/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                             cap ](Test/cap/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -509,4 +509,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                     xmpp-notify ](Test/xmpp-notify/)|  ✔   |  ✔   |  ✔   | 21   |  ✔   | (c)
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 
-bee419a36dd02eaed92d96e929887d994b62db3d | 686
+2d385c2309c89fd4ca5796732fbb91a57d98d8e8 | 691
