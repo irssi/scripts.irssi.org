@@ -71,6 +71,7 @@ sub event_who_result
 
     if ($busy)
     {
+        my($start,$realname);
         if ($data =~ /^(.*):([^:]{1,})$/)
         {
             $start = $1;
