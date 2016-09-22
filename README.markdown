@@ -88,7 +88,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                        cap_sasl ](Test/cap_sasl/)|  ✘   |  ✔   |  ✔   |  7   |  ☡   | (c)
 [                            cddb ](Test/cddb/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       centericq ](Test/centericq/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
-[                           cgrep ](Test/cgrep/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[                           cgrep ](Test/cgrep/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                         chanact ](Test/chanact/)|  ✔   |  ✔   |  ✔   |  8   |  ✔   | (c)
 [                  chanfull_duden ](Test/chanfull_duden/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        chanfull ](Test/chanfull/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -389,6 +389,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                          romaji ](Test/romaji/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                           rot13 ](Test/rot13/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                         rotator ](Test/rotator/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                      rud_emotes ](Test/rud_emotes/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
 [                        sana_cmd ](Test/sana_cmd/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                    sbclearmatch ](Test/sbclearmatch/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                     sb_position ](Test/sb_position/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
@@ -509,4 +510,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                     xmpp-notify ](Test/xmpp-notify/)|  ✔   |  ✔   |  ✔   | 21   |  ✔   | (c)
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 
-37e1aac060d43a47d41bcc91c2ed8b05bbba6fd0 | 692
+14a110ff3bbbc106ebff3548324abd6a40b86bdb | 693
