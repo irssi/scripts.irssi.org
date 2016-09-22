@@ -777,10 +777,10 @@
   description: 'Saves the buffer for /upgrade, so that no information is lost'
   filename: buf.pl
   license: 'Public Domain'
-  modified: '2014-10-17 20:34:00'
+  modified: '2016-09-22 02:26:09'
   name: 'Scroll buffer restorer'
   url: http://juerd.nl/irssi/
-  version: '2.13'
+  version: '2.20'
 -
   authors: 'Pablo Martín Báez Echevarría'
   contact: pab_24n@outlook.com
