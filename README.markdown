@@ -80,7 +80,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                         blowjob ](Test/blowjob/)|  ✔   |  ✔   |  ✔   | 22   |  ✔   | (c)
 [                             bmi ](Test/bmi/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                          buffer ](Test/buffer/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
-[                             buf ](Test/buf/)|  ✔   |  ✔   |  ✔   | 12   |  ✔   
+[                             buf ](Test/buf/)|  ✔   |  ✔   |  ✔   | 12   |  ✔   | (c)
 [                            calc ](Test/calc/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
 [                        callerid ](Test/callerid/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                             cap ](Test/cap/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -88,7 +88,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                        cap_sasl ](Test/cap_sasl/)|  ✘   |  ✔   |  ✔   |  7   |  ☡   | (c)
 [                            cddb ](Test/cddb/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       centericq ](Test/centericq/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
-[                           cgrep ](Test/cgrep/)|  ✘   |  ✔   |  ✔   |  3   |  ☡   | (c)
+[                           cgrep ](Test/cgrep/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                         chanact ](Test/chanact/)|  ✔   |  ✔   |  ✔   |  8   |  ✔   | (c)
 [                  chanfull_duden ](Test/chanfull_duden/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        chanfull ](Test/chanfull/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -509,4 +509,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                     xmpp-notify ](Test/xmpp-notify/)|  ✔   |  ✔   |  ✔   | 21   |  ✔   | (c)
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 
-2d385c2309c89fd4ca5796732fbb91a57d98d8e8 | 691
+37e1aac060d43a47d41bcc91c2ed8b05bbba6fd0 | 692

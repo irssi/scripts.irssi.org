@@ -1,8 +1,1 @@
-* -!- Irssi: Error in script cgrep:
-* Global symbol "$start" requires explicit package name at cgrep.pl line 76.
-* Global symbol "$realname" requires explicit package name at cgrep.pl line 77.
-* Global symbol "$start" requires explicit package name at cgrep.pl line 87.
-* Global symbol "$realname" requires explicit package name at cgrep.pl line 90.
-* Global symbol "$realname" requires explicit package name at cgrep.pl line 93.
-* Global symbol "$realname" requires explicit package name at cgrep.pl line 98.
-* Global symbol "$realname" requires explicit package name at cgrep.pl line 108.
+* -!- Irssi: Loaded script cgrep
