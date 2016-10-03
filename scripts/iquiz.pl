@@ -45,7 +45,7 @@ use Irssi qw(theme_register current_theme command_bind settings_add_int settings
 use Time::HiRes qw(time);
 use constant { QT_STD => 1, QT_MIX => 2, QT_FAM => 3, QT_MUL => 4, QT_SCR => 5 }; # QT_MIL => 6, QT_FOR => 7
 
-our $VERSION = '161003';
+our $VERSION = '160919';
 our %IRSSI = (
 	authors			=> 'wilk',
 	name			=> 'iQuiz',
@@ -248,7 +248,7 @@ sub load_quiz {
 	my ($fname, $lines) = (shift, 0);
 	$quiz{data} = [];
 	$quiz{qcnt} = 0;
-	return 0 unless (open(my $fh, '<', $fname));
+	return 0 unless (open(my $fh, $fname));
 	while (<$fh>) {
 		s/[\n\r]//g;	# chomp is platform dependent ($/)
 		tr/\t/ /;		# tabs to spaces
