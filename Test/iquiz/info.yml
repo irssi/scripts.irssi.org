@@ -1,0 +1,14 @@
+---
+-
+  authors: wilk
+  changed: 2016-09-19
+  changes: 'see http://www.quizpl.net/viewtopic.php?f=3&t=404'
+  contact: http://mail.quizpl.net
+  default_package: iquiz
+  description: 'irssi quiz script'
+  license: 'GNU GPL v3 or any later version'
+  modified: '2016-10-03 18:26:38'
+  name: iQuiz
+  url: http://iquiz.quizpl.net
+  usage: 'see http://www.quizpl.net/viewtopic.php?f=3&t=587'
+  version: '160919'
