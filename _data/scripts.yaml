@@ -2158,6 +2158,26 @@
   name: IPupdate
   version: '1.2'
 -
+  authors: wilk
+  contact: http://mail.quizpl.net
+  description: 'irssi quiz script'
+  filename: iquiz.pl
+  license: 'GNU GPL v3 or any later version'
+  modified: '2016-10-03 18:26:38'
+  name: iQuiz
+  url: http://iquiz.quizpl.net
+  version: '160919'
+-
+  authors: wilk
+  contact: http://mail.quizpl.net
+  description: 'irssi quiz script'
+  filename: iquiz_en.pl
+  license: 'GNU GPL v3 or any later version'
+  modified: '2016-10-03 18:26:38'
+  name: iQuiz
+  url: http://iquiz.quizpl.net
+  version: 160919_en
+-
   authors: DonRumata
   commands: none
   contact: rumata@dragons.ru
