@@ -108,7 +108,7 @@ if ($@ && $@ =~ m/Can't locate/) {
 }
 
 
-our $VERSION = '1.6.1';
+our $VERSION = '1.6.2';
 our %IRSSI = (
               authors     => 'Isaac Good (yitz_), Tom Feist (shabble)',
               contact     => 'irssi@isaacgood.com, shabble+irssi@metavore.org',
@@ -307,6 +307,7 @@ sub process_word {
         } else {
 
             print_suggestions();
+            highlight_incorrect_word($word_obj);
         }
     } else {
 
