@@ -85,6 +85,7 @@ See README file.
 use warnings;
 use strict;
 use Data::Dumper;
+use Encode 'decode';
 use Irssi;
 use Irssi::Irc;
 use Irssi::TextUI;
@@ -391,7 +392,8 @@ sub spellcheck_finish {
 
     # stick the cursor at the end of the input line?
     my $input = _input();
-    my $end = length($input);
+    my $charset = lc Irssi::settings_get_str('term_charset');
+    my $end = length(decode $charset=>$input);
     Irssi::gui_input_set_pos($end);
 }
 
