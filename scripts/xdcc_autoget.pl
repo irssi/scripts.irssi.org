@@ -50,7 +50,7 @@ use File::Copy;
 use Try::Tiny;
 use vars qw($VERSION %IRSSI);
 
-$VERSION = "2.0";
+$VERSION = "2.1";
 %IRSSI = (
 	name => "autoget", 
 	description => "XDCC Autoget, for automated searching and downloading of xdcc packs",
@@ -143,7 +143,7 @@ sub ag_list
 
 sub ag_initserver	#init server
 {
-	Irssi::signal_remove("server connected", "ag_server");
+	Irssi::signal_remove("server connected", "ag_initserver");
 	$statusbarmessage = "Connected";
 	$server = $_[0];
 	if (!$runningflag) {Irssi::timeout_add_once(5000, sub { &ag_run; }, []);}
@@ -270,11 +270,11 @@ sub ag_search		#searches bots for packs
 	$msgflag[$botcounter] = 0;	#unset message flag so that ag_skip knows no important message has arrived
 	if($episodicflag)	
 	{
-		my $searchterm;
+		my $searchterm = $terms[$termcounter[$botcounter]];
 		my @words = split(/#/, $terms[$termcounter[$botcounter]]);
-		my $ep = sprintf("%.2d", $episode[$botcounter]);
+		my $ep = sprintf("%d", $episode[$botcounter]);
 		if ($#words > 0){$searchterm = "$words[0]$ep$words[1]";}
-		else {$searchterm = "$words[0] $ep";}
+		else {$searchterm = "$terms[$termcounter[$botcounter]] $ep";}
 
 		ag_message("msg $bots[$botcounter] $findprefix $searchterm" );
 		push(@{$totags[$botcounter]}, Irssi::timeout_add_once($botdelay * 1000, sub { ag_skip($botcounter); } , []));
@@ -323,9 +323,9 @@ sub ag_getpacks			#if ($m =~ m{#(\d+):})
 	my @temp = split(/[#,]/, $message);	#split up the message into 'words'
 	my $timeoutscleared = 0;
 	
-	my $newpackflag = 1;
 	foreach my $m (@temp)		#find packs (#[NUMBER]: format)
 	{ 
+		my $newpackflag = 1;
 		if ($m =~ m/(\d+):(.+)/)
 		{
 			if (!$timeoutscleared)	#reset timeouts if any packs are found
@@ -339,7 +339,7 @@ sub ag_getpacks			#if ($m =~ m{#(\d+):})
 				my $filename = $2;
 				$filename =~ tr/[ ']/[__]/;
 				if ($n eq "$bots[$botcounter] $1" or $n eq $filename) {$newpackflag = 0;}
-				last if ($n eq "$bots[$botcounter] $1");
+				last if ($n eq "$bots[$botcounter] $1" or $n eq $filename);
 			}
 			if($newpackflag){push(@{$packs[$botcounter]}, $1);}	#push all new pack numbers to list of packs
 		}
@@ -580,7 +580,6 @@ sub ag_addfinished		#save finished downloads
 	ag_getfinished;
 }
 
-
 sub ag_parseadd		#parses add arguments for storage
 {
 	my ($file, @args) = @_;
@@ -650,7 +649,6 @@ sub ag_parserem		#parses remove arguments for deletion from file
 
 sub ag_add	#add search terms
 {
-	ag_server;
 	my @args = quotewords('\s+', 0, $_[0]);	#split arguments (words in brackets not seperated)
 	if ($#args < 0)
 	{
@@ -664,7 +662,6 @@ sub ag_add	#add search terms
 
 sub ag_rem	#remove ssearch terms
 {
-	ag_server;
 	my @args = quotewords('\s+', 0, $_[0]);
 	if ($#args < 0)
 	{
@@ -678,7 +675,6 @@ sub ag_rem	#remove ssearch terms
 
 sub ag_botadd	#add bots
 {
-	ag_server;
 	my @args = quotewords('\s+', 0, $_[0]);
 	if ($#args < 0)
 	{
@@ -692,7 +688,6 @@ sub ag_botadd	#add bots
 
 sub ag_botrem	#remove bots
 {
-	ag_server;
 	my @args = quotewords('\s+', 0, $_[0]);
 	if ($#args < 0)
 	{
