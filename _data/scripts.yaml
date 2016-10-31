@@ -230,10 +230,10 @@
   description: 'ASpell spellchecking system for Irssi'
   filename: aspell.pl
   license: MIT
-  modified: '2015-11-16 19:36:52'
+  modified: '2016-10-06 17:55:58'
   modules: Text::Aspell
   name: aspell
-  version: 1.6.1
+  version: 1.6.2
 -
   authors: 'Philipp Haegi'
   commands: rotate_dict
