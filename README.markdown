@@ -25,7 +25,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                         armeija ](Test/armeija/)|  ✔   |  ✔   |  ✔   | 10   |  ✔   | (c)
 [                           ascii ](Test/ascii/)|  ✔   |  ✔   |  ✔   | 69   |  ✔   | (c)
 [                 aspell_complete ](Test/aspell_complete/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
-[                          aspell ](Test/aspell/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
+[                          aspell ](Test/aspell/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
 [                   auth_quakenet ](Test/auth_quakenet/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        autoaway ](Test/autoaway/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
 [                     autochannel ](Test/autochannel/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -501,7 +501,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                    wordscramble ](Test/wordscramble/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                           xauth ](Test/xauth/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
 [                            xcmd ](Test/xcmd/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                    xdcc_autoget ](Test/xdcc_autoget/)|  ✔   |  ✔   |  ✔   |  2   |  ✔   
+[                    xdcc_autoget ](Test/xdcc_autoget/)|  ✔   |  ✔   |  ✔   |  2   |  ✔   | (c)
 [                         xdccget ](Test/xdccget/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                            xdcc ](Test/xdcc/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
 [                           xetra ](Test/xetra/)|  ✘   |  ✔   |  ✔   | 11   |  ☡   | (c)
@@ -512,4 +512,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                     xmpp-notify ](Test/xmpp-notify/)|  ✔   |  ✔   |  ✔   | 21   |  ✔   | (c)
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 
-e2d0dd57954ddca5f4c0b9581dcd48677d032e73 | 703
+682bcf49381e488c93e765d601590feca5399ed4 | 704
