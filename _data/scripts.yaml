@@ -4957,10 +4957,10 @@
   description: 'XDCC Autoget, for automated searching and downloading of xdcc packs'
   filename: xdcc_autoget.pl
   license: 'BeerWare Version 42'
-  modified: '2016-02-09 01:27:46'
+  modified: '2016-10-26 19:23:08'
   modules: 'File::HomeDir Try::Tiny'
   name: autoget
-  version: '2.0'
+  version: '2.1'
 -
   authors: "Stefan 'tommie' Tomanek, Obfuscoder"
   commands: xdccget
