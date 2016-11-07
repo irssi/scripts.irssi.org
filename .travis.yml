@@ -1,3 +1,5 @@
+sudo: required
+dist: trusty
 language: c
 before_install:
 - sudo apt-get update -qq
@@ -5,11 +7,13 @@ before_install:
   cpanminus
 - sudo apt-get install -qq lynx zsh apt-file libtest-most-perl libgetopt-long-descriptive-perl
   libwww-perl liblog-log4perl-perl libdatetime-perl libmodule-runtime-perl libparams-classify-perl
-  libtime-duration-parse-perl
+  libtime-duration-parse-perl curl
 - perl -V
-- wget -qO- https://raw.githubusercontent.com/miyagawa/cpanminus/master/cpanm | sudo
-  perl - App::cpanminus
-- sudo cpanm -q --skip-satisfied YAML::Tiny Perl::Critic Perl::PrereqScanner PPIx::XPath
+- wget -qO- https://raw.githubusercontent.com/miyagawa/cpanminus/master/cpanm |
+  perl - --sudo App::cpanminus
+# Tree::XPathEngine test is broken :-(
+- cpanm --force --sudo --quiet --no-interactive --skip-satisfied Tree::XPathEngine
+- cpanm --sudo --quiet --no-interactive --skip-satisfied YAML::Tiny Perl::Critic Perl::PrereqScanner PPIx::XPath
 - git clone -q git://github.com/irssi/irssi irssi-head
 - pushd irssi-head
 - ./autogen.sh --with-perl=module 2>/dev/null | tail -n 17

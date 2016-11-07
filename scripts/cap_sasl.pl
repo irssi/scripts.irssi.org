@@ -4,14 +4,14 @@ use MIME::Base64;
 use vars qw($VERSION %IRSSI);
 use constant CHALLENGE_SIZE => 32;
 
-$VERSION = "1.10";
+$VERSION = "1.11";
 %IRSSI = (
-    authors     => 'Michael Tharp (gxti), Jilles Tjoelker (jilles), Mantas Mikulėnas (grawity)',
-    contact     => 'grawity@gmail.com',
-    name        => 'cap_sasl.pl',
-    description => 'Implements SASL authentication and enables CAP "multi-prefix"',
-    license     => 'GPLv2',
-    url         => 'http://ircv3.atheme.org/extensions/sasl-3.1',
+	authors => 'Michael Tharp (gxti), Jilles Tjoelker (jilles), Mantas Mikulėnas (grawity)',
+	contact => 'grawity@gmail.com',
+	name => 'cap_sasl.pl',
+	description => 'Implements SASL authentication and enables CAP "multi-prefix"',
+	license => 'GPLv2',
+	url => 'http://ircv3.atheme.org/extensions/sasl-3.1',
 );
 
 my %sasl_auth = ();
@@ -314,7 +314,7 @@ if (eval {require Crypt::PK::ECC}) {
 		}
 	};
 
-	sub cmd_sasl_keygen {
+	Irssi::command_bind("sasl keygen" => sub {
 		my ($data, $server, $witem) = @_;
 
 		my $print = $server
@@ -362,8 +362,7 @@ if (eval {require Crypt::PK::ECC}) {
 		}
 
 		my $cmdchar = substr(Irssi::settings_get_str("cmdchars"), 0, 1);
-		my $cmd = "msg NickServ SET PROPERTY pubkey $pub";
-		# TODO: change to 'SET PUBKEY' when freenode gets support for that
+		my $cmd = "msg NickServ SET PUBKEY $pub";
 
 		if ($server) {
 			$print->("SASL: updating your Irssi settings...");
@@ -379,9 +378,9 @@ if (eval {require Crypt::PK::ECC}) {
 			$print->("SASL: submit your pubkey to $net:");
 			$print->("%P".$cmdchar.$cmd);
 		}
-	}
+	});
 
-	sub cmd_sasl_pubkey {
+	Irssi::command_bind("sasl pubkey" => sub {
 		my ($data, $server, $witem) = @_;
 
 		my $arg = $server ? $server->{tag} : $data;
@@ -420,11 +419,18 @@ if (eval {require Crypt::PK::ECC}) {
 		my $pub = encode_base64($pk->export_key_raw("public_compressed"), "");
 		Irssi::print("SASL: loaded keyfile '$f'");
 		Irssi::print("SASL: your pubkey is $pub");
-	}
+	});
+} else {
+	Irssi::command_bind("sasl keygen" => sub {
+		Irssi::print("SASL: cannot '/sasl keygen' as the Perl 'CryptX' module is missing",
+					MSGLEVEL_CLIENTERROR);
+	});
 
-	Irssi::command_bind('sasl keygen', \&cmd_sasl_keygen);
-	Irssi::command_bind('sasl pubkey', \&cmd_sasl_pubkey);
-};
+	Irssi::command_bind("sasl pubkey" => sub {
+		Irssi::print("SASL: cannot '/sasl pubkey' as the Perl 'CryptX' module is missing",
+					MSGLEVEL_CLIENTERROR);
+	});
+}
 
 cmd_sasl_load();
 

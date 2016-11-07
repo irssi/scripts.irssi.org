@@ -18,7 +18,7 @@ use vars qw($VERSION %IRSSI);
 use Irssi;
 use Text::Aspell;
 
-$VERSION = '1.00';
+$VERSION = '1.01';
 %IRSSI = (
   authors     => 'Philipp Haegi',
   contact     => 'phaegi\@mimir.ch',
@@ -59,7 +59,7 @@ sub rotate_dict() {
 
 Irssi::signal_add_last 'complete word' => sub {
   my ($complist, $window, $word, $linestart, $want_space) = @_;
-  push(@$complist, $speller->suggest( $word ));
+  push(@$complist, grep { defined } $speller->suggest( $word )); # eliminate null pointers
 };
 
 

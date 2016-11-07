@@ -3,10 +3,11 @@ use warnings;
 use vars qw($VERSION %IRSSI);
 use Irssi;
 
-$VERSION = '0.0.5';
+$VERSION = '0.0.6';
 %IRSSI = (
 	name => 'fnotify',
-	authors => 'Thorsten Leemhuis, James Shubin, Serge van Ginderachter',
+	authors => 'Tyler Abair, Thorsten Leemhuis, James Shubin' .
+               ', Serge van Ginderachter',
 	contact => 'fedora@leemhuis.info, serge@vanginderachter.be',
 	description => 'Write notifications to a file in a consistent format.',
 	license => 'GNU General Public License',
@@ -20,10 +21,15 @@ $VERSION = '0.0.5';
 # $ cp fnotify.pl ~/.irssi/scripts/fnotify.pl
 # irssi> /load perl
 # irssi> /script load fnotify
+# irssi> /set fnotify_ignore_hilight 0 # ignore hilights of priority 0
 #
 
 #
 #	AUTHORS
+#
+# Ignore hilighted messages with priority = fnotify_ignore_hilight
+# version: 0.0.6
+# Tyler Abair <tyler.abair@gmail.com>
 #
 # Strip non-parsed left over codes (Bitlbee otr messages)
 # version: 0.0.5
@@ -48,6 +54,17 @@ $VERSION = '0.0.5';
 # http://fedora.feedjack.org/user/918/
 #
 
+my %config;
+
+Irssi::settings_add_int('fnotify', 'fnotify_ignore_hilight' => -1);
+$config{'ignore_hilight'} = Irssi::settings_get_int('fnotify_ignore_hilight');
+
+Irssi::signal_add(
+    'setup changed' => sub {
+        $config{'ignore_hilight'} = Irssi::settings_get_int('fnotify_ignore_hilight');
+    }
+);
+
 #
 #	catch private messages
 #
@@ -63,7 +80,8 @@ sub priv_msg {
 #
 sub hilight {
 	my ($dest, $text, $stripped) = @_;
-	if ($dest->{level} & MSGLEVEL_HILIGHT) {
+    my $ihl = $config{'ignore_hilight'};
+	if ($dest->{level} & MSGLEVEL_HILIGHT && $dest->{hilight_priority} != $ihl) {
 		my $server = $dest->{server};
 		my $network = $server->{tag};
 		filewrite($network . ' ' . $dest->{target} . ' ' . $stripped);

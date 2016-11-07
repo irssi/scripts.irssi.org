@@ -33,7 +33,7 @@ $VERSION = '1.6';
 #
 # OPTIONS
 # =======
-# Settings can be resetted to defaults with /set -default
+# Settings can be reset to defaults with /set -default
 #
 # /set clones_scanner_maxtime <time>
 # * This is the maximum time in which the script remembers that a specific hostname 

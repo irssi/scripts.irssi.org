@@ -25,7 +25,7 @@ use Irssi 20070804;
 use Irssi::TextUI;
 
 use vars qw($VERSION %IRSSI);
-$VERSION = '2.0';
+$VERSION = '2.1';
 %IRSSI = (
     authors     => 'Wouter Coekaerts',
     contact     => 'coekie@irssi.org',
@@ -33,7 +33,6 @@ $VERSION = '2.0';
     description => 'Search within your typed history as you type (like ctrl-R in bash)',
     license     => 'GPLv2 or later',
     url         => 'http://wouter.coekaerts.be/irssi/',
-    changed     => '17/01/09'
 );
 
 # is the searching enabled?
@@ -78,7 +77,7 @@ Irssi::command_bind('history_search', sub {
 Irssi::signal_add_last 'gui key pressed' => sub {
 	my ($key) = @_;
 	
-	if ($key == 10 || $key == 27) { # enter or escape
+	if ($key == 10 || $key == 13 || $key == 27) { # enter or escape
 		$enabled = 0;
 	}
 

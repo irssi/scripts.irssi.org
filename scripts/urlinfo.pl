@@ -4,7 +4,7 @@ use Encode;
 use Irssi;
 use POSIX ();
 
-our $VERSION = "1.3";
+our $VERSION = "1.4";
 our %IRSSI = (
     authors     => 'David Leadbeater',
     contact     => 'dgl@dgl.cx',
@@ -238,6 +238,7 @@ sub msg {
   my $msg_time = time;
   my $tag = $server->{tag};
   my $target = $target || $nick;
+  $text = Irssi::strip_codes($text);
 
   if (my($url) = $text =~ $URL_RE) {
     my($site, $uri) = get_site(\@sites, $url);

@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-our $VERSION = '0.4.6'; # 373036720cc131b
+our $VERSION = '0.4.8'; # baf75f08d3d32c9
 our %IRSSI = (
     authors     => 'Nei',
     contact     => 'Nei @ anti@conference.jabber.teamidiot.de',
@@ -31,6 +31,9 @@ our %IRSSI = (
 # /set dim_nicks_history_lines <num>
 # * only this many lines of messages are remembered/rewritten (per
 #   window)
+#
+# /set dim_nicks_ignore_hilights <ON|OFF>
+# * ignore lines with hilight when dimming
 #
 # /set dim_nicks_forms_skip <num>
 # /set dim_nicks_forms_search_max <num>
@@ -64,26 +67,20 @@ sub set ($) {
 my $history_lines = 100;
 my $skip_forms = 1;
 my $search_forms_max = 5;
+my $ignore_hilights = 1;
 my $color_letter = 'K';
 
-my (%nick_reg, %chan_reg, %history, %history_st, %lost_nicks, %lost_nicks_backup);
+# nick object cache, chan object cache, line id cache, line id -> window map, -> channel, -> nick, -> nickname, channel -> line ids, channel->nickname->departure time, channel->nickname->{parts of line}
+my (%nick_reg, %chan_reg, %history_w, %history_c, %history_n, %history_nn, %history_st, %lost_nicks, %lost_nicks_fs, %lost_nicks_fc, %lost_nicks_bc, %lost_nicks_bs);
 
-my ($dest, $chanref, $nickref);
+our ($dest, $chanref, $nickref);
 
-sub clear_ref {
-    $dest = undef;
-    $chanref = undef;
-    $nickref = undef;
-}
 
 sub msg_line_tag {
     my ($srv, $msg, $nick, $addr, $targ) = @_;
-    $chanref = $srv->channel_find($targ);
-    $nickref = ref $chanref ? $chanref->nick_find($nick) : undef;
-}
-
-sub msg_line_clear {
-    clear_ref();
+    local $chanref = $srv->channel_find($targ);
+    local $nickref = ref $chanref ? $chanref->nick_find($nick) : undef;
+    &Irssi::signal_continue;
 }
 
 my @color_code;
@@ -91,10 +88,11 @@ my @color_code;
 sub color_to_code {
     my $win = Irssi::active_win;
     my $view = $win->view;
-    if (-1 == index $color_letter, '$*') {
-	$color_letter = "%$color_letter\$*";
+    my $cl = $color_letter;
+    if (-1 == index $cl, '$*') {
+	$cl = "%$cl\$*";
     }
-    $win->print_after(undef, MSGLEVEL_NEVER, "$color_letter ");
+    $win->print_after(undef, MSGLEVEL_NEVER, "$cl ");
     my $lp = $win->last_line_insert;
     my $color_code = $lp->get_text(1);
     $color_code =~ s/ $//;
@@ -106,6 +104,7 @@ sub setup_changed {
     $history_lines = Irssi::settings_get_int( set 'history_lines' );
     $skip_forms = Irssi::settings_get_int( set 'forms_skip' );
     $search_forms_max = Irssi::settings_get_int( set 'forms_search_max' );
+    $ignore_hilights = Irssi::settings_get_bool( set 'ignore_hilights' );
     my $new_color = Irssi::settings_get_str( set 'color' );
     if ($new_color ne $color_letter) {
 	$color_letter = $new_color;
@@ -118,47 +117,64 @@ sub init_dim_nicks {
 }
 
 sub prt_text_issue {
-    ($dest) = @_;
-    clear_ref() unless defined $dest->{target};
-    clear_ref() unless $dest->{level} & MSGLEVEL_PUBLIC;
+    my ($ld) = @_;
+    local $dest = $ld;
+    &Irssi::signal_continue;
 }
 
 sub expire_hist {
     for my $ch (keys %history_st) {
 	if (@{$history_st{$ch}} > 2 * $history_lines) {
 	    my @del = splice @{$history_st{$ch}}, 0, $history_lines;
-	    delete @history{ @del };
+	    delete @history_w{ @del };
+	    delete @history_c{ @del };
+	    delete @history_n{ @del };
+	    delete @history_nn{ @del };
 	}
     }
 }
 
 sub prt_text_ref {
     return unless $nickref;
+    return unless $dest && defined $dest->{target};
+    return unless $dest->{level} & MSGLEVEL_PUBLIC;
+    return if $ignore_hilights && $dest->{level} & MSGLEVEL_HILIGHT;
+
     my ($win) = @_;
     my $view = $win->view;
     my $line_id = $view->{buffer}{_irssi} .','. $view->{buffer}{cur_line}{_irssi};
     $chan_reg{ $chanref->{_irssi} } = $chanref;
     $nick_reg{ $nickref->{_irssi} } = $nickref;
-    if (exists $history{ $line_id }) {
+    if (exists $history_w{ $line_id }) {
     }
-    $history{ $line_id } = [ $win->{_irssi}, $chanref->{_irssi}, $nickref->{_irssi}, $nickref->{nick} ];
+    $history_w{ $line_id } = $win->{_irssi};
+    $history_c{ $line_id } = $chanref->{_irssi};
+    $history_n{ $line_id } = $nickref->{_irssi};
+    $history_nn{ $line_id } = $nickref->{nick};
     push @{$history_st{ $chanref->{_irssi} }}, $line_id;
     expire_hist();
     my @lost_forever = grep { $view->{buffer}{first_line}{info}{time} > $lost_nicks{ $chanref->{_irssi} }{ $_ } }
 	keys %{$lost_nicks{ $chanref->{_irssi} }};
     delete @{$lost_nicks{ $chanref->{_irssi} }}{ @lost_forever };
-    delete @{$lost_nicks_backup{ $chanref->{_irssi} }}{ @lost_forever };
-    clear_ref();
+    delete @{$lost_nicks_fs{ $chanref->{_irssi} }}{ @lost_forever };
+    delete @{$lost_nicks_fc{ $chanref->{_irssi} }}{ @lost_forever };
+    delete @{$lost_nicks_bc{ $chanref->{_irssi} }}{ @lost_forever };
+    delete @{$lost_nicks_bs{ $chanref->{_irssi} }}{ @lost_forever };
+    return;
 }
 
 sub win_del {
     my ($win) = @_;
     for my $ch (keys %history_st) {
-	@{$history_st{$ch}} = grep { exists $history{ $_ } &&
-					 $history{ $_ }[0] != $win->{_irssi} } @{$history_st{$ch}};
+	@{$history_st{$ch}} = grep { exists $history_w{ $_ } &&
+				     $history_w{ $_ } != $win->{_irssi} } @{$history_st{$ch}};
     }
-    my @del = grep { $history{ $_ }[0] == $win->{_irssi} } keys %history;
-    delete @history{ @del };
+    my @del = grep { $history_w{ $_ } == $win->{_irssi} } keys %history_w;
+    delete @history_w{ @del };
+    delete @history_c{ @del };
+    delete @history_n{ @del };
+    delete @history_nn{ @del };
+    return;
 }
 
 sub _alter_lines {
@@ -203,9 +219,8 @@ sub debug_forms {
     my $buffer_id = $view->{buffer}{_irssi} .',';
     while ($lp && $count) {
 	my $line_id = $buffer_id . $lp->{_irssi};
-	# $history{ $line_id } = [ $win->{_irssi}, $chanref->{_irssi}, $nickref->{_irssi}, $nickref->{nick} ];
-	if (exists $history{ $line_id }) {
-	    my $line_nick = $history{ $line_id }[3];
+	if (exists $history_w{ $line_id }) {
+	    my $line_nick = $history_nn{ $line_id };
 	    my $text = $lp->get_text(1);
 	    pos $text = 0;
 	    my $from = 0;
@@ -250,7 +265,7 @@ sub debug_forms {
 
 sub _alter_line {
     my ($buffer_id, $lrp, $win, $view, $lp, $cid, $ad) = @_;
-    my $line_nick = $history{ $lrp }[3];
+    my $line_nick = $history_nn{ $lrp };
     my $text = $lp->get_text(1);
     pos $text = 0;
     my $from = 0;
@@ -270,8 +285,8 @@ sub _alter_line {
     unshift @nick_reg, quotemeta substr $line_nick, 0, $_ for 1 .. length $line_nick;
     { no warnings 'uninitialized';
     if ($ad) {
-	if (exists $lost_nicks_backup{ $cid }{ $line_nick }) {
-	    my ($fs, $fc, $bc, $bs) = @{$lost_nicks_backup{ $cid }{ $line_nick }};
+	if (exists $lost_nicks_fs{ $cid }{ $line_nick }) {
+	    my ($fs, $fc, $bc, $bs) = ($lost_nicks_fs{ $cid }{ $line_nick }, $lost_nicks_fc{ $cid }{ $line_nick }, $lost_nicks_bc{ $cid }{ $line_nick }, $lost_nicks_bs{ $cid }{ $line_nick });
 	    my $sen = length $bs ? $color_code[0] : '';
 	    for my $nick_reg (@nick_reg) {
 		last if
@@ -285,7 +300,10 @@ sub _alter_line {
 	    if (
 		(substr $text, $from, $to-$from)
 		    =~ s/(\Q$color_code[0]\E\s*)?((?:$irssi_mumbo)+)?$irssi_mumbo_no_partial($nick_reg)((?:$irssi_mumbo)+)?(\s*\Q$color_code[0]\E)?/$1$2$color_code[0]$3$color_code[1]$4$5/) {
-		$lost_nicks_backup{ $cid }{ $line_nick } = [ $1, $2, $4, $5 ];
+		$lost_nicks_fs{ $cid }{ $line_nick } = $1;
+		$lost_nicks_fc{ $cid }{ $line_nick } = $2;
+		$lost_nicks_bc{ $cid }{ $line_nick } = $4;
+		$lost_nicks_bs{ $cid }{ $line_nick } = $5;
 		last;
 	    }
 	}
@@ -293,10 +311,13 @@ sub _alter_line {
     $win->gui_printtext_after($lp->prev, $lp->{info}{level} | MSGLEVEL_NEVER, "$text\n", $lp->{info}{time});
     my $ll = $win->last_line_insert;
     my $line_id = $buffer_id . $ll->{_irssi};
-    if (exists $history{ $line_id }) {
+    if (exists $history_w{ $line_id }) {
     }
     grep { $_ eq $lrp and $_ = $line_id } @{$history_st{ $cid }};
-    $history{ $line_id } = delete $history{ $lrp };
+    $history_w{ $line_id } = delete $history_w{ $lrp };
+    $history_c{ $line_id } = delete $history_c{ $lrp };
+    $history_n{ $line_id } = delete $history_n{ $lrp };
+    $history_nn{ $line_id } = delete $history_nn{ $lrp };
     $view->remove_line($lp);
     $ll;
 }
@@ -304,30 +325,35 @@ sub _alter_line {
 sub nick_add {
     my ($chan, $nick) = @_;
     if (delete $lost_nicks{ $chan->{_irssi} }{ $nick->{nick} }) {
-	my @check_lr = grep { $history{ $_ }[1] == $chan->{_irssi} &&
-				  $history{ $_ }[2] eq $nick->{nick} } keys %history;
+	my @check_lr = grep { $history_c{ $_ } == $chan->{_irssi} &&
+			      $history_n{ $_ } eq $nick->{nick} } keys %history_w;
 	if (@check_lr) {
 	    $nick_reg{ $nick->{_irssi} } = $nick;
 	    for my $li (@check_lr) {
-		$history{ $li }[2] = $nick->{_irssi};
+		$history_n{ $li } = $nick->{_irssi};
 	    }
 	    _alter_lines($chan, \@check_lr, 1);
 	}
     }
-    delete $lost_nicks_backup{ $chan->{_irssi} }{ $nick->{nick} };
+    delete $lost_nicks_fs{ $chan->{_irssi} }{ $nick->{nick} };
+    delete $lost_nicks_fc{ $chan->{_irssi} }{ $nick->{nick} };
+    delete $lost_nicks_bc{ $chan->{_irssi} }{ $nick->{nick} };
+    delete $lost_nicks_bs{ $chan->{_irssi} }{ $nick->{nick} };
+    return;
 }
 
 sub nick_del {
     my ($chan, $nick) = @_;
-    my @check_lr = grep { $history{ $_ }[2] eq $nick->{_irssi} } keys %history;
+    my @check_lr = grep { $history_n{ $_ } eq $nick->{_irssi} } keys %history_w;
     for my $li (@check_lr) {
-	$history{ $li }[2] = $nick->{nick};
+	$history_n{ $li } = $nick->{nick};
     }
     if (@check_lr) {
 	$lost_nicks{ $chan->{_irssi} }{ $nick->{nick} } = time;
 	_alter_lines($chan, \@check_lr, 0);
     }
     delete $nick_reg{ $nick->{_irssi} };
+    return;
 }
 
 sub nick_change {
@@ -338,14 +364,22 @@ sub nick_change {
 sub chan_del {
     my ($chan) = @_;
     if (my $del = delete $history_st{ $chan->{_irssi} }) {
-	delete @history{ @$del };
+	delete @history_w{ @$del };
+	delete @history_c{ @$del };
+	delete @history_n{ @$del };
+	delete @history_nn{ @$del };
     }
     delete $chan_reg{ $chan->{_irssi} };
     delete $lost_nicks{$chan->{_irssi}};
-    delete $lost_nicks_backup{$chan->{_irssi}};
+    delete $lost_nicks_fs{$chan->{_irssi}};
+    delete $lost_nicks_fc{$chan->{_irssi}};
+    delete $lost_nicks_bc{$chan->{_irssi}};
+    delete $lost_nicks_bs{$chan->{_irssi}};
+    return;
 }
 
 Irssi::settings_add_int( setc, set 'history_lines',     $history_lines);
+Irssi::settings_add_bool( setc, set 'ignore_hilights',  $ignore_hilights);
 Irssi::signal_add_last({
     'setup changed'    => 'setup_changed',
 });
@@ -357,7 +391,6 @@ Irssi::signal_add({
     'nicklist remove'	      => 'nick_del',
     'window destroyed'	      => 'win_del',
     'message public'	      => 'msg_line_tag',
-    'message own_public'      => 'msg_line_clear',
     'channel destroyed'	      => 'chan_del',
 });
 
@@ -367,13 +400,14 @@ sub dumphist {
     my $buffer_id = $view->{buffer}{_irssi} .',';
     for (my $lp = $view->{buffer}{first_line}; $lp; $lp = $lp->next) {
 	my $line_id = $buffer_id . $lp->{_irssi};
-	if (exists $history{ $line_id }) {
-	    my $k = $history{ $line_id };
-	    if (exists $chan_reg{ $k->[1] }) {
+	if (exists $history_w{ $line_id }) {
+	    my $k = $history_c{ $line_id };
+	    my $kn = $history_n{ $line_id };
+	    if (exists $chan_reg{ $k }) {
 	    }
-	    if (exists $nick_reg{ $k->[2] }) {
+	    if (exists $nick_reg{ $kn }) {
 	    }
-	    if (exists $lost_nicks{ $k->[1] } && exists $lost_nicks{ $k->[1] }{ $k->[2] }) {
+	    if (exists $lost_nicks{ $k } && exists $lost_nicks{ $k }{ $kn }) {
 	    }
 	}
     }
@@ -388,5 +422,9 @@ init_dim_nicks();
 
 # Changelog
 # =========
+# 0.4.8
+# - optionally ignore hilighted lines
+# 0.4.7
+# - fix useless re-reading of settings colour
 # 0.4.6
 # - fix crash on some lines reported by pierrot

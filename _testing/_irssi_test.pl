@@ -15,7 +15,12 @@ Irssi::command('^window log on');
 Irssi::command("script load $CURRENT_SCRIPT");
 Irssi::command('^window log off');
 
-my ($package) = grep { !/^_/ } keys %Irssi::Script::;
+my (@packages) = grep { !/^_/ } keys %Irssi::Script::;
+my $tp = $CURRENT_SCRIPT; $tp =~ s/^.*\///; $tp =~ s/\W/_/g; my @tmp;
+if ((@tmp = grep /^\Q$tp\E::/, @packages) or (@tmp = grep /^\Q$tp\E/, @packages)) {
+    @packages = @tmp;
+}
+my ($package) = @packages;
 
 require YAML::Tiny;
 YAML::Tiny->VERSION("1.59");

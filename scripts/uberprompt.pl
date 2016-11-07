@@ -278,7 +278,7 @@ use Data::Dumper;
 
 { package Irssi::Nick } # magic.
 
-our $VERSION = "0.2"; # 255b35bb44161e0
+our $VERSION = "0.3"; # 960b4fdf423a081
 our %IRSSI =
   (
    authors         => "shabble",
@@ -627,7 +627,7 @@ sub uberprompt_render_prompt {
     my $prompt_arg = '';
 
     # default prompt sbar arguments (from config)
-    if (scalar( () = $window->items )) {
+    if ($window && scalar( () = $window->items )) {
         $prompt_arg = '$[.15]{itemname}';
     } else {
         $prompt_arg = '${winname}';

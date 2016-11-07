@@ -55,7 +55,6 @@ whitelist:
   - l33tmusic
   - localize
   - log2ansi
-  - mail
   - mangle
   - mkshorterlink
   - newsline
@@ -83,3 +82,4 @@ whitelist:
   - wordcompletition
   - xetra
   - xmmsinfo
+  - desktop-notify # fails test due to missing gobject-introspection in travis

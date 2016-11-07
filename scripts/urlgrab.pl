@@ -1,13 +1,20 @@
 #!/usr/bin/perl -w
+#
+# Settings:
+#   /SET urlgrab_command <command>
+#     Command to execute when opening URLs
+#     Default: xdg-open '%s' > /dev/null 2>&1
+#
+
 use strict;
 use Irssi 20010120.0250 ();
 use vars qw($VERSION %IRSSI);
-$VERSION = "0.2";
+$VERSION = "0.3";
 %IRSSI = (
     authors     => 'David Leadbeater',
     contact     => 'dgl@dgl.cx',
     name        => 'urlgrab',
-    description => 'Captures urls said in channel and private messages and saves them to a file, also adds a /url command which loads the last said url into mozilla.',
+    description => 'Captures urls said in channel and private messages and saves them to a file, also adds a /url command which loads the last said url into a browser.',
     license     => 'GNU GPLv2 or later',
     url         => 'http://irssi.dgl.cx/',
 );
@@ -34,7 +41,7 @@ sub url_cmd{
 	  Irssi::print("No url captured yet");
 	  return;
    }
-   system("netscape-remote -remote 'openURL($lasturl)' &>/dev/null");
+   system(sprintf(Irssi::settings_get_str("urlgrab_command"), $lasturl));
 }
 
 sub find_url {
@@ -56,7 +63,7 @@ sub url_log{
    close(URLLOG);
 }
 
+Irssi::settings_add_str("misc", "urlgrab_command", "xdg-open '%s' > /dev/null 2>&1");
 Irssi::signal_add_last("message public", "url_public");
 Irssi::signal_add_last("message private", "url_private");
 Irssi::command_bind("url", "url_cmd");
-

@@ -23,6 +23,8 @@
 # * colourise the nicks in the nicklist (required nickcolor script
 #   with get_nick_color2 and debug_ansicolour functions)
 # 
+# /set nicklist_gone_sort <ON|OFF>
+# * sort away people below
 #
 # It supports mouse scrolling and the following keys:
 # k/up arrow: up one line
@@ -34,6 +36,9 @@
 #
 # For better integration, unrecognized sequences will be sent to irssi and
 # its pane will be focused.
+#
+# to toggle the nicklist if it is in the way you can make a key binding:
+# /bind meta-Z /script exec Irssi::Script::tmux_nicklist_portable::toggle_nicklist
 ################################################################################
 
 use strict;
@@ -43,7 +48,7 @@ use IO::Select;
 use POSIX;
 use File::Temp qw/ :mktemp  /;
 use File::Basename;
-our $VERSION = '0.1.3'; # 82c05732e50bb62
+our $VERSION = '0.1.5'; # a58bc1253b0a191
 our %IRSSI = (
   authors     => 'Thiago de Arruda',
   contact     => 'tpadilha84@gmail.com',
@@ -60,6 +65,7 @@ if ($#ARGV == -1) {
 require Irssi;
 
 my $enabled = 0;
+my $nicklist_toggle = 1;
 my $script_path = __FILE__;
 my $tmpdir;
 my $fifo_path;
@@ -132,11 +138,13 @@ sub reset_nicklist {
     $channel_pattern = eval { qr/$channel_pattern/ };
     $channel_pattern = qr/(?!)/ if $@;
   }
-
-  if (!$channel || !ref($channel)
+  my $smallest_main = Irssi::settings_get_int('nicklist_smallest_main');
+  if (!$nicklist_toggle
+      || !$channel || !ref($channel)
       || !$channel->isa('Irssi::Channel')
       || !$channel->{'names_got'}
-      || $channel->{'name'} !~ $channel_pattern) {
+      || $channel->{'name'} !~ $channel_pattern
+      || ($smallest_main && $channel->window->{width} < $smallest_main)) {
     disable_nicklist;
   } else {
     my %colour;
@@ -151,27 +159,46 @@ sub reset_nicklist {
         $colour{$nick->{nick}} = ($ansifier && $colourer) ? $ansifier->($colourer->($active->{active}{server}{tag}, $channel->{name}, $nick->{nick}, 0)) : '';
       }
       print($fifo "BEGIN\n");
-      foreach my $nick (sort {(($a->{'op'}?'1':$a->{'halfop'}?'2':$a->{'voice'}?'3':$a->{'other'}>32?'0':'4').lc($a->{'nick'}))
-        cmp (($b->{'op'}?'1':$b->{'halfop'}?'2':$b->{'voice'}?'3':$b->{'other'}>32?'0':'4').lc($b->{'nick'}))} @nicks) {
+      my $gone_sort = Irssi::settings_get_bool('nicklist_gone_sort');
+      my $prefer_real;
+      if (exists $Irssi::Script::{'realnames::'}) {
+	  my $code = "Irssi::Script::realnames"->can('use_realnames');
+	  $prefer_real = $code && $code->($channel);
+      }
+      my $_real = sub {
+	  my $nick = shift;
+	  $prefer_real && length $nick->{'realname'} ? $nick->{'realname'} : $nick->{'nick'}
+      };
+      foreach my $nick (sort {($a->{'op'}?'1':$a->{'halfop'}?'2':$a->{'voice'}?'3':$a->{'other'}>32?'0':'4').($gone_sort?($a->{'gone'}?1:0):'').lc($_real->($a))
+        cmp ($b->{'op'}?'1':$b->{'halfop'}?'2':$b->{'voice'}?'3':$b->{'other'}>32?'0':'4').($gone_sort?($b->{'gone'}?1:0):'').lc($_real->($b))} @nicks) {
         my $colour = $colour{$nick->{nick}} || "\e[39m";
 	$colour = "\e[37m" if $nick->{'gone'};
         print($fifo "NICK");
         if ($nick->{'op'}) {
-          print($fifo "\e[32m\@$colour$nick->{'nick'}\e[39m");
+          print($fifo "\e[32m\@$colour".$_real->($nick)."\e[39m");
         } elsif ($nick->{'halfop'}) {
-          print($fifo "\e[34m%$colour$nick->{'nick'}\e[39m");
+          print($fifo "\e[34m%$colour".$_real->($nick)."\e[39m");
         } elsif ($nick->{'voice'}) {
-          print($fifo "\e[33m+$colour$nick->{'nick'}\e[39m");
+          print($fifo "\e[33m+$colour".$_real->($nick)."\e[39m");
         } elsif ($nick->{'other'}>32) {
-          print($fifo "\e[31m".(chr $nick->{'other'})."$colour$nick->{'nick'}\e[39m");
+          print($fifo "\e[31m".(chr $nick->{'other'})."$colour".$_real->($nick)."\e[39m");
         } else {
-          print($fifo " $colour$nick->{'nick'}\e[39m");
+          print($fifo " $colour".$_real->($nick)."\e[39m");
         }
         print($fifo "\n");
       }
       print($fifo "END\n");
     }
   }
+}
+
+sub toggle_nicklist {
+    if ($enabled) {
+	$nicklist_toggle = undef
+    } else {
+	$nicklist_toggle = 1;
+    }
+    reset_nicklist;
 }
 
 sub switch_channel {
@@ -188,7 +215,7 @@ sub resized_timed {
 sub resized {
   $resize_timer = undef;
   return if defined $just_launched;
-  return unless $enabled > 0;
+  return unless $enabled >= 0;
   disable_nicklist;
   Irssi::timeout_add_once(200, \&reset_nicklist, '');
 }
@@ -201,6 +228,7 @@ Irssi::settings_add_int('tmux_nicklist', 'nicklist_max_users', 0);
 Irssi::settings_add_int('tmux_nicklist', 'nicklist_smallest_main', 0);
 Irssi::settings_add_int('tmux_nicklist', 'nicklist_pane_width', 13);
 Irssi::settings_add_bool('tmux_nicklist', 'nicklist_color', 1);
+Irssi::settings_add_bool('tmux_nicklist', 'nicklist_gone_sort', 0);
 Irssi::signal_add_last('window item changed', \&switch_channel);
 Irssi::signal_add_last('window changed', \&switch_channel);
 Irssi::signal_add_last('channel joined', \&switch_channel);
