@@ -1,4 +1,4 @@
-#    Copyright (C) 2015  Dawid Lekawski
+#    Copyright (C) 2016  Dawid Lekawski
 #      contact: xxrud0lf@gmail.com
 #
 #       --- INFORMATION ---
@@ -33,7 +33,7 @@
 #   notes:
 #
 #   - script doesn't work with /msg target text; must be typed in a channel
-#     or query window
+#     or query window (from version 1.10 it works with /me command too)
 #
 #   - Ctrl+O (ascii 15) at the beggining of your text turns off emote replacing 
 #     for this text
@@ -41,20 +41,31 @@
 #   - remeber to escape "\" characters in emotes (just type it twice -> "\\"),
 #       take a look at 'shrug' emote for reference
 #
+#
+#
+#   -- CHANGES: --
+#
+#   - script now works with /me command (action)
+#
+#   - moved text output messages into nice and clean theme_register
+#
+#
 
 use strict;
 use warnings;
 use utf8;
 
-use Irssi qw(signal_add signal_continue command_bind);
+use Irssi qw(signal_add signal_continue command_bind theme_register
+	printformat);
 
-our $VERSION = "1.00";
+our $VERSION = "1.10";
 our %IRSSI = (
 	authors		=> "Dawid 'rud0lf' Lekawski",
 	contact		=> 'rud0lf/IRCnet; rud0lf/freenode; xxrud0lf@gmail.com',
 	name		=> 'emotes script',
 	description	=> 'Replaces :emote_name: text in your sent messages into pre-defined emotes (unicode mostly).',
-	license		=> 'GPLv3'
+	license		=> 'GPLv3',
+	changed		=> 'Mon Nov 07 14:54:38 2016'
 );
 
 my $pattern = '';
@@ -94,10 +105,18 @@ my %emotes = (
     'wink', '◕‿↼',
 	'gift', '(´・ω・)っ由',
     'success', '(•̀ᴗ•́)و',
-	'whatever', '◔_◔'
+	'whatever', '◔_◔',
+	'run', 'ᕕ(⚆ ʖ̯⚆)ᕗ',
+	'rock', '(ツ)\m/'
 );
 
 sub init {
+	theme_register([
+		'rud_emotes_list', 'List of emotes:',
+		'rud_emotes_emote', '* $[!15]0 : $1',
+		'rud_emotes_total', 'Total of $0 emotes.'
+]);  
+  
 	$pattern = join('|', keys %emotes);
 	if ($pattern eq '') {
 		$pattern = '!?';
@@ -127,31 +146,28 @@ sub sig_send_text {
 	signal_continue($newline, $server, $witem);
 }
 
-sub pad {
-	my ($txt, $cnt) = @_;
+sub sig_command_me {
+	my ($line, $server, $witem) = @_;
 
-	if (length($txt) >= $cnt) {
-		return $txt;
-	}	
-	
-	$txt .= " " x ($cnt - length($txt));
-	return $txt;
+	return unless ($witem);
+	return unless ($witem->{type} eq "CHANNEL" or $witem->{type} eq "QUERY");
+
+	my $newline = process_emotes($line);
+	signal_continue($newline, $server, $witem);	
 }
 
 sub cmd_emotes {
 	my ($data, $server, $witem) = @_;
-	
-	Irssi::print('List of emotes:', MSGLEVEL_CLIENTCRAP);
+
+	printformat(MSGLEVEL_CLIENTCRAP, 'rud_emotes_list');
 	foreach my $key (sort(keys %emotes)) {
-		my $emote = $emotes{$key};
-		Irssi::print('* '. pad($key, 15) . ' : ' . $emote, MSGLEVEL_CLIENTCRAP);
+		printformat(MSGLEVEL_CLIENTCRAP, 'rud_emotes_emote', $key, $emotes{$key});
 	}	
-	Irssi::print('Total of '.scalar(keys %emotes).' emotes.', MSGLEVEL_CLIENTCRAP);
+	printformat(MSGLEVEL_CLIENTCRAP, 'rud_emotes_total', scalar(keys %emotes));
 }
 
 init();
 
 signal_add("send text", "sig_send_text");
+signal_add("command me", "sig_command_me");
 command_bind("emotes", "cmd_emotes");
-
-
