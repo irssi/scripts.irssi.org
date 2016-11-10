@@ -3873,9 +3873,9 @@
   description: 'Replaces :emote_name: text in your sent messages into pre-defined emotes (unicode mostly).'
   filename: rud_emotes.pl
   license: GPLv3
-  modified: '2016-09-17 10:03:31'
+  modified: '2016-11-07 15:43:52'
   name: 'emotes script'
-  version: '1.00'
+  version: '1.10'
 -
   authors: "Johan \"Ion\" Kiviniemi, idea taken from Riku Voipio's sana.pl"
   contact: 'ion at hassers.org'
