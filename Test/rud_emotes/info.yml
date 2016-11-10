@@ -1,10 +1,11 @@
 ---
 -
   authors: "Dawid 'rud0lf' Lekawski"
+  changed: 'Mon Nov 07 14:54:38 2016'
   contact: 'rud0lf/IRCnet; rud0lf/freenode; xxrud0lf@gmail.com'
   default_package: rud_emotes
   description: 'Replaces :emote_name: text in your sent messages into pre-defined emotes (unicode mostly).'
   license: GPLv3
-  modified: '2016-09-17 10:03:31'
+  modified: '2016-11-07 15:43:52'
   name: 'emotes script'
-  version: '1.00'
+  version: '1.10'
