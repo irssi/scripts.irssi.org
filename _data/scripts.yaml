@@ -99,11 +99,11 @@
   description: 'Adds a permanent advanced window list on the right or in a status bar.'
   filename: adv_windowlist.pl
   license: 'GNU GPLv2 or later'
-  modified: '2016-02-15 11:38:04'
+  modified: '2016-11-01 17:15:32'
   modules: Text::CharWidth
   name: adv_windowlist
   url: http://anti.teamidiot.de/
-  version: '1.2'
+  version: '1.3'
 -
   authors: BC-bd
   contact: bd@bc-bd.org
