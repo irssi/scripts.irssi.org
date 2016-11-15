@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-our $VERSION = '1.2'; # 762850b0c2c1d5a
+our $VERSION = '1.3'; # 463402cffae35e5
 our %IRSSI = (
     authors     => 'Nei',
     contact     => 'Nei @ anti@conference.jabber.teamidiot.de',
@@ -1710,7 +1710,12 @@ sub string_LCSS {
     (sort { length $b <=> length $a } $str =~ /(?=(.+).*\0.*\1)/g)[0]
 }
 
+# workaround for issue #271
 { package Irssi::Nick }
+
+# workaround for issue #572
+@Irssi::UI::Exec::ISA = 'Irssi::Windowitem'
+    if Irssi::version >= 20140822 && Irssi::version <= 20161101 && !@Irssi::UI::Exec::ISA;
 
 UNITCHECK
 { package AwlViewer;
@@ -2388,6 +2393,7 @@ UNITCHECK
 
 # Changelog
 # =========
+# 1.3 - workaround for irssi issue #572
 # 1.2 - new format to choose abbreviation character
 # 1.1 - infinite loop on shortening certain window names reported by Kalan
 #
