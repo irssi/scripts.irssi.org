@@ -3771,13 +3771,14 @@
   url: http://irssi.dgl.cx/
   version: '1'
 -
-  authors: 'Isaac G'
-  contact: irssi@isaac.otherinbox.com
+  authors: 'Isaac Good'
+  contact: irssi@isaacgood.com
   description: 'Reordering windows based on a textfile.'
   filename: reorder.pl
   license: GPL
-  modified: '2010-02-12 22:42:13'
+  modified: '2016-12-06 18:47:28'
   name: reorder
+  version: '1.0'
 -
   authors: BC-bd
   contact: bd@bc-bd.org
