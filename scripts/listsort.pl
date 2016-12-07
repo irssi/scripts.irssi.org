@@ -55,6 +55,6 @@ sub list_end {
         Irssi::print($msg, MSGLEVEL_CRAP);
     }
     # Drop the hash values; no point in holding them in memory.
-    delete @list{keys %list};
+    %list = ();
 }
 
