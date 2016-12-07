@@ -1,8 +1,10 @@
 ---
 -
-  authors: 'Isaac G'
-  contact: irssi@isaac.otherinbox.com
+  authors: 'Isaac Good'
+  contact: irssi@isaacgood.com
   default_package: reorder
   description: 'Reordering windows based on a textfile.'
   license: GPL
+  modified: '2016-12-06 18:47:28'
   name: reorder
+  version: '1.0'
