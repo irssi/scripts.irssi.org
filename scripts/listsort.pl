@@ -1,3 +1,5 @@
+use strict;
+use warnings;
 use Irssi;
 use vars qw/$VERSION %IRSSI/;
 
@@ -15,15 +17,9 @@ $VERSION = '0.1';
 # Bindings. Start of channel list, end of list, list item.
 Irssi::signal_add_last('event 322', \&list_event);
 Irssi::signal_add_last('event 323', \&list_end);
-Irssi::signal_add_last('notifylist event', \&list_start);
 
 # Store the channel list between IRC messages
 my %list;
-
-# When we get a start-list, create an empty list.
-sub list_start {
-    %list = {};
-}
 
 # Store list info in the hash.
 sub list_event {
@@ -32,9 +28,12 @@ sub list_event {
     my ($nick, $name, $size) = split (/ /, $meta, 3);
     $list{$name}{'size'} = $size;
 
-    $more =~ /^[^[]*\[([^]]*)\][^ ]* *([^ ].*)$/;
-    my $modes = $1;
-    $list{$name}{'desc'} = $2;
+    my $modes = '';
+	$list{$name}{'desc'} = '';
+    if ($more =~ /^[^[]*\[([^]]*)\][^ ]* *([^ ].*)$/) {
+		$modes = $1;
+		$list{$name}{'desc'} = $2;
+	}
 
     $modes =~ s/ +$//;
     $list{$name}{'modes'} = $modes;
@@ -43,12 +42,14 @@ sub list_event {
 # Print out the whole list in sorted order.
 sub list_end {
     for my $name (sort {$list{$a}{'size'} <=> $list{$b}{'size'}} keys %list) {
+		my $mode = $list{$name}{'modes'};
+		$mode = " ($mode)" if ($mode);
         my $msg = sprintf (
-            "%d %s: %s (%s)",
+            "%d %s: %s%s",
             $list{$name}{'size'},
             $name,
             $list{$name}{'desc'},
-            $list{$name}{'modes'}
+            $mode
         );
 
         Irssi::print($msg, MSGLEVEL_CRAP);
