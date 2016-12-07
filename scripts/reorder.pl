@@ -57,7 +57,7 @@ sub GetFilename
     }
 
     # Add a file extension
-    $filename .= '.layout' unless ($filename =~ /.layout$/);
+    $filename .= '.layout' unless ($filename =~ /\.layout$/);
 
     # Use get_irssi_dir() unless using an absolute path
     if ($filename !~ /\//) {
