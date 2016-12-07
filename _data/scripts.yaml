@@ -2024,6 +2024,15 @@
   url: http://www.musicpd.org
   version: 0.0.0n
 -
+  authors: 'Isaac Good'
+  contact: 'irssi@isaacgood.com; irc.freenode.net/yitz'
+  description: 'Automatically IDENTIFY when prompted'
+  filename: ident.pl
+  license: MIT
+  modified: '2016-12-06 18:45:34'
+  name: ident
+  version: '1.0'
+-
   authors: 'Eric Jansen'
   contact: chaos@sorcery.net
   description: 'MD5 NickServ identification script for SorceryNet'
