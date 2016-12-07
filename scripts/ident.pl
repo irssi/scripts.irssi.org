@@ -35,7 +35,7 @@ sub LoadPasswords {
     {
         chomp $line;
 		next unless ($line);
-        my ($tag, $password) = split(/ /, $line, 2);
+        my ($tag, $password) = split(/  */, $line, 2);
         next unless ($tag and $password);
 		$pw{$tag} = $password;
 	}
