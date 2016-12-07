@@ -206,6 +206,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                        hlscroll ](Test/hlscroll/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        hostname ](Test/hostname/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                    identify-md5 ](Test/identify-md5/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                           ident ](Test/ident/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                        idletime ](Test/idletime/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                         idonkey ](Test/idonkey/)|  ✔   |  ✔   |  ✔   | 13   |  ✔   | (c)
 [                    ido_switcher ](Test/ido_switcher/)|  ✔   |  ✔   |  ✔   |  1   |  ✔   | (c)
@@ -381,7 +382,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                        redirect ](Test/redirect/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                            relm ](Test/relm/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                          remote ](Test/remote/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                         reorder ](Test/reorder/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   
+[                         reorder ](Test/reorder/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                          repeat ](Test/repeat/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                         replace ](Test/replace/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                    resize_split ](Test/resize_split/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -512,4 +513,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                     xmpp-notify ](Test/xmpp-notify/)|  ✔   |  ✔   |  ✔   | 21   |  ✔   | (c)
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 
-a37d1aaf6f54f565bca17689187a39ac52fcb1f6 | 722
+9835e818c8d83cf9f8ff97d182d29fd3838ae771 | 723
