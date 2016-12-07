@@ -29,11 +29,11 @@ sub list_event {
     $list{$name}{'size'} = $size;
 
     my $modes = '';
-	$list{$name}{'desc'} = '';
+    $list{$name}{'desc'} = '';
     if ($more =~ /^[^[]*\[([^]]*)\][^ ]* *([^ ].*)$/) {
-		$modes = $1;
-		$list{$name}{'desc'} = $2;
-	}
+        $modes = $1;
+        $list{$name}{'desc'} = $2;
+    }
 
     $modes =~ s/ +$//;
     $list{$name}{'modes'} = $modes;
@@ -42,8 +42,8 @@ sub list_event {
 # Print out the whole list in sorted order.
 sub list_end {
     for my $name (sort {$list{$a}{'size'} <=> $list{$b}{'size'}} keys %list) {
-		my $mode = $list{$name}{'modes'};
-		$mode = " ($mode)" if ($mode);
+        my $mode = $list{$name}{'modes'};
+        $mode = " ($mode)" if ($mode);
         my $msg = sprintf (
             "%d %s: %s%s",
             $list{$name}{'size'},
