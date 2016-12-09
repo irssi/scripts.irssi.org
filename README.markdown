@@ -206,7 +206,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                        hlscroll ](Test/hlscroll/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        hostname ](Test/hostname/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                    identify-md5 ](Test/identify-md5/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                           ident ](Test/ident/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[                           ident ](Test/ident/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        idletime ](Test/idletime/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                         idonkey ](Test/idonkey/)|  ✔   |  ✔   |  ✔   | 13   |  ✔   | (c)
 [                    ido_switcher ](Test/ido_switcher/)|  ✔   |  ✔   |  ✔   |  1   |  ✔   | (c)
@@ -259,6 +259,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                      linebuffer ](Test/linebuffer/)|  ✔   |  ✔   |  ✔   |  2   |  ✔   | (c)
 [                        linkchan ](Test/linkchan/)|  ✔   |  ✔   |  ✔   | 32   |  ✔   | (c)
 [                          listen ](Test/listen/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
+[                        listsort ](Test/listsort/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
 [                         loadavg ](Test/loadavg/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        localize ](Test/localize/)|  ✔   |  ✔   |  ✘   | 37   |  ☡   | (c)
 [                        log2ansi ](Test/log2ansi/)|  ✘   |  ✘   |  ✔   | 15   |  ☡   | (c)
@@ -513,4 +514,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                     xmpp-notify ](Test/xmpp-notify/)|  ✔   |  ✔   |  ✔   | 21   |  ✔   | (c)
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 
-9835e818c8d83cf9f8ff97d182d29fd3838ae771 | 723
+4fa07671dd5c4b12e6cb8f7294fd5996901693e8 | 725

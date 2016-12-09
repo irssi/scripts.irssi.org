@@ -1,0 +1,12 @@
+---
+-
+  authors: 'Isaac Good'
+  contact: irssi@isaacgood.com
+  created: 2013/02/23
+  decsription: 'Sort the /list output by channel size'
+  default_package: listsort
+  license: BSD
+  modified: '2016-12-07 11:32:54'
+  name: listsort
+  url: https://github.com/IsaacG/irssi-scripts
+  version: '0.1'
