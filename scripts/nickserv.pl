@@ -24,7 +24,7 @@ use strict;
 use Irssi;
 use vars qw($VERSION %IRSSI);
 
-$VERSION = "1.10";
+$VERSION = "1.11";
 
 %IRSSI = (
     authors     => 'Geert Hauwaerts',
@@ -41,6 +41,9 @@ my $nickservnet_file = "nickserv.networks";
 my @nickservauth = ();
 my $nickservauth_file = "nickserv.auth";
 
+my @nickservpostcmd = ();
+my $nickservpostcmd_file = "nickserv.postcmd";
+
 my $irssidir = Irssi::get_irssi_dir();
 
 my $help = <<EOF;
@@ -48,21 +51,27 @@ my $help = <<EOF;
 Usage: (all on one line)
 /NICKSERV [addnet <ircnet> <services\@host>]
           [addnick <ircnet> <nickname> <password>]
+          [addpostcmd <ircnet> <nickname> <command>]
           [delnet <ircnet>]
           [delnick <ircnet> <nick>]
-          [help listnet listnick]
+          [delpostcmd <ircnet> <nick>]
+          [help listnet listnick listpostcmd]
 
-addnet:     Add a new network into the NickServ list.
-addnick:    Add a new nickname into the NickServ list.
-delnet:     Delete a network from the NickServ list.
-delnick:    Delete a nickname from the NickServ list.
-listnet:    Display the contents of the NickServ network list.
-listnick:   Display the contents of the NickServ nickname list.
-help:       Display this useful little helptext.
+addnet:      Add a new network into the NickServ list.
+addnick:     Add a new nickname into the NickServ list.
+addpostcmd:  Add a new post auth command for nickname into the NickServ list.
+delnet:      Delete a network from the NickServ list.
+delnick:     Delete a nickname from the NickServ list.
+delpostcmd:  Deletes all post auth command for nickame.
+listnet:     Display the contents of the NickServ network list.
+listnick:    Display the contents of the NickServ nickname list.
+listpostcmd: Display the contents of the NickServ postcmd list.
+help:        Display this useful little helptext.
 
 Examples: (all on one line)
 /NICKSERV addnet Freenode NickServ\@services.
 /NICKSERV addnick Freenode Geert mypass
+/NICKSERV addpostcmd Freenode Geert ^MSG ChanServ invite #heaven
 
 /NICKSERV delnet Freenode
 /NICKSERV delnick Freenode Geert
@@ -74,19 +83,25 @@ EOF
 Irssi::theme_register([
     'nickserv_usage_network', '%R>>%n %_NickServ:%_ Insufficient parameters: Usage "%_/NICKSERV addnet ircnet services@host%_".',
     'nickserv_usage_nickname', '%R>>%n %_NickServ:%_ Insufficient parameters: Usage "%_/NICKSERV addnick ircnet nickname password%_".',
+    'nickserv_usage_postcmd', '%R>>%n %_NickServ:%_ Insufficient parameters: Usage "%_/NICKSERV addpostcmd ircnet nickname command%_".',
     'nickserv_delusage', '%R>>%n %_NickServ:%_ Insufficient parameters: Usage "%_/NICKSERV delnet ircnet%_".',
     'nickserv_delnickusage', '%R>>%n %_NickServ:%_ Insufficient parameters: Usage "%_/NICKSERV delnick ircnet nickname%_".',
+    'nickserv_delpostcmdusage', '%R>>%n %_NickServ:%_ Insufficient parameters: Usage "%_/NICKSERV delpostcmd ircnet nickname%_".',
     'nickserv_delled', '%R>>%n %_NickServ:%_ Deleted %_$0%_ and his nicknames from the NickServ ircnet list.',
     'nickserv_delled_nick', '%R>>%n %_NickServ:%_ Deleted %_$1%_ from the NickServ list on $0.',
+    'nickserv_delled_postcmd', '%R>>%n %_NickServ:%_ Deleted all entries for %_$1%_ from the NickServ postcmd list on $0.',
     'nickserv_nfound', '%R>>%n %_NickServ:%_ The NickServ ircnet %_$0%_ could not be found.',
     'nickserv_nfound_nick', '%R>>%n %_NickServ:%_ The NickServ nickname %_$0%_ could not be found on $1.',
+    'nickserv_nfound_postcmd', '%R>>%n %_NickServ:%_ The NickServ nickname %_$0%_ could not be found on $1.',
     'nickserv_usage', '%R>>%n %_NickServ:%_ Insufficient parameters: Use "%_/NICKSERV help%_" for further instructions.',
     'nickserv_no_net', '%R>>%n %_NickServ:%_ Unknown Irssi ircnet %_$0%_.',
     'nickserv_wrong_host', '%R>>%n %_NickServ:%_ Malformed services hostname %_$0%_.',
     'already_loaded_network', '%R>>%n %_NickServ:%_ The ircnet %_$0%_ already exists in the NickServ ircnet list, please remove it first.',
     'nickserv_loaded_nick', '%R>>%n %_NickServ:%_ The nickname %_$0%_ already exists in the NickServ authlist on %_$1%_, please remove it first.',
     'nickserv_not_loaded_net', '%R>>%n %_NickServ:%_ The ircnet %_$0%_ doesn\'t exists in the NickServ ircnet list, please add it first.',
+    'nickserv_not_loaded_nick', '%R>>%n %_NickServ:%_ The nickname %_$0%_ doesn\'t exists in the NickServ authlist on %_$1%_, please add it first.',
     'saved_nickname', '%R>>%n %_NickServ:%_ Added nickname %_$1%_ on %_$0%_.',
+    'saved_postcmd', '%R>>%n %_NickServ:%_ Added postcmd %_$1%_ on %_$0%_: %_%2%_.',
     'network_print', '$[!-2]0 $[20]1 $2',
     'password_request', '%R>>%n %_NickServ:%_ Auth Request from NickServ on %_$0%_.',
     'password_accepted', '%R>>%n %_NickServ:%_ Password accepted on %_$0%_.',
@@ -96,6 +111,9 @@ Irssi::theme_register([
     'nickname_print', '$[!-2]0 $[20]1 $[18]2 $3',
     'nickname_info', '%_ # Ircnet               Nickname           Password%_',
     'nickname_empty', '%R>>%n %_NickServ:%_ Your NickServ authlist is empty.',
+    'postcmd_print', '$[!-2]0 $[20]1 $[18]2 $3',
+    'postcmd_info', '%_ # Ircnet               Nickname           Postcmd%_',
+    'postcmd_empty', '%R>>%n %_NickServ:%_ Your NickServ postcmd list is empty.',
     'nickserv_help', '$0',
     'saved_network', '%R>>%n %_NickServ:%_ Added services mask "%_$1%_" on %_$0%_.',
     'nickserv_loaded', '%R>>%n %_Scriptinfo:%_ Loaded $0 version $1 by $2.'
@@ -187,6 +205,30 @@ sub load_nickservnick {
     }
 }
 
+sub load_nickservpostcmd {
+
+    my ($file) = @_;
+
+    @nickservpostcmd = ();
+
+    if (-e $file) {
+        local *F;
+        open(F, "<" ,$file);
+        local $/ = "\n";
+
+        while (<F>) {
+            chop;
+            my $new_postcmd = new_postcmd(split("\t"));
+  
+            if (($new_postcmd->{ircnet} ne "") && ($new_postcmd->{nick} ne "") && ($new_postcmd->{postcmd} ne "")) {
+                push(@nickservpostcmd, $new_postcmd);
+            }
+        }
+        
+        close(F);
+    }
+}
+
 sub save_nickservnick {
 
     my ($file) = @_;
@@ -203,12 +245,33 @@ sub save_nickservnick {
     
         close(F);
     } else {
-        create_nick_file($file);
+        create_save_file($file);
         save_nickservnick($file);
     }
 }
 
-sub create_nick_file {
+sub save_nickservpostcmd {
+
+    my ($file) = @_;
+
+    return unless scalar @nickservpostcmd; # there's nothing to save
+
+    if (-e $file) {
+        local *F;
+        open(F, ">", $file);
+
+        for (my $n = 0; $n < @nickservpostcmd; ++$n) {
+            print(F join("\t", $nickservpostcmd[$n]->{ircnet}, $nickservpostcmd[$n]->{nick}, $nickservpostcmd[$n]->{postcmd}) . "\n");
+        }
+    
+        close(F);
+    } else {
+        create_save_file($file);
+        save_nickservpostcmd($file);
+    }
+}
+
+sub create_save_file {
     
     my ($file) = @_;
     
@@ -228,10 +291,21 @@ sub new_nickserv_nick {
     return $nsnick;
 }
 
+sub new_postcmd {
+
+    my $nspostcmd = {};
+
+    $nspostcmd->{ircnet} = shift;
+    $nspostcmd->{nick} = shift;
+    $nspostcmd->{postcmd} = shift;
+
+    return $nspostcmd;
+}
+
 sub add_nickname {
     
     my ($network, $nickname, $password) = split(" ", $_[0], 3);
-    my ($correct_network, $correct_nickname, $correct_password);
+    my ($correct_network, $correct_nickname);
 
     if ($network eq "" || $nickname eq "" || $password eq "") {
         Irssi::printformat(MSGLEVEL_CLIENTCRAP, 'nickserv_usage_nickname');
@@ -261,6 +335,42 @@ sub add_nickname {
         save_nickservnick("$irssidir/$nickservauth_file");
             
         Irssi::printformat(MSGLEVEL_CLIENTCRAP, 'saved_nickname', $network, $nickname);
+    }
+}
+
+sub add_postcmd {
+    
+    my ($network, $nickname, $postcmd) = split(" ", $_[0], 3);
+    my ($correct_network, $correct_nickname);
+
+    if ($network eq "" || $nickname eq "" || $postcmd eq "") {
+        Irssi::printformat(MSGLEVEL_CLIENTCRAP, 'nickserv_usage_postcmd');
+        return;
+    }
+    
+    if ($network) {
+        if (!already_loaded_net($network)) {
+            Irssi::printformat(MSGLEVEL_CLIENTCRAP, 'nickserv_not_loaded_net', $network);
+            return;
+        } else {
+            $correct_network = 1;
+        }
+    }
+    
+    if ($nickname) {
+        if (!already_loaded_nick($nickname, $network)) {
+            Irssi::printformat(MSGLEVEL_CLIENTCRAP, 'nickserv_not_loaded_nick', $nickname, $network);
+            return;
+        } else {
+            $correct_nickname = 1;
+        }
+    }
+    
+    if ($correct_network && $correct_nickname) {
+        push(@nickservpostcmd, new_postcmd($network, $nickname, $postcmd));
+        save_nickservpostcmd("$irssidir/$nickservpostcmd_file");
+            
+        Irssi::printformat(MSGLEVEL_CLIENTCRAP, 'saved_postcmd', $network, $nickname, $postcmd);
     }
 }
 
@@ -382,6 +492,19 @@ sub list_nick {
     }
 }
 
+sub list_postcmd {
+    
+    if (@nickservpostcmd == 0) {
+        Irssi::printformat(MSGLEVEL_CLIENTCRAP, 'postcmd_empty');
+    } else {
+        Irssi::printformat(MSGLEVEL_CLIENTCRAP, 'postcmd_info');
+
+        for (my $n = 0; $n < @nickservpostcmd ; ++$n) {
+            Irssi::printformat(MSGLEVEL_CLIENTCRAP, 'postcmd_print', $n, $nickservpostcmd[$n]->{ircnet}, $nickservpostcmd[$n]->{nick}, $nickservpostcmd[$n]->{postcmd});
+        }
+    }
+}
+
 sub nickserv_notice {
     
     my ($server, $data, $nick, $address) = @_;
@@ -442,11 +565,23 @@ sub nickserv_notice {
         } elsif ($text =~ /^Password accepted - you are now recognized/ || $text =~ /^You are now identified for/) {
             Irssi::signal_stop();
             Irssi::printformat(MSGLEVEL_CLIENTCRAP, 'password_accepted', $server->{tag});
+	    run_postcmds($server, $server->{tag}, $server->{nick})
         } elsif ($text =~ /^Password Incorrect/ || $text =~ /^Password incorrect./) {
             Irssi::signal_stop();
             Irssi::printformat(MSGLEVEL_CLIENTCRAP, 'password_wrong', $server->{tag});
         }
     }
+}
+
+sub run_postcmds {
+	my ($server, $tag, $nick) = @_;
+	return unless scalar @nickservpostcmd; # there's nothing to save
+
+	for my $cmd (@nickservpostcmd) {
+		if ($tag eq $cmd->{ircnet} && $nick eq $cmd->{nick} && $cmd->{postcmd}) {
+			$server->command($cmd->{postcmd});
+		}
+	}
 }
 
 sub is_nickserv {
@@ -521,6 +656,28 @@ sub del_nickname {
     }
 }
 
+sub del_postcmd {
+    
+    my ($ircnet, $nickname) = split(" ", $_[0], 2);
+    my ($nickindex);
+    
+    if ($ircnet eq "" || $nickname eq "") {
+        Irssi::printformat(MSGLEVEL_CLIENTCRAP, 'nickserv_delpostcmdusage');
+        return;
+    }
+
+    my $size_before = scalar(@nickservpostcmd);
+    @nickservpostcmd = grep { !( lc($_->{ircnet}) eq lc($ircnet) && lc($_->{nick}) eq lc($nickname) )} @nickservpostcmd;
+    my $size_after = scalar(@nickservpostcmd);
+
+    if ($size_before != $size_after) {
+        Irssi::printformat(MSGLEVEL_CLIENTCRAP, 'nickserv_delled_postcmd', $ircnet, $nickname);
+        save_nickservpostcmd("$irssidir/$nickservpostcmd_file");
+    } else {
+        Irssi::printformat(MSGLEVEL_CLIENTCRAP, 'nickserv_nfound_postcmd', $ircnet, $nickname);
+    }
+}
+
 sub nickserv_runsub {
     
     my ($data, $server, $item) = @_;
@@ -535,6 +692,7 @@ sub nickserv_runsub {
 
 load_nickservnet("$irssidir/$nickservnet_file");
 load_nickservnick("$irssidir/$nickservauth_file");
+load_nickservpostcmd("$irssidir/$nickservpostcmd_file");
 
 Irssi::command_bind('nickserv', 'nickserv_runsub');
 Irssi::command_bind('ns', 'nickserv_runsub');
@@ -545,17 +703,26 @@ Irssi::command_bind('ns addnet', 'add_network');
 Irssi::command_bind('nickserv addnick', 'add_nickname');
 Irssi::command_bind('ns addnick', 'add_nickname');
 
+Irssi::command_bind('nickserv addpostcmd', 'add_postcmd');
+Irssi::command_bind('ns addpostcmd', 'add_postcmd');
+
 Irssi::command_bind('nickserv listnet', 'list_net');
 Irssi::command_bind('ns listnet', 'list_net');
 
 Irssi::command_bind('nickserv listnick', 'list_nick');
 Irssi::command_bind('ns listnick', 'list_nick');
 
+Irssi::command_bind('nickserv listpostcmd', 'list_postcmd');
+Irssi::command_bind('ns listpostcmd', 'list_postcmd');
+
 Irssi::command_bind('nickserv delnet', 'del_network');
 Irssi::command_bind('ns delnet', 'del_network');
 
 Irssi::command_bind('nickserv delnick', 'del_nickname');
 Irssi::command_bind('ns delnick', 'del_nickname');
+
+Irssi::command_bind('nickserv delpostcmd', 'del_postcmd');
+Irssi::command_bind('ns delpostcmd', 'del_postcmd');
 
 Irssi::command_bind('nickserv help' => sub { Irssi::printformat(MSGLEVEL_CLIENTCRAP, 'nickserv_help', $help) });
 Irssi::command_bind('ns help' => sub { Irssi::printformat(MSGLEVEL_CLIENTCRAP, 'nickserv_help', $help) });
