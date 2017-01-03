@@ -147,8 +147,6 @@ sub save_nickservnet {
 
     my ($file) = @_;
 
-    return unless scalar @nickservnet; # there's nothing to save
-
     if (-e $file) {
         local *F;
         open(F, ">", $file);
@@ -206,7 +204,6 @@ sub load_nickservnick {
 }
 
 sub load_nickservpostcmd {
-
     my ($file) = @_;
 
     @nickservpostcmd = ();
@@ -230,10 +227,7 @@ sub load_nickservpostcmd {
 }
 
 sub save_nickservnick {
-
     my ($file) = @_;
-
-    return unless scalar @nickservauth; # there's nothing to save
 
     if (-e $file) {
         local *F;
@@ -251,10 +245,7 @@ sub save_nickservnick {
 }
 
 sub save_nickservpostcmd {
-
     my ($file) = @_;
-
-    return unless scalar @nickservpostcmd; # there's nothing to save
 
     if (-e $file) {
         local *F;
@@ -272,11 +263,10 @@ sub save_nickservpostcmd {
 }
 
 sub create_save_file {
-    
     my ($file) = @_;
-    
     my $umask = umask 0077; # save old umask
     open(F, ">", $file) or die "Can't create $file. Reason: $!";
+    close(F);
     umask $umask;
 }
 
@@ -565,7 +555,7 @@ sub nickserv_notice {
         } elsif ($text =~ /^Password accepted - you are now recognized/ || $text =~ /^You are now identified for/) {
             Irssi::signal_stop();
             Irssi::printformat(MSGLEVEL_CLIENTCRAP, 'password_accepted', $server->{tag});
-	    run_postcmds($server, $server->{tag}, $server->{nick})
+            run_postcmds($server, $server->{tag}, $server->{nick})
         } elsif ($text =~ /^Password Incorrect/ || $text =~ /^Password incorrect./) {
             Irssi::signal_stop();
             Irssi::printformat(MSGLEVEL_CLIENTCRAP, 'password_wrong', $server->{tag});
