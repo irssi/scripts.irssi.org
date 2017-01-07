@@ -18,6 +18,7 @@ $VERSION = "0.01";
 sub sig_rotate {
     my $input = $_[0]->{real_fname};
     gzip $input => "$input.gz" or Irssi::print(MSGLEVEL_CLIENTERROR, "gzip failed: $GzipError\n");
+    unlink $input if -e "$input.gz";
 }
 
 Irssi::signal_add('log rotated', 'sig_rotate');
