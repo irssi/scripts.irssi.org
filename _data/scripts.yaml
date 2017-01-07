@@ -2616,10 +2616,10 @@
   description: "compress logfiles then they're rotated, modified from original logcompress.pl to use perl modules instead"
   filename: logcompress_perl.pl
   license: 'Public Domain'
-  modified: '2016-01-31 01:51:39'
+  modified: '2017-01-07 11:52:46'
   name: logcompress_perl
   url: http://irssi.org/
-  version: '0.01'
+  version: '0.02'
 -
   authors: ferret
   commands: 'logtail, logview'
