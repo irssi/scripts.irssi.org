@@ -263,7 +263,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                         loadavg ](Test/loadavg/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        localize ](Test/localize/)|  ✔   |  ✔   |  ✘   | 37   |  ☡   | (c)
 [                        log2ansi ](Test/log2ansi/)|  ✘   |  ✘   |  ✔   | 15   |  ☡   | (c)
-[                logcompress_perl ](Test/logcompress_perl/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
+[                logcompress_perl ](Test/logcompress_perl/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                     logcompress ](Test/logcompress/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       logresume ](Test/logresume/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                              ls ](Test/ls/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -453,7 +453,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                        topicsed ](Test/topicsed/)|  ✔   |  ✘   |  ✘   | 18   |  ☡   | (c)
 [                          topics ](Test/topics/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       tordetect ](Test/tordetect/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
-[                      trackbar22 ](Test/trackbar22/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
+[                      trackbar22 ](Test/trackbar22/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   
 [                        trackbar ](Test/trackbar/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       tracknick ](Test/tracknick/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                           track ](Test/track/)|  ✔   |  ✔   |  ✔   | 36   |  ✔   | (c)
@@ -514,4 +514,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                     xmpp-notify ](Test/xmpp-notify/)|  ✔   |  ✔   |  ✔   | 21   |  ✔   | (c)
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 
-8b85609c0ed46267e376798cd833195f45341e83 | 728
+3f3bde14e9878ad2e843a0bfedb28a589b52b3aa | 730

@@ -1,15 +1,15 @@
 ---
 -
   authors: 'Peter Leurs and Geert Hauwaerts'
-  changed: 'Fri Jan 23 23:59:11 2004'
   commands: trackbar
   contact: peter@pfoe.be
   default_package: trackbar22
   description: 'Shows a bar where you have last read a window.'
   license: 'GNU General Public License'
+  modified: '2017-01-09 14:35:07'
   modules:
     - Text::CharWidth
   name: trackbar
   patchers: 'Johan Kiviniemi (UTF-8), Uwe Dudenhoeffer (on-upgrade-remove-line)'
   url: http://www.pfoe.be/~peter/trackbar/
-  version: '2.2'
+  version: '2.3'
