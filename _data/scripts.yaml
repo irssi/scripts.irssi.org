@@ -4498,11 +4498,11 @@
   description: 'Shows a bar where you have last read a window.'
   filename: trackbar22.pl
   license: 'GNU General Public License'
-  modified: '2015-11-16 19:36:52'
+  modified: '2017-01-09 14:35:07'
   modules: Text::CharWidth
   name: trackbar
   url: http://www.pfoe.be/~peter/trackbar/
-  version: '2.2'
+  version: '2.3'
 -
   authors: 'Timo Sirainen'
   contact: tss@iki.fi
