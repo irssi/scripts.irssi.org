@@ -1944,6 +1944,16 @@
   url: http://irssi.org/
   version: '0.04'
 -
+  authors: 'Stefan Heinemann'
+  contact: stefan.heinemann@codedump.ch
+  description: 'Simple script that highlights URL'
+  filename: hilite_url.pl
+  license: GPL
+  modified: '2017-01-12 12:37:37'
+  name: 'hilite url'
+  url: http://senseless.codedump.ch
+  version: '0.1'
+-
   authors: 'John Morrissey'
   contact: jwm@horde.net
   description: 'Translate nicks to HipChat "mention names"'
