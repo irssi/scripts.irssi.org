@@ -87,38 +87,29 @@ sub load_allowed_nicks {
     my ($file) = @_;
     @allowed_nicks = ();
     if (-e $file) {
-        local *F;
-        open(F, "<", $file);
+        open(my $fh, "<", $file);
         local $/ = "\n";
 
-        while (<F>) {
+        while (<$fh>) {
             chomp;
             my $new_allowed = new_allowed_nick(split("\t"));
             if (($new_allowed->{net} ne "") && ($new_allowed->{nick} ne "")) {
                 push(@allowed_nicks, $new_allowed);
             }
         }
-        close(F);
+        close($fh);
     }
 }
 
 sub save_allowed_nicks {
     my ($file) = @_;
+    open(my $fh, ">", $file) or die "Can't create $file. Reason: $!";
 
-    if (-e $file) {
-        local *F;
-        open(F, ">", $file);
-
-        for my $allowed (@allowed_nicks) {
-            print(F join("\t", $allowed->{net}, $allowed->{nick}) . "\n");
-        }
-    
-        close(F);
-    } else {
-      open(F, ">", $file) or die "Can't create $file. Reason: $!";
-      close(F);
-      save_allowed_nicks($file);
+    for my $allowed (@allowed_nicks) {
+      print($fh join("\t", $allowed->{net}, $allowed->{nick}) . "\n");
     }
+
+    close($fh);
 }
 
 sub new_allowed_nick {
@@ -205,7 +196,9 @@ sub invitejoin_runsub {
 sub is_allowed_nick {
   my ($server, $nick) = @_;
 
-  return 1 unless @allowed_nicks < 1;
+  # If no allowed nicks are specified (initial configuration) accept
+  # all invite requests, which mimics previous behavior of this script
+  return 1 if @allowed_nicks == 0;
 
   return (grep {
     $_->{net}  eq $server->{tag} &&
