@@ -36,8 +36,8 @@ cpan:
 whitelist:
   - amaroknp
   - babelirc
+  - cap_sasl_fail
   - cap_sasl
-  - cgrep
   - colorkick
   - connectcmd
   - dau
@@ -70,7 +70,6 @@ whitelist:
   - quizmaster
   - quiz
   - randaway
-  - reorder
   - scroller
   - stocks
   - sysinfoplus
