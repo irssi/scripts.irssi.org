@@ -5,6 +5,5 @@
   default_package: settingshelp
   description: 'Irssi 0.8.10 settings notes and documentation'
   license: 'CC BY-SA 2.5, http://creativecommons.org/licenses/by-sa/2.5/'
-  modified: '2016-04-27 00:09:59'
   name: settingshelp
   version: 0.8.10

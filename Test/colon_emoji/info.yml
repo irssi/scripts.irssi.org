@@ -5,6 +5,5 @@
   default_package: colon_emoji
   description: 'Replace words between :...: in messages according to a text file. Was intended for Unicode Emoji on certain proprietary platforms.'
   license: GPLv3
-  modified: '2016-04-26 23:53:02'
   name: colon_emoji
   version: '0.1'

@@ -6,7 +6,6 @@
   default_package: mh_hold_mode
   description: 'Emulation of ircII per-window hold_mode'
   license: BSD
-  modified: '2016-05-10 19:11:10'
   name: mh_hold_mode
   url: 'http://scripts.irssi.org / https://github.com/mh-source/irssi-scripts'
   version: '1.07'

@@ -1,1 +1,2 @@
-* -!- Irssi: Loaded script cap_sasl_fail
+* -!- Irssi: Error in script cap_sasl_fail:
+* Please use /set sasl_disconnect_on_failure instead of this script.

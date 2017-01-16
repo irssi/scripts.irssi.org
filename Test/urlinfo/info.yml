@@ -5,7 +5,6 @@
   default_package: urlinfo
   description: 'Print short summaries about URLs from known services that are mentioned on IRC. (Including YouTube, etc.)'
   license: 'WTFPL <http://dgl.cx/licence>'
-  modified: '2016-05-21 20:22:57'
   modules:
     - HTML::TreeBuilder
     - URI
