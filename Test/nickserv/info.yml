@@ -1,10 +1,12 @@
 ---
 -
   authors: 'Geert Hauwaerts'
+  changed: 'Di 17. Jan 19:32:45 CET 2017'
   contact: geert@irssi.org
   default_package: nickserv
   description: 'This script will authorize you into NickServ.'
   license: 'GNU General Public License'
+  modified: '2017-01-17 00:18:42'
   name: nickserv.pl
-  url: http://irssi.hauwaerts.be/nickserv.pl
-  version: '1.10'
+  url: https://github.com/irssi/scripts.irssi.org/blob/master/scripts/nickserv.pl
+  version: '1.11'

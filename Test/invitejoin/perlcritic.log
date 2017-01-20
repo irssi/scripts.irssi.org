@@ -1,1 +1,8 @@
 Code before warnings are enabled at line 27, column 1.  See page 431 of PBP.  (Severity: 4)
+Return value of "open" ignored at line 128, column 9.  Check the return value of "open" for success.  (Severity: 3)
+String delimiter used with "split" at line 133, column 41.  Express it as a regex instead.  (Severity: 2)
+Return value of "close" ignored at line 137, column 9.  Check the return value of "close" for success.  (Severity: 2)
+"die" used instead of "croak" at line 152, column 33.  See page 283 of PBP.  (Severity: 3)
+Return value of "close" ignored at line 158, column 5.  Check the return value of "close" for success.  (Severity: 2)
+"die" used instead of "croak" at line 164, column 33.  See page 283 of PBP.  (Severity: 3)
+Return value of "close" ignored at line 165, column 5.  Check the return value of "close" for success.  (Severity: 2)
