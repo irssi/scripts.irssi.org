@@ -2162,10 +2162,10 @@
   description: 'This script will join a channel if somebody invites you to it.'
   filename: invitejoin.pl
   license: 'Public Domain'
-  modified: '2004-04-11 12:38:18'
+  modified: '2017-01-17 20:26:41'
   name: invitejoin.pl
-  url: http://irssi.hauwaerts.be/invitejoin.pl
-  version: '0.01'
+  url: https://github.com/irssi/scripts.irssi.org/blob/master/scripts/invitejoin.pl
+  version: '0.02'
 -
   authors: xlony
   contact: anderfdez@yahoo.es
@@ -3190,10 +3190,10 @@
   description: 'This script will authorize you into NickServ.'
   filename: nickserv.pl
   license: 'GNU General Public License'
-  modified: '2016-04-06 16:03:28'
+  modified: '2017-01-17 00:18:42'
   name: nickserv.pl
-  url: http://irssi.hauwaerts.be/nickserv.pl
-  version: '1.10'
+  url: https://github.com/irssi/scripts.irssi.org/blob/master/scripts/nickserv.pl
+  version: '1.11'
 -
   authors: BC-bd
   contact: bd@bc-bd.org
