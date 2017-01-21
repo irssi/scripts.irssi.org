@@ -26,6 +26,7 @@ Creates or updates an alias. Like any perl code, multiple statements must be sep
 No replacement of parameter values is done: any $text is a perl variable.
 
 The arguments given to the /alias when typed are put into $_ and are also split on whitespace and put into @_.
+In addition, the variables $server and $witem will refer to the active server and window item respectively.
 
 Examples:
 
@@ -74,7 +75,7 @@ use POSIX qw(strftime);
 
 { package Irssi::Nick; } # Keeps trying to look for this package but for some reason it doesn't get loaded.
 
-our $VERSION = '1.0';
+our $VERSION = '1.1';
 our %IRSSI = (
 	authors => 'aquanight',
 	contact => 'aquanight@gmail.com',
@@ -103,14 +104,14 @@ sub exec_perlalias {
 	exists $cmds{$cmd} or return;
 	defined $cmds{$cmd}->{cmpcmd} or return;
 	local $_ = $data;
-	$cmds{$cmd}->{cmpcmd}->(split / +/, $data);
+	$cmds{$cmd}->{cmpcmd}->($server, $witem, split / +/, $data);
 }
 
 # Bind a command
 sub setup_command {
 	my ($cmd, $data) = @_;
 	# Compile the script.
-	my $code = qq{package Irssi::Scripts::perlalias::aliaspkg;\nno warnings;\nsub {\n#line 1 "perlalias $cmd"\n$data}\n};
+	my $code = qq{package Irssi::Scripts::perlalias::aliaspkg;\nno warnings;\nsub {my \$server = shift; my \$witem = shift;\n#line 1 "perlalias $cmd"\n$data}\n};
 	my $proc = eval $code;
 	if ($@) {
 		Irssi::printformat(MSGLEVEL_CLIENTERROR, perlalias_compile_error => $cmd);
