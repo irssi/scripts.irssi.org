@@ -1,0 +1,4 @@
+Expression form of "eval" at line 115, column 13.  See page 161 of PBP.  (Severity: 5)
+"die" used instead of "croak" at line 148, column 18.  See page 283 of PBP.  (Severity: 3)
+Return value of "close" ignored at line 201, column 2.  Check the return value of "close" for success.  (Severity: 2)
+Return value of "close" ignored at line 235, column 2.  Check the return value of "close" for success.  (Severity: 2)
