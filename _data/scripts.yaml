@@ -3591,6 +3591,15 @@
   url: http://wouter.coekaerts.be/irssi/
   version: '1.1'
 -
+  authors: aquanight
+  contact: aquanight@gmail.com
+  description: 'Quickly create commands from short perl blocks'
+  filename: perlalias.pl
+  license: 'public domain'
+  modified: '2017-01-21 05:12:33'
+  name: perlalias
+  version: '1.1'
+-
   authors: 'Adam Duck'
   contact: duck@cs.uni-frankfurt.de
   description: 'does CTCP SOUNDs and other similar things.'
