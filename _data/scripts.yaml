@@ -1291,10 +1291,10 @@
   description: 'Sends notification using the Desktop Notifications Specification.'
   filename: desktop-notify.pl
   license: 'GPL v3+'
-  modified: '2016-08-04 19:09:35'
+  modified: '2017-01-23 21:52:29'
   modules: 'Glib::Object::Introspection HTML::Entities'
   name: desktop-notify
-  version: 1.0.0
+  version: 1.0.1
 -
   authors: 'Jochem Meyers'
   contact: jochem.meyers@gmail.com
