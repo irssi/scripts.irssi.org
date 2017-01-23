@@ -26,7 +26,7 @@ use HTML::Entities;
 use Glib::Object::Introspection; # Ignore 'late INIT' warning message if autoloading
 use Encode;
 
-our $VERSION = '1.0.0';
+our $VERSION = '1.0.1';
 our %IRSSI = (
 	authors     => 'Felipe F. Tonello',
 	contact     => 'eu@felipetonello.com',
