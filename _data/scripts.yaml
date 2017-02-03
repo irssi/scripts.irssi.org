@@ -3641,6 +3641,15 @@
   url: http://www.linux.it/~md/irssi/
   version: '20020128'
 -
+  authors: 'martin f. krafft'
+  contact: madduck@madduck.net
+  description: 'hooks into every signal and writes the information provided to a file'
+  filename: print_signals.pl
+  license: MIT
+  modified: '2017-02-03 11:47:17'
+  name: 'print signals debugger'
+  version: '1.0'
+-
   authors: 'Cyprien Debu'
   contact: frey@notk.org
   description: 'Gets new mails from procmail.log file'
