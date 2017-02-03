@@ -1,0 +1,11 @@
+---
+-
+  authors: 'martin f. krafft'
+  changed: 2017-02-03
+  contact: madduck@madduck.net
+  default_package: print_signals
+  description: 'hooks into every signal and writes the information provided to a file'
+  license: MIT
+  modified: '2017-02-03 11:47:17'
+  name: 'print signals debugger'
+  version: '1.0'

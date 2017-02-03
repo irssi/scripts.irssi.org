@@ -132,7 +132,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                 defaultchanmode ](Test/defaultchanmode/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                          dejunk ](Test/dejunk/)|  ✔   |  ✔   |  ✔   | 10   |  ✔   | (c)
 [                    deliciousurl ](Test/deliciousurl/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
-[                  desktop-notify ](Test/desktop-notify/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[                  desktop-notify ](Test/desktop-notify/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                              df ](Test/df/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                    dice_concise ](Test/dice_concise/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                            dice ](Test/dice/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
@@ -368,6 +368,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                          poison ](Test/poison/)|  ✔   |  ✔   |  ✔   | 12   |  ✔   | (c)
 [                        postpone ](Test/postpone/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                             ppl ](Test/ppl/)|  ✔   |  ✔   |  ✔   | 39   |  ✔   | (c)
+[                   print_signals ](Test/print_signals/)|  ✔   |  ✔   |  ✔   |  1   |  ✔   
 [                     procmaillog ](Test/procmaillog/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
 [                  qchallengeauth ](Test/qchallengeauth/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                           query ](Test/query/)|  ✔   |  ✔   |  ✘   | 30   |  ☡   | (c)
@@ -516,4 +517,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                     xmpp-notify ](Test/xmpp-notify/)|  ✔   |  ✔   |  ✔   | 21   |  ✔   | (c)
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 
-0f27bb5aae60b26336600b70290f6da05fe62d7b | 747
+b4f72f646e648d2fab92bcf7815a225ea49f8c7b | 757
