@@ -7,7 +7,7 @@ use Irssi::TextUI;
 
 use vars qw($VERSION %IRSSI);
 
-$VERSION = "master";
+$VERSION = "0.5.16";
 %IRSSI = (
     authors     => 'BC-bd',
     contact     => 'bd@bc-bd.org',
@@ -596,13 +596,19 @@ Irssi::signal_add('nick mode changed', 'chanactHasChanged');
 #
 # Changelog
 #
-# master
-# 	- fixed URL
-# 	- now with 'use warnings'
-# 	- fix cmd_window_unalias call from cmd_window_alias
-# 	- fix Use of uninitialized value $name in hash element warnings
-# 	- return from cmd_window_unalias if the window has no valid
-# 	  chanact'ified name
+# 0.5.16
+#       - fix divergence from upstream by serialising the history. The
+#         following commits are actually (Git-)historically earlier than
+#         the changes for 0.5.15, but they're being introduced to the
+#         scripts.irssi.org repo only with this 0.5.16 release, so we list
+#         them here:
+#         * fixed URL
+# 	  * now with 'use warnings'
+# 	  * fix cmd_window_unalias call from cmd_window_alias
+# 	  * fix Use of uninitialized value $name in hash element warnings
+# 	  * return from cmd_window_unalias if the window has no valid
+# 	    chanact'ified name
+# 	  (I also removed extraneous whitespace from line ends...)
 #
 # 0.5.15
 # 	- fixed unbind error when aliasing a previously un-aliased window
