@@ -38,6 +38,7 @@ $VERSION = "master";
 # ivo@o2w.nl          win->{hilight} patch
 # Bazerka             base patch for sorting by level change
 #                     updated documentation
+# tslocum@gmail.com   Case-insensitive aliases, bugfix
 # 
 #########
 # USAGE
@@ -111,6 +112,12 @@ $VERSION = "master";
 #		      [3:+.#irssi.de]
 #
 #		    with '3:+.' highlighted and the channel name printed in regular color
+#
+# /set chanact_case_sensitive <ON|OFF>
+# 		* ON  : Aliases are case-sensitive
+# 		* OFF : Aliases are case-insensitive
+#
+#		Existing aliases must be reapplied after switching to case-insensitive.
 #
 # /set chanact_display_alias <string>
 #   as 'chanact_display' but is used if the window has an alias and
@@ -429,9 +436,9 @@ sub setup_changed {
 
 # Remove alias
 sub cmd_window_unalias {
-	my ($data, $server, $witem) = @_;
+	my ($data, $server, $witem, $internal) = @_;
 
-	if ($data ne '') {
+	if ($data ne '' && !$internal) {
 		Irssi::print("chanact: /window_unalias does not take any ".
 			"parameters, Run it in the window you want to unalias");
 		return;
@@ -449,7 +456,20 @@ sub cmd_window_unalias {
 	($tag, $name) = split('/', $tag);
 	return unless (length($key) == 1);
 
-	$server->command("/bind -delete meta-$key");
+	# remove alias only of we have a single character keybinding, if we
+	# haven't the name was not set by chanact, so we won't blindly unset
+	# stuff
+	if (length($key) == 1) {
+		if (Irssi::settings_get_bool('chanact_case_sensitive')) {
+			$server->command("/bind -delete meta-$data");
+		} else {
+			$server->command("/bind -delete meta-" . lc($data));
+			$server->command("/bind -delete meta-" . uc($data));
+		}
+	} elsif (!$internal) {
+		Irssi::print("chanact: could not determine keybinding. ".
+			"Won't unbind anything");
+	}
 
 	# set the windowname back to it's old one. We don't bother checking
 	# for a vaild name here, as we want to remove the current one and if
@@ -497,7 +517,7 @@ sub cmd_window_alias {
 		$winname = $window->{name};
 	}
 
-	cmd_window_unalias("", $server, $witem);
+	cmd_window_unalias($data, $server, $witem, 1);
 
 	my $winnum = $window->{refnum};
 	
@@ -520,7 +540,12 @@ sub cmd_window_alias {
 	my $name = "$data:$winhandle";
 
 	$window->set_name($name);
-	$server->command("/bind meta-$data change_window $name");
+	if (Irssi::settings_get_bool('chanact_case_sensitive')) {
+		$server->command("/bind meta-$data change_window $name");
+	} else {
+		$server->command("/bind meta-" . lc($data) . " change_window $name");
+		$server->command("/bind meta-" . uc($data) . " change_window $name");
+	}
 	Irssi::print("Window $winhandle is now accessible with meta-$data");
 }
 
@@ -534,6 +559,7 @@ Irssi::command_bind('window_unalias','cmd_window_unalias');
 Irssi::settings_add_str('chanact', 'chanact_display', '$H$N:$M$C$S');
 Irssi::settings_add_str('chanact', 'chanact_display_alias', '$H$N$M$S');
 Irssi::settings_add_int('chanact', 'chanact_abbreviate_names', 0);
+Irssi::settings_add_bool('chanact', 'chanact_case_sensitive', 1);
 Irssi::settings_add_bool('chanact', 'chanact_show_alias', 1);
 Irssi::settings_add_str('chanact', 'chanact_separator', " ");
 Irssi::settings_add_bool('chanact', 'chanact_autorenumber', 0);
@@ -577,6 +603,10 @@ Irssi::signal_add('nick mode changed', 'chanactHasChanged');
 # 	- fix Use of uninitialized value $name in hash element warnings
 # 	- return from cmd_window_unalias if the window has no valid
 # 	  chanact'ified name
+#
+# 0.5.15
+# 	- fixed unbind error when aliasing a previously un-aliased window
+# 	- added setting to allow case-insensitive window aliases
 #
 # 0.5.14
 # 	- fix itemless window handling, thx Bazerka
