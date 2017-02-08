@@ -3627,9 +3627,9 @@
   description: 'Postpones messages sent to a splitted user and resends them when the nick rejoins'
   filename: postpone.pl
   license: GPLv2
-  modified: '2008-05-17 17:39:11'
+  modified: '2017-02-04 02:11:54'
   name: postpone
-  version: '20030208'
+  version: '20170204'
 -
   authors: "Maciek Freudenheim, Marco d'Itri"
   contact: 'fahren@bochnia.pl, md@linux.it'
