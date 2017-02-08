@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-our $VERSION = '1.3'; # 463402cffae35e5
+our $VERSION = '1.3.1'; # 463402cffae35e5
 our %IRSSI = (
     authors     => 'Nei',
     contact     => 'Nei @ anti@conference.jabber.teamidiot.de',
@@ -81,6 +81,9 @@ our %IRSSI = (
 #
 # /format awl_viewer_item_bg <string>
 # * string : Format String specifying the viewer's item background colour
+#
+# /set awl_sb_leader <string>
+# * string : String to put before the awl statusbar item (default: "Awl: ")
 #
 # /set awl_prefer_name <ON|OFF>
 # * this setting decides whether awl will use the active_name (OFF) or the
@@ -390,6 +393,7 @@ sub syncLines {
 	    @actString;
     $currentLines = 1 if !$currentLines && $S{shared_sbar};
     if ($S{shared_sbar} && !$statusbars{shared}) {
+    	my $sb_leader = Irssi::settings_get_str('awl_sb_leader');
 	my $l = set 'shared';
 	{
 	    no strict 'refs';
@@ -398,7 +402,7 @@ sub syncLines {
 		my ($item, $get_size_only) = @_;
 
 		my $text = $actString[0];
-		my $pat = defined $text ? '{sb '.ucfirst(setc()).': $*}' : '{sb }';
+		my $pat = defined $text ? '{sb '.$sb_leader.'$*}' : '{sb }';
 		$text //= '';
 		$item->default_handler($get_size_only, $pat, $text, 0);
 	    };
@@ -1635,6 +1639,7 @@ Irssi::settings_add_str( setc, set 'viewer_launch_env',  ''); #
 Irssi::settings_add_str( setc, set 'viewer_tmux_position',  'left'); #
 Irssi::settings_add_str( setc, set 'viewer_xwin_command',  'xterm +sb -e %A'); #
 Irssi::settings_add_str( setc, set 'viewer_custom_command',  ''); #
+Irssi::settings_add_str( setc, set 'sb_leader', ucfirst(setc()).': '); #
 
 Irssi::signal_add_last({
     'setup changed'    => 'setup_changed',
@@ -2393,6 +2398,7 @@ UNITCHECK
 
 # Changelog
 # =========
+# 1.3.1 - made the status bar leader configurable (default remains "Awl: ")
 # 1.3 - workaround for irssi issue #572
 # 1.2 - new format to choose abbreviation character
 # 1.1 - infinite loop on shortening certain window names reported by Kalan
