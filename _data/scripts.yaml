@@ -1759,9 +1759,9 @@
   description: 'Implements /go command that activates a window given a name/partial name. It features a nice completion.'
   filename: go.pl
   license: 'GPLv2 or later'
-  modified: '2014-10-19 15:12:04'
+  modified: '2017-02-02 02:40:44'
   name: 'go to window'
-  version: '1.01'
+  version: '1.1'
 -
   authors: cxreg
   contact: cxreg@pobox.com
