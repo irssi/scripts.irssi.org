@@ -5,7 +5,7 @@ use Irssi::TextUI;
 
 use vars qw($VERSION %IRSSI);
 
-$VERSION = "0.5.15";
+$VERSION = "0.5.16";
 %IRSSI = (
     authors     => 'BC-bd, Veli',
     contact     => 'bd@bc-bd.org, veli@piipiip.net',
@@ -61,11 +61,11 @@ $VERSION = "0.5.15";
 # aliases to your windows. Go to the window you want to give the alias to
 # and say:
 #
-#		/window_alias <alias char>
+#		/chanact_window_alias <alias char>
 #
 # You can remove the aliases with from an aliased window:
 #
-#		/window_unalias
+#		/chanact_window_unalias
 #
 # To see a list of your windows use:
 #
@@ -434,7 +434,7 @@ sub cmd_window_unalias {
 	my ($data, $server, $witem, $internal) = @_;
 
 	if ($data ne '' && !$internal) {
-		Irssi::print("chanact: /window_unalias does not take any ".
+		Irssi::print("chanact: /chanact_window_unalias does not take any ".
 			"parameters, Run it in the window you want to unalias");
 		return;
 	}
@@ -487,7 +487,7 @@ sub cmd_window_alias {
 	my $rn_start = Irssi::settings_get_int('chanact_renumber_start');
 
 	unless ($data =~ /^[a-zA-Z+]$/) {
-		Irssi::print("Usage: /window_alias <char>");
+		Irssi::print("Usage: /chanact_window_alias <char>");
 		return;
 	}
 
@@ -543,8 +543,8 @@ sub cmd_window_alias {
 $needRemake = 1;
 
 # Window alias command
-Irssi::command_bind('window_alias','cmd_window_alias');
-Irssi::command_bind('window_unalias','cmd_window_unalias');
+Irssi::command_bind('chanact_window_alias','cmd_window_alias');
+Irssi::command_bind('chanact_window_unalias','cmd_window_unalias');
 
 # our config item
 Irssi::settings_add_str('chanact', 'chanact_display', '$H$N:$M$C$S');
@@ -586,6 +586,9 @@ Irssi::signal_add('nick mode changed', 'chanactHasChanged');
 ###
 #
 # Changelog
+#
+# 0.5.16
+#   - rename /window_(un)alias to /chanact_window_(un)alias
 #
 # 0.5.15
 # 	- fixed unbind error when aliasing a previously un-aliased window
