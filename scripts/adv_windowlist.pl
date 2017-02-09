@@ -474,7 +474,7 @@ sub get_keymap {
 		if (/^change_window (\d+)/i) {
 		    $nummap{$1} = $map;
 		}
-		elsif (/^command window goto (\S+)/i) {
+		elsif (/^(?:command window goto|change_window) (\S+)/i) {
 		    my $window = $1;
 		    if ($window !~ /\D/) {
 			$nummap{$window} = $map;
