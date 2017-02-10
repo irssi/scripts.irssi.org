@@ -457,15 +457,26 @@ sub awl {
 sub get_keymap {
     my ($textDest, undef, $cont_stripped) = @_;
     if ($textDest->{level} == 524288 and $textDest->{target} eq '' and !defined $textDest->{server}) {
-	my $one_meta_or_ctrl_key = qr/((?:meta-)*?)(?:(meta-|\^)(\S)|(\w+))/;
+	my $one_meta_or_ctrl_key = qr/((?:meta-)*?)(?:(?:(meta-|\^)(\S)|(meta-|\^)?(F\d+))|(\w+))/;
 	$cont_stripped = as_uni($cont_stripped);
 	if ($cont_stripped =~ m/((?:$one_meta_or_ctrl_key-)*$one_meta_or_ctrl_key)\s+(.*)$/) {
-	    my ($combo, $command) = ($1, $10);
+	    my ($combo, $command) = ($1, $14);
 	    my $map = '';
 	    while ($combo =~ s/(?:-|^)$one_meta_or_ctrl_key$//) {
-		my ($level, $ctl, $key, $nkey) = ($1, $2, $3, $4);
+		my ($level, $ctl, $key, $fctl, $fkey, $nkey) = ($1, $2, $3, $4, $5, $6);
+		if (!defined $fkey) {
+			$ctl = '' if !$ctl || $ctl ne '^';
+		}
+		else {
+			# meta-F12 -> "F12" by convention
+			if($fctl eq 'meta-') { $ctl = ''; }
+			# so pure F12 -> "`F12"
+			elsif (!$fctl || $fctl eq '') { $ctl = '`'; }
+			# ^F12 stays ^F12
+			else { $ctl = $fctl; }
+			$key = $fkey;
+		}
 		my $numlevel = ($level =~ y/-//);
-		$ctl = '' if !$ctl || $ctl ne '^';
 		$map = ('-' x ($numlevel%2)) . ('+' x ($numlevel/2)) .
 		    $ctl . (defined $key ? $key : "\01$nkey\01") . $map;
 	    }
