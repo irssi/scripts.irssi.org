@@ -1939,10 +1939,10 @@
   description: 'Print hilighted messages to window named "hilight"'
   filename: hilightwin.pl
   license: 'Public Domain'
-  modified: '2015-11-07 14:09:15'
+  modified: '2017-02-10 17:59:58'
   name: hilightwin
   url: http://irssi.org/
-  version: '0.04'
+  version: '0.05'
 -
   authors: 'Stefan Heinemann'
   contact: stefan.heinemann@codedump.ch
