@@ -873,15 +873,15 @@
   url: http://pieter-bas.ijdens.com/irssi/
   version: 1.0.0
 -
-  authors: 'BC-bd, Veli'
-  contact: 'bd@bc-bd.org, veli@piipiip.net'
+  authors: BC-bd
+  contact: bd@bc-bd.org
   description: 'Adds new powerful and customizable [Act: ...] item (chanelnames,modes,alias). Lets you give alias characters to windows so that you can select those with meta-<char>'
   filename: chanact.pl
   license: 'GNU GPLv2 or later'
-  modified: '2016-04-25 18:46:30'
+  modified: '2017-02-13 17:21:07'
   name: chanact
-  url: https://bc-bd.org/svn/repos/irssi/chanact
-  version: 0.5.15
+  url: http://bc-bd.org/blog/irssi/
+  version: 0.6.0
 -
   authors: "Joern 'Wulf' Heissler"
   contact: wulf@wulf.eu.org
