@@ -145,6 +145,7 @@ sub sig_setup_changed {
 	$inhibit_beep = Irssi::settings_get_bool('ctrlact_inhibit_beep');
 }
 Irssi::signal_add('setup changed', \&sig_setup_changed);
+Irssi::signal_add('setup reread', \&sig_setup_changed);
 sig_setup_changed();
 
 my $changed_since_last_save = 0;
@@ -487,6 +488,7 @@ sub UNLOAD {
 }
 
 Irssi::signal_add('setup saved', \&autosave);
+Irssi::signal_add('setup reread', \&cmd_load);
 
 Irssi::command_bind('ctrlact help',\&cmd_help);
 Irssi::command_bind('ctrlact reload',\&cmd_load);
