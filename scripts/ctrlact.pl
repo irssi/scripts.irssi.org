@@ -77,7 +77,7 @@
 # You can use the Irssi settings activity_msg_level and activity_hilight_level
 # to specify which IRC levels will be considered messages and hilights. Note
 # that if an activity indication is inhibited, then there also won't be
-# a beep (cf. beep_msg_level).
+# a beep (cf. beep_msg_level), unless you toggle ctrlmap_inhibit_beep.
 #
 ### Settings:
 #
@@ -89,6 +89,10 @@
 #   queries, and windows respectively, if no applicable mapping could be
 #   found.
 #
+# /set ctrlact_inhibit_beep [on]
+#   If an activity wouldn't be indicated, also inhibit the beep/bell. Turn
+#   this off if you want the bell anyway.
+#
 # /set ctrlact_debug [off]
 #   Turns on debug output. Not that this may itself be buggy, so please don't
 #   use it unless you really need it.
@@ -98,7 +102,6 @@
 # - figure out interplay with activity_hide_level
 # - /ctrlact add/delete/move and /ctrlact save, maybe
 # - ability to add a server tag to an item name to make matches more specific
-# - make beep inhibition configurable
 # - completion for commands
 #
 use strict;
@@ -124,12 +127,14 @@ my $map_file = Irssi::get_irssi_dir()."/ctrlact";
 my $fallback_channel_threshold = 1;
 my $fallback_query_threshold = 1;
 my $fallback_window_threshold = 1;
+my $inhibit_beep = 1;
 
 Irssi::settings_add_str('ctrlact', 'ctrlact_map_file', $map_file);
 Irssi::settings_add_bool('ctrlact', 'ctrlact_debug', $debug);
 Irssi::settings_add_int('ctrlact', 'ctrlact_fallback_channel_threshold', $fallback_channel_threshold);
 Irssi::settings_add_int('ctrlact', 'ctrlact_fallback_query_threshold', $fallback_query_threshold);
 Irssi::settings_add_int('ctrlact', 'ctrlact_fallback_window_threshold', $fallback_window_threshold);
+Irssi::settings_add_bool('ctrlact', 'ctrlact_inhibit_beep', $inhibit_beep);
 
 sub sig_setup_changed {
 	$debug = Irssi::settings_get_bool('ctrlact_debug');
@@ -137,6 +142,7 @@ sub sig_setup_changed {
 	$fallback_channel_threshold = Irssi::settings_get_int('ctrlact_fallback_channel_threshold');
 	$fallback_query_threshold = Irssi::settings_get_int('ctrlact_fallback_query_threshold');
 	$fallback_window_threshold = Irssi::settings_get_int('ctrlact_fallback_window_threshold');
+	$inhibit_beep = Irssi::settings_get_bool('ctrlact_inhibit_beep');
 }
 Irssi::signal_add('setup changed', \&sig_setup_changed);
 sig_setup_changed();
@@ -261,7 +267,7 @@ sub print_levels_for_all {
 
 ### HILIGHT SIGNAL HANDLERS ####################################################
 
-my $_inhibit_bell = 0;
+my $_inhibit_beep = 0;
 my $_inhibit_window = 0;
 
 sub maybe_inhibit_witem_hilight {
@@ -272,7 +278,7 @@ sub maybe_inhibit_witem_hilight {
 	return if ($newlevel <= $oldlevel);
 
 	$_inhibit_window = 0;
-	$_inhibit_bell = 0;
+	$_inhibit_beep = 0;
 	my $wichattype = $witem->{'chat_type'};
 	my $witype = $witem->{'type'};
 	my $winame = $witem->{'name'};
@@ -281,7 +287,9 @@ sub maybe_inhibit_witem_hilight {
 	debugprint("$winame: witem $wichattype:$witype:\"$winame\" $oldlevel → $newlevel (".($inhibit ? "< $threshold, inhibit" : ">= $threshold, pass").')');
 	if ($inhibit) {
 		Irssi::signal_stop();
-		$_inhibit_bell = 1;
+		# the rhval comes from config, so if the user doesn't want the
+		# bell inhibited, this is effectively a noop.
+		$_inhibit_beep = $inhibit_beep;
 		$_inhibit_window = $witem->window();
 	}
 }
@@ -317,7 +325,7 @@ sub maybe_inhibit_win_hilight {
 Irssi::signal_add_first('window hilight', \&maybe_inhibit_win_hilight);
 
 sub maybe_inhibit_beep {
-	Irssi::signal_stop() if $_inhibit_bell;
+	Irssi::signal_stop() if $_inhibit_beep;
 }
 Irssi::signal_add_first('beep', \&maybe_inhibit_beep);
 
