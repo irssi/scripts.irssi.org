@@ -155,6 +155,7 @@ my @DATALEVEL_KEYWORDS = ('all', 'messages', 'hilights', 'none');
 ### HELPERS ####################################################################
 
 my $_inhibit_debug_activity = 0;
+use constant DEBUGEVENTFORMAT => "%7s %-22.22s  %d %s %d → %-7s  (%-8s ← %s)";
 sub debugprint {
 	return unless $debug;
 	my ($msg, @rest) = @_;
@@ -210,8 +211,7 @@ sub walk_match_array {
 		my $result = to_data_level($pair->[1]);
 		my $tresult = from_data_level($result);
 		$name = '(unnamed)' unless length $name;
-		debugprint("$name ($type) matches '$match' → '$tresult' ($result)");
-		return $result
+		return ($result, $tresult, $match)
 	}
 	return -1;
 }
@@ -244,15 +244,25 @@ sub get_specific_threshold {
 
 sub get_item_threshold {
 	my ($chattype, $type, $name) = @_;
-	my $ret = get_specific_threshold($type, $name);
-	return $ret if $ret > 0;
-	return ($type eq 'CHANNEL') ? $fallback_channel_threshold : $fallback_query_threshold;
+	my ($ret, $tret, $match) = get_specific_threshold($type, $name);
+	return ($ret, $tret, $match) if $ret > 0;
+	if ($type eq 'CHANNEL') {
+		return ($fallback_channel_threshold, from_data_level($fallback_channel_threshold), '[default]');
+	}
+	else {
+		return ($fallback_query_threshold, from_data_level($fallback_query_threshold), '[default]');
+	}
 }
 
 sub get_win_threshold {
 	my ($name) = @_;
-	my $ret = get_specific_threshold('window', $name);
-	return ($ret > 0) ? $ret : $fallback_window_threshold;
+	my ($ret, $tret, $match) = get_specific_threshold('window', $name);
+	if ($ret > 0) {
+		return ($ret, $tret, $match);
+	}
+	else {
+		return ($fallback_window_threshold, from_data_level($fallback_window_threshold), '[default]');
+	}
 }
 
 sub print_levels_for_all {
@@ -260,9 +270,9 @@ sub print_levels_for_all {
 	Irssi::print("ctrlact: $type mappings:");
 	for (my $i = 0; $i < @arr; $i++) {
 		my $name = $arr[$i]->{'name'};
-		my $t = get_specific_threshold($type, $name);
+		my ($t, $tt, $match) = get_specific_threshold($type, $name);
 		my $c = ($type eq 'window') ? $arr[$i]->{'refnum'} : $i;
-		printf CLIENTCRAP "%4d: %-40s → %d (%s)", $c, $name, $t, from_data_level($t);
+		printf CLIENTCRAP "%4d: %-40s → %d (%s; match:%s)", $c, $name, $t, $tt, $match;
 	}
 }
 
@@ -283,9 +293,11 @@ sub maybe_inhibit_witem_hilight {
 	my $wichattype = $witem->{'chat_type'};
 	my $witype = $witem->{'type'};
 	my $winame = $witem->{'name'};
-	my $threshold = get_item_threshold($wichattype, $witype, $winame);
-	my $inhibit = $newlevel > 0 && $newlevel < $threshold;
-	debugprint("$winame: witem $wichattype:$witype:\"$winame\" $oldlevel → $newlevel (".($inhibit ? "< $threshold, inhibit" : ">= $threshold, pass").')');
+	my ($th, $tth, $match) = get_item_threshold($wichattype, $witype, $winame);
+	my $inhibit = $newlevel > 0 && $newlevel < $th;
+	debugprint(sprintf(DEBUGEVENTFORMAT, lc($witype), $winame, $newlevel,
+			$inhibit ? ('<',$th,'inhibit'):('≥',$th,'pass'),
+			$tth, $match));
 	if ($inhibit) {
 		Irssi::signal_stop();
 		# the rhval comes from config, so if the user doesn't want the
@@ -317,9 +329,12 @@ sub maybe_inhibit_win_hilight {
 		return if ($newlevel <= $oldlevel);
 
 		my $wname = $win->{'name'};
-		my $threshold = get_win_threshold($wname);
-		my $inhibit = $newlevel > 0 && $newlevel < $threshold;
-		debugprint(($wname?$wname:'(unnamed)').": window \"$wname\" $oldlevel → $newlevel (".($inhibit ? "< $threshold, inhibit" : ">= $threshold, pass").')');
+		my ($th, $tth, $match) = get_win_threshold($wname);
+		my $inhibit = $newlevel > 0 && $newlevel < $th;
+		debugprint(sprintf(DEBUGEVENTFORMAT, 'window',
+				$wname?$wname:'(unnamed)', $newlevel,
+				$inhibit ? ('<',$th,'inhibit'):('≥',$th,'pass'),
+				$tth, $match));
 		inhibit_win_hilight($win) if $inhibit;
 	}
 }
@@ -457,8 +472,8 @@ sub cmd_query {
 	my ($type, $max, @words) = parse_args(@args);
 	$type = $type // 'channel';
 	foreach my $word (@words) {
-		my $t = get_specific_threshold($type, $word);
-		printf CLIENTCRAP "ctrlact $type map: %*s → %d (%s)", $max, $word, $t, from_data_level($t);
+		my ($t, $tt, $match) = get_specific_threshold($type, $word);
+		printf CLIENTCRAP "ctrlact $type map: %*s → %d (%s, match:%s)", $max, $word, $t, $tt, $match;
 	}
 }
 
