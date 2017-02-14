@@ -675,7 +675,8 @@ TRIGGER:
 # return array of filters for the given trigger
 sub filters_for_trigger($) {
 	my ($trigger) = @_;
-	return values(%{$trigger->{'filters'}});
+	my $href = $trigger->{filters};
+	return @{$href}{ sort keys %$href };
 }
 
 # used in check_signal_message to expand $'s
@@ -1001,7 +1002,7 @@ sub to_string {
 	}
 	
 	if ($compat) {
-		foreach my $filter (keys(%filters)) {
+		foreach my $filter (sort keys(%filters)) {
 			if ($trigger->{$filter}) {
 				$string .= '-' . $filter . param_to_string($trigger->{$filter});
 			}
