@@ -279,7 +279,7 @@ sub print_levels_for_all {
 		my $net = $arr[$i]->{'server'}->{'tag'} // '';
 		my ($t, $tt, $match) = get_specific_threshold($type, $name, $net);
 		my $c = ($type eq 'window') ? $arr[$i]->{'refnum'} : $arr[$i]->window()->{'refnum'};
-		printf CLIENTCRAP "%4d: %-40.40s → %d (%-8s)  match %s", $c, $name, $t, $tt, $match;
+		Irssi::print(sprintf("%4d: %-40.40s → %d (%-8s)  match %s", $c, $name, $t, $tt, $match), MSGLEVEL_CRAP);
 	}
 }
 
@@ -465,11 +465,11 @@ sub cmd_save {
 
 sub cmd_list {
 	Irssi::print("ctrlact: window mappings");
-	print CLIENTCRAP get_mappings_table(@window_thresholds);
+	Irssi::print(get_mappings_table(@window_thresholds), MSGLEVEL_CRAP);
 	Irssi::print("ctrlact: channel mappings");
-	print CLIENTCRAP get_mappings_table(@channel_thresholds);
+	Irssi::print(get_mappings_table(@channel_thresholds), MSGLEVEL_CRAP);
 	Irssi::print("ctrlact: query mappings");
-	print CLIENTCRAP get_mappings_table(@query_thresholds);
+	Irssi::print(get_mappings_table(@query_thresholds), MSGLEVEL_CRAP);
 }
 
 sub parse_args {
