@@ -370,7 +370,7 @@ sub get_mappings_fh {
 		my $ftc = from_data_level($fallback_channel_threshold);
 		my $ftq = from_data_level($fallback_query_threshold);
 		print $fh <<"EOF";
-# ctrlact mappings file (version:$VERSION)
+# ctrlact mappings file (version: $VERSION)
 #
 # type: window, channel, query
 # server: the server tag (chatnet)
@@ -411,6 +411,7 @@ sub get_mappings_fh {
 # vim:noet:tw=0:ts=16
 EOF
 		Irssi::print("ctrlact: created new/empty mappings file: $filename");
+		seek($fh, 0, 0) || croak "Cannot rewind $filename.";
 	}
 	return $fh;
 }
@@ -419,9 +420,9 @@ sub load_mappings {
 	my ($filename) = @_;
 	@window_thresholds = @channel_thresholds = @query_thresholds = ();
 	my $fh = get_mappings_fh($filename);
-	my $firstline = <$fh>;
+	my $firstline = <$fh> || croak "Cannot read from $filename.";;
 	my $version;
-	if ($firstline =~ m/^#+\s+ctrlact mappings file \(version:([\d.]+)\)/) {
+	if ($firstline =~ m/^#+\s+ctrlact mappings file \(version: *([\d.]+)\)/) {
 		$version = $1;
 	}
 	else {
