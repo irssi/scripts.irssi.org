@@ -161,7 +161,7 @@ sub debugprint {
 	return unless $debug;
 	my ($msg, @rest) = @_;
 	$_inhibit_debug_activity = 1;
-	Irssi::print("ctrlact debug: ".$msg);
+	Irssi::print("ctrlact debug: ".$msg, MSGLEVEL_CRAP);
 	$_inhibit_debug_activity = 0;
 }
 
