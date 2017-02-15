@@ -15,17 +15,19 @@
 #
 # For instance, you might never want to be disturbed by activity in any
 # channel, unless someone highlights you. However, you do want all activity
-# in queries, as well as an indication about any chatter in your company
-# channels. The following ctrlact map would do this for you:
+# in queries (except on efnet, as well as an indication about any chatter in
+# your company channels. The following ctrlact map would do this for you:
 #
-#	channel		/^#myco-/	messages
-#	channel		*		hilights
-#	query		*		all
+#	channel			/^#myco-/	messages
+#	channel			*		hilights
+#	query		efnet	*		messages
+#	query			*		all
 #
 # These three lines would be interpreted/read as:
 #  "only messages or higher in a channel matching /^#myco-/ should trigger act"
 #  "in all other channels, only hilights (or higher) should trigger act"
-#  "messages of all levels should trigger act in queries"
+#  "queries on efnet should only trigger act for messages and higher"
+#  "messages of all levels should trigger act in queries elsewhere"
 #
 # The activity level in the third column is thus to be interpreted as
 #  "the minimum level of activity that will trigger an indication"
@@ -101,7 +103,6 @@
 #
 # - figure out interplay with activity_hide_level
 # - /ctrlact add/delete/move and /ctrlact save, maybe
-# - ability to add a server tag to an item name to make matches more specific
 # - completion for commands
 #
 use strict;
@@ -109,7 +110,7 @@ use warnings;
 use Irssi;
 use Text::ParseWords;
 
-our $VERSION = '1.0';
+our $VERSION = '1.1';
 
 our %IRSSI = (
     authors     => 'martin f. krafft',
@@ -117,7 +118,7 @@ our %IRSSI = (
     name        => 'ctrlact',
     description => 'allows per-channel control over activity indication',
     license     => 'MIT',
-    changed     => '2017-02-12'
+    changed     => '2017-02-15'
 );
 
 ### DEFAULTS AND SETTINGS ######################################################
@@ -155,7 +156,7 @@ my @DATALEVEL_KEYWORDS = ('all', 'messages', 'hilights', 'none');
 ### HELPERS ####################################################################
 
 my $_inhibit_debug_activity = 0;
-use constant DEBUGEVENTFORMAT => "%7s %-22.22s  %d %s %d → %-7s  (%-8s ← %s)";
+use constant DEBUGEVENTFORMAT => "%7s %7.7s %-22.22s  %d %s %d → %-7s  (%-8s ← %s)";
 sub debugprint {
 	return unless $debug;
 	my ($msg, @rest) = @_;
@@ -204,13 +205,17 @@ sub from_data_level {
 }
 
 sub walk_match_array {
-	my ($name, $type, @arr) = @_;
-	foreach my $pair (@arr) {
-		my $match = match($pair->[0], $name);
-		next unless $match;
-		my $result = to_data_level($pair->[1]);
+	my ($name, $net, $type, @arr) = @_;
+	foreach my $quadruplet (@arr) {
+		my $netmatch = match($quadruplet->[0], $net);
+		my $match = match($quadruplet->[1], $name);
+		next unless $netmatch and $match;
+
+		my $result = to_data_level($quadruplet->[2]);
 		my $tresult = from_data_level($result);
 		$name = '(unnamed)' unless length $name;
+		$match = sprintf('line %-3d = net:%-10.10s name:%s',
+			$quadruplet->[3], $netmatch, $match);
 		return ($result, $tresult, $match)
 	}
 	return -1;
@@ -220,22 +225,23 @@ sub get_mappings_table {
 	my (@arr) = @_;
 	my @ret = ();
 	for (my $i = 0; $i < @arr; $i++) {
-		push @ret, sprintf("%4d: %-40s %-10s", $i, $arr[$i]->[0], $arr[$i]->[1]);
+		push @ret, sprintf("%4d: %-10s %-40s %-10s",
+			$i, $arr[$i]->[0], $arr[$i]->[1], $arr[$i]->[2]);
 	}
 	return join("\n", @ret);
 }
 
 sub get_specific_threshold {
-	my ($type, $name) = @_;
+	my ($type, $name, $net) = @_;
 	$type = lc($type);
 	if ($type eq 'window') {
-		return walk_match_array($name, $type, @window_thresholds);
+		return walk_match_array($name, $net, $type, @window_thresholds);
 	}
 	elsif ($type eq 'channel') {
-		return walk_match_array($name, $type, @channel_thresholds);
+		return walk_match_array($name, $net, $type, @channel_thresholds);
 	}
 	elsif ($type eq 'query') {
-		return walk_match_array($name, $type, @query_thresholds);
+		return walk_match_array($name, $net, $type, @query_thresholds);
 	}
 	else {
 		die "ctrlact: can't look up threshold for type: $type";
@@ -243,8 +249,8 @@ sub get_specific_threshold {
 }
 
 sub get_item_threshold {
-	my ($chattype, $type, $name) = @_;
-	my ($ret, $tret, $match) = get_specific_threshold($type, $name);
+	my ($chattype, $type, $name, $net) = @_;
+	my ($ret, $tret, $match) = get_specific_threshold($type, $name, $net);
 	return ($ret, $tret, $match) if $ret > 0;
 	if ($type eq 'CHANNEL') {
 		return ($fallback_channel_threshold, from_data_level($fallback_channel_threshold), '[default]');
@@ -255,8 +261,8 @@ sub get_item_threshold {
 }
 
 sub get_win_threshold {
-	my ($name) = @_;
-	my ($ret, $tret, $match) = get_specific_threshold('window', $name);
+	my ($name, $net) = @_;
+	my ($ret, $tret, $match) = get_specific_threshold('window', $name, $net);
 	if ($ret > 0) {
 		return ($ret, $tret, $match);
 	}
@@ -270,9 +276,10 @@ sub print_levels_for_all {
 	Irssi::print("ctrlact: $type mappings:");
 	for (my $i = 0; $i < @arr; $i++) {
 		my $name = $arr[$i]->{'name'};
-		my ($t, $tt, $match) = get_specific_threshold($type, $name);
-		my $c = ($type eq 'window') ? $arr[$i]->{'refnum'} : $i;
-		printf CLIENTCRAP "%4d: %-40s → %d (%s; match:%s)", $c, $name, $t, $tt, $match;
+		my $net = $arr[$i]->{'server'}->{'tag'} // '';
+		my ($t, $tt, $match) = get_specific_threshold($type, $name, $net);
+		my $c = ($type eq 'window') ? $arr[$i]->{'refnum'} : $arr[$i]->window()->{'refnum'};
+		printf CLIENTCRAP "%4d: %-40.40s → %d (%-8s)  match %s", $c, $name, $t, $tt, $match;
 	}
 }
 
@@ -293,9 +300,10 @@ sub maybe_inhibit_witem_hilight {
 	my $wichattype = $witem->{'chat_type'};
 	my $witype = $witem->{'type'};
 	my $winame = $witem->{'name'};
-	my ($th, $tth, $match) = get_item_threshold($wichattype, $witype, $winame);
+	my $witag = $witem->{'server'}->{'tag'} // '';
+	my ($th, $tth, $match) = get_item_threshold($wichattype, $witype, $winame, $witag);
 	my $inhibit = $newlevel > 0 && $newlevel < $th;
-	debugprint(sprintf(DEBUGEVENTFORMAT, lc($witype), $winame, $newlevel,
+	debugprint(sprintf(DEBUGEVENTFORMAT, lc($witype), $witag, $winame, $newlevel,
 			$inhibit ? ('<',$th,'inhibit'):('≥',$th,'pass'),
 			$tth, $match));
 	if ($inhibit) {
@@ -329,9 +337,10 @@ sub maybe_inhibit_win_hilight {
 		return if ($newlevel <= $oldlevel);
 
 		my $wname = $win->{'name'};
-		my ($th, $tth, $match) = get_win_threshold($wname);
+		my $wtag = $win->{'server'}->{'tag'} // '';
+		my ($th, $tth, $match) = get_win_threshold($wname, $wtag);
 		my $inhibit = $newlevel > 0 && $newlevel < $th;
-		debugprint(sprintf(DEBUGEVENTFORMAT, 'window',
+		debugprint(sprintf(DEBUGEVENTFORMAT, 'window', $wtag,
 				$wname?$wname:'(unnamed)', $newlevel,
 				$inhibit ? ('<',$th,'inhibit'):('≥',$th,'pass'),
 				$tth, $match));
@@ -363,39 +372,40 @@ sub get_mappings_fh {
 # ctrlact mappings file (version:$VERSION)
 #
 # type: window, channel, query
+# server: the server tag (chatnet)
 # name: full name to match, /regexp/, or * (for all)
 # min.level: none, messages, hilights, all, or 1,2,3,4
 #
-# type	name	min.level
+# type	server	name	min.level
 
 
 # EXAMPLES
 #
 ### only indicate activity in the status window if messages were displayed:
-# window	(status)	messages
+# window	*	(status)	messages
 #
 ### never ever indicate activity for any item bound to this window:
-# window	oubliette	none
+# window	*	oubliette	none
 #
-### indicate activity on all messages in debian-related channels:
-# channel	/^#debian/	messages
+### indicate activity on all messages in debian-related channels on OFTC:
+# channel	oftc	/^#debian/	messages
 #
 ### display any text (incl. joins etc.) for the '#madduck' channel:
-# channel	#madduck	all
+# channel	*	#madduck	all
 #
 ### otherwise ignore everything in channels, unless a hilight is triggered:
-# channel	*	hilights
+# channel	*	*	hilights
 #
 ### make somebot only get your attention if they hilight you:
-# query	somebot	hilights
+# query	efnet	somebot	hilights
 #
 ### otherwise we want to see everything in queries:
-# query	*	all
+# query	*	*	all
 
 # DEFAULTS:
-# window	*	$ftw
-# channel	*	$ftc
-# query	*	$ftq
+# window	*	*	$ftw
+# channel	*	*	$ftc
+# query	*	*	$ftq
 
 # vim:noet:tw=0:ts=16
 EOF
@@ -408,12 +418,36 @@ sub load_mappings {
 	my ($filename) = @_;
 	@window_thresholds = @channel_thresholds = @query_thresholds = ();
 	my $fh = get_mappings_fh($filename);
+	my $firstline = <$fh>;
+	my $version;
+	if ($firstline =~ m/^#+\s+ctrlact mappings file \(version:([\d.]+)\)/) {
+		$version = $1;
+	}
+	else {
+		die "First line of $filename is not a ctrlact header.";
+	}
+
+	my $nrcols = 4;
+	if ($version eq $VERSION) {
+		# current version
+	}
+	elsif ($version eq "1.0") {
+		$nrcols = 3;
+	}
+	else {
+		die "Unsupported version found in $filename: $version"
+	}
+	my $linesplitter = '^\s*'.join('\s+', ('(\S+)') x $nrcols).'\s*$';
+	my $l = 1;
 	while (<$fh>) {
+		$l++;
 		next if m/^\s*(?:#|$)/;
-		m/^\s*(\S+)\s+(\S+)\s+(\S+)\s*$/;
-		push @window_thresholds, [$2, $3] if match($1, 'window');
-		push @channel_thresholds, [$2, $3] if match($1, 'channel');
-		push @query_thresholds, [$2, $3] if match($1, 'query');
+		my ($type, @matchers) = m/$linesplitter/;
+		@matchers = ['*', @matchers] if ($version eq "1.0");
+		push @matchers, $l;
+		push @window_thresholds, [@matchers] if match($type, 'window');
+		push @channel_thresholds, [@matchers] if match($type, 'channel');
+		push @query_thresholds, [@matchers] if match($type, 'query');
 	}
 	close($fh) || die "Cannot close mappings file: $!";
 }
@@ -442,6 +476,7 @@ sub parse_args {
 	my (@args) = @_;
 	my @words = ();
 	my $typewasset = 0;
+	my $tag;
 	my $max = 0;
 	my $type = undef;
 	foreach my $arg (@args) {
@@ -455,25 +490,26 @@ sub parse_args {
 			$type = 'query' if $1 =~ m/^q/;
 			$typewasset = 1
 		}
-		elsif ($arg =~ m/^-/) {
-			error("Unknown argument: $arg");
+		elsif ($arg =~ m/-(\S+)/) {
+			$tag = $1;
 		}
 		else {
 			push @words, $arg;
 			$max = length $arg if length $arg > $max;
 		}
 	}
-	return ($type, $max, @words);
+	return ($type, $tag, $max, @words);
 }
 
 sub cmd_query {
 	my ($data, $server, $item) = @_;
 	my @args = shellwords($data);
-	my ($type, $max, @words) = parse_args(@args);
+	my ($type, $tag, $max, @words) = parse_args(@args);
 	$type = $type // 'channel';
+	$tag = $tag // '*';
 	foreach my $word (@words) {
-		my ($t, $tt, $match) = get_specific_threshold($type, $word);
-		printf CLIENTCRAP "ctrlact $type map: %*s → %d (%s, match:%s)", $max, $word, $t, $tt, $match;
+		my ($t, $tt, $match) = get_specific_threshold($type, $word, $tag);
+		printf CLIENTCRAP "ctrlact $type map: %s %*s → %d (%s, match:%s)", $tag, $max, $word, $t, $tt, $match;
 	}
 }
 
