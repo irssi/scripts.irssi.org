@@ -361,10 +361,10 @@ sub get_mappings_fh {
 	my ($filename) = @_;
 	my $fh;
 	if (-e $filename) {
-		open($fh, $filename) || croak "Cannot open mappings file: $!";
+		open($fh, '<', $filename) || croak "Cannot open mappings file: $!";
 	}
 	else {
-		open($fh, "+>$filename") || croak "Cannot create mappings file: $!";
+		open($fh, '+>', $filename) || croak "Cannot create mappings file: $!";
 
 		my $ftw = from_data_level($fallback_window_threshold);
 		my $ftc = from_data_level($fallback_channel_threshold);
