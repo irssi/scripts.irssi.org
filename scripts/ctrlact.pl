@@ -225,8 +225,8 @@ sub get_mappings_table {
 	my (@arr) = @_;
 	my @ret = ();
 	for (my $i = 0; $i < @arr; $i++) {
-		push @ret, sprintf("%4d: %-10s %-40s %-10s",
-			$i, $arr[$i]->[0], $arr[$i]->[1], $arr[$i]->[2]);
+		push @ret, sprintf("%4d: %-10s %-40s %-10s (line: %3d)",
+			$i, $arr[$i]->[0], $arr[$i]->[1], $arr[$i]->[2], $arr[$i]->[3]);
 	}
 	return join("\n", @ret);
 }
