@@ -107,6 +107,7 @@
 #
 use strict;
 use warnings;
+use Carp qw( croak );
 use Irssi;
 use Text::ParseWords;
 
@@ -200,7 +201,7 @@ sub to_data_level {
 
 sub from_data_level {
 	my ($dl) = @_;
-	die "Invalid numeric data level: $dl" unless $dl =~ m/^([1-4])$/;
+	croak "Invalid numeric data level: $dl" unless $dl =~ m/^([1-4])$/;
 	return $DATALEVEL_KEYWORDS[$dl-1];
 }
 
@@ -244,7 +245,7 @@ sub get_specific_threshold {
 		return walk_match_array($name, $net, $type, @query_thresholds);
 	}
 	else {
-		die "ctrlact: can't look up threshold for type: $type";
+		croak "ctrlact: can't look up threshold for type: $type";
 	}
 }
 
@@ -360,10 +361,10 @@ sub get_mappings_fh {
 	my ($filename) = @_;
 	my $fh;
 	if (-e $filename) {
-		open($fh, $filename) || die "Cannot open mappings file: $!";
+		open($fh, $filename) || croak "Cannot open mappings file: $!";
 	}
 	else {
-		open($fh, "+>$filename") || die "Cannot create mappings file: $!";
+		open($fh, "+>$filename") || croak "Cannot create mappings file: $!";
 
 		my $ftw = from_data_level($fallback_window_threshold);
 		my $ftc = from_data_level($fallback_channel_threshold);
@@ -424,7 +425,7 @@ sub load_mappings {
 		$version = $1;
 	}
 	else {
-		die "First line of $filename is not a ctrlact header.";
+		croak "First line of $filename is not a ctrlact header.";
 	}
 
 	my $nrcols = 4;
@@ -435,7 +436,7 @@ sub load_mappings {
 		$nrcols = 3;
 	}
 	else {
-		die "Unsupported version found in $filename: $version"
+		croak "Unsupported version found in $filename: $version"
 	}
 	my $linesplitter = '^\s*'.join('\s+', ('(\S+)') x $nrcols).'\s*$';
 	my $l = 1;
@@ -449,7 +450,7 @@ sub load_mappings {
 		push @channel_thresholds, [@matchers] if match($type, 'channel');
 		push @query_thresholds, [@matchers] if match($type, 'query');
 	}
-	close($fh) || die "Cannot close mappings file: $!";
+	close($fh) || croak "Cannot close mappings file: $!";
 }
 
 sub cmd_load {
