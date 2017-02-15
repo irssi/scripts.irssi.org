@@ -214,7 +214,7 @@ sub walk_match_array {
 		my $result = to_data_level($quadruplet->[2]);
 		my $tresult = from_data_level($result);
 		$name = '(unnamed)' unless length $name;
-		$match = sprintf('line %-3d = net:%-10.10s name:%s',
+		$match = sprintf('line %3d = net:%s name:%s',
 			$quadruplet->[3], $netmatch, $match);
 		return ($result, $tresult, $match)
 	}
