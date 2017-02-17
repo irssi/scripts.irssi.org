@@ -120,6 +120,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                      crapbuster ](Test/crapbuster/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       credstore ](Test/credstore/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                            cron ](Test/cron/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
+[                         ctrlact ](Test/ctrlact/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   
 [                            cwho ](Test/cwho/)|  ✔   |  ✔   |  ✔   | 18   |  ✔   | (c)
 [               dancer_forwardfix ](Test/dancer_forwardfix/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                 dancer_hide_477 ](Test/dancer_hide_477/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -197,7 +198,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                        highlite ](Test/highlite/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                         hignore ](Test/hignore/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                      hilightcmd ](Test/hilightcmd/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                      hilightwin ](Test/hilightwin/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[                      hilightwin ](Test/hilightwin/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                      hilite_url ](Test/hilite_url/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                hipchat_complete ](Test/hipchat_complete/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                  history_search ](Test/history_search/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
@@ -517,4 +518,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                     xmpp-notify ](Test/xmpp-notify/)|  ✔   |  ✔   |  ✔   | 21   |  ✔   | (c)
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 
-f5801eb3f56c452a8c3598aae3320e0a41c0b5ca | 773
+c2a891a1ad9138196c415e77f8ff09ad06607738 | 780
