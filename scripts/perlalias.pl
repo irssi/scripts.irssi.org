@@ -75,7 +75,7 @@ use POSIX qw(strftime);
 
 { package Irssi::Nick; } # Keeps trying to look for this package but for some reason it doesn't get loaded.
 
-our $VERSION = '1.1';
+our $VERSION = '1.2';
 our %IRSSI = (
 	authors => 'aquanight',
 	contact => 'aquanight@gmail.com',
