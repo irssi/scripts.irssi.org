@@ -235,6 +235,34 @@ sub sig_setup_reread {
 	close $fd;
 }
 
+sub sig_complete_perlalias {
+	my ($lst, $win, $word, $line, $want_space) = @_;
+	$word//return;
+	$line//return;
+	$lst//return;
+	if ($line ne '') {
+		my $def = $cmds{$line};
+		$def//return;
+		push @$lst, $def->{textcmd};
+		Irssi::signal_stop();
+	}
+	else {
+		push @$lst, (grep /^\Q$word\E/i, keys %cmds);
+		Irssi::signal_stop();
+	}
+}
+
+sub sig_complete_perlunalias {
+	my ($lst, $win, $word, $line, $want_space) = @_;
+	$lst//return;
+	$word//return;
+	push @$lst, (grep /^\Q$word\E/i, keys %cmds);
+}
+
+Irssi::signal_register({"complete command " => [qw(glistptr_char* Irssi::UI::Window string string intptr)]});
+Irssi::signal_add("complete command perlalias" => \&sig_complete_perlalias);
+Irssi::signal_add("complete command perlunalias" => \&sig_complete_perlunalias);
+
 Irssi::signal_add("setup saved" => \&sig_setup_saved);
 Irssi::signal_add("setup reread" => \&sig_setup_reread);
 
