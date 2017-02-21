@@ -343,7 +343,7 @@ sub maybe_inhibit_win_hilight {
 		my ($th, $tth, $match) = get_win_threshold($wname, $wtag);
 		my $inhibit = $newlevel > 0 && $newlevel < $th;
 		debugprint(sprintf(DEBUGEVENTFORMAT, 'window', $wtag,
-				$wname?$wname:'(unnamed)', $newlevel,
+				$wname?$wname:"$win->{'refnum'}(unnamed)", $newlevel,
 				$inhibit ? ('<',$th,'inhibit'):('≥',$th,'pass'),
 				$tth, $match));
 		inhibit_win_hilight($win) if $inhibit;
