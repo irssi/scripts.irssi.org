@@ -3605,9 +3605,9 @@
   description: 'Quickly create commands from short perl blocks'
   filename: perlalias.pl
   license: 'public domain'
-  modified: '2017-01-21 05:12:33'
+  modified: '2017-02-19 12:53:47'
   name: perlalias
-  version: '1.1'
+  version: '1.2'
 -
   authors: 'Adam Duck'
   contact: duck@cs.uni-frankfurt.de
