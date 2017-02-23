@@ -111,7 +111,7 @@ use Carp qw( croak );
 use Irssi;
 use Text::ParseWords;
 
-our $VERSION = '1.1';
+our $VERSION = '1.2';
 
 our %IRSSI = (
     authors     => 'martin f. krafft',
@@ -119,7 +119,7 @@ our %IRSSI = (
     name        => 'ctrlact',
     description => 'allows per-channel control over activity indication',
     license     => 'MIT',
-    changed     => '2017-02-15'
+    changed     => '2017-02-24'
 );
 
 ### DEFAULTS AND SETTINGS ######################################################
@@ -208,7 +208,8 @@ sub from_data_level {
 sub walk_match_array {
 	my ($name, $net, $type, @arr) = @_;
 	foreach my $quadruplet (@arr) {
-		my $netmatch = match($quadruplet->[0], $net);
+		my $netmatch = $net eq '*' ? '(ignored)'
+					: match($quadruplet->[0], $net);
 		my $match = match($quadruplet->[1], $name);
 		next unless $netmatch and $match;
 
@@ -431,13 +432,13 @@ sub load_mappings {
 
 	my $nrcols = 4;
 	if ($version eq $VERSION) {
-		# current version
+		# current version, i.e. no special handling is required. If
+		# previous versions require special handling, then massage the
+		# data or do whatever is required in the following
+		# elsif-clauses:
 	}
 	elsif ($version eq "1.0") {
 		$nrcols = 3;
-	}
-	else {
-		croak "Unsupported version found in $filename: $version"
 	}
 	my $linesplitter = '^\s*'.join('\s+', ('(\S+)') x $nrcols).'\s*$';
 	my $l = 1;
