@@ -1,11 +1,11 @@
 ---
 -
   authors: 'martin f. krafft'
-  changed: 2017-02-15
+  changed: 2017-02-24
   contact: madduck@madduck.net
   default_package: ctrlact
   description: 'allows per-channel control over activity indication'
   license: MIT
-  modified: '2017-02-15 22:20:06'
+  modified: '2017-02-24 07:41:29'
   name: ctrlact
-  version: '1.1'
+  version: '1.2'
