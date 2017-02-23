@@ -432,13 +432,13 @@ sub load_mappings {
 
 	my $nrcols = 4;
 	if ($version eq $VERSION) {
-		# current version
+		# current version, i.e. no special handling is required. If
+		# previous versions require special handling, then massage the
+		# data or do whatever is required in the following
+		# elsif-clauses:
 	}
 	elsif ($version eq "1.0") {
 		$nrcols = 3;
-	}
-	else {
-		croak "Unsupported version found in $filename: $version"
 	}
 	my $linesplitter = '^\s*'.join('\s+', ('(\S+)') x $nrcols).'\s*$';
 	my $l = 1;
