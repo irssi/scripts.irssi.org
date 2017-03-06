@@ -41,7 +41,6 @@ whitelist:
   - colorkick
   - connectcmd
   - dau
-  - dccself
   - dnsspam
   - hddtemp
   - hitcount
