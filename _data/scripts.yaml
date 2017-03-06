@@ -4557,8 +4557,9 @@
   description: translitiratar
   filename: translit.pl
   license: GPL
-  modified: '2008-05-17 17:39:11'
+  modified: '2017-03-05 14:29:01'
   name: translit
+  version: '0.1'
 -
   authors: 'Wouter Coekaerts'
   contact: wouter@coekaerts.be
