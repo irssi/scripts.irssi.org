@@ -461,7 +461,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                        trackbar ](Test/trackbar/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                       tracknick ](Test/tracknick/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                           track ](Test/track/)|  ✔   |  ✔   |  ✔   | 36   |  ✔   
-[                        translit ](Test/translit/)|  ✔   |  ✘   |  ✔   |  8   |  ☡   
+[                        translit ](Test/translit/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                         trigger ](Test/trigger/)|  ✔   |  ✔   |  ✔   | 16   |  ✔   
 [                        trustweb ](Test/trustweb/)|  ✔   |  ✔   |  ✔   | 20   |  ✔   
 [                         tvmusor ](Test/tvmusor/)|  ✔   |  ✘   |  ✔   | 17   |  ☡   
@@ -518,4 +518,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                     xmpp-notify ](Test/xmpp-notify/)|  ✔   |  ✔   |  ✔   | 21   |  ✔   
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   
 
-3c41230d022c3a258d32784466cb1e9d61dc5e30 | 791
+3120be4431f9169291416f96def63fc743c226c2 | 792
