@@ -1251,8 +1251,9 @@
   description: "/dccself ip port, starts a dcc chat with yourself on that \n\t                host/port, best used with /set dcc_autochat_masks."
   filename: dccself.pl
   license: GPL
-  modified: '2008-05-17 17:39:11'
+  modified: '2017-03-05 13:58:24'
   name: dccself
+  version: '0.1'
 -
   authors: "Matti 'qvr' Hiljanen"
   contact: matti\@hiljanen.com
