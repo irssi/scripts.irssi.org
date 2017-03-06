@@ -1,6 +1,6 @@
 * Use of uninitialized value $Irssi::Script::xetra::forked in numeric gt (>) at xetra.pl line 95.
 * 
 * >> Xetra 20030208 loaded: /xetra help for help
+* -!- Irssi: Loaded script xetra
 * -!- Irssi: Error in script xetra:
 * Can't locate object method "new" via package "Data::Dumper" (perhaps you forgot to load "Data::Dumper"?) at xetra.pl line 112.
-* -!- Irssi: Loaded script xetra

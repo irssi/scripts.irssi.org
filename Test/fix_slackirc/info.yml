@@ -5,7 +5,6 @@
   default_package: fix_slackirc
   description: 'Some workarounds to improve irssi experience on the Slack IRC gateway'
   license: ISC
-  modified: '2016-08-16 22:01:01'
   name: fix_slackirc
   url: http://anti.teamidiot.de/
   version: '0.3'

@@ -5,7 +5,6 @@
   default_package: fullwidth
   description: 'talk like some vaporwave cool kid'
   license: 'Apache 2.0'
-  modified: '2016-09-03 21:27:52'
   name: fullwidth
   url: http://github.com/GeneralUnRest/
   version: 1.1.0
