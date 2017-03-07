@@ -40,7 +40,7 @@ sub catch_junk
 	for my $channel (split(/ /,
 		Irssi::settings_get_str('colorkick_channels')))
 	{
-		if ($target == $channel)
+		if ($target eq $channel)
 		{
 			$valid_channel = 1;
 			last;
