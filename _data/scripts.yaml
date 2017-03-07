@@ -1068,8 +1068,9 @@
   description: 'kicking users for using colors or blinks'
   filename: colorkick.pl
   license: 'public domain'
-  modified: '2014-10-17 20:34:00'
+  modified: '2017-03-07 22:28:22'
   name: colorkick
+  version: '0.1'
 -
   authors: "Timo 'cras' Sirainen"
   contact: tss@iki.fi
