@@ -355,7 +355,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                          ownage ](Test/ownage/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                     page-c0ffee ](Test/page-c0ffee/)|  ✘   |  ✔   |  ✔   |  5   |  ☡   
 [                     page_reeler ](Test/page_reeler/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                           pager ](Test/pager/)|  ✘   |  ✔   |  ✔   |  3   |  ☡   
+[                           pager ](Test/pager/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                       pangotext ](Test/pangotext/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
 [                    paste_derwan ](Test/paste_derwan/)|  ✔   |  ✔   |  ✔   | 53   |  ✔   
 [                    paste-derwan ](Test/paste-derwan/)|  ✔   |  ✔   |  ✔   | 37   |  ✔   
@@ -518,4 +518,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                     xmpp-notify ](Test/xmpp-notify/)|  ✔   |  ✔   |  ✔   | 21   |  ✔   
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   
 
-3120be4431f9169291416f96def63fc743c226c2 | 792
+9a4868007cb9167693220e1090acc7eebac848b5 | 794

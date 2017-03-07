@@ -1,4 +1,1 @@
-* -!- Irssi: Error in script pager:
-* Global symbol "$VERSION" requires explicit package name at pager.pl line 5.
-* Global symbol "%IRSSI" requires explicit package name at pager.pl line 6.
-* BEGIN not safe after errors--compilation aborted at pager.pl line 55.
+* -!- Irssi: Loaded script pager
