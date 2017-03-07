@@ -38,7 +38,6 @@ whitelist:
   - babelirc
   - cap_sasl_fail
   - cap_sasl
-  - colorkick
   - connectcmd
   - dau
   - dnsspam

@@ -13,7 +13,8 @@ use strict;
 use Irssi;
 use Irssi::Irc;
 
-use vars %IRSSI;
+use vars qw/%IRSSI $VERSION/;
+$VERSION='0.1';
 %IRSSI =
 (
 	authors		=> "Gabor Nyeki",
@@ -22,7 +23,7 @@ use vars %IRSSI;
 	description	=> "kicking users for using colors or blinks",
 	license		=> "public domain",
 	written		=> "Thu Dec 26 00:22:54 CET 2002",
-	changed		=> "Fri Jan  2 03:43:10 CET 2004"
+	changed		=> "2017-03-07"
 );
 
 sub catch_junk
@@ -31,15 +32,15 @@ sub catch_junk
 	my ($target, $text) = split(/ :/, $data, 2);
 	my $valid_channel = 0;
 
-	if ($target[0] != '#' && $target[0] != '!' && $target[0] != '&')
-	{
-		return;
-	}
+	#if ($target[0] != '#' && $target[0] != '!' && $target[0] != '&')
+	#{
+	#	return;
+	#}
 
 	for my $channel (split(/ /,
 		Irssi::settings_get_str('colorkick_channels')))
 	{
-		if ($target == $channel)
+		if ($target eq $channel)
 		{
 			$valid_channel = 1;
 			last;
