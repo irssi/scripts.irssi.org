@@ -2,14 +2,16 @@
 
 use strict;
 use Irssi 20020121.2020 ();
-$VERSION = "1.1";
+
+use vars qw/$VERSION %IRSSI/;
+$VERSION = "1.2";
 %IRSSI = (
 	  authors     => 'Jean-Yves Lefort',
 	  contact     => 'jylefort\@brutele.be',
 	  name        => 'pager',
 	  description => 'Notifies people if they send you a private message or a DCC chat offer while you are away; runs a shell command configurable via /set if they page you',
 	  license     => 'BSD',
-	  changed     => '$Date: 2003/01/27 09:45:16 $ ',
+	  changed     => '$Date: 2017/03/06 $ ',
 );
 
 # note:
@@ -32,6 +34,9 @@ $VERSION = "1.1";
 #			a DCC chat offer (this automatically pages you)
 #
 # changes:
+#
+#	2017-03-06	release 1.2
+#			* declaration $VERSION %IRSSI
 #
 #	2003-01-27	release 1.1
 #			* notices and commands are now optional

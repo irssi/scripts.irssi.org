@@ -62,7 +62,6 @@ whitelist:
   - 'on'
   - osd
   - page-c0ffee
-  - pager
   - query
   - quizgr
   - quizmaster-fr
