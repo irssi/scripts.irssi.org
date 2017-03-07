@@ -109,7 +109,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                        cmpchans ](Test/cmpchans/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
 [                     colon_emoji ](Test/colon_emoji/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
 [                  colorize_nicks ](Test/colorize_nicks/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
-[                       colorkick ](Test/colorkick/)|  ✘   |  ✘   |  ✔   | 14   |  ☡   
+[                       colorkick ](Test/colorkick/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                       colorswap ](Test/colorswap/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                     complete_at ](Test/complete_at/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   
 [              complete_lastspoke ](Test/complete_lastspoke/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
@@ -518,4 +518,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                     xmpp-notify ](Test/xmpp-notify/)|  ✔   |  ✔   |  ✔   | 21   |  ✔   
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   
 
-9a4868007cb9167693220e1090acc7eebac848b5 | 794
+f6dd87b5a73bc2e72f323116f7d14b900d5903fe | 796

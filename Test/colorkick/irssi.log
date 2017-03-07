@@ -1,3 +1,1 @@
-* -!- Irssi: Error in script colorkick:
-* Global symbol "%IRSSI" requires explicit package name at colorkick.pl line 16.
-* BEGIN not safe after errors--compilation aborted at colorkick.pl line 16.
+* -!- Irssi: Loaded script colorkick
