@@ -149,10 +149,14 @@ sub read_settings {
 
     $last_refresh = $time;
 	
-	#Irssi::timeout_remove(my $refresh_tag) if (my $refresh_tag);
+	Irssi::timeout_remove($refresh_tag) if ($refresh_tag);
     $refresh_tag = Irssi::timeout_add($time*1000, 'refresh_hitcount', undef);
 
 	refresh_hitcount();
+}
+
+sub UNLOAD {
+	Irssi::timeout_remove($refresh_tag) if ($refresh_tag);
 }
 
 # default values
