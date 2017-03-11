@@ -2193,20 +2193,20 @@
   description: 'irssi quiz script'
   filename: iquiz.pl
   license: 'GNU GPL v3 or any later version'
-  modified: '2016-10-03 18:26:38'
+  modified: '2017-03-11 21:51:03'
   name: iQuiz
   url: http://iquiz.quizpl.net
-  version: '160919'
+  version: '170202'
 -
   authors: wilk
   contact: http://mail.quizpl.net
   description: 'irssi quiz script'
   filename: iquiz_en.pl
   license: 'GNU GPL v3 or any later version'
-  modified: '2016-10-03 18:26:38'
+  modified: '2017-03-11 21:51:03'
   name: iQuiz
   url: http://iquiz.quizpl.net
-  version: 160919_en
+  version: 170202_en
 -
   authors: DonRumata
   commands: none
