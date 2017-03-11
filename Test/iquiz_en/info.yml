@@ -1,13 +1,14 @@
 ---
 -
   authors: wilk
-  changed: 2016-09-19
+  changed: 2017-02-02
   changes: 'see http://www.quizpl.net/viewtopic.php?f=3&t=404'
   contact: http://mail.quizpl.net
   default_package: iquiz_en
   description: 'irssi quiz script'
   license: 'GNU GPL v3 or any later version'
+  modified: '2017-03-11 21:51:03'
   name: iQuiz
   url: http://iquiz.quizpl.net
   usage: 'see http://www.quizpl.net/viewtopic.php?f=3&t=587'
-  version: 160919_en
+  version: 170202_en
