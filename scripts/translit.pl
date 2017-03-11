@@ -1,7 +1,8 @@
 use strict;
-use vars qw(%IRSSI);
+use vars qw(%IRSSI $VERSION);
 
 use Irssi;
+$VERSION = "0.1";
 %IRSSI = (
   authors     => 'dreg',
   contact     => 'dreg@fine.lv',

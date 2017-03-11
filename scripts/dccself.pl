@@ -1,7 +1,8 @@
 use strict;
-use vars qw/%IRSSI/;
+use vars qw/%IRSSI $VERSION/;
 use Irssi qw(command_bind active_server);
 
+$VERSION= "0.1";
 %IRSSI = (
 	authors     => "David Leadbeater",
 	contact     => "dgl\@dgl.cx",

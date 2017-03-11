@@ -5,7 +5,7 @@
 use strict;
 
 use vars qw($VERSION %IRSSI);
-$VERSION = "20030208";
+$VERSION = "20170204";
 %IRSSI = (
     authors     => "Stefan 'tommie' Tomanek",
     contact     => "stefan\@pico.ruhr.de",
@@ -37,6 +37,8 @@ sub show_help() {
     Display this help
 /postpone flush <nick>
     Flush postponed messages to <nick>
+/postpone discard <nick>
+    Discard postponed messages to <nick>
 /postpone list
     List postponed messages
 ";
@@ -85,11 +87,11 @@ sub cmd_postpone ($$$) {
     my @arg = split(/ /, $args);
     if (scalar(@arg) < 1) {
 	#foo
-    } elsif ($arg[0] eq 'flush' && defined $arg[1]) {
+    } elsif (($arg[0] eq 'discard' || $arg[0] eq 'flush') && defined $arg[1]) {
 	return unless ($witem && $witem->{type} eq "CHANNEL");
 	while (scalar(@{$messages{$server->{tag}}{$witem->{name}}{$arg[1]}}) > 0) {
 	    my $msg = pop @{$messages{$server->{tag}}{$witem->{name}}{$arg[1]}};
-	    $server->command('MSG '.$witem->{name}.' '.$msg);
+	    $server->command('MSG '.$witem->{name}.' '.$msg) if $arg[0] eq 'flush';
 	}
     } elsif ($arg[0] eq 'list') {
 	my $text;

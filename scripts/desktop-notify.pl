@@ -24,8 +24,9 @@ use strict;
 use Irssi;
 use HTML::Entities;
 use Glib::Object::Introspection; # Ignore 'late INIT' warning message if autoloading
+use Encode;
 
-our $VERSION = '1.0.0';
+our $VERSION = '1.0.1';
 our %IRSSI = (
 	authors     => 'Felipe F. Tonello',
 	contact     => 'eu@felipetonello.com',
@@ -38,6 +39,7 @@ our %IRSSI = (
 # List of standard icons can be found here:
 # http://standards.freedesktop.org/icon-naming-spec/icon-naming-spec-latest.html#names
 my $notify_icon;
+my $term_charset;
 
 my $help = '
 /set notify_icon <icon-name>
@@ -60,6 +62,7 @@ sub UNLOAD {
 
 sub setup_changed {
 	$notify_icon = Irssi::settings_get_str('notify_icon');
+	$term_charset = Irssi::settings_get_str('term_charset');
 }
 
 sub priv_msg {
@@ -71,9 +74,9 @@ sub priv_msg {
 		return;
 	}
 
-	my $msg = HTML::Entities::encode_entities(Irssi::strip_codes($msg));
+	my $msg = HTML::Entities::encode_entities(Irssi::strip_codes($msg), "\<>&'");
 	my $network = $server->{tag};
-	my $noti = Notify::Notification->new($nick . '@' . $network, $msg, $notify_icon);
+	my $noti = Notify::Notification->new($nick . '@' . $network, decode($term_charset, $msg), $notify_icon);
 	$noti->show();
 }
 
@@ -94,8 +97,8 @@ sub hilight {
 	}
 
 	my $network = $server->{tag};
-	my $msg = HTML::Entities::encode_entities($stripped);
-	my $noti = Notify::Notification->new($dest->{target} . '@' . $network, $msg, $notify_icon);
+	my $msg = HTML::Entities::encode_entities($stripped, "\'<>&");
+	my $noti = Notify::Notification->new($dest->{target} . '@' . $network, decode($term_charset, $msg), $notify_icon);
 	$noti->show();
 }
 
