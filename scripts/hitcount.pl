@@ -65,6 +65,8 @@ my ($my_change, $total_change) = (0,0);
 my ($last_total_hitcount, $last_my_hitcount, $last_refresh) = (0,0,0);
 # set default variables
 my ($filename, $regexp, $refresh) = ("/var/log/httpd/access.log", "/", 60);
+# marker for the refresh
+my $refresh_tag;
 
 # read the access_log and count rows, regexp matches
 sub get_hitcount {
@@ -146,7 +148,8 @@ sub read_settings {
     return if ($time == $last_refresh);
 
     $last_refresh = $time;
-    Irssi::timeout_remove(my $refresh_tag) if (my $refresh_tag);
+	
+	#Irssi::timeout_remove(my $refresh_tag) if (my $refresh_tag);
     $refresh_tag = Irssi::timeout_add($time*1000, 'refresh_hitcount', undef);
 
 	refresh_hitcount();
