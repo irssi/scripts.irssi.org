@@ -36,12 +36,10 @@ cpan:
 whitelist:
   - amaroknp
   - babelirc
+  - cap_sasl_fail
   - cap_sasl
-  - cgrep
-  - colorkick
   - connectcmd
   - dau
-  - dccself
   - dnsspam
   - hddtemp
   - hitcount
@@ -63,19 +61,16 @@ whitelist:
   - 'on'
   - osd
   - page-c0ffee
-  - pager
   - query
   - quizgr
   - quizmaster-fr
   - quizmaster
   - quiz
   - randaway
-  - reorder
   - scroller
   - stocks
   - sysinfoplus
   - topicsed
-  - translit
   - tvmusor
   - wordcompletition
   - xetra

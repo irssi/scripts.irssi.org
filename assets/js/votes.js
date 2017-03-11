@@ -1,75 +1,153 @@
 (function(document, $){
     'use strict';
     var jsonpRe = /^\/\*[\s\S]*?\*\/jsonp\(([\s\S]*)\)$/m;
+    var ghLimits = {search: {}, core: {}};
+    var stopId = 0;
+    var queue = {search: [], core: []};
+    var todo = 1;
 
-    function requestAll(start) {
-	$.ajax({
+    function requestLater(what, how, arg) {
+	var when = rateTimeout(what);
+	if (when >= 0) {
+	    var empty = queue[what].length == 0;
+	    queue[what].push([how, arg]);
+	    if (empty) window.setTimeout(function(){reQueue(what);}, when);
+	} else {
+	    ghLimits[what].remaining--;
+	    how(arg);
+	}
+    }
+
+    function reQueue(what) {
+	limitsThen(what, function(q) {
+	    q.forEach(function(e) {
+		requestLater(what, e[0], e[1]);
+	    });
+	}, queue[what].splice(0, queue[what].length));
+    }
+
+    function signalDone() {
+	if (!todo) $("#th-votes").html("Votes");
+    }
+
+    function _jsonpToJson(dta, typ) {
+	if (typ == "json") {
+	    return dta.replace(jsonpRe, "$1");
+	}
+	return dta;
+    }
+
+    function jj(url) {
+	return $.ajax({
 	    accepts: { json: 'application/vnd.github.squirrel-girl-preview' },
 	    dataType: 'json',
-	    url: start,
+	    url: url + (url.indexOf('callback=') === -1
+			? (url.indexOf('?') === -1 ? '?' : ';') + 'callback=jsonp'
+			: ''),
 	    jsonp: false,
 	    jsonpCallback: 'jsonp',
-	    dataFilter: function(dta, typ) {
-		if (typ == "json") {
-		    return dta.replace(jsonpRe, "$1");
-		}
-		return dta;
-	    }
-	})
-	    .done(function(r) {
-		var remaining = r.meta['X-RateLimit-Remaining'];
-		var rateReset = r.meta['X-RateLimit-Reset'];
-		var timeOut = 0;
-		var hasMore = false;
-		if (remaining < 10) {
-		    timeOut = 1000 + rateReset * 1000 - (new Date() / 1);
-		}
-		if (timeOut < 0) timeOut = 0;
-		if (r.meta.Link) {
-		    r.meta.Link.forEach(function(l) {
-			if (l[1].rel == "next") {
-			    window.setTimeout(function(){requestAll(l[0]);}, timeOut);
-			    hasMore = true;
-			    return;
-			}
-		    });
-		}
-		if (timeOut > 0) {
-		    timeOut += 1000;
-		}
+	    dataFilter: _jsonpToJson
+	});
+    }
 
-		r.data.forEach(function(e) {
-		    e.body = e.body.replace(/\r/g, "");
-		    var redir = e.body.match(/^#(\d+)$/);
-		    if (redir) {
-			var l = start.replace(/(\/issues\/)\d+(\/comments\?)/, "$1" + redir[1] + "$2").replace(/&.*/, "");
-			window.setTimeout(function(){requestAll(l);}, timeOut);
-			hasMore = true;
-			return;
-		    }
-			
-		    var lines = e.body.split("\n");
-		    var script = lines[0].replace(/[^-a-zA-Z0-9_]/g, "_");
-		    if (script == "comment") {
-			script = "adv_windowlist_pl";
-		    }
-		    var st = "#script-" + script + " .votes";
-		    var row = $(st);
-		    if (row.length) {
-			var votes = 1+ e.reactions['+1'] - e.reactions['-1'];
-			var link = "＊";
-			if (e.reactions['heart'] >= votes) {
-			    link = "💜";
-			}
-			row.html( "" + votes );
-			
-			row.append("<span><a data-toggle=\"tooltip\" title=\"vote on github\" href=\"" + e.html_url + "\">"+link+"</a></span>");
-		    }
-		});
-		if (!hasMore) {
-		    $("#th-votes").html("Votes");
+    function searchVotes(url) {
+	var start = url.indexOf("//") !== -1 ? url
+		: 'https://api.github.com/search/issues?q=votes+in:title+state:closed+type:issue+'
+		+ 'repo:' + url + ';sort=updated';
+	jj(start).done(function(r) {
+	    var hasMore = fetchNext('search', r.meta, searchVotes);
+	    if (hasMore) todo++;
+	    r.data.items.forEach(function(e) {
+		if (stopId && e.number > stopId) return;
+		if (e.title != "votes") return;
+		if (e.locked) { stopId = e.number; return; }
+		todo++;
+		requestLater('core', requestComments, e.comments_url);
+		todo++;
+		requestLater('core', requestComments, e.comments_url + '?page=2');
+		todo++;
+		requestLater('core', requestComments, e.comments_url + '?page=3');
+		//todo++;
+		//requestLater('core', requestComments, e.comments_url + '?page=4');
+	    });
+	    todo--;
+	    signalDone();
+	});
+    }
+
+    function rateTimeout(what) {
+	if ($.isEmptyObject(ghLimits[what])) return -1;
+
+	var remaining = ghLimits[what].remaining;
+	var rateReset = ghLimits[what].reset;
+	var limit = ghLimits[what].limit;
+
+	var timeOut = -1;
+	if (remaining < Math.log(limit) + Math.sqrt(limit)) {
+	    timeOut = 1000 + rateReset * 1000 - (new Date() / 1);
+	    if (timeOut < -1) timeOut = 0;
+	}
+	return timeOut;
+    }
+
+    function updateLimits(what, meta) {
+	ghLimits[what].remaining = meta['X-RateLimit-Remaining'];
+	ghLimits[what].reset = meta['X-RateLimit-Reset'];
+    }
+
+    function fetchNext(what, meta, how) {
+	var hasMore = false;
+	updateLimits(what, meta);
+	if (meta.Link) {
+	    meta.Link.forEach(function(l) {
+		if (l[1].rel == "next") {
+		    hasMore = true;
+		    requestLater(what, how, l[0]);
+		    return;
 		}
 	    });
+	}
+	return hasMore;
     }
-    requestAll('https://api.github.com/repos/ailin-nemui/scripts.irssi.org/issues/2/comments?callback=jsonp');
+
+    function requestComments(start) {
+	jj(start).done(function(r) {
+	    updateLimits('core', r.meta);
+	    if (r.meta.status == 403 && !r.meta['X-RateLimit-RateLimit']) {
+		requestLater('core', requestComments, start);
+		return;
+	    }
+	    //var hasMore = fetchNext('core', r.meta, requestComments);
+	    //if (hasMore) todo++;
+	    r.data.some(function(e) {
+		e.body = e.body.replace(/\r/g, "");
+		var lines = e.body.split("\n");
+		var redir = e.body.match(/^#(\d+)$/);
+		if (redir) return true;
+		var script = lines[0].replace(/^## /, "").replace(/[^-a-zA-Z0-9_]/g, "_");
+		var row = $("#script-" + script + " .votes");
+		if (row.length) {
+		    var votes = 1+ e.reactions['+1'] - e.reactions['-1'];
+		    var link = "＊";
+		    if (e.reactions['heart'] >= votes) link = "💜";
+		    row.html( "" + votes );
+		    row.append("<span><a data-toggle=\"tooltip\" title=\"vote on github\" href=\""
+			       + e.html_url + "\">"+link+"</a></span>");
+		}
+		return false;
+	    });
+	    todo--;
+	    signalDone();
+	});
+    }
+
+    function limitsThen(what, how, arg) {
+	jj('https://api.github.com/rate_limit').done(function(r) {
+	    ghLimits = r.data.resources;
+	    requestLater(what, how, arg);
+	});
+    }
+
+    limitsThen('search', searchVotes, 'ailin-nemui/scripts.irssi.org');
+
 })(document, $);

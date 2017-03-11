@@ -23,3 +23,12 @@ table.sortable thead {
 table.sortable thead th:hover {
     opacity: 0.8;
 }
+
+div.instructions input {
+    opacity: 0;
+    position: fixed;
+}
+div.instructions label { display: inline; }
+input#manual-instructions:checked ~ dl.automatic-instructions,
+input#automatic-instructions:checked ~ dl.manual-instructions
+{ display: none; }

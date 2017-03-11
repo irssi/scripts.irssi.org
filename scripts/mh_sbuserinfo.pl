@@ -1,8 +1,8 @@
 ##############################################################################
 #
-# mh_sbuserinfo.pl v1.04 (20151225)
+# mh_sbuserinfo.pl v1.05 (20161106)
 #
-# Copyright (c) 2015  Michael Hansen
+# Copyright (c) 2015, 2016  Michael Hansen
 #
 # Permission to use, copy, modify, and distribute this software
 # for any purpose with or without fee is hereby granted, provided
@@ -25,22 +25,40 @@
 # displays in the statusbar the number of users and the limit of the channel,
 # with several settings for finetuning:
 #
-# default settings: [Users: <users>(@<users_op>:+<users_voice>:<users_rest>)/<limit>(<limitusers>)]
+# default settings: [Users: <users>(*<users_oper>:@<users_op>:+<users_voice>:<users_rest>)/<limit>(<limitusers>)]
 # "/<limit>(<limitusers>)" will only show when there is a limit set.
 # "(<limitusers>)" shows the difference between the limit and current
 # users (this can be negative if the limit is lower than users)
+#
+# setting mh_sbuserinfo_format_group_begin (default '(') and
+# setting mh_sbuserinfo_format_group_end'  (default ')'); change the characters grouping
+# details
+#
+# setting mh_sbuserinfo_format_sep (default ':'): change the : seperator to another string
+#
+# setting mh_sbuserinfo_format_div (default '/'): change the / divider to another string
 #
 # setting mh_sbuserinfo_show_prefix (default 'Users: '): set/unset the prefix
 # in the window item
 #
 # setting mh_sbuserinfo_show_details (default ON): enable/disable showing a
-# detailed breakout of users into ops, halfops, voice and normal
+# detailed breakout of users into opers, ops, halfops, voice and normal
 #
 # setting mh_sbuserinfo_show_details_mode (default ON): enable/disable
-# prefixing ops, halfops and voice with @%+ when details are enabled
+# prefixing opers, ops, halfops and voice with *@%+ when details are enabled
+#
+# setting mh_sbuserinfo_format_mode_oper  (default '*'),
+# setting mh_sbuserinfo_format_mode_op    (default '@'),
+# setting mh_sbuserinfo_format_mode_ho    (default '%%'),
+# setting mh_sbuserinfo_format_mode_vo    (default '+') and
+# setting mh_sbuserinfo_format_mode_other (default ''): change the mode prefix
+# for each of oper, op, halfdop, voice and others
 #
 # setting mh_sbuserinfo_show_details_halfop (default OFF): enable/disable
 # showing halfops when details are enabled
+#
+# setting mh_sbuserinfo_show_details_oper (default ON): enable/disable
+# showing opers when details are enabled
 #
 # setting mh_sbuserinfo_show_details_difference (default ON): enable/disable
 # showing the "(<limitusers>)"
@@ -51,9 +69,13 @@
 # setting mh_sbuserinfo_show_warning_limit (default ON): change the colour
 # of "<limit>" if channel is above, at or close to the limited amount of users
 #
-# setting mh_sbuserinfo_show_warning_limit_percent (default 95): number in
+# setting mh_sbuserinfo_show_warning_limit_percent (default 0): number in
 # percent (0-100) of users relative to the limit before a limit warning is
-# triggered
+# triggered (if set to 0 see mh_sbuserinfo_show_warning_limit_difference)
+#
+# setting mh_sbuserinfo_show_warning_limit_difference (default 5): when
+# mh_sbuserinfo_show_warning_limit_percent is 0, use this absolute value
+# as the difference warning trigger instead of percentage
 #
 # setting mh_sbuserinfo_warning_format (default '%Y'): the colour used for
 # warnings. see http://www.irssi.org/documentation/formats
@@ -63,6 +85,15 @@
 # see '/help statusbar' for more details and do not forget to '/save'
 #
 # history:
+#
+#	v1.05 (20161106)
+#		added setting _show_details_oper and supporting code
+#		added setting _format_sep and supportingf code
+#		added setting _format_div and supporting code
+#		added setting _group_begin and _format_group_end and supporting code
+#		added setting _format_mode_oper, _format_mode_op, _format_mode_ho, _format_mode_vo and _format_mode_other, and supporting code
+#		added settting _show_warning_limit_difference and supporting code (changing _show_warning_limit_percent behavior)
+#		changed default of _show_warning_limit_percent from 95 to 0
 #	v1.04 (20151225)
 #		added setting _show_details_difference and supporting code
 #		changed _show_warning_limit_percent default from 90 to 95
@@ -96,7 +127,7 @@ use strict;
 use Irssi 20100403;
 use Irssi::TextUI;
 
-our $VERSION = '1.04';
+our $VERSION = '1.05';
 our %IRSSI   =
 (
 	'name'        => 'mh_sbuserinfo',
@@ -105,7 +136,7 @@ our %IRSSI   =
 	'authors'     => 'Michael Hansen',
 	'contact'     => 'mh on IRCnet #help',
 	'url'         => 'http://scripts.irssi.org / https://github.com/mh-source/irssi-scripts',
-	'changed'     => 'Fri Dec 25 17:14:34 CET 2015',
+	'changed'     => 'Sun Nov  6 20:37:05 CET 2016',
 );
 
 ##############################################################################
@@ -183,6 +214,7 @@ sub statusbar_userinfo
 			my $users_op       = 0;
 			my $users_ho       = 0;
 			my $users_vo       = 0;
+			my $users_oper     = 0;
 			my $warning_format = Irssi::settings_get_str('mh_sbuserinfo_warning_format');
 
 			for my $nick ($channel->nicks())
@@ -201,56 +233,84 @@ sub statusbar_userinfo
 				{
 					$users_vo++;
 				}
+
+				if ($nick->{'serverop'})
+				{
+					$users_oper++;
+				}
 			}
 
-			$format = $format . $users;
+			$format .= $users;
+
+			my $format_sep = Irssi::settings_get_str('mh_sbuserinfo_format_sep');
+			my $format_div = Irssi::settings_get_str('mh_sbuserinfo_format_div');
+
+			my $format_group_begin = Irssi::settings_get_str('mh_sbuserinfo_format_group_begin');
+			my $format_group_end   = Irssi::settings_get_str('mh_sbuserinfo_format_group_end');
 
 			if (Irssi::settings_get_bool('mh_sbuserinfo_show_details'))
 			{
-				$format = $format . '(';
+				$format .= $format_group_begin;
 
 				my $showmode = Irssi::settings_get_bool('mh_sbuserinfo_show_details_mode');
 
+				if (Irssi::settings_get_bool('mh_sbuserinfo_show_details_oper'))
+				{
+					if ($showmode)
+					{
+						$format .= Irssi::settings_get_str('mh_sbuserinfo_format_mode_oper');
+					}
+
+					$format .= $users_oper . $format_sep
+				}
+
 				if (Irssi::settings_get_bool('mh_sbuserinfo_show_warning_opless') and (not $users_op))
 				{
-					$format = $format . $warning_format;
+					$format .= $warning_format;
 				}
 
 				if ($showmode)
 				{
-					$format = $format . '@';
+					$format .= Irssi::settings_get_str('mh_sbuserinfo_format_mode_op');
 				}
 
-				$format = $format . $users_op . '%n:';
+				$format .= $users_op . '%n' . $format_sep;
 
 				if (Irssi::settings_get_bool('mh_sbuserinfo_show_details_halfop'))
 				{
 					#
 					# add halfops to ops so users calculation below matches
 					#
-					$users_op = $users_op + $users_ho;
+					$users_op += $users_ho;
 
 					if ($showmode)
 					{
-						$format = $format . '%%';
+						$format .= Irssi::settings_get_str('mh_sbuserinfo_format_mode_ho');
 					}
 
- 					$format = $format . $users_ho . ':';
+ 					$format .= $users_ho . $format_sep;
 				}
 
 				if ($showmode)
 				{
-					$format = $format . '+';
+					$format .= Irssi::settings_get_str('mh_sbuserinfo_format_mode_vo');;
 				}
 
-				$format = $format . $users_vo . ':' . ($users - ($users_op + $users_vo)) . ')';
+				$format .= $users_vo . $format_sep;
+
+				if ($showmode)
+				{
+					$format .= Irssi::settings_get_str('mh_sbuserinfo_format_mode_other');;
+				}
+
+				$format .= ($users - ($users_op + $users_vo)) . $format_group_end;
 			}
 
 			my $limit = $channel->{'limit'};
 
 			if ($limit)
 			{
-				$format = $format . '/';
+				$format .= $format_div;
 
 				if (Irssi::settings_get_bool('mh_sbuserinfo_show_warning_limit'))
 				{
@@ -265,20 +325,39 @@ sub statusbar_userinfo
 						$setting_percent = 0;
 					}
 
-					my $percent = int(($users / $limit) * 100);
-
-					if ($percent >= $setting_percent)
+					if ($setting_percent)
 					{
-						$format = $format . $warning_format;
+
+						my $percent = int(($users / $limit) * 100);
+
+						if ($percent >= $setting_percent)
+						{
+							$format .= $warning_format;
+						}
+					} else
+					{
+						my $setting_percent = Irssi::settings_get_int('mh_sbuserinfo_show_warning_limit_difference');
+
+						my $difference = ($limit - $users);
+
+						if ($setting_percent < 0)
+						{
+							$setting_percent = 0;
+						}
+
+						if ($difference < $setting_percent)
+						{
+							$format .= $warning_format;
+						}
 					}
 				}
 
 				if (Irssi::settings_get_bool('mh_sbuserinfo_show_details_difference'))
 				{
-					$limit = $limit . '(' . ($limit - $users) . ')';
+					$limit .= $format_group_begin . ($limit - $users) . $format_group_end;
 				}
 
-				$format = $format . $limit . '%n';
+				$format .= $limit . '%n';
 			}
 		}
 	}
@@ -292,17 +371,26 @@ sub statusbar_userinfo
 #
 ##############################################################################
 
-Irssi::settings_add_bool('mh_sbuserinfo', 'mh_sbuserinfo_show_details',               1);
-Irssi::settings_add_bool('mh_sbuserinfo', 'mh_sbuserinfo_show_details_mode',          1);
-Irssi::settings_add_bool('mh_sbuserinfo', 'mh_sbuserinfo_show_details_halfop',        0);
-Irssi::settings_add_bool('mh_sbuserinfo', 'mh_sbuserinfo_show_warning_opless',        1);
-Irssi::settings_add_bool('mh_sbuserinfo', 'mh_sbuserinfo_show_warning_limit',         1);
-Irssi::settings_add_int( 'mh_sbuserinfo', 'mh_sbuserinfo_show_warning_limit_percent', 95);
-Irssi::settings_add_str( 'mh_sbuserinfo', 'mh_sbuserinfo_warning_format',             '%Y');
-Irssi::settings_add_str( 'mh_sbuserinfo', 'mh_sbuserinfo_show_prefix',                'Users: ');
-Irssi::settings_add_bool('mh_sbuserinfo', 'mh_sbuserinfo_show_details_difference',    1);
-
-Irssi::statusbar_item_register('mh_sbuserinfo', '', 'statusbar_userinfo');
+Irssi::settings_add_bool('mh_sbuserinfo', 'mh_sbuserinfo_show_details',                  1);
+Irssi::settings_add_bool('mh_sbuserinfo', 'mh_sbuserinfo_show_details_mode',             1);
+Irssi::settings_add_bool('mh_sbuserinfo', 'mh_sbuserinfo_show_details_halfop',           0);
+Irssi::settings_add_bool('mh_sbuserinfo', 'mh_sbuserinfo_show_warning_opless',           1);
+Irssi::settings_add_bool('mh_sbuserinfo', 'mh_sbuserinfo_show_warning_limit',            1);
+Irssi::settings_add_int( 'mh_sbuserinfo', 'mh_sbuserinfo_show_warning_limit_percent',    0);
+Irssi::settings_add_int( 'mh_sbuserinfo', 'mh_sbuserinfo_show_warning_limit_difference', 5);
+Irssi::settings_add_str( 'mh_sbuserinfo', 'mh_sbuserinfo_warning_format',                '%Y');
+Irssi::settings_add_str( 'mh_sbuserinfo', 'mh_sbuserinfo_show_prefix',                   'Users: ');
+Irssi::settings_add_bool('mh_sbuserinfo', 'mh_sbuserinfo_show_details_difference',       1);
+Irssi::settings_add_bool('mh_sbuserinfo', 'mh_sbuserinfo_show_details_oper',             1);
+Irssi::settings_add_str( 'mh_sbuserinfo', 'mh_sbuserinfo_format_sep',                    ':');
+Irssi::settings_add_str( 'mh_sbuserinfo', 'mh_sbuserinfo_format_div',                    '/');
+Irssi::settings_add_str( 'mh_sbuserinfo', 'mh_sbuserinfo_format_group_begin',            '(');
+Irssi::settings_add_str( 'mh_sbuserinfo', 'mh_sbuserinfo_format_group_end',              ')');
+Irssi::settings_add_str( 'mh_sbuserinfo', 'mh_sbuserinfo_format_mode_oper',              '*');
+Irssi::settings_add_str( 'mh_sbuserinfo', 'mh_sbuserinfo_format_mode_op',                '@');
+Irssi::settings_add_str( 'mh_sbuserinfo', 'mh_sbuserinfo_format_mode_ho',                '%%');
+Irssi::settings_add_str( 'mh_sbuserinfo', 'mh_sbuserinfo_format_mode_vo',                '+');
+Irssi::settings_add_str( 'mh_sbuserinfo', 'mh_sbuserinfo_format_mode_other',             '');
 
 Irssi::signal_add_last('channel sync',         'statusbar_redraw');
 Irssi::signal_add_last('channel mode changed', 'statusbar_redraw');
@@ -311,6 +399,8 @@ Irssi::signal_add_last('nicklist new',         'statusbar_redraw');
 Irssi::signal_add_last('nicklist remove',      'statusbar_redraw');
 Irssi::signal_add_last('setup changed',        'signal_setup_changed_last');
 Irssi::signal_add_last('window changed',       'signal_window_changed_last');
+
+Irssi::statusbar_item_register('mh_sbuserinfo', '', 'statusbar_userinfo');
 
 1;
 

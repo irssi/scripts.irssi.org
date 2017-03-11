@@ -96,7 +96,7 @@ use Encode;
 use POSIX qw(strftime);
 use vars qw($VERSION %IRSSI);
 
-$VERSION = "2.2"; # cb3189a33c8e5f9
+$VERSION = "2.3"; # 45c0adad4366edd
 
 %IRSSI = (
     authors     => 'Peter Leurs and Geert Hauwaerts',
@@ -106,7 +106,6 @@ $VERSION = "2.2"; # cb3189a33c8e5f9
     description => 'Shows a bar where you have last read a window.',
     license     => 'GNU General Public License',
     url         => 'http://www.pfoe.be/~peter/trackbar/',
-    changed     => 'Fri Jan 23 23:59:11 2004',
     commands    => 'trackbar',
 );
 
@@ -234,6 +233,7 @@ sub add_one_trackbar {
     $win->print(line($win->{width}), MSGLEVEL_NEVER);
     $view->set_bookmark_bottom('trackbar');
     $unseen_trackbar{ $win->{_irssi} } = 1;
+    Irssi::signal_emit("window trackbar added", $win);
     $view->redraw;
 }
 
@@ -253,6 +253,7 @@ sub win_ignored {
     my $view = shift || $win->view;
     return 1 unless $view->{buffer}{lines_count};
     return 1 if $win->{name} eq '(status)' && !$config{use_status_window};
+    no warnings 'uninitialized';
     return 1 if grep { $win->{name} eq $_ || $win->{refnum} eq $_
 			   || $win->get_active_name eq $_ } @{ $config{ignore_windows} };
     return 0;
@@ -271,10 +272,13 @@ sub sig_window_changed {
 sub trackbar_update_seen {
     my $win = shift;
     return unless $win;
+    return unless $unseen_trackbar{ $win->{_irssi} };
+
     my $view = $win->view;
     my $line = $view->get_bookmark('trackbar');
     unless ($line) {
         delete $unseen_trackbar{ $win->{_irssi} };
+        Irssi::signal_emit("window trackbar seen", $win);
         return;
     }
     my $startline = $view->{startline};
@@ -283,6 +287,7 @@ sub trackbar_update_seen {
     if ($startline->{info}{time} < $line->{info}{time}
             || $startline->{_irssi} == $line->{_irssi}) {
         delete $unseen_trackbar{ $win->{_irssi} };
+        Irssi::signal_emit("window trackbar seen", $win);
     }
 }
 
@@ -477,6 +482,8 @@ update_config();
 Irssi::signal_add_last( 'mainwindow resized' => 'redraw_trackbars')
     unless $old_irssi;
 
+Irssi::signal_register({'window trackbar added' => [qw/Irssi::UI::Window/]});
+Irssi::signal_register({'window trackbar seen' => [qw/Irssi::UI::Window/]});
 Irssi::signal_register({'gui page scrolled' => [qw/Irssi::UI::Window/]});
 Irssi::signal_add_last('gui page scrolled' => 'trackbar_update_seen');
 

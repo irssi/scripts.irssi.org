@@ -10,7 +10,31 @@ layout: default
     </div>
 
     <div class="row">
-        <dl>
+      <div class="instructions">
+        <input id="automatic-instructions" type="radio" checked="checked" name="instructions" />
+	<input id="manual-instructions" type="radio" name="instructions" />
+        <dl class="automatic-instructions">
+            <dt>How do I install scripts?</dt>
+            <dd>In Irssi, do <code>/run scriptassist</code> (only once per session), then
+            <code>/script install <i>scriptname</i></code> .
+
+            <dt>How do I rerun scripts?</dt>
+            <dd>Just do <code>/script load <i>scriptname</i></code> .</dd>
+
+            <dt>How do I unload scripts?</dt>
+            <dd>Just do <code>/script unload <i>scriptname</i></code> .</dd>
+
+            <dt>How do I run scripts automatically at startup?</dt>
+            <dd>Just do <code>/script autorun <i>scriptname</i></code> .</dd>
+
+	    <dt>Scriptassist does not work for me / I want to do it myself?</dt>
+	    <dd><label for="manual-instructions" class="btn-link">
+		View manual instructions.</label></dd>
+
+            <dt>How do I submit a script to this page?</dt>
+            <dd>See information on how to contribute <a href="https://github.com/irssi/scripts.irssi.org">here</a>.</dd>
+        </dl>
+        <dl class="manual-instructions">
             <dt>How do I run scripts?</dt>
             <dd>Put them into <code>~/.irssi/scripts/</code> and in irssi do
             <code>/script load script.pl</code> . There is a default alias for
@@ -32,15 +56,17 @@ layout: default
 
             <dt>Is there an easy way of managing scripts?</dt> <dd>Try
             <code>scriptassist.pl</code>, it can update and manage your scripts
-            as well as install new ones and search the database.</dd>
+            as well as install new ones and search the database.
+	    <label for="automatic-instructions" class="btn-link">
+		View instructions when using scriptassist.pl .</label></dd>
 
             <dt>How do I submit a script to this page?</dt>
             <dd>See information on how to contribute <a href="https://github.com/irssi/scripts.irssi.org">here</a>.</dd>
         </dl>
-	
+      </div>
         <hr>
 
-        <input type="search" class="light-table-filter form-control" data-table="sortable" data-name="q" placeholder="Filter" style="width: 100%">
+        <input type="search" class="light-table-filter form-control" data-table="sortable" data-name="q" placeholder="Filter" style="width: 100%" autocorrect="off" spellcheck="false">
         <table class="table table-striped table-condensed sortable">
             <thead>
                 <tr>
@@ -50,7 +76,7 @@ layout: default
                     <th class="sorttable_alpha">Description</th>
                     <th class="sorttable_alpha">Authors</th>
                     <th class="sorttable_alpha">Modified</th>
-                    <th class="sorttable_numeric" id="th-votes">&hellip;</th>
+                    <th class="sorttable_numeric" id="th-votes">&hellip;&hellip;</th>
                 </tr>
             </thead>
             <tbody>

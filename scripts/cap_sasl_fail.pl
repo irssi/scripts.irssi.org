@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-our $VERSION = '2.0'; # ed9e98e5d63cfb3
+our $VERSION = '2.1'; # bb62357c61d9e54
 our %IRSSI = (
     authors     => 'Nei',
     name        => 'cap_sasl_fail',
@@ -15,8 +15,8 @@ use version;
 my %disconnect_next;
 
 my $irssi_version = qv(Irssi::parse_special('v$J') =~ s/-.*//r);
-die sprintf "Support for Irssi v%vd has not been written yet.\n", $irssi_version
-    if $irssi_version > v0.8.20;
+die sprintf "Please use /set sasl_disconnect_on_failure instead of this script.\n"
+    if $irssi_version >= v1.0.0;
 
 Irssi::signal_register({'server sasl fail' => [qw[iobject string]]});
 Irssi::signal_add_first('server sasl fail' => 'sasl_fail_failed');

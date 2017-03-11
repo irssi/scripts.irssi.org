@@ -85,6 +85,7 @@ See README file.
 use warnings;
 use strict;
 use Data::Dumper;
+use Encode 'decode';
 use Irssi;
 use Irssi::Irc;
 use Irssi::TextUI;
@@ -107,7 +108,7 @@ if ($@ && $@ =~ m/Can't locate/) {
 }
 
 
-our $VERSION = '1.6.1';
+our $VERSION = '1.6.2';
 our %IRSSI = (
               authors     => 'Isaac Good (yitz_), Tom Feist (shabble)',
               contact     => 'irssi@isaacgood.com, shabble+irssi@metavore.org',
@@ -306,6 +307,7 @@ sub process_word {
         } else {
 
             print_suggestions();
+            highlight_incorrect_word($word_obj);
         }
     } else {
 
@@ -391,7 +393,8 @@ sub spellcheck_finish {
 
     # stick the cursor at the end of the input line?
     my $input = _input();
-    my $end = length($input);
+    my $charset = lc Irssi::settings_get_str('term_charset');
+    my $end = length(decode $charset=>$input);
     Irssi::gui_input_set_pos($end);
 }
 
