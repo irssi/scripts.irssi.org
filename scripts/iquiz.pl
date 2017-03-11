@@ -1,5 +1,5 @@
 ##################################################################
-##    irssi Quiz (iQuiz) script (2010-2016) by wilk/xorandor    ##
+##    irssi Quiz (iQuiz) script (2010-2017) by wilk/xorandor    ##
 ##################################################################
 ## Script inspired by classic mIRC scripts: "Dizzy" by Dizzy,   ##
 ##   "Mieszacz" & "Familiada" by snajperx (both with my later   ##
@@ -12,7 +12,7 @@
 
 # Script works with:
 #
-# - standard Dizzy/Pomieszany files (also without "pyt"/"odp" prefixes):
+# - standard "Dizzy"/"Pomieszany" files (also without "pyt"/"odp" prefixes):
 #
 # pyt Evaluate: 2+2=?
 # odp four
@@ -20,7 +20,7 @@
 # odp Sun
 # ...
 #
-# - standard Mieszacz files (also without line numbers):
+# - standard "Mieszacz" files (also without line numbers):
 #
 # 1 alpha
 # 2 beta
@@ -28,7 +28,7 @@
 # 4 delta
 # ...
 #
-# - standard Familiada files (can have any number of answers per question, used also for Multi):
+# - standard "Familiada" files (can have any number of answers per question, not only 10; used also for "Multi"):
 #
 # Planets of our Solar System:
 # Mercury*Venus*Earth*Mars*Jupiter*Saturn*Uranus*Neptune
@@ -36,16 +36,15 @@
 # methane*ethane*propane*butane*pentane*hexane
 # ...
 
-# >>> To view all available commands and settings type: /quiz
+# >>> To review all available commands and settings type: /quiz OR /help quiz
 
 # only core modules
 use strict;
 use warnings;
 use Irssi qw(theme_register current_theme command_bind settings_add_int settings_add_bool settings_add_str settings_get_int settings_get_bool settings_get_str settings_set_int settings_set_bool settings_set_str printformat timeout_add_once timeout_remove signal_add_last signal_remove signal_stop signal_emit active_win);
 use Time::HiRes qw(time);
-use constant { QT_STD => 1, QT_MIX => 2, QT_FAM => 3, QT_MUL => 4, QT_SCR => 5 }; # QT_MIL => 6, QT_FOR => 7
 
-our $VERSION = '160919';
+our $VERSION = '170202';
 our %IRSSI = (
 	authors			=> 'wilk',
 	name			=> 'iQuiz',
@@ -72,41 +71,54 @@ my $_protect_urls = 1;				# bool; turn off antigoogler if URL is detected in que
 my $_round_warn_time = 15;			# sec; seconds before round end to show warning (0 = off)
 my $_round_warn_coeff = 1.5;		# float; round duration must be longer than coeff * $_round_warn_time to show warning (protection)
 my $_qstats_ranks = 0;				# bool; 0: /qstats param corresponds to number of players, 1: /qstats param corresponds to rank
-my $_qstats_records = 5;			# int; number of time/speed record places in /qstats
+my $_qstats_records = 5;			# int; number of time/speed record places in /qstats (0 - off)
+my $_no_hints_spam = 1;				# bool; do not show fully revealed answer as a hint (except the first)?
+
+my $_flex_separator = '/';			# char; separator used in quiz_flx_* formats
+my $_team_separator = ', ';			# str; team players separator eq. "nick1, nick2, nick3"
 
 my $_next_delay = 10;				# sec; default delay between questions
 my $_next_delay_long = 20;			# sec; default delay between questions (fam/mul) (longer delay to prevent flooding and give a breath)
 my $_round_duration = 90;			# sec; default round duration
+my $_hints_interval = 10;			# sec; default hints interval
 my $_hint_alpha = '.';				# char; default substitution symbol for alphabet characters in hints (special characters are left intact)
 my $_hint_digit = '.';				# char; default substitution symbol for digit characters in hints (special characters are left intact)
 
 my $_quiz_types = 5;				# (do not change)
 
 ##### Internal stuff #####
+use constant { QT_STD => 1, QT_MIX => 2, QT_FAM => 3, QT_MUL => 4, QT_SCR => 5 }; # QT_MIL => 6, QT_FOR => 7
 use constant { T_HMS => 0, T_S => 1, T_MS => 2 }; # 0: h/m/s, 1: s only, 2: s.ms
 use constant { INSTANT => 1, PREPDOTS => 1, V_INT => 1, V_BOOL => 2, V_STR => 3 };
 
 my %quiz = (
 	chan => undef, file => '',
 	type => 0, tcnt => 0, # copies just in case someone modifies settings directly while quiz is running
-	ison => 0, inq => 0, standby => 0,
+	ison => 0,		# /qon ... /qoff (or error while /qreload)
+	inq => 0,		# in question
+	standby => 0,	# /qon QT_FAM ... /qon (/qoff or error in /qreload)
+	ended => 0,		# after last question till /qoff (or error in /qreload)
 	stime => 0, qtime => 0,
 	qcnt => 0, qnum => 0, hnum => 0,
 	score => 0, answers => 0,
-	tnext => undef, tround => undef, thint => undef, tremind => undef, twarn => undef,
+	tnext => undef, tround => undef, thint => undef, thinter => undef, tremind => undef, twarn => undef,
 	hprot => 0, rprot => 0,
 	data => [],		# data[]{question realquestion answer answers{}}
 	teams => [],	# teams[]{score answers}
-	players => {},	# players{}{nick timestamp score answers team besttime alltime bestspeed allspeed}
-	lookup => {}, dcnt => 0, dmax => 0, lmax => 0, dots => [], hwords => []
+	players => {},	# players{}{nick timestamp score answers team joined besttime alltime bestspeed allspeed}
+	lookup => {},
+	dcnt => 0,		# total number of currently unrevealed letters
+	dmax => 0,		# number of currently unrevealed letters in the "most hidden" word
+	dots => [], hwords => []
 );
 
 my %settings_int = (
-	'quiz_type' => 1,
+	'quiz_type' => QT_STD,
 	'quiz_teams' => 2,
 	'quiz_delay' => $_next_delay,
 	'quiz_delay_long' => $_next_delay_long,
-	'quiz_round_duration' => $_round_duration,
+	'quiz_timeout' => $_round_duration,
+	'quiz_hints_interval' => $_hints_interval,
 	'quiz_max_hints' => 0,
 	'quiz_words_style' => 0,
 	'quiz_anticheat_delay' => 3,
@@ -120,6 +132,7 @@ my %settings_int = (
 
 my %settings_bool = (
 	'quiz_antigoogler' => 1,
+	'quiz_autohinter' => 0,
 	'quiz_split_long_lines' => 1,
 	'quiz_show_first_hint' => 0,
 	'quiz_first_hint_dots' => 0,
@@ -134,6 +147,7 @@ my %settings_bool = (
 	'quiz_transfer_points' => 0,
 	'quiz_limiter' => 0,
 	'quiz_keep_scores' => 0,
+	'quiz_keep_teams' => 1,
 	'quiz_cmd_hint' => 1,
 	'quiz_cmd_remind' => 1,
 );
@@ -201,7 +215,7 @@ theme_register([
 	'quiz_msg_score_other',			"\00304%s\00303 zdobyl(a) jak dotad \00304%d\00303 %s.", # see quiz_msg_score
 	'quiz_msg_noscore_other',		"\00304%s\00303 nie zdobyl(a) jeszcze zadnego punktu!", # 1: nick
 	'quiz_msg_noscores',			"\00303Tablica wynikow jest jeszcze pusta.",
-	'quiz_msg_scores',				"\00303Wyniki quizu po %s i %u %s:", # 1: time_str (hms), 2: question, 3: quiz_flx_questions, 4: questions (total), 5: quiz_flx_questions (total)
+	'quiz_msg_scores',				"\00303Wyniki quizu po %s i %u %s:", # 1: time_str (hms), 2: question, 3: quiz_flx_aquestions, 4: questions (total), 5: quiz_flx_fquestions (total)
 	'quiz_msg_scores_place',		"\00303%u. miejsce: \00304%s\00303 - \00304%d\00303 %s [%.1f%%] (sr. czas zgadywania: %10\$.3f sek.)", # 1: place, 2: nick, 3: score, 4: quiz_flx_points, 5: score%, 6: answers, 7: quiz_flx_answers, 8: answers%, 9: best time, 10: avg time, 11: best speed, 12: avg speed, 13: spacer
 	'quiz_msg_scores_place_full',	"\00303%u. miejsce: \00304%s\00303 - \00304%d\00303 %s [%.1f%%] (%u %s, sr. czas zgadywania: %10\$.3f sek.)", # see quiz_msg_scores_place
 	'quiz_msg_team_score',			"\00303Druzyna %u (%s): \00304%d\00303 %s", # 1: team, 2: players (comma separated), 3: score, 4: quiz_flx_points, 5: score%, 6: answers, 7: quiz_flx_answers, 8: answers%
@@ -214,6 +228,7 @@ theme_register([
 	'quiz_msg_congrats',			"\00303Brawo, \00304%s\00303! Dostajesz %s za odpowiedz \00304%s\00303 podana po czasie %.3f sek. (%.3f zn/s) - suma punktow: \00304%d\00303.", # 1: nick, 2: quiz_inc_got_point*, 3: answer, 4: time (ms), 5: speed (chars/s), 6: total score
 	'quiz_inc_got_points',			"\00304%d\00303 %s", # 1: points, 2: quiz_flx_points
 	'quiz_inc_got_point',			"\00303%s", # 1: quiz_flx_point
+	'quiz_msg_limit',				"\00307Masz juz 50%%+1 punktow - daj pograc innym. ;)",
 	'quiz_inc_hours',				'%u godz.',		# 1: hours
 	'quiz_inc_minutes',				'%u min.',		# 1: minutes
 	'quiz_inc_seconds',				'%u sek.',		# 1: seconds
@@ -225,21 +240,13 @@ theme_register([
 	'quiz_msg_next_x',				"\00303Nastepne haslo za %u sek...", # 1: time (s)
 	'quiz_msg_last',				"\00307Koniec pytan!",
 	'quiz_msg_skipped',				"\00303Pytanie zostalo pominiete.",
-	# 1 point								/ 1 punkt
-	# x points								/ x punktow
-	# 2-4, x2-x4 points (x != 1)			/ 2-4, x2-x4 punkty (x != 1)
+	# 1 point / x points / 2-4, x2-x4 points (x != 1)	|	1 punkt / x punktow / 2-4, x2-x4 punkty (x != 1)
 	'quiz_flx_points',				'punkt/punktow/punkty',
-	# 1 answer								/ 1 odpowiedz
-	# x answers								/ x odpowiedzi
-	# 2-4, x2-x4 answers (x != 1)			/ 2-4, x2-x4 odpowiedzi (x != 1)
+	# 1 answer / x answers / 2-4, x2-x4 answers (x != 1)	|	1 odpowiedz / x odpowiedzi / 2-4, x2-x4 odpowiedzi (x != 1)
 	'quiz_flx_answers',				'odpowiedz/odpowiedzi/odpowiedzi',
-	# after 1 question						/ po 1 pytaniu
-	# after x questions						/ po x pytaniach
-	# after 2-4, x2-x4 questions (x != 1)	/ po 2-4, x2-x4 pytaniach (x != 1)
+	# (after) 1 question / x questions / 2-4, x2-x4 questions (x != 1)	|	(po) 1 pytaniu / x pytaniach / 2-4, x2-x4 pytaniach (x != 1)
 	'quiz_flx_aquestions',			'pytaniu/pytaniach/pytaniach',
-	# from 1 question						/ z 1 pytania
-	# from x questions						/ z x pytan
-	# from 2-4, x2-x4 questions (x != 1)	/ z 2-4, x2-x4 pytan (x != 1)
+	# (from) 1 question / x questions / 2-4, x2-x4 questions (x != 1)	|	(z) 1 pytania / x pytan / 2-4, x2-x4 pytan (x != 1)
 	'quiz_flx_fquestions',			'pytania/pytan/pytan',
 ]);
 
@@ -308,7 +315,7 @@ sub send_irc {
 		}
 		timeout_add_once($_display_delay, 'evt_delayed_show_msg', $msg); # le trick (workaround for chantext showing after owntext)
 	} else {
-		send_ui_raw($msg); # this helps when we got disconnected not to lose messages like stats
+		send_ui_raw($msg); # this helps when we got disconnected not to lose any messages (like stats)
 		send_ui('quiz_err_server');
 	}
 }
@@ -324,7 +331,7 @@ sub send_irc_whisper {
 		}
 		timeout_add_once($_display_delay, 'evt_delayed_show_notc', [$msg, $nick]); # le trick (workaround for chantext showing after owntext)
 	} else {
-		send_ui_raw($msg); # this helps when we got disconnected not to lose messages like stats
+		send_ui_raw($msg); # this helps when we got disconnected not to lose any messages (like stats)
 		send_ui('quiz_err_server');
 	}
 }
@@ -421,7 +428,7 @@ sub antigoogle {
 		if (!$quiz{inq}) {
 			my $suffix = ($quiz{type} == QT_MIX) ? '_x' : ((($quiz{type} == QT_FAM) || ($quiz{type} == QT_MUL)) ? '_fm' : '');
 			my $answers = keys %{$quiz{lookup}};
-			my $duration = abs(settings_get_int('quiz_round_duration')) || $_round_duration; # abs in case of <0, || in case of ==0
+			my $duration = abs(settings_get_int('quiz_timeout')) || $_round_duration; # abs in case of <0, || in case of ==0
 			$msg_crap += length(get_format('quiz_msg_question' . $suffix, [$quiz{qnum}, $quiz{qcnt}, '', $answers, answers_str($answers), $duration]));
 		} else {
 			$msg_crap += length(get_format('quiz_msg_remind', ''));
@@ -483,10 +490,10 @@ sub make_hint {
 	my $dots_only = shift;
 	my @words = split(/ /, $quiz{data}[$quiz{qnum}]{answer});
 	if (!@{$quiz{dots}}) { # make first dots
-		@quiz{qw/dcnt dmax lmax/} = (0) x 3;
+		@quiz{qw/dcnt dmax/} = (0) x 2;
+		$quiz{hwords} = [];
 		my ($w, $dmax) = (0) x 2;
 		foreach my $word (@words) {
-			$quiz{lmax} = length($word) if (length($word) > $quiz{lmax});
 			my ($l, $hword, $dcnt) = (0, '', 0);
 			foreach my $letter (split(//, $word)) {
 				if ($letter =~ /^[a-z0-9]$/i) {
@@ -562,12 +569,12 @@ sub time_str {
 
 sub flex {
 	my ($value, $format, $flex) = (abs(shift), shift, 0);
-	my @flex = split(/\//, get_format($format));
+	my @flex = split(/$_flex_separator/, get_format($format));
 	if ($value != 1) {
 		$flex++;
 		$flex++ if ($value =~ /^[2-4]$|[^1][2-4]$/);
 	}
-	return defined($flex[$flex]) ? $flex[$flex] : '???'; # just a precaution
+	return defined($flex[$flex]) ? $flex[$flex] : '???'; # just a precaution when user messes up
 }
 
 sub score_str		{ return flex(shift, 'quiz_flx_points'); }		# X points
@@ -589,8 +596,8 @@ sub stop_timer {
 }
 
 sub stop_question {
-	@quiz{qw/inq hnum hprot rprot dcnt dmax lmax/} = (0) x 7;
-	stop_timer($_) foreach (qw/tround thint tremind twarn/);
+	@quiz{qw/inq hnum hprot rprot dcnt dmax/} = (0) x 6;
+	stop_timer($_) foreach (qw/tround thint thinter tremind twarn/);
 	$quiz{dots} = [];
 	$quiz{hwords} = [];
 	$quiz{lookup} = {};
@@ -598,7 +605,7 @@ sub stop_question {
 
 sub stop_quiz {
 	stop_question();
-	@quiz{qw/ison standby/} = (0) x 2;
+	@quiz{qw/ison standby ended/} = (0) x 3;
 	stop_timer('tnext');
 	signal_remove('message public', 'sig_pubmsg');
 }
@@ -616,9 +623,14 @@ sub init_next_question {
 	my ($msg, $instant) = @_;
 	if ($quiz{qnum} >= $quiz{qcnt}) {
 		send_irc('quiz_msg', $msg . ' ' . get_format('quiz_msg_last'), $instant);
+		$quiz{ended} = 1;
 	} else {
-		my $delay = abs(settings_get_int('quiz_delay' . ((($quiz{type} == QT_FAM) || ($quiz{type} == QT_MUL)) ? '_long' : ''))); # abs in case of <0
-		$delay ||= ((($quiz{type} == QT_FAM) || ($quiz{type} == QT_MUL)) ? $_next_delay_long : $_next_delay); # in case of ==0
+		my $delay;
+		if (($quiz{type} == QT_FAM) || ($quiz{type} == QT_MUL)) {
+			$delay = abs(settings_get_int('quiz_delay_long')) || $_next_delay_long; # abs in case of <0, || in case of ==0
+		} else {
+			$delay = abs(settings_get_int('quiz_delay')) || $_next_delay; # abs in case of <0, || in case of ==0
+		}
 		send_irc('quiz_msg', $msg . ' ' . get_format('quiz_msg_next' . (($quiz{type} == QT_MIX) ? '_x' : ''), $delay), $instant);
 		$quiz{tnext} = timeout_add_once($delay * 1000, 'evt_next_question', undef);
 	}
@@ -682,53 +694,74 @@ sub hvar {
 }
 
 sub show_help {
-	send_ui_raw("%_$IRSSI{name}%_ v$VERSION by wilk (quiz obecnie: " . ($quiz{ison} ? ($quiz{standby} ? 'oczekuje na uruchomienie' : 'trwa') : 'jest wylaczony') . ')');
+	my $type = settings_get_int('quiz_type');
+	send_ui_raw("%_$IRSSI{name}%_ v$VERSION by wilk (quiz obecnie: " . ($quiz{ison} ? ($quiz{standby} ? 'oczekuje na uruchomienie' : ($quiz{ended} ? 'dobiegl konca' : 'trwa')) : 'jest wylaczony') . ')');
 	send_ui_raw('%_Dostepne polecenia:%_');
 	send_ui_raw(hcmd("/qtype [1-$_quiz_types/nazwa]") . 'zmiana rodzaju quizu (bez parametru wybiera kolejny)');
-	send_ui_raw(hcmd("/qteams <2-$_max_teams>") . 'zmiana liczby druzyn (tylko Familiada)');
-	send_ui_raw(hcmd("/qon [kanal] <plik> [1-$_quiz_types/nazwa] [0-$_max_teams]") . 'rozpoczecie quizu; mozna podac rodzaj quizu i liczbe druzyn');
-	send_ui_raw(hcmd('/qstats [miejsca]') . 'wyswietla ranking graczy (Familiada: 0 - pokazuje tylko druzyny)');
-	send_ui_raw(hcmd('/qhint') . 'wyswietlenie podpowiedzi (nie w Familiadzie/Multi)');
+	if ($type == QT_FAM) {
+		send_ui_raw(hcmd("/qteams <2-$_max_teams>") . 'zmiana liczby druzyn');
+		send_ui_raw(hcmd("/qon [kanal] <plik> [1-$_quiz_types/nazwa] [0-$_max_teams]") . 'rozpoczecie quizu; mozna podac rodzaj quizu i liczbe druzyn');
+		send_ui_raw(hcmd('/qstats [miejsca]') . 'wyswietla ranking graczy (0: pokazuje tylko druzyny)');
+	} else {
+		send_ui_raw(hcmd("/qon [kanal] <plik> [1-$_quiz_types/nazwa]") . 'rozpoczecie quizu; mozna podac rodzaj quizu');
+		send_ui_raw(hcmd('/qstats [miejsca]') . 'wyswietla ranking graczy');
+	}
+	send_ui_raw(hcmd('/qhint') . 'wyswietlenie podpowiedzi') if (($type != QT_FAM) && ($type != QT_MUL));
 	send_ui_raw(hcmd('/qremind') . 'przypomnienie pytania');
 	send_ui_raw(hcmd('/qskip') . 'pominiecie biezacego pytania');
 	send_ui_raw(hcmd('/qoff') . 'przerwanie lub zakonczenie quizu');
 	send_ui_raw(hcmd('/qdelay <sekundy>') . 'zmiana opoznienia miedzy pytaniami');
-	send_ui_raw(hcmd('/qtime <sekundy>') . 'zmiana czasu trwania rundy (tylko Familiada/Multi)');
+	send_ui_raw(hcmd('/qtime <sekundy>') . 'zmiana czasu trwania rundy') if (($type == QT_FAM) || ($type == QT_MUL));
 	send_ui_raw(hcmd('/qreload') . 'ponowne wczytanie pliku z pytaniami');
 	send_ui_raw(hcmd('/qinit') . 'resetuje wszystkie ustawienia do wartosci poczatkowych');
 	send_ui_raw('%_Dostepne ustawienia (/set):%_');
 	send_ui_raw(hvar('quiz_type', V_INT) . 'rodzaj quizu (1: Dizzy, 2: Mieszacz/Literaki, 3: Familiada, 4: Multi (Familiada bez druzyn), 5: Pomieszany)');
-	send_ui_raw(hvar('quiz_teams', V_INT) . "liczba druzyn (2-$_max_teams; tylko Familiada)");
+	send_ui_raw(hvar('quiz_teams', V_INT) . "liczba druzyn (2-$_max_teams)") if ($type == QT_FAM);
 	send_ui_raw(hvar('quiz_delay', V_INT) . 'opoznienie miedzy pytaniami (sek.)');
-	send_ui_raw(hvar('quiz_delay_long', V_INT) . 'opoznienie miedzy pytaniami (sek.; tylko Familiada/Multi)');
-	send_ui_raw(hvar('quiz_round_duration', V_INT) . 'czas trwania rundy (sek.; tylko Familiada/Multi)');
-	send_ui_raw(hvar('quiz_max_hints', V_INT) . 'maksymalna liczba podpowiedzi (0: bez ograniczen, >0: limit podpowiedzi, <0: limit ukrytych znakow; nie dla Familiady/Multi)');
-	send_ui_raw(hvar('quiz_words_style', V_INT) . 'styl wyrazow (0: bez zmian, 1: male, 2: DUZE, 3: Kapitaliki; tylko Mieszacz/Pomieszany)');
-	send_ui_raw(hvar('quiz_anticheat_delay', V_INT) . 'czas trwania ochrony !podp/!przyp (sek.; 0: wylaczone)');
-	send_ui_raw(hvar('quiz_first_anticheat_delay', V_INT) . 'czas trwania ochrony pierwszego !podp/!przyp (sek.; 0: wylaczone)');
-	send_ui_raw(hvar('quiz_points_per_answer', V_INT) . 'punkty za poprawna odpowiedz');
-	send_ui_raw(hvar('quiz_min_points', V_INT) . 'minimum punktowe (tylko Familiada/Multi)');
-	send_ui_raw(hvar('quiz_max_points', V_INT) . 'maksimum punktowe (tylko Familiada/Multi)');
-	send_ui_raw(hvar('quiz_scoring_mode', V_INT) . 'tryb punktowania (1: ppa, 2: ppa++, 3: ppa++:max, 4: min++ppa, 5: min++ppa:max, 6: max--ppa:min, 7: max->min; tylko Familiada/Multi)');
-	send_ui_raw(hvar('quiz_ranking_type', V_INT) . 'rodzaj rankingu (1: zwykly "1234", 2: zwarty "1223", 3: turniejowy "1224")');
+	if (($type == QT_FAM) || ($type == QT_MUL)) {
+		send_ui_raw(hvar('quiz_delay_long', V_INT) . 'opoznienie miedzy pytaniami (sek.)');
+		send_ui_raw(hvar('quiz_timeout', V_INT) . 'czas trwania rundy (sek.)');
+	} else {
+		send_ui_raw(hvar('quiz_max_hints', V_INT) . 'limit podpowiedzi (0: bez ogr., >0: limit podp., <0: limit ukrytych znakow)');
+		send_ui_raw(hvar('quiz_autohinter', V_BOOL) . 'automatyczne podpowiedzi co X sek. od poprzedniej?');
+		send_ui_raw(hvar('quiz_hints_interval', V_INT) . 'opoznienie pomiedzy auto-podpowiedziami (sek.)');
+	}
+	send_ui_raw(hvar('quiz_words_style', V_INT) . 'styl wyrazow (0: bez zmian, 1: male, 2: DUZE, 3: Kapitaliki)') if (($type == QT_MIX) || ($type == QT_SCR));
 	send_ui_raw(hvar('quiz_antigoogler', V_BOOL) . 'uzywac antygooglera do maskowania pytan?');
 	send_ui_raw(hvar('quiz_split_long_lines', V_BOOL) . 'dzielic dlugie linie na czesci (nowsze irssi potrafi samo)?');
-	send_ui_raw(hvar('quiz_show_first_hint', V_BOOL) . 'pokazywac podpowiedz razem z pytaniem? (nie dla Familiady/Multi)');
-	send_ui_raw(hvar('quiz_first_hint_dots', V_BOOL) . 'pierwsza podpowiedz jako same kropki? (nie dla Familiady/Multi)');
-	send_ui_raw(hvar('quiz_random_hints', V_BOOL) . 'losowe odslanianie podpowiedzi? albo od lewej do prawej (nie dla Familiady/Multi)');
-	send_ui_raw(hvar('quiz_nonrandom_first_hint', V_BOOL) . 'losowe odslanianie podpowiedzi, poza pierwsza? (nie dla Familiady/Multi)');
-	send_ui_raw(hvar('quiz_hint_alpha', V_STR) . 'znak podstawiany w podpowiedziach za litery (nie dla Familiady/Multi)');
-	send_ui_raw(hvar('quiz_hint_digit', V_STR) . 'znak podstawiany w podpowiedziach za cyfry (nie dla Familiady/Multi)');
-	send_ui_raw(hvar('quiz_words_mode', V_BOOL) . 'mieszac slowa osobno? albo wszystko razem (tylko Mieszacz)');
-	send_ui_raw(hvar('quiz_smart_mix', V_BOOL) . 'mieszac kotwiczac cyfry i niektore znaki interpunkcyjne? (tylko Pomieszany)');
-	send_ui_raw(hvar('quiz_smart_mix_chars', V_STR) . 'te znaki będą zakotwiczone (regex; tylko Pomieszany)');
-	send_ui_raw(hvar('quiz_mix_on_remind', V_BOOL) . 'mieszac litery przy kazdym !przyp? (tylko Mieszacz/Pomieszany)');
-	send_ui_raw(hvar('quiz_strict_match', V_BOOL) . 'tylko doslowne odpowiedzi? albo *dopasowane* (nie dla Familiady/Multi)');
-	send_ui_raw(hvar('quiz_join_anytime', V_BOOL) . 'wchodzenie do druzyn w dowolnej chwili? (tylko Familiada)' );
-	send_ui_raw(hvar('quiz_team_play', V_BOOL) . 'graja tylko gracze z druzyn? (tylko Familiada)');
-	send_ui_raw(hvar('quiz_transfer_points', V_BOOL) . 'wraz ze zmiana druzyny przenosic punkty? (tylko Familiada)');
-	send_ui_raw(hvar('quiz_limiter', V_BOOL) . 'limitowac najlepsza osobe do 50%+1 punktow? (nie dla Familiady/Multi)');
+	send_ui_raw(hvar('quiz_anticheat_delay', V_INT) . 'czas trwania ochrony !podp/!przyp (sek.; 0: wylaczone)');
+	send_ui_raw(hvar('quiz_first_anticheat_delay', V_INT) . 'czas trwania ochrony pierwszego !podp/!przyp (sek.; 0: wylaczone)');
+	if (($type != QT_FAM) && ($type != QT_MUL)) {
+		send_ui_raw(hvar('quiz_show_first_hint', V_BOOL) . 'pokazywac podpowiedz razem z pytaniem?');
+		send_ui_raw(hvar('quiz_first_hint_dots', V_BOOL) . 'pierwsza podpowiedz jako same kropki?');
+		send_ui_raw(hvar('quiz_random_hints', V_BOOL) . 'losowe odslanianie podpowiedzi? albo od lewej do prawej');
+		send_ui_raw(hvar('quiz_nonrandom_first_hint', V_BOOL) . 'losowe odslanianie podpowiedzi, poza pierwsza?');
+		send_ui_raw(hvar('quiz_hint_alpha', V_STR) . 'znak podstawiany w podpowiedziach za litery');
+		send_ui_raw(hvar('quiz_hint_digit', V_STR) . 'znak podstawiany w podpowiedziach za cyfry');
+	}
+	send_ui_raw(hvar('quiz_words_mode', V_BOOL) . 'mieszac slowa osobno? albo wszystko razem') if ($type == QT_MIX);
+	if ($type == QT_SCR) {
+		send_ui_raw(hvar('quiz_smart_mix', V_BOOL) . 'mieszac kotwiczac cyfry i niektore znaki interpunkcyjne?');
+		send_ui_raw(hvar('quiz_smart_mix_chars', V_STR) . 'te znaki beda zakotwiczone (regex)');
+	}
+	send_ui_raw(hvar('quiz_mix_on_remind', V_BOOL) . 'mieszac litery przy kazdym !przyp?') if (($type == QT_MIX) || ($type == QT_SCR));
+	if ($type == QT_FAM) {
+		send_ui_raw(hvar('quiz_join_anytime', V_BOOL) . 'wchodzenie do druzyn w dowolnej chwili?');
+		send_ui_raw(hvar('quiz_team_play', V_BOOL) . 'graja tylko gracze z druzyn?');
+		send_ui_raw(hvar('quiz_transfer_points', V_BOOL) . 'wraz ze zmiana druzyny przenosic punkty?');
+	}
+	send_ui_raw(hvar('quiz_strict_match', V_BOOL) . 'tylko doslowne odpowiedzi? albo *dopasowane*') if (($type != QT_FAM) && ($type != QT_MUL));
+	send_ui_raw(hvar('quiz_points_per_answer', V_INT) . 'punkty za poprawna odpowiedz');
+	if (($type == QT_FAM) || ($type == QT_MUL)) {
+		send_ui_raw(hvar('quiz_min_points', V_INT) . 'minimum punktowe');
+		send_ui_raw(hvar('quiz_max_points', V_INT) . 'maksimum punktowe');
+		send_ui_raw(hvar('quiz_scoring_mode', V_INT) . 'tryb punktowania (1: ppa, 2: ppa++, 3: ppa++:max, 4: min++ppa, 5: min++ppa:max, 6: max--ppa:min, 7: max->min');
+	} else {
+		send_ui_raw(hvar('quiz_limiter', V_BOOL) . 'limitowac najlepsza osobe do 50%+1 punktow?');
+	}
+	send_ui_raw(hvar('quiz_ranking_type', V_INT) . 'rodzaj rankingu (1: zwykly "1234", 2: zwarty "1223", 3: turniejowy "1224")');
 	send_ui_raw(hvar('quiz_keep_scores', V_BOOL) . 'sumowac punkty z poprzednich quizow?');
+	send_ui_raw(hvar('quiz_keep_teams', V_BOOL) . 'jesli zachowujemy punkty, to pozostawiac zawodnikow w druzynach miedzy quizami?') if ($type == QT_FAM);
 	send_ui_raw(hvar('quiz_cmd_hint', V_BOOL) . 'polecenie !podp jest dostepne dla graczy?');
 	send_ui_raw(hvar('quiz_cmd_remind', V_BOOL) . 'polecenie !przyp jest dostepne dla graczy?');
 }
@@ -777,11 +810,14 @@ sub cmd_start {
 		$quiz{teams} = [];
 		@quiz{qw/score answers/} = (0) x 2;
 	} else {
-		#delete $quiz{players}{$_}{team} for (keys %{$quiz{players}}); #? unsure...
+		if (!settings_get_bool('quiz_keep_teams') && ($type == QT_FAM)) {
+			delete $quiz{players}{$_}{team} for (keys %{$quiz{players}});
+		}
 	}
 	send_irc('quiz_msg_start1', INSTANT);
 	send_irc('quiz_msg_start2' . (($type == QT_FAM) ? '_f' : (($type == QT_MUL) ? '_m' : '')), $teams, INSTANT);
-	@quiz{qw/stime qnum ison/} = (time(), 0, 1);
+	@quiz{qw/stime ison/} = (time(), 1);
+	@quiz{qw/qnum inq ended/} = (0) x 3;
 	if ($type == QT_FAM) {
 		$quiz{standby} = 1;
 		@{$quiz{teams}[$_]}{qw/score answers/} = (0) x 2 for (0 .. $teams);
@@ -810,12 +846,12 @@ sub cmd_stats {
 		((($quiz{type} == QT_FAM) || ($quiz{type} == QT_MUL)) && (settings_get_int('quiz_scoring_mode') != 1)));
 	if ($quiz{type} == QT_FAM) {
 		my @teams;
-		push(@{$teams[$quiz{players}{$_}{team}]}, get_format('quiz_inc_team_nick', $quiz{players}{$_}{nick})) for (keys %{$quiz{players}});
+		push(@{$teams[$quiz{players}{$_}{team}]}, get_format('quiz_inc_team_nick', $quiz{players}{$_}{nick})) for (sort { $quiz{players}{$a}{joined} <=> $quiz{players}{$b}{joined} } keys %{$quiz{players}});
 		foreach my $team (1 .. $quiz{tcnt}) {
 			my ($score, $answers) = @{$quiz{teams}[$team]}{qw/score answers/};
 			send_irc('quiz_msg_team_score' . $suffix, [
 				$team,
-				(!defined $teams[$team]) ? '' : join(', ', @{$teams[$team]}),
+				(!defined $teams[$team]) ? '' : join($_team_separator, @{$teams[$team]}),
 				$score, score_str($score), percents($score, $quiz{score}),
 				$answers, answers_str($answers), percents($answers, $quiz{answers})]);
 		}
@@ -862,8 +898,7 @@ sub cmd_stats {
 						$quiz{players}{$a}{timestamp} <=> $quiz{players}{$b}{timestamp}
 					} keys %{$quiz{players}}) {
 		push(@nicks, get_format('quiz_inc_scores_record', [$place, $quiz{players}{$player}{nick}, $quiz{players}{$player}{besttime}]));
-		last if ($place >= $_qstats_records);
-		$place++;
+		last if (++$place > $_qstats_records);
 	}
 	send_irc('quiz_msg_scores_times', join(', ', @nicks)) if (@nicks);
 	$place = 1;
@@ -873,8 +908,7 @@ sub cmd_stats {
 						$quiz{players}{$a}{timestamp} <=> $quiz{players}{$b}{timestamp}
 					} keys %{$quiz{players}}) {
 		push(@nicks, get_format('quiz_inc_scores_record', [$place, $quiz{players}{$player}{nick}, $quiz{players}{$player}{bestspeed}]));
-		last if ($place >= $_qstats_records);
-		$place++;
+		last if (++$place > $_qstats_records);
 	}
 	send_irc('quiz_msg_scores_speeds', join(', ', @nicks)) if (@nicks);
 }
@@ -892,7 +926,7 @@ sub cmd_time {
 	my $duration = shift;
 	#? send_ui('quiz_err_na'), return if (($quiz{type} != QT_FAM) && ($quiz{type} != QT_MUL));
 	send_ui('quiz_err_duration'), return if (($duration !~ /^\d+$/) || ($duration < 1));
-	settings_set_int('quiz_round_duration', $duration);
+	settings_set_int('quiz_timeout', $duration);
 	send_irc('quiz_msg_duration', $duration) if ($quiz{ison});
 	send_ui('quiz_inf_duration', $duration);
 }
@@ -1017,7 +1051,7 @@ sub evt_next_question {
 		%{$quiz{lookup}} = map { lc($_) => $_ } keys %{$quiz{data}[$quiz{qnum}]{answers}};
 		$suffix = '_fm';
 	}
-	my $duration = abs(settings_get_int('quiz_round_duration')) || $_round_duration; # abs in case of <0, || in case of ==0
+	my $duration = abs(settings_get_int('quiz_timeout')) || $_round_duration; # abs in case of <0, || in case of ==0
 	my @lines = make_remind();
 	my $line = 1;
 	foreach my $text (@lines) {
@@ -1039,17 +1073,21 @@ sub evt_next_question {
 		}
 	} else {
 		send_irc('quiz_msg_hint', make_hint()) if (settings_get_bool('quiz_show_first_hint'));
-	}
-	$quiz{inq} = 1;
-	my $delay = settings_get_int('quiz_first_anticheat_delay');
-	if ($delay > 0) {
-		$quiz{hprot} = 1;
-		$quiz{thint} = timeout_add_once($delay * 1000, sub { $quiz{hprot} = 0 }, undef);
-		if ((($quiz{type} == QT_MIX) || ($quiz{type} == QT_SCR)) && settings_get_bool('quiz_mix_on_remind')) {
-			$quiz{rprot} = 1;
-			$quiz{tremind} = timeout_add_once($delay * 1000, sub { $quiz{rprot} = 0 }, undef);
+		my $delay = settings_get_int('quiz_first_anticheat_delay');
+		if ($delay > 0) {
+			$quiz{hprot} = 1;
+			$quiz{thint} = timeout_add_once($delay * 1000, sub { $quiz{hprot} = 0 }, undef);
+			if ((($quiz{type} == QT_MIX) || ($quiz{type} == QT_SCR)) && settings_get_bool('quiz_mix_on_remind')) {
+				$quiz{rprot} = 1;
+				$quiz{tremind} = timeout_add_once($delay * 1000, sub { $quiz{rprot} = 0 }, undef);
+			}
+		}
+		if (settings_get_bool('quiz_autohinter')) {
+			$delay = abs(settings_get_int('quiz_hints_interval')) || $_hints_interval; # abs in case of <0, || in case of ==0
+			$quiz{thinter} = timeout_add_once($delay * 1000, 'evt_show_hint', undef);
 		}
 	}
+	$quiz{inq} = 1;
 }
 
 sub evt_round_timeout_warn {
@@ -1059,6 +1097,10 @@ sub evt_round_timeout_warn {
 sub evt_round_timeout {
 	stop_question();
 	init_next_question(get_format('quiz_msg_timeout')); #? INSTANT?
+}
+
+sub evt_show_hint {
+	show_hint();
 }
 
 ##### User interaction - responses / handlers #####
@@ -1086,7 +1128,8 @@ sub show_score {
 sub join_team {
 	my ($nick, $addr, $team) = @_;
 	return unless (($quiz{type} == QT_FAM) && (settings_get_bool('quiz_join_anytime') || $quiz{standby}));
-	return unless (($team >= 1) && ($team <= $quiz{tcnt}));
+	return if (($team < 1) || ($team > $quiz{tcnt}));
+	my $time = time();
 	if (exists $quiz{players}{$addr}) {
 		if (settings_get_bool('quiz_transfer_points')) {
 			my ($score, $answers) = @{$quiz{players}{$addr}}{qw/score answers/};
@@ -1098,21 +1141,21 @@ sub join_team {
 			$quiz{teams}[$team]{score} += $score;
 			$quiz{teams}[$team]{answers} += $answers;
 		}
-		$quiz{players}{$addr}{team} = $team;
 	} else {
-		@{$quiz{players}{$addr}}{qw/nick timestamp team/} = ($nick, time(), $team);
+		@{$quiz{players}{$addr}}{qw/nick timestamp/} = ($nick, $time);
 		@{$quiz{players}{$addr}}{qw/score answers besttime alltime bestspeed allspeed/} = (0) x 6;
 	}
+	@{$quiz{players}{$addr}}{qw/team joined/} = ($team, $time);
 	my @teams;
-	push(@{$teams[$quiz{players}{$_}{team}]}, get_format('quiz_inc_team_nick', $quiz{players}{$_}{nick})) for (keys %{$quiz{players}});
-	send_irc_whisper('quiz_msg_team_join', [$team, join(', ', @{$teams[$team]})], $nick) if (defined $teams[$team]);
+	push(@{$teams[$quiz{players}{$_}{team}]}, get_format('quiz_inc_team_nick', $quiz{players}{$_}{nick})) for (sort { $quiz{players}{$a}{joined} <=> $quiz{players}{$b}{joined} } keys %{$quiz{players}});
+	send_irc_whisper('quiz_msg_team_join', [$team, join($_team_separator, @{$teams[$team]})], $nick) if (defined $teams[$team]);
 }
 
 sub show_hint {
-	return unless (($quiz{type} != QT_FAM) && ($quiz{type} != QT_MUL) && settings_get_bool('quiz_cmd_hint'));
-	return if ($quiz{hprot});
+	return if ($quiz{hprot} || ($quiz{type} == QT_FAM) || ($quiz{type} == QT_MUL) || !settings_get_bool('quiz_cmd_hint'));
 	my $hints_limit = settings_get_int('quiz_max_hints');
-	make_hint(PREPDOTS) if (!@{$quiz{dots}} && ($hints_limit < 0));
+	make_hint(PREPDOTS) if (($quiz{hnum} == 0) && ($hints_limit < 0));
+	return unless (($quiz{hnum} == 0) || !$_no_hints_spam || ($quiz{dcnt} > 0));
 	if (($hints_limit == 0) ||
 		(($hints_limit > 0) && ($quiz{hnum} < $hints_limit)) ||
 		(($hints_limit < 0) && ($quiz{dmax} > abs($hints_limit)))) {
@@ -1122,6 +1165,11 @@ sub show_hint {
 				$quiz{hprot} = 1;
 				$quiz{thint} = timeout_add_once($delay * 1000, sub { $quiz{hprot} = 0 }, undef);
 			}
+	}
+	if (settings_get_bool('quiz_autohinter')) {
+		stop_timer('thinter');
+		my $delay = abs(settings_get_int('quiz_hints_interval')) || $_hints_interval; # abs in case of <0, || in case of ==0
+		$quiz{thinter} = timeout_add_once($delay * 1000, 'evt_show_hint', undef);
 	}
 }
 
@@ -1149,9 +1197,11 @@ sub show_remind {
 sub check_answer {
 	my ($nick, $addr, $answer) = @_;
 	if (($quiz{type} == QT_FAM) || ($quiz{type} == QT_MUL)) {
-		return unless (exists($quiz{lookup}{$answer}) && ($quiz{data}[$quiz{qnum}]{answers}{$quiz{lookup}{$answer}} > 0));
-		return unless (($quiz{type} == QT_MUL) || !settings_get_bool('quiz_team_play') || (exists($quiz{players}{$addr}) && exists($quiz{players}{$addr}{team}) && ($quiz{players}{$addr}{team} != 0))); # last condition: for non team players there is no record
-		my ($time, $match) = (time(), $quiz{lookup}{$answer});
+		return unless (exists($quiz{lookup}{lc $answer}) &&
+						($quiz{data}[$quiz{qnum}]{answers}{$quiz{lookup}{lc $answer}} > 0));
+		return unless (($quiz{type} == QT_MUL) || !settings_get_bool('quiz_team_play') ||
+						(exists($quiz{players}{$addr}) && exists($quiz{players}{$addr}{team}) && ($quiz{players}{$addr}{team} != 0))); # last condition: for non team players there is no record yet // autovivification...
+		my ($time, $match) = (time(), $quiz{lookup}{lc $answer});
 		my $answers = keys %{$quiz{data}[$quiz{qnum}]{answers}};
 		my $id = $quiz{data}[$quiz{qnum}]{answers}{$match};
 		my $value = $answers - $id + 1;
@@ -1192,11 +1242,12 @@ sub check_answer {
 			init_next_question(get_format('quiz_msg_all_answers')); #? not INSTANT
 		}
 	} else {
-		return unless (($answer eq lc($quiz{data}[$quiz{qnum}]{answer})) ||
-			(!settings_get_bool('quiz_strict_match') && (index($answer, lc $quiz{data}[$quiz{qnum}]{answer}) >= 0)));
+		return unless ((lc($answer) eq lc($quiz{data}[$quiz{qnum}]{answer})) ||
+			(!settings_get_bool('quiz_strict_match') && (index(lc $answer, lc $quiz{data}[$quiz{qnum}]{answer}) >= 0)));
 		my ($time, $points) = (time(), settings_get_int('quiz_points_per_answer'));
-		return unless (!settings_get_bool('quiz_limiter') || !exists($quiz{players}{$addr}) ||
-			($quiz{players}{$addr}{score} < int($quiz{qcnt} * 0.5 + 1) * $points)); # 50%+1
+		my $limit = int($quiz{qcnt} * 0.5 + 1) * $points; # 50%+1
+		my $limiter = settings_get_bool('quiz_limiter');
+		return unless (!$limiter || !exists($quiz{players}{$addr}) || ($quiz{players}{$addr}{score} < $limit));
 		stop_question();
 		correct_answer($addr, $nick, $time, $points, $answer);
 		init_next_question(get_format('quiz_msg_congrats', [
@@ -1205,7 +1256,7 @@ sub check_answer {
 			$quiz{data}[$quiz{qnum}]{answer},
 			$time - $quiz{qtime},
 			length($answer) / ($time - $quiz{qtime}),
-			$quiz{players}{$addr}{score}]), INSTANT);
+			$quiz{players}{$addr}{score}]) . (($limiter && ($quiz{players}{$addr}{score} >= $limit)) ? ' ' . get_format('quiz_msg_limit') : ''), INSTANT);
 	}
 }
 
@@ -1221,19 +1272,17 @@ sub sig_pubmsg {
 		# \002 - bold  \003$fg(,$bg)? - color  \017 - plain  \026 - reverse  \037 - underline
 	}
 	return if ($msg eq '');
-	my $lmsg = lc $msg;
-	if ($lmsg =~ /^!ile(?:\s+([^\s]+))?/) {
-		show_score($nick, $addr, $1)
-	} elsif ($lmsg =~ /^!join\s+(\d)$/) {
-		join_team($nick, $addr, $1);
-	}
+	show_score($nick, $addr, $1) if ($msg =~ /^!ile(?:\s+([^\s]+))?/i);
+	return if ($quiz{ended});
+	join_team($nick, $addr, $1) if ($msg =~ /^!join\s+(\d)$/i);
 	return if (!$quiz{inq});
+	my $lmsg = lc $msg;
 	if ($lmsg eq '!podp') {
 		show_hint();
 	} elsif (($lmsg eq '!przyp') || ($lmsg eq '!pyt')) {
 		show_remind();
 	}
-	check_answer($nick, $addr, $lmsg);
+	check_answer($nick, $addr, $msg);
 }
 
 ##### Bindings #####
