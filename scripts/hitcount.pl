@@ -5,13 +5,13 @@ use vars qw($VERSION %IRSSI);
 my @rev = split(/ /, '$Revision: 1.4 $n');
 $VERSION = "1.4";
 %IRSSI = (
-	    authors     => 'Riku "Shrike" Lindblad',
-	    contact     => 'shrike\@addiktit.net, Shrike on IRCNet/QNet/EFNet/DALNet',
-	    name        => 'hitcount',
-	    description => 'Add a apache page hitcounter to statusbar',
-	    license     => 'Free',
-	    changed     => '$Date: 2017/03/07 $ ',
-	  );
+    authors     => 'Riku "Shrike" Lindblad',
+    contact     => 'shrike\@addiktit.net, Shrike on IRCNet/QNet/EFNet/DALNet',
+    name        => 'hitcount',
+    description => 'Add a apache page hitcounter to statusbar',
+    license     => 'Free',
+    changed     => '$Date: 2017/03/07 $ ',
+);
 
 # Changelog:
 #
@@ -79,18 +79,18 @@ sub get_hitcount {
     
     # Go through the access log and count matches to the given regexp
     if(open STUFF, "<", $filename) {
-		while (<STUFF>) {
-			$total_hitcount++;
-			#if(m#$regexp#ois)
-			if(m<GET $regexp >) {
-				# DEBUG
-				Irssi::print("Matched $_", MSGLEVEL_CLIENTERROR) if($debug_level > 3);
-				$my_hitcount++;
-			}
-		}
-		close STUFF;
+        while (<STUFF>) {
+            $total_hitcount++;
+            #if(m#$regexp#ois)
+            if(m<GET $regexp >) {
+                # DEBUG
+                Irssi::print("Matched $_", MSGLEVEL_CLIENTERROR) if($debug_level > 3);
+                $my_hitcount++;
+            }
+        }
+        close STUFF;
     } else {
-		Irssi::print("Failed to open <$filename: $!", MSGLEVEL_CLIENTERROR);
+        Irssi::print("Failed to open <$filename: $!", MSGLEVEL_CLIENTERROR);
     }
 
     return($my_hitcount,$total_hitcount);
@@ -101,20 +101,20 @@ sub hitcount {
     my ($item, $get_size_only) = @_;
     
     $item->default_handler($get_size_only, 
-		"{sb Hits: $last_my_hitcount/$last_total_hitcount ".
-		"$my_prefix$my_change/$total_prefix$total_change}", '', 0);
+        "{sb Hits: $last_my_hitcount/$last_total_hitcount ".
+        "$my_prefix$my_change/$total_prefix$total_change}", '', 0);
 }
 
 # repeat refresh by interval time
 sub refresh_hitcount {
     
     my ($my_hitcount, $my_total_hitcount) = get_hitcount();
-	
+    
     # Calculate change since last update
-	if ($last_total_hitcount >0) {
-		$my_change = $my_hitcount - $last_my_hitcount;
-		$total_change = $total_hitcount - $last_total_hitcount;
-	}
+    if ($last_total_hitcount >0) {
+        $my_change = $my_hitcount - $last_my_hitcount;
+        $total_change = $total_hitcount - $last_total_hitcount;
+    }
     
     # Get correct prefix for change
     $my_prefix = "+" if($my_change > 0);
@@ -126,13 +126,13 @@ sub refresh_hitcount {
     
     # DEBUG
     Irssi::print(
-		"$last_my_hitcount/$last_total_hitcount | $my_hitcount/$total_hitcount ".
-		"| $my_prefix$my_change $total_prefix$total_change", 
-		MSGLEVEL_CLIENTERROR) if($debug_level > 0);
+        "$last_my_hitcount/$last_total_hitcount | $my_hitcount/$total_hitcount ".
+        "| $my_prefix$my_change $total_prefix$total_change", 
+        MSGLEVEL_CLIENTERROR) if($debug_level > 0);
 
-	# show it
+    # show it
     Irssi::statusbar_items_redraw('hitcount');
-	
+    
     # last hitcount = current hitcount
     $last_my_hitcount = $my_hitcount;
     $last_total_hitcount = $total_hitcount;
@@ -148,15 +148,11 @@ sub read_settings {
     return if ($time == $last_refresh);
 
     $last_refresh = $time;
-	
-	Irssi::timeout_remove($refresh_tag) if ($refresh_tag);
+    
+    Irssi::timeout_remove($refresh_tag) if ($refresh_tag);
     $refresh_tag = Irssi::timeout_add($time*1000, 'refresh_hitcount', undef);
 
-	refresh_hitcount();
-}
-
-sub UNLOAD {
-	Irssi::timeout_remove($refresh_tag) if ($refresh_tag);
+    refresh_hitcount();
 }
 
 # default values
