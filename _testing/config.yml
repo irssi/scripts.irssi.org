@@ -60,7 +60,6 @@ whitelist:
   - oidenty
   - 'on'
   - osd
-  - page-c0ffee
   - query
   - quizgr
   - quizmaster-fr

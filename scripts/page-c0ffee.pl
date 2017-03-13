@@ -2,7 +2,7 @@ use strict;
 use vars qw($VERSION %IRSSI);
 
 use Irssi 20020120;
-$VERSION = "0.02";
+$VERSION = "0.03";
 %IRSSI = (
     authors	=> "c0ffee",
     contact	=> "c0ffee\@penguin-breeder.org",
@@ -10,7 +10,7 @@ $VERSION = "0.02";
     description	=> "Adds the /PAGE command to page a nick (use /page nick <text>)... to ignore pages /set pager_mode off",
     license	=> "Public Domain",
     url		=> "http://www.penguin-breeder.org/?page=irssi",
-    changed	=> "Sun Feb 16 11:32 CET 2003",
+    changed	=> "2017-03-12",
 );
 
 use Irssi::Irc;
@@ -45,7 +45,7 @@ sub signal_ctcpmsg {
 	my ($server, $data, $nick, $addr, $target) = @_;
 	my $pm = Irssi::settings_get_bool('pager_mode');
 	my $cmd = Irssi::settings_get_str('pager_cmd');
-	my $answer = 0, $pid;
+	my $answer = 0; 
 	my $rnd = int(rand(65535));
 
 	if ($pm) {
@@ -98,7 +98,7 @@ sub cmd_page {
 Irssi::signal_add('ctcp msg page', 'signal_ctcpmsg');
 Irssi::signal_add('ctcp reply page', 'signal_ctcpmsg_reply');
 Irssi::command_bind('page','cmd_page');
-Irssi::settings_add_bool('misc','pager_mode',true);
+Irssi::settings_add_bool('misc','pager_mode',1);
 Irssi::settings_add_str('misc', 'pager_cmd', "");
 # ok, here for the pager_cmd syntax:
 # "command [parameters]+"
