@@ -10,6 +10,7 @@
   version: '0.22'
 -
   authors: 'Dani Soufi (compengi)'
+  commands: 'audacious mocp'
   contact: 'IRC: Freenode network, #ubuntu-lb'
   description: 'Controls Audacious2 and MOCP from Irssi'
   filename: Cirssi.pl
@@ -20,6 +21,7 @@
   version: 2.0.0
 -
   authors: 'Doncho N. Gunchev'
+  commands: id
   contact: mr_700@yahoo.com
   description: "Automaticaly \x02/msg ident NS yourpassword\x02 when you connect or services come back from death"
   filename: UNIBG-autoident.pl
@@ -48,6 +50,7 @@
   version: '1.0'
 -
   authors: c0ffee
+  commands: act
   contact: c0ffee@penguin-breeder.org
   description: 'Reset window activity status. defines command /act'
   filename: act.pl
@@ -95,6 +98,7 @@
   version: '1.00'
 -
   authors: Nei
+  commands: awl
   contact: 'Nei @ anti@conference.jabber.teamidiot.de'
   description: 'Adds a permanent advanced window list on the right or in a status bar.'
   filename: adv_windowlist.pl
@@ -106,6 +110,7 @@
   version: '1.3'
 -
   authors: BC-bd
+  commands: ai
   contact: bd@bc-bd.org
   description: 'Puts people on ignore if they do a public away. See source for options.'
   filename: ai.pl
@@ -125,6 +130,7 @@
   version: 1.1b
 -
   authors: ak
+  commands: akftp
   contact: ocb23@freenet.removethis.de
   description: 'Full configurable FTP advertiser for Irssi'
   filename: akftp.pl
@@ -135,6 +141,7 @@
   version: '1.4'
 -
   authors: "Christian 'mordeth' Weber"
+  commands: alamer
   contact: mordeth\@mac.com
   description: 'Converts towards lame speech'
   filename: alame.pl
@@ -166,6 +173,7 @@
   version: '0.10'
 -
   authors: 'Matt "f0rked" Sparks, Miklos Vajna'
+  commands: anames
   contact: ms+irssi@quadpoint.org
   description: 'a /names display with away nicks coloured'
   filename: anames.pl
@@ -206,6 +214,7 @@
   version: '0.4'
 -
   authors: 'Erkki Seppälä'
+  commands: armeija
   contact: flux@inside.org
   description: 'Ignores people bringin up boring/repeated subjects, plus replies.'
   filename: armeija.pl
@@ -216,6 +225,7 @@
   version: '0.4'
 -
   authors: 'Marcin Rozycki'
+  commands: 'ascii colkick colme colquit colsay coltopic'
   contact: derwan@irssi.pl
   description: 'Ascii-art bassed on figlet. Available commands: /ASCII, /COLSAY, /COLME, /COLTOPIC, /COLKICK, /COLQUIT.'
   filename: ascii.pl
@@ -226,6 +236,7 @@
   version: 1.6.3
 -
   authors: 'Isaac Good (yitz_), Tom Feist (shabble)'
+  commands: spellcheck
   contact: 'irssi@isaacgood.com, shabble+irssi@metavore.org'
   description: 'ASpell spellchecking system for Irssi'
   filename: aspell.pl
@@ -270,6 +281,7 @@
   version: '0.9'
 -
   authors: 'Larry "Vizzie" Daffner'
+  commands: autoaway
   contact: vizzie@airmail.net
   description: 'Automatically goes  away after defined inactivity'
   filename: autoaway.pl
@@ -290,6 +302,7 @@
   version: '1.2'
 -
   authors: 'Trevor "tee" Slocum'
+  commands: 'autocleared cleared'
   contact: tslocum@gmail.com
   description: 'Automatically clears pending input when you are away.'
   filename: autoclearinput.pl
@@ -300,6 +313,7 @@
   version: 1.0.1
 -
   authors: 'Marcin Rozycki'
+  commands: autocycle
   contact: derwan@irssi.pl
   description: 'Auto regain ops in empty opless channels'
   filename: autocycle.pl
@@ -329,6 +343,7 @@
   version: '1.00'
 -
   authors: 'Timo Sirainen & Jostein Kjønigsen'
+  commands: autoop
   description: 'Simple auto-op script'
   filename: autoop.pl
   license: 'Public Domain'
@@ -337,6 +352,7 @@
   version: '1.10'
 -
   authors: 'Toni Salomäki'
+  commands: 'autoop_add autoop_check autoop_del autoop_dynamic autoop_load autoop_save autoop_show'
   contact: Toni@IRCNet
   description: 'Auto-op script with dynamic address support and random delay'
   filename: autoopper.pl
@@ -376,6 +392,7 @@
   version: '0.3'
 -
   authors: 'Terry Lewis'
+  commands: 'start stop'
   contact: terry@kryogenic.co.uk
   description: 'This script Reminds people to do stuff! :)'
   filename: autoreminder.pl
@@ -395,6 +412,7 @@
   version: '0.1'
 -
   authors: Juerd
+  commands: autostuff
   contact: '#####@juerd.nl'
   description: 'Save current servers, channels and windows for autoconnect and autojoin'
   filename: autostuff.pl
@@ -415,6 +433,7 @@
   version: 0.0.1
 -
   authors: aluser
+  commands: autovoice
   description: autovoice
   filename: autovoice.pl
   license: GPL
@@ -573,6 +592,7 @@
   authors:
     - 'Nathan Handler'
     - 'Joseph Price'
+  commands: bansearch
   contact:
     - nathan.handler@gmail.com
     - pricechild@ubuntu.com
@@ -584,6 +604,7 @@
   version: '1.1'
 -
   authors: "David O'Rourke"
+  commands: bantime
   contact: phyber@#irssi
   description: 'Print time when ban was set in a nicer way. eg. 23 mins, 40 secs ago.'
   filename: bantime.pl
@@ -623,6 +644,7 @@
   version: '2003011501'
 -
   authors: Nei
+  commands: key_insert_before_space
   contact: 'Nei @ anti@conference.jabber.teamidiot.de'
   description: 'Rebind certain keys so that they are inserted before the space'
   filename: beforespace.pl
@@ -644,6 +666,7 @@
   version: '2003020801'
 -
   authors: 'Liam Hopkins'
+  commands: betterlist
   contact: we.hopkins@gmail.com
   description: '/list <perl-regexp>'
   filename: betterlist.pl
@@ -653,6 +676,7 @@
   version: '2.1'
 -
   authors: '[^BgTA^]'
+  commands: 'bgdebian bggoogle bghelp bgperl bgphp bgphpwb bgversion bgwwwd'
   contact: raul@bgta.net
   description: "Byte's Gallery of the TAilor Script"
   filename: bgta.pl
@@ -663,6 +687,7 @@
   version: 0.0.1
 -
   authors: 'Carl Fischer'
+  commands: 'binary unbinary'
   contact: carl.fischer@netcourrier.com
   description: 'adds /binary command that converts what you type into 2-base string representation, also decodes other peoples binary automatically'
   filename: binary.pl
@@ -681,6 +706,7 @@
   version: '20060826'
 -
   authors: 'Tijmen "timing" Ruizendaal'
+  commands: blist
   contact: tijmen.ruizendaal@gmail.com
   description: '/blist <all|online|offline|away> <word>,  greps <word> from blist for bitlbee'
   filename: bitlbee_blist.pl
@@ -742,6 +768,7 @@
   version: '0.5'
 -
   authors: 'Tijmen "timing" Ruizendaal, Matt "f0rked" Sparks'
+  commands: db_typing
   contact: 'tijmen.ruizendaal@gmail.com, root@f0rked.com'
   description: "1. Adds an item to the status bar wich shows [typing] when someone is typing a message on the supported IM-networks\t2. Sends typing notices to the supported IM networks (the other way arround). (For bitlbee 3.0+)"
   filename: bitlbee_typing_notice.pl
@@ -752,6 +779,7 @@
   version: 1.7.2
 -
   authors: iMil,Skid,Foxmask,reiffert
+  commands: 'bconf blow blowhelp delkey perm setkey showkey'
   contact: imil@gcu-squad.org,blowjob@reifferscheid.org,#blowtest@freenode
   description: 'Crypt IRC communication with blowfish encryption. Supports public #channels, !channels, +channel, querys and dcc chat. Roadmap for Version 1.0.0 is to get some feedback and cleanup. Join #blowtest on freenode (irc.debian.org) to get latest stuff available. Note to users upgrading from versions prior to 0.8.5: The blowjob.keys format has changed.'
   filename: blowjob.pl
@@ -763,6 +791,7 @@
   version: 0.9.0
 -
   authors: 'Daniel K. Gebhart, Marcus Rückert'
+  commands: bmi
   contact: 'dkg@con-fuse.org, darix@irssi.org'
   description: 'a simple body mass index calculator for depression ;)'
   filename: bmi.pl
@@ -783,6 +812,7 @@
   version: '2.20'
 -
   authors: 'Pablo Martín Báez Echevarría'
+  commands: buffer
   contact: pab_24n@outlook.com
   description: 'pastes a buffer into a channel or query window line by line with a specific delay between lines'
   filename: buffer.pl
@@ -793,6 +823,7 @@
   version: '1.1'
 -
   authors: Juerd
+  commands: calc
   contact: juerd@juerd.nl
   description: 'Simple /calc mechanism'
   filename: calc.pl
@@ -842,7 +873,6 @@
   version: '2.1'
 -
   authors: ZaMz0n
-  commands: cddb
   contact: zamzon@freakpower.com
   description: 'Find CDs by Artist, Disc name or Track name in CDDB.'
   filename: cddb.pl
@@ -864,6 +894,7 @@
   version: 1.0.0
 -
   authors: 'Pieter-Bas IJdens'
+  commands: cgrep
   contact: irssi-scripts@nospam.mi4.org.uk
   description: 'Lists users on the channel matching the specified regexp'
   filename: cgrep.pl
@@ -874,6 +905,7 @@
   version: 1.0.0
 -
   authors: BC-bd
+  commands: 'chanact_window_alias chanact_window_unalias'
   contact: bd@bc-bd.org
   description: 'Adds new powerful and customizable [Act: ...] item (chanelnames,modes,alias). Lets you give alias characters to windows so that you can select those with meta-<char>'
   filename: chanact.pl
@@ -913,6 +945,7 @@
   version: 0.2.2
 -
   authors: "Stefan 'tommie' Tomanek"
+  commands: chansearch
   contact: stefan@pico.ruhr.de
   description: 'searches for specific channels'
   filename: chansearch.pl
@@ -924,6 +957,7 @@
   version: '20021019'
 -
   authors: "Timo 'cras' Sirainen"
+  commands: chanshare
   contact: tss@iki.fi
   description: '/CHANSHARE - display people who are in more than one channel with you'
   filename: chanshare.pl
@@ -934,6 +968,7 @@
   version: '0.3'
 -
   authors: 'Peder Stray'
+  commands: chansort
   contact: peder@ninja.no
   description: 'Sort all channel and query windows'
   filename: chansort.pl
@@ -944,6 +979,7 @@
   version: '1.4'
 -
   authors: 'Ævar Arnfjörð Bjarmason'
+  commands: chansort_configurable
   contact: avarab@gmail.com
   description: "Sort channels & query windows in a configurable way, based on Peder Stray's chansort.pl"
   filename: chansort_configurable.pl
@@ -965,6 +1001,7 @@
   version: '0.22'
 -
   authors: 'Jakub Jankowski'
+  commands: 'chops nops'
   contact: shasta@atn.pl
   description: "Simulates BitchX's /CHOPS and /NOPS commands."
   filename: chops.pl
@@ -984,6 +1021,7 @@
   url: http://mental.mine.nu
   version: '0.3'
 -
+  commands: clearable
   contact: 'Nei @ anti@conference.jabber.teamidiot.de'
   description: 'make some command output clearable'
   filename: clearable.pl
@@ -994,6 +1032,7 @@
   version: '0.1'
 -
   authors: 'Dominic Battre'
+  commands: qc
   contact: dominic@battre.de
   description: 'Better quoting of content from clipboard (without leading spaces) -- requires Perl/Tk'
   filename: clipboard.pl
@@ -1005,6 +1044,7 @@
   version: '1.2'
 -
   authors: 'Rick (strlen) Jansen'
+  commands: 'ak cw tk tr'
   contact: strlen@shellz.nl
   description: 'Parses OperServ notices to make autokill aliases from clonewarnings'
   filename: cloneprot.pl
@@ -1015,6 +1055,7 @@
   version: '1.11'
 -
   authors: 'From irssi source, modified by David Leadbeater (dg)'
+  commands: clones
   description: '/CLONES - Display clones in the active channel (with added options)'
   filename: clones.pl
   license: 'Same as Irssi'
@@ -1024,6 +1065,7 @@
   version: '2.01'
 -
   authors: 'Pablo Martín Báez Echevarría'
+  commands: clones_scanner_size
   contact: pab_24n@outlook.com
   description: 'when a nick joins #channel, notifies you if there is (or there has been) someone in #channel with the same hostname'
   filename: clones_scanner.pl
@@ -1035,6 +1077,7 @@
   version: '1.6'
 -
   authors: 'Jari Matilainen, init[1]@irc.freenode.net'
+  commands: cmp
   contact: vague@vague.se
   description: 'Compare nicks in two channels'
   filename: cmpchans.pl
@@ -1121,6 +1164,7 @@
   version: '1.0'
 -
   authors: 'Timo Sirainen'
+  commands: country
   contact: tss@iki.fi
   description: 'Print the country name in /WHOIS replies'
   filename: country.pl
@@ -1149,6 +1193,7 @@
   version: '2003020801'
 -
   authors: Benedetto
+  commands: credstore
   contact: dettox@gmail.com
   description: 'store fingerprints of know users so can verify'
   filename: credstore.pl
@@ -1169,6 +1214,7 @@
   version: '0.12'
 -
   authors: 'martin f. krafft'
+  commands: ctrlact
   contact: madduck@madduck.net
   description: 'allows per-channel control over activity indication'
   filename: ctrlact.pl
@@ -1178,6 +1224,7 @@
   version: '1.2'
 -
   authors: "Maciek 'fahren' Freudenheim"
+  commands: cwho
   contact: fahren@bochnia.pl
   description: 'Usage: /CWHO [-a | -l | -o | -v ] [ mask ]'
   filename: cwho.pl
@@ -1238,6 +1285,7 @@
   version: '1.4'
 -
   authors: Nei
+  commands: dccrel
   contact: 'Nei @ anti@conference.jabber.teamidiot.de'
   description: 'Relays DCC messages. Originally written by greeny & mute for NoNameScript.'
   filename: dccrelay.pl
@@ -1248,6 +1296,7 @@
   version: '0.1'
 -
   authors: 'David Leadbeater'
+  commands: dccself
   contact: dgl@dgl.cx
   description: "/dccself ip port, starts a dcc chat with yourself on that \n\t                host/port, best used with /set dcc_autochat_masks."
   filename: dccself.pl
@@ -1257,6 +1306,7 @@
   version: '0.1'
 -
   authors: "Matti 'qvr' Hiljanen"
+  commands: dccstat
   contact: matti\@hiljanen.com
   description: 'Shows verbose or short information of dcc send/gets on statusbar (speed, size, eta etc.)'
   filename: dccstat.pl
@@ -1277,6 +1327,7 @@
   version: '1.1'
 -
   authors: 'Joost Vunderink (Garion)'
+  commands: dejunk
   contact: joost@vunderink.net
   description: 'Prevents all kinds of junk from showing up'
   filename: dejunk.pl
@@ -1308,6 +1359,7 @@
   version: 1.0.1
 -
   authors: 'Jochem Meyers'
+  commands: dfupdate
   contact: jochem.meyers@gmail.com
   description: 'Adds an item which displays the current disk usage.'
   filename: df.pl
@@ -1366,6 +1418,7 @@
   version: 0.0.2
 -
   authors: "Timo 'cras' Sirainen"
+  commands: dns
   contact: tss@iki.fi
   description: '/DNS <nick>|<host>|<ip> ...'
   filename: dns.pl
@@ -1406,6 +1459,7 @@
   version: '0.3'
 -
   authors: 'Bitt Faulk'
+  commands: dr_who_refresh
   contact: lxsfx3h02@sneakemail.com
   description: 'Put a nick list in a statusbar'
   filename: dr_who.pl
@@ -1426,6 +1480,7 @@
   version: '1.2'
 -
   authors: 'Ilya Cassina'
+  commands: elist
   contact: icassina@gmail.com
   description: 'This script allow advanced parametrization of the /list command. Accepted parameters are -minusers <#users> and -maxusers <#users>. '
   filename: elist.pl
@@ -1479,7 +1534,7 @@
   version: '1.0'
 -
   authors: 'Ilkka Pale'
-  commands: emo
+  commands: 'emo emolist'
   contact: ilkka.pale@gmail.com
   description: 'Outputs various unicode emoticons'
   filename: emo.pl
@@ -1518,6 +1573,7 @@
   version: '0.1'
 -
   authors: CrazyCat
+  commands: 'aw back xahelp xanick xasave'
   contact: crazycat@c-p-f.org
   description: 'Extended Away & Back programm'
   filename: extaway.pl
@@ -1527,6 +1583,7 @@
   version: '1.0'
 -
   authors: 'Geert Hauwaerts'
+  commands: fctcp
   contact: geert@irssi.org
   description: 'This script sends fake ctcp replies to a client using a fake ctcp list.'
   filename: fakectcp.pl
@@ -1548,6 +1605,7 @@
   version: 1.0.0
 -
   authors: Juerd
+  commands: figlet
   contact: juerd@juerd.nl
   description: 'Safe figlet implementation (with color support!)'
   filename: figlet.pl
@@ -1558,6 +1616,7 @@
   version: '1.14'
 -
   authors: 'David Leadbeater'
+  commands: file
   description: 'A command to output content of files in various ways'
   filename: file.pl
   license: 'GNU GPLv2 or later'
@@ -1567,6 +1626,7 @@
   version: '1'
 -
   authors: 'Erkki Seppälä'
+  commands: find
   contact: flux@inside.org
   description: "Finds a nick by real name, if he's on a channel with you."
   filename: find.pl
@@ -1577,6 +1637,7 @@
   version: '0.2'
 -
   authors: 'Thomas Karlsson'
+  commands: 'findbotactivesends findbotqueue findbotreload findbotremove findbotreset'
   contact: findbot@planet.eu.org
   description: 'Public command @find script'
   filename: findbot.pl
@@ -1597,6 +1658,7 @@
   version: '0.3'
 -
   authors: 'Piotr Krukowiecki'
+  commands: fleech
   contact: 'piotr //at// krukowiecki //dot// net'
   description: 'fserve leecher - helps you download files from file servers'
   filename: fleech.pl
@@ -1627,6 +1689,7 @@
   version: '1.10'
 -
   authors: 'Juerd, Shiar'
+  commands: rot
   contact: 'juerd@juerd.nl, shiar@shiar.org'
   description: 'Rot n+i encryption and decryption'
   filename: foo.pl
@@ -1637,6 +1700,7 @@
   version: '3.00'
 -
   authors: 'David Leadbeater'
+  commands: ''
   contact: dgl@dgl.cx
   description: "Extends the /foreach command to have /foreach user \n        (users in a channel).\n        Syntax: /foreach user [hostmask] command."
   filename: foreach_user.pl
@@ -1657,6 +1721,7 @@
   version: 1.5-dev-coekie
 -
   authors: 'Ivo Marino'
+  commands: fortune
   contact: eim@cpan.rg
   description: 'Send a random fortune cookie to an user in channel.'
   filename: fortune.pl
@@ -1687,6 +1752,7 @@
   version: '0.06'
 -
   authors: 'Peder Stray'
+  commands: 'addfriend friends'
   contact: peder@ninja.no
   description: 'Basicly an autoop script with a nice interface and nick coloring ;)'
   filename: friends_peder.pl
@@ -1697,6 +1763,7 @@
   version: '1.34'
 -
   authors: 'Jakub Jankowski'
+  commands: 'addfriend addhost chdelay chflags chhandle chpass comment delchanrec delfriend delhost findfriends flushlearnt friendsversion isfriend listfriends loadfriends opfriends oppingtree queue savefriends'
   contact: shasta@toxcorp.com
   description: 'Maintains list of people you know.'
   filename: friends_shasta.pl
@@ -1707,6 +1774,7 @@
   version: 2.4.9
 -
   authors: 'Pablo Martín Báez Echevarría'
+  commands: mirccolors
   contact: pab_24n@outlook.com
   description: 'define a permanent text formatting (bold, underline, etc.) for outgoing messages'
   filename: frm_outgmsgs.pl
@@ -1717,6 +1785,7 @@
   version: '1.1'
 -
   authors: 'Piotr Krukowiecki & others'
+  commands: fs
   contact: 'piotr at pingu.ii.uj.edu.pl'
   description: 'File server for irssi'
   filename: fserve.pl
@@ -1727,6 +1796,7 @@
   version: 2.0.0
 -
   authors: 'Geert Hauwaerts'
+  commands: fuckem
   contact: geert@irssi.org
   description: 'Simulates the BitchX /FUCKEM command. Deop/Dehalfop everyone on the channel including you.'
   filename: fuckem.pl
@@ -1737,6 +1807,7 @@
   version: '0.05'
 -
   authors: prussian
+  commands: fullwidth
   contact: genunrest@gmail.com
   description: 'talk like some vaporwave cool kid'
   filename: fullwidth.pl
@@ -1747,6 +1818,7 @@
   version: 1.1.0
 -
   authors: "Maciek 'fahren' Freudenheim"
+  commands: 'addgetop delgetop getop listgetop'
   contact: fahren@bochnia.pl
   description: 'Automatically request op from random opped person with specifed command from list after joining channel'
   filename: getop.pl
@@ -1766,6 +1838,7 @@
   version: '1.0'
 -
   authors: nohar
+  commands: go
   contact: nohar@freenode
   description: 'Implements /go command that activates a window given a name/partial name. It features a nice completion.'
   filename: go.pl
@@ -1785,6 +1858,7 @@
   version: '1.0'
 -
   authors: 'Oddbjørn Kvalsund'
+  commands: google
   contact: oddbjorn.kvalsund@hiof.no
   description: 'This script queries google.com and returns the results.'
   filename: google.pl
@@ -1795,6 +1869,7 @@
   version: '1.00'
 -
   authors: 'original idea by valvoline, irssi porting by pallotron'
+  commands: 'about erasepass greets manual setpass validate verify'
   contact: pallotron@freaknet.org
   description: 'Have gpg-based trusting features in your irssi client!'
   filename: gpgvalidator.pl
@@ -1814,6 +1889,7 @@
   version: '1.1'
 -
   authors: "Timo 'cras' Sirainen, Wouter Coekaerts"
+  commands: grep
   contact: 'tss@iki.fi, wouter@coekaerts.be'
   description: '/GREP [-i] [-w] [-v] [-F] <perl-regexp> <command to run>'
   filename: grep.pl
@@ -1824,6 +1900,7 @@
   version: '2.1'
 -
   authors: 'Nathan Handler'
+  commands: grepbans
   contact: nathan.handler@gmail.com
   description: 'Greps the ban list for the specified pattern'
   filename: grepbans.pl
@@ -1833,6 +1910,7 @@
   version: '1.0'
 -
   authors: mistr
+  commands: gsi
   contact: mistr@sensewave.com
   description: '/gsi <phone nr> checks number via http://gulesider.no. Norwegian 8-digit numbers only. Nice if you have caller-ID and are as paranoid as me.'
   filename: gsi.pl
@@ -1876,6 +1954,7 @@
   version: '0.14'
 -
   authors: Cybertinus
+  commands: hello
   contact: cybertinus@cybertinus.nl
   description: "This script allows you to greet the channel You're joining with the command /hello. The text it shows depends on the time you're living."
   filename: hello.pl
@@ -1885,6 +1964,7 @@
   version: '1.00'
 -
   authors: 'Marcus Rueckert'
+  commands: hide
   contact: darix@irssi.de
   description: "a little interface to irssi's activity_hide_* settings"
   filename: hide.pl
@@ -1905,6 +1985,7 @@
   version: '1.01'
 -
   authors: Nei
+  commands: ''
   contact: 'Nei @ anti@conference.jabber.teamidiot.de'
   description: 'Removes and re-adds lines to the Irssi buffer view.'
   filename: hideshow.pl
@@ -1925,6 +2006,7 @@
   version: '1.0'
 -
   authors: 'Geert Hauwaerts'
+  commands: hignore
   contact: geert@irssi.org
   description: 'This script will add the HIGNORE command, if you use this command in a query it will ignore the host.'
   filename: hignore.pl
@@ -1976,6 +2058,7 @@
   version: '2.0'
 -
   authors: 'Wouter Coekaerts'
+  commands: history_search
   contact: coekie@irssi.org
   description: 'Search within your typed history as you type (like ctrl-R in bash)'
   filename: history_search.pl
@@ -2015,6 +2098,7 @@
   version: '1.0'
 -
   authors: 'Juerd, Eevee'
+  commands: ''
   contact: '#####@juerd.nl'
   description: 'Scrolls to previous or next highlight'
   filename: hlscroll.pl
@@ -2025,6 +2109,7 @@
   version: '0.02'
 -
   authors: 'Jean-Yves Lefort'
+  commands: hostname
   contact: 'jylefort\@brutele.be, decadix on IRCNet'
   description: 'Adds a /HOSTNAME command; it will list all IP addresses on all interfaces found on your machine, resolve them, and allow you to choose one easily'
   filename: hostname.pl
@@ -2036,6 +2121,7 @@
   version: '1.01'
 -
   authors: Santabutthead
+  commands: 'maap maasp madd maddall mas masp mcaap mcaasp mcap mcasp mclear mclearback mdel mhelp mhelpadv mhelpmpdbar minfo mloud mlouder mls mmove mmute mnext mpause mplay mplaylist mplaylistload mplaylistls mplaylistrm mplaylistsave mpls mprev mrandom mrepeat mrm msearch mseek mshuffle mstop mupdate mvolume mwa mwaa mwaas mwas mwipe'
   contact: starz@antisocial.com
   description: 'This controls Music Player Daemon from the familiar irssi interface'
   filename: iMPD.pl
@@ -2055,6 +2141,7 @@
   version: '1.0'
 -
   authors: 'Eric Jansen'
+  commands: identify-md5
   contact: chaos@sorcery.net
   description: 'MD5 NickServ identification script for SorceryNet'
   filename: identify-md5.pl
@@ -2076,6 +2163,7 @@
   version: '20030208'
 -
   authors: 'Tom Feist, Wouter Coekaerts'
+  commands: ido_switch_start
   contact: 'shabble+irssi@metavore.org, shabble@#irssi/freenode'
   description: 'Select window[-items] using an ido-mode like search interface'
   filename: ido_switcher.pl
@@ -2107,6 +2195,7 @@
   version: '0.1'
 -
   authors: 'Erkki Seppälä'
+  commands: ignoreoc
   contact: flux@inside.org
   description: 'Ignore messages from people not on your channels.Now people you msg are added to bypass-list.'
   filename: ignoreoc.pl
@@ -2148,6 +2237,7 @@
   version: '1.01'
 -
   authors: 'Jari Matilainen'
+  commands: prompt
   contact: 'vague!#irssi@freenode on irc'
   description: 'Intercept misprinted commands and offer to remove the first character before sending it on'
   filename: intercept.pl
@@ -2158,6 +2248,7 @@
   version: '0.2'
 -
   authors: c0ffee
+  commands: 'join18n msg18n part18n'
   contact: c0ffee@penguin-breeder.org
   description: 'Joins channels with non-utf8 non-ascii names.'
   filename: intjoin.pl
@@ -2169,6 +2260,7 @@
   version: '0.2'
 -
   authors: 'Geert Hauwaerts'
+  commands: invitejoin
   contact: geert@irssi.org
   description: 'This script will join a channel if somebody invites you to it.'
   filename: invitejoin.pl
@@ -2179,6 +2271,7 @@
   version: '0.02'
 -
   authors: xlony
+  commands: ipupdate
   contact: anderfdez@yahoo.es
   description: 'Auto "/set dcc_own_ip IP" on connect.'
   filename: ipupdate.pl
@@ -2189,6 +2282,7 @@
   version: '1.2'
 -
   authors: wilk
+  commands: 'qdelay qhint qinit qoff qon qreload qremind qskip qstats qteams qtime qtype quiz'
   contact: http://mail.quizpl.net
   description: 'irssi quiz script'
   filename: iquiz.pl
@@ -2199,6 +2293,7 @@
   version: '170202'
 -
   authors: wilk
+  commands: 'qdelay qhint qinit qoff qon qreload qremind qskip qstats qteams qtime qtype quiz'
   contact: http://mail.quizpl.net
   description: 'irssi quiz script'
   filename: iquiz_en.pl
@@ -2209,7 +2304,6 @@
   version: 170202_en
 -
   authors: DonRumata
-  commands: none
   contact: rumata@dragons.ru
   description: 'IrcNet.ru Auto Identify - changes nick and send identify command, then sets codepage'
   filename: iraident.pl
@@ -2230,6 +2324,7 @@
   version: '0.1'
 -
   authors: 'Erkki Seppälä'
+  commands: irccomplete_typowords
   contact: flux@inside.org
   description: 'Adds words from IRC to your tab-completion list, plus fixes typos'
   filename: irccomplete.pl
@@ -2250,6 +2345,7 @@
   version: '1.13'
 -
   authors: BCOW
+  commands: ircgcomments
   contact: bcow@iki.fi
   description: 'Tarkistelee irc-galleria.net:iä ja sanoo kun sinulle on uusia viestejä.'
   filename: ircgmessagenotify.pl
@@ -2261,6 +2357,7 @@
   version: 0.1b
 -
   authors: BC-bd
+  commands: ircops
   contact: bd@bc-bd.org
   description: '/IRCOPS - Display IrcOps in current channel'
   filename: ircops.pl
@@ -2292,6 +2389,7 @@
   version: '1.2'
 -
   authors: 'Julius Michaelis'
+  commands: feed
   contact: iRRSi@cserv.dyndns.org
   description: 'Parses and announces XML/Atom feeds'
   filename: irssi-feed.pl
@@ -2303,6 +2401,7 @@
   version: '20130209'
 -
   authors: legion
+  commands: 'anp anpa cleanbar np npa npinfo npsend'
   contact: a.lepore@email.it
   description: 'Display the song played by mp3blaster in channels and statusbar. See the top of the file for usage.'
   filename: irssiBlaster.pl
@@ -2323,7 +2422,6 @@
   version: '1.0'
 -
   authors: "Stefan 'tommie' Tomanek"
-  commands: irssiq
   contact: stefan@pico.ruhr.de
   description: 'integrates ICQ instant-messaging into irssi'
   filename: irssiq.pl
@@ -2334,7 +2432,7 @@
   version: '2003231101'
 -
   authors: mniip
-  commands: 'isbanned ismuted islisted isreset'
+  commands: 'isbanned islisted ismuted isreset'
   contact: 'mniip @ freenode'
   description: 'freenode-specific script that checks whether someone is banned on some channel'
   filename: isbanned.pl
@@ -2374,6 +2472,7 @@
   version: 0.2+1
 -
   authors: 'Pieter-Bas IJdens'
+  commands: joininfo
   contact: irssi-scripts@nospam.mi4.org.uk
   description: 'Reports WHOIS information and channel list for those who join a channel'
   filename: joininfo.pl
@@ -2404,6 +2503,7 @@
   version: 0.0.1
 -
   authors: 'Peder Stray'
+  commands: 'keepnick listnick unkeepnick'
   contact: peder@ninja.no
   description: 'Try to get your nick back when it becomes available.'
   filename: keepnick.pl
@@ -2414,6 +2514,7 @@
   version: '1.17'
 -
   authors: 'Gerfried Fuchs'
+  commands: 'dekenny kenny'
   contact: alfie@channel.debian.de
   description: 'autodekennyfies /kenny, adds /kenny, /dekenny. Based on Jan-Pieter Cornets signature version'
   filename: kenny.pl
@@ -2424,6 +2525,7 @@
   version: 2.3.1
 -
   authors: 'Johan "Ion" Kiviniemi'
+  commands: kernel_version
   contact: 'ion at hassers.org'
   description: 'Fetches the version(s) of the latest Linux kernel(s).'
   filename: kernel.pl
@@ -2434,6 +2536,7 @@
   version: '0.9'
 -
   authors: 'Geert Hauwaerts'
+  commands: 'azerty qwerty'
   contact: geert@irssi.org
   description: 'This script will set the proper keybindings on /AZERTY and /QWERTY.'
   filename: keybinds.pl
@@ -2534,6 +2637,7 @@
   version: '20040515'
 -
   authors: 'Nico R. Wohlgemuth'
+  commands: levelclear
   contact: nico@lifeisabug.com
   description: 'Similar to crapbuster.pl but uses irssis internal scrollback levelclear functionality and is able to clear the previous window automatically after having switched to a new one when levelclear_autoclear is set to true.'
   filename: levelclear.pl
@@ -2554,6 +2658,7 @@
   version: '0.5'
 -
   authors: Nei
+  commands: dumplines
   contact: 'Nei @ anti@conference.jabber.teamidiot.de'
   description: 'dump the linebuffer content'
   filename: linebuffer.pl
@@ -2564,6 +2669,7 @@
   version: '0.3'
 -
   authors: "Marcin 'Qrczak' Kowalczyk"
+  commands: link
   contact: qrczak@knm.org.pl
   description: 'Link several channels on serveral networks'
   filename: linkchan.pl
@@ -2574,6 +2680,7 @@
   version: '1.5'
 -
   authors: 'Csaba Nagy'
+  commands: listen
   contact: lordpyre@negerno.hu
   description: 'A simple mp3 display script that will display what mp3 you are playing in which software (mpg123, xmms, mp3blaster, etc) to your active channel or to a query window.'
   filename: listen.pl
@@ -2643,7 +2750,7 @@
   version: '0.02'
 -
   authors: ferret
-  commands: 'logtail, logview'
+  commands: 'logtail logview'
   contact: 'ferret(tA)explodingferret(moCtoD), ferret on irc.freenode.net'
   description: 'print last n lines of logs when opening queries/channels'
   filename: logresume.pl
@@ -2653,6 +2760,7 @@
   version: '0.6'
 -
   authors: c0ffee
+  commands: ls
   contact: c0ffee@penguin-breeder.org
   description: 'Use /ls <regex> to show all nicks (including ident@host) matching regex in the current channel'
   filename: ls.pl
@@ -2663,6 +2771,7 @@
   version: '0.02'
 -
   authors: Mika
+  commands: lwho
   contact: '[Mika] @ IRCnet'
   description: 'Displays users logged on system in current window, simple one'
   filename: lwho.pl
@@ -2673,6 +2782,7 @@
   version: 0.01a
 -
   authors: 'Timo Sirainen, Matti Hiljanen, Joost Vunderink, Bart Matthaei'
+  commands: mailbox
   contact: 'tss@iki.fi, matti@hiljanen.com, joost@carnique.nl, bart@dreamflow.nl'
   description: 'Fully customizable mail counter statusbar item with multiple mailbox and multiple Maildir support'
   filename: mail.pl
@@ -2683,6 +2793,7 @@
   version: '2.92'
 -
   authors: 'David "Legooolas" Gardner'
+  commands: 'mailcheck_imap mailcheck_imap_help mailcheck_imap_stop'
   contact: irssi@icmfp.com
   description: 'Staturbar item which indicates how many new emails you have in the specified IMAP[S] mailbox'
   filename: mailcheck_imap.pl
@@ -2704,6 +2815,7 @@
   version: '0.1'
 -
   authors: 'Kimmo Lehto'
+  commands: mail
   contact: kimmo@a-men.org
   description: 'POP3 new mail notification and listing of mailbox contents. Use "/mail help" for instructions. Requires Net::POP3.'
   filename: mailcheck_pop3_kimmo.pl
@@ -2763,6 +2875,7 @@
   version: '1.0'
 -
   authors: 'Kaveh Moini'
+  commands: 'mg mg_cancel mg_reset'
   contact: campanastra@gmail.com
   description: 'DCC MultiGet, for fetching from XDCC bots'
   filename: mg.pl
@@ -2850,6 +2963,7 @@
   version: '1.1'
 -
   authors: 'Marcin Rozycki'
+  commands: mkick
   contact: derwan@irssi.pl
   description: 'Masskick, usage: /mkick [-aovdln6 (hostmask)] <[:]reason>'
   filename: mkick.pl
@@ -2860,6 +2974,7 @@
   version: '0.9'
 -
   authors: 'Gergely Nagy'
+  commands: 'mkshorter mkunshort mkunshortlist mkununshort'
   contact: algernon\@bonehunter.rulez.org
   description: 'Automatically filters all http:// links through makeashorterlink.com'
   filename: mkshorterlink.pl
@@ -2883,6 +2998,7 @@
   version: '20030712'
 -
   authors: 'Timo Sirainen'
+  commands: mlock
   description: 'Channel mode locking'
   filename: mlock.pl
   license: 'Public Domain'
@@ -2891,6 +3007,7 @@
   version: '1.00'
 -
   authors: 'Marcin Rozycki'
+  commands: 'se si sr unexcept uninvite unreop'
   contact: derwan@irssi.pl
   description: 'Cache of invites, ban exceptions and reops in channel. Script commands: /si, /se, /sr, /unexcept, /uninvite, /unreop (version only for ircd >= 2.11.0).'
   filename: modelist-r.pl
@@ -2901,6 +3018,7 @@
   version: 0.8.0-rc4
 -
   authors: 'Marcin Rozycki'
+  commands: 'se si unexcept uninvite'
   contact: derwan@irssi.pl
   description: 'Cache of invites and ban exceptions in channel. Usage: /si, /se, /unexcept [indexes], /uninvite [indexes]'
   filename: modelist.pl
@@ -2911,6 +3029,7 @@
   version: 0.7.2
 -
   authors: 'Jilles Tjoelker'
+  commands: monitor
   contact: jilles@stack.nl
   description: 'Interface to ratbox 2.1+ /monitor command'
   filename: monitor.pl
@@ -2929,7 +3048,7 @@
   version: '20031207'
 -
   authors: "Stefan 'tommie' Tomanek"
-  commands: 'morse spell'
+  commands: 'demorse despell morse spell'
   contact: stefan@pico.ruhr.de
   description: 'turns your messages into morse or spelling code'
   filename: morse.pl
@@ -2939,6 +3058,7 @@
   version: '2004021901'
 -
   authors: 'Wouter Coekaerts'
+  commands: mouse
   contact: wouter@coekaerts.be
   description: 'control irssi using mouse clicks and gestures'
   filename: mouse-awl.pl
@@ -2949,6 +3069,7 @@
   version: 1.0.0-awl
 -
   authors: 'Wouter Coekaerts'
+  commands: 'mouse mouse_xterm'
   contact: wouter@coekaerts.be
   description: 'control irssi using mouse clicks and gestures'
   filename: mouse.pl
@@ -2959,6 +3080,7 @@
   version: 1.0.0
 -
   authors: 'Wouter Coekaerts'
+  commands: mouse_xterm
   contact: wouter@coekaerts.be
   description: 'experimental perl version of the irssi mouse patch'
   filename: mouse_soliton.pl
@@ -2969,6 +3091,7 @@
   version: 0.0.0
 -
   authors: 'Erik Scharwaechter, Tobias Böhm, Mikkel Kroman'
+  commands: np
   contact: 'diozaka@gmx.de, code@aibor.de, mk@maero.dk'
   description: 'print the song you are listening to'
   filename: mpd.pl
@@ -2978,6 +3101,7 @@
   version: '0.7'
 -
   authors: 'Ricardo Mesquita'
+  commands: mpg123
   contact: ricardomesquita@netcabo.pt
   description: 'Display current mpg123 track'
   filename: mpg123.pl
@@ -2988,6 +3112,7 @@
   version: 0.01+1
 -
   authors: 'Thomas B. Ruecker'
+  commands: 'mqtt-notify mqtt-test'
   contact: 'thomas@ruecker.fi, tbr on irc.freenode.net'
   description: 'Sends out notifications via MQTT'
   filename: mqtt-notify.pl
@@ -2998,6 +3123,7 @@
   version: '1.0'
 -
   authors: 'Morten Lied Johansen'
+  commands: msg2notice
   contact: mortenjo@ifi.uio.no
   description: 'For a configured list of nicks, convert all their messages to a notice'
   filename: msg2notice.pl
@@ -3081,6 +3207,7 @@
   version: '1.0'
 -
   authors: BC-bd
+  commands: bw
   contact: bd@bc-bd.org
   description: 'Adds an item which displays the current network activity. Needs /proc/net/dev.'
   filename: nact.pl
@@ -3091,6 +3218,7 @@
   version: 0.2.6
 -
   authors: 'Roeland Nieuwenhuis'
+  commands: netswitch
   contact: irc@trancer.nl
   description: 'Set all windows not bound to a network to a specified network.'
   filename: netswitch.pl
@@ -3101,6 +3229,7 @@
   version: 1.0.0
 -
   authors: 'Marcin Rozycki, Mathieu Doidy'
+  commands: article
   contact: derwan@irssi.pl
   description: 'News reader, usage:  /article [-s <server>] [-p <port>] [-P <password> -U <login>] [-l <group> <count>] [-a] [-L <index>] <message-id>'
   filename: news.pl
@@ -3132,6 +3261,7 @@
   version: '1.1'
 -
   authors: 'Timo Sirainen, Ian Peters, David Leadbeater'
+  commands: color
   contact: tss@iki.fi
   description: 'assign a different color for each nick'
   filename: nickcolor.pl
@@ -3142,6 +3272,7 @@
   version: '2'
 -
   authors: Nei
+  commands: neatcolor
   description: 'colourise nicks'
   filename: nickcolor_expando.pl
   license: 'GPL v2'
@@ -3167,6 +3298,7 @@
   version: '0.03'
 -
   authors: 'Wouter Coekaerts'
+  commands: nicklist
   contact: coekie@irssi.org
   description: 'draws a nicklist to another terminal, or at the right of your irssi in the same terminal'
   filename: nicklist.pl
@@ -3177,6 +3309,7 @@
   version: 0.4.6
 -
   authors: c0ffee
+  commands: 'nickmix stopmix'
   contact: c0ffee@penguin-breeder.org
   description: 'Perturbates your nick, use /nickmix nick/len where len is the number of chars you want to keep from your orig nick. use /stopmix to stop. Always issue the commands in a window of the server you want to mix in.'
   filename: nickmix-c0ffee.pl
@@ -3187,6 +3320,7 @@
   version: v0.1
 -
   authors: 'Petr Baudis'
+  commands: nickmix
   contact: pasky@ji.cz
   description: 'Perturbates given nick (or just a word) in certain way.'
   filename: nickmix_pasky.pl
@@ -3197,6 +3331,7 @@
   version: '1.2'
 -
   authors: 'Geert Hauwaerts'
+  commands: 'nickserv ns'
   contact: geert@irssi.org
   description: 'This script will authorize you into NickServ.'
   filename: nickserv.pl
@@ -3217,6 +3352,7 @@
   version: 0.5.7
 -
   authors: BC-bd
+  commands: neatcolor
   contact: bd@bc-bd.org
   description: 'right aligned nicks depending on longest nick'
   filename: nm.pl
@@ -3287,6 +3423,7 @@
   version: '0.5'
 -
   authors: vague
+  commands: notes
   contact: vague!#irssi@freenode
   description: 'Keeps notes on users and displayes the note in /whois output if the host/nick matches'
   filename: notes.pl
@@ -3326,6 +3463,7 @@
   version: '1.01'
 -
   authors: 'Jari Matilainen'
+  commands: 'notifyquit_show_exceptions notifyquit_show_watchlist prompt'
   contact: 'vague!#irssi@freenode on irc'
   description: 'Notify if user has left the channel'
   filename: notifyquit.pl
@@ -3356,6 +3494,7 @@
   version: '1.00'
 -
   authors: 'Ricardo Mesquita'
+  commands: ogg123
   contact: ricardomesquita@netcabo.pt
   description: 'Display current ogg123 track'
   filename: ogg123.pl
@@ -3376,6 +3515,7 @@
   version: 0.0.2
 -
   authors: 'David Leadbeater'
+  commands: on
   contact: dgl@dgl.cx
   description: "/on command - this is very simple and not really designed to be the same as ircII - it tries to fit into Irssi's usage style more than emulating ircII."
   filename: on.pl
@@ -3427,6 +3567,7 @@
   version: '20030208'
 -
   authors: 'Petr Baudis'
+  commands: operit
   contact: pasky@ucw.cz
   description: 'Perform certain action (invite/op/...) on request authenticated by the IRC operator status.'
   filename: operit.pl
@@ -3447,6 +3588,7 @@
   version: '1.11'
 -
   authors: 'Terje "xerath" Tjeldnes'
+  commands: o
   contact: terje@darkrealm.no
   filename: opnotice.pl
   license: 'GNU GPL v2'
@@ -3465,7 +3607,7 @@
   version: '1.0'
 -
   authors: Wohmatak
-  commands: /np
+  commands: 'np npinfo'
   contact: wohmatak@iglu.cz
   description: 'Displays the song played by orpheus'
   filename: orphamp.pl
@@ -3496,6 +3638,7 @@
   version: '20071209'
 -
   authors: c0ffee
+  commands: page
   contact: c0ffee@penguin-breeder.org
   description: 'Adds the /PAGE command to page a nick (use /page nick <text>)... to ignore pages /set pager_mode off'
   filename: page-c0ffee.pl
@@ -3506,6 +3649,7 @@
   version: '0.03'
 -
   authors: 'Thomas Graf'
+  commands: page
   contact: irssi@reeler.org
   description: 'display and send CTCP PAGE'
   filename: page_reeler.pl
@@ -3525,6 +3669,7 @@
   version: '1.2'
 -
   authors: fprintf
+  commands: pango
   contact: fprintf@github.com
   description: 'Render text with various color modifications using HTML tag syntax.'
   filename: pangotext.pl
@@ -3534,6 +3679,7 @@
   version: '1.1'
 -
   authors: 'Marcin Rozycki, Stanislaw Halik'
+  commands: paste
   contact: derwan@irssi.pl
   description: 'Usage: /paste [-all|-msgs|-public] [-c|-b] [-s|-l| where] [lines]'
   filename: paste-derwan.pl
@@ -3544,6 +3690,7 @@
   version: '0.9'
 -
   authors: 'Marcin Rozycki'
+  commands: paste
   contact: derwan@irssi.pl
   description: 'Pasting lines to specified targets, type "/paste -help" for help'
   filename: paste_derwan.pl
@@ -3554,6 +3701,7 @@
   version: 1.0-rc5
 -
   authors: 'Simon Huggins'
+  commands: 'clear_buffer paste'
   contact: huggie-irssi@earth.li
   description: 'Paste reformats long pieces of text typically pasted into your client from webpages so that they fit nicely into your channel.  Width of client may be specified'
   filename: paste_huggie.pl
@@ -3564,6 +3712,7 @@
   version: '0.5'
 -
   authors: 'Kimmo Lehto'
+  commands: 'play see start stop'
   contact: kimmo@a-men.org
   description: 'Provides /start, /stop, /play <-nopack> <-nospace> paste mechanism - start and stop recording and then replay without linebreaks. Also /see to view what was recorded.'
   filename: paste_kimmoke.pl
@@ -3573,6 +3722,7 @@
   version: '0.1'
 -
   authors: Mankeli
+  commands: pelix
   contact: mankeli@einari.org
   description: 'This script allows you flood shit.'
   filename: pelix.pl
@@ -3582,6 +3732,7 @@
   version: '0.3'
 -
   authors: "Marcin 'Qrczak' Kowalczyk, Johan 'ion' Kiviniemi"
+  commands: 'find flag mask trust user'
   contact: qrczak@knm.org.pl
   description: 'Userlist with autoopping, autokicking etc.'
   filename: people.pl
@@ -3603,6 +3754,7 @@
   version: '1.1'
 -
   authors: aquanight
+  commands: 'perlalias perlunalias'
   contact: aquanight@gmail.com
   description: 'Quickly create commands from short perl blocks'
   filename: perlalias.pl
@@ -3612,6 +3764,7 @@
   version: '1.2'
 -
   authors: 'Adam Duck'
+  commands: sound
   contact: duck@cs.uni-frankfurt.de
   description: 'does CTCP SOUNDs and other similar things.'
   filename: pggb_sound.pl
@@ -3643,6 +3796,7 @@
   version: '20170204'
 -
   authors: "Maciek Freudenheim, Marco d'Itri"
+  commands: ppl
   contact: 'fahren@bochnia.pl, md@linux.it'
   description: "port of asmodean's /ppl command from skuld3"
   filename: ppl.pl
@@ -3662,6 +3816,7 @@
   version: '1.0'
 -
   authors: 'Cyprien Debu'
+  commands: procmaillog
   contact: frey@notk.org
   description: 'Gets new mails from procmail.log file'
   filename: procmaillog.pl
@@ -3761,6 +3916,7 @@
   version: '20030208'
 -
   authors: 'Jakub Jankowski'
+  commands: 'rkick rknockout rme rsay rtopic'
   contact: shasta@atn.pl
   description: 'Prints colored text. Rather simple than sophisticated.'
   filename: rainbow.pl
@@ -3781,6 +3937,7 @@
   version: '1.13'
 -
   authors: legion
+  commands: randname
   contact: a.lepore(at)email.it
   description: 'Random "/set real_name" taken from a file.'
   filename: randname.pl
@@ -3810,6 +3967,7 @@
   version: '0.1'
 -
   authors: "Maciek 'fahren' Freudenheim"
+  commands: relm
   contact: fahren@bochnia.pl
   description: 'Keeps last 15 messages in cache'
   filename: relm.pl
@@ -3819,6 +3977,7 @@
   version: '1.0'
 -
   authors: 'David Leadbeater'
+  commands: remote
   contact: dgl@dgl.cx
   description: 'Lets you run commands remotely via /msg and a password'
   filename: remote.pl
@@ -3829,6 +3988,7 @@
   version: '1'
 -
   authors: 'Isaac Good'
+  commands: 'layout_load layout_save'
   contact: irssi@isaacgood.com
   description: 'Reordering windows based on a textfile.'
   filename: reorder.pl
@@ -3848,6 +4008,7 @@
   version: 0.2.0
 -
   authors: 'Jere Toivonen'
+  commands: replace
   contact: jere@flamero.fi
   description: 'Replaces regexps with predefined strings'
   filename: replace.pl
@@ -3868,6 +4029,7 @@
   version: '1'
 -
   authors: Fogel
+  commands: 'mute next np pause play prev rhythmbox_help unmute vdown vol vup'
   contact: fogel@fogel.netmark.pl
   description: 'Rhythmbox now playing script'
   filename: rhythmbox.pl
@@ -3878,6 +4040,7 @@
   version: '1.30'
 -
   authors: "Maciek 'fahren' Freudenheim"
+  commands: rk
   contact: fahren@bochnia.pl
   description: '/RK [-o | -l | -a] - kicks random nick from ops | lusers | all on channel'
   filename: rk.pl
@@ -3887,6 +4050,7 @@
   version: '0.9'
 -
   authors: 'Victor Ivanov'
+  commands: romaji
   contact: v0rbiz@yahoo.com
   description: 'translates romaji to hiragana or katakana in text enclosed in ^R'
   filename: romaji.pl
@@ -3897,6 +4061,7 @@
   version: 1.0b3
 -
   authors: 'Victor Ivanov'
+  commands: 'rohira rokata rorest'
   contact: v0rbiz@yahoo.com
   description: 'Dynamic romaji binds'
   filename: romajibind.pl
@@ -3927,6 +4092,7 @@
   version: 0.2.1
 -
   authors: "Dawid 'rud0lf' Lekawski"
+  commands: emotes
   contact: 'rud0lf/IRCnet; rud0lf/freenode; xxrud0lf@gmail.com'
   description: 'Replaces :emote_name: text in your sent messages into pre-defined emotes (unicode mostly).'
   filename: rud_emotes.pl
@@ -3936,6 +4102,7 @@
   version: '1.10'
 -
   authors: "Johan \"Ion\" Kiviniemi, idea taken from Riku Voipio's sana.pl"
+  commands: sana
   contact: 'ion at hassers.org'
   description: '/sana command, translates english-finnish-english.'
   filename: sana_cmd.pl
@@ -3956,6 +4123,7 @@
   version: '0.1'
 -
   authors: 'Wouter Coekaerts, Emanuele Giaquinta'
+  commands: ''
   contact: 'wouter@coekaerts.be, exg@irssi.org'
   description: 'search in your scrollback, scroll to a match'
   filename: sb_search.pl
@@ -3966,6 +4134,7 @@
   version: '1.1'
 -
   authors: Nei
+  commands: ''
   contact: 'Nei @ anti@conference.jabber.teamidiot.de'
   description: 'clear matching lines in scrollback'
   filename: sbclearmatch.pl
@@ -4017,6 +4186,7 @@
   version: '0.9'
 -
   authors: Juerd
+  commands: ''
   contact: juerd@juerd.nl
   description: 'Access script information'
   filename: scriptinfo.pl
@@ -4027,6 +4197,7 @@
   version: '1.20'
 -
   authors: lasers
+  commands: ''
   contact: 'lasers on freenode'
   description: 'Loads scripts from file instead of autorun directory'
   filename: scriptsave.pl
@@ -4036,6 +4207,7 @@
   version: '0.2'
 -
   authors: 'jwz, irssified by Mikachu'
+  commands: scrmable
   contact: 'Mikachu @ freenode'
   description: 'wtires lkie tihs'
   filename: scrmable.pl
@@ -4054,6 +4226,7 @@
   version: '0.01'
 -
   authors: "Jari Matilainen, a lot of code borrowed from whitelist.pl by David O'Rourke and Karl Siegemund"
+  commands: sm
   contact: 'vague`!#irssi@freenode on irc '
   description: 'An irssi adaptation of securequery.mrc found in the Acidmax mIRC script. :), now with multiserver support'
   filename: securemsg.pl
@@ -4063,6 +4236,7 @@
   version: '2.1'
 -
   authors: "Marcin 'Qrczak' Kowalczyk"
+  commands: 'forget listen say_seen seen'
   contact: qrczak@knm.org.pl
   description: 'Tell people when other people were online'
   filename: seen.pl
@@ -4092,7 +4266,7 @@
   version: '2'
 -
   authors: optical
-  commands: '/seti <#channel>|<nick>'
+  commands: seti
   contact: optical@linux.nu
   description: "Tell ppl how far you've gotten with you SETI\\@home workunit."
   filename: seti.pl
@@ -4113,6 +4287,7 @@
   version: 0.8.10
 -
   authors: 'Marcin Rozycki'
+  commands: '42.pl shortenurl'
   contact: derwan@irssi.pl
   description: shortenurl
   filename: shortenurl.pl
@@ -4124,6 +4299,7 @@
   version: 0.7.1
 -
   authors: 'eo, tsaavik'
+  commands: shorturl
   contact: 'irssi@eosin.org, dave001@hellspark.com'
   description: 'Private/Public url reduction script.'
   filename: shorturl.pl
@@ -4199,6 +4375,7 @@
   version: '0.1'
 -
   authors: 'Jonne Piittinen'
+  commands: smiley
   contact: jip@loota.org
   description: 'Very useful smiley-flooder'
   filename: smiley.pl
@@ -4208,6 +4385,7 @@
   version: '0.69'
 -
   authors: "Maciek 'fahren' Freudenheim"
+  commands: 'addsms delsms listsms sms smsadd smsdel smslist smsstat'
   contact: fahren@bochnia.pl
   description: '/ADDSMS, /DELSMS, /LISTSMS and /SMS - phone address-book with smssender, for now supports only Polish operators'
   filename: sms.pl
@@ -4217,6 +4395,7 @@
   version: 1.5b
 -
   authors: 'Rick (strlen) Jansen'
+  commands: snmpup
   contact: strlen@shellz.nl
   description: "This script queries remote hosts (/snmpup <host1> <host2> <hostN>) running snmpd for it's uptime and cpu usage"
   filename: snmpup.pl
@@ -4245,6 +4424,7 @@
   version: '1.1'
 -
   authors: 'Michael Kowalchuk'
+  commands: '_spellcheck spell'
   contact: michael_kowalchuk@umanitoba.ca
   description: 'A spell checker for irssi.  Hit alt+s and your line will echoed to the active window with mistakes underlined and suggestions noted.  /spell is also provided.  Requires Lingua::Ispell and Ispell.'
   filename: spell.pl
@@ -4267,6 +4447,7 @@
   version: '0.4'
 -
   authors: "Maciek 'fahren' Freudenheim, David Leadbeater"
+  commands: sping
   contact: fahren@bochnia.pl
   description: '/SPING [server] - checks latency between current server and [server]'
   filename: sping.pl
@@ -4285,6 +4466,7 @@
   version: '0.20'
 -
   authors: 'Örjan Persson'
+  commands: spotify
   contact: o@42mm.org
   description: 'Lookup spotify uris'
   filename: spotify.pl
@@ -4307,6 +4489,7 @@
   version: '0.9'
 -
   authors: 'Marcin Rozycki'
+  commands: sync-check
   contact: derwan@irssi.pl
   description: 'Script checking channel synchronization. Usage: /sync-check [channel (servers)|-stop]'
   filename: synccheck.pl
@@ -4317,6 +4500,7 @@
   version: 0.4.9.1
 -
   authors: 'David Rudie'
+  commands: sysinfo
   contact: david@inexistent.com
   description: 'Cross-platform/architecture system information script.'
   filename: sysinfo270-irssi.pl
@@ -4327,6 +4511,7 @@
   version: '2.70'
 -
   authors: 'David Rudie'
+  commands: sysinfo
   contact: david@inexistent.com
   description: 'Cross-platform/architecture system information script.'
   filename: sysinfo277-irssi.pl
@@ -4337,6 +4522,7 @@
   version: '2.77'
 -
   authors: 'David Leadbeater'
+  commands: sysinfo
   contact: dgl@dgl.cx
   description: 'Adds a /sysinfo command which prints system information (linux only).'
   filename: sysinfo_dg.pl
@@ -4347,6 +4533,7 @@
   version: '1.3'
 -
   authors: 'Juerd, Tronic'
+  commands: sysinfo
   contact: trn@iki.fi
   description: 'Linux system information (with vPenis and other stuff)'
   filename: sysinfoplus.pl
@@ -4396,6 +4583,7 @@
   version: '2003020801'
 -
   authors: BC-bd
+  commands: thankop
   contact: bd@bc-bd.org
   description: 'Remembers the last person oping you on a channel'
   filename: thankop.pl
@@ -4406,6 +4594,7 @@
   version: 0.1.7
 -
   authors: 'Teemu Hjelt'
+  commands: 'thistory tinfo topichistory topicinfo'
   contact: temex@iki.fi
   description: 'Keeps information about the most recent topics of the channels you are on.'
   filename: thistory.pl
@@ -4416,6 +4605,7 @@
   version: '1.05'
 -
   authors: 'Kimmo Lehto, Marcus Rueckert'
+  commands: timer
   contact: 'kimmo@a-men.org, darix@irssi.org'
   description: 'Provides /timer command for mIRC/BitchX type timer functionality.'
   filename: timer.pl
@@ -4436,6 +4626,7 @@
   version: '0.2'
 -
   authors: Atoms
+  commands: tinyurl
   contact: atoms@tups.lv
   description: 'create a tinyurl from a long one'
   filename: tinyurl.pl
@@ -4456,6 +4647,7 @@
   version: 3.2b
 -
   authors: "Maciek 'fahren' Freudenheim"
+  commands: tlock
   contact: fahren@bochnia.pl
   description: '/TLOCK [-d] [channel] [topic] - locks current or specified topic on [channel]'
   filename: tlock.pl
@@ -4494,6 +4686,7 @@
   version: '2003020801'
 -
   authors: 'Gabor Nyeki'
+  commands: topicsed
   contact: bigmac@vim.hu
   description: 'editing channel topics by regexps'
   filename: topicsed.pl
@@ -4512,6 +4705,7 @@
   version: 0.0.1
 -
   authors: Ziddy
+  commands: 'gather import track'
   contact: DALnet
   description: 'Keeps track of users by building a databaseof online, joining and nickchanges. Regex-cabablefor the most part, AKA import available. Search byident, nick or host'
   filename: track.pl
@@ -4522,6 +4716,7 @@
   version: '2.1'
 -
   authors: "Peter 'kinlo' Leurs, Uwe Dudenhoeffer, Michiel Holtkamp, Nico R. Wohlgemuth"
+  commands: 'mark tb trackbar'
   contact: irssi-trackbar@supermind.nl
   description: "Shows a bar where you've last read a window"
   filename: trackbar.pl
@@ -4532,7 +4727,7 @@
   version: '1.9'
 -
   authors: 'Peter Leurs and Geert Hauwaerts'
-  commands: trackbar
+  commands: 'mark trackbar'
   contact: peter@pfoe.be
   description: 'Shows a bar where you have last read a window.'
   filename: trackbar22.pl
@@ -4544,6 +4739,7 @@
   version: '2.3'
 -
   authors: 'Timo Sirainen'
+  commands: findnick
   contact: tss@iki.fi
   description: "Are you ever tired of those people who keep changing their nicks? Or maybe you just don't like someone's nick? This script lets you see them with the real nick all the time no matter what nick they're currently using."
   filename: tracknick.pl
@@ -4563,6 +4759,7 @@
   version: '0.1'
 -
   authors: 'Wouter Coekaerts'
+  commands: trigger
   contact: wouter@coekaerts.be
   description: 'execute a command or replace text, triggered by an event in irssi'
   filename: trigger.pl
@@ -4583,6 +4780,7 @@
   version: '2003020801'
 -
   authors: 'Gabor Nyeki'
+  commands: tvmusor
   contact: bigmac@home.sirklabs.hu
   description: 'asks for the current tv-lineup from http://www.port.hu/'
   filename: tvmusor.pl
@@ -4591,6 +4789,7 @@
   name: tvmusor
 -
   authors: 'Sam Stoller'
+  commands: ''
   contact: snstoller@gmail.com
   description: 'Assign colors to tweet message components'
   filename: twitter_theme.pl
@@ -4643,6 +4842,7 @@
   version: '1.12'
 -
   authors: Michiel
+  commands: u
   contact: michiel@dotgeek.org
   description: 'BitchX /u clone. Use /u <regex> to show all nicks (including ident@host) matching regex in the current channel.'
   filename: u.pl
@@ -4653,6 +4853,7 @@
   version: '1.3'
 -
   authors: shabble
+  commands: prompt
   contact: 'shabble+irssi@metavore.org, shabble@#irssi/Freenode'
   description: 'Helper script for dynamically adding text into the input-bar prompt.'
   filename: uberprompt.pl
@@ -4662,6 +4863,7 @@
   version: '0.3'
 -
   authors: 'David Leadbeater'
+  commands: 'charblocks unicode'
   contact: dgl@dgl.cx
   description: 'Get infomation about unicode characters'
   filename: unicode.pl
@@ -4672,6 +4874,7 @@
   version: '2'
 -
   authors: 'Peder Stray'
+  commands: upgradeinfo
   contact: peder@ninja.no
   description: 'Statusbaritem notifying you about updated binary'
   filename: upgradeinfo.pl
@@ -4682,6 +4885,7 @@
   version: '1.7'
 -
   authors: 'Ivo Schooneman'
+  commands: 'ume usay'
   contact: ivo@schooneman.net
   description: 'Plugin to place text upsidedown'
   filename: upsidedown.pl
@@ -4703,6 +4907,7 @@
   version: '1.6'
 -
   authors: 'Thomas Graf'
+  commands: 'head url'
   contact: irssi@reeler.org
   description: 'logs urls to textfile or/and database, able to list, quote, open or `http head` saved urls.'
   filename: url_log.pl
@@ -4725,6 +4930,7 @@
   version: '1.28'
 -
   authors: 'David Leadbeater'
+  commands: url
   contact: dgl@dgl.cx
   description: 'Captures urls said in channel and private messages and saves them to a file, also adds a /url command which loads the last said url into a browser.'
   filename: urlgrab.pl
@@ -4746,6 +4952,7 @@
   version: '1.4'
 -
   authors: bwolf
+  commands: url
   contact: bwolf@geekmind.org
   description: 'URL grabber with HTML generation and cmd execution'
   filename: urlplot.pl
@@ -4776,6 +4983,7 @@
   version: '0.23'
 -
   authors: 'Jean-Yves Lefort'
+  commands: users
   contact: 'jylefort\@brutele.be, decadix on IRCnet'
   description: 'Implements /USERS'
   filename: users.pl
@@ -4785,6 +4993,7 @@
   version: '2.3'
 -
   authors: c0ffee
+  commands: vstat
   contact: c0ffee@penguin-breeder.org
   description: 'shows top[0-9]+ irc client versions in a channel'
   filename: version-stat.pl
@@ -4806,6 +5015,7 @@
   version: '20030208'
 -
   authors: 'Olof "zibri" Johansson, Cyprien Debu'
+  commands: vidinfo
   contact: 'olof@ethup.se, frey@notk.org'
   description: 'Prints some info of a linked video automatically'
   filename: vidinfo.pl
@@ -4816,6 +5026,7 @@
   version: '1.00'
 -
   authors: 'Jakub Jankowski'
+  commands: 'vme vsay vtopic'
   contact: shasta@atn.pl
   description: 'Silly script, removes vowels, idea taken from #linuxnews ;-)'
   filename: vowels.pl
@@ -4826,7 +5037,7 @@
   version: '1.0'
 -
   authors: "Matti 'qvr' Hiljanen, Piotr 'Pieta' Szymanski"
-  commands: wa
+  commands: 'vol wa'
   contact: 'matti@hiljanen.com, pieta@osiedle.net.pl'
   description: 'shows what WinAmp is playing with /wa command'
   filename: wa.pl
@@ -4857,6 +5068,7 @@
   version: '1.01'
 -
   authors: ThEbUtChE
+  commands: watch
   contact: thebutche@interec.org
   description: 'Uso del comando watch para irssi.'
   filename: watch.pl
@@ -4867,6 +5079,7 @@
   version: '1.0'
 -
   authors: "David O'Rourke, Karl Siegemund"
+  commands: whitelist
   contact: 'phyber [at] #irssi, q [at] spuk.de'
   description: 'Whitelist specific nicks or hosts and ignore messages from anyone else.'
   filename: whitelist.pl
@@ -4905,6 +5118,7 @@
   version: '1.4'
 -
   authors: 'Erik Fears'
+  commands: whos
   contact: strtok@softhome.net
   description: 'This script allows you to view all users on a specific server.'
   filename: whos.pl
@@ -4914,6 +5128,7 @@
   version: '1.00'
 -
   authors: 'Leszek Matok'
+  commands: 'wiilm wilm'
   contact: lam@lac.pl
   description: 'Provides /wilm and /wiilm commands, which do a whois on a person who sent you last private message'
   filename: wilm.pl
@@ -4923,6 +5138,7 @@
   version: 1.0.1
 -
   authors: 'Wouter Coekaerts'
+  commands: ws
   contact: coekie@irssi.org
   description: 'makes switching windows easy'
   filename: window_switcher.pl
@@ -4983,6 +5199,7 @@
   version: 0.0.2
 -
   authors: 'Toshio R. Spoor'
+  commands: 'auth xhelp xrehash'
   contact: t.spoor@gmail.com
   description: 'Undernet X Service Authentication Program'
   filename: xauth.pl
@@ -5002,6 +5219,7 @@
   version: '0.2'
 -
   authors: 'Julie LaLa'
+  commands: xdcc
   contact: ryz@asdf.us
   description: 'Run an XDCC file server from irssi.'
   filename: xdcc.pl
@@ -5012,6 +5230,7 @@
   version: '1.0'
 -
   authors: MarshalMeatball
+  commands: 'ag_add ag_botadd ag_botrem ag_clearcache ag_help ag_list ag_rem ag_reset ag_run ag_server ag_stop'
   contact: mobilegundamseed@hotmail.com
   description: 'XDCC Autoget, for automated searching and downloading of xdcc packs'
   filename: xdcc_autoget.pl
@@ -5032,7 +5251,6 @@
   version: '20141016'
 -
   authors: "Stefan 'tommie' Tomanek"
-  commands: xetra
   contact: stefan@pico.ruhr.de
   description: 'brings the stock exchanges of the world to your irssi'
   filename: xetra.pl
@@ -5053,6 +5271,7 @@
   version: '1.00'
 -
   authors: 'Simon Shine'
+  commands: 'np xmms'
   contact: simon@blueshell.dk
   description: 'XMMS-InfoPipe front-end - allow /np [-help] [dest]'
   filename: xmms.pl
@@ -5062,7 +5281,7 @@
   version: '2.0'
 -
   authors: simon
-  commands: /np
+  commands: np
   contact: simon\@blueshell.dk
   description: 'Returns XMMS-InfoPipe data'
   filename: xmms2.pl
