@@ -29,7 +29,8 @@ require Encode;
     # This is an ugly hack to be `lax' about the encoding. We try to
     # read everything as UTF-8 regardless of declared file encoding
     # and fall back to Latin-1.
-    my $orig = YAML::Tiny->can("_has_internal_string_value");
+    my $orig = YAML::Tiny->can("_has_internal_string_value") || die("Error in ".__PACKAGE__);
+    no warnings 'redefine';
     *YAML::Tiny::_has_internal_string_value = sub {
 	my $ret = $orig->(@_);
 	use bytes;
