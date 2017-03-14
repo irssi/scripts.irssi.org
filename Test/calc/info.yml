@@ -2,6 +2,8 @@
 -
   authors: Juerd
   changed: 'Thu Mar 19 11:00 CET 2002'
+  commands:
+    - calc
   contact: juerd@juerd.nl
   default_package: calc
   description: 'Simple /calc mechanism'

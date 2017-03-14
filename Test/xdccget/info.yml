@@ -2,7 +2,16 @@
 -
   authors: "Stefan 'tommie' Tomanek, Obfuscoder"
   changed: '20141016'
-  commands: xdccget
+  commands:
+    - xdccget
+    - 'xdccget cancel'
+    - 'xdccget help'
+    - 'xdccget list'
+    - 'xdccget offers'
+    - 'xdccget pause'
+    - 'xdccget queue'
+    - 'xdccget reset'
+    - 'xdccget stat'
   contact: obfuscoder@obfusco.de
   default_package: xdccget
   description: 'enhanced downloading, queing, searching from XDCC bots'

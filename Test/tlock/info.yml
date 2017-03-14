@@ -2,6 +2,8 @@
 -
   authors: "Maciek 'fahren' Freudenheim"
   changed: 'Fri Mar 15 15:09:42 CET 2002'
+  commands:
+    - tlock
   contact: fahren@bochnia.pl
   default_package: tlock
   description: '/TLOCK [-d] [channel] [topic] - locks current or specified topic on [channel]'

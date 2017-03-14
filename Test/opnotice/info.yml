@@ -2,6 +2,8 @@
 -
   authors: 'Terje "xerath" Tjeldnes'
   changed: 'Thu Jul 25 00:19:09 CEST 2002'
+  commands:
+    - o
   contact: terje@darkrealm.no
   default_package: opnotice
   license: 'GNU GPL v2'

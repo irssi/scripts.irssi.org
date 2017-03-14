@@ -1,6 +1,12 @@
 ---
 -
   authors: 'Timo Sirainen, Matti Hiljanen, Joost Vunderink, Bart Matthaei'
+  commands:
+    - mailbox
+    - 'mailbox add'
+    - 'mailbox del'
+    - 'mailbox help'
+    - 'mailbox show'
   contact: 'tss@iki.fi, matti@hiljanen.com, joost@carnique.nl, bart@dreamflow.nl'
   default_package: mail
   description: 'Fully customizable mail counter statusbar item with multiple mailbox and multiple Maildir support'

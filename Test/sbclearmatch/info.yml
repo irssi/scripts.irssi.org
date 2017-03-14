@@ -1,6 +1,8 @@
 ---
 -
   authors: Nei
+  commands:
+    - 'scrollback clearmatch'
   contact: 'Nei @ anti@conference.jabber.teamidiot.de'
   default_package: sbclearmatch
   description: 'clear matching lines in scrollback'

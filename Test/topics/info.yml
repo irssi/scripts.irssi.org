@@ -2,7 +2,11 @@
 -
   authors: "Stefan 'tommie' Tomanek"
   changed: '2003020801'
-  commands: topics
+  commands:
+    - topics
+    - 'topics help'
+    - 'topics lock'
+    - 'topics unlock'
   contact: stefan@pico.ruhr.de
   default_package: topics
   description: 'records a topic history and locks the channel topic'

@@ -1,6 +1,8 @@
 ---
 -
   authors: BC-bd
+  commands:
+    - thankop
   contact: bd@bc-bd.org
   default_package: thankop
   description: 'Remembers the last person oping you on a channel'

@@ -2,7 +2,15 @@
 -
   authors: "Stefan 'tommie' Tomanek"
   changed: '2003020801'
-  commands: babelirc
+  commands:
+    - babelirc
+    - 'babelirc add'
+    - 'babelirc del'
+    - 'babelirc help'
+    - 'babelirc list'
+    - 'babelirc load'
+    - 'babelirc save'
+    - 'babelirc toggle'
   contact: stefan@pico.ruhr.de
   default_package: babelirc
   description: 'translates your messages via Babelfish'

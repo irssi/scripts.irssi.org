@@ -1,6 +1,8 @@
 ---
 -
   authors: 'Matt "f0rked" Sparks, Miklos Vajna'
+  commands:
+    - anames
   contact: ms+irssi@quadpoint.org
   default_package: anames
   description: 'a /names display with away nicks coloured'

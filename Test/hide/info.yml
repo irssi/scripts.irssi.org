@@ -2,6 +2,17 @@
 -
   authors: 'Marcus Rueckert'
   changed: '2002-07-21 06:53:21+0200'
+  commands:
+    - hide
+    - 'hide help'
+    - 'hide level'
+    - 'hide level add'
+    - 'hide level remove'
+    - 'hide print'
+    - 'hide target'
+    - 'hide target add'
+    - 'hide target remove'
+    - 'hide usage'
   contact: darix@irssi.de
   default_package: hide
   description: "a little interface to irssi's activity_hide_* settings"

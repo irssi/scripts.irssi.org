@@ -2,6 +2,8 @@
 -
   authors: 'Timo Sirainen'
   changed: 'Mon Oct 28 00:29:26 EET 2002'
+  commands:
+    - country
   contact: tss@iki.fi
   default_package: country
   description: 'Print the country name in /WHOIS replies'

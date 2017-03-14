@@ -1,6 +1,11 @@
 ---
 -
   authors: "Marcin 'Qrczak' Kowalczyk"
+  commands:
+    - link
+    - 'link add'
+    - 'link list'
+    - 'link remove'
   contact: qrczak@knm.org.pl
   default_package: linkchan
   description: 'Link several channels on serveral networks'

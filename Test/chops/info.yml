@@ -1,6 +1,9 @@
 ---
 -
   authors: 'Jakub Jankowski'
+  commands:
+    - chops
+    - nops
   contact: shasta@atn.pl
   default_package: chops
   description: "Simulates BitchX's /CHOPS and /NOPS commands."

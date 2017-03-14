@@ -2,7 +2,18 @@
 -
   authors: "Stefan 'tommie' Tomanek"
   changed: '20030208'
-  commands: quizmaster
+  commands:
+    - quizmaster
+    - 'quizmaster help'
+    - 'quizmaster hint'
+    - 'quizmaster import'
+    - 'quizmaster list'
+    - 'quizmaster load'
+    - 'quizmaster next'
+    - 'quizmaster save'
+    - 'quizmaster score'
+    - 'quizmaster start'
+    - 'quizmaster stop'
   contact: stefan@pico.ruhr.de
   default_package: quizmaster
   description: 'a trivia script for Irssi'

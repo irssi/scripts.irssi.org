@@ -1,5 +1,7 @@
 ---
 -
+  commands:
+    - clearable
   contact: 'Nei @ anti@conference.jabber.teamidiot.de'
   default_package: clearable
   description: 'make some command output clearable'

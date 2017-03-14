@@ -1,6 +1,14 @@
 ---
 -
   authors: 'original idea by valvoline, irssi porting by pallotron'
+  commands:
+    - about
+    - erasepass
+    - greets
+    - manual
+    - setpass
+    - validate
+    - verify
   contact: pallotron@freaknet.org
   default_package: gpgvalidator
   description: 'Have gpg-based trusting features in your irssi client!'

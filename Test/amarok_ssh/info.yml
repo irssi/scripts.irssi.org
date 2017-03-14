@@ -1,7 +1,19 @@
 ---
 -
   authors: "Tobias 'camel69' Wulff"
-  commands: amarok
+  commands:
+    - amarok
+    - 'amarok help'
+    - 'amarok mute'
+    - 'amarok next'
+    - 'amarok pause'
+    - 'amarok play'
+    - 'amarok prev'
+    - 'amarok seek'
+    - 'amarok song'
+    - 'amarok stop'
+    - 'amarok time'
+    - 'amarok vol'
   contact: camel69(at)codeeye.de
   default_package: amarok_ssh
   description: 'Retrievs song infos and controls amaroK via dcop, optionally running on another computer via ssh'

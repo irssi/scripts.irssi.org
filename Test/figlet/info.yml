@@ -3,6 +3,8 @@
   authors: Juerd
   changed: 'Sun 10 Mar 14:46 CET 2002'
   changes: 'No more zombie processes'
+  commands:
+    - figlet
   contact: juerd@juerd.nl
   default_package: figlet
   description: 'Safe figlet implementation (with color support!)'

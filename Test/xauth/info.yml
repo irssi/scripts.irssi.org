@@ -2,6 +2,10 @@
 -
   authors: 'Toshio R. Spoor'
   changed: '$Date: 2004/12/17 08:39:47 $'
+  commands:
+    - auth
+    - xhelp
+    - xrehash
   contact: t.spoor@gmail.com
   default_package: xauth
   description: 'Undernet X Service Authentication Program'

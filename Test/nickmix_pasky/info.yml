@@ -1,6 +1,8 @@
 ---
 -
   authors: 'Petr Baudis'
+  commands:
+    - nickmix
   contact: pasky@ji.cz
   default_package: nickmix_pasky
   description: 'Perturbates given nick (or just a word) in certain way.'

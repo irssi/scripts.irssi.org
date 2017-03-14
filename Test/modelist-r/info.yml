@@ -2,6 +2,13 @@
 -
   authors: 'Marcin Rozycki'
   changed: 'Thu Nov  4 17:56:17 2004'
+  commands:
+    - se
+    - si
+    - sr
+    - unexcept
+    - uninvite
+    - unreop
   contact: derwan@irssi.pl
   default_package: modelist_r
   description: 'Cache of invites, ban exceptions and reops in channel. Script commands: /si, /se, /sr, /unexcept, /uninvite, /unreop (version only for ircd >= 2.11.0).'

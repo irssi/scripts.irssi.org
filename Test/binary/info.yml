@@ -1,6 +1,9 @@
 ---
 -
   authors: 'Carl Fischer'
+  commands:
+    - binary
+    - unbinary
   contact: carl.fischer@netcourrier.com
   default_package: binary
   description: 'adds /binary command that converts what you type into 2-base string representation, also decodes other peoples binary automatically'

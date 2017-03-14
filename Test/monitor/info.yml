@@ -1,6 +1,17 @@
 ---
 -
   authors: 'Jilles Tjoelker'
+  commands:
+    - monitor
+    - 'monitor add'
+    - 'monitor clear'
+    - 'monitor delete'
+    - 'monitor help'
+    - 'monitor list'
+    - 'monitor load'
+    - 'monitor readd'
+    - 'monitor save'
+    - 'monitor show'
   contact: jilles@stack.nl
   default_package: monitor
   description: 'Interface to ratbox 2.1+ /monitor command'

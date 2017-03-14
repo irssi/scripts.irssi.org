@@ -2,6 +2,9 @@
 -
   authors: 'Simon Huggins'
   changed: 'Sat Mar  9 10:59:49 GMT 2002'
+  commands:
+    - clear_buffer
+    - paste
   contact: huggie-irssi@earth.li
   default_package: paste_huggie
   description: 'Paste reformats long pieces of text typically pasted into your client from webpages so that they fit nicely into your channel.  Width of client may be specified'

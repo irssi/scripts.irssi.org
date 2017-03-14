@@ -2,6 +2,8 @@
 -
   authors: 'Pablo Martín Báez Echevarría'
   changed: '14:20:15, Oct 16th, 2014 UYT'
+  commands:
+    - mirccolors
   contact: pab_24n@outlook.com
   default_package: frm_outgmsgs
   description: 'define a permanent text formatting (bold, underline, etc.) for outgoing messages'

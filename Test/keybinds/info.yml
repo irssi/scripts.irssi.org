@@ -2,6 +2,9 @@
 -
   authors: 'Geert Hauwaerts'
   changed: 'Tue Nov  4 16:49:20 CET 2003'
+  commands:
+    - azerty
+    - qwerty
   contact: geert@irssi.org
   default_package: keybinds
   description: 'This script will set the proper keybindings on /AZERTY and /QWERTY.'

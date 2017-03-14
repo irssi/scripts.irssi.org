@@ -1,6 +1,8 @@
 ---
 -
   authors: 'Petr Baudis'
+  commands:
+    - operit
   contact: pasky@ucw.cz
   default_package: operit
   description: 'Perform certain action (invite/op/...) on request authenticated by the IRC operator status.'

@@ -2,6 +2,8 @@
 -
   authors: 'Marcin Rozycki'
   changed: 'Wed Oct  6 20:58:38 CEST 2004'
+  commands:
+    - mkick
   contact: derwan@irssi.pl
   default_package: mkick
   description: 'Masskick, usage: /mkick [-aovdln6 (hostmask)] <[:]reason>'

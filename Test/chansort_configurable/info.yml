@@ -1,6 +1,8 @@
 ---
 -
   authors: 'Ævar Arnfjörð Bjarmason'
+  commands:
+    - chansort_configurable
   contact: avarab@gmail.com
   default_package: chansort_configurable
   description: "Sort channels & query windows in a configurable way, based on Peder Stray's chansort.pl"

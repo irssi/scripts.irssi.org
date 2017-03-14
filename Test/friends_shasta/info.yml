@@ -2,6 +2,30 @@
 -
   authors: 'Jakub Jankowski'
   changed: 'Sun Oct 9 22:12:43 2003'
+  commands:
+    - addfriend
+    - addhost
+    - chdelay
+    - chflags
+    - chhandle
+    - chpass
+    - comment
+    - delchanrec
+    - delfriend
+    - delhost
+    - findfriends
+    - flushlearnt
+    - friendsversion
+    - isfriend
+    - listfriends
+    - loadfriends
+    - opfriends
+    - oppingtree
+    - queue
+    - 'queue flush'
+    - 'queue purge'
+    - 'queue show'
+    - savefriends
   contact: shasta@toxcorp.com
   default_package: friends_shasta
   description: 'Maintains list of people you know.'

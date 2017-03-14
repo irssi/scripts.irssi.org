@@ -2,6 +2,14 @@
 -
   authors: 'Jari Matilainen'
   changed: '24 Nov 16:00:00 CET 2015'
+  commands:
+    - notifyquit_show_exceptions
+    - notifyquit_show_watchlist
+    - prompt
+    - 'prompt clear'
+    - 'prompt off'
+    - 'prompt on'
+    - 'prompt set'
   contact: 'vague!#irssi@freenode on irc'
   default_package: notifyquit
   description: 'Notify if user has left the channel'

@@ -2,6 +2,8 @@
 -
   authors: 'Marcin Rozycki, Mathieu Doidy'
   changed: 'Fri Feb  6 21:26:57 CET 2004'
+  commands:
+    - article
   contact: derwan@irssi.pl
   default_package: news
   description: 'News reader, usage:  /article [-s <server>] [-p <port>] [-P <password> -U <login>] [-l <group> <count>] [-a] [-L <index>] <message-id>'

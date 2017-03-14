@@ -2,6 +2,12 @@
 -
   authors: CrazyCat
   changed: '$Date: 2005/01/12 03:04:01$'
+  commands:
+    - aw
+    - back
+    - xahelp
+    - xanick
+    - xasave
   contact: crazycat@c-p-f.org
   default_package: extaway
   description: 'Extended Away & Back programm'

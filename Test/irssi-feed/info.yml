@@ -2,6 +2,8 @@
 -
   authors: 'Julius Michaelis'
   changed: $VERSION
+  commands:
+    - feed
   contact: iRRSi@cserv.dyndns.org
   default_package: irssi_feed
   description: 'Parses and announces XML/Atom feeds'

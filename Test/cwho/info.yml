@@ -2,6 +2,8 @@
 -
   authors: "Maciek 'fahren' Freudenheim"
   changed: 'Mon May  6 14:02:25 CEST 2002'
+  commands:
+    - cwho
   contact: fahren@bochnia.pl
   default_package: cwho
   description: 'Usage: /CWHO [-a | -l | -o | -v ] [ mask ]'

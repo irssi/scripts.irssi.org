@@ -2,6 +2,9 @@
 -
   authors: 'Sam Stoller'
   changed: 2014-11-10
+  commands:
+    - 'twt colors'
+    - 'twt reset'
   contact: snstoller@gmail.com
   default_package: twitter_theme
   description: 'Assign colors to tweet message components'

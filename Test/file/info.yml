@@ -1,6 +1,8 @@
 ---
 -
   authors: 'David Leadbeater'
+  commands:
+    - file
   default_package: file
   description: 'A command to output content of files in various ways'
   license: 'GNU GPLv2 or later'

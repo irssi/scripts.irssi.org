@@ -2,7 +2,8 @@
 -
   authors: 'Stefan Jakobs'
   changed: 'Son May 11 20:20: CET 2008'
-  commands: fcountry
+  commands:
+    - fcountry
   contact: stefan.jakobs@rus.uni-stuttgart.de
   default_package: fcountry
   description: 'Print the country name in /WHOIS replies'

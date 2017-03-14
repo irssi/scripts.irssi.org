@@ -2,6 +2,12 @@
 -
   authors: 'Jari Matilainen'
   changed: '24 Nov 16:00:00 CET 2015'
+  commands:
+    - prompt
+    - 'prompt clear'
+    - 'prompt off'
+    - 'prompt on'
+    - 'prompt set'
   contact: 'vague!#irssi@freenode on irc'
   default_package: intercept
   description: 'Intercept misprinted commands and offer to remove the first character before sending it on'

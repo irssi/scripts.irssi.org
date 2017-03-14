@@ -1,6 +1,8 @@
 ---
 -
   authors: 'Jonne Piittinen'
+  commands:
+    - smiley
   contact: jip@loota.org
   default_package: smiley
   description: 'Very useful smiley-flooder'

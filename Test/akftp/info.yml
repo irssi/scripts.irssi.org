@@ -1,6 +1,8 @@
 ---
 -
   authors: ak
+  commands:
+    - akftp
   contact: ocb23@freenet.removethis.de
   default_package: akftp
   description: 'Full configurable FTP advertiser for Irssi'

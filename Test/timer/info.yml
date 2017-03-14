@@ -2,6 +2,12 @@
 -
   authors: 'Kimmo Lehto, Marcus Rueckert'
   changed: 2015-02-07
+  commands:
+    - timer
+    - 'timer add'
+    - 'timer help'
+    - 'timer list'
+    - 'timer stop'
   contact: 'kimmo@a-men.org, darix@irssi.org'
   default_package: timer
   description: 'Provides /timer command for mIRC/BitchX type timer functionality.'

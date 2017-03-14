@@ -2,7 +2,8 @@
 -
   authors: optical
   changed: 'Sat Jul 13 12:03:42 CEST 2002'
-  commands: '/seti <#channel>|<nick>'
+  commands:
+    - seti
   contact: optical@linux.nu
   default_package: seti
   description: "Tell ppl how far you've gotten with you SETI\\@home workunit."

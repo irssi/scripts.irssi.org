@@ -2,6 +2,14 @@
 -
   authors: legion
   changed: 'Fri Oct 31 12:22:08 CET 2003'
+  commands:
+    - anp
+    - anpa
+    - cleanbar
+    - np
+    - npa
+    - npinfo
+    - npsend
   contact: a.lepore@email.it
   default_package: irssiBlaster
   description: 'Display the song played by mp3blaster in channels and statusbar. See the top of the file for usage.'

@@ -1,6 +1,10 @@
 ---
 -
   authors: 'Jakub Jankowski'
+  commands:
+    - vme
+    - vsay
+    - vtopic
   contact: shasta@atn.pl
   default_package: vowels
   description: 'Silly script, removes vowels, idea taken from #linuxnews ;-)'

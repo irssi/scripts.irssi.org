@@ -2,7 +2,11 @@
 -
   authors: "Stefan 'tommie' Tomanek"
   changed: '2003020801'
-  commands: poison
+  commands:
+    - poison
+    - 'poison get'
+    - 'poison help'
+    - 'poison search'
   contact: stefan@pico.ruhr.de
   default_package: poison
   description: 'equips Irssi with an interface to giFT'

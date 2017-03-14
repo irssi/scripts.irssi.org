@@ -2,6 +2,9 @@
 -
   authors: 'Leszek Matok'
   changed: '10.3.2002 14:00'
+  commands:
+    - wiilm
+    - wilm
   contact: lam@lac.pl
   default_package: wilm
   description: 'Provides /wilm and /wiilm commands, which do a whois on a person who sent you last private message'

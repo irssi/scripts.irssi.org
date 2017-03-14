@@ -2,7 +2,8 @@
 -
   authors: "Stefan 'tommie' Tomanek"
   changed: '2014112501'
-  commands: localize
+  commands:
+    - localize
   contact: stefan@pico.ruhr.de
   default_package: localize
   description: 'Localizes users using traceroute, the localizer database or IP-Atlas'

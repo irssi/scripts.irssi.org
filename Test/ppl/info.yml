@@ -1,6 +1,8 @@
 ---
 -
   authors: "Maciek Freudenheim, Marco d'Itri"
+  commands:
+    - ppl
   contact: 'fahren@bochnia.pl, md@linux.it'
   default_package: ppl
   description: "port of asmodean's /ppl command from skuld3"

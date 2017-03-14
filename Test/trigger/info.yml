@@ -2,6 +2,17 @@
 -
   authors: 'Wouter Coekaerts'
   changed: '$LastChangedDate: 2009-02-07 21:35:47 +0100 (Sat, 07 Feb 2009) $'
+  commands:
+    - 'help trigger'
+    - trigger
+    - 'trigger add'
+    - 'trigger change'
+    - 'trigger delete'
+    - 'trigger help'
+    - 'trigger list'
+    - 'trigger move'
+    - 'trigger reload'
+    - 'trigger save'
   contact: wouter@coekaerts.be
   default_package: trigger
   description: 'execute a command or replace text, triggered by an event in irssi'

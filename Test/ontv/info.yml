@@ -2,7 +2,15 @@
 -
   authors: "Stefan 'tommie' Tomanek"
   changed: '20050226'
-  commands: ontv
+  commands:
+    - ontv
+    - 'ontv current'
+    - 'ontv help'
+    - 'ontv info'
+    - 'ontv next'
+    - 'ontv search'
+    - 'ontv tonight'
+    - 'ontv watching'
   contact: stefan@pico.ruhr.de
   default_package: ontv
   description: 'turns irssi into a tv program guide'

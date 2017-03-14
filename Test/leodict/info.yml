@@ -2,7 +2,8 @@
 -
   authors: "Stefan 'tommie' Tomanek"
   changed: '20040515'
-  commands: leodict
+  commands:
+    - leodict
   contact: stefan@pico.ruhr.de
   default_package: leodict
   description: 'translates via dict.leo.org'

@@ -2,6 +2,10 @@
 -
   authors: c0ffee
   changed: 'Thu Apr 16 15:55:05 BST 2015'
+  commands:
+    - act
+    - 'act all'
+    - 'act public'
   contact: c0ffee@penguin-breeder.org
   default_package: act
   description: 'Reset window activity status. defines command /act'

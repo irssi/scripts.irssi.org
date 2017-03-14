@@ -2,6 +2,8 @@
 -
   authors: "Stefan 'tommie' Tomanek"
   changed: '20021019'
+  commands:
+    - chansearch
   contact: stefan@pico.ruhr.de
   default_package: chansearch
   description: 'searches for specific channels'

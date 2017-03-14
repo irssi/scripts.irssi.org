@@ -2,6 +2,8 @@
 -
   authors: 'Erkki Seppälä'
   changed: 'Mon Mar  4 23:25:18 EET 2002'
+  commands:
+    - find
   contact: flux@inside.org
   default_package: find
   description: "Finds a nick by real name, if he's on a channel with you."

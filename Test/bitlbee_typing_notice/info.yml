@@ -1,6 +1,8 @@
 ---
 -
   authors: 'Tijmen "timing" Ruizendaal, Matt "f0rked" Sparks'
+  commands:
+    - db_typing
   contact: 'tijmen.ruizendaal@gmail.com, root@f0rked.com'
   default_package: bitlbee_typing_notice
   description: "1. Adds an item to the status bar wich shows [typing] when someone is typing a message on the supported IM-networks\t2. Sends typing notices to the supported IM networks (the other way arround). (For bitlbee 3.0+)"

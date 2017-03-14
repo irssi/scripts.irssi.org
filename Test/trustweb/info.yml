@@ -2,7 +2,15 @@
 -
   authors: "Stefan 'tommie' Tomanek"
   changed: '2003020801'
-  commands: trustweb
+  commands:
+    - trustweb
+    - 'trustweb help'
+    - 'trustweb load'
+    - 'trustweb merge'
+    - 'trustweb save'
+    - 'trustweb scan'
+    - 'trustweb show'
+    - 'trustweb trace'
   contact: stefan@pico.ruhr.de
   default_package: trustweb
   description: 'Illustrates the trust between ops'

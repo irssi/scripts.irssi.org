@@ -2,6 +2,20 @@
 -
   authors: "Jari Matilainen, a lot of code borrowed from whitelist.pl by David O'Rourke and Karl Siegemund"
   changed: '10.09.2007 11:30pm GST'
+  commands:
+    - sm
+    - 'sm accept'
+    - 'sm add'
+    - 'sm add host'
+    - 'sm add nick'
+    - 'sm del'
+    - 'sm del host'
+    - 'sm del nick'
+    - 'sm help'
+    - 'sm hosts'
+    - 'sm nicks'
+    - 'sm reject'
+    - 'sm show'
   contact: 'vague`!#irssi@freenode on irc '
   default_package: securemsg
   description: 'An irssi adaptation of securequery.mrc found in the Acidmax mIRC script. :), now with multiserver support'

@@ -2,6 +2,11 @@
 -
   authors: 'Simon Shine'
   changed: 2004-01-15
+  commands:
+    - np
+    - 'np help'
+    - xmms
+    - 'xmms help'
   contact: simon@blueshell.dk
   default_package: xmms
   description: 'XMMS-InfoPipe front-end - allow /np [-help] [dest]'

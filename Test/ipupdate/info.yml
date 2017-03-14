@@ -2,6 +2,8 @@
 -
   authors: xlony
   changed: 'Tue Jan  3 18:33:56 CET 2006'
+  commands:
+    - ipupdate
   contact: anderfdez@yahoo.es
   default_package: ipupdate
   description: 'Auto "/set dcc_own_ip IP" on connect.'

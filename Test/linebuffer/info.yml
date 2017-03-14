@@ -1,6 +1,8 @@
 ---
 -
   authors: Nei
+  commands:
+    - dumplines
   contact: 'Nei @ anti@conference.jabber.teamidiot.de'
   default_package: linebuffer
   description: 'dump the linebuffer content'

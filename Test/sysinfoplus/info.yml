@@ -2,6 +2,8 @@
 -
   authors: 'Juerd, Tronic'
   changed: 'Mon Nov 04 15:17:30 EET 2002'
+  commands:
+    - sysinfo
   contact: trn@iki.fi
   default_package: sysinfoplus
   description: 'Linux system information (with vPenis and other stuff)'

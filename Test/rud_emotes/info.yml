@@ -2,6 +2,8 @@
 -
   authors: "Dawid 'rud0lf' Lekawski"
   changed: 'Mon Nov 07 14:54:38 2016'
+  commands:
+    - emotes
   contact: 'rud0lf/IRCnet; rud0lf/freenode; xxrud0lf@gmail.com'
   default_package: rud_emotes
   description: 'Replaces :emote_name: text in your sent messages into pre-defined emotes (unicode mostly).'

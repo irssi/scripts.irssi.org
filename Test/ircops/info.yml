@@ -1,6 +1,8 @@
 ---
 -
   authors: BC-bd
+  commands:
+    - ircops
   contact: bd@bc-bd.org
   default_package: ircops
   description: '/IRCOPS - Display IrcOps in current channel'

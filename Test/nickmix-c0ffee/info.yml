@@ -1,6 +1,9 @@
 ---
 -
   authors: c0ffee
+  commands:
+    - nickmix
+    - stopmix
   contact: c0ffee@penguin-breeder.org
   default_package: nickmix_c0ffee
   description: 'Perturbates your nick, use /nickmix nick/len where len is the number of chars you want to keep from your orig nick. use /stopmix to stop. Always issue the commands in a window of the server you want to mix in.'

@@ -1,6 +1,15 @@
 ---
 -
   authors: '[^BgTA^]'
+  commands:
+    - bgdebian
+    - bggoogle
+    - bghelp
+    - bgperl
+    - bgphp
+    - bgphpwb
+    - bgversion
+    - bgwwwd
   contact: raul@bgta.net
   default_package: bgta
   description: "Byte's Gallery of the TAilor Script"

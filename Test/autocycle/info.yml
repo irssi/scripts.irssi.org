@@ -2,6 +2,8 @@
 -
   authors: 'Marcin Rozycki'
   changed: 'Fri Jan  3 23:20:06 CET 2003'
+  commands:
+    - autocycle
   contact: derwan@irssi.pl
   default_package: autocycle
   description: 'Auto regain ops in empty opless channels'

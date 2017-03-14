@@ -1,6 +1,9 @@
 ---
 -
   authors: 'Peder Stray'
+  commands:
+    - addfriend
+    - friends
   contact: peder@ninja.no
   default_package: friends_peder
   description: 'Basicly an autoop script with a nice interface and nick coloring ;)'

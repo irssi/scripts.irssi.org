@@ -2,7 +2,8 @@
 -
   authors: 'Clément "nodens" Hermann'
   changed: '0.2'
-  commands: xcmd
+  commands:
+    - xcmd
   contact: clement.hermann@free.fr
   default_package: xcmd
   description: "makes Undernet's X commands easier and faster to use"

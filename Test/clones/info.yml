@@ -1,6 +1,8 @@
 ---
 -
   authors: 'From irssi source, modified by David Leadbeater (dg)'
+  commands:
+    - clones
   default_package: clones
   description: '/CLONES - Display clones in the active channel (with added options)'
   license: 'Same as Irssi'

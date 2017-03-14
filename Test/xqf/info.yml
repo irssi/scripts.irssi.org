@@ -2,7 +2,8 @@
 -
   authors: mizerou
   changed: 'Sat June 05 05:12 MST 2004'
-  commands: xqf
+  commands:
+    - xqf
   contact: mizerou@telus.net
   default_package: xqf
   description: 'automatically sends xqf data to irssi and optionally licq'

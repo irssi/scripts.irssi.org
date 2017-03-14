@@ -2,6 +2,10 @@
 -
   authors: c0ffee
   changed: 'Sun Sep 21 12:22:24 CEST 2008'
+  commands:
+    - join18n
+    - msg18n
+    - part18n
   contact: c0ffee@penguin-breeder.org
   default_package: intjoin
   description: 'Joins channels with non-utf8 non-ascii names.'

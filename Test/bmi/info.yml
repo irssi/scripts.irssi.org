@@ -2,6 +2,9 @@
 -
   authors: 'Daniel K. Gebhart, Marcus Rückert'
   changed: '2002121801'
+  commands:
+    - bmi
+    - 'bmi help'
   contact: 'dkg@con-fuse.org, darix@irssi.org'
   default_package: bmi
   description: 'a simple body mass index calculator for depression ;)'

@@ -2,6 +2,8 @@
 -
   authors: c0ffee
   changed: 2017-03-12
+  commands:
+    - page
   contact: c0ffee@penguin-breeder.org
   default_package: page_c0ffee
   description: 'Adds the /PAGE command to page a nick (use /page nick <text>)... to ignore pages /set pager_mode off'

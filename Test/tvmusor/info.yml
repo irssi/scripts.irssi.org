@@ -2,6 +2,8 @@
 -
   authors: 'Gabor Nyeki'
   changed: 'Tue Jun  3 18:48:02 CEST 2003'
+  commands:
+    - tvmusor
   contact: bigmac@home.sirklabs.hu
   default_package: tvmusor
   description: 'asks for the current tv-lineup from http://www.port.hu/'

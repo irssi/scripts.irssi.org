@@ -2,6 +2,8 @@
 -
   authors: 'Kimmo Lehto'
   changed: 'Sun Apr 7 00:10 EET 2002'
+  commands:
+    - mail
   contact: kimmo@a-men.org
   default_package: mailcheck_pop3_kimmo
   description: 'POP3 new mail notification and listing of mailbox contents. Use "/mail help" for instructions. Requires Net::POP3.'

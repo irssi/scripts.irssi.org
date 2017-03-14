@@ -2,6 +2,8 @@
 -
   authors: Cybertinus
   changed: '2005-05-25 13:42:00 GMT+1+DST'
+  commands:
+    - hello
   contact: cybertinus@cybertinus.nl
   default_package: hello
   description: "This script allows you to greet the channel You're joining with the command /hello. The text it shows depends on the time you're living."

@@ -1,6 +1,8 @@
 ---
 -
   authors: 'David Leadbeater'
+  commands:
+    - sysinfo
   contact: dgl@dgl.cx
   default_package: sysinfo_dg
   description: 'Adds a /sysinfo command which prints system information (linux only).'

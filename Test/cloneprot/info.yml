@@ -2,6 +2,11 @@
 -
   authors: 'Rick (strlen) Jansen'
   changed: 'Wed Mar 13 20:26:46 CET 2002'
+  commands:
+    - ak
+    - cw
+    - tk
+    - tr
   contact: strlen@shellz.nl
   default_package: cloneprot
   description: 'Parses OperServ notices to make autokill aliases from clonewarnings'

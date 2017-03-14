@@ -2,6 +2,11 @@
 -
   authors: 'Cyprien Debu'
   changed: 06-2014
+  commands:
+    - procmaillog
+    - 'procmaillog help'
+    - 'procmaillog start'
+    - 'procmaillog stop'
   contact: frey@notk.org
   default_package: procmaillog
   description: 'Gets new mails from procmail.log file'

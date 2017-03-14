@@ -2,7 +2,8 @@
 -
   authors: 'Philipp Haegi'
   changed: 2004-02-05
-  commands: rotate_dict
+  commands:
+    - rotate_dict
   contact: phaegi\@mimir.ch
   default_package: aspell_complete
   description: 'Adds Text::Aspell suggestions to the list of completions'

@@ -2,6 +2,8 @@
 -
   authors: 'Wouter Coekaerts, Emanuele Giaquinta'
   changed: $LastChangedDate$
+  commands:
+    - 'scrollback search'
   contact: 'wouter@coekaerts.be, exg@irssi.org'
   default_package: sb_search
   description: 'search in your scrollback, scroll to a match'

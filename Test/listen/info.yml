@@ -2,6 +2,8 @@
 -
   authors: 'Csaba Nagy'
   changed: 'Tue Nov 26 19:55:04 CET 2002'
+  commands:
+    - listen
   contact: lordpyre@negerno.hu
   default_package: listen
   description: 'A simple mp3 display script that will display what mp3 you are playing in which software (mpg123, xmms, mp3blaster, etc) to your active channel or to a query window.'

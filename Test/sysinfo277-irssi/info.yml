@@ -3,6 +3,8 @@
   authors: 'David Rudie'
   bugs: 'Probably some if it cannot read /proc.'
   changed: 'Mon Sep 01 04:20 PDT 2003'
+  commands:
+    - sysinfo
   contact: david@inexistent.com
   default_package: sysinfo277_irssi
   description: 'Cross-platform/architecture system information script.'

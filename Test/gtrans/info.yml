@@ -2,7 +2,8 @@
 -
   authors: 'Sven Ulland'
   changed: 0.0.1
-  commands: gtrans
+  commands:
+    - gtrans
   contact: svensven@gmail.com
   default_package: gtrans
   description: 'Translation via the Google Language API'

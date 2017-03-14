@@ -2,6 +2,8 @@
 -
   authors: nohar
   changed: 2017-02-02
+  commands:
+    - go
   contact: nohar@freenode
   default_package: go
   description: 'Implements /go command that activates a window given a name/partial name. It features a nice completion.'

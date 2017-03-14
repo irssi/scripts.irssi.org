@@ -3,6 +3,20 @@
   authors: wilk
   changed: 2017-02-02
   changes: 'see http://www.quizpl.net/viewtopic.php?f=3&t=404'
+  commands:
+    - qdelay
+    - qhint
+    - qinit
+    - qoff
+    - qon
+    - qreload
+    - qremind
+    - qskip
+    - qstats
+    - qteams
+    - qtime
+    - qtype
+    - quiz
   contact: http://mail.quizpl.net
   default_package: iquiz
   description: 'irssi quiz script'

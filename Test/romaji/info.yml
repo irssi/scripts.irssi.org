@@ -1,6 +1,8 @@
 ---
 -
   authors: 'Victor Ivanov'
+  commands:
+    - romaji
   contact: v0rbiz@yahoo.com
   default_package: romaji
   description: 'translates romaji to hiragana or katakana in text enclosed in ^R'

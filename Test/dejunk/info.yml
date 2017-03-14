@@ -2,6 +2,11 @@
 -
   authors: 'Joost Vunderink (Garion)'
   changed: '29 September 2012 10:15:10'
+  commands:
+    - dejunk
+    - 'dejunk help'
+    - 'dejunk save'
+    - 'dejunk status'
   contact: joost@vunderink.net
   default_package: dejunk
   description: 'Prevents all kinds of junk from showing up'

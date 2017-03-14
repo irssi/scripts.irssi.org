@@ -2,6 +2,8 @@
 -
   authors: 'Marcin Rozycki'
   changed: 'Sat Nov 13 14:32:13 2004'
+  commands:
+    - paste
   contact: derwan@irssi.pl
   default_package: paste_derwan
   description: 'Pasting lines to specified targets, type "/paste -help" for help'

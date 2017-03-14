@@ -2,7 +2,8 @@
 -
   authors: 'Clemens Heidinger'
   changed: '$LastChangedDate: 2006-03-11 19:30:09 +0100 (Sat, 11 Mar 2006) $'
-  commands: len
+  commands:
+    - len
   contact: heidinger@dau.pl
   default_package: len
   description: 'If you try to get a nick with 11 characters but only 9 are allowed, this script will prevent the nickchange. The same for too long topics, kickmsgs, partmsgs and quitmsgs.'

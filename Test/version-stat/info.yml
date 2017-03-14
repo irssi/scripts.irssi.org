@@ -2,6 +2,8 @@
 -
   authors: c0ffee
   changed: 'Sun Apr 14 17:30 GMT 2002'
+  commands:
+    - vstat
   contact: c0ffee@penguin-breeder.org
   default_package: version_stat
   description: 'shows top[0-9]+ irc client versions in a channel'

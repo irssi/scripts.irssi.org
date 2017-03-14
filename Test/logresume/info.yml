@@ -3,7 +3,9 @@
   authors: ferret
   changed: 2012-10-08
   changes: '0.6: added memory of windows that have been logresumed already0.5: added /logtail and /logview0.4: fixed problem with lines containing %, removed use warnings0.3: swapped File::ReadBackwards for internal tail implementation'
-  commands: 'logtail, logview'
+  commands:
+    - logtail
+    - logview
   contact: 'ferret(tA)explodingferret(moCtoD), ferret on irc.freenode.net'
   default_package: logresume
   description: 'print last n lines of logs when opening queries/channels'

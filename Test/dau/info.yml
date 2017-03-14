@@ -2,7 +2,8 @@
 -
   authors: 'Clemens Heidinger'
   changed: '$LastChangedDate: 2008-02-03 16:27:25 +0100 (Sun, 03 Feb 2008) $'
-  commands: dau
+  commands:
+    - dau
   contact: heidinger@dau.pl
   default_package: dau
   description: 'write like an idiot'

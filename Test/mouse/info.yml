@@ -2,6 +2,10 @@
 -
   authors: 'Wouter Coekaerts'
   changed: 2009-05-16
+  commands:
+    - mouse
+    - 'mouse tempdisable'
+    - mouse_xterm
   contact: wouter@coekaerts.be
   default_package: mouse
   description: 'control irssi using mouse clicks and gestures'

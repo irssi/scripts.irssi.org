@@ -1,6 +1,8 @@
 ---
 -
   authors: Nei
+  commands:
+    - 'scrollback status hidden'
   contact: 'Nei @ anti@conference.jabber.teamidiot.de'
   default_package: hideshow
   description: 'Removes and re-adds lines to the Irssi buffer view.'

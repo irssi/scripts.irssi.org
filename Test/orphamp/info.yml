@@ -2,7 +2,9 @@
 -
   authors: Wohmatak
   changed: Wed
-  commands: /np
+  commands:
+    - np
+    - npinfo
   contact: wohmatak@iglu.cz
   default_package: orphamp
   description: 'Displays the song played by orpheus'

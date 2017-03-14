@@ -1,6 +1,10 @@
 ---
 -
   authors: 'Victor Ivanov'
+  commands:
+    - rohira
+    - rokata
+    - rorest
   contact: v0rbiz@yahoo.com
   default_package: romajibind
   description: 'Dynamic romaji binds'

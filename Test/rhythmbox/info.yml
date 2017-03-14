@@ -1,6 +1,18 @@
 ---
 -
   authors: Fogel
+  commands:
+    - mute
+    - next
+    - np
+    - pause
+    - play
+    - prev
+    - rhythmbox_help
+    - unmute
+    - vdown
+    - vol
+    - vup
   contact: fogel@fogel.netmark.pl
   default_package: rhythmbox
   description: 'Rhythmbox now playing script'

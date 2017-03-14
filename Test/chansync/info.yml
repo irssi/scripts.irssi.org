@@ -2,7 +2,8 @@
 -
   authors: "Uwe 'duden' Dudenhoeffer"
   changed: 'Sun Feb  9 18:27:51 CET 2003'
-  commands: chansync
+  commands:
+    - chansync
   contact: script@duden.eu.org
   default_package: chansync
   description: '/who a channel and optionaly executes a command'

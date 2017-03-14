@@ -1,6 +1,8 @@
 ---
 -
   authors: 'Liam Hopkins'
+  commands:
+    - betterlist
   contact: we.hopkins@gmail.com
   default_package: betterlist
   description: '/list <perl-regexp>'

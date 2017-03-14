@@ -2,6 +2,15 @@
 -
   authors: "Maciek 'fahren' Freudenheim"
   changed: 'Fri Jan 10 03:54:07 CET 2003'
+  commands:
+    - addsms
+    - delsms
+    - listsms
+    - sms
+    - smsadd
+    - smsdel
+    - smslist
+    - smsstat
   contact: fahren@bochnia.pl
   default_package: sms
   description: '/ADDSMS, /DELSMS, /LISTSMS and /SMS - phone address-book with smssender, for now supports only Polish operators'

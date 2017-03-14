@@ -2,6 +2,8 @@
 -
   authors: 'Eric Jansen'
   changed: 'Sat Mar  1 13:32:30 CET 2003'
+  commands:
+    - identify-md5
   contact: chaos@sorcery.net
   default_package: identify_md5
   description: 'MD5 NickServ identification script for SorceryNet'

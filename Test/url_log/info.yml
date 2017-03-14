@@ -1,6 +1,9 @@
 ---
 -
   authors: 'Thomas Graf'
+  commands:
+    - head
+    - url
   contact: irssi@reeler.org
   default_package: url_log
   description: 'logs urls to textfile or/and database, able to list, quote, open or `http head` saved urls.'

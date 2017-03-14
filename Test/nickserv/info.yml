@@ -2,6 +2,29 @@
 -
   authors: 'Geert Hauwaerts'
   changed: 'Di 17. Jan 19:32:45 CET 2017'
+  commands:
+    - nickserv
+    - 'nickserv addnet'
+    - 'nickserv addnick'
+    - 'nickserv addpostcmd'
+    - 'nickserv delnet'
+    - 'nickserv delnick'
+    - 'nickserv delpostcmd'
+    - 'nickserv help'
+    - 'nickserv listnet'
+    - 'nickserv listnick'
+    - 'nickserv listpostcmd'
+    - ns
+    - 'ns addnet'
+    - 'ns addnick'
+    - 'ns addpostcmd'
+    - 'ns delnet'
+    - 'ns delnick'
+    - 'ns delpostcmd'
+    - 'ns help'
+    - 'ns listnet'
+    - 'ns listnick'
+    - 'ns listpostcmd'
   contact: geert@irssi.org
   default_package: nickserv
   description: 'This script will authorize you into NickServ.'

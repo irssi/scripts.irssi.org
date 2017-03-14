@@ -3,6 +3,8 @@
   authors: 'Larry "Vizzie" Daffner'
   changed: 'Tue Apr 26 19:30:00 CDT 2016'
   changes: 'Applied multiserver/store config patch from Adam Monsen'
+  commands:
+    - autoaway
   contact: vizzie@airmail.net
   default_package: autoaway
   description: 'Automatically goes  away after defined inactivity'

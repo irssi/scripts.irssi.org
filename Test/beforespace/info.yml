@@ -1,6 +1,8 @@
 ---
 -
   authors: Nei
+  commands:
+    - key_insert_before_space
   contact: 'Nei @ anti@conference.jabber.teamidiot.de'
   default_package: beforespace
   description: 'Rebind certain keys so that they are inserted before the space'

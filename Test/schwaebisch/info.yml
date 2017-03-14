@@ -2,7 +2,8 @@
 -
   authors: 'Robert Scheck'
   changed: 1.0.0
-  commands: schwäbisch
+  commands:
+    - schwäbisch
   contact: irssi@robert-scheck.de
   default_package: schwaebisch
   description: '/schwäbisch - translates your messages from german to swabian'

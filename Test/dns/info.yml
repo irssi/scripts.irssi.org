@@ -2,6 +2,8 @@
 -
   authors: "Timo 'cras' Sirainen"
   changed: 2002-03-04T22:47+0100
+  commands:
+    - dns
   contact: tss@iki.fi
   default_package: dns
   description: '/DNS <nick>|<host>|<ip> ...'

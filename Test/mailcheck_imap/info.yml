@@ -1,6 +1,10 @@
 ---
 -
   authors: 'David "Legooolas" Gardner'
+  commands:
+    - mailcheck_imap
+    - mailcheck_imap_help
+    - mailcheck_imap_stop
   contact: irssi@icmfp.com
   default_package: mailcheck_imap
   description: 'Staturbar item which indicates how many new emails you have in the specified IMAP[S] mailbox'

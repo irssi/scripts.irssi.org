@@ -2,6 +2,12 @@
 -
   authors: vague
   changed: '24 Nov 16:00:00 CET 2015'
+  commands:
+    - notes
+    - 'notes add'
+    - 'notes del'
+    - 'notes help'
+    - 'notes list'
   contact: vague!#irssi@freenode
   default_package: notes
   description: 'Keeps notes on users and displayes the note in /whois output if the host/nick matches'

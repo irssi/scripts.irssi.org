@@ -1,6 +1,8 @@
 ---
 -
   authors: 'Peder Stray'
+  commands:
+    - chansort
   contact: peder@ninja.no
   default_package: chansort
   description: 'Sort all channel and query windows'

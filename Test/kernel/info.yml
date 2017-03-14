@@ -2,6 +2,8 @@
 -
   authors: 'Johan "Ion" Kiviniemi'
   changed: 'Tue Mar 12 22:20 EET 2002'
+  commands:
+    - kernel_version
   contact: 'ion at hassers.org'
   default_package: kernel
   description: 'Fetches the version(s) of the latest Linux kernel(s).'

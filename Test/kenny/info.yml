@@ -2,6 +2,9 @@
 -
   authors: 'Gerfried Fuchs'
   changed: 2002-06-13
+  commands:
+    - dekenny
+    - kenny
   contact: alfie@channel.debian.de
   default_package: kenny
   description: 'autodekennyfies /kenny, adds /kenny, /dekenny. Based on Jan-Pieter Cornets signature version'

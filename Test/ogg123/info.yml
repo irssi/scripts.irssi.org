@@ -2,6 +2,8 @@
 -
   authors: 'Ricardo Mesquita'
   changed: 'Mon Nov 27 18:00:00 CET 2006'
+  commands:
+    - ogg123
   contact: ricardomesquita@netcabo.pt
   default_package: ogg123
   description: 'Display current ogg123 track'

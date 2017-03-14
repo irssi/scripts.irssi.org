@@ -2,6 +2,15 @@
 -
   authors: 'martin f. krafft'
   changed: 2017-02-24
+  commands:
+    - ctrlact
+    - 'ctrlact help'
+    - 'ctrlact list'
+    - 'ctrlact load'
+    - 'ctrlact query'
+    - 'ctrlact reload'
+    - 'ctrlact save'
+    - 'ctrlact show'
   contact: madduck@madduck.net
   default_package: ctrlact
   description: 'allows per-channel control over activity indication'

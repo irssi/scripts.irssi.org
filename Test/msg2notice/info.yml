@@ -1,6 +1,8 @@
 ---
 -
   authors: 'Morten Lied Johansen'
+  commands:
+    - msg2notice
   contact: mortenjo@ifi.uio.no
   default_package: msg2notice
   description: 'For a configured list of nicks, convert all their messages to a notice'

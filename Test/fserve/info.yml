@@ -1,6 +1,8 @@
 ---
 -
   authors: 'Piotr Krukowiecki & others'
+  commands:
+    - fs
   contact: 'piotr at pingu.ii.uj.edu.pl'
   default_package: fserve
   description: 'File server for irssi'

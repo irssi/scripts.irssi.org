@@ -2,6 +2,8 @@
 -
   authors: 'Bitt Faulk'
   changed: 1-17-2005
+  commands:
+    - dr_who_refresh
   contact: lxsfx3h02@sneakemail.com
   default_package: dr_who
   description: 'Put a nick list in a statusbar'

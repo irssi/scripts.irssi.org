@@ -1,6 +1,9 @@
 ---
 -
   authors: 'Terry Lewis'
+  commands:
+    - start
+    - stop
   contact: terry@kryogenic.co.uk
   default_package: autoreminder
   description: 'This script Reminds people to do stuff! :)'

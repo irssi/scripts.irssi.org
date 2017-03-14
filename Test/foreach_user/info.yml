@@ -1,6 +1,8 @@
 ---
 -
   authors: 'David Leadbeater'
+  commands:
+    - 'foreach user'
   contact: dgl@dgl.cx
   default_package: foreach_user
   description: "Extends the /foreach command to have /foreach user \n        (users in a channel).\n        Syntax: /foreach user [hostmask] command."

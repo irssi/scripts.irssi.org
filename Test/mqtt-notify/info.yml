@@ -1,6 +1,9 @@
 ---
 -
   authors: 'Thomas B. Ruecker'
+  commands:
+    - mqtt-notify
+    - mqtt-test
   contact: 'thomas@ruecker.fi, tbr on irc.freenode.net'
   default_package: mqtt_notify
   description: 'Sends out notifications via MQTT'

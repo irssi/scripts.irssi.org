@@ -1,6 +1,9 @@
 ---
 -
   authors: 'Ivo Schooneman'
+  commands:
+    - ume
+    - usay
   contact: ivo@schooneman.net
   default_package: upsidedown
   description: 'Plugin to place text upsidedown'

@@ -2,6 +2,18 @@
 -
   authors: "Peter 'kinlo' Leurs, Uwe Dudenhoeffer, Michiel Holtkamp, Nico R. Wohlgemuth"
   changed: '2015-01-15 08:00'
+  commands:
+    - mark
+    - tb
+    - 'tb help'
+    - 'tb mark'
+    - 'tb scroll'
+    - 'tb vmark'
+    - trackbar
+    - 'trackbar help'
+    - 'trackbar mark'
+    - 'trackbar scroll'
+    - 'trackbar vmark'
   contact: irssi-trackbar@supermind.nl
   default_package: trackbar
   description: "Shows a bar where you've last read a window"

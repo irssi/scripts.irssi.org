@@ -2,6 +2,13 @@
 -
   authors: 'Doncho N. Gunchev'
   changed: 'Sat Jan 25 02:35:40 EET 2003'
+  commands:
+    - id
+    - 'id add'
+    - 'id del'
+    - 'id help'
+    - 'id list'
+    - 'id show'
   contact: mr_700@yahoo.com
   default_package: UNIBG_autoident
   description: "Automaticaly \x02/msg ident NS yourpassword\x02 when you connect or services come back from death"

@@ -2,6 +2,8 @@
 -
   authors: Benedetto
   changed: 'Thu Jan 20 13:07:49 GMT 2014'
+  commands:
+    - credstore
   contact: dettox@gmail.com
   default_package: credstore
   description: 'store fingerprints of know users so can verify'

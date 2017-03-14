@@ -2,7 +2,13 @@
 -
   authors: "Stefan 'tommie' Tomanek"
   changed: '2003020801'
-  commands: target
+  commands:
+    - target
+    - 'target ban'
+    - 'target help'
+    - 'target kick'
+    - 'target lock'
+    - 'target unlock'
   contact: stefan@pico.ruhr.de
   default_package: target
   description: 'advances IRC warfare to the next level ;)'

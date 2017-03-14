@@ -1,6 +1,12 @@
 ---
 -
   authors: 'Jakub Jankowski'
+  commands:
+    - rkick
+    - rknockout
+    - rme
+    - rsay
+    - rtopic
   contact: shasta@atn.pl
   default_package: rainbow
   description: 'Prints colored text. Rather simple than sophisticated.'

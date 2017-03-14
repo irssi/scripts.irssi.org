@@ -1,6 +1,8 @@
 ---
 -
   authors: 'David Leadbeater'
+  commands:
+    - remote
   contact: dgl@dgl.cx
   default_package: remote
   description: 'Lets you run commands remotely via /msg and a password'

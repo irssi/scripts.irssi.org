@@ -2,6 +2,8 @@
 -
   authors: c0ffee
   changed: 'Fri Sep 06 15:36 CEST 2002'
+  commands:
+    - ls
   contact: c0ffee@penguin-breeder.org
   default_package: ls
   description: 'Use /ls <regex> to show all nicks (including ident@host) matching regex in the current channel'

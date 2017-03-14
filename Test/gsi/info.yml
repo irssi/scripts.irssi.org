@@ -2,6 +2,8 @@
 -
   authors: mistr
   changed: 220904-04:30:00
+  commands:
+    - gsi
   contact: mistr@sensewave.com
   default_package: gsi
   description: '/gsi <phone nr> checks number via http://gulesider.no. Norwegian 8-digit numbers only. Nice if you have caller-ID and are as paranoid as me.'

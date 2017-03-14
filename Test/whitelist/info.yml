@@ -2,6 +2,8 @@
 -
   authors: "David O'Rourke, Karl Siegemund"
   changed: '12/03/2007 15:20 GMT'
+  commands:
+    - whitelist
   contact: 'phyber [at] #irssi, q [at] spuk.de'
   default_package: whitelist
   description: 'Whitelist specific nicks or hosts and ignore messages from anyone else.'

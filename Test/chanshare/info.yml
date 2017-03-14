@@ -3,6 +3,8 @@
   authors: "Timo 'cras' Sirainen"
   changed: 2002-03-04T22:47+0100
   changes: 'v0.3 - Timo Sirainen tss@iki.fi: Supports for limiting searches only to specified ircnets and channels. Some cleanups..'
+  commands:
+    - chanshare
   contact: tss@iki.fi
   default_package: chanshare
   description: '/CHANSHARE - display people who are in more than one channel with you'

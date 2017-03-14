@@ -2,6 +2,8 @@
 -
   authors: 'Ricardo Mesquita'
   changed: 'Mon Nov 27 18:00:00 CET 2006'
+  commands:
+    - mpg123
   contact: ricardomesquita@netcabo.pt
   default_package: mpg123
   description: 'Display current mpg123 track'

@@ -1,6 +1,9 @@
 ---
 -
   authors: Mankeli
+  commands:
+    - 'help pelix'
+    - pelix
   contact: mankeli@einari.org
   default_package: pelix
   description: 'This script allows you flood shit.'

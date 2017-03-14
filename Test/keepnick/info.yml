@@ -1,6 +1,10 @@
 ---
 -
   authors: 'Peder Stray'
+  commands:
+    - keepnick
+    - listnick
+    - unkeepnick
   contact: peder@ninja.no
   default_package: keepnick
   description: 'Try to get your nick back when it becomes available.'

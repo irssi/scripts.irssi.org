@@ -1,6 +1,8 @@
 ---
 -
   authors: prussian
+  commands:
+    - fullwidth
   contact: genunrest@gmail.com
   default_package: fullwidth
   description: 'talk like some vaporwave cool kid'

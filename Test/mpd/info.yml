@@ -1,6 +1,9 @@
 ---
 -
   authors: 'Erik Scharwaechter, Tobias Böhm, Mikkel Kroman'
+  commands:
+    - np
+    - 'np help'
   contact: 'diozaka@gmx.de, code@aibor.de, mk@maero.dk'
   default_package: mpd
   description: 'print the song you are listening to'

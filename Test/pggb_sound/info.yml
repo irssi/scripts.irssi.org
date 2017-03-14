@@ -1,6 +1,8 @@
 ---
 -
   authors: 'Adam Duck'
+  commands:
+    - sound
   contact: duck@cs.uni-frankfurt.de
   default_package: pggb_sound
   description: 'does CTCP SOUNDs and other similar things.'

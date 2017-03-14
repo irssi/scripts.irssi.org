@@ -1,6 +1,10 @@
 ---
 -
   authors: Ziddy
+  commands:
+    - gather
+    - import
+    - track
   contact: DALnet
   default_package: track
   description: 'Keeps track of users by building a databaseof online, joining and nickchanges. Regex-cabablefor the most part, AKA import available. Search byident, nick or host'

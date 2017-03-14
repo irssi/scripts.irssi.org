@@ -1,6 +1,17 @@
 ---
 -
   authors: "Marcin 'Qrczak' Kowalczyk"
+  commands:
+    - forget
+    - listen
+    - 'listen delay'
+    - 'listen disable'
+    - 'listen list'
+    - 'listen off'
+    - 'listen on'
+    - 'listen private'
+    - say_seen
+    - seen
   contact: qrczak@knm.org.pl
   default_package: seen
   description: 'Tell people when other people were online'

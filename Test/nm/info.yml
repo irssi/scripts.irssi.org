@@ -1,6 +1,8 @@
 ---
 -
   authors: BC-bd
+  commands:
+    - neatcolor
   contact: bd@bc-bd.org
   default_package: nm
   description: 'right aligned nicks depending on longest nick'

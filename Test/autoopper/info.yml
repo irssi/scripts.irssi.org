@@ -1,6 +1,14 @@
 ---
 -
   authors: 'Toni Salomäki'
+  commands:
+    - autoop_add
+    - autoop_check
+    - autoop_del
+    - autoop_dynamic
+    - autoop_load
+    - autoop_save
+    - autoop_show
   contact: Toni@IRCNet
   default_package: autoopper
   description: 'Auto-op script with dynamic address support and random delay'

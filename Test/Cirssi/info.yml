@@ -2,6 +2,30 @@
 -
   authors: 'Dani Soufi (compengi)'
   changed: 'Thu Aug 14 22:43 CET 2009'
+  commands:
+    - audacious
+    - 'audacious details'
+    - 'audacious help'
+    - 'audacious jump'
+    - 'audacious next'
+    - 'audacious pause'
+    - 'audacious play'
+    - 'audacious playlist'
+    - 'audacious previous'
+    - 'audacious song'
+    - 'audacious stop'
+    - 'audacious version'
+    - 'audacious volume'
+    - mocp
+    - 'mocp help'
+    - 'mocp next'
+    - 'mocp pause'
+    - 'mocp play'
+    - 'mocp previous'
+    - 'mocp song'
+    - 'mocp stop'
+    - 'mocp unpause'
+    - 'mocp volume'
   contact: 'IRC: Freenode network, #ubuntu-lb'
   default_package: Cirssi
   description: 'Controls Audacious2 and MOCP from Irssi'

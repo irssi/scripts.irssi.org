@@ -2,6 +2,8 @@
 -
   authors: 'Pablo Martín Báez Echevarría'
   changed: '22:30:25, Dec 20th, 2014 UYT'
+  commands:
+    - clones_scanner_size
   contact: pab_24n@outlook.com
   default_package: clones_scanner
   description: 'when a nick joins #channel, notifies you if there is (or there has been) someone in #channel with the same hostname'

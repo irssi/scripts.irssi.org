@@ -1,6 +1,8 @@
 ---
 -
   authors: 'Jari Matilainen, init[1]@irc.freenode.net'
+  commands:
+    - cmp
   contact: vague@vague.se
   default_package: cmpchans
   description: 'Compare nicks in two channels'

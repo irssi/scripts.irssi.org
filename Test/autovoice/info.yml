@@ -1,6 +1,8 @@
 ---
 -
   authors: aluser
+  commands:
+    - autovoice
   default_package: autovoice
   description: autovoice
   license: GPL

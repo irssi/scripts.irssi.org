@@ -2,7 +2,20 @@
 -
   authors: "Stefan 'tommie' Tomanek"
   changed: '2003021101'
-  commands: newsline
+  commands:
+    - newsline
+    - 'newsline add'
+    - 'newsline delete'
+    - 'newsline description'
+    - 'newsline fetch'
+    - 'newsline help'
+    - 'newsline limit'
+    - 'newsline list'
+    - 'newsline paste'
+    - 'newsline paste description'
+    - 'newsline reload'
+    - 'newsline save'
+    - 'newsline toggle'
   contact: stefan@pico.ruhr.de
   default_package: newsline
   depends: openurl

@@ -1,6 +1,8 @@
 ---
 -
   authors: 'Jochem Meyers'
+  commands:
+    - dfupdate
   contact: jochem.meyers@gmail.com
   default_package: df
   description: 'Adds an item which displays the current disk usage.'

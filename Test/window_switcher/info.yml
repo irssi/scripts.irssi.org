@@ -2,6 +2,8 @@
 -
   authors: 'Wouter Coekaerts'
   changed: 29/07/07
+  commands:
+    - ws
   contact: coekie@irssi.org
   default_package: window_switcher
   description: 'makes switching windows easy'

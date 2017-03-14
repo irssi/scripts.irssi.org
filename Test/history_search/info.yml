@@ -1,6 +1,8 @@
 ---
 -
   authors: 'Wouter Coekaerts'
+  commands:
+    - history_search
   contact: coekie@irssi.org
   default_package: history_search
   description: 'Search within your typed history as you type (like ctrl-R in bash)'

@@ -2,6 +2,9 @@
 -
   authors: 'Marcin Rozycki'
   changed: 'Sat Jun 26 19:17:02 CEST 2004'
+  commands:
+    - 42.pl
+    - shortenurl
   contact: derwan@irssi.pl
   default_package: shortenurl
   description: shortenurl

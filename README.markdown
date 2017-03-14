@@ -518,4 +518,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                     xmpp-notify ](Test/xmpp-notify/)|  ✔   |  ✔   |  ✔   | 21   |  ✔   
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   
 
-08f326abcf4e5ac7103de849ff8bda55a4f25994 | 803
+43ec4348ea43312073cd48312278812b63e4f850 | 805

@@ -2,6 +2,8 @@
 -
   authors: 'Pieter-Bas IJdens'
   changed: 2005-03-10
+  commands:
+    - cgrep
   contact: irssi-scripts@nospam.mi4.org.uk
   default_package: cgrep
   description: 'Lists users on the channel matching the specified regexp'

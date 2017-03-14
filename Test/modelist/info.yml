@@ -2,6 +2,11 @@
 -
   authors: 'Marcin Rozycki'
   changed: 'Sat Jun  5 22:38:59 CEST 2004'
+  commands:
+    - se
+    - si
+    - unexcept
+    - uninvite
   contact: derwan@irssi.pl
   default_package: modelist
   description: 'Cache of invites and ban exceptions in channel. Usage: /si, /se, /unexcept [indexes], /uninvite [indexes]'

@@ -2,7 +2,8 @@
 -
   authors: "Stefan 'tommie' Tomanek"
   changed: '20030208'
-  commands: verstats
+  commands:
+    - verstats
   contact: stefan@pico.ruhr.de
   default_package: verstats
   description: 'Draws a diagram of the used clients in a channel'

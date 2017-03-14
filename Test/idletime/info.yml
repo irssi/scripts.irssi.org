@@ -2,7 +2,8 @@
 -
   authors: "Stefan 'tommie' Tomanek"
   changed: '20030208'
-  commands: idle
+  commands:
+    - idle
   contact: stefan@pico.ruhr.de
   default_package: idletime
   description: 'Retrieves the idletime of any nick'

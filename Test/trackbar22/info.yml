@@ -1,7 +1,17 @@
 ---
 -
   authors: 'Peter Leurs and Geert Hauwaerts'
-  commands: trackbar
+  commands:
+    - mark
+    - trackbar
+    - 'trackbar goto'
+    - 'trackbar keep'
+    - 'trackbar mark'
+    - 'trackbar markall'
+    - 'trackbar markvisible'
+    - 'trackbar redraw'
+    - 'trackbar remove'
+    - 'trackbar removeall'
   contact: peter@pfoe.be
   default_package: trackbar22
   description: 'Shows a bar where you have last read a window.'

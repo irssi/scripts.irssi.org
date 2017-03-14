@@ -2,6 +2,12 @@
 -
   authors: 'Geert Hauwaerts'
   changed: 'Di 17. Jan 19:32:45 CET 2017'
+  commands:
+    - invitejoin
+    - 'invitejoin addnick'
+    - 'invitejoin delnick'
+    - 'invitejoin help'
+    - 'invitejoin listnick'
   contact: geert@irssi.org
   default_package: invitejoin
   description: 'This script will join a channel if somebody invites you to it.'

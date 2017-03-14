@@ -1,6 +1,16 @@
 ---
 -
   authors: Nei
+  commands:
+    - neatcolor
+    - 'neatcolor colors'
+    - 'neatcolor colors add'
+    - 'neatcolor colors remove'
+    - 'neatcolor get'
+    - 'neatcolor re'
+    - 'neatcolor reset'
+    - 'neatcolor save'
+    - 'neatcolor set'
   default_package: nickcolor_expando
   description: 'colourise nicks'
   license: 'GPL v2'

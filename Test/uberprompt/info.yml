@@ -2,6 +2,12 @@
 -
   authors: shabble
   changed: 24/7/2010
+  commands:
+    - prompt
+    - 'prompt clear'
+    - 'prompt off'
+    - 'prompt on'
+    - 'prompt set'
   contact: 'shabble+irssi@metavore.org, shabble@#irssi/Freenode'
   default_package: uberprompt
   description: 'Helper script for dynamically adding text into the input-bar prompt.'

@@ -2,6 +2,16 @@
 -
   authors: 'Pablo Martín Báez Echevarría'
   changed: 'vie jun 17 15:04:25 UYT 2016'
+  commands:
+    - buffer
+    - 'buffer clear'
+    - 'buffer load'
+    - 'buffer play'
+    - 'buffer print'
+    - 'buffer remove'
+    - 'buffer resume'
+    - 'buffer search'
+    - 'buffer stop'
   contact: pab_24n@outlook.com
   default_package: buffer
   description: 'pastes a buffer into a channel or query window line by line with a specific delay between lines'

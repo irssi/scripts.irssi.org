@@ -2,6 +2,18 @@
 -
   authors: MarshalMeatball
   changed: '2.1'
+  commands:
+    - ag_add
+    - ag_botadd
+    - ag_botrem
+    - ag_clearcache
+    - ag_help
+    - ag_list
+    - ag_rem
+    - ag_reset
+    - ag_run
+    - ag_server
+    - ag_stop
   contact: mobilegundamseed@hotmail.com
   default_package: xdcc_autoget
   description: 'XDCC Autoget, for automated searching and downloading of xdcc packs'

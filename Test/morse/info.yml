@@ -2,7 +2,11 @@
 -
   authors: "Stefan 'tommie' Tomanek"
   changed: '2004021901'
-  commands: 'morse spell'
+  commands:
+    - demorse
+    - despell
+    - morse
+    - spell
   contact: stefan@pico.ruhr.de
   default_package: morse
   description: 'turns your messages into morse or spelling code'

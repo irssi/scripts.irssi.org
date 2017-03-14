@@ -1,6 +1,8 @@
 ---
 -
   authors: 'Isaac Good (yitz_), Tom Feist (shabble)'
+  commands:
+    - spellcheck
   contact: 'irssi@isaacgood.com, shabble+irssi@metavore.org'
   default_package: aspell
   description: 'ASpell spellchecking system for Irssi'

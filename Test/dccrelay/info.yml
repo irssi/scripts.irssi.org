@@ -1,6 +1,8 @@
 ---
 -
   authors: Nei
+  commands:
+    - dccrel
   contact: 'Nei @ anti@conference.jabber.teamidiot.de'
   default_package: dccrelay
   description: 'Relays DCC messages. Originally written by greeny & mute for NoNameScript.'

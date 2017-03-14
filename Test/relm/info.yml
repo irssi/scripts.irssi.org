@@ -2,6 +2,8 @@
 -
   authors: "Maciek 'fahren' Freudenheim"
   changed: 'Fri Mar 15 15:09:42 CET 2002'
+  commands:
+    - relm
   contact: fahren@bochnia.pl
   default_package: relm
   description: 'Keeps last 15 messages in cache'

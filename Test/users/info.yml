@@ -2,6 +2,8 @@
 -
   authors: 'Jean-Yves Lefort'
   changed: '$Date: 2003/01/11 14:54:35 $ '
+  commands:
+    - users
   contact: 'jylefort\@brutele.be, decadix on IRCnet'
   default_package: users
   description: 'Implements /USERS'

@@ -1,6 +1,8 @@
 ---
 -
   authors: BC-bd
+  commands:
+    - ai
   contact: bd@bc-bd.org
   default_package: ai
   description: 'Puts people on ignore if they do a public away. See source for options.'

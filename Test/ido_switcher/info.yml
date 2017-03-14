@@ -1,6 +1,8 @@
 ---
 -
   authors: 'Tom Feist, Wouter Coekaerts'
+  commands:
+    - ido_switch_start
   contact: 'shabble+irssi@metavore.org, shabble@#irssi/freenode'
   default_package: ido_switcher
   description: 'Select window[-items] using an ido-mode like search interface'

@@ -1,7 +1,9 @@
 ---
 -
   authors: "Matti 'qvr' Hiljanen, Piotr 'Pieta' Szymanski"
-  commands: wa
+  commands:
+    - vol
+    - wa
   contact: 'matti@hiljanen.com, pieta@osiedle.net.pl'
   contributors: bd@bc-bd.org
   default_package: wa

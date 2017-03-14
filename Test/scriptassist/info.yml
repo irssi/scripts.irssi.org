@@ -1,7 +1,28 @@
 ---
 -
   authors: "Stefan 'tommie' Tomanek"
-  commands: scriptassist
+  commands:
+    - 'script autorun'
+    - 'script check'
+    - 'script contact'
+    - 'script cpan'
+    - 'script help'
+    - 'script info'
+    - 'script install'
+    - 'script new'
+    - 'script search'
+    - 'script update'
+    - scriptassist
+    - 'scriptassist autorun'
+    - 'scriptassist check'
+    - 'scriptassist contact'
+    - 'scriptassist cpan'
+    - 'scriptassist help'
+    - 'scriptassist info'
+    - 'scriptassist install'
+    - 'scriptassist new'
+    - 'scriptassist search'
+    - 'scriptassist update'
   contact: stefan@pico.ruhr.de
   default_package: scriptassist
   description: 'keeps your scripts on the cutting edge'

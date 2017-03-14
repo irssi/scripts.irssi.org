@@ -2,6 +2,9 @@
 -
   authors: 'Juerd, Eevee'
   changed: 'Fri Apr 13 05:48 CEST 2012'
+  commands:
+    - 'scrollback hlnext'
+    - 'scrollback hlprev'
   contact: '#####@juerd.nl'
   default_package: hlscroll
   description: 'Scrolls to previous or next highlight'

@@ -2,6 +2,11 @@
 -
   authors: 'Kimmo Lehto'
   changed: 'Wed Mar 27 14:51 EET 2002'
+  commands:
+    - play
+    - see
+    - start
+    - stop
   contact: kimmo@a-men.org
   default_package: paste_kimmoke
   description: 'Provides /start, /stop, /play <-nopack> <-nospace> paste mechanism - start and stop recording and then replay without linebreaks. Also /see to view what was recorded.'

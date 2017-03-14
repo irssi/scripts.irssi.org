@@ -2,6 +2,8 @@
 -
   authors: 'Wouter Coekaerts'
   changed: 2005-11-21
+  commands:
+    - mouse_xterm
   contact: wouter@coekaerts.be
   default_package: mouse_soliton
   description: 'experimental perl version of the irssi mouse patch'

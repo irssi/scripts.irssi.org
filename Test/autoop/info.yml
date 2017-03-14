@@ -2,6 +2,8 @@
 -
   authors: 'Timo Sirainen & Jostein Kjønigsen'
   changed: 'Fri Nov 24 12:55 GMT+1 2014'
+  commands:
+    - autoop
   default_package: autoop
   description: 'Simple auto-op script'
   license: 'Public Domain'

@@ -2,7 +2,8 @@
 -
   authors: "Stefan 'tommie' Tomanek"
   changed: '2003120617'
-  commands: multipaste
+  commands:
+    - multipaste
   contact: stefan@pico.ruhr.de
   default_package: multipaste
   description: 'Helps pasting multiple lines to a channel'

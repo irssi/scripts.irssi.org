@@ -2,6 +2,8 @@
 -
   authors: 'Erkki Seppälä'
   changed: 'Mon Jun 16 08:10:45 EEST 2008'
+  commands:
+    - ignoreoc
   contact: flux@inside.org
   default_package: ignoreoc
   description: 'Ignore messages from people not on your channels.Now people you msg are added to bypass-list.'

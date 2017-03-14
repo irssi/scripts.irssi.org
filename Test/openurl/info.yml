@@ -2,7 +2,12 @@
 -
   authors: "Stefan 'tommie' Tomanek"
   changed: '20030208'
-  commands: openurl
+  commands:
+    - openurl
+    - 'openurl clear'
+    - 'openurl help'
+    - 'openurl paste'
+    - 'openurl topics'
   contact: stefan@pico.ruhr.de
   default_package: openurl
   description: 'Stores URLs in a list and launches mail, web or ftp software'

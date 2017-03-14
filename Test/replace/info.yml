@@ -2,6 +2,12 @@
 -
   authors: 'Jere Toivonen'
   changed: '22 March 2016'
+  commands:
+    - replace
+    - 'replace add'
+    - 'replace delete'
+    - 'replace help'
+    - 'replace list'
   contact: jere@flamero.fi
   default_package: replace
   description: 'Replaces regexps with predefined strings'

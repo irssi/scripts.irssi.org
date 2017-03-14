@@ -2,6 +2,8 @@
 -
   authors: "Maciek 'fahren' Freudenheim, David Leadbeater"
   changed: 'Sun 15 Jun 18:56:52 BST 2014'
+  commands:
+    - sping
   contact: fahren@bochnia.pl
   default_package: sping
   description: '/SPING [server] - checks latency between current server and [server]'

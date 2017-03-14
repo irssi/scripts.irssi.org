@@ -2,6 +2,12 @@
 -
   authors: 'Pieter-Bas IJdens'
   changed: 2005-03-10
+  commands:
+    - joininfo
+    - 'joininfo force'
+    - 'joininfo gc'
+    - 'joininfo help'
+    - 'joininfo info'
   contact: irssi-scripts@nospam.mi4.org.uk
   default_package: joininfo
   description: 'Reports WHOIS information and channel list for those who join a channel'

@@ -1,7 +1,9 @@
 ---
 -
   authors: 'Ilkka Pale'
-  commands: emo
+  commands:
+    - emo
+    - emolist
   contact: ilkka.pale@gmail.com
   default_package: emo
   description: 'Outputs various unicode emoticons'

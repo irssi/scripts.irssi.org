@@ -2,6 +2,8 @@
 -
   authors: 'Nico R. Wohlgemuth'
   changed: '2014-06-15 17:07:00'
+  commands:
+    - levelclear
   contact: nico@lifeisabug.com
   default_package: levelclear
   description: 'Similar to crapbuster.pl but uses irssis internal scrollback levelclear functionality and is able to clear the previous window automatically after having switched to a new one when levelclear_autoclear is set to true.'

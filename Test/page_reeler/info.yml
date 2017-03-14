@@ -1,6 +1,8 @@
 ---
 -
   authors: 'Thomas Graf'
+  commands:
+    - page
   contact: irssi@reeler.org
   default_package: page_reeler
   description: 'display and send CTCP PAGE'

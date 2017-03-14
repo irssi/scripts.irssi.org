@@ -2,6 +2,8 @@
 -
   authors: 'Marcin Rozycki, Stanislaw Halik'
   changed: 'Tue Oct 12 23:37:12 CEST 2004'
+  commands:
+    - paste
   contact: derwan@irssi.pl
   default_package: paste_derwan
   description: 'Usage: /paste [-all|-msgs|-public] [-c|-b] [-s|-l| where] [lines]'

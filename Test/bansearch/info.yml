@@ -3,6 +3,8 @@
   authors:
     - 'Nathan Handler'
     - 'Joseph Price'
+  commands:
+    - bansearch
   contact:
     - nathan.handler@gmail.com
     - pricechild@ubuntu.com

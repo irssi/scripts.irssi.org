@@ -2,6 +2,9 @@
 -
   authors: Juerd
   changed: '2010-03-24 14:35'
+  commands:
+    - autostuff
+    - 'window clean'
   contact: '#####@juerd.nl'
   default_package: autostuff
   description: 'Save current servers, channels and windows for autoconnect and autojoin'

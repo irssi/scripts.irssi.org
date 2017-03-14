@@ -1,6 +1,12 @@
 ---
 -
   authors: 'Thomas Karlsson'
+  commands:
+    - findbotactivesends
+    - findbotqueue
+    - findbotreload
+    - findbotremove
+    - findbotreset
   contact: findbot@planet.eu.org
   default_package: findbot
   description: 'Public command @find script'

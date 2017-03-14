@@ -2,6 +2,8 @@
 -
   authors: 'Marcin Rozycki'
   changed: 'Fri Aug  9 23:00:00 CEST 2002'
+  commands:
+    - sync-check
   contact: derwan@irssi.pl
   default_package: synccheck
   description: 'Script checking channel synchronization. Usage: /sync-check [channel (servers)|-stop]'

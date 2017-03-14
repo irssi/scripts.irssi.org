@@ -2,6 +2,8 @@
 -
   authors: 'Jean-Yves Lefort'
   changed: '$Date: 2002/07/04 13:18:02 $ '
+  commands:
+    - hostname
   contact: 'jylefort\@brutele.be, decadix on IRCNet'
   default_package: hostname
   description: 'Adds a /HOSTNAME command; it will list all IP addresses on all interfaces found on your machine, resolve them, and allow you to choose one easily'

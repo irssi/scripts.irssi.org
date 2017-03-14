@@ -2,7 +2,8 @@
 -
   authors: "Stefan 'tommie' Tomanek"
   changed: '2003020801'
-  commands: crapbuster
+  commands:
+    - crapbuster
   contact: stefan@pico.ruhr.de
   default_package: crapbuster
   description: 'Removes CRAP or CLIENTCRAP messages from your buffer'

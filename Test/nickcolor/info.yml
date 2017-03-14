@@ -2,6 +2,8 @@
 -
   authors: 'Timo Sirainen, Ian Peters, David Leadbeater'
   changed: 'Sun 15 Jun 19:10:44 BST 2014'
+  commands:
+    - color
   contact: tss@iki.fi
   default_package: nickcolor
   description: 'assign a different color for each nick'

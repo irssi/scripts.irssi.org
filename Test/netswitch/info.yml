@@ -2,6 +2,8 @@
 -
   authors: 'Roeland Nieuwenhuis'
   changed: 'Mon May 24 2010'
+  commands:
+    - netswitch
   contact: irc@trancer.nl
   default_package: netswitch
   description: 'Set all windows not bound to a network to a specified network.'

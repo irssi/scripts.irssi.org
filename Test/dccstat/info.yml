@@ -1,6 +1,8 @@
 ---
 -
   authors: "Matti 'qvr' Hiljanen"
+  commands:
+    - dccstat
   contact: matti\@hiljanen.com
   contributors: 'stefan@pico.ruhr.de, dieck@gmx.de, peder@ifi.uio.no'
   default_package: dccstat

@@ -2,6 +2,8 @@
 -
   authors: "Timo 'cras' Sirainen, Wouter Coekaerts"
   changed: 2008-01-13
+  commands:
+    - grep
   contact: 'tss@iki.fi, wouter@coekaerts.be'
   default_package: grep
   description: '/GREP [-i] [-w] [-v] [-F] <perl-regexp> <command to run>'

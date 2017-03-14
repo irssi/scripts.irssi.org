@@ -1,6 +1,8 @@
 ---
 -
   authors: 'Nathan Handler'
+  commands:
+    - grepbans
   contact: nathan.handler@gmail.com
   default_package: grepbans
   description: 'Greps the ban list for the specified pattern'

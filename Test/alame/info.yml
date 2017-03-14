@@ -1,6 +1,8 @@
 ---
 -
   authors: "Christian 'mordeth' Weber"
+  commands:
+    - alamer
   contact: mordeth\@mac.com
   default_package: alame
   description: 'Converts towards lame speech'
