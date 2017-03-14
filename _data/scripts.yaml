@@ -1700,7 +1700,6 @@
   version: '3.00'
 -
   authors: 'David Leadbeater'
-  commands: ''
   contact: dgl@dgl.cx
   description: "Extends the /foreach command to have /foreach user \n        (users in a channel).\n        Syntax: /foreach user [hostmask] command."
   filename: foreach_user.pl
@@ -1985,7 +1984,6 @@
   version: '1.01'
 -
   authors: Nei
-  commands: ''
   contact: 'Nei @ anti@conference.jabber.teamidiot.de'
   description: 'Removes and re-adds lines to the Irssi buffer view.'
   filename: hideshow.pl
@@ -2098,7 +2096,6 @@
   version: '1.0'
 -
   authors: 'Juerd, Eevee'
-  commands: ''
   contact: '#####@juerd.nl'
   description: 'Scrolls to previous or next highlight'
   filename: hlscroll.pl
@@ -4123,7 +4120,6 @@
   version: '0.1'
 -
   authors: 'Wouter Coekaerts, Emanuele Giaquinta'
-  commands: ''
   contact: 'wouter@coekaerts.be, exg@irssi.org'
   description: 'search in your scrollback, scroll to a match'
   filename: sb_search.pl
@@ -4134,7 +4130,6 @@
   version: '1.1'
 -
   authors: Nei
-  commands: ''
   contact: 'Nei @ anti@conference.jabber.teamidiot.de'
   description: 'clear matching lines in scrollback'
   filename: sbclearmatch.pl
@@ -4186,7 +4181,6 @@
   version: '0.9'
 -
   authors: Juerd
-  commands: ''
   contact: juerd@juerd.nl
   description: 'Access script information'
   filename: scriptinfo.pl
@@ -4197,7 +4191,6 @@
   version: '1.20'
 -
   authors: lasers
-  commands: ''
   contact: 'lasers on freenode'
   description: 'Loads scripts from file instead of autorun directory'
   filename: scriptsave.pl
@@ -4789,7 +4782,6 @@
   name: tvmusor
 -
   authors: 'Sam Stoller'
-  commands: ''
   contact: snstoller@gmail.com
   description: 'Assign colors to tweet message components'
   filename: twitter_theme.pl
