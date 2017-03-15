@@ -3924,14 +3924,15 @@
   version: '1.6'
 -
   authors: 'Lasse Karstensen'
+  commands: 'awayadd awayreasons awayreread raway'
   contact: lkarsten@stud.ntnu.no
   description: 'Random away-messages'
   filename: randaway.pl
   license: 'Public Domain'
-  modified: '2014-10-19 11:54:16'
+  modified: '2017-03-15 20:28:47'
   name: randaway.pl
   url: http://www.stud.ntnu.no/~lkarsten/irssi/
-  version: '1.13'
+  version: '1.14'
 -
   authors: legion
   commands: randname
