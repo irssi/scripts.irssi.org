@@ -19,7 +19,7 @@ use Irssi 20011116;
 use Irssi::Irc;
 use vars qw($VERSION %IRSSI);
 
-$VERSION = '1.13';
+$VERSION = '1.14';
 %IRSSI = (
     authors	=> "Lasse Karstensen",
     contact	=> "lkarsten\@stud.ntnu.no",
@@ -32,7 +32,7 @@ $VERSION = '1.13';
 # file to read random reasons from. It should contain one
 # reason at each line, empty lines and lines starting with # is 
 # skipped.
-$reasonfile = Irssi::get_irssi_dir() . "/awayreasons";
+my $reasonfile = Irssi::get_irssi_dir() . "/awayreasons";
 
 my @awayreasons;
 
@@ -46,7 +46,7 @@ sub readreasons {
 		# like a read() .. ie, stopping at each \n.
 		local $/ = "\n";
                 while (<F>) {
-		    $reason = $_;
+		    my $reason = $_;
 
 		    # remove any naughty linefeeds.
 		    chomp($reason);
@@ -94,8 +94,8 @@ sub add_reason {
 	# adding to current environment.
 	push(@awayreasons, $reason);
 	# and also saving it for later.  
-	open(F, ">>", $reasonsfile);
-	print F $reason;
+	open(F, ">>", $reasonfile);
+	print F $reason,"\n";
 	close F;
 	Irssi::print("Added: $reason");
     }
@@ -103,7 +103,7 @@ sub add_reason {
 
 sub reasons {
     Irssi::print("Listing current awayreasons");
-    foreach $var (@awayreasons) {
+    foreach my $var (@awayreasons) {
         Irssi::print("=> \"$var\""); 
     }
 }
