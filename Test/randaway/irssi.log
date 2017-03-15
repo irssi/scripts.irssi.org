@@ -1,15 +1,2 @@
-* -!- Irssi: Error in script randaway:
-* Global symbol "$reasonfile" requires explicit package name at randaway.pl line 35.
-* Global symbol "$reasonfile" requires explicit package name at randaway.pl line 41.
-* Global symbol "$reasonfile" requires explicit package name at randaway.pl line 42.
-* Global symbol "$reasonfile" requires explicit package name at randaway.pl line 43.
-* Global symbol "$reason" requires explicit package name at randaway.pl line 49.
-* Global symbol "$reason" requires explicit package name at randaway.pl line 52.
-* Global symbol "$reason" requires explicit package name at randaway.pl line 55.
-* Global symbol "$reason" requires explicit package name at randaway.pl line 56.
-* Global symbol "$reason" requires explicit package name at randaway.pl line 58.
-* Global symbol "$reason" requires explicit package name at randaway.pl line 61.
-* Global symbol "$reasonfile" requires explicit package name at randaway.pl line 67.
-* Global symbol "$reasonsfile" requires explicit package name at randaway.pl line 97.
-* Global symbol "$var" requires explicit package name at randaway.pl line 106.
-* Global symbol "$var" requires explicit package name at randaway.pl line 107.
+* -!- Irssi: Unable to find ../awayreasons, no reasons loaded.
+* -!- Irssi: Loaded script randaway

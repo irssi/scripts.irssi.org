@@ -1,9 +1,16 @@
 ---
 -
   authors: 'Lasse Karstensen'
+  commands:
+    - awayadd
+    - awayreasons
+    - awayreread
+    - raway
   contact: lkarsten@stud.ntnu.no
+  default_package: randaway
   description: 'Random away-messages'
   license: 'Public Domain'
+  modified: '2017-03-15 20:28:47'
   name: randaway.pl
   url: http://www.stud.ntnu.no/~lkarsten/irssi/
-  version: '1.13'
+  version: '1.14'

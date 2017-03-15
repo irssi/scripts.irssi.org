@@ -381,7 +381,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                      quizmaster ](Test/quizmaster/)|  ✔   |  ✔   |  ✘   | 27   |  ☡   
 [                            quiz ](Test/quiz/)|  ✔   |  ✔   |  ✘   |  8   |  ☡   
 [                         rainbow ](Test/rainbow/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   
-[                        randaway ](Test/randaway/)|  ✘   |  ✔   |  ✔   |  9   |  ☡   
+[                        randaway ](Test/randaway/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   
 [                        randname ](Test/randname/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   
 [                    recentdepart ](Test/recentdepart/)|  ✔   |  ✔   |  ✔   |  2   |  ✔   
 [                        redirect ](Test/redirect/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
@@ -518,4 +518,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                     xmpp-notify ](Test/xmpp-notify/)|  ✔   |  ✔   |  ✔   | 21   |  ✔   
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   
 
-7653befcf57e66cf78dd9216d31619e362805796 | 806
+2311224e817d539f09928e070a5fe67bd12b5c32 | 808
