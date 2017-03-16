@@ -376,7 +376,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                     queryresume ](Test/queryresume/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   
 [                         quitmsg ](Test/quitmsg/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   
 [                        quitrand ](Test/quitrand/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   
-[                          quizgr ](Test/quizgr/)|  ✘   |  ✔   |  ✔   |  6   |  ☡   
+[                          quizgr ](Test/quizgr/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   
 [                   quizmaster-fr ](Test/quizmaster-fr/)|  ✔   |  ✔   |  ✘   | 27   |  ☡   
 [                      quizmaster ](Test/quizmaster/)|  ✔   |  ✔   |  ✘   | 27   |  ☡   
 [                            quiz ](Test/quiz/)|  ✔   |  ✔   |  ✘   |  8   |  ☡   
@@ -518,4 +518,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                     xmpp-notify ](Test/xmpp-notify/)|  ✔   |  ✔   |  ✔   | 21   |  ✔   
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   
 
-2311224e817d539f09928e070a5fe67bd12b5c32 | 808
+011c7e0ba2c943ab0e73b4ad90599c735a4f1e4f | 810
