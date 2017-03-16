@@ -61,7 +61,6 @@ whitelist:
   - 'on'
   - osd
   - query
-  - quizgr
   - quizmaster-fr
   - quizmaster
   - quiz
