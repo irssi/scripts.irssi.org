@@ -3885,10 +3885,10 @@
   description: 'Turns irssi into a quiz bot. Has greek language and many answers support'
   filename: quizgr.pl
   license: GPLv2
-  modified: '2014-10-19 11:54:16'
+  modified: '2017-03-16 17:31:18'
   name: Quizgr
   url: http://kronos.eng.auth.gr/~arvan/irssi/
-  version: 0.7GR02
+  version: 0.7GR03
 -
   authors: "Stefan 'tommie' Tomanek"
   commands: quizmaster
