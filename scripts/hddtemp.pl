@@ -48,18 +48,19 @@
 
 use strict;
 use Irssi;
+use Irssi::TextUI;
 use IO::Socket::INET;
 use POSIX;
 
 use vars qw($VERSION %IRSSI);
-$VERSION = "0.14";
+$VERSION = "0.15";
 %IRSSI = (
     authors     => "Valentin Batz",
     contact     => "vb\@g-23.org",
     name        => "hddtemp",
     description => "adds a statusbar item which shows temperatures of harddisks (with multiple hddtemp-hosts support)",
     license     => "GPLv2",
-    changed     => "2004-06-21",
+    changed     => "2017-03-16",
     url         => "http://hurzelgnom.bei.t-online.de/irssi/scripts/hddtemp.pl",
     sbitems     => "hddtemp"
 );

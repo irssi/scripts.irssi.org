@@ -41,7 +41,6 @@ whitelist:
   - connectcmd
   - dau
   - dnsspam
-  - hddtemp
   - hitcount
   - irc_chess
   - ircgallery
