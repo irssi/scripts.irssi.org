@@ -202,7 +202,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                      hilite_url ](Test/hilite_url/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                hipchat_complete ](Test/hipchat_complete/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                  history_search ](Test/history_search/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   
-[                        hitcount ](Test/hitcount/)|  ✘   |  ✔   |  ✔   |  4   |  ☡   
+[                        hitcount ](Test/hitcount/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   
 [                           hlbot ](Test/hlbot/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   
 [                              hl ](Test/hl/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   
 [                        hlscroll ](Test/hlscroll/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
@@ -518,4 +518,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                     xmpp-notify ](Test/xmpp-notify/)|  ✔   |  ✔   |  ✔   | 21   |  ✔   
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   
 
-0949ff4df513d38d40f7895bf1bbddbbbbd3316c | 812
+55a800ac4889543fd56adabbe335a232bff404a4 | 814
