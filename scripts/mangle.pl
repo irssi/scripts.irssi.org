@@ -194,23 +194,25 @@ sub add_channel ($$) {
 
 sub save_channels {
     my $filename = Irssi::settings_get_str('mangle_filename');
-    local *F;
-    open F, '>'.$filename;
+	my $fo;
+    open $fo, '>',$filename;
     my $data = Dumper(\%channels);
-    print F $data;
-    close F;
+    print $fo $data;
+    close $fo;
     print CLIENTCRAP "%R>>%n Mangle channels saved";
 }
 
 sub load_channels {
     my $filename = Irssi::settings_get_str('mangle_filename');
     return unless (-e $filename);
-    local *F;
-    open F, '<'.$filename;
+    my $fi;
+    open $fi, '<',$filename;
     my $text;
-    $text .= $_ foreach <F>;
-    no strict "vars";
-    %channels = %{ eval "$text" };
+    $text .= $_ foreach <$fi>;
+    #no strict "vars";
+    my $VAR1;
+    eval "$text";
+    %channels = %$VAR1;
 }
 
 sub mangle_show ($$) {
