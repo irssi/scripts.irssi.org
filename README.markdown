@@ -190,7 +190,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                             gsi ](Test/gsi/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   
 [                          gtrans ](Test/gtrans/)|  ✔   |  ✔   |  ✔   | 10   |  ✔   
 [                            guts ](Test/guts/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                         hddtemp ](Test/hddtemp/)|  ✘   |  ✔   |  ✔   |  9   |  ☡   
+[                         hddtemp ](Test/hddtemp/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   
 [                           hello ](Test/hello/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                        hideauth ](Test/hideauth/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                            hide ](Test/hide/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
@@ -518,4 +518,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                     xmpp-notify ](Test/xmpp-notify/)|  ✔   |  ✔   |  ✔   | 21   |  ✔   
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   
 
-011c7e0ba2c943ab0e73b4ad90599c735a4f1e4f | 810
+0949ff4df513d38d40f7895bf1bbddbbbbd3316c | 812

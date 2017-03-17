@@ -1,10 +1,14 @@
-* Scalar value @ports[0] better written as $ports[0] at hddtemp.pl line 77.
+* Scalar value @ports[0] better written as $ports[0] at hddtemp.pl line 78.
 * 
-* Scalar value @hosts[$i] better written as $hosts[$i] at hddtemp.pl line 81.
+* Scalar value @hosts[$i] better written as $hosts[$i] at hddtemp.pl line 82.
 * 
-* Scalar value @ports[$i] better written as $ports[$i] at hddtemp.pl line 82.
+* Scalar value @ports[$i] better written as $ports[$i] at hddtemp.pl line 83.
 * 
-* Useless use of private variable in void context at hddtemp.pl line 90.
+* Useless use of private variable in void context at hddtemp.pl line 91.
 * 
-* -!- Irssi: Error in script hddtemp:
-* Undefined subroutine &Irssi::statusbar_item_register called at hddtemp.pl line 175.
+* Use of uninitialized value in subroutine entry at hddtemp.pl line 176.
+* 
+* hi
+* -!- Irssi: Loaded script hddtemp
+* Use of uninitialized value $lines in print at hddtemp.pl line 119.
+* 

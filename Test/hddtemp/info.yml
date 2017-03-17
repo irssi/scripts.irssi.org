@@ -1,11 +1,13 @@
 ---
 -
   authors: 'Valentin Batz'
-  changed: 2004-06-21
+  changed: 2017-03-16
   contact: vb@g-23.org
+  default_package: hddtemp
   description: 'adds a statusbar item which shows temperatures of harddisks (with multiple hddtemp-hosts support)'
   license: GPLv2
+  modified: '2017-03-17 11:54:11'
   name: hddtemp
   sbitems: hddtemp
   url: http://hurzelgnom.bei.t-online.de/irssi/scripts/hddtemp.pl
-  version: '0.14'
+  version: '0.15'
