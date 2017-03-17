@@ -7,18 +7,20 @@
 use strict;
 use locale;
 use Irssi 20020324;
+use Irssi::TextUI;
 use POSIX;
 use Data::Dumper;
 
 use vars qw($VERSION %IRSSI %HELP %channels %translations);
-$VERSION = '2004031701';
+$VERSION = '2017031701';
 %IRSSI = (
     authors     => 'Szymon Sokol',
     contact     => 'szymon@hell.pl',
     name        => 'mangle',
     description => 'translates your messages into Morse code, rot13 and other sillinesses.',
     license     => 'GPLv2',
-    url         => 'http://irssi.org/scripts/',                                     changed     => $VERSION,
+    url         => 'http://irssi.org/scripts/',
+    changed     => $VERSION,
     modules     => 'Data::Dumper'
 );  
 
