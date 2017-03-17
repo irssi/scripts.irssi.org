@@ -1947,10 +1947,10 @@
   description: 'adds a statusbar item which shows temperatures of harddisks (with multiple hddtemp-hosts support)'
   filename: hddtemp.pl
   license: GPLv2
-  modified: '2004-06-21 00:00:00'
+  modified: '2017-03-17 11:54:11'
   name: hddtemp
   url: http://hurzelgnom.bei.t-online.de/irssi/scripts/hddtemp.pl
-  version: '0.14'
+  version: '0.15'
 -
   authors: Cybertinus
   commands: hello
