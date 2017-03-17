@@ -2,20 +2,22 @@
 
 use strict;
 use vars qw($VERSION %IRSSI);
-my @rev = split(/ /, "$Revision: 1.3.2.2 $n");
-$VERSION = "1.3";
+my @rev = split(/ /, '$Revision: 1.4 $n');
+$VERSION = "1.4";
 %IRSSI = (
-	    authors     => 'Riku "Shrike" Lindblad',
-	    contact     => 'shrike\@addiktit.net, Shrike on IRCNet/QNet/EFNet/DALNet',
-	    name        => 'hitcount',
-	    description => 'Add a apache page hitcounter to statusbar',
-	    license     => 'Free',
-	    changed     => '$Date: 2002/03/05 18:19:28 $ ',
-	  );
+    authors     => 'Riku "Shrike" Lindblad',
+    contact     => 'shrike\@addiktit.net, Shrike on IRCNet/QNet/EFNet/DALNet',
+    name        => 'hitcount',
+    description => 'Add a apache page hitcounter to statusbar',
+    license     => 'Free',
+    changed     => '$Date: 2017/03/07 $ ',
+);
 
 # Changelog:
 #
-# $Log: hitcount.pl,v $
+# Revision 1.4  2017/03/07 bw1
+# bug fix
+#
 # Revision 1.3.2.2  2002/03/05 18:19:28  shrike
 # Added use vars qw($VERSION %IRSSI);
 #
@@ -54,59 +56,65 @@ use Irssi::TextUI;
 # Debug level - higher levels print out more crap
 my $debug_level = 0;
 # current hitcount
-my ($total_hitcount, $my_hitcount) = (0);
+my ($total_hitcount, $my_hitcount) = (0,0);
 # change prefixes
-my ($my_prefix, $total_prefix) = ("");
+my ($my_prefix, $total_prefix) = ("","");
 # change from last update
-my ($my_change, $total_change) = (0);
+my ($my_change, $total_change) = (0,0);
 # hitcount on last update
-my ($last_total_hitcount, $last_my_hitcount, $last_refresh) = (0);
+my ($last_total_hitcount, $last_my_hitcount, $last_refresh) = (0,0,0);
 # set default variables
-my ($filename, $regexp, $refresh) = ("/var/log/apache/access.log", "/", 60);
+my ($filename, $regexp, $refresh) = ("/var/log/httpd/access.log", "/", 60);
+# marker for the refresh
+my $refresh_tag;
 
+# read the access_log and count rows, regexp matches
 sub get_hitcount {
     my $filename = Irssi::settings_get_str('hitcount_access_log');
     my $regexp = Irssi::settings_get_str('hitcount_regexp');
     
-    Irssi::print("Finding match for \"".my $regexp."\"", MSGLEVEL_CLIENTERROR) if($debug_level > 2);
+    Irssi::print("Finding match for \"$regexp\"", MSGLEVEL_CLIENTERROR) if($debug_level > 2);
     
-    ($total_hitcount, $my_hitcount) = (0);
+    ($total_hitcount, $my_hitcount) = (0,0);
     
     # Go through the access log and count matches to the given regexp
-    if(open STUFF, "<", $filename)
-    {
-   	while (<STUFF>) 
-	{
-	    $total_hitcount++;
-	    if(/$regexp/ois)
-	    {
-		# DEBUG
-		Irssi::print("Matched $_", MSGLEVEL_CLIENTERROR) if($debug_level > 3);
-		$my_hitcount++;
-	    }
-	}
-	close STUFF;
+    if(open STUFF, "<", $filename) {
+        while (<STUFF>) {
+            $total_hitcount++;
+            #if(m#$regexp#ois)
+            if(m<GET $regexp >) {
+                # DEBUG
+                Irssi::print("Matched $_", MSGLEVEL_CLIENTERROR) if($debug_level > 3);
+                $my_hitcount++;
+            }
+        }
+        close STUFF;
+    } else {
+        Irssi::print("Failed to open <$filename: $!", MSGLEVEL_CLIENTERROR);
     }
-    else
-    {
-	Irssi::print("Failed to open <$filename: $!", MSGLEVEL_CLIENTERROR);
-    }
+
     return($my_hitcount,$total_hitcount);
 }
 
+# show the result
 sub hitcount {
     my ($item, $get_size_only) = @_;
     
-    # DEBUG
-    Irssi::print("$get_size_only | $last_my_hitcount/$last_total_hitcount | $my_hitcount/$total_hitcount | $my_prefix$my_change $total_prefix$total_change", MSGLEVEL_CLIENTERROR) if($debug_level > 0);
+    $item->default_handler($get_size_only, 
+        "{sb Hits: $last_my_hitcount/$last_total_hitcount ".
+        "$my_prefix$my_change/$total_prefix$total_change}", '', 0);
+}
+
+# repeat refresh by interval time
+sub refresh_hitcount {
     
     my ($my_hitcount, $my_total_hitcount) = get_hitcount();
     
-    if($my_hitcount eq '') { $my_hitcount = 0; }
-    
     # Calculate change since last update
-    $my_change = $my_hitcount - $last_my_hitcount;
-    $total_change = $total_hitcount - $last_total_hitcount;
+    if ($last_total_hitcount >0) {
+        $my_change = $my_hitcount - $last_my_hitcount;
+        $total_change = $total_hitcount - $last_total_hitcount;
+    }
     
     # Get correct prefix for change
     $my_prefix = "+" if($my_change > 0);
@@ -116,7 +124,14 @@ sub hitcount {
     $total_prefix = "-" if($total_change < 0);
     $total_prefix = "" if($total_change == 0);
     
-    $item->default_handler($get_size_only, undef, "$last_my_hitcount $last_total_hitcount $my_prefix$my_change $total_prefix$total_change", 1);
+    # DEBUG
+    Irssi::print(
+        "$last_my_hitcount/$last_total_hitcount | $my_hitcount/$total_hitcount ".
+        "| $my_prefix$my_change $total_prefix$total_change", 
+        MSGLEVEL_CLIENTERROR) if($debug_level > 0);
+
+    # show it
+    Irssi::statusbar_items_redraw('hitcount');
     
     # last hitcount = current hitcount
     $last_my_hitcount = $my_hitcount;
@@ -128,28 +143,28 @@ sub hitcount {
     $my_total_hitcount = 0;
 }
 
-sub refresh_hitcount {
-    get_hitcount();
-    Irssi::statusbar_items_redraw('hitcount');
-}
-
 sub read_settings {
     my $time = Irssi::settings_get_int('hitcount_refresh');
     return if ($time == $last_refresh);
 
     $last_refresh = $time;
-    Irssi::timeout_remove(my $refresh_tag) if (my $refresh_tag);
+    
+    Irssi::timeout_remove($refresh_tag) if ($refresh_tag);
     $refresh_tag = Irssi::timeout_add($time*1000, 'refresh_hitcount', undef);
+
+    refresh_hitcount();
 }
 
 # default values
 Irssi::settings_add_str('misc', 'hitcount_regexp', $regexp);
 Irssi::settings_add_int('misc', 'hitcount_refresh', $refresh);
 Irssi::settings_add_str('misc', 'hitcount_access_log', $filename);
+
 # sub to call, string on statusbar, func on statusbar
-Irssi::statusbar_item_register('hitcount', '{sb Hits: $0%K/%N$1 $2%K/%N$3}', 'hitcount');
+Irssi::statusbar_item_register('hitcount', 0, 'hitcount');
+
+Irssi::print("Hitcounter version ".$rev[1]." loaded");
 
 read_settings();
 Irssi::signal_add('setup changed', 'read_settings');
 
-Irssi::print("Hitcounter version ".$rev[1]." loaded");
