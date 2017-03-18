@@ -1,7 +1,8 @@
 use strict;
 use Irssi 20020101.0250 ();
+
 use vars qw($VERSION %IRSSI);
-$VERSION = "0.1";
+$VERSION = "0.2";
 %IRSSI = (
     authors     => "Ian Peters",
     contact     => "itp\@ximian.com",
@@ -9,7 +10,7 @@ $VERSION = "0.1";
     description => "run arbitrary shell commands while [dis]connecting to a server",
     license     => "Public Domain",
     url         => "http://irssi.org/",
-    changed     => "Sun, 10 Mar 2002 17:08:03 -0500"
+    changed     => "2017-03-18"
 );
 
 my %preconn_actions;
@@ -17,39 +18,42 @@ my %postconn_actions;
 my %disconn_actions;
 
 sub load_actions {
-  open ACTIONS, q{<}, "$ENV{HOME}/.irssi/connectcmd_actions";
+  my $fi;
 
-  while (<ACTIONS>) {
+  open $fi, '<', "$ENV{HOME}/.irssi/connectcmd_actions";
+
+  while (<$fi>) {
     my @lines = split "\n";
     foreach my $line (@lines) {
       my ($server, $type, $action) = split ":", $line;
       if ($type eq "preconn") {
-	$preconn_actions{$server} = $action;
+	      $preconn_actions{$server} = $action;
       } elsif ($type eq "postconn") {
-	$postconn_actions{$server} = $action;
+	      $postconn_actions{$server} = $action;
       } elsif ($type eq "disconn") {
-	$disconn_actions{$server} = $action;
+	      $disconn_actions{$server} = $action;
       }
     }
   }
 
-  close ACTIONS;
+  close $fi;
 }
 
 sub save_actions {
-  open ACTIONS, q{>}, "$ENV{HOME}/.irssi/connectcmd_actions";
+  my $fa;
+  open $fa, q{>}, "$ENV{HOME}/.irssi/connectcmd_actions";
 
   foreach my $server (keys %preconn_actions) {
-    print ACTIONS "$server:preconn:$preconn_actions{$server}\n";
+    print $fa "$server:preconn:$preconn_actions{$server}\n";
   }
   foreach my $server (keys %postconn_actions) {
-    print ACTIONS "$server:postconn:$postconn_actions{$server}\n";
+    print $fa "$server:postconn:$postconn_actions{$server}\n";
   }
   foreach my $server (keys %disconn_actions) {
-    print ACTIONS "$server:disconn:$disconn_actions{$server}\n";
+    print $fa "$server:disconn:$disconn_actions{$server}\n";
   }
 
-  close ACTIONS;
+  close $fa;
 }
 
 sub sig_server_looking {
@@ -78,7 +82,13 @@ sub sig_server_disconnected {
 
 sub cmd_connectcmd {
   my ($data, $server, $witem) = @_;
-  my ($op, $type, $server, $action) = split " ", $data;
+  
+  #my ($op, $type, $server, $action) = split " ", $data;
+  $data =~ m/^(\S*)\s+(\S*)\s+(\S*)\s+(.*)$/;
+  my $op=$1;
+  my $type=$2;
+  my $server=$3;
+  my $action=$4;
 
   $op = lc $op;
 
@@ -146,7 +156,7 @@ sub cmd_connectcmd {
   }
 }
 
-load_actions;
+load_actions();
 
 Irssi::command_bind ('connectcmd', 'cmd_connectcmd');
 
