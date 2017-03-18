@@ -32,7 +32,7 @@ $VERSION = "0.2+2";
 	license		=> 'GPL',
 	url		=> 'http://manoli.im-dachgeschoss.de/~kk/',
 	changed		=> '2017-03-18',
-    modules     => 'Xmms::Remote',
+    modules     => 'Xmms Xmms::Remote',
 );
 
 Irssi::print("*****\n* $IRSSI{name} $VERSION loaded.\n* Type /xmms to announce currently played file.\n*****");
