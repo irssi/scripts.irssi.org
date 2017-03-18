@@ -31,6 +31,8 @@ cpan:
   broken_tests:
     - Geo::Weather
     - Net::Google
+    - Xmms
+    - Xmms::Remote
 # This is a whitelist of scripts who are currently allowed to fail
 # testing. They should be fixed and then removed from the whitelist.
 whitelist:
