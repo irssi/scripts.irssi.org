@@ -1,9 +1,10 @@
 #!/usr/bin/perl
 use Irssi;
 use DBI;
+use DBD::SQLite;
 use strict;
 use vars qw($VERSION %IRSSI);
-$VERSION = "0.1";
+$VERSION = "0.2";
 %IRSSI = (
     authors     => "Jesper Lindh",
     contact     => "rakblad\@midgard.liu.se",
@@ -11,16 +12,23 @@ $VERSION = "0.1";
     description => "Adds words from IRC to your tab-completion list",
     license     => "Public Domain",
     url         => "http://midgard.liu.se/~n02jesli/perl/",
-    changed     => "2004-03-12"
+    changed     => "2017-03-19",
+	modules     => "DBD::SQLite"
 );
-my ($dsn) = "DBI:mysql:yourdatabase:databashostname";
-my ($user_name) = "yourusername";
-my ($password) = "yourpassword";
+
+my $bd= Irssi::get_irssi_dir();
+my $fndb="wordcompletition.db";
+#my ($dsn) = "DBI:mysql:yourdatabase:databashostname";
+my ($dsn) = "DBI:SQLite:dbname=$bd/$fndb";
+my ($user_name) = "";
+my ($password) = "";
 my ($dbh, $sth);
 my (@ary);
 my $query;
 my $connect = 1;
 $dbh = DBI->connect ($dsn, $user_name, $password, { RaiseError => 1 });
+
+$dbh->do("create table if not exists words (word varchar(30), prio int)");
 
 sub wordsearch
 {
@@ -32,7 +40,7 @@ sub wordsearch
 	$sth->execute();
 	while (@ary = $sth->fetchrow_array ())
 	{
-        	$retar[$i++] = join ("", @ary), "\n";
+		push @retar,$ary[0];
 	}
 	$sth->finish();
 	return @retar;
@@ -78,7 +86,7 @@ sub word_complete
 {
 	my ($complist, $window, $word, $linestart, $want_space) = @_;
         $word =~ s/([^a-zA-Z0-9åäöÅÄÖ])//g;
-	@$complist = wordsearch($word);	
+		push @$complist , wordsearch($word);	
 };
 sub word_message
 {
