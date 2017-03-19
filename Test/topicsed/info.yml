@@ -1,11 +1,13 @@
 ---
 -
   authors: 'Gabor Nyeki'
-  changed: 'Fri Aug 13 19:27:38 CEST 2004'
+  changed: 2017-03-18
   commands:
     - topicsed
   contact: bigmac@vim.hu
   default_package: topicsed
   description: 'editing channel topics by regexps'
   license: 'public domain'
+  modified: '2017-03-18 23:06:54'
   name: topicsed
+  version: '0.1'
