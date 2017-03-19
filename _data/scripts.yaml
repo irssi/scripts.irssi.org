@@ -4685,8 +4685,9 @@
   description: 'editing channel topics by regexps'
   filename: topicsed.pl
   license: 'public domain'
-  modified: '2004-08-13 19:27:38'
+  modified: '2017-03-18 23:06:54'
   name: topicsed
+  version: '0.1'
 -
   authors: "Sebastian 'yath' Schmidt"
   contact: yath+irssiscripts@yath.de
