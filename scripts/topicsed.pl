@@ -4,17 +4,18 @@
 # Thanks to Mikael Magnusson for the idea and patch to implement a
 # preview functionality. ;]
 #
-
+use strict;
 use Irssi;
 
-use vars %IRSSI;
+use vars qw/%IRSSI $VERSION/;
+$VERSION="0.1";
 %IRSSI = (
 	authors		=> "Gabor Nyeki",
 	contact		=> "bigmac\@vim.hu",
 	name		=> "topicsed",
 	description	=> "editing channel topics by regexps",
 	license		=> "public domain",
-	changed		=> "Fri Aug 13 19:27:38 CEST 2004"
+	changed		=> "2017-03-18"
 );
 
 
@@ -32,7 +33,7 @@ sub topicsed {
 		return;
 	}
 	return if (!$server || !$server->{connected} ||
-		!$winit || $winit->{type} != 'CHANNEL');
+		!$winit || $winit->{type} ne 'CHANNEL');
 
 	my $topic = $winit->{topic};
 	my $x = $topic;
