@@ -5,7 +5,7 @@ use strict;
 use IO::Handle; # for (auto)flush
 use Fcntl; # for sysopen
 use vars qw($VERSION %IRSSI);
-$VERSION = '0.4.6';
+$VERSION = '0.4.7';
 %IRSSI = (
 	authors     => 'Wouter Coekaerts',
 	contact     => 'coekie@irssi.org',
@@ -13,7 +13,7 @@ $VERSION = '0.4.6';
 	description => 'draws a nicklist to another terminal, or at the right of your irssi in the same terminal',
 	license     => 'GPLv2',
 	url         => 'http://wouter.coekaerts.be/irssi',
-	changed     => '29/06/2004'
+	changed     => '20/03/2017'
 );
 
 sub cmd_help {
@@ -193,7 +193,7 @@ sub screen_size {
 		unless (defined &TIOCGWINSZ) {
 			die "Term::ReadKey not found, and ioctl 'workaround' failed. Install the Term::ReadKey perl module to use screen mode.\n";
 		}
-		open(TTY, "+</dev/tty") or die "No tty: $!";
+		open(TTY, "+<","/dev/tty") or die "No tty: $!";
 		unless (ioctl(TTY, &TIOCGWINSZ, $winsize='')) {
 			die "Term::ReadKey not found, and ioctl 'workaround' failed ($!). Install the Term::ReadKey perl module to use screen mode.\n";
 		}
