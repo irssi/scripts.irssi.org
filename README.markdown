@@ -113,7 +113,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                       colorswap ](Test/colorswap/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                     complete_at ](Test/complete_at/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   
 [              complete_lastspoke ](Test/complete_lastspoke/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                      connectcmd ](Test/connectcmd/)|  ✘   |  ✔   |  ✔   | 11   |  ☡   
+[                      connectcmd ](Test/connectcmd/)|  ✔   |  ✔   |  ✔   | 19   |  ✔   
 [                       countdown ](Test/countdown/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                         country ](Test/country/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                     cp1250_kick ](Test/cp1250_kick/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
@@ -339,7 +339,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                      notifyquit ](Test/notifyquit/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
 [                       notonline ](Test/notonline/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                            null ](Test/null/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                          ogg123 ](Test/ogg123/)|  ✔   |  ✔   |  ✘   |  8   |  ☡   
+[                          ogg123 ](Test/ogg123/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   
 [                         oidenty ](Test/oidenty/)|  ✔   |  ✔   |  ✘   | 13   |  ☡   
 [                              on ](Test/on/)|  ✔   |  ✔   |  ✘   | 20   |  ☡   
 [                            ontv ](Test/ontv/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   
@@ -409,7 +409,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                      scriptinfo ](Test/scriptinfo/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                      scriptsave ](Test/scriptsave/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                        scrmable ](Test/scrmable/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
-[                        scroller ](Test/scroller/)|  ✘   |  ✔   |  ✔   |  3   |  ☡   
+[                        scroller ](Test/scroller/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                       securemsg ](Test/securemsg/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   
 [                            seen ](Test/seen/)|  ✔   |  ✔   |  ✔   |103   |  ✔   
 [                     send_scroll ](Test/send_scroll/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
@@ -518,4 +518,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                     xmpp-notify ](Test/xmpp-notify/)|  ✔   |  ✔   |  ✔   | 21   |  ✔   
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   
 
-f74303d84d2e9f21f56c630d08ffa54a24f7e066 | 833
+b46f6ae0eb2782c284f58e503865dd450475ce64 | 838

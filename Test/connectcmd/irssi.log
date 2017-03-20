@@ -1,4 +1,5 @@
-* "my" variable $server masks earlier declaration in same scope at connectcmd.pl line 81.
+* "my" variable $server masks earlier declaration in same scope at connectcmd.pl line 90.
 * 
-* -!- Irssi: Error in script connectcmd:
-* Can't locate object method "OPEN" via package "Irssi" at connectcmd.pl line 20.
+* readline() on closed filehandle $fi at connectcmd.pl line 25.
+* 
+* -!- Irssi: Loaded script connectcmd

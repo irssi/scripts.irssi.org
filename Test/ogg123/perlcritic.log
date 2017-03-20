@@ -1,3 +1,2 @@
 Code before warnings are enabled at line 35, column 1.  See page 431 of PBP.  (Severity: 4)
-Two-argument "open" used at line 67, column 3.  See page 207 of PBP.  (Severity: 5)
 Return value of "close" ignored at line 89, column 3.  Check the return value of "close" for success.  (Severity: 2)

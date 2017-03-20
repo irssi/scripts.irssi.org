@@ -1,2 +1,4 @@
-* -!- Irssi: Error in script scroller:
-* Undefined subroutine &Irssi::statusbar_item_register called at scroller.pl line 86.
+* Scrolling: " - - - ->Scrolling text not defined.  Use "/set scrollerText <something>" to define it- - - -> "
+* Use "/set scrollerText <something>" to scroll <something>
+* Use "/set scrollerSpeed <int>" to set the delay in milliseconds
+* -!- Irssi: Loaded script scroller

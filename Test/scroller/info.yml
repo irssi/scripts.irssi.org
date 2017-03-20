@@ -2,7 +2,9 @@
 -
   authors: Demonen
   contact: demmydemon@gmail.com
+  default_package: scroller
   description: 'Scrolls specified text on the status bar'
   license: 'Public Domain'
+  modified: '2017-03-17 18:54:18'
   name: scroller
-  version: '0.01'
+  version: '0.02'

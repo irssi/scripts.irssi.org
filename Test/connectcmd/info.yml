@@ -1,10 +1,14 @@
 ---
 -
   authors: 'Ian Peters'
-  changed: 'Sun, 10 Mar 2002 17:08:03 -0500'
+  changed: 2017-03-18
+  commands:
+    - connectcmd
   contact: itp@ximian.com
+  default_package: connectcmd
   description: 'run arbitrary shell commands while [dis]connecting to a server'
   license: 'Public Domain'
+  modified: '2017-03-18 12:17:25'
   name: 'Connect Command'
   url: http://irssi.org/
-  version: '0.1'
+  version: '0.2'

@@ -8,6 +8,7 @@
   default_package: ogg123
   description: 'Display current ogg123 track'
   license: GPLv2
+  modified: '2017-03-20 14:19:18'
   name: ogg123
   url: http://pwp.netcabo.pt/ricardomesquita/irssi
   version: 0.01+1
