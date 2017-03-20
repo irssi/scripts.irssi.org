@@ -39,7 +39,6 @@ whitelist:
   - cap_sasl_fail
   - cap_sasl
   - connectcmd
-  - dau
   - dnsspam
   - irc_chess
   - ircgallery
