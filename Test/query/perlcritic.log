@@ -1,8 +1,6 @@
 Code before warnings are enabled at line 19, column 1.  See page 431 of PBP.  (Severity: 4)
-Two-argument "open" used at line 47, column 5.  See page 207 of PBP.  (Severity: 5)
 Return value of "open" ignored at line 47, column 5.  Check the return value of "open" for success.  (Severity: 3)
 Return value of "close" ignored at line 53, column 5.  Check the return value of "close" for success.  (Severity: 2)
-Two-argument "open" used at line 62, column 5.  See page 207 of PBP.  (Severity: 5)
 Return value of "open" ignored at line 62, column 5.  Check the return value of "open" for success.  (Severity: 3)
 Return value of "close" ignored at line 70, column 5.  Check the return value of "close" for success.  (Severity: 2)
 Expression form of "eval" at line 112, column 9.  See page 161 of PBP.  (Severity: 5)

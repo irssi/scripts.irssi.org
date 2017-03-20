@@ -320,7 +320,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                   nickcolor_gay ](Test/nickcolor_gay/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   
 [                       nickcolor ](Test/nickcolor/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   
 [                      nickignore ](Test/nickignore/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                        nicklist ](Test/nicklist/)|  ✔   |  ✔   |  ✘   | 17   |  ☡   
+[                        nicklist ](Test/nicklist/)|  ✔   |  ✔   |  ✔   | 13   |  ✔   
 [                  nickmix-c0ffee ](Test/nickmix-c0ffee/)|  ✔   |  ✔   |  ✔   | 18   |  ✔   
 [                   nickmix_pasky ](Test/nickmix_pasky/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                        nickserv ](Test/nickserv/)|  ✔   |  ✔   |  ✔   | 13   |  ✔   
@@ -372,7 +372,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                   print_signals ](Test/print_signals/)|  ✔   |  ✔   |  ✔   |  1   |  ✔   
 [                     procmaillog ](Test/procmaillog/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   
 [                  qchallengeauth ](Test/qchallengeauth/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
-[                           query ](Test/query/)|  ✔   |  ✔   |  ✘   | 30   |  ☡   
+[                           query ](Test/query/)|  ✔   |  ✔   |  ✔   | 22   |  ✔   
 [                     queryresume ](Test/queryresume/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   
 [                         quitmsg ](Test/quitmsg/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   
 [                        quitrand ](Test/quitrand/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   
@@ -518,4 +518,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                     xmpp-notify ](Test/xmpp-notify/)|  ✔   |  ✔   |  ✔   | 21   |  ✔   
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   
 
-b46f6ae0eb2782c284f58e503865dd450475ce64 | 838
+1f3171fbee0f88d24429ea3ed6b0248e021f73a5 | 842
