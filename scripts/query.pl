@@ -16,7 +16,7 @@ use POSIX;
 # ======[ Script Header ]===============================================
 
 use vars qw{$VERSION %IRSSI};
-($VERSION) = '$Revision: 1.24 $' =~ / (\d+\.\d+) /;
+($VERSION) = '$Revision: 1.25 $' =~ / (\d+\.\d+) /;
 %IRSSI = (
 	  name	      => 'query',
 	  authors     => 'Peder Stray',
@@ -44,7 +44,7 @@ sub load_defaults {
     local *FILE;
 
     %defaults = ();
-    open FILE, "< $file";
+    open FILE, '<',$file;
     while (<FILE>) {
 	my($mask,$maxage,$immortal) = split;
 	$defaults{$mask}{maxage}   = $maxage;
@@ -59,7 +59,7 @@ sub save_defaults {
     my $file = Irssi::get_irssi_dir."/query";
     local *FILE;
 
-    open FILE, "> $file";
+    open FILE, '>', $file;
     for (keys %defaults) {
 	my $d = $defaults{$_};
 	print FILE join("\t", $_, 
