@@ -50,7 +50,6 @@ whitelist:
   - log2ansi
   - mkshorterlink
   - newsline
-  - nicklist
   - oidenty
   - 'on'
   - osd
