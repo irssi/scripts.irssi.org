@@ -124,7 +124,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                            cwho ](Test/cwho/)|  ✔   |  ✔   |  ✔   | 18   |  ✔   
 [               dancer_forwardfix ](Test/dancer_forwardfix/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                 dancer_hide_477 ](Test/dancer_hide_477/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                             dau ](Test/dau/)|  ✔   |  ✔   |  ✘   | 58   |  ☡   
+[                             dau ](Test/dau/)|  ✔   |  ✔   |  ✔   | 42   |  ✔   
 [                          dcc_ip ](Test/dcc_ip/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                         dccmove ](Test/dccmove/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                        dccrelay ](Test/dccrelay/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   
@@ -518,4 +518,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                     xmpp-notify ](Test/xmpp-notify/)|  ✔   |  ✔   |  ✔   | 21   |  ✔   
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   
 
-44e2232350900548809adb9908745ed4a0647feb | 830
+07d53b034aceda2f087b8117d2c7f891082459e2 | 832
