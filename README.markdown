@@ -275,7 +275,7 @@ See [the testing read-me](../master/_testing/) for details.
 [            mailcheck_pop3_kimmo ](Test/mailcheck_pop3_kimmo/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                       mailcount ](Test/mailcount/)|  ✔   |  ✔   |  ✔   | 25   |  ✔   
 [                            mail ](Test/mail/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   
-[                          mangle ](Test/mangle/)|  ✘   |  ✔   |  ✘   | 23   |  ☡   
+[                          mangle ](Test/mangle/)|  ✔   |  ✔   |  ✔   | 15   |  ✔   
 [                             map ](Test/map/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [            mass_hilight_blocker ](Test/mass_hilight_blocker/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                 messages_bottom ](Test/messages_bottom/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
@@ -518,4 +518,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                     xmpp-notify ](Test/xmpp-notify/)|  ✔   |  ✔   |  ✔   | 21   |  ✔   
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   
 
-07d53b034aceda2f087b8117d2c7f891082459e2 | 832
+f74303d84d2e9f21f56c630d08ffa54a24f7e066 | 833
