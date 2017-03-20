@@ -1145,14 +1145,15 @@
   version: '2.1'
 -
   authors: 'Ian Peters'
+  commands: connectcmd
   contact: itp@ximian.com
   description: 'run arbitrary shell commands while [dis]connecting to a server'
   filename: connectcmd.pl
   license: 'Public Domain'
-  modified: '2014-10-17 20:34:00'
+  modified: '2017-03-18 12:17:25'
   name: 'Connect Command'
   url: http://irssi.org/
-  version: '0.1'
+  version: '0.2'
 -
   authors: "Mikko 'Quidz' Salmi"
   contact: mikko@quidz.net
@@ -3497,7 +3498,7 @@
   description: 'Display current ogg123 track'
   filename: ogg123.pl
   license: GPLv2
-  modified: '2006-11-27 18:00:00'
+  modified: '2017-03-20 14:19:18'
   name: ogg123
   url: http://pwp.netcabo.pt/ricardomesquita/irssi
   version: 0.01+1
@@ -4216,9 +4217,9 @@
   description: 'Scrolls specified text on the status bar'
   filename: scroller.pl
   license: 'Public Domain'
-  modified: '2008-05-17 17:39:09'
+  modified: '2017-03-17 18:54:18'
   name: scroller
-  version: '0.01'
+  version: '0.02'
 -
   authors: "Jari Matilainen, a lot of code borrowed from whitelist.pl by David O'Rourke and Karl Siegemund"
   commands: sm
