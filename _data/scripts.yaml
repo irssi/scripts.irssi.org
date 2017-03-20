@@ -3302,10 +3302,10 @@
   description: 'draws a nicklist to another terminal, or at the right of your irssi in the same terminal'
   filename: nicklist.pl
   license: GPLv2
-  modified: '2014-06-10 12:58:13'
+  modified: '2017-03-20 19:38:25'
   name: nicklist
   url: http://wouter.coekaerts.be/irssi
-  version: 0.4.6
+  version: 0.4.7
 -
   authors: c0ffee
   commands: 'nickmix stopmix'
@@ -3840,10 +3840,10 @@
   description: 'Give you more control over when to jump to query windows and when to just tell you one has been created. Enhanced autoclose.'
   filename: query.pl
   license: GPL
-  modified: '2009-04-25 11:27:28'
+  modified: '2017-03-20 20:22:57'
   name: query
   url: http://ninja.no/irssi/query.pl
-  version: '1.24'
+  version: '1.25'
 -
   authors: "Stefan 'tommie' Tomanek"
   contact: stefan@pico.ruhr.de
