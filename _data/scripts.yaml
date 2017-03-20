@@ -2833,14 +2833,15 @@
   version: 1.4.5
 -
   authors: 'Szymon Sokol'
+  commands: mangle
   contact: szymon@hell.pl
   description: 'translates your messages into Morse code, rot13 and other sillinesses.'
   filename: mangle.pl
   license: GPLv2
-  modified: '2008-05-17 17:39:11'
+  modified: '2017-03-17 23:41:44'
   name: mangle
   url: http://irssi.org/scripts/
-  version: '2004031701'
+  version: '2017031701'
 -
   authors: 'Petr Baudis'
   contact: pasky@ji.cz
