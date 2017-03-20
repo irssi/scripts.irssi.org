@@ -54,7 +54,6 @@ whitelist:
   - oidenty
   - 'on'
   - osd
-  - query
   - quizmaster-fr
   - quizmaster
   - quiz
