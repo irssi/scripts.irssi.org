@@ -4332,6 +4332,13 @@
   name: showmode
   version: '0.3'
 -
+  contact: jwm@horde.net
+  description: 'Send highlighted messages via Signal'
+  filename: signal_hilight.pl
+  modified: '2017-03-20 16:27:59'
+  name: signal_hilight
+  version: '1.0'
+-
   authors: 'Morten Lied Johansen, Jonas Berlin'
   contact: mortenjo@ifi.uio.no
   description: 'Prefix nicks with @ when completing nicks to match conventions on networks like Slack, Flowdock, Gitter etc'
