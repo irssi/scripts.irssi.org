@@ -1,0 +1,10 @@
+---
+-
+  author: 'John Morrissey'
+  contact: jwm@horde.net
+  default_package: signal_hilight
+  description: 'Send highlighted messages via Signal'
+  licence: BSD
+  modified: '2017-03-20 16:27:59'
+  name: signal_hilight
+  version: '1.0'
