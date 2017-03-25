@@ -35,9 +35,9 @@ sub wordsearch
 	my $sw = shift;
 	my @retar;
 	my $i = 0;
-	$query = qq{ select word from words where word like "$sw%" order by prio desc };
+	$query = qq{ select word from words where word like ? order by prio desc };
 	$sth = $dbh->prepare ( $query );
-	$sth->execute();
+	$sth->execute($sw.'%');
 	while (@ary = $sth->fetchrow_array ())
 	{
 		push @retar,$ary[0];
@@ -49,9 +49,9 @@ sub wordfind
 {
 	my $sw = shift;
 	my $ret;
-	$query = qq{ select word from words where word = "$sw" };
+	$query = qq{ select word from words where word = ? };
         $sth = $dbh->prepare ( $query );
-        $sth->execute();
+        $sth->execute($sw);
         @ary = $sth->fetchrow_array;
         $ret = join ("", @ary), "\n";
         $sth->finish();
@@ -61,25 +61,25 @@ sub wordfind
 sub wordupdate
 {
 	my $sw = shift;
-	$query = qq { update words set prio = prio + 1 where word = "$sw" };
+	$query = qq { update words set prio = prio + 1 where word = ? };
         $sth = $dbh->prepare ( $query );
-        $sth->execute();
+        $sth->execute($sw);
         $sth->finish();
 };
 sub delword
 {
 	my $sw = shift;
-	$query = qq { delete from words where word = "$sw" };
+	$query = qq { delete from words where word = ? };
         $sth = $dbh->prepare ( $query );
-        $sth->execute();
+        $sth->execute($sw);
         $sth->finish();
 };
 sub addword
 {
 	my $sw = shift;
-	$query = qq { insert into words values ('$sw', 1) };
+	$query = qq { insert into words values (?, 1) };
         $sth = $dbh->prepare ( $query );
-        $sth->execute();
+        $sth->execute($sw);
         $sth->finish();
 };
 sub word_complete
