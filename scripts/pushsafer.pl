@@ -9,12 +9,13 @@ use Scalar::Util qw(looks_like_number);
 $VERSION = '0.0.1';
 
 %IRSSI = (
-    authors => 'Pushsafer.com Kevin Siml',
+    authors => 'Kevin Siml',
     contact => 'kevinsiml@googlemail.com',
     name => 'pushsafer',
     description => 'Push hilights and private messages when away by the pushsafer.com API',
     license => 'BSD',
-    url => 'https://www.pushsafer.com'
+    url => 'https://www.pushsafer.com',
+    changed => "2017-03-31"
 );
 
 my $pushsafer_ignorefile;
@@ -99,7 +100,7 @@ sub msg_pub {
 
     if ($data =~ /$safeNick/i) {
         debug('Got pub msg.');
-        send_push($target, $nick.': '.strip_formating($data));
+        send_push($target, $nick.': '.Irssi::strip_codes($data));
     }
 }
 
@@ -130,7 +131,7 @@ sub msg_pri {
         return;
     }
     debug('Got priv msg.');
-    send_push('Priv, '.$nick, strip_formating($data));
+    send_push('Priv, '.$nick, Irssi::strip_codes($data));
 }
 
 sub msg_kick {
@@ -142,7 +143,7 @@ sub msg_kick {
 
     if ($nick eq $server->{nick}) {
         debug('Was kicked.');
-        send_push('Kicked: '.$channel, 'Was kicked by: '.$kicker.'. Reason: '.strip_formating($reason));
+        send_push('Kicked: '.$channel, 'Was kicked by: '.$kicker.'. Reason: '.Irssi::strip_codes($reason));
     }
 }
 
@@ -152,18 +153,9 @@ sub msg_test {
    my $orig_debug = Irssi::settings_get_bool('pushsafer_debug');
    Irssi::settings_set_bool('pushsafer_debug', 1);
    debug("Sending test message :" . $data);
-   send_push("Test Message", strip_formating($data));
+   send_push("Test Message", Irssi::strip_codes($data));
    Irssi::settings_set_bool('pushsafer_debug', $orig_debug);
 }
-
-sub strip_formating {
-    my ($msg) = @_;
-    $msg =~ s/\x03[0-9]{0,2}(,[0-9]{1,2})?//g;
-    $msg =~ s/[^\x20-\xFF]//g;
-    $msg =~ s/\xa0/ /g;
-    return $msg;
-}
-
 
 # check our away status & pushsafer_only_if_away. returns 0 if it's ok to send a message. 
 sub check_away {
@@ -265,9 +257,11 @@ sub write_file {
 sub read_file {
     read_settings();
     my $fp;
-    if (!open($fp, "<", $pushsafer_ignorefile)) {
-        Irssi::print("Error opening ignore file", MSGLEVEL_CLIENTCRAP);
-        return;
+    if (-e $pushsafer_ignorefile)
+        if (!open($fp, "<", $pushsafer_ignorefile)) {
+            Irssi::print("Error opening ignore file", MSGLEVEL_CLIENTCRAP);
+            return;
+        }
     }
 
     my @out;
