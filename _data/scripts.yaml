@@ -1806,6 +1806,17 @@
   url: http://irssi.hauwaerts.be/fuckem.pl
   version: '0.05'
 -
+  authors: kjensenxz
+  commands: 'rfaway rfme rfsay rftopic'
+  contact: kenneth@jensen.cf
+  description: 'Prints colorized fullwidth text'
+  filename: fullrain.pl
+  license: 'GNU GPLv3'
+  modified: '2017-03-28 23:10:37'
+  name: fullrain
+  url: http://github.com/kjensenxz
+  version: 1.0.0
+-
   authors: prussian
   commands: fullwidth
   contact: genunrest@gmail.com
