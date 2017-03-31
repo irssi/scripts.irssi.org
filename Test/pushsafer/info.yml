@@ -1,0 +1,22 @@
+---
+-
+  authors: 'Kevin Siml'
+  changed: 2017-03-31
+  commands:
+    - 'help pushignore'
+    - pushignore
+    - 'pushignore add'
+    - 'pushignore help'
+    - 'pushignore list'
+    - 'pushignore remove'
+    - pushtest
+  contact: kevinsiml@googlemail.com
+  default_package: pushsafer
+  description: 'Push hilights and private messages when away by the pushsafer.com API'
+  license: BSD
+  modified: '2017-03-31 15:30:51'
+  modules:
+    - LWP::UserAgent
+  name: pushsafer
+  url: https://www.pushsafer.com
+  version: 0.0.1

@@ -1,0 +1,3 @@
+Mismatched operator at line 164, column 55.  Numeric/string operators and operands should match.  (Severity: 3)
+Return value of "close" ignored at line 254, column 5.  Check the return value of "close" for success.  (Severity: 2)
+Return value of "close" ignored at line 273, column 5.  Check the return value of "close" for success.  (Severity: 2)
