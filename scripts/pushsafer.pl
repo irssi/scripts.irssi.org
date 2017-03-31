@@ -257,7 +257,7 @@ sub write_file {
 sub read_file {
     read_settings();
     my $fp;
-    if (-e $pushsafer_ignorefile)
+    if (-e $pushsafer_ignorefile) {
         if (!open($fp, "<", $pushsafer_ignorefile)) {
             Irssi::print("Error opening ignore file", MSGLEVEL_CLIENTCRAP);
             return;
