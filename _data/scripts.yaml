@@ -3837,6 +3837,18 @@
   url: ''
   version: '2.02'
 -
+  authors: 'Kevin Siml'
+  commands: 'pushignore pushtest'
+  contact: kevinsiml@googlemail.com
+  description: 'Push hilights and private messages when away by the pushsafer.com API'
+  filename: pushsafer.pl
+  license: BSD
+  modified: '2017-03-31 15:30:51'
+  modules: LWP::UserAgent
+  name: pushsafer
+  url: https://www.pushsafer.com
+  version: 0.0.1
+-
   authors: 'Doug Freed'
   contact: dwfreed!#irssi@freenode
   description: "Authenticates you to QuakeNet's Q immediately on connect using CHALLENGEAUTH"
