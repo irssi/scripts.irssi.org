@@ -94,7 +94,7 @@ sub initialize {
             next if /^\s*#/;
 
             chomp;
-            (my $key, my $reasons) = /^(\S+)\s+(.+)\s*$/ or next;
+            my ($key, $reasons) = /^(\S+)\s+(.+)\s*$/ or next;
 
             if ($reasons =~ /\`([^\s]+).*?\`/) {
                 $kickreasons{$key} = "$reasons";
@@ -145,7 +145,7 @@ sub get_a_reason {
 }
 
 sub cmd_realkick {
-    (my $data, my $server, my $channel, my $cmd) = @_;
+    my ($data, $server, $channel, $cmd) = @_;
     my $reasons = "default";
 
     return if not $server
