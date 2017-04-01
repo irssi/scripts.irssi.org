@@ -7,7 +7,7 @@
 use vars qw($VERSION %IRSSI);
 
 use Irssi 20020120;
-$VERSION = "0.26";
+$VERSION = "0.27";
 %IRSSI = (
     authors	=> "c0ffee",
     contact	=> "c0ffee\@penguin-breeder.org",
@@ -15,7 +15,7 @@ $VERSION = "0.26";
     description	=> "Enhances /k /kb and /kn with some nice options.",
     license	=> "Public Domain",
     url		=> "http://www.penguin-breeder.org/irssi/",
-    changed	=> "Tue Nov 14 23:19:19 CET 2006",
+    changed	=> "2017-03-31",
 );
 #</scriptinfo>
 
@@ -83,7 +83,7 @@ sub initialize {
     my ($basedir) = $conf_file =~ /^(.*\/).*?/;
 
     if (-f $conf_file) {
-	open CONF, $conf_file;
+	open CONF, '>', $conf_file;
 	
 	while (<CONF>) {
 	    $line++;
@@ -107,7 +107,7 @@ sub initialize {
 
 		$kickreasons{$key} = [];
 
-		open REASON, $reasons;
+		open REASON, '>',  $reasons;
 
 		while (<REASON>) {
 		    chomp;
