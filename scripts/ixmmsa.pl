@@ -23,7 +23,7 @@ use strict;
 use Irssi;
 use vars qw($VERSION %IRSSI);
 
-$VERSION = "0.2+1";
+$VERSION = "0.2+2";
 %IRSSI = (
 	authors		=> 'Kristof Korwisi',
 	contact		=> 'kk@manoli.im-dachgeschoss.de',
@@ -31,8 +31,8 @@ $VERSION = "0.2+1";
 	description	=> '/xmms announces which _file_ is currently playing. E.g.  Currently playing: "Kieran Halpin & Band - Mirror Town.mp3"',
 	license		=> 'GPL',
 	url		=> 'http://manoli.im-dachgeschoss.de/~kk/',
-	changed		=> '2006-10-27',
-	changes		=> 'added some comments, added $announce_message:_*-stuff',
+	changed		=> '2017-03-18',
+    modules     => 'Xmms',
 );
 
 Irssi::print("*****\n* $IRSSI{name} $VERSION loaded.\n* Type /xmms to announce currently played file.\n*****");
@@ -42,11 +42,11 @@ sub cmd_xmms {
 	my ($data, $server, $witem) = @_; 
 	my $xmms_remote = Xmms::Remote->new;
 
-        my $announce_message_front = "Currently playing:";      # announce message in front of the filename playing
+    my $announce_message_front = "Currently playing:";      # announce message in front of the filename playing
 	my $announce_message_after = "";                        # announce message after the filename playing
 			
 
-	$filename= $xmms_remote->get_playlist_file($xmms_remote->get_playlist_pos);
+	my $filename= $xmms_remote->get_playlist_file($xmms_remote->get_playlist_pos);
 
 
 	$filename =~ s/.*\///g;					# removes path

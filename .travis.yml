@@ -20,6 +20,7 @@ before_install:
 - make >/dev/null 2>&1
 - sudo make install >/dev/null
 - popd
+- sudo export PERL_CPANM_OPT='--force'
 - sudo apt-get install -qq `perl -MYAML::Tiny=LoadFile -e'print qq{@{LoadFile(+shift)->{additional_system_deps}}}'
   _testing/config.yml`
 - |
