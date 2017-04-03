@@ -26,7 +26,7 @@ use strict;
 use vars qw($VERSION %IRSSI);
     
 use Irssi 20020217.1542 (); # Version 0.8.1
-$VERSION = "0.7";
+$VERSION = "0.8";
 %IRSSI = (
 authors     => "Simon Huggins",
 contact     => "huggie-irssi\@earth.li",
@@ -34,7 +34,7 @@ name        => "Quiz",
 description => "Turns irssi into a quiz bot",
 license     => "GPLv2",
 url         => "http://the.earth.li/~huggie/irssi/",
-changed     => "Wed Apr 24 01:12:01 BST 2002",
+changed     => "2017-04-03",
 );
 
 use Irssi::Irc;
@@ -69,7 +69,7 @@ sub load_questions($$) {
 	return if $game->{'questions'} and not $force;
 
 	my $file = Irssi::settings_get_str("quiz_file");
-	if (open(QS, "<$file")) {
+	if (open(QS, '<',$file)) {
 		@{$game->{'questions'}}=<QS>;
 		close(QS);
 		Irssi::print("Loaded questions");
