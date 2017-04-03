@@ -1,7 +1,7 @@
 ---
 -
   authors: "Stefan 'tommie' Tomanek"
-  changed: 20030208+fr
+  changed: 20170403+fr
   commands:
     - quizmaster
     - 'quizmaster help'
@@ -18,8 +18,9 @@
   default_package: quizmaster_fr
   description: 'Un script de quiz pour irssi'
   license: GPLv2
+  modified: '2017-04-03 18:52:16'
   modules: Data::Dumper
   name: quizmaster
   traduction: pec
   url: 'http://irssi.org/scripts/ http://pierre.carlot.free.fr/tux/'
-  version: 20030208+fr
+  version: 20170403+fr

@@ -1,11 +1,12 @@
 ---
 -
   authors: 'Simon Huggins'
-  changed: 'Wed Apr 24 01:12:01 BST 2002'
+  changed: 2017-04-03
   contact: huggie-irssi@earth.li
   default_package: quiz
   description: 'Turns irssi into a quiz bot'
   license: GPLv2
+  modified: '2017-04-03 14:51:40'
   name: Quiz
   url: http://the.earth.li/~huggie/irssi/
-  version: '0.7'
+  version: '0.8'

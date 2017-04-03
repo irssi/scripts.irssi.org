@@ -1,16 +1,17 @@
 ---
 -
   authors: "Stefan 'tommie' Tomanek"
-  changed: '2014112501'
+  changed: '2017040101'
   commands:
     - localize
   contact: stefan@pico.ruhr.de
   default_package: localize
   description: 'Localizes users using traceroute, the localizer database or IP-Atlas'
   license: GPLv2
+  modified: '2017-04-01 17:22:26'
   modules:
     - HTML::Entities
     - LWP::UserAgent
   name: localize
   url: ''
-  version: '2014112501'
+  version: '2017040101'

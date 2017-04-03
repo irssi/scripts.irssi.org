@@ -264,7 +264,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                          listen ](Test/listen/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   
 [                        listsort ](Test/listsort/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
 [                         loadavg ](Test/loadavg/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                        localize ](Test/localize/)|  ✔   |  ✔   |  ✘   | 37   |  ☡   
+[                        localize ](Test/localize/)|  ✔   |  ✔   |  ✔   | 25   |  ✔   
 [                        log2ansi ](Test/log2ansi/)|  ✘   |  ✘   |  ✔   | 15   |  ☡   
 [                logcompress_perl ](Test/logcompress_perl/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
 [                     logcompress ](Test/logcompress/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
@@ -379,9 +379,9 @@ See [the testing read-me](../master/_testing/) for details.
 [                         quitmsg ](Test/quitmsg/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   
 [                        quitrand ](Test/quitrand/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   
 [                          quizgr ](Test/quizgr/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   
-[                   quizmaster-fr ](Test/quizmaster-fr/)|  ✔   |  ✔   |  ✘   | 27   |  ☡   
-[                      quizmaster ](Test/quizmaster/)|  ✔   |  ✔   |  ✘   | 27   |  ☡   
-[                            quiz ](Test/quiz/)|  ✔   |  ✔   |  ✘   |  8   |  ☡   
+[                   quizmaster-fr ](Test/quizmaster-fr/)|  ✔   |  ✔   |  ✔   | 15   |  ✔   
+[                      quizmaster ](Test/quizmaster/)|  ✔   |  ✔   |  ✔   | 15   |  ✔   
+[                            quiz ](Test/quiz/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   
 [                         rainbow ](Test/rainbow/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   
 [                        randaway ](Test/randaway/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   
 [                        randname ](Test/randname/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   
@@ -521,4 +521,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                     xmpp-notify ](Test/xmpp-notify/)|  ✔   |  ✔   |  ✔   | 21   |  ✔   
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   
 
-b5c49beaff333e5077282b489549fb20aa18b045 | 861
+c615cdd5b44e8bb069447ca0219c8738be7a3527 | 870

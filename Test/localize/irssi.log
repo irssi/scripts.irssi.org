@@ -5,5 +5,5 @@
 * Use of uninitialized value in hash dereference at localize.pl line 528.
 * 
 * >> localize cache (0 hosts) loaded
-* >> localize 2014112501 loaded: /localize -h for help
+* >> localize 2017040101 loaded: /localize -h for help
 * -!- Irssi: Loaded script localize
