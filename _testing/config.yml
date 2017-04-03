@@ -53,8 +53,6 @@ whitelist:
   - oidenty
   - 'on'
   - osd
-  - quizmaster
-  - quiz
   - stocks
   - tvmusor
   - wordcompletition
