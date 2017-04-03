@@ -1,7 +1,7 @@
-* Scalar value @uname[1] better written as $uname[1] at sysinfoplus.pl line 52.
+* Scalar value @uname[1] better written as $uname[1] at sysinfoplus.pl line 53.
 * 
-* Scalar value @uname[0] better written as $uname[0] at sysinfoplus.pl line 52.
+* Scalar value @uname[0] better written as $uname[0] at sysinfoplus.pl line 53.
 * 
-* Scalar value @uname[2] better written as $uname[2] at sysinfoplus.pl line 52.
+* Scalar value @uname[2] better written as $uname[2] at sysinfoplus.pl line 53.
 * 
 * -!- Irssi: Loaded script sysinfoplus
