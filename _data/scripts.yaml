@@ -2722,11 +2722,11 @@
   description: 'Localizes users using traceroute, the localizer database or IP-Atlas'
   filename: localize.pl
   license: GPLv2
-  modified: '2014-12-06 11:57:45'
+  modified: '2017-04-01 17:22:26'
   modules: 'HTML::Entities LWP::UserAgent'
   name: localize
   url: ''
-  version: '2014112501'
+  version: '2017040101'
 -
   authors: 'Peder Stray'
   contact: peder@ninja.no
@@ -3900,10 +3900,10 @@
   description: 'Turns irssi into a quiz bot'
   filename: quiz.pl
   license: GPLv2
-  modified: '2002-04-24 01:12:01'
+  modified: '2017-04-03 14:51:40'
   name: Quiz
   url: http://the.earth.li/~huggie/irssi/
-  version: '0.7'
+  version: '0.8'
 -
   authors: 'Athanasius Emilius Arvanitis based on Simon Huggins quiz 0.7'
   contact: arvan
@@ -3921,10 +3921,10 @@
   description: 'Un script de quiz pour irssi'
   filename: quizmaster-fr.pl
   license: GPLv2
-  modified: '2008-06-16 10:15:05'
+  modified: '2017-04-03 18:52:16'
   name: quizmaster
   url: 'http://irssi.org/scripts/ http://pierre.carlot.free.fr/tux/'
-  version: 20030208+fr
+  version: 20170403+fr
 -
   authors: "Stefan 'tommie' Tomanek"
   commands: quizmaster
@@ -3932,10 +3932,10 @@
   description: 'a trivia script for Irssi'
   filename: quizmaster.pl
   license: GPLv2
-  modified: '2008-06-16 10:14:51'
+  modified: '2017-04-03 18:05:34'
   name: quizmaster
   url: http://irssi.org/scripts/
-  version: '20030208'
+  version: '20170403'
 -
   authors: 'Jakub Jankowski'
   commands: 'rkick rknockout rme rsay rtopic'
