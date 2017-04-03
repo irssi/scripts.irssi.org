@@ -54,7 +54,6 @@ whitelist:
   - 'on'
   - osd
   - quizmaster-fr
-  - quizmaster
   - stocks
   - tvmusor
   - wordcompletition
