@@ -2560,10 +2560,10 @@
   description: 'Enhances /k /kb and /kn with some nice options.'
   filename: kicks.pl
   license: 'Public Domain'
-  modified: '2006-11-14 23:19:19'
+  modified: '2017-04-01 17:30:41'
   name: 'Various kick and ban commands'
   url: http://www.penguin-breeder.org/irssi/
-  version: '0.26'
+  version: '0.27'
 -
   authors: "Piotr 'Cvbge' Krukowiecki"
   description: 'When new send arrives checks if there are old identical sends (ie from the same nick on the same server and with the same filename) and closes them'
