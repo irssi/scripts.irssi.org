@@ -1,12 +1,19 @@
 ---
 -
   authors: 'Jesper Lindh'
-  changed: 2004-03-12
+  changed: 2017-03-19
+  commands:
+    - delword
+    - sql_connect
+    - sql_disconnect
   contact: rakblad@midgard.liu.se
+  default_package: wordcompletition
   description: 'Adds words from IRC to your tab-completion list'
   license: 'Public Domain'
+  modified: '2017-03-25 22:50:36'
   modules:
+    - DBD::SQLite
     - DBI
   name: 'IRC Completion with mysql-database'
   url: http://midgard.liu.se/~n02jesli/perl/
-  version: '0.1'
+  version: '0.2'

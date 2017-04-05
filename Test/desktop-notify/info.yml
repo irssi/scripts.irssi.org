@@ -5,6 +5,7 @@
   default_package: desktop_notify
   description: 'Sends notification using the Desktop Notifications Specification.'
   license: 'GPL v3+'
+  modified: '2017-01-23 21:52:29'
   modules:
     - Glib::Object::Introspection
     - HTML::Entities

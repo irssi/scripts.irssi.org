@@ -506,7 +506,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                          winnum ](Test/winnum/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                       wisestamp ](Test/wisestamp/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   
 [                             wkb ](Test/wkb/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                wordcompletition ](Test/wordcompletition/)|  ✘   |  ✔   |  ✔   |  9   |  ☡   
+[                wordcompletition ](Test/wordcompletition/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   
 [                    wordscramble ](Test/wordscramble/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                           xauth ](Test/xauth/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   
 [                            xcmd ](Test/xcmd/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
@@ -521,4 +521,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                     xmpp-notify ](Test/xmpp-notify/)|  ✔   |  ✔   |  ✔   | 21   |  ✔   
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   
 
-4918fe97cabf4d1f03ca7e4ef9c1e1b7b8f2f1e7 | 875
+c2540aba63f15d580f54d98bc9e611e240f1cab8 | 876

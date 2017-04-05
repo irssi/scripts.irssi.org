@@ -1,6 +1,3 @@
-* Useless use of a constant ("\n") in void context at wordcompletition.pl line 35.
+* Useless use of a constant ("\n") in void context at wordcompletition.pl line 56.
 * 
-* Useless use of a constant ("\n") in void context at wordcompletition.pl line 48.
-* 
-* -!- Irssi: Error in script wordcompletition:
-* DBI connect('yourdatabase:databashostname','yourusername',...) failed: Unknown MySQL server host 'databashostname' (0) at wordcompletition.pl line 23.
+* -!- Irssi: Loaded script wordcompletition

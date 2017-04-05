@@ -8,5 +8,6 @@
   default_package: postpone
   description: 'Postpones messages sent to a splitted user and resends them when the nick rejoins'
   license: GPLv2
+  modified: '2017-02-04 02:11:54'
   name: postpone
   version: '20170204'
