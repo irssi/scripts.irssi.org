@@ -314,7 +314,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                  mysqlurllogger ](Test/mysqlurllogger/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                            nact ](Test/nact/)|  ✔   |  ✔   |  ✔   | 12   |  ✔   
 [                       netswitch ](Test/netswitch/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                        newsline ](Test/newsline/)|  ✔   |  ✔   |  ✘   | 34   |  ☡   
+[                        newsline ](Test/newsline/)|  ✔   |  ✔   |  ✔   | 26   |  ✔   
 [                            news ](Test/news/)|  ✔   |  ✔   |  ✔   | 79   |  ✔   
 [                         nickban ](Test/nickban/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [               nickcolor_expando ](Test/nickcolor_expando/)|  ✔   |  ✔   |  ✔   | 10   |  ✔   
@@ -521,4 +521,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                     xmpp-notify ](Test/xmpp-notify/)|  ✔   |  ✔   |  ✔   | 21   |  ✔   
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   
 
-9dc91df129a675e9198d7b7583308d6f0fd35e31 | 873
+4918fe97cabf4d1f03ca7e4ef9c1e1b7b8f2f1e7 | 875
