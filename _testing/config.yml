@@ -52,6 +52,5 @@ whitelist:
   - osd
   - stocks
   - tvmusor
-  - wordcompletition
   - xetra
   - xmmsinfo
