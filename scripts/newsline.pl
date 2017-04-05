@@ -3,7 +3,7 @@
 use strict;
 
 use vars qw($VERSION %IRSSI);
-$VERSION = '2003021101';
+$VERSION = '2017040101';
 %IRSSI = (
     authors     => 'Stefan \'tommie\' Tomanek',
     contact     => 'stefan@pico.ruhr.de',
@@ -287,10 +287,10 @@ sub call_openurl ($) {
     my ($url) = @_;
     no strict "refs";
     # check for a loaded openurl
-    if (defined %{ "Irssi::Script::openurl::" }) {
-	&{ "Irssi::Script::openurl::launch_url" }($url);
+    if (my $code = Irssi::Script::openurl::->can('launch_url')) {
+        $code->($url);
     } else {
-	print CLIENTCRAP "%R>>%n Please install openurl.pl";
+        print CLIENTCRAP "%R>>%n Please install openurl.pl";
     }
     use strict "refs";
 }
@@ -377,7 +377,7 @@ sub reload_config() {
     my $text;
     if (-e $filename) {
 	local *F;
-	open F, "<".$filename;
+	open F, "<",$filename;
 	$text .= $_ foreach (<F>);
 	close F;
 	if ($text) {
@@ -402,7 +402,7 @@ sub reload_config() {
 sub save_config() {
     local *F;
     my $filename = Irssi::settings_get_str('newsline_sites_file');
-    open(F, ">$filename");
+    open(F, '>',$filename);
     my $dumper = Data::Dumper->new([\%sites], ['sites']);
     $dumper->Purity(1)->Deepcopy(1);
     my $data = $dumper->Dump;
