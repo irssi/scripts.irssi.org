@@ -3256,10 +3256,10 @@
   description: 'brings various newstickers to Irssi (Slashdot, Freshmeat, Heise etc.)'
   filename: newsline.pl
   license: GPLv2
-  modified: '2008-05-17 17:39:09'
+  modified: '2017-04-04 23:08:20'
   modules: 'LWP::UserAgent Unicode::String XML::RSS'
   name: Newsline
-  version: '2003021101'
+  version: '2017040101'
 -
   authors: "Roeland 'Trancer' Nieuwenhuis"
   contact: irssi@trancer.nl
