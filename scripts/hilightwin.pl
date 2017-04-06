@@ -5,8 +5,8 @@
 # Modded a tiny bit by znx to stop private messages entering the hilighted
 # window (can be toggled) and to put up a timestamp.
 #
-# Changed a little by rummik to optionally show network name. Disable with
-# `/set hilightwin_shownetwork off`
+# Changed a little by rummik to optionally show network name. Enable with
+# `/set hilightwin_shownetwork on`
 #
 
 use strict;
@@ -78,7 +78,7 @@ Irssi::print("Create a window named 'hilight'") if (!$window);
 
 Irssi::settings_add_bool('hilightwin','hilightwin_showprivmsg',1);
 Irssi::settings_add_str('hilightwin', 'hilightwin_ignore_targets', '');
-Irssi::settings_add_bool('hilightwin','hilightwin_show_network', 1);
+Irssi::settings_add_bool('hilightwin','hilightwin_show_network', 0);
 
 Irssi::signal_add('print text', 'sig_printtext');
 
