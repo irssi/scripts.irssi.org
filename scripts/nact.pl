@@ -10,6 +10,7 @@ $VERSION="0.2.6";
 	contact=> 'bd@bc-bd.org',
 	name=> 'nact',
 	description=> 'Adds an item which displays the current network activity. Needs /proc/net/dev.',
+	sbitems=> 'nact',
 	license=> 'GPL v2 or later',
 	url=> 'https://bc-bd.org/svn/repos/irssi/trunk/',
 );

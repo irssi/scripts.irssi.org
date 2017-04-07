@@ -15,6 +15,7 @@ $VERSION="0.4";
 	contact	    => 'aki@evilbsd.info',
 	name	    => 'loadavg',
 	description => 'display a loadavg statusbar item using vm.loadavg mib or /proc/loadavg',
+	sbitems	    => 'loadavg',
 	license	    => 'public domain',
 );
 

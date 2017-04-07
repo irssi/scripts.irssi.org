@@ -6,6 +6,7 @@ $VERSION = "0.5";
     contact     => "jmn98015\@student.mdh.se",
     name        => "licq",
     description => "Licq statusbar thingy",
+    sbitems     => "licq",
     license     => "Public Domain",
     url         => "http://jari.cjb.net,http://irssi.org,http://scripts.irssi.de",
 );

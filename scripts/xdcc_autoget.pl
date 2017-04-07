@@ -54,6 +54,7 @@ $VERSION = "2.1";
 %IRSSI = (
 	name => "autoget", 
 	description => "XDCC Autoget, for automated searching and downloading of xdcc packs",
+	sbitems => "ag_statusbar",
 	license => "BeerWare Version 42",
 	changed => "$VERSION",
 	authors => "MarshalMeatball",

@@ -126,6 +126,7 @@ $VERSION="0.5.7";
 	contact=> 'bd@bc-bd.org',
 	name=> 'niq',
 	description=> 'BitchX like Nickcompletion at line start plus statusbar',
+	sbitems=> 'niq',
 	license=> 'GPL v2',
 	url=> 'https://bc-bd.org/cgi-bin/gitweb.cgi?p=irssi.git;a=summary',
 );

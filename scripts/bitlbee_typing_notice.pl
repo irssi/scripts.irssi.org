@@ -86,6 +86,7 @@ $VERSION = '1.7.2';
 	contact		=> 'tijmen.ruizendaal@gmail.com, root@f0rked.com',
 	name		=> 'BitlBee_typing_notice',
 	description	=> '1. Adds an item to the status bar wich shows [typing] when someone is typing a message on the supported IM-networks	2. Sends typing notices to the supported IM networks (the other way arround). (For bitlbee 3.0+)',
+	sbitems 	=> 'typing_notice',
 	license	 	=> 'GPLv2',
 	url		=> 'http://the-timing.nl/stuff/irssi-bitlbee, http://f0rked.com',
 );

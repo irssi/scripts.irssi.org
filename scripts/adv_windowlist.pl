@@ -8,6 +8,7 @@ our %IRSSI = (
     url         => "http://anti.teamidiot.de/",
     name        => 'adv_windowlist',
     description => 'Adds a permanent advanced window list on the right or in a status bar.',
+    sbitems     => 'awl_shared',
     license     => 'GNU GPLv2 or later',
    );
 

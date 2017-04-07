@@ -52,6 +52,7 @@ my $APPVERSION = "Securemsg v2.1";
 	  contact	=> "vague`!#irssi\@freenode on irc ",
 	  name		=> "securemsg",
 	  description	=> "An irssi adaptation of securequery.mrc found in the Acidmax mIRC script. :), now with multiserver support",
+	  sbitems       => "securemsg",
 	  license	=> "GPLv2",
 	  changed	=> "10.09.2007 11:30pm GST"
 );

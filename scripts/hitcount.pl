@@ -9,6 +9,7 @@ $VERSION = "1.4";
     contact     => 'shrike\@addiktit.net, Shrike on IRCNet/QNet/EFNet/DALNet',
     name        => 'hitcount',
     description => 'Add a apache page hitcounter to statusbar',
+    sbitems     => 'hitcount',
     license     => 'Free',
     changed     => '$Date: 2017/03/07 $ ',
 );
