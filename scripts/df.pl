@@ -10,6 +10,7 @@ $VERSION="0.1.0";
 	contact=> 'jochem.meyers@gmail.com',
 	name=> 'df',
 	description=> 'Adds an item which displays the current disk usage.',
+	sbitems=> 'df',
 	license=> 'GPL v2 or later',
 	url=> 'http://kaede.kicks-ass.net/irssi.html',
 );

@@ -10,6 +10,7 @@ $VERSION="0.2.1";
 	contact=> 'bd@bc-bd.org',
 	name=> 'rotator',
 	description=> 'Displaye a small, changeing statusbar item to show irssi is still running',
+	sbitems=> 'rotator',
 	license=> 'GPL v2',
 	url=> 'https://bc-bd.org/svn/repos/irssi/trunk/',
 );

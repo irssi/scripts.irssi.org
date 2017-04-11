@@ -18,6 +18,7 @@ $VERSION = '2017031701';
     contact     => 'szymon@hell.pl',
     name        => 'mangle',
     description => 'translates your messages into Morse code, rot13 and other sillinesses.',
+    sbitems     => 'mangle_sb',
     license     => 'GPLv2',
     url         => 'http://irssi.org/scripts/',
     changed     => $VERSION,

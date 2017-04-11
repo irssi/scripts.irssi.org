@@ -32,6 +32,7 @@ our %IRSSI = (
     contact     => 'simon@ruderich.org, shabble+irssi@metavore.org',
     name        => 'sb_position',
     description => 'Displays current position in scrollback.',
+    sbitems     => 'position',
     license     => 'GPLv3 or later',
     changed     => '2010-12-02'
 );

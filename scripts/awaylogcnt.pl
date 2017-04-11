@@ -14,6 +14,7 @@ $VERSION = '0.2';
    name         => 'awalogcnt',
    description  => 'Displays in statusbar number of messages in awaylog',
    modules      => '',
+   sbitems      => 'awaylogcnt',
    license      => 'GNU GPL v2',
    url          => 'http://derwan.irssi.pl',
    changed      => 'Wed Oct 27 19:46:28 CEST 2004'

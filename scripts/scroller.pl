@@ -39,6 +39,7 @@ $VERSION="0.02";
 	contact=> 'demmydemon@gmail.com',
 	name=> 'scroller',
 	description=> 'Scrolls specified text on the status bar',
+	sbitems=> 'scroller',
 	license=> 'Public Domain',
 );
 
