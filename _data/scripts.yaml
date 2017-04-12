@@ -103,7 +103,7 @@
   description: 'Adds a permanent advanced window list on the right or in a status bar.'
   filename: adv_windowlist.pl
   license: 'GNU GPLv2 or later'
-  modified: '2017-04-03 21:21:55'
+  modified: '2017-04-07 16:34:31'
   modules: Text::CharWidth
   name: adv_windowlist
   url: http://anti.teamidiot.de/
@@ -208,7 +208,7 @@
   description: 'Shows your battery status in your Statusbar'
   filename: apm.pl
   license: 'GNU Public License'
-  modified: '2014-10-17 18:30:46'
+  modified: '2017-04-07 16:34:31'
   name: apm
   url: http://www.formorer.de/code
   version: '0.4'
@@ -524,7 +524,7 @@
   description: 'Provides a menubar item with away message'
   filename: awaybar.pl
   license: 'Public domain'
-  modified: '2008-05-17 17:39:11'
+  modified: '2017-04-07 16:34:31'
   name: awaybar
   version: 0.1.1
 -
@@ -533,7 +533,7 @@
   description: 'Displays in statusbar number of messages in awaylog'
   filename: awaylogcnt.pl
   license: 'GNU GPL v2'
-  modified: '2004-10-27 19:46:28'
+  modified: '2017-04-07 16:34:31'
   name: awalogcnt
   url: http://derwan.irssi.pl
   version: '0.2'
@@ -584,7 +584,7 @@
   description: 'shows bandwidth usage in statusbar'
   filename: bandwidth.pl
   license: GPLv2
-  modified: '2014-10-17 20:34:00'
+  modified: '2017-04-07 16:34:31'
   name: bandwidth
   url: http://nchip.ukkosenjyly.mine.nu/irssiscripts/
   version: '1.0'
@@ -731,7 +731,7 @@
   description: '1. Adds an item to the status bar wich shows [joined: <nicks>] when someone is joining &bitlbee. 2. Shows join messages in the query. (For bitlbee v3.0+)'
   filename: bitlbee_join_notice.pl
   license: GPLv2
-  modified: '2014-10-17 20:34:00'
+  modified: '2017-04-07 16:34:31'
   name: BitlBee_join_notice
   url: http://the-timing.nl/stuff/irssi-bitlbee
   version: '1.3'
@@ -773,7 +773,7 @@
   description: "1. Adds an item to the status bar wich shows [typing] when someone is typing a message on the supported IM-networks\t2. Sends typing notices to the supported IM networks (the other way arround). (For bitlbee 3.0+)"
   filename: bitlbee_typing_notice.pl
   license: GPLv2
-  modified: '2016-01-08 16:59:55'
+  modified: '2017-04-07 16:34:31'
   name: BitlBee_typing_notice
   url: 'http://the-timing.nl/stuff/irssi-bitlbee, http://f0rked.com'
   version: 1.7.2
@@ -888,7 +888,7 @@
   description: 'Staturbar item which indicates how many new messages you have in your centericq'
   filename: centericq.pl
   license: 'Public Domain'
-  modified: '2014-10-17 20:34:00'
+  modified: '2017-04-07 16:34:31'
   name: centericq
   url: 'http://irssi.org, http://scripts.irssi.org'
   version: 1.0.0
@@ -1365,7 +1365,7 @@
   description: 'Adds an item which displays the current disk usage.'
   filename: df.pl
   license: 'GPL v2 or later'
-  modified: '2014-10-17 20:34:00'
+  modified: '2017-04-07 16:34:31'
   name: df
   url: http://kaede.kicks-ass.net/irssi.html
   version: 0.1.0
@@ -1465,7 +1465,7 @@
   description: 'Put a nick list in a statusbar'
   filename: dr_who.pl
   license: BSD
-  modified: '2005-01-17 00:00:00'
+  modified: '2017-04-07 16:34:31'
   name: dr_who
   url: http://beaglebros.com
   version: '1.0'
@@ -1823,10 +1823,10 @@
   description: 'talk like some vaporwave cool kid'
   filename: fullwidth.pl
   license: 'Apache 2.0'
-  modified: '2016-09-03 21:27:52'
+  modified: '2017-04-11 22:11:42'
   name: fullwidth
   url: http://github.com/GeneralUnRest/
-  version: 1.1.0
+  version: 1.2.0
 -
   authors: "Maciek 'fahren' Freudenheim"
   commands: 'addgetop delgetop getop listgetop'
@@ -2083,7 +2083,7 @@
   description: 'Add a apache page hitcounter to statusbar'
   filename: hitcount.pl
   license: Free
-  modified: '2017-03-13 21:57:23'
+  modified: '2017-04-07 16:34:31'
   name: hitcount
   version: '1.4'
 -
@@ -2135,7 +2135,7 @@
   description: 'This controls Music Player Daemon from the familiar irssi interface'
   filename: iMPD.pl
   license: 'GPL v2'
-  modified: '2014-10-17 22:54:13'
+  modified: '2017-04-07 16:34:31'
   name: iMPD
   url: http://www.musicpd.org
   version: 0.0.0n
@@ -2229,7 +2229,7 @@
   description: 'adds a statusbar item which show length of the inputline'
   filename: il.pl
   license: 'BSD License or something more liberal'
-  modified: '2003-01-13 13:17:44'
+  modified: '2017-04-07 16:34:31'
   name: inputlength
   url: http://www.irssi.de./
   version: 0.0.5
@@ -2359,7 +2359,7 @@
   description: 'Tarkistelee irc-galleria.net:iä ja sanoo kun sinulle on uusia viestejä.'
   filename: ircgmessagenotify.pl
   license: GPLv2
-  modified: '2014-10-17 22:54:13'
+  modified: '2017-04-07 16:34:31'
   modules: 'HTTP::Cookies LWP::UserAgent'
   name: ircgmessagenotify
   url: http://www.verkonpaino.net/
@@ -2415,7 +2415,7 @@
   description: 'Display the song played by mp3blaster in channels and statusbar. See the top of the file for usage.'
   filename: irssiBlaster.pl
   license: 'GNU GPLv2 or later'
-  modified: '2014-10-17 22:54:13'
+  modified: '2017-04-07 16:34:31'
   name: irssiBlaster
   version: '1.6'
 -
@@ -2464,7 +2464,7 @@
   description: 'Internet Time statusbar item. See http://www.timeanddate.com/time/internettime.html'
   filename: itime.pl
   license: 'Public Domain'
-  modified: '2002-03-12 22:20:00'
+  modified: '2017-04-07 16:34:31'
   name: itime
   url: http://ion.amigafin.org/scripts/
   version: '0.9'
@@ -2661,7 +2661,7 @@
   description: 'Licq statusbar thingy'
   filename: licq.pl
   license: 'Public Domain'
-  modified: '2014-10-17 22:54:13'
+  modified: '2017-04-07 16:34:31'
   name: licq
   url: http://jari.cjb.net,http://irssi.org,http://scripts.irssi.de
   version: '0.5'
@@ -2712,7 +2712,7 @@
   description: 'display a loadavg statusbar item using vm.loadavg mib or /proc/loadavg'
   filename: loadavg.pl
   license: 'public domain'
-  modified: '2014-10-17 22:54:13'
+  modified: '2017-04-07 16:34:31'
   name: loadavg
   version: '0.4'
 -
@@ -2796,7 +2796,7 @@
   description: 'Fully customizable mail counter statusbar item with multiple mailbox and multiple Maildir support'
   filename: mail.pl
   license: 'Public Domain'
-  modified: '2016-05-20 19:45:17'
+  modified: '2017-04-07 16:34:31'
   name: mail
   url: 'http://irssi.org, http://scripts.irssi.de'
   version: '2.92'
@@ -2807,7 +2807,7 @@
   description: 'Staturbar item which indicates how many new emails you have in the specified IMAP[S] mailbox'
   filename: mailcheck_imap.pl
   license: 'GNU GPLv2'
-  modified: '2014-10-19 11:54:16'
+  modified: '2017-04-07 16:34:31'
   modules: IO::Socket::SSL
   name: mailcheck_imap
   url: http://icmfp.com/irssi
@@ -2838,7 +2838,7 @@
   description: 'Adds statusbar item mailcount and displays info about new mails'
   filename: mailcount.pl
   license: 'GNU GPL v2'
-  modified: '2003-10-18 14:43:27'
+  modified: '2017-04-07 16:34:31'
   modules: Mail::MboxParser
   name: mailcount
   url: http://derwan.irssi.pl
@@ -2850,7 +2850,7 @@
   description: 'translates your messages into Morse code, rot13 and other sillinesses.'
   filename: mangle.pl
   license: GPLv2
-  modified: '2017-03-17 23:41:44'
+  modified: '2017-04-07 16:34:31'
   name: mangle
   url: http://irssi.org/scripts/
   version: '2017031701'
@@ -2968,7 +2968,7 @@
   description: 'Shows a mIRC-style colour popup when you hit ^C.'
   filename: mirc_colour_popup.pl
   license: 'Public Domain'
-  modified: '2015-12-10 14:46:55'
+  modified: '2017-04-07 16:34:31'
   name: mirc_colour_popup
   version: '1.1'
 -
@@ -3022,7 +3022,7 @@
   description: 'Cache of invites, ban exceptions and reops in channel. Script commands: /si, /se, /sr, /unexcept, /uninvite, /unreop (version only for ircd >= 2.11.0).'
   filename: modelist-r.pl
   license: 'GNU GPL v2'
-  modified: '2004-11-04 17:56:17'
+  modified: '2017-04-07 16:34:31'
   name: modelist-r
   url: http://derwan.irssi.pl
   version: 0.8.0-rc4
@@ -3222,7 +3222,7 @@
   description: 'Adds an item which displays the current network activity. Needs /proc/net/dev.'
   filename: nact.pl
   license: 'GPL v2 or later'
-  modified: '2014-10-19 11:54:16'
+  modified: '2017-04-07 16:34:31'
   name: nact
   url: https://bc-bd.org/svn/repos/irssi/trunk/
   version: 0.2.6
@@ -3356,7 +3356,7 @@
   description: 'BitchX like Nickcompletion at line start plus statusbar'
   filename: niq.pl
   license: 'GPL v2'
-  modified: '2009-08-11 12:35:49'
+  modified: '2017-04-07 16:34:31'
   name: niq
   url: https://bc-bd.org/cgi-bin/gitweb.cgi?p=irssi.git;a=summary
   version: 0.5.7
@@ -3592,7 +3592,7 @@
   description: 'Reformats some server notices, which may come i.e. from &clients or &servers at IRCnet. You can turn the script on/off bytoggling variable mangle_server_notices.'
   filename: operview.pl
   license: 'GPLv2, not later'
-  modified: '2008-05-17 17:39:09'
+  modified: '2017-04-07 16:34:31'
   name: operview
   url: http://pasky.ji.cz/~pasky/dev/irssi/
   version: '1.11'
@@ -4089,7 +4089,7 @@
   description: 'Dynamic romaji binds'
   filename: romajibind.pl
   license: 'BSD 2-clause'
-  modified: '2008-05-17 17:39:11'
+  modified: '2017-04-07 16:34:31'
   name: romajibind
   url: http://irssi.org/scripts/
   version: 1.0b
@@ -4109,7 +4109,7 @@
   description: 'Displaye a small, changeing statusbar item to show irssi is still running'
   filename: rotator.pl
   license: 'GPL v2'
-  modified: '2008-05-22 09:10:50'
+  modified: '2017-04-07 16:34:31'
   name: rotator
   url: https://bc-bd.org/svn/repos/irssi/trunk/
   version: 0.2.1
@@ -4141,7 +4141,7 @@
   description: 'Displays current position in scrollback.'
   filename: sb_position.pl
   license: 'GPLv3 or later'
-  modified: '2015-11-16 19:36:52'
+  modified: '2017-04-07 16:34:31'
   name: sb_position
   version: '0.1'
 -
@@ -4240,7 +4240,7 @@
   description: 'Scrolls specified text on the status bar'
   filename: scroller.pl
   license: 'Public Domain'
-  modified: '2017-03-17 18:54:18'
+  modified: '2017-04-07 16:34:31'
   name: scroller
   version: '0.02'
 -
@@ -4250,7 +4250,7 @@
   description: 'An irssi adaptation of securequery.mrc found in the Acidmax mIRC script. :), now with multiserver support'
   filename: securemsg.pl
   license: GPLv2
-  modified: '2014-08-07 02:00:52'
+  modified: '2017-04-07 16:34:31'
   name: securemsg
   version: '2.1'
 -
@@ -4645,7 +4645,7 @@
   description: 'timezones displayer'
   filename: timezones.pl
   license: 'Public Domain'
-  modified: '2015-11-25 14:03:48'
+  modified: '2017-04-07 16:34:31'
   modules: DateTime
   name: timezones
   url: http://gplus.to/vague
@@ -4830,7 +4830,7 @@
   description: "BitchX's CrackRock3 animated prompt bar."
   filename: twprompt.pl
   license: 'Public Domain'
-  modified: '2014-10-24 23:01:30'
+  modified: '2017-04-07 16:34:31'
   name: twprompt.pl
   url: "http://irssi.darktalker.net\n"
   version: '1.00'
@@ -4851,7 +4851,7 @@
   description: 'Animated Topic bar.'
   filename: twtopic.pl
   license: 'Public Domain'
-  modified: '2014-10-24 23:01:30'
+  modified: '2017-04-07 16:34:31'
   name: twtopic.pl
   url: "http://irssi.darktalker.net\n"
   version: '1.01'
@@ -4993,7 +4993,7 @@
   description: 'Adds a usercount for a channel as a statusbar item'
   filename: usercount.pl
   license: 'GNU GPLv2 or later'
-  modified: '2014-10-24 23:01:30'
+  modified: '2017-04-07 16:34:31'
   name: usercount
   url: http://irssi.dgl.cx/
   version: '1.19'
@@ -5169,7 +5169,7 @@
   description: 'makes switching windows easy'
   filename: window_switcher.pl
   license: 'GPLv2 or later'
-  modified: '2007-07-29 00:00:00'
+  modified: '2017-04-07 16:34:31'
   name: window_switcher
   url: http://wouter.coekaerts.be/irssi/
   version: '1.0'
@@ -5262,7 +5262,7 @@
   description: 'XDCC Autoget, for automated searching and downloading of xdcc packs'
   filename: xdcc_autoget.pl
   license: 'BeerWare Version 42'
-  modified: '2016-10-26 19:23:08'
+  modified: '2017-04-07 16:34:31'
   modules: 'File::HomeDir Try::Tiny'
   name: autoget
   version: '2.1'
@@ -5282,7 +5282,7 @@
   description: 'brings the stock exchanges of the world to your irssi'
   filename: xetra.pl
   license: GPLv2
-  modified: '2008-05-17 17:39:11'
+  modified: '2017-04-07 16:34:31'
   modules: LWP::Simple
   name: Xetra
   version: '20030208'
