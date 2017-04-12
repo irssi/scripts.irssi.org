@@ -15,8 +15,9 @@
   default_package: mangle
   description: 'translates your messages into Morse code, rot13 and other sillinesses.'
   license: GPLv2
-  modified: '2017-03-17 23:41:44'
+  modified: '2017-04-07 16:34:31'
   modules: Data::Dumper
   name: mangle
+  sbitems: mangle_sb
   url: http://irssi.org/scripts/
   version: '2017031701'

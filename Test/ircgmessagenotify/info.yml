@@ -8,9 +8,11 @@
   default_package: ircgmessagenotify
   description: 'Tarkistelee irc-galleria.net:iä ja sanoo kun sinulle on uusia viestejä.'
   license: GPLv2
+  modified: '2017-04-07 16:34:31'
   modules:
     - HTTP::Cookies
     - LWP::UserAgent
   name: ircgmessagenotify
+  sbitems: ircgcomments
   url: http://www.verkonpaino.net/
   version: 0.1b

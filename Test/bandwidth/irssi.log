@@ -1,3 +1,3 @@
-* Use of uninitialized value $last_refresh in numeric eq (==) at bandwidth.pl line 96.
+* Use of uninitialized value $last_refresh in numeric eq (==) at bandwidth.pl line 97.
 * 
 * -!- Irssi: Loaded script bandwidth

@@ -1,10 +1,10 @@
-* Use of uninitialized value $1 in concatenation (.) or string at mailcheck_imap.pl line 80.
+* Use of uninitialized value $1 in concatenation (.) or string at mailcheck_imap.pl line 81.
 * 
-* Use of uninitialized value $1 in concatenation (.) or string at mailcheck_imap.pl line 80.
+* Use of uninitialized value $1 in concatenation (.) or string at mailcheck_imap.pl line 81.
 * 
-* Use of uninitialized value $1 in concatenation (.) or string at mailcheck_imap.pl line 80.
+* Use of uninitialized value $1 in concatenation (.) or string at mailcheck_imap.pl line 81.
 * 
-* Use of uninitialized value $1 in concatenation (.) or string at mailcheck_imap.pl line 80.
+* Use of uninitialized value $1 in concatenation (.) or string at mailcheck_imap.pl line 81.
 * 
 * ,--[mailcheck_imap]
 * | mailcheck_imap 0.5

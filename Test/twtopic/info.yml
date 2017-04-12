@@ -6,6 +6,8 @@
   default_package: twtopic
   description: 'Animated Topic bar.'
   license: 'Public Domain'
+  modified: '2017-04-07 16:34:31'
   name: twtopic.pl
+  sbitems: twtopic
   url: "http://irssi.darktalker.net\n"
   version: '1.01'

@@ -1,2 +1,2 @@
 Code before warnings are enabled at line 21, column 1.  See page 431 of PBP.  (Severity: 4)
-Capture variable used outside conditional at line 182, column 17.  See page 253 of PBP.  (Severity: 3)
+Capture variable used outside conditional at line 183, column 17.  See page 253 of PBP.  (Severity: 3)

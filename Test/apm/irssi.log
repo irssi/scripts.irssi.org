@@ -1,9 +1,9 @@
-* "my" variable $text masks earlier declaration in same scope at apm.pl line 66.
+* "my" variable $text masks earlier declaration in same scope at apm.pl line 67.
 * 
-* "my" variable $text masks earlier declaration in same scope at apm.pl line 74.
+* "my" variable $text masks earlier declaration in same scope at apm.pl line 75.
 * 
-* "my" variable $ein masks earlier declaration in same scope at apm.pl line 74.
+* "my" variable $ein masks earlier declaration in same scope at apm.pl line 75.
 * 
-* Use of uninitialized value $last_refresh in numeric eq (==) at apm.pl line 104.
+* Use of uninitialized value $last_refresh in numeric eq (==) at apm.pl line 105.
 * 
 * -!- Irssi: Loaded script apm

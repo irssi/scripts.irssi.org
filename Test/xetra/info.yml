@@ -6,7 +6,9 @@
   contact: stefan@pico.ruhr.de
   description: 'brings the stock exchanges of the world to your irssi'
   license: GPLv2
+  modified: '2017-04-07 16:34:31'
   modules:
     - LWP::Simple
   name: Xetra
+  sbitems: xetra
   version: '20030208'

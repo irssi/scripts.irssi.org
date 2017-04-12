@@ -1,3 +1,3 @@
-* Useless use of numeric eq (==) in void context at ircgmessagenotify.pl line 63.
+* Useless use of numeric eq (==) in void context at ircgmessagenotify.pl line 64.
 * 
 * -!- Irssi: Loaded script ircgmessagenotify

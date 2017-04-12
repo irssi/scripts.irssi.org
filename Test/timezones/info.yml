@@ -6,8 +6,10 @@
   default_package: timezones
   description: 'timezones displayer'
   license: 'Public Domain'
+  modified: '2017-04-07 16:34:31'
   modules:
     - DateTime
   name: timezones
+  sbitems: timezones
   url: http://gplus.to/vague
   version: '0.2'

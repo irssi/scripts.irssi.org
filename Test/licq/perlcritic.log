@@ -1,2 +1,2 @@
 Code before warnings are enabled at line 3, column 1.  See page 431 of PBP.  (Severity: 4)
-Return value of "open" ignored at line 30, column 4.  Check the return value of "open" for success.  (Severity: 3)
+Return value of "open" ignored at line 31, column 4.  Check the return value of "open" for success.  (Severity: 3)
