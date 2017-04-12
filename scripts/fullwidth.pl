@@ -14,8 +14,8 @@
 # limitations under the License.
 
 use strict;
-use Irssi qw(command_bind active_win);
-our $VERSION = '1.1.0';
+use Irssi qw(command_bind active_win signal_stop);
+our $VERSION = '1.2.0';
 our %IRSSI = (
     authors     => 'prussian',
     contact     => 'genunrest@gmail.com',
@@ -25,7 +25,15 @@ our %IRSSI = (
     license     => 'Apache 2.0',
 );
 
-command_bind(fullwidth => sub {
+my $help = '/fullwidth your cool text here
+-> ｙｏｕｒ ｃｏｏｌ ｔｅｘｔ ｈｅｒｅ
+
+you can also use stars to only fullwidth text between them
+
+/fullwidth do *you* know *the* way *to* San *Jose*
+-> do ｙｏｕ know ｔｈｅ way ｔｏ San Ｊｏｓｅ';
+
+sub fullwidth {
     my $msg = $_[0];
     my $say = "";
     foreach my $char (split //, $msg) {
@@ -39,5 +47,24 @@ command_bind(fullwidth => sub {
             }
         }
     }
+    return $say;
+}
+
+command_bind(fullwidth => sub {
+    my $arg = $_[0];
+    my $say = '';
+    if ($arg =~ /\*[^*]*\*/) {
+        $say = $_[0] =~ s/\*([^*]*)\*/fullwidth($1)/reg;
+    }
+    else {
+        $say = fullwidth($arg);
+    }
     active_win->command("say $say");
+});
+
+command_bind(help => sub {
+    if ($_[0] eq $IRSSI{name}) {
+        Irssi::print($help, MSGLEVEL_CLIENTCRAP);
+        signal_stop();
+    }
 });
