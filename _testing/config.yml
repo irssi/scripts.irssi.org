@@ -35,7 +35,6 @@ cpan:
 # testing. They should be fixed and then removed from the whitelist.
 whitelist:
   - amaroknp
-  - babelirc
   - cap_sasl_fail
   - cap_sasl
   - dnsspam
