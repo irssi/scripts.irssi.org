@@ -778,7 +778,7 @@ sub update_matches {
     }
 
     $regex_valid = 1;
-    if ($search_str =~ m/^\d+$/) {
+    if ($search_str =~ m/^\d+$/ and $search_str <= @window_cache) {
 
         @search_matches =
           grep {
