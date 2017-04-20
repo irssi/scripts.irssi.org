@@ -1,12 +1,12 @@
 ---
 -
-  authors: "Timo 'cras' Sirainen, Mark 'znx' Sangster"
-  changed: 'Sun May 25 18:59:57 BST 2008'
-  contact: 'tss@iki.fi, znxster@gmail.com'
+  authors: "Timo 'cras' Sirainen, Mark 'znx' Sangster, Kimberly 'rummik' Zick"
+  changed: 'Thu Apr  6 15:30:25 EDT 2017'
+  contact: 'tss@iki.fi, znxster@gmail.com, git@zick.kim'
   default_package: hilightwin
   description: 'Print hilighted messages to window named "hilight"'
   license: 'Public Domain'
-  modified: '2017-02-10 17:59:58'
+  modified: '2017-04-06 16:28:24'
   name: hilightwin
   url: http://irssi.org/
-  version: '0.05'
+  version: '1.00'

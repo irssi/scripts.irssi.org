@@ -11,7 +11,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                   active_notify ](Test/active_notify/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                   activity_file ](Test/activity_file/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
 [                             act ](Test/act/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                  adv_windowlist ](Test/adv_windowlist/)|  ✔   |  ✔   |  ✔   | 36   |  ✔   
+[                  adv_windowlist ](Test/adv_windowlist/)|  ✔   |  ✔   |  ✔   | 36   |  ✔   | (c)
 [                           aidle ](Test/aidle/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                              ai ](Test/ai/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
 [                           akftp ](Test/akftp/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -21,7 +21,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                          anames ](Test/anames/)|  ✔   |  ✔   |  ✔   |  1   |  ✔   | (c)
 [                      anotherway ](Test/anotherway/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       antiplenk ](Test/antiplenk/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                             apm ](Test/apm/)|  ✔   |  ✔   |  ✔   | 13   |  ✔   
+[                             apm ](Test/apm/)|  ✔   |  ✔   |  ✔   | 13   |  ✔   | (c)
 [                         armeija ](Test/armeija/)|  ✔   |  ✔   |  ✔   | 10   |  ✔   | (c)
 [                           ascii ](Test/ascii/)|  ✔   |  ✔   |  ✔   | 69   |  ✔   | (c)
 [                 aspell_complete ](Test/aspell_complete/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
@@ -49,15 +49,15 @@ See [the testing read-me](../master/_testing/) for details.
 [                         autowho ](Test/autowho/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                        autowrap ](Test/autowrap/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        away2web ](Test/away2web/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
-[                         awaybar ](Test/awaybar/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[                         awaybar ](Test/awaybar/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [             away_hilight_notice ](Test/away_hilight_notice/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                      awaylogcnt ](Test/awaylogcnt/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[                      awaylogcnt ](Test/awaylogcnt/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                            away ](Test/away/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       awayproxy ](Test/awayproxy/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
 [                    away_verbose ](Test/away_verbose/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        babelirc ](Test/babelirc/)|  ✔   |  ✔   |  ✘   | 36   |  ☡   | (c)
 [                         badword ](Test/badword/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                       bandwidth ](Test/bandwidth/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   
+[                       bandwidth ](Test/bandwidth/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
 [                             ban ](Test/ban/)|  ✔   |  ✔   |  ✔   | 38   |  ✔   | (c)
 [                       bansearch ](Test/bansearch/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                         bantime ](Test/bantime/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -72,11 +72,11 @@ See [the testing read-me](../master/_testing/) for details.
 [                     binary_time ](Test/binary_time/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                   bitlbee_blist ](Test/bitlbee_blist/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [           bitlbee_hide_password ](Test/bitlbee_hide_password/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
-[             bitlbee_join_notice ](Test/bitlbee_join_notice/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[             bitlbee_join_notice ](Test/bitlbee_join_notice/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [             bitlbee_nick_change ](Test/bitlbee_nick_change/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [          bitlbee_tab_completion ](Test/bitlbee_tab_completion/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [               bitlbee_timestamp ](Test/bitlbee_timestamp/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[           bitlbee_typing_notice ](Test/bitlbee_typing_notice/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[           bitlbee_typing_notice ](Test/bitlbee_typing_notice/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                         blowjob ](Test/blowjob/)|  ✔   |  ✔   |  ✔   | 22   |  ✔   | (c)
 [                             bmi ](Test/bmi/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                          buffer ](Test/buffer/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
@@ -87,7 +87,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                   cap_sasl_fail ](Test/cap_sasl_fail/)|  ✘   |  ✔   |  ✔   |  2   |  ☡   | (c)
 [                        cap_sasl ](Test/cap_sasl/)|  ✘   |  ✔   |  ✔   |  7   |  ☡   | (c)
 [                            cddb ](Test/cddb/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                       centericq ](Test/centericq/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   
+[                       centericq ](Test/centericq/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                           cgrep ](Test/cgrep/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                         chanact ](Test/chanact/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                  chanfull_duden ](Test/chanfull_duden/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -134,7 +134,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                          dejunk ](Test/dejunk/)|  ✔   |  ✔   |  ✔   | 10   |  ✔   | (c)
 [                    deliciousurl ](Test/deliciousurl/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                  desktop-notify ](Test/desktop-notify/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                              df ](Test/df/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   
+[                              df ](Test/df/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                    dice_concise ](Test/dice_concise/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                            dice ](Test/dice/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
 [                    dictcomplete ](Test/dictcomplete/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
@@ -144,7 +144,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                         dnsspam ](Test/dnsspam/)|  ✘   |  ✔   |  ✔   |  4   |  ☡   | (c)
 [                             doc ](Test/doc/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
 [                    doublefilter ](Test/doublefilter/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                          dr_who ](Test/dr_who/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   
+[                          dr_who ](Test/dr_who/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                        efnetorg ](Test/efnetorg/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                           elist ](Test/elist/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                           eliza ](Test/eliza/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -178,7 +178,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                          fserve ](Test/fserve/)|  ✔   |  ✔   |  ✔   | 44   |  ✔   | (c)
 [                          fuckem ](Test/fuckem/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        fullrain ](Test/fullrain/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
-[                       fullwidth ](Test/fullwidth/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[                       fullwidth ](Test/fullwidth/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                           getop ](Test/getop/)|  ✔   |  ✔   |  ✔   | 16   |  ✔   | (c)
 [                          gimmie ](Test/gimmie/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                             go2 ](Test/go2/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -199,11 +199,11 @@ See [the testing read-me](../master/_testing/) for details.
 [                        highlite ](Test/highlite/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                         hignore ](Test/hignore/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                      hilightcmd ](Test/hilightcmd/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                      hilightwin ](Test/hilightwin/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                      hilightwin ](Test/hilightwin/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                      hilite_url ](Test/hilite_url/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                hipchat_complete ](Test/hipchat_complete/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                  history_search ](Test/history_search/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
-[                        hitcount ](Test/hitcount/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   
+[                        hitcount ](Test/hitcount/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
 [                           hlbot ](Test/hlbot/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
 [                              hl ](Test/hl/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                        hlscroll ](Test/hlscroll/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -216,9 +216,9 @@ See [the testing read-me](../master/_testing/) for details.
 [                      ignore_log ](Test/ignore_log/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
 [                        ignoreoc ](Test/ignoreoc/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       ignorsula ](Test/ignorsula/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                              il ](Test/il/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[                              il ](Test/il/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                            imdb ](Test/imdb/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
-[                            iMPD ](Test/iMPD/)|  ✔   |  ✔   |  ✔   | 22   |  ✔   
+[                            iMPD ](Test/iMPD/)|  ✔   |  ✔   |  ✔   | 22   |  ✔   | (c)
 [                       intercept ](Test/intercept/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                         intjoin ](Test/intjoin/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
 [                      invitejoin ](Test/invitejoin/)|  ✔   |  ✔   |  ✔   | 13   |  ✔   | (c)
@@ -229,17 +229,17 @@ See [the testing read-me](../master/_testing/) for details.
 [                       irc_chess ](Test/irc_chess/)|  ✘   |  ✔   |  ✔   |  8   |  ☡   | (c)
 [                     irccomplete ](Test/irccomplete/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                      ircgallery ](Test/ircgallery/)|  ✘   |  ✔   |  ✔   |  7   |  ☡   | (c)
-[               ircgmessagenotify ](Test/ircgmessagenotify/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   
+[               ircgmessagenotify ](Test/ircgmessagenotify/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                          ircops ](Test/ircops/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                          ircsec ](Test/ircsec/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
 [                       ircuwhois ](Test/ircuwhois/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                    irssiBlaster ](Test/irssiBlaster/)|  ✔   |  ✔   |  ✔   | 12   |  ✔   
+[                    irssiBlaster ](Test/irssiBlaster/)|  ✔   |  ✔   |  ✔   | 12   |  ✔   | (c)
 [                      irssi-feed ](Test/irssi-feed/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                    irssi_logger ](Test/irssi_logger/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                          irssiq ](Test/irssiq/)|  ✘   |  ✔   |  ✘   | 50   |  ☡   | (c)
 [                        isbanned ](Test/isbanned/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
 [                            isdn ](Test/isdn/)|  ✘   |  ✔   |  ✘   | 10   |  ☡   | (c)
-[                           itime ](Test/itime/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[                           itime ](Test/itime/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                          ixmmsa ](Test/ixmmsa/)|  ✘   |  ✔   |  ✔   |  3   |  ☡   | (c)
 [                        joininfo ](Test/joininfo/)|  ✔   |  ✔   |  ✔   | 11   |  ✔   | (c)
 [                  kban-referrals ](Test/kban-referrals/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
@@ -258,12 +258,12 @@ See [the testing read-me](../master/_testing/) for details.
 [                             len ](Test/len/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                         leodict ](Test/leodict/)|  ✔   |  ✔   |  ✔   | 10   |  ✔   | (c)
 [                      levelclear ](Test/levelclear/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
-[                            licq ](Test/licq/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   
+[                            licq ](Test/licq/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                      linebuffer ](Test/linebuffer/)|  ✔   |  ✔   |  ✔   |  2   |  ✔   | (c)
 [                        linkchan ](Test/linkchan/)|  ✔   |  ✔   |  ✔   | 32   |  ✔   | (c)
 [                          listen ](Test/listen/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
 [                        listsort ](Test/listsort/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
-[                         loadavg ](Test/loadavg/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[                         loadavg ](Test/loadavg/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        localize ](Test/localize/)|  ✔   |  ✔   |  ✔   | 25   |  ✔   | (c)
 [                        log2ansi ](Test/log2ansi/)|  ✘   |  ✘   |  ✔   | 15   |  ☡   | (c)
 [                logcompress_perl ](Test/logcompress_perl/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
@@ -271,12 +271,12 @@ See [the testing read-me](../master/_testing/) for details.
 [                       logresume ](Test/logresume/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                              ls ](Test/ls/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                            lwho ](Test/lwho/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                  mailcheck_imap ](Test/mailcheck_imap/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   
+[                  mailcheck_imap ](Test/mailcheck_imap/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [             mailcheck_mbox_flux ](Test/mailcheck_mbox_flux/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
 [            mailcheck_pop3_kimmo ](Test/mailcheck_pop3_kimmo/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                       mailcount ](Test/mailcount/)|  ✔   |  ✔   |  ✔   | 25   |  ✔   
-[                            mail ](Test/mail/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   
-[                          mangle ](Test/mangle/)|  ✔   |  ✔   |  ✔   | 15   |  ✔   
+[                       mailcount ](Test/mailcount/)|  ✔   |  ✔   |  ✔   | 25   |  ✔   | (c)
+[                            mail ](Test/mail/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
+[                          mangle ](Test/mangle/)|  ✔   |  ✔   |  ✔   | 15   |  ✔   | (c)
 [                             map ](Test/map/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [            mass_hilight_blocker ](Test/mass_hilight_blocker/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                 messages_bottom ](Test/messages_bottom/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -288,13 +288,13 @@ See [the testing read-me](../master/_testing/) for details.
 [                   mh_userstatus ](Test/mh_userstatus/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                   mh_windowfill ](Test/mh_windowfill/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                          miodek ](Test/miodek/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[               mirc_colour_popup ](Test/mirc_colour_popup/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
+[               mirc_colour_popup ](Test/mirc_colour_popup/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                           mkick ](Test/mkick/)|  ✔   |  ✔   |  ✔   | 30   |  ✔   | (c)
 [                   mkshorterlink ](Test/mkshorterlink/)|  ✔   |  ✘   |  ✔   | 14   |  ☡   | (c)
 [              mldonkey_bandwidth ](Test/mldonkey_bandwidth/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                           mlock ](Test/mlock/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        modelist ](Test/modelist/)|  ✔   |  ✔   |  ✔   | 33   |  ✔   | (c)
-[                      modelist-r ](Test/modelist-r/)|  ✔   |  ✔   |  ✔   | 18   |  ✔   
+[                      modelist-r ](Test/modelist-r/)|  ✔   |  ✔   |  ✔   | 18   |  ✔   | (c)
 [                         monitor ](Test/monitor/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                            mood ](Test/mood/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                           morse ](Test/morse/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
@@ -312,7 +312,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                        mygoogle ](Test/mygoogle/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
 [                          myimdb ](Test/myimdb/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
 [                  mysqlurllogger ](Test/mysqlurllogger/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                            nact ](Test/nact/)|  ✔   |  ✔   |  ✔   | 12   |  ✔   
+[                            nact ](Test/nact/)|  ✔   |  ✔   |  ✔   | 12   |  ✔   | (c)
 [                       netswitch ](Test/netswitch/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        newsline ](Test/newsline/)|  ✔   |  ✔   |  ✔   | 26   |  ✔   | (c)
 [                            news ](Test/news/)|  ✔   |  ✔   |  ✔   | 79   |  ✔   | (c)
@@ -325,7 +325,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                  nickmix-c0ffee ](Test/nickmix-c0ffee/)|  ✔   |  ✔   |  ✔   | 18   |  ✔   | (c)
 [                   nickmix_pasky ](Test/nickmix_pasky/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        nickserv ](Test/nickserv/)|  ✔   |  ✔   |  ✔   | 13   |  ✔   | (c)
-[                             niq ](Test/niq/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   
+[                             niq ](Test/niq/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
 [                             nm2 ](Test/nm2/)|  ✔   |  ✔   |  ✔   | 14   |  ✔   | (c)
 [                              nm ](Test/nm/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
 [                          nocaps ](Test/nocaps/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -348,7 +348,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                            oops ](Test/oops/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                         openurl ](Test/openurl/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                          operit ](Test/operit/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                        operview ](Test/operview/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[                        operview ](Test/operview/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        opnotice ](Test/opnotice/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        opnotify ](Test/opnotify/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                         orphamp ](Test/orphamp/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
@@ -395,14 +395,14 @@ See [the testing read-me](../master/_testing/) for details.
 [                    resize_split ](Test/resize_split/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       rhythmbox ](Test/rhythmbox/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                              rk ](Test/rk/)|  ✔   |  ✔   |  ✔   | 14   |  ✔   | (c)
-[                      romajibind ](Test/romajibind/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[                      romajibind ](Test/romajibind/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                          romaji ](Test/romaji/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                           rot13 ](Test/rot13/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
-[                         rotator ](Test/rotator/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[                         rotator ](Test/rotator/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                      rud_emotes ](Test/rud_emotes/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                        sana_cmd ](Test/sana_cmd/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                    sbclearmatch ](Test/sbclearmatch/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
-[                     sb_position ](Test/sb_position/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
+[                     sb_position ](Test/sb_position/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                       sb_search ](Test/sb_search/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                     schwaebisch ](Test/schwaebisch/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                     screen_away ](Test/screen_away/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -411,8 +411,8 @@ See [the testing read-me](../master/_testing/) for details.
 [                      scriptinfo ](Test/scriptinfo/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                      scriptsave ](Test/scriptsave/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        scrmable ](Test/scrmable/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
-[                        scroller ](Test/scroller/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                       securemsg ](Test/securemsg/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   
+[                        scroller ](Test/scroller/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                       securemsg ](Test/securemsg/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                            seen ](Test/seen/)|  ✔   |  ✔   |  ✔   |103   |  ✔   | (c)
 [                     send_scroll ](Test/send_scroll/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                  servercomplete ](Test/servercomplete/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
@@ -451,7 +451,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                         thankop ](Test/thankop/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        thistory ](Test/thistory/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                           timer ](Test/timer/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
-[                       timezones ](Test/timezones/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
+[                       timezones ](Test/timezones/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                         tinyurl ](Test/tinyurl/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                           title ](Test/title/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                           tlock ](Test/tlock/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -469,9 +469,9 @@ See [the testing read-me](../master/_testing/) for details.
 [                        trustweb ](Test/trustweb/)|  ✔   |  ✔   |  ✔   | 20   |  ✔   | (c)
 [                         tvmusor ](Test/tvmusor/)|  ✔   |  ✘   |  ✔   | 17   |  ☡   | (c)
 [                   twitter_theme ](Test/twitter_theme/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
-[                        twprompt ](Test/twprompt/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[                        twprompt ](Test/twprompt/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       twsocials ](Test/twsocials/)|  ✔   |  ✔   |  ✔   | 16   |  ✔   | (c)
-[                         twtopic ](Test/twtopic/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[                         twtopic ](Test/twtopic/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                         typofix ](Test/typofix/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
 [                      uberprompt ](Test/uberprompt/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                 UNIBG-autoident ](Test/UNIBG-autoident/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -485,7 +485,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                         urlinfo ](Test/urlinfo/)|  ✔   |  ✔   |  ✔   | 11   |  ✔   | (c)
 [                         url_log ](Test/url_log/)|  ✔   |  ✔   |  ✔   | 12   |  ✔   | (c)
 [                         urlplot ](Test/urlplot/)|  ✔   |  ✔   |  ✔   | 86   |  ✔   | (c)
-[                       usercount ](Test/usercount/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[                       usercount ](Test/usercount/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        userhost ](Test/userhost/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                           users ](Test/users/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                    version-stat ](Test/version-stat/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
@@ -502,7 +502,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                           whois ](Test/whois/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                            whos ](Test/whos/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                            wilm ](Test/wilm/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                 window_switcher ](Test/window_switcher/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[                 window_switcher ](Test/window_switcher/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                          winnum ](Test/winnum/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       wisestamp ](Test/wisestamp/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                             wkb ](Test/wkb/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -510,10 +510,10 @@ See [the testing read-me](../master/_testing/) for details.
 [                    wordscramble ](Test/wordscramble/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                           xauth ](Test/xauth/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
 [                            xcmd ](Test/xcmd/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                    xdcc_autoget ](Test/xdcc_autoget/)|  ✔   |  ✔   |  ✔   |  2   |  ✔   
+[                    xdcc_autoget ](Test/xdcc_autoget/)|  ✔   |  ✔   |  ✔   |  2   |  ✔   | (c)
 [                         xdccget ](Test/xdccget/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                            xdcc ](Test/xdcc/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
-[                           xetra ](Test/xetra/)|  ✘   |  ✔   |  ✔   | 11   |  ☡   
+[                           xetra ](Test/xetra/)|  ✘   |  ✔   |  ✔   | 11   |  ☡   | (c)
 [                           xlist ](Test/xlist/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                           xmms2 ](Test/xmms2/)|  ✔   |  ✔   |  ✔   | 10   |  ✔   | (c)
 [                        xmmsinfo ](Test/xmmsinfo/)|  ✘   |  ✔   |  ✔   |  3   |  ☡   | (c)
@@ -521,4 +521,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                     xmpp-notify ](Test/xmpp-notify/)|  ✔   |  ✔   |  ✔   | 21   |  ✔   | (c)
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 
-fa6ab59ba18c61f471f7471d9866772ee8d08e84 | 884
+c3dacd170180e1d6ef67bd2ec57b1fd08e15f8a4 | 886
