@@ -2037,15 +2037,15 @@
   url: https://github.com/ramnes/hilightcmd
   version: '0.1'
 -
-  authors: "Timo 'cras' Sirainen, Mark 'znx' Sangster"
-  contact: 'tss@iki.fi, znxster@gmail.com'
+  authors: "Timo 'cras' Sirainen, Mark 'znx' Sangster, Kimberly 'rummik' Zick"
+  contact: 'tss@iki.fi, znxster@gmail.com, git@zick.kim'
   description: 'Print hilighted messages to window named "hilight"'
   filename: hilightwin.pl
   license: 'Public Domain'
-  modified: '2017-02-10 17:59:58'
+  modified: '2017-04-06 16:28:24'
   name: hilightwin
   url: http://irssi.org/
-  version: '0.05'
+  version: '1.00'
 -
   authors: 'Stefan Heinemann'
   contact: stefan.heinemann@codedump.ch
