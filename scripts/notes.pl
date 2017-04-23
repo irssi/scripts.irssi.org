@@ -23,10 +23,8 @@ no autovivification;
 use feature qw(fc);
 use Data::Dumper;
 
-use vars qw($VERSION %IRSSI);
-
-my $VERSION = '1.0';
-my %IRSSI = (
+our $VERSION = '1.0';
+our %IRSSI = (
     authors     => 'vague',
     contact     => 'vague!#irssi@freenode',
     name        => 'notes',
