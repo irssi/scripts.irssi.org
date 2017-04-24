@@ -284,7 +284,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                    mh_hold_mode ](Test/mh_hold_mode/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       mh_invite ](Test/mh_invite/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                  mh_sbsplitmode ](Test/mh_sbsplitmode/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
-[                   mh_sbuserinfo ](Test/mh_sbuserinfo/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[                   mh_sbuserinfo ](Test/mh_sbuserinfo/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                   mh_userstatus ](Test/mh_userstatus/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                   mh_windowfill ](Test/mh_windowfill/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                          miodek ](Test/miodek/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -521,4 +521,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                     xmpp-notify ](Test/xmpp-notify/)|  ✔   |  ✔   |  ✔   | 21   |  ✔   | (c)
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 
-9d6c0c460ec3429d0c3caa897296737031d1bad7 | 891
+9960e77e808baab33b3c1acdf7a6cbb6458e3949 | 894
