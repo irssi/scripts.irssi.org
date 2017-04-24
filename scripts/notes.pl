@@ -157,7 +157,7 @@ sub cmd_notes_del {
     return;
   }
   else {
-    push @networks, fc $server->{tag};
+    push @networks, fc $server->{tag} if !@networks;
   }
 
   for (@networks) {
