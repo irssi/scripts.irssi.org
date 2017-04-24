@@ -2926,13 +2926,13 @@
 -
   authors: 'Michael Hansen'
   contact: 'mh on IRCnet #help'
-  description: 'statusbar item that shows users and limit info in channels'
+  description: 'statusbar item that shows user count (opers, ops, halfops, voice and total) and limit info (with opless/limit warning) in channels'
   filename: mh_sbuserinfo.pl
   license: BSD
-  modified: '2016-11-07 14:57:43'
+  modified: '2017-04-24 09:50:42'
   name: mh_sbuserinfo
   url: 'http://scripts.irssi.org / https://github.com/mh-source/irssi-scripts'
-  version: '1.05'
+  version: '1.06'
 -
   authors: 'Michael Hansen'
   contact: 'mh on IRCnet #help'
@@ -3438,10 +3438,10 @@
   description: 'Keeps notes on users and displayes the note in /whois output if the host/nick matches'
   filename: notes.pl
   license: GPL2
-  modified: '2015-11-25 11:42:09'
-  modules: 'DBI DBM::Deep'
+  modified: '2017-04-23 22:41:20'
+  modules: 'DBI DBM::Deep List::MoreUtils autovivification'
   name: notes
-  version: '0.31'
+  version: '1.0'
 -
   authors: "Stefan 'tommie' Tomanek"
   contact: stefan@pico.ruhr.de
