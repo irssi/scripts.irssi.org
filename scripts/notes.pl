@@ -145,7 +145,7 @@ sub cmd_notes_del {
   my $patt = join('|', @chatnets);
   my @networks = grep {/$patt/i} keys %$args;
 
-  my $purge = $args->{purge};
+  my $purge = (defined $args->{purge} ? 1 : 0);
   unless ($purge || ($type && $pattern)) {
     _error "Could not parse command\n" . usage(), $witem;
     return;
@@ -253,9 +253,9 @@ Irssi::command_bind('notes' => sub {
   Irssi::command_runsub ('notes', $data, $server, $item ) ;
 });
 
-Irssi::command_bind('notes add', \&cmd_notes_add);
-Irssi::command_bind('notes del', \&cmd_notes_del);
-Irssi::command_bind('notes list', \&cmd_notes_list);
+Irssi::command_bind('notes add', 'cmd_notes_add');
+Irssi::command_bind('notes del', 'cmd_notes_del');
+Irssi::command_bind('notes list', 'cmd_notes_list');
 Irssi::command_bind('notes help', sub { Irssi::active_win()->print(usage()); });
 
 Irssi::command_set_options('notes add', join(' ', @chatnets) . ' +nick +mask');
