@@ -1,11 +1,13 @@
 ---
 -
   authors: 'Michael Hansen'
-  changed: 'Sun Nov  6 20:37:05 CET 2016'
+  changed: 'Mon Apr 24 09:34:36 CEST 2017'
   contact: 'mh on IRCnet #help'
   default_package: mh_sbuserinfo
-  description: 'statusbar item that shows users and limit info in channels'
+  description: 'statusbar item that shows user count (opers, ops, halfops, voice and total) and limit info (with opless/limit warning) in channels'
   license: BSD
+  modified: '2017-04-24 09:50:42'
   name: mh_sbuserinfo
+  sbitems: mh_sbuserinfo
   url: 'http://scripts.irssi.org / https://github.com/mh-source/irssi-scripts'
-  version: '1.05'
+  version: '1.06'

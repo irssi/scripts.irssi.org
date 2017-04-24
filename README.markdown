@@ -199,7 +199,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                        highlite ](Test/highlite/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                         hignore ](Test/hignore/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                      hilightcmd ](Test/hilightcmd/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                      hilightwin ](Test/hilightwin/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[                      hilightwin ](Test/hilightwin/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                      hilite_url ](Test/hilite_url/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                hipchat_complete ](Test/hipchat_complete/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                  history_search ](Test/history_search/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
@@ -284,7 +284,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                    mh_hold_mode ](Test/mh_hold_mode/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       mh_invite ](Test/mh_invite/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                  mh_sbsplitmode ](Test/mh_sbsplitmode/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
-[                   mh_sbuserinfo ](Test/mh_sbuserinfo/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                   mh_sbuserinfo ](Test/mh_sbuserinfo/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                   mh_userstatus ](Test/mh_userstatus/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                   mh_windowfill ](Test/mh_windowfill/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                          miodek ](Test/miodek/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -334,7 +334,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                            nopl ](Test/nopl/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        norepeat ](Test/norepeat/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                       noteserve ](Test/noteserve/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                           notes ](Test/notes/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                           notes ](Test/notes/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
 [                     noticelogic ](Test/noticelogic/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                      noticemove ](Test/noticemove/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                      notifyquit ](Test/notifyquit/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
@@ -521,4 +521,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                     xmpp-notify ](Test/xmpp-notify/)|  ✔   |  ✔   |  ✔   | 21   |  ✔   | (c)
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 
-c3dacd170180e1d6ef67bd2ec57b1fd08e15f8a4 | 886
+9d6c0c460ec3429d0c3caa897296737031d1bad7 | 891
