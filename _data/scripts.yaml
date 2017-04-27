@@ -2899,10 +2899,10 @@
   description: 'Emulation of ircII per-window hold_mode'
   filename: mh_hold_mode.pl
   license: BSD
-  modified: '2016-05-10 19:11:10'
+  modified: '2017-04-24 10:41:11'
   name: mh_hold_mode
   url: 'http://scripts.irssi.org / https://github.com/mh-source/irssi-scripts'
-  version: '1.07'
+  version: '1.08'
 -
   authors: 'Michael Hansen'
   contact: 'mh on IRCnet #help'
