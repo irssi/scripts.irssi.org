@@ -1,11 +1,13 @@
 ---
 -
   authors: 'Michael Hansen'
-  changed: 'Tue May 10 19:09:32 CEST 2016'
+  changed: 'Mon Apr 24 10:32:25 CEST 2017'
   contact: 'mh on IRCnet #help'
   default_package: mh_hold_mode
   description: 'Emulation of ircII per-window hold_mode'
   license: BSD
+  modified: '2017-04-24 10:41:11'
   name: mh_hold_mode
+  sbitems: mh_sbmore
   url: 'http://scripts.irssi.org / https://github.com/mh-source/irssi-scripts'
-  version: '1.07'
+  version: '1.08'
