@@ -181,7 +181,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                       fullwidth ](Test/fullwidth/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                           getop ](Test/getop/)|  ✔   |  ✔   |  ✔   | 16   |  ✔   | (c)
 [                          gimmie ](Test/gimmie/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                             go2 ](Test/go2/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[                             go2 ](Test/go2/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                          google ](Test/google/)|  ✔   |  ✔   |  ✔   | 10   |  ✔   | (c)
 [                              go ](Test/go/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                    gpgvalidator ](Test/gpgvalidator/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -420,7 +420,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                    settingshelp ](Test/settingshelp/)|  ✔   |  ✔   |  ✔   |  1   |  ✔   | (c)
 [                      shortenurl ](Test/shortenurl/)|  ✔   |  ✔   |  ✔   | 20   |  ✔   | (c)
 [                        shorturl ](Test/shorturl/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                     showhilight ](Test/showhilight/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                     showhilight ](Test/showhilight/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                        showhost ](Test/showhost/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        showmode ](Test/showmode/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                  signal_hilight ](Test/signal_hilight/)|  ✔   |  ✔   |  ✔   |  1   |  ✔   | (c)
@@ -521,4 +521,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                     xmpp-notify ](Test/xmpp-notify/)|  ✔   |  ✔   |  ✔   | 21   |  ✔   | (c)
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 
-c87237172ee5c4731c252d008e970d77c4b65db0 | 903
+8135b8217b12287a6505cead411acbb3aa6b4fef | 904
