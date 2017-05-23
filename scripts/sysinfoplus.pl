@@ -16,8 +16,10 @@
 # -Total amount of memory counts (not the used amount, as before)
 
 # Changelog 2.10 -> 2.20: memory/swap info is displayed now (it was broken previously) and code is properly indented
+use strict;
+use vars qw/$VERSION %IRSSI/;
 
-$VERSION = "2.20";
+$VERSION = "2.21";
 %IRSSI = (
 	  authors     => "Juerd, Tronic",
 	  contact     => "trn\@iki.fi",
@@ -25,7 +27,7 @@ $VERSION = "2.20";
 	  description => "Linux system information (with vPenis and other stuff)",
 	  license     => "Public Domain",
 	  url         => "http://juerd.nl/irssi/",
-	  changed     => "Mon Nov 04 15:17:30 EET 2002"
+	  changed     => "2017-04-02"
 	  );
 
 BEGIN{
@@ -37,7 +39,6 @@ BEGIN{
     $console = !!$@;
 }
 
-use strict;
 
 # Tronic has no time for maintaining this and Juerd hates braces, so it might be better
 # not to expect any new versions ...
@@ -51,7 +52,7 @@ sub sysinfo{
     
     $ret = "Host '@uname[1]', running @uname[0] @uname[2] - ";
     
-    open FOO, '/proc/cpuinfo';
+    open FOO,'<', '/proc/cpuinfo';
     while (<FOO>){
 	/^processor\s*:\s*(\d+)/         ? $ret .= "Cpu$1: "
 	  : /^model name\s*:\s*(\w+[ A-Za-z]*)/ ? do { my $t = $1; $t =~ s/\s+$//; $ret .= "$t " }
@@ -60,7 +61,7 @@ sub sysinfo{
     }
     close FOO;
     $ret =~ s/( ?)$/;$1/;
-    open FOO, '/proc/pci';
+    open FOO,'<', '/proc/pci';
     while (<FOO>){
 	/^\s*(?:multimedia )?(.*?)( storage| compatible)? controller/i and push @pci, $1;
     }

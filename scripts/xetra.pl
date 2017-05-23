@@ -10,6 +10,7 @@ $VERSION = "20030208";
     description => "brings the stock exchanges of the world to your irssi",
     license     => "GPLv2",
     changed     => "$VERSION",
+    sbitems     => "xetra",
     commands	=> "xetra"
 );
 

@@ -96,6 +96,7 @@ $VERSION = '1.6';
 	contact		=> 'a.lepore@email.it',
 	name		=> 'irssiBlaster',
 	description	=> 'Display the song played by mp3blaster in channels and statusbar. See the top of the file for usage.',
+	sbitems		=> 'blaster',
 	license		=> 'GNU GPLv2 or later',
 	changed		=> 'Fri Oct 31 12:22:08 CET 2003',
 );

@@ -24,6 +24,7 @@ $VERSION = '1.0';
 	contact     => 'lxsfx3h02@sneakemail.com',
 	name        => 'dr_who',
 	description => 'Put a nick list in a statusbar',
+	sbitems => 'dr_who',
 	license => 'BSD',
 	url     => 'http://beaglebros.com',
 	changed => '1-17-2005'

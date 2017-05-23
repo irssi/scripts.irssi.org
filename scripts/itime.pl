@@ -15,6 +15,7 @@ $VERSION = '0.9';
     name        => 'itime',
     description =>
 'Internet Time statusbar item. See http://www.timeanddate.com/time/internettime.html',
+    sbitems => 'itime',
     license => 'Public Domain',
     url     => 'http://ion.amigafin.org/scripts/',
     changed => 'Tue Mar 12 22:20 EET 2002',

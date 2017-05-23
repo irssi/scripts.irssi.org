@@ -13,246 +13,238 @@
 # DBI
 
 use strict;
+use warnings;
+
 use Irssi;
 use DBI;
-use Data::Dumper;
 use DBM::Deep;
+use List::MoreUtils qw(any);
+no autovivification;
+use feature qw(fc);
+use Data::Dumper;
 
-use vars qw($VERSION %IRSSI);
-
-$VERSION = '0.31';
-%IRSSI = (
+our $VERSION = '1.0';
+our %IRSSI = (
     authors     => 'vague',
     contact     => 'vague!#irssi@freenode',
     name        => 'notes',
     description => 'Keeps notes on users and displayes the note in /whois output if the host/nick matches',
     license     => 'GPL2',
-    changed     => "24 Nov 16:00:00 CET 2015",
+    changed     => '22 Apr 20:00:00 CEST 2017',
 );
 
-my $notes;
-my $note_expando = '';
+my ($notes, $expando);
 my @chatnets;
+my $DEBUG_ENABLED;
+
 push @chatnets, $_->{name} for(Irssi::chatnets());
 
-my $DEBUG_ENABLED = 1;
 sub DEBUG { $DEBUG_ENABLED }
 
-sub init {
-  my $filename = Irssi::settings_get_str("notes_db") || Irssi::get_irssi_dir() . "/notes.db";
-  $notes = DBM::Deep->new( $filename );
-}
-
 sub _print {
-  my ($msg) = @_;
-  Irssi::active_win->print($msg, Irssi::MSGLEVEL_CLIENTCRAP);
+  my ($msg, $w) = @_;
+  $w = Irssi::active_win() unless $w;
+  $w->print($msg, Irssi::MSGLEVEL_CLIENTCRAP);
 }
 
 sub _error {
-  my ($msg) = @_;
-  Irssi::active_win->print($msg, Irssi::MSGLEVEL_CLIENTCRAP);
+  my ($msg, $w) = @_;
+  $w = Irssi::active_win() unless $w;
+  $w->print($msg, Irssi::MSGLEVEL_CLIENTCRAP);
 }
 
-sub _debug_print {
+sub _debug {
+  my ($msg, $w) = @_;
+
   return unless DEBUG;
-  my ($msg) = @_;
-  Irssi::active_win->print($msg, Irssi::MSGLEVEL_CLIENTCRAP);
+
+  $w = Irssi::active_win() unless $w;
+  $w->print($msg, Irssi::MSGLEVEL_CLIENTCRAP);
 }
 
+sub init {
+  $DEBUG_ENABLED = Irssi::settings_get_bool("notes_verbose");
+  my $filename = Irssi::settings_get_str("notes_db") // Irssi::get_irssi_dir() . "/notes.db";
+  $filename =~ s,^~,$ENV{HOME},e;
+  _debug "Loading database from " . $filename, Irssi::window_find_refnum(1);
+  $notes = DBM::Deep->new( file => $filename, autoflush => 1 );
+  $expando = '';
+}
+ 
 sub sig_whois {
   my ($server, $data, undef, undef) = @_;
   my ($me, $nick, $user, $host) = split(" ", $data);
+  my $network = fc $server->{tag};
+  $nick = fc $nick;
 
-  if(exists $notes->{lc $server->{tag}}->{nick}->{lc $nick}) {
-    $note_expando = $notes->{lc $server->{tag}}->{nick}->{lc $nick};
+  if ($notes->{$network}{nick}{$nick}) {
+    $expando = $notes->{$network}{nick}{$nick};
   }
   else {
-    my $masks = $notes->{lc $server->{tag}}->{mask};
-    while(my ($mask, $value) = each %$masks) {
-      if($server->mask_match_address(lc $mask, '*', "$nick!$user\@$host")) {
-        $note_expando = $value;
-        return;
+    my $masks = $notes->{$network}{mask};
+    while (my ($mask, $value) = each %$masks) {
+      if ($server->mask_match_address(fc $mask, $nick, sprintf('%s@%s', $user, $host))) {
+        $expando = $value;
       }
     }
   }
 }
 
-sub expando_note {
-  my ($tmp) = $note_expando;
-  $note_expando = '';
+sub expand_note {
+  my $tmp = $expando;
+  $expando = '';
   return $tmp;
 }
 
 sub cmd_notes_add {
-  my ($args, $server, $witem) = @_;
-  my $tmpargs = [ sort {$a =~ /^-/ <=> $b !~ /^-/} split / /, $args ];
-  my @options_list = Irssi::command_parse_options('notes add', join(' ', @$tmpargs));
+  my ($data, $server, $witem) = @_;
+  my ($args, $rest) = Irssi::command_parse_options('notes add', $data);
+  my ($type, $pattern);
 
-  if(!@options_list) {
-    _error "Could not parse arguments\n" . usage();
+  unless ($rest) {
+    _error "You have to specify notes to add", $witem;
+  }
+
+  if (any {/nick|mask/i} keys %$args) {
+    _error("Can't specify both -nick and -mask", $witem) && return if $args->{nick} && $args->{mask};
+
+    $type = $args->{nick} ? 'nick' : 'mask';
+    $pattern = fc $args->{$type};
+  }
+
+  my $patt = join('|', @chatnets);
+  my @networks = grep {/$patt/i} keys %$args;
+
+  unless (@networks) {
+    push @networks, fc $server->{tag};
+  }
+
+  unless ($type && $pattern) {
+    _error "Could not parse command\n" . usage(), $witem;
     return;
   }
 
-  my @minusargs = grep {/^-/} split / /, $args;
-  my @rest = grep {!/^-/} split / /, $args;
-  my ($network, $type, $pattern);
-
-  foreach(@minusargs) {
-    s/^-//;
-    if(/nick|mask/i) {
-      $type = $_;
-      $pattern = shift @rest;
-    }
-    else {
-      if(join(' ', @chatnets) =~ /$_/i) {
-        $network = $_;
-      }
-    }
+  for (@networks) {
+    $notes->{$_}{$type}{$pattern} = $rest;
+    _print "Added $type $pattern to $_ with data: $rest", $witem;
   }
-
-  if(not defined $network) {
-    $network = Irssi::active_server()->{tag};
-  }
-
-  unless ($type || $pattern) {
-    _error "Could not parse command\n" . usage();
-    return;
-  }
-
-  $notes->{lc $network}->{lc $type}->{lc $pattern} = join ' ', @rest;
-  _print "Added $pattern to $network";
 }
 
 sub cmd_notes_del {
-  my ($args, $server, $witem) = @_;
-  my $tmpargs = [ sort {$a =~ /^-/ <=> $b !~ /^-/} split / /, $args ];
-  my @options_list = Irssi::command_parse_options('notes del', join(' ', @$tmpargs));
+  my ($data, $server, $witem) = @_;
+  my ($args, $rest) = Irssi::command_parse_options('notes del', $data);
+  my ($type, $pattern);
 
-  if(!@options_list) {
-    _error "Could not parse arguments\n" . usage();
+  if (any {/nick|mask/i} keys %$args) {
+    _error("Can't specify both -nick and -mask", $witem) && return if $args->{nick} && $args->{mask};
+
+    $type = $args->{nick} ? 'nick' : 'mask';
+    $pattern = fc $args->{$type};
+  }
+
+  my $patt = join('|', @chatnets);
+  my @networks = grep {/$patt/i} keys %$args;
+
+  my $purge = (defined $args->{purge} ? 1 : 0);
+  unless ($purge || ($type && $pattern)) {
+    _error "Could not parse command\n" . usage(), $witem;
     return;
   }
 
-  my @minusargs = grep {/^-/} split / /, $args;
-  my @rest = grep {!/^-/} split / /, $args;
-  my ($network, $type, $pattern, $purge);
-
-  foreach(@minusargs) {
-    s/^-//;
-    if(/nick|mask/i) {
-      $type = $_;
-      $pattern = shift @rest;
-    }
-    elsif(/purge/) {
-      $purge = 1;
-    }
-    else {
-      if(join(' ', @chatnets) =~ /$_/i) {
-        $network = $_;
-      }
-    }
-  }
-
-  unless ($purge || $type || $pattern) {
-    _error "Could not parse command\n" . usage();
+  if ($purge && !@networks) {
+    $notes->clear;
+    _print "Deleted all notes", $witem;
     return;
-  }
-
-  if($purge) {
-    if(defined $network) {
-      delete $notes->{lc $network};
-      _print "Deleted all notes in $network";
-    }
-    else {
-      $notes->clear;
-      _print "Deleted all notes";
-    }
   }
   else {
-    if(not defined $network) {
-      $network = Irssi::active_server()->{tag};
-    }
+    push @networks, fc $server->{tag} if !@networks;
+  }
 
-    if(exists $notes->{lc $network}->{lc $type}->{lc $pattern}) {
-      delete $notes->{lc $network}->{lc $type}->{lc $pattern};
-      _print "Deleted $pattern from $network";
+  for (@networks) {
+    if ($purge) {
+      delete $notes->{$_};
+      _print "Deleted all notes for users on $_", $witem;
+    }
+    elsif ($notes->{$_}{$type}{$pattern}) {
+      delete $notes->{$_}{$type}{$pattern};
+      delete $notes->{$_}{$type} if !keys %{$notes->{$_}{$type}};
+      delete $notes->{$_} if !keys %{$notes->{$_}};
+      _print "Deleted $type $pattern from $_", $witem;
     }
     else {
-      _error "\u$type '$pattern' on '$network' not found";
+      _error "\u$type '$pattern' on '$_' not found", $witem;
     }
   }
 }
 
 sub cmd_notes_list {
-  my ($args, $server, $witem) = @_;
-  my $tmpargs = [ sort {$a =~ /^-/ <=> $b !~ /^-/} split / /, $args ];
-  my @options_list = Irssi::command_parse_options('notes list', join(' ', @$tmpargs));
+  my ($data, $server, $witem) = @_;
+  my ($args, $rest) = Irssi::command_parse_options('notes list', $data);
+  my ($type, $pattern);
 
-  if(!@options_list) {
-    _error "Could not parse arguments\n" . usage();
-    return;
+  if (any {/nick|mask/i} keys %$args) {
+    _error("Can't specify both -nick and -mask", $witem) && return if $args->{nick} && $args->{mask};
+
+    $type = $args->{nick} ? 'nick' : 'mask';
+    $pattern = fc $args->{$type};
   }
 
-  my @minusargs = grep {/^-/} split / /, $args;
-  my @rest = grep {!/^-/} split / /, $args;
-  my ($network, $type, $pattern, $all);
+  my $patt = join('|', @chatnets);
+  my @networks = map {fc} grep {/$patt/i} keys %$args;
+  my $all = !$type && !$pattern;
 
-  foreach(@minusargs) {
-    s/^-//;
-    if(/nick|mask/i) {
-      $type = $_;
-      $pattern = shift @rest;
-    }
-    elsif(/all/) {
-      $all = 1;
-    }
-    else {
-      if(join(' ', @chatnets) =~ /$_/i) {
-        $network = $_;
-      }
-    }
-  }
+  if ($all) {
+    for my $tag (keys %$notes) {
+      next if @networks && !any {/$tag/} @networks;
+      next unless keys %{$notes->{$tag}};
 
-  if(not defined $network) {
-    $network = Irssi::active_server()->{tag};
-  }
-
-  if($all) {
-    foreach my $tag (keys %$notes) {
-      Irssi::active_win()->{active}->print("--- Notes for $tag ---");
+      _print "--- Notes for $tag ---", $witem;
       my $nicks = $notes->{$tag}->{nick};
-      while(my ($nick, $value1) = each %$nicks) {
-        Irssi::active_win()->{active}->print($nick . ": " . $value1);
+      while (my ($nick, $value1) = each %$nicks) {
+        _print "$nick: $value1", $witem;
       }
       my $masks = $notes->{$tag}->{mask};
-      while(my ($hostmask, $value2) = each %$masks) {
-        Irssi::active_win()->{active}->print($hostmask . ": " . $value2);
+      while (my ($hostmask, $value2) = each %$masks) {
+        _print "$hostmask: $value2", $witem;
       }
     }
   }
   else {
-    if(defined $type && defined $pattern) {
-      Irssi::active_win()->{active}->print("--- Note on $network/$pattern ---");
-      Irssi::active_win()->{active}->print($notes->{lc $network}->{lc $type}->{lc $pattern});
+    unless (@networks) {
+      push @networks, fc $server->{tag};
     }
-    else {
-      Irssi::active_win()->{active}->print("--- Notes for $network ---");
-      my $nicks = $notes->{lc $network}->{nick};
-      while(my ($nick, $value1) = each %$nicks) {
-        Irssi::active_win()->{active}->print($nick . ": " . $value1);
+
+    for (@networks) {
+      if ($type && $pattern) {
+        if ($notes->{$_}{$type}{$pattern}) {
+          _print "--- Note on $_/$type/$pattern ---", $witem;
+          _print $notes->{$_}{$type}{$pattern}, $witem;
+        }
+        else {
+          _print "--- Nothing on $_/$type/$pattern ---", $witem;
+        }
       }
-      my $masks = $notes->{lc $network}->{mask};
-      while(my ($hostmask, $value2) = each %$masks) {
-        Irssi::active_win()->{active}->print($hostmask . ": " . $value2);
+      else {
+        return unless keys %{$notes->{$_}};
+  
+        Irssi::active_win()->print("--- Notes for $_ ---");
+        my $nicks = $notes->{$_}{nick};
+        while (my ($nick, $value1) = each %$nicks) {
+          Irssi::active_win()->print($nick . ": " . $value1);
+        }
+        my $masks = $notes->{$_}{mask};
+        while (my ($hostmask, $value2) = each %$masks) {
+          Irssi::active_win()->print($hostmask . ": " . $value2);
+        }
       }
     }
   }
 }
 
 sub usage {
-  return "Usage: %_/notes%_ add [-tag] -nick|-mask pattern <notes>\n" .
-         "       %_/notes%_ del [-tag] -purge|(-nick|-mask pattern)\n" .
-         "       %_/notes%_ list [-tag] -all|(-nick|-mask pattern)";
+  return "Usage: %_/notes%_ add [-tag] -nick|-mask <pattern> <notes>\n" .
+         "       %_/notes%_ del [-tag] [-purge] -nick|-mask <pattern>\n" .
+         "       %_/notes%_ list [-tag] [-nick|-mask <pattern>]";
 }
 
 Irssi::command_bind('notes' => sub {
@@ -261,19 +253,21 @@ Irssi::command_bind('notes' => sub {
   Irssi::command_runsub ('notes', $data, $server, $item ) ;
 });
 
-Irssi::command_bind('notes add', \&cmd_notes_add);
-Irssi::command_bind('notes del', \&cmd_notes_del);
-Irssi::command_bind('notes list', \&cmd_notes_list);
+Irssi::command_bind('notes add', 'cmd_notes_add');
+Irssi::command_bind('notes del', 'cmd_notes_del');
+Irssi::command_bind('notes list', 'cmd_notes_list');
 Irssi::command_bind('notes help', sub { Irssi::active_win()->print(usage()); });
 
-Irssi::command_set_options('notes add', join(' ', @chatnets) . ' nick mask');
-Irssi::command_set_options('notes del', join(' ', @chatnets) . ' purge nick mask');
-Irssi::command_set_options('notes list', join(' ', @chatnets) . ' all nick mask');
+Irssi::command_set_options('notes add', join(' ', @chatnets) . ' +nick +mask');
+Irssi::command_set_options('notes del', join(' ', @chatnets) . ' purge +nick +mask');
+Irssi::command_set_options('notes list', join(' ', @chatnets) . ' +nick +mask');
 
 Irssi::settings_add_str('Notes', 'notes_db', Irssi::get_irssi_dir() . "/notes.db");
+Irssi::settings_add_bool('Notes', 'notes_verbose', 0);
 
+Irssi::signal_add('setup changed' => \&init);
 Irssi::signal_add_first('event 311', \&sig_whois);
-Irssi::expando_create('NOTE', \&expando_note,
+Irssi::expando_create('NOTE', \&expand_note,
                      {'event 311' => 'None' });
 
 init();

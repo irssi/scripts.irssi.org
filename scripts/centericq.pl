@@ -7,6 +7,7 @@ $VERSION = "1.0.0";
     contact     => "joost\@carnique.nl",
     name        => "centericq",
     description => "Staturbar item which indicates how many new messages you have in your centericq",
+    sbitems     => "centericq",
     license     => "Public Domain",
     url         => "http://irssi.org, http://scripts.irssi.org",
 );

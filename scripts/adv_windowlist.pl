@@ -1,13 +1,14 @@
 use strict;
 use warnings;
 
-our $VERSION = '1.3'; # 463402cffae35e5
+our $VERSION = '1.4'; # b46fded611292cb
 our %IRSSI = (
     authors     => 'Nei',
     contact     => 'Nei @ anti@conference.jabber.teamidiot.de',
     url         => "http://anti.teamidiot.de/",
     name        => 'adv_windowlist',
     description => 'Adds a permanent advanced window list on the right or in a status bar.',
+    sbitems     => 'awl_shared',
     license     => 'GNU GPLv2 or later',
    );
 
@@ -78,6 +79,9 @@ our %IRSSI = (
 # /format awl_abbrev_chars <string>
 # * string : Character to use when shortening long names. The second character
 #   will be used if two blocks need to be filled.
+#
+# /format awl_title <string>
+# * string : Text to display in the title string or title bar
 #
 # /format awl_viewer_item_bg <string>
 # * string : Format String specifying the viewer's item background colour
@@ -398,7 +402,19 @@ sub syncLines {
 		my ($item, $get_size_only) = @_;
 
 		my $text = $actString[0];
-		my $pat = defined $text ? '{sb '.ucfirst(setc()).': $*}' : '{sb }';
+		my $title = _get_format(set 'title');
+		if (length $title) {
+		    $title =~ s{\\(.)|(.)}{
+			defined $2 ? quotemeta $2
+			    : $1 eq 'V' ? '\u'
+			    : $1 eq ':' ? quotemeta ':%n'
+			    : $1 =~ /^[uUFQE]$/ ? "\\$1"
+			    : quotemeta "\\$1"
+			}sge;
+		    $title = eval qq{"$title"};
+		    $title .= ' ';
+		}
+		my $pat = defined $text ? "{sb $title\$*}" : '{sb }';
 		$text //= '';
 		$item->default_handler($get_size_only, $pat, $text, 0);
 	    };
@@ -454,6 +470,12 @@ sub awl {
   }
 }
 
+sub _add_map {
+    my ($type, $target, $map) = @_;
+    ($type->{$target}) = sort { length $a <=> length $b || $a cmp $b }
+	$map, exists $type->{$target} ? $type->{$target} : ();
+}
+
 sub get_keymap {
     my ($textDest, undef, $cont_stripped) = @_;
     if ($textDest->{level} == 524288 and $textDest->{target} eq '' and !defined $textDest->{server}) {
@@ -472,32 +494,32 @@ sub get_keymap {
 	    for ($command) {
 		last unless length $map;
 		if (/^change_window (\d+)/i) {
-		    $nummap{$1} = $map;
+		    _add_map(\%nummap, $1, $map);
 		}
-		elsif (/^command window goto (\S+)/i) {
+		elsif (/^(?:command window goto|change_window) (\S+)/i) {
 		    my $window = $1;
 		    if ($window !~ /\D/) {
-			$nummap{$window} = $map;
+			_add_map(\%nummap, $window, $map);
 		    }
 		    elsif (lc $window eq 'active') {
-			$specialmap{_active} = $map;
+			_add_map(\%specialmap, '_active', $map);
 		    }
 		    else {
-			$wnmap{$window} = $map;
+			_add_map(\%wnmap, $window, $map);
 		    }
 		}
 		elsif (/^(?:active_window|command (ack))/i) {
-		    $specialmap{_active} = $map;
+		    _add_map(\%specialmap, '_active', $map);
 		    $viewer{use_ack} = !!$1;
 		}
 		elsif (/^command window last/i) {
-		    $specialmap{_last} = $map;
+		    _add_map(\%specialmap, '_last', $map);
 		}
 		elsif (/^(?:upper_window|command window up)/i) {
-		    $specialmap{_up} = $map;
+		    _add_map(\%specialmap, '_up', $map);
 		}
 		elsif (/^(?:lower_window|command window down)/i) {
-		    $specialmap{_down} = $map;
+		    _add_map(\%specialmap, '_down', $map);
 		}
 		elsif (/^key\s+(\w+)/i) {
 		    $custom_key_map{$1} = $map;
@@ -726,12 +748,16 @@ sub _format_display {
     @ret
 }
 
+sub _get_format {
+    Irssi::current_theme->get_format(__PACKAGE__, @_)
+}
+
 sub _calculate_items {
     my ($wins, $abbrevList) = @_;
 
-    my $display_header = Irssi::current_theme->get_format(__PACKAGE__, set 'display_header');
-    my $name_format = Irssi::current_theme->get_format(__PACKAGE__, set 'name_display');
-    my $abbrev_chars = as_uni(Irssi::current_theme->get_format(__PACKAGE__, set 'abbrev_chars'));
+    my $display_header = _get_format(set 'display_header');
+    my $name_format = _get_format(set 'name_display');
+    my $abbrev_chars = as_uni(_get_format(set 'abbrev_chars'));
 
     my %displays;
 
@@ -767,14 +793,14 @@ sub _calculate_items {
 	$abbrev2 = $abbrev_chars[1];
     }
     for my $win (@$wins) {
-	my $global_hack_alert_tag_header;
+	my $global_tag_header_mode;
 
 	next unless ref $win;
 
 	my $backup_win = Storable::dclone($win);
 	delete $backup_win->{active} unless ref $backup_win->{active};
 
-	$global_hack_alert_tag_header =
+	$global_tag_header_mode =
 	    $display_header && ($last_net // '') ne ($backup_win->{active}{server}{tag} // '');
 
 	if ($win->{data_level} < abs $S{hide_data}
@@ -796,7 +822,7 @@ sub _calculate_items {
 	my $number = $win->{refnum};
 
 	my ($name, $display, $cdisplay);
-	if ($global_hack_alert_tag_header) {
+	if ($global_tag_header_mode) {
 	    $display = $display_header;
 	    $name = as_uni($backup_win->{active}{server}{tag}) // '';
 	    if ($custom_xform) {
@@ -818,7 +844,7 @@ sub _calculate_items {
 		    grep { !/_visible$/ } @display;
 	    }
 	    $display = (grep { length $_ }
-			       map { $displays{$_} //= Irssi::current_theme->get_format(__PACKAGE__, set $_) }
+			       map { $displays{$_} //= _get_format(set $_) }
 				   @display)[0];
 	    $cdisplay = $name_format;
 	    $name = as_uni($win->get_active_name) // '';
@@ -906,7 +932,7 @@ sub _calculate_items {
 	    as_tc($key_ent),
 	    $win);
 
-	if ($global_hack_alert_tag_header) {
+	if ($global_tag_header_mode) {
 	    $last_net = $backup_win->{active}{server}{tag};
 	    redo;
 	}
@@ -917,9 +943,9 @@ sub _calculate_items {
 
 sub _spread_items {
     my $width = [Irssi::windows]->[0]{width} - $sb_base_width - 1;
-    my @separator = Irssi::current_theme->get_format(__PACKAGE__, set 'separator');
+    my @separator = _get_format(set 'separator');
     if ($S{block} >= 0) {
-	my $sep2 = Irssi::current_theme->get_format(__PACKAGE__, set 'separator2');
+	my $sep2 = _get_format(set 'separator2');
 	push @separator, $sep2 if length $sep2 && $sep2 ne $separator[0];
     }
     $separator[0] .= '%n';
@@ -929,7 +955,7 @@ sub _spread_items {
     my $curLine;
     my $curLen = 0;
     if ($S{shared_sbar}) {
-	$curLen += $S{shared_sbar}[0] + 2 + length setc();
+	$curLen += $S{shared_sbar}[0] + 2;
 	$width -= $S{shared_sbar}[2];
     }
     my $mouse_header_check = 0;
@@ -1198,13 +1224,25 @@ sub syncViewer {
 	       });
 	    $viewer{client_env} = 1;
 	}
-	my $separator = Irssi::current_theme->get_format(__PACKAGE__, set 'separator');
+	my $separator = _get_format(set 'separator');
 	my $sepLen = sb_length($separator);
-	my $item_bg = Irssi::current_theme->get_format(__PACKAGE__, set 'viewer_item_bg');
+	my $item_bg = _get_format(set 'viewer_item_bg');
+	my $title = _get_format(set 'title');
+	if (length $title) {
+	    $title =~ s{\\(.)|(.)}{
+		defined $2 ? quotemeta $2
+		    : $1 eq 'V' ? '\U'
+		    : $1 eq ':' ? quotemeta '%N'
+		    : $1 =~ /^[uUFQE]$/ ? "\\$1"
+		    : quotemeta "\\$1"
+		}sge;
+	    $title = eval qq{"$title"};
+	}
 	$str .= _encode_var(redraw => 1) if delete $viewer{fullRedraw};
 	$str .= _encode_var(separator => $separator,
 			    seplen => $sepLen,
 			    itembg => $item_bg,
+			    title => $title,
 			    mouse => $mouse_coords{refnum},
 			    key2 => \%wnmap_exp,
 			    win => \@win_items);
@@ -1377,9 +1415,9 @@ return sub {
     %banned_channels = map { lc1459(to_uni($_)) => undef }
 	split ' ', Irssi::settings_get_str('banned_channels');
 
-    my @sb_base = split /\177/, sb_format_expand("{sb \177}"), 2;
+    my @sb_base = split /\177/, sb_format_expand("{sbstart}{sb \177}{sbend}"), 2;
     $sb_base_width_pre = sb_length($sb_base[0]);
-    $sb_base_width_post = sb_length($sb_base[1]);
+    $sb_base_width_post = max 0, sb_length($sb_base[1])-1;
     $sb_base_width = $sb_base_width_pre + $sb_base_width_post;
 
     if ($print_text_activity && $S{line_shade}) {
@@ -1602,6 +1640,7 @@ Irssi::signal_register({
     set 'separator2'		=> '',
     set 'abbrev_chars'		=> "~\x{301c}",
     set 'viewer_item_bg'	=> sb_format_expand('{sb_background}'),
+    set 'title'			=> '\V'.setc().'\:',
    ]);
 }
 Irssi::settings_add_bool(setc, set 'prefer_name',    0); #
@@ -1976,13 +2015,17 @@ UNITCHECK
   }
 
   sub _header {
-      my $str = uc ::setc();
-      my $space = int( ((abs $vars{block}) - length $str) / (1 + length $str));
+      my $str = $vars{title} // uc ::setc();
+      my $ccs = qr/%(?:X(?:[1-6][0-9A-Z]|7[A-X])|[0-9BCFGIKMNRUWY_])/i;
+      (my $stripstr = $str) =~ s/($ccs)//g;
+      my $space = int( ((abs $vars{block}) - length $stripstr) / (1 + length $stripstr));
       if ($space > 0) {
 	  my $ss = ' ' x $space;
-	  $str = join $ss, '', (split //, $str), '';
+	  my @x = $str =~ /((?:$ccs)*\X(?:(?:$ccs)*$)?)/g;
+	  $str = join $ss, '', @x, '';
       }
-      my $pad = (abs $vars{block}) - length $str;
+      ($stripstr = $str) =~ s/($ccs)//g;
+      my $pad = max 0, (abs $vars{block}) - length $stripstr;
       $str = ' ' x ($pad/2) . $str . ' ' x ($pad/2 + $pad%2);
       $str
   }
@@ -2017,7 +2060,7 @@ UNITCHECK
       my $j = 0;
       my @new_screen;
       my @new_mouse;
-      $new_screen[0][0] = _header() . ' ' x $vars{seplen}
+      $new_screen[0][0] = _header() #. ' ' x $vars{seplen}
 	  if $show_title_bar;
       unless ($nrows > $ncols) { # line layout
 	  ++$j if $show_title_bar;
@@ -2393,6 +2436,11 @@ UNITCHECK
 
 # Changelog
 # =========
+# 1.4
+# - fix line wrapping in some themes, reported by justanotherbody
+# - fix named window key detection, reported by madduck
+# - make title (in viewer and shared_sbar) configurable
+#
 # 1.3 - workaround for irssi issue #572
 # 1.2 - new format to choose abbreviation character
 # 1.1 - infinite loop on shortening certain window names reported by Kalan

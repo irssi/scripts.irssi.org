@@ -34,6 +34,7 @@ $VERSION = "0.1b";
  contact => "bcow\@iki.fi",
  name => "ircgmessagenotify",
  description => "Tarkistelee irc-galleria.net:iä ja sanoo kun sinulle on uusia viestejä.",
+ sbitems => "ircgcomments",
  license => "GPLv2",
  url => "http://www.verkonpaino.net/",
  changed => "21.01.2004 23:55:00 EET"

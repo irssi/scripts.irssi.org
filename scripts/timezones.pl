@@ -22,6 +22,7 @@ $VERSION = "0.2";
     contact     => 'vague!#irssi@freenode on irc',
     name        => "timezones",
     description => "timezones displayer",
+    sbitems     => "timezones",
     license     => "Public Domain",
     url         => "http://gplus.to/vague",
     changed     => "Tue 24 November 16:00:00 CET 2015",

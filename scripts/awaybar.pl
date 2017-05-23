@@ -12,6 +12,7 @@ $VERSION = "0.1.1";
     contact     => 'http://shine.eu.org/',
     name        => 'awaybar',
     description => 'Provides a menubar item with away message',
+    sbitems     => 'awaybar',
     license     => 'Public domain',
 );
 

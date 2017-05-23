@@ -22,6 +22,7 @@ $VERSION = '1.3';
 	contact		=> 'tijmen.ruizendaal@gmail.com',
 	name		=> 'BitlBee_join_notice',
 	description 	=> '1. Adds an item to the status bar wich shows [joined: <nicks>] when someone is joining &bitlbee. 2. Shows join messages in the query. (For bitlbee v3.0+)',
+	sbitems 	=> 'join_notice',
 	license 	=> 'GPLv2',
 	url		=> 'http://the-timing.nl/stuff/irssi-bitlbee',
 	changed 	=> '2010-08-10'

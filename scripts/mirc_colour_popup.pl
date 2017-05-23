@@ -21,6 +21,7 @@ $VERSION = "1.1"; # 6c78efbfcb07c71
     contact     => "michael.kowalchuk\@gmail.com",
     name        => "mirc_colour_popup",
     description => "Shows a mIRC-style colour popup when you hit ^C.",
+    sbitems     => "colours",
     license     => "Public Domain",
 );
 

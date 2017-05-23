@@ -28,16 +28,18 @@
 
 
 use Irssi;
+use Irssi::TextUI;
 use strict;
 
 use vars qw($VERSION %IRSSI);
 
-$VERSION="0.01";
+$VERSION="0.02";
 %IRSSI = (
 	authors=> 'Demonen',
 	contact=> 'demmydemon@gmail.com',
 	name=> 'scroller',
 	description=> 'Scrolls specified text on the status bar',
+	sbitems=> 'scroller',
 	license=> 'Public Domain',
 );
 
@@ -84,7 +86,7 @@ sub scrollerStart() {
     Irssi::settings_add_int('misc', 'scrollerSpeed', 200);
     $timeout = Irssi::timeout_add(Irssi::settings_get_int('scrollerSpeed'), 'scrollerTimeout' , undef);
     Irssi::statusbar_item_register('scroller', '$0', 'scrollerStatusbar');
-    Irssi::command_bind scrollthis => \&scrollthis;
+	#Irssi::command_bind scrollthis => \&scrollthis;
     Irssi::signal_add('setup changed', 'scrollerUpdate');
     &scrollerUpdate();
 }

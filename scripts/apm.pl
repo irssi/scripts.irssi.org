@@ -9,6 +9,7 @@ $VERSION = "0.4";
     contact     => "formorer\@formorer.de",
     name        => "apm",
     description => "Shows your battery status in your Statusbar",
+    sbitems     => "power",
     license     => "GNU Public License",
     url         => "http://www.formorer.de/code",
 );

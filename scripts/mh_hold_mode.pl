@@ -1,8 +1,8 @@
 ##############################################################################
 #
-# mh_hold_mode.pl v1.07 (20160510)
+# mh_hold_mode.pl v1.08 (20170424)
 #
-# Copyright (c) 2007, 2015, 2016  Michael Hansen
+# Copyright (c) 2007, 2015-2017  Michael Hansen
 #
 # Permission to use, copy, modify, and distribute this software
 # for any purpose with or without fee is hereby granted, provided
@@ -82,17 +82,24 @@
 #
 # history:
 #
+#	v1.08 (20170424)
+#		added 'sbitems' to irssi header for better scriptassist.pl support (github issue #1)
+#
 #	v1.07 (20160510)
 #		corrected typo in instructions
 #		added space to old-style more so it looks better
+#
 #	v1.06 (20160503)
 #		fixed call to missing sub
+#
 #	v1.05 (20160211)
 #		moved default settings from hardcoded to irssi settings _default_hold_mode and _default_scroll_always
+#
 #	v1.04 (20160126)
 #		added mh_hold_mode_more_oldstyle and supporting code
 #		added namespace to MSGLEVEL
 #		code cleanup
+#
 #	v1.03 (20151226)
 #		now using 'key send_line' instead of 'gui key pressed'
 #		added /help
@@ -100,12 +107,16 @@
 #		code cleanup
 #		added changed field to irssi header
 #		changed url
+#
 #	v1.02 (20151210)
 #		now accepts both 10 and 13 as keycode for enter, required to work in upcoming irssi
+#
 #	v1.01 (20151204)
 #		nicer (imho) mh_sbmore
+#
 #	v1.00 (20151201)
 #		cleanup and re-release, this have been in active use since 2007 without any issues
+#
 #	v0.12 (unknown 2007)
 #		added scroll_always option: /HOLD_MODE scroll_always [on|off|toggle]
 #		Defaults to always scroll on, even if the line is not empty when you
@@ -127,7 +138,7 @@ use strict;
 use Irssi 20100403;
 use Irssi::TextUI;
 
-our $VERSION = '1.07';
+our $VERSION = '1.08';
 our %IRSSI   =
 (
 	'name'        => 'mh_hold_mode',
@@ -136,7 +147,8 @@ our %IRSSI   =
 	'authors'     => 'Michael Hansen',
 	'contact'     => 'mh on IRCnet #help',
 	'url'         => 'http://scripts.irssi.org / https://github.com/mh-source/irssi-scripts',
-	'changed'     => 'Tue May 10 19:09:32 CEST 2016',
+	'changed'     => 'Mon Apr 24 10:32:25 CEST 2017',
+	'sbitems'     => 'mh_sbmore',
 );
 
 ##############################################################################

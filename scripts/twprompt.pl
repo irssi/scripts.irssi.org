@@ -32,6 +32,7 @@ $VERSION = '1.00';
    contact	=> 'jengelbr@yahoo.com',
    name	        => 'twprompt.pl',
    description	=> 'BitchX\'s CrackRock3 animated prompt bar.',
+   sbitems      => 'twprompt',
    license	=> 'Public Domain',
    changed	=> 'Wed Sep 29 02:58:28 CDT 2004',
    url		=> 'http://irssi.darktalker.net'."\n",

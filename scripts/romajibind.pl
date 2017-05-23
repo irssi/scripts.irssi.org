@@ -33,6 +33,7 @@ $VERSION = "1.0b";
     contact	=> 'v0rbiz@yahoo.com',
     name	=> 'romajibind',
     description	=> 'Dynamic romaji binds',
+    sbitems     => 'ro1_sb',
     license	=> 'BSD 2-clause',
     url		=> 'http://irssi.org/scripts/'
 );

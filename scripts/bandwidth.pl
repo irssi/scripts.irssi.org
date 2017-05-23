@@ -27,6 +27,7 @@ $VERSION = "1.0";
 	contact     => "riku.voipio\@iki.fi",
 	name        => "bandwidth",
 	description => "shows bandwidth usage in statusbar",
+	sbitems     => "stats",
         license     => "GPLv2",
         url         => "http://nchip.ukkosenjyly.mine.nu/irssiscripts/",
     );

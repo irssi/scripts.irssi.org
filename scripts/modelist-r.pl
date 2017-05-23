@@ -57,6 +57,7 @@ $VERSION = '0.8.0-rc4';
    'name'         => 'modelist-r',
    'description'  => 'Cache of invites, ban exceptions and reops in channel. Script commands: '.
                      '/si, /se, /sr, /unexcept, /uninvite, /unreop (version only for ircd >= 2.11.0).',
+   'sbitems'      => 'modelist',
    'license'      => 'GNU GPL v2',
    'modules'      => '',
    'url'          => 'http://derwan.irssi.pl',
