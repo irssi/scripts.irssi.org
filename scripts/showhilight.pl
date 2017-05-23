@@ -1,11 +1,11 @@
 # Print hilighted messages with MSGLEVEL_PUBLIC  to active window 
-# for irssi 0.7.99 by Pawe³ 'Styx' Chuchma³a based on hilightwin.pl by Timo Sirainen
+# for irssi 0.7.99 by PaweÅ‚ 'Styx' ChuchmaÅ‚a based on hilightwin.pl by Timo Sirainen
 use strict;
 use Irssi;
 use vars qw($VERSION %IRSSI); 
-$VERSION = "0.1";
+$VERSION = "0.2";
 %IRSSI = (
-        authors         => "Pawe³ \'Styx\' Chuchma³a",
+        authors         => "PaweÅ‚ \'Styx\' ChuchmaÅ‚a",
 	contact         => "styx\@irc.pl",
 	name            => "showhilight",
 	description     => "Show hilight messages in active window",
@@ -22,6 +22,7 @@ sub sig_printtext {
   if (($dest->{level} & MSGLEVEL_HILIGHT) && ($dest->{level} & MSGLEVEL_PUBLIC) && 
        ($window->{refnum} != $dest->{window}->{refnum}) && ($dest->{level} & MSGLEVEL_NOHILIGHT) == 0) {
 
+    $text =~ s/%/%%/g;
     $text = $dest->{target}.":%K[".Irssi::settings_get_str('hilight_color').$dest->{window}->{refnum}."%K]:".$text;
 
     $window->print($text, MSGLEVEL_CLIENTCRAP);
