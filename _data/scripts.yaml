@@ -1863,10 +1863,10 @@
   description: 'Switch to the window with the given name or item'
   filename: go2.pl
   license: 'Public Domain'
-  modified: '2014-05-27 21:08:34'
+  modified: '2017-05-02 11:42:35'
   name: go2
   url: http://genericorp.net/~count/irssi/go
-  version: '1.0'
+  version: '1.1'
 -
   authors: 'Oddbjørn Kvalsund'
   commands: google
