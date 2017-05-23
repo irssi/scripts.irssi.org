@@ -3,7 +3,7 @@ use vars qw($VERSION %IRSSI);
 use Irssi;
 use Irssi::TextUI;
 
-$VERSION = '1.0';
+$VERSION = '1.1';
 %IRSSI = (
     authors     => 'cxreg',
     contact     => 'cxreg@pobox.com',
@@ -11,7 +11,7 @@ $VERSION = '1.0';
     description => 'Switch to the window with the given name or item',
     license     => 'Public Domain',
     url         => 'http://genericorp.net/~count/irssi/go',
-    changed     => '2008-02-22',
+    changed     => '2017-05-02',
 );
 
 # Tab complete (0.8.12+)
@@ -22,13 +22,16 @@ sub signal_complete_go {
     my $k = Irssi::parse_special('$k');
     return unless ( $linestart =~ /^\Q${k}\Ego/i );
 
+    # before we call the go command, remove the input, or else scripts like
+    # per_window_prompt.pl will save the /go call, which we don't want.
+    Irssi::gui_input_set('');
+
     # call the go command
     $window->command("go $word");
 
     # we've come back from the go command and cleaned up the command line,
-    # remove previous input and finish up
+    # now finish up
     @$complist = ();
-    Irssi::gui_input_set('');
     Irssi::signal_stop();
 }
 
