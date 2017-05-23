@@ -4328,14 +4328,14 @@
   name: shorturl.pl
   version: '20090904'
 -
-  authors: "Pawe³ 'Styx' Chuchma³a"
+  authors: "Paweł 'Styx' Chuchmała"
   contact: styx@irc.pl
   description: 'Show hilight messages in active window'
   filename: showhilight.pl
   license: 'GNU GPLv2'
-  modified: '2014-10-24 23:01:30'
+  modified: '2017-05-23 10:54:02'
   name: showhilight
-  version: '0.1'
+  version: '0.2'
 -
   authors: 'Michiel v Vaardegem'
   contact: michielv@zeelandnet.nl
