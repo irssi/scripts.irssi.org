@@ -1,4 +1,4 @@
-## mkshorterlink.pl -- Irssi interface for makeashorterlink.com
+## mkshorterlink.pl -- Irssi interface for tinyurl.com
 ## (C) 2002 Gergely Nagy <algernon@bonehunter.rulez.org>
 ##
 ## Released under the GPLv2.
@@ -8,36 +8,37 @@
 ## 0.2 -- Added support for ignoring URLs matching certain regexps.
 ##        (Thanks to Ganneff for the idea)
 ## 0.3 -- Added help messages.
+## 0.4 -- tinyurl.com
 
+use strict;
 use Irssi qw();
 use LWP::UserAgent;
-use strict;
 use vars qw($VERSION %IRSSI);
 
+$VERSION='0.4';
 %IRSSI = (
 	  'authors'	=> 'Gergely Nagy',
 	  'contact'	=> 'algernon\@bonehunter.rulez.org',
-	  'name'	=> 'makeashorterlink.com interface',
-	  'description'	=> 'Automatically filters all http:// links through makeashorterlink.com',
+	  'name'	=> 'makeashorterlink',
+	  'description'	=> 'Automatically filters all http:// links through tinyurl.com',
 	  'license'	=> 'GPL',
-	  'url'		=> 'ftp://bonehunter.rulez.org/pub/irssi/mkshorterlink.pl',
-	  'changed'	=> '2002-12-20'
+	  'changed'	=> '2017-05-28'
 	 );
 
 my %noshort;
 my %help = (
 	    "mkshorterlink" =>
 	      "mkshorterlink is an Irssi script that filters all " .
-	      "http:// links through makeshorterlink.com. " .
+	      "http:// links through tinyurl.com. " .
 	      "Available commands are: mkshorter, mkunshor, " .
 	      "mkununshort, and mkunshortlist.",
 
-	    "mkshort" => "MKSHORT <text>\n" .
-	      "Filters the URLs in <text> through makeashorterlink.com.",
+	    "mkshorter" => "MKSHORTER <text>\n" .
+	      "Filters the URLs in <text> through tinyurl.com.",
 	    
 	    "mkunshort" => "MKUNSHORT <regexps>\n" .
 	      "All URLs matching any of the listed <regexps> will be " .
-	      "ignored, and not filtered through makeashorterlink.com.",
+	      "ignored, and not filtered through tinyurl.com.",
 
 	    "mkununshort" => "MKUNUNSHORT <regexp>\n" .
 	      "Reverses the effect of MKUNSHORT.",
@@ -64,9 +65,10 @@ sub makeshorter {
 				      keep_alive => 0,
 				      timeout => 10,
 				      agent => '');
-	my $response = $ua->post ("http://makeashorterlink.com/index.php",
+	my $response = $ua->post ("http://tinyurl.com/create.php",
 				  ['url' => "$msg"]);
-	if ($response->content =~ /Your shorter link is: <a href=\"([^\"]+)\"/) {
+
+	if ($response->decoded_content =~ m#\[<a href="(http://tinyurl\.com.+?)"#) {
 		return $1;
 	} else {
 		return $msg;
@@ -90,7 +92,8 @@ sub mkshorter {
 		{
 			$t=~s/$1//;
 		}
-		$msg =~ s/$t/&makeshorter($t)/e;
+
+		$msg = makeshorter($t);
 	}
 	return $msg;
 }
@@ -98,7 +101,7 @@ sub mkshorter {
 sub cmd_mkshorter {
 	my ($msg, undef, $channel) = @_;
 	my $public = 0;
-	
+
 	if ($msg =~ /^-p */)
 	{
 		$public = 1;
