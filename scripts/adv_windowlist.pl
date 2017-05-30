@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-our $VERSION = '1.4'; # b46fded611292cb
+our $VERSION = '1.5'; # 5df597ac461465e
 our %IRSSI = (
     authors     => 'Nei',
     contact     => 'Nei @ anti@conference.jabber.teamidiot.de',
@@ -942,7 +942,7 @@ sub _calculate_items {
 }
 
 sub _spread_items {
-    my $width = [Irssi::windows]->[0]{width} - $sb_base_width - 1;
+    my $width = $screenWidth - $sb_base_width - 1;
     my @separator = _get_format(set 'separator');
     if ($S{block} >= 0) {
 	my $sep2 = _get_format(set 'separator2');
@@ -2436,6 +2436,8 @@ UNITCHECK
 
 # Changelog
 # =========
+# 1.5 - improve compat. with sideways splits
+#
 # 1.4
 # - fix line wrapping in some themes, reported by justanotherbody
 # - fix named window key detection, reported by madduck
