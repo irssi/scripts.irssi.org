@@ -23,7 +23,7 @@ use Text::ParseWords;
 use IO::File;
 use vars qw($VERSION %IRSSI);
 
-$VERSION = '1.0+';
+$VERSION = '1.1';
 %IRSSI = (
 	authors     => 'Wouter Coekaerts',
 	contact     => 'wouter@coekaerts.be',
