@@ -9,10 +9,10 @@
   default_package: adv_windowlist
   description: 'Adds a permanent advanced window list on the right or in a status bar.'
   license: 'GNU GPLv2 or later'
-  modified: '2017-04-07 16:34:31'
+  modified: '2017-05-12 10:45:31'
   modules:
     - Text::CharWidth
   name: adv_windowlist
   sbitems: awl_shared
   url: http://anti.teamidiot.de/
-  version: '1.4'
+  version: '1.5'
