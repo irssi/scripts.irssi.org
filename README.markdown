@@ -222,7 +222,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                         intjoin ](Test/intjoin/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
 [                      invitejoin ](Test/invitejoin/)|  ✔   |  ✔   |  ✔   | 13   |  ✔   | (c)
 [                        ipupdate ](Test/ipupdate/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                           iquiz ](Test/iquiz/)|  ✔   |  ✔   |  ✔   |104   |  ✔   
+[                           iquiz ](Test/iquiz/)|  ✔   |  ✔   |  ✔   |104   |  ✔   | (c)
 [                        iraident ](Test/iraident/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
 [                       irc_chess ](Test/irc_chess/)|  ✘   |  ✔   |  ✔   |  8   |  ☡   | (c)
 [                     irccomplete ](Test/irccomplete/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -463,7 +463,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                       tracknick ](Test/tracknick/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                           track ](Test/track/)|  ✔   |  ✔   |  ✔   | 36   |  ✔   | (c)
 [                        translit ](Test/translit/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                         trigger ](Test/trigger/)|  ✔   |  ✔   |  ✔   | 16   |  ✔   | (c)
+[                         trigger ](Test/trigger/)|  ✔   |  ✔   |  ✔   | 16   |  ✔   
 [                        trustweb ](Test/trustweb/)|  ✔   |  ✔   |  ✔   | 20   |  ✔   | (c)
 [                         tvmusor ](Test/tvmusor/)|  ✔   |  ✘   |  ✔   | 17   |  ☡   | (c)
 [                   twitter_theme ](Test/twitter_theme/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
@@ -519,4 +519,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                     xmpp-notify ](Test/xmpp-notify/)|  ✔   |  ✔   |  ✔   | 21   |  ✔   | (c)
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 
-f760e75019e1c5ee9fb506129ef15b4972659c90 | 908
+f97f66fd04ee56e4da1ce44e541a43d8986e06ef | 910
