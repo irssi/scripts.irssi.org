@@ -548,18 +548,6 @@
   url: http://www.n0-life.com
   version: 0.2e
 -
-  authors: "Stefan 'tommie' Tomanek"
-  commands: babelirc
-  contact: stefan@pico.ruhr.de
-  description: 'translates your messages via Babelfish'
-  filename: babelirc.pl
-  license: GPLv2
-  modified: '2008-05-17 17:39:09'
-  modules: 'Unicode::String WWW::Babelfish'
-  name: babelirc
-  url: http://irssi.org/scripts/
-  version: '2003020801'
--
   authors: "Jan 'fissie' Sembera"
   contact: fis@ji.cz
   description: 'Configurable badword kickbanning script'
