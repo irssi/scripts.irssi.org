@@ -2960,18 +2960,6 @@
   url: http://derwan.irssi.pl
   version: '0.9'
 -
-  authors: 'Gergely Nagy'
-  commands: 'mkshorter mkunshort mkunshortlist mkununshort'
-  contact: algernon\@bonehunter.rulez.org
-  description: 'Automatically filters all http:// links through makeashorterlink.com'
-  filename: mkshorterlink.pl
-  license: GPL
-  modified: '2014-10-19 11:54:16'
-  modules: LWP::UserAgent
-  name: 'makeashorterlink.com interface'
-  url: ftp://bonehunter.rulez.org/pub/irssi/mkshorterlink.pl
-  version: '0.3'
--
   authors: 'Carsten Otto'
   commands: mlbw
   contact: c-otto@gmx.de
