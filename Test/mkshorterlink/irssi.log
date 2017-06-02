@@ -1,4 +1,0 @@
-* readline() on closed filehandle CONF at mkshorterlink.pl line 167.
-* 
-* -!- mkshorterlink: Loaded 0 ignore-regexps from ../unshortlist.
-* -!- Irssi: Loaded script mkshorterlink
