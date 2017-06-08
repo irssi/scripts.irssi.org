@@ -1089,10 +1089,10 @@
   description: 'Colourise mention of nicks in the message body.'
   filename: colorize_nicks.pl
   license: 'GNU GPLv2 or later'
-  modified: '2015-11-16 19:32:11'
+  modified: '2017-06-06 19:12:52'
   name: colorize_nicks
   url: http://anti.teamidiot.de/
-  version: 0.3.6
+  version: 0.3.7
 -
   authors: 'Gabor Nyeki'
   contact: bigmac@vim.hu
