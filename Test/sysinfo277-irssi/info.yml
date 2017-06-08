@@ -2,13 +2,14 @@
 -
   authors: 'David Rudie'
   bugs: 'Probably some if it cannot read /proc.'
-  changed: 'Mon Sep 01 04:20 PDT 2003'
+  changed: 2017-06-08
   commands:
     - sysinfo
   contact: david@inexistent.com
   default_package: sysinfo277_irssi
   description: 'Cross-platform/architecture system information script.'
   license: BSD
+  modified: '2017-06-08 16:29:44'
   name: SysInfo
   url: http://www.inexistent.com/
-  version: '2.77'
+  version: '2.78'
