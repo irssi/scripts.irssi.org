@@ -27,6 +27,7 @@ additional_system_deps:
   - libtext-glob-perl
   - libterm-readline-perl-perl
   - gir1.2-notify-0.7 # for desktop-notify
+  - xosd-bin # osd
 cpan:
   broken_tests:
     - Geo::Weather
@@ -47,7 +48,6 @@ whitelist:
   - log2ansi
   - oidenty
   - 'on'
-  - osd
   - stocks
   - tvmusor
   - xetra

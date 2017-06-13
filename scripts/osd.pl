@@ -3,7 +3,7 @@ use IO::Handle;
 use vars qw($VERSION %IRSSI);
 
 use Irssi;
-$VERSION = '0.3.3';
+$VERSION = '0.3.4';
 %IRSSI = (
 	authors     => 'Jeroen Coekaerts, Koenraad Heijlen',
 	contact     => 'vipie@ulyssis.org, jeroen@coekaerts.be',
@@ -11,7 +11,7 @@ $VERSION = '0.3.3';
 	description => 'An OnScreenDisplay (osd) it show\'s who is talking to you, on what IRC Network.',
 	license     => 'BSD',
 	url         => 'http://vipie.studentenweb.org/dev/irssi/',
-	changed     => '2004-01-09'
+	changed     => '2017-06-12'
 );
 
 #--------------------------------------------------------------------
@@ -201,7 +201,8 @@ sub pipe_open {
 		}
 	}
 	
-	$command = "|DISPLAY=".Irssi::settings_get_str('osd_display') .
+	$command = 
+		"env DISPLAY=".Irssi::settings_get_str('osd_display') .
 		" osd_cat $place " .
 		" --color=".Irssi::settings_get_str('osd_color').
 		" --delay=".Irssi::settings_get_str('osd_delay').
