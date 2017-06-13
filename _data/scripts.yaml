@@ -3597,10 +3597,10 @@
   description: "An OnScreenDisplay (osd) it show's who is talking to you, on what IRC Network."
   filename: osd.pl
   license: BSD
-  modified: '2014-10-19 11:54:16'
+  modified: '2017-06-12 23:56:49'
   name: osd
   url: http://vipie.studentenweb.org/dev/irssi/
-  version: 0.3.3
+  version: 0.3.4
 -
   authors: ''
   commands: ownage
