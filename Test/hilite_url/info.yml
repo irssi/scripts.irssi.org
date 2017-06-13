@@ -5,7 +5,6 @@
   default_package: hilite_url
   description: 'Simple script that highlights URL'
   license: GPL
-  modified: '2017-01-12 12:37:37'
   name: 'hilite url'
   url: http://senseless.codedump.ch
   version: '0.1'

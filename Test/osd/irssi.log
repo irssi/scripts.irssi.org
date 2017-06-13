@@ -1,4 +1,2 @@
-* Can't exec "osd_cat": No such file or directory at osd.pl line 182.
-* 
-* -!- Irssi: Error in script osd:
-* The OSD program can't be started, check if you have osd_cat installed AND in your path. at osd.pl line 182.
+* -!- Irssi: Use /help osd for more information.
+* -!- Irssi: Loaded script osd
