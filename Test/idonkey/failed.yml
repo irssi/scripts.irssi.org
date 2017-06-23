@@ -1,0 +1,7 @@
+---
+-
+  failed: 1
+  modules:
+    - HTML::Entities
+    - LWP::UserAgent
+  name: idonkey

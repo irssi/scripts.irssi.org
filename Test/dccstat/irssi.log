@@ -1,4 +1,4 @@
-* Scalar value @results[$displaying] better written as $results[$displaying] at dccstat.pl line 400.
+* Scalar value @results[...] better written as $results[...] at dccstat.pl line 400.
 * 
 * Use of uninitialized value in subroutine entry at dccstat.pl line 479.
 * 

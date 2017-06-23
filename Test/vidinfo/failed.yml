@@ -1,0 +1,12 @@
+---
+-
+  failed: 1
+  modules:
+    - HTML::Entities
+    - JSON::Parse
+    - LWP::UserAgent
+    - Regexp::Common
+    - URI
+    - URI::QueryParam
+    - XML::Simple
+  name: vidinfo

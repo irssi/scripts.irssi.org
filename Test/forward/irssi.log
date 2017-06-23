@@ -1,6 +1,6 @@
-* Scalar value @args[0] better written as $args[0] at forward.pl line 111.
+* Scalar value @args[0] better written as $args[0] at forward.pl line 109.
 * 
-* Scalar value @args[0] better written as $args[0] at forward.pl line 115.
+* Scalar value @args[0] better written as $args[0] at forward.pl line 114.
 * 
 * >> Forward 2003071904 loaded: /forward help for help
 * -!- Irssi: Loaded script forward

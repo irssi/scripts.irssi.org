@@ -1,12 +1,4 @@
 * "my" variable $password masks earlier declaration in same scope at idonkey.pl line 146.
 * 
-* defined(@array) is deprecated at idonkey.pl line 520.
-* 
-* 	(Maybe you should just omit the defined()?)
-* 
-* Useless use of push with no values at idonkey.pl line 819.
-* 
-* Useless use of concatenation (.) or string in void context at idonkey.pl line 819.
-* 
-* >> iDonkey 2004051601 loaded, /idonkey help
-* -!- Irssi: Loaded script idonkey
+* -!- Irssi: Error in script idonkey:
+* Can't use 'defined(@array)' (Maybe you should just omit the defined()?) at idonkey.pl line 520.

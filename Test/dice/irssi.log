@@ -1,3 +1,3 @@
-* Illegal character in prototype for Irssi::Script::dice::question : $server,$msg,$nick,$target at dice.pl line 59.
+* Illegal character in prototype for Irssi::Script::dice::question : $server, $msg, $nick, $target at dice.pl line 59.
 * 
 * -!- Irssi: Loaded script dice

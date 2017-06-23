@@ -1,4 +1,4 @@
-* Too late to run INIT block at /usr/lib/perl5/Glib/Object/Introspection.pm line 258.
+* Too late to run INIT block at .../extlib/lib/perl5/x86_64-linux-thread-multi/Glib/Object/Introspection.pm line 257.
 * 
 * "my" variable $msg masks earlier declaration in same scope at desktop-notify.pl line 77.
 * 

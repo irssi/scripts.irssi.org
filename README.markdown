@@ -1,7 +1,7 @@
 This branch stores the travis-ci results for irssi/scripts.irssi.org
 See [the testing read-me](../master/_testing/) for details.
 ## Irssi Scripts Test Report
-                                 | LOAD | HDR | CRIT | SCORE | PASS
+\                                | LOAD | HDR | CRIT | SCORE | PASS
 ----: | :--: | :-: | :--: | ----: | :---:
 [                          8-ball ](Test/8-ball/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   
 [                          accent ](Test/accent/)|  ✔   |  ✔   |  ✔   | 11   |  ✔   
@@ -149,7 +149,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                           eliza ](Test/eliza/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                      emaildb1.0 ](Test/emaildb1.0/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   
 [                      email_msgs ](Test/email_msgs/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                  email_privmsgs ](Test/email_privmsgs/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[                  email_privmsgs ](Test/email_privmsgs/)|  ✘   |  ✔   |  ✔   |  3   |  ☡   
 [                             emo ](Test/emo/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                          events ](Test/events/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                      exec_clean ](Test/exec_clean/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
@@ -188,7 +188,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                        grepbans ](Test/grepbans/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   
 [                            grep ](Test/grep/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                             gsi ](Test/gsi/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   
-[                          gtrans ](Test/gtrans/)|  ✔   |  ✔   |  ✔   | 10   |  ✔   
+[                          gtrans ](Test/gtrans/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   
 [                            guts ](Test/guts/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                         hddtemp ](Test/hddtemp/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   
 [                           hello ](Test/hello/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
@@ -210,7 +210,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                    identify-md5 ](Test/identify-md5/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                           ident ](Test/ident/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                        idletime ](Test/idletime/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   
-[                         idonkey ](Test/idonkey/)|  ✔   |  ✔   |  ✔   | 13   |  ✔   
+[                         idonkey ](Test/idonkey/)|  ✘   |  ✔   |  ✔   | 13   |  ☡   
 [                    ido_switcher ](Test/ido_switcher/)|  ✔   |  ✔   |  ✔   |  1   |  ✔   
 [                      ignore_log ](Test/ignore_log/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   
 [                        ignoreoc ](Test/ignoreoc/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
@@ -263,7 +263,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                        listsort ](Test/listsort/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
 [                         loadavg ](Test/loadavg/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                        localize ](Test/localize/)|  ✔   |  ✔   |  ✔   | 25   |  ✔   
-[                        log2ansi ](Test/log2ansi/)|  ✘   |  ✘   |  ✔   | 15   |  ☡   
+[                        log2ansi ](Test/log2ansi/)|  ✘   |  ✔   |  ✔   | 10   |  ☡   
 [                logcompress_perl ](Test/logcompress_perl/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
 [                     logcompress ](Test/logcompress/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                       logresume ](Test/logresume/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
@@ -487,7 +487,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                           users ](Test/users/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                    version-stat ](Test/version-stat/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   
 [                        verstats ](Test/verstats/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                         vidinfo ](Test/vidinfo/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   
+[                         vidinfo ](Test/vidinfo/)|  ✘   |  ✔   |  ✔   |  4   |  ☡   
 [                          vowels ](Test/vowels/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                              wa ](Test/wa/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   
 [                        warnkick ](Test/warnkick/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
@@ -518,4 +518,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                     xmpp-notify ](Test/xmpp-notify/)|  ✔   |  ✔   |  ✔   | 21   |  ✔   
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   
 
-3f378084e7eb255157f6ae2d8ed96dd9d414626e | 919
+258ab779494848ea23a4d01588f5debf7aa16bbf | 920

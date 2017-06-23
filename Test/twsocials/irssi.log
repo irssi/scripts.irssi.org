@@ -180,17 +180,17 @@
 * 
 * "my" variable $text masks earlier declaration in same scope at twsocials.pl line 629.
 * 
-* Scalar value @mirc_color_name[$cx] better written as $mirc_color_name[$cx] at twsocials.pl line 631.
+* Scalar value @mirc_color_name[...] better written as $mirc_color_name[...] at twsocials.pl line 631.
 * 
-* Scalar value @colname[$cx] better written as $colname[$cx] at twsocials.pl line 631.
+* Scalar value @colname[...] better written as $colname[...] at twsocials.pl line 631.
 * 
-* Scalar value @mirc_color_arr[$cx] better written as $mirc_color_arr[$cx] at twsocials.pl line 636.
+* Scalar value @mirc_color_arr[...] better written as $mirc_color_arr[...] at twsocials.pl line 636.
 * 
-* Scalar value @mirc_color_name[$cx] better written as $mirc_color_name[$cx] at twsocials.pl line 661.
+* Scalar value @mirc_color_name[...] better written as $mirc_color_name[...] at twsocials.pl line 661.
 * 
-* Scalar value @colname[$cx] better written as $colname[$cx] at twsocials.pl line 661.
+* Scalar value @colname[...] better written as $colname[...] at twsocials.pl line 661.
 * 
-* Scalar value @mirc_color_arr[$cx] better written as $mirc_color_arr[$cx] at twsocials.pl line 666.
+* Scalar value @mirc_color_arr[...] better written as $mirc_color_arr[...] at twsocials.pl line 666.
 * 
 * Scalar value @data_arr[0] better written as $data_arr[0] at twsocials.pl line 898.
 * 
@@ -198,9 +198,9 @@
 * 
 * Scalar value @data_arr[0] better written as $data_arr[0] at twsocials.pl line 902.
 * 
-* Scalar value @mirc_color_name[$cx] better written as $mirc_color_name[$cx] at twsocials.pl line 943.
+* Scalar value @mirc_color_name[...] better written as $mirc_color_name[...] at twsocials.pl line 943.
 * 
-* Scalar value @mirc_color_arr[$cx] better written as $mirc_color_arr[$cx] at twsocials.pl line 944.
+* Scalar value @mirc_color_arr[...] better written as $mirc_color_arr[...] at twsocials.pl line 944.
 * 
 * Scalar value @data_arr[0] better written as $data_arr[0] at twsocials.pl line 1049.
 * 
@@ -208,7 +208,7 @@
 * 
 * Scalar value @data_arr[1] better written as $data_arr[1] at twsocials.pl line 1064.
 * 
-* Scalar value @socline_arr[$cx] better written as $socline_arr[$cx] at twsocials.pl line 1126.
+* Scalar value @socline_arr[...] better written as $socline_arr[...] at twsocials.pl line 1126.
 * 
 * closedir() attempted on invalid dirhandle DIR at twsocials.pl line 1087.
 * 

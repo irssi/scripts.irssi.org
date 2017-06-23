@@ -1,3 +1,5 @@
+* Useless use of greediness modifier '?' in regex; marked by <-- HERE in m/^([0-9]{8}? <-- HERE )$/ at gsi.pl line 49.
+* 
 * -!- Irssi: Set gsi_debug ON for debugging output
 * -!- Irssi: Added command /gsi
 * -!- Irssi: Loaded script gsi

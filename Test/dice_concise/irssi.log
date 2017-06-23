@@ -1,6 +1,4 @@
-* Illegal character in prototype for Irssi::Script::dice_concise::question : $server,$msg,$nick,$target at dice_concise.pl line 97.
-* 
-* Scalar value @roll[1] better written as $roll[1] at dice_concise.pl line 117.
+* Illegal character in prototype for Irssi::Script::dice_concise::question : $server, $msg, $nick, $target at dice_concise.pl line 97.
 * 
 * given is experimental at dice_concise.pl line 133.
 * 
@@ -53,5 +51,7 @@
 * when is experimental at dice_concise.pl line 221.
 * 
 * when is experimental at dice_concise.pl line 224.
+* 
+* Scalar value @roll[1] better written as $roll[1] at dice_concise.pl line 117.
 * 
 * -!- Irssi: Loaded script dice_concise

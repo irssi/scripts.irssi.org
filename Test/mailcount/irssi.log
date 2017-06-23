@@ -1,1 +1,3 @@
+* Use of uninitialized value in subroutine entry at mailcount.pl line 181.
+* 
 * -!- Irssi: Loaded script mailcount
