@@ -5243,6 +5243,7 @@
   version: '20141016'
 -
   authors: "Stefan 'tommie' Tomanek"
+  commands: xetra
   contact: stefan@pico.ruhr.de
   description: 'brings the stock exchanges of the world to your irssi'
   filename: xetra.pl
