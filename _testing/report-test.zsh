@@ -5,6 +5,7 @@ local passmark="\e[32m✔\e[0m"
 local skipmark="\e[33m☡\e[0m"
 local failed=0
 local T=
+local Q=
 
 if [[ $MARKDOWN_REPORT == 1 ]] {
     echo '## Irssi Scripts Test Report'
@@ -16,11 +17,12 @@ if [[ $MARKDOWN_REPORT == 1 ]] {
     passmark=✔
     skipmark=☡
     T="|"
+    Q="\\"
 } \
 else {
     echo '============================== TEST REPORT ============================='
 }
-printf "%32s $T LOAD $T HDR $T CRIT $T SCORE $T PASS\n"
+printf "%-32s $T LOAD $T HDR $T CRIT $T SCORE $T PASS\n" "$Q"
 if [[ $MARKDOWN_REPORT == 1 ]] {
  echo "----: $T :--: $T :-: $T :--: $T ----: $T :---:"
 }

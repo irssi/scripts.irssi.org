@@ -15,23 +15,15 @@ scripts_yaml_keys:
   - modules
   # explicit
   - modified
-additional_system_deps:
-  - libconfig-simple-perl
-  - libyaml-perl
-  - libcrypt-ssleay-perl
-  - libclass-inspector-perl
-  - libsoap-lite-perl
-  - libipc-run3-perl
-  - libprobe-perl-perl
-  - libtest-script-perl
-  - libtext-glob-perl
-  - libterm-readline-perl-perl
-  - gir1.2-notify-0.7 # for desktop-notify
-  - xosd-bin # osd
 cpan:
   broken_tests:
     - Geo::Weather
     - Net::Google
+  broken_modules:
+    - Xmms
+    - Xmms::Remote
+    - spamcalc::SpamCalc
+    - Net::vICQ
 # This is a whitelist of scripts who are currently allowed to fail
 # testing. They should be fixed and then removed from the whitelist.
 whitelist:
@@ -39,6 +31,8 @@ whitelist:
   - cap_sasl_fail
   - cap_sasl
   - dnsspam
+  - email_privmsgs
+  - idonkey
   - irc_chess
   - ircgallery
   - irssiq
@@ -50,5 +44,6 @@ whitelist:
   - 'on'
   - stocks
   - tvmusor
+  - vidinfo
   - xetra
   - xmmsinfo

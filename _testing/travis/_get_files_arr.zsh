@@ -20,19 +20,7 @@ elif [[ $USE_ARTEFACTS_CACHE = yes ]] {
         cached_run=($cache_allowed)
     } \
     else {
-        autoload -Uz is-at-least
-        if { is-at-least 5.0.0 } {
-            filelist=(${filelist:|cache_allowed})
-        } \
-        else {
-	    # manually filter the array in zsh4
-            local -a scriptfiles
-            for x ($filelist) {
-                if [[ $+cache_allowed[(r)$x] -eq 0 ]] {
-                    scriptfiles+=($x)
-                }
-            }
-            filelist=($scriptfiles)
-        }
+        # is-at-least 5.0.0
+        filelist=(${filelist:|cache_allowed})
     }
 }
