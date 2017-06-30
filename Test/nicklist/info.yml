@@ -1,21 +1,23 @@
 ---
 -
   authors: 'Wouter Coekaerts'
-  changed: 20/03/2017
+  changed: 28/06/2017
   commands:
     - nicklist
     - 'nicklist fifo'
     - 'nicklist help'
     - 'nicklist off'
+    - 'nicklist on'
     - 'nicklist screen'
     - 'nicklist screensize'
     - 'nicklist scroll'
+    - 'nicklist toggle'
     - 'nicklist update'
   contact: coekie@irssi.org
   default_package: nicklist
   description: 'draws a nicklist to another terminal, or at the right of your irssi in the same terminal'
   license: GPLv2
-  modified: '2017-03-20 19:38:25'
+  modified: '2017-06-28 12:19:17'
   name: nicklist
   url: http://wouter.coekaerts.be/irssi
-  version: 0.4.7
+  version: 0.4.8
