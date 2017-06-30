@@ -5,7 +5,7 @@ use strict;
 use IO::Handle; # for (auto)flush
 use Fcntl; # for sysopen
 use vars qw($VERSION %IRSSI);
-$VERSION = '0.4.7';
+$VERSION = '0.4.8';
 %IRSSI = (
 	authors     => 'Wouter Coekaerts',
 	contact     => 'coekie@irssi.org',
@@ -13,7 +13,7 @@ $VERSION = '0.4.7';
 	description => 'draws a nicklist to another terminal, or at the right of your irssi in the same terminal',
 	license     => 'GPLv2',
 	url         => 'http://wouter.coekaerts.be/irssi',
-	changed     => '20/03/2017'
+	changed     => '28/06/2017'
 );
 
 sub cmd_help {
@@ -23,7 +23,9 @@ NICKLIST HELP
 NICKLIST SCROLL <nr of lines>
 NICKLIST SCREEN
 NICKLIST FIFO
+NICKLIST ON
 NICKLIST OFF
+NICKLIST TOGGLE
 NICKLIST UPDATE
 
 For help see: http://wouter.coekaerts.be/site/irssi/nicklist
@@ -94,6 +96,16 @@ sub update {
 ##### OUTPUT #####
 ##################
 
+### on ###
+
+sub cmd_on {
+	if (uc(Irssi::settings_get_str('nicklist_automode')) eq 'SCREEN') {
+		cmd_screen_start();
+	} elsif (uc(Irssi::settings_get_str('nicklist_automode')) eq 'FIFO') {
+		cmd_fifo_start();
+	}
+}
+
 ### off ###
 
 sub cmd_off {
@@ -101,6 +113,16 @@ sub cmd_off {
 		screen_stop();
 	} elsif ($mode == $FIFO) {
 		fifo_stop();
+	}
+}
+
+### toggle ###
+
+sub cmd_toggle {
+	if ($mode == $OFF) {
+		cmd_on();
+	} else {
+		cmd_off();
 	}
 }
 
@@ -449,10 +471,13 @@ sub cmd_scroll {
 	if (!$active_channel) { # not a channel active
 		return;
 	}
-	my @nicks=Irssi::active_win->{active}->nicks;
-	my $nick_count = scalar(@nicks)+0;
 	my $channel = Irssi::active_win->{active};
-	if (!$channel || $channel->{type} ne 'CHANNEL' || !$channel->{names_got} || $nick_count <= Irssi::settings_get_int('nicklist_height')) {
+	if (!$channel || $channel->{type} ne 'CHANNEL' || !$channel->{names_got}) {
+		return;
+	}
+	my @nicks = $channel->{nicks};
+	my $nick_count = scalar(@nicks)+0;
+	if ($nick_count <= Irssi::settings_get_int('nicklist_height')) {
 		return;
 	}
 	$scroll_pos += @_[0];
@@ -574,7 +599,9 @@ Irssi::command_bind('nicklist scroll',\&cmd_scroll);
 Irssi::command_bind('nicklist fifo',\&cmd_fifo_start);
 Irssi::command_bind('nicklist screen',\&cmd_screen_start);
 Irssi::command_bind('nicklist screensize',\&screen_size);
+Irssi::command_bind('nicklist on',\&cmd_on);
 Irssi::command_bind('nicklist off',\&cmd_off);
+Irssi::command_bind('nicklist toggle',\&cmd_toggle);
 
 ##### signals #####
 Irssi::signal_add_last('window item changed', \&make_nicklist);
@@ -604,8 +631,4 @@ Irssi::settings_add_str('nicklist', 'nicklist_screen_split_windows', '');
 Irssi::settings_add_str('nicklist', 'nicklist_automode', '');
 
 read_settings();
-if (uc(Irssi::settings_get_str('nicklist_automode')) eq 'SCREEN') {
-	cmd_screen_start();
-} elsif (uc(Irssi::settings_get_str('nicklist_automode')) eq 'FIFO') {
-	cmd_fifo_start();
-}
+cmd_on();
