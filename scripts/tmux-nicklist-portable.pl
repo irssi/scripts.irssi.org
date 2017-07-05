@@ -48,7 +48,7 @@ use IO::Select;
 use POSIX;
 use File::Temp qw/ :mktemp  /;
 use File::Basename;
-our $VERSION = '0.1.5'; # a58bc1253b0a191
+our $VERSION = '0.1.6'; # aea329934f6a48c
 our %IRSSI = (
   authors     => 'Thiago de Arruda',
   contact     => 'tpadilha84@gmail.com',
@@ -103,7 +103,7 @@ sub open_fifo {
     disable_nicklist();
   } elsif ($enabled == -1) {
     $enabled = 1;
-    reset_nicklist();
+    reset_nicklist("enabled");
   } else {
     $enabled = 1;
   }
@@ -122,8 +122,15 @@ sub disable_nicklist {
 }
 
 sub reset_nicklist {
+  my $event = shift;
   my $active = Irssi::active_win();
   my $channel = $active->{active};
+  return disable_nicklist unless $channel && ref $channel;
+  if ($event =~ /^nick/) {
+    # check if that nick event is for the current channel/nicklist
+    my ($event_channel) = @_;
+    return unless $channel->{_irssi} == $event_channel->{_irssi};
+  }
   my ($colourer, $ansifier);
   if (Irssi::settings_get_bool('nicklist_color')) {
     for my $script (sort map { my $z = $_; $z =~ s/::$//; $z } grep { /^nickcolor|nm/ } keys %Irssi::Script::) {
@@ -198,12 +205,12 @@ sub toggle_nicklist {
     } else {
 	$nicklist_toggle = 1;
     }
-    reset_nicklist;
+    reset_nicklist("toggle");
 }
 
 sub switch_channel {
   print $fifo "SWITCH_CHANNEL\n" if $fifo;
-  reset_nicklist;
+  &reset_nicklist;
 }
 
 sub resized_timed {
@@ -217,7 +224,7 @@ sub resized {
   return if defined $just_launched;
   return unless $enabled >= 0;
   disable_nicklist;
-  Irssi::timeout_add_once(200, \&reset_nicklist, '');
+  Irssi::timeout_add_once(200, sub{reset_nicklist("terminal resized")}, '');
 }
 sub UNLOAD {
   disable_nicklist;
@@ -229,13 +236,13 @@ Irssi::settings_add_int('tmux_nicklist', 'nicklist_smallest_main', 0);
 Irssi::settings_add_int('tmux_nicklist', 'nicklist_pane_width', 13);
 Irssi::settings_add_bool('tmux_nicklist', 'nicklist_color', 1);
 Irssi::settings_add_bool('tmux_nicklist', 'nicklist_gone_sort', 0);
-Irssi::signal_add_last('window item changed', \&switch_channel);
-Irssi::signal_add_last('window changed', \&switch_channel);
-Irssi::signal_add_last('channel joined', \&switch_channel);
-Irssi::signal_add('nicklist new', \&reset_nicklist);
-Irssi::signal_add('nicklist remove', \&reset_nicklist);
-Irssi::signal_add('nicklist changed', \&reset_nicklist);
-Irssi::signal_add_first('nick mode changed', \&reset_nicklist);
+Irssi::signal_add_last('window item changed', sub{switch_channel("window item changed",@_)});
+Irssi::signal_add_last('window changed', sub{switch_channel("window changed",@_)});
+Irssi::signal_add_last('channel joined', sub{switch_channel("channel joined",@_)});
+Irssi::signal_add('nicklist new', sub{reset_nicklist("nicklist new",@_)});
+Irssi::signal_add('nicklist remove', sub{reset_nicklist("nicklist remove",@_)});
+Irssi::signal_add('nicklist changed', sub{reset_nicklist("nicklist changed",@_)});
+Irssi::signal_add_first('nick mode changed', sub{reset_nicklist("nick mode changed",@_)});
 Irssi::signal_add('gui exit', \&disable_nicklist);
 Irssi::signal_add_last('terminal resized', \&resized_timed);
 
