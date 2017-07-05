@@ -314,7 +314,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                        newsline ](Test/newsline/)|  ✔   |  ✔   |  ✔   | 26   |  ✔   | (c)
 [                            news ](Test/news/)|  ✔   |  ✔   |  ✔   | 79   |  ✔   | (c)
 [                         nickban ](Test/nickban/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[               nickcolor_expando ](Test/nickcolor_expando/)|  ✔   |  ✔   |  ✔   | 10   |  ✔   
+[               nickcolor_expando ](Test/nickcolor_expando/)|  ✔   |  ✔   |  ✔   | 10   |  ✔   | (c)
 [                   nickcolor_gay ](Test/nickcolor_gay/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                       nickcolor ](Test/nickcolor/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
 [                      nickignore ](Test/nickignore/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -453,7 +453,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                           title ](Test/title/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                           tlock ](Test/tlock/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       tmux_away ](Test/tmux_away/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
-[          tmux-nicklist-portable ](Test/tmux-nicklist-portable/)|  ✔   |  ✔   |  ✔   |  8   |  ✔   | (c)
+[          tmux-nicklist-portable ](Test/tmux-nicklist-portable/)|  ✔   |  ✔   |  ✔   |  8   |  ✔   
 [                        topicsed ](Test/topicsed/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
 [                          topics ](Test/topics/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       tordetect ](Test/tordetect/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
@@ -518,4 +518,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                     xmpp-notify ](Test/xmpp-notify/)|  ✔   |  ✔   |  ✔   | 21   |  ✔   | (c)
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 
-ae06f099bf56b28e49e75908bd8e315800de5dc7 | 926
+a0e86203562bac00ecc271842d6f4b238dae1c81 | 927
