@@ -3251,9 +3251,9 @@
   description: 'colourise nicks'
   filename: nickcolor_expando.pl
   license: 'GPL v2'
-  modified: '2015-11-16 19:32:11'
+  modified: '2017-07-05 13:52:36'
   name: nickcolor_expando
-  version: 0.3.7
+  version: 0.4.0
 -
   description: 'colourise nicks'
   filename: nickcolor_gay.pl
