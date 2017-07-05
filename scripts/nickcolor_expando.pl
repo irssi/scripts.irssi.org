@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-our $VERSION = '0.4.0'; # 6edfe656246780e
+our $VERSION = '0.4.0'; # c274f630aff9967
 our %IRSSI = (
     authors	=> 'Nei',
     name	=> 'nickcolor_expando',
