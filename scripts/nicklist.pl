@@ -5,7 +5,7 @@ use strict;
 use IO::Handle; # for (auto)flush
 use Fcntl; # for sysopen
 use vars qw($VERSION %IRSSI);
-$VERSION = '0.4.8';
+$VERSION = '0.4.9';
 %IRSSI = (
 	authors     => 'Wouter Coekaerts',
 	contact     => 'coekie@irssi.org',
@@ -475,7 +475,7 @@ sub cmd_scroll {
 	if (!$channel || $channel->{type} ne 'CHANNEL' || !$channel->{names_got}) {
 		return;
 	}
-	my @nicks = $channel->{nicks};
+	my @nicks = $channel->nicks;
 	my $nick_count = scalar(@nicks)+0;
 	if ($nick_count <= Irssi::settings_get_int('nicklist_height')) {
 		return;
