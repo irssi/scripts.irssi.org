@@ -119,7 +119,7 @@ sub sig_setup_changed {
 Irssi::settings_add_str('identd', 'identd_resolve_mode', '!username');
 Irssi::settings_add_int('identd', 'identd_port', 8113);
 Irssi::settings_add_int('identd', 'identd_length', 10);
-Irssi::settings_add_bool('identd', 'identd_verbose', 'FALSE');
+Irssi::settings_add_bool('identd', 'identd_verbose', 0);
 
 Irssi::signal_add_first('server looking', 'sig_server_connecting');
 Irssi::signal_add_last('event connected', 'sig_event_connected');
