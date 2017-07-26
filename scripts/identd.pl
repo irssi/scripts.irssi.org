@@ -59,9 +59,9 @@ sub start_ident_server {
 sub handle_connection {
   my $sock = $_[0]->accept;
   my $iaddr = inet_aton($sock->peerhost); # or whatever address
-  my $peer  = gethostbyaddr($iaddr, AF_INET);
+  my $peer  = gethostbyaddr($iaddr, AF_INET) // $sock->peerhost;
   Irssi::print("Identd - handling connection from $peer") if VERBOSE;
-  return unless exists $connectrec->{$peer};
+#  return unless exists $connectrec->{$peer};
 
   my $username;
   my $username_mode = fc(Irssi::settings_get_str('identd_resolve_mode'));
@@ -82,7 +82,9 @@ sub handle_connection {
   $sock->autoflush(1);
   my $incoming = <$sock>;
   $incoming =~ s/\r\n//;
-  $incoming .= " : USERID : OTHER : " . $username . "\n";
+  $incoming =~ s/\s*//g;
+  $incoming .= ":USERID:UNIX:" . $username . "\n";
+#  $incoming .= " : USERID : OTHER : " . $username . "\n";
   print $sock $incoming;
   close $sock;
   chomp $incoming;
