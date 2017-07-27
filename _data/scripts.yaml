@@ -2137,6 +2137,17 @@
   name: ident
   version: '1.0'
 -
+  authors: vague
+  contact: 'vague!#irssi@freenode on irc'
+  description: 'Identd script for irssi'
+  filename: identd.pl
+  license: GPL2
+  modified: '2017-07-26 19:59:54'
+  modules: autovivification
+  name: identd
+  url: https://vague.se
+  version: '0.2'
+-
   authors: 'Eric Jansen'
   commands: identify-md5
   contact: chaos@sorcery.net
