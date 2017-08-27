@@ -1920,18 +1920,6 @@
   url: http://irssi.org/scripts
   version: 220904-04:30:00
 -
-  authors: 'Sven Ulland'
-  commands: gtrans
-  contact: svensven@gmail.com
-  description: 'Translation via the Google Language API'
-  filename: gtrans.pl
-  license: GPLv2
-  modified: '2008-10-07 18:49:55'
-  modules: WebService::Google::Language
-  name: GTrans
-  url: http://scripts.irssi.org/
-  version: 0.0.1
--
   authors: Juerd
   contact: juerd@juerd.nl
   description: 'Adds the uppercased version of the tab completes'
