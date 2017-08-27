@@ -1,6 +1,0 @@
-* "my" variable %args masks earlier declaration in same scope at gtrans.pl line 315.
-* 
-* "my" variable $result masks earlier declaration in same scope at gtrans.pl line 323.
-* 
-* GTrans loaded. Hints: /gtrans help
-* -!- Irssi: Loaded script gtrans
