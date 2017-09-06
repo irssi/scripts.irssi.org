@@ -4310,6 +4310,15 @@
   name: showhost
   version: '0.2'
 -
+  authors: "Peter 'kinlo' Leurs"
+  contact: peter@pfoe.be
+  description: 'Show whatever needs your attention in active window, and cleans your windows afterwards.  Also provides a hilight window.  This is a combination of the hilightwin, noisyquery and showhilight scripts'
+  filename: showinactive.pl
+  license: 'GNU GPLv2'
+  modified: '2017-09-06 16:07:03'
+  name: showinactive
+  version: '1.0'
+-
   authors: 'Wouter Coekaerts'
   contact: wouter@coekaerts.be
   description: 'show modes in parts, quits, kicks, topic changes or actions, like show_nickmode does for public messages'
