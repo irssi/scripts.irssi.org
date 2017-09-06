@@ -517,5 +517,6 @@ See [the testing read-me](../master/_testing/) for details.
 [                            xmms ](Test/xmms/)|  ✔   |  ✔   |  ✔   |  8   |  ✔   | (c)
 [                     xmpp-notify ](Test/xmpp-notify/)|  ✔   |  ✔   |  ✔   | 21   |  ✔   | (c)
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
+[                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 
-7d2f0c1a9aa6a17d30745f6c2963b5caf23eff90 | 935
+ed6fc4303f50cfc357e4fc9f6ee7cc873fe6bc25 | 937
