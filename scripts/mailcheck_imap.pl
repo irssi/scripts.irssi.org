@@ -11,6 +11,7 @@ $VERSION = "0.5";
     contact     => "irssi\@icmfp.com",
     name        => "mailcheck_imap",
     description => "Staturbar item which indicates how many new emails you have in the specified IMAP[S] mailbox",
+    sbitems     => "mailcheck_imap",
     license     => "GNU GPLv2",
     url         => "http://icmfp.com/irssi",
 );

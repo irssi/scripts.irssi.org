@@ -5,21 +5,24 @@
 # Modded a tiny bit by znx to stop private messages entering the hilighted
 # window (can be toggled) and to put up a timestamp.
 #
+# Changed a little by rummik to optionally show network name. Enable with
+# `/set hilightwin_shownetwork on`
+#
 
 use strict;
 use Irssi;
 use POSIX;
-use vars qw($VERSION %IRSSI); 
+use vars qw($VERSION %IRSSI);
 
-$VERSION = "0.05";
+$VERSION = "1.00";
 %IRSSI = (
-    authors     => "Timo \'cras\' Sirainen, Mark \'znx\' Sangster",
-    contact     => "tss\@iki.fi, znxster\@gmail.com", 
+    authors     => "Timo \'cras\' Sirainen, Mark \'znx\' Sangster, Kimberly \'rummik\' Zick",
+    contact     => "tss\@iki.fi, znxster\@gmail.com, git\@zick.kim",
     name        => "hilightwin",
     description => "Print hilighted messages to window named \"hilight\"",
     license     => "Public Domain",
     url         => "http://irssi.org/",
-    changed     => "Sun May 25 18:59:57 BST 2008"
+    changed     => "Thu Apr  6 15:30:25 EDT 2017"
 );
 
 sub is_ignored {
@@ -46,6 +49,7 @@ sub sig_printtext {
     my ($dest, $text, $stripped) = @_;
 
     my $opt = MSGLEVEL_HILIGHT;
+    my $shownetwork = Irssi::settings_get_bool('hilightwin_show_network');
 
     if(Irssi::settings_get_bool('hilightwin_showprivmsg')) {
         $opt = MSGLEVEL_HILIGHT|MSGLEVEL_MSGS;
@@ -60,6 +64,9 @@ sub sig_printtext {
         
         if ($dest->{level} & MSGLEVEL_PUBLIC) {
             $text = $dest->{target}.": ".$text;
+            $text = $dest->{server}->{tag} . "/" . $text if ($shownetwork);
+        } elsif ($shownetwork) {
+            $text = $dest->{server}->{tag} . ": " . $text;
         }
         $text =~ s/%/%%/g;
         $window->print($text, MSGLEVEL_CLIENTCRAP) if ($window);
@@ -71,6 +78,7 @@ Irssi::print("Create a window named 'hilight'") if (!$window);
 
 Irssi::settings_add_bool('hilightwin','hilightwin_showprivmsg',1);
 Irssi::settings_add_str('hilightwin', 'hilightwin_ignore_targets', '');
+Irssi::settings_add_bool('hilightwin','hilightwin_show_network', 0);
 
 Irssi::signal_add('print text', 'sig_printtext');
 

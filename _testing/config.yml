@@ -15,63 +15,35 @@ scripts_yaml_keys:
   - modules
   # explicit
   - modified
-additional_system_deps:
-  - libconfig-simple-perl
-  - libyaml-perl
-  - libcrypt-ssleay-perl
-  - libclass-inspector-perl
-  - libsoap-lite-perl
-  - libipc-run3-perl
-  - libprobe-perl-perl
-  - libtest-script-perl
-  - libtext-glob-perl
-  - libterm-readline-perl-perl
-  - gir1.2-notify-0.7 # for desktop-notify
 cpan:
   broken_tests:
     - Geo::Weather
     - Net::Google
+  broken_modules:
+    - Xmms
+    - Xmms::Remote
+    - spamcalc::SpamCalc
+    - Net::vICQ
 # This is a whitelist of scripts who are currently allowed to fail
 # testing. They should be fixed and then removed from the whitelist.
 whitelist:
   - amaroknp
-  - babelirc
   - cap_sasl_fail
   - cap_sasl
-  - connectcmd
-  - dau
   - dnsspam
-  - hddtemp
-  - hitcount
+  - email_privmsgs
+  - idonkey
   - irc_chess
   - ircgallery
   - irssiq
   - isdn
   - ixmmsa
-  - kicks
   - l33tmusic
-  - localize
   - log2ansi
-  - mangle
-  - mkshorterlink
-  - newsline
-  - nicklist
-  - ogg123
   - oidenty
   - 'on'
-  - osd
-  - page-c0ffee
-  - query
-  - quizgr
-  - quizmaster-fr
-  - quizmaster
-  - quiz
-  - randaway
-  - scroller
   - stocks
-  - sysinfoplus
-  - topicsed
   - tvmusor
-  - wordcompletition
+  - vidinfo
   - xetra
   - xmmsinfo

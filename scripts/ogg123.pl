@@ -64,7 +64,7 @@ sub cmd_ogg123 {
 			}
 		}
 		
-		open (f, $ogg123file) || return;
+		open (f,'<', $ogg123file) || return;
 
 		while ($ogg123linha=<f>) {		
 			

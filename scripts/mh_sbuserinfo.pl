@@ -1,8 +1,8 @@
 ##############################################################################
 #
-# mh_sbuserinfo.pl v1.05 (20161106)
+# mh_sbuserinfo.pl v1.06 (20170424)
 #
-# Copyright (c) 2015, 2016  Michael Hansen
+# Copyright (c) 2015-2017  Michael Hansen
 #
 # Permission to use, copy, modify, and distribute this software
 # for any purpose with or without fee is hereby granted, provided
@@ -20,7 +20,7 @@
 #
 ##############################################################################
 #
-# statusbar item that shows users and limit info in channels
+# statusbar item that shows user count (opers, ops, halfops, voice and total) and limit info (with opless/limit warning) in channels
 #
 # displays in the statusbar the number of users and the limit of the channel,
 # with several settings for finetuning:
@@ -29,6 +29,11 @@
 # "/<limit>(<limitusers>)" will only show when there is a limit set.
 # "(<limitusers>)" shows the difference between the limit and current
 # users (this can be negative if the limit is lower than users)
+#
+# (if you do not already have another script running a periodical who on channels,
+# you will need one (autowho.pl from irssi.org for example). otherwise oper/away
+# counts will not update correctly (if you do not use oper/away details you can ignore
+# this))
 #
 # setting mh_sbuserinfo_format_group_begin (default '(') and
 # setting mh_sbuserinfo_format_group_end'  (default ')'); change the characters grouping
@@ -43,22 +48,27 @@
 #
 # setting mh_sbuserinfo_show_details (default ON): enable/disable showing a
 # detailed breakout of users into opers, ops, halfops, voice and normal
+# (further customisable with _show_details_*)
 #
 # setting mh_sbuserinfo_show_details_mode (default ON): enable/disable
 # prefixing opers, ops, halfops and voice with *@%+ when details are enabled
 #
+# setting mh_sbuserinfo_format_mode_away  (default 'z'),
 # setting mh_sbuserinfo_format_mode_oper  (default '*'),
 # setting mh_sbuserinfo_format_mode_op    (default '@'),
 # setting mh_sbuserinfo_format_mode_ho    (default '%%'),
 # setting mh_sbuserinfo_format_mode_vo    (default '+') and
 # setting mh_sbuserinfo_format_mode_other (default ''): change the mode prefix
-# for each of oper, op, halfdop, voice and others
+# for each of away, oper, op, halfdop, voice and others
 #
 # setting mh_sbuserinfo_show_details_halfop (default OFF): enable/disable
 # showing halfops when details are enabled
 #
 # setting mh_sbuserinfo_show_details_oper (default ON): enable/disable
 # showing opers when details are enabled
+#
+# setting mh_sbuserinfo_show_details_away (default ON): enable/disable
+# showing users away when details are enabled
 #
 # setting mh_sbuserinfo_show_details_difference (default ON): enable/disable
 # showing the "(<limitusers>)"
@@ -86,6 +96,11 @@
 #
 # history:
 #
+#	v1.06 (20170424)
+#		added 'sbitems' to irssi header for better scriptassist.pl support (github issue #1)
+#		added _show_details_away/_format_mode_away and supporting code
+#		some description and documentation changes
+#
 #	v1.05 (20161106)
 #		added setting _show_details_oper and supporting code
 #		added setting _format_sep and supportingf code
@@ -94,22 +109,27 @@
 #		added setting _format_mode_oper, _format_mode_op, _format_mode_ho, _format_mode_vo and _format_mode_other, and supporting code
 #		added settting _show_warning_limit_difference and supporting code (changing _show_warning_limit_percent behavior)
 #		changed default of _show_warning_limit_percent from 95 to 0
+#
 #	v1.04 (20151225)
 #		added setting _show_details_difference and supporting code
 #		changed _show_warning_limit_percent default from 90 to 95
 #		added changed field to irssi header
 #		added a few comments
+#
 #	v1.03 (20151201)
 #		added setting _show_prefix and supporting code
 #		changed setting _show_details_mode default to ON
 #		updated documentation
+#
 #	v1.02 (20151127)
 #		only show item when channel is synced
 #		cleaned out redundant code
+#
 #	v1.01 (20151127)
 #		call statusbar_redraw directly in signals
 #		now using elsif
 #		removed timeout on load
+#
 #	v1.00 (20151126)
 #		initial release
 #
@@ -127,16 +147,17 @@ use strict;
 use Irssi 20100403;
 use Irssi::TextUI;
 
-our $VERSION = '1.05';
+our $VERSION = '1.06';
 our %IRSSI   =
 (
 	'name'        => 'mh_sbuserinfo',
-	'description' => 'statusbar item that shows users and limit info in channels',
+	'description' => 'statusbar item that shows user count (opers, ops, halfops, voice and total) and limit info (with opless/limit warning) in channels',
 	'license'     => 'BSD',
 	'authors'     => 'Michael Hansen',
 	'contact'     => 'mh on IRCnet #help',
 	'url'         => 'http://scripts.irssi.org / https://github.com/mh-source/irssi-scripts',
-	'changed'     => 'Sun Nov  6 20:37:05 CET 2016',
+	'changed'     => 'Mon Apr 24 09:34:36 CEST 2017',
+	'sbitems'     => 'mh_sbuserinfo',
 );
 
 ##############################################################################
@@ -215,6 +236,7 @@ sub statusbar_userinfo
 			my $users_ho       = 0;
 			my $users_vo       = 0;
 			my $users_oper     = 0;
+			my $users_gone     = 0;
 			my $warning_format = Irssi::settings_get_str('mh_sbuserinfo_warning_format');
 
 			for my $nick ($channel->nicks())
@@ -238,6 +260,11 @@ sub statusbar_userinfo
 				{
 					$users_oper++;
 				}
+
+				if ($nick->{'gone'})
+				{
+					$users_gone++;
+				}
 			}
 
 			$format .= $users;
@@ -253,6 +280,16 @@ sub statusbar_userinfo
 				$format .= $format_group_begin;
 
 				my $showmode = Irssi::settings_get_bool('mh_sbuserinfo_show_details_mode');
+
+				if (Irssi::settings_get_bool('mh_sbuserinfo_show_details_away'))
+				{
+					if ($showmode)
+					{
+						$format .= Irssi::settings_get_str('mh_sbuserinfo_format_mode_away');
+					}
+
+					$format .= $users_gone . $format_sep
+				}
 
 				if (Irssi::settings_get_bool('mh_sbuserinfo_show_details_oper'))
 				{
@@ -382,11 +419,13 @@ Irssi::settings_add_str( 'mh_sbuserinfo', 'mh_sbuserinfo_warning_format',       
 Irssi::settings_add_str( 'mh_sbuserinfo', 'mh_sbuserinfo_show_prefix',                   'Users: ');
 Irssi::settings_add_bool('mh_sbuserinfo', 'mh_sbuserinfo_show_details_difference',       1);
 Irssi::settings_add_bool('mh_sbuserinfo', 'mh_sbuserinfo_show_details_oper',             1);
+Irssi::settings_add_bool('mh_sbuserinfo', 'mh_sbuserinfo_show_details_away',             1);
 Irssi::settings_add_str( 'mh_sbuserinfo', 'mh_sbuserinfo_format_sep',                    ':');
 Irssi::settings_add_str( 'mh_sbuserinfo', 'mh_sbuserinfo_format_div',                    '/');
 Irssi::settings_add_str( 'mh_sbuserinfo', 'mh_sbuserinfo_format_group_begin',            '(');
 Irssi::settings_add_str( 'mh_sbuserinfo', 'mh_sbuserinfo_format_group_end',              ')');
 Irssi::settings_add_str( 'mh_sbuserinfo', 'mh_sbuserinfo_format_mode_oper',              '*');
+Irssi::settings_add_str( 'mh_sbuserinfo', 'mh_sbuserinfo_format_mode_away',              'z');
 Irssi::settings_add_str( 'mh_sbuserinfo', 'mh_sbuserinfo_format_mode_op',                '@');
 Irssi::settings_add_str( 'mh_sbuserinfo', 'mh_sbuserinfo_format_mode_ho',                '%%');
 Irssi::settings_add_str( 'mh_sbuserinfo', 'mh_sbuserinfo_format_mode_vo',                '+');

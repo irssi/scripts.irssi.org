@@ -35,6 +35,7 @@ $VERSION = '1.0';
     contact     => 'coekie@irssi.org',
     name        => 'window_switcher',
     description => 'makes switching windows easy',
+    sbitems     => 'window_switcher',
     license     => 'GPLv2 or later',
     url         => 'http://wouter.coekaerts.be/irssi/',
     changed     => '29/07/07'

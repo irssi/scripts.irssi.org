@@ -46,6 +46,11 @@ for my $file (<scripts/*.pl>) {
 	$newmeta{$filename}{modules}
 	    = join ' ', @$modules
 		if 'ARRAY' eq ref $modules;
+	my $commands = delete $newmeta{$filename}{commands};
+	my @commands = grep { !/ / } @$commands
+		if 'ARRAY' eq ref $commands;
+	$newmeta{$filename}{commands} = "@commands"
+	    if @commands;
     }
     elsif (exists $oldmeta{$filename}) {
 	print "META-INF FOR $base NOT FOUND\n";

@@ -86,6 +86,7 @@ $VERSION = '0.0.0n';
 	  contact     => 'starz@antisocial.com',
 	  name        => 'iMPD',
 	  description => 'This controls Music Player Daemon from the familiar irssi interface',
+	  sbitems     => 'mpdbar',
 	  license     => 'GPL v2',
 	  url         => 'http://www.musicpd.org'
 	  );

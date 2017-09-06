@@ -50,6 +50,7 @@ $VERSION = '1.4.5';
   contact      => 'derwan@irssi.pl',
   name         => 'mailcount',
   description  => 'Adds statusbar item mailcount and displays info about new mails',
+  sbitems      => 'mailcount',
   modules      => 'Mail::MboxParser Digest::MD5',
   license      => 'GNU GPL v2',
   url          => 'http://derwan.irssi.pl',

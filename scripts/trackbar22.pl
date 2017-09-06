@@ -96,7 +96,7 @@ use Encode;
 use POSIX qw(strftime);
 use vars qw($VERSION %IRSSI);
 
-$VERSION = "2.3"; # 45c0adad4366edd
+$VERSION = "2.4"; # 1ca8fa9f28b9586
 
 %IRSSI = (
     authors     => 'Peter Leurs and Geert Hauwaerts',
@@ -262,6 +262,7 @@ sub win_ignored {
 sub sig_window_changed {
     my ($newwindow, $oldwindow) = @_;
     return unless $oldwindow;
+    redraw_trackbars($newwindow);
     trackbar_update_seen($newwindow);
     return if delete $keep_trackbar{ $oldwindow->{_irssi} };
     trackbar_update_seen($oldwindow);
@@ -360,7 +361,7 @@ sub UNLOAD {
 
 sub redraw_trackbars {
     return unless check_version();
-    for my $win (Irssi::windows) {
+    for my $win (@_ ? @_ : Irssi::windows) {
         next unless ref $win;
         my $view = $win->view;
         my $line = $view->get_bookmark('trackbar');

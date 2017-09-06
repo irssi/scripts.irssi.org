@@ -34,8 +34,6 @@ pointers to both authors and reviewers.
 
 The following keys are recognised in config.yml:
 
-* additional_system_deps: - list of ubuntu packages to install via
-                            apt-get
 * cpan:
   * broken_tests: - modules where to skip tests, that would otherwise
                     hang Travis

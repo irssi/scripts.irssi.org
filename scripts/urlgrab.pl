@@ -9,7 +9,7 @@
 use strict;
 use Irssi 20010120.0250 ();
 use vars qw($VERSION %IRSSI);
-$VERSION = "0.3";
+$VERSION = "0.4";
 %IRSSI = (
     authors     => 'David Leadbeater',
     contact     => 'dgl@dgl.cx',
@@ -46,7 +46,7 @@ sub url_cmd{
 
 sub find_url {
    my $text = shift;
-   if($text =~ /((ftp|http):\/\/[a-zA-Z0-9\/\\\:\?\%\.\&\;=#\-\_\!\+\~]*)/i){
+   if($text =~ /((ftp|http|https):\/\/[a-zA-Z0-9\/\\\:\?\%\.\&\;=#\-\_\!\+\~]*)/i){
 	  return $1;
    }elsif($text =~ /(www\.[a-zA-Z0-9\/\\\:\?\%\.\&\;=#\-\_\!\+\~]*)/i){
 	  return "http://".$1;

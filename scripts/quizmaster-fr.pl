@@ -3,7 +3,7 @@
 use strict;
 
 use vars qw($VERSION %IRSSI);
-$VERSION = '20030208+fr';
+$VERSION = '20170403+fr';
 %IRSSI = (
 	   authors     => 'Stefan \'tommie\' Tomanek',
 	   contact     => 'stefan@pico.ruhr.de',
@@ -60,7 +60,7 @@ sub draw_box ($$$$) {
 sub save_quizfile {
     local *F;
     my $filename = Irssi::settings_get_str("quizmaster_questions_file");
-    open(F, ">".$filename);
+    open(F, '>',$filename);
     my $dumper = Data::Dumper->new([\%questions], ['quest']);
     $dumper->Purity(1)->Deepcopy(1);
     my $data = $dumper->Dump;
@@ -75,7 +75,7 @@ sub load_quizfile ($) {
     return unless -e $file;
     my $text;
     local *F;
-    open F, $file;
+    open F,'<', $file;
     $text .= $_ foreach (<F>);
     close F;
     return unless "$text";
@@ -85,7 +85,7 @@ sub load_quizfile ($) {
 sub import_quizfile ($$) {
     my ($name, $file) = @_;
     local *F;
-    open(F, $file);
+    open(F,'<', $file);
     my @data = <F>;
     my @questions;
     my $quest = {};

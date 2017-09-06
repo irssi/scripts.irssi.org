@@ -10,6 +10,7 @@ $VERSION = '1.01';
    contact	=> 'jengelbr@yahoo.com',
    name	        => 'twtopic.pl',
    description	=> 'Animated Topic bar.',
+   sbitems      => 'twtopic',
    license	=> 'Public Domain',
    changed	=> 'Sat Nov 20 14:15:18 CST 2004',
    url		=> 'http://irssi.darktalker.net'."\n",

@@ -30,7 +30,8 @@ $rcsid = '$Id: operview.pl,v 1.11 2002/03/30 21:16:06 pasky Exp pasky $';
           contact     => 'pasky@ji.cz',
           url         => 'http://pasky.ji.cz/~pasky/dev/irssi/',
           license     => 'GPLv2, not later',
-          description => 'Reformats some server notices, which may come i.e. from &clients or &servers at IRCnet. You can turn the script on/off bytoggling variable mangle_server_notices.'
+          description => 'Reformats some server notices, which may come i.e. from &clients or &servers at IRCnet. You can turn the script on/off bytoggling variable mangle_server_notices.',
+          sbitems     => 'sclientcount kills',
          );
 
 my $mangle_stats_output;

@@ -1,8 +1,8 @@
 ##############################################################################
 #
-# mh_sbsplitmode.pl v1.07 (20160213)
+# mh_sbsplitmode.pl v1.08 (20170424)
 #
-# Copyright (c) 2015, 2016  Michael Hansen
+# Copyright (c) 2015-2017  Michael Hansen
 #
 # Permission to use, copy, modify, and distribute this software
 # for any purpose with or without fee is hereby granted, provided
@@ -60,28 +60,38 @@
 #
 # history:
 #
+#	v1.08 (20170424)
+#		added 'sbitems' to irssi header for better scriptassist.pl support (github issue #1)
+#
 #	v1.07 (20160213)
 #		added namespace to MSGLEVEL
 #		code cleanup
+#
 #	v1.06 (20151227)
 #		added _print/_print_details and supporting code
 #		/splitmode now prints stats d unavailable in a bit nicer way
 #		now using individual redir numeric events for stats d
 #		now does a stats d on netsplit/join
 #		added changed field to irssi header
+#
 #	v1.05 (20151217)
 #		added indents to /help
+#
 #	v1.04 (20151210)
 #		added setting _show_details_trend and supporting code
 #		fixed warning about experimental feature (keys($var)) in perl v5.20.2
+#
 #	v1.03 (20151208)
 #		cleaned up useless code.
+#
 #	v1.02 (20151207)
 #		fixed bug where the timeout never got started
 #		added a few comments
+#
 #	v1.01 (20151203)
 #		added _lag_limit and supporting code to skip /stats d on lag
 #		will now print server is in splitmode in all relevant windows
+#
 #	v1.00 (20151201)
 #		initial release
 #
@@ -99,7 +109,7 @@ use strict;
 use Irssi 20100403;
 use Irssi::TextUI;
 
-our $VERSION = '1.07';
+our $VERSION = '1.08';
 our %IRSSI   =
 (
 	'name'        => 'mh_sbsplitmode',
@@ -108,7 +118,8 @@ our %IRSSI   =
 	'authors'     => 'Michael Hansen',
 	'contact'     => 'mh on IRCnet #help',
 	'url'         => 'http://scripts.irssi.org / https://github.com/mh-source/irssi-scripts',
-	'changed'     => 'Sat Feb 13 14:18:00 CET 2016',
+	'changed'     => 'Mon Apr 24 10:59:54 CEST 2017',
+	'sbitems'     => 'mh_sbsplitmode',
 );
 
 ##############################################################################

@@ -60,7 +60,7 @@
 use strict;
 use vars qw($VERSION %IRSSI);
 
-$VERSION = "2014112501";
+$VERSION = "2017040101";
 %IRSSI = (
     authors     => "Stefan 'tommie' Tomanek",
     contact     => "stefan\@pico.ruhr.de",
@@ -511,7 +511,7 @@ sub save_cache {
     my $filename = Irssi::settings_get_str('localize_cache_filename');
     my $data = Dumper(\%cache);
     local *F;
-    open(F, '>'.$filename);
+    open(F, '>',$filename);
     print(F $data);
     close(F);
     print CLIENTCRAP "%R>>%n localize cache (".scalar(keys(%cache))." entries/".length($data)." bytes) saved to ".$filename;
@@ -522,7 +522,7 @@ sub load_cache {
     my $filename = Irssi::settings_get_str('localize_cache_filename');
     my (%new_cache, $text);
     local *F;
-    open F, "<".$filename || return;
+    open F, "<",$filename || return;
     $text .= $_ foreach (<F>);
     close(F);
     eval { %new_cache = %{ eval "$text" }; };
@@ -561,7 +561,7 @@ sub show_map ($$$) {
     my $cmd = Irssi::settings_get_str('localize_xplanet_cmd');
     my $file = Irssi::settings_get_str('localize_xplanet_temp_file');
     local *F;
-    open F, '>'.$file;
+    open F, '>',$file;
     print F $lat.'	'.$long.'	"'.$nick.'"';
     close F;
     system("$cmd -markerf $file &");

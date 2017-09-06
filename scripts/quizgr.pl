@@ -41,7 +41,7 @@ use strict;
 use vars qw($VERSION %IRSSI);
     
 use Irssi 20020217.1542 (); # Version 0.8.1 or perhaps get the most up to date irssi version
-$VERSION = "0.7GR02";
+$VERSION = "0.7GR03";
 %IRSSI = (
 authors     => "Athanasius Emilius Arvanitis based on Simon Huggins quiz 0.7",
 contact     => "arvan",
@@ -76,6 +76,8 @@ sub load_questions($$) {
 	my ($game,$force) = @_;
 	my $tag = $game->{'tag'};
 	my $channel = $game->{'channel'};
+
+	$game->{'used_questions'}=[];
 
 	my $server = Irssi::server_find_tag($tag);
 
@@ -540,7 +542,7 @@ sub check_answer($$$$) {
         			#putting it in used
 				if (@{$game->{'used_questions'}}){
         			${$game->{'usedCounter'}} = @{$game->{'used_questions'}};
-				} else {my ${$game->{'usedCounter'}}=0;}
+				} else {${$game->{'usedCounter'}}=0;}
 
         			${$game->{'used_questions'}}[${$game->{'usedCounter'}}]=${$game->{'the_question'}};
 
@@ -566,7 +568,7 @@ sub check_answer($$$$) {
         			#putting it in used
 				if (@{$game->{'used_questions'}}){
         			${$game->{'usedCounter'}} = @{$game->{'used_questions'}};
-				} else {my ${$game->{'usedCounter'}} =0;}
+				} else {${$game->{'usedCounter'}} =0;}
 
         			${$game->{'used_questions'}}[${$game->{'usedCounter'}}]=${$game->{'the_question'}};
 

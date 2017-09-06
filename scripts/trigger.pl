@@ -23,7 +23,7 @@ use Text::ParseWords;
 use IO::File;
 use vars qw($VERSION %IRSSI);
 
-$VERSION = '1.0+';
+$VERSION = '1.1';
 %IRSSI = (
 	authors     => 'Wouter Coekaerts',
 	contact     => 'wouter@coekaerts.be',
@@ -456,7 +456,8 @@ my %filters = (
 	'types' => \@all_types,
 	'sub' => sub {
 		my ($param, $signal,$parammessage,$server,$channelname,$nickname,$address,$condition,$extra) = @_;
-		return  (defined($nickname) && defined($address) && defined($server) && $server->masks_match($param, $nickname, $address));
+		$address //= '';
+		return  (defined($nickname) && defined($server) && $server->masks_match($param, $nickname, $address));
 	}
 },
 'other_masks' => {

@@ -29,7 +29,8 @@ require Encode;
     # This is an ugly hack to be `lax' about the encoding. We try to
     # read everything as UTF-8 regardless of declared file encoding
     # and fall back to Latin-1.
-    my $orig = YAML::Tiny->can("_has_internal_string_value");
+    my $orig = YAML::Tiny->can("_has_internal_string_value") || die("Error in ".__PACKAGE__);
+    no warnings 'redefine';
     *YAML::Tiny::_has_internal_string_value = sub {
 	my $ret = $orig->(@_);
 	use bytes;
@@ -48,7 +49,7 @@ my @modules = grep {
 	&& !Module::CoreList->first_release($_)
 } sort keys %{ $prereq_results->as_string_hash };
 
-my (%info, $version);
+my (%info, $version, @commands);
 unless (defined $package) {
     my %fail = (failed => 1, name => $CURRENT_SCRIPT);
     $fail{modules} = \@modules if @modules;
@@ -67,6 +68,7 @@ unless (defined $package) {
 else {
     %info = do { no strict 'refs'; %{"Irssi::Script::${package}IRSSI"} };
     $version = do { no strict 'refs'; ${"Irssi::Script::${package}VERSION"} };
+    @commands = sort map { $_->{cmd} } grep { $_->{category} eq "Perl scripts' commands" } Irssi::commands;
 }
 delete $info{''};
 for my $rb (keys %info) {
@@ -93,5 +95,6 @@ if ($loginfo) {
     $info{modified} = "$date $time";
 }
 $info{modules} = \@modules if @modules;
+$info{commands} = \@commands if @commands;
 $info{default_package} = $package =~ s/::$//r if $package;
 YAML::Tiny::DumpFile("info.yml", [\%info]);

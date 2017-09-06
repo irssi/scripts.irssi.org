@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-our $VERSION = '0.3.7'; # 6edfe656246780e
+our $VERSION = '0.4.0'; # c274f630aff9967
 our %IRSSI = (
     authors	=> 'Nei',
     name	=> 'nickcolor_expando',
@@ -117,7 +117,8 @@ use Irssi;
 
 my @action_protos = qw(irc silc xmpp);
 my (%set_colour, %avoid_colour, %has_colour, %last_time, %netchan_hist);
-my ($expando, $ignore_re, $ignore_setting, $global_colours, $retain_colour_time, @colours, $exited, $session_load_time);
+my ($expando, $iexpando, $ignore_re, $ignore_setting, $global_colours, $retain_colour_time, @colours, $exited, $session_load_time);
+($expando, $iexpando) = ('', ''); 	# Initialise to empty
 
 # the numbers for the scoring system, highest colour value will be chosen
 my %scores = (
@@ -168,6 +169,10 @@ my %ext_to_base_map = map { (sprintf '%02X', $_) => $bases[$_] } 0..15;
 
 sub expando_neatcolour {
     return $expando;
+}
+
+sub expando_neatcolour_inv {
+    return $iexpando;
 }
 
 # one-at-a-time hash
@@ -405,6 +410,7 @@ sub msg_line_tag {
     $nick = $nickobj->{nick} if $nickobj;
     my $colour = colourise_nt($srv->{tag}.'/'.$obj->{name}, $nick);
     $expando = $colour ? format_expand('%X'.$colour) : '';
+    $iexpando = $colour ? format_expand('%x'.$colour) : '';
 }
 
 sub msg_line_tag_xmppaction {
@@ -424,6 +430,7 @@ sub prnt_clear_public {
 
 sub clear_ref {
     $expando = '';
+    $iexpando = '';
 }
 
 sub nicklist_changed {
@@ -990,7 +997,15 @@ Irssi::expando_create('nickcolor', \&expando_neatcolour, {
 	    "message $_ own_action" => 'none')
        } @action_protos),
    });
-
+   
+Irssi::expando_create('inickcolor', \&expando_neatcolour_inv, {
+    'message public' 	 => 'none',
+    'message own_public' => 'none',
+    (map { ("message $_ action"     => 'none',
+	    "message $_ own_action" => 'none')
+       } @action_protos),
+   });
+   
 Irssi::signal_add({
     'message public'	 => 'msg_line_tag',
     'message own_public' => 'msg_line_clear',
@@ -1021,6 +1036,8 @@ Irssi::signal_add_last('setup changed' => 'setup_changed');
 
 # Changelog
 # =========
+# 0.4.0
+# - Allow usage of the colour as a background (using $inickcolor)
 # 0.3.7
 # - fix crash if xmpp action signal is not registered (just ignore it)
 # 0.3.6

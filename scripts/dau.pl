@@ -1417,7 +1417,7 @@ sub switch_create_files {
 
 	} else {
 
-		if (open(FH1, "> $file1")) {
+		if (open(FH1, ">", $file1)) {
 
 			print FH1 &fix(<<'			END');
 			# dau.pl - http://dau.pl/
@@ -1451,7 +1451,7 @@ sub switch_create_files {
 
 	} else {
 
-		if (open(FH1, "> $file2")) {
+		if (open(FH1, ">", $file2)) {
 
 			print FH1 &fix(<<'			END');
 			END
@@ -1479,7 +1479,7 @@ sub switch_create_files {
 
 	} else {
 
-		if (open(FH1, "> $file3")) {
+		if (open(FH1, ">", $file3)) {
 
 			print FH1 &fix(<<'			END');
 			END
@@ -5736,7 +5736,7 @@ sub time_parse {
 ################################################################################
 
 sub debug_message {
-        open(DEBUG, ">> $ENV{HOME}/.dau/.debug");
+        open(DEBUG, ">>", "$ENV{HOME}/.dau/.debug");
 
         print DEBUG $_[0];
 
@@ -5746,5 +5746,5 @@ sub debug_message {
 #BEGIN {
 #	use warnings;
 #
-#	open(STDERR, ">> $ENV{HOME}/.dau/.STDERR");
+#	open(STDERR, ">>", $ENV{HOME}/.dau/.STDERR");
 #}

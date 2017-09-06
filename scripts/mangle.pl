@@ -7,18 +7,21 @@
 use strict;
 use locale;
 use Irssi 20020324;
+use Irssi::TextUI;
 use POSIX;
 use Data::Dumper;
 
 use vars qw($VERSION %IRSSI %HELP %channels %translations);
-$VERSION = '2004031701';
+$VERSION = '2017031701';
 %IRSSI = (
     authors     => 'Szymon Sokol',
     contact     => 'szymon@hell.pl',
     name        => 'mangle',
     description => 'translates your messages into Morse code, rot13 and other sillinesses.',
+    sbitems     => 'mangle_sb',
     license     => 'GPLv2',
-    url         => 'http://irssi.org/scripts/',                                     changed     => $VERSION,
+    url         => 'http://irssi.org/scripts/',
+    changed     => $VERSION,
     modules     => 'Data::Dumper'
 );  
 
@@ -192,23 +195,25 @@ sub add_channel ($$) {
 
 sub save_channels {
     my $filename = Irssi::settings_get_str('mangle_filename');
-    local *F;
-    open F, '>'.$filename;
+	my $fo;
+    open $fo, '>',$filename;
     my $data = Dumper(\%channels);
-    print F $data;
-    close F;
+    print $fo $data;
+    close $fo;
     print CLIENTCRAP "%R>>%n Mangle channels saved";
 }
 
 sub load_channels {
     my $filename = Irssi::settings_get_str('mangle_filename');
     return unless (-e $filename);
-    local *F;
-    open F, '<'.$filename;
+    my $fi;
+    open $fi, '<',$filename;
     my $text;
-    $text .= $_ foreach <F>;
-    no strict "vars";
-    %channels = %{ eval "$text" };
+    $text .= $_ foreach <$fi>;
+    #no strict "vars";
+    my $VAR1;
+    eval "$text";
+    %channels = %$VAR1;
 }
 
 sub mangle_show ($$) {

@@ -29,7 +29,7 @@
 
 use strict;
 use vars qw($VERSION %IRSSI);
-$VERSION = '2.77';
+$VERSION = '2.78';
 %IRSSI = (
   authors	=> 'David Rudie',
   contact	=> 'david@inexistent.com',
@@ -37,7 +37,7 @@ $VERSION = '2.77';
   description	=> 'Cross-platform/architecture system information script.',
   license	=> 'BSD',
   url		=> 'http://www.inexistent.com/',
-  changed	=> 'Mon Sep 01 04:20 PDT 2003',
+  changed	=> '2017-06-08',
   bugs		=> 'Probably some if it cannot read /proc.'
 );
 
@@ -114,7 +114,9 @@ my $ppc		= 1 if $osm =~ /^ppc$/;
 my $x86_64	= 1 if $osm =~ /^x86_64$/;
 
 
-my $l26 = 1 if $osv =~ /^2\.6/;
+# linux => 2.6
+$osv =~ m/^(\d+\.\d+)/;
+my $l26 = 1 if 2.6 <=$1;
 
 
 sub cmd_sysinfo {
