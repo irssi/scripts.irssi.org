@@ -2283,10 +2283,10 @@
   description: 'irssi quiz script'
   filename: iquiz.pl
   license: 'GNU GPL v3 or any later version'
-  modified: '2017-05-23 19:48:34'
+  modified: '2017-09-06 20:23:36'
   name: iQuiz
   url: http://iquiz.quizpl.net
-  version: '170523'
+  version: '170819'
 -
   authors: DonRumata
   contact: rumata@dragons.ru
