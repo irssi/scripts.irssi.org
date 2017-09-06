@@ -4925,10 +4925,10 @@
   description: 'Captures urls said in channel and private messages and saves them to a file, also adds a /url command which loads the last said url into a browser.'
   filename: urlgrab.pl
   license: 'GNU GPLv2 or later'
-  modified: '2016-06-29 00:54:08'
+  modified: '2017-09-06 16:06:47'
   name: urlgrab
   url: http://irssi.dgl.cx/
-  version: '0.3'
+  version: '0.4'
 -
   authors: 'David Leadbeater'
   contact: dgl@dgl.cx
