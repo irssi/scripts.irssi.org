@@ -43,7 +43,7 @@ use warnings;
 use Irssi qw(theme_register current_theme command_bind settings_add_int settings_add_bool settings_add_str settings_get_int settings_get_bool settings_get_str settings_set_int settings_set_bool settings_set_str printformat timeout_add_once timeout_remove signal_add_last signal_remove signal_stop signal_emit);
 use Time::HiRes qw(time);
 
-our $VERSION = '170523';
+our $VERSION = '170819';
 our %IRSSI = (
 	authors			=> 'wilk',
 	name			=> 'iQuiz',
@@ -1536,7 +1536,7 @@ sub check_answer {
 ##### Signals' handlers #####
 sub sig_pubmsg {
 	my ($r_server, $msg, $nick, $addr, $target) = @_;
-	return if (!$quiz{ison} || ($r_server->{tag} ne $quiz{chan}{server}{tag}) || ($target ne $quiz{chan}{name}) || exists($quiz{ignored}{$addr}));
+	return if (!$quiz{ison} || (lc($r_server->{tag}) ne lc($quiz{chan}{server}{tag})) || (lc($target) ne lc($quiz{chan}{name})) || exists($quiz{ignored}{$addr}));
 	for ($msg) { # cleanup
 		tr/\t/ /;			# tabs to spaces
 		s/ {2,}/ /g;		# fix double spaces
