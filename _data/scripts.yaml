@@ -5316,3 +5316,14 @@
   name: XQF
   url: none
   version: '0.14'
+-
+  authors: 'Grzegorz Jaskiewicz'
+  commands: 'ryawn yawn'
+  contact: gj@pointblue.com.pl
+  description: 'yawners toy'
+  filename: ziew.pl
+  license: GPLv2
+  modified: '2017-09-02 11:31:26'
+  name: ziew
+  url: http://gj.pointblue.com.pl/projects/ziew
+  version: '0.56'
