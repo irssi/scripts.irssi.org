@@ -43,6 +43,7 @@ command_bind(
     my $i = 0;
     my @parm;
     push(@parm,'toilet');
+    push(@parm,'--irc');
     my $gay = Irssi::settings_get_bool('toilet_gay');
     my $font = Irssi::settings_get_str('toilet_font');
     if ($gay == 1) {
