@@ -1,0 +1,13 @@
+---
+-
+  authors: bcattaneo
+  commands:
+    - toilet
+  contact: c@ttaneo.uy
+  default_package: toilet
+  description: 'Simple toilet implementation for Irssi'
+  license: 'Public Domain'
+  modified: '2017-09-10 02:26:44'
+  name: toilet
+  url: http://github.com/bcattaneo
+  version: 1.0.0
