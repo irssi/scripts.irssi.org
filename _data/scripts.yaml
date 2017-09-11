@@ -4673,6 +4673,17 @@
   url: http://cybione.org
   version: '2.1'
 -
+  authors: bcattaneo
+  commands: toilet
+  contact: c@ttaneo.uy
+  description: 'Simple toilet implementation for Irssi'
+  filename: toilet.pl
+  license: 'Public Domain'
+  modified: '2017-09-10 02:26:44'
+  name: toilet
+  url: http://github.com/bcattaneo
+  version: 1.0.0
+-
   authors: "Stefan 'tommie' Tomanek"
   commands: topics
   contact: stefan@pico.ruhr.de
