@@ -24,10 +24,17 @@ sub cmd_ls {
 
 	my @nicks = $channel->nicks();
 
+	my $re = eval { qr/$data/i };
+	if (not $re) {
+		chomp $@;
+		$channel->print("Invalid regex pattern:\n$@");
+		return;
+	}
+
 	foreach my $nick (@nicks) {
 		my $n = $nick->{nick} . "!" . $nick->{host};
 
-		$channel->print("$n") if $n =~ /$data/i;
+		$channel->print("$n") if $n =~ $re;
 	}
 }
 
