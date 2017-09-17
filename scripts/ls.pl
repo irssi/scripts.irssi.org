@@ -1,7 +1,7 @@
 use strict;
 use vars qw($VERSION %IRSSI);
 use Irssi 20020120;
-$VERSION = "0.02";
+$VERSION = "0.03";
 %IRSSI = (
     authors	=> "c0ffee",
     contact	=> "c0ffee\@penguin-breeder.org",
@@ -9,31 +9,42 @@ $VERSION = "0.02";
     description	=> "Use /ls <regex> to show all nicks (including ident\@host) matching regex in the current channel",
     license	=> "Public Domain",
     url		=> "http://www.penguin-breeder.org/irssi/",
-    changed	=> "Fri Sep 06 15:36 CEST 2002",
+    changed	=> "Sun Sep 17 06:31 CEST 2017",
 );
 
 
 sub cmd_ls {
 	my ($data, $server, $channel) = @_;
-	my @nicks;
-	my $n;
-	my $nick;
 
 	if ($channel->{type} ne "CHANNEL") {
+		Irssi::print("You are not on a channel");
 
-		Irssi::print("Your are not on a channel");
 		return;
-
 	}
 
-	@nicks = $channel->nicks();
+	$channel->print("--- Search results:");
 
-	foreach $nick (@nicks) {
+	my @nicks = $channel->nicks();
 
-		$n = $nick->{nick} . "!" . $nick->{host};
+	my $re = eval { qr/$data/i };
+	if (not $re) {
+		chomp $@;
+		$channel->print("Invalid regex pattern:\n$@");
+		return;
+	}
 
-		$channel->print("$n") if $n =~ /$data/i;
-		
+	my $found;
+	foreach my $nick (@nicks) {
+		my $n = $nick->{nick} . "!" . $nick->{host};
+
+		if ($n =~ $re) {
+			$channel->print($n);
+			$found = 1;
+		}
+	}
+
+	if (not $found) {
+		$channel->print("No matches");
 	}
 }
 
