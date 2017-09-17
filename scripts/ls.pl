@@ -31,10 +31,18 @@ sub cmd_ls {
 		return;
 	}
 
+	my $found;
 	foreach my $nick (@nicks) {
 		my $n = $nick->{nick} . "!" . $nick->{host};
 
-		$channel->print("$n") if $n =~ $re;
+		if ($n =~ $re) {
+			$channel->print($n);
+			$found = 1;
+		}
+	}
+
+	if (not $found) {
+		$channel->print("No matches");
 	}
 }
 
