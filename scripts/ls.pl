@@ -22,6 +22,8 @@ sub cmd_ls {
 		return;
 	}
 
+	$channel->print("--- Search results:");
+
 	my @nicks = $channel->nicks();
 
 	my $re = eval { qr/$data/i };
