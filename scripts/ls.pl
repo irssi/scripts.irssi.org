@@ -15,25 +15,19 @@ $VERSION = "0.02";
 
 sub cmd_ls {
 	my ($data, $server, $channel) = @_;
-	my @nicks;
-	my $n;
-	my $nick;
 
 	if ($channel->{type} ne "CHANNEL") {
+		Irssi::print("You are not on a channel");
 
-		Irssi::print("Your are not on a channel");
 		return;
-
 	}
 
-	@nicks = $channel->nicks();
+	my @nicks = $channel->nicks();
 
-	foreach $nick (@nicks) {
-
-		$n = $nick->{nick} . "!" . $nick->{host};
+	foreach my $nick (@nicks) {
+		my $n = $nick->{nick} . "!" . $nick->{host};
 
 		$channel->print("$n") if $n =~ /$data/i;
-		
 	}
 }
 
