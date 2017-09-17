@@ -1,7 +1,7 @@
 use strict;
 use vars qw($VERSION %IRSSI);
 use Irssi 20020120;
-$VERSION = "0.02";
+$VERSION = "0.03";
 %IRSSI = (
     authors	=> "c0ffee",
     contact	=> "c0ffee\@penguin-breeder.org",
@@ -9,7 +9,7 @@ $VERSION = "0.02";
     description	=> "Use /ls <regex> to show all nicks (including ident\@host) matching regex in the current channel",
     license	=> "Public Domain",
     url		=> "http://www.penguin-breeder.org/irssi/",
-    changed	=> "Fri Sep 06 15:36 CEST 2002",
+    changed	=> "Sun Sep 17 06:31 CEST 2017",
 );
 
 
