@@ -2750,10 +2750,10 @@
   description: 'Use /ls <regex> to show all nicks (including ident@host) matching regex in the current channel'
   filename: ls.pl
   license: 'Public Domain'
-  modified: '2014-10-17 22:54:13'
+  modified: '2017-09-17 06:18:46'
   name: 'List nicks in channel'
   url: http://www.penguin-breeder.org/irssi/
-  version: '0.02'
+  version: '0.03'
 -
   authors: Mika
   commands: lwho
