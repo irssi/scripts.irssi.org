@@ -374,12 +374,12 @@
 -
   authors: "Timo 'cras' Sirainen, Leszek Matok"
   contact: lam@lac.pl
-  description: 'Automatically rejoin to channel after being kick, after a (short) user-defined delay'
+  description: 'Automatically rejoin to channel after being kicked, after a (short) user-defined delay'
   filename: autorejoin.pl
   license: GPLv2
-  modified: '2002-03-10 14:00:00'
+  modified: '2017-09-26 02:40:01'
   name: autorejoin
-  version: 1.0.0
+  version: 1.1.0
 -
   authors: "Paul 'laaama' Raade"
   contact: paul\@raade.org
