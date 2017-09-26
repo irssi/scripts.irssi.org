@@ -36,7 +36,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                       autoopper ](Test/autoopper/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
 [                          autoop ](Test/autoop/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
 [                    autorealname ](Test/autorealname/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                      autorejoin ](Test/autorejoin/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                      autorejoin ](Test/autorejoin/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                autorejoinpunish ](Test/autorejoinpunish/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                    autoreminder ](Test/autoreminder/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                 autorun_scripts ](Test/autorun_scripts/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
@@ -267,7 +267,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                logcompress_perl ](Test/logcompress_perl/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                     logcompress ](Test/logcompress/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       logresume ](Test/logresume/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                              ls ](Test/ls/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[                              ls ](Test/ls/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                            lwho ](Test/lwho/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                  mailcheck_imap ](Test/mailcheck_imap/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [             mailcheck_mbox_flux ](Test/mailcheck_mbox_flux/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
@@ -521,4 +521,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-07e7fc1ae55784a32f0279683980fefc7335c5c9 | 952
+ec05ad8b108ad8129f22d66c023f6fed70a47378 | 954
