@@ -6,7 +6,6 @@
 # notice and this notice are preserved.  This file is offered as-is,
 # without any warranty.
 
-use v5.10.1;
 use strict;
 use HTML::Entities;
 use Irssi;
@@ -17,14 +16,14 @@ use URI;
 use URI::QueryParam;
 use XML::Simple;
 
-our $VERSION = '1.00';
+our $VERSION = '1.01';
 our %IRSSI = (
   authors     => 'Olof "zibri" Johansson, Cyprien Debu',
   contact     => 'olof@ethup.se, frey@notk.org',
   name        => 'vidinfo',
   description => 'Prints some info of a linked video automatically',
   license     => 'GPL',
-  changed     => '2014-07'
+  changed     => '2017-10-09'
 );
 
 my $sn = $IRSSI{name};
@@ -125,7 +124,7 @@ sub get_rule {
 }
 
 sub load_rules {
-  state $rules_str = $default_rule;
+  my $rules_str = $default_rule;
 
   return if ($rules_str eq Irssi::settings_get_str($sn.'_print_rules'));
 
@@ -153,16 +152,16 @@ sub process {
 }
 
 sub canon_domain {
-  my $_ = shift;
-  s/^www\.//;
-  return $_;
+  my $s = shift;
+  $s=~ s/^www\.//;
+  return $s;
 }
 
 sub idextr_dailymotion_com {
   my $u = URI->new(shift);
-  my $_ = ($u->path_segments())[2];
-  s/_.+//;
-  return $_;
+  my $s = ($u->path_segments())[2];
+  $s=~ s/_.+//;
+  return $s;
 }
 
 sub idextr_vimeo_com {
@@ -248,14 +247,14 @@ sub yt_get_title {
 
   my $content = $response->decoded_content;
 
-  my $xml = XMLin($content)->{'media:group'};
-  my $title = $xml->{'media:title'}->{content};
-  my $s = $xml->{'yt:duration'}->{seconds};
+  $content =~ m/meta itemprop="name" content="(.*?)"/p;
+  my $title=$1;
 
-  my $m = $s / 60;
-  my $d = sprintf "%d:%02d", $m, $s % 60;
+  ${^POSTMATCH} =~ m/meta itemprop="duration" content="(.*?)"/;
+  $1 =~ m/(\d+)m(\d+)s/i;
+  my $duration = sprintf("%d:%02d", $1, $2);
 
-  return ($title, $d);
+  return ($title, $duration);
 }
 
 sub get_title {
@@ -276,7 +275,7 @@ sub get_title {
     yt => {
       sitename => 'YouTube',
       get_title => \&yt_get_title,
-      url => "http://gdata.youtube.com/feeds/api/videos/$vid->{id}",
+      url => "https://www.youtube.com/watch?v=$vid->{id}",
     },
   );
 
@@ -314,20 +313,22 @@ sub print_title {
   my $c = Irssi::settings_get_str($sn.'_site_color');
   my $line = ($c ne '' ? "\x03$c$site:\x03" : "$site:") . " $title ($time)";
 
+  SWITCH:
   for ($rule) {
-    when (/=/) {
+    if (/=/) {
       my $witem = Irssi::window_item_find $tgt;
       $witem->print($line);
+      last SWITCH;
     }
-    when (/\+/) {
+    if (/\+/) {
       # Remove colors in channels with mode 'c'
       my $chan = $srv->channel_find($tgt);
       if (defined $chan and $chan->{mode} =~ /c/ and $c ne '') {
         $line = "\x02$site:\x02 $title ($time)";
       }
       $srv->command("msg $tgt $line");
+      last SWITCH;
     }
-    default { }
   }
 }
 
