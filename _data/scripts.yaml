@@ -5030,10 +5030,10 @@
   description: 'Prints some info of a linked video automatically'
   filename: vidinfo.pl
   license: GPL
-  modified: '2014-07-05 17:57:51'
+  modified: '2017-10-09 18:50:19'
   modules: 'HTML::Entities JSON::Parse LWP::UserAgent Regexp::Common URI URI::QueryParam XML::Simple'
   name: vidinfo
-  version: '1.00'
+  version: '1.01'
 -
   authors: 'Jakub Jankowski'
   commands: 'vme vsay vtopic'
