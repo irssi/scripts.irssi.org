@@ -44,6 +44,5 @@ whitelist:
   - 'on'
   - stocks
   - tvmusor
-  - vidinfo
   - xetra
   - xmmsinfo
