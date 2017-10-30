@@ -4,7 +4,7 @@ use FileHandle;
 
 use vars qw($VERSION %IRSSI);
 
-$VERSION = "0.9.8.1";
+$VERSION = "0.9.8.2";
 %IRSSI = (
     authors     => 'Andreas \'ads\' Scherbaum <ads@wars-nicht.de>',
     name        => 'screen_away',
