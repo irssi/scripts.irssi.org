@@ -1,19 +1,3 @@
-# identd_resolve_mode has three possible modes for identd generation:
-# 1. !random
-#    a random string will be created containing [a-z0-9]
-# 2. !username
-#    $ENV{USER} will be used
-# 3. freeform
-#    any other text will be used as is
-# 
-# The identd will be truncated to identd_length characters before the response is sent
-#
-# For the script to work, the defined port, identd_port, has to be accessible from the
-# internet. Make sure it is portforwarded in the router or firewall, or otherwise
-# visible to the irc servers you are connecting to.
-#
-# Beware that on *nix a non-privileged user can't bind to ports below 1024.
-
 use strict;
 use warnings;
 use Irssi;
@@ -42,6 +26,36 @@ my $verbose = 0;
 
 sub VERBOSE { $verbose };
 
+sub cmd_help {
+  my ($args, $server, $witem) = @_;
+  if($args =~ /^identd\b/i) {
+    Irssi::print ( <<SCRIPTHELP_EOF
+%_Description:%_
+
+Handles identd responses during server connections.
+Port 113 from the outside has to be portforwarded to identd_port for
+the script to work. The port has to be above 1024 or irssi will complain.
+Another option is to run irssi as root but that is strongly discouraged.
+
+%_Available settings:%_
+
+    identd_port         - the port the identd server is listening on
+    identd_length       - maximum length of the username to return
+    identd_resolve_mode - the available modes to use are:
+                            * !random - username is a identd_length
+                              long random string consisting of 0-9a-z
+                            * !username - use the logged in user's name
+                            * it's up to you, identd_length characters are
+                              used
+    identd_verbose      - print status messages when identd is listening
+                          to connections
+
+SCRIPTHELP_EOF
+                        ,MSGLEVEL_CLIENTCRAP);
+    Irssi::signal_stop;
+  }
+}
+
 sub start_ident_server {
   my $port = Irssi::settings_get_int('identd_port') // 8113;
   Irssi::print("Identd - starting...") if VERBOSE;
@@ -61,7 +75,11 @@ sub handle_connection {
   my $iaddr = inet_aton($sock->peerhost); # or whatever address
   my $peer  = gethostbyaddr($iaddr, AF_INET) // $sock->peerhost;
   Irssi::print("Identd - handling connection from $peer") if VERBOSE;
-#  return unless exists $connectrec->{$peer};
+  unless(exists $connectrec->{$peer}) {
+    Irssi::print("Identd - $peer not found in access list");
+    close $sock;
+    return;
+  }
 
   my $username;
   my $username_mode = fc(Irssi::settings_get_str('identd_resolve_mode'));
@@ -122,6 +140,8 @@ Irssi::settings_add_str('identd', 'identd_resolve_mode', '!username');
 Irssi::settings_add_int('identd', 'identd_port', 8113);
 Irssi::settings_add_int('identd', 'identd_length', 10);
 Irssi::settings_add_bool('identd', 'identd_verbose', 0);
+
+Irssi::command_bind_first('help', 'cmd_help');
 
 Irssi::signal_add_first('server looking', 'sig_server_connecting');
 Irssi::signal_add_last('event connected', 'sig_event_connected');
