@@ -7,7 +7,7 @@ no autovivification;
 use feature qw(fc);
 
 use vars qw($VERSION %IRSSI);
-$VERSION = "0.2";
+$VERSION = "0.3";
 %IRSSI = (
   authors     => 'vague',
   contact     => 'vague!#irssi@freenode on irc',
