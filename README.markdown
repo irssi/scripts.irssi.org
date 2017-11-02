@@ -206,7 +206,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                              hl ](Test/hl/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                        hlscroll ](Test/hlscroll/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        hostname ](Test/hostname/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
-[                          identd ](Test/identd/)|  ✔   |  ✔   |  ✔   |  1   |  ✔   | (c)
+[                          identd ](Test/identd/)|  ✔   |  ✔   |  ✔   |  2   |  ✔   
 [                    identify-md5 ](Test/identify-md5/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                           ident ](Test/ident/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        idletime ](Test/idletime/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
@@ -402,7 +402,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                     sb_position ](Test/sb_position/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                       sb_search ](Test/sb_search/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                     schwaebisch ](Test/schwaebisch/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                     screen_away ](Test/screen_away/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[                     screen_away ](Test/screen_away/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                    scriptassist ](Test/scriptassist/)|  ✔   |  ✔   |  ✔   | 60   |  ✔   | (c)
 [                      scripthelp ](Test/scripthelp/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                      scriptinfo ](Test/scriptinfo/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -521,4 +521,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-ce8dd21970e876cc22e8bd04622ea3bbd91104c9 | 958
+7971abeefee26e6b314483650b221a127f5d6242 | 961
