@@ -130,10 +130,7 @@ sub cmd_sb_search {
 			if ($forward) { # first line
 				$line = $view->get_lines;
 			} else { # last line
-				$line = $view->{startline};
-				while ($line->next) {
-					$line = $line->next
-				}
+				$line = $view->{buffer}{cur_line};
 			}
 		} else { # line after or before first visible line
 			$line = $forward ? $view->{startline}->next : $view->{startline}->prev;
