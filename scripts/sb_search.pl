@@ -22,7 +22,7 @@ use Irssi;
 use Irssi::TextUI;
 use vars qw($VERSION %IRSSI);
 
-$VERSION = '1.1';
+$VERSION = '1.2';
 %IRSSI = (
 	authors     => 'Wouter Coekaerts, Emanuele Giaquinta',
 	contact     => 'wouter@coekaerts.be, exg@irssi.org',
