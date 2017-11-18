@@ -80,7 +80,7 @@ use Data::Dumper;
 
 use vars qw($VERSION %IRSSI);
 
-$VERSION = '1.7.2';
+$VERSION = '1.7.3';
 %IRSSI = (
 	authors	 	=> 'Tijmen "timing" Ruizendaal, Matt "f0rked" Sparks',
 	contact		=> 'tijmen.ruizendaal@gmail.com, root@f0rked.com',
@@ -213,7 +213,7 @@ sub event_quit {
 sub typing_notice {
 	my ($item, $get_size_only) = @_;
 	my $window = Irssi::active_win();
-	my $tag = Irssi::active_server->{tag};
+	my $tag = $window->{active}{server}{tag} // "";
 	my $channel = $window->get_active_name();
 	my $k = "$tag/$channel";
 	
@@ -260,10 +260,9 @@ sub key_pressed {
 	if ($key != 9 && $key != 10 && $key != 13 && $lastkey != 27 && $key != 27 
 	   && $lastkey != 91 && $key != 126 && $key != 127) 
 	{
-		my $server = Irssi::active_server();
 		my $window = Irssi::active_win();
 		my $nick = $window->get_active_name();
-		my $tag = $server->{tag};
+		my $tag = $window->{active}{server}{tag};
 		if (defined $tag && $bitlbee_tag{ $tag } && $nick ne "(status)" && $nick ne "root") {
 			if( grep $_ eq $nick, @{ $control_channels{$tag} // [] } ){ # send typing if in control channel
 				my $input = Irssi::parse_special("\$L");
