@@ -75,7 +75,7 @@ See [the testing read-me](../master/_testing/) for details.
 [             bitlbee_nick_change ](Test/bitlbee_nick_change/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [          bitlbee_tab_completion ](Test/bitlbee_tab_completion/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [               bitlbee_timestamp ](Test/bitlbee_timestamp/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[           bitlbee_typing_notice ](Test/bitlbee_typing_notice/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[           bitlbee_typing_notice ](Test/bitlbee_typing_notice/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                         blowjob ](Test/blowjob/)|  ✔   |  ✔   |  ✔   | 22   |  ✔   | (c)
 [                             bmi ](Test/bmi/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                          buffer ](Test/buffer/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
@@ -221,7 +221,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                       intercept ](Test/intercept/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                         intjoin ](Test/intjoin/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
 [                      invitejoin ](Test/invitejoin/)|  ✔   |  ✔   |  ✔   | 13   |  ✔   | (c)
-[                        ipupdate ](Test/ipupdate/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[                        ipupdate ](Test/ipupdate/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                           iquiz ](Test/iquiz/)|  ✔   |  ✔   |  ✔   |104   |  ✔   | (c)
 [                        iraident ](Test/iraident/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
 [                       irc_chess ](Test/irc_chess/)|  ✘   |  ✔   |  ✔   |  8   |  ☡   | (c)
@@ -521,4 +521,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-2375b33707ec3e13d33d2fdb289f7b15d1377564 | 965
+a82e0dfb0ce998d0fefba6af350b788fe1ab5515 | 969
