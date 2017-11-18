@@ -761,10 +761,10 @@
   description: "1. Adds an item to the status bar wich shows [typing] when someone is typing a message on the supported IM-networks\t2. Sends typing notices to the supported IM networks (the other way arround). (For bitlbee 3.0+)"
   filename: bitlbee_typing_notice.pl
   license: GPLv2
-  modified: '2017-04-07 16:34:31'
+  modified: '2017-11-17 16:21:26'
   name: BitlBee_typing_notice
   url: 'http://the-timing.nl/stuff/irssi-bitlbee, http://f0rked.com'
-  version: 1.7.2
+  version: 1.7.3
 -
   authors: iMil,Skid,Foxmask,reiffert
   commands: 'bconf blow blowhelp delkey perm setkey showkey'
