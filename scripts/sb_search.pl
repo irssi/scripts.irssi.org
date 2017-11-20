@@ -132,7 +132,7 @@ sub cmd_sb_search {
 			} else { # last line
 				$line = $view->{buffer}{cur_line};
 			}
-		} else { # line after or before first visible line
+		} elsif ($view->{startline}) { # line after or before first visible line
 			$line = $forward ? $view->{startline}->next : $view->{startline}->prev;
 		}
 		
