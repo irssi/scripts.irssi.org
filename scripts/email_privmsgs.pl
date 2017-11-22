@@ -28,7 +28,7 @@ use Email::Sender::Simple qw(try_to_sendmail);
 use Email::Simple;
 use Email::Simple::Creator;
 
-$VERSION = '0.5';
+$VERSION = '0.6';
 %IRSSI = (
 	authors => 'Adam James',
 	contact => 'atj@pulsewidth.org.uk',
@@ -39,15 +39,16 @@ $VERSION = '0.5';
 		"Useful in combination with screen_away. " .
 		"Requires Email::Sender.",
 	license => 'MIT',
+	changed => "2017-11-21", 
 );
 
 my $FORMAT = $IRSSI{'name'} . '_crap';
 my $msgs = {};
 
 Irssi::settings_add_str('misc', $IRSSI{'name'} . '_from_address',
-	'irssi@' . (%ENV->{'HOST'} || 'localhost'));
+	'irssi@' . ($ENV{'HOST'} || 'localhost'));
 Irssi::settings_add_str('misc', $IRSSI{'name'} . '_to_address',
-	%ENV->{'USER'});
+	$ENV{'USER'});
 Irssi::settings_add_str('misc', $IRSSI{'name'} . '_subject',
 	'IRC Private Messages from Irssi');
 
