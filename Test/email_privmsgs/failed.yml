@@ -1,8 +1,0 @@
----
--
-  failed: 1
-  modules:
-    - Email::Sender::Simple
-    - Email::Simple
-    - Email::Simple::Creator
-  name: email_privmsgs

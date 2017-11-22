@@ -11,7 +11,6 @@
   default_package: xetra
   description: 'brings the stock exchanges of the world to your irssi'
   license: GPLv2
-  modified: '2017-04-07 16:34:31'
   modules:
     - LWP::Simple
   name: Xetra
