@@ -1505,11 +1505,11 @@
   description: "Emails you private messages sent while you're away. Useful in combination with screen_away. Requires Email::Sender."
   filename: email_privmsgs.pl
   license: MIT
-  modified: '2015-01-18 02:15:41'
+  modified: '2017-11-21 23:52:33'
   modules: 'Email::Sender::Simple Email::Simple Email::Simple::Creator'
   name: email_privmsgs
   url: http://git.pulsewidth.org.uk/?p=irssi-scripts.git;a=summary
-  version: '0.5'
+  version: '0.6'
 -
   authors: PrincessLeia2
   contact: 'lyz\@princessleia.com '
