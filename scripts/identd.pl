@@ -7,7 +7,7 @@ no autovivification;
 use feature qw(fc);
 
 use vars qw($VERSION %IRSSI);
-$VERSION = "0.3";
+$VERSION = "0.4";
 %IRSSI = (
   authors     => 'vague',
   contact     => 'vague!#irssi@freenode on irc',
@@ -49,6 +49,8 @@ Another option is to run irssi as root but that is strongly discouraged.
                               used
     identd_verbose      - print status messages when identd is listening
                           to connections
+    identd_strict_conn  - verify an incoming connection is from a server we are
+                          connecting to
 
 SCRIPTHELP_EOF
                         ,MSGLEVEL_CLIENTCRAP);
@@ -59,7 +61,7 @@ SCRIPTHELP_EOF
 sub start_ident_server {
   my $port = Irssi::settings_get_int('identd_port') // 8113;
   Irssi::print("Identd - starting...") if VERBOSE;
-  $ident_server = IO::Socket::INET->new( Proto => 'tcp', LocalAddr => '0.0.0.0' , LocalPort => $port, Listen => SOMAXCONN, ReusePort => 1) or print "Cam't bind to port $port, $@";
+  $ident_server = IO::Socket::INET->new( Proto => 'tcp', LocalAddr => '0.0.0.0' , LocalPort => $port, Listen => SOMAXCONN, ReusePort => 1) or print "Can't bind to port $port, $@";
   if(!$ident_server) {
     Irssi::print("Identd - couldn't start server, $@", MSGLEVEL_CLIENTERROR) if VERBOSE;
     $started = 0;
@@ -75,7 +77,8 @@ sub handle_connection {
   my $iaddr = inet_aton($sock->peerhost); # or whatever address
   my $peer  = gethostbyaddr($iaddr, AF_INET) // $sock->peerhost;
   Irssi::print("Identd - handling connection from $peer") if VERBOSE;
-  unless(exists $connectrec->{$peer}) {
+  my $strict = Irssi::settings_get_bool('identd_strict_conn');
+  if($strict && !exists $connectrec->{$peer}) {
     Irssi::print("Identd - $peer not found in access list");
     close $sock;
     return;
@@ -140,6 +143,7 @@ Irssi::settings_add_str('identd', 'identd_resolve_mode', '!username');
 Irssi::settings_add_int('identd', 'identd_port', 8113);
 Irssi::settings_add_int('identd', 'identd_length', 10);
 Irssi::settings_add_bool('identd', 'identd_verbose', 0);
+Irssi::settings_add_bool('identd', 'identd_strict_conn', 0);
 
 Irssi::command_bind_first('help', 'cmd_help');
 
