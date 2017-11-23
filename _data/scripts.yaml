@@ -4114,10 +4114,10 @@
   description: 'search in your scrollback, scroll to a match'
   filename: sb_search.pl
   license: 'GPLv2 or later'
-  modified: '2015-10-01 18:41:05'
+  modified: '2017-11-20 11:40:40'
   name: sb_search
   url: http://wouter.coekaerts.be/irssi/
-  version: '1.1'
+  version: '1.2'
 -
   authors: Nei
   contact: 'Nei @ anti@conference.jabber.teamidiot.de'
