@@ -2130,11 +2130,11 @@
   description: 'Identd script for irssi'
   filename: identd.pl
   license: GPL2
-  modified: '2017-11-02 09:04:40'
+  modified: '2017-11-23 20:27:26'
   modules: autovivification
   name: identd
   url: https://vague.se
-  version: '0.3'
+  version: '0.4'
 -
   authors: 'Eric Jansen'
   commands: identify-md5
