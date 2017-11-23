@@ -22,7 +22,7 @@ use Irssi;
 use Irssi::TextUI;
 use vars qw($VERSION %IRSSI);
 
-$VERSION = '1.1';
+$VERSION = '1.2';
 %IRSSI = (
 	authors     => 'Wouter Coekaerts, Emanuele Giaquinta',
 	contact     => 'wouter@coekaerts.be, exg@irssi.org',
@@ -130,12 +130,9 @@ sub cmd_sb_search {
 			if ($forward) { # first line
 				$line = $view->get_lines;
 			} else { # last line
-				$line = $view->{startline};
-				while ($line->next) {
-					$line = $line->next
-				}
+				$line = $view->{buffer}{cur_line};
 			}
-		} else { # line after or before first visible line
+		} elsif ($view->{startline}) { # line after or before first visible line
 			$line = $forward ? $view->{startline}->next : $view->{startline}->prev;
 		}
 		
