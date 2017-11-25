@@ -1397,6 +1397,16 @@
   url: http://anti.teamidiot.de/
   version: 0.4.8
 -
+  authors: 'Christoffer Holmberg'
+  contact: skug+irssiscripts@skug.fi
+  description: 'Strips the annoying mentions of your nickname via <yournick> on irc<->discord bridge, will work for any bridge using botnick: <yournick>'
+  filename: discord_unhilight.pl
+  license: 'Public Domain'
+  modified: '2017-11-25 10:40:23'
+  name: discord_unhilight.pl
+  url: 'http://scripts.irssi.org & https://github.com/mskug/scrips.irssi.org/blob/master/scripts/discord_unhilight.pl'
+  version: 0.1b
+-
   authors: "Sebastian 'yath' Schmidt"
   contact: yathen@web.de
   description: 'This scripts sends unknown commands to the server'
