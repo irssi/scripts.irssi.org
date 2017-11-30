@@ -40,6 +40,15 @@
   name: accent
   version: '1.34'
 -
+  authors: ilbelkyr
+  contact: 'ilbelkyr on freenode, ilbelkyr@shalture.org'
+  description: 'Display account identification status changes using CAP account-notify'
+  filename: account-notify.pl
+  license: 'CC0 1.0 <https://creativecommons.org/publicdomain/zero/1.0/legalcode>'
+  modified: '2017-11-05 00:04:25'
+  name: account-notify
+  version: '1.01'
+-
   authors: "Chris 'raz' Hoogenboezem"
   contact: chrish@carrier6.com
   description: 'Instead of displaying semi-raw data, a /whois now gives a tidy accountname on Asuka/lain servers (if applicable).'
