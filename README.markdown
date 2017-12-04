@@ -6,7 +6,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                          8-ball ](Test/8-ball/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
 [                          accent ](Test/accent/)|  ✔   |  ✔   |  ✔   | 11   |  ✔   | (c)
 [                     accountname ](Test/accountname/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                  account-notify ](Test/account-notify/)|  ✔   |  ✔   |  ✔   |  2   |  ✔   
+[                  account-notify ](Test/account-notify/)|  ✔   |  ✔   |  ✔   |  2   |  ✔   | (c)
 [                        act_fifo ](Test/act_fifo/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                   active_notice ](Test/active_notice/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                   active_notify ](Test/active_notify/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -308,7 +308,6 @@ See [the testing read-me](../master/_testing/) for details.
 [                      multipaste ](Test/multipaste/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [  munge_own_nickname_to_username ](Test/munge_own_nickname_to_username/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                         my_beep ](Test/my_beep/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                        mygoogle ](Test/mygoogle/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
 [                          myimdb ](Test/myimdb/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
 [                  mysqlurllogger ](Test/mysqlurllogger/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                            nact ](Test/nact/)|  ✔   |  ✔   |  ✔   | 12   |  ✔   | (c)
@@ -523,4 +522,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-3425a819983969ff6aa99d889e4c9a289b512770 | 981
+f6c3ebd322df3c92970c5a7dbe11f499f3bdc91e | 983

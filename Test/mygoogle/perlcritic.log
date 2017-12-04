@@ -1,2 +1,0 @@
-Code before warnings are enabled at line 35, column 1.  See page 431 of PBP.  (Severity: 4)
-String delimiter used with "split" at line 60, column 15.  Express it as a regex instead.  (Severity: 2)
