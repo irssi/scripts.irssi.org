@@ -1,0 +1,14 @@
+---
+-
+  authors: "Stefan 'tommie' Tomanek"
+  changed: '2004051601'
+  commands: idonkey
+  contact: stefan@pico.ruhr.de
+  description: 'equips Irssi with an interface to mldonkey'
+  license: GPLv2
+  modules:
+    - HTML::Entities
+    - LWP::UserAgent
+  name: iDonkey
+  sbitems: idonkey
+  version: '2004051601'

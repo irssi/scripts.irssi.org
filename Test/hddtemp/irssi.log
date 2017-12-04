@@ -8,7 +8,7 @@
 * 
 * Use of uninitialized value in subroutine entry at hddtemp.pl line 176.
 * 
-* -!- Irssi: Loaded script hddtemp
 * hi
+* -!- Irssi: Loaded script hddtemp
 * Use of uninitialized value $lines in print at hddtemp.pl line 119.
 * 

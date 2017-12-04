@@ -1,0 +1,10 @@
+---
+-
+  authors: 'Tuukka Lukkala'
+  changed: 'Tue Mar 30 23:20 EET 2004'
+  contact: 'ragdim at mbnet dot fi'
+  description: 'Shows the song playing in amaroK in the active window (channel or query).'
+  license: GPL
+  name: amaroknp
+  url: http://koti.mbnet.fi/ragdim/amaroknp/
+  version: '0.10'

@@ -2,13 +2,8 @@
 -
   authors: "Stefan 'tommie' Tomanek"
   changed: '20030208'
-  commands:
-    - xetra
-    - 'xetra get'
-    - 'xetra help'
-    - 'xetra update'
+  commands: xetra
   contact: stefan@pico.ruhr.de
-  default_package: xetra
   description: 'brings the stock exchanges of the world to your irssi'
   license: GPLv2
   modules:

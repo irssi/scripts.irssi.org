@@ -1,0 +1,12 @@
+---
+-
+  authors: 'Tuomas Jormola'
+  changed: 2006-1027T18:00+0300
+  contact: tjormola@cc.hut.fi
+  description: "/xmmsinfo to tell what you're currently playing"
+  license: GPLv2
+  modules:
+    - Irssi::XMMSInfo
+  name: XMMSInfo
+  url: http://shakti.tky.hut.fi/stuff.xml#irssi
+  version: '1.01'

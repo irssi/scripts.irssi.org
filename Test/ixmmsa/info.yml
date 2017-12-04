@@ -1,0 +1,14 @@
+---
+-
+  authors: 'Kristof Korwisi'
+  changed: 2006-10-27
+  changes: 'added some comments, added $announce_message:_*-stuff'
+  contact: kk@manoli.im-dachgeschoss.de
+  description: '/xmms announces which _file_ is currently playing. E.g.  Currently playing: "Kieran Halpin & Band - Mirror Town.mp3"'
+  license: GPL
+  modules:
+    - Xmms
+    - Xmms::Remote
+  name: iXMMSa
+  url: http://manoli.im-dachgeschoss.de/~kk/
+  version: 0.2+1
