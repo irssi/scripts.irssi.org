@@ -3168,17 +3168,6 @@
 -
   authors: 'Tim Van Wassenhove'
   contact: timvw@users.sourceforge.net
-  description: 'Query Google'
-  filename: mygoogle.pl
-  license: BSD
-  modified: '2004-03-13 01:35:00'
-  modules: LWP::UserAgent
-  name: mygoogle
-  url: http://home.mysth.be/~timvw
-  version: '1.01'
--
-  authors: 'Tim Van Wassenhove'
-  contact: timvw@users.sourceforge.net
   description: 'Query imdb'
   filename: myimdb.pl
   license: BSD
