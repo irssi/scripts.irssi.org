@@ -1,28 +1,27 @@
-#!/usr/bin/perl
-# Support extended-joins
-# (C) 2012 Mike Quin <mike@elite.uk.com>
-# Licensed under the GNU General Public License Version 2 ( https://www.gnu.org/licenses/gpl-2.0.html )
+# Support extended-joins in Irssi
+# (c) 2012 Mike Quin <mike@elite.uk.com>
+#
+# Licensed under GNU General Public License version 2
+#   <https://www.gnu.org/licenses/gpl-2.0.html>
 
-
-use Irssi;
 use strict;
-use Data::Dumper;
-use vars qw($VERSION %IRSSI); 
-$VERSION = "0.8.15";
-%IRSSI = (
-    authors	=> "Mike Quin",
-    contact	=> "mike at elite.uk.com",
-    name	=> "cap-extjoin",
-    description	=> "Print accountname and realname information on joins where extended-join is available",
-    license	=> "GPLv2",
-    url		=> "http://www.elite.uk.com/mike/irc/",
-    changed	=> "Fri Feb  4 10:35:32 UTC 2011"
+use warnings;
+use Irssi;
+
+our $VERSION = '0.9.0';
+our %IRSSI = (
+    authors	=> 'Mike Quin, Krytarik Raido',
+    contact	=> 'mike@elite.uk.com, krytarik@tuxgarage.com',
+    url		=> 'http://www.elite.uk.com/mike/irc/',
+    name	=> 'cap-extjoin',
+    description	=> 'Print account and realname information on joins where extended-join is available',
+    license	=> 'GPLv2',
+    changed	=> 'Sun Nov  6 12:34:04 CET 2016'
 );
 
 Irssi::theme_register([
-  'join', '{channick_hilight $0} {chanhost_hilight $1} has joined {channel $2}',
-  'join_realname', '{channick_hilight $0} ({hilight $1}) {chanhost_hilight $2} has joined {channel $3}',
-  'join_account_realname', '{channick_hilight $0 [$1]} ({hilight $2}) {chanhost_hilight $3} has joined {channel $4}',
+  'join_extended' => '{channick_hilight $0} ({hilight $1}) {chanhost_hilight $2} has joined {channel $3}',
+  'join_extended_account' => '{channick_hilight $0 [$1]} ({hilight $2}) {chanhost_hilight $3} has joined {channel $4}'
 ]);
 
 my %servers;
@@ -30,57 +29,59 @@ my %servers;
 sub event_join {
   my ($server, $data, $nick, $host) = @_;
 
-  return unless ($servers{$server->{tag}}->{'EXTENDED-JOIN'} == 1);
+  unless ($servers{$server->{tag}}->{'EXTENDED-JOIN'}
+      and ! $server->netsplit_find($nick, $host)) {
+    return;
+  }
+
   Irssi::signal_stop();
 
-  my ($channel, $account, $realname);
-  if ($data=~/(\S+) (\S+) :(.*)/) {
-    $channel=$1;
-    $account=$2;
-    $realname=$3;
-  } elsif ($data=~/:(\S+)/) {
-    # We will still see regular JOINS when users' hostnames change, so we handle them as well
-    $channel=$1;
-  } 
+  $data =~ /^(\S+) (\S+) :(.+)$/;
+  my ($channel, $account, $realname) = ($1, $2, $3);
+
+  if ($server->ignore_check($nick, $host, $channel, '', MSGLEVEL_JOINS)) {
+    return;
+  }
 
   my $chanrec = $server->channel_find($channel);
-  if ($chanrec && $realname && $account && $account ne '*') {
-       $chanrec->printformat(MSGLEVEL_JOINS, 'join_account_realname', $nick, $account, $realname, $host, $channel);
-  } elsif ($chanrec && $realname) {
-       $chanrec->printformat(MSGLEVEL_JOINS, 'join_realname', $nick, $realname, $host, $channel);
-  } elsif ($chanrec) {
-       $chanrec->printformat(MSGLEVEL_JOINS, 'join', $nick, $host, $channel);
+  if ($account ne '*') {
+    $chanrec->printformat(MSGLEVEL_JOINS, 'join_extended_account', $nick, $account, $realname, $host, $channel);
+  } else {
+    $chanrec->printformat(MSGLEVEL_JOINS, 'join_extended', $nick, $realname, $host, $channel);
   }
 }
 
 sub extjoin_cap_reply {
-        my ($server, $data, $server_name) = @_;
-        if ($data =~ /ACK :.*extended-join/) {
-                $servers{$server->{tag}}->{'EXTENDED-JOIN'} = 1;
-        }
+  my ($server, $data) = @_;
+  if ($data =~ /^\S+ ACK :extended-join\s*$/) {
+    $servers{$server->{tag}}->{'EXTENDED-JOIN'} = 1;
+  }
+  elsif ($data =~ /^\S+ NAK :extended-join\s*$/) {
+    $servers{$server->{tag}}->{'EXTENDED-JOIN'} = 0;
+    Irssi::signal_stop();
+  }
 }
 
 sub extjoin_connected {
-        my $server = shift;
-        $servers{$server->{tag}}->{'EXTENDED-JOIN'} = 0;
-        $server->command("^quote cap req :extended-join");
+  my ($server) = @_;
+  $servers{$server->{tag}}->{'EXTENDED-JOIN'} = 0;
+  $server->command("quote cap req :extended-join");
 }
 
 sub extjoin_disconnected {
-  my $server = shift;
+  my ($server) = @_;
   delete $servers{$server->{tag}};
 }
 
-Irssi::signal_add ( {
-	'event join' => \&event_join, 
-        'event cap', 'extjoin_cap_reply',
-        'event connected', 'extjoin_connected',
-	'server disconnected' => \&extjoin_disconnected } );
+Irssi::signal_add_first('event cap', 'extjoin_cap_reply');
+
+Irssi::signal_add({
+  'event join' => 'event_join',
+  'event connected' => 'extjoin_connected',
+  'server disconnected' => 'extjoin_disconnected'
+});
 
 # On load enumerate the servers and try to turn on extended-join
 foreach my $server (Irssi::servers()) {
-        %servers = ();
-        extjoin_connected($server);
+  extjoin_connected($server);
 }
-
-
