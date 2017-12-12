@@ -12,11 +12,11 @@ our $VERSION = '0.9.0';
 our %IRSSI = (
     authors	=> 'Mike Quin, Krytarik Raido',
     contact	=> 'mike@elite.uk.com, krytarik@tuxgarage.com',
-    url		=> 'http://www.elite.uk.com/mike/irc/',
+    url		=> 'https://github.com/mquin/irssi-scripts',
     name	=> 'cap-extjoin',
     description	=> 'Print account and realname information on joins where extended-join is available',
     license	=> 'GPLv2',
-    changed	=> 'Sun Nov  6 12:34:04 CET 2016'
+    changed	=> 'Tue 12 Dec 16:12:24 GMT 2017'
 );
 
 Irssi::theme_register([
