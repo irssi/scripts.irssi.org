@@ -2,6 +2,9 @@
 # 2017-09-09 bcattaneo:
 #  - initial release
 #
+# 2017-12-23 bcattaneo:
+#  - Added filters
+#
 
 use IPC::Open3;
 use strict;
@@ -13,11 +16,16 @@ use Irssi qw(command_bind active_win);
 #	/toilet [message]
 #
 # Settings:
-#	/set toilet_gay [ON/OFF]
+#	/set toilet_filters [Filters (separated with ":")]
 #	/set toilet_font [Font name]
 #
+# Example:
+# /set toilet_filters border:metal
+# /set toilet_font small
+# /toilet Hello!
+#
 
-our $VERSION = '1.0.0';
+our $VERSION = '1.1.0';
 our %IRSSI = (
   authors     => 'bcattaneo',
   contact     => 'c@ttaneo.uy',
@@ -25,18 +33,18 @@ our %IRSSI = (
   url         => 'http://github.com/bcattaneo',
   description => 'Simple toilet implementation for Irssi',
   license     => 'Public Domain',
-  #changed     => "2017-09-09",
+  changed     => "2017-12-23",
 
   # safe implementation borrowed from figlet.pl:
-	# Author: https://juerd.nl/site.plp/irssi
+  # Author: https://juerd.nl/site.plp/irssi
   # https://github.com/irssi/scripts.irssi.org/blob/master/scripts/figlet.pl
 
 );
 
-Irssi::settings_add_bool('toilet', 'toilet_gay' => 0);
+Irssi::settings_add_str('toilet', 'toilet_filters' => '');
 Irssi::settings_add_str('toilet', 'toilet_font' => '');
 
-command_bind(
+command_bind (
   toilet => sub {
     my ($msg) = @_;
     my @toilet;
@@ -44,10 +52,10 @@ command_bind(
     my @parm;
     push(@parm,'toilet');
     push(@parm,'--irc');
-    my $gay = Irssi::settings_get_bool('toilet_gay');
+    my $filters = Irssi::settings_get_str('toilet_filters');
     my $font = Irssi::settings_get_str('toilet_font');
-    if ($gay == 1) {
-      push(@parm,'--gay');
+    if ($filters ne '') {
+      push(@parm,'-F'.$filters);
     }
     if ($font ne '') {
       push(@parm,'-f'.$font);
