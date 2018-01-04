@@ -1,15 +1,15 @@
 use strict;
 use Irssi 20020101.0250 ();
-use vars qw($VERSION %IRSSI); 
-$VERSION = "2";
+use vars qw($VERSION %IRSSI);
+$VERSION = "2.0.1";
 %IRSSI = (
     authors     => "Timo Sirainen, Ian Peters, David Leadbeater",
-    contact	=> "tss\@iki.fi", 
+    contact	=> "tss\@iki.fi",
     name        => "Nick Color",
     description => "assign a different color for each nick",
     license	=> "Public Domain",
     url		=> "http://irssi.org/",
-    changed	=> "Sun 15 Jun 19:10:44 BST 2014",
+    changed	=> "Wed 03 Jan 21:10:53 BST 2018",
 );
 
 # Settings:
@@ -125,7 +125,7 @@ sub cmd_color {
   } elsif ($op eq "list") {
     Irssi::print ("\nSaved Colors:");
     foreach my $nick (keys %saved_colors) {
-      Irssi::print (chr (3) . "$saved_colors{$nick}$nick" .
+      Irssi::print (chr (3) . sprintf("%02d", $saved_colors{$nick}) . "$nick" .
 		    chr (3) . "1 ($saved_colors{$nick})");
     }
   } elsif ($op eq "preview") {
