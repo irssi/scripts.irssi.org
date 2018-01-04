@@ -1,15 +1,26 @@
+#
+# 2018-01-03 bcattaneo:
+#  - initial release (nickcolor.pl fork)
+#
+
+#
+# Why forking nickcolor.pl? To add message prefix
+# For more info, see https://github.com/irssi/irssi/issues/800
+#
+
+use Irssi;
 use strict;
-use Irssi 20020101.0250 ();
 use vars qw($VERSION %IRSSI);
-$VERSION = "2.0.1";
-%IRSSI = (
-    authors     => "Timo Sirainen, Ian Peters, David Leadbeater",
-    contact	=> "tss\@iki.fi",
-    name        => "Nick Color",
-    description => "assign a different color for each nick",
-    license	=> "Public Domain",
-    url		=> "http://irssi.org/",
-    changed	=> "Wed 03 Jan 21:10:53 BST 2018",
+
+our $VERSION = '1.0.0';
+our %IRSSI = (
+  authors     => 'bcattaneo',
+  contact     => 'c@ttaneo.uy',
+  name        => 'nickcolor_with_prefix',
+  url         => 'http://github.com/bcattaneo',
+  description => 'assign a different color for each nickname and also group successive messages',
+  license     => 'Public Domain',
+  #changed     => "2018-01-03",
 );
 
 # Settings:
@@ -19,6 +30,7 @@ $VERSION = "2.0.1";
 
 my %saved_colors;
 my %session_colors = {};
+my %saved_nicks; # To store each channel's last nickname
 
 sub load_colors {
   open my $color_fh, "<", "$ENV{HOME}/.irssi/saved_colors";
@@ -77,6 +89,7 @@ sub simple_hash {
 
 sub sig_public {
   my ($server, $msg, $nick, $address, $target) = @_;
+  my $prefix = Irssi::settings_get_str('prefix_same_nick');
 
   # Has the user assigned this nick a color?
   my $color = $saved_colors{$nick};
@@ -93,7 +106,40 @@ sub sig_public {
   }
 
   $color = sprintf "\003%02d", $color;
-  $server->command('/^format pubmsg {pubmsgnick $2 {pubnick ' . $color . '$0}}$1');
+
+  # We check if it's the same nickname for current target
+  if ($saved_nicks{$target} eq $nick)
+  {
+    # Grouped message
+    $server->command('/^format pubmsg ' . $prefix . ' $1');
+  }
+  else
+  {
+    # Normal message
+    $server->command('/^format pubmsg {pubmsgnick $2 {pubnick ' . $color . '$0}}$1');
+    $saved_nicks{$target} = $nick;
+  }
+
+}
+
+sub sig_me {
+  my ($server, $msg, $target) = @_;
+  my $nick = $server->{nick};
+  my $prefix = Irssi::settings_get_str('prefix_same_nick');
+
+  # We check if it's the same nickname for current target
+  if ($saved_nicks{$target} eq $nick)
+  {
+    # Grouped message
+    $server->command('/^format own_msg ' . $prefix . ' $1');
+  }
+  else
+  {
+    # Normal message
+    $server->command('/^format own_msg {ownmsgnick $2 {ownnick $0}}$1');
+    $saved_nicks{$target} = $nick;
+  }
+
 }
 
 sub cmd_color {
@@ -139,7 +185,9 @@ sub cmd_color {
 load_colors;
 
 Irssi::settings_add_str('misc', 'nickcolor_colors', '2 3 4 5 6 7 9 10 11 12 13');
+Irssi::settings_add_str('misc', 'prefix_same_nick' => '-');
 Irssi::command_bind('color', 'cmd_color');
 
 Irssi::signal_add('message public', 'sig_public');
+Irssi::signal_add('message own_public', 'sig_me');
 Irssi::signal_add('event nick', 'sig_nick');
