@@ -65,7 +65,7 @@ use List::Util qw(min max);
 
 use vars qw($VERSION %IRSSI);
 
-$VERSION = '1.7';
+$VERSION = '1.8';
 %IRSSI = (
   authors     => 'Matt "f0rked" Sparks, Miklos Vajna',
   contact     => 'ms+irssi@quadpoint.org',
