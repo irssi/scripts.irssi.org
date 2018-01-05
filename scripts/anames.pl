@@ -7,11 +7,11 @@
 
 # Options
 # =======
+# /format names_awaynick
+# * colour for the nicks that are away, example: %K$0%n
+#
 # /format endofanames
 # * equivalent of /format endofnames, the final summary line of /anames command
-#
-# /format names_awaynick
-# * colour for the nicks that are away, example: %w$0
 #
 # /set anames_force_sync <ON|OFF>
 # * whether to use -sync by default (request fresh /who list)
@@ -22,6 +22,12 @@
 
 # Thanks to Dirm and Chris62vw for the Perl help and coekie for writing the
 # evil code to sort the nicklist by the alphabet and rank in nicklist.pl
+#
+#
+# 1.8   - Drop re-registration of WHO, since unnecessary and incomplete,
+#         breaking WHO generally and for other scripts (krytarik)
+#
+#       - Change default away nick colour back to grey (krytarik)
 #
 # 1.7   - Improved nick prefix sorting (tslocum)
 #
@@ -60,10 +66,9 @@ use warnings;
 use Irssi 20140918;
 use List::Util qw(min max);
 
-use vars qw($VERSION %IRSSI);
 
-$VERSION = '1.7';
-%IRSSI = (
+our $VERSION = '1.8';
+our %IRSSI = (
   authors     => 'Matt "f0rked" Sparks, Miklos Vajna',
   contact     => 'ms+irssi@quadpoint.org',
   name        => 'anames',
@@ -76,12 +81,6 @@ $VERSION = '1.7';
 my $tmp_server;
 my $tmp_chan;
 my $tmp_count;
-
-
-Irssi::theme_register([
-  'endofanames' => '{channel $0}: Total of {hilight $1} nicks {comment {hilight $2} ops, {hilight $3} halfops, {hilight $4} voices, {hilight $5} normal, {hilight $6} away}',
-  'names_awaynick' => '{channick $0}',
-]);
 
 
 sub cmd_help {
@@ -145,8 +144,8 @@ sub cmd_anames
 {
   my($args, $server, $item) = @_;
   my $channel = $item;
-  $tmp_server = $server->{"tag"};
-  $tmp_chan = $channel->{"name"};
+  $tmp_server = $server->{tag};
+  $tmp_chan = $channel->{name};
   $tmp_count = undef;
 
   my ($force_sync, $force_cache);
@@ -211,7 +210,7 @@ sub prefix_index
   }
 
   my $prefix_index;
-  foreach my $prefix (split("", $nick->{'prefixes'})) {
+  foreach my $prefix (split("", $nick->{prefixes})) {
     if ($prefix) {
       $prefix_index = index($prefixes, $prefix);
       if ($prefix_index > -1) {
@@ -240,29 +239,29 @@ sub print_anames
 
     my $prefer_real;
     if (exists $Irssi::Script::{'realnames::'}) {
-        my $code = "Irssi::Script::realnames"->can('use_realnames');
+        my $code = Irssi::Script::realnames->can('use_realnames');
         $prefer_real = $code && $code->($channel);
     }
     my $_real = sub {
         my $nick = shift;
-        $prefer_real && length $nick->{'realname'} ? $nick->{'realname'} : $nick->{'nick'}
+        $prefer_real && length $nick->{realname} ? $nick->{realname} : $nick->{nick}
     };
-    foreach my $nick (sort {prefix_index($a) <=> prefix_index($b) || lc($a->{'nick'}) cmp lc($b->{'nick'})} $channel->nicks()) {
+    foreach my $nick (sort {prefix_index($a) <=> prefix_index($b) || lc($a->{nick}) cmp lc($b->{nick})} $channel->nicks()) {
       my $realnick = $_real->($nick);
-      my $gone = $nick->{'gone'};
-      my $prefix = substr($nick->{'prefixes'}, 0, 1);
+      my $gone = $nick->{gone};
+      my $prefix = substr($nick->{prefixes}, 0, 1);
       if (!$prefix) {
         $prefix = " ";
       }
 
       my $format;
-      if ($nick->{'op'}) {
+      if ($nick->{op}) {
         $ops++;
         $format = 'names_nick_op';
-      } elsif ($nick->{'halfop'}) {
+      } elsif ($nick->{halfop}) {
         $halfops++;
         $format = 'names_nick_halfop';
-      } elsif ($nick->{'voice'}) {
+      } elsif ($nick->{voice}) {
         $voices++;
         $format = 'names_nick_voice';
       } else {
@@ -369,7 +368,7 @@ sub columnize_nicks
   my $total = @nicks;
 
   # determine max columns
-  my $cols = Irssi::settings_get_int("names_max_columns");
+  my $cols = Irssi::settings_get_int('names_max_columns');
   my $width = $channel->window->{width};
   {
     my $ts_format = Irssi::settings_get_str('timestamp_format');
@@ -432,19 +431,23 @@ sub round
 sub who_reply_end
 {
   print_anames();
-#  Irssi::signal_emit('chanquery who end', @_);
   $tmp_chan = "";
 }
 
 
-Irssi::Irc::Server::redirect_register("who", 0, 0,
-                                      {"event 352" => 1},
-                                      {"event 315" => 1},
-                                      undef);
-Irssi::signal_register({'chanquery who end' => [qw[iobject string]]});
-Irssi::signal_add("redir who_reply", 'who_reply');
-Irssi::signal_add("redir who_reply_end", 'who_reply_end');
+Irssi::theme_register([
+  'names_awaynick' => '%K$0%n',
+  'endofanames' => '{channel $0}: Total of {hilight $1} nicks {comment {hilight $2} ops, {hilight $3} halfops, '
+                   . '{hilight $4} voices, {hilight $5} normal, {hilight $6} away}',
+]);
+
 Irssi::settings_add_bool("anames", "anames_force_sync", 0);
-Irssi::command_bind("anames", 'cmd_anames');
+
+Irssi::signal_add({
+  "redir who_reply" => "who_reply",
+  "redir who_reply_end" => "who_reply_end",
+});
+
+Irssi::command_bind("anames", "cmd_anames");
 Irssi::command_set_options("anames", "sync cached count");
-Irssi::command_bind_last('help' => 'cmd_help');
+Irssi::command_bind_last("help", "cmd_help");
