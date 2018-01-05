@@ -1314,6 +1314,17 @@
   url: http://matin.maapallo.org/softa/irssi
   version: '1.52'
 -
+  authors: bcattaneo
+  commands: 'dbnext dbpause dbplay dbprev dbrandom dbstop np'
+  contact: c@ttaneo.uy
+  description: 'deadbeef control and now playing script'
+  filename: deadbeef.pl
+  license: 'Public Domain'
+  modified: '2017-12-30 20:33:13'
+  name: deadbeef
+  url: http://github.com/bcattaneo
+  version: 1.0.0
+-
   authors: 'Jakub Jankowski'
   contact: shasta@atn.pl
   description: 'Allows your client to automatically set desired chanmode upon a join to an empty channel.'
