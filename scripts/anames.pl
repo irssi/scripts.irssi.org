@@ -23,6 +23,9 @@
 # Thanks to Dirm and Chris62vw for the Perl help and coekie for writing the
 # evil code to sort the nicklist by the alphabet and rank in nicklist.pl
 #
+# 1.8   - Drop re-registration of WHO, since unnecessary and incomplete,
+#         breaking WHO generally and for other scripts (krytarik)
+#
 # 1.7   - Improved nick prefix sorting (tslocum)
 #
 # 1.6   - optional support for unicode nicknames, realnames script,
@@ -437,10 +440,6 @@ sub who_reply_end
 }
 
 
-Irssi::Irc::Server::redirect_register("who", 0, 0,
-                                      {"event 352" => 1},
-                                      {"event 315" => 1},
-                                      undef);
 Irssi::signal_register({'chanquery who end' => [qw[iobject string]]});
 Irssi::signal_add("redir who_reply", 'who_reply');
 Irssi::signal_add("redir who_reply_end", 'who_reply_end');
