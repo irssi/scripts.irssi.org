@@ -23,7 +23,7 @@ use Text::ParseWords;
 use IO::File;
 use vars qw($VERSION %IRSSI);
 
-$VERSION = '1.1';
+$VERSION = '1.2';
 %IRSSI = (
 	authors     => 'Wouter Coekaerts',
 	contact     => 'wouter@coekaerts.be',
@@ -104,6 +104,7 @@ All filters except for -pattern and -regexp can also be inversed by prefixing wi
      -once: %|remove the trigger if it is triggered, so it only executes once and then is forgotten.
      -stop: %|stops the signal. It won't get displayed by Irssi. Like /IGNORE
      -debug: %|print some debugging info
+     -last: %|Don't process any more triggers for this message
 
 %U%_Other options%_%U 
      -disabled: %|Same as removing it, but keeps it in case you might need it later
@@ -168,8 +169,10 @@ my @allmsg_types = (@allchanmsg_types, qw(privmsgs privactions privnotices privc
 my @allchan_types = (@allchanmsg_types, qw(mode_channel mode_nick joins invites pubflood));
 # trigger types in -all
 my @all_types = (@allmsg_types, qw(mode_channel mode_nick joins invites nick_changes));
+# trigger types that can use -masks
+my @mask_types = (@all_types, qw(notify_join notify_part notify_away notify_unaway notify_unidle));
 # trigger types with a server
-my @all_server_types = (@all_types, qw(rawin notify_join notify_part notify_away notify_unaway notify_unidle pubflood privflood));
+my @all_server_types = (@mask_types, qw(rawin pubflood privflood));
 # all trigger types
 my @trigger_types = (@all_server_types, qw(send_command send_text beep));
 #trigger types that are not in -all
@@ -253,7 +256,7 @@ my @signals = (
 {
 	'types' => ['nick_changes'],
 	'signal' => 'message nick',
-	'sub' => sub {check_signal_message(\@_,-1,$_[0],undef,$_[1],$_[3],'nick_changes');}
+	'sub' => sub {check_signal_message(\@_,-1,$_[0],undef,$_[1],$_[3],'nick_changes',{'other'=>$_[2]});}
 },
 # "message dcc", DCC_REC *dcc, char *msg
 {
@@ -453,7 +456,7 @@ my %filters = (
 	}
 },
 'masks' => {
-	'types' => \@all_types,
+	'types' => \@mask_types,
 	'sub' => sub {
 		my ($param, $signal,$parammessage,$server,$channelname,$nickname,$address,$condition,$extra) = @_;
 		$address //= '';
@@ -461,11 +464,11 @@ my %filters = (
 	}
 },
 'other_masks' => {
-	'types' => ['kicks', 'mode_nick'],
+	'types' => ['kicks', 'mode_nick', 'nick_changes'],
 	'sub' => sub {
 		my ($param, $signal,$parammessage,$server,$channelname,$nickname,$address,$condition,$extra) = @_;
 		return 0 unless defined($extra->{'other'});
-		my $other_address = get_address($extra->{'other'}, $server, $channelname);
+		my $other_address = ($condition ne 'nick_changes') ? get_address($extra->{'other'}, $server, $channelname) : $address;
 		return defined($other_address) && $server->masks_match($param, $extra->{'other'}, $other_address);
 	}
 },
@@ -551,7 +554,7 @@ sub hasmode {
 }
 
 # list of all switches
-my @trigger_switches = (@trigger_types, qw(all nocase stop once debug disabled));
+my @trigger_switches = (@trigger_types, qw(all nocase stop once debug disabled last));
 # parameters (with an argument)
 my @trigger_params = qw(pattern regexp command replace name);
 # all options that can be used to set filters, including negative matches (not_<filter>)
@@ -648,6 +651,9 @@ TRIGGER:
 				}
 			}
 			$need_rebuild = 1;
+		}
+		if ($trigger->{'last'}) {
+			last TRIGGER;
 		}
 	}
 
@@ -1195,17 +1201,14 @@ sub cmd_move {
 	my @args = &shellwords($data);
 	my $index = find_trigger(shift @args);
 	if ($index != -1) {
-		my $newindex = shift @args;
-		if ($newindex < 1 || $newindex > scalar(@triggers)) {
-			Irssi::print("$newindex is not a valid trigger number");
-			return;
+		my $newindex = find_trigger(shift @args);
+		if ($newindex != -1) {
+			Irssi::print("Moved from " . ($index+1) . " to " . ($newindex+1) . ": " . to_string($triggers[$index]));
+			my $trigger = splice (@triggers,$index,1); # remove from old place
+			splice (@triggers,$newindex,0,($trigger)); # insert at new place
+			rebuild();
+			$changed_since_last_save = 1;
 		}
-		Irssi::print("Moved from ". ($index+1) ." to $newindex: ". to_string($triggers[$index]));
-		$newindex -= 1; # array starts counting from 0
-		my $trigger = splice (@triggers,$index,1); # remove from old place
-		splice (@triggers,$newindex,0,($trigger)); # insert at new place
-		rebuild();
-		$changed_since_last_save = 1;
 	}
 }
 
