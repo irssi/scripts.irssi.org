@@ -1,7 +1,7 @@
 use strict;
 use Irssi 20020101.0250 ();
 use vars qw($VERSION %IRSSI); 
-$VERSION = "2";
+$VERSION = "2.1";
 %IRSSI = (
     authors     => "Timo Sirainen, Ian Peters, David Leadbeater",
     contact	=> "tss\@iki.fi", 
@@ -93,7 +93,7 @@ sub sig_public {
   }
 
   $color = sprintf "\003%02d", $color;
-  $server->command('/^format pubmsg {pubmsgnick $2 {pubnick ' . $color . '$0}}$1');
+  Irssi::command('/^format pubmsg {pubmsgnick $2 {pubnick ' . $color . '$0}}$1');
 }
 
 sub cmd_color {
