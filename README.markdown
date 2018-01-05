@@ -19,7 +19,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                           alame ](Test/alame/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                        amaroknp ](Test/amaroknp/)|  ✘   |  ✔   |  ✔   |  5   |  ☡   | (c)
 [                      amarok_ssh ](Test/amarok_ssh/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                          anames ](Test/anames/)|  ✔   |  ✔   |  ✔   |  1   |  ✔   | (c)
+[                          anames ](Test/anames/)|  ✔   |  ✔   |  ✔   |  1   |  ✔   
 [                      anotherway ](Test/anotherway/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       antiplenk ](Test/antiplenk/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                             apm ](Test/apm/)|  ✔   |  ✔   |  ✔   | 13   |  ✔   | (c)
@@ -523,4 +523,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-171b1cc4bbdee8d16b0317935e9fb348f21ce6da | 996
+10e916a59c9c7299421986f8b23599616ae5d35e | 997
