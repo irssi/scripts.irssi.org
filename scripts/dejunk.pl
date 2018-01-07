@@ -6,7 +6,9 @@ use Irssi::Irc;
 
 use Data::Dumper;
 
-our $VERSION = '1.0';
+#use Devel::NYTProf;
+
+our $VERSION = '1.2';
 our %IRSSI = (
     authors     => 'Joost Vunderink (Garion)',
     contact     => 'joost@vunderink.net',
@@ -14,7 +16,7 @@ our %IRSSI = (
     description => 'Prevents all kinds of junk from showing up',
     license     => 'Public Domain',
     url         => 'http://www.garion.org/irssi/',
-    changed     => '29 September 2012 10:15:10',
+    changed     => '2018-01-07',
 );
 
 my ($STATUS_ACTIVE, $STATUS_INACTIVE, $STATUS_UNKNOWN) = (1, 2, 3);
@@ -24,6 +26,13 @@ my $activity_filename = 'dejunk.activity.data';
 #     last_msg => time(),
 # }
 my %activity;
+
+# $ignorlist{$server/$channel}
+my %ignorlist;
+
+# marker for the refresh
+my $time_tag_ignorlist;
+my $time_tag_clean;
 
 sub cmd_dejunk {
     my ($args, $server, $item) = @_;
@@ -36,22 +45,49 @@ sub cmd_dejunk {
 
 sub cmd_dejunk_help {
     message("Dejunk is a script that prevents some clutter from showing up.");
-    message("In large and/or busy channels, joins, parts, nickchanges and quits can take up a large part of the activity. ".
-        "Using dejunk, all these events on large channels are hidden if the user doing ".
-        "them has not said anything for a while.");
+    message("In large and/or busy channels, joins, parts, nickchanges and");
+    message("quits can take up a large part of the activity. ");
+    message("Using dejunk, all these events on large channels are hidden");
+    message("if the user doing them has not said anything for a while.");
     message("This way, you only see such activity when it matters.");
     message("");
+    message("Dejunk will save its data when it unloads, so when you upgrade");
+    message("it, or restart irssi quickly, it will remember ");
+    message("which nicks were active recently on which networks.");
+    message("");
     message("Commands:");
-    message("/dejunk save - Force saving of data immediately.");
+    message(" /dejunk status");
+    message("   Show which activity dejunk has seen recently.");
+    message(" /dejunk save");
+    message("   Force saving of data immediately.");
+    message("   Should not be needed at all.");
     message("");
     message("Settings:");
-    message("dejunk_joinpart_enabled - Hide all non-relevant joins, parts, quits and nickchanges.");
-    message("dejunk_joinpart_idle_time - The amount of minutes of inactivity after which a user will be hidden.");
-    message("dejunk_joinpart_min_size - Activity on channels with fewer users than this is not hidden.");
-    message("dejunk_joinpart_show_unknown - If it's unknown whether the user has been active recently, ".
-        "show them if this setting is true. ".
-        "This is only relevant if the script has just been loaded for the first time.");
-    message("dejunk_debug - set to ON to see debug messages.");
+    message(" dejunk_joinpart_enabled");
+    message("   Hide all non-relevant joins, parts, quits and nickchanges.");
+    message(" dejunk_joinpart_idle_time");
+    message("   The amount of minutes of inactivity after which a user");
+    message("   will be hidden.");
+    message(" dejunk_joinpart_min_size");
+    message("   Activity on channels with fewer users than this");
+    message("   is not hidden.");
+    message(" dejunk_joinpart_show_unknown");
+    message("   If it's unknown whether the user has been active recently, ");
+    message("   show them if this setting is true. This is only relevant");
+    message("   if the script has just been loaded for the first time.");
+    message(" dejunk_debug");
+    message("   set to ON to see debug messages.");
+    message("dejunk_update_ignorlist_time");
+    message("   set the update time in seconds for the ignorlist");
+    message("dejunk_clean_data_time");
+    message("   set the repeat time in seconds for the shrinking function");
+    message("   clean_activity_data");
+    message("");
+    message("You can see the current values of all dejunk settings via");
+    message("the following command:");
+    message("    /set dejunk");
+    message("You can change a setting via commands like this one:");
+    message("    /set dejunk_joinpart_min_size 100");
 }
 
 sub cmd_dejunk_status {
@@ -69,7 +105,7 @@ sub event_join {
     # Don't handle my own JOINs.
     return if ($nick eq $server->{nick});
 
-    return if channel_size_below_joinpart_minimum($server, $channel);
+    return if is_ignor_channel($server,$channel);
 
     my $status = get_client_status($server->{tag}, $host, $nick);
     my $show_unknown = Irssi::settings_get_bool('dejunk_joinpart_show_unknown');
@@ -95,7 +131,7 @@ sub event_part {
     # Don't handle my own JOINs.
     return if ($nick eq $server->{nick});
 
-    return if channel_size_below_joinpart_minimum($server, $channel);
+    return if is_ignor_channel($server,$channel);
     
     my $status = get_client_status($server->{tag}, $host, $nick);
     my $show_unknown = Irssi::settings_get_bool('dejunk_joinpart_show_unknown');
@@ -121,13 +157,7 @@ sub event_quit {
     # Don't handle my own QUITs.
     return if ($nick eq $server->{nick});
 
-    my $channel = get_smallest_channel($server, $nick);
-    if (!$channel) {
-        warning("QUIT: Could not get smallest channel for nick '%s' on network '%s'!",
-            $nick, $server->{tag});
-        return;
-    }
-    return if channel_size_below_joinpart_minimum($server, $channel);
+    return if is_ignor_nick($server,$nick);
 
     debug("QUIT: nick=$nick host=$host tag=%s", $server->{tag});
 
@@ -159,13 +189,7 @@ sub event_nick {
         }
     }
 
-    my $channel = get_smallest_channel($server, $newnick);
-    if (!$channel) {
-        warning("NICK: Could not get smallest channel for nick '%s' on network '%s'!",
-            $newnick, $server->{tag});
-        return;
-    }
-    return if channel_size_below_joinpart_minimum($server, $channel);
+    return if is_ignor_nick($server,$newnick);
     
     my $status = get_client_status($server->{tag}, $hostmask, $oldnick);
     my $show_unknown = Irssi::settings_get_bool('dejunk_joinpart_show_unknown');
@@ -225,37 +249,56 @@ sub get_client_status {
     return $STATUS_UNKNOWN;
 }
 
-sub channel_size_below_joinpart_minimum {
-    my ($server, $channel) = @_;
-    my $chan_obj = $server->channel_find($channel);
-    if (!$chan_obj) {
-        warning("Minsize check: could not find channel '%s' on network '%s'!",
-            $channel, $server->{tag});
-        return 1;
+sub get_channel_str {
+    my $channel=$_[0];
+    my $cn=$channel->{'server'}->{'tag'}."/".$channel->{'name'};
+    #print $cn;
+    return $cn;
+}
+sub list_channels {
+    my @cl = Irssi::channels;
+    foreach (@cl) {
+        my @nicks= $_->nicks();
+        my $cn=get_channel_str($_);
+        #print $cn," ",$#nicks," ",$_->{"_irssi"};
+
+        if (!exists($ignorlist{$cn})) {
+            $ignorlist{$cn}=0;
+        }
+        if ($#nicks > Irssi::settings_get_int('dejunk_joinpart_min_size')) {
+            $ignorlist{$cn}=1;
+        }
     }
-    my @nicks = $chan_obj->nicks();
-    if (scalar @nicks < Irssi::settings_get_int('dejunk_joinpart_min_size')) {
-        return 1;
-    }
-    return 0;
 }
 
-sub get_smallest_channel {
-    my ($server, $nick) = @_;
+sub is_ignor_channel {
+    (my $server, my $channel)=@_;
+    my $cn=$server->{"tag"}."/".$channel;
+    my $ci=1;
+    if (exists($ignorlist{$cn})) {
+        if ($ignorlist{$cn} >0) {
+            $ci=0;
+        }
+    }
+    #print "is_ignor_channel: ",$cn," ",$ci;
+    return $ci;
+}
 
-    my $count = 999999999;
-    my $found_channel;
-    for my $channel ($server->channels()) {
+sub is_ignor_nick {
+    (my $server, my $nick)=@_;
+    my $res=1;
+    foreach my $channel ($server->channels()) {
         if ($channel->nick_find($nick)) {
-            my @nicks = $channel->nicks();
-            if (scalar @nicks < $count) {
-                $count = scalar @nicks;
-                $found_channel = $channel;
+            my $cn=get_channel_str($channel);
+            if (exists($ignorlist{$cn})) {
+                if ($ignorlist{$cn} >0) {
+                    $res=0;
+                }
             }
         }
     }
-
-    return $found_channel->{name};
+    #print "is_ignor_nick: $server->{'tag'} $nick $res";
+    return $res;
 }
 
 sub load_data {
@@ -350,6 +393,7 @@ sub report_status {
 sub UNLOAD {
     message("Dejunk is being unloaded - saving data.");
     save_data();
+#    DB::finish_profile();
 }
 
 sub debug {
@@ -376,6 +420,22 @@ sub _log {
     Irssi::printformat(MSGLEVEL_CLIENTCRAP, "dejunk_$level", $str);
 }
 
+sub setup_change {
+    if ($time_tag_ignorlist) {
+        Irssi::timeout_remove($time_tag_ignorlist)
+    }
+    $time_tag_ignorlist=
+        Irssi::timeout_add(Irssi::settings_get_int('dejunk_update_ignorlist_time')
+            *1000,'list_channels',0);
+
+    if ($time_tag_clean) {
+        Irssi::timeout_remove($time_tag_clean)
+    }
+    $time_tag_clean=
+        Irssi::timeout_add(Irssi::settings_get_int('dejunk_clean_data_time')
+            *1000,'clean_activity_data',0);
+}
+
 Irssi::command_bind('dejunk',        'cmd_dejunk');
 Irssi::command_bind('dejunk help',   'cmd_dejunk_help');
 Irssi::command_bind('dejunk status', 'cmd_dejunk_status');
@@ -384,18 +444,21 @@ Irssi::command_bind('dejunk save',   'cmd_dejunk_save');
 Irssi::settings_add_bool('dejunk', 'dejunk_joinpart_enabled', 1);
 Irssi::settings_add_int( 'dejunk', 'dejunk_joinpart_min_size', 40);
 Irssi::settings_add_int( 'dejunk', 'dejunk_joinpart_idle_time', 15);
+Irssi::settings_add_int( 'dejunk', 'dejunk_update_ignorlist_time', 60);
+Irssi::settings_add_int( 'dejunk', 'dejunk_clean_data_time', 60*10);
 Irssi::settings_add_bool('dejunk', 'dejunk_joinpart_show_unknown', 1);
 Irssi::settings_add_bool('dejunk', 'dejunk_debug', 0);
 
 Irssi::signal_add({
-    'server connected'              => \&event_connected,
-    'server disconnected'           => \&event_disconnected,
+    #'server connected'              => \&event_connected,
+    #'server disconnected'           => \&event_disconnected,
     'message join'                  => \&event_join,
     'message part'                  => \&event_part,
     'message quit'                  => \&event_quit,
     'message nick'                  => \&event_nick,
 });
 Irssi::signal_add_last('message public', \&event_public);
+Irssi::signal_add('setup changed', 'setup_change');
 
 Irssi::theme_register(
     [
@@ -412,6 +475,9 @@ Irssi::theme_register(
      '{line_start}{hilight Dejunk:} [DEBUG] $0',
     ],
 );
+
+setup_change();
+list_channels();
 
 load_data();
 report_status();
