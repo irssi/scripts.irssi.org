@@ -6,6 +6,7 @@
   default_package: mh_sbuserinfo
   description: 'statusbar item that shows user count (opers, ops, halfops, voice and total) and limit info (with opless/limit warning) in channels'
   license: BSD
+  modified: '2017-04-24 09:50:42'
   name: mh_sbuserinfo
   sbitems: mh_sbuserinfo
   url: 'http://scripts.irssi.org / https://github.com/mh-source/irssi-scripts'

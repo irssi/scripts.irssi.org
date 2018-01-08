@@ -8,6 +8,7 @@
   default_package: localize
   description: 'Localizes users using traceroute, the localizer database or IP-Atlas'
   license: GPLv2
+  modified: '2017-04-01 17:22:26'
   modules:
     - HTML::Entities
     - LWP::UserAgent

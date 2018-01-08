@@ -5,6 +5,7 @@
   default_package: centericq
   description: 'Staturbar item which indicates how many new messages you have in your centericq'
   license: 'Public Domain'
+  modified: '2017-04-07 16:34:31'
   name: centericq
   sbitems: centericq
   url: 'http://irssi.org, http://scripts.irssi.org'

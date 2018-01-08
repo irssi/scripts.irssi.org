@@ -6,6 +6,7 @@
   default_package: itime
   description: 'Internet Time statusbar item. See http://www.timeanddate.com/time/internettime.html'
   license: 'Public Domain'
+  modified: '2017-04-07 16:34:31'
   name: itime
   sbitems: itime
   url: http://ion.amigafin.org/scripts/

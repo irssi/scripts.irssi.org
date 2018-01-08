@@ -5,6 +5,7 @@
   default_package: niq
   description: 'BitchX like Nickcompletion at line start plus statusbar'
   license: 'GPL v2'
+  modified: '2017-04-07 16:34:31'
   name: niq
   sbitems: niq
   url: https://bc-bd.org/cgi-bin/gitweb.cgi?p=irssi.git;a=summary

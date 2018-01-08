@@ -7,6 +7,7 @@
   default_package: nact
   description: 'Adds an item which displays the current network activity. Needs /proc/net/dev.'
   license: 'GPL v2 or later'
+  modified: '2017-04-07 16:34:31'
   name: nact
   sbitems: nact
   url: https://bc-bd.org/svn/repos/irssi/trunk/

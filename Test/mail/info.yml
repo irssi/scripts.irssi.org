@@ -11,6 +11,7 @@
   default_package: mail
   description: 'Fully customizable mail counter statusbar item with multiple mailbox and multiple Maildir support'
   license: 'Public Domain'
+  modified: '2017-04-07 16:34:31'
   name: mail
   sbitems: mail
   url: 'http://irssi.org, http://scripts.irssi.de'

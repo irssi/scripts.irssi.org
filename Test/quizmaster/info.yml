@@ -18,6 +18,7 @@
   default_package: quizmaster
   description: 'a trivia script for Irssi'
   license: GPLv2
+  modified: '2017-04-03 18:05:34'
   modules: Data::Dumper
   name: quizmaster
   url: http://irssi.org/scripts/

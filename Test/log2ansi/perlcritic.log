@@ -3,4 +3,3 @@ Capture variable used outside conditional at line 175, column 40.  See page 253 
 Capture variable used outside conditional at line 175, column 44.  See page 253 of PBP.  (Severity: 3)
 String delimiter used with "split" at line 203, column 18.  Express it as a regex instead.  (Severity: 2)
 Capture variable used outside conditional at line 247, column 11.  See page 253 of PBP.  (Severity: 3)
-Missing $VERSION in script. (Severity: 6)

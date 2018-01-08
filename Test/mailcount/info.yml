@@ -6,6 +6,7 @@
   default_package: mailcount
   description: 'Adds statusbar item mailcount and displays info about new mails'
   license: 'GNU GPL v2'
+  modified: '2017-04-07 16:34:31'
   modules:
     - Mail::MboxParser
   name: mailcount

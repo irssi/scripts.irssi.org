@@ -21,6 +21,7 @@
   depends: openurl
   description: 'brings various newstickers to Irssi (Slashdot, Freshmeat, Heise etc.)'
   license: GPLv2
+  modified: '2017-04-04 23:08:20'
   modules:
     - LWP::UserAgent
     - Unicode::String

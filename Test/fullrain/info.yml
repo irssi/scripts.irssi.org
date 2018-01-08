@@ -10,6 +10,7 @@
   default_package: fullrain
   description: 'Prints colorized fullwidth text'
   license: 'GNU GPLv3'
+  modified: '2017-03-28 23:10:37'
   name: fullrain
   url: http://github.com/kjensenxz
   version: 1.0.0

@@ -14,6 +14,7 @@
   default_package: irssiBlaster
   description: 'Display the song played by mp3blaster in channels and statusbar. See the top of the file for usage.'
   license: 'GNU GPLv2 or later'
+  modified: '2017-04-07 16:34:31'
   name: irssiBlaster
   sbitems: blaster
   version: '1.6'

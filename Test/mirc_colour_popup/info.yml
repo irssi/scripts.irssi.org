@@ -5,6 +5,7 @@
   default_package: mirc_colour_popup
   description: 'Shows a mIRC-style colour popup when you hit ^C.'
   license: 'Public Domain'
+  modified: '2017-04-07 16:34:31'
   name: mirc_colour_popup
   sbitems: colours
   version: '1.1'

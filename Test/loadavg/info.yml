@@ -5,6 +5,7 @@
   default_package: loadavg
   description: 'display a loadavg statusbar item using vm.loadavg mib or /proc/loadavg'
   license: 'public domain'
+  modified: '2017-04-07 16:34:31'
   name: loadavg
   sbitems: loadavg
   version: '0.4'

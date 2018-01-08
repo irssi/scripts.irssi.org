@@ -12,6 +12,7 @@
   default_package: notes
   description: 'Keeps notes on users and displayes the note in /whois output if the host/nick matches'
   license: GPL2
+  modified: '2017-04-24 22:54:06'
   modules:
     - DBI
     - DBM::Deep

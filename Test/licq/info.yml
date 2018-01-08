@@ -5,6 +5,7 @@
   default_package: licq
   description: 'Licq statusbar thingy'
   license: 'Public Domain'
+  modified: '2017-04-07 16:34:31'
   name: licq
   sbitems: licq
   url: http://jari.cjb.net,http://irssi.org,http://scripts.irssi.de

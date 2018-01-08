@@ -6,6 +6,7 @@
   default_package: awaylogcnt
   description: 'Displays in statusbar number of messages in awaylog'
   license: 'GNU GPL v2'
+  modified: '2017-04-07 16:34:31'
   modules: ''
   name: awalogcnt
   sbitems: awaylogcnt

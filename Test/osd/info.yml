@@ -6,6 +6,7 @@
   default_package: osd
   description: "An OnScreenDisplay (osd) it show's who is talking to you, on what IRC Network."
   license: BSD
+  modified: '2017-06-12 23:56:49'
   name: osd
   url: http://vipie.studentenweb.org/dev/irssi/
   version: 0.3.4

@@ -20,6 +20,7 @@
   default_package: securemsg
   description: 'An irssi adaptation of securequery.mrc found in the Acidmax mIRC script. :), now with multiserver support'
   license: GPLv2
+  modified: '2017-04-07 16:34:31'
   name: securemsg
   sbitems: securemsg
   version: '2.1'

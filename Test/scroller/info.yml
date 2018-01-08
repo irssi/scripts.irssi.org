@@ -5,6 +5,7 @@
   default_package: scroller
   description: 'Scrolls specified text on the status bar'
   license: 'Public Domain'
+  modified: '2017-04-07 16:34:31'
   name: scroller
   sbitems: scroller
   version: '0.02'
