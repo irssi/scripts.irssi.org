@@ -58,6 +58,17 @@
   name: accountname
   version: '1.0'
 -
+  authors: 'Rocco Caputo'
+  commands: 'ack ack_add ack_del ack_sorts ack_spoke'
+  contact: rcaputo@cpan.org
+  description: 'Jump to the next active window, with tiebreakers.'
+  filename: ack.pl
+  license: Perl
+  modified: '2012-03-07 13:20:23'
+  name: ack
+  url: '(none yet)'
+  version: '0.0000'
+-
   authors: c0ffee
   commands: act
   contact: c0ffee@penguin-breeder.org
