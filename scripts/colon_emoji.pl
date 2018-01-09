@@ -1,10 +1,10 @@
 use strict;
 use warnings;
 
-our $VERSION = '0.1'; # dd9c3f5ff21242d
+our $VERSION = '0.2';
 our %IRSSI = (
-    authors     => 'Lars Djerf, Nei',
-    contact     => 'lars.djerf@gmail.com, Nei @ anti@conference.jabber.teamidiot.de',
+    authors     => 'Lars Djerf, Nei, Phoenix616',
+    contact     => 'lars.djerf@gmail.com, Nei @ anti@conference.jabber.teamidiot.de, Phoenix616 @ mail@moep.tv',
     name        => 'colon_emoji',
     description => 'Replace words between :...: in messages according to a text file. Was intended for Unicode Emoji on certain proprietary platforms.',
     license     => 'GPLv3',
@@ -32,7 +32,11 @@ our %IRSSI = (
 # data file. aferwards, all incoming messages will have words between
 #  :...: replaced according to the file
 
-# TODO handle outgoing messages
+# 
+# Changelog
+# =========
+# 0.2: Handle outgoing messages
+#
 
 use File::Basename 'dirname';
 use File::Spec;
@@ -42,12 +46,15 @@ use constant ScriptFile => __FILE__;
 my %netchans;
 my ($lastfile, $lastfilemod);
 
+my ($replaceIncoming, $replaceOutgoing);
+
 my %emojie;
 
 my $regex = qr/(?!)/;
 
 sub sig_message_public {
     my ($server, $msg, $nick, $address, $channel, @x) = @_;
+    return unless $replaceIncoming;
     if (_want_targ($server, $channel)) {
 	&event_message;
     }
@@ -55,8 +62,17 @@ sub sig_message_public {
 
 sub sig_message_private {
     my ($server, $msg, $nick, $address, @x) = @_;
+    return unless $replaceIncoming;
     if (_want_targ($server, $nick)) {
 	&event_message;
+    }
+}
+
+sub sig_send {
+    my ($msg, @rest) = @_;
+    if ($replaceOutgoing) {
+        $msg =~ s/$regex/$emojie{$1}/g;
+        Irssi::signal_continue($msg, @rest);
     }
 }
 
@@ -66,9 +82,19 @@ sub event_message {
     Irssi::signal_continue($server, $msg, @rest);
 }
 
+sub sig_send {
+    my ($msg, @rest) = @_;
+    if ($replaceOutgoing) {
+        $msg =~ s/$regex/$emojie{$1}/g;
+        Irssi::signal_continue($msg, @rest);
+    }
+}
+
 sub sig_setup_changed {
     my @targets = split ' ', lc Irssi::settings_get_str('colon_emoji_target');
     %netchans = map { ($_ => 1) } @targets;
+    $replaceIncoming = Irssi::settings_get_str('colon_emoji_replace_incoming');
+    $replaceOutgoing = Irssi::settings_get_str('colon_emoji_replace_outgoing');
     my $file = Irssi::settings_get_str('colon_emoji_file');
     my $file2 = $file;
     $file2 =~ s/^~\//$ENV{HOME}\//;
@@ -116,9 +142,13 @@ sub init {
 
 Irssi::settings_add_str('colon_emoji', 'colon_emoji_target', '');
 Irssi::settings_add_str('colon_emoji', 'colon_emoji_file', 'emoji_def.txt');
+Irssi::settings_add_str('colon_emoji', 'colon_emoji_replace_incoming', '1');
+Irssi::settings_add_str('colon_emoji', 'colon_emoji_replace_outgoing', '1');
 
 Irssi::signal_add('setup changed' => 'sig_setup_changed');
 Irssi::signal_add_first('message public' => 'sig_message_public');
 Irssi::signal_add_first('message private' => 'sig_message_private');
+Irssi::signal_add_first('send command' => 'sig_send');
+Irssi::signal_add_first('send text' => 'sig_send');
 
 init();
