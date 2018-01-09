@@ -7,7 +7,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                          accent ](Test/accent/)|  ✔   |  ✔   |  ✔   | 11   |  ✔   | (c)
 [                     accountname ](Test/accountname/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                  account-notify ](Test/account-notify/)|  ✔   |  ✔   |  ✔   |  2   |  ✔   | (c)
-[                             ack ](Test/ack/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
+[                             ack ](Test/ack/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                        act_fifo ](Test/act_fifo/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                   active_notice ](Test/active_notice/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                   active_notify ](Test/active_notify/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -108,7 +108,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                          clones ](Test/clones/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                  clones_scanner ](Test/clones_scanner/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                        cmpchans ](Test/cmpchans/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
-[                     colon_emoji ](Test/colon_emoji/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
+[                     colon_emoji ](Test/colon_emoji/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
 [                  colorize_nicks ](Test/colorize_nicks/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                       colorkick ](Test/colorkick/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       colorswap ](Test/colorswap/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -523,4 +523,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-31906ee6dc2d6cff8de5075cb7d5fa33c5dcb2d6 | 1008
+ad2980dba86898209247f62b5a27804e066f0dc6 | 1009
