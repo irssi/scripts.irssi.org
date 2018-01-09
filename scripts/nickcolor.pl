@@ -96,6 +96,9 @@ sub sig_public {
   my $prefix_text = Irssi::settings_get_str('nickcolor_prefix_text');
   my $truncate_value = Irssi::settings_get_int('nickcolor_truncate_value');
 
+  # Reference for server/channel
+  my $tagtarget = "$server->{tag}/$target";
+
   # Set default nick truncate value to 0 if option is disabled
   $truncate_value = 0 if (!$enable_truncate);
 
@@ -116,7 +119,7 @@ sub sig_public {
   $color = sprintf "\003%02d", $color;
 
   # Optional: We check if it's the same nickname for current target
-  if ($saved_nicks{$target} eq $nick && $enable_prefix)
+  if ($saved_nicks{$tagtarget} eq $nick && $enable_prefix)
   {
     # Grouped message
     Irssi::command('/^format pubmsg ' . $prefix_text . '$1');
@@ -127,7 +130,7 @@ sub sig_public {
     Irssi::command('/^format pubmsg {pubmsgnick $2 {pubnick ' . $color . '$[' . $truncate_value . ']0}}$1');
 
     # Save nickname for next message
-    $saved_nicks{$target} = $nick;
+    $saved_nicks{$tagtarget} = $nick;
   }
 
 }
@@ -142,11 +145,14 @@ sub sig_me {
   my $prefix_text = Irssi::settings_get_str('nickcolor_prefix_text');
   my $truncate_value = Irssi::settings_get_int('nickcolor_truncate_value');
 
+  # Reference for server/channel
+  my $tagtarget = "$server->{tag}/$target";
+
   # Set default nick truncate value to 0 if option is disabled
   $truncate_value = 0 if (!$enable_truncate);
 
   # Optional: We check if it's the same nickname for current target
-  if ($saved_nicks{$target} eq $nick && $enable_prefix)
+  if ($saved_nicks{$tagtarget} eq $nick && $enable_prefix)
   {
     # Grouped message
     Irssi::command('/^format own_msg ' . $prefix_text . '$1');
@@ -157,7 +163,7 @@ sub sig_me {
     Irssi::command('/^format own_msg {ownmsgnick $2 {ownnick $[' . $truncate_value . ']0}}$1');
 
     # Save nickname for next message
-    $saved_nicks{$target} = $nick;
+    $saved_nicks{$tagtarget} = $nick;
   }
 
 }
@@ -168,8 +174,11 @@ sub sig_action_public {
 
   my $enable_prefix = Irssi::settings_get_bool('nickcolor_enable_prefix');
 
+  # Reference for server/channel
+  my $tagtarget = "$server->{tag}/$target";
+
   # Empty current target nick if prefix option is enabled
-  $saved_nicks{$target} = '' if ($enable_prefix);
+  $saved_nicks{$tagtarget} = '' if ($enable_prefix);
 
 }
 
@@ -180,8 +189,11 @@ sub sig_action_me {
 
   my $enable_prefix = Irssi::settings_get_bool('nickcolor_enable_prefix');
 
+  # Reference for server/channel
+  my $tagtarget = "$server->{tag}/$target";
+
   # Empty current target nick if prefix option is enabled
-  $saved_nicks{$target} = '' if ($enable_prefix);
+  $saved_nicks{$tagtarget} = '' if ($enable_prefix);
 
 }
 
