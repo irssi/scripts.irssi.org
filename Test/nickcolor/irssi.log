@@ -1,5 +1,5 @@
-* Reference found where even-sized list expected at nickcolor.pl line 21.
+* Reference found where even-sized list expected at nickcolor.pl line 32.
 * 
-* readline() on closed filehandle $color_fh at nickcolor.pl line 25.
+* readline() on closed filehandle $color_fh at nickcolor.pl line 37.
 * 
 * -!- Irssi: Loaded script nickcolor

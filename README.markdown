@@ -108,7 +108,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                          clones ](Test/clones/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                  clones_scanner ](Test/clones_scanner/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                        cmpchans ](Test/cmpchans/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
-[                     colon_emoji ](Test/colon_emoji/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
+[                     colon_emoji ](Test/colon_emoji/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                  colorize_nicks ](Test/colorize_nicks/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                       colorkick ](Test/colorkick/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       colorswap ](Test/colorswap/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -319,7 +319,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                         nickban ](Test/nickban/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [               nickcolor_expando ](Test/nickcolor_expando/)|  ✔   |  ✔   |  ✔   | 10   |  ✔   | (c)
 [                   nickcolor_gay ](Test/nickcolor_gay/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
-[                       nickcolor ](Test/nickcolor/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
+[                       nickcolor ](Test/nickcolor/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   
 [                      nickignore ](Test/nickignore/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        nicklist ](Test/nicklist/)|  ✔   |  ✔   |  ✔   | 13   |  ✔   | (c)
 [                  nickmix-c0ffee ](Test/nickmix-c0ffee/)|  ✔   |  ✔   |  ✔   | 18   |  ✔   | (c)
@@ -523,4 +523,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-ad2980dba86898209247f62b5a27804e066f0dc6 | 1009
+3cead9be6a673bc259748a5b8010db9579400f23 | 1010
