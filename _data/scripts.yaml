@@ -1095,14 +1095,14 @@
   url: http://vague.se
   version: '0.5'
 -
-  authors: 'Lars Djerf, Nei'
-  contact: 'lars.djerf@gmail.com, Nei @ anti@conference.jabber.teamidiot.de'
+  authors: 'Lars Djerf, Nei, Phoenix616'
+  contact: 'lars.djerf@gmail.com, Nei @ anti@conference.jabber.teamidiot.de, Phoenix616 @ mail@moep.tv'
   description: 'Replace words between :...: in messages according to a text file. Was intended for Unicode Emoji on certain proprietary platforms.'
   filename: colon_emoji.pl
   license: GPLv3
-  modified: '2016-04-26 23:53:02'
+  modified: '2018-01-09 16:56:23'
   name: colon_emoji
-  version: '0.1'
+  version: '0.2'
 -
   authors: Nei
   contact: 'Nei @ anti@conference.jabber.teamidiot.de'
@@ -3263,16 +3263,16 @@
   name: nickban
   version: '1.1'
 -
-  authors: 'Timo Sirainen, Ian Peters, David Leadbeater'
+  authors: 'Timo Sirainen, Ian Peters, David Leadbeater, Bruno Cattáneo'
   commands: color
   contact: tss@iki.fi
   description: 'assign a different color for each nick'
   filename: nickcolor.pl
   license: 'Public Domain'
-  modified: '2014-10-19 11:54:16'
+  modified: '2018-01-09 10:41:20'
   name: 'Nick Color'
   url: http://irssi.org/
-  version: '2'
+  version: '2.1'
 -
   authors: Nei
   commands: neatcolor
