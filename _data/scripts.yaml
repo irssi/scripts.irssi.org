@@ -4505,17 +4505,6 @@
   url: https://github.com/op/irssi-spotify
   version: '1.1'
 -
-  authors: "Marcus 'darix' Rückert, tira, Stefan 'tommie' Tomanek"
-  contact: 'darix@irssi.de, tira@isx.de, stefan@pico.ruhr.de'
-  description: 'prints the stats for german stocks'
-  filename: stocks.pl
-  license: 'Public Domain'
-  modified: '2008-05-17 17:39:11'
-  modules: 'HTML::Entities LWP::Simple'
-  name: stocks
-  url: http://irssi.org/scripts/
-  version: '0.9'
--
   authors: 'Marcin Rozycki'
   commands: sync-check
   contact: derwan@irssi.pl
