@@ -19,7 +19,7 @@ use warnings;
 use vars  qw ($VERSION %IRSSI);
 use Irssi 20020325 qw (command_bind command_runsub command timeout_add timeout_remove signal_add_first);
 
-$VERSION = '0.6';
+$VERSION = '0.7';
 %IRSSI = (
     authors     => 'Kimmo Lehto, Marcus Rueckert',
     contact     => 'kimmo@a-men.org, darix@irssi.org' ,
@@ -35,13 +35,6 @@ our %timers;
 sub timer_command {
     my ( $name ) = @_;
     if ( exists ( $timers{$name} ) ) {
-        if ( $timers{$name}->{'repeat'} != -1 ) {
-            if ( $timers{$name}->{'repeat'}-- == 0) {
-                cmd_timerstop( $name );
-                return;
-            }
-        }
-
         my ($server, $item);
         if ($timers{$name}->{'server'}) {
             $server = Irssi::server_find_tag( $timers{$name}->{'server'} );
@@ -53,6 +46,12 @@ sub timer_command {
             ($item ? $item : $server)->command( $timers{$name}->{'command'} );
         } else {
             command( $timers{$name}->{'command'} );
+        }
+
+        if ( $timers{$name}->{'repeat'} != -1 ) {
+            if ( --$timers{$name}->{'repeat'} == 0) {
+                cmd_timerstop( $name );
+            }
         }
     }
 }
@@ -88,11 +87,11 @@ command_bind 'timer add' => sub {
     my ( $data, $server, $item ) = @_;
     my ( $name, $interval, $times, $command );
 
-    if ( $data =~ /^\s*(\w+)\s+(\d+(?:\.\d+)?)\s+(-?\d+)\s+(.*)$/ ) {
+    if ( $data =~ /^\s*(\S+)\s+(\d+(?:\.\d+)?)\s+(-?\d+)\s+(.*)$/ ) {
         ( $name, $interval, $times, $command ) = ( $1, $2, $3, $4 );
         $times = -1 if ( $times == 0 );
     }
-    elsif ( $data =~ /^\s*(\w+)\s+(\d+(?:\.\d+)?)\s+(.*)$/ )
+    elsif ( $data =~ /^\s*(\S+)\s+(\d+(?:\.\d+)?)\s+(.*)$/ )
     {
         ( $name, $interval, $times, $command ) = ( $1, $2, -1, $3 );
     }
