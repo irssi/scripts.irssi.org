@@ -31,10 +31,14 @@
 # you CAN have RACE CONDITIONS HERE. 
 # so delay your connects a bit.
 #
+use strict;
+use warnings;
+use Irssi qw ( signal_add  );
+use IO::File;
 
 use vars qw ( $VERSION %IRSSI );
 
-$VERSION = "0.0.2";
+$VERSION = "0.0.3";
 %IRSSI = (
     authors     => 'darix',
     contact     => 'darix@irssi.org',
@@ -43,12 +47,6 @@ $VERSION = "0.0.2";
     license     => 'BSD License',
     url         => 'http://www.irssi.de'
 );
-#
-use strict;
-use warnings;
-
-use Irssi qw ( signal_add  );
-use IO::File;
 
 signal_add 'server looking' => sub {
     my ( $server ) = @_;
