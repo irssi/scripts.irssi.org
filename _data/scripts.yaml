@@ -613,14 +613,13 @@
 -
   authors: "David O'Rourke"
   commands: bantime
-  contact: phyber@#irssi
-  description: 'Print time when ban was set in a nicer way. eg. 23 mins, 40 secs ago.'
+  contact: 'phyber [at] #irssi'
+  description: 'Print time when ban was set in a nicer way. eg. 23m, 40s ago.'
   filename: bantime.pl
   license: GPLv2
-  modified: '2004-08-01 02:46:00'
-  modules: Time::Duration
+  modified: '2015-01-09 19:54:31'
   name: bantime
-  version: '0.5'
+  version: '1.03'
 -
   authors: 'Jean-Yves Lefort'
   contact: 'jylefort\@brutele.be, decadix on IRCNet'
