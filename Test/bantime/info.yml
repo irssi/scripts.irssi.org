@@ -1,14 +1,13 @@
 ---
 -
   authors: "David O'Rourke"
-  changed: '08.01.2004 02:46'
+  changed: 02/03/2009
   commands:
     - bantime
-  contact: phyber@#irssi
+  contact: 'phyber [at] #irssi'
   default_package: bantime
-  description: 'Print time when ban was set in a nicer way. eg. 23 mins, 40 secs ago.'
+  description: 'Print time when ban was set in a nicer way. eg. 23m, 40s ago.'
   license: GPLv2
-  modules:
-    - Time::Duration
+  modified: '2015-01-09 19:54:31'
   name: bantime
-  version: '0.5'
+  version: '1.03'
