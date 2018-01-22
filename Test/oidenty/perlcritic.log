@@ -1,4 +1,2 @@
-Code before strictures are enabled at line 37, column 1.  See page 429 of PBP.  (Severity: 5)
-Code before warnings are enabled at line 37, column 1.  See page 431 of PBP.  (Severity: 4)
-Subroutine "new" called using indirect syntax at line 56, column 14.  See page 349 of PBP.  (Severity: 4)
-Subroutine "new" called using indirect syntax at line 65, column 11.  See page 349 of PBP.  (Severity: 4)
+Subroutine "new" called using indirect syntax at line 54, column 14.  See page 349 of PBP.  (Severity: 4)
+Subroutine "new" called using indirect syntax at line 63, column 11.  See page 349 of PBP.  (Severity: 4)
