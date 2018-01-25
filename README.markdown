@@ -134,7 +134,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                         dccstat ](Test/dccstat/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
 [                        deadbeef ](Test/deadbeef/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
 [                 defaultchanmode ](Test/defaultchanmode/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                          dejunk ](Test/dejunk/)|  ✔   |  ✔   |  ✔   | 10   |  ✔   | (c)
+[                          dejunk ](Test/dejunk/)|  ✔   |  ✔   |  ✔   | 10   |  ✔   
 [                    deliciousurl ](Test/deliciousurl/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                  desktop-notify ](Test/desktop-notify/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                              df ](Test/df/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
@@ -293,7 +293,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                          miodek ](Test/miodek/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [               mirc_colour_popup ](Test/mirc_colour_popup/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                           mkick ](Test/mkick/)|  ✔   |  ✔   |  ✔   | 30   |  ✔   | (c)
-[              mldonkey_bandwidth ](Test/mldonkey_bandwidth/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[              mldonkey_bandwidth ](Test/mldonkey_bandwidth/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                           mlock ](Test/mlock/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        modelist ](Test/modelist/)|  ✔   |  ✔   |  ✔   | 33   |  ✔   | (c)
 [                      modelist-r ](Test/modelist-r/)|  ✔   |  ✔   |  ✔   | 18   |  ✔   | (c)
@@ -523,4 +523,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-f098f73e9468f869638ce5ac4df29c9d50d97846 | 1032
+a7324e005355e99ef59d959480923e46e24fd0e6 | 1034
