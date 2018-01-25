@@ -84,7 +84,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                             buf ](Test/buf/)|  ✔   |  ✔   |  ✔   | 12   |  ✔   | (c)
 [                            calc ](Test/calc/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
 [                        callerid ](Test/callerid/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                     cap-extjoin ](Test/cap-extjoin/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   
+[                     cap-extjoin ](Test/cap-extjoin/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                             cap ](Test/cap/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                   cap_sasl_fail ](Test/cap_sasl_fail/)|  ✘   |  ✔   |  ✔   |  2   |  ☡   | (c)
 [                        cap_sasl ](Test/cap_sasl/)|  ✘   |  ✔   |  ✔   |  7   |  ☡   | (c)
@@ -293,7 +293,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                          miodek ](Test/miodek/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [               mirc_colour_popup ](Test/mirc_colour_popup/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                           mkick ](Test/mkick/)|  ✔   |  ✔   |  ✔   | 30   |  ✔   | (c)
-[              mldonkey_bandwidth ](Test/mldonkey_bandwidth/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[              mldonkey_bandwidth ](Test/mldonkey_bandwidth/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                           mlock ](Test/mlock/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        modelist ](Test/modelist/)|  ✔   |  ✔   |  ✔   | 33   |  ✔   | (c)
 [                      modelist-r ](Test/modelist-r/)|  ✔   |  ✔   |  ✔   | 18   |  ✔   | (c)
@@ -523,4 +523,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-02398304d6a89b915de75daf37dedfcb61192012 | 1027
+f098f73e9468f869638ce5ac4df29c9d50d97846 | 1032
