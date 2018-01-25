@@ -1,13 +1,10 @@
+use strict;
 require LWP::UserAgent;
 use Irssi;
 use HTTP::Request::Common;
-use strict;
 use vars qw($VERSION %IRSSI);
-######################
-my $ip = "127.0.0.1";
-#enter mldonkey's IP here and make sure you are allowed to connect!
-######################
-$VERSION = "20030712";
+
+$VERSION = "20180123";
 %IRSSI = (
 	authors		=> "Carsten Otto",
 	contact		=> "c-otto\@gmx.de",
@@ -18,11 +15,15 @@ $VERSION = "20030712";
 	changed		=> "$VERSION",
 	commands	=> "mlbw"
 );
+
+Irssi::settings_add_str('mldonkey_bandwidth', 'mldonkey_bandwidth_host' ,'127.0.0.1:4080');
+my $host = Irssi::settings_get_str('mldonkey_bandwidth_host');
+
 sub cmd_mlbw
 {
 	my ($args, $server, $target) = @_;
 	my $ua = LWP::UserAgent->new(timeout => 5);
-	my $req = GET "http://$ip:4080/submit?q=bw_stats";
+	my $req = GET "http://$host/submit?q=bw_stats";
 	my $resp = $ua->request($req);
 	my $output = $resp->content();
 	my $down = $output;
@@ -41,4 +42,10 @@ sub cmd_mlbw
 	}
 }
 
+sub cmd_changed
+{
+	$host = Irssi::settings_get_str('mldonkey_bandwidth_host');
+}
+
 Irssi::command_bind('mlbw', 'cmd_mlbw');
+Irssi::signal_add('setup changed', 'cmd_changed'); 
