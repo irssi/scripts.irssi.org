@@ -3014,11 +3014,11 @@
   description: "Shows your mldonkey's current down- and upload rate"
   filename: mldonkey_bandwidth.pl
   license: GPLv2
-  modified: '2008-05-17 17:39:11'
+  modified: '2018-01-23 14:20:51'
   modules: 'HTTP::Request::Common LWP::UserAgent'
   name: 'mldonkey bandwidth script'
   url: http://www.c-otto.de
-  version: '20030712'
+  version: '20180123'
 -
   authors: 'Timo Sirainen'
   commands: mlock
