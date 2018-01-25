@@ -1361,10 +1361,10 @@
   description: 'Prevents all kinds of junk from showing up'
   filename: dejunk.pl
   license: 'Public Domain'
-  modified: '2015-02-02 14:02:20'
+  modified: '2018-01-07 11:55:29'
   name: Dejunk
   url: http://www.garion.org/irssi/
-  version: '1.0'
+  version: '1.2'
 -
   authors: 'Benjamin Reed'
   contact: ranger@befunk.com
