@@ -3870,6 +3870,15 @@
   url: http://ninja.no/irssi/query.pl
   version: '1.25'
 -
+  authors: ferret
+  contact: 'ferret(tA)explodingferret(moCtoD), ferret on irc.freenode.net'
+  description: 'whois on every query open (and only then)'
+  filename: query_whois.pl
+  modified: '2018-01-11 11:02:11'
+  name: query_whois
+  url: http://explodingferret.com/linux/irssi/query_whois.pl
+  version: '0.02'
+-
   authors: "Stefan 'tommie' Tomanek"
   contact: stefan@pico.ruhr.de
   description: 'restores the last lines of a query on re-creation'
@@ -4300,12 +4309,13 @@
 -
   authors: 'Rocco Caputo (dngor), Nei'
   contact: 'rcaputo@cpan.org, Nei @ anti@conference.jabber.teamidiot.de'
-  description: 'Irssi 0.8.10 settings notes and documentation'
+  description: 'Irssi 1.0 settings notes and documentation'
   filename: settingshelp.pl
   license: 'CC BY-SA 2.5, http://creativecommons.org/licenses/by-sa/2.5/'
-  modified: '2016-04-27 00:09:59'
+  modified: '2018-01-25 14:26:50'
+  modules: LWP::Simple
   name: settingshelp
-  version: 0.8.10
+  version: '1.0'
 -
   authors: 'Marcin Rozycki'
   commands: '42.pl shortenurl'
