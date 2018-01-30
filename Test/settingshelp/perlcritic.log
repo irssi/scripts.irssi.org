@@ -1,1 +1,2 @@
-String delimiter used with "split" at line 32, column 6.  Express it as a regex instead.  (Severity: 2)
+String delimiter used with "split" at line 36, column 15.  Express it as a regex instead.  (Severity: 2)
+"die" used instead of "croak" at line 37, column 5.  See page 283 of PBP.  (Severity: 3)

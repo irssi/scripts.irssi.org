@@ -1,31 +1,5 @@
-* Irssi 0.8.10 settings notes.  Gathered through much effort by Rocco
-* Caputo <rcaputo at cpan dot org> (aka "dngor").  Includes original
-* work by Nei, and advice and guidance from irc.freenode.net #irssi.
-* Irssi Settings documentation license
-* 
-* Copyright & License.
-* The original portions of this document are Copyright 2005 by Rocco
-* Caputo <rcaputo@cpan.org> and Nei (on irc.freenode.net #irssi).  Other
-* portions are Copyright by their respective authors or licensors.
-* This work is licensed under a Creative Commons Attribution-ShareAlike
-* 2.5 License.  Please see http://creativecommons.org/licenses/by-sa/2.5/
-* for details.  Summary:
-*   You are free:
-*     * to copy, distribute, display, and perform this work
-*     * to make derivative works
-*     * to make commercial use of this work
-*   Under the following conditions:
-*     Attribution.  You must attribute the work in the manner specified
-*     by the author or licensor.
-*     Share Alike.  If you alter, transform, or build upon this work,
-*     you may distribute the resulting work only under a license
-*     identical to this one.
-*   * For any reuse or distribution, you must make clear to others the
-*   license terms of this work.
-*   * Any of these conditions can be waived if you get permision from
-*   the copyright holder.
-*   Your fair use and other rights are in no way affected by the above.
-* Sorry for the heavy license crap.  Coekie wanted clarification.
+* Irssi Settings documentation licence
+*  CC BY-SA 2.5, http://creativecommons.org/licenses/by-sa/2.5/
 * 
 * You can now read help for settings with /HELP SET settingname
 * -!- Irssi: Loaded script settingshelp
