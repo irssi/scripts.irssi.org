@@ -81,6 +81,7 @@ layout: default
             </thead>
             <tbody>
             {% for script in site.data.scripts %}
+            {% unless script.HIDDEN == "1" %}
                 <tr id="script-{{ script.filename | replace: ".", "_" }}">
                     <td class="filename">
                         <a href="scripts/{{ script.filename }}">{{ script.filename }}</a>
@@ -99,6 +100,7 @@ layout: default
                     </td>
 		    <td class="votes"></td>
                 </tr>
+            {% endunless %}
             {% endfor %}
             </tbody>
         </table>
