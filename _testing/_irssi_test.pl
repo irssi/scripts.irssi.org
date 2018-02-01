@@ -13,7 +13,6 @@ my $PWD = $ENV{PWD};
 my $SWD = "$PWD/../..";
 Irssi::command('^window log on');
 Irssi::command("script load $CURRENT_SCRIPT");
-Irssi::command('^window log off');
 
 my (@packages) = grep { !/^_/ } keys %Irssi::Script::;
 my $tp = $CURRENT_SCRIPT; $tp =~ s/^.*\///; $tp =~ s/\W/_/g; my @tmp;
@@ -98,3 +97,4 @@ $info{modules} = \@modules if @modules;
 $info{commands} = \@commands if @commands;
 $info{default_package} = $package =~ s/::$//r if $package;
 YAML::Tiny::DumpFile("info.yml", [\%info]);
+Irssi::command('^window log off');
