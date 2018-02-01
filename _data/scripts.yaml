@@ -587,6 +587,16 @@
   name: ban
   version: 1.4d
 -
+  authors: 'Valentin Batz, Nico R. Wohlgemuth'
+  commands: banaffects
+  contact: 'senneth@irssi.org, nico@lifeisabug.com'
+  description: 'Shows affected nicks by a ban on a new ban and defends yourself because IRC is serious.'
+  filename: banaffects.pl
+  modified: '2012-10-27 01:57:13'
+  name: banaffects_sd
+  url: http://nico.lifeisabug.com/irssi/scripts/
+  version: '1.2'
+-
   authors: 'Riku Voipio'
   contact: riku.voipio@iki.fi
   description: 'shows bandwidth usage in statusbar'
