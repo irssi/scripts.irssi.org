@@ -1,4 +1,4 @@
-# trackbar.pl
+## trackbar.pl
 #
 # This little script will do just one thing: it will draw a line each time you
 # switch away from a window. This way, you always know just upto where you've
@@ -7,8 +7,9 @@
 #
 #  redraw trackbar only works on irssi 0.8.17 or higher.
 #
-#
-# Usage:
+##
+
+## Usage:
 #
 #     The script works right out of the box, but if you want you can change
 #     the working by /set'ing the following variables:
@@ -24,6 +25,11 @@
 #    Description: This is the string that your line will display. This can
 #                 be multiple characters or just one. For example: '~-~-'
 #                 The default setting is '-'.
+#                 Here are some unicode characters you can try:
+#                     "───" => U+2500 => a line
+#                     "═══" => U+2550 => a double line
+#                     "━━━" => U+2501 => a wide line
+#                     "▭  " => U+25ad => a white rectangle
 #
 #    Setting:     trackbar_use_status_window
 #    Description: If this setting is set to OFF, Irssi won't print a trackbar
@@ -67,8 +73,10 @@
 #    Command:     /trackbar redraw
 #    Description: Force redraw of trackbars
 #
+##
 
-
+##
+#
 # For bugreports and other improvements contact one of the authors.
 #
 #    This program is free software; you can redistribute it and/or modify
@@ -89,17 +97,14 @@
 
 use strict;
 use warnings;
-use Irssi;
-use Irssi::TextUI;
-use Encode;
-
-use POSIX qw(strftime);
 use vars qw($VERSION %IRSSI);
 
-$VERSION = "2.4"; # 1ca8fa9f28b9586
+$VERSION = "2.5"; # 56e983314dc1b85
 
 %IRSSI = (
-    authors     => 'Peter Leurs and Geert Hauwaerts',
+    authors     => "Peter 'kinlo' Leurs, Uwe Dudenhoeffer, " .
+                   "Michiel Holtkamp, Nico R. Wohlgemuth, " .
+                   "Geert Hauwaerts",
     contact     => 'peter@pfoe.be',
     patchers    => 'Johan Kiviniemi (UTF-8), Uwe Dudenhoeffer (on-upgrade-remove-line)',
     name        => 'trackbar',
@@ -150,6 +155,62 @@ $VERSION = "2.4"; # 1ca8fa9f28b9586
 #    Todo: * Instead of drawing a line, invert the line.
 #
 ##
+
+## Authors:
+#
+#   - Main maintainer & author: Peter 'kinlo' Leurs
+#   - Many thanks to Timo 'cras' Sirainen for placing me on my way
+#   - on-upgrade-remove-line patch by Uwe Dudenhoeffer
+#   - trackbar resizing by Michiel Holtkamp (02 Jul 2012)
+#   - scroll to trackbar, window excludes, and timestamp options by Nico R.
+#     Wohlgemuth (22 Sep 2012)
+#
+##
+
+## Version history:
+#
+#  2.5: - merge back on scripts.irssi.org
+#  2.4: - add support for horizontal splits
+#  2.3: - add some features for seen tracking using other scripts
+#  2.0: - big rewrite based on 1.4
+#         * removed /tb, you can have it with /alias tb trackbar if you want
+#         * subcommand and settings changes:
+#              /trackbar vmark  => /trackbar markvisible
+#              /trackbar scroll => /trackbar goto (or just /trackbar)
+#              /trackbar help   => /help trackbar
+#              /set trackbar_hide_windows => /set trackbar_ignore_windows
+#              /set trackbar_timestamp    => /set trackbar_print_timestamp
+#         * magic line strings were removed, just paste the unicode you want!
+#         * trackbar_timestamp_styled is not currently supported
+#  1.9: - add version guard
+#  1.8: - sub draw_bar
+#  1.7: - Added /tb scroll, trackbar_hide_windows, trackbar_timestamp_timestamp
+#         and trackbar_timestamp_styled
+#  1.6: - Work around Irssi resize bug, please do /upgrade! (see below)
+#  1.5: - Resize trackbars in all windows when terminal is resized
+#  1.4: - Changed our's by my's so the irssi script header is valid
+#       - Removed utf-8 support.  In theory, the script should work w/o any
+#         problems for utf-8, just set trackbar_string to a valid utf-8 character
+#         and everything *should* work.  However, this script is being plagued by
+#         irssi internal bugs.  The function Irssi::settings_get_str does NOT handle
+#         unicode strings properly, hence you will notice problems when setting the bar
+#         to a unicode char.  For changing your bar to utf-8 symbols, read the line sub.
+#  1.3: - Upgrade now removes the trackbars.
+#       - Some code cleanups, other defaults
+#       - /mark sets the line to the bottom
+#  1.2: - Support for utf-8
+#       - How the bar looks can now be configured with trackbar_string
+#         and trackbar_style
+#  1.1: - Fixed bug when closing window
+#  1.0: - Initial release
+#
+##
+
+use Irssi;
+use Irssi::TextUI;
+use Encode;
+
+use POSIX qw(strftime);
 
 sub cmd_help {
     my ($args) = @_;
