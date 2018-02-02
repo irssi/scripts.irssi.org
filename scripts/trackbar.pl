@@ -431,7 +431,6 @@ sub redraw_trackbars {
         $win->print_after($line, MSGLEVEL_NEVER, line($win->{width}, $line->{info}{time}),
                           $line->{info}{time});
         $view->set_bookmark('trackbar', $win->last_line_insert);
-        $view->redraw;
         $view->remove_line($line);
         $win->command('^scrollback end') if $bottom && !$win->view->{bottom};
         $view->redraw;
