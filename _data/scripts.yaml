@@ -3870,6 +3870,14 @@
   name: qchallengeauth.pl
   version: '1.0'
 -
+  authors: "David O'Rourke"
+  contact: 'phyber [at] #irssi'
+  description: 'Hide the stupid quit/join on QuakeNet when a user registers with nickserv.'
+  filename: quakequit.pl
+  modified: '2015-01-09 16:05:06'
+  name: quakequit
+  version: '1.0'
+-
   authors: 'Peder Stray'
   contact: peder@ninja.no
   description: 'Give you more control over when to jump to query windows and when to just tell you one has been created. Enhanced autoclose.'
