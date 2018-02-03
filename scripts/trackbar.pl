@@ -323,7 +323,7 @@ sub win_ignored {
 sub sig_window_changed {
     my ($newwindow, $oldwindow) = @_;
     return unless $oldwindow;
-    redraw_trackbars($newwindow) unless $old_irssi;
+    redraw_one_trackbar($newwindow) unless $old_irssi;
     trackbar_update_seen($newwindow);
     return if delete $keep_trackbar{ $oldwindow->{_irssi} };
     trackbar_update_seen($oldwindow);
@@ -420,20 +420,25 @@ sub UNLOAD {
     remove_all_trackbars();
 }
 
+sub redraw_one_trackbar {
+    my $win = shift;
+    my $view = $win->view;
+    my $line = $view->get_bookmark('trackbar');
+    return unless $line;
+    my $bottom = $view->{bottom};
+    $win->print_after($line, MSGLEVEL_NEVER, line($win->{width}, $line->{info}{time}),
+		      $line->{info}{time});
+    $view->set_bookmark('trackbar', $win->last_line_insert);
+    $view->remove_line($line);
+    $win->command('^scrollback end') if $bottom && !$win->view->{bottom};
+    $view->redraw;
+}
+
 sub redraw_trackbars {
     return unless check_version();
-    for my $win (@_ ? @_ : Irssi::windows) {
+    for my $win (Irssi::windows) {
         next unless ref $win;
-        my $view = $win->view;
-        my $line = $view->get_bookmark('trackbar');
-        next unless $line;
-        my $bottom = $view->{bottom};
-        $win->print_after($line, MSGLEVEL_NEVER, line($win->{width}, $line->{info}{time}),
-                          $line->{info}{time});
-        $view->set_bookmark('trackbar', $win->last_line_insert);
-        $view->remove_line($line);
-        $win->command('^scrollback end') if $bottom && !$win->view->{bottom};
-        $view->redraw;
+        redraw_one_trackbar($win);
     }
 }
 
