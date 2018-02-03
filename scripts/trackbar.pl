@@ -362,9 +362,7 @@ sub screen_length;
   else {
       *screen_length = sub {
           my $temp = shift;
-          if (is_utf8()) {
-              Encode::_utf8_on($temp);
-          }
+          Encode::_utf8_on($temp) if is_utf8();
           length($temp)
       };
   }
@@ -388,7 +386,7 @@ sub line {
     $string = ' ' unless length $string;
     $time ||= time;
 
-    Encode::_utf8_on($string);
+    Encode::_utf8_on($string) if is_utf8();
     my $length = c_length($string);
 
     my $format = '';
@@ -402,7 +400,9 @@ sub line {
 
     my $times = $width / $length;
     $times += 1 if $times != int $times;
-    $format .= $config{style};
+    my $style = "$config{style}";
+    Encode::_utf8_on($style) if is_utf8();
+    $format .= $style;
     $width -= c_length($format);
     $string x= $times;
     chop $string while length $string && c_length($string) > $width;
