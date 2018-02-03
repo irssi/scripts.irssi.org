@@ -566,3 +566,6 @@ Irssi::command_bind('mark'               => 'cmd_mark');
 Irssi::command_bind_last('help' => 'cmd_help');
 
 Irssi::printformat(MSGLEVEL_CLIENTCRAP, 'trackbar_loaded', $IRSSI{name}, $VERSION, $IRSSI{authors});
+
+# workaround for issue #271
+{ package Irssi::Nick }
