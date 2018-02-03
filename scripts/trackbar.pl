@@ -170,6 +170,9 @@ $VERSION = "2.5"; # 56e983314dc1b85
 ## Version history:
 #
 #  2.5: - merge back on scripts.irssi.org
+#       - fix /trackbar redraw broken in 2.4
+#       - fix legacy encodings
+#       - add workaround for irssi issue #271
 #  2.4: - add support for horizontal splits
 #  2.3: - add some features for seen tracking using other scripts
 #  2.0: - big rewrite based on 1.4
