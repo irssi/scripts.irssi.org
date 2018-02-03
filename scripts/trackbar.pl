@@ -323,7 +323,7 @@ sub win_ignored {
 sub sig_window_changed {
     my ($newwindow, $oldwindow) = @_;
     return unless $oldwindow;
-    redraw_trackbars($newwindow);
+    redraw_trackbars($newwindow) unless $old_irssi;
     trackbar_update_seen($newwindow);
     return if delete $keep_trackbar{ $oldwindow->{_irssi} };
     trackbar_update_seen($oldwindow);
