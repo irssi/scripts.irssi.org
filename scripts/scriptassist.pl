@@ -5,7 +5,7 @@
 
 use strict;
 
-our $VERSION = '2003020804';
+our $VERSION = '2003020805';
 our %IRSSI = (
     authors     => 'Stefan \'tommie\' Tomanek',
     contact     => 'stefan@pico.ruhr.de',
@@ -315,6 +315,7 @@ sub get_new {
     my $xml = get_scripts();
     foreach (sort {$xml->{$b}{last_modified} cmp $xml->{$a}{last_modified}} keys %$xml) {
 	my %entry = %{ $xml->{$_} };
+	next if $entry{HIDDEN};
 	$result->{$_} = \%entry;
 	$num--;
 	last unless $num;
@@ -390,6 +391,7 @@ sub search_scripts {
     my %result;
     foreach (sort keys %{$database}) {
 	my %entry = %{$database->{$_}};
+	next if $entry{HIDDEN};
 	my $string = $_." ";
 	$string .= $entry{description} if defined $entry{description};
 	if ($string =~ /$query/i) {

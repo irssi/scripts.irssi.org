@@ -1,5 +1,4 @@
 #!/bin/zsh
-mkdir -p Test
 local base_path="`pwd`"
 local test_script="$base_path/_testing/_irssi_test.pl"
 
@@ -7,8 +6,8 @@ local test_script="$base_path/_testing/_irssi_test.pl"
 
 for scriptfile ($filelist) {
     rm -rf "Test/${scriptfile:t:r}"
-    mkdir "Test/${scriptfile:t:r}"
-    perlcritic --theme certrule --exclude RequireEndWithOne -2 $scriptfile >"Test/${scriptfile:t:r}/perlcritic.log"
+    mkdir -p "Test/${scriptfile:t:r}"
+    perlcritic --theme certrule --exclude RequireEndWithOne -2 $scriptfile >"Test/${scriptfile:t:r}/perlcritic.log" 2>&1
     pushd Test
     rm -fr .home
     mkdir .home

@@ -1,8 +1,83 @@
-# trackbar.pl
+## trackbar.pl
 #
-# Track what you read last when switching to a window.
+# This little script will do just one thing: it will draw a line each time you
+# switch away from a window. This way, you always know just upto where you've
+# been reading that window :) It also removes the previous drawn line, so you
+# don't see double lines.
 #
-#    Copyright (C) 2003  Peter Leurs
+#  redraw trackbar only works on irssi 0.8.17 or higher.
+#
+##
+
+## Usage:
+#
+#     The script works right out of the box, but if you want you can change
+#     the working by /set'ing the following variables:
+#
+#    Setting:     trackbar_style
+#    Description: This setting will be the color of your trackbar line.
+#                 By default the value will be '%K', only Irssi color
+#                 formats are allowed. If you don't know the color formats
+#                 by heart, you can take a look at the formats documentation.
+#                 You will find the proper docs on http://www.irssi.org/docs.
+#
+#    Setting:     trackbar_string
+#    Description: This is the string that your line will display. This can
+#                 be multiple characters or just one. For example: '~-~-'
+#                 The default setting is '-'.
+#                 Here are some unicode characters you can try:
+#                     "───" => U+2500 => a line
+#                     "═══" => U+2550 => a double line
+#                     "━━━" => U+2501 => a wide line
+#                     "▭  " => U+25ad => a white rectangle
+#
+#    Setting:     trackbar_use_status_window
+#    Description: If this setting is set to OFF, Irssi won't print a trackbar
+#                 in the statuswindow
+#
+#    Setting:     trackbar_ignore_windows
+#    Description: A list of windows where no trackbar should be printed
+#
+#    Setting:     trackbar_print_timestamp
+#    Description: If this setting is set to ON, Irssi will print the formatted
+#                 timestamp in front of the trackbar.
+#
+#    Setting:     trackbar_require_seen
+#    Description: Only clear the trackbar if it has been scrolled to.
+#
+#     /mark is a command that will redraw the line at the bottom.
+#
+#    Command:     /trackbar, /trackbar goto
+#    Description: Jump to where the trackbar is, to pick up reading
+#
+#    Command:     /trackbar keep
+#    Description: Keep this window's trackbar where it is the next time
+#                 you switch windows (then this flag is cleared again)
+#
+#    Command:     /mark, /trackbar mark
+#    Description: Remove the old trackbar and mark the bottom of this
+#                 window with a new trackbar
+#
+#    Command:     /trackbar markvisible
+#    Description: Like mark for all visible windows
+#
+#    Command:     /trackbar markall
+#    Description: Like mark for all windows
+#
+#    Command:     /trackbar remove
+#    Description: Remove this window's trackbar
+#
+#    Command:     /trackbar removeall
+#    Description: Remove all windows' trackbars
+#
+#    Command:     /trackbar redraw
+#    Description: Force redraw of trackbars
+#
+##
+
+##
+#
+# For bugreports and other improvements contact one of the authors.
 #
 #    This program is free software; you can redistribute it and/or modify
 #    it under the terms of the GNU General Public License as published by
@@ -14,48 +89,75 @@
 #    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 #    GNU General Public License for more details.
 #
-#    You should have received a copy of the GNU General Public License along
-#    with this program; if not, write to the Free Software Foundation, Inc.,
-#    51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
-# 
-# This little script will do just one thing: it will draw a line each time you
-# switch away from a window. This way, you always know just upto where you've
-# been reading that window :) It also removes the previous drawn line, so you
-# don't see double lines.
+#    You should have received a copy of the GNU General Public License
+#    along with this script; if not, write to the Free Software
+#    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
-# Usage: 
+##
+
+use strict;
+use warnings;
+use vars qw($VERSION %IRSSI);
+
+$VERSION = "2.5"; # 56e983314dc1b85
+
+%IRSSI = (
+    authors     => "Peter 'kinlo' Leurs, Uwe Dudenhoeffer, " .
+                   "Michiel Holtkamp, Nico R. Wohlgemuth, " .
+                   "Geert Hauwaerts",
+    contact     => 'peter@pfoe.be',
+    patchers    => 'Johan Kiviniemi (UTF-8), Uwe Dudenhoeffer (on-upgrade-remove-line)',
+    name        => 'trackbar',
+    description => 'Shows a bar where you have last read a window.',
+    license     => 'GNU General Public License',
+    url         => 'http://www.pfoe.be/~peter/trackbar/',
+    commands    => 'trackbar',
+);
+
+## Comments and remarks.
 #
-#     The script works right out of the box, but if you want you can change
-#     the working by /set'ing the following variables:
+# This script uses settings.
+# Use /SET  to change the value or /TOGGLE to switch it on or off.
 #
-#     trackbar_string            The characters to repeat to draw the bar
-#                                    "---" => U+2500 => a line
-#                                    "===" => U+2550 => a double line
-#                                    "___" => U+2501 => a wide line
-#                                    "# #" => U+25ad.U+0020 => a white rectangle and a space
-#     trackbar_style             The style for the bar, %r is red for example
-#                                See formats.txt that came with irssi
-#     trackbar_hide_windows      Comma seperated list of window names where the
-#                                trackbar should not be drawn.
-#     trackbar_timestamp         Prints a timestamp at the start of the bar
-#     trackbar_timestamp_styled  When enabled, the timestamp respects
-#                                trackbar_style
 #
-#     /tb or /tb scroll is a command that will scroll to trackbar.
+#    Tip:     The command 'trackbar' is very usefull if you bind that to a key,
+#             so you can easily jump to the trackbar. Please see 'help bind' for
+#             more information about keybindings in Irssi.
 #
-#     /tb mark is a command that will redraw the line at the bottom.  However!
-#     This requires irssi version after 20021228.  otherwise you'll get the
-#     error redraw: unknown command, and your screen is all goofed up :)
+#    Command: /BIND meta2-P key F1
+#             /BIND F1 command trackbar
 #
-#     /upgrade & buf.pl notice: This version tries to remove the trackbars
-#     before the upgrade is done, so buf.pl does not restore them, as they are
-#     not removeable afterwards by trackbar.  Unfortunately, to make this work,
-#     trackbar and buf.pl need to be loaded in a specific order. Please
-#     experiment to see which order works for you (strangely, it differs from
-#     configuration to configuration, something I will try to fix in a next
-#     version) 
+##
+
+## Bugfixes and new items in this rewrite.
 #
-# Authors:
+# * Remove all the trackbars before upgrading.
+# * New setting trackbar_use_status_window to control the statuswindow trackbar.
+# * New setting trackbar_print_timestamp to print a timestamp or not.
+# * New command 'trackbar' to scroll up to the trackbar.
+# * When resizing your terminal, Irssi will update all the trackbars to the new size.
+# * When changing trackbar settings, change all the trackbars to the new settings.
+# * New command 'trackbar mark' to draw a new trackbar (The old '/mark').
+# * New command 'trackbar markall' to draw a new trackbar in each window.
+# * New command 'trackbar remove' to remove the trackbar from the current window.
+# * New command 'trackbar removeall' to remove all the trackbars.
+# * Don't draw a trackbar in empty windows.
+# * Added a version check to prevent Irssi redraw errors.
+# * Fixed a bookmark NULL versus 0 bug.
+# * Fixed a remove-line bug in Uwe Dudenhoeffer his patch.
+# * New command 'help trackbar' to display the trackbar commands.
+# * Fixed an Irssi startup bug, now processing each auto-created window.
+#
+##
+
+## Known bugs and the todolist.
+#
+#    Todo: * Instead of drawing a line, invert the line.
+#
+##
+
+## Authors:
+#
 #   - Main maintainer & author: Peter 'kinlo' Leurs
 #   - Many thanks to Timo 'cras' Sirainen for placing me on my way
 #   - on-upgrade-remove-line patch by Uwe Dudenhoeffer
@@ -63,7 +165,26 @@
 #   - scroll to trackbar, window excludes, and timestamp options by Nico R.
 #     Wohlgemuth (22 Sep 2012)
 #
-# Version history:
+##
+
+## Version history:
+#
+#  2.5: - merge back on scripts.irssi.org
+#       - fix /trackbar redraw broken in 2.4
+#       - fix legacy encodings
+#       - add workaround for irssi issue #271
+#  2.4: - add support for horizontal splits
+#  2.3: - add some features for seen tracking using other scripts
+#  2.0: - big rewrite based on 1.4
+#         * removed /tb, you can have it with /alias tb trackbar if you want
+#         * subcommand and settings changes:
+#              /trackbar vmark  => /trackbar markvisible
+#              /trackbar scroll => /trackbar goto (or just /trackbar)
+#              /trackbar help   => /help trackbar
+#              /set trackbar_hide_windows => /set trackbar_ignore_windows
+#              /set trackbar_timestamp    => /set trackbar_print_timestamp
+#         * magic line strings were removed, just paste the unicode you want!
+#         * trackbar_timestamp_styled is not currently supported
 #  1.9: - add version guard
 #  1.8: - sub draw_bar
 #  1.7: - Added /tb scroll, trackbar_hide_windows, trackbar_timestamp_timestamp
@@ -77,332 +198,382 @@
 #         irssi internal bugs.  The function Irssi::settings_get_str does NOT handle
 #         unicode strings properly, hence you will notice problems when setting the bar
 #         to a unicode char.  For changing your bar to utf-8 symbols, read the line sub.
-#  1.3: - Upgrade now removes the trackbars. 
+#  1.3: - Upgrade now removes the trackbars.
 #       - Some code cleanups, other defaults
 #       - /mark sets the line to the bottom
 #  1.2: - Support for utf-8
-#       - How the bar looks can now be configured with trackbar_string 
+#       - How the bar looks can now be configured with trackbar_string
 #         and trackbar_style
 #  1.1: - Fixed bug when closing window
 #  1.0: - Initial release
 #
-# Contacts
-#  https://github.com/mjholtkamp/irssi-trackbar
-#
-# Known bugs:
-#  - if you /clear a window, it will be uncleared when returning to the window
-#  - changing the trackbar style is only visible after returning to a window
-#    however, changing style/resize takes in effect after you left the window.
-#
-# Whishlist/todo:
-#  - instead of drawing a line, just invert timestamp or something, 
-#    to save a line (but I don't think this is possible with current irssi)
-#  - <@coekie> kinlo: if i switch to another window, in another split window, i 
-#              want the trackbar to go down in the previouswindow in  that splitwindow :)
-#  - < bob_2> anyway to clear the line once the window is read?
-#
-# BTW: when you have feature requests, mailing a patch that works is the fastest way
-# to get it added :p
+##
 
-# IRSSI RESIZE BUG:
-# when resizing from a larger window to a smaller one, the width of the
-# trackbar causes some lines at the bottom not to be shown. This only happens
-# if the trackbar was not the last line. This glitch can be 'fixed' by
-# resetting the trackbar to the last line (e.g. by switching to another window
-# and back) and then resize twice (e.g. to a bigger size and back). Of course,
-# this is not convenient for the user.
-# This script works around this problem by printing not one, but two lines and
-# then removing the second line. My guess is that irssi does something to the
-# previous line (or the line cache) whenever a line is 'completed' (i.e. the
-# EOL is sent). When only one line is printed, it is not 'completed', but when
-# printing the second line, the first line is 'completed'. The second line is
-# still not completed, but since we delete it straight away, it doesn't matter.
-#
-# Some effects from older versions (<1.6) of trackbar.pl can still screw up your
-# buffer so we recommend to restart your irssi, or do an "/upgrade". After
-# installing this version of trackbar.pl
-
-use strict;
-use 5.6.1;
-use Irssi 20140701;
+use Irssi;
 use Irssi::TextUI;
+use Encode;
+
 use POSIX qw(strftime);
-use utf8;
-
-our $VERSION = "1.9";
-
-our %IRSSI = (
-    authors     => "Peter 'kinlo' Leurs, Uwe Dudenhoeffer, " .
-                   "Michiel Holtkamp, Nico R. Wohlgemuth",
-    contact     => "irssi-trackbar\@supermind.nl",
-    name        => "trackbar",
-    description => "Shows a bar where you've last read a window",
-    license     => "GPLv2",
-    url         => "http://github.com/mjholtkamp/irssi-trackbar/",
-    changed     => "2015-01-15 08:00", 
-);
-
-my %config;
-
-my $screen_resizing = 0;   # terminal is being resized
-
-# This could be '(status)' if you want to hide the status window
-Irssi::settings_add_str('trackbar', 'trackbar_hide_windows' => '');
-$config{'trackbar_hide_windows'} = Irssi::settings_get_str('trackbar_hide_windows');
-
-Irssi::settings_add_str('trackbar', 'trackbar_string' => '-');
-$config{'trackbar_string'} = Irssi::settings_get_str('trackbar_string');
-
-Irssi::settings_add_str('trackbar', 'trackbar_style' => '%K');
-$config{'trackbar_style'} = Irssi::settings_get_str('trackbar_style');
-
-Irssi::settings_add_bool('trackbar', 'trackbar_timestamp' => 0);
-$config{'trackbar_timestamp'} = Irssi::settings_get_bool('trackbar_timestamp');
-
-Irssi::settings_add_bool('trackbar', 'trackbar_timestamp_styled' => 1);
-$config{'trackbar_timestamp_styled'} = Irssi::settings_get_bool('trackbar_timestamp_styled');
-
-$config{'timestamp_format'} = Irssi::settings_get_str('timestamp_format');
-
-Irssi::signal_add(
-    'setup changed' => sub {
-        $config{'trackbar_string'} = Irssi::settings_get_str('trackbar_string');
-        $config{'trackbar_style'}  = Irssi::settings_get_str('trackbar_style');
-        $config{'trackbar_hide_windows'} = Irssi::settings_get_str('trackbar_hide_windows');
-        $config{'trackbar_timestamp'} = Irssi::settings_get_bool('trackbar_timestamp');
-        $config{'trackbar_timestamp_styled'} = Irssi::settings_get_bool('trackbar_timestamp_styled');
-        $config{'timestamp_format'} = Irssi::settings_get_str('timestamp_format');
-        if ($config{'trackbar_style'} =~ /(?<!%)[^%]|%%|%$/) {
-            Irssi::print(
-                "trackbar: %RWarning!%n 'trackbar_style' seems to contain "
-                . "printable characters. Only use format codes (read "
-                . "formats.txt).", MSGLEVEL_CLIENTERROR);
-        }
-    }
-);
-
-Irssi::signal_add(
-    'window changed' => sub {
-        my (undef, $oldwindow) = @_;
-
-		draw_bar($oldwindow);
-    }
-);
-
-# handel the line creation and the removing of the old lines
-sub draw_bar ($) {
-	(my $window) =  @_;
-	if ($window) {
-		my $line = $window->view()->get_bookmark('trackbar');
-
-		if (defined $line) {
-			$window->view()->remove_line($line);
-			$window->view()->redraw();
-		}
-
-		my $hidden =$config{'trackbar_hide_windows'};
-		my $wname   =$window->{'name'};
-
-		if ($wname eq ""  || $hidden !~ $wname) {
-			$window->print(line($window->{'width'}), MSGLEVEL_NEVER);
-			$window->view()->set_bookmark_bottom('trackbar');
-		}
-	}
-}
-
-# terminal resize code inspired on nicklist.pl
-sub sig_terminal_resized {
-	if ($screen_resizing) {
-		# prevent multiple resize_trackbars from running
-		return;
-	}
-	$screen_resizing = 1;
-	Irssi::timeout_add_once(10,\&resize_trackbars,[]);
-}
-
-sub resize_trackbars {
-	my $active_win = Irssi::active_win();
-	for my $window (Irssi::windows) {
-		next unless defined $window;
-		my $line = $window->view()->get_bookmark('trackbar');
-		next unless defined $line;
-
-		# first add new trackbar line, then remove the old one. For some reason
-		# this works better than removing the old one, then adding a new one
-		$window->print_after($line, MSGLEVEL_NEVER, line($window->{'width'}));
-		my $next = $line->next();
-		$window->view()->set_bookmark('trackbar', $next);
-		$window->view()->remove_line($line);
-
-		# This hack exists to work around a bug: see IRSSI RESIZE BUG above.
-		# Add a line after the trackbar and delete it immediately
-		$window->print_after($next, MSGLEVEL_NEVER, line(1));
-		$window->view()->remove_line($next->next);
-	}
-	$active_win->view()->redraw();
-	$screen_resizing = 0;
-}
-
-Irssi::signal_add('terminal resized' => \&sig_terminal_resized);
-
-sub line {
-    my $width  = shift;
-    my $string = $config{'trackbar_string'};
-
-    my $tslen = 0;
-
-    if ($config{'trackbar_timestamp'}) {
-        $tslen = int(1 + length $config{'timestamp_format'});
-    }
-
-    if (!defined($string) || $string eq '') {
-        $string = '-';
-    }
-
-    # There is a bug in (irssi's) utf-8 handling on config file settings, as you 
-    # can reproduce/see yourself by the following code sniplet:
-    #
-    #   my $quake = pack 'U*', 8364;    # EUR symbol
-    #   Irssi::settings_add_str 'temp', 'temp_foo' => $quake;
-    #   $a= length($quake);
-    #       # $a => 1
-    #   $a= length(Irssi::settings_get_str 'temp_foo');
-    #       # $a => 3
-	#	$a= utf8::is_utf8(Irssi::settings_get_str 'temp_foo');
-	#		# $a => false
-
-	utf8::decode($string);
-
-	if ($string =~ m/---/) {
-		$string = pack('U*', 0x2500);
-	}
-
-	if ($string =~ m/===/) {
-		$string = pack('U*', 0x2550);
-	}
-
-	if ($string =~ m/___/) {
-		$string = pack('U*', 0x2501);
-	}
-
-	if ($string =~ m/# #/) {
-		$string = pack('U*', 0x25ad)." ";
-	}
-
-    my $length = length $string;
-
-    my $times = $width / $length - $tslen;
-    $times = int(1 + $times) if $times != int($times);
-    $string =~ s/%/%%/g;
-
-    if ($tslen) {
-        # why $config{'timestamp_format'} won't work here?
-        my $ts = strftime(Irssi::settings_get_str('timestamp_format')." ", localtime);
-
-        if ($config{'trackbar_timestamp_styled'}) {
-            return $config{'trackbar_style'} . $ts . substr($string x $times, 0, $width);
-        } else {
-            return $ts . $config{'trackbar_style'} . substr($string x $times, 0, $width);
-        }
-    } else {
-		return $config{'trackbar_style'} . substr($string x $times, 0, $width);
-    }
-}
-
-# Remove trackbars on upgrade - but this doesn't really work if the scripts are not loaded in the correct order... watch out!
-
-Irssi::signal_add_first('session save' => sub {
-	for my $window (Irssi::windows) {
-		next unless defined $window;
-		my $line = $window->view()->get_bookmark('trackbar');
-		$window->view()->remove_line($line) if defined $line;
-	}
-}
-);
-
-sub cmd_mark {
-    my $window = Irssi::active_win();
-
-	draw_bar($window);
-}
-
-
-# mark all visible windows with a line
-sub cmd_mark_visual {
-    my $w= Irssi::active_win();
-	my $refs =$w->{refnum};
-	my $refa;
-
-	cmd_mark();
-
-	do {
-        Irssi::command('window down');
-    	$w= Irssi::active_win();
-		$refa =$w->{refnum};
-
-		if ($refs != $refa) {
-			cmd_mark();
-		}
-
-	} while ($refs != $refa)
-}
-
-#  /tb or /trackbar
-sub cmd_tb {
-   if ($#_ >=0 ) {
-       my $sc = shift @_;
-	   $sc =~ s/\s+$//;
-
-       if ($sc eq "mark") {
-          cmd_mark();
-       } elsif ($sc eq "help") {
-           cmd_help("trackbar");
-       } elsif ($sc eq "vmark") {
-		   cmd_mark_visual();
-       } else {
-           cmd_scroll();
-       }
-   }
-}
-
-sub cmd_scroll {
-	my $window = Irssi::active_win();
-	my $line = $window->view()->get_bookmark('trackbar');
-	$window->view()->scroll_line($line) if defined $line;
-}
 
 sub cmd_help {
-   my $help = <<HELP;
-/trackbar or /tb
-    /tb mark
-       - Set the trackbar of the current window at the bottom
-    /tb vmark
-       - Set the trackbar on all visible windows
-    /tb scroll
-       - Scroll to where the trackbar is right now
-    /tb help
-       - this help
-    /tb
-       - Same as /tb scroll
+    my ($args) = @_;
+    if ($args =~ /^trackbar *$/i) {
+        print CLIENTCRAP <<HELP
+%9Syntax:%9
+
+TRACKBAR
+TRACKBAR GOTO
+TRACKBAR KEEP
+TRACKBAR MARK
+TRACKBAR MARKVISIBLE
+TRACKBAR MARKALL
+TRACKBAR REMOVE
+TRACKBAR REMOVEALL
+TRACKBAR REDRAW
+
+%9Parameters:%9
+
+    GOTO:        Jump to where the trackbar is, to pick up reading
+    KEEP:        Keep this window's trackbar where it is the next time
+                 you switch windows (then this flag is cleared again)
+    MARK:        Remove the old trackbar and mark the bottom of this
+                 window with a new trackbar
+    MARKVISIBLE: Like mark for all visible windows
+    MARKALL:     Like mark for all windows
+    REMOVE:      Remove this window's trackbar
+    REMOVEALL:   Remove all windows' trackbars
+    REDRAW:      Force redraw of trackbars
+
+%9Description:%9
+
+    Manage a trackbar. Without arguments, it will scroll up to the trackbar.
+
+%9Examples:%9
+
+    /TRACKBAR MARK
+    /TRACKBAR REMOVE
 HELP
-   if ($_[0] =~ m/^tb/ or $_[0] =~ m/^trackbar/ ) {
-      Irssi::print($help, MSGLEVEL_CLIENTCRAP);
-      Irssi::signal_stop;
-   }
+    }
 }
 
-Irssi::command_bind('tb', 'cmd_tb');
-Irssi::command_bind('tb help', 'cmd_tb');
-Irssi::command_bind('tb mark', 'cmd_tb');
-Irssi::command_bind('tb scroll', 'cmd_tb');
-Irssi::command_bind('tb vmark', 'cmd_tb');
+Irssi::theme_register([
+    'trackbar_loaded', '%R>>%n %_Scriptinfo:%_ Loaded $0 version $1 by $2.',
+    'trackbar_wrong_version', '%R>>%n %_Trackbar:%_ Please upgrade your client to 0.8.17 or above if you would like to use this feature of trackbar.',
+    'trackbar_all_removed', '%R>>%n %_Trackbar:%_ All the trackbars have been removed.',
+    'trackbar_not_found', '%R>>%n %_Trackbar:%_ No trackbar found in this window.',
+]);
 
-Irssi::command_bind('trackbar', 'cmd_tb');
-Irssi::command_bind('trackbar help', 'cmd_tb');
-Irssi::command_bind('trackbar mark', 'cmd_tb');
-Irssi::command_bind('trackbar scroll', 'cmd_tb');
-Irssi::command_bind('trackbar vmark', 'cmd_tb');
+my $old_irssi = Irssi::version < 20140701;
+sub check_version {
+    if ($old_irssi) {
+        Irssi::printformat(MSGLEVEL_CLIENTCRAP, 'trackbar_wrong_version');
+        return;
+    } else {
+        return 1;
+    }
+}
 
-Irssi::command_bind('mark', 'cmd_mark');
-#Irssi::command_bind('scroll', 'cmd_scroll');
-Irssi::command_bind('help', 'cmd_help');
+sub is_utf8 {
+    lc Irssi::settings_get_str('term_charset') eq 'utf-8'
+}
+
+my (%config, %keep_trackbar, %unseen_trackbar);
+
+sub remove_one_trackbar {
+    my $win = shift;
+    my $view = shift || $win->view;
+    my $line = $view->get_bookmark('trackbar');
+    if (defined $line) {
+        my $bottom = $view->{bottom};
+        $view->remove_line($line);
+        $win->command('^scrollback end') if $bottom && !$win->view->{bottom};
+        $view->redraw;
+    }
+}
+
+sub add_one_trackbar {
+    my $win = shift;
+    my $view = shift || $win->view;
+    $win->print(line($win->{width}), MSGLEVEL_NEVER);
+    $view->set_bookmark_bottom('trackbar');
+    $unseen_trackbar{ $win->{_irssi} } = 1;
+    Irssi::signal_emit("window trackbar added", $win);
+    $view->redraw;
+}
+
+sub update_one_trackbar {
+    my $win = shift;
+    my $view = shift || $win->view;
+    my $force = shift;
+    my $ignored = win_ignored($win, $view);
+    remove_one_trackbar($win, $view)
+	if $force || !defined $force || !$ignored;
+    add_one_trackbar($win, $view)
+	if $force || !$ignored;
+}
+
+sub win_ignored {
+    my $win = shift;
+    my $view = shift || $win->view;
+    return 1 unless $view->{buffer}{lines_count};
+    return 1 if $win->{name} eq '(status)' && !$config{use_status_window};
+    no warnings 'uninitialized';
+    return 1 if grep { $win->{name} eq $_ || $win->{refnum} eq $_
+			   || $win->get_active_name eq $_ } @{ $config{ignore_windows} };
+    return 0;
+}
+
+sub sig_window_changed {
+    my ($newwindow, $oldwindow) = @_;
+    return unless $oldwindow;
+    redraw_one_trackbar($newwindow) unless $old_irssi;
+    trackbar_update_seen($newwindow);
+    return if delete $keep_trackbar{ $oldwindow->{_irssi} };
+    trackbar_update_seen($oldwindow);
+    return if $config{require_seen} && $unseen_trackbar{ $oldwindow->{_irssi } };
+    update_one_trackbar($oldwindow, undef, 0);
+}
+
+sub trackbar_update_seen {
+    my $win = shift;
+    return unless $win;
+    return unless $unseen_trackbar{ $win->{_irssi} };
+
+    my $view = $win->view;
+    my $line = $view->get_bookmark('trackbar');
+    unless ($line) {
+        delete $unseen_trackbar{ $win->{_irssi} };
+        Irssi::signal_emit("window trackbar seen", $win);
+        return;
+    }
+    my $startline = $view->{startline};
+    return unless $startline;
+
+    if ($startline->{info}{time} < $line->{info}{time}
+            || $startline->{_irssi} == $line->{_irssi}) {
+        delete $unseen_trackbar{ $win->{_irssi} };
+        Irssi::signal_emit("window trackbar seen", $win);
+    }
+}
+
+sub screen_length;
+{ local $@;
+  eval { require Text::CharWidth; };
+  unless ($@) {
+      *screen_length = sub { Text::CharWidth::mbswidth($_[0]) };
+  }
+  else {
+      *screen_length = sub {
+          my $temp = shift;
+          Encode::_utf8_on($temp) if is_utf8();
+          length($temp)
+      };
+  }
+}
+
+{ my %strip_table = (
+    (map { $_ => '' } (split //, '04261537' .  'kbgcrmyw' . 'KBGCRMYW' . 'U9_8I:|FnN>#[' . 'pP')),
+    (map { $_ => $_ } (split //, '{}%')),
+   );
+  sub c_length {
+      my $o = Irssi::strip_codes($_[0]);
+      $o =~ s/(%(%|Z.{6}|z.{6}|X..|x..|.))/exists $strip_table{$2} ? $strip_table{$2} :
+          $2 =~ m{x(?:0[a-f]|[1-6][0-9a-z]|7[a-x])|z[0-9a-f]{6}}i ? '' : $1/gex;
+      screen_length($o)
+  }
+}
+
+sub line {
+    my ($width, $time)  = @_;
+    my $string = $config{string};
+    $string = ' ' unless length $string;
+    $time ||= time;
+
+    Encode::_utf8_on($string) if is_utf8();
+    my $length = c_length($string);
+
+    my $format = '';
+    if ($config{print_timestamp}) {
+        $format = $config{timestamp_str};
+        $format =~ y/%/\01/;
+        $format =~ s/\01\01/%/g;
+        $format = strftime($format, localtime $time);
+        $format =~ y/\01/%/;
+    }
+
+    my $times = $width / $length;
+    $times += 1 if $times != int $times;
+    my $style = "$config{style}";
+    Encode::_utf8_on($style) if is_utf8();
+    $format .= $style;
+    $width -= c_length($format);
+    $string x= $times;
+    chop $string while length $string && c_length($string) > $width;
+    return $format . $string;
+}
+
+sub remove_all_trackbars {
+    for my $window (Irssi::windows) {
+        next unless ref $window;
+        remove_one_trackbar($window);
+    }
+}
+
+sub UNLOAD {
+    remove_all_trackbars();
+}
+
+sub redraw_one_trackbar {
+    my $win = shift;
+    my $view = $win->view;
+    my $line = $view->get_bookmark('trackbar');
+    return unless $line;
+    my $bottom = $view->{bottom};
+    $win->print_after($line, MSGLEVEL_NEVER, line($win->{width}, $line->{info}{time}),
+		      $line->{info}{time});
+    $view->set_bookmark('trackbar', $win->last_line_insert);
+    $view->remove_line($line);
+    $win->command('^scrollback end') if $bottom && !$win->view->{bottom};
+    $view->redraw;
+}
+
+sub redraw_trackbars {
+    return unless check_version();
+    for my $win (Irssi::windows) {
+        next unless ref $win;
+        redraw_one_trackbar($win);
+    }
+}
+
+sub goto_trackbar {
+    my $win = Irssi::active_win;
+    my $line = $win->view->get_bookmark('trackbar');
+
+    if ($line) {
+        $win->command("scrollback goto ". strftime("%d %H:%M:%S", localtime($line->{info}{time})));
+    } else {
+        $win->printformat(MSGLEVEL_CLIENTCRAP, 'trackbar_not_found');
+    }
+}
+
+sub cmd_mark {
+    update_one_trackbar(Irssi::active_win, undef, 1);
+}
+
+sub cmd_markall {
+    for my $window (Irssi::windows) {
+        next unless ref $window;
+        update_one_trackbar($window);
+    }
+}
+
+sub signal_stop {
+    Irssi::signal_stop;
+}
+
+sub cmd_markvisible {
+    my @wins = Irssi::windows;
+    my $awin =
+        my $bwin = Irssi::active_win;
+    my $awin_counter = 0;
+    Irssi::signal_add_priority('window changed' => 'signal_stop', -99);
+    do {
+        Irssi::active_win->command('window up');
+        $awin = Irssi::active_win;
+        update_one_trackbar($awin);
+        ++$awin_counter;
+    } until ($awin->{refnum} == $bwin->{refnum} || $awin_counter >= @wins);
+    Irssi::signal_remove('window changed' => 'signal_stop');
+}
+
+sub cmd_trackbar_remove_one {
+    remove_one_trackbar(Irssi::active_win);
+}
+
+sub cmd_remove_all_trackbars {
+    remove_all_trackbars();
+    Irssi::printformat(MSGLEVEL_CLIENTCRAP, 'trackbar_all_removed');
+}
+
+sub cmd_keep_once {
+    $keep_trackbar{ Irssi::active_win->{_irssi} } = 1;
+}
+
+sub trackbar_runsub {
+    my ($data, $server, $item) = @_;
+    $data =~ s/\s+$//g;
+
+    if ($data) {
+        Irssi::command_runsub('trackbar', $data, $server, $item);
+    } else {
+        goto_trackbar();
+    }
+}
+
+sub update_config {
+    my $was_status_window = $config{use_status_window};
+    $config{style} = Irssi::settings_get_str('trackbar_style');
+    $config{string} = Irssi::settings_get_str('trackbar_string');
+    $config{require_seen} = Irssi::settings_get_bool('trackbar_require_seen');
+    $config{ignore_windows} = [ split /[,\s]+/, Irssi::settings_get_str('trackbar_ignore_windows') ];
+    $config{use_status_window} = Irssi::settings_get_bool('trackbar_use_status_window');
+    $config{print_timestamp} = Irssi::settings_get_bool('trackbar_print_timestamp');
+    if (defined $was_status_window && $was_status_window != $config{use_status_window}) {
+        if (my $swin = Irssi::window_find_name('(status)')) {
+            if ($config{use_status_window}) {
+                update_one_trackbar($swin);
+            }
+            else {
+                remove_one_trackbar($swin);
+            }
+        }
+    }
+    if ($config{print_timestamp}) {
+        my $ts_format = Irssi::settings_get_str('timestamp_format');
+        my $ts_theme = Irssi::current_theme->get_format('fe-common/core', 'timestamp');
+        my $render_str = Irssi::current_theme->format_expand($ts_theme);
+        (my $ts_escaped = $ts_format) =~ s/([%\$])/$1$1/g;
+        $render_str =~ s/(?|\$(.)(?!\w)|\$\{(\w+)\})/$1 eq 'Z' ? $ts_escaped : $1/ge;
+        $config{timestamp_str} = $render_str;
+    }
+    redraw_trackbars() unless $old_irssi;
+}
+
+Irssi::settings_add_str('trackbar', 'trackbar_string', is_utf8() ? "\x{2500}" : '-');
+Irssi::settings_add_str('trackbar', 'trackbar_style', '%K');
+Irssi::settings_add_str('trackbar', 'trackbar_ignore_windows', '');
+Irssi::settings_add_bool('trackbar', 'trackbar_use_status_window', 1);
+Irssi::settings_add_bool('trackbar', 'trackbar_print_timestamp', 0);
+Irssi::settings_add_bool('trackbar', 'trackbar_require_seen', 0);
+
+update_config();
+
+Irssi::signal_add_last( 'mainwindow resized' => 'redraw_trackbars')
+    unless $old_irssi;
+
+Irssi::signal_register({'window trackbar added' => [qw/Irssi::UI::Window/]});
+Irssi::signal_register({'window trackbar seen' => [qw/Irssi::UI::Window/]});
+Irssi::signal_register({'gui page scrolled' => [qw/Irssi::UI::Window/]});
+Irssi::signal_add_last('gui page scrolled' => 'trackbar_update_seen');
+
+Irssi::signal_add('setup changed' => 'update_config');
+Irssi::signal_add_priority('session save' => 'remove_all_trackbars', Irssi::SIGNAL_PRIORITY_HIGH-1);
+
+Irssi::signal_add('window changed' => 'sig_window_changed');
+
+Irssi::command_bind('trackbar goto'      => 'goto_trackbar');
+Irssi::command_bind('trackbar keep'      => 'cmd_keep_once');
+Irssi::command_bind('trackbar mark'      => 'cmd_mark');
+Irssi::command_bind('trackbar markvisible' => 'cmd_markvisible');
+Irssi::command_bind('trackbar markall'   => 'cmd_markall');
+Irssi::command_bind('trackbar remove'    => 'cmd_trackbar_remove_one');
+Irssi::command_bind('trackbar removeall' => 'cmd_remove_all_trackbars');
+Irssi::command_bind('trackbar redraw'    => 'redraw_trackbars');
+Irssi::command_bind('trackbar'           => 'trackbar_runsub');
+Irssi::command_bind('mark'               => 'cmd_mark');
+Irssi::command_bind_last('help' => 'cmd_help');
+
+Irssi::printformat(MSGLEVEL_CLIENTCRAP, 'trackbar_loaded', $IRSSI{name}, $VERSION, $IRSSI{authors});
+
+# workaround for issue #271
+{ package Irssi::Nick }

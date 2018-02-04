@@ -19,6 +19,8 @@ To add or modify a script do the following:
 8. [Review the travis report](travis_report.markdown) once it is done.
 9. Await review of your changes by one of our developers.
 
+Optionally, to run tests locally, see more information under [_testing](_testing).
+
 ### Version Numbering
 
 To increase the version numbering, take the following conditions into account:

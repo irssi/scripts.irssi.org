@@ -15,6 +15,8 @@ scripts_yaml_keys:
   - modules
   # explicit
   - modified
+  # special
+  - HIDDEN
 cpan:
   broken_tests:
     - Geo::Weather
@@ -40,5 +42,6 @@ whitelist:
   - l33tmusic
   - log2ansi
   - 'on'
+  - trackbar22
   - tvmusor
   - xmmsinfo
