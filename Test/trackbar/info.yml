@@ -1,23 +1,25 @@
 ---
 -
-  authors: "Peter 'kinlo' Leurs, Uwe Dudenhoeffer, Michiel Holtkamp, Nico R. Wohlgemuth"
-  changed: '2015-01-15 08:00'
+  authors: "Peter 'kinlo' Leurs, Uwe Dudenhoeffer, Michiel Holtkamp, Nico R. Wohlgemuth, Geert Hauwaerts"
   commands:
     - mark
-    - tb
-    - 'tb help'
-    - 'tb mark'
-    - 'tb scroll'
-    - 'tb vmark'
     - trackbar
-    - 'trackbar help'
+    - 'trackbar goto'
+    - 'trackbar keep'
     - 'trackbar mark'
-    - 'trackbar scroll'
-    - 'trackbar vmark'
-  contact: irssi-trackbar@supermind.nl
+    - 'trackbar markall'
+    - 'trackbar markvisible'
+    - 'trackbar redraw'
+    - 'trackbar remove'
+    - 'trackbar removeall'
+  contact: peter@pfoe.be
   default_package: trackbar
-  description: "Shows a bar where you've last read a window"
-  license: GPLv2
+  description: 'Shows a bar where you have last read a window.'
+  license: 'GNU General Public License'
+  modified: '2018-02-03 22:23:52'
+  modules:
+    - Text::CharWidth
   name: trackbar
-  url: http://github.com/mjholtkamp/irssi-trackbar/
-  version: '1.9'
+  patchers: 'Johan Kiviniemi (UTF-8), Uwe Dudenhoeffer (on-upgrade-remove-line)'
+  url: http://www.pfoe.be/~peter/trackbar/
+  version: '2.5'
