@@ -4220,11 +4220,11 @@
   description: 'keeps your scripts on the cutting edge'
   filename: scriptassist.pl
   license: GPLv2
-  modified: '2016-02-04 00:38:58'
+  modified: '2018-02-01 16:29:26'
   modules: LWP::UserAgent
   name: scriptassist
   url: http://irssi.org/scripts/
-  version: '2003020804'
+  version: '2003020805'
 -
   authors: "Maciek 'fahren' Freudenheim"
   contact: fahren@bochnia.pl
@@ -4781,16 +4781,17 @@
   url: none
   version: '2.1'
 -
-  authors: "Peter 'kinlo' Leurs, Uwe Dudenhoeffer, Michiel Holtkamp, Nico R. Wohlgemuth"
-  commands: 'mark tb trackbar'
-  contact: irssi-trackbar@supermind.nl
-  description: "Shows a bar where you've last read a window"
+  authors: "Peter 'kinlo' Leurs, Uwe Dudenhoeffer, Michiel Holtkamp, Nico R. Wohlgemuth, Geert Hauwaerts"
+  commands: 'mark trackbar'
+  contact: peter@pfoe.be
+  description: 'Shows a bar where you have last read a window.'
   filename: trackbar.pl
-  license: GPLv2
-  modified: '2015-06-29 20:02:06'
+  license: 'GNU General Public License'
+  modified: '2018-02-03 22:23:52'
+  modules: Text::CharWidth
   name: trackbar
-  url: http://github.com/mjholtkamp/irssi-trackbar/
-  version: '1.9'
+  url: http://www.pfoe.be/~peter/trackbar/
+  version: '2.5'
 -
   authors: 'Peter Leurs and Geert Hauwaerts'
   commands: 'mark trackbar'
