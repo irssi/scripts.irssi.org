@@ -4793,17 +4793,12 @@
   url: http://www.pfoe.be/~peter/trackbar/
   version: '2.5'
 -
-  authors: 'Peter Leurs and Geert Hauwaerts'
-  commands: 'mark trackbar'
-  contact: peter@pfoe.be
-  description: 'Shows a bar where you have last read a window.'
+  HIDDEN: '1'
+  description: 'This script has been replaced with trackbar.pl.'
   filename: trackbar22.pl
-  license: 'GNU General Public License'
-  modified: '2017-05-12 10:45:31'
-  modules: Text::CharWidth
-  name: trackbar
-  url: http://www.pfoe.be/~peter/trackbar/
-  version: '2.4'
+  modified: '2018-02-01 16:16:29'
+  name: trackbar22
+  version: '2.5'
 -
   authors: 'Timo Sirainen'
   commands: findnick
