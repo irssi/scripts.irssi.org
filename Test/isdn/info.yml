@@ -1,0 +1,9 @@
+---
+-
+  authors: 'Uli Baumann'
+  changed: 'Thu Jun 17 12:49:55 CEST 2004'
+  contact: f-zappa@irc-muenster.de
+  description: 'Displays incoming ISDN calls'
+  license: GPL
+  name: isdn
+  version: '0.3'

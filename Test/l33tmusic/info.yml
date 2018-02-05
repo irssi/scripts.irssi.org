@@ -1,0 +1,12 @@
+---
+-
+  authors: Mikachu
+  contact: 'Mikachu @ quakenet|freenode|arcnet|oftc'
+  description: 'A script to show playing xmms song in channel or in a statusbar, and also control xmms. Be sure to read through the script to see all features.'
+  license: GPL
+  modules:
+    - Xmms
+    - Xmms::Remote
+  name: 'l33t xmms music showing script'
+  sbitems: l33tmusic
+  version: '2.01'

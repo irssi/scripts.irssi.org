@@ -1,0 +1,11 @@
+---
+-
+  authors: 'Michael Tharp (gxti), Jilles Tjoelker (jilles), Mantas Mikulėnas (grawity)'
+  contact: grawity@gmail.com
+  description: 'Implements SASL authentication and enables CAP "multi-prefix"'
+  license: GPLv2
+  modules:
+    - Crypt::PK::ECC
+  name: cap_sasl.pl
+  url: http://ircv3.atheme.org/extensions/sasl-3.1
+  version: '1.11'

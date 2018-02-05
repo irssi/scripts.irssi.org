@@ -269,7 +269,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                        listsort ](Test/listsort/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
 [                         loadavg ](Test/loadavg/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                        localize ](Test/localize/)|  ✔   |  ✔   |  ✔   | 25   |  ✔   
-[                        log2ansi ](Test/log2ansi/)|  ✘   |  ✔   |  ✔   | 10   |  ☡   
+[                        log2ansi ](Test/log2ansi/)|  ✘   |  ✘   |  ✔   | 15   |  ☡   
 [                logcompress_perl ](Test/logcompress_perl/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
 [                     logcompress ](Test/logcompress/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                       logresume ](Test/logresume/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
@@ -465,7 +465,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                        topicsed ](Test/topicsed/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   
 [                          topics ](Test/topics/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                       tordetect ](Test/tordetect/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   
-[                      trackbar22 ](Test/trackbar22/)|  ✘   |  ✔   |  ✔   |  0   |  ☡   
+[                      trackbar22 ](Test/trackbar22/)|  ✘   |  ✘   |  ✔   |  5   |  ☡   
 [                        trackbar ](Test/trackbar/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   
 [                       tracknick ](Test/tracknick/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                           track ](Test/track/)|  ✔   |  ✔   |  ✔   | 36   |  ✔   
@@ -526,4 +526,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 
-cd6f2df7ba2249e373ae10a027453b90bb0a598d | 1052
+2c21ba045c906ca12c98f02a362c34c16662bdf5 | 1055

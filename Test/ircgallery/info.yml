@@ -1,0 +1,10 @@
+---
+-
+  authors: "Timo 'cras' Sirainen"
+  changed: 2002-03-04T22:47+0100
+  contact: tss@iki.fi
+  description: 'Show IRC gallery (http://irc-galleria.net, finnish only) information on /WHOIS or /GALLERY'
+  license: 'Public Domain'
+  name: ircgallery
+  url: http://irssi.org/
+  version: '1.13'

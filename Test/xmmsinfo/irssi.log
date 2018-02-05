@@ -1,16 +1,3 @@
 * -!- Irssi: Error in script xmmsinfo:
 * Can't locate Irssi/XMMSInfo.pm in @INC (you may need to install the Irssi::XMMSInfo module)  at xmmsinfo.pl line 30.
 * BEGIN failed--compilation aborted at xmmsinfo.pl line 30.
-* -!- Irssi: Error in script _irssi_test:
-* Can't locate PPIx/XPath.pm in @INC (you may need to install the PPIx::XPath module)  at .../_testing/_irssi_test.pl line 58.
-* -!-  ___           _
-* -!- |_ _|_ _ _____(_)
-* -!-  | || '_(_-<_-< |
-* -!- |___|_| /__/__/_|
-* -!- Irssi v1.1-gc25e1221 - https://irssi.org
-* -!- Irssi: The following settings were initialized
-* real_name = Travis CI User
-* user_name = travis
-* nick = travis
-* -!- Irssi: Unloaded module perl/core
-* -!- Irssi: Unloaded module perl/fe
