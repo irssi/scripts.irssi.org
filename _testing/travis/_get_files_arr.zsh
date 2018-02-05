@@ -16,6 +16,7 @@ elif [[ $USE_ARTEFACTS_CACHE = yes ]] {
 
     if [[ $REPORT_STAGE == yes ]] {
         autoload -Uz zargs
+        mkdir -p Test
         { zargs -r -- old-artefacts/Test/${^cache_allowed:t:r} -- mv -nt Test } 2>/dev/null
         cached_run=($cache_allowed)
     } \
