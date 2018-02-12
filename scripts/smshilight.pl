@@ -1,6 +1,9 @@
 # smshi - sends highlights via SMS, using Twilio
 # CC0 https://creativecommons.org/publicdomain/zero/1.0/
 
+use strict;
+use warnings;
+
 use Irssi;
 use vars qw($VERSION %IRSSI);
 
