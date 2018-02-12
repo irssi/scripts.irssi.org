@@ -3,527 +3,528 @@ See [the testing read-me](../master/_testing/) for details.
 ## Irssi Scripts Test Report
 \                                | LOAD | HDR | CRIT | SCORE | PASS
 ----: | :--: | :-: | :--: | ----: | :---:
-[                          8-ball ](Test/8-ball/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   
-[                          accent ](Test/accent/)|  ✔   |  ✔   |  ✔   | 11   |  ✔   
-[                     accountname ](Test/accountname/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                  account-notify ](Test/account-notify/)|  ✔   |  ✔   |  ✔   |  2   |  ✔   
-[                             ack ](Test/ack/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
-[                        act_fifo ](Test/act_fifo/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   
-[                   active_notice ](Test/active_notice/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                   active_notify ](Test/active_notify/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                   activity_file ](Test/activity_file/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   
-[                             act ](Test/act/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                  adv_windowlist ](Test/adv_windowlist/)|  ✔   |  ✔   |  ✔   | 36   |  ✔   
-[                           aidle ](Test/aidle/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                              ai ](Test/ai/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   
-[                           akftp ](Test/akftp/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                           alame ](Test/alame/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
-[                        amaroknp ](Test/amaroknp/)|  ✘   |  ✔   |  ✔   |  5   |  ☡   
-[                      amarok_ssh ](Test/amarok_ssh/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                          anames ](Test/anames/)|  ✔   |  ✔   |  ✔   |  1   |  ✔   
-[                      anotherway ](Test/anotherway/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                       antiplenk ](Test/antiplenk/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                             apm ](Test/apm/)|  ✔   |  ✔   |  ✔   | 13   |  ✔   
-[                         armeija ](Test/armeija/)|  ✔   |  ✔   |  ✔   | 10   |  ✔   
-[                           ascii ](Test/ascii/)|  ✔   |  ✔   |  ✔   | 69   |  ✔   
-[                 aspell_complete ](Test/aspell_complete/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   
-[                          aspell ](Test/aspell/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
-[                   auth_quakenet ](Test/auth_quakenet/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                        autoaway ](Test/autoaway/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   
-[                     autochannel ](Test/autochannel/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                  autoclearinput ](Test/autoclearinput/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                       autocycle ](Test/autocycle/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                       autolimit ](Test/autolimit/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                  autonickprefix ](Test/autonickprefix/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                       autoopper ](Test/autoopper/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   
-[                          autoop ](Test/autoop/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   
-[                    autorealname ](Test/autorealname/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                      autorejoin ](Test/autorejoin/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                autorejoinpunish ](Test/autorejoinpunish/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                    autoreminder ](Test/autoreminder/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                 autorun_scripts ](Test/autorun_scripts/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
-[                       autostuff ](Test/autostuff/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                     autoversion ](Test/autoversion/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                       autovoice ](Test/autovoice/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                      auto_whois ](Test/auto_whois/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                       autowhois ](Test/autowhois/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                autowhois_simple ](Test/autowhois_simple/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                         autowho ](Test/autowho/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
-[                        autowrap ](Test/autowrap/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                        away2web ](Test/away2web/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   
-[                         awaybar ](Test/awaybar/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[             away_hilight_notice ](Test/away_hilight_notice/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                      awaylogcnt ](Test/awaylogcnt/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                            away ](Test/away/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                       awayproxy ](Test/awayproxy/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   
-[                    away_verbose ](Test/away_verbose/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                         badword ](Test/badword/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                      banaffects ](Test/banaffects/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                       bandwidth ](Test/bandwidth/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   
-[                             ban ](Test/ban/)|  ✔   |  ✔   |  ✔   | 38   |  ✔   
-[                       bansearch ](Test/bansearch/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   
-[                         bantime ](Test/bantime/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                        beepaway ](Test/beepaway/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                       beep_beep ](Test/beep_beep/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                            beep ](Test/beep/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                     beforespace ](Test/beforespace/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
-[                       bestoiber ](Test/bestoiber/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                      betterlist ](Test/betterlist/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
-[                            bgta ](Test/bgta/)|  ✔   |  ✔   |  ✔   | 22   |  ✔   
-[                          binary ](Test/binary/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                     binary_time ](Test/binary_time/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                   bitlbee_blist ](Test/bitlbee_blist/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   
-[           bitlbee_hide_password ](Test/bitlbee_hide_password/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
-[             bitlbee_join_notice ](Test/bitlbee_join_notice/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[             bitlbee_nick_change ](Test/bitlbee_nick_change/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[          bitlbee_tab_completion ](Test/bitlbee_tab_completion/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[               bitlbee_timestamp ](Test/bitlbee_timestamp/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[           bitlbee_typing_notice ](Test/bitlbee_typing_notice/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                         blowjob ](Test/blowjob/)|  ✔   |  ✔   |  ✔   | 22   |  ✔   
-[                             bmi ](Test/bmi/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                          buffer ](Test/buffer/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   
-[                             buf ](Test/buf/)|  ✔   |  ✔   |  ✔   | 12   |  ✔   
-[                            calc ](Test/calc/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   
-[                        callerid ](Test/callerid/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                     cap-extjoin ](Test/cap-extjoin/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   
-[                             cap ](Test/cap/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                   cap_sasl_fail ](Test/cap_sasl_fail/)|  ✘   |  ✔   |  ✔   |  2   |  ☡   
-[                        cap_sasl ](Test/cap_sasl/)|  ✘   |  ✔   |  ✔   |  7   |  ☡   
-[                            cddb ](Test/cddb/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                       centericq ](Test/centericq/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   
-[                           cgrep ](Test/cgrep/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                         chanact ](Test/chanact/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   
-[                  chanfull_duden ](Test/chanfull_duden/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                        chanfull ](Test/chanfull/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                        chanpeak ](Test/chanpeak/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   
-[                      chansearch ](Test/chansearch/)|  ✔   |  ✔   |  ✔   | 10   |  ✔   
-[                       chanshare ](Test/chanshare/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[           chansort_configurable ](Test/chansort_configurable/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
-[                        chansort ](Test/chansort/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                        chansync ](Test/chansync/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                           chops ](Test/chops/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                          Cirssi ](Test/Cirssi/)|  ✔   |  ✔   |  ✔   | 31   |  ✔   
-[                     cleanpublic ](Test/cleanpublic/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                       clearable ](Test/clearable/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
-[                       clipboard ](Test/clipboard/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                       cloneprot ](Test/cloneprot/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                          clones ](Test/clones/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                  clones_scanner ](Test/clones_scanner/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
-[                        cmpchans ](Test/cmpchans/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
-[                     colon_emoji ](Test/colon_emoji/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
-[                  colorize_nicks ](Test/colorize_nicks/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
-[                       colorkick ](Test/colorkick/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                       colorswap ](Test/colorswap/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                     complete_at ](Test/complete_at/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   
-[              complete_lastspoke ](Test/complete_lastspoke/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                      connectcmd ](Test/connectcmd/)|  ✔   |  ✔   |  ✔   | 19   |  ✔   
-[                       countdown ](Test/countdown/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                         country ](Test/country/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                     cp1250_kick ](Test/cp1250_kick/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                      crapbuster ](Test/crapbuster/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                       credstore ](Test/credstore/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
-[                            cron ](Test/cron/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   
-[                         ctrlact ](Test/ctrlact/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   
-[                            cwho ](Test/cwho/)|  ✔   |  ✔   |  ✔   | 18   |  ✔   
-[               dancer_forwardfix ](Test/dancer_forwardfix/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                 dancer_hide_477 ](Test/dancer_hide_477/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                             dau ](Test/dau/)|  ✔   |  ✔   |  ✔   | 42   |  ✔   
-[                          dcc_ip ](Test/dcc_ip/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                         dccmove ](Test/dccmove/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                        dccrelay ](Test/dccrelay/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   
-[                         dccself ](Test/dccself/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                         dccstat ](Test/dccstat/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   
-[                        deadbeef ](Test/deadbeef/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   
-[                 defaultchanmode ](Test/defaultchanmode/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                          dejunk ](Test/dejunk/)|  ✔   |  ✔   |  ✔   | 10   |  ✔   
-[                    deliciousurl ](Test/deliciousurl/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   
-[                  desktop-notify ](Test/desktop-notify/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                              df ](Test/df/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   
-[                    dice_concise ](Test/dice_concise/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                            dice ](Test/dice/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   
-[                    dictcomplete ](Test/dictcomplete/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   
-[                       dim_nicks ](Test/dim_nicks/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   
-[               discord_unhilight ](Test/discord_unhilight/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
-[                        dispatch ](Test/dispatch/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
-[                             dns ](Test/dns/)|  ✔   |  ✔   |  ✔   |  8   |  ✔   
-[                         dnsspam ](Test/dnsspam/)|  ✘   |  ✔   |  ✔   |  4   |  ☡   
-[                             doc ](Test/doc/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   
-[                    doublefilter ](Test/doublefilter/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                          dr_who ](Test/dr_who/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   
-[                        efnetorg ](Test/efnetorg/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   
-[                           elist ](Test/elist/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                           eliza ](Test/eliza/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                      emaildb1.0 ](Test/emaildb1.0/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   
-[                      email_msgs ](Test/email_msgs/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                  email_privmsgs ](Test/email_privmsgs/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                             emo ](Test/emo/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                          events ](Test/events/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                      exec_clean ](Test/exec_clean/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                         execcmd ](Test/execcmd/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
-[                         extaway ](Test/extaway/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   
-[                        fakectcp ](Test/fakectcp/)|  ✔   |  ✔   |  ✔   | 10   |  ✔   
-[                        fcountry ](Test/fcountry/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                          figlet ](Test/figlet/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   
-[                            file ](Test/file/)|  ✔   |  ✔   |  ✔   | 16   |  ✔   
-[                         findbot ](Test/findbot/)|  ✔   |  ✔   |  ✔   | 15   |  ✔   
-[                            find ](Test/find/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                    fix_slackirc ](Test/fix_slackirc/)|  ✔   |  ✔   |  ✔   |  1   |  ✔   
-[                          fleech ](Test/fleech/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   
-[                         fnotify ](Test/fnotify/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
-[                          follow ](Test/follow/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                             foo ](Test/foo/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   
-[                    foreach_user ](Test/foreach_user/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                 format_identify ](Test/format_identify/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                         fortune ](Test/fortune/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                         forward ](Test/forward/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                 freenode_filter ](Test/freenode_filter/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                   friends_peder ](Test/friends_peder/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   
-[                  friends_shasta ](Test/friends_shasta/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   
-[                    frm_outgmsgs ](Test/frm_outgmsgs/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
-[                          fserve ](Test/fserve/)|  ✔   |  ✔   |  ✔   | 44   |  ✔   
-[                          fuckem ](Test/fuckem/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                        fullrain ](Test/fullrain/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
-[                       fullwidth ](Test/fullwidth/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                           getop ](Test/getop/)|  ✔   |  ✔   |  ✔   | 16   |  ✔   
-[                          gimmie ](Test/gimmie/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                             go2 ](Test/go2/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                          google ](Test/google/)|  ✔   |  ✔   |  ✔   | 10   |  ✔   
-[                              go ](Test/go/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                    gpgvalidator ](Test/gpgvalidator/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                     greetignore ](Test/greetignore/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                        grepbans ](Test/grepbans/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   
-[                            grep ](Test/grep/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                             gsi ](Test/gsi/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   
-[                            guts ](Test/guts/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                         hddtemp ](Test/hddtemp/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   
-[                           hello ](Test/hello/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                        hideauth ](Test/hideauth/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                            hide ](Test/hide/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                        hideshow ](Test/hideshow/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
-[                        highlite ](Test/highlite/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                         hignore ](Test/hignore/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                      hilightcmd ](Test/hilightcmd/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                      hilightwin ](Test/hilightwin/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                      hilite_url ](Test/hilite_url/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                hipchat_complete ](Test/hipchat_complete/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                  history_search ](Test/history_search/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   
-[                        hitcount ](Test/hitcount/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   
-[                           hlbot ](Test/hlbot/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   
-[                              hl ](Test/hl/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   
-[                        hlscroll ](Test/hlscroll/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                        hostname ](Test/hostname/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   
-[                          identd ](Test/identd/)|  ✔   |  ✔   |  ✔   |  2   |  ✔   
-[                    identify-md5 ](Test/identify-md5/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                           ident ](Test/ident/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                        idletime ](Test/idletime/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   
-[                         idonkey ](Test/idonkey/)|  ✘   |  ✔   |  ✔   | 13   |  ☡   
-[                    ido_switcher ](Test/ido_switcher/)|  ✔   |  ✔   |  ✔   |  1   |  ✔   
-[                      ignore_log ](Test/ignore_log/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   
-[                        ignoreoc ](Test/ignoreoc/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                       ignorsula ](Test/ignorsula/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                              il ](Test/il/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                            imdb ](Test/imdb/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   
-[                            iMPD ](Test/iMPD/)|  ✔   |  ✔   |  ✔   | 22   |  ✔   
-[                       intercept ](Test/intercept/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
-[                         intjoin ](Test/intjoin/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   
-[                      invitejoin ](Test/invitejoin/)|  ✔   |  ✔   |  ✔   | 13   |  ✔   
-[                        ipupdate ](Test/ipupdate/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                           iquiz ](Test/iquiz/)|  ✔   |  ✔   |  ✔   |104   |  ✔   
-[                        iraident ](Test/iraident/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   
-[                       irc_chess ](Test/irc_chess/)|  ✘   |  ✔   |  ✔   |  8   |  ☡   
-[                     irccomplete ](Test/irccomplete/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                      ircgallery ](Test/ircgallery/)|  ✘   |  ✔   |  ✔   |  7   |  ☡   
-[               ircgmessagenotify ](Test/ircgmessagenotify/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   
-[                          ircops ](Test/ircops/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                          ircsec ](Test/ircsec/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   
-[                       ircuwhois ](Test/ircuwhois/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                    irssiBlaster ](Test/irssiBlaster/)|  ✔   |  ✔   |  ✔   | 12   |  ✔   
-[                      irssi-feed ](Test/irssi-feed/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
-[                    irssi_logger ](Test/irssi_logger/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                          irssiq ](Test/irssiq/)|  ✘   |  ✔   |  ✘   | 50   |  ☡   
-[                        isbanned ](Test/isbanned/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   
-[                            isdn ](Test/isdn/)|  ✘   |  ✔   |  ✘   | 10   |  ☡   
-[                           itime ](Test/itime/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                          ixmmsa ](Test/ixmmsa/)|  ✘   |  ✔   |  ✔   |  3   |  ☡   
-[                        joininfo ](Test/joininfo/)|  ✔   |  ✔   |  ✔   | 11   |  ✔   
-[                  kban-referrals ](Test/kban-referrals/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
-[                      kblamehost ](Test/kblamehost/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                        keepnick ](Test/keepnick/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   
-[                           kenny ](Test/kenny/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                          kernel ](Test/kernel/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                        keybinds ](Test/keybinds/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                           kicks ](Test/kicks/)|  ✔   |  ✔   |  ✔   | 25   |  ✔   
-[                  kill_fake_gets ](Test/kill_fake_gets/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                           kills ](Test/kills/)|  ✔   |  ✔   |  ✔   | 17   |  ✔   
-[                   kline_warning ](Test/kline_warning/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                       l33tmusic ](Test/l33tmusic/)|  ✘   |  ✔   |  ✔   |  6   |  ☡   
-[                          lastfm ](Test/lastfm/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   
-[                       lastspoke ](Test/lastspoke/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                             len ](Test/len/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
-[                         leodict ](Test/leodict/)|  ✔   |  ✔   |  ✔   | 10   |  ✔   
-[                      levelclear ](Test/levelclear/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
-[                            licq ](Test/licq/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   
-[                      linebuffer ](Test/linebuffer/)|  ✔   |  ✔   |  ✔   |  2   |  ✔   
-[                        linkchan ](Test/linkchan/)|  ✔   |  ✔   |  ✔   | 32   |  ✔   
-[                          listen ](Test/listen/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   
-[                        listsort ](Test/listsort/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
-[                         loadavg ](Test/loadavg/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                        localize ](Test/localize/)|  ✔   |  ✔   |  ✔   | 25   |  ✔   
-[                        log2ansi ](Test/log2ansi/)|  ✘   |  ✘   |  ✔   | 15   |  ☡   
-[                logcompress_perl ](Test/logcompress_perl/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
-[                     logcompress ](Test/logcompress/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                       logresume ](Test/logresume/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                              ls ](Test/ls/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                            lwho ](Test/lwho/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                  mailcheck_imap ](Test/mailcheck_imap/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   
-[             mailcheck_mbox_flux ](Test/mailcheck_mbox_flux/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   
-[            mailcheck_pop3_kimmo ](Test/mailcheck_pop3_kimmo/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                       mailcount ](Test/mailcount/)|  ✔   |  ✔   |  ✔   | 25   |  ✔   
-[                            mail ](Test/mail/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   
-[                          mangle ](Test/mangle/)|  ✔   |  ✔   |  ✔   | 15   |  ✔   
-[                             map ](Test/map/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[            mass_hilight_blocker ](Test/mass_hilight_blocker/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                 messages_bottom ](Test/messages_bottom/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                              mg ](Test/mg/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                    mh_hold_mode ](Test/mh_hold_mode/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                       mh_invite ](Test/mh_invite/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                  mh_sbsplitmode ](Test/mh_sbsplitmode/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   
-[                   mh_sbuserinfo ](Test/mh_sbuserinfo/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                   mh_userstatus ](Test/mh_userstatus/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                   mh_windowfill ](Test/mh_windowfill/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                          miodek ](Test/miodek/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[               mirc_colour_popup ](Test/mirc_colour_popup/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
-[                           mkick ](Test/mkick/)|  ✔   |  ✔   |  ✔   | 30   |  ✔   
-[              mldonkey_bandwidth ](Test/mldonkey_bandwidth/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                           mlock ](Test/mlock/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                        modelist ](Test/modelist/)|  ✔   |  ✔   |  ✔   | 33   |  ✔   
-[                      modelist-r ](Test/modelist-r/)|  ✔   |  ✔   |  ✔   | 18   |  ✔   
-[                         monitor ](Test/monitor/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   
-[                            mood ](Test/mood/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                           morse ](Test/morse/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   
-[                       mouse-awl ](Test/mouse-awl/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                           mouse ](Test/mouse/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   
-[                   mouse_soliton ](Test/mouse_soliton/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   
-[                             mpd ](Test/mpd/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   
-[                          mpg123 ](Test/mpg123/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   
-[                     mqtt-notify ](Test/mqtt-notify/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                      msg2notice ](Test/msg2notice/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   
-[                msg2notice_regex ](Test/msg2notice_regex/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
-[                      multipaste ](Test/multipaste/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[  munge_own_nickname_to_username ](Test/munge_own_nickname_to_username/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
-[                         my_beep ](Test/my_beep/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                          myimdb ](Test/myimdb/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   
-[                  mysqlurllogger ](Test/mysqlurllogger/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                            nact ](Test/nact/)|  ✔   |  ✔   |  ✔   | 12   |  ✔   
-[                       netswitch ](Test/netswitch/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                        newsline ](Test/newsline/)|  ✔   |  ✔   |  ✔   | 26   |  ✔   
-[                            news ](Test/news/)|  ✔   |  ✔   |  ✔   | 79   |  ✔   
-[                         nickban ](Test/nickban/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[               nickcolor_expando ](Test/nickcolor_expando/)|  ✔   |  ✔   |  ✔   | 10   |  ✔   
-[                   nickcolor_gay ](Test/nickcolor_gay/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   
-[                       nickcolor ](Test/nickcolor/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   
-[                      nickignore ](Test/nickignore/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                        nicklist ](Test/nicklist/)|  ✔   |  ✔   |  ✔   | 13   |  ✔   
-[                  nickmix-c0ffee ](Test/nickmix-c0ffee/)|  ✔   |  ✔   |  ✔   | 18   |  ✔   
-[                   nickmix_pasky ](Test/nickmix_pasky/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                        nickserv ](Test/nickserv/)|  ✔   |  ✔   |  ✔   | 13   |  ✔   
-[                             niq ](Test/niq/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   
-[                             nm2 ](Test/nm2/)|  ✔   |  ✔   |  ✔   | 14   |  ✔   
-[                              nm ](Test/nm/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   
-[                          nocaps ](Test/nocaps/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                       nocollide ](Test/nocollide/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                      noisyquery ](Test/noisyquery/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                            nopl ](Test/nopl/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                        norepeat ](Test/norepeat/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   
-[                       noteserve ](Test/noteserve/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                           notes ](Test/notes/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
-[                     noticelogic ](Test/noticelogic/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                      noticemove ](Test/noticemove/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                      notifyquit ](Test/notifyquit/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
-[                       notonline ](Test/notonline/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                            null ](Test/null/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                          ogg123 ](Test/ogg123/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   
-[                         oidenty ](Test/oidenty/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   
-[                              on ](Test/on/)|  ✔   |  ✔   |  ✘   | 20   |  ☡   
-[                            ontv ](Test/ontv/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   
-[                          oopsie ](Test/oopsie/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
-[                            oops ](Test/oops/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                         openurl ](Test/openurl/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   
-[                          operit ](Test/operit/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                        operview ](Test/operview/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                        opnotice ](Test/opnotice/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                        opnotify ](Test/opnotify/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                         orphamp ](Test/orphamp/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   
-[                             osd ](Test/osd/)|  ✔   |  ✔   |  ✔   |  8   |  ✔   
-[                          ownage ](Test/ownage/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                     page-c0ffee ](Test/page-c0ffee/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   
-[                     page_reeler ](Test/page_reeler/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                           pager ](Test/pager/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                       pangotext ](Test/pangotext/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
-[                    paste_derwan ](Test/paste_derwan/)|  ✔   |  ✔   |  ✔   | 53   |  ✔   
-[                    paste-derwan ](Test/paste-derwan/)|  ✔   |  ✔   |  ✔   | 37   |  ✔   
-[                    paste_huggie ](Test/paste_huggie/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   
-[                   paste_kimmoke ](Test/paste_kimmoke/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                           pelix ](Test/pelix/)|  ✔   |  ✔   |  ✔   | 25   |  ✔   
-[                          people ](Test/people/)|  ✔   |  ✔   |  ✔   | 75   |  ✔   
-[                       perlalias ](Test/perlalias/)|  ✔   |  ✔   |  ✔   |  8   |  ✔   
-[               per_window_prompt ](Test/per_window_prompt/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                      pggb_sound ](Test/pggb_sound/)|  ✔   |  ✔   |  ✔   | 33   |  ✔   
-[                          poison ](Test/poison/)|  ✔   |  ✔   |  ✔   | 12   |  ✔   
-[                        postpone ](Test/postpone/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                             ppl ](Test/ppl/)|  ✔   |  ✔   |  ✔   | 39   |  ✔   
-[                   print_signals ](Test/print_signals/)|  ✔   |  ✔   |  ✔   |  1   |  ✔   
-[                     procmaillog ](Test/procmaillog/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   
-[                       pushsafer ](Test/pushsafer/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   
-[                  qchallengeauth ](Test/qchallengeauth/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
-[                       quakequit ](Test/quakequit/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                           query ](Test/query/)|  ✔   |  ✔   |  ✔   | 22   |  ✔   
-[                     queryresume ](Test/queryresume/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   
-[                     query_whois ](Test/query_whois/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                         quitmsg ](Test/quitmsg/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   
-[                        quitrand ](Test/quitrand/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   
-[                          quizgr ](Test/quizgr/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   
-[                   quizmaster-fr ](Test/quizmaster-fr/)|  ✔   |  ✔   |  ✔   | 15   |  ✔   
-[                      quizmaster ](Test/quizmaster/)|  ✔   |  ✔   |  ✔   | 15   |  ✔   
-[                            quiz ](Test/quiz/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   
-[                         rainbow ](Test/rainbow/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   
-[                        randaway ](Test/randaway/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   
-[                        randname ](Test/randname/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   
-[                    recentdepart ](Test/recentdepart/)|  ✔   |  ✔   |  ✔   |  2   |  ✔   
-[                        redirect ](Test/redirect/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                            relm ](Test/relm/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                          remote ](Test/remote/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                         reorder ](Test/reorder/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   
-[                          repeat ](Test/repeat/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                         replace ](Test/replace/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                    resize_split ](Test/resize_split/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                       rhythmbox ](Test/rhythmbox/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   
-[                              rk ](Test/rk/)|  ✔   |  ✔   |  ✔   | 14   |  ✔   
-[                      romajibind ](Test/romajibind/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                          romaji ](Test/romaji/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                           rot13 ](Test/rot13/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   
-[                         rotator ](Test/rotator/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                      rud_emotes ](Test/rud_emotes/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
-[                        sana_cmd ](Test/sana_cmd/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
-[                    sbclearmatch ](Test/sbclearmatch/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
-[                     sb_position ](Test/sb_position/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
-[                       sb_search ](Test/sb_search/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                     schwaebisch ](Test/schwaebisch/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                     screen_away ](Test/screen_away/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                    scriptassist ](Test/scriptassist/)|  ✔   |  ✔   |  ✔   | 60   |  ✔   
-[                      scripthelp ](Test/scripthelp/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                      scriptinfo ](Test/scriptinfo/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                      scriptsave ](Test/scriptsave/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                        scrmable ](Test/scrmable/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
-[                        scroller ](Test/scroller/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                       securemsg ](Test/securemsg/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   
-[                            seen ](Test/seen/)|  ✔   |  ✔   |  ✔   |103   |  ✔   
-[                     send_scroll ](Test/send_scroll/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
-[                  servercomplete ](Test/servercomplete/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   
-[                            seti ](Test/seti/)|  ✔   |  ✔   |  ✔   | 10   |  ✔   
-[                    settingshelp ](Test/settingshelp/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                      shortenurl ](Test/shortenurl/)|  ✔   |  ✔   |  ✔   | 20   |  ✔   
-[                        shorturl ](Test/shorturl/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                     showhilight ](Test/showhilight/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                        showhost ](Test/showhost/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                    showinactive ](Test/showinactive/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                        showmode ](Test/showmode/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                  signal_hilight ](Test/signal_hilight/)|  ✔   |  ✔   |  ✔   |  1   |  ✔   
-[                  slack_complete ](Test/slack_complete/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                     slack_emoji ](Test/slack_emoji/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
-[             slack_strip_auto_cc ](Test/slack_strip_auto_cc/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
-[                     smartfilter ](Test/smartfilter/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   
-[                          smiley ](Test/smiley/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                             sms ](Test/sms/)|  ✔   |  ✔   |  ✔   | 77   |  ✔   
-[                          snmpup ](Test/snmpup/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                         spambot ](Test/spambot/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                special_complete ](Test/special_complete/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                      spellcheck ](Test/spellcheck/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                           spell ](Test/spell/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                           sping ](Test/sping/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                       splitlong ](Test/splitlong/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                         spotify ](Test/spotify/)|  ✔   |  ✔   |  ✔   | 14   |  ✔   
-[                       synccheck ](Test/synccheck/)|  ✔   |  ✔   |  ✔   | 37   |  ✔   
-[                sysinfo270-irssi ](Test/sysinfo270-irssi/)|  ✔   |  ✔   |  ✔   | 26   |  ✔   
-[                sysinfo277-irssi ](Test/sysinfo277-irssi/)|  ✔   |  ✔   |  ✔   | 15   |  ✔   
-[                      sysinfo_dg ](Test/sysinfo_dg/)|  ✔   |  ✔   |  ✔   | 40   |  ✔   
-[                     sysinfoplus ](Test/sysinfoplus/)|  ✔   |  ✔   |  ✔   | 15   |  ✔   
-[                 tabcompletenick ](Test/tabcompletenick/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
-[                        tab_stop ](Test/tab_stop/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                            talk ](Test/talk/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                          target ](Test/target/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                         thankop ](Test/thankop/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                        thistory ](Test/thistory/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                           timer ](Test/timer/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
-[                       timezones ](Test/timezones/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
-[                         tinyurl ](Test/tinyurl/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                           title ](Test/title/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   
-[                           tlock ](Test/tlock/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                       tmux_away ](Test/tmux_away/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   
-[          tmux-nicklist-portable ](Test/tmux-nicklist-portable/)|  ✔   |  ✔   |  ✔   |  8   |  ✔   
-[                          toilet ](Test/toilet/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   
-[                        topicsed ](Test/topicsed/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   
-[                          topics ](Test/topics/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                       tordetect ](Test/tordetect/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   
-[                      trackbar22 ](Test/trackbar22/)|  ✘   |  ✘   |  ✔   |  5   |  ☡   
-[                        trackbar ](Test/trackbar/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   
-[                       tracknick ](Test/tracknick/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                           track ](Test/track/)|  ✔   |  ✔   |  ✔   | 36   |  ✔   
-[                        translit ](Test/translit/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                         trigger ](Test/trigger/)|  ✔   |  ✔   |  ✔   | 16   |  ✔   
-[                        trustweb ](Test/trustweb/)|  ✔   |  ✔   |  ✔   | 20   |  ✔   
-[                         tvmusor ](Test/tvmusor/)|  ✔   |  ✘   |  ✔   | 17   |  ☡   
-[                   twitter_theme ](Test/twitter_theme/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
-[                        twprompt ](Test/twprompt/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                       twsocials ](Test/twsocials/)|  ✔   |  ✔   |  ✔   | 16   |  ✔   
-[                         twtopic ](Test/twtopic/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                         typofix ](Test/typofix/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   
-[                      uberprompt ](Test/uberprompt/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
-[                 UNIBG-autoident ](Test/UNIBG-autoident/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                         unicode ](Test/unicode/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   
-[                     upgradeinfo ](Test/upgradeinfo/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                               u ](Test/u/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                      upsidedown ](Test/upsidedown/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                          uptime ](Test/uptime/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   
-[                         urlfeed ](Test/urlfeed/)|  ✔   |  ✔   |  ✔   | 12   |  ✔   
-[                         urlgrab ](Test/urlgrab/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   
-[                         urlinfo ](Test/urlinfo/)|  ✔   |  ✔   |  ✔   | 11   |  ✔   
-[                         url_log ](Test/url_log/)|  ✔   |  ✔   |  ✔   | 12   |  ✔   
-[                         urlplot ](Test/urlplot/)|  ✔   |  ✔   |  ✔   | 86   |  ✔   
-[                       usercount ](Test/usercount/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                        userhost ](Test/userhost/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                           users ](Test/users/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                    version-stat ](Test/version-stat/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   
-[                        verstats ](Test/verstats/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                         vidinfo ](Test/vidinfo/)|  ✔   |  ✔   |  ✔   | 12   |  ✔   
-[                          vowels ](Test/vowels/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                              wa ](Test/wa/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   
-[                        warnkick ](Test/warnkick/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                       washnicks ](Test/washnicks/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                           watch ](Test/watch/)|  ✔   |  ✔   |  ✔   | 33   |  ✔   
-[                       whitelist ](Test/whitelist/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   
-[                        whocount ](Test/whocount/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                     whois_hexip ](Test/whois_hexip/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   
-[                           whois ](Test/whois/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                            whos ](Test/whos/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                            wilm ](Test/wilm/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                 window_switcher ](Test/window_switcher/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                          winnum ](Test/winnum/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                       wisestamp ](Test/wisestamp/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   
-[                             wkb ](Test/wkb/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                wordcompletition ](Test/wordcompletition/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   
-[                    wordscramble ](Test/wordscramble/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                           xauth ](Test/xauth/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   
-[                            xcmd ](Test/xcmd/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                    xdcc_autoget ](Test/xdcc_autoget/)|  ✔   |  ✔   |  ✔   |  2   |  ✔   
-[                         xdccget ](Test/xdccget/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
-[                            xdcc ](Test/xdcc/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   
-[                           xlist ](Test/xlist/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                           xmms2 ](Test/xmms2/)|  ✔   |  ✔   |  ✔   | 10   |  ✔   
-[                        xmmsinfo ](Test/xmmsinfo/)|  ✘   |  ✔   |  ✔   |  3   |  ☡   
-[                            xmms ](Test/xmms/)|  ✔   |  ✔   |  ✔   |  8   |  ✔   
-[                     xmpp-notify ](Test/xmpp-notify/)|  ✔   |  ✔   |  ✔   | 21   |  ✔   
-[                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   
-[                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[                          8-ball ](Test/8-ball/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
+[                          accent ](Test/accent/)|  ✔   |  ✔   |  ✔   | 11   |  ✔   | (c)
+[                     accountname ](Test/accountname/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                  account-notify ](Test/account-notify/)|  ✔   |  ✔   |  ✔   |  2   |  ✔   | (c)
+[                             ack ](Test/ack/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
+[                        act_fifo ](Test/act_fifo/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
+[                   active_notice ](Test/active_notice/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                   active_notify ](Test/active_notify/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                   activity_file ](Test/activity_file/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
+[                             act ](Test/act/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                  adv_windowlist ](Test/adv_windowlist/)|  ✔   |  ✔   |  ✔   | 36   |  ✔   | (c)
+[                           aidle ](Test/aidle/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                              ai ](Test/ai/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
+[                           akftp ](Test/akftp/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                           alame ](Test/alame/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
+[                        amaroknp ](Test/amaroknp/)|  ✘   |  ✔   |  ✔   |  5   |  ☡   | (c)
+[                      amarok_ssh ](Test/amarok_ssh/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                          anames ](Test/anames/)|  ✔   |  ✔   |  ✔   |  1   |  ✔   | (c)
+[                      anotherway ](Test/anotherway/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                       antiplenk ](Test/antiplenk/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                             apm ](Test/apm/)|  ✔   |  ✔   |  ✔   | 13   |  ✔   | (c)
+[                         armeija ](Test/armeija/)|  ✔   |  ✔   |  ✔   | 10   |  ✔   | (c)
+[                           ascii ](Test/ascii/)|  ✔   |  ✔   |  ✔   | 69   |  ✔   | (c)
+[                 aspell_complete ](Test/aspell_complete/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
+[                          aspell ](Test/aspell/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
+[                   auth_quakenet ](Test/auth_quakenet/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                        autoaway ](Test/autoaway/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
+[                     autochannel ](Test/autochannel/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                  autoclearinput ](Test/autoclearinput/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                       autocycle ](Test/autocycle/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                       autolimit ](Test/autolimit/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                  autonickprefix ](Test/autonickprefix/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                       autoopper ](Test/autoopper/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
+[                          autoop ](Test/autoop/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
+[                    autorealname ](Test/autorealname/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                      autorejoin ](Test/autorejoin/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                autorejoinpunish ](Test/autorejoinpunish/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                    autoreminder ](Test/autoreminder/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                 autorun_scripts ](Test/autorun_scripts/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
+[                       autostuff ](Test/autostuff/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                     autoversion ](Test/autoversion/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                       autovoice ](Test/autovoice/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                      auto_whois ](Test/auto_whois/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                       autowhois ](Test/autowhois/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                autowhois_simple ](Test/autowhois_simple/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                         autowho ](Test/autowho/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
+[                        autowrap ](Test/autowrap/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                        away2web ](Test/away2web/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
+[                         awaybar ](Test/awaybar/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[             away_hilight_notice ](Test/away_hilight_notice/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                      awaylogcnt ](Test/awaylogcnt/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                            away ](Test/away/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                       awayproxy ](Test/awayproxy/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
+[                    away_verbose ](Test/away_verbose/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                         badword ](Test/badword/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                      banaffects ](Test/banaffects/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                       bandwidth ](Test/bandwidth/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
+[                             ban ](Test/ban/)|  ✔   |  ✔   |  ✔   | 38   |  ✔   | (c)
+[                       bansearch ](Test/bansearch/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
+[                         bantime ](Test/bantime/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                        beepaway ](Test/beepaway/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                       beep_beep ](Test/beep_beep/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                            beep ](Test/beep/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                     beforespace ](Test/beforespace/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
+[                       bestoiber ](Test/bestoiber/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                      betterlist ](Test/betterlist/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
+[                            bgta ](Test/bgta/)|  ✔   |  ✔   |  ✔   | 22   |  ✔   | (c)
+[                          binary ](Test/binary/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                     binary_time ](Test/binary_time/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                   bitlbee_blist ](Test/bitlbee_blist/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
+[           bitlbee_hide_password ](Test/bitlbee_hide_password/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
+[             bitlbee_join_notice ](Test/bitlbee_join_notice/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[             bitlbee_nick_change ](Test/bitlbee_nick_change/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[          bitlbee_tab_completion ](Test/bitlbee_tab_completion/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[               bitlbee_timestamp ](Test/bitlbee_timestamp/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[           bitlbee_typing_notice ](Test/bitlbee_typing_notice/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                         blowjob ](Test/blowjob/)|  ✔   |  ✔   |  ✔   | 22   |  ✔   | (c)
+[                             bmi ](Test/bmi/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                          buffer ](Test/buffer/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
+[                             buf ](Test/buf/)|  ✔   |  ✔   |  ✔   | 12   |  ✔   | (c)
+[                            calc ](Test/calc/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
+[                        callerid ](Test/callerid/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                     cap-extjoin ](Test/cap-extjoin/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
+[                             cap ](Test/cap/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                   cap_sasl_fail ](Test/cap_sasl_fail/)|  ✘   |  ✔   |  ✔   |  2   |  ☡   | (c)
+[                        cap_sasl ](Test/cap_sasl/)|  ✘   |  ✔   |  ✔   |  7   |  ☡   | (c)
+[                            cddb ](Test/cddb/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                       centericq ](Test/centericq/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
+[                           cgrep ](Test/cgrep/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                         chanact ](Test/chanact/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
+[                  chanfull_duden ](Test/chanfull_duden/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                        chanfull ](Test/chanfull/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                        chanpeak ](Test/chanpeak/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
+[                      chansearch ](Test/chansearch/)|  ✔   |  ✔   |  ✔   | 10   |  ✔   | (c)
+[                       chanshare ](Test/chanshare/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[           chansort_configurable ](Test/chansort_configurable/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
+[                        chansort ](Test/chansort/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                        chansync ](Test/chansync/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                           chops ](Test/chops/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                          Cirssi ](Test/Cirssi/)|  ✔   |  ✔   |  ✔   | 31   |  ✔   | (c)
+[                     cleanpublic ](Test/cleanpublic/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                       clearable ](Test/clearable/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
+[                       clipboard ](Test/clipboard/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                       cloneprot ](Test/cloneprot/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                          clones ](Test/clones/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                  clones_scanner ](Test/clones_scanner/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
+[                        cmpchans ](Test/cmpchans/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
+[                     colon_emoji ](Test/colon_emoji/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
+[                  colorize_nicks ](Test/colorize_nicks/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
+[                       colorkick ](Test/colorkick/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                       colorswap ](Test/colorswap/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                     complete_at ](Test/complete_at/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
+[              complete_lastspoke ](Test/complete_lastspoke/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                      connectcmd ](Test/connectcmd/)|  ✔   |  ✔   |  ✔   | 19   |  ✔   | (c)
+[                       countdown ](Test/countdown/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                         country ](Test/country/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                     cp1250_kick ](Test/cp1250_kick/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                      crapbuster ](Test/crapbuster/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                       credstore ](Test/credstore/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
+[                            cron ](Test/cron/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
+[                         ctrlact ](Test/ctrlact/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
+[                            cwho ](Test/cwho/)|  ✔   |  ✔   |  ✔   | 18   |  ✔   | (c)
+[               dancer_forwardfix ](Test/dancer_forwardfix/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                 dancer_hide_477 ](Test/dancer_hide_477/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                             dau ](Test/dau/)|  ✔   |  ✔   |  ✔   | 42   |  ✔   | (c)
+[                          dcc_ip ](Test/dcc_ip/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                         dccmove ](Test/dccmove/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                        dccrelay ](Test/dccrelay/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
+[                         dccself ](Test/dccself/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                         dccstat ](Test/dccstat/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
+[                        deadbeef ](Test/deadbeef/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
+[                 defaultchanmode ](Test/defaultchanmode/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                          dejunk ](Test/dejunk/)|  ✔   |  ✔   |  ✔   | 10   |  ✔   | (c)
+[                    deliciousurl ](Test/deliciousurl/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
+[                  desktop-notify ](Test/desktop-notify/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                              df ](Test/df/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
+[                    dice_concise ](Test/dice_concise/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                            dice ](Test/dice/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
+[                    dictcomplete ](Test/dictcomplete/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
+[                       dim_nicks ](Test/dim_nicks/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
+[               discord_unhilight ](Test/discord_unhilight/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
+[                        dispatch ](Test/dispatch/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
+[                             dns ](Test/dns/)|  ✔   |  ✔   |  ✔   |  8   |  ✔   | (c)
+[                         dnsspam ](Test/dnsspam/)|  ✘   |  ✔   |  ✔   |  4   |  ☡   | (c)
+[                             doc ](Test/doc/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
+[                    doublefilter ](Test/doublefilter/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                          dr_who ](Test/dr_who/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
+[                        efnetorg ](Test/efnetorg/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
+[                           elist ](Test/elist/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                           eliza ](Test/eliza/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                      emaildb1.0 ](Test/emaildb1.0/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
+[                      email_msgs ](Test/email_msgs/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                  email_privmsgs ](Test/email_privmsgs/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                             emo ](Test/emo/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                          events ](Test/events/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                      exec_clean ](Test/exec_clean/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                         execcmd ](Test/execcmd/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
+[                         extaway ](Test/extaway/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
+[                        fakectcp ](Test/fakectcp/)|  ✔   |  ✔   |  ✔   | 10   |  ✔   | (c)
+[                        fcountry ](Test/fcountry/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                          figlet ](Test/figlet/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
+[                            file ](Test/file/)|  ✔   |  ✔   |  ✔   | 16   |  ✔   | (c)
+[                         findbot ](Test/findbot/)|  ✔   |  ✔   |  ✔   | 15   |  ✔   | (c)
+[                            find ](Test/find/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                    fix_slackirc ](Test/fix_slackirc/)|  ✔   |  ✔   |  ✔   |  1   |  ✔   | (c)
+[                          fleech ](Test/fleech/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
+[                         fnotify ](Test/fnotify/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
+[                          follow ](Test/follow/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                             foo ](Test/foo/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
+[                    foreach_user ](Test/foreach_user/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                 format_identify ](Test/format_identify/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                         fortune ](Test/fortune/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                         forward ](Test/forward/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                 freenode_filter ](Test/freenode_filter/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                   friends_peder ](Test/friends_peder/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
+[                  friends_shasta ](Test/friends_shasta/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
+[                    frm_outgmsgs ](Test/frm_outgmsgs/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
+[                          fserve ](Test/fserve/)|  ✔   |  ✔   |  ✔   | 44   |  ✔   | (c)
+[                          fuckem ](Test/fuckem/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                        fullrain ](Test/fullrain/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
+[                       fullwidth ](Test/fullwidth/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                           getop ](Test/getop/)|  ✔   |  ✔   |  ✔   | 16   |  ✔   | (c)
+[                          gimmie ](Test/gimmie/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                             go2 ](Test/go2/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                          google ](Test/google/)|  ✔   |  ✔   |  ✔   | 10   |  ✔   | (c)
+[                              go ](Test/go/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                    gpgvalidator ](Test/gpgvalidator/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                     greetignore ](Test/greetignore/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                        grepbans ](Test/grepbans/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
+[                            grep ](Test/grep/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                             gsi ](Test/gsi/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
+[                            guts ](Test/guts/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                         hddtemp ](Test/hddtemp/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
+[                           hello ](Test/hello/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                        hideauth ](Test/hideauth/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                            hide ](Test/hide/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                        hideshow ](Test/hideshow/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
+[                        highlite ](Test/highlite/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                         hignore ](Test/hignore/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                      hilightcmd ](Test/hilightcmd/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                      hilightwin ](Test/hilightwin/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                      hilite_url ](Test/hilite_url/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                hipchat_complete ](Test/hipchat_complete/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                  history_search ](Test/history_search/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
+[                        hitcount ](Test/hitcount/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
+[                           hlbot ](Test/hlbot/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
+[                              hl ](Test/hl/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
+[                        hlscroll ](Test/hlscroll/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                        hostname ](Test/hostname/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
+[                          identd ](Test/identd/)|  ✔   |  ✔   |  ✔   |  2   |  ✔   | (c)
+[                    identify-md5 ](Test/identify-md5/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                           ident ](Test/ident/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                        idletime ](Test/idletime/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
+[                         idonkey ](Test/idonkey/)|  ✘   |  ✔   |  ✔   | 13   |  ☡   | (c)
+[                    ido_switcher ](Test/ido_switcher/)|  ✔   |  ✔   |  ✔   |  1   |  ✔   | (c)
+[                      ignore_log ](Test/ignore_log/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
+[                        ignoreoc ](Test/ignoreoc/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                       ignorsula ](Test/ignorsula/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                              il ](Test/il/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                            imdb ](Test/imdb/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
+[                            iMPD ](Test/iMPD/)|  ✔   |  ✔   |  ✔   | 22   |  ✔   | (c)
+[                       intercept ](Test/intercept/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
+[                         intjoin ](Test/intjoin/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
+[                      invitejoin ](Test/invitejoin/)|  ✔   |  ✔   |  ✔   | 13   |  ✔   | (c)
+[                        ipupdate ](Test/ipupdate/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                           iquiz ](Test/iquiz/)|  ✔   |  ✔   |  ✔   |104   |  ✔   | (c)
+[                        iraident ](Test/iraident/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
+[                       irc_chess ](Test/irc_chess/)|  ✘   |  ✔   |  ✔   |  8   |  ☡   | (c)
+[                     irccomplete ](Test/irccomplete/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                      ircgallery ](Test/ircgallery/)|  ✘   |  ✔   |  ✔   |  7   |  ☡   | (c)
+[               ircgmessagenotify ](Test/ircgmessagenotify/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
+[                          ircops ](Test/ircops/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                          ircsec ](Test/ircsec/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
+[                       ircuwhois ](Test/ircuwhois/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                    irssiBlaster ](Test/irssiBlaster/)|  ✔   |  ✔   |  ✔   | 12   |  ✔   | (c)
+[                      irssi-feed ](Test/irssi-feed/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
+[                    irssi_logger ](Test/irssi_logger/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                          irssiq ](Test/irssiq/)|  ✘   |  ✔   |  ✘   | 50   |  ☡   | (c)
+[                        isbanned ](Test/isbanned/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
+[                            isdn ](Test/isdn/)|  ✘   |  ✔   |  ✘   | 10   |  ☡   | (c)
+[                           itime ](Test/itime/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                          ixmmsa ](Test/ixmmsa/)|  ✘   |  ✔   |  ✔   |  3   |  ☡   | (c)
+[                        joininfo ](Test/joininfo/)|  ✔   |  ✔   |  ✔   | 11   |  ✔   | (c)
+[                  kban-referrals ](Test/kban-referrals/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
+[                      kblamehost ](Test/kblamehost/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                        keepnick ](Test/keepnick/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
+[                           kenny ](Test/kenny/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                          kernel ](Test/kernel/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                        keybinds ](Test/keybinds/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                           kicks ](Test/kicks/)|  ✔   |  ✔   |  ✔   | 25   |  ✔   | (c)
+[                  kill_fake_gets ](Test/kill_fake_gets/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                           kills ](Test/kills/)|  ✔   |  ✔   |  ✔   | 17   |  ✔   | (c)
+[                   kline_warning ](Test/kline_warning/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                       l33tmusic ](Test/l33tmusic/)|  ✘   |  ✔   |  ✔   |  6   |  ☡   | (c)
+[                          lastfm ](Test/lastfm/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
+[                       lastspoke ](Test/lastspoke/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                             len ](Test/len/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
+[                         leodict ](Test/leodict/)|  ✔   |  ✔   |  ✔   | 10   |  ✔   | (c)
+[                      levelclear ](Test/levelclear/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
+[                            licq ](Test/licq/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
+[                      linebuffer ](Test/linebuffer/)|  ✔   |  ✔   |  ✔   |  2   |  ✔   | (c)
+[                        linkchan ](Test/linkchan/)|  ✔   |  ✔   |  ✔   | 32   |  ✔   | (c)
+[                          listen ](Test/listen/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
+[                        listsort ](Test/listsort/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
+[                         loadavg ](Test/loadavg/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                        localize ](Test/localize/)|  ✔   |  ✔   |  ✔   | 25   |  ✔   | (c)
+[                        log2ansi ](Test/log2ansi/)|  ✘   |  ✘   |  ✔   | 15   |  ☡   | (c)
+[                logcompress_perl ](Test/logcompress_perl/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
+[                     logcompress ](Test/logcompress/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                       logresume ](Test/logresume/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                              ls ](Test/ls/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                            lwho ](Test/lwho/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                  mailcheck_imap ](Test/mailcheck_imap/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
+[             mailcheck_mbox_flux ](Test/mailcheck_mbox_flux/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
+[            mailcheck_pop3_kimmo ](Test/mailcheck_pop3_kimmo/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                       mailcount ](Test/mailcount/)|  ✔   |  ✔   |  ✔   | 25   |  ✔   | (c)
+[                            mail ](Test/mail/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
+[                          mangle ](Test/mangle/)|  ✔   |  ✔   |  ✔   | 15   |  ✔   | (c)
+[                             map ](Test/map/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[            mass_hilight_blocker ](Test/mass_hilight_blocker/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                 messages_bottom ](Test/messages_bottom/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                              mg ](Test/mg/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                    mh_hold_mode ](Test/mh_hold_mode/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                       mh_invite ](Test/mh_invite/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                  mh_sbsplitmode ](Test/mh_sbsplitmode/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
+[                   mh_sbuserinfo ](Test/mh_sbuserinfo/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                   mh_userstatus ](Test/mh_userstatus/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                   mh_windowfill ](Test/mh_windowfill/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                          miodek ](Test/miodek/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[               mirc_colour_popup ](Test/mirc_colour_popup/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
+[                           mkick ](Test/mkick/)|  ✔   |  ✔   |  ✔   | 30   |  ✔   | (c)
+[              mldonkey_bandwidth ](Test/mldonkey_bandwidth/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                           mlock ](Test/mlock/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                        modelist ](Test/modelist/)|  ✔   |  ✔   |  ✔   | 33   |  ✔   | (c)
+[                      modelist-r ](Test/modelist-r/)|  ✔   |  ✔   |  ✔   | 18   |  ✔   | (c)
+[                         monitor ](Test/monitor/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
+[                            mood ](Test/mood/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                           morse ](Test/morse/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
+[                       mouse-awl ](Test/mouse-awl/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                           mouse ](Test/mouse/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
+[                   mouse_soliton ](Test/mouse_soliton/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
+[                             mpd ](Test/mpd/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
+[                          mpg123 ](Test/mpg123/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
+[                     mqtt-notify ](Test/mqtt-notify/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                      msg2notice ](Test/msg2notice/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
+[                msg2notice_regex ](Test/msg2notice_regex/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
+[                      multipaste ](Test/multipaste/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[  munge_own_nickname_to_username ](Test/munge_own_nickname_to_username/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
+[                         my_beep ](Test/my_beep/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                          myimdb ](Test/myimdb/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
+[                  mysqlurllogger ](Test/mysqlurllogger/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                            nact ](Test/nact/)|  ✔   |  ✔   |  ✔   | 12   |  ✔   | (c)
+[                       netswitch ](Test/netswitch/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                        newsline ](Test/newsline/)|  ✔   |  ✔   |  ✔   | 26   |  ✔   | (c)
+[                            news ](Test/news/)|  ✔   |  ✔   |  ✔   | 79   |  ✔   | (c)
+[                         nickban ](Test/nickban/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[               nickcolor_expando ](Test/nickcolor_expando/)|  ✔   |  ✔   |  ✔   | 10   |  ✔   | (c)
+[                   nickcolor_gay ](Test/nickcolor_gay/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
+[                       nickcolor ](Test/nickcolor/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
+[                      nickignore ](Test/nickignore/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                        nicklist ](Test/nicklist/)|  ✔   |  ✔   |  ✔   | 13   |  ✔   | (c)
+[                  nickmix-c0ffee ](Test/nickmix-c0ffee/)|  ✔   |  ✔   |  ✔   | 18   |  ✔   | (c)
+[                   nickmix_pasky ](Test/nickmix_pasky/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                        nickserv ](Test/nickserv/)|  ✔   |  ✔   |  ✔   | 13   |  ✔   | (c)
+[                             niq ](Test/niq/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
+[                             nm2 ](Test/nm2/)|  ✔   |  ✔   |  ✔   | 14   |  ✔   | (c)
+[                              nm ](Test/nm/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
+[                          nocaps ](Test/nocaps/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                       nocollide ](Test/nocollide/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                      noisyquery ](Test/noisyquery/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                            nopl ](Test/nopl/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                        norepeat ](Test/norepeat/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
+[                       noteserve ](Test/noteserve/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                           notes ](Test/notes/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
+[                     noticelogic ](Test/noticelogic/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                      noticemove ](Test/noticemove/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                      notifyquit ](Test/notifyquit/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
+[                       notonline ](Test/notonline/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                            null ](Test/null/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                          ogg123 ](Test/ogg123/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
+[                         oidenty ](Test/oidenty/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
+[                              on ](Test/on/)|  ✔   |  ✔   |  ✘   | 20   |  ☡   | (c)
+[                            ontv ](Test/ontv/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
+[                          oopsie ](Test/oopsie/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
+[                            oops ](Test/oops/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                         openurl ](Test/openurl/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
+[                          operit ](Test/operit/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                        operview ](Test/operview/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                        opnotice ](Test/opnotice/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                        opnotify ](Test/opnotify/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                         orphamp ](Test/orphamp/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
+[                             osd ](Test/osd/)|  ✔   |  ✔   |  ✔   |  8   |  ✔   | (c)
+[                          ownage ](Test/ownage/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                     page-c0ffee ](Test/page-c0ffee/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
+[                     page_reeler ](Test/page_reeler/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                           pager ](Test/pager/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                       pangotext ](Test/pangotext/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
+[                    paste_derwan ](Test/paste_derwan/)|  ✔   |  ✔   |  ✔   | 53   |  ✔   | (c)
+[                    paste-derwan ](Test/paste-derwan/)|  ✔   |  ✔   |  ✔   | 37   |  ✔   | (c)
+[                    paste_huggie ](Test/paste_huggie/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
+[                   paste_kimmoke ](Test/paste_kimmoke/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                           pelix ](Test/pelix/)|  ✔   |  ✔   |  ✔   | 25   |  ✔   | (c)
+[                          people ](Test/people/)|  ✔   |  ✔   |  ✔   | 75   |  ✔   | (c)
+[                       perlalias ](Test/perlalias/)|  ✔   |  ✔   |  ✔   |  8   |  ✔   | (c)
+[               per_window_prompt ](Test/per_window_prompt/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                      pggb_sound ](Test/pggb_sound/)|  ✔   |  ✔   |  ✔   | 33   |  ✔   | (c)
+[                          poison ](Test/poison/)|  ✔   |  ✔   |  ✔   | 12   |  ✔   | (c)
+[                        postpone ](Test/postpone/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                             ppl ](Test/ppl/)|  ✔   |  ✔   |  ✔   | 39   |  ✔   | (c)
+[                   print_signals ](Test/print_signals/)|  ✔   |  ✔   |  ✔   |  1   |  ✔   | (c)
+[                     procmaillog ](Test/procmaillog/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
+[                       pushsafer ](Test/pushsafer/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
+[                  qchallengeauth ](Test/qchallengeauth/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
+[                       quakequit ](Test/quakequit/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                           query ](Test/query/)|  ✔   |  ✔   |  ✔   | 22   |  ✔   | (c)
+[                     queryresume ](Test/queryresume/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
+[                     query_whois ](Test/query_whois/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                         quitmsg ](Test/quitmsg/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
+[                        quitrand ](Test/quitrand/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
+[                          quizgr ](Test/quizgr/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
+[                   quizmaster-fr ](Test/quizmaster-fr/)|  ✔   |  ✔   |  ✔   | 15   |  ✔   | (c)
+[                      quizmaster ](Test/quizmaster/)|  ✔   |  ✔   |  ✔   | 15   |  ✔   | (c)
+[                            quiz ](Test/quiz/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
+[                         rainbow ](Test/rainbow/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
+[                        randaway ](Test/randaway/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
+[                        randname ](Test/randname/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
+[                    recentdepart ](Test/recentdepart/)|  ✔   |  ✔   |  ✔   |  2   |  ✔   | (c)
+[                        redirect ](Test/redirect/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                            relm ](Test/relm/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                          remote ](Test/remote/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                         reorder ](Test/reorder/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
+[                          repeat ](Test/repeat/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                         replace ](Test/replace/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                    resize_split ](Test/resize_split/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                       rhythmbox ](Test/rhythmbox/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
+[                              rk ](Test/rk/)|  ✔   |  ✔   |  ✔   | 14   |  ✔   | (c)
+[                      romajibind ](Test/romajibind/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                          romaji ](Test/romaji/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                           rot13 ](Test/rot13/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
+[                         rotator ](Test/rotator/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                      rud_emotes ](Test/rud_emotes/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
+[                        sana_cmd ](Test/sana_cmd/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
+[                    sbclearmatch ](Test/sbclearmatch/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
+[                     sb_position ](Test/sb_position/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
+[                       sb_search ](Test/sb_search/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                     schwaebisch ](Test/schwaebisch/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                     screen_away ](Test/screen_away/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                    scriptassist ](Test/scriptassist/)|  ✔   |  ✔   |  ✔   | 60   |  ✔   | (c)
+[                      scripthelp ](Test/scripthelp/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                      scriptinfo ](Test/scriptinfo/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                      scriptsave ](Test/scriptsave/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                        scrmable ](Test/scrmable/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
+[                        scroller ](Test/scroller/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                       securemsg ](Test/securemsg/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
+[                            seen ](Test/seen/)|  ✔   |  ✔   |  ✔   |103   |  ✔   | (c)
+[                     send_scroll ](Test/send_scroll/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
+[                  servercomplete ](Test/servercomplete/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
+[                            seti ](Test/seti/)|  ✔   |  ✔   |  ✔   | 10   |  ✔   | (c)
+[                    settingshelp ](Test/settingshelp/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                      shortenurl ](Test/shortenurl/)|  ✔   |  ✔   |  ✔   | 20   |  ✔   | (c)
+[                        shorturl ](Test/shorturl/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                     showhilight ](Test/showhilight/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                        showhost ](Test/showhost/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                    showinactive ](Test/showinactive/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                        showmode ](Test/showmode/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                  signal_hilight ](Test/signal_hilight/)|  ✔   |  ✔   |  ✔   |  1   |  ✔   | (c)
+[                  slack_complete ](Test/slack_complete/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                     slack_emoji ](Test/slack_emoji/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
+[             slack_strip_auto_cc ](Test/slack_strip_auto_cc/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
+[                     smartfilter ](Test/smartfilter/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
+[                          smiley ](Test/smiley/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                      smshilight ](Test/smshilight/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
+[                             sms ](Test/sms/)|  ✔   |  ✔   |  ✔   | 77   |  ✔   | (c)
+[                          snmpup ](Test/snmpup/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                         spambot ](Test/spambot/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                special_complete ](Test/special_complete/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                      spellcheck ](Test/spellcheck/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                           spell ](Test/spell/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                           sping ](Test/sping/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                       splitlong ](Test/splitlong/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                         spotify ](Test/spotify/)|  ✔   |  ✔   |  ✔   | 14   |  ✔   | (c)
+[                       synccheck ](Test/synccheck/)|  ✔   |  ✔   |  ✔   | 37   |  ✔   | (c)
+[                sysinfo270-irssi ](Test/sysinfo270-irssi/)|  ✔   |  ✔   |  ✔   | 26   |  ✔   | (c)
+[                sysinfo277-irssi ](Test/sysinfo277-irssi/)|  ✔   |  ✔   |  ✔   | 15   |  ✔   | (c)
+[                      sysinfo_dg ](Test/sysinfo_dg/)|  ✔   |  ✔   |  ✔   | 40   |  ✔   | (c)
+[                     sysinfoplus ](Test/sysinfoplus/)|  ✔   |  ✔   |  ✔   | 15   |  ✔   | (c)
+[                 tabcompletenick ](Test/tabcompletenick/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
+[                        tab_stop ](Test/tab_stop/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                            talk ](Test/talk/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                          target ](Test/target/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                         thankop ](Test/thankop/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                        thistory ](Test/thistory/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                           timer ](Test/timer/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
+[                       timezones ](Test/timezones/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
+[                         tinyurl ](Test/tinyurl/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                           title ](Test/title/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
+[                           tlock ](Test/tlock/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                       tmux_away ](Test/tmux_away/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
+[          tmux-nicklist-portable ](Test/tmux-nicklist-portable/)|  ✔   |  ✔   |  ✔   |  8   |  ✔   | (c)
+[                          toilet ](Test/toilet/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
+[                        topicsed ](Test/topicsed/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
+[                          topics ](Test/topics/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                       tordetect ](Test/tordetect/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
+[                      trackbar22 ](Test/trackbar22/)|  ✘   |  ✘   |  ✔   |  5   |  ☡   | (c)
+[                        trackbar ](Test/trackbar/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
+[                       tracknick ](Test/tracknick/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                           track ](Test/track/)|  ✔   |  ✔   |  ✔   | 36   |  ✔   | (c)
+[                        translit ](Test/translit/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                         trigger ](Test/trigger/)|  ✔   |  ✔   |  ✔   | 16   |  ✔   | (c)
+[                        trustweb ](Test/trustweb/)|  ✔   |  ✔   |  ✔   | 20   |  ✔   | (c)
+[                         tvmusor ](Test/tvmusor/)|  ✔   |  ✘   |  ✔   | 17   |  ☡   | (c)
+[                   twitter_theme ](Test/twitter_theme/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
+[                        twprompt ](Test/twprompt/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                       twsocials ](Test/twsocials/)|  ✔   |  ✔   |  ✔   | 16   |  ✔   | (c)
+[                         twtopic ](Test/twtopic/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                         typofix ](Test/typofix/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
+[                      uberprompt ](Test/uberprompt/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
+[                 UNIBG-autoident ](Test/UNIBG-autoident/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                         unicode ](Test/unicode/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
+[                     upgradeinfo ](Test/upgradeinfo/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                               u ](Test/u/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                      upsidedown ](Test/upsidedown/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                          uptime ](Test/uptime/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
+[                         urlfeed ](Test/urlfeed/)|  ✔   |  ✔   |  ✔   | 12   |  ✔   | (c)
+[                         urlgrab ](Test/urlgrab/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
+[                         urlinfo ](Test/urlinfo/)|  ✔   |  ✔   |  ✔   | 11   |  ✔   | (c)
+[                         url_log ](Test/url_log/)|  ✔   |  ✔   |  ✔   | 12   |  ✔   | (c)
+[                         urlplot ](Test/urlplot/)|  ✔   |  ✔   |  ✔   | 86   |  ✔   | (c)
+[                       usercount ](Test/usercount/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                        userhost ](Test/userhost/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                           users ](Test/users/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                    version-stat ](Test/version-stat/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
+[                        verstats ](Test/verstats/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                         vidinfo ](Test/vidinfo/)|  ✔   |  ✔   |  ✔   | 12   |  ✔   | (c)
+[                          vowels ](Test/vowels/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                              wa ](Test/wa/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
+[                        warnkick ](Test/warnkick/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                       washnicks ](Test/washnicks/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                           watch ](Test/watch/)|  ✔   |  ✔   |  ✔   | 33   |  ✔   | (c)
+[                       whitelist ](Test/whitelist/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
+[                        whocount ](Test/whocount/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                     whois_hexip ](Test/whois_hexip/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
+[                           whois ](Test/whois/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                            whos ](Test/whos/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                            wilm ](Test/wilm/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                 window_switcher ](Test/window_switcher/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                          winnum ](Test/winnum/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                       wisestamp ](Test/wisestamp/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
+[                             wkb ](Test/wkb/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                wordcompletition ](Test/wordcompletition/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
+[                    wordscramble ](Test/wordscramble/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                           xauth ](Test/xauth/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
+[                            xcmd ](Test/xcmd/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                    xdcc_autoget ](Test/xdcc_autoget/)|  ✔   |  ✔   |  ✔   |  2   |  ✔   | (c)
+[                         xdccget ](Test/xdccget/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
+[                            xdcc ](Test/xdcc/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
+[                           xlist ](Test/xlist/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                           xmms2 ](Test/xmms2/)|  ✔   |  ✔   |  ✔   | 10   |  ✔   | (c)
+[                        xmmsinfo ](Test/xmmsinfo/)|  ✘   |  ✔   |  ✔   |  3   |  ☡   | (c)
+[                            xmms ](Test/xmms/)|  ✔   |  ✔   |  ✔   |  8   |  ✔   | (c)
+[                     xmpp-notify ](Test/xmpp-notify/)|  ✔   |  ✔   |  ✔   | 21   |  ✔   | (c)
+[                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
+[                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-2c21ba045c906ca12c98f02a362c34c16662bdf5 | 1055
+effccd7010635e8399faae74d474f5d2509558a2 | 1061

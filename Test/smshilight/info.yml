@@ -1,0 +1,15 @@
+---
+-
+  authors: 'John Runyon'
+  commands:
+    - testsms
+  contact: https://github.com/zonidjan/irssi-scripts/issues
+  default_package: smshilight
+  description: 'send highlights via Twilio sms'
+  license: CC0
+  modified: '2018-02-12 03:58:36'
+  modules:
+    - LWP::UserAgent
+  name: smshi
+  url: https://github.com/zonidjan/irssi-scripts
+  version: '1.0'
