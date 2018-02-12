@@ -6,7 +6,7 @@
 # window (can be toggled) and to put up a timestamp.
 #
 # Changed a little by rummik to optionally show network name. Enable with
-# `/set hilightwin_shownetwork on`
+# `/set hilightwin_show_network on`
 #
 
 use strict;
