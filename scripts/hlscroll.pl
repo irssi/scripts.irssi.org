@@ -1,5 +1,6 @@
 use strict;
 use Irssi qw(command_bind MSGLEVEL_HILIGHT);
+use Irssi::TextUI;
 use vars qw($VERSION %IRSSI);
 
 # Recommended key bindings: alt+pgup, alt+pgdown:
@@ -14,7 +15,7 @@ $VERSION = '0.02';
     description	=> 'Scrolls to previous or next highlight',
     license	=> 'Public Domain',
     url		=> 'http://juerd.nl/site.plp/irssi',
-    changed	=> 'Fri Apr 13 05:48 CEST 2012',
+    changed	=> 'Thu Feb 15 10:35 CEST 2018',
     inspiration => '@eevee on Twitter: "i really want irssi keybindings that will scroll to the next/previous line containing a highlight. why does this not exist"',
 );
 
