@@ -7,7 +7,7 @@ use vars qw($VERSION %IRSSI);
 #   /bind meta2-5;3~ /scrollback hlprev
 #   /bind meta2-6;3~ /scrollback hlnext
 
-$VERSION = '0.02';
+$VERSION = '0.03';
 %IRSSI = (
     authors     => 'Juerd, Eevee',
     contact	=> '#####@juerd.nl',
