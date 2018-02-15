@@ -2148,10 +2148,10 @@
   description: 'Scrolls to previous or next highlight'
   filename: hlscroll.pl
   license: 'Public Domain'
-  modified: '2015-11-16 19:36:52'
+  modified: '2018-02-15 11:19:47'
   name: 'Scroll to hilights'
   url: http://juerd.nl/site.plp/irssi
-  version: '0.02'
+  version: '0.03'
 -
   authors: 'Jean-Yves Lefort'
   commands: hostname
