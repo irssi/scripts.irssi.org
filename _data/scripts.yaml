@@ -2078,7 +2078,7 @@
   description: 'Print hilighted messages to window named "hilight"'
   filename: hilightwin.pl
   license: 'Public Domain'
-  modified: '2017-04-06 16:28:24'
+  modified: '2018-02-12 13:35:15'
   name: hilightwin
   url: http://irssi.org/
   version: '1.00'
