@@ -203,7 +203,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                        highlite ](Test/highlite/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                         hignore ](Test/hignore/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                      hilightcmd ](Test/hilightcmd/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                      hilightwin ](Test/hilightwin/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                      hilightwin ](Test/hilightwin/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                      hilite_url ](Test/hilite_url/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                hipchat_complete ](Test/hipchat_complete/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                  history_search ](Test/history_search/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
@@ -434,7 +434,7 @@ See [the testing read-me](../master/_testing/) for details.
 [             slack_strip_auto_cc ](Test/slack_strip_auto_cc/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                     smartfilter ](Test/smartfilter/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                          smiley ](Test/smiley/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                      smshilight ](Test/smshilight/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
+[                      smshilight ](Test/smshilight/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                             sms ](Test/sms/)|  ✔   |  ✔   |  ✔   | 77   |  ✔   | (c)
 [                          snmpup ](Test/snmpup/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                         spambot ](Test/spambot/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -527,4 +527,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-effccd7010635e8399faae74d474f5d2509558a2 | 1061
+016eed27b22b06b7693dc2f962ca0fc9b166cac2 | 1064
