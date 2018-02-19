@@ -432,7 +432,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                  slack_complete ](Test/slack_complete/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                     slack_emoji ](Test/slack_emoji/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [             slack_strip_auto_cc ](Test/slack_strip_auto_cc/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
-[                     smartfilter ](Test/smartfilter/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[                     smartfilter ](Test/smartfilter/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                          smiley ](Test/smiley/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                      smshilight ](Test/smshilight/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                             sms ](Test/sms/)|  ✔   |  ✔   |  ✔   | 77   |  ✔   | (c)
@@ -462,6 +462,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                           tlock ](Test/tlock/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       tmux_away ](Test/tmux_away/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [          tmux-nicklist-portable ](Test/tmux-nicklist-portable/)|  ✔   |  ✔   |  ✔   |  8   |  ✔   | (c)
+[                toggle_winlevels ](Test/toggle_winlevels/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
 [                          toilet ](Test/toilet/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
 [                        topicsed ](Test/topicsed/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
 [                          topics ](Test/topics/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -527,4 +528,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-aebc50a2b8363adf28f277c157b9e76fd59d979a | 1067
+62163c3e5680978947cf39d9400748f18cf27e69 | 1068

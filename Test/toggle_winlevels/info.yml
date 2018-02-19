@@ -1,0 +1,15 @@
+---
+-
+  authors: 'Jari Matilainen'
+  changed: '17.01.2018 01:00pm CET'
+  commands:
+    - hide_levels_all
+    - show_levels_all
+    - 'window togglelevel'
+  contact: 'vague!#irssi@freenode on irc'
+  default_package: toggle_winlevels
+  description: 'Toggle hidden levels on per window basis'
+  licence: GPLv2
+  modified: '2018-01-03 15:14:11'
+  name: toggle_winlevels
+  version: '0.3'
