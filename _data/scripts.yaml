@@ -4429,15 +4429,15 @@
   url: 'http://scripts.irssi.org & https://github.com/avar/dotfiles/blob/master/.irssi/scripts/slack_strip_auto_cc.pl'
   version: '1.0'
 -
-  authors: 'Christian Brassat'
-  contact: crshd@mail.com
-  description: 'This script hides join/part messages.'
+  authors: 'Christian Brassat, Niall Bunting, Walter Hop and Frantisek Sumsal'
+  contact: irssi-smartfilter@spam.lifeforms.nl
+  description: 'Improved smart filter for join, part, quit, nick messages`'
   filename: smartfilter.pl
   license: BSD
-  modified: '2014-06-26 18:46:20'
+  modified: '2015-12-28'
   name: smartfilter.pl
-  url: http://crshd.github.io
-  version: '0.1'
+  url: https://github.com/lifeforms/irssi-smartfilter
+  version: '0.4'
 -
   authors: 'Jonne Piittinen'
   commands: smiley
