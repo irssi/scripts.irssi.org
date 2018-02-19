@@ -4431,10 +4431,10 @@
 -
   authors: 'Christian Brassat, Niall Bunting, Walter Hop and Frantisek Sumsal'
   contact: irssi-smartfilter@spam.lifeforms.nl
-  description: 'Improved smart filter for join, part, quit, nick messages`'
+  description: 'Improved smart filter for join, part, quit, nick messages'
   filename: smartfilter.pl
   license: BSD
-  modified: '2015-12-28'
+  modified: '2018-01-30 08:20:44'
   name: smartfilter.pl
   url: https://github.com/lifeforms/irssi-smartfilter
   version: '0.4'
