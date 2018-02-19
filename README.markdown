@@ -210,7 +210,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                        hitcount ](Test/hitcount/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
 [                           hlbot ](Test/hlbot/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
 [                              hl ](Test/hl/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
-[                        hlscroll ](Test/hlscroll/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[                        hlscroll ](Test/hlscroll/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        hostname ](Test/hostname/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                          identd ](Test/identd/)|  ✔   |  ✔   |  ✔   |  2   |  ✔   | (c)
 [                    identify-md5 ](Test/identify-md5/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -432,7 +432,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                  slack_complete ](Test/slack_complete/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                     slack_emoji ](Test/slack_emoji/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [             slack_strip_auto_cc ](Test/slack_strip_auto_cc/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
-[                     smartfilter ](Test/smartfilter/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
+[                     smartfilter ](Test/smartfilter/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                          smiley ](Test/smiley/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                      smshilight ](Test/smshilight/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                             sms ](Test/sms/)|  ✔   |  ✔   |  ✔   | 77   |  ✔   | (c)
@@ -527,4 +527,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-3721026d4b69d267a3067e772df2bc1c0eef1c64 | 1066
+aebc50a2b8363adf28f277c157b9e76fd59d979a | 1067

@@ -1,11 +1,12 @@
 ---
 -
-  authors: 'Christian Brassat'
-  changed: 2012-10-02
-  contact: crshd@mail.com
+  authors: 'Christian Brassat, Niall Bunting, Walter Hop and Frantisek Sumsal'
+  changed: 2015-12-28
+  contact: irssi-smartfilter@spam.lifeforms.nl
   default_package: smartfilter
-  description: 'This script hides join/part messages.'
+  description: 'Improved smart filter for join, part, quit, nick messages'
   license: BSD
+  modified: '2018-01-30 08:20:44'
   name: smartfilter.pl
-  url: http://crshd.github.io
-  version: '0.1'
+  url: https://github.com/lifeforms/irssi-smartfilter
+  version: '0.4'
