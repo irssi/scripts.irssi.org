@@ -1,10 +1,12 @@
+use strict;
+use warnings;
 use 5.014;
 use utf8;
 use Encode;
 use Irssi;
 use POSIX ();
 
-our $VERSION = "1.4";
+our $VERSION = "1.5";
 our %IRSSI = (
     authors     => 'David Leadbeater',
     contact     => 'dgl@dgl.cx',
@@ -80,14 +82,14 @@ my %SITES = (
     items => [
       {
         domain => "youtu.be",
-        example => "http://youtu.be/wa1c6EU2bY0",
-        expected => "I Am The Resurrection (Remastered)",
+        example => "http://youtu.be/ghGoI7xVtSI",
+        expected => "Rick Astley - Never Gonna Give You Up (Live 1987)",
       },
       {
         domain => "youtube.com",
         path => "/watch",
-        example => "https://www.youtube.com/watch?v=q99JgYrgzco&list=PLE57B71744156439A",
-        expected => "I Wanna Be Adored (Remastered)",
+        example => "https://www.youtube.com/watch?v=ghGoI7xVtSI",
+        expected => "Rick Astley - Never Gonna Give You Up (Live 1987)",
       },
     ],
   },
@@ -111,7 +113,9 @@ my %SITES = (
     domain => "gist.github.com",
     from => ["og:title", "description"],
     example => "https://gist.github.com/dgl/792206",
-    expected => "dgl/installblead: An install script that installs a development version of perl (from git) and keeps a particular set of modules installed. Sort of perlbrew for blead, but not quite.",
+    expected => "An install script that installs a development version of perl (from ".
+                "git) and keeps a particular set of modules installed. Sort of ".
+                "perlbrew for blead, but not quite.",
   },
   github => {
     domain => "github.com",
@@ -237,7 +241,7 @@ sub msg {
 
   my $msg_time = time;
   my $tag = $server->{tag};
-  my $target = $target || $nick;
+  $target = $target || $nick;
   $text = Irssi::strip_codes($text);
 
   if (my($url) = $text =~ $URL_RE) {
