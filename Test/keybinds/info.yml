@@ -1,7 +1,7 @@
 ---
 -
   authors: 'Geert Hauwaerts'
-  changed: 'Tue Nov  4 16:49:20 CET 2003'
+  changed: 2018-02-19
   commands:
     - azerty
     - qwerty
@@ -9,6 +9,7 @@
   default_package: keybinds
   description: 'This script will set the proper keybindings on /AZERTY and /QWERTY.'
   license: 'Public Domain'
+  modified: '2018-02-19 23:54:10'
   name: keybindings.pl
   url: http://irssi.hauwaerts.be/keybindings.pl
-  version: '0.01'
+  version: '0.02'

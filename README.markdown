@@ -251,7 +251,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                        keepnick ](Test/keepnick/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
 [                           kenny ](Test/kenny/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                          kernel ](Test/kernel/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                        keybinds ](Test/keybinds/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                        keybinds ](Test/keybinds/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                           kicks ](Test/kicks/)|  ✔   |  ✔   |  ✔   | 25   |  ✔   | (c)
 [                  kill_fake_gets ](Test/kill_fake_gets/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                           kills ](Test/kills/)|  ✔   |  ✔   |  ✔   | 17   |  ✔   | (c)
@@ -462,7 +462,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                           tlock ](Test/tlock/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       tmux_away ](Test/tmux_away/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [          tmux-nicklist-portable ](Test/tmux-nicklist-portable/)|  ✔   |  ✔   |  ✔   |  8   |  ✔   | (c)
-[                toggle_winlevels ](Test/toggle_winlevels/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
+[                toggle_winlevels ](Test/toggle_winlevels/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                          toilet ](Test/toilet/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
 [                        topicsed ](Test/topicsed/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
 [                          topics ](Test/topics/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -528,4 +528,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-62163c3e5680978947cf39d9400748f18cf27e69 | 1068
+9229b6f030068704faff821e26971cb22d8cc8db | 1071
