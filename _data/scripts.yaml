@@ -2585,10 +2585,10 @@
   description: 'This script will set the proper keybindings on /AZERTY and /QWERTY.'
   filename: keybinds.pl
   license: 'Public Domain'
-  modified: '2003-11-04 16:49:20'
+  modified: '2018-02-19 23:54:10'
   name: keybindings.pl
   url: http://irssi.hauwaerts.be/keybindings.pl
-  version: '0.01'
+  version: '0.02'
 -
   authors: c0ffee
   contact: c0ffee@penguin-breeder.org
