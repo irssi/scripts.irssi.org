@@ -21,10 +21,11 @@
 ##
 
 use strict;
+use utf8;
 use Irssi;
 use vars qw($VERSION %IRSSI);
 
-$VERSION = "0.01";
+$VERSION = "0.02";
 
 %IRSSI = (
     authors     => 'Geert Hauwaerts',
@@ -33,7 +34,7 @@ $VERSION = "0.01";
     description => 'This script will set the proper keybindings on /AZERTY and /QWERTY.',
     license     => 'Public Domain',
     url         => 'http://irssi.hauwaerts.be/keybindings.pl',
-    changed     => 'Tue Nov  4 16:49:20 CET 2003',
+    changed     => '2018-02-19',
 );
 
 Irssi::theme_register([
@@ -77,15 +78,15 @@ sub azerty {
     Irssi::command("^BIND meta-L change_window 49");
     Irssi::command("^BIND meta-M change_window 50");
     Irssi::command("^BIND meta-& change_window 1");
-    Irssi::command("^BIND meta-é change_window 2");
+    Irssi::command("^BIND meta-Ã© change_window 2");
     Irssi::command("^BIND meta-\" change_window 3");
     Irssi::command("^BIND meta-' change_window 4");
     Irssi::command("^BIND meta-( change_window 5");
-    Irssi::command("^BIND meta-§ change_window 6");
-    Irssi::command("^BIND meta-è change_window 7");
+    Irssi::command("^BIND meta-Â§ change_window 6");
+    Irssi::command("^BIND meta-Ã¨ change_window 7");
     Irssi::command("^BIND meta-! change_window 8");
-    Irssi::command("^BIND meta-ç change_window 9");
-    Irssi::command("^BIND meta-à change_window 10");
+    Irssi::command("^BIND meta-Ã§ change_window 9");
+    Irssi::command("^BIND meta-Ã  change_window 10");
     Irssi::command("^BIND meta-x command window last");
     Irssi::command("^BIND meta-N command /mark");
 
@@ -128,15 +129,15 @@ sub qwerty {
     Irssi::command("^BIND meta-L change_window 49");
     Irssi::command("^BIND meta-M change_window 50");
     Irssi::command("^BIND meta-& change_window 1");
-    Irssi::command("^BIND meta-é change_window 2");
+    Irssi::command("^BIND meta-Ã© change_window 2");
     Irssi::command("^BIND meta-\" change_window 3");
     Irssi::command("^BIND meta-' change_window 4");
     Irssi::command("^BIND meta-( change_window 5");
-    Irssi::command("^BIND meta-§ change_window 6");
-    Irssi::command("^BIND meta-è change_window 7");
+    Irssi::command("^BIND meta-Â§ change_window 6");
+    Irssi::command("^BIND meta-Ã¨ change_window 7");
     Irssi::command("^BIND meta-! change_window 8");
-    Irssi::command("^BIND meta-ç change_window 9");
-    Irssi::command("^BIND meta-à change_window 10");
+    Irssi::command("^BIND meta-Ã§ change_window 9");
+    Irssi::command("^BIND meta-Ã  change_window 10");
     Irssi::command("^BIND meta-x command window last");
     Irssi::command("^BIND meta-N command /mark");
 
