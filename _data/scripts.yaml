@@ -4220,11 +4220,11 @@
   description: 'keeps your scripts on the cutting edge'
   filename: scriptassist.pl
   license: GPLv2
-  modified: '2018-02-01 16:29:26'
+  modified: '2018-02-22 15:18:03'
   modules: LWP::UserAgent
   name: scriptassist
   url: http://irssi.org/scripts/
-  version: '2003020805'
+  version: '2003020806'
 -
   authors: "Maciek 'fahren' Freudenheim"
   contact: fahren@bochnia.pl
