@@ -27,3 +27,4 @@ Return value of "close" ignored at line 992, column 3.  Check the return value o
 Subroutine "new" called using indirect syntax at line 996, column 17.  See page 349 of PBP.  (Severity: 4)
 Mismatched operator at line 1054, column 42.  Numeric/string operators and operands should match.  (Severity: 3)
 Mismatched operator at line 1055, column 27.  Numeric/string operators and operands should match.  (Severity: 3)
+Mismatched operator at line 1056, column 16.  Numeric/string operators and operands should match.  (Severity: 3)
