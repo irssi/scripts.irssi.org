@@ -6,7 +6,7 @@ use Encode;
 use Irssi;
 use POSIX ();
 
-our $VERSION = "1.5";
+our $VERSION = "1.6";
 our %IRSSI = (
     authors     => 'David Leadbeater',
     contact     => 'dgl@dgl.cx',
@@ -48,6 +48,9 @@ BEGIN {
 #
 # /SET urlinfo_ignore_targets freenode #something efnet/#example
 #   Space separated list of targets to ignore.
+#
+# /SET urlinfo_send_channels freenode #something efnet/#example
+#   Space separated list of targets to post in the channel.
 #
 # /SET urlinfo_custom_domains my\.domain/thing irssi\.org=description
 #   A limited way of configuring custom domains, if you need something more
@@ -281,13 +284,31 @@ sub msg {
       # I'm sure I shouldn't have to care about colours here...
       my $pad = length Irssi::strip_codes($timestamp);
 
-      my $text = $win->format_get_text(__PACKAGE__, $server, $target,
-        "urlinfo", " " x $pad, $in);
-      $win->print_after($line, MSGLEVEL_NO_ACT|MSGLEVEL_CLIENTCRAP,
-        $text, $msg_time);
-      $view->redraw;
+      if (not(send2channel($server,$target,$url,$in))) {
+        my $text = $win->format_get_text(__PACKAGE__, $server, $target,
+          "urlinfo", " " x $pad, $in);
+        $win->print_after($line, MSGLEVEL_NO_ACT|MSGLEVEL_CLIENTCRAP,
+          $text, $msg_time);
+        $view->redraw;
+      }
     });
   }
+}
+
+sub send2channel {
+  my ($server,$target,$url,$in) =@_;
+  my @cl= split(" ",Irssi::settings_get_str('urlinfo_send_channels'));
+  my $s=0;
+
+  foreach ( @cl) {
+    if ( $_ eq $target || $_ eq $server->{tag}."/".$target) {
+      $s=1;
+      $server->command("msg $target urlinfo: $url -> $in");
+      last;
+    }
+  }
+
+  return $s;
 }
 
 sub ignored {
@@ -396,6 +417,7 @@ if (caller) {
   Irssi::settings_add_str($IRSSI{name}, "urlinfo_custom_domains", "");
   Irssi::settings_add_str($IRSSI{name}, "urlinfo_ignore_domains", "");
   Irssi::settings_add_str($IRSSI{name}, "urlinfo_ignore_targets", "");
+  Irssi::settings_add_str($IRSSI{name}, "urlinfo_send_channels", "");
   Irssi::settings_add_int($IRSSI{name}, "urlinfo_timeout", $timeout);
   Irssi::settings_add_bool($IRSSI{name}, "urlinfo_title_unknown", 0);
 
