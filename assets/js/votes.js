@@ -56,7 +56,7 @@
 		+ 'repo:' + url + ';sort=updated';
 	jj(start).done(function(r) {
 	    var hasMore = fetchNext('search', r.meta, searchVotes);
-	    if (hasMore) todo++;
+	    if (hasMore) { todo++; }
 	    r.data.items.forEach(function(e) {
 		if (stopId && e.number > stopId) return;
 		if (e.title != "votes") return;
@@ -76,7 +76,7 @@
     }
 
     function rateTimeout(what) {
-	if ($.isEmptyObject(ghLimits[what])) return -1;
+	if ($.isEmptyObject(ghLimits[what])) { return -1; }
 
 	var remaining = ghLimits[what].remaining;
 	var rateReset = ghLimits[what].reset;
@@ -91,8 +91,8 @@
     }
 
     function updateLimits(what, meta) {
-	ghLimits[what].remaining = meta['X-RateLimit-Remaining'];
-	ghLimits[what].reset = meta['X-RateLimit-Reset'];
+	ghLimits[what].remaining = ~~ meta['X-RateLimit-Remaining'];
+	ghLimits[what].reset = ~~ meta['X-RateLimit-Reset'];
     }
 
     function fetchNext(what, meta, how) {
@@ -130,9 +130,10 @@
 		    var votes = 1+ e.reactions['+1'] - e.reactions['-1'];
 		    var link = "＊";
 		    if (e.reactions['heart'] >= votes) link = "💜";
-		    row.html( "" + votes );
+		    row.html( "" + (e.reactions['+1'] == 0 && e.reactions['-1'] == 0 ? "" : votes-1)  );
 		    row.append("<span><a data-toggle=\"tooltip\" title=\"vote on github\" href=\""
 			       + e.html_url + "\">"+link+"</a></span>");
+		    row.attr("sorttable_customkey", 9999+votes);
 		}
 		return false;
 	    });
