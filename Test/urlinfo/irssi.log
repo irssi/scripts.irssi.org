@@ -1,3 +1,1 @@
-* "my" variable $target masks earlier declaration in same scope at urlinfo.pl line 240.
-* 
 * -!- Irssi: Loaded script urlinfo

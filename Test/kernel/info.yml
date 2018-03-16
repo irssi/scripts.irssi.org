@@ -1,13 +1,16 @@
 ---
 -
   authors: 'Johan "Ion" Kiviniemi'
-  changed: 'Tue Mar 12 22:20 EET 2002'
+  changed: 2018-03-11
   commands:
     - kernel_version
   contact: 'ion at hassers.org'
   default_package: kernel
   description: 'Fetches the version(s) of the latest Linux kernel(s).'
   license: 'Public Domain'
+  modified: '2018-03-11 20:53:39'
+  modules:
+    - LWP::Simple
   name: Kernel
-  url: http://ion.amigafin.org/irssi/
-  version: '0.9'
+  url: http://scripts.irssi.org/
+  version: '0.10'
