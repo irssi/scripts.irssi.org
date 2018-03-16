@@ -2574,10 +2574,11 @@
   description: 'Fetches the version(s) of the latest Linux kernel(s).'
   filename: kernel.pl
   license: 'Public Domain'
-  modified: '2002-03-12 22:20:00'
+  modified: '2018-03-11 20:53:39'
+  modules: LWP::Simple
   name: Kernel
-  url: http://ion.amigafin.org/irssi/
-  version: '0.9'
+  url: http://scripts.irssi.org/
+  version: '0.10'
 -
   authors: 'Geert Hauwaerts'
   commands: 'azerty qwerty'
@@ -5027,11 +5028,11 @@
   description: 'Print short summaries about URLs from known services that are mentioned on IRC. (Including YouTube, etc.)'
   filename: urlinfo.pl
   license: 'WTFPL <http://dgl.cx/licence>'
-  modified: '2016-05-21 20:22:57'
+  modified: '2018-02-23 09:46:28'
   modules: 'HTML::TreeBuilder URI'
   name: urlinfo
   url: http://dgl.cx/irssi
-  version: '1.4'
+  version: '1.6'
 -
   authors: bwolf
   commands: url
