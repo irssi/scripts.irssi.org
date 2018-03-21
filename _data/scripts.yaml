@@ -4742,13 +4742,13 @@
   version: '2.1'
 -
   authors: 'Jari Matilainen'
-  commands: 'hide_levels_all show_levels_all'
+  commands: 'dump_window_hash hide_levels_all show_levels_all'
   contact: 'vague!#irssi@freenode on irc'
   description: 'Toggle hidden levels on per window basis'
   filename: toggle_winlevels.pl
-  modified: '2018-01-03 15:14:11'
+  modified: '2018-03-16 11:00:27'
   name: toggle_winlevels
-  version: '0.3'
+  version: 0.3.1
 -
   authors: bcattaneo
   commands: toilet
