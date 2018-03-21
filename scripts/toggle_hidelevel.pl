@@ -12,11 +12,11 @@ use Irssi::TextUI;
 use Data::Dumper;
 use vars qw($VERSION %IRSSI);
 
-$VERSION = "0.3.1";
+$VERSION = "0.3.2";
 %IRSSI = (
           authors       => 'Jari Matilainen',
           contact       => 'vague!#irssi@freenode on irc',
-          name          => 'toggle_winlevels',
+          name          => 'toggle_hidelevel',
           description   => 'Toggle hidden levels on per window basis',
           licence       => "GPLv2",
           changed       => "17.01.2018 01:00pm CET"
