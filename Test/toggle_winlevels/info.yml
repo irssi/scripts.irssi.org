@@ -3,6 +3,7 @@
   authors: 'Jari Matilainen'
   changed: '17.01.2018 01:00pm CET'
   commands:
+    - dump_window_hash
     - hide_levels_all
     - show_levels_all
     - 'window togglelevel'
@@ -10,6 +11,6 @@
   default_package: toggle_winlevels
   description: 'Toggle hidden levels on per window basis'
   licence: GPLv2
-  modified: '2018-01-03 15:14:11'
+  modified: '2018-03-16 11:00:27'
   name: toggle_winlevels
-  version: '0.3'
+  version: 0.3.1
