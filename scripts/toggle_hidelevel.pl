@@ -16,10 +16,10 @@ $VERSION = "0.3.2";
 %IRSSI = (
           authors       => 'Jari Matilainen',
           contact       => 'vague!#irssi@freenode on irc',
-          name          => 'toggle_winlevels',
-          description   => 'DEPRECATED!! Download toggle_hidelevel instead',
+          name          => 'toggle_hidelevel',
+          description   => 'Toggle hidden levels on per window basis',
           licence       => "GPLv2",
-          changed       => "17.01.2018 01:00pm CET"
+          changed       => "21.03.2018 23:00pm CET"
 );
 
 my $windows;
