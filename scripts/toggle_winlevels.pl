@@ -12,7 +12,7 @@ use Irssi::TextUI;
 use Data::Dumper;
 use vars qw($VERSION %IRSSI);
 
-$VERSION = "0.3";
+$VERSION = "0.3.1";
 %IRSSI = (
           authors       => 'Jari Matilainen',
           contact       => 'vague!#irssi@freenode on irc',
@@ -34,7 +34,7 @@ sub set_mode_all {
 
 sub set_mode {
   my ($win, $mode) = @_;
-  my $lvlbits = ($win->view->{hidden_level} - Irssi::level2bits('HIDDEN')) || $windows->{$win->{refnum}}{levels} - Irssi::level2bits('HIDDEN');
+  my $lvlbits = ($win->view->{hidden_level} - Irssi::level2bits('HIDDEN')) || ($windows->{$win->{refnum}}{levels} ? $windows->{$win->{refnum}}{levels} - Irssi::level2bits('HIDDEN') : 0);
   my $levels = Irssi::bits2level($lvlbits);
   my $val;
 
@@ -107,11 +107,17 @@ Irssi::command_bind_last('window hidelevel' => sub {
   }
 });
 
+Irssi::command_bind('dump_window_hash' => sub {
+  for my $key (keys %$windows) {
+    warn Dumper($key, Irssi::bits2level($windows->{$key}{levels}), $windows->{$key}{mode});
+  }
+});
+
 Irssi::settings_add_level('lookandfeel', 'window_default_hidden_level', 'HIDDEN');
 
 for my $win (Irssi::windows) {
   my $view = $win->view();
-  my $levels = $win->view->{hidden_level};
-  $windows->{$win->{refnum}}{levels} = $levels - Irssi::level2bits('HIDDEN') ? $levels : Irssi::settings_get_level('window_default_hidden_level');
-  $windows->{$win->{refnum}}{mode}   = $levels - Irssi::level2bits('HIDDEN') ? 1 : 0;
+  my $levels = ($view->{hidden_level} ? $view->{hidden_level} - Irssi::level2bits('HIDDEN') : 0) || ($windows->{$win->{refnum}}{levels} ? $windows->{$win->{refnum}}{levels} - Irssi::level2bits('HIDDEN') : 0);
+  $windows->{$win->{refnum}}{levels} = $levels // Irssi::settings_get_level('window_default_hidden_level');
+  $windows->{$win->{refnum}}{mode}   = $levels ? 1 : 0;
 }
