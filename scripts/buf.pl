@@ -4,10 +4,10 @@ use Storable;
 use 5.014000;
 use Data::Dumper;
 
-use Irssi qw(command signal_add signal_add_first active_win
-             settings_get_str settings_get_bool channels windows
-	     settings_add_str settings_add_bool get_irssi_dir
-	     window_find_refnum signal_stop);
+use Irssi v1.2 qw(command signal_add signal_add_first active_win
+                  settings_get_str settings_get_bool channels windows
+                  settings_add_str settings_add_bool get_irssi_dir
+                  window_find_refnum signal_stop);
 $VERSION = '3.00';
 %IRSSI = (
   authors	=> 'Juerd',
@@ -18,7 +18,7 @@ $VERSION = '3.00';
   url		=> 'http://juerd.nl/irssi/',
   changed	=> 'Mon Mar 26 09:00 CEST 2018',
   changes	=> <<EOB
-v3.00: Print buffers to their original levels to be able to use /window hidelevel
+v3.00: Print buffers to their original levels to be able to use /window hidelevel (vague)
 v2.20: Fixed file permissions (leaked everything via filesystem)
 EOB
 ,
