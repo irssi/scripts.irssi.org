@@ -692,17 +692,6 @@
   name: betterlist
   version: '2.1'
 -
-  authors: '[^BgTA^]'
-  commands: 'bgdebian bggoogle bghelp bgperl bgphp bgphpwb bgversion bgwwwd'
-  contact: raul@bgta.net
-  description: "Byte's Gallery of the TAilor Script"
-  filename: bgta.pl
-  license: 'Public Domain'
-  modified: '2008-05-17 17:39:11'
-  modules: 'LWP Net::Google'
-  name: 'BgTA Script'
-  version: 0.0.1
--
   authors: 'Carl Fischer'
   commands: 'binary unbinary'
   contact: carl.fischer@netcourrier.com
