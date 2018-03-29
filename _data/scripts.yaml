@@ -823,10 +823,10 @@
   description: 'Saves the buffer for /upgrade, so that no information is lost'
   filename: buf.pl
   license: 'Public Domain'
-  modified: '2016-09-22 02:26:09'
+  modified: '2018-03-29 13:14:39'
   name: 'Scroll buffer restorer'
   url: http://juerd.nl/irssi/
-  version: '2.20'
+  version: '3.00'
 -
   authors: 'Pablo Martín Báez Echevarría'
   commands: buffer
