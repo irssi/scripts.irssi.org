@@ -88,14 +88,14 @@ sub restore {
         my $view = $window->view;
         $view->remove_all_lines();
         $view->redraw();
-        my $sep = settings_get_str 'upgrade_separator';
-        $sep .= "\n" if $sep ne '';
-        $window->gui_printtext_after(undef, MSGLEVEL_CLIENTNOTICE, "\cO$sep\n");
         for my $line (@lines) {
             my $level = $line->{level};
             my $data  = $line->{data};
             $window->gui_printtext_after($window->last_line_insert, $level, "$data\n");
         }
+        my $sep = settings_get_str 'upgrade_separator';
+        $sep .= "\n" if $sep ne '';
+        $window->gui_printtext_after($window->last_line_insert, MSGLEVEL_CLIENTNOTICE, "\cO$sep\n");
         $view->redraw();
     }
     active_win->command('^window scroll on');
