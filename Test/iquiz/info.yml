@@ -23,6 +23,7 @@
   default_package: iquiz
   description: 'irssi quiz script'
   license: 'GNU GPL v3 or any later version'
+  modified: '2017-09-06 20:23:36'
   name: iQuiz
   url: http://iquiz.quizpl.net
   usage: 'see http://www.quizpl.net/viewtopic.php?f=3&t=587'

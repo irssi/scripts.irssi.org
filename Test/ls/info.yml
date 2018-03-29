@@ -8,6 +8,7 @@
   default_package: ls
   description: 'Use /ls <regex> to show all nicks (including ident@host) matching regex in the current channel'
   license: 'Public Domain'
+  modified: '2017-09-17 06:18:46'
   name: 'List nicks in channel'
   url: http://www.penguin-breeder.org/irssi/
   version: '0.03'

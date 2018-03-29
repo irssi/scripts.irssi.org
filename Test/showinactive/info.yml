@@ -6,5 +6,6 @@
   default_package: showinactive
   description: 'Show whatever needs your attention in active window, and cleans your windows afterwards.  Also provides a hilight window.  This is a combination of the hilightwin, noisyquery and showhilight scripts'
   license: 'GNU GPLv2'
+  modified: '2017-09-06 16:07:03'
   name: showinactive
   version: '1.0'
