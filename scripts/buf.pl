@@ -94,7 +94,7 @@ sub restore {
         }
         my $sep = settings_get_str 'upgrade_separator';
         $sep .= "\n" if $sep ne '';
-        $window->gui_printtext_after($window->last_line_insert, MSGLEVEL_CLIENTNOTICE, "\cO$sep\n");
+        $window->gui_printtext_after($window->last_line_insert, MSGLEVEL_CLIENTNOTICE, "\cO$sep");
         $view->redraw();
     }
     active_win->command('^window scroll on');
