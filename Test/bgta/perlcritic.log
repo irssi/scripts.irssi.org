@@ -1,8 +1,0 @@
-Code before warnings are enabled at line 11, column 1.  See page 431 of PBP.  (Severity: 4)
-Subroutine "new" called using indirect syntax at line 95, column 18.  See page 349 of PBP.  (Severity: 4)
-Subroutine "new" called using indirect syntax at line 138, column 18.  See page 349 of PBP.  (Severity: 4)
-Capture variable used outside conditional at line 144, column 13.  See page 253 of PBP.  (Severity: 3)
-Capture variable used outside conditional at line 145, column 10.  See page 253 of PBP.  (Severity: 3)
-Subroutine "new" called using indirect syntax at line 182, column 18.  See page 349 of PBP.  (Severity: 4)
-Subroutine "new" called using indirect syntax at line 222, column 18.  See page 349 of PBP.  (Severity: 4)
-Subroutine "new" called using indirect syntax at line 259, column 18.  See page 349 of PBP.  (Severity: 4)
