@@ -4,26 +4,22 @@ use Storable;
 use 5.014000;
 use Data::Dumper;
 
-use Irssi v1.2 qw(command signal_add signal_add_first active_win
-                  settings_get_str settings_get_bool channels windows
-                  settings_add_str settings_add_bool get_irssi_dir
-                  window_find_refnum signal_stop);
+use Irssi qw(command signal_add signal_add_first active_win
+             settings_get_str settings_get_bool channels windows
+             settings_add_str settings_add_bool get_irssi_dir
+             window_find_refnum signal_stop);
 $VERSION = '3.00';
 %IRSSI = (
-  authors	=> 'Juerd',
-  contact	=> 'juerd@juerd.nl',
-  name		=> 'Scroll buffer restorer',
-  description	=> 'Saves the buffer for /upgrade, so that no information is lost',
-  license	=> 'Public Domain',
-  url		=> 'http://juerd.nl/irssi/',
-  changed	=> 'Mon Mar 26 09:00 CEST 2018',
-  changes	=> <<EOB
-v3.00: Print buffers to their original levels to be able to use /window hidelevel (vague)
-v2.20: Fixed file permissions (leaked everything via filesystem)
-EOB
-,
-  note1		=> 'This script HAS TO BE in your scripts/autorun!',
-  note2		=> 'Perl support must be static or in startup',
+    authors     => 'Juerd',
+    contact     => 'juerd@juerd.nl',
+    name        => 'Scroll buffer restorer',
+    description => 'Saves the buffer for /upgrade, so that no information is lost',
+    license     => 'Public Domain',
+    url         => 'http://juerd.nl/irssi/',
+    changed     => 'Thu Sep 22 01:37 CEST 2016',
+    changes     => 'Fixed file permissions (leaked everything via filesystem)',
+    note1       => 'This script HAS TO BE in your scripts/autorun!',
+    note2       => 'Perl support must be static or in startup',
 );
 
 # Q: How can I get a very smooth and clean upgrade?
@@ -47,75 +43,74 @@ my %suppress;
 sub _filename { sprintf '%s/scrollbuffer', get_irssi_dir }
 
 sub upgrade {
-  my $out = { suppress => join("\0", map $_->{server}->{address} . $_->{name}, channels) };
-  for my $window (windows) {
-    next unless defined $window;
-    next if $window->{name} eq 'status';
-    my $view = $window->view;
-    my $line = $view->get_lines;
-    my $lines  = 0;
-    my $buf = '';
-    my $output;
-    if (defined $line) {
-      {
-        push @$output, { level => $line->{info}{level}, data => $line->get_text(1) };
-        $line = $line->next;
-        redo if defined $line;
-      }
+    my $out = { suppress => join("\0", map $_->{server}->{address} . $_->{name}, channels) };
+    for my $window (windows) {
+        next unless defined $window;
+        next if $window->{name} eq 'status';
+        my $view = $window->view;
+        my $line = $view->get_lines;
+        my $lines  = 0;
+        my $buf = '';
+        my $output;
+        if (defined $line) {
+            {
+              push @$output, { level => $line->{info}{level}, data => $line->get_text(1) };
+              $line = $line->next;
+              redo if defined $line;
+            }
+        }
+        push @{$out->{windows}}, { refnum => $window->{refnum}, lines => $output };
     }
-    push @{$out->{windows}}, { refnum => $window->{refnum}, lines => $output };
-  }
-  my $old_umask = umask 0077;
-  store($out, _filename) or die $!;
-  umask $old_umask;
-  unlink sprintf("%s/sessionconfig", get_irssi_dir);
-  command 'layout save';
-  command 'save';
+    my $old_umask = umask 0077;
+    store($out, _filename) or die $!;
+    umask $old_umask;
+    unlink sprintf("%s/sessionconfig", get_irssi_dir);
+    command 'layout save';
+    command 'save';
 }
 
 sub restore {
-  my $fn = _filename;
-  my $in = retrieve($fn) or die $!;
-  unlink $fn;
-
-  my @suppress = split /\0/, $in->{suppress};
-  @suppress{@suppress} = (2) x @suppress if (settings_get_bool 'upgrade_suppress_join');
-
-  active_win->command('^window scroll off');
-  for my $win (@{$in->{windows}}) {
-    my $window = window_find_refnum $win->{refnum};
-    next unless $window;
-    my @lines  = ref $win->{lines} eq 'ARRAY' ? @{$win->{lines}} : ();
-    next unless @lines;
-
-    my $view = $window->view;
-    $view->remove_all_lines();
-    $view->redraw();
-    my $sep = settings_get_str 'upgrade_separator';
-    $sep .= "\n" if $sep ne '';
-    $window->gui_printtext_after(undef, MSGLEVEL_CLIENTNOTICE, "\cO$sep\n");
-    for my $line (@lines) {
-      my $level = $line->{level};
-      my $data  = $line->{data};
-      $window->gui_printtext_after($window->last_line_insert, $level, "$data\n");
-#      $window->print($data, $level);
+    my $fn = _filename;
+    my $in = retrieve($fn) or die $!;
+    unlink $fn;
+  
+    my @suppress = split /\0/, $in->{suppress};
+    @suppress{@suppress} = (2) x @suppress if (settings_get_bool 'upgrade_suppress_join');
+  
+    active_win->command('^window scroll off');
+    for my $win (@{$in->{windows}}) {
+        my $window = window_find_refnum $win->{refnum};
+        next unless $window;
+        my @lines  = @{ $win->{lines} || [] };
+        next unless @lines;
+    
+        my $view = $window->view;
+        $view->remove_all_lines();
+        $view->redraw();
+        my $sep = settings_get_str 'upgrade_separator';
+        $sep .= "\n" if $sep ne '';
+        $window->gui_printtext_after(undef, MSGLEVEL_CLIENTNOTICE, "\cO$sep\n");
+        for my $line (@lines) {
+            my $level = $line->{level};
+            my $data  = $line->{data};
+            $window->gui_printtext_after($window->last_line_insert, $level, "$data\n");
+        }
+        $view->redraw();
     }
-    $view->redraw();
-  }
-  active_win->command('^window scroll on');
-  active_win->command('^scrollback end');
+    active_win->command('^window scroll on');
+    active_win->command('^scrollback end');
 }
 
 sub suppress {
-  my ($first, $second) = @_;
-  return unless scalar keys %suppress and settings_get_bool 'upgrade_suppress_join';
-  my $key_part = (grep { /^:?[#!+&]/ } split ' ', $second)[0];
-  $key_part =~ s/^://;
-  my $key = $first->{address} . $key_part;
-  if (exists $suppress{$key} and $suppress{$key}--) {
-    signal_stop();
-    delete $suppress{$key} unless $suppress{$key};
-  }
+    my ($first, $second) = @_;
+    return unless scalar keys %suppress and settings_get_bool 'upgrade_suppress_join';
+    my $key_part = (grep { /^:?[#!+&]/ } split ' ', $second)[0];
+    $key_part =~ s/^://;
+    my $key = $first->{address} . $key_part;
+    if (exists $suppress{$key} and $suppress{$key}--) {
+        signal_stop();
+        delete $suppress{$key} unless $suppress{$key};
+    }
 }
 
 settings_add_str  'buffer', 'upgrade_separator'     => '=Upgrade=';
@@ -127,12 +122,12 @@ signal_add       'event 366'       => 'suppress';
 signal_add       'event join'      => 'suppress';
 
 unless (-f sprintf('%s/scripts/autorun/buf.pl', get_irssi_dir)) {
-  Irssi::print('PUT THIS SCRIPT IN ~/.irssi/scripts/autorun/ BEFORE /UPGRADING!!');
+    Irssi::print('PUT THIS SCRIPT IN ~/.irssi/scripts/autorun/ BEFORE /UPGRADING!!');
 }
 
 # Remove any left-over file. If 'session' doesn't exist (created by irssi
 # during /UPGRADE), neither should our file.
 unless (-e sprintf('%s/session', get_irssi_dir)) {
-  my $fn = _filename;
-  unlink $fn or warn "unlink $fn: $!" if -e $fn;
+    my $fn = _filename;
+    unlink $fn or warn "unlink $fn: $!" if -e $fn;
 }
