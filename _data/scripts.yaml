@@ -4734,10 +4734,10 @@
   commands: 'dump_window_hash hide_levels_all show_levels_all'
   contact: 'vague!#irssi@freenode on irc'
   description: 'Toggle hidden levels on per window basis'
-  filename: toggle_winlevels.pl
-  modified: '2018-03-16 11:00:27'
-  name: toggle_winlevels
-  version: 0.3.1
+  filename: toggle_hidelevel.pl
+  modified: '2018-03-21 22:29:28'
+  name: toggle_hidelevel
+  version: 0.3.2
 -
   authors: bcattaneo
   commands: toilet
