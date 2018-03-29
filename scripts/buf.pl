@@ -62,7 +62,8 @@ sub upgrade {
         push @{$out->{windows}}, { refnum => $window->{refnum}, lines => $output };
     }
     my $old_umask = umask 0077;
-    store($out, _filename) or die $!;
+    my $fn = _filename;
+    store($out, $fn) or die "Could not store data to $fn";
     umask $old_umask;
     unlink sprintf("%s/sessionconfig", get_irssi_dir);
     command 'layout save';
@@ -71,7 +72,7 @@ sub upgrade {
 
 sub restore {
     my $fn = _filename;
-    my $in = retrieve($fn) or die $!;
+    my $in = retrieve($fn) or die "Could not retrieve data from $fn";
     unlink $fn;
   
     my @suppress = @{$in->{suppress}};
