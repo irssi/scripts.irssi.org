@@ -461,7 +461,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                           tlock ](Test/tlock/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       tmux_away ](Test/tmux_away/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [          tmux-nicklist-portable ](Test/tmux-nicklist-portable/)|  ✔   |  ✔   |  ✔   |  8   |  ✔   | (c)
-[                toggle_winlevels ](Test/toggle_winlevels/)|  ✔   |  ✔   |  ✔   |  2   |  ✔   | (c)
+[                toggle_hidelevel ](Test/toggle_hidelevel/)|  ✔   |  ✔   |  ✔   |  2   |  ✔   
 [                          toilet ](Test/toilet/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
 [                        topicsed ](Test/topicsed/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
 [                          topics ](Test/topics/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -527,4 +527,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-3ae582d1e8057e5edb4dadafc33a81742ced5911 | 1103
+5ffe483ceafbeb007604a463919dad1b328d3aa7 | 1104

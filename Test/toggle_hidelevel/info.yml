@@ -8,9 +8,9 @@
     - show_levels_all
     - 'window togglelevel'
   contact: 'vague!#irssi@freenode on irc'
-  default_package: toggle_winlevels
+  default_package: toggle_hidelevel
   description: 'Toggle hidden levels on per window basis'
   licence: GPLv2
-  modified: '2018-03-16 11:00:27'
-  name: toggle_winlevels
-  version: 0.3.1
+  modified: '2018-03-21 22:29:28'
+  name: toggle_hidelevel
+  version: 0.3.2
