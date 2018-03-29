@@ -93,7 +93,7 @@ sub restore {
             $window->gui_printtext_after($window->last_line_insert, $level, "$data\n");
         }
         my $sep = settings_get_str 'upgrade_separator';
-        $window->gui_printtext_after($window->last_line_insert, MSGLEVEL_CLIENTNOTICE, "\cO$sep\n") if defined $sep;
+        $window->gui_printtext_after($window->last_line_insert, MSGLEVEL_CLIENTNOTICE, "\cO$sep\n") if $sep ne '';
         $view->redraw();
     }
     active_win->command('^window scroll on');
