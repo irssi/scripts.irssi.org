@@ -21,6 +21,12 @@ if ((@tmp = grep /^\Q$tp\E::/, @packages) or (@tmp = grep /^\Q$tp\E/, @packages)
 }
 my ($package) = @packages;
 
+require Carp;
+$Carp::CarpInternal{ 'Irssi::Core' }++;
+$Carp::Internal{ (__PACKAGE__) }++;
+$Carp::Internal{ 'Perl::PrereqScanner' }++;
+$Carp::MaxEvalLen = 3;
+
 require YAML::Tiny;
 YAML::Tiny->VERSION("1.59");
 require Encode;

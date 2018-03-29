@@ -60,7 +60,7 @@ for scriptfile ($filelist) {
     perl -ne '$score += $1 -1 if /Severity: (\d+)/; END { printf "%3d", $score }' "Test/${scriptfile:t:r}/perlcritic.log" 2>/dev/null
     print -n '   '$T
     if [[ $pass -lt 3 ]]  {
-	if [[ -n $allow_fail[$scriptfile:t:r] ]] {
+	if [[ -n $allow_fail[$scriptfile:t:r] ]] || [[ ! -f scripts/${scriptfile:t:r}.pl ]] {
 	    print -n '  '$skipmark'   '
 	} \
 	else {

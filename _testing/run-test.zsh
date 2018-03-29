@@ -7,7 +7,11 @@ local test_script="$base_path/_testing/_irssi_test.pl"
 for scriptfile ($filelist) {
     rm -rf "Test/${scriptfile:t:r}"
     mkdir -p "Test/${scriptfile:t:r}"
-    perlcritic --theme certrule --exclude RequireEndWithOne -2 $scriptfile >"Test/${scriptfile:t:r}/perlcritic.log" 2>&1
+    if [[ ! -f scripts/${scriptfile:t:r}.pl ]] {
+	{echo "command not found: script ${scriptfile:t:r}";echo "test skipped"} >"Test/${scriptfile:t:r}/perlcritic.log"
+	continue
+    }
+    perlcritic --theme certrule --exclude RequireEndWithOne -2 scripts/${scriptfile:t:r}.pl >"Test/${scriptfile:t:r}/perlcritic.log" 2>&1
     pushd Test
     rm -fr .home
     mkdir .home
