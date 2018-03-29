@@ -43,7 +43,7 @@ my %suppress;
 sub _filename { sprintf '%s/scrollbuffer', get_irssi_dir }
 
 sub upgrade {
-    my $out = { suppress => join("\0", map $_->{server}->{address} . $_->{name}, channels) };
+    my $out = { suppress => [ map $_->{server}->{address} . $_->{name}, channels ] };
     for my $window (windows) {
         next unless defined $window;
         next if $window->{name} eq 'status';
@@ -74,7 +74,7 @@ sub restore {
     my $in = retrieve($fn) or die $!;
     unlink $fn;
   
-    my @suppress = split /\0/, $in->{suppress};
+    my @suppress = @{$in->{suppress}};
     @suppress{@suppress} = (2) x @suppress if (settings_get_bool 'upgrade_suppress_join');
   
     active_win->command('^window scroll off');
