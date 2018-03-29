@@ -2,7 +2,6 @@ use strict;
 use vars qw($VERSION %IRSSI);
 use Storable;
 use 5.014000;
-use Data::Dumper;
 
 use Irssi qw(command signal_add signal_add_first active_win
              settings_get_str settings_get_bool channels windows
@@ -73,7 +72,7 @@ sub upgrade {
 sub restore {
     my $fn = _filename;
     my $in = retrieve($fn) or die "Could not retrieve data from $fn";
-    unlink $fn or warn "unlink $fn: $!"
+    unlink $fn or warn "unlink $fn: $!";
   
     my @suppress = @{$in->{suppress}};
     @suppress{@suppress} = (2) x @suppress if (settings_get_bool 'upgrade_suppress_join');
