@@ -82,7 +82,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                         blowjob ](Test/blowjob/)|  ✔   |  ✔   |  ✔   | 22   |  ✔   | (c)
 [                             bmi ](Test/bmi/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                          buffer ](Test/buffer/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
-[                             buf ](Test/buf/)|  ✔   |  ✔   |  ✔   | 12   |  ✔   | (c)
+[                             buf ](Test/buf/)|  ✔   |  ✔   |  ✔   | 11   |  ✔   
 [                            calc ](Test/calc/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
 [                        callerid ](Test/callerid/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                     cap-extjoin ](Test/cap-extjoin/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
@@ -462,7 +462,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                           tlock ](Test/tlock/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       tmux_away ](Test/tmux_away/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [          tmux-nicklist-portable ](Test/tmux-nicklist-portable/)|  ✔   |  ✔   |  ✔   |  8   |  ✔   | (c)
-[                toggle_winlevels ](Test/toggle_winlevels/)|  ✔   |  ✔   |  ✔   |  2   |  ✔   
+[                toggle_winlevels ](Test/toggle_winlevels/)|  ✔   |  ✔   |  ✔   |  2   |  ✔   | (c)
 [                          toilet ](Test/toilet/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
 [                        topicsed ](Test/topicsed/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
 [                          topics ](Test/topics/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -528,4 +528,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-339e8f03b7b749350bce7de202af0743dbce3bef | 1080
+7a70f076092ab3fd24cae503eba950c2067ad1cc | 1097
