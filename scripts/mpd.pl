@@ -96,7 +96,7 @@ sub np {
             $ans = <$socket>;
         }
 
-        if ($ans =~ /^ACK \[...\] {.*?} (.*)$/){
+        if ($ans =~ /^ACK \[...\] \{.*?\} (.*)$/){
             my_status_print('Auth Error: '.$1, $witem);
             close $socket;
             return;
@@ -120,7 +120,7 @@ sub np {
     print $socket "status\n";
     while (not $ans =~ /^(OK$|ACK)/) {
         $ans = <$socket>;
-        if ($ans =~ /^ACK \[...\] {.*?} (.*)$/){
+        if ($ans =~ /^ACK \[...\] \{.*?\} (.*)$/){
             my_status_print($1, $witem);
             close $socket;
             return;
