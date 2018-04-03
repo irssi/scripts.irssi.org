@@ -3315,10 +3315,10 @@
   description: 'draws a nicklist to another terminal, or at the right of your irssi in the same terminal'
   filename: nicklist.pl
   license: GPLv2
-  modified: '2017-07-20 16:39:22'
+  modified: '2018-04-02 23:32:07'
   name: nicklist
   url: http://wouter.coekaerts.be/irssi
-  version: 0.4.9
+  version: 0.4.10
 -
   authors: c0ffee
   commands: 'nickmix stopmix'
