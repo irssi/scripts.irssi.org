@@ -11,7 +11,7 @@ use vars qw($VERSION %IRSSI);
 
 use Irssi;
 
-$VERSION = '1.01';
+$VERSION = '1.02';
 %IRSSI = (
     authors	=> 'ulbkold',
     contact	=> 'solaris@sundevil.de',
@@ -19,11 +19,11 @@ $VERSION = '1.01';
     description	=> 'Removes annoying characters from nicks',
     license	=> 'GPL',
     url		=> 'n/a',
-    changed	=> '12 April 2002 14:44:11',
+    changed	=> '2018-04-04',
 );
 
 # Channel list
-my @channels = ('#fof');
+my @channels;
 
 #main event handler
 sub wash_nick {
@@ -63,5 +63,13 @@ sub wash_nick {
   
 }
 
+Irssi::settings_add_str('washnicks', 'washnicks_channels', '#fof');
 
+sub update_config {
+  @channels=split(/ /,Irssi::settings_get_str('washnicks_channels'));
+}
+
+update_config();
+
+Irssi::signal_add('setup changed', 'update_config');
 Irssi::signal_add('event privmsg', 'wash_nick');
