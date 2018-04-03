@@ -2074,13 +2074,13 @@
 -
   authors: 'Stefan Heinemann'
   contact: stefan.heinemann@codedump.ch
-  description: 'Simple script that highlights URL'
+  description: 'Simple script that highlights links'
   filename: hilite_url.pl
   license: GPL
-  modified: '2017-01-12 12:37:37'
-  name: 'hilite url'
+  modified: '2018-04-03 10:23:02'
+  name: HiliteUrl
   url: http://senseless.codedump.ch
-  version: '0.1'
+  version: '0.2'
 -
   authors: 'John Morrissey'
   contact: jwm@horde.net
