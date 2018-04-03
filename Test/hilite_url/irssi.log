@@ -1,3 +1,5 @@
-* \1 better written as $1 at hilite_url.pl line 21.
+* \1 better written as $1 at hilite_url.pl line 32.
+* 
+* Argument "4;34" isn't numeric in subroutine entry at hilite_url.pl line 41.
 * 
 * -!- Irssi: Loaded script hilite_url
