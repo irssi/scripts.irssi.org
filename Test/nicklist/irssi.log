@@ -1,7 +1,7 @@
-* Scalar value @_[0] better written as $_[0] at nicklist.pl line 385.
+* Scalar value @_[0] better written as $_[0] at nicklist.pl line 459.
 * 
-* Scalar value @_[0] better written as $_[0] at nicklist.pl line 483.
+* Scalar value @_[0] better written as $_[0] at nicklist.pl line 673.
 * 
-* Use of uninitialized value $nicklist_width in numeric ne (!=) at nicklist.pl line 84.
+* Use of uninitialized value $nicklist_width in numeric ne (!=) at nicklist.pl line 123.
 * 
 * -!- Irssi: Loaded script nicklist

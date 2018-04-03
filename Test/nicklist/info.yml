@@ -1,7 +1,7 @@
 ---
 -
   authors: 'Wouter Coekaerts'
-  changed: 28/06/2017
+  changed: 2018-04-02
   commands:
     - nicklist
     - 'nicklist fifo'
@@ -17,6 +17,7 @@
   default_package: nicklist
   description: 'draws a nicklist to another terminal, or at the right of your irssi in the same terminal'
   license: GPLv2
+  modified: '2018-04-02 23:32:07'
   name: nicklist
   url: http://wouter.coekaerts.be/irssi
-  version: 0.4.9
+  version: 0.4.10
