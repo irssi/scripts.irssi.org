@@ -11,7 +11,7 @@ use vars qw($VERSION %IRSSI);
 
 use Irssi;
 
-$VERSION = '1.01';
+$VERSION = '1.02';
 %IRSSI = (
     authors	=> 'ulbkold',
     contact	=> 'solaris@sundevil.de',
@@ -19,16 +19,17 @@ $VERSION = '1.01';
     description	=> 'Removes annoying characters from nicks',
     license	=> 'GPL',
     url		=> 'n/a',
-    changed	=> '12 April 2002 14:44:11',
+    changed	=> '2018-04-04',
 );
 
 # Channel list
-my @channels = ('#fof');
+my @channels;
 
 #main event handler
 sub wash_nick {
   my ($server, $data, $nick, $address, $target) = @_;
   my ($channel, $msg) = split(/ :/, $data,2);
+  my $oldnick=$nick;
 
   # if the current channel is in the list...
    for (@channels) { 
@@ -43,7 +44,7 @@ sub wash_nick {
 	 $nick =~ s/\[//;
 	 $nick =~ s/\^//;
 	 $nick =~ s/-//;
-	 $nick =~ s/-//;
+	 $nick =~ s/_//;
 	 $nick =~ s/\`//;
 	 $nick =~ s/3/e/;
 	 $nick =~ s/0/O/;
@@ -51,17 +52,28 @@ sub wash_nick {
 	 $nick =~ s/4/a/;
 	 $nick = lc($nick);
 	 
-	 # emit signal
-	 Irssi::signal_emit("event privmsg", $server, $data,
-			    $nick, $address, $target);
-	 
-	 #and stop
-	 Irssi::signal_stop();
+         # fail safe
+         if ($oldnick ne $nick) {
+           # emit signal
+           Irssi::signal_emit("event privmsg", $server, $data,
+                  $nick, $address, $target);
+
+           #and stop
+           Irssi::signal_stop();
+         }
        }
      }
    } 
   
 }
 
+Irssi::settings_add_str('washnicks', 'washnicks_channels', '#fof');
 
+sub update_config {
+  @channels=split(/ /,Irssi::settings_get_str('washnicks_channels'));
+}
+
+update_config();
+
+Irssi::signal_add('setup changed', 'update_config');
 Irssi::signal_add('event privmsg', 'wash_nick');
