@@ -5,7 +5,7 @@
 # If a channel parameter is specified when adding a feed, announces it to a channel.
 #
 # Command format:
-# /feed {add|set|list|rm} [--uri <address>] [--id <short name>] [--color %<color>] [--newid <new short name>] [--interval <seconds>] [--channel <channel>]
+# /feed {add|set|list|rm|help} [--uri <address>] [--id <short name>] [--color %<color>] [--newid <new short name>] [--interval <seconds>] [--channel <channel>]
 #
 # Note: Since XML::Feed's HTTP doesn't support async usage, I implemented an
 # an own HTTP client. It won't do anything sensible when redirected and does
@@ -20,7 +20,7 @@ use List::Util qw(min);
 use IO::Socket::INET;
 use Errno;
 use Getopt::Long qw(GetOptionsFromString);
-our $VERSION = "20140514";
+our $VERSION = "20180414";
 our %IRSSI = (
 	authors     => 'Julius Michaelis',
 	contact     => 'iRRSi@liftm.de', # see also: JCaesar on freenode, probably idling in #irssi
@@ -33,6 +33,15 @@ our %IRSSI = (
 use Irssi qw(command_bind timeout_add INPUT_READ INPUT_WRITE);
 
 { package Irssi::Nick }
+
+# print help message
+sub help {
+	feedprint("Command format:");
+	feedprint("/feed {add|set|list|rm|help} [--uri <address>]");
+	feedprint("    [--id <short name>] [--color %<color>]");
+	feedprint("    [--newid <new short name>] [--interval <seconds>]");
+	feedprint("    [--channel <channel>]");
+}
 
 sub save_config {
 	our @feeds;
@@ -60,7 +69,8 @@ sub initialize {
 
 sub feedreader_cmd {
 	my ($data, $server, $window_item) = @_;
-	my ($cmd, $args) = split(/ /, $data, 2);
+	(my $cmd,my $args) = split(/ /, $data, 2);
+	$cmd = "help" if (!defined $cmd);
 	my $feed_id;
 	my $feed_uri;
 	my $feed_timeout = 0;
@@ -145,6 +155,8 @@ sub feedreader_cmd {
 			feedprint("No feed to remove.");
 		}
 		save_config;
+	} elsif ($cmd eq "help") {
+		help();
 	} else {
 		feedprint("Unknown command: /feed $cmd");
 	}
@@ -173,7 +185,7 @@ sub find_feed_by {
 	return unless $hint;
 	our @feeds;
 	foreach(@feeds) {
-		return $_ if(lc($_->{$by}) eq lc($hint));
+		return $_ if(exists($_->{$by}) and lc($_->{$by}) eq lc($hint));
 	}
 	return 0;
 }
