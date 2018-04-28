@@ -322,7 +322,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                   nickcolor_gay ](Test/nickcolor_gay/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                       nickcolor ](Test/nickcolor/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
 [                      nickignore ](Test/nickignore/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                        nicklist ](Test/nicklist/)|  ✔   |  ✔   |  ✔   | 13   |  ✔   
+[                        nicklist ](Test/nicklist/)|  ✔   |  ✔   |  ✔   | 13   |  ✔   | (c)
 [                  nickmix-c0ffee ](Test/nickmix-c0ffee/)|  ✔   |  ✔   |  ✔   | 18   |  ✔   | (c)
 [                   nickmix_pasky ](Test/nickmix_pasky/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        nickserv ](Test/nickserv/)|  ✔   |  ✔   |  ✔   | 13   |  ✔   | (c)
@@ -500,7 +500,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                          vowels ](Test/vowels/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                              wa ](Test/wa/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
 [                        warnkick ](Test/warnkick/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                       washnicks ](Test/washnicks/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                       washnicks ](Test/washnicks/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                           watch ](Test/watch/)|  ✔   |  ✔   |  ✔   | 33   |  ✔   | (c)
 [                       whitelist ](Test/whitelist/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                        whocount ](Test/whocount/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -527,4 +527,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-e98f69f96f6b6eaa5bc662ab8ee86d91b671c9b7 | 1111
+19766386a2a7ec29504f7211f2ecd23f938af1e6 | 1119
