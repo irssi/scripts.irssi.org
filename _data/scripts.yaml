@@ -5134,10 +5134,10 @@
   description: 'Removes annoying characters from nicks'
   filename: washnicks.pl
   license: GPL
-  modified: '2002-04-12 14:44:11'
+  modified: '2018-04-04 21:23:35'
   name: washnicks
   url: n/a
-  version: '1.01'
+  version: '1.02'
 -
   authors: ThEbUtChE
   commands: watch
