@@ -32,6 +32,7 @@
 #       Added support for password authentication                     #
 #  0.7: Added format directives for bitrate and volume                #
 #       Fixed socket not timing out at specified interval             #
+#  0.8: unescaped left brace in regex becomes an error in perl5 v26   #
 #######################################################################
 
 use strict;
@@ -40,7 +41,7 @@ use Irssi;
 
 use vars qw{$VERSION %IRSSI %MPD};
 
-$VERSION = "0.7";
+$VERSION = "0.8";
 %IRSSI = (
           name        => 'mpd',
           authors     => 'Erik Scharwaechter, Tobias Böhm, Mikkel Kroman',
@@ -96,7 +97,7 @@ sub np {
             $ans = <$socket>;
         }
 
-        if ($ans =~ /^ACK \[...\] {.*?} (.*)$/){
+        if ($ans =~ /^ACK \[...\] \{.*?\} (.*)$/){
             my_status_print('Auth Error: '.$1, $witem);
             close $socket;
             return;
@@ -120,7 +121,7 @@ sub np {
     print $socket "status\n";
     while (not $ans =~ /^(OK$|ACK)/) {
         $ans = <$socket>;
-        if ($ans =~ /^ACK \[...\] {.*?} (.*)$/){
+        if ($ans =~ /^ACK \[...\] \{.*?\} (.*)$/){
             my_status_print($1, $witem);
             close $socket;
             return;
