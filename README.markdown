@@ -303,7 +303,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                       mouse-awl ](Test/mouse-awl/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                           mouse ](Test/mouse/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                   mouse_soliton ](Test/mouse_soliton/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
-[                             mpd ](Test/mpd/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
+[                             mpd ](Test/mpd/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   
 [                          mpg123 ](Test/mpg123/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
 [                     mqtt-notify ](Test/mqtt-notify/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                      msg2notice ](Test/msg2notice/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
@@ -500,7 +500,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                          vowels ](Test/vowels/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                              wa ](Test/wa/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
 [                        warnkick ](Test/warnkick/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                       washnicks ](Test/washnicks/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[                       washnicks ](Test/washnicks/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                           watch ](Test/watch/)|  ✔   |  ✔   |  ✔   | 33   |  ✔   | (c)
 [                       whitelist ](Test/whitelist/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                        whocount ](Test/whocount/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -527,4 +527,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-19766386a2a7ec29504f7211f2ecd23f938af1e6 | 1119
+b4828c1b99d92dc120bfd1450c634bacdc378dc2 | 1121

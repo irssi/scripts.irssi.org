@@ -1,7 +1,3 @@
-* Unescaped left brace in regex is deprecated, passed through in regex; marked by <-- HERE in m/^ACK \[...\] { <-- HERE .*?} (.*)$/ at mpd.pl line 99.
-* 
-* "my" variable $ans masks earlier declaration in same scope at mpd.pl line 117.
-* 
-* Unescaped left brace in regex is deprecated, passed through in regex; marked by <-- HERE in m/^ACK \[...\] { <-- HERE .*?} (.*)$/ at mpd.pl line 123.
+* "my" variable $ans masks earlier declaration in same scope at mpd.pl line 118.
 * 
 * -!- Irssi: Loaded script mpd
