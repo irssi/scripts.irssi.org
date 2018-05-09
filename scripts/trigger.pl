@@ -23,7 +23,7 @@ use Text::ParseWords;
 use IO::File;
 use vars qw($VERSION %IRSSI);
 
-$VERSION = '1.2';
+$VERSION = '1.2.1';
 %IRSSI = (
 	authors     => 'Wouter Coekaerts',
 	contact     => 'wouter@coekaerts.be',
@@ -162,9 +162,9 @@ Irssi::theme_register([
 #########################################
 
 # trigger types with a message and a channel
-my @allchanmsg_types = qw(publics pubactions pubnotices pubctcps pubctcpreplies parts quits kicks topics);
+my @allchanmsg_types = qw(publics pubactions pubnotices pubctcps pubctcpreplies parts kicks topics);
 # trigger types with a message
-my @allmsg_types = (@allchanmsg_types, qw(privmsgs privactions privnotices privctcps privctcpreplies dcc_msgs dcc_actions dcc_ctcps));
+my @allmsg_types = (@allchanmsg_types, qw(privmsgs privactions privnotices privctcps privctcpreplies dcc_msgs dcc_actions dcc_ctcps quits));
 # trigger types with a channel
 my @allchan_types = (@allchanmsg_types, qw(mode_channel mode_nick joins invites pubflood));
 # trigger types in -all
@@ -1132,7 +1132,7 @@ ARGS:	for (my $arg = shift @args; $arg; $arg = shift @args) {
 		
 		# -no<filter>
 		if ($option =~ /^no(.*)$/ && $filters{$1}) {
-			delete $trigger->{'filters'}->{$option};
+			delete $trigger->{'filters'}->{$1};
 		}
 	}
 	
