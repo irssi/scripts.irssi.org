@@ -86,6 +86,8 @@
 ###############################################################################
 # CHANGES
 #
+# 1.58  * requesting in a private message is allowed when user is in a monitored channel
+# 	* filelist creation script at the bottom of this script has been changed to support utf8, multiple folders, with or without file and          7z compression of the command list
 # 1.57	* Added a VIP function which allows +v users to be first in line to get a file
 # 	* Remove a users queue if they get kicked (only if findbot_mustbeinchannel is ON)
 #	* Fixed a bug when a user with a download changed nick.
@@ -135,7 +137,7 @@ use Irssi::Irc;
 use strict;
 use vars qw($VERSION %IRSSI);
 
-$VERSION = "1.57";
+$VERSION = "1.58";
 
 %IRSSI = (
     authors     =>  "Thomas Karlsson",
@@ -367,7 +369,7 @@ sub process_queue {
 				if ( ! user_have_max_active_sends($nickqueue{$i},$servertagqueue{$i}[0]) ) { # If NOT user have max active sends
 					my $nicefile = nicefilename($filequeue{$i});
 					if ( user_is_in_active_channel($nickqueue{$i},$servertagqueue{$i}[0]) ) { # Are the user in a monitored channel?
-						debugprint(10,"[ADMIN] $nickqueue{$i} are in monitored channels, sending $nicefile");
+						debugprint(10,"[ADMIN] $nickqueue{$i} is in monitored channels, sending $nicefile");
 						my $localserver = Irssi::server_find_tag($servertagqueue{$i}[0]);
 						$localserver->command("/QUOTE NOTICE " . $nickqueue{$i} . " :Sending you the requested file: $nicefile");
 						$localserver->command("/DCC SEND $nickqueue{$i} \"$filequeue{$i}\"" );
@@ -620,6 +622,10 @@ sub find_public {
 			$validchan = 1;
 		}
 	}
+	# allows requesting and searching files in private messages because $targetchan has the own nickname in it when it is a private message, if not it's the channel where it was said
+	if ( $targetchan == "$server->{nick}" && user_is_in_active_channel($nick) ) {
+		$validchan = 1;
+	}
 
 	if ( $validchan && Irssi::settings_get_bool('findbot_enabled') && timeslotenabled($wday,$hour,$min) ) {	# Did the user say something in one of our channels?
 		my $mynick = $server->{nick};
@@ -827,7 +833,7 @@ Irssi::settings_add_int("misc", "findbot_debuglevel", 10);	# Add a variable insi
 Irssi::settings_add_bool("misc", "findbot_mustbeinchannel", "");
 Irssi::settings_add_str("misc", "findbot_timeslots", "");	# Add a variable inside of irssi
 Irssi::signal_add_last('message public', 'find_public');	# Hook up a function to public chatter
-Irssi::signal_add_last('message private', 'private_get');	# Hook up a function to public chatter
+Irssi::signal_add_last('message private', 'find_public');	# Hook up a function to public chatter
 Irssi::signal_add_last('dcc created', 'dcc_created');		# Hook when a dcc is created
 Irssi::signal_add_last('dcc closed', 'dcc_closed');		# Hook when a dcc is closed
 Irssi::signal_add_last('dcc destroyed', 'dcc_destroyed');
@@ -879,38 +885,44 @@ debugprint (5,"[ADMIN] Findbot fileserver has been loaded!");
 ####### Here is the script #########
 
 # #!/usr/bin/perl 
-
+#use open ":encoding(UTF-8)";
 # if not supplied on cmd line this is the values
-#$MP3PATH = "/misc/glftpd/site/mp3/";
-#$NICK    = "Donken";
+#@PATH = ("/mnt/folder1","/mnt/folder2"); # if only one folder should be used let it be @PATH = ("/mnt/folder1");
+#@INPUT = "";
+#$NICK    = "nickname";
 #($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) = localtime(time);
 #
 #$year    = sprintf("%04d",$year+1900);
 #$mon     = sprintf("%02d",$mon + 1);
 #$mday    = sprintf("%02d",$mday);
 #$DATE    = "$year-$mon-$mday";
-#$LIST    = $NICK . "_mp3s_list.txt";
-#$CMD     = $NICK . "_mp3s_cmd.txt";
-#$padding = 50;	# How many pad-characters should it be
+#$LIST    = $NICK . "_books_list.txt";
+#$CMD     = $NICK . "_books_cmd.txt";
+#$CMD_7z  = $NICK . "_books_cmd";
+#$padding = 50; # How many pad-characters should it be
+#$use_file = 0; # each file is analysed by the program file if this is set to 0, this takes ages when with lots of files
+#$use_compressed_cmdfile = 1; # if 1 then use 7z for compressing the command filelist that is being sent to the users
 #
 #if( "x" ne  "x$ARGV[0]" ){ $NICK    = $ARGV[0]; }
-#if( "x" ne  "x$ARGV[1]" ){ $MP3PATH = $ARGV[1]; }
+#if( "x" ne  "x$ARGV[1]" ){ $PATH    = $ARGV[1]; }
 #if( "x" ne  "x$ARGV[2]" ){ $LIST    = $ARGV[2]; }
 #if( "x" ne  "x$ARGV[3]" ){ $CMD     = $ARGV[3]; }
 #
 #print "Using nick: $NICK\n";
-#print "Finding under supplied mp3path $MP3PATH\n";
-#@INPUT=`find $MP3PATH -follow -type f`;
+#foreach (@PATH){ 
+#	print "Finding under supplied path $_\n";
+#	push(@INPUT,`find "$_" -follow -type f`);
+#}
 #print "Find done\n";
 #print "Summaryfile: $LIST\n";
 #print "Sendlist:    $CMD\n";
 #
-#print "Generating lists done/total mp3 files\n";
-#open(LIST,">$LIST"); 
+#print "Generating lists done/total files\n";
+#open(LIST,">$LIST");
 #open(CMD,">$CMD");
 #
-#print LIST "### List generated: $DATE I have a total of $#INPUT mp3s ###\n";
-#print CMD  "### List generated: $DATE I have a total of $#INPUT mp3s ###\r\n";
+#print LIST "### List generated: $DATE I have a total of $#INPUT files ###\n";
+#print CMD  "### List generated: $DATE I have a total of $#INPUT files ###\r\n";
 #print CMD  "### This list was created by Findbot for Irssi\r\n";
 #print CMD  "### http://irssi.org/scripts\r\n";
 #
@@ -921,44 +933,55 @@ debugprint (5,"[ADMIN] Findbot fileserver has been loaded!");
 #$TOTAL = $#INPUT + 1; 
 #
 #sub padline {
-#	$filename = shift;
-#	$filelength = length($filename);
-#	$paddchar = "=";
-#	if ( $filelength <= $padding ) {
-#		for ( $counter = $filelength; $counter < $padding; $counter++ ) {
-#			$paddchar .= "=";
-#		}
-#	}
-#	return $paddchar;
+#       $filename = shift;
+#       $filelength = length($filename);
+#       $paddchar = "=";
+#       if ( $filelength <= $padding ) {
+#               for ( $counter = $filelength; $counter < $padding; $counter++ ) {
+#                       $paddchar .= "=";
+#               }
+#       }
+#       return $paddchar;
 #}
 #
 #foreach( @INPUT ){
 #        $CNT++; 
-#	print "\r$CNT/" . $TOTAL;
+#        print "\r$CNT/" . $TOTAL;
 #        chomp $_; 
 #
-#	$FILE=$_; 
-#	$DIR=$_; 
-#	$FILEwPATH=$_;
+#       $FILE=$_; 
+#       $DIR=$_;
+#       $FILEwPATH=$_;
 #
-#        $FILE =~ s/.*\/(.*)/$1/g; # only the file
-#        $DIR =~ s/(.*)\/.*/$1/g; # only the dir
+#       $FILE =~ s/.*\/(.*)/$1/g; # only the file
+#       $DIR =~ s/(.*)\/.*/$1/g; # only the dir
 #
-#        $STAT_OF_FILE = `file -b "$FILEwPATH"`; # the info about the file
-#	$STAT_OF_FILE =~ s#/##gio; # remove /
-#        chomp $STAT_OF_FILE;
-#
-#        print LIST "$FILEwPATH : $STAT_OF_FILE\n"; # output to the LIST-file
-#	if( "$DIR" ne "$CHECKDIR" ){ 
-#	        # output to the CMD-file 
-#		print CMD "\r\n=================================================\r\n";
-#		$CHECKDIR = $DIR; print CMD "Files in $DIR\r\n"; 
-#		print CMD "=================================================\r\n\r\n";
-#	}
-#        print CMD "!$NICK $FILE " . padline($FILE) . " $STAT_OF_FILE\r\n"; # output to the CMD-file
+#       if ( $use_file ) {
+#               $STAT_OF_FILE = `file -b "$FILEwPATH"`; # the info about the file
+#               $STAT_OF_FILE =~ s#/##gio; # remove /
+#               chomp $STAT_OF_FILE;
+#               print LIST "$FILEwPATH : $STAT_OF_FILE\n"; # output to the LIST-file
+#       } else {
+#                print LIST "$FILEwPATH\n"; # output to the LIST-file
+#       }
+#       if( "$DIR" ne "$CHECKDIR" ){ 
+#               # output to the CMD-file 
+#               print CMD "\r\n=================================================\r\n";
+#               $CHECKDIR = $DIR; print CMD "Files in $DIR\r\n"; 
+#               print CMD "=================================================\r\n\r\n";
+#       }
+#       if ( $use_file ) {
+#               print CMD "!$NICK $FILE " . padline($FILE) . " $STAT_OF_FILE\r\n"; # output to the CMD-file
+#       } else {
+#               print CMD "!$NICK $FILE\r\n"; # output to the CMD-file
+#       }
 #}
 #print CMD "EOF\r\n";
 #print LIST "EOF\r\n";
-#close LIST,CMD;
+#close LIST;
+#close CMD;
+#if ( $use_compressed_cmdfile ) {
+#        print "\ncompressing filelist...\n";
+#        system "7z a -t7z -mx9 $CMD_7z.7z $CMD";
+#}
 #print "\nList generation done\n";
-
