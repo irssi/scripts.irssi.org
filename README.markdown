@@ -164,7 +164,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                        fcountry ](Test/fcountry/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                          figlet ](Test/figlet/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
 [                            file ](Test/file/)|  ✔   |  ✔   |  ✔   | 16   |  ✔   | (c)
-[                         findbot ](Test/findbot/)|  ✔   |  ✔   |  ✔   | 15   |  ✔   
+[                         findbot ](Test/findbot/)|  ✔   |  ✔   |  ✔   | 17   |  ✔   
 [                            find ](Test/find/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                    fix_slackirc ](Test/fix_slackirc/)|  ✔   |  ✔   |  ✔   |  1   |  ✔   | (c)
 [                          fleech ](Test/fleech/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
@@ -525,4 +525,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-61be406f31992ba5ad37cd124667c79896423e57 | 1132
+3871a9b60222ffcaa733ca10bd3db68994571f42 | 1133
