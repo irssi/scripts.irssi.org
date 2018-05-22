@@ -212,7 +212,6 @@ See [the testing read-me](../master/_testing/) for details.
 [                        hlscroll ](Test/hlscroll/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        hostname ](Test/hostname/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                          identd ](Test/identd/)|  ✔   |  ✔   |  ✔   |  2   |  ✔   | (c)
-[                    identify-md5 ](Test/identify-md5/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                           ident ](Test/ident/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        idletime ](Test/idletime/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                         idonkey ](Test/idonkey/)|  ✘   |  ✔   |  ✔   | 13   |  ☡   | (c)
@@ -526,4 +525,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-2be62790ffc74259d971a6fb579b5ec7f42b2281 | 1128
+2c7481eba0d55692c5665bb0f2d5810a73d9d1ea | 1129
