@@ -105,7 +105,6 @@ See [the testing read-me](../master/_testing/) for details.
 [                     cleanpublic ](Test/cleanpublic/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       clearable ](Test/clearable/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                       clipboard ](Test/clipboard/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                       cloneprot ](Test/cloneprot/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                          clones ](Test/clones/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                  clones_scanner ](Test/clones_scanner/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                        cmpchans ](Test/cmpchans/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
@@ -164,7 +163,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                        fcountry ](Test/fcountry/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                          figlet ](Test/figlet/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
 [                            file ](Test/file/)|  ✔   |  ✔   |  ✔   | 16   |  ✔   | (c)
-[                         findbot ](Test/findbot/)|  ✔   |  ✔   |  ✔   | 17   |  ✔   
+[                         findbot ](Test/findbot/)|  ✔   |  ✔   |  ✔   | 17   |  ✔   | (c)
 [                            find ](Test/find/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                    fix_slackirc ](Test/fix_slackirc/)|  ✔   |  ✔   |  ✔   |  1   |  ✔   | (c)
 [                          fleech ](Test/fleech/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
@@ -525,4 +524,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-3871a9b60222ffcaa733ca10bd3db68994571f42 | 1133
+f41f835a27dcacd0e4b672729c56fe237f58dc03 | 1135
