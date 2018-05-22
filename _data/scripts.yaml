@@ -1059,17 +1059,6 @@
   url: http://www.battre.de
   version: '1.2'
 -
-  authors: 'Rick (strlen) Jansen'
-  commands: 'ak cw tk tr'
-  contact: strlen@shellz.nl
-  description: 'Parses OperServ notices to make autokill aliases from clonewarnings'
-  filename: cloneprot.pl
-  license: GPL/1
-  modified: '2002-03-13 20:26:46'
-  name: cloneprot
-  url: http://www.shellz.nl/
-  version: '1.11'
--
   authors: 'From irssi source, modified by David Leadbeater (dg)'
   commands: clones
   description: '/CLONES - Display clones in the active channel (with added options)'
