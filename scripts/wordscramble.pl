@@ -2,20 +2,24 @@ use Irssi;
 use strict;
 use vars qw($VERSION %IRSSI);
 
-$VERSION = '0.0.2';
+$VERSION = '0.0.3';
 %IRSSI = (
 	authors     => 'Koenraad Heijlen',
 	contact     => 'vipie@ulyssis.org',
+	commands    => 'ws',
 	name        => 'word_scramble',
 	description => 'A script that scrambles all the letters in a word except the first and last.', 
 	license     => 'GNU GPL version 2',
 	url         => 'http://vipie.studentenweb.org/dev/irssi/wordscramble',
-	changed     => '2003-09-15'
+	changed     => '2018-05-11'
 );
 
 #--------------------------------------------------------------------
 # Changelog
 #--------------------------------------------------------------------
+#
+# word_scramble.pl 0.0.3 (2018-05-11)- bw1
+#	- fixed the help bug
 #
 # word_scramble.pl 0.0.2 (2003-09-17)- Koenraad Heijlen
 # 	- fixed the four letter word bug
@@ -40,17 +44,21 @@ sub cmd_help {
 	my ($about) = @_;
 
 	%myHELP = (
-		ws => "
-ws - wordscramble 
+		ws =>
+"%9ws - wordscramble%9
 
-scrambles the text you type, and outputs it in the current (active) channel
+  /ws <text>
+
+scrambles the text you type,
+and outputs it in the current (active) channel
 or query.
 ",
-);
+	);
 
-	if ( $about =~ /(ws)/i ) { 
-		Irssi::print($myHELP{$1});
-	} 
+	if ( $about =~ /(ws)/i ) {
+		Irssi::print($myHELP{ws},MSGLEVEL_CLIENTCRAP);
+		Irssi::signal_stop;
+	}
 }
 
 #--------------------------------------------------------------------
