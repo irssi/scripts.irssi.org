@@ -19,9 +19,6 @@
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
 # Thomas Karlsson (findbot@planet.eu.org)
-###############################################################################
-# The file collection at the end of this file is made by Henrik Andreasson
-# findbot@han.pp.se
 # 
 ###############################################################################
 # Description:
