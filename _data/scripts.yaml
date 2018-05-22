@@ -1680,10 +1680,10 @@
   description: 'Public command @find script'
   filename: findbot.pl
   license: GPL
-  modified: '2014-10-17 22:54:13'
+  modified: '2018-05-22 13:10:54'
   name: Findbot
   url: http://hem.passagen.se/thka2315/
-  version: '1.57'
+  version: '1.58'
 -
   authors: Nei
   contact: 'Nei @ anti@conference.jabber.teamidiot.de'
@@ -4815,10 +4815,10 @@
   description: 'execute a command or replace text, triggered by an event in irssi'
   filename: trigger.pl
   license: 'GPLv2 or later'
-  modified: '2017-07-31 23:01:45'
+  modified: '2018-05-09 15:46:00'
   name: trigger
   url: http://wouter.coekaerts.be/irssi/
-  version: '1.2'
+  version: 1.2.1
 -
   authors: "Stefan 'tommie' Tomanek"
   commands: trustweb
