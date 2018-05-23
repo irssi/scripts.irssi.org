@@ -888,17 +888,6 @@
   name: cap_sasl_fail
   version: '2.1'
 -
-  authors: ZaMz0n
-  contact: zamzon@freakpower.com
-  description: 'Find CDs by Artist, Disc name or Track name in CDDB.'
-  filename: cddb.pl
-  license: Free
-  modified: '2003-10-29 01:27:00'
-  modules: LWP::Simple
-  name: cddb
-  url: http://www.gracenote.com/music/
-  version: '1.21'
--
   authors: 'Joost "Garion" Vunderink'
   contact: joost@carnique.nl
   description: 'Staturbar item which indicates how many new messages you have in your centericq'
