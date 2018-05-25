@@ -4622,9 +4622,9 @@
   description: 'Provides /timer command for mIRC/BitchX type timer functionality.'
   filename: timer.pl
   license: 'Public Domain'
-  modified: '2018-01-17 00:32:02'
+  modified: '2018-05-20 11:39:42'
   name: Timer
-  version: '0.7'
+  version: '0.8'
 -
   authors: 'Jari Matilainen'
   contact: 'vague!#irssi@freenode on irc'
