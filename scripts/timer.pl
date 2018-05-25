@@ -19,7 +19,7 @@ use warnings;
 use vars  qw ($VERSION %IRSSI);
 use Irssi 20020325 qw (command_bind command_runsub command timeout_add timeout_remove signal_add_first);
 
-$VERSION = '0.7';
+$VERSION = '0.8';
 %IRSSI = (
     authors     => 'Kimmo Lehto, Marcus Rueckert',
     contact     => 'kimmo@a-men.org, darix@irssi.org' ,
@@ -28,6 +28,8 @@ $VERSION = '0.7';
     license     => 'Public Domain',
     changed     => '2015-02-07'
 );
+
+Irssi::settings_add_bool('timer', 'timer_stop_msgs', 1);
 
 our %timers;
 # my %timer = { repeat => \d+, command => '' , windowitem => NULL , server=> NULL, timer = NULL};
@@ -59,14 +61,15 @@ sub timer_command {
 sub cmd_timerstop {
     my ( $name ) = @_;
 
+    my $verbose = Irssi::settings_get_bool('timer_stop_msgs');
     if ( exists ( $timers{$name} ) ) {
         timeout_remove($timers{$name}->{'timer'});
         $timers{$name} = ();
         delete ( $timers{$name} );
-        print( CRAP "Timer \"$name\" stopped." );
+        print( CRAP "Timer \"$name\" stopped." ) if $verbose;
     }
     else {
-        print( CRAP "\cBTimer:\cB No such timer \"$name\"." );
+        print( CRAP "\cBTimer:\cB No such timer \"$name\"." ) if $verbose;
     }
 }
 
