@@ -1,11 +1,13 @@
 ---
 -
   authors: 'Koenraad Heijlen'
-  changed: 2003-09-15
+  changed: 2018-05-11
+  commands: ws
   contact: vipie@ulyssis.org
   default_package: wordscramble
   description: 'A script that scrambles all the letters in a word except the first and last.'
   license: 'GNU GPL version 2'
+  modified: '2018-05-22 22:22:59'
   name: word_scramble
   url: http://vipie.studentenweb.org/dev/irssi/wordscramble
-  version: 0.0.2
+  version: 0.0.3

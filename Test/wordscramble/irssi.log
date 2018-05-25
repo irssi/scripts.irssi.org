@@ -1,3 +1,3 @@
-* "my" variable $l masks earlier declaration in same scope at wordscramble.pl line 73.
+* "my" variable $l masks earlier declaration in same scope at wordscramble.pl line 81.
 * 
 * -!- Irssi: Loaded script wordscramble
