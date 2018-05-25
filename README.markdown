@@ -450,7 +450,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                          target ](Test/target/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                         thankop ](Test/thankop/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        thistory ](Test/thistory/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                           timer ](Test/timer/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
+[                           timer ](Test/timer/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
 [                       timezones ](Test/timezones/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                         tinyurl ](Test/tinyurl/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                           title ](Test/title/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
@@ -523,4 +523,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-a9a8ef281cb0273aaf4466458f22a5ff26aa26d1 | 1136
+c44a21b315b0dfa1ed8c2e6b41fa17650dbc696f | 1137
