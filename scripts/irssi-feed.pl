@@ -11,9 +11,57 @@
 # an own HTTP client. It won't do anything sensible when redirected and does
 # not support https.
 
+=encoding utf8
+
+=head1 Global variable
+
+=head2 @feeds
+
+	(
+		{
+			'configtimeout' => 0,
+			'name' => 'Fefes Blog',
+			'color' => '',
+			'channel' => '#test',
+			'uri' => bless( do{\(my $o = 'http://blog.fefe.de/rss.xml')}, 'URI::http' ),
+			'timeout' => 600,
+			'generation' => 1,
+			'active' => 1,
+			'id' => 'fefe',
+			'itemids' => {
+				'http://blog.fefe.de/?ts=a5f710ca' => 0,
+				'http://blog.fefe.de/?ts=a5f64305' => 0,
+				'http://blog.fefe.de/?ts=a5f64851' => 0,
+				'http://blog.fefe.de/?ts=a5f9e716' => 0,
+				'http://blog.fefe.de/?ts=a5f7e1a7' => 0
+			},
+			'io' => {
+				'buffer' => '',
+				'conn' => 0,
+				'failed' => 0,
+				'state' => 0,
+				'readtag' => 0,
+				'xml' => 0,
+				'writetag' => 0
+			},
+			'servtag' => 'mylocalnet',
+			'lastcheck' => '88149.150603957'
+		},
+		{
+			...
+		}
+	);
+
+=head4 io=>failed
+
+fail counter
+
+=cut
+
 use strict;
 use warnings;
 use feature 'state';
+use Data::Dumper;
 use XML::Feed;
 use Time::HiRes qw(clock_gettime CLOCK_MONOTONIC);
 use List::Util qw(min);
@@ -481,7 +529,13 @@ sub feedprint {
 	}
 }
 
+sub feed_test_cmd {
+	our @feeds;
+	print Dumper(\@feeds);
+}
+
 Irssi::command_bind('feed', \&feedreader_cmd);
+Irssi::command_bind('feed_test', 'feed_test_cmd');
 Irssi::settings_add_str('feedreader', 'feedlist', '');
 our $initial_skips = 0;
 our @feeds = ();
