@@ -2,27 +2,76 @@
 #
 # Displays messages in status window, unless a window irssi-feed exists
 # Add one with /window new hidden /window name irssi-feed
+# If a channel parameter is specified when adding a feed, announces it to a channel.
 #
 # Command format:
-# /feed {add|set|list|rm} [--uri <address>] [--id <short name>] [--color %<color>] [--newid <new short name>] [--interval <seconds>]
+# /feed {add|set|list|rm|help} [--uri <address>] [--id <short name>] [--color %<color>] [--newid <new short name>] [--interval <seconds>] [--channel <channel>]
 #
 # Note: Since XML::Feed's HTTP doesn't support async usage, I implemented an
 # an own HTTP client. It won't do anything sensible when redirected and does
 # not support https.
 
+=encoding utf8
+
+=head1 Global variable
+
+=head2 @feeds
+
+	(
+		{
+			'configtimeout' => 0,
+			'name' => 'Fefes Blog',
+			'color' => '',
+			'channel' => '#test',
+			'uri' => bless( do{\(my $o = 'http://blog.fefe.de/rss.xml')}, 'URI::http' ),
+			'timeout' => 600,
+			'generation' => 1,
+			'active' => 1,
+			'id' => 'fefe',
+			'itemids' => {
+				'http://blog.fefe.de/?ts=a5f710ca' => 0,
+				'http://blog.fefe.de/?ts=a5f64305' => 0,
+				'http://blog.fefe.de/?ts=a5f64851' => 0,
+				'http://blog.fefe.de/?ts=a5f9e716' => 0,
+				'http://blog.fefe.de/?ts=a5f7e1a7' => 0
+			},
+			'io' => {
+				'buffer' => '',
+				'conn' => 0,
+				'failed' => 0,
+				'state' => 0,
+				'readtag' => 0,
+				'xml' => 0,
+				'writetag' => 0
+			},
+			'servtag' => 'mylocalnet',
+			'lastcheck' => '88149.150603957'
+		},
+		{
+			...
+		}
+	);
+
+=head4 io=>failed
+
+fail counter
+
+=cut
+
 use strict;
 use warnings;
 use feature 'state';
+use Data::Dumper;
 use XML::Feed;
 use Time::HiRes qw(clock_gettime CLOCK_MONOTONIC);
 use List::Util qw(min);
 use IO::Socket::INET;
 use Errno;
 use Getopt::Long qw(GetOptionsFromString);
-our $VERSION = "20130209";
+our $VERSION = "20180414";
 our %IRSSI = (
 	authors     => 'Julius Michaelis',
-	contact     => 'iRRSi@cserv.dyndns.org', # see also: JCaesar on freenode, probably idling in #irssi
+	contact     => 'iRRSi@liftm.de', # see also: JCaesar on freenode, probably idling in #irssi
 	name        => 'iRSSi feed reader',
 	description => 'Parses and announces XML/Atom feeds',
 	license     => 'GPLv3',
@@ -30,6 +79,17 @@ our %IRSSI = (
 	changed     => '$VERSION',
 );
 use Irssi qw(command_bind timeout_add INPUT_READ INPUT_WRITE);
+
+{ package Irssi::Nick }
+
+# print help message
+sub help {
+	feedprint("Command format:");
+	feedprint("/feed {add|set|list|rm|help} [--uri <address>]");
+	feedprint("    [--id <short name>] [--color %<color>]");
+	feedprint("    [--newid <new short name>] [--interval <seconds>]");
+	feedprint("    [--channel <channel>]");
+}
 
 sub save_config {
 	our @feeds;
@@ -40,6 +100,8 @@ sub save_config {
 			$str .= " --uri $feed->{uri}";
 			$str .= " --interval $feed->{configtimeout} " if($feed->{configtimeout});
 			$str .= " --color $feed->{color} " if($feed->{color});
+			$str .= " --channel $feed->{channel} " if($feed->{channel});
+			$str .= " --servtag $feed->{servtag} " if($feed->{servtag});
 			$str .= "\n";
 		}
 	}
@@ -55,17 +117,22 @@ sub initialize {
 
 sub feedreader_cmd {
 	my ($data, $server, $window_item) = @_;
-	my ($cmd, $args) = split(/ /, $data, 2);
+	(my $cmd,my $args) = split(/ /, $data, 2);
+	$cmd = "help" if (!defined $cmd);
 	my $feed_id;
 	my $feed_uri;
 	my $feed_timeout = 0;
 	my $feed_color = 'NOMODIFY';
+	my $feed_channel;
+	my $feed_servtag = $server->{tag};
 	my $feed_newid;
 	if(!GetOptionsFromString($args, 
 		'uri=s' => \$feed_uri,
 		'id=s' => \$feed_id,
 		'interval=i' => \$feed_timeout,
 		'color=s' => \$feed_color,
+		'channel=s' => \$feed_channel,
+		'servtag=s' => \$feed_servtag,
 		'newid=s' => \$feed_newid)
 	) {
 		feedprint("Could not parse options of $data");
@@ -84,7 +151,7 @@ sub feedreader_cmd {
 			feedprint("Failed to add feed. No uri given.");
 		} else {
 			$feed_color = '' if($feed_color eq 'NOMODIFY');
-			$feed = feed_new($feed_uri, $feed_timeout, $feed_id, $feed_color);
+			$feed = feed_new($feed_uri, $feed_timeout, $feed_id, $feed_color, $feed_channel, $feed_servtag);
 			feedprint("Added feed " . feed_stringrepr($feed, 'long')) if($window_item);
 			save_config();
 			check_feeds();
@@ -96,8 +163,10 @@ sub feedreader_cmd {
 			$feed->{active} = 1;
 			$feed->{io}->{failed} = 0;
 			$feed->{timeout} = valid_timeout($feed->{configtimeout});
-			$feed->{uri} = $feed_uri if($feed_uri && $feed_id);
+			$feed->{uri} = URI->new($feed_uri) if($feed_uri && $feed_id);
 			$feed->{color} = $feed_color unless($feed_color eq 'NOMODIFY');
+			$feed->{channel} = $feed_channel if($feed_channel);
+			$feed->{servtag} = $feed_servtag if($feed_servtag);
 			$feed->{timeout} = $feed_timeout if($feed_timeout);
 			$feed->{id} = $feed_newid if($feed_newid);
 			save_config();
@@ -134,6 +203,8 @@ sub feedreader_cmd {
 			feedprint("No feed to remove.");
 		}
 		save_config;
+	} elsif ($cmd eq "help") {
+		help();
 	} else {
 		feedprint("Unknown command: /feed $cmd");
 	}
@@ -162,7 +233,7 @@ sub find_feed_by {
 	return unless $hint;
 	our @feeds;
 	foreach(@feeds) {
-		return $_ if(lc($_->{$by}) eq lc($hint));
+		return $_ if(exists($_->{$by}) and lc($_->{$by}) eq lc($hint));
 	}
 	return 0;
 }
@@ -177,16 +248,15 @@ sub valid_timeout {
 }
 
 sub feed_new {
-	my $uri = shift;
-	my $timeout = shift;
-	my $id = shift;
-	my $color = shift;
+	my ($uri, $timeout, $id, $color, $channel, $servtag) = @_;
 	state $nextfid = 1;
 	my $feed = {
 		id => $id // "$nextfid",
 		uri => URI->new($uri),
 		name => $uri,
 		color => $color,
+		channel => $channel,
+		servtag => $servtag,
 		lastcheck => clock_gettime(CLOCK_MONOTONIC) - 86400,
 		timeout => valid_timeout($timeout), # next actual timeout. Doubled on error
 		configtimeout => $timeout,
@@ -225,8 +295,8 @@ sub feed_check {
 	if(($now - $feed->{lastcheck}) > $feed->{timeout}) {
 		if($feed->{io}->{failed} >= 3) {
 			$feed->{timeout} = valid_timeout($feed->{timeout} * 2);
+			$feed->{io}->{failed} -= 2;
 			$feed->{generation} += 1; # so the "Skipped n feed entries" message won't hang forever
-			return 0;
 		}
 		feedprint("Warning, stall feed " . feed_stringrepr($feed)) if($feed->{io}->{conn});
 		feed_cleanup_conn($feed, 1);
@@ -280,7 +350,7 @@ sub feed_io_event_write {
 		my $req = "GET " . $query . " HTTP/1.0\r\n" .
 				"Host: " . $self->{uri}->host . "\r\n" .
 				"User-Agent: Irssi feed reader " . $VERSION . "\r\n" .
-				"Accept-Encoding: gzip\r\n" .
+				"Accept-Encoding: " . HTTP::Message->decodable() . "\r\n" .
 				"Connection: close\r\n\r\n";
 		$self->{io}->{conn}->send($req);
 		Irssi::input_remove($self->{io}->{writetag}) if $self->{io}->{writetag};
@@ -314,7 +384,7 @@ sub feed_parse_buffer {
 	my $http = HTTP::Response->parse($feed->{io}->{buffer});
 	if($http->is_redirect) {
 		my $location = $http->header('Location');
-		my $uri = URI->new($location);
+		my $uri = URI->new($location, $feed->{uri});
 		if($location) {
 			feedprint('Feed ' . feed_stringrepr($feed) . ' got redirected to ' . $location);
 			$feed->{uri} = $uri;
@@ -327,7 +397,12 @@ sub feed_parse_buffer {
 		}
 	}
 	return if not $http->is_success;
-	my $httpcontent = $http->decoded_content;
+	my $httpcontent = $http->decoded_content();
+	my $contenttype = $http->header('Content-Type');
+	if($contenttype and $contenttype =~ /^.*charset\s*=\s*(?<charset>[^;]*)(;|$)/ and $+{charset} !~ /UTF-8/i) {
+		# http specifies a non-utf8 content, but HTTP::Response will convert that to utf-8 for us.
+		$httpcontent =~ s/encoding\s*=\s*("[^"]*"|[^" ]*)\s(?<!\?>)//;
+	}
 	my $data = eval { $feed->{io}->{xml} = XML::Feed->parse(\$httpcontent) };
 	if($data) {
 		$feed->{name} = $data->title;
@@ -376,11 +451,26 @@ sub feed_get_news {
 
 sub feed_announce_item {
 	my ($feed, $news) = @_;
-	my $space = "";
-	$space =~ s//' ' x ((length $feed->{id}) + 3)/e;
 	my $titleline = $news->title;
+	if(not defined $titleline) {
+		$titleline = "[no title]"
+	}
 	$titleline =~ s/\s*\n\s*/ | /g;
-	feedprint('<' . feed_stringrepr($feed) . '> ' . $titleline . "\n" . $space . $news->link, Irssi::MSGLEVEL_PUBLIC);
+
+	my $channel = $feed->{channel};
+	if($channel) {
+		my $server = Irssi::server_find_tag($feed->{servtag});
+		if($server) {
+			$server->command("/notice $channel <" . feed_stringrepr($feed, 0, 1) . '> ' . $titleline . " " . $news->link);
+		} else {
+			feedprint('Feed ' . feed_stringrepr($feed) . ' failed to find servertag ' . $feed->{servtag} . '. Deactivated!') if($feed->{active});
+			$feed->{active} = 0;
+		}
+	} else {
+		my $space = " ";
+		$space =~ s/ /' ' x ((length $feed->{id}) + 3)/e;
+		feedprint('<' . feed_stringrepr($feed) . '> ' . $titleline . "\n" . $space . $news->link);
+	}
 }
 
 sub finished_load_message {
@@ -399,7 +489,7 @@ sub feed_delete {
 }
 
 sub feed_stringrepr {
-	my ($feed, $long) = @_;
+	my ($feed, $long, $nocolor) = @_;
 	return unless $feed;
 	if($long) {
 		return "#" .
@@ -410,11 +500,13 @@ sub feed_stringrepr {
 		$feed->{name} . 
 		(($feed->{name} ne $feed->{uri}) ? (" (" .$feed->{uri}. ")") : "") . 
 		($feed->{active} ? " ":" in")."active, " . 
-		$feed->{timeout} ."s";
+		$feed->{timeout} ."s" .
+		" (next in " . int($feed->{lastcheck} + $feed->{timeout} - clock_gettime(CLOCK_MONOTONIC)) . "s)" .
+		($feed->{channel} ? ' (printed to ' . $feed->{channel} . '@' . $feed->{servtag} . ')' : '');
 	} else {
-		return ($feed->{color} ? $feed->{color} : '') .
+		return ($feed->{color} && !$nocolor ? $feed->{color} : '') .
 		$feed->{id} .
-		($feed->{color} ? '%n' : '');
+		($feed->{color} && !$nocolor ? '%n' : '');
 	}
 }
 
@@ -437,7 +529,13 @@ sub feedprint {
 	}
 }
 
+sub feed_test_cmd {
+	our @feeds;
+	print Dumper(\@feeds);
+}
+
 Irssi::command_bind('feed', \&feedreader_cmd);
+Irssi::command_bind('feed_test', 'feed_test_cmd');
 Irssi::settings_add_str('feedreader', 'feedlist', '');
 our $initial_skips = 0;
 our @feeds = ();
