@@ -2389,16 +2389,16 @@
   version: '1.2'
 -
   authors: 'Julius Michaelis'
-  commands: feed
-  contact: iRRSi@cserv.dyndns.org
+  commands: 'feed feed_test'
+  contact: iRRSi@liftm.de
   description: 'Parses and announces XML/Atom feeds'
   filename: irssi-feed.pl
   license: GPLv3
-  modified: '2013-07-12 20:44:55'
+  modified: '2018-05-27 09:58:35'
   modules: XML::Feed
   name: 'iRSSi feed reader'
   url: https://github.com/jcaesar/irssi-feed
-  version: '20130209'
+  version: '20180414'
 -
   authors: legion
   commands: 'anp anpa cleanbar np npa npinfo npsend'
@@ -5222,10 +5222,10 @@
   description: 'A script that scrambles all the letters in a word except the first and last.'
   filename: wordscramble.pl
   license: 'GNU GPL version 2'
-  modified: '2003-09-15 00:00:00'
+  modified: '2018-05-22 22:22:59'
   name: word_scramble
   url: http://vipie.studentenweb.org/dev/irssi/wordscramble
-  version: 0.0.2
+  version: 0.0.3
 -
   authors: 'Toshio R. Spoor'
   commands: 'auth xhelp xrehash'
