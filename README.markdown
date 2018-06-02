@@ -234,7 +234,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                          ircsec ](Test/ircsec/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
 [                       ircuwhois ](Test/ircuwhois/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                    irssiBlaster ](Test/irssiBlaster/)|  ✔   |  ✔   |  ✔   | 12   |  ✔   | (c)
-[                      irssi-feed ](Test/irssi-feed/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
+[                      irssi-feed ](Test/irssi-feed/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
 [                    irssi_logger ](Test/irssi_logger/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                          irssiq ](Test/irssiq/)|  ✘   |  ✔   |  ✘   | 50   |  ☡   | (c)
 [                        isbanned ](Test/isbanned/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
@@ -509,7 +509,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                       wisestamp ](Test/wisestamp/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                             wkb ](Test/wkb/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                wordcompletition ](Test/wordcompletition/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
-[                    wordscramble ](Test/wordscramble/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[                    wordscramble ](Test/wordscramble/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                           xauth ](Test/xauth/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
 [                            xcmd ](Test/xcmd/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                    xdcc_autoget ](Test/xdcc_autoget/)|  ✔   |  ✔   |  ✔   |  2   |  ✔   | (c)
@@ -523,4 +523,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-a148cc4836fb62831346411ec2d6bd2cebb541bd | 1138
+adbe6071d418fb58e8e914387efda0e591996842 | 1143
