@@ -1,10 +1,10 @@
 # based on the nicklist.pl script
 ################################################################################
-#                               tmux_nicklist.pl                               
-# This script integrates tmux and irssi to display a list of nicks in a       
+#                               tmux_nicklist.pl
+# This script integrates tmux and irssi to display a list of nicks in a
 # vertical right pane with 20% width. Right now theres no configuration
 # or setup, simply initialize the script with irssi and by default you
-# will get the nicklist for every channel(customize by altering 
+# will get the nicklist for every channel(customize by altering
 # the regex in /set nicklist_channel_re)
 #
 # /set nicklist_channel_re <regex>
@@ -22,15 +22,15 @@
 # /set nicklist_color <ON|OFF>
 # * colourise the nicks in the nicklist (required nickcolor script
 #   with get_nick_color2 and debug_ansicolour functions)
-# 
+#
 # /set nicklist_gone_sort <ON|OFF>
 # * sort away people below
 #
 # It supports mouse scrolling and the following keys:
 # k/up arrow: up one line
 # j/down arrow: down one line
-# pageup: up 20 lines
-# pagedown: down 20 lines
+# u/pageup: up 50% lines
+# d/pagedown: down 50% lines
 # gg: go to top
 # G: go to bottom
 #
@@ -48,7 +48,7 @@ use IO::Select;
 use POSIX;
 use File::Temp qw/ :mktemp  /;
 use File::Basename;
-our $VERSION = '0.1.6'; # aea329934f6a48c
+our $VERSION = '0.1.7';
 our %IRSSI = (
   authors     => 'Thiago de Arruda',
   contact     => 'tpadilha84@gmail.com',
@@ -58,6 +58,7 @@ our %IRSSI = (
 );
 
 # "other" prefixes by danielg4 <daniel@gimpelevich.san-francisco.ca.us>
+# added 'd' and 'u' navigation as in vim, by @gerardbm (github)
 
 { package Irssi::Nick }
 
@@ -261,10 +262,12 @@ my $MOUSE_SCROLL_DOWN="\e[Ma";
 my $MOUSE_SCROLL_UP="\e[M`";
 my $ARROW_DOWN="\e[B";
 my $ARROW_UP="\e[A";
-my $UP="k";
 my $DOWN="j";
+my $UP="k";
 my $PAGE_DOWN="\e[6~";
 my $PAGE_UP="\e[5~";
+my $PAGE_DOWN_D="d";
+my $PAGE_UP_U="u";
 my $GO_TOP="gg";
 my $GO_BOTTOM="G";
 
@@ -370,7 +373,7 @@ MAIN: {
             push @nicknames, $1;
           } elsif ($line =~ /^END$/) {
             redraw;
-            last; 
+            last;
           } elsif ($line =~ /^EXIT$/) {
             last MAIN;
           }
@@ -381,7 +384,7 @@ MAIN: {
         $sequence .= $key;
         if ($MOUSE_SCROLL_DOWN =~ /^\Q$sequence\E/) {
           if ($MOUSE_SCROLL_DOWN eq $sequence) {
-            move_down 3; 
+            move_down 3;
             # mouse scroll has two more bytes that I dont use here
             # so consume them now to avoid sending unwanted bytes to
             # irssi
@@ -389,7 +392,7 @@ MAIN: {
           }
         } elsif ($MOUSE_SCROLL_UP =~ /^\Q$sequence\E/) {
           if ($MOUSE_SCROLL_UP eq $sequence) {
-            move_up 3; 
+            move_up 3;
             sysread(STDIN, $key, 2);
           }
         } elsif ($ARROW_DOWN =~ /^\Q$sequence\E/) {
@@ -404,6 +407,10 @@ MAIN: {
           move_down $rows/2 if ($PAGE_DOWN eq $sequence);
         } elsif ($PAGE_UP =~ /^\Q$sequence\E/) {
           move_up $rows/2 if ($PAGE_UP eq $sequence);
+        } elsif ($PAGE_DOWN_D =~ /^\Q$sequence\E/) {
+          move_down $rows/2 if ($PAGE_DOWN_D eq $sequence);
+        } elsif ($PAGE_UP_U =~ /^\Q$sequence\E/) {
+          move_up $rows/2 if ($PAGE_UP_U eq $sequence);
         } elsif ($GO_BOTTOM =~ /^\Q$sequence\E/) {
           move_down -1 if ($GO_BOTTOM eq $sequence);
         } elsif ($GO_TOP =~ /^\Q$sequence\E/) {
