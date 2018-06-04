@@ -22,7 +22,7 @@ use strict;
 use IO::Handle; # for (auto)flush
 use Fcntl; # for sysopen
 use vars qw($VERSION %IRSSI);
-$VERSION = '0.4.10';
+$VERSION = '0.4.11';
 %IRSSI = (
 	authors     => 'Wouter Coekaerts',
 	contact     => 'coekie@irssi.org',
@@ -30,7 +30,7 @@ $VERSION = '0.4.10';
 	description => 'draws a nicklist to another terminal, or at the right of your irssi in the same terminal',
 	license     => 'GPLv2',
 	url         => 'http://wouter.coekaerts.be/irssi',
-	changed     => '2018-04-02'
+	changed     => '2018-06-02'
 );
 
 sub cmd_help {
@@ -658,6 +658,9 @@ sub recalc_nick {
 # scroll the nicklist, arg = number of lines to scroll, positive = down, negative = up
 sub cmd_scroll {
 	my $channel = Irssi::active_win->{active};
+	if (!$channel || !$channel->can('nicks')) { # active window is not a channel
+		return;
+	}
 	my @nicks = $channel->nicks;
 	my $nick_count = scalar(@nicks)+0;
 
