@@ -5,5 +5,6 @@
   default_package: tmux_nicklist_portable
   description: 'displays a list of nicks in a separate tmux pane'
   license: WTFPL
+  modified: '2018-05-25 22:18:13'
   name: tmux-nicklist
-  version: 0.1.6
+  version: 0.1.7

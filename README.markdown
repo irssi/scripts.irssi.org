@@ -318,7 +318,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                   nickcolor_gay ](Test/nickcolor_gay/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                       nickcolor ](Test/nickcolor/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
 [                      nickignore ](Test/nickignore/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                        nicklist ](Test/nicklist/)|  ✔   |  ✔   |  ✔   | 13   |  ✔   
+[                        nicklist ](Test/nicklist/)|  ✔   |  ✔   |  ✔   | 13   |  ✔   | (c)
 [                  nickmix-c0ffee ](Test/nickmix-c0ffee/)|  ✔   |  ✔   |  ✔   | 18   |  ✔   | (c)
 [                   nickmix_pasky ](Test/nickmix_pasky/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        nickserv ](Test/nickserv/)|  ✔   |  ✔   |  ✔   | 13   |  ✔   | (c)
@@ -456,7 +456,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                           title ](Test/title/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                           tlock ](Test/tlock/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       tmux_away ](Test/tmux_away/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
-[          tmux-nicklist-portable ](Test/tmux-nicklist-portable/)|  ✔   |  ✔   |  ✔   |  8   |  ✔   | (c)
+[          tmux-nicklist-portable ](Test/tmux-nicklist-portable/)|  ✔   |  ✔   |  ✔   |  8   |  ✔   
 [                toggle_hidelevel ](Test/toggle_hidelevel/)|  ✔   |  ✔   |  ✔   |  2   |  ✔   | (c)
 [                          toilet ](Test/toilet/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
 [                        topicsed ](Test/topicsed/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
@@ -523,4 +523,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-a2762c2e80fd169c161669659229caf859254674 | 1146
+f74236ac11ede1e0548e851e1d083a68d15efa99 | 1147
