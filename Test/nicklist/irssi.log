@@ -1,6 +1,6 @@
 * Scalar value @_[0] better written as $_[0] at nicklist.pl line 459.
 * 
-* Scalar value @_[0] better written as $_[0] at nicklist.pl line 673.
+* Scalar value @_[0] better written as $_[0] at nicklist.pl line 676.
 * 
 * Use of uninitialized value $nicklist_width in numeric ne (!=) at nicklist.pl line 123.
 * 
