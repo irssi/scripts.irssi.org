@@ -8,22 +8,23 @@ $VERSION = '20071209';
     contact     => '',
     name        => 'oops',
     description =>
-'turns \'ls\' in the beginning of a sent line into the names or whois commands',
+'turns \'ll\' and \'ls\' in the beginning of a sent line into the names or whois commands',
     license => 'Public Domain',
 );
 
 sub send_text {
+    my $pattern = qr/(^ll |^ll$|^ls |^ls$)/;
 
     #"send text", char *line, SERVER_REC, WI_ITEM_REC
     my ( $data, $server, $witem ) = @_;
     if ( $witem
         && ( $witem->{type} eq "CHANNEL" )
-        && ( $data =~ /(^ls |^ls$)/ ) )
+        && ( $data =~ $pattern ) )
     {
         $witem->command("names $witem->{name}");
         Irssi::signal_stop();
     }
-    if ( $witem && ( $witem->{type} eq "QUERY" ) && ( $data =~ /(^ls |^ls$)/ ) )
+    if ( $witem && ( $witem->{type} eq "QUERY" ) && ( $data =~ $pattern ) )
     {
         $witem->command("whois $witem->{name}");
         Irssi::signal_stop();
