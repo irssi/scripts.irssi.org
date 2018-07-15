@@ -1,4 +1,4 @@
-# /OWNAGE [<output to channel>]
+# /OWNAGE
 # shows how many channels you're joined and how many in them you're op, and
 # how many nicks are in those channels (not including you)
 
@@ -6,12 +6,13 @@ use strict;
 use vars qw($VERSION %IRSSI);
 
 use Irssi;
-$VERSION = '20071209';
+$VERSION = '20180715';
 %IRSSI = (
     authors     => '',
     contact     => '',
-    name        => '',
-    description => '',
+    name        => 'ownage',
+    description => 'shows how many channels you\'re joined and how many in them you\'re op, and
+how many nicks are in those channels',
     license     => '',
     commands    => 'ownage',
 );
