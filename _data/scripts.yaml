@@ -2241,11 +2241,11 @@
   description: 'Automatically lookup IMDB-numbers in nicknames'
   filename: imdb.pl
   license: GPL
-  modified: '2003-03-01 12:39:49'
-  modules: LWP::UserAgent
+  modified: '2018-06-14 20:57:12'
+  modules: 'HTML::Entities LWP::UserAgent'
   name: imdb
   url: http://xyrion.org/irssi/
-  version: '1.01'
+  version: '1.02'
 -
   authors: 'Jari Matilainen'
   commands: prompt
