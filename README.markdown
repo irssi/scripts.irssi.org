@@ -218,7 +218,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                        ignoreoc ](Test/ignoreoc/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       ignorsula ](Test/ignorsula/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                              il ](Test/il/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                            imdb ](Test/imdb/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
+[                            imdb ](Test/imdb/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   
 [                            iMPD ](Test/iMPD/)|  ✔   |  ✔   |  ✔   | 22   |  ✔   | (c)
 [                       intercept ](Test/intercept/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                         intjoin ](Test/intjoin/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
@@ -456,7 +456,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                           title ](Test/title/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                           tlock ](Test/tlock/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       tmux_away ](Test/tmux_away/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
-[          tmux-nicklist-portable ](Test/tmux-nicklist-portable/)|  ✔   |  ✔   |  ✔   |  8   |  ✔   
+[          tmux-nicklist-portable ](Test/tmux-nicklist-portable/)|  ✔   |  ✔   |  ✔   |  8   |  ✔   | (c)
 [                toggle_hidelevel ](Test/toggle_hidelevel/)|  ✔   |  ✔   |  ✔   |  2   |  ✔   | (c)
 [                          toilet ](Test/toilet/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
 [                        topicsed ](Test/topicsed/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
@@ -523,4 +523,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-f74236ac11ede1e0548e851e1d083a68d15efa99 | 1147
+2cd5a4e38a32536d570198adf44f1f4825b7551a | 1159
