@@ -24,7 +24,7 @@ use strict;
 use Irssi;
 use vars qw($VERSION %IRSSI);
 
-$VERSION = "1.11";
+$VERSION = "1.12";
 
 %IRSSI = (
     authors     => 'Geert Hauwaerts',
@@ -33,7 +33,7 @@ $VERSION = "1.11";
     description => 'This script will authorize you into NickServ.',
     license     => 'GNU General Public License',
     url         => 'https://github.com/irssi/scripts.irssi.org/blob/master/scripts/nickserv.pl',
-    changed     => 'Di 17. Jan 19:32:45 CET 2017',
+    changed     => 'Wed Jun 27 19:23 CEST 2018',
 );
 
 my $irssidir = Irssi::get_irssi_dir();
@@ -466,7 +466,7 @@ sub nickserv_notice {
     if (is_nickserv($server->{tag}, $address)) {
         $text =~ s/[[:cntrl:]]+//g; # remove control crap
 
-        if ($text =~ /^(?:If this is your nickname, type|Please identify via|Type) \/msg NickServ (?i:identify)/ || $text =~ /^This nickname is registered and protected.  If it is your/ || $text =~ /This nickname is registered\. Please choose a different nickname/) {
+        if ($text =~ /^(?:\(?If this is your nick(?:name)?, type|Please identify via|Type) \/msg NickServ (?i:identify)/ || $text =~ /^This nickname is registered and protected.  If it is your/ || $text =~ /This nickname is registered\. Please choose a different nickname/) {
             my $password = get_password($server->{tag}, $server->{nick});
 
             if ($password == -1) {
