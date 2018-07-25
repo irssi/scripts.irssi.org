@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-our $VERSION = '0.2';
+our $VERSION = '0.3';
 our %IRSSI = (
     authors     => 'Lars Djerf, Nei, Phoenix616',
     contact     => 'lars.djerf@gmail.com, Nei @ anti@conference.jabber.teamidiot.de, Phoenix616 @ mail@moep.tv',
@@ -80,14 +80,6 @@ sub event_message {
     my ($server, $msg, @rest) = @_;
     $msg =~ s/$regex/$emojie{$1}/g;
     Irssi::signal_continue($server, $msg, @rest);
-}
-
-sub sig_send {
-    my ($msg, @rest) = @_;
-    if ($replaceOutgoing) {
-        $msg =~ s/$regex/$emojie{$1}/g;
-        Irssi::signal_continue($msg, @rest);
-    }
 }
 
 sub sig_setup_changed {
