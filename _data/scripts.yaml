@@ -3598,12 +3598,12 @@
   authors: ''
   commands: ownage
   contact: ''
-  description: ''
+  description: "shows how many channels you're joined and how many in them you're op, and\r\nhow many nicks are in those channels"
   filename: ownage.pl
   license: ''
-  modified: '2008-05-25 14:29:31'
-  name: ''
-  version: '20071209'
+  modified: '2018-07-15 18:05:48'
+  name: ownage
+  version: '20180715'
 -
   authors: c0ffee
   commands: page
