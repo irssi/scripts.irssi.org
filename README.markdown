@@ -350,12 +350,12 @@ See [the testing read-me](../master/_testing/) for details.
 [                        opnotify ](Test/opnotify/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                         orphamp ](Test/orphamp/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                             osd ](Test/osd/)|  ✔   |  ✔   |  ✔   |  8   |  ✔   | (c)
-[                          ownage ](Test/ownage/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[                          ownage ](Test/ownage/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                     page-c0ffee ](Test/page-c0ffee/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                     page_reeler ](Test/page_reeler/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                           pager ](Test/pager/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       pangotext ](Test/pangotext/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
-[                    paste_derwan ](Test/paste_derwan/)|  ✔   |  ✔   |  ✔   | 53   |  ✔   | (c)
+[                    paste_derwan ](Test/paste_derwan/)|  ✔   |  ✔   |  ✔   | 53   |  ✔   
 [                    paste-derwan ](Test/paste-derwan/)|  ✔   |  ✔   |  ✔   | 37   |  ✔   | (c)
 [                    paste_huggie ](Test/paste_huggie/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                   paste_kimmoke ](Test/paste_kimmoke/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -523,4 +523,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-e1f5702d56e09deffef27c5d8fb919f82c138064 | 1162
+e30f9f33bc905dbc4322d3dd3754e4a90cbe2d0f | 1164
