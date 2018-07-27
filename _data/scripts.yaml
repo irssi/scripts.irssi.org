@@ -3663,10 +3663,10 @@
   description: 'Pasting lines to specified targets, type "/paste -help" for help'
   filename: paste_derwan.pl
   license: 'GNU GPL v2'
-  modified: '2004-11-13 14:32:13'
+  modified: '2018-07-14 17:49:40'
   name: paste
   url: http://derwan.irssi.pl
-  version: 1.0-rc5
+  version: '1.1'
 -
   authors: 'Simon Huggins'
   commands: 'clear_buffer paste'
