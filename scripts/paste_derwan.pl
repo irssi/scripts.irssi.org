@@ -1,6 +1,3 @@
-# $Id: paste_derwan.pl,v 1.0-rc5 2004/11/13 14:32 derwan Exp $
-#
-
 use strict;
 use vars qw($VERSION %IRSSI %HELP);
 
@@ -9,7 +6,10 @@ use Irssi 0 qw
    active_win server_find_tag signal_stop window_find_name parse_special
 );
 
-$VERSION = '1.0-rc5';
+use Irssi::UI;
+use Irssi::TextUI;
+
+$VERSION = '1.1';
 %IRSSI =
 (
    'authors'      => 'Marcin Rozycki',
@@ -19,7 +19,7 @@ $VERSION = '1.0-rc5';
    'license'      => 'GNU GPL v2',
    'modules'      => '',
    'url'          => 'http://derwan.irssi.pl',   
-   'changed'      => 'Sat Nov 13 14:32:13 2004',
+   'changed'      => '2018-07-14',
 );
 
 $HELP{'paste'} = <<EOF;
