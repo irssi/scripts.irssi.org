@@ -520,14 +520,14 @@
   version: '2003100201'
 -
   authors: 'Geert Hauwaerts'
-  contact: geert@irssi.org
-  description: 'This script will notice your away message to the person who just hilighted you.'
+  contact: geert@hauwaerts.be
+  description: 'This script will notice your away message in response to a hilight.'
   filename: away_hilight_notice.pl
   license: 'GNU General Public License'
-  modified: '2003-12-31 15:37:24'
+  modified: '2015-06-25 22:51:33'
   name: away_hilight_notice.pl
-  url: http://irssi.hauwaerts.be/away_hilight_notice.pl
-  version: '0.10'
+  url: https://github.com/GeertHauwaerts/irssi-scripts/blob/master/src/away_hilight_notice.pl
+  version: 15.01.01
 -
   authors: 'Wouter Coekaerts, Koenraad Heijlen'
   contact: 'vipie@ulyssis.org, wouter@coekaerts.be'
