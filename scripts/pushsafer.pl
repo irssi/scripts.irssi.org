@@ -6,7 +6,7 @@ use vars qw($VERSION %IRSSI %config);
 use LWP::UserAgent;
 use Scalar::Util qw(looks_like_number);
 
-$VERSION = '0.0.1';
+$VERSION = '0.0.2';
 
 %IRSSI = (
     authors => 'Kevin Siml',
@@ -15,7 +15,7 @@ $VERSION = '0.0.1';
     description => 'Push hilights and private messages when away by the pushsafer.com API',
     license => 'BSD',
     url => 'https://www.pushsafer.com',
-    changed => "2017-03-31"
+    changed => "2018-08-21"
 );
 
 my $pushsafer_ignorefile;
@@ -70,10 +70,15 @@ sub send_push {
             d => Irssi::settings_get_str('pushsafer_device'),
             s => Irssi::settings_get_str('pushsafer_sound'),
             i => Irssi::settings_get_str('pushsafer_icon'),
+            c => Irssi::settings_get_str('pushsafer_iconcolor'),
             v => Irssi::settings_get_str('pushsafer_vibration'),
             u => Irssi::settings_get_str('pushsafer_url'),
             ut => Irssi::settings_get_str('pushsafer_urltitle'),
             l => Irssi::settings_get_str('pushsafer_time2live'),
+			pr => Irssi::settings_get_str('pushsafer_priority'),
+			re => Irssi::settings_get_str('pushsafer_retry'),
+			ex => Irssi::settings_get_str('pushsafer_expire'),
+			a => Irssi::settings_get_str('pushsafer_answer'),
             t => $channel
         ]
     );
@@ -286,10 +291,15 @@ Irssi::settings_add_str($IRSSI{'name'}, 'pushsafer_ignorechannels', '');
 Irssi::settings_add_str($IRSSI{'name'}, 'pushsafer_sound', '21');
 Irssi::settings_add_str($IRSSI{'name'}, 'pushsafer_device', '');
 Irssi::settings_add_str($IRSSI{'name'}, 'pushsafer_icon', '25');
+Irssi::settings_add_str($IRSSI{'name'}, 'pushsafer_iconcolor', '25');
 Irssi::settings_add_str($IRSSI{'name'}, 'pushsafer_vibration', '0');
 Irssi::settings_add_str($IRSSI{'name'}, 'pushsafer_url', '');
 Irssi::settings_add_str($IRSSI{'name'}, 'pushsafer_urltitle', '');
 Irssi::settings_add_str($IRSSI{'name'}, 'pushsafer_time2live', '');
+Irssi::settings_add_str($IRSSI{'name'}, 'pushsafer_priority', '');
+Irssi::settings_add_str($IRSSI{'name'}, 'pushsafer_retry', '');
+Irssi::settings_add_str($IRSSI{'name'}, 'pushsafer_expire', '');
+Irssi::settings_add_str($IRSSI{'name'}, 'pushsafer_answer', '');
 
 Irssi::command_bind('help pushignore', \&cmd_help);
 Irssi::command_bind('pushignore help', \&cmd_help);
