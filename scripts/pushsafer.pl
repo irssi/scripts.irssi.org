@@ -75,10 +75,10 @@ sub send_push {
             u => Irssi::settings_get_str('pushsafer_url'),
             ut => Irssi::settings_get_str('pushsafer_urltitle'),
             l => Irssi::settings_get_str('pushsafer_time2live'),
-			pr => Irssi::settings_get_str('pushsafer_priority'),
-			re => Irssi::settings_get_str('pushsafer_retry'),
-			ex => Irssi::settings_get_str('pushsafer_expire'),
-			a => Irssi::settings_get_str('pushsafer_answer'),
+            pr => Irssi::settings_get_str('pushsafer_priority'),
+            re => Irssi::settings_get_str('pushsafer_retry'),
+            ex => Irssi::settings_get_str('pushsafer_expire'),
+            a => Irssi::settings_get_str('pushsafer_answer'),
             t => $channel
         ]
     );
