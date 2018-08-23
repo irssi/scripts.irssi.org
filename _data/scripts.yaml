@@ -3801,11 +3801,11 @@
   description: 'Push hilights and private messages when away by the pushsafer.com API'
   filename: pushsafer.pl
   license: BSD
-  modified: '2017-03-31 15:30:51'
+  modified: '2018-08-21 08:30:47'
   modules: LWP::UserAgent
   name: pushsafer
   url: https://www.pushsafer.com
-  version: 0.0.1
+  version: 0.0.2
 -
   authors: 'Doug Freed'
   contact: dwfreed!#irssi@freenode
