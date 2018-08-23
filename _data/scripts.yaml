@@ -90,14 +90,14 @@
   version: '1.1'
 -
   authors: 'Geert Hauwaerts'
-  contact: geert@irssi.org
-  description: 'This script shows notices into the active channel unless it has its own window.'
+  contact: geert@hauwaerts.be
+  description: 'This script shows incoming notices into the active channel.'
   filename: active_notice.pl
   license: 'GNU General Public License'
   modified: '2016-01-20 22:59:49'
   name: active_notice.pl
-  url: http://irssi.hauwaerts.be/active_notice.pl
-  version: '1.08'
+  url: https://github.com/GeertHauwaerts/irssi-scripts/blob/master/src/active_notice.pl
+  version: 18.01.01
 -
   authors: 'Geert Hauwaerts'
   contact: geert@irssi.org
