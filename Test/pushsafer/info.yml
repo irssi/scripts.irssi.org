@@ -1,7 +1,7 @@
 ---
 -
   authors: 'Kevin Siml'
-  changed: 2017-03-31
+  changed: 2018-08-21
   commands:
     - 'help pushignore'
     - pushignore
@@ -14,8 +14,9 @@
   default_package: pushsafer
   description: 'Push hilights and private messages when away by the pushsafer.com API'
   license: BSD
+  modified: '2018-08-21 08:30:47'
   modules:
     - LWP::UserAgent
   name: pushsafer
   url: https://www.pushsafer.com
-  version: 0.0.1
+  version: 0.0.2
