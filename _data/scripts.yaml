@@ -4347,14 +4347,14 @@
   name: signal_hilight
   version: '1.0'
 -
-  authors: 'Morten Lied Johansen, Jonas Berlin'
+  authors: 'Morten Lied Johansen, Jonas Berlin, Ossi Hakkarainen'
   contact: mortenjo@ifi.uio.no
   description: 'Prefix nicks with @ when completing nicks to match conventions on networks like Slack, Flowdock, Gitter etc'
   filename: slack_complete.pl
   license: GPL
-  modified: '2015-11-09 13:04:58'
+  modified: '2018-08-29 00:46:06'
   name: slack_complete
-  version: '1.1'
+  version: '2.0'
 -
   authors: 'Lars Djerf'
   contact: lars.djerf@gmail.com
