@@ -424,7 +424,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                    showinactive ](Test/showinactive/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        showmode ](Test/showmode/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                  signal_hilight ](Test/signal_hilight/)|  ✔   |  ✔   |  ✔   |  1   |  ✔   | (c)
-[                  slack_complete ](Test/slack_complete/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                  slack_complete ](Test/slack_complete/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                     slack_emoji ](Test/slack_emoji/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [             slack_strip_auto_cc ](Test/slack_strip_auto_cc/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                     smartfilter ](Test/smartfilter/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -487,7 +487,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                         urlinfo ](Test/urlinfo/)|  ✔   |  ✔   |  ✔   |  8   |  ✔   | (c)
 [                         url_log ](Test/url_log/)|  ✔   |  ✔   |  ✔   | 12   |  ✔   | (c)
 [                         urlplot ](Test/urlplot/)|  ✔   |  ✔   |  ✔   | 86   |  ✔   | (c)
-[                       usercount ](Test/usercount/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[                       usercount ](Test/usercount/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        userhost ](Test/userhost/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                           users ](Test/users/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                    version-stat ](Test/version-stat/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
@@ -523,4 +523,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-c88538b8cd02d5df2a05a730727bb87fb3a46329 | 1170
+ec8831891248656b8c97bf61d49eecb5b5ba1a39 | 1173
