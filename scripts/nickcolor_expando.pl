@@ -14,7 +14,7 @@ our %IRSSI = (
 # Usage
 # =====
 # after loading the script, add the colour expando to the format
-# (themes are not supported)
+# (themes' abstracts are not supported)
 #
 #   /format pubmsg {pubmsgnick $2 {pubnick $nickcolor$0}}$1
 #
