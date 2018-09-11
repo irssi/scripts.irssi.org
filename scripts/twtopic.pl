@@ -4,7 +4,7 @@ use Irssi;
 use Irssi::Irc;
 use Irssi::TextUI;
 
-$VERSION = '1.01';
+$VERSION = '1.02';
 %IRSSI = (
    authors	=> 'John Engelbrecht',
    contact	=> 'jengelbr@yahoo.com',
@@ -12,7 +12,7 @@ $VERSION = '1.01';
    description	=> 'Animated Topic bar.',
    sbitems      => 'twtopic',
    license	=> 'Public Domain',
-   changed	=> 'Sat Nov 20 14:15:18 CST 2004',
+   changed	=> '2018-09-08',
    url		=> 'http://irssi.darktalker.net'."\n",
 );
 
@@ -35,7 +35,7 @@ my $instrut =
   "|  /toggle twtopic_instruct |Startup instructions  |\n".
   "\`--------------------------------------------------'";
 
-my $timeout;
+my $timeout=0;
 my $start_pos=0;
 my $flipflop=0; 
 my @mirc_color_arr = ("\0031","\0035","\0033","\0037","\0032","\0036","\00310","\0030","\00314","\0034","\0039","\0038","\00312","\00313","\00311","\00315","\017");
@@ -43,7 +43,13 @@ my @mirc_color_arr = ("\0031","\0035","\0033","\0037","\0032","\0036","\00310","
 
 sub setup {
    my $time = Irssi::settings_get_int('twtopic_refresh');
-   Irssi::timeout_remove($timeout);
+   Irssi::timeout_remove($timeout) if ($timeout != 0);
+
+   if ($time < 10 ) {
+      print "Warning: 'twtopic_refresh' must be >= 10";
+      $time=150;
+      Irssi::settings_set_int('twtopic_refresh',$time);
+   }
    $timeout = Irssi::timeout_add($time, 'reload' , undef);
 }
  
@@ -96,15 +102,19 @@ sub get {
    return $text;
 }
 
+sub reload {
+   Irssi::statusbar_items_redraw('twtopic');
+}
+
 Irssi::statusbar_item_register('twtopic', '$0', 'show');
 Irssi::signal_add('setup changed', 'setup');
 Irssi::settings_add_int('tech_addon', 'twtopic_refresh', 150);
 Irssi::settings_add_bool('tech_addon', 'twtopic_instruct', 1);
 Irssi::settings_add_int('tech_addon', 'twtopic_size',20);
-$timeout = Irssi::timeout_add(Irssi::settings_get_int('twtopic_refresh'), 'reload' , undef);
-sub reload { Irssi::statusbar_items_redraw('twtopic'); }
+
+setup();
 
 if(Irssi::settings_get_bool('twtopic_instruct')) {
    print $instrut;
-   }
+}
 
