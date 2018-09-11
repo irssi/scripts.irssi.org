@@ -424,7 +424,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                    showinactive ](Test/showinactive/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        showmode ](Test/showmode/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                  signal_hilight ](Test/signal_hilight/)|  ✔   |  ✔   |  ✔   |  1   |  ✔   | (c)
-[                  slack_complete ](Test/slack_complete/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[                  slack_complete ](Test/slack_complete/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                     slack_emoji ](Test/slack_emoji/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [             slack_strip_auto_cc ](Test/slack_strip_auto_cc/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                     smartfilter ](Test/smartfilter/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -473,7 +473,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                   twitter_theme ](Test/twitter_theme/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                        twprompt ](Test/twprompt/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       twsocials ](Test/twsocials/)|  ✔   |  ✔   |  ✔   | 16   |  ✔   | (c)
-[                         twtopic ](Test/twtopic/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                         twtopic ](Test/twtopic/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                         typofix ](Test/typofix/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
 [                      uberprompt ](Test/uberprompt/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                 UNIBG-autoident ](Test/UNIBG-autoident/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -523,4 +523,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-ec8831891248656b8c97bf61d49eecb5b5ba1a39 | 1173
+cceece63ddc99774fe6ae279bd51b32e9ff1104f | 1181
