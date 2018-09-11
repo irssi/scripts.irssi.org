@@ -4853,10 +4853,10 @@
   description: 'Animated Topic bar.'
   filename: twtopic.pl
   license: 'Public Domain'
-  modified: '2017-04-07 16:34:31'
+  modified: '2018-09-08 10:00:39'
   name: twtopic.pl
   url: "http://irssi.darktalker.net\n"
-  version: '1.01'
+  version: '1.02'
 -
   authors: 'Juerd (first version: Timo Sirainen, additions by: Qrczak)'
   contact: 'tss@iki.fi, juerd@juerd.nl, qrczak@knm.org.pl'
