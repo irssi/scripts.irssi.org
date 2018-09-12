@@ -314,7 +314,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                        newsline ](Test/newsline/)|  ✔   |  ✔   |  ✔   | 26   |  ✔   | (c)
 [                            news ](Test/news/)|  ✔   |  ✔   |  ✔   | 79   |  ✔   | (c)
 [                         nickban ](Test/nickban/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[               nickcolor_expando ](Test/nickcolor_expando/)|  ✔   |  ✔   |  ✔   | 10   |  ✔   
+[               nickcolor_expando ](Test/nickcolor_expando/)|  ✔   |  ✔   |  ✔   | 10   |  ✔   | (c)
 [                   nickcolor_gay ](Test/nickcolor_gay/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                       nickcolor ](Test/nickcolor/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
 [                      nickignore ](Test/nickignore/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -435,7 +435,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                         spambot ](Test/spambot/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                special_complete ](Test/special_complete/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                      spellcheck ](Test/spellcheck/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                           spell ](Test/spell/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                           spell ](Test/spell/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                           sping ](Test/sping/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       splitlong ](Test/splitlong/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                         spotify ](Test/spotify/)|  ✔   |  ✔   |  ✔   | 14   |  ✔   | (c)
@@ -523,4 +523,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-98ee66be7ec633362c46bf376e692ee0325deae1 | 1182
+04f6c280298ee3f772b7f6c53f5bfe75e190d182 | 1183

@@ -1,7 +1,7 @@
 ---
 -
   authors: 'Michael Kowalchuk'
-  changed: 'Mon Jan  2 17:02:12 CST 2006'
+  changed: 2018-09-05
   commands:
     - _spellcheck
     - spell
@@ -9,8 +9,9 @@
   default_package: spell
   description: 'A spell checker for irssi.  Hit alt+s and your line will echoed to the active window with mistakes underlined and suggestions noted.  /spell is also provided.  Requires Lingua::Ispell and Ispell.'
   license: MIT
+  modified: '2018-09-06 19:23:44'
   modules:
     - Lingua::Ispell
   name: spell
   url: http://home.cc.umanitoba.ca/~umkowa17/
-  version: '1.0'
+  version: '1.1'
