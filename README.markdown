@@ -314,7 +314,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                        newsline ](Test/newsline/)|  ✔   |  ✔   |  ✔   | 26   |  ✔   | (c)
 [                            news ](Test/news/)|  ✔   |  ✔   |  ✔   | 79   |  ✔   | (c)
 [                         nickban ](Test/nickban/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[               nickcolor_expando ](Test/nickcolor_expando/)|  ✔   |  ✔   |  ✔   | 10   |  ✔   | (c)
+[               nickcolor_expando ](Test/nickcolor_expando/)|  ✔   |  ✔   |  ✔   | 10   |  ✔   
 [                   nickcolor_gay ](Test/nickcolor_gay/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                       nickcolor ](Test/nickcolor/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
 [                      nickignore ](Test/nickignore/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -473,7 +473,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                   twitter_theme ](Test/twitter_theme/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                        twprompt ](Test/twprompt/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       twsocials ](Test/twsocials/)|  ✔   |  ✔   |  ✔   | 16   |  ✔   | (c)
-[                         twtopic ](Test/twtopic/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[                         twtopic ](Test/twtopic/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                         typofix ](Test/typofix/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
 [                      uberprompt ](Test/uberprompt/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                 UNIBG-autoident ](Test/UNIBG-autoident/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -523,4 +523,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-cceece63ddc99774fe6ae279bd51b32e9ff1104f | 1181
+98ee66be7ec633362c46bf376e692ee0325deae1 | 1182
