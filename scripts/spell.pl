@@ -17,11 +17,13 @@
 #   spell_max_guesses (def: 1)
 #   spell_error_effect (def: %U = underline, others are %8 = reverse, %9 = bold)
 #                                            see http://irssi.org/documentation/formats
-#                                      
+#   spell_ispell_path		(default: "/usr/local/bin/ispell")
+#   spell_use_dictionary	(default: "")
 #
 # History
 #   First version: inline spellchecking, terrible, unreleased [Tue Aug  2 00:32:27 CDT 2005]
-#   New version: Spellcheck on request [Mon Jan  2 17:02:12 CST 2006]
+#   1.0    Spellcheck on request [Mon Jan  2 17:02:12 CST 2006]
+#   1.1    new options spell_ispell_path spell_use_dictionary [2018-09-05]
 #
 # Todo
 #   Is there a way for a script to clear its mess like '/lastlog -clear' does?
@@ -34,7 +36,7 @@ use Irssi::TextUI;
 use Lingua::Ispell;
 
 use vars qw($VERSION %IRSSI);
-$VERSION = '1.0';
+$VERSION = '1.1';
 %IRSSI = (
     authors     => 'Michael Kowalchuk',
     contact     => 'michael_kowalchuk@umanitoba.ca',
@@ -42,7 +44,7 @@ $VERSION = '1.0';
     description => 'A spell checker for irssi.  Hit alt+s and your line will echoed to the active window with mistakes underlined and suggestions noted.  /spell is also provided.  Requires Lingua::Ispell and Ispell.',
     license     => 'MIT',
     url         => 'http://home.cc.umanitoba.ca/~umkowa17/',
-    changed     => 'Mon Jan  2 17:02:12 CST 2006'
+    changed     => '2018-09-05'
 );
 
 sub check_line {
@@ -116,10 +118,21 @@ sub cmd_spell {
 	Irssi::active_win()->print("spell: " . check_line($inputline, $guesses), MSGLEVEL_CRAP );
 }
 
+sub sig_config {
+	$Lingua::Ispell::path=Irssi::settings_get_str($IRSSI{'name'}.'_ispell_path');
 
+	my $dic=Irssi::settings_get_str($IRSSI{'name'}.'_use_dictionary');
+	Lingua::Ispell::use_dictionary($dic) if ($dic ne "") ;
+}
+
+
+Irssi::settings_add_str('misc', $IRSSI{'name'} . '_use_dictionary', "");
+Irssi::settings_add_str('misc', $IRSSI{'name'} . '_ispell_path', "/usr/local/bin/ispell");
 Irssi::settings_add_str('misc', $IRSSI{'name'} . '_error_effect', "%U");
 Irssi::settings_add_int('misc', $IRSSI{'name'} . '_max_guesses', 1);
 
 Irssi::command_bind('_spellcheck', 'cmd_spellcheck');
 Irssi::command_bind('spell', 'cmd_spell');
 
+Irssi::signal_add("setup changed",\&sig_config);
+sig_config();
