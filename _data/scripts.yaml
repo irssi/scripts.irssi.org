@@ -3244,7 +3244,7 @@
   description: 'colourise nicks'
   filename: nickcolor_expando.pl
   license: 'GPL v2'
-  modified: '2017-07-05 13:52:36'
+  modified: '2018-09-06 14:56:14'
   name: nickcolor_expando
   version: 0.4.0
 -
@@ -4452,11 +4452,11 @@
   description: 'A spell checker for irssi.  Hit alt+s and your line will echoed to the active window with mistakes underlined and suggestions noted.  /spell is also provided.  Requires Lingua::Ispell and Ispell.'
   filename: spell.pl
   license: MIT
-  modified: '2006-01-02 17:02:12'
+  modified: '2018-09-06 19:23:44'
   modules: Lingua::Ispell
   name: spell
   url: http://home.cc.umanitoba.ca/~umkowa17/
-  version: '1.0'
+  version: '1.1'
 -
   authors: 'Jakub Jankowski'
   contact: shasta@toxcorp.com
