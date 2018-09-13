@@ -1,7 +1,7 @@
 ---
 -
   authors: 'Doncho N. Gunchev'
-  changed: 'Sat Jan 25 02:35:40 EET 2003'
+  changed: 2018-09-10
   commands:
     - id
     - 'id add'
@@ -13,6 +13,7 @@
   default_package: UNIBG_autoident
   description: "Automaticaly \x02/msg ident NS yourpassword\x02 when you connect or services come back from death"
   license: 'Public Domain'
+  modified: '2018-09-10 18:52:09'
   name: UNIBG-autoident
   url: http://not.available.yet/
-  version: '0.1'
+  version: '0.2'

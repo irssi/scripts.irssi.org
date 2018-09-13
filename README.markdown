@@ -123,7 +123,6 @@ See [the testing read-me](../master/_testing/) for details.
 [                         ctrlact ](Test/ctrlact/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            cwho ](Test/cwho/)|  ✔   |  ✔   |  ✔   | 18   |  ✔   | (c)
 [               dancer_forwardfix ](Test/dancer_forwardfix/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                 dancer_hide_477 ](Test/dancer_hide_477/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                             dau ](Test/dau/)|  ✔   |  ✔   |  ✔   | 42   |  ✔   | (c)
 [                          dcc_ip ](Test/dcc_ip/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                         dccmove ](Test/dccmove/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -435,7 +434,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                         spambot ](Test/spambot/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                special_complete ](Test/special_complete/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                      spellcheck ](Test/spellcheck/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                           spell ](Test/spell/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[                           spell ](Test/spell/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                           sping ](Test/sping/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       splitlong ](Test/splitlong/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                         spotify ](Test/spotify/)|  ✔   |  ✔   |  ✔   | 14   |  ✔   | (c)
@@ -476,7 +475,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                         twtopic ](Test/twtopic/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                         typofix ](Test/typofix/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
 [                      uberprompt ](Test/uberprompt/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
-[                 UNIBG-autoident ](Test/UNIBG-autoident/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                 UNIBG-autoident ](Test/UNIBG-autoident/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                         unicode ](Test/unicode/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
 [                     upgradeinfo ](Test/upgradeinfo/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                               u ](Test/u/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -523,4 +522,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-04f6c280298ee3f772b7f6c53f5bfe75e190d182 | 1183
+d7b0171ac81e3797ae96b77f3aac97da2c9ec7ef | 1186
