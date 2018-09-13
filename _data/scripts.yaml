@@ -26,10 +26,10 @@
   description: "Automaticaly \x02/msg ident NS yourpassword\x02 when you connect or services come back from death"
   filename: UNIBG-autoident.pl
   license: 'Public Domain'
-  modified: '2003-01-25 02:35:40'
+  modified: '2018-09-10 18:52:09'
   name: UNIBG-autoident
   url: http://not.available.yet/
-  version: '0.1'
+  version: '0.2'
 -
   authors: 'Tamas SZERB'
   contact: toma@rulez.org
@@ -1237,16 +1237,6 @@
   name: dancer_forwardfix.pl
   url: http://irssi.hauwaerts.be/dancer_forwardfix.pl
   version: '0.03'
--
-  authors: 'Geert Hauwaerts'
-  contact: geert@irssi.org
-  description: 'This script hides the 477 numerics from the dancer IRCd.'
-  filename: dancer_hide_477.pl
-  license: 'GNU General Public License'
-  modified: '2004-03-12 19:46:24'
-  name: dancer_hide_477.pl
-  url: http://irssi.hauwaerts.be/dancer_hide_477.pl
-  version: '0.01'
 -
   authors: 'Clemens Heidinger'
   commands: dau
