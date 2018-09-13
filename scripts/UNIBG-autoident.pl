@@ -2,7 +2,7 @@ use strict;
 use vars qw($VERSION %IRSSI);
 use Irssi::TextUI;
 
-$VERSION = "0.1";
+$VERSION = "0.2";
 %IRSSI = (
     authors     => 'Doncho N. Gunchev',
     contact     => 'mr_700@yahoo.com',
@@ -10,7 +10,7 @@ $VERSION = "0.1";
     description => 'Automaticaly /msg ident NS yourpassword when you connect or services come back from death',
     license     => 'Public Domain',
     url         => 'http://not.available.yet/',
-    changed	=> 'Sat Jan 25 02:35:40 EET 2003'
+    changed	=> '2018-09-10'
 );
 
 # UNIBG NS auto identifyer
@@ -26,7 +26,7 @@ my $numpasswords = 0;
 my $passwordspassword = '';
 my $nsnick='NS';
 my $nshost='NickServ@UniBG.services';
-my $nsreq='This nickname is owned by someone else';
+my $nsreq='This nickname is registered and protected';
 my $nsok  ='Password accepted - you are now recognized';
 my $nscmd ='identify';
 # 2DO
