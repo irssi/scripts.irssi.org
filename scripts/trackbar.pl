@@ -46,7 +46,7 @@
 #    Description: Only clear the trackbar if it has been scrolled to.
 #
 #    Setting:     trackbar_all_manual
-#    Description: Never clear the trackbar.
+#    Description: Never clear the trackbar until you do /mark.
 #
 #     /mark is a command that will redraw the line at the bottom.
 #
@@ -102,7 +102,7 @@ use strict;
 use warnings;
 use vars qw($VERSION %IRSSI);
 
-$VERSION = "2.6"; # 7e8c189d7817f70
+$VERSION = "2.6"; # c99d17e529ad9ce
 
 %IRSSI = (
     authors     => "Peter 'kinlo' Leurs, Uwe Dudenhoeffer, " .
@@ -172,6 +172,7 @@ $VERSION = "2.6"; # 7e8c189d7817f70
 
 ## Version history:
 #
+#  2.7: - add /set trackbar_all_manual option
 #  2.5: - merge back on scripts.irssi.org
 #       - fix /trackbar redraw broken in 2.4
 #       - fix legacy encodings
