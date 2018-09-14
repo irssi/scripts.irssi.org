@@ -462,7 +462,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                          topics ](Test/topics/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       tordetect ](Test/tordetect/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                      trackbar22 ](Test/trackbar22/)|  ✘   |  ✘   |  ✔   |  5   |  ☡   | (c)
-[                        trackbar ](Test/trackbar/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
+[                        trackbar ](Test/trackbar/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   
 [                       tracknick ](Test/tracknick/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                           track ](Test/track/)|  ✔   |  ✔   |  ✔   | 36   |  ✔   | (c)
 [                        translit ](Test/translit/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -475,7 +475,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                         twtopic ](Test/twtopic/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                         typofix ](Test/typofix/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
 [                      uberprompt ](Test/uberprompt/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
-[                 UNIBG-autoident ](Test/UNIBG-autoident/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[                 UNIBG-autoident ](Test/UNIBG-autoident/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                         unicode ](Test/unicode/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
 [                     upgradeinfo ](Test/upgradeinfo/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                               u ](Test/u/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -522,4 +522,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-d7b0171ac81e3797ae96b77f3aac97da2c9ec7ef | 1186
+6e5f26d3a21cfa7085eba4e6c6d413c4bd13c6e2 | 1189
