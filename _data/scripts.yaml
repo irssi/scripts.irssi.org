@@ -4744,11 +4744,11 @@
   description: 'Shows a bar where you have last read a window.'
   filename: trackbar.pl
   license: 'GNU General Public License'
-  modified: '2018-02-03 22:23:52'
+  modified: '2018-09-13 10:18:32'
   modules: Text::CharWidth
   name: trackbar
   url: http://www.pfoe.be/~peter/trackbar/
-  version: '2.5'
+  version: '2.6'
 -
   HIDDEN: '1'
   description: 'This script has been replaced with trackbar.pl.'
