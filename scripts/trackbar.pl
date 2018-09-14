@@ -45,6 +45,9 @@
 #    Setting:     trackbar_require_seen
 #    Description: Only clear the trackbar if it has been scrolled to.
 #
+#    Setting:     trackbar_all_manual
+#    Description: Never clear the trackbar until you do /mark.
+#
 #     /mark is a command that will redraw the line at the bottom.
 #
 #    Command:     /trackbar, /trackbar goto
@@ -99,7 +102,7 @@ use strict;
 use warnings;
 use vars qw($VERSION %IRSSI);
 
-$VERSION = "2.5"; # 56e983314dc1b85
+$VERSION = "2.6"; # c99d17e529ad9ce
 
 %IRSSI = (
     authors     => "Peter 'kinlo' Leurs, Uwe Dudenhoeffer, " .
@@ -169,6 +172,7 @@ $VERSION = "2.5"; # 56e983314dc1b85
 
 ## Version history:
 #
+#  2.7: - add /set trackbar_all_manual option
 #  2.5: - merge back on scripts.irssi.org
 #       - fix /trackbar redraw broken in 2.4
 #       - fix legacy encodings
@@ -331,6 +335,7 @@ sub sig_window_changed {
     return if delete $keep_trackbar{ $oldwindow->{_irssi} };
     trackbar_update_seen($oldwindow);
     return if $config{require_seen} && $unseen_trackbar{ $oldwindow->{_irssi } };
+    return if $config{all_manual};
     update_one_trackbar($oldwindow, undef, 0);
 }
 
@@ -515,6 +520,7 @@ sub update_config {
     $config{style} = Irssi::settings_get_str('trackbar_style');
     $config{string} = Irssi::settings_get_str('trackbar_string');
     $config{require_seen} = Irssi::settings_get_bool('trackbar_require_seen');
+    $config{all_manual} = Irssi::settings_get_bool('trackbar_all_manual');
     $config{ignore_windows} = [ split /[,\s]+/, Irssi::settings_get_str('trackbar_ignore_windows') ];
     $config{use_status_window} = Irssi::settings_get_bool('trackbar_use_status_window');
     $config{print_timestamp} = Irssi::settings_get_bool('trackbar_print_timestamp');
@@ -545,6 +551,7 @@ Irssi::settings_add_str('trackbar', 'trackbar_ignore_windows', '');
 Irssi::settings_add_bool('trackbar', 'trackbar_use_status_window', 1);
 Irssi::settings_add_bool('trackbar', 'trackbar_print_timestamp', 0);
 Irssi::settings_add_bool('trackbar', 'trackbar_require_seen', 0);
+Irssi::settings_add_bool('trackbar', 'trackbar_all_manual', 0);
 
 update_config();
 
