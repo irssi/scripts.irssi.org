@@ -4980,6 +4980,16 @@
   url: http://www.geekmind.net
   version: '1.2'
 -
+  authors: zdleaf
+  contact: leaf@zincldn.co.uk
+  description: 'Print urls to window named "urls"'
+  filename: urlwindow.pl
+  license: 'Public Domain'
+  modified: '2018-09-16 11:31:07'
+  name: urlwindow
+  url: http://irssi.org/
+  version: '1.1'
+-
   authors: 'David Leadbeater, Timo Sirainen, Georg Lukas'
   contact: 'dgl@dgl.cx, tss@iki.fi, georg@boerde.de'
   description: 'Adds a usercount for a channel as a statusbar item'
