@@ -462,7 +462,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                          topics ](Test/topics/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       tordetect ](Test/tordetect/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                      trackbar22 ](Test/trackbar22/)|  ✘   |  ✘   |  ✔   |  5   |  ☡   | (c)
-[                        trackbar ](Test/trackbar/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   
+[                        trackbar ](Test/trackbar/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                       tracknick ](Test/tracknick/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                           track ](Test/track/)|  ✔   |  ✔   |  ✔   | 36   |  ✔   | (c)
 [                        translit ](Test/translit/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -486,6 +486,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                         urlinfo ](Test/urlinfo/)|  ✔   |  ✔   |  ✔   |  8   |  ✔   | (c)
 [                         url_log ](Test/url_log/)|  ✔   |  ✔   |  ✔   | 12   |  ✔   | (c)
 [                         urlplot ](Test/urlplot/)|  ✔   |  ✔   |  ✔   | 86   |  ✔   | (c)
+[                       urlwindow ](Test/urlwindow/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                       usercount ](Test/usercount/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        userhost ](Test/userhost/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                           users ](Test/users/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -522,4 +523,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-6e5f26d3a21cfa7085eba4e6c6d413c4bd13c6e2 | 1189
+b3ebb64d7c00de3583a4deceefb3288c77946c47 | 1191

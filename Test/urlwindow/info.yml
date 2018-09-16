@@ -1,0 +1,11 @@
+---
+-
+  authors: zdleaf
+  contact: leaf@zincldn.co.uk
+  default_package: urlwindow
+  description: 'Print urls to window named "urls"'
+  license: 'Public Domain'
+  modified: '2018-09-16 11:31:07'
+  name: urlwindow
+  url: http://irssi.org/
+  version: '1.1'
