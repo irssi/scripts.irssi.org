@@ -1,5 +1,3 @@
-# Settings:
-# window_default_hidden_level - levels to hide/show with below commands
 # Included commands:
 # /window togglelevel  - hide/show levels in active window
 # /show_levels_all     - show levels in all windows
