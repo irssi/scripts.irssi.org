@@ -44,6 +44,8 @@ sub set_mode {
   my $levels = Irssi::bits2level($lvlbits);
   my $val;
 
+  $levels = Irssi::settings_get_str('window_default_hidelevel') if $mode && !$levels;
+
   $val = $levels =~ s/(\w+)/sprintf("%s%s", $mode ? '+' : '-', $1)/gre;
   $windows->{$win->{refnum}}{mode} = $mode;
 
@@ -61,7 +63,6 @@ Irssi::signal_add('message join' => sub {
   my $levels = $win->view->{hidden_level};
   $windows->{$win->{refnum}}{levels} = $levels;
   $windows->{$win->{refnum}}{mode}   = $levels ? 1 : 0;
-#  set_mode($win, 1) if $levels;
 });
 
 Irssi::signal_add('window destroyed' => sub {
