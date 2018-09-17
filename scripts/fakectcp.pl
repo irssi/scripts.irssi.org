@@ -24,7 +24,7 @@ use strict;
 use Irssi;
 use vars qw($VERSION %IRSSI);
 
-$VERSION = "1.03";
+$VERSION = "1.04";
 
 %IRSSI = (
     authors     => 'Geert Hauwaerts',
@@ -33,7 +33,7 @@ $VERSION = "1.03";
     description => 'This script sends fake ctcp replies to a client using a fake ctcp list.',
     license     => 'GNU General Public License',
     url         => 'http://irssi.hauwaerts.be/default.pl',
-    changed     => 'Wed Sep 17 23:00:11 CEST 2003',
+    changed     => '2018-09-17',
 );
 
 my @fakectcp = ();
@@ -271,7 +271,7 @@ sub fakectcp {
 
 load_fakectcplist("$irssidir/$fakectcp_file");
 
-Irssi::signal_add('default ctcp msg', 'ctcpreply');
+Irssi::signal_add('ctcp msg', 'ctcpreply');
 Irssi::command_bind('fctcp', 'fakectcp');
 Irssi::command_set_options('fctcp','add del list help replace');
 Irssi::printformat(MSGLEVEL_CLIENTCRAP, 'loaded', $IRSSI{name}, $VERSION, $IRSSI{authors});
