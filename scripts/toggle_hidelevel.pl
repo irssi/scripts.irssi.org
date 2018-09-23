@@ -5,7 +5,7 @@
 
 use strict;
 use warnings;
-use Irssi v1.1;
+use Irssi 20180115;
 use Irssi::TextUI;
 use Data::Dumper;
 use vars qw($VERSION %IRSSI);
