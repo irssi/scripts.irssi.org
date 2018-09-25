@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-our $VERSION = '1.6'; # e8cba38389fa426
+our $VERSION = '1.6'; # 5255191a189be5c
 our %IRSSI = (
     authors     => 'Nei',
     contact     => 'Nei @ anti@conference.jabber.teamidiot.de',
@@ -531,9 +531,9 @@ sub get_keymap {
 			_add_map(\%wnmap, $window, $map);
 		    }
 		}
-		elsif (/^(?:active_window|command (ack))/i) {
+		elsif (/^(?:active_window|command ((awl )?ack))/i) {
 		    _add_map(\%specialmap, '_active', $map);
-		    $viewer{use_ack} = !!$1;
+		    $viewer{use_ack} = $1;
 		}
 		elsif (/^command window last/i) {
 		    _add_map(\%specialmap, '_last', $map);
@@ -1200,7 +1200,7 @@ sub vi_clientinput {
 		Irssi::command("window $2");
 	    }
 	    elsif (lc $1 eq 'active' && $viewer{use_ack}) {
-		Irssi::command("ack");
+		Irssi::command($viewer{use_ack});
 	    }
 	    else {
 		Irssi::command("window goto $1");
