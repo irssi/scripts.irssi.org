@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-our $VERSION = '1.6'; # 8f71fef5a41b370
+our $VERSION = '1.6'; # e8cba38389fa426
 our %IRSSI = (
     authors     => 'Nei',
     contact     => 'Nei @ anti@conference.jabber.teamidiot.de',
@@ -1548,7 +1548,6 @@ sub unhide_window {
     my $active = as_uni($win->get_active_name) // '';
     my $tag = $win->{active} && $win->{active}{server} ? as_uni($win->{active}{server}{tag}) // '' : '';
 
-    my @setting;
     my %detach_aht;
     if ($S{detach_aht}) {
 	%detach_aht = (map { ( lc1459(as_uni($_)) => undef ) }
