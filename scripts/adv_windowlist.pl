@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-our $VERSION = '1.6'; # 5255191a189be5c
+our $VERSION = '1.6'; # 6e36258a4c21ac9
 our %IRSSI = (
     authors     => 'Nei',
     contact     => 'Nei @ anti@conference.jabber.teamidiot.de',
@@ -159,6 +159,7 @@ our %IRSSI = (
 #     -last_line  : sort windows in order of activity
 #     refnum      : sort windows by window number
 #     active/server/tag : sort by server name
+#     lru         : sort windows with the last recently used last
 #   "-" reverses the sort order
 #   typechecks are supported via ::, e.g. active::Query or active::Irc::Query
 #   undefinedness can be checked with ~, e.g. ~active
@@ -714,7 +715,8 @@ sub lc1459 {
 }
 
 sub window_list {
-    sort $window_sort_func Irssi::windows;
+    my $i = 0;
+    map { $_->[1] } sort $window_sort_func map { [ $i++, $_ ] } Irssi::windows;
 }
 
 sub _calculate_abbrev {
@@ -1381,8 +1383,9 @@ sub reset_awl {
 
 	    my @path = split '/';
 	    my $class_check = @path && $path[-1] =~ s/(::.*)$// ? $1 : undef;
+	    my $lru = "@path" eq 'lru';
 
-	    [ $reverse ? -1 : 1, $undef_check, $equal_check, $class_check, $ignore_case, @path ]
+	    [ $reverse ? -1 : 1, $undef_check, $equal_check, $class_check, $ignore_case, $lru, @path ]
 	} "$S{sort}," =~ /([^+,]*|[^+,]*=[^,]*?\s(?=\+)|[^+,]*=[^,]*)[+,]/g;
 	$window_sort_func = sub {
 	    no warnings qw(numeric uninitialized);
@@ -1396,7 +1399,7 @@ sub reset_awl {
 		    -$ret || $_
 		}
 		map {
-		    reduce { return unless ref $a; $a->{$b} } $_, @{$so}[5..$#$so]
+		    $so->[5] ? $_->[0] : reduce { return unless ref $a; $a->{$b} } $_->[1], @{$so}[6..$#$so]
 		} $a, $b;
 		return ((($x[0] <=> $x[1] || $x[0] cmp $x[1]) * $so->[0]) || next);
 	    }
@@ -2729,6 +2732,7 @@ UNITCHECK
 # - add detach setting to hide windows
 # - fix race condition when loading the script, reported by madduck
 # - improve compatibility with irssi 1.2
+# - add special value lru to awl_sort to sort windows by usage
 #
 # 1.5
 # - improve compat. with sideways splits
