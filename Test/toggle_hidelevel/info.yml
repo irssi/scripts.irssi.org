@@ -1,7 +1,7 @@
 ---
 -
   authors: 'Jari Matilainen'
-  changed: '17.01.2018 01:00pm CET'
+  changed: '17.09.2018 20:30 CEST'
   commands:
     - dump_window_hash
     - hide_levels_all
@@ -11,6 +11,6 @@
   default_package: toggle_hidelevel
   description: 'Toggle hidden levels on per window basis'
   licence: GPLv2
-  modified: '2018-03-21 22:29:28'
+  modified: '2018-09-23 15:50:05'
   name: toggle_hidelevel
-  version: 0.3.2
+  version: 0.5.0
