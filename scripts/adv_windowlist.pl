@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-our $VERSION = '1.5'; # 5df597ac461465e
+our $VERSION = '1.6'; # 6e36258a4c21ac9
 our %IRSSI = (
     authors     => 'Nei',
     contact     => 'Nei @ anti@conference.jabber.teamidiot.de',
@@ -97,6 +97,18 @@ our %IRSSI = (
 #           1 to hide visible windows without items (negative exempt
 #           active window)
 #
+# /set awl_detach <list>
+# * list of windows that should be hidden from the window list. you
+#   can also use /awl detach and /awl attach to manage this
+#   setting. an optional data_level can be specified with ",num"
+#
+# /set awl_detach_data <num>
+# * num : hide the detached window if its data_level is below num
+#
+# /set awl_detach_aht <ON|OFF>
+# * if enabled, also detach all windows listed in the
+#   activity_hide_targets setting
+#
 # /set awl_hide_data <num>
 # * num : hide the window if its data_level is below num
 # set it to 0 to basically disable this feature,
@@ -147,6 +159,7 @@ our %IRSSI = (
 #     -last_line  : sort windows in order of activity
 #     refnum      : sort windows by window number
 #     active/server/tag : sort by server name
+#     lru         : sort windows with the last recently used last
 #   "-" reverses the sort order
 #   typechecks are supported via ::, e.g. active::Query or active::Irc::Query
 #   undefinedness can be checked with ~, e.g. ~active
@@ -244,6 +257,16 @@ our %IRSSI = (
 
 # Commands
 # ========
+# /awl detach <num>
+# * hide the current window from the window list. num specifies the
+#   data_level (optional)
+#
+# /awl attach
+# * unhide the current window from the window list
+#
+# /awl ack
+# * change to the next window with activity, ignoring detached windows
+#
 # /awl redraw
 # * redraws the windowlist. There may be occasions where the
 #   windowlist can get destroyed so you can use this command to
@@ -293,8 +316,8 @@ BEGIN {
 	*CORE::GLOBAL::length = *CORE::GLOBAL::length = sub (_) {
 	    defined $_[0] ? CORE::length($_[0]) : undef
 	};
-	*Irssi::active_win = {}; # hide incorrect warning
     }
+    *Irssi::active_win = {}; # hide incorrect warning
 }
 
 unless (IN_IRSSI) {
@@ -330,6 +353,7 @@ my %viewer;
 
 my (%keymap, %nummap, %wnmap, %specialmap, %wnmap_exp, %custom_key_map);
 my %banned_channels;
+my %detach_map;
 my %abbrev_cache;
 
 use constant setc => 'awl';
@@ -347,7 +371,7 @@ sub add_statusbar {
 	    no strict 'refs';
 	    *{$l} = sub { awl($close, @_) };
 	}
-	Irssi::command("statusbar $l reset");
+	Irssi::command("^statusbar $l reset");
 	Irssi::command("statusbar $l enable");
 	if (lc $S{placement} eq 'top') {
 	    Irssi::command("statusbar $l placement top");
@@ -508,9 +532,9 @@ sub get_keymap {
 			_add_map(\%wnmap, $window, $map);
 		    }
 		}
-		elsif (/^(?:active_window|command (ack))/i) {
+		elsif (/^(?:active_window|command ((awl )?ack))/i) {
 		    _add_map(\%specialmap, '_active', $map);
-		    $viewer{use_ack} = !!$1;
+		    $viewer{use_ack} = $1;
 		}
 		elsif (/^command window last/i) {
 		    _add_map(\%specialmap, '_last', $map);
@@ -691,7 +715,8 @@ sub lc1459 {
 }
 
 sub window_list {
-    sort $window_sort_func Irssi::windows;
+    my $i = 0;
+    map { $_->[1] } sort $window_sort_func map { [ $i++, $_ ] } Irssi::windows;
 }
 
 sub _calculate_abbrev {
@@ -752,6 +777,29 @@ sub _get_format {
     Irssi::current_theme->get_format(__PACKAGE__, @_)
 }
 
+sub _is_detached {
+    my ($win, $active_number) = @_;
+    my $level = $win->{data_level} // 0;
+    my $number = $win->{refnum};
+    my $name = lc1459( as_uni($win->{name}) );
+    my $active = lc1459( as_uni($win->get_active_name) // '' );
+    my $tag = $win->{active} && $win->{active}{server} ? lc1459( as_uni($win->{active}{server}{tag}) // '' ) : '';
+    my @cond = ($number);
+    push @cond, "$name" if length $name;
+    push @cond, "$tag/$active" if length $tag && length $active;
+    push @cond, "$active" if length $active;
+    push @cond, "$tag/*", "$tag/::all" if length $tag;
+    push @cond, "*", "::all";
+    for my $cond (@cond) {
+	if (exists $detach_map{ $cond }) {
+	    my $dd = $detach_map{ $cond } // $S{detach_data};
+	    return $win->{data_level} < abs $dd
+		&& ($number != $active_number || 0 <= $dd);
+	}
+    }
+    return;
+}
+
 sub _calculate_items {
     my ($wins, $abbrevList) = @_;
 
@@ -808,6 +856,8 @@ sub _calculate_items {
 	    next; }
 	elsif (exists $awins{$win->{refnum}} && $S{hide_empty} && !$win->items
 		&& ($win->{refnum} != $active->{refnum} || 0 <= $S{hide_empty})) {
+	    next; }
+	elsif (_is_detached($win, $active->{refnum})) {
 	    next; }
 
 	my $colour = $win->{hilight_color} // '';
@@ -1152,7 +1202,7 @@ sub vi_clientinput {
 		Irssi::command("window $2");
 	    }
 	    elsif (lc $1 eq 'active' && $viewer{use_ack}) {
-		Irssi::command("ack");
+		Irssi::command($viewer{use_ack});
 	    }
 	    else {
 		Irssi::command("window goto $1");
@@ -1287,6 +1337,9 @@ sub reset_awl {
 	hide_data     => Irssi::settings_get_int( set 'hide_data'),
 	hide_name     => Irssi::settings_get_int( set 'hide_name_data'),
 	hide_empty    => Irssi::settings_get_int( set 'hide_empty'),
+	detach        => Irssi::settings_get_str( set 'detach'),
+	detach_data   => Irssi::settings_get_int( set 'detach_data'),
+	detach_aht    => Irssi::settings_get_bool(set 'detach_aht'),
 	sbar_maxlen   => Irssi::settings_get_bool(set 'sbar_maxlength'),
 	placement     => Irssi::settings_get_str( set 'placement'),
 	position      => Irssi::settings_get_int( set 'position'),
@@ -1330,8 +1383,9 @@ sub reset_awl {
 
 	    my @path = split '/';
 	    my $class_check = @path && $path[-1] =~ s/(::.*)$// ? $1 : undef;
+	    my $lru = "@path" eq 'lru';
 
-	    [ $reverse ? -1 : 1, $undef_check, $equal_check, $class_check, $ignore_case, @path ]
+	    [ $reverse ? -1 : 1, $undef_check, $equal_check, $class_check, $ignore_case, $lru, @path ]
 	} "$S{sort}," =~ /([^+,]*|[^+,]*=[^,]*?\s(?=\+)|[^+,]*=[^,]*)[+,]/g;
 	$window_sort_func = sub {
 	    no warnings qw(numeric uninitialized);
@@ -1345,7 +1399,7 @@ sub reset_awl {
 		    -$ret || $_
 		}
 		map {
-		    reduce { return unless ref $a; $a->{$b} } $_, @{$so}[5..$#$so]
+		    $so->[5] ? $_->[0] : reduce { return unless ref $a; $a->{$b} } $_->[1], @{$so}[6..$#$so]
 		} $a, $b;
 		return ((($x[0] <=> $x[1] || $x[0] cmp $x[1]) * $so->[0]) || next);
 	    }
@@ -1412,8 +1466,15 @@ return sub {
 	stop_viewer();
     }
 
-    %banned_channels = map { lc1459(to_uni($_)) => undef }
+    %banned_channels = map { lc1459(as_uni($_)) => undef }
 	split ' ', Irssi::settings_get_str('banned_channels');
+
+    %detach_map = ($S{detach_aht}
+		   ? (map { ( lc1459(as_uni($_)) => undef ) }
+		      split ' ', Irssi::settings_get_str('activity_hide_targets')) : (),
+		   (map { my ($k, $v) = (split /(?:,(-?\d+))$/, $_)[0, 1];
+		    ( lc1459(as_uni($k)) => $v ) }
+		    split ' ', $S{detach}));
 
     my @sb_base = split /\177/, sb_format_expand("{sbstart}{sb \177}{sbend}"), 2;
     $sb_base_width_pre = sb_length($sb_base[0]);
@@ -1425,6 +1486,227 @@ return sub {
     }
 
     $CHANGED{AWINS} = 1;
+}
+
+sub hide_window {
+    my ($data) = @_;
+    my $ent;
+
+    $data =~ s/\s*$//;
+    my $win = Irssi::active_win;
+    my $number = $win->{refnum};
+    my $name = as_uni($win->{name});
+    my $active = as_uni($win->get_active_name) // '';
+    my $tag = $win->{active} && $win->{active}{server} ? as_uni($win->{active}{server}{tag}) // '' : '';
+    if (length $name) {
+	$ent = "$name";
+    }
+    elsif (length $tag && length $active) {
+	$ent = "$tag/$active";
+    }
+    else {
+	$ent = "$number";
+    }
+
+    my $found = 0;
+    my @setting;
+    for my $s (split ' ', $S{detach}) {
+	my ($k, $v) = (split /(?:,(-?\d+))$/, $s)[0, 1];
+	if (lc1459(as_uni($k)) eq lc1459($ent)) {
+	    unless ($found) {
+		if ($data =~ /^(-?\d+)$/) {
+		    $ent .= ",$1";
+		}
+		if (defined $v && 0 == abs $v) {
+		    $win->print("Hiding window $ent");
+		}
+		push @setting, as_tc($ent);
+		$found = 1;
+	    }
+	}
+	else {
+	    push @setting, defined $v ? "$k,$v" : $k;
+	}
+    }
+    unless ($found) {
+	$win->print("Hiding window $ent");
+	if ($data =~ /^(-?\d+)$/) {
+	    $ent .= ",$1";
+	}
+	push @setting, as_tc($ent);
+    }
+
+    if (@setting) {
+	Irssi::command("^set ".(set 'detach')." @setting");
+    } else {
+	Irssi::command("^set -clear ".(set 'detach'));
+    }
+}
+
+sub unhide_window {
+    my ($data, $server, $witem) = @_;
+    my $win = Irssi::active_win;
+    my $number = $win->{refnum};
+    my $name = as_uni($win->{name});
+    my $active = as_uni($win->get_active_name) // '';
+    my $tag = $win->{active} && $win->{active}{server} ? as_uni($win->{active}{server}{tag}) // '' : '';
+
+    my %detach_aht;
+    if ($S{detach_aht}) {
+	%detach_aht = (map { ( lc1459(as_uni($_)) => undef ) }
+		       split ' ', Irssi::settings_get_str('activity_hide_targets'));
+    }
+    my @setting;
+    my @kills = (length $name ? $name : undef,
+		 length $tag && length $active ? "$tag/$active" : undef,
+		 length $active ? $active : undef,
+		 $number);
+    my @was_unhidden = (0) x @kills;
+    for my $s (split ' ', $S{detach}) {
+	my ($k, $v) = (split /(?:,(-?\d+))$/, $s)[0, 1];
+	my $k2 = lc1459(as_uni($k));
+	my $kill;
+	for my $ki (0..$#kills) {
+	    if (defined $kills[$ki] && $k2 eq lc1459($kills[$ki])) {
+		$kill = $ki;
+	    }
+	}
+
+	if (defined $kill) {
+	    if (defined $v && 0 == abs $v) {
+		$was_unhidden[$kill] = 1;
+		push @setting, defined $v ? "$k,$v" : $k;
+	    } else {
+		$win->print("Unhiding window $kills[$kill]");
+	    }
+	}
+	else {
+	    push @setting, defined $v ? "$k,$v" : $k;
+	}
+    }
+    my @is_hidden = (defined $kills[0] && (exists $detach_map{"*"} || exists $detach_map{"::all"}),
+		     defined $kills[1] && (exists $detach_map{lc1459("$tag/*")} || exists $detach_map{lc1459("$tag/::all")}
+					   || exists $detach_map{"*"} || exists $detach_map{"::all"}),
+		     defined $kills[2] && (exists $detach_map{"*"} || exists $detach_map{"::all"}),
+		     (exists $detach_map{"*"} || exists $detach_map{"::all"})
+		    );
+    for my $ki (1, 2, 0, 3) {
+	if ($is_hidden[$ki]) {
+	    unless ($was_unhidden[$ki]) {
+		$win->print("Unhiding window $kills[$ki]");
+		push @setting, "$kills[$ki],0";
+		$was_unhidden[$ki] = 1;
+	    }
+	    last;
+	}
+    }
+    my @is_hidden_aht = (defined $kills[0] && (exists $detach_aht{lc1459($name)}
+					       || exists $detach_aht{"*"} || exists $detach_aht{"::all"}),
+			 defined $kills[1] && (exists $detach_aht{lc1459("$tag/$active")}
+					       || exists $detach_aht{lc1459($active)}
+					       || exists $detach_aht{lc1459("$tag/*")} || exists $detach_aht{lc1459("$tag/::all")}
+					       || exists $detach_aht{"*"} || exists $detach_aht{"::all"}),
+			 defined $kills[2] && (exists $detach_aht{lc1459($active)}
+					       || exists $detach_aht{"*"} || exists $detach_aht{"::all"}),
+			 (exists $detach_aht{$number} || exists $detach_aht{"*"} || exists $detach_aht{"::all"})
+			);
+    for my $ki (1, 2, 0, 3) {
+	if ($is_hidden_aht[$ki]) {
+	    unless ($was_unhidden[$ki]) {
+		$win->print("Unhiding window $kills[$ki], it is hidden because ".(set 'detach_aht')." is ON");
+		push @setting, "$kills[$ki],0";
+		$was_unhidden[$ki] = 1;
+	    }
+	    last;
+	}
+    }
+
+    if (@setting) {
+	Irssi::command("^set ".(set 'detach')." @setting");
+    } else {
+	Irssi::command("^set -clear ".(set 'detach'));
+    }
+}
+
+sub ack_window {
+    my ($data, $server, $witem) = @_;
+    my $win = Irssi::active_win;
+    my $number = $win->{refnum};
+    if (grep { $_->{cmd} eq 'ack' } Irssi::commands) {
+	my $Orig_Irssi_windows = \&Irssi::windows;
+	local *Irssi::windows = sub () { grep { !_is_detached($_, $number) } $Orig_Irssi_windows->() };
+	Irssi::command("ack" . (length $data ?  " $data" : ""));
+    } else {
+	my $ignore_refnum = Irssi::settings_get_bool('active_window_ignore_refnum');
+	my $max_win;
+	my $max_act = 0;
+	my $max_ref = 0;
+	for my $rec (Irssi::windows) {
+	    next if _is_detached($rec, $number);
+
+	    # ignore refnum
+	    if ($ignore_refnum &&
+		$rec->{data_level} > 0 && $max_act < $rec->{data_level}) {
+		$max_act = $rec->{data_level};
+		$max_win = $rec;
+	    }
+
+	    # windows with lower refnums break ties
+	    elsif (!$ignore_refnum &&
+		   $rec->{data_level} > 0 &&
+		   ($rec->{data_level} > $max_act ||
+		    ($rec->{data_level} == $max_act && $rec->{refnum} < $max_ref))) {
+		$max_act = $rec->{data_level};
+		$max_win = $rec;
+		$max_ref = $rec->{refnum};
+	    }
+	}
+	$max_win->set_active if defined $max_win;
+    }
+}
+
+sub refnum_changed {
+    my ($win, $old_refnum) = @_;
+    my @old_setting = split ' ',  $S{detach};
+    my @setting = map {
+	my ($k, $v) = (split /(?:,(-?\d+))$/, $_)[0, 1];
+	if ($k eq $old_refnum) {
+	    $win->{refnum} . (defined $v ? ",$v" : "")
+	}
+	else {
+	    $_
+	}
+    } @old_setting;
+    if ("@old_setting" ne "@setting") {
+	$S{detach} = "@setting";
+	Irssi::settings_set_str(set 'detach', "@setting");
+	&setup_changed;
+    }
+    else {
+	&wl_changed;
+    }
+}
+
+sub window_destroyed {
+    my ($win) = @_;
+    my @old_setting = split ' ',  $S{detach};
+    my @setting = grep {
+	my ($k, $v) = (split /(?:,(-?\d+))$/, $_)[0, 1];
+	if ($k eq $win->{refnum}) {
+	    0;
+	}
+	else {
+	    1;
+	}
+    } @old_setting;
+    if ("@old_setting" ne "@setting") {
+	$S{detach} = "@setting";
+	Irssi::settings_set_str(set 'detach', "@setting");
+	&setup_changed;
+    }
+    else {
+	&awins_changed;
+    }
 }
 
 sub stop_mouse_tracking {
@@ -1610,7 +1892,11 @@ sub queue_refresh {
 
 sub awl_init {
     termsize_changed();
+    setup_changed();
     update_keymap();
+    Irssi::timeout_remove($globTime)
+	    if defined $globTime;
+    awl_refresh();
 }
 
 sub runsub {
@@ -1646,6 +1932,9 @@ Irssi::signal_register({
 Irssi::settings_add_bool(setc, set 'prefer_name',    0); #
 Irssi::settings_add_int( setc, set 'hide_empty',     0); #
 Irssi::settings_add_int( setc, set 'hide_data',      0); #
+Irssi::settings_add_str( setc, set 'detach',         ''); #
+Irssi::settings_add_int( setc, set 'detach_data',    -3); #
+Irssi::settings_add_bool(setc, set 'detach_aht',     0); #
 Irssi::settings_add_int( setc, set 'hide_name_data', 0); #
 Irssi::settings_add_int( setc, set 'maxlines',       9); #
 Irssi::settings_add_int( setc, set 'maxcolumns',     4); #
@@ -1688,9 +1977,9 @@ Irssi::signal_add({
     'window item changed'      => 'wl_changed',
     'window changed automatic' => 'window_changed',
     'window created'	       => 'awins_changed',
-    'window destroyed'	       => 'awins_changed',
+    'window destroyed'	       => 'window_destroyed',
     'window name changed'      => 'wl_changed',
-    'window refnum changed'    => 'wl_changed',
+    'window refnum changed'    => 'refnum_changed',
 });
 Irssi::signal_add_last('gui mouse' => 'mouse_escape');
 Irssi::signal_add_last('gui mouse' => 'mouse_scroll_event');
@@ -1698,6 +1987,9 @@ Irssi::signal_add_last('gui mouse' => 'awl_mouse_event');
 Irssi::command_bind( setc() => runsub(setc()) );
 Irssi::command_bind( setc() . ' redraw' => 'screenFullRedraw' );
 Irssi::command_bind( setc() . ' restart' => 'restartViewerServer' );
+Irssi::command_bind( setc() . ' attach' => 'unhide_window' );
+Irssi::command_bind( setc() . ' detach' => 'hide_window' );
+Irssi::command_bind( setc() . ' ack'    => 'ack_window' );
 
 {
     my $l = set 'shared';
@@ -2436,16 +2728,28 @@ UNITCHECK
 
 # Changelog
 # =========
-# 1.5 - improve compat. with sideways splits
+# 1.6
+# - add detach setting to hide windows
+# - fix race condition when loading the script, reported by madduck
+# - improve compatibility with irssi 1.2
+# - add special value lru to awl_sort to sort windows by usage
+#
+# 1.5
+# - improve compat. with sideways splits
 #
 # 1.4
 # - fix line wrapping in some themes, reported by justanotherbody
 # - fix named window key detection, reported by madduck
 # - make title (in viewer and shared_sbar) configurable
 #
-# 1.3 - workaround for irssi issue #572
-# 1.2 - new format to choose abbreviation character
-# 1.1 - infinite loop on shortening certain window names reported by Kalan
+# 1.3
+# - workaround for irssi issue #572
+#
+# 1.2
+# - new format to choose abbreviation character
+#
+# 1.1
+# - infinite loop on shortening certain window names reported by Kalan
 #
 # 1.0
 # - new awl_viewer_launch setting and an array of related settings
