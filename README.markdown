@@ -13,7 +13,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                   active_notify ](Test/active_notify/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                   activity_file ](Test/activity_file/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
 [                             act ](Test/act/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                  adv_windowlist ](Test/adv_windowlist/)|  ✔   |  ✔   |  ✔   | 36   |  ✔   | (c)
+[                  adv_windowlist ](Test/adv_windowlist/)|  ✔   |  ✔   |  ✔   | 36   |  ✔   
 [                           aidle ](Test/aidle/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                              ai ](Test/ai/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
 [                           akftp ](Test/akftp/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -146,7 +146,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                             doc ](Test/doc/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
 [                    doublefilter ](Test/doublefilter/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                          dr_who ](Test/dr_who/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
-[                      duckduckgo ](Test/duckduckgo/)|  ✔   |  ✔   |  ✔   | 32   |  ✔   
+[                      duckduckgo ](Test/duckduckgo/)|  ✔   |  ✔   |  ✔   | 32   |  ✔   | (c)
 [                        efnetorg ](Test/efnetorg/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                           elist ](Test/elist/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                           eliza ](Test/eliza/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -524,4 +524,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-712582db38eeb2514ff543ee92a48756b90b4d1d | 1200
+524880385be975384a664e5d1e81c4ba737369f1 | 1201
