@@ -1,0 +1,18 @@
+---
+-
+  authors: bw1
+  changed: 2018-09-18
+  commands:
+    - ddg
+  contact: bw1@aol.at
+  default_package: duckduckgo
+  description: 'search by https://duckduckgo.com/html/'
+  license: lgplv3
+  modified: '2018-09-20 21:18:10'
+  modules:
+    - HTML::Entities
+    - LWP::UserAgent
+    - URI::Escape
+  name: duckduckgo
+  url: http://scripts.irssi.org
+  version: '0.01'
