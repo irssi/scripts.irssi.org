@@ -13,7 +13,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                   active_notify ](Test/active_notify/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                   activity_file ](Test/activity_file/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
 [                             act ](Test/act/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                  adv_windowlist ](Test/adv_windowlist/)|  ✔   |  ✔   |  ✔   | 36   |  ✔   
+[                  adv_windowlist ](Test/adv_windowlist/)|  ✔   |  ✔   |  ✔   | 36   |  ✔   | (c)
 [                           aidle ](Test/aidle/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                              ai ](Test/ai/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
 [                           akftp ](Test/akftp/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -121,6 +121,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                       credstore ](Test/credstore/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                            cron ](Test/cron/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                         ctrlact ](Test/ctrlact/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
+[                           cubes ](Test/cubes/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
 [                            cwho ](Test/cwho/)|  ✔   |  ✔   |  ✔   | 18   |  ✔   | (c)
 [               dancer_forwardfix ](Test/dancer_forwardfix/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                             dau ](Test/dau/)|  ✔   |  ✔   |  ✔   | 42   |  ✔   | (c)
@@ -524,4 +525,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-524880385be975384a664e5d1e81c4ba737369f1 | 1201
+7bd90408fc982aeb8d76a977100f3ee68b53f981 | 1203
