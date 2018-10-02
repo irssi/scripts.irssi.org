@@ -1218,6 +1218,17 @@
   name: ctrlact
   version: '1.2'
 -
+  authors: 'Irssi staff'
+  commands: cubes
+  contact: staff@irssi.org
+  description: '256 colour test script for Irssi.'
+  filename: cubes.pl
+  license: 'Public Domain'
+  modified: '2018-10-02 16:00:23'
+  name: cubes
+  url: https://irssi.org
+  version: '1.0'
+-
   authors: "Maciek 'fahren' Freudenheim"
   commands: cwho
   contact: fahren@bochnia.pl
