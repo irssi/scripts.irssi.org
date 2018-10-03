@@ -22,7 +22,7 @@ use strict;
 use IO::Handle; # for (auto)flush
 use Fcntl; # for sysopen
 use vars qw($VERSION %IRSSI);
-$VERSION = '0.4.11';
+$VERSION = '0.4.12';
 %IRSSI = (
 	authors     => 'Wouter Coekaerts',
 	contact     => 'coekie@irssi.org',
@@ -30,7 +30,7 @@ $VERSION = '0.4.11';
 	description => 'draws a nicklist to another terminal, or at the right of your irssi in the same terminal',
 	license     => 'GPLv2',
 	url         => 'http://wouter.coekaerts.be/irssi',
-	changed     => '2018-06-02'
+	changed     => '2018-10-02'
 );
 
 sub cmd_help {
@@ -287,13 +287,13 @@ sub sig_terminal_resized {
 
 sub nicklist_write_start {
 	if ($mode == $SCREEN) {
-		print STDERR "\033P\033[s\033\\"; # save cursor
+		print STDERR "\033P\0337\033\\"; # save cursor
 	}
 }
 
 sub nicklist_write_end {
 	if ($mode == $SCREEN) {
-		print STDERR "\033P\033[u\033\\"; # restore cursor
+		print STDERR "\033P\0338\033\\"; # restore cursor
 	}
 }
 
