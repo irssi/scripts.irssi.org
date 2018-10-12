@@ -1,7 +1,7 @@
 # Included commands:
-# /window togglelevel  - hide/show levels in active window
-# /show_levels_all     - show levels in all windows
-# /hide_levels_all     - hide levels in all windows
+# /window toggle_hidelevel  - hide/show levels in active window
+# /show_levels_all          - show levels in all windows
+# /hide_levels_all          - hide levels in all windows
 
 use strict;
 use warnings;
@@ -10,14 +10,14 @@ use Irssi::TextUI;
 use Data::Dumper;
 use vars qw($VERSION %IRSSI);
 
-$VERSION = "0.5.0";
+$VERSION = "0.5.1";
 %IRSSI = (
           authors       => 'Jari Matilainen',
           contact       => 'vague!#irssi@freenode on irc',
           name          => 'toggle_hidelevel',
           description   => 'Toggle hidden levels on per window basis',
           licence       => "GPLv2",
-          changed       => "17.09.2018 20:30 CEST"
+          changed       => "12.10.2018 16:00 CEST"
 );
 
 my $windows;
@@ -76,9 +76,16 @@ Irssi::signal_add('window refnum changed' => sub {
   delete $windows->{$old_refnum};
 });
 
+Irssi::command_bind('window toggle_hidelevel' => sub {
+  my ($args, $server, $witem) = @_;
+  return unless $witem;
+  set_mode($witem->window, ($windows->{$witem->window->{refnum}}{mode} // 0) ^ 1);
+});
+
 Irssi::command_bind('window togglelevel' => sub {
   my ($args, $server, $witem) = @_;
   return unless $witem;
+  warn("This subcommand is obsolete, use /window toggle_hidelevel instead");
   set_mode($witem->window, ($windows->{$witem->window->{refnum}}{mode} // 0) ^ 1);
 });
 
