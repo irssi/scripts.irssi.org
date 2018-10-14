@@ -1,16 +1,17 @@
 ---
 -
   authors: 'Jari Matilainen'
-  changed: '17.09.2018 20:30 CEST'
+  changed: '12.10.2018 16:00 CEST'
   commands:
     - dump_window_hash
     - hide_levels_all
     - show_levels_all
+    - 'window toggle_hidelevel'
     - 'window togglelevel'
   contact: 'vague!#irssi@freenode on irc'
   default_package: toggle_hidelevel
   description: 'Toggle hidden levels on per window basis'
   licence: GPLv2
-  modified: '2018-09-23 15:50:05'
+  modified: '2018-10-12 16:07:42'
   name: toggle_hidelevel
-  version: 0.5.0
+  version: 0.5.1

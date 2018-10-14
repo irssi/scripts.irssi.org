@@ -1,2 +1,2 @@
 Having more than one /x regexp modifier is deprecated at /home/travis/build/irssi/scripts.irssi.org/extlib/lib/perl5/Perl/Critic/Policy/ValuesAndExpressions/RequireInterpolationOfMetachars.pm line 110.
-scripts/toggle_hidelevel.pl source OK
+"warn" used instead of "carp" at line 88, column 3.  See page 283 of PBP.  (Severity: 3)
