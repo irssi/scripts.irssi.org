@@ -3,7 +3,7 @@ use warnings;
 use LWP::Simple qw();
 use Irssi;
 
-our $VERSION = '1.0'; #
+our $VERSION = '1.1'; # # a3f78214eed2faa
 our %IRSSI = (
     authors     => 'Rocco Caputo (dngor), Nei',
     contact     => 'rcaputo@cpan.org, Nei @ anti@conference.jabber.teamidiot.de',
@@ -40,18 +40,24 @@ my %help;
 	my $soon = 0;
 	my $setting;
 	my $val;
+	my $old_setting;
+	my $old_val;
 	while (defined(my $line = shift @res)) {
 	    if ($line =~ /^\{:#(\w+)\}/i) {
 		$soon = 1;
+		$old_setting = $setting;
 		$setting = $1;
 	    }
-	    elsif ($soon == 1 && $line =~ /^` (.*) `$/) {
-		$val = $1;
+	    elsif ($soon == 1 && $line =~ /^(?:` (.*) `|` (.*)` \*\*`(.*)`\*\*)$/) {
+		$old_val = $val;
+		$val = defined $1 ? $1 : "$2 = $3";
 		$soon++;
 	    }
 	    elsif ($soon && $line =~ /^>+(?:\s|$)/) {
 		next if $line =~ /^>>+$/;
 		next if $line =~ /^>+\s+!/;
+		next if $line =~ /^>+\s+```/;
+		next if $line =~ /^>+\s+\{:.*?\}$/;
 		$line =~ s/^>+//;
 		push @info, $line;
 	    }
@@ -62,11 +68,28 @@ my %help;
 	}
 	unshift @info, $val if defined $val;
 	s/`//g for @info;
+	s/\\\\/\\/g for @info;
 	if (@info) {
+	    if ($old_val && $old_setting) {
+		my $sep =($old_val =~ s/^\Q$old_setting\E\s+=(\s+|\s*$)//i) ? '' : ':';
+		my $clr = !$sep && !$old_val ? '-clear ' : '';
+		my @info2 = ("/set $clr\cB\L$old_setting\E\cB$sep ".($old_val),'',
+			     "    see /help set \cB\L$setting\E\cB",'');
+		s/%/%%/g for @info2;
+		s/^(\s+)/$1%|/gm for @info2;
+		push @{$help{"settings/$old_setting"}}, @info2;
+	    }
 	    my $sep =($info[0] =~ s/^\Q$setting\E\s+=(\s+|\s*$)//i) ? '' : ':';
 	    my $clr = !$sep && !$info[0] ? '-clear ' : '';
 	    my @info2 = ("/set $clr\cB\L$setting\E\cB$sep ".(shift @info),'',(map {"    $_"} @info),'');
 	    s/%/%%/g for @info2;
+	    s/^(\s+)/$1%|/gm for @info2;
+	    for (@info2) {
+		if (s/%\|\| (.*) \|$/$1/) {
+		    s/ \| / | %|/g;
+		    s/\s+$//;
+		}
+	    }
 	    push @{$help{"settings/$setting"}}, @info2;
 	}
     }
