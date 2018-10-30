@@ -11,6 +11,10 @@
 	if (when >= 0) {
 	    var empty = queue[what].length == 0;
 	    queue[what].push([how, arg]);
+	    if (console && console.log && empty && when > 2000) {
+		console.log("GitHub rate limit on: " + arg + " time to wait: " +
+			    (when > 120 * 1000 ? Math.ceil(when / 1000 / 60) + " m" : Math.ceil(when / 1000) + " s"));
+	    }
 	    if (empty) window.setTimeout(function(){reQueue(what);}, when);
 	} else {
 	    ghLimits[what].remaining--;
@@ -27,7 +31,22 @@
     }
 
     function signalDone() {
-	if (!todo) $("#th-votes").html("Votes");
+	if (!todo) {
+	    var myTH = $("#th-votes");
+	    myTH.html("Votes");
+	    var isSorted = [0];
+	    Array.prototype.forEach.call(myTH[0].parentNode.children, function(e) {
+		if (e.classList.contains("sorttable_sorted") || e.classList.contains("sorttable_sorted_reverse")) {
+		    isSorted[0] = 1;
+		}
+	    });
+	    if (!isSorted[0]) {
+		sorttable.innerSortFunction.apply(myTH[0].parentNode.children[0], []);
+		sorttable.innerSortFunction.apply(myTH[0].parentNode.children[0], []);
+		sorttable.innerSortFunction.apply(myTH[0], []);
+		sorttable.innerSortFunction.apply(myTH[0], []);
+	    }
+	}
     }
 
     function _jsonpToJson(dta, typ) {
