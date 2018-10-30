@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-our $VERSION = '1.6'; # 6e36258a4c21ac9
+our $VERSION = '1.7'; # 9926bc6b1f9d094
 our %IRSSI = (
     authors     => 'Nei',
     contact     => 'Nei @ anti@conference.jabber.teamidiot.de',
@@ -342,7 +342,7 @@ my $MOUSE_ON;
 my %mouse_coords;
 my %statusbars;
 my %S; # settings
-my $settings_str = '';
+my $settings_str = '1';
 my $window_sort_func;
 my $custom_xform;
 my ($sb_base_width, $sb_base_width_pre, $sb_base_width_post);
@@ -1403,7 +1403,7 @@ sub reset_awl {
 		} $a, $b;
 		return ((($x[0] <=> $x[1] || $x[0] cmp $x[1]) * $so->[0]) || next);
 	    }
-	    return ($a->{refnum} <=> $b->{refnum});
+	    return ($a->[1]{refnum} <=> $b->[1]{refnum});
 	};
     }
     if ($was_xform ne $S{xform}) {
@@ -1431,6 +1431,7 @@ return sub {
 	 ? ("\\", $S{block}, $S{height_adjust}, $S{maxlines}, $S{maxcolumns})
 	 : ("!", $S{placement}, $S{position});
 
+    my $first_viewer = $settings_str eq '1';
     if ($settings_str ne $new_settings) {
 	@actString = ();
 	%abbrev_cache = ();
@@ -1448,22 +1449,24 @@ return sub {
 	uninstall_mouse();
     }
 
-    my $path = Irssi::settings_get_str(set 'path');
-    my $was_viewer_mode = $VIEWER_MODE;
-    if ($was_viewer_mode &&
-	defined $viewer{path} && $viewer{path} ne $path) {
-	stop_viewer();
-	$was_viewer_mode = 0;
-    }
-    elsif ($was_viewer_mode && $S{no_mode_hint} != $was_no_hint + 0) {
-	set_viewer_mode_hint();
-    }
-    $viewer{path} = $path;
-    if ($VIEWER_MODE = Irssi::settings_get_bool(set 'viewer') and !$was_viewer_mode) {
-	start_viewer();
-    }
-    elsif ($was_viewer_mode and !$VIEWER_MODE) {
-	stop_viewer();
+    unless ($first_viewer) {
+	my $path = Irssi::settings_get_str(set 'path');
+	my $was_viewer_mode = $VIEWER_MODE;
+	if ($was_viewer_mode &&
+	    defined $viewer{path} && $viewer{path} ne $path) {
+	    stop_viewer();
+	    $was_viewer_mode = 0;
+	}
+	elsif ($was_viewer_mode && $S{no_mode_hint} != $was_no_hint + 0) {
+	    set_viewer_mode_hint();
+	}
+	$viewer{path} = $path;
+	if ($VIEWER_MODE = Irssi::settings_get_bool(set 'viewer') and !$was_viewer_mode) {
+	    start_viewer();
+	}
+	elsif ($was_viewer_mode and !$VIEWER_MODE) {
+	    stop_viewer();
+	}
     }
 
     %banned_channels = map { lc1459(as_uni($_)) => undef }
@@ -1897,6 +1900,7 @@ sub awl_init {
     Irssi::timeout_remove($globTime)
 	    if defined $globTime;
     awl_refresh();
+    termsize_changed();
 }
 
 sub runsub {
@@ -2574,6 +2578,8 @@ UNITCHECK
   sub resize_integration {
       return unless $one_shot_integration;
       return unless ($one_shot_resize//0) < 0 || shift;
+      return if ($one_shot_resize//0) > 0;
+
       my $nrows = $screenHeight - $vars{ha};
       my $ncols = ($vars{seplen} + abs $vars{block}) ? int( ($screenWidth + $vars{seplen}) / ($vars{seplen} + abs $vars{block}) ) : 0;
       my $items = ($show_title_bar ? 1 : 0) + @{$vars{win}//[]};
@@ -2728,6 +2734,12 @@ UNITCHECK
 
 # Changelog
 # =========
+# 1.7
+# - fix crash on invalid /set awl_sort, introduced in 1.6, reported by
+#   tpetazzoni
+# - delay viewer initialisation
+# - improve race condition on tmux resize integration
+#
 # 1.6
 # - add detach setting to hide windows
 # - fix race condition when loading the script, reported by madduck
