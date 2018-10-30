@@ -417,7 +417,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                     send_scroll ](Test/send_scroll/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                  servercomplete ](Test/servercomplete/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
 [                            seti ](Test/seti/)|  ✔   |  ✔   |  ✔   | 10   |  ✔   | (c)
-[                    settingshelp ](Test/settingshelp/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                    settingshelp ](Test/settingshelp/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                      shortenurl ](Test/shortenurl/)|  ✔   |  ✔   |  ✔   | 20   |  ✔   | (c)
 [                        shorturl ](Test/shorturl/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                     showhilight ](Test/showhilight/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -458,7 +458,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                           tlock ](Test/tlock/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       tmux_away ](Test/tmux_away/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [          tmux-nicklist-portable ](Test/tmux-nicklist-portable/)|  ✔   |  ✔   |  ✔   |  8   |  ✔   | (c)
-[                toggle_hidelevel ](Test/toggle_hidelevel/)|  ✔   |  ✔   |  ✔   |  2   |  ✔   
+[                toggle_hidelevel ](Test/toggle_hidelevel/)|  ✔   |  ✔   |  ✔   |  2   |  ✔   | (c)
 [                          toilet ](Test/toilet/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
 [                        topicsed ](Test/topicsed/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
 [                          topics ](Test/topics/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -525,4 +525,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-2797a93707976a492caf9be50e2d7f35b328eadf | 1207
+9f7acb0afa6fd0be5eed24d32641f7004e080f06 | 1209
