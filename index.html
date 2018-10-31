@@ -91,7 +91,7 @@ layout: default
                     </td>
                     <td class="name">{{ script.name }}</td>
                     <td class="version">{{ script.version }}</td>
-                    <td class="description">{{ script.description | xml_escape }}</td>
+                    <td class="description">{{ script.description | xml_escape | replace: '', '' }}</td>
                     <td class="authors">{{ script.authors | xml_escape }}</td>
                     <td class="modified" sorttable_customkey="{{ script.modified | date: "%Y%m%d%H%M%S" }}">
                         <abbr class="timeago" title="{{ script.modified | date: "%Y-%m-%dT%H:%M:%SZ" }}">
