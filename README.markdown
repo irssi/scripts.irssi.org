@@ -13,7 +13,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                   active_notify ](Test/active_notify/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                   activity_file ](Test/activity_file/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
 [                             act ](Test/act/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                  adv_windowlist ](Test/adv_windowlist/)|  ✔   |  ✔   |  ✔   | 36   |  ✔   
+[                  adv_windowlist ](Test/adv_windowlist/)|  ✔   |  ✔   |  ✔   | 36   |  ✔   | (c)
 [                           aidle ](Test/aidle/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                              ai ](Test/ai/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
 [                           akftp ](Test/akftp/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -525,4 +525,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-1e2685d8c6c5cb7986c9d6202b10a172295bafae | 1211
+579f5d3dc4fd7e2b766a29deecab98c0456e52d6 | 1212
