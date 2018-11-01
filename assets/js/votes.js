@@ -1,7 +1,7 @@
 (function(document, $){
     'use strict';
-    var jsonpRe = /^\/\*[\s\S]*?\*\/jsonp\(([\s\S]*)\)$/m;
     var ghLimits = {search: {}, core: {}};
+    var linkRe = /\s*<([^>]*)>;\s*rel=(["'])(.*?)\2\s*(?:,|$)/g;
     var stopId = 0;
     var queue = {search: [], core: []};
     var todo = 1;
@@ -11,8 +11,8 @@
 	if (when >= 0) {
 	    var empty = queue[what].length == 0;
 	    queue[what].push([how, arg]);
-	    if (console && console.log && empty && when > 2000) {
-		console.log("GitHub rate limit on: " + arg + " time to wait: " +
+	    if (empty && when > 2000 && console && console.log) {
+		console.log("rate limit on: ", arg, "time to wait: ",
 			    (when > 120 * 1000 ? Math.ceil(when / 1000 / 60) + " m" : Math.ceil(when / 1000) + " s"));
 	    }
 	    if (empty) window.setTimeout(function(){reQueue(what);}, when);
@@ -49,23 +49,12 @@
 	}
     }
 
-    function _jsonpToJson(dta, typ) {
-	if (typ == "json") {
-	    return dta.replace(jsonpRe, "$1");
-	}
-	return dta;
-    }
-
     function jj(url) {
 	return $.ajax({
 	    accepts: { json: 'application/vnd.github.squirrel-girl-preview' },
 	    dataType: 'json',
-	    url: url + (url.indexOf('callback=') === -1
-			? (url.indexOf('?') === -1 ? '?' : ';') + 'callback=jsonp'
-			: ''),
-	    jsonp: false,
-	    jsonpCallback: 'jsonp',
-	    dataFilter: _jsonpToJson
+	    url: url,
+	    jsonp: false
 	});
     }
 
@@ -73,10 +62,10 @@
 	var start = url.indexOf("//") !== -1 ? url
 		: 'https://api.github.com/search/issues?q=votes+in:title+state:closed+type:issue+'
 		+ 'repo:' + url + ';sort=updated';
-	jj(start).done(function(r) {
-	    var hasMore = fetchNext('search', r.meta, searchVotes);
+	jj(start).done(function(r, textStatus, $xhr) {
+	    var hasMore = fetchNext('search', $xhr, searchVotes);
 	    if (hasMore) { todo++; }
-	    r.data.items.forEach(function(e) {
+	    r.items.forEach(function(e) {
 		if (stopId && e.number > stopId) return;
 		if (e.title != "votes") return;
 		if (e.locked) { stopId = e.number; return; }
@@ -109,36 +98,37 @@
 	return timeOut;
     }
 
-    function updateLimits(what, meta) {
-	ghLimits[what].remaining = ~~ meta['X-RateLimit-Remaining'];
-	ghLimits[what].reset = ~~ meta['X-RateLimit-Reset'];
+    function updateLimits(what, $xhr) {
+	ghLimits[what].remaining = ~~ $xhr.getResponseHeader('X-RateLimit-Remaining');
+	ghLimits[what].reset = ~~ $xhr.getResponseHeader('X-RateLimit-Reset');
     }
 
-    function fetchNext(what, meta, how) {
+    function fetchNext(what, $xhr, how) {
 	var hasMore = false;
-	updateLimits(what, meta);
-	if (meta.Link) {
-	    meta.Link.forEach(function(l) {
-		if (l[1].rel == "next") {
+	updateLimits(what, $xhr);
+	var link = $xhr.getResponseHeader('Link');
+	if (link) {
+	    var l;
+	    while ((l = linkRe.exec(link))) {
+		if (l[3] == "next") {
 		    hasMore = true;
-		    requestLater(what, how, l[0]);
-		    return;
+		    requestLater(what, how, l[1]);
 		}
-	    });
+	    }
 	}
 	return hasMore;
     }
 
     function requestComments(start) {
-	jj(start).done(function(r) {
-	    updateLimits('core', r.meta);
-	    if (r.meta.status == 403 && !r.meta['X-RateLimit-RateLimit']) {
+	jj(start).done(function(r, textStatus, $xhr) {
+	    updateLimits('core', $xhr);
+	    if ($xhr.status == 403 && !$xhr.getResponseHeader('X-RateLimit-RateLimit')) {
 		requestLater('core', requestComments, start);
 		return;
 	    }
-	    //var hasMore = fetchNext('core', r.meta, requestComments);
+	    //var hasMore = fetchNext('core', $xhr, requestComments);
 	    //if (hasMore) todo++;
-	    r.data.some(function(e) {
+	    r.some(function(e) {
 		e.body = e.body.replace(/\r/g, "");
 		var lines = e.body.split("\n");
 		var redir = e.body.match(/^#(\d+)$/);
@@ -163,7 +153,7 @@
 
     function limitsThen(what, how, arg) {
 	jj('https://api.github.com/rate_limit').done(function(r) {
-	    ghLimits = r.data.resources;
+	    ghLimits = r.resources;
 	    requestLater(what, how, arg);
 	});
     }
