@@ -243,7 +243,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                           itime ](Test/itime/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                          ixmmsa ](Test/ixmmsa/)|  ✘   |  ✔   |  ✔   |  3   |  ☡   | (c)
 [                        joininfo ](Test/joininfo/)|  ✔   |  ✔   |  ✔   | 11   |  ✔   | (c)
-[                            jump ](Test/jump/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
+[                            jump ](Test/jump/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                  kban-referrals ](Test/kban-referrals/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                      kblamehost ](Test/kblamehost/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        keepnick ](Test/keepnick/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
@@ -402,6 +402,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                         rotator ](Test/rotator/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                      rud_emotes ](Test/rud_emotes/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                        sana_cmd ](Test/sana_cmd/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
+[                     savecmdhist ](Test/savecmdhist/)|  ✔   |  ✔   |  ✔   |  1   |  ✔   
 [                    sbclearmatch ](Test/sbclearmatch/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                     sb_position ](Test/sb_position/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                       sb_search ](Test/sb_search/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -526,4 +527,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-5b5db77d09e293cf5ad3240efd8c0ba8e233b0bb | 1215
+8398736894bef1804c417b295f43907b0c5a2c16 | 1217
