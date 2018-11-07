@@ -2495,6 +2495,16 @@
   url: http://pieter-bas.ijdens.com/irssi/
   version: 1.0.0
 -
+  authors: Nei
+  contact: 'Nei @ anti@conference.jabber.teamidiot.de'
+  description: 'Adds a command to navigate to the previously active windows and an optional shortcut to go back when you try to switch to the current window. Think /window last²'
+  filename: jump.pl
+  license: ISC
+  modified: '2018-11-07 12:19:46'
+  name: jump
+  url: http://anti.teamidiot.de/
+  version: '1.1'
+-
   authors: Linostar
   commands: kbanref
   contact: linostar@sdf.org
