@@ -4134,6 +4134,16 @@
   url: http://ion.amigafin.org/irssi/
   version: '0.1'
 -
+  authors: Nei
+  contact: 'Nei @ anti@conference.jabber.teamidiot.de'
+  description: 'Saves the commands you typed in the input prompt to a history file, so that they persist across /upgrade and restart.'
+  filename: savecmdhist.pl
+  license: ISC
+  modified: '2018-11-07 14:02:31'
+  name: savecmdhist
+  url: http://anti.teamidiot.de/
+  version: '1.0'
+-
   authors: 'Simon Ruderich, Tom Feist'
   contact: 'simon@ruderich.org, shabble+irssi@metavore.org'
   description: 'Displays current position in scrollback.'
