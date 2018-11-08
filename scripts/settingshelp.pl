@@ -3,7 +3,7 @@ use warnings;
 use LWP::Simple qw();
 use Irssi;
 
-our $VERSION = '1.1'; # # a3f78214eed2faa
+our $VERSION = '1.2'; # # a3f78214eed2faa
 our %IRSSI = (
     authors     => 'Rocco Caputo (dngor), Nei',
     contact     => 'rcaputo@cpan.org, Nei @ anti@conference.jabber.teamidiot.de',
@@ -24,14 +24,14 @@ our %IRSSI = (
 # NOTE
 # ====
 # This script will download the settings documentation from the
-# website every time it is loaded
+# github every time it is loaded
 
 my %help;
 
 {
     print STDERR " .. downloading settings documentation .. ";
     local $LWP::Simple::ua->{timeout} = 2;
-    my $res = LWP::Simple::get("https://github.com/irssi/irssi.github.io/raw/master/documentation/settings/index.markdown");
+    my $res = LWP::Simple::get("https://github.com/irssi/irssi.github.io/raw/master/documentation/settings.markdown");
     Irssi::command('redraw');
     my @res = split "\n", $res if defined $res;
     die "Error downloading settings" unless @res && $res[0] eq '---';
