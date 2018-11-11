@@ -2885,9 +2885,9 @@
   description: 'Disables hilighting for messages containing a lot of nicknames'
   filename: mass_hilight_blocker.pl
   license: GPL
-  modified: '2016-04-26 17:27:32'
+  modified: '2018-11-11 16:14:40'
   name: mass_hilight_blocker
-  version: '0.3'
+  version: '0.4'
 -
   authors: 'Wouter Coekaerts'
   contact: coekie@irssi.org
