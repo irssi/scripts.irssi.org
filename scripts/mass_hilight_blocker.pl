@@ -18,14 +18,14 @@
 use strict;
 use Irssi;
 use vars qw($VERSION %IRSSI); 
-$VERSION = "0.3";
+$VERSION = "0.4";
 %IRSSI = (
         authors         => "Uli Baumann",
 	contact         => "f-zappa\@irc-muenster.de",
 	name            => "mass_hilight_blocker",
 	description     => "Disables hilighting for messages containing a lot of nicknames",
 	license         => "GPL",
-	changed	        => "Wed Apr 27 02:30:00 CEST 2016",
+	changed	        => "Sun Nov 11 15:30:00 CET 2018",
 );
 
 
@@ -60,4 +60,3 @@ sub sig_printtext {
 
 Irssi::signal_add_first('print text', 'sig_printtext');
 Irssi::settings_add_int('misc','mass_hilight_threshold',3);
-
