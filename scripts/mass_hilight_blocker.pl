@@ -49,7 +49,7 @@ sub sig_printtext {
       
       if ($num_nicks>=($max_num_nicks)) # all criteria match?
         {
-	  $dest->{level} = MSGLEVEL_CLIENTCRAP;
+          $dest->{level} = MSGLEVEL_CLIENTCRAP;
           Irssi::signal_continue($dest, $text, $stripped);		# continue with changed level
           $window->print('mass-hilighting in above message ('.$num_nicks.' nicks)',MSGLEVEL_CLIENTCRAP);
         }
