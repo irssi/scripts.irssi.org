@@ -10,7 +10,6 @@
   description: 'Scrolls to previous or next highlight'
   inspiration: '@eevee on Twitter: "i really want irssi keybindings that will scroll to the next/previous line containing a highlight. why does this not exist"'
   license: 'Public Domain'
-  modified: '2018-02-15 11:19:47'
   name: 'Scroll to hilights'
   url: http://juerd.nl/site.plp/irssi
   version: '0.03'

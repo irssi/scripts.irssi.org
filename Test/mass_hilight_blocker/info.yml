@@ -1,10 +1,11 @@
 ---
 -
   authors: 'Uli Baumann'
-  changed: 'Wed Apr 27 02:30:00 CEST 2016'
+  changed: 'Sun Nov 11 15:30:00 CET 2018'
   contact: f-zappa@irc-muenster.de
   default_package: mass_hilight_blocker
   description: 'Disables hilighting for messages containing a lot of nicknames'
   license: GPL
+  modified: '2018-11-11 16:14:40'
   name: mass_hilight_blocker
-  version: '0.3'
+  version: '0.4'

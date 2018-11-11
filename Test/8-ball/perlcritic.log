@@ -1,3 +1,4 @@
+Having more than one /x regexp modifier is deprecated at /home/travis/build/irssi/scripts.irssi.org/extlib/lib/perl5/Perl/Critic/Policy/ValuesAndExpressions/RequireInterpolationOfMetachars.pm line 110.
 Subroutine "new" called using indirect syntax at line 83, column 23.  See page 349 of PBP.  (Severity: 4)
 Subroutine "new" called using indirect syntax at line 90, column 9.  See page 349 of PBP.  (Severity: 4)
 Subroutine "new" called using indirect syntax at line 102, column 23.  See page 349 of PBP.  (Severity: 4)
