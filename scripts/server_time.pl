@@ -63,7 +63,7 @@ our %IRSSI = (
     name        => 'server_time',
     description => 'Implements the IRCv3 "server-time" capability',
     license     => 'MIT',
-    url         => 'https://github.com/brownhead/irssi-server-time',
+    url         => 'https://github.com/itsjohncs/irssi-server-time',
 );
 
 sub parse_servertime {
