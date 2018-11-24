@@ -1,47 +1,64 @@
+# Note: The fork at https://github.com/itsjohncs/irssi-server-time is the
+# correct place to open up issues. The original repo seems to be unmaintained.
+# 
 # Summary
 # -------
-#
+# 
 # irssi does not yet support the IRCv3 server-time extension (specified at
-# https://ircv3.net/specs/extensions/server-time-3.2.html), so this plugin
-# fills that hole. The plugin does not work for all kinds of messages, but
-# query messages and channel messages you receive with a servertime attached
-# will show the servertime properly (rather than the time you received the
-# message).
-#
+# https://ircv3.net/specs/extensions/server-time-3.2.html), so this plugin fills
+# that hole. The plugin does not work for all kinds of messages, but query
+# messages and channel messages you receive with a servertime attached will show
+# the servertime properly (rather than the time you received the message).
+# 
+# How it works
+# ------------
+# 
+# Irssi does not provide a nice way to change the timestamp of a message within
+# a script. So this script changes the "timestamp format" setting (normally set
+# to a value like "%h:%m") to the literal time the server sent us (ex: "10:23")
+# while the message is being processed, and then the script changes the
+# timestamp format back to whatever it was before.
+# 
 # Instructions
 # ------------
-#
-# This script is intended to be loaded before connecting to a server; then it
-# will request the server-time capability upon connecting. Make sure to include
-# it in your autorun directory (~/.irssi/scripts/autorun/).
-#
+# 
+# Add `server_time.pl` to your scripts directory (likely at
+# `~/.irssi/scripts/`). This script is intended to be loaded before connecting to a server, so I'd recommend adding a symlink in your autorun directory.
+# 
+# You can run `make` in the project directory to create a
+# `server_time.withcomments.pl` file that has this README and the License added
+# to the top as comments (this is the file that's published to
+# `scripts.irssi.org`).
+# 
 # Changelog
 # ---------
-#
+# 
 # 0.1
 #   - Initial release
+# 
 # 1.0
 #   - Forked by John Sullivan (without explicit cooperation from original
 #     author).
-#   - Removed dependency on DateTime::Format::ISO8601 (because it is not
-#     shipped in Brew's Perl by default it's overkill anyways).
+#   - Removed dependency on DateTime::Format::ISO8601 because it is not shipped
+#     in Brew's Perl by default and it's overkill anyways.
 #   - Prepared it for inclusion in https://scripts.irssi.org.
-#
+# 
 # License
 # -------
+# 
 # Copyright (C) 2016 Adrian Keet (arkeet@gmail.com)
 # Copyright (C) 2018 John Sullivan (johnsullivan.pem@gmail.com)
-#
+# 
 # Permission is hereby granted, free of charge, to any person obtaining a
 # copy of this software and associated documentation files (the "Software"),
 # to deal in the Software without restriction, including without limitation
 # the rights to use, copy, modify, merge, publish, distribute, sublicense,
 # and/or sell copies of the Software, and to permit persons to whom the
 # Software is furnished to do so, subject to the following conditions:
-#
+# 
 # The above copyright notice and this permission notice shall be included in
 # all copies or substantial portions of the Software.
-#
+# 
 # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 # IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 # FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
@@ -49,7 +66,6 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 # DEALINGS IN THE SOFTWARE.
-
 
 use strict;
 use Irssi;
