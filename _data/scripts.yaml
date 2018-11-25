@@ -1769,16 +1769,6 @@
   url: http://irssi.org/scripts/
   version: '2003071904'
 -
-  authors: 'Geert Hauwaerts'
-  contact: geert@irssi.org
-  description: 'This script will filter some Freenode IRCD (Dancer) servernotices.'
-  filename: freenode_filter.pl
-  license: 'GNU General Public License'
-  modified: '2003-09-17 23:00:11'
-  name: default.pl
-  url: http://irssi.hauwaerts.be/freenode_filter.pl
-  version: '0.06'
--
   authors: 'Peder Stray'
   commands: 'addfriend friends'
   contact: peder@ninja.no
