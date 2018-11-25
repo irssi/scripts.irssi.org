@@ -9,6 +9,7 @@
   default_package: keybinds
   description: 'This script will set the proper keybindings on /AZERTY and /QWERTY.'
   license: 'Public Domain'
+  modified: '2018-02-19 23:54:10'
   name: keybindings.pl
   url: http://irssi.hauwaerts.be/keybindings.pl
   version: '0.02'

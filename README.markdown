@@ -174,7 +174,6 @@ See [the testing read-me](../master/_testing/) for details.
 [                 format_identify ](Test/format_identify/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                         fortune ](Test/fortune/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                         forward ](Test/forward/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
-[                 freenode_filter ](Test/freenode_filter/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                   friends_peder ](Test/friends_peder/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   
 [                  friends_shasta ](Test/friends_shasta/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   
 [                    frm_outgmsgs ](Test/frm_outgmsgs/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
@@ -527,4 +526,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 
-226c2be6037207b67228f990bbaa744832b1d127 | 1224
+3e37fae205a6108a0bb98b4d8b94e28b8c035ac4 | 1230

@@ -6,6 +6,7 @@
   default_package: hilightwin
   description: 'Print hilighted messages to window named "hilight"'
   license: 'Public Domain'
+  modified: '2018-02-12 13:35:15'
   name: hilightwin
   url: http://irssi.org/
   version: '1.00'

@@ -7,6 +7,7 @@
   default_package: smshilight
   description: 'send highlights via Twilio sms'
   license: CC0
+  modified: '2018-02-12 03:58:36'
   modules:
     - LWP::UserAgent
   name: smshi
