@@ -141,11 +141,26 @@ sub message_dcc_own_action {
 
 sub setup_changed {
   $reason   = Irssi::settings_get_str("away_reason");
-  $timeout  = Irssi::settings_get_time("away_timeout");
-  $actlevel = Irssi::settings_get_level("away_activity_level");
+  if(my $t = Irssi::settings_get_time("autoaway")) {
+    warn("Setting misc/autoaway has been renamed to away/away_timeout");
+    $timeout = $t;
+  }
+  else {
+    $timeout  = Irssi::settings_get_time("away_timeout");
+  }
+  if(my $l = Irssi::settings_get_level("autounaway_level")) {
+    warn("Setting misc/autounaway_level has been renamed to away/away_activity_level");
+    $actlevel = $l;
+  }
+  else {
+    $actlevel = Irssi::settings_get_level("away_activity_level");
+  }
   reset_timer();
 }
 
+Irssi::settings_add_str("misc",   "away_reason", "");
+Irssi::settings_add_time("misc",  "autoaway", "");
+Irssi::settings_add_level("misc", "autounaway_level", "");
 Irssi::settings_add_str("away",   "away_reason", "Away since %F %T %z");
 Irssi::settings_add_time("away",  "away_timeout", "20mins");
 Irssi::settings_add_level("away", "away_activity_level", "PUBLIC MSGS ACTIONS DCCMSGS");
