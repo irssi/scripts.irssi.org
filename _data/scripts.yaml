@@ -4272,6 +4272,17 @@
   url: http://anti.teamidiot.de/
   version: '0.1'
 -
+  authors: 'Adrian Keet & John Sullivan'
+  contact: johnsullivan.pem@gmail.com
+  description: 'Implements the IRCv3 "server-time" capability'
+  filename: server_time.pl
+  license: MIT
+  modified: '2018-11-24 12:46:20'
+  modules: 'DateTime DateTime::TimeZone'
+  name: server_time
+  url: https://github.com/itsjohncs/irssi-server-time
+  version: '1.0'
+-
   authors: 'David Leadbeater'
   contact: dgl@dgl.cx
   description: 'Tab complete servers and userhosts (irc. -> irc server, user@ -> user@host). Useful for lazy ircops for /squit and so on :)'
