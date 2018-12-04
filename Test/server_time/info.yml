@@ -1,0 +1,14 @@
+---
+-
+  authors: 'Adrian Keet & John Sullivan'
+  contact: johnsullivan.pem@gmail.com
+  default_package: server_time
+  description: 'Implements the IRCv3 "server-time" capability'
+  license: MIT
+  modified: '2018-11-24 12:46:20'
+  modules:
+    - DateTime
+    - DateTime::TimeZone
+  name: server_time
+  url: https://github.com/itsjohncs/irssi-server-time
+  version: '1.0'
