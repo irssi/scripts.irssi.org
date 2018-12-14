@@ -106,6 +106,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                       clipboard ](Test/clipboard/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                          clones ](Test/clones/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                  clones_scanner ](Test/clones_scanner/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
+[                          cmdind ](Test/cmdind/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
 [                        cmpchans ](Test/cmpchans/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                     colon_emoji ](Test/colon_emoji/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                  colorize_nicks ](Test/colorize_nicks/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
@@ -417,7 +418,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                            seen ](Test/seen/)|  ✔   |  ✔   |  ✔   |103   |  ✔   | (c)
 [                     send_scroll ](Test/send_scroll/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                  servercomplete ](Test/servercomplete/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
-[                     server_time ](Test/server_time/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[                     server_time ](Test/server_time/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                            seti ](Test/seti/)|  ✔   |  ✔   |  ✔   | 10   |  ✔   | (c)
 [                    settingshelp ](Test/settingshelp/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                      shortenurl ](Test/shortenurl/)|  ✔   |  ✔   |  ✔   | 20   |  ✔   | (c)
@@ -527,4 +528,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-ba9c1c7e85eacc3f8ab3fee0848704ace6a7ca65 | 1233
+92b0549fc02bd10c8620000b06ce5bd29f69fe90 | 1235
