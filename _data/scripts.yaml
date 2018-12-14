@@ -1070,6 +1070,16 @@
   url: http://reirssi.wordpress.com
   version: '1.6'
 -
+  authors: Nei
+  contact: 'Nei @ anti@conference.jabber.teamidiot.de'
+  description: 'Indicator for input prompt if you are inputting a command or text'
+  filename: cmdind.pl
+  license: 'GNU GPLv2 or later'
+  modified: '2018-11-25 17:13:30'
+  name: cmdind
+  url: http://anti.teamidiot.de/
+  version: '1.0'
+-
   authors: 'Jari Matilainen, init[1]@irc.freenode.net'
   commands: cmp
   contact: vague@vague.se
