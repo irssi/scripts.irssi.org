@@ -102,7 +102,7 @@ use strict;
 use warnings;
 use vars qw($VERSION %IRSSI);
 
-$VERSION = "2.6"; # c99d17e529ad9ce
+$VERSION = "2.8";
 
 %IRSSI = (
     authors     => "Peter 'kinlo' Leurs, Uwe Dudenhoeffer, " .
@@ -172,6 +172,7 @@ $VERSION = "2.6"; # c99d17e529ad9ce
 
 ## Version history:
 #
+#  2.8: - fix /^join bug
 #  2.7: - add /set trackbar_all_manual option
 #  2.5: - merge back on scripts.irssi.org
 #       - fix /trackbar redraw broken in 2.4
@@ -289,7 +290,9 @@ sub remove_one_trackbar {
     my $line = $view->get_bookmark('trackbar');
     if (defined $line) {
         my $bottom = $view->{bottom};
-        $view->remove_line($line);
+        if ($line->{info}->{level} == MSGLEVEL_NEVER) {
+            $view->remove_line($line);
+        }
         $win->command('^scrollback end') if $bottom && !$win->view->{bottom};
         $view->redraw;
     }
@@ -437,7 +440,9 @@ sub redraw_one_trackbar {
     $win->print_after($line, MSGLEVEL_NEVER, line($win->{width}, $line->{info}{time}),
 		      $line->{info}{time});
     $view->set_bookmark('trackbar', $win->last_line_insert);
-    $view->remove_line($line);
+    if ($line->{info}->{level} == MSGLEVEL_NEVER) {
+        $view->remove_line($line);
+    }
     $win->command('^scrollback end') if $bottom && !$win->view->{bottom};
     $view->redraw;
 }
@@ -584,3 +589,5 @@ Irssi::printformat(MSGLEVEL_CLIENTCRAP, 'trackbar_loaded', $IRSSI{name}, $VERSIO
 
 # workaround for issue #271
 { package Irssi::Nick }
+
+# vim:set ts=8 sw=4 expandtab:
