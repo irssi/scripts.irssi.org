@@ -48,8 +48,6 @@
 #    Setting:     trackbar_all_manual
 #    Description: Never clear the trackbar until you do /mark.
 #
-#     /mark is a command that will redraw the line at the bottom.
-#
 #    Command:     /trackbar, /trackbar goto
 #    Description: Jump to where the trackbar is, to pick up reading
 #
@@ -173,6 +171,7 @@ $VERSION = "2.8";
 ## Version history:
 #
 #  2.8: - fix /^join bug
+#       - remove redraws
 #  2.7: - add /set trackbar_all_manual option
 #  2.5: - merge back on scripts.irssi.org
 #       - fix /trackbar redraw broken in 2.4
@@ -219,6 +218,8 @@ use Irssi::TextUI;
 use Encode;
 
 use POSIX qw(strftime);
+
+my $line_width=0; # last line width of sub line()
 
 sub cmd_help {
     my ($args) = @_;
@@ -292,9 +293,9 @@ sub remove_one_trackbar {
         my $bottom = $view->{bottom};
         if ($line->{info}->{level} == MSGLEVEL_NEVER) {
             $view->remove_line($line);
+            $view->redraw;
         }
         $win->command('^scrollback end') if $bottom && !$win->view->{bottom};
-        $view->redraw;
     }
 }
 
@@ -305,7 +306,6 @@ sub add_one_trackbar {
     $view->set_bookmark_bottom('trackbar');
     $unseen_trackbar{ $win->{_irssi} } = 1;
     Irssi::signal_emit("window trackbar added", $win);
-    $view->redraw;
 }
 
 sub update_one_trackbar {
@@ -313,10 +313,21 @@ sub update_one_trackbar {
     my $view = shift || $win->view;
     my $force = shift;
     my $ignored = win_ignored($win, $view);
-    remove_one_trackbar($win, $view)
-	if $force || !defined $force || !$ignored;
-    add_one_trackbar($win, $view)
-	if $force || !$ignored;
+
+    my $buffer_cur_line= '';
+    if (defined $view->{buffer}->{cur_line}){
+        $buffer_cur_line= $view->{buffer}->{cur_line}->get_text(0);
+    }
+    my $bookmark= '';
+    if (defined $view->get_bookmark('trackbar') ){
+        $bookmark= $view->get_bookmark('trackbar')->get_text(0);
+    }
+
+    if (($buffer_cur_line ne $bookmark
+            && !$ignored) || $force) {
+        remove_one_trackbar($win, $view);
+        add_one_trackbar($win, $view);
+    }
 }
 
 sub win_ignored {
@@ -333,7 +344,8 @@ sub win_ignored {
 sub sig_window_changed {
     my ($newwindow, $oldwindow) = @_;
     return unless $oldwindow;
-    redraw_one_trackbar($newwindow) unless $old_irssi;
+    redraw_one_trackbar($newwindow)
+        unless $old_irssi || $line_width == $newwindow->{width};
     trackbar_update_seen($newwindow);
     return if delete $keep_trackbar{ $oldwindow->{_irssi} };
     trackbar_update_seen($oldwindow);
@@ -396,6 +408,7 @@ sub line {
     my $string = $config{string};
     $string = ' ' unless length $string;
     $time ||= time;
+    $line_width=$width;
 
     Encode::_utf8_on($string) if is_utf8();
     my $length = c_length($string);
@@ -442,9 +455,9 @@ sub redraw_one_trackbar {
     $view->set_bookmark('trackbar', $win->last_line_insert);
     if ($line->{info}->{level} == MSGLEVEL_NEVER) {
         $view->remove_line($line);
+        $view->redraw;
     }
     $win->command('^scrollback end') if $bottom && !$win->view->{bottom};
-    $view->redraw;
 }
 
 sub redraw_trackbars {
