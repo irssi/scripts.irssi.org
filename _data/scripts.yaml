@@ -1075,10 +1075,10 @@
   description: 'Indicator for input prompt if you are inputting a command or text'
   filename: cmdind.pl
   license: 'GNU GPLv2 or later'
-  modified: '2018-11-25 17:13:30'
+  modified: '2018-12-18 17:40:02'
   name: cmdind
   url: http://anti.teamidiot.de/
-  version: '1.0'
+  version: '1.1'
 -
   authors: 'Jari Matilainen, init[1]@irc.freenode.net'
   commands: cmp
