@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-our $VERSION = '1.0'; # cd71e7f6cb97775
+our $VERSION = '1.1'; # 67ffc4766319fe4
 our %IRSSI = (
     authors     => 'Nei',
     contact     => 'Nei @ anti@conference.jabber.teamidiot.de',
@@ -30,27 +30,29 @@ our %IRSSI = (
 use Irssi;
 
 my $cmd_state = 0;
-my ($cmdind_text, $cmdind_warn_text);
 my $cmdchars;
+my @text;
 
 sub check_input {
     my $inputline = Irssi::parse_special('$L');
     my $c1 = length $inputline > 0 ? substr $inputline, 0, 1 : '';
     my $c2 = length $inputline > 1 ? substr $inputline, 1, 1 : '';
     my $old_state = $cmd_state;
-    my $x_state = length $c1 && (-1 != index $cmdchars, $c1) && $c2 ne ' ';
-    my $warn_state = !$x_state &&
-	$inputline =~ /^\s+(\S)/ && (-1 != index $cmdchars, $1);
-    $cmd_state = $x_state ? 1 : $warn_state ? 2 : 3;
+    my $x_state = length $c2 && (-1 != index $cmdchars, $c1) && $c2 ne ' ';
+    my $warn_state =
+	($inputline =~ /^\s+(\S)/ && (-1 != index $cmdchars, $1))
+	|| ($x_state && $inputline =~ /^(.)\1?+\S*[\Q$cmdchars\E]/);
+    $cmd_state = $warn_state ? 2 : $x_state ? 1 : 3;
     if ($cmd_state ne $old_state) {
-	Irssi::signal_emit('change prompt',
-			   $x_state ? $cmdind_text : $warn_state ? $cmdind_warn_text : '', 'UP_POST');
+	Irssi::signal_emit('change prompt', $text[ $cmd_state ], 'UP_POST');
     }
 }
 sub setup_changed {
     $cmdchars = Irssi::settings_get_str('cmdchars');
-    $cmdind_text = Irssi::settings_get_str('cmdind_text');
-    $cmdind_warn_text = Irssi::settings_get_str('cmdind_warn_text');
+    @text = ('',
+	     Irssi::settings_get_str('cmdind_text'),
+	     Irssi::settings_get_str('cmdind_warn_text'),
+	     '');
 }
 Irssi::settings_add_str('cmdind', 'cmdind_text', '%gCmd:');
 Irssi::settings_add_str('cmdind', 'cmdind_warn_text', '%RMsg?');
