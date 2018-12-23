@@ -4,7 +4,7 @@
 
 use strict;
 use vars qw($VERSION %IRSSI);
-$VERSION = "2003011501";
+$VERSION = "2018122301";
 %IRSSI = (
     authors     => "Simon 'corecode' Schubert",
     contact     => "corecode\@corecode.ath.cx",
@@ -26,7 +26,11 @@ sub catch_away {
 		$level = Irssi::settings_get_str("beep_back_msg_level")
 	}
 #	Irssi::print "%R>>%n setting levels ``$level''";
-	$server->command("/^set beep_msg_level ".$level);
+	if ($level eq '' || $level =~ m/NONE/) {
+		$server->command("/^set -clear beep_msg_level ");
+	} else {
+		$server->command("/^set beep_msg_level ".$level);
+	}
 }
 
 Irssi::settings_add_str($IRSSI{name}, "beep_away_msg_level", "MSGS NOTICES DCC DCCMSGS HILIGHT");
