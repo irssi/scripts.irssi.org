@@ -4,5 +4,6 @@
   contact: peder@ninja.no
   description: 'convert mirc color and irssi interal formatting to ansi colors, useful for log filtering'
   license: GPL
+  modified: '2010-02-13 13:59:47'
   name: log2ansi
   url: http://ninja.no/irssi/log2ansi

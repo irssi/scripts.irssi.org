@@ -63,7 +63,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                             ban ](Test/ban/)|  ✔   |  ✔   |  ✔   | 38   |  ✔   | (c)
 [                       bansearch ](Test/bansearch/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                         bantime ](Test/bantime/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                        beepaway ](Test/beepaway/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                        beepaway ](Test/beepaway/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                       beep_beep ](Test/beep_beep/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                            beep ](Test/beep/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                     beforespace ](Test/beforespace/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
@@ -187,7 +187,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                             go2 ](Test/go2/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                          google ](Test/google/)|  ✔   |  ✔   |  ✔   | 10   |  ✔   | (c)
 [                              go ](Test/go/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                    gpgvalidator ](Test/gpgvalidator/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[                    gpgvalidator ](Test/gpgvalidator/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                     greetignore ](Test/greetignore/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        grepbans ](Test/grepbans/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            grep ](Test/grep/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -267,7 +267,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                        listsort ](Test/listsort/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                         loadavg ](Test/loadavg/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        localize ](Test/localize/)|  ✔   |  ✔   |  ✔   | 25   |  ✔   | (c)
-[                        log2ansi ](Test/log2ansi/)|  ✘   |  ✘   |  ✔   | 15   |  ☡   | (c)
+[                        log2ansi ](Test/log2ansi/)|  ✘   |  ✘   |  ✔   | 15   |  ☡   
 [                logcompress_perl ](Test/logcompress_perl/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                     logcompress ](Test/logcompress/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       logresume ](Test/logresume/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -528,4 +528,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-041c5255c5cb4f76b247b88c41c2eddaee4a0993 | 1246
+e5bb77321f77acd9d74c19b8a9a2b4e0b9d65f7e | 1248

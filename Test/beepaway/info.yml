@@ -1,10 +1,11 @@
 ---
 -
   authors: "Simon 'corecode' Schubert"
-  changed: '2003011501'
+  changed: '2018122301'
   contact: corecode@corecode.ath.cx
   default_package: beepaway
   description: 'Only beep when you are away'
   license: BSD
+  modified: '2018-12-23 22:07:33'
   name: beepaway
-  version: '2003011501'
+  version: '2018122301'
