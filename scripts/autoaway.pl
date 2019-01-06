@@ -23,7 +23,7 @@ use Irssi;
 use Irssi::Irc;
 
 use vars qw($VERSION %IRSSI);
-$VERSION = "0.4";
+$VERSION = "0.5";
 %IRSSI = (
     authors => 'Larry "Vizzie" Daffner',
     contact => 'vizzie@airmail.net',
@@ -31,8 +31,7 @@ $VERSION = "0.4";
     description => 'Automatically goes  away after defined inactivity',
     license => 'BSD',
     url => 'http://www.flamingpackets.net/~vizzie/irssi/',
-    changed => 'Tue Apr 26 19:30:00 CDT 2016',
-    changes => 'Applied multiserver/store config patch from Adam Monsen'
+    changed => '2018-12-02',
 );
 
 my ($autoaway_sec, $autoaway_to_tag, $autoaway_state);
@@ -121,13 +120,11 @@ sub reset_timer {
 
 Irssi::settings_add_int("misc", "autoaway_timeout", 0);
 
-my $autoaway_default = Irssi::settings_get_int("autoaway_timeout");
-if ($autoaway_default) {
-  $autoaway_to_tag =
-    Irssi::timeout_add($autoaway_default*1000, "auto_timeout", "");
-
-}
+$autoaway_sec = Irssi::settings_get_int("autoaway_timeout");
+reset_timer();
 
 Irssi::command_bind('autoaway', 'cmd_autoaway');
 Irssi::command_bind('away', 'cmd_away');
 Irssi::signal_add('send command', 'reset_timer');
+
+# vim:set expandtab ts=2 sw=2:
