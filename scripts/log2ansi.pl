@@ -1,19 +1,22 @@
 #! /usr/bin/perl
 #
-#    $Id: log2ansi,v 1.9 2004/03/08 21:31:26 peder Exp $
+#    $Id: log2ansi,v 1.10 2010/02/13 13:59:47 peder Exp $
 #
-# Copyright (C) 2002, 2003 by Peder Stray <peder@ninja.no>
+# Copyright (C) 2002, 2003, 2010 by Peder Stray <peder@ninja.no>
 #
 #    This is a standalone perl program and not intended to run within
 #    irssi, it will complain if you try to...
 
 use strict;
 use Getopt::Long;
+use Encode;
+
 use vars qw(%ansi %base %attr %old);
-use vars qw(@bols @nums @mirc @irssi @mc @mh @ic @ih);
+use vars qw(@bols @nums @mirc @irssi @mc @mh @ic @ih @cn);
+use vars qw($class $oldclass);
 
 use vars qw{$VERSION %IRSSI};
-($VERSION) = '$Revision: 1.9 $' =~ / (\d+\.\d+) /;
+($VERSION) = ' $Revision: 1.10 $ ' =~ / (\d+\.\d+) /;
 %IRSSI = (
           name        => 'log2ansi',
           authors     => 'Peder Stray',
@@ -25,14 +28,18 @@ use vars qw{$VERSION %IRSSI};
 
 if (__PACKAGE__ =~ /^Irssi/) {
     # we are within irssi... die!
-    Irssi::print("%RWarning:%n log2ansi is should not run from within irssi");
+    Irssi::print("%RWarning:%n log2ansi should not run from within irssi");
     die "Suicide to prevent loading\n";
 }
 
-my $clear = 0;
+my $opt_clear = 0;
+my $opt_html = 0;
+my $opt_utf8 = 0;
 
 GetOptions(
-	   '--clear!' => \$clear,
+	   'clear!' => \$opt_clear,
+	   'html!' => \$opt_html,
+	   'utf8!' => \$opt_utf8,
 	  );
 
 for (@ARGV) {
@@ -61,6 +68,8 @@ my($n) = 0;
 @ic = map {$ansi{lc $_}} @irssi;
 @ih = map {$_ eq uc $_} @irssi;
 
+@cn = qw(black dr dg dy db dm dc lgray dgray lr lg ly lb lm lc white);
+
 sub defc {
     my($attr) = shift || \%attr;
     $attr->{fgc} = $attr->{bgc} = -1;
@@ -87,28 +96,63 @@ sub emit {
     my($str) = @_;
     my(%elem,@elem);
 
-    my(@clear) = ( (grep { $old{$_} > $attr{$_} } @bols),
-		   (grep { $old{$_}>=0 && $attr{$_}<0 } @nums)
-		 );
+    if ($opt_clear) {
+	# do nothing
+    }
+    else {
+	
+	if ($opt_html) {
+	    my %class;
+	    
+	    for (@bols) {
+		$class{$_}++ if $attr{$_};
+	    }
 
-    $elem{0}++ if @clear;
+	    for (qw(fg bg)) {
+		my $h = delete $class{"${_}h"};
+		my $n = $attr{"${_}c"};
+		next unless $n >= 0;
+		$class{"$_$cn[$n + 8 * $h]"}++;
+	    }
 
-    for (@bols) {
-	$elem{$base{$_}}++ 
-	  if $attr{$_} && ($old{$_} != $attr{$_} || $elem{0});
+	    $class = join " ", sort keys %class;
+
+	    print qq{</span>} if $oldclass;
+	    print qq{<span class="$class">} if $class;
+	    $oldclass = $class;
+	}
+	else {
+	    my(@clear) = ( (grep { $old{$_} > $attr{$_} } @bols),
+			   (grep { $old{$_}>=0 && $attr{$_}<0 } @nums)
+			 );
+
+	    $elem{0}++ if @clear;
+	
+	    for (@bols) {
+		$elem{$base{$_}}++ 
+		  if $attr{$_} && ($old{$_} != $attr{$_} || $elem{0});
+	    }
+	    
+	    for (@nums) {
+		$elem{$base{$_}+$attr{$_}}++
+		  if $attr{$_} >= 0 && ($old{$_} != $attr{$_} || $elem{0});
+	    }
+	    
+	    @elem = sort {$a<=>$b} keys %elem;
+	    
+	    if (@elem) {
+		@elem = () if @elem == 1 && !$elem[0];
+		printf "\e[%sm", join ";", @elem;
+	    }
+	}
     }
 
-    for (@nums) {
-	$elem{$base{$_}+$attr{$_}}++
-	  if $attr{$_} >= 0 && ($old{$_} != $attr{$_} || $elem{0});
-    }
-
-    @elem = sort {$a<=>$b} keys %elem;
-
-    if (@elem) {
-	@elem = () if @elem == 1 && !$elem[0];
-	printf "\e[%sm", join ";", @elem
-	  unless $clear;
+    if ($opt_html) {
+	for ($str) {
+	    s/&/&amp;/g;
+	    s/</&lt;/g;
+	    s/>/&gt;/g;
+	}
     }
 
     print $str;
@@ -116,10 +160,33 @@ sub emit {
     setold;
 }
 
+if ($opt_html) {
+    print qq{<div class="loglines">\n};
+}
+
+if ($opt_utf8) {
+    binmode STDIN, ':bytes'; #encoding(cp1252)';
+    binmode STDOUT, ':utf8';
+}
+
 while (<>) {
+    if ($opt_utf8) {
+	my $line;
+	while (length) {
+	    $line .= decode("utf8", $_, Encode::FB_QUIET);
+	    $line .= substr $_, 0, 1, "";
+	}
+	$_ = $line;
+    }
+
     chomp;
+
     def;
     setold;
+
+    if ($opt_html) {
+	printf qq{<div class="logline">};
+    }
 
     while (length) {
 	if (s/^\cB//) {
@@ -249,5 +316,13 @@ while (<>) {
     }
 
     def;
-    emit "\n";
+    emit "";
+    if ($opt_html) {
+	print "</div>";
+    }
+    print "\n";
+}
+
+if ($opt_html) {
+    print "</div>\n";
 }
