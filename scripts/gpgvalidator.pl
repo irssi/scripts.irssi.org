@@ -5,7 +5,7 @@
 #  \__, | .__/ \__, | \_/ \__,_|_|_|\__,_|\__,_|\__\___/|_|   
 #  |___/|_|    |___/ 
 #
-#				for irssi - VERSION 0.1.2
+#				for irssi - VERSION 0.1.3
 #
 # this is a nice irssi's script coded by pallotron
 # based on a lovely implementation writed by valvoline for xchat client
@@ -67,17 +67,17 @@ use vars qw($VERSION %IRSSI);
 my $PASS = "NULL";
 my $VALIDATEDIR = "~/";
 
-$VERSION = "0.1.2";
+$VERSION = "0.1.3";
 %IRSSI = (
 	authors=> 'original idea by valvoline, irssi porting by pallotron',
 	contact=> 'pallotron@freaknet.org',
-	name=> 'gpgvalidator v. 0.1.2',
+	name=> 'gpgvalidator v. 0.1.3',
 	description=> 'Have gpg-based trusting features in your irssi client!',
 	license=> 'GPL v2',
 	url=> 'http://www.freaknet.org/~pallotron',
 );
 
-Irssi::print("Loading irssi pallotron's porting of valvoline gpgvalidator 0.1.2");
+Irssi::print("Loading irssi pallotron's porting of valvoline gpgvalidator 0.1.3");
 
 # create a new irssi command called /PASSPHRASE
 # USAGE:
@@ -138,7 +138,7 @@ sub ctcp_send_chunck_file {
     
     if ( $cmd =~ /^VALIDATE/) {
         if ( $PASS =~ /NULL/i ) {
-	    Irssi::print("requested GPG-VALIDATE from $nick, but no passphrase in cache!\nplz, set a passphrase with /passphrase <your_gpg_pass>");
+	    Irssi::print("requested GPG-VALIDATE from $nick, but no passphrase in cache!\nplz, set a passphrase with /setpass <your_gpg_pass>");
 	    return 1;
 	} else {
 	    Irssi::print("requested GPG-VALIDATE from $nick\n");
@@ -151,7 +151,7 @@ sub ctcp_send_chunck_file {
 	    }
 	    if (( my $i = index($result,"BAD_PASSPHRASE")) > -1) {
                 $result = `echo "$result" | grep "BAS_PASSPHRASE"`;
-                Irssi::print("$result\nBAD passphrase - cannot unlock your secret keyring - please set a passprase with /passphrase <yourpass>\n");
+                Irssi::print("$result\nBAD passphrase - cannot unlock your secret keyring - please set a passprase with /setpass <yourpass>\n");
             }   
 	}
 	return 0;
@@ -207,7 +207,7 @@ sub sub_verify {
 }
 
 sub about {
-        Irssi::print("\n-------------------------------------------------------\nGPG validator v0.1.2 for irssi coded in perl by pallotron\n-------------------------------------------------------\n(c) 2002 - valvoline / VRL Team - valvoline\@vrlteam.org\nported to irssi by pallotron\@freaknet.org\n-------------------------------------------------------\nthis's a simple script to validate users under irc, \nusing gpg. there're NO optimization, and the code was\nwritten in 10mins!. i'm not a perl-programmer, so...\n...fill free to make mods to the code, but, leave the\noriginal credits at the same place (=\n\ntype /greets to see greets!\n\ntype /manual to see user-manual\n");
+        Irssi::print("\n-------------------------------------------------------\nGPG validator v0.1.3 for irssi coded in perl by pallotron\n-------------------------------------------------------\n(c) 2002 - valvoline / VRL Team - valvoline\@vrlteam.org\nported to irssi by pallotron\@freaknet.org\n-------------------------------------------------------\nthis's a simple script to validate users under irc, \nusing gpg. there're NO optimization, and the code was\nwritten in 10mins!. i'm not a perl-programmer, so...\n...fill free to make mods to the code, but, leave the\noriginal credits at the same place (=\n\ntype /greets to see greets!\n\ntype /manual to see user-manual\n");
     return 1;
 }
 
