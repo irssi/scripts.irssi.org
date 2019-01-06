@@ -1913,10 +1913,10 @@
   description: 'Have gpg-based trusting features in your irssi client!'
   filename: gpgvalidator.pl
   license: 'GPL v2'
-  modified: '2008-05-17 17:39:11'
-  name: 'gpgvalidator v. 0.1.2'
+  modified: '2018-12-31 13:43:04'
+  name: 'gpgvalidator v. 0.1.3'
   url: http://www.freaknet.org/~pallotron
-  version: 0.1.2
+  version: 0.1.3
 -
   authors: "David O'Rourke, Nico R. Wohlgemuth"
   contact: nico@lifeisabug.com
