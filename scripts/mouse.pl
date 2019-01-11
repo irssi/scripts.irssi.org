@@ -132,7 +132,7 @@ sub UNLOAD {
 	mouse_disable();
 }
 
-if ($ENV{"TERM"} !~ /^rxvt|screen|xterm(-(256)?color)?$) {
+if ($ENV{"TERM"} !~ /^rxvt|screen|xterm(-(256)?color)?$/) {
 	die "Your terminal doesn't seem to support this.";
 }
 
