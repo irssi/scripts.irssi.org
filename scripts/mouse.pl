@@ -23,7 +23,7 @@ use Math::Trig;
 
 use vars qw($VERSION %IRSSI);
 
-$VERSION = '1.0.0';
+$VERSION = '1.1.0';
 %IRSSI = (
 	authors  	=> 'Wouter Coekaerts',
 	contact  	=> 'wouter@coekaerts.be',
@@ -31,7 +31,7 @@ $VERSION = '1.0.0';
 	description 	=> 'control irssi using mouse clicks and gestures',
 	license 	=> 'GPLv2 or later',
 	url     	=> 'http://wouter.coekaerts.be/irssi/',
-	changed  	=> '2009-05-16',
+	changed  	=> '2019-01-14',
 );
 
 my @BUTTONS = ('', '_middle', '_right');
@@ -132,7 +132,7 @@ sub UNLOAD {
 	mouse_disable();
 }
 
-if ($ENV{"TERM"} !~ /^rxvt|screen|xterm(-color)?$/) {
+if ($ENV{"TERM"} !~ /^rxvt|screen|xterm(-(256)?color)?$/) {
 	die "Your terminal doesn't seem to support this.";
 }
 
