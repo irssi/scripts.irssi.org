@@ -31,7 +31,7 @@ $VERSION = '1.1.0';
 	description 	=> 'control irssi using mouse clicks and gestures',
 	license 	=> 'GPLv2 or later',
 	url     	=> 'http://wouter.coekaerts.be/irssi/',
-	changed  	=> '2009-05-16',
+	changed  	=> '2019-01-14',
 );
 
 my @BUTTONS = ('', '_middle', '_right');
