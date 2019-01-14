@@ -3087,10 +3087,10 @@
   description: 'control irssi using mouse clicks and gestures'
   filename: mouse.pl
   license: 'GPLv2 or later'
-  modified: '2009-05-16 00:00:00'
+  modified: '2019-01-14 15:16:45'
   name: mouse
   url: http://wouter.coekaerts.be/irssi/
-  version: 1.0.0
+  version: 1.1.0
 -
   authors: 'Wouter Coekaerts'
   commands: mouse_xterm
