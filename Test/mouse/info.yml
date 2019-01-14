@@ -1,7 +1,7 @@
 ---
 -
   authors: 'Wouter Coekaerts'
-  changed: 2009-05-16
+  changed: 2019-01-14
   commands:
     - mouse
     - 'mouse tempdisable'
@@ -10,6 +10,7 @@
   default_package: mouse
   description: 'control irssi using mouse clicks and gestures'
   license: 'GPLv2 or later'
+  modified: '2019-01-14 15:16:45'
   name: mouse
   url: http://wouter.coekaerts.be/irssi/
-  version: 1.0.0
+  version: 1.1.0
