@@ -1,4 +1,4 @@
-# vim:ft=perl:et:
+# vim:ft=perl:et:sw=2:ts=2:
 use strict;
 use Irssi;
 
