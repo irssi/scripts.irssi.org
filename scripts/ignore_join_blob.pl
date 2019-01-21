@@ -2,7 +2,7 @@
 use strict;
 use Irssi;
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 our %IRSSI = (
   authors     => q{Magnus Woldrich},
   contact     => q{m@japh.se},
@@ -26,9 +26,9 @@ sub sig_print_text {
   my ($dest, $string, $stripped) = @_;
 
   if($dest->{level} & MSGLEVEL_CRAP) {
-    # TODO: get rid of the
-    # > Irssi: Join to ... line.
-    $stripped =~ m/ > / and Irssi::signal_stop();
+    if($stripped =~ m/Topic (for|set)|Channel [#]\S+ created|Home page for [#]\S+/) {
+      Irssi::signal_stop();
+    }
   }
 }
 
