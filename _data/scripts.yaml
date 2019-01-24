@@ -2208,6 +2208,15 @@
   name: iDonkey
   version: '2004051601'
 -
+  authors: 'Magnus Woldrich'
+  contact: m@japh.se
+  description: 'Ignore the blob of text displayed when (re)joining a channel'
+  filename: ignore_join_blob.pl
+  license: MIT
+  modified: '2019-01-24 09:01:46'
+  name: ignore_join_blob
+  version: '0.02'
+-
   authors: 'Dmitry "jsn" Kim'
   contact: jason@nichego.net
   description: 'script to log ignored messages'
