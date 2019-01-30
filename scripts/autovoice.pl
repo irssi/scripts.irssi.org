@@ -10,7 +10,7 @@ BEGIN {
 }
 
 use Irssi;
-our $VERSION = '0.05';
+our $VERSION = '0.06';
 our %IRSSI = (
 		authors => 'aluser',
 		name => 'autovoice',
@@ -476,11 +476,12 @@ Irssi command handler which dispatches all the /autovoice * commands.  Autovoice
 sub autovoice_cmd {
 	my ($data, $server, $witem) = @_;
 	my ($cmd, @args) = (split ' ', $data);
+	$cmd='' if (!defined $cmd);
 	$cmd = lc $cmd;
 	if (exists $commands{$cmd}) {
 		$commands{$cmd}->($server, $witem, @args)
 	} else {
-		Irssi::print("No such command: autovoice $cmd");
+		Irssi::print("No such subcommand: autovoice '$cmd'");
 	}
 }
 
@@ -676,4 +677,8 @@ Irssi::settings_add_int('autovoice', 'autovoice_cycletime' => 600);
 Irssi::settings_add_bool('autovoice', 'autovoice_voice_ops' => 0);
 Irssi::settings_add_bool('autovoice', 'autovoice_use_ident' => 0);
 Irssi::settings_add_bool('autovoice', 'autovoice' => 1);
-Irssi::command_bind(autovoice => 'autovoice_cmd');
+
+Irssi::command_bind($IRSSI{name},'autovoice_cmd');
+foreach (keys %commands) {
+	Irssi::command_bind($IRSSI{name}.' '.$_,'autovoice_cmd');
+}
