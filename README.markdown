@@ -160,7 +160,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                      exec_clean ](Test/exec_clean/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                         execcmd ](Test/execcmd/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                         extaway ](Test/extaway/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
-[                        fakectcp ](Test/fakectcp/)|  ✔   |  ✔   |  ✔   | 10   |  ✔   | (c)
+[                        fakectcp ](Test/fakectcp/)|  ✔   |  ✔   |  ✔   | 10   |  ✔   
 [                        fcountry ](Test/fcountry/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                          figlet ](Test/figlet/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
 [                            file ](Test/file/)|  ✔   |  ✔   |  ✔   | 16   |  ✔   | (c)
@@ -215,7 +215,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                        idletime ](Test/idletime/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                         idonkey ](Test/idonkey/)|  ✘   |  ✔   |  ✔   | 13   |  ☡   | (c)
 [                    ido_switcher ](Test/ido_switcher/)|  ✔   |  ✔   |  ✔   |  1   |  ✔   | (c)
-[                ignore_join_blob ](Test/ignore_join_blob/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[                ignore_join_blob ](Test/ignore_join_blob/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                      ignore_log ](Test/ignore_log/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
 [                        ignoreoc ](Test/ignoreoc/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       ignorsula ](Test/ignorsula/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -298,7 +298,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                        modelist ](Test/modelist/)|  ✔   |  ✔   |  ✔   | 33   |  ✔   | (c)
 [                      modelist-r ](Test/modelist-r/)|  ✔   |  ✔   |  ✔   | 18   |  ✔   | (c)
 [                         monitor ](Test/monitor/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
-[                            mood ](Test/mood/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                            mood ](Test/mood/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                           morse ](Test/morse/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
 [                       mouse-awl ](Test/mouse-awl/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                           mouse ](Test/mouse/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
@@ -529,4 +529,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-c962cabca9f4ffdc37b6b0c37b6b99fbe3340497 | 1262
+7b07fb0ead97049d914bbbf390a9b4e431c212bb | 1265
