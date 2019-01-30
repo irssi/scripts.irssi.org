@@ -3,8 +3,13 @@
   authors: aluser
   commands:
     - autovoice
+    - 'autovoice add'
+    - 'autovoice dump'
+    - 'autovoice flush'
+    - 'autovoice remove'
   default_package: autovoice
   description: autovoice
   license: GPL
+  modified: '2019-01-14 16:25:50'
   name: autovoice
-  version: '0.05'
+  version: '0.06'
