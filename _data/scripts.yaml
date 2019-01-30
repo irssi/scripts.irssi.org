@@ -1450,10 +1450,10 @@
   description: '/DNS <nick>|<host>|<ip> ...'
   filename: dns.pl
   license: 'Public Domain'
-  modified: '2002-03-04 22:47:00'
+  modified: '2019-01-24 16:31:43'
   name: dns
   url: http://irssi.org/
-  version: 2.1.1
+  version: '2.2'
 -
   authors: 'Pieter-Bas IJdens'
   contact: irssi-scripts@nospam.mi4.org.uk
