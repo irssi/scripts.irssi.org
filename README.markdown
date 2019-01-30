@@ -44,7 +44,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                 autorun_scripts ](Test/autorun_scripts/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                       autostuff ](Test/autostuff/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                     autoversion ](Test/autoversion/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                       autovoice ](Test/autovoice/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[                       autovoice ](Test/autovoice/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                      auto_whois ](Test/auto_whois/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       autowhois ](Test/autowhois/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                autowhois_simple ](Test/autowhois_simple/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -143,7 +143,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                       dim_nicks ](Test/dim_nicks/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
 [               discord_unhilight ](Test/discord_unhilight/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                        dispatch ](Test/dispatch/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
-[                             dns ](Test/dns/)|  ✔   |  ✔   |  ✔   |  8   |  ✔   | (c)
+[                             dns ](Test/dns/)|  ✔   |  ✔   |  ✔   |  8   |  ✔   
 [                         dnsspam ](Test/dnsspam/)|  ✘   |  ✔   |  ✔   |  4   |  ☡   | (c)
 [                             doc ](Test/doc/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
 [                    doublefilter ](Test/doublefilter/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -529,4 +529,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-6901e55cff3533c1625148c5f477cb049f4b3f91 | 1266
+90dac1e00bd7697a9131218884e6a644bd6189f9 | 1267
