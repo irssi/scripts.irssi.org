@@ -457,9 +457,9 @@
   description: autovoice
   filename: autovoice.pl
   license: GPL
-  modified: '2008-05-22 01:47:56'
+  modified: '2019-01-14 16:25:50'
   name: autovoice
-  version: '0.05'
+  version: '0.06'
 -
   authors: Nei
   contact: 'Nei @ anti@conference.jabber.teamidiot.de'
