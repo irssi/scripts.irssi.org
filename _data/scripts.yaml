@@ -1627,10 +1627,10 @@
   description: 'This script sends fake ctcp replies to a client using a fake ctcp list.'
   filename: fakectcp.pl
   license: 'GNU General Public License'
-  modified: '2014-10-17 22:54:13'
+  modified: '2018-09-17 14:39:59'
   name: fakectcp.pl
   url: http://irssi.hauwaerts.be/default.pl
-  version: '1.03'
+  version: '1.04'
 -
   authors: 'Stefan Jakobs'
   commands: fcountry
@@ -3065,9 +3065,9 @@
   description: 'Keeps track of the channel mood'
   filename: mood.pl
   license: GPLv2
-  modified: '2008-05-17 17:39:11'
+  modified: '2019-01-05 10:14:23'
   name: Mood
-  version: '20031207'
+  version: '20190105'
 -
   authors: "Stefan 'tommie' Tomanek"
   commands: 'demorse despell morse spell'
