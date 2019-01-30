@@ -12,12 +12,15 @@
 #
 # 07.04.2002
 # *own messages can be interpreted
+#
+# 05.01.2019
+# *some regexp tweaking
 
 use strict;
 
 use vars qw($VERSION %IRSSI);
 
-$VERSION = "20031207";
+$VERSION = "20190105";
 %IRSSI = (
     authors     => "Stefan 'tommie' Tomanek",
     contact     => "stefan\@pico.ruhr.de",
@@ -35,7 +38,7 @@ use vars qw(%channels $eye $refresh $shouting $bored_mouth);
 sub find_smiley {
     my ($msg) = @_;
     my $eyes = '[:=8;]';
-    my $noses = '[\-\o]?';
+    my $noses = '[\-o]?';
     my $sad = '[\(\<\[]';
     my $happy = '[\)\>\]D]';
     my %smiley = ($eyes.$noses.$happy         =>  10,
@@ -195,3 +198,5 @@ Irssi::timeout_add(10000, 'change_bored_mouth', undef);
 close_mouth;
 change_bored_mouth();
 open_eyes();
+
+# vim:set ts=8 sw=4:
