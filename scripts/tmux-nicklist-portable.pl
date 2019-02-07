@@ -48,7 +48,7 @@ use IO::Select;
 use POSIX;
 use File::Temp qw/ :mktemp  /;
 use File::Basename;
-our $VERSION = '0.1.7';
+our $VERSION = '0.1.8';
 our %IRSSI = (
   authors     => 'Thiago de Arruda',
   contact     => 'tpadilha84@gmail.com',
@@ -310,17 +310,17 @@ sub move_down {
   my $nickcount = $#nicknames;
   return if ($nickcount <= $rows);
   if ($count == -1) {
-    $current_line = $nickcount - $rows - 1;
+    $current_line = $nickcount - $rows + 1;
     redraw;
     return;
   }
-  my $visible = $nickcount - $current_line - $count;
+  my $visible = $nickcount - $current_line - $count + 1;
   if ($visible > $rows) {
     $current_line += $count;
     redraw;
   } elsif (($visible + $count) > $rows) {
     # scroll the maximum we can
-    $current_line = $nickcount - $rows - 1;
+    $current_line = $nickcount - $rows + 1;
     redraw;
   }
 }
