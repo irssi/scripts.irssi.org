@@ -4726,9 +4726,9 @@
   description: 'displays a list of nicks in a separate tmux pane'
   filename: tmux-nicklist-portable.pl
   license: WTFPL
-  modified: '2018-05-25 22:18:13'
+  modified: '2019-02-07 00:08:18'
   name: tmux-nicklist
-  version: 0.1.7
+  version: 0.1.8
 -
   authors: cdidier
   description: 'set (un)away if tmux session is attached/detached'
