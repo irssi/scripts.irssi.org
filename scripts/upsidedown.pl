@@ -3,13 +3,15 @@
 # Irssi plugin to place text upside down
 # V0.1 - Initial script - Ivo Schooneman, 08-11-2012
 # V0.2 - usay/ume - Ivo Schooneman, 08-11-2012
+# V0.3 - decode args 30-01-2019
 #
 use strict;
+use utf8;
 use Text::UpsideDown;
 use Irssi;
 use vars qw($VERSION %IRSSI);
 
-$VERSION = "0.2";
+$VERSION = "0.3";
 %IRSSI = (
     authors     => "Ivo Schooneman",
     contact     => "ivo\@schooneman.net",
@@ -21,6 +23,8 @@ $VERSION = "0.2";
 
 sub ume {
     my ($text, $server, $dest) = @_;
+
+    utf8::decode($text);
 
     # Check if connected to server
     if (!$server || !$server->{connected}) {
@@ -38,6 +42,8 @@ sub ume {
 sub usay {
     my ($text, $server, $dest) = @_;
 
+    utf8::decode($text);
+
     # Check if connected to server
     if (!$server || !$server->{connected}) {
   	Irssi::print("Not connected to server");
@@ -53,3 +59,10 @@ sub usay {
 
 Irssi::command_bind('usay', 'usay');
 Irssi::command_bind('ume', 'ume');
+
+if (Irssi::settings_get_str("term_charset") !~ m/utf/i ) {
+    Irssi::print("%RWarning%n %9$IRSSI{name}:%n no utf8 Terminal (".
+	Irssi::settings_get_str("term_charset").")",MSGLEVEL_CLIENTCRAP);
+}
+
+# vim:set sw=4 ts=8: 
