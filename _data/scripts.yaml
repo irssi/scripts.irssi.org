@@ -4188,10 +4188,10 @@
   description: '/schwäbisch - translates your messages from german to swabian'
   filename: schwaebisch.pl
   license: 'GNU GPL v2'
-  modified: '2008-05-17 17:39:09'
+  modified: '2019-01-30 22:52:13'
   name: Schwaebisch
   url: http://ftp.robert-scheck.de/linux/irssi/scripts/
-  version: 1.0.0
+  version: 1.0.1
 -
   authors: "Andreas 'ads' Scherbaum <ads@wars-nicht.de>"
   description: 'set (un)away, if screen is attached/detached'
@@ -4971,11 +4971,11 @@
   description: 'Plugin to place text upsidedown'
   filename: upsidedown.pl
   license: 'GNU GPLv2'
-  modified: '2012-11-08 23:16:14'
+  modified: '2019-01-30 18:12:38'
   modules: Text::UpsideDown
   name: upsidedown
   url: https://github.com/Ivo-tje/Irssi-plugin-upsidedown
-  version: '0.2'
+  version: '0.3'
 -
   authors: 'Peder Stray'
   contact: peder@ninja.no
