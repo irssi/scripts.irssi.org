@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 #
-#  Schwaebisch (irssi) 1.0.0
+#  Schwaebisch (irssi) 1.0.1
 #
 #  (c) 2000-2003 by Robert Scheck <irssi@robert-scheck.de>
 #
@@ -25,29 +25,33 @@
 
 
 use strict;
+use utf8;
+use Encode;
 
 use vars qw($VERSION %IRSSI);
-$VERSION = "1.0.0";
+$VERSION = "1.0.1";
 %IRSSI = (
     authors     => "Robert Scheck",
     contact     => "irssi\@robert-scheck.de",
     name        => "Schwaebisch",
-    description => "/schw‰bisch - translates your messages from german to swabian",
+    description => "/schw√§bisch - translates your messages from german to swabian",
     license     => "GNU GPL v2",
     url         => "http://ftp.robert-scheck.de/linux/irssi/scripts/",
     modules     => "",
     changed     => "$VERSION",
-    commands    => "schw‰bisch"
+    commands    => "schw√§bisch"
 );
 
 use Irssi 20020324;
+
+my $term_charset;
 
 sub schwaebisch ($)
 {
   my ($text) = @_;
 
   # Komplette Wortersetzungen:
-  $text =~ s/\b([Dd])a\b([^ﬂ])/$1o$2/g;
+  $text =~ s/\b([Dd])a\b([^√ü])/$1o$2/g;
   $text =~ s/\bdann\b/no/g;
   $text =~ s/\bEs\b/S/g;
   $text =~ s/\bes\b/s/g;
@@ -73,7 +77,7 @@ sub schwaebisch ($)
   $text =~ s/\b([Hh])abe\b/$1ann/g;
   $text =~ s/\b([Gg])ehen\b/$1anga/g;
   $text =~ s/\b([Kk])ann\b/$1a/g;
-  $text =~ s/\b([Kk])ˆnnen\b/$1enna/g;
+  $text =~ s/\b([Kk])√∂nnen\b/$1enna/g;
   $text =~ s/\b([Ww])ollen\b/$1ella/g;
   $text =~ s/\b([Ss])ollten\b/$1oddad/g;
   $text =~ s/\b([Ss])ollt?e?\b/$1odd/g;
@@ -89,13 +93,13 @@ sub schwaebisch ($)
   $text =~ s/\bviele?s?\b/en Haufa/g;
   $text =~ s/\bViele?s?\b/En Haufa/g;
   $text =~ s/\bAuto|Daimler\b/Heilix Blechle/g;
-  $text =~ s/Marmelade|Konfit¸re/X‰lz/g;
+  $text =~ s/Marmelade|Konfit√ºre/X√§lz/g;
   $text =~ s/\b2\b/zwoi/g;
   $text =~ s/\b5\b/fempf/g;
   $text =~ s/\b15\b/fuffzehn/g;
   $text =~ s/\b50\b/fuffzig/g;
 
-  # Am Wortanfang und Groﬂgeschriebenes:
+  # Am Wortanfang und Gro√ügeschriebenes:
   $text =~ s/\bAuf/Uff/g;
   $text =~ s/\bauf/uff/g;
   $text =~ s/\bEin/Oi/g;
@@ -147,7 +151,7 @@ sub schwaebisch ($)
   $text =~ s/!/, haidanai!/g;
 
   # Spezielles:
-  $text =~ tr/TtPp÷ˆ‹¸/DdBbEeIi/;        # Globale Transformationen zum Schluss
+  $text =~ tr/TtPp√ñ√∂√ú√º/DdBbEeIi/;        # Globale Transformationen zum Schluss
 
   # Was nach 'tr' stehen muss:
   $text =~ s/ung/ong/g;
@@ -160,14 +164,28 @@ sub schwaebisch ($)
 sub cmd_schwaebisch ($$$)
 {
   my ($arg, $server, $witem) = @_;
-  if ($witem && ($witem->{type} eq 'CHANNEL' || $witem->{type} eq 'QUERY'))
-  {
-    $witem->command('MSG '.$witem->{name}.' '.schwaebisch($arg));
-  }
-  else
-  {
-    print CLIENTCRAP "%B>>%n ".schwaebisch($arg);
+  utf8::decode($arg);
+  if ($witem && ($witem->{type} eq 'CHANNEL' || $witem->{type} eq 'QUERY')) {
+    if ($term_charset eq 'UTF-8') {
+      $witem->command('MSG '.$witem->{name}.' '.schwaebisch($arg));
+    } else {
+      $witem->command('MSG '.$witem->{name}.' '.encode($term_charset,schwaebisch($arg)));
+    }
+  } else {
+    if ($term_charset eq 'UTF-8') {
+      Irssi::print("%B>>%n ".schwaebisch($arg), MSGLEVEL_CLIENTCRAP);
+    } else {
+      Irssi::print("%B>>%n ".encode($term_charset,schwaebisch($arg)), MSGLEVEL_CLIENTCRAP);
+    }
   }
 }
 
-Irssi::command_bind('schw‰bisch', \&cmd_schwaebisch);
+$term_charset=Irssi::settings_get_str("term_charset");
+
+if ($term_charset eq 'UTF-8') {
+  Irssi::command_bind('schw√§bisch', \&cmd_schwaebisch);
+} else {
+  Irssi::command_bind(encode($term_charset,'schw√§bisch'), \&cmd_schwaebisch);
+}
+
+# vim:set ts=2 sw=2 expandtab:
