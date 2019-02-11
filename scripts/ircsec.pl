@@ -8,7 +8,7 @@ use Crypt::CBC;
 use Digest::MD5 qw(md5 md5_hex md5_base64);;
 
 use vars qw($VERSION %IRSSI);
-$VERSION = '2008051101';
+$VERSION = '20190114';
 %IRSSI = (
     authors     => 'Stefan \'tommie\' Tomanek',
     contact     => 'stefan@pico.ruhr.de',
@@ -57,16 +57,13 @@ sub show_help() {
 sub encrypt ($$$) {
     my ($text, $key, $algo) = @_;
     my $cipher;
-    eval {
-       $cipher = Crypt::CBC->new( -key             => $key,
-                                  -cipher          => $algo,
-                                  -iv              => '$KJh#(}q',
-                                  -literal_key     => 0,
-                                  -padding         => 'space',
-                                  -header          => 'randomiv'
-                                );
-
-    };
+    $cipher = Crypt::CBC->new( -key             => $key,
+			       -cipher          => $algo,
+			       -iv              => '$KJh#(}q',
+			       -literal_key     => 0,
+			       -padding         => 'space',
+			       -header          => 'randomiv'
+			     );
     return unless $cipher;
     my $checksum = md5_base64($text);
     my $ciphertext = $cipher->encrypt_hex($text." ".$checksum);
@@ -76,16 +73,14 @@ sub encrypt ($$$) {
 sub decrypt ($$$) {
     my ($data, $key, $algo) = @_;
     my $cipher;
-    eval {
-       $cipher = Crypt::CBC->new( -key             => $key,
-                                  -cipher          => $algo,
-                                  -iv              => '$KJh#(}q',
-                                  -literal_key     => 0,
-                                  -padding         => 'space',
-                                  -header          => 'randomiv'
-				);
+    $cipher = Crypt::CBC->new( -key             => $key,
+			       -cipher          => $algo,
+			       -iv              => '$KJh#(}q',
+			       -literal_key     => 0,
+			       -padding         => 'space',
+			       -header          => 'randomiv'
+			     );
 
-    };
     return unless $cipher;
     my $plaintext = $cipher->decrypt_hex($data);
     my ($text, $checksum) = $plaintext =~ /^(.*) (.*?)$/;
@@ -207,3 +202,4 @@ foreach my $cmd ('unlock', 'secure', 'toggle') {
 
 print CLIENTCRAP "%B>>%n ".$IRSSI{name}." ".$VERSION." loaded: /ircsec help for help";
 
+# vim:set ts=8 sw=4:
