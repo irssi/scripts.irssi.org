@@ -327,10 +327,10 @@
   description: 'Automatically clears pending input when you are away.'
   filename: autoclearinput.pl
   license: GPLv3
-  modified: '2014-08-01 15:27:47'
+  modified: '2019-02-11 10:29:06'
   name: AutoClearInput
   url: https://github.com/tslocum/irssi-scripts
-  version: 1.0.1
+  version: 1.0.2
 -
   authors: 'Marcin Rozycki'
   commands: autocycle
