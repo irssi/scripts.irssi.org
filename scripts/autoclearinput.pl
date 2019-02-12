@@ -11,9 +11,12 @@
 #
 
 use strict;
+use Irssi;
+use Irssi::TextUI;
+
 use vars qw($VERSION %IRSSI);
 
-$VERSION = '1.0.1';
+$VERSION = '1.0.2';
 %IRSSI = (
 	authors         => 'Trevor "tee" Slocum',
 	contact         => 'tslocum@gmail.com',
@@ -21,7 +24,7 @@ $VERSION = '1.0.1';
 	description     => 'Automatically clears pending input when you are away.',
 	license         => 'GPLv3',
 	url             => 'https://github.com/tslocum/irssi-scripts',
-	changed         => '2014-05-13'
+	changed         => '2019-02-11'
 );
 
 my ($autoclear_tag, $autoclear_last_input);
