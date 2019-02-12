@@ -1,4 +1,4 @@
-* AutoClearInput: v1.0.1 loaded. Pending input will be cleared after 30 seconds of idling.
+* AutoClearInput: v1.0.2 loaded. Pending input will be cleared after 30 seconds of idling.
 * AutoClearInput: Configure this delay with: /SET autoclear_sec <seconds>  [0 to disable]
 * AutoClearInput: Retrieve the last cleared line of input with: /CLEARED
 * -!- Irssi: Loaded script autoclearinput
