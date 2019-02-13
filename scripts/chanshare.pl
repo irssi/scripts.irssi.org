@@ -29,11 +29,13 @@
 # Version 0.3 - Timo Sirainen tss@iki.fi
 #       Supports for limiting searches only to specified ircnets and
 #       channels. Some cleanups..
+# Version 0.4 - bw1
+#       bug fix
 
 use strict;
 use Irssi;
 use vars qw($VERSION %IRSSI); 
-$VERSION = "0.3";
+$VERSION = "0.4";
 %IRSSI = (
     authors	=> "Timo \'cras\' Sirainen",
     contact	=> "tss\@iki.fi",
@@ -41,8 +43,7 @@ $VERSION = "0.3";
     description	=> "/CHANSHARE - display people who are in more than one channel with you",
     license	=> "Public Domain",
     url		=> "http://irssi.org/",
-    changed	=> "2002-03-04T22:47+0100",
-    changes	=> "v0.3 - Timo Sirainen tss\@iki.fi: Supports for limiting searches only to specified ircnets and channels. Some cleanups.."
+    changed	=> "2019-02-13",
 );
 
 sub cmd_chanshare {
@@ -85,7 +86,7 @@ sub cmd_chanshare {
 	my @list = ();
 	next if ($nick->{nick} eq $mynick);
 
-	@list = @{$channicks{$nickhost}} if (@{$channicks{$nickhost}});
+	@list = @{$channicks{$nickhost}} if (exists $channicks{$nickhost});
 #	Irssi::print($nickhost);
 	push @list, $channel->{name};
 	$channicks{$nickhost} = [@list];
@@ -117,3 +118,5 @@ sub cmd_chanshare {
 }
 
 Irssi::command_bind('chanshare', 'cmd_chanshare');
+
+# vim:set ts=8 sw=2 expandtab:
