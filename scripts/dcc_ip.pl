@@ -23,7 +23,7 @@
 use strict;
 use Irssi;
 use vars qw($VERSION %IRSSI);
-    $VERSION = '0.5';
+    $VERSION = '0.6';
     %IRSSI = (
         authors     => 'ak5',
         contact     => 'meister@hq.kroenk.remove-this-because-of-spam.de',
@@ -34,18 +34,21 @@ use vars qw($VERSION %IRSSI);
         license     => 'Public Domain',
 	url	    => 'http://hq.kroenk.de/?gnu/irssi',
 	source      => 'http://hq.kroenk.de/?gnu/irssi/dcc_ip.pl/plaintext',
-	changed     => 'Sa 26 Jun 2004 22:27:08 CEST',
+	changed     => '2019-02-17',
     );
+
+# ip of the nat interface as a string;
+my $router_ip;
 
 sub dcc_ip {
     my ($args, $shash, $c, $iface, $cmd, @arg, @ip) = @_;
     @arg = split(" ", $args);
     if (@arg[0] eq "send" || @arg[0] eq "chat") {
         $iface = Irssi::settings_get_str('dcc_ip_interface');
-	
 	if ($iface eq "router") {
-		$cmd = `lynx -dump -nolist http://ipid.shat.net/iponly/`;
-		$cmd =~ s/[a-zA-Z:\ \n]//g;
+            myip($args, $shash, $c);
+            sleep 1;
+            return;
 	} else {
 		$cmd = `/sbin/ifconfig $iface | head -n 2 | tail -n 1`;
 		$cmd =~ s/^[a-zA-Z\ ]*\://;
@@ -57,6 +60,36 @@ sub dcc_ip {
     }
 };
 
+sub myip {
+    my ($args, $server, $witem) = @_;
+    my $nick =$server->{nick};
+    $server->redirect_event("whois", 1, $nick, 0, undef, {
+        "event 311" => "redir whos",
+        "event 318" => "redir whosend",
+        "" => "event empty"}
+    );
+    $server->send_raw("WHOIS " . $nick);
+}
+
+sub sig_whos {
+    my ($server, $data) = @_;
+    my @r = split(/\s/,$data);
+    $router_ip = $r[3];
+}
+
+sub sig_whosend {
+    my ($server, $data) = @_;
+
+    if ( defined $router_ip ) {
+        Irssi::settings_set_str("dcc_own_ip", $router_ip);
+    }
+}
+
+Irssi::signal_add('redir whos', \&sig_whos);
+Irssi::signal_add('redir whosend', \&sig_whosend);
+
 Irssi::settings_add_str('dcc_ip', 'dcc_ip_interface', "ppp0");
 Irssi::command_bind ('dcc', 'dcc_ip');
 #EOF
+
+# vim:set ts=8 sw=4 expandtab:
