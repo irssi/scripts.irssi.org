@@ -4,7 +4,7 @@
 # You must have the appropriate tools installed for MySQL and Perl to "talk"
 # to each other... specifically perl dbi and DBD::mysql
 # 
-# You must set up the following table in your mysql database:
+# You must set up the following table `13th` in your mysql database:
 #
 # +----------+-------------+------+-----+---------+-------+
 # | Field    | Type        | Null | Key | Default | Extra |
@@ -18,21 +18,15 @@
 # with only permission to SELECT from this database.
 # </paranoia>
 #
-# In the script you must replace the following variables with your information:
-#
-#    $d = database name
-#    $u = user login for database
-#    $p = user password
+# change the settings in irssi (see /set emaildb).
 #
 # if you choose to make this accessible by users on a user-list only, create
-# a text file called "users" in your home .irssi directory, add the nicknames 
+# a text file called "emaildb_users" in your home .irssi directory, add the nicknames 
 # of users you wish to give access in this format:
 #
 # PrincessLeia2
 # R2D2
 # Time
-#
-# AND uncomment the 2 sections indicatated in the script
 #
 # I never created an interface to add new nicknames, email, and birthday, 
 # so you will need to manually insert this information into the database
@@ -49,14 +43,14 @@
 # ... That's about it, enjoy!
 # 
 
-
+use strict;
 use Irssi;
 use DBI;
 use vars qw($VERSION %IRSSI);
 
-$VERSION = "1.1";
+$VERSION = "1.2";
 %IRSSI = (
-    author => 'PrincessLeia2',
+    authors => 'PrincessLeia2',
     contact => 'lyz\@princessleia.com ',
     name => 'emaildb',
     description => 'a script for accessing an email mysql database through irc',
@@ -64,49 +58,74 @@ $VERSION = "1.1";
     url => 'http://www.princessleia.com/'
 );
 
+my $LIST;
+my @user;
+my $filename = Irssi::get_irssi_dir().'/emaildb_users';
+if (! -e $filename) {
+  my $fa;
+  open $fa, '>', $filename;
+  close $fa;
+}
+open ( $LIST, '<', $filename ) or die "can't open users:$!\n";
+chomp( @user = <$LIST> );
+close $LIST;
 
-# uncomment the following commented (and replace '/home/user' with your home directory) lines for user restricted access.
+if (1 > @user) {
+  Irssi::print("%RWarning:%n no users defined (see: $filename)",MSGLEVEL_CLIENTNOTICE);
+}
 
- open ( LIST, "</home/lyz/.irssi/users" ) or die "can't open users:$!\n";
-  chomp( @user = <LIST> );
-         close LIST;
-
-$d = ('database');
-$u = ('user');
-$p = ('password');
-
+# database
+my $d;
+# user
+my $u;
+# password
+my $p;
 
 sub event_privmsg {
 my ($server, $data, $nick, $mask, $target) =@_;
-my ($target, $text) = $data =~ /^(\S*)\s:(.*)/;
+my ($ta, $text) = $data =~ /^(\S*)\s:(.*)/;
   if ($text =~ /^~search */i ) {
-    foreach $person (@user) {
+    foreach my $person (@user) {
       if ($nick =~ /^$person$/i) {
 		my ($nickname) = $text =~ /^~search (.*)/;
 
-        $dbh = DBI->connect("DBI:mysql:$d","$u","$p")
+        my $dbh = DBI->connect("DBI:mysql:$d","$u","$p")
                 or die "Couldn't connect to database: " . DBI->errstr;
-        $sth = $dbh->prepare("SELECT * FROM 13th where nickname like \"\%$nickname\%\";")
-                or die "Cant prepare $statement: $dbh->errstr\n";
-        $rv = $sth->execute
+        my $sth = $dbh->prepare("SELECT * FROM 13th where nickname like \"\%$nickname\%\";")
+                or die "Cant prepare statement: $dbh->errstr\n";
+        my $rv = $sth->execute
                 or die "cant execute the query: $sth->errstr\n";
-if ($rv >= 1) {
-  my @row;
-  while ( @row = $sth->fetchrow_array(  ) ) {
-	$n = "$row[0]\n";
- 	$e = "$row[1]\n";
- 	$b = "$row[2]\n";
-                $server->command ( "msg $nick Nickname : $n" );
-                $server->command ( "msg $nick Email : $e" );
-                $server->command ( "msg $nick Birthday : $b" );
+        if ($rv >= 1) {
+          my @row;
+          while ( @row = $sth->fetchrow_array(  ) ) {
+            my $n = "$row[0]\n";
+            my $e = "$row[1]\n";
+            my $b = "$row[2]\n";
+            $server->command ( "msg $nick Nickname : $n" );
+            $server->command ( "msg $nick Email : $e" );
+            $server->command ( "msg $nick Birthday : $b" );
+          }
+        } else {
+          $server->command ( "msg $nick Sorry, No Results Match Your Query\n" );
+        }
+      }
+    }
+  }
 }
-}
-else    {
-           $server->command ( "msg $nick Sorry, No Results Match Your Query\n" );
-	}
 
+sub event_setup_changed {
+  $d=Irssi::settings_get_str($IRSSI{name}.'_database');
+  $u=Irssi::settings_get_str($IRSSI{name}.'_user');
+  $p=Irssi::settings_get_str($IRSSI{name}.'_password');
 }
-}
-}
-}
+
 Irssi::signal_add('event privmsg', 'event_privmsg');
+Irssi::signal_add('setup changed','event_setup_changed');
+
+Irssi::settings_add_str($IRSSI{name}, $IRSSI{name}.'_database', 'database');
+Irssi::settings_add_str($IRSSI{name}, $IRSSI{name}.'_user', 'user');
+Irssi::settings_add_str($IRSSI{name}, $IRSSI{name}.'_password', 'password');
+
+event_setup_changed();
+
+# vim:set ts=4 sw=2 expandtab:
