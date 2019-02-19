@@ -2395,10 +2395,10 @@
   description: 'secures your conversation'
   filename: ircsec.pl
   license: GPLv2
-  modified: '2008-05-25 13:44:01'
+  modified: '2019-02-11 13:59:43'
   modules: Crypt::CBC
   name: IRCSec
-  version: '2008051101'
+  version: '20190114'
 -
   authors: 'Valentin Batz'
   contact: vb\@g-23.org
