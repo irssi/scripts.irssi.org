@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-our $VERSION = "1.0";
+our $VERSION = "1.1";
 our %IRSSI = (
   authors     => 'David Leadbeater',
   contact     => 'dgl@dgl.cx',
@@ -32,7 +32,11 @@ Irssi::signal_add("send command" => sub {
   if ($command =~ /^\s+$cmdchars_re/ ||
       $command =~ /^$cmdchars_re(?:\s+$oopsie_re|$oopsie_re\s*$cmdchars_re)/) {
     Irssi::signal_stop();
-    $rec->print("oopsie " . $words[rand @words] . ": $command", MSGLEVEL_CRAP);
+    if ($rec ) {
+      $rec->print("oopsie " . $words[rand @words] . ": $command", MSGLEVEL_CRAP);
+    } else {
+      Irssi::print("oopsie " . $words[rand @words] . ": $command", MSGLEVEL_CRAP);
+    }
   }
 });
 
@@ -42,3 +46,5 @@ Irssi::signal_add("setup changed" => sub {
       "Your oopsie_chars_regexp matches a space. This is a very bad idea.");
   }
 });
+
+# vim:set ts=2 sw=2 expandtab:
