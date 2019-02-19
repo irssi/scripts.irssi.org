@@ -1,7 +1,7 @@
 ---
 -
   authors: "Stefan 'tommie' Tomanek"
-  changed: '2008051101'
+  changed: '20190114'
   commands:
     - ircsec
     - 'ircsec secure'
@@ -11,8 +11,9 @@
   default_package: ircsec
   description: 'secures your conversation'
   license: GPLv2
+  modified: '2019-02-11 13:59:43'
   modules:
     - Crypt::CBC
   name: IRCSec
   sbitems: ircsec
-  version: '2008051101'
+  version: '20190114'

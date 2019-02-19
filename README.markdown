@@ -31,7 +31,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                   auth_quakenet ](Test/auth_quakenet/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        autoaway ](Test/autoaway/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
 [                     autochannel ](Test/autochannel/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                  autoclearinput ](Test/autoclearinput/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[                  autoclearinput ](Test/autoclearinput/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       autocycle ](Test/autocycle/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       autolimit ](Test/autolimit/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                  autonickprefix ](Test/autonickprefix/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -233,7 +233,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                      ircgallery ](Test/ircgallery/)|  ✘   |  ✔   |  ✔   |  7   |  ☡   | (c)
 [               ircgmessagenotify ](Test/ircgmessagenotify/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                          ircops ](Test/ircops/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                          ircsec ](Test/ircsec/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
+[                          ircsec ](Test/ircsec/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   
 [                       ircuwhois ](Test/ircuwhois/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                    irssiBlaster ](Test/irssiBlaster/)|  ✔   |  ✔   |  ✔   | 12   |  ✔   | (c)
 [                      irssi-feed ](Test/irssi-feed/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
@@ -529,4 +529,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-d2c873865f64881e484d6d8f205c634a0cba5441 | 1282
+0417c91c24162b083cd46e5938f1d9e2386c1577 | 1290
