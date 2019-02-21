@@ -2,7 +2,7 @@ use strict;
 use vars qw($VERSION %IRSSI);
 
 use Irssi;
-$VERSION = '1.00';
+$VERSION = '1.01';
 %IRSSI = (
     authors     => 'Erik Fears',
     contact     => 'strtok@softhome.net',
@@ -14,16 +14,18 @@ $VERSION = '1.00';
 );
 
 Irssi::command_bind('whos', \&cmd_whos);
+Irssi::command_bind('whoss', \&cmd_whoss);
 Irssi::signal_add('redir whos', \&sig_whos);
 Irssi::signal_add('redir whosend', \&sig_whosend);
 
 Irssi::theme_register([
    'whos' => '%#{channelhilight $[-10]0} %|{nick $[!9]1} $[!3]2 $[!2]3 $4@$5 {comment {hilight $6}}',
-   'whos_end' => 'End of /WHOS list'
+   'whos_end' => 'End of /WHOS list',
+   'whos_hil' => '{hilight $0} $1'
 ]);
 
-#server name given in /whos if any
-my $SERVER_NAME;
+#results
+my %res;
 
 #WHOS <CHANNEL>
 sub cmd_whos
@@ -31,6 +33,12 @@ sub cmd_whos
    my @parv;
    my ($data, $server, $witem) = @_;
    my $chan;
+   if (exists $res{$server->{tag}}) {
+      $res{$server->{tag}}=();
+   }
+   $res{$server->{tag}}->{result}=();
+   $res{$server->{tag}}->{server}=();
+   $res{$server->{tag}}->{regex}='';
 
    if( !($witem && $witem->{type} eq "CHANNEL") ) 
    {
@@ -50,11 +58,11 @@ sub cmd_whos
   
    if(length($parv[0]) <= 0)
    {
-      $SERVER_NAME = $server->{tag};
+      $res{$server->{tag}}->{regex}='';
    }
    else
    {
-      $SERVER_NAME = $parv[0];
+      $res{$server->{tag}}->{regex}=$parv[0];
    }
 
    $server->send_raw("WHO " . $chan);
@@ -70,14 +78,32 @@ sub sig_whos
 
    @who = split(/\s+/,$msg,9);
 
-   if($who[4] =~ /$SERVER_NAME/)
-   {
-      Irssi::printformat(MSGLEVEL_CRAP, 'whos',$who[1], $who[5],$who[6], $who[7], $who[2], $who[3], $who[8]);
-   }
+   $res{$server->{tag}}->{result}->{$who[5]}=[@who];
 }
 
 sub sig_whosend
 {
    my ($server, $msg, $nick, $address, $target) = @_;
+   if ($res{$server->{tag}}->{regex} eq '') {
+      $res{$server->{tag}}->{regex}= $nick;
+   }
+   Irssi::printformat(MSGLEVEL_CRAP,'whos_hil','regex:',$res{$server->{tag}}->{regex});
+   foreach (sort keys %{$res{$server->{tag}}->{result}}) {
+      my @r=@{$res{$server->{tag}}->{result}->{$_}};
+      if ($r[4] =~ m/$res{$server->{tag}}->{regex}/ ) {
+         Irssi::printformat(MSGLEVEL_CRAP,'whos',@r[1,5,6,7,2,3,8]);
+      }
+      $res{$server->{tag}}->{server}->{$r[4]}=1;
+   }
    Irssi::printformat(MSGLEVEL_CRAP, 'whos_end');
 }
+
+sub cmd_whoss {
+   my ($args, $server, $witem) = @_;
+   Irssi::printformat(MSGLEVEL_CRAP,'whos_hil','servers:');
+   foreach (sort keys %{$res{$server->{tag}}->{server}}) {
+      Irssi::print($_,MSGLEVEL_CRAP);
+   }
+}
+
+# vim:set ts=3 sw=3 expandtab:
