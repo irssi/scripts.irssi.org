@@ -16,7 +16,6 @@
 #          "#foo,#bar,#baz" is correct
 #          "#foo#bar#baz" is correct
 #          "#foo #bar #baz" is correct
-#          "foo bar baz" is incorrect
 #
 # Triggers on !lastspoke <nick>, !seen <nick> and !lastseen <nick>
 # 
@@ -25,7 +24,7 @@ use Irssi;
 use Irssi::Irc;
 use vars qw($VERSION %IRSSI);
 
-$VERSION = "0.2";
+$VERSION = "0.3";
 %IRSSI = (
     authors     => 'Sander Smeenk',
     contact     => 'irssi@freshdot.net',
@@ -34,8 +33,6 @@ $VERSION = "0.2";
     license     => 'GNU GPLv2 or later',
     url         => 'http://irssi.freshdot.net/',
 );
-
-my $target;
 
 # Storage for the data.
 my %lasthash;
@@ -59,7 +56,12 @@ sub on_nick {
 	my ($server, $new, $old, $address) = @_;
 
 	my $allowedChans = lc(Irssi::settings_get_str("lastspoke_channels")) || "(null)";
-	if (index($allowedChans, $target) >= 0) {
+	my @cl=split(/,/,$server->get_channels());
+	my $ok=0;
+	foreach (@cl) {
+		$ok += index($allowedChans, $_) >= 0;
+	}
+	if ( $ok >= 0) {
 	    $lasthash{lc($old)}{'last'} = time();
 	    $lasthash{lc($old)}{'words'} = "$old changed nick to $new";
 	    $lasthash{lc($new)}{'last'} = time();
@@ -72,7 +74,12 @@ sub on_quit {
 	my ($server, $nick, $address, $reason) = @_;
 
 	my $allowedChans = lc(Irssi::settings_get_str("lastspoke_channels")) || "(null)";
-	if (index($allowedChans, $target) >= 0) {
+	my @cl=split(/,/,$server->get_channels());
+	my $ok=0;
+	foreach (@cl) {
+		$ok += index($allowedChans, $_) >= 0;
+	}
+	if ( $ok >= 0) {
 		$lasthash{lc($nick)}{'last'} = time();
 		if (! $reason) {
 			$lasthash{lc($nick)}{'words'} = "$nick quit IRC with no reason";
@@ -111,9 +118,9 @@ sub on_part {
 # Hook for public messages.
 # Only act on channels we are supposed to act on (settings_get_str)
 sub on_public {
-	my ($server, $msg, $nick, $addr, $_target) = @_;
+	my ($server, $msg, $nick, $addr, $target) = @_;
 
-	$_target = $nick if ( ! $_target );
+	$target = $nick if ( ! $target );
 	$nick = $server->{'nick'} if ($nick =~ /^#/);
 	$target = lc($target);
 
