@@ -20,7 +20,7 @@ use Irssi::Irc;
 
 use vars qw($VERSION %IRSSI);
 
-$VERSION = "1.0";
+$VERSION = "1.1";
 %IRSSI = (
         authors     => "Riku Voipio, lite",
         contact     => "riku.voipio\@iki.fi",
@@ -30,9 +30,9 @@ $VERSION = "1.0";
         url         => "http://nchip.ukkosenjyly.mine.nu/irssiscripts/",
     );
 
-my $dsn = 'DBI:mysql:ircurl:localhost';
-my $db_user_name = 'tunnus';
-my $db_password = 'salakala';
+my $dsn; # 'DBI:mysql:ircurl:localhost';
+my $db_user_name;
+my $db_password;
 
 sub cmd_logurl {
 	my ($server, $data, $nick, $mask, $target) = @_;
@@ -60,10 +60,23 @@ sub db_insert {
 	$dbh->disconnect();
 	}
 
+sub sig_setup_changed {
+	$dsn=Irssi::settings_get_str($IRSSI{name}.'_dsn');
+	$db_user_name=Irssi::settings_get_str($IRSSI{name}.'_user');
+	$db_password=Irssi::settings_get_str($IRSSI{name}.'_password');
+}
+
+Irssi::settings_add_str($IRSSI{name}, $IRSSI{name}.'_dsn', 'DBI:mysql:ircurl:localhost');
+Irssi::settings_add_str($IRSSI{name}, $IRSSI{name}.'_user', 'tunnus');
+Irssi::settings_add_str($IRSSI{name}, $IRSSI{name}.'_password', 'salakala');
+
 Irssi::signal_add_last('message public', 'cmd_logurl');
 Irssi::signal_add_last('message own_public', 'cmd_own');
 Irssi::signal_add_last('message topic', 'cmd_topic');
+Irssi::signal_add("setup changed", "sig_setup_changed");
+
+sig_setup_changed();
 
 Irssi::print("URL logger by lite/nchip loaded.");
 
-
+# vim:set ts=8 sw=8:
