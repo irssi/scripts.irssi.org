@@ -13,14 +13,14 @@ use Irssi;
 use Net::POP3;
 use vars qw($VERSION %IRSSI);
 
-$VERSION = '0.5';
+$VERSION = '0.6';
 %IRSSI = (
     authors     => 'Kimmo Lehto',
     contact     => 'kimmo@a-men.org' ,
     name        => 'Mailcheck-POP3',
     description => 'POP3 new mail notification and listing of mailbox contents. Use "/mail help" for instructions. Requires Net::POP3.',
     license     => 'Public Domain',
-    changed	=> 'Sun Apr 7 00:10 EET 2002'
+    changed	=> '2019-02-23'
 );
 
 
@@ -108,18 +108,13 @@ sub cmd_mail
 		Irssi::print("%Wmailcheck.pl%n $VERSION - By KimmoKe\%W@%nircnet\n");
 		Irssi::print("Usage:");
 		Irssi::print("/mail add <user\@host> <password> - add account to be monitored.");
-		Irssi::print("/mail remove <user\@host> - stop monitoring account");
 		Irssi::print("/mail list - list monitored accounts");
-		Irssi::print("/mail list <user\@host> - list ALL messages in mailbox");
 		Irssi::print("\n%WNote:%n Passwords are kept in irssi's memory in %Wplain text%n, and the password will also remain in the command history. The POP3 authorization is currently also plain text.\n");
 		Irssi::print("Check interval and POP3 login timeout are controlled with %W/set pop3_interval%n (default: 60 seconds) and %Wpop3_timeout%n (default: 30 seconds).");
 	}
-
-
-	
 }
 
 
 Irssi::settings_add_int("misc","pop3_timeout",30);
-Irssi::settings_add_str("misc","pop3_interval","60");	
+Irssi::settings_add_int("misc","pop3_interval","60");
 Irssi::command_bind('mail', 'cmd_mail');
