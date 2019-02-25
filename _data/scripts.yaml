@@ -3536,14 +3536,14 @@
   name: OnTV
   version: '20050226'
 -
-  authors: ''
-  contact: ''
-  description: "turns 'ls' in the beginning of a sent line into the names or whois commands"
+  authors: 'bw1 and others'
+  contact: bw1@aol.at
+  description: "turns 'll' and 'ls' in the beginning of a sent line into the names or whois commands"
   filename: oops.pl
   license: 'Public Domain'
-  modified: '2008-05-25 14:29:31'
+  modified: '2019-01-15 15:07:59'
   name: oops
-  version: '20071209'
+  version: '20180707'
 -
   authors: 'David Leadbeater'
   contact: dgl@dgl.cx
