@@ -2,7 +2,7 @@
 use strict;
 use Irssi 20010120.0250 ();
 use vars qw($VERSION %IRSSI);
-$VERSION = "1";
+$VERSION = "1.1";
 %IRSSI = (
     authors     => 'David Leadbeater',
     contact     => 'dgl@dgl.cx',
@@ -22,7 +22,7 @@ $VERSION = "1";
 # so you can do mode #channel +o whoever
 # but it will allow any command, yes it's dangerous if someone knows the
 # password they can access just about anything your user account can....
-# put a crypted password here
+# set password with /remote passwd <password>
 my $password = "pp00000000";
 my($login,$remote);
 # $remote = 1;
@@ -53,11 +53,39 @@ sub remote{
    my($args) = shift;
    if($args eq "enable" or $args eq "on"){
 	  $remote = 1;
+   } elsif (index($args, 'password') != -1) {
+	  cmd_passwd($args);
    }else{
 	  $remote = undef;
    }
 }
 
+sub cmd_passwd {
+   my ($args)= @_;
+   my @arg= split(/\s+/, $args);
+   my @chars= map {chr($_)} (0x41 .. 0x5a, 0x61 .. 0x7a, 0x30 .. 0x39, 0x2e);
+   my $len= scalar(@chars);
+   my $salt= '';
+   foreach (1..2) {
+	  $salt .= $chars[int(rand($len))];
+   }
+   Irssi::settings_set_str($IRSSI{name}.'_password', crypt($arg[1],$salt));
+}
+
+sub sig_setup_changed {
+   $password = Irssi::settings_get_str($IRSSI{name}.'_password');
+   if (length($password) != 13) {
+	  $password = "pp00000000";
+   }
+}
+
+Irssi::settings_add_str($IRSSI{name}, $IRSSI{name}.'_password','pp00000000');
+
+Irssi::signal_add('setup changed','sig_setup_changed');
 Irssi::signal_add_last("message private", "event");
 Irssi::command_bind("remote", "remote");
+Irssi::command_bind("remote password", "remote");
 
+sig_setup_changed();
+
+# vim:set sw=3 ts=4:
