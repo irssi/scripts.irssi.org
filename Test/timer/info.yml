@@ -12,5 +12,6 @@
   default_package: timer
   description: 'Provides /timer command for mIRC/BitchX type timer functionality.'
   license: 'Public Domain'
+  modified: '2018-05-20 11:39:42'
   name: Timer
   version: '0.8'

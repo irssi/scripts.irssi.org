@@ -14,5 +14,6 @@
   default_package: nickcolor_expando
   description: 'colourise nicks'
   license: 'GPL v2'
+  modified: '2018-09-06 14:56:14'
   name: nickcolor_expando
   version: 0.4.0

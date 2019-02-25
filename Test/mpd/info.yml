@@ -8,5 +8,6 @@
   default_package: mpd
   description: 'print the song you are listening to'
   license: GPLv2
+  modified: '2018-04-28 18:08:24'
   name: mpd
   version: '0.8'
