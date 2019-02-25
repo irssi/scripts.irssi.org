@@ -6,7 +6,6 @@
   default_package: usercount
   description: 'Adds a usercount for a channel as a statusbar item'
   license: 'GNU GPLv2 or later'
-  modified: '2018-08-21 10:23:36'
   name: usercount
   sbitems: usercount
   url: http://irssi.dgl.cx/

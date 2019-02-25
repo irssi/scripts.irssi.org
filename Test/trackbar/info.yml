@@ -16,7 +16,6 @@
   default_package: trackbar
   description: 'Shows a bar where you have last read a window.'
   license: 'GNU General Public License'
-  modified: '2018-09-13 10:18:32'
   modules:
     - Text::CharWidth
   name: trackbar
