@@ -9,7 +9,13 @@ if [[ ${#filelist} -eq 0 ]] {
     touch auto/cpanfile
 } \
 else {
-    scan-perl-prereqs $filelist > auto/cpanfile
+    rfl=()
+    for fn ($filelist) {
+        if [[ -f $fn ]] {
+            rfl+=$fn
+        }
+    }
+    scan-perl-prereqs $rfl > auto/cpanfile
 }
 
 typeset -A broken_mods
