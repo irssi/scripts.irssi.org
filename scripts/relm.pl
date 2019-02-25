@@ -10,17 +10,17 @@ use strict;
 use Irssi;
 
 use vars qw($VERSION %IRSSI);
-$VERSION = "1.0";
+$VERSION = "1.1";
 %IRSSI = (
         authors         => "Maciek \'fahren\' Freudenheim",
         contact         => "fahren\@bochnia.pl",
         name            => "REdirect Last Message",
         description     => "Keeps last 15 messages in cache",
         license         => "GNU GPLv2 or later",
-        changed         => "Fri Mar 15 15:09:42 CET 2002"
+        changed         => "2019-02-25"
 );
 
-my %relm;
+my %relm=();
 
 sub cmd_relm {
 	my ($args, $server, $winit) = @_;
@@ -29,12 +29,12 @@ sub cmd_relm {
 	
 	$where = $which unless $which =~ /[0-9]/;
 
-	$which = scalar(@{$relm{lc($ircnet)}}) unless ($which);
-
 	unless ($relm{$ircnet}) {
 		Irssi::print("%R>>%n Nothing in relm buffer on $ircnet.", MSGLEVEL_CRAP);
 		return;
 	}
+
+	$which = scalar(@{$relm{lc($ircnet)}}) unless ($which);
 
 	if ($where eq "-l") {
 		my $numspace;
@@ -83,7 +83,9 @@ sub event_privmsg {
 
 	return if ($server->{nick} ne $target);
 	my $relm = "\00312[ \00310$nick!$address \00312]\003 $text";
-	shift(@{$relm{$ircnet}}) if scalar(@{$relm{$ircnet}}) > 14;
+	if ( exists $relm{$ircnet} ) {
+		shift(@{$relm{$ircnet}}) if scalar(@{$relm{$ircnet}}) > 14;
+	}
 	push(@{$relm{$ircnet}}, $relm);
 }
 
