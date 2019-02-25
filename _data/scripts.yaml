@@ -4002,9 +4002,9 @@
   description: 'Keeps last 15 messages in cache'
   filename: relm.pl
   license: 'GNU GPLv2 or later'
-  modified: '2014-10-19 11:54:16'
+  modified: '2019-02-25 10:29:22'
   name: 'REdirect Last Message'
-  version: '1.0'
+  version: '1.1'
 -
   authors: 'David Leadbeater'
   commands: remote
