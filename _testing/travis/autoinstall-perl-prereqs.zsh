@@ -9,12 +9,12 @@ if [[ ${#filelist} -eq 0 ]] {
     touch auto/cpanfile
 } \
 else {
-	rfl=()
-	for fn ($filelist) {
-		if ( test -f $fn ) {
-			rfl+=$fn
-		}
-	}
+    rfl=()
+    for fn ($filelist) {
+        if [[ -f $fn ]] {
+            rfl+=$fn
+        }
+    }
     scan-perl-prereqs $rfl > auto/cpanfile
 }
 
