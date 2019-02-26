@@ -81,7 +81,7 @@ sub cmd_go
 		Irssi::settings_get_bool('go_match_case_sensitive'),
 		Irssi::settings_get_bool('go_match_anchored'));
 
-	my @matches = [];
+	my @matches;
 	foreach my $w (Irssi::windows) {
 		my $name = $w->get_active_name();
 		if ($name =~ /$re$/) {
@@ -92,7 +92,7 @@ sub cmd_go
 		}
 	}
 	if (@matches) {
-		$matches[0]->set_active()
+		$matches[0]->set_active();
 	}
 }
 
