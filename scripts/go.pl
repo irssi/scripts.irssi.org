@@ -29,7 +29,7 @@ use Irssi::Irc;
 #     completion. The leading '#' of channel names is optional either way.
 #
 
-$VERSION = '1.1';
+$VERSION = '1.1.1';
 
 %IRSSI = (
     authors     => 'nohar',
@@ -37,7 +37,7 @@ $VERSION = '1.1';
     name        => 'go to window',
     description => 'Implements /go command that activates a window given a name/partial name. It features a nice completion.',
     license     => 'GPLv2 or later',
-    changed     => '2017-02-02'
+    changed     => '2019-02-25'
 );
 
 sub _make_regexp {
@@ -81,12 +81,18 @@ sub cmd_go
 		Irssi::settings_get_bool('go_match_case_sensitive'),
 		Irssi::settings_get_bool('go_match_anchored'));
 
+	my @matches = [];
 	foreach my $w (Irssi::windows) {
 		my $name = $w->get_active_name();
-		if ($name =~ $re) {
+		if ($name =~ /$re$/) {
 			$w->set_active();
 			return;
+		} elsif ($name =~ /$re/) {
+			push(@matches, $w);
 		}
+	}
+	if (@matches) {
+		$matches[0]->set_active()
 	}
 }
 
@@ -103,3 +109,5 @@ Irssi::settings_add_bool('go', 'go_complete_anchored', 0);
 #   - made case-sensitivity of match configurable
 #   - made anchoring of search strings configurable
 #
+# 2019-02-025  1.1.1  dylan lloyd <dylan@disinclined.org>
+#   - fixed short-circuiting during channel search
