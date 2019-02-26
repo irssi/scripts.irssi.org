@@ -110,4 +110,4 @@ Irssi::settings_add_bool('go', 'go_complete_anchored', 0);
 #   - made anchoring of search strings configurable
 #
 # 2019-02-025  1.1.1  dylan lloyd <dylan@disinclined.org>
-#   - fixed short-circuiting during channel search
+#   - prefer exact channel matches
