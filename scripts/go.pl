@@ -76,15 +76,17 @@ sub cmd_go
 {
 	my($chan,$server,$witem) = @_;
 
+	my $case_sensitive = Irssi::settings_get_bool('go_match_case_sensitive');
+	my $match_anchored = Irssi::settings_get_bool('go_match_anchored');
+
 	$chan =~ s/ *//g;
-	my $re = _make_regexp($chan,
-		Irssi::settings_get_bool('go_match_case_sensitive'),
-		Irssi::settings_get_bool('go_match_anchored'));
+	my $re = _make_regexp($chan, $case_sensitive, $match_anchored);
 
 	my @matches;
 	foreach my $w (Irssi::windows) {
 		my $name = $w->get_active_name();
-		if (CORE::fc $name eq CORE::fc $chan) {
+		if (($case_sensitive && $name eq $chan) ||
+			(!$case_sensitive && CORE::fc $name eq CORE::fc $chan)) {
 			$w->set_active();
 			return;
 		} elsif ($name =~ /$re/) {
