@@ -84,7 +84,7 @@ sub cmd_go
 	my @matches;
 	foreach my $w (Irssi::windows) {
 		my $name = $w->get_active_name();
-		if ($name =~ /$re$/) {
+		if (fc $name eq fc $chan) {
 			$w->set_active();
 			return;
 		} elsif ($name =~ /$re/) {
