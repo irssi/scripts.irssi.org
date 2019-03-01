@@ -257,7 +257,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                   kline_warning ](Test/kline_warning/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       l33tmusic ](Test/l33tmusic/)|  ✘   |  ✔   |  ✔   |  6   |  ☡   | (c)
 [                          lastfm ](Test/lastfm/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
-[                       lastspoke ](Test/lastspoke/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                       lastspoke ](Test/lastspoke/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                             len ](Test/len/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                         leodict ](Test/leodict/)|  ✔   |  ✔   |  ✔   | 10   |  ✔   | (c)
 [                      levelclear ](Test/levelclear/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
@@ -508,7 +508,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                        whocount ](Test/whocount/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                     whois_hexip ](Test/whois_hexip/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
 [                           whois ](Test/whois/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                            whos ](Test/whos/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[                            whos ](Test/whos/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                            wilm ](Test/wilm/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                 window_switcher ](Test/window_switcher/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                          winnum ](Test/winnum/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -529,4 +529,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-80627fe69b29b6e6d3c6550a490cbfc13c81a1a8 | 1324
+463a4cd2535193fbd3f90ca33b6aff6b1588c6f8 | 1325
