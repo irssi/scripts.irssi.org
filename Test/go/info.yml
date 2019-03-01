@@ -1,12 +1,13 @@
 ---
 -
   authors: nohar
-  changed: 2017-02-02
+  changed: 2019-02-25
   commands:
     - go
   contact: nohar@freenode
   default_package: go
   description: 'Implements /go command that activates a window given a name/partial name. It features a nice completion.'
   license: 'GPLv2 or later'
+  modified: '2019-02-28 07:48:53'
   name: 'go to window'
-  version: '1.1'
+  version: 1.1.1
