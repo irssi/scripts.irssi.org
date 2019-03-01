@@ -3,14 +3,14 @@ use Irssi;
 use Irssi::Irc;
 
 use vars qw($VERSION %IRSSI);
-$VERSION = "0.2";
+$VERSION = "0.3";
 %IRSSI = ( 
            authors         => "Csaba Nagy",
 	   contact         => "lordpyre\@negerno.hu",
 	   name            => "listen",
 	   description     => "A simple mp3 display script that will display what mp3 you are playing in which software (mpg123, xmms, mp3blaster, etc) to your active channel or to a query window.",
 	   license         => "GNU GPLv2 or later",
-	   changed         => "Tue Nov 26 19:55:04 CET 2002"
+	   changed         => "2019-02-22"
 );
 
 # Usage: 1, load the script
@@ -73,7 +73,8 @@ sub getmp3filename {
 		# if we have found one player 'turned on', we don't have to
 		# check the other results of lsof, so we can leave
 		if ($mp3player ne "nope") {
-			$mp3file=$line[$#line];
+			$_ =~ m#(/.*)$#;
+			$mp3file=$1;
 			last GECMO;
 			}
 		}
@@ -107,7 +108,7 @@ sub getmp3proces {
 
 sub getmp3idtags {
 	# getting the idtags from file
-	open(ID3GECMO, "-|", "id3 -R -l \"$mp3file\"");
+	open(ID3GECMO, '-|', 'id3', '-R', $mp3file);
 	while (<ID3GECMO>) {
 		chop;
 		foreach my $kulcs (keys %idtag) {
