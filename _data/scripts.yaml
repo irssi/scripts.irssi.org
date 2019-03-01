@@ -1270,15 +1270,15 @@
   url: http://dau.pl/
   version: 2.4.3
 -
-  authors: ak5
+  authors: 'ak5, bw1'
   contact: meister@hq.kroenk.remove-this-because-of-spam.de
   description: 'This script sets dcc_own_ip when starting a DCC send or chat.set dcc_ip_interface to your external interface, f.e. ppp0.If you are connecting though a router, set it to "router"'
   filename: dcc_ip.pl
   license: 'Public Domain'
-  modified: '2014-10-17 20:34:00'
+  modified: '2019-02-17 21:08:42'
   name: dcc_ip
   url: http://hq.kroenk.de/?gnu/irssi
-  version: '0.5'
+  version: '0.6'
 -
   authors: 'Peder Stray'
   contact: peder@ninja.no
@@ -1882,9 +1882,9 @@
   description: 'Implements /go command that activates a window given a name/partial name. It features a nice completion.'
   filename: go.pl
   license: 'GPLv2 or later'
-  modified: '2017-02-02 02:40:44'
+  modified: '2019-02-28 07:48:53'
   name: 'go to window'
-  version: '1.1'
+  version: 1.1.1
 -
   authors: cxreg
   contact: cxreg@pobox.com
