@@ -257,14 +257,14 @@ See [the testing read-me](../master/_testing/) for details.
 [                   kline_warning ](Test/kline_warning/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       l33tmusic ](Test/l33tmusic/)|  ✘   |  ✔   |  ✔   |  6   |  ☡   | (c)
 [                          lastfm ](Test/lastfm/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
-[                       lastspoke ](Test/lastspoke/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[                       lastspoke ](Test/lastspoke/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                             len ](Test/len/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                         leodict ](Test/leodict/)|  ✔   |  ✔   |  ✔   | 10   |  ✔   | (c)
 [                      levelclear ](Test/levelclear/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                            licq ](Test/licq/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                      linebuffer ](Test/linebuffer/)|  ✔   |  ✔   |  ✔   |  2   |  ✔   | (c)
 [                        linkchan ](Test/linkchan/)|  ✔   |  ✔   |  ✔   | 32   |  ✔   | (c)
-[                          listen ](Test/listen/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
+[                          listen ](Test/listen/)|  ✔   |  ✔   |  ✔   | 11   |  ✔   
 [                        listsort ](Test/listsort/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                         loadavg ](Test/loadavg/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        localize ](Test/localize/)|  ✔   |  ✔   |  ✔   | 25   |  ✔   | (c)
@@ -529,4 +529,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-463a4cd2535193fbd3f90ca33b6aff6b1588c6f8 | 1325
+251ad1b91a2a33baf5fa57f9ac3d2b6e9d4d3b2d | 1326
