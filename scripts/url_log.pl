@@ -52,7 +52,7 @@ use Irssi;
 use Irssi::Irc;
 use vars qw($VERSION %IRSSI);
 
-$VERSION = "0.2";
+$VERSION = "0.3";
 %IRSSI = (
     authors     => 'Thomas Graf',
     contact     => 'irssi@reeler.org',
@@ -72,7 +72,7 @@ use POSIX qw(strftime);
 my @urls;
 my $user_agent = new LWP::UserAgent;
 
-$user_agent->agent("IrssiUrlLog/0.2");
+$user_agent->agent("IrssiUrlLog/0.3");
 
 # hmm... stolen..
 # -verbatim- import expand
@@ -106,7 +106,7 @@ sub open_url
         my $data = expand(Irssi::settings_get_str("url_log_browser"), "f", $url);
         # XXX use exec
         system $data;
-        exit;
+        POSIX::_exit(1);
     } else {
         # weird fork error
         print_msg "Can't fork: $!";
@@ -365,9 +365,13 @@ sub sig_url
     }
 }
 
-
 Irssi::command_bind('head', 'sig_head');
 Irssi::command_bind('url', 'sig_url');
+Irssi::command_bind('url list', 'sig_url');
+Irssi::command_bind('url clear', 'sig_url');
+Irssi::command_bind('url open', 'sig_url');
+Irssi::command_bind('url quote', 'sig_url');
+Irssi::command_bind('url head', 'sig_url');
 Irssi::signal_add_first('event privmsg', 'sig_msg');
 
 Irssi::settings_add_bool("url_log", "url_log", 1);
@@ -391,3 +395,5 @@ Server:       %s');
 Irssi::theme_register(['url_head', '[%gHTTP Head%n %g$0%n]$1-',
                        'url_auto_head', '[%gHEAD%n] $0-',
                        'url_list', '[$0] $1 %W$2%n $3-']);
+
+# vim:set ts=4 sw=4 expandtab:
