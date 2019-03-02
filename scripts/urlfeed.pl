@@ -23,7 +23,7 @@ use Encode;
 use XML::RSS;
 use Regexp::Common qw /URI/;
 
-$VERSION = '1.30';
+$VERSION = '1.31';
 
 %IRSSI = (
     authors     => 'Jakub Jankowski',
@@ -32,7 +32,7 @@ $VERSION = '1.30';
     description => 'Provides RSS feeds with URLs pasted on your channels.',
     license     => 'GNU GPLv2 or later',
     url         => 'http://toxcorp.com/irc/irssi/urlfeed/',
-    changed     => '$Date: 2014-12-12 00:25:38 +0100$'
+    changed     => '2019-03-02'
 );
 
 # These rules apply only to per-channel RSS files, NOT to the bundle!
@@ -94,7 +94,7 @@ sub urlfeed_touch_file ($) {
     return 0;
   }
 
-  eval { open(FH, "+<$f"); };
+  eval { open(FH, '+<',$f); };
   if ($@) {
     Irssi::print("URLfeed error: couldn't open $f for writing: $@");
     return 0;
