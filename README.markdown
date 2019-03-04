@@ -264,7 +264,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                            licq ](Test/licq/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                      linebuffer ](Test/linebuffer/)|  ✔   |  ✔   |  ✔   |  2   |  ✔   | (c)
 [                        linkchan ](Test/linkchan/)|  ✔   |  ✔   |  ✔   | 32   |  ✔   | (c)
-[                          listen ](Test/listen/)|  ✔   |  ✔   |  ✔   | 11   |  ✔   
+[                          listen ](Test/listen/)|  ✔   |  ✔   |  ✔   | 11   |  ✔   | (c)
 [                        listsort ](Test/listsort/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                         loadavg ](Test/loadavg/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        localize ](Test/localize/)|  ✔   |  ✔   |  ✔   | 25   |  ✔   | (c)
@@ -344,7 +344,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                         oidenty ](Test/oidenty/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                              on ](Test/on/)|  ✔   |  ✔   |  ✘   | 20   |  ☡   | (c)
 [                            ontv ](Test/ontv/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
-[                          oopsie ](Test/oopsie/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
+[                          oopsie ](Test/oopsie/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
 [                            oops ](Test/oops/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                         openurl ](Test/openurl/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                          operit ](Test/operit/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -529,4 +529,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-251ad1b91a2a33baf5fa57f9ac3d2b6e9d4d3b2d | 1326
+984ea3e0a645182eca1cfdab8705725b1db1e7d9 | 1333
