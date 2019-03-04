@@ -2718,9 +2718,9 @@
   description: 'A simple mp3 display script that will display what mp3 you are playing in which software (mpg123, xmms, mp3blaster, etc) to your active channel or to a query window.'
   filename: listen.pl
   license: 'GNU GPLv2 or later'
-  modified: '2014-10-17 22:54:13'
+  modified: '2019-02-22 12:10:58'
   name: listen
-  version: '0.2'
+  version: '0.3'
 -
   authors: 'Isaac Good'
   contact: irssi@isaacgood.com
@@ -3550,10 +3550,10 @@
   description: 'Stops those silly mistakes being sent (spaces at start of line, /1/1 for window changes, etc).'
   filename: oopsie.pl
   license: 'WTFPL <http://dgl.cx/licence>'
-  modified: '2014-08-13 20:54:58'
+  modified: '2019-02-19 16:46:39'
   name: oopsie
   url: http://dgl.cx/irssi
-  version: '1.0'
+  version: '1.1'
 -
   authors: "Stefan 'tommie' Tomanek"
   commands: openurl
