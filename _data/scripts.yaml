@@ -8,6 +8,8 @@
   modified: '2015-09-15 19:05:29'
   name: 8-ball
   version: '0.22'
+  tags:
+    - 'game'
 -
   authors: 'Dani Soufi (compengi)'
   commands: 'audacious mocp'
@@ -19,6 +21,9 @@
   name: 'Consolidate Irssi Player'
   url: http://bazaar.launchpad.net/~compengi/%2Bjunk/Cirssi/annotate/head%3A/Cirssi.pl
   version: 2.0.0
+  tags:
+    - audio
+    - desktop
 -
   authors: 'Doncho N. Gunchev'
   commands: id
@@ -30,6 +35,8 @@
   name: UNIBG-autoident
   url: http://not.available.yet/
   version: '0.2'
+  tags:
+    - 'identify'
 -
   authors: 'Tamas SZERB'
   contact: toma@rulez.org
@@ -128,6 +135,8 @@
   name: adv_windowlist
   url: http://anti.teamidiot.de/
   version: '1.7'
+  tags:
+    - 'window'
 -
   authors: BC-bd
   commands: ai
@@ -181,6 +190,8 @@
   name: 'amaroK (via ssh)'
   url: http://www.codeeye.de/irssi/
   version: '1.0'
+  tags:
+    - 'audio'
 -
   authors: 'Tuukka Lukkala'
   contact: 'ragdim at mbnet dot fi'
@@ -191,6 +202,8 @@
   name: amaroknp
   url: http://koti.mbnet.fi/ragdim/amaroknp/
   version: '0.10'
+  tags:
+    - 'audio'
 -
   authors: 'Matt "f0rked" Sparks, Miklos Vajna'
   commands: anames
@@ -212,6 +225,8 @@
   modified: '2008-05-17 17:39:11'
   name: anotherway
   version: '2003010201'
+  tags:
+    - 'away'
 -
   authors: 'Grigori Goronzy'
   contact: greg@chown.ath.cx
@@ -1332,6 +1347,8 @@
   name: deadbeef
   url: http://github.com/bcattaneo
   version: 1.0.0
+  tags:
+    - audio
 -
   authors: 'Jakub Jankowski'
   contact: shasta@atn.pl
@@ -2155,6 +2172,8 @@
   name: iMPD
   url: http://www.musicpd.org
   version: 0.0.0n
+  tags:
+    - audio
 -
   authors: 'Isaac Good'
   contact: 'irssi@isaacgood.com; irc.freenode.net/yitz'
@@ -2492,6 +2511,8 @@
   name: iXMMSa
   url: http://manoli.im-dachgeschoss.de/~kk/
   version: 0.2+1
+  tags:
+    - audio
 -
   authors: 'Pieter-Bas IJdens'
   commands: joininfo
@@ -2625,6 +2646,8 @@
   modules: 'Xmms Xmms::Remote'
   name: 'l33t xmms music showing script'
   version: '2.01'
+  tags:
+    - audio
 -
   authors: "Simon 'simmel' Lundström"
   contact: 'simmel@(freenode|quakenet|efnet) http://last.fm/user/darksoy'
@@ -2636,6 +2659,8 @@
   name: lastfm
   url: http://soy.se/code/
   version: '5.8'
+  tags:
+    - audio
 -
   authors: 'Sander Smeenk'
   contact: irssi@freshdot.net
@@ -2721,6 +2746,8 @@
   modified: '2019-02-22 12:10:58'
   name: listen
   version: '0.3'
+  tags:
+    - audio
 -
   authors: 'Isaac Good'
   contact: irssi@isaacgood.com
@@ -3121,6 +3148,8 @@
   modified: '2018-04-28 18:08:24'
   name: mpd
   version: '0.8'
+  tags:
+    - audio
 -
   authors: 'Ricardo Mesquita'
   commands: mpg123
@@ -3132,6 +3161,8 @@
   name: mpg123
   url: http://pwp.netcabo.pt/ricardomesquita/irssi
   version: 0.01+1
+  tags:
+    - audio
 -
   authors: 'Thomas B. Ruecker'
   commands: 'mqtt-notify mqtt-test'
@@ -3503,6 +3534,8 @@
   name: ogg123
   url: http://pwp.netcabo.pt/ricardomesquita/irssi
   version: 0.01+1
+  tags:
+    - audio
 -
   authors: darix
   contact: darix@irssi.org
@@ -3616,6 +3649,8 @@
   name: orphamp
   url: http://irssi.org/
   version: '0.9'
+  tags:
+    - audio
 -
   authors: 'Jeroen Coekaerts, Koenraad Heijlen'
   contact: 'vipie@ulyssis.org, jeroen@coekaerts.be'
@@ -4068,6 +4103,8 @@
   name: rhythmbox
   url: www.fogel.com.pl
   version: '1.30'
+  tags:
+    - audio
 -
   authors: "Maciek 'fahren' Freudenheim"
   commands: rk
@@ -5137,6 +5174,8 @@
   name: wa
   url: http://matin.maapallo.org/softa/irssi
   version: 2.3.1
+  tags:
+    - audio
 -
   authors: 'Svante Kvarnström'
   contact: sjk@ankeborg.nu
@@ -5279,6 +5318,9 @@
   name: 'IRC Completion with mysql-database'
   url: http://midgard.liu.se/~n02jesli/perl/
   version: '0.2'
+  tags:
+    - completition
+    - db
 -
   authors: 'Koenraad Heijlen'
   contact: vipie@ulyssis.org
@@ -5361,6 +5403,8 @@
   modified: '2015-01-18 02:15:41'
   name: xmms
   version: '2.0'
+  tags:
+    - audio
 -
   authors: simon
   commands: np
@@ -5373,6 +5417,8 @@
   note: 'Make sure InfoPipe is configured!'
   url: http://irssi.dk/
   version: 1.1.3+1
+  tags:
+    - audio
 -
   authors: 'Tuomas Jormola'
   contact: tjormola@cc.hut.fi
@@ -5384,6 +5430,8 @@
   name: XMMSInfo
   url: http://shakti.tky.hut.fi/stuff.xml#irssi
   version: '1.01'
+  tags:
+    - audio
 -
   authors: 'Thomas B. Ruecker'
   contact: 'thomas@ruecker.fi, tbr on irc.freenode.net'

@@ -8,12 +8,14 @@ $VERSION = "0.2";
 %IRSSI = (
     authors     => "Jesper Lindh",
     contact     => "rakblad\@midgard.liu.se",
-    name        => "IRC Completion with mysql-database",
-    description => "Adds words from IRC to your tab-completion list",
+    name        => "wordcompletition",
+    description => "Adds words from IRC to your tab-completion list".
+					" and store in a database.",
     license     => "Public Domain",
     url         => "http://midgard.liu.se/~n02jesli/perl/",
     changed     => "2017-03-19",
-	modules     => "DBD::SQLite"
+    modules     => "DBD::SQLite",
+    tags        => ['completion','database'],
 );
 
 my $bd= Irssi::get_irssi_dir();
@@ -142,3 +144,4 @@ Irssi::command_bind("delword", "cmd_delword");
 Irssi::command_bind("sql_disconnect", "cmd_sql_disconnect");
 Irssi::command_bind("sql_connect", "cmd_sql_connect");
 
+# vim:set ts=4 sw=4:
