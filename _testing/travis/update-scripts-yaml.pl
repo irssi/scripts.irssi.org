@@ -34,7 +34,7 @@ for my $file (<scripts/*.pl>) {
     }
     if (@cdoc) {
 	$newmeta{$filename} = $cdoc[0][0];
-	for my $copykey (qw(modified version)) {
+	for my $copykey (qw(modified version tags)) {
 	    unless (defined $newmeta{$filename}{$copykey}) {
 		$newmeta{$filename}{$copykey}
 		    = $oldmeta{$filename}{$copykey}
@@ -111,3 +111,5 @@ if [ "\$(git log -1 --format=%an)" != "\$(git config user.name)" -a \\
 fi
 ];
 }
+
+# vim:set ts=8 sw=4:
