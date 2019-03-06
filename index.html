@@ -76,6 +76,7 @@ layout: default
                     <th class="sorttable_alpha">Description</th>
                     <th class="sorttable_alpha">Authors</th>
                     <th class="sorttable_alpha">Modified</th>
+                    <th class="sorttable_alpha">tags</th>
                     <th class="sorttable_numeric" id="th-votes">&hellip;&hellip;</th>
                 </tr>
             </thead>
@@ -98,7 +99,8 @@ layout: default
                             {{ script.modified | date: "%Y-%m-%d" }}
                         </abbr>
                     </td>
-		    <td class="votes"></td>
+                    <td class="tags">{{ script.tags | join: ", " }}</td>
+						  <td class="votes"></td>
                 </tr>
             {% endunless %}
             {% endfor %}
@@ -107,3 +109,4 @@ layout: default
     </div>
 </div>
 
+<!-- vim:ts=4 sw=4 expandtab: -->
