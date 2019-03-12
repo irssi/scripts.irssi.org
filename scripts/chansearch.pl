@@ -5,26 +5,37 @@
 use strict;
 
 use vars qw($VERSION %IRSSI);
-$VERSION = '20021019';
+$VERSION = '2.0';
 %IRSSI = (
-    authors     => 'Stefan \'tommie\' Tomanek',
-    contact     => 'stefan@pico.ruhr.de',
+    authors     => 'Stefan \'tommie\' Tomanek, bw1',
+    contact     => 'bw1@aol.at',
     name        => 'ChanSearch',
     description => 'searches for specific channels',
     license     => 'GPLv2',
     url         => 'http://scripts.irssi.org/',
     changed     => $VERSION,
-    modules     => 'Data::Dumper LWP::UserAgent POSIX',
 );
 
+use utf8;
 use Irssi 20020324;
+use open qw/:std :utf8/;
 use LWP::UserAgent;
-use Data::Dumper;
+use HTML::Entities;
+use JSON::PP;
+use Getopt::Long qw(GetOptionsFromString);
 use POSIX;
 
 use vars qw($forked);
 
 $forked = 0;
+my $footer;
+my $default_network;
+my $max_results;
+my @results;
+
+# ! for the fork
+my @clist;
+my $t;
 
 sub draw_box ($$$$) {
     my ($title, $text, $footer, $colour) = @_;
@@ -38,8 +49,42 @@ sub draw_box ($$$$) {
     return $box;
 }
 
-sub fork_search ($) {
-    my ($query) = @_;
+sub dehtml {
+    my ($text) =@_;
+    $text =decode_entities($text);
+    utf8::decode($text);
+    $text =~ s/<.*?>//g;
+    return $text;
+}
+
+sub get_entries_count {
+    $t =~ m/(\d+) matching entries found/;
+    return $1;
+}
+
+sub html_to_list {
+    while (length($t) > 0) {
+	my %h;
+	if ($t =~ m#<span class="cs-channel">(.*?)</span>#p) {
+	    $h{channel}= dehtml($1);
+	    $' =~ m#<span class="cs-network">(.*?)</span>#p;
+	    $h{network}= dehtml($1);
+	    $' =~ m#<span class="cs-users">(.*?)</span>(.*?)<span class="cs-category"#p;
+	    $t= $';
+	    $h{topic}=dehtml($2);
+	    $_=$1;
+	    $_ =~ m/(\d+)/;
+	    $h{users}=$1;
+	    push @clist, {%h};
+	} else {
+	    $t='';
+	}
+    }
+}
+
+sub fork_search {
+    my ($query,$net) = @_;
+    $footer="$net $query";
     my ($rh, $wh);
     pipe($rh, $wh);
     return if $forked;
@@ -53,12 +98,8 @@ sub fork_search ($) {
 	$pipetag = Irssi::input_add(fileno($rh), INPUT_READ, \&pipe_input, \@args);
 	print CLIENTCRAP "%R>>%n Please wait...";
     } else {
-	my %result;
-	$result{query} = $query;
-	$result{result} = search_channels($query);
-	my $dumper = Data::Dumper->new([\%result]);
-	$dumper->Purity(1)->Deepcopy(1);
-	my $data = $dumper->Dump;
+	search_channels($query,$net);
+	my $data = encode_json( \@clist );
 	print($wh $data);
 	close($wh);
 	POSIX::_exit(1);
@@ -68,49 +109,99 @@ sub fork_search ($) {
 sub pipe_input ($$) {
     my ($rh, $pipetag) = @{$_[0]};
     my $data;
-    $data .= $_ foreach (<$rh>);
-    close($rh);
+    {
+	select($rh);
+	local $/;
+	select(CLIENTCRAP);
+	$data = <$rh>;
+	close($rh);
+    }
     Irssi::input_remove($$pipetag);
     return unless($data);
-    no strict;
-    my %result = %{ eval "$data" };
-    my $text;
-    foreach (sort keys %{ $result{result} }) {
-        $text .= '%9'.$_.'%9, '.$result{result}{$_}->{nicks}." nicks\n";
-        $text .= '   "'.$result{result}{$_}->{topic}.'"'."\n" if $result{result}{$_}->{topic};
+
+    @results = @{ decode_json( $data ) };
+
+    my $lnet=0;
+    my $lchan=0;
+    foreach (@results) {
+	$lnet =length($_->{network}) if ($lnet <length($_->{network}));
+	$lchan =length($_->{channel}) if ($lchan <length($_->{channel}));
     }
+    $lnet++;
+    $lchan++;
+
+    my $text;
+    foreach (@results) {
+	$text .= sprintf("%-".$lnet."s%-".$lchan."s %4i %s\n",
+	    $_->{network}, $_->{channel}, $_->{users},  substr($_->{topic},0,65-$lnet-$lchan));
+    }
+
     $forked = 0;
-    print CLIENTCRAP draw_box('ChanSearch', $text, $result{query}, 1);
+    print CLIENTCRAP draw_box('ChanSearch', $text, $footer, 1);
 }
 
 sub search_channels ($) {
-    my ($query) = @_;
+    my ($query,$net) = @_;
     my $ua = LWP::UserAgent->new(env_proxy => 1,keep_alive => 1,timeout => 30);
     $ua->agent('Irssi Chansearch');
-    my $page = 'http://www.ludd.luth.se/irc/bin/csearch.cgi';
-    my %form = ( topic => "channels",
-                 hits => "all",
-                 min  => 2,
-		 max  => "infinite",
-		 sort => "in alphabetic order.",
-		 pattern => $query
-		);
-    my $result = $ua->post($page, \%form);
-    return undef unless $result->is_success();
-    my %channels;
-    foreach ( split(/\n/, $result->content()) ) {
-	if (/^<LI><STRONG>(.*?)<\/STRONG> <I>(\d+)<\/I><BR>(.*).$/) {
-	    $channels{$1} = { topic => $3, nicks => $2 };
-	}
-    }
-    return \%channels;
+    # http://irc.netsplit.de/channels/?net=IRCnet&chat=linux&num=10
+    my $num='';
+    my $count=0;
+    my $rcount;
+    do {
+	my $page = "http://irc.netsplit.de/channels/?net=$net&chat=$query$num";
+	my $result = $ua->get($page);
+	return undef unless $result->is_success();
+	$t = $result->content();
+	$rcount = get_entries_count();
+	html_to_list();
+	$count += 10;
+	$num ="&num=$count";
+    } while ( $count < $rcount  && $count < $max_results );
 }
 
 sub cmd_chansearch ($$$) {
     my ($args, $server, $witem) = @_;
-    fork_search($args);
+    my $net= $default_network;
+    my ($re, $ar) = GetOptionsFromString($args,
+	'network=s' => \$net,
+	'n=s' => \$net,
+	'check' => \&self_check_init,
+    );
+    fork_search($ar->[0], $net);
 }
 
+sub self_check_init {
+    fork_search('linux','IRCnet');
+    Irssi::timeout_add_once(5*1000, 'sig_self_check','');
+    Irssi::command_bind('quit', \&cmd_quit_self_check);
+}
+
+sub sig_self_check {
+    my $min=10;
+    if ( scalar @results > $min) {
+	print "Results: ",scalar @results," check";
+    } else {
+	print "Results: ",scalar @results," <$min fail";
+	die("Error: self check fail");
+    }
+}
+
+sub sig_setup_changed {
+    $default_network= Irssi::settings_get_str($IRSSI{name}.'_default_network');
+    $max_results= Irssi::settings_get_int($IRSSI{name}.'_max_results');
+}
+
+Irssi::settings_add_str($IRSSI{name}, $IRSSI{name}.'_default_network', 'freenode' );
+Irssi::settings_add_int($IRSSI{name}, $IRSSI{name}.'_max_results', 50 );
+
+Irssi::signal_add('setup changed', "sig_setup_changed");
+
 Irssi::command_bind('chansearch', \&cmd_chansearch);
+Irssi::command_set_options('chansearch', 'network check');
+
+sig_setup_changed();
 
 print CLIENTCRAP '%B>>%n '.$IRSSI{name}.' '.$VERSION.' loaded';
+
+# vim:set sw=4 ts=8:
