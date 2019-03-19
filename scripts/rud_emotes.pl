@@ -1,4 +1,4 @@
-#    Copyright (C) 2016  Dawid Lekawski
+#    Copyright (C) 2016-2019  Dawid 'rud0lf' Lekawski
 #      contact: xxrud0lf@gmail.com
 #
 #       --- INFORMATION ---
@@ -50,22 +50,28 @@
 #   - moved text output messages into nice and clean theme_register
 #
 #
+#   -- CHANGES: -- ( v 1.20, 10-03-2019 )
+#
+#   - fixed messages containing utf-8 characters
+#   - added tab-completion to emotes
+#   - added "rud_emotes_space_after_completion" settings flag
 
 use strict;
 use warnings;
 use utf8;
 
+use Encode qw(decode_utf8 encode_utf8);
 use Irssi qw(signal_add signal_continue command_bind theme_register
-	printformat);
+	printformat settings_add_bool);
 
-our $VERSION = "1.10";
+our $VERSION = "1.20";
 our %IRSSI = (
 	authors		=> "Dawid 'rud0lf' Lekawski",
 	contact		=> 'rud0lf/IRCnet; rud0lf/freenode; xxrud0lf@gmail.com',
 	name		=> 'emotes script',
 	description	=> 'Replaces :emote_name: text in your sent messages into pre-defined emotes (unicode mostly).',
 	license		=> 'GPLv3',
-	changed		=> 'Mon Nov 07 14:54:38 2016'
+	changed		=> '10-03-2019'
 );
 
 my $pattern = '';
@@ -131,7 +137,9 @@ sub process_emotes {
 		return $line;
 	}
 
+    $line = decode_utf8($line);
 	$line =~ s/:($pattern):/$emotes{$1}/g;
+    $line = encode_utf8($line);
 
 	return $line;
 }
@@ -166,8 +174,23 @@ sub cmd_emotes {
 	printformat(MSGLEVEL_CLIENTCRAP, 'rud_emotes_total', scalar(keys %emotes));
 }
 
+sub sig_complete_word {
+    my ($list, $win, $word, $prefix, $want_space) = @_;
+    return unless ($word =~ /:(\w+)/);
+    my $p = $1;
+    my $sp = Irssi::settings_get_bool('rud_emotes_space_after_completion');
+    foreach (keys %emotes) {
+        if ($_ =~ /$p\w+/) {
+            push @$list, ":$_:";
+            $$want_space = $sp;
+        } 
+    }
+}
+
 init();
 
 signal_add("send text", "sig_send_text");
 signal_add("command me", "sig_command_me");
+signal_add("complete word", "sig_complete_word");
 command_bind("emotes", "cmd_emotes");
+settings_add_bool('rud_emotes', 'rud_emotes_space_after_completion', 1);
