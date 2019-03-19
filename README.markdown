@@ -344,7 +344,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                         oidenty ](Test/oidenty/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                              on ](Test/on/)|  ✔   |  ✔   |  ✘   | 20   |  ☡   | (c)
 [                            ontv ](Test/ontv/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
-[                          oopsie ](Test/oopsie/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
+[                          oopsie ](Test/oopsie/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                            oops ](Test/oops/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                         openurl ](Test/openurl/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                          operit ](Test/operit/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -401,7 +401,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                          romaji ](Test/romaji/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                           rot13 ](Test/rot13/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                         rotator ](Test/rotator/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                      rud_emotes ](Test/rud_emotes/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
+[                      rud_emotes ](Test/rud_emotes/)|  ✔   |  ✔   |  ✔   |  2   |  ✔   
 [                        sana_cmd ](Test/sana_cmd/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                     savecmdhist ](Test/savecmdhist/)|  ✔   |  ✔   |  ✔   |  1   |  ✔   | (c)
 [                    sbclearmatch ](Test/sbclearmatch/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
@@ -529,4 +529,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-984ea3e0a645182eca1cfdab8705725b1db1e7d9 | 1333
+2af4fd371b952eb8bc5e5d040bb5d381b8430a51 | 1345
