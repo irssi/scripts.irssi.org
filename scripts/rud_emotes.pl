@@ -71,7 +71,7 @@ our %IRSSI = (
 	name		=> 'emotes script',
 	description	=> 'Replaces :emote_name: text in your sent messages into pre-defined emotes (unicode mostly).',
 	license		=> 'GPLv3',
-	changed		=> 'Mon Nov 07 14:54:38 2016'
+	changed		=> '10-03-2019'
 );
 
 my $pattern = '';
