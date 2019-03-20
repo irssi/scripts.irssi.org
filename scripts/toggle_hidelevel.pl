@@ -10,14 +10,14 @@ use Irssi::TextUI;
 use Data::Dumper;
 use vars qw($VERSION %IRSSI);
 
-$VERSION = "0.5.1";
+$VERSION = "0.5.2";
 %IRSSI = (
           authors       => 'Jari Matilainen',
           contact       => 'vague!#irssi@freenode on irc',
           name          => 'toggle_hidelevel',
           description   => 'Toggle hidden levels on per window basis',
           licence       => "GPLv2",
-          changed       => "12.10.2018 16:00 CEST"
+          changed       => "20.03.2019 13:00 CET"
 );
 
 my $windows;
@@ -44,7 +44,7 @@ sub set_mode {
   my $levels = Irssi::bits2level($lvlbits);
   my $val;
 
-  $levels = Irssi::settings_get_str('window_default_hidelevel') if $mode && !$levels;
+  $levels = Irssi::settings_get_str('window_default_hidelevel') if $mode && !$lvlbits;
 
   $val = $levels =~ s/(\w+)/sprintf("%s%s", $mode ? '+' : '-', $1)/gre;
   $windows->{$win->{refnum}}{mode} = $mode;
