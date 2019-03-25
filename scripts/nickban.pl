@@ -1,6 +1,6 @@
 use strict;
 use vars qw($VERSION %IRSSI);
-$VERSION = "1.1";
+$VERSION = "1.2";
 %IRSSI = (
     authors     =>  "Roeland 'Trancer' Nieuwenhuis",
     contact     =>  "irssi\@trancer.nl",
@@ -12,13 +12,13 @@ $VERSION = "1.1";
 use Irssi;
 
 # The channels the nicks are banned on (on which this script is active)
-my @channels = qw(#worldchat #chat-world #php);
+my @channels;
 
 # The banned nicks
-my @nicks = qw(evildude evilgirl);
+my @nicks;
 
 # Your kickreason
-my $kickreason = "Not welcome here.";
+my $kickreason;
 
 sub nick_banner {
 
@@ -48,4 +48,19 @@ sub nick_banner {
     Irssi::print("Nick banning $nick on $channel. Banned.");
 }
 
+sub sig_setup_changed {
+    @channels = split(/\s+/,Irssi::settings_get_str($IRSSI{name}.'_channels'));
+    @nicks = split(/\s+/,Irssi::settings_get_str($IRSSI{name}.'_nicks'));
+    $kickreason = Irssi::settings_get_str($IRSSI{name}.'_reason');
+}
+
+Irssi::settings_add_str($IRSSI{name}, $IRSSI{name}.'_channels', '#worldchat #chat-world #php');
+Irssi::settings_add_str($IRSSI{name}, $IRSSI{name}.'_nicks', 'evildude evilgirl');
+Irssi::settings_add_str($IRSSI{name}, $IRSSI{name}.'_reason', "Not welcome here.");
+
 Irssi::signal_add_last('message join', 'nick_banner');
+Irssi::signal_add('setup changed', 'sig_setup_changed');
+
+sig_setup_changed();
+
+# vim:set ts=4 sw=4 expandtab:
