@@ -15,10 +15,10 @@
   description: 'Controls Audacious2 and MOCP from Irssi'
   filename: Cirssi.pl
   license: 'GNU General Public License'
-  modified: '2009-08-14 22:56:45'
+  modified: '2019-01-20 23:16:01'
   name: 'Consolidate Irssi Player'
-  url: http://bazaar.launchpad.net/~compengi/%2Bjunk/Cirssi/annotate/head%3A/Cirssi.pl
-  version: 2.0.0
+  url: http://git.peersnode.net/
+  version: '2.2'
 -
   authors: 'Doncho N. Gunchev'
   commands: id
