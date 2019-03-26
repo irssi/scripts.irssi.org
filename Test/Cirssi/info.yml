@@ -1,7 +1,7 @@
 ---
 -
   authors: 'Dani Soufi (compengi)'
-  changed: 'Thu Aug 14 22:43 CET 2009'
+  changed: 2019-01-20
   commands:
     - audacious
     - 'audacious details'
@@ -12,6 +12,7 @@
     - 'audacious play'
     - 'audacious playlist'
     - 'audacious previous'
+    - 'audacious search'
     - 'audacious song'
     - 'audacious stop'
     - 'audacious version'
@@ -30,6 +31,7 @@
   default_package: Cirssi
   description: 'Controls Audacious2 and MOCP from Irssi'
   license: 'GNU General Public License'
+  modified: '2019-01-20 23:16:01'
   name: 'Consolidate Irssi Player'
-  url: http://bazaar.launchpad.net/~compengi/%2Bjunk/Cirssi/annotate/head%3A/Cirssi.pl
-  version: 2.0.0
+  url: http://git.peersnode.net/
+  version: '2.2'
