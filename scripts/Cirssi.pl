@@ -18,6 +18,11 @@ use vars qw($VERSION %IRSSI);
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
 # Change Log:
+# v2.2:
+#       - change the audacious and audtool command name
+# v2.0.1b:
+#       - Cleaning some unusefull code.
+#       - Show an error when a command is executed in a wrong window, instead of exiting silently.
 # v2.0.0:
 #       - Start/Play(Toggle)/Stop/Pause/Unpause/Next/Previous/Volume MOC Player control functions are added.
 #       - MOC Player support is implemented.
@@ -58,30 +63,55 @@ use vars qw($VERSION %IRSSI);
 use Irssi;
 use IPC::Open3;
 
-$VERSION = '2.0.0';
+$VERSION = '2.2';
 %IRSSI = (
    authors      =>   "Dani Soufi (compengi)",
    contact      =>   "IRC: Freenode network, #ubuntu-lb",
    name         =>   "Consolidate Irssi Player",
    description  =>   "Controls Audacious2 and MOCP from Irssi",
    license      =>   "GNU General Public License",
-   url          =>   "http://bazaar.launchpad.net/~compengi/%2Bjunk/Cirssi/annotate/head%3A/Cirssi.pl",
-   changed      =>   "Thu Aug 14 22:43 CET 2009",
+   url          =>   "http://git.peersnode.net/",
+   changed      =>   "2019-01-20",
 );
 
 #################################################################################
 # Please do not change anything below this, unless you know what you are doing. #
 #################################################################################
 
+# command names of audacious and audtool
+my $c_audtool="audtool";
+my $c_audacious="audacious";
+
+# Give an error when a command is used where it was not supposed to, instead
+# of exiting silently. Much better this way.
+sub cmd_err {
+   print "Error: This command can't be executed in this window.";
+}
+
 sub cmd_aud_song {
    my ($data, $server, $witem) = @_;
 	# Get current song information.
-   if ($witem && ($witem->{type} eq "CHANNEL")) {
+  if ($witem && ($witem->{type} eq "CHANNEL")) {
+   my ($position, $song, $current, $total, $artist, $album, $title,
+       $total, $bitrate, $frequency, $album);
+
+   chomp($position = `$c_audtool --playlist-position`);
+   chomp($song = `$c_audtool --current-song`);
+   chomp($current = `$c_audtool --current-song-output-length`);
+   chomp($total = `$c_audtool --current-song-length`);
+   chomp($artist = `$c_audtool --current-song-tuple-data artist`);
+   chomp($album = `$c_audtool current-song-tuple-data album`);
+   chomp($title = `$c_audtool --current-song-tuple-data title`);
+   chomp($total = `$c_audtool --current-song-length`);
+   chomp($bitrate = `$c_audtool --current-song-bitrate-kbps`);
+   chomp($frequency = `$c_audtool --current-song-frequency-khz`);
+   chomp($album = `$c_audtool current-song-tuple-data album`);
+   
 
    # Read output.
    my ( $wtr, $rdr, $err );
    my $pid = open3( $wtr, $rdr, $err,
-                    'audtool2', '--current-song-tuple-data', 'file-name') or die $!;
+                    $c_audtool, '--current-song-tuple-data', 'file-name') or die $!;
 
    # Make it global.
    my $file;
@@ -91,25 +121,10 @@ sub cmd_aud_song {
                 $file =~ s/\.(?i:mp3|cda|aa3|ac3|aif|ape|med|mpu|wave|mpc|oga|wma|ogg|wav|aac|flac)\n//;
    }
 
-    if ($data ne "--details") {
-      if (`ps -C audacious2` =~ /audacious/) {
-        my $position = `audtool2 --playlist-position`;
-        # I'm the most nasty variable ever.
-        my $song = `audtool2 --current-song`;
-        my $current = `audtool2 --current-song-output-length`;
-        my $total = `audtool2 --current-song-length`;
-        my $artist = `audtool2 --current-song-tuple-data artist`;
-        my $album = `audtool2 current-song-tuple-data album`;
-        my $title = `audtool2 --current-song-tuple-data title`;
-        chomp($song);
-        chomp($position);
-        chomp($current);
-        chomp($total);
-        chomp($artist);
-        chomp($album);
-        chomp($title);
-
-        # If we notice that the user sorted his playlist
+    if (`ps -C $c_audacious` =~ /audacious/) {
+      if ($data ne "--details") {
+        
+	# If we notice that the user sorted his playlist
         # by song title, we will try to be nice and parse
         # the existing artist for him.
         if ($song !~ /$artist/) {
@@ -135,32 +150,8 @@ sub cmd_aud_song {
           $witem->command("/me is listening to: $artist - $title ($current/$total)");
         }
       }
-      else {
-        $witem->print("Audacious is not currently running.");
-      }
-    }
-    if ($data eq "--details") {
-        # Show more details in the output.
-      if (`ps -C audacious2` =~ /audacious/) {
-        my $position = `audtool2 --playlist-position`;
-        # I'm a nasty variable.
-        my $song = `audtool2 --current-song`;
-        my $current = `audtool2 --current-song-output-length`;
-        my $total = `audtool2 --current-song-length`;
-        my $bitrate = `audtool2 --current-song-bitrate-kbps`;
-        my $frequency = `audtool2 --current-song-frequency-khz`;
-        my $album = `audtool2 current-song-tuple-data album`;
-        my $artist = `audtool2 --current-song-tuple-data artist`;
-        my $title = `audtool2 --current-song-tuple-data title`;
-        chomp($song);
-        chomp($position);
-        chomp($current);
-        chomp($total);
-        chomp($bitrate);
-        chomp($frequency);
-        chomp($album);
-        chomp($artist);
-        chomp($title);
+      # Show more details in our output.
+      if ($data eq "--details") {
 
         # Check against an empty string.
         # If it's empty, we don't print it.
@@ -195,11 +186,14 @@ sub cmd_aud_song {
           $witem->command("/me is listening to: $artist - $title ($current/$total) [$bitrate Kbps/$frequency KHz]");
         }
       }
-      else {
-        $witem->print("Audacious is not currently running.");
-      }
+    }
+    else {
+      $witem->print("Audacious is not currently running.");
     }
    return 1;
+  }
+  else {
+     cmd_err();
   }
 }
 
@@ -207,8 +201,8 @@ sub cmd_aud_next {
    my ($data, $server, $witem) = @_;
 	# Skip to the next track.
    if ($witem && ($witem->{type} eq "CHANNEL")) {
-    if (`ps -C audacious2` =~ /audacious/) {
-      my $next = `audtool2 --playlist-advance`;
+    if (`ps -C audacious` =~ /audacious/) {
+      my $next = `$c_audtool --playlist-advance`;
 
       $witem->print("Skipped to next track.");
     }
@@ -217,14 +211,17 @@ sub cmd_aud_next {
     }
    return 1;
    }
+   else {
+      cmd_err();
+   }
 }
 
 sub cmd_aud_previous {
    my ($data, $server, $witem) = @_;
 	# Skip to the previous track.
    if ($witem && ($witem->{type} eq "CHANNEL")) {
-    if (`ps -C audacious2` =~ /audacious/) {
-      my $reverse = `audtool2 --playlist-reverse`;
+    if (`ps -C $c_audacious` =~ /audacious/) {
+      my $reverse = `$c_audtool --playlist-reverse`;
 
       $witem->print("Skipped to previous track.");
    }
@@ -233,14 +230,17 @@ sub cmd_aud_previous {
     }
    return 1;
    }
+   else {
+      cmd_err();
+   }
 }
 
 sub cmd_aud_play {
    my ($data, $server, $witem) = @_;
 	# Start playback.
    if ($witem && ($witem->{type} eq "CHANNEL")) {
-    if (`ps -C audacious2` =~ /audacious/) {
-      my $play = `audtool2 --playback-play`;
+    if (`ps -C $c_audacious` =~ /audacious/) {
+      my $play = `$c_audtool --playback-play`;
 
       $witem->print("Started playback.");
    }
@@ -249,14 +249,17 @@ sub cmd_aud_play {
     }
    return 1;
    }
+   else {
+      cmd_err();
+   }
 }
 
 sub cmd_aud_pause {
    my ($data, $server, $witem) = @_;
 	# Pause playback.
    if ($witem && ($witem->{type} eq "CHANNEL")) {
-    if (`ps -C audacious2` =~ /audacious/) {
-      my $pause = `audtool2 --playback-pause`;
+    if (`ps -C $c_audacious` =~ /audacious/) {
+      my $pause = `$c_audtool --playback-pause`;
 
       $witem->print("Paused playback.");
    }
@@ -265,14 +268,17 @@ sub cmd_aud_pause {
     }
    return 1;
    }
+   else {
+      cmd_err();
+   }
 }
 
 sub cmd_aud_stop {
    my ($data, $server, $witem) = @_;
 	# Pause playback.
    if ($witem && ($witem->{type} eq "CHANNEL")) {
-    if (`ps -C audacious2` =~ /audacious/) {
-      my $stop = `audtool2 --playback-stop`;
+    if (`ps -C $c_audacious` =~ /audacious/) {
+      my $stop = `$c_audtool --playback-stop`;
 
       $witem->print("Stopped playback.");
    }
@@ -281,6 +287,9 @@ sub cmd_aud_stop {
     }
    return 1;
    }
+   else {
+      cmd_err();
+   }
 }
 
 sub cmd_aud_volume {
@@ -288,7 +297,7 @@ sub cmd_aud_volume {
         # Set volume and make sure the value is an integer
 	# that lays between 0 and 100.
    if ($witem && ($witem->{type} eq "CHANNEL")) {
-    if (`ps -C audacious2` =~ /audacious/) {
+    if (`ps -C $c_audacious` =~ /audacious/) {
 
      if ($data eq "") {
       $witem->print("Use /audacious volume <value> to set a specific volume value");
@@ -298,8 +307,8 @@ sub cmd_aud_volume {
        return 0;
      }
      elsif ($data =~ /^[\d]+$/) {
-       system 'audtool2','--set-volume', $data;
-       my $volume = `audtool2 --get-volume`;
+       system $c_audtool,'--set-volume', $data;
+       my $volume = `$c_audtool --get-volume`;
        chomp($volume);
        $witem->print("Volume is changed to $volume%%");
      }
@@ -312,6 +321,9 @@ sub cmd_aud_volume {
     }
    return 1;
    }
+   else {
+      cmd_err();
+   }
 }
 
 sub cmd_aud_jump {
@@ -319,7 +331,7 @@ sub cmd_aud_jump {
         # Jump to a specific track, making sure that
 	# the selected track number exists.
    if ($witem && ($witem->{type} eq "CHANNEL")) {
-    if (`ps -C audacious2` =~ /audacious/) {
+    if (`ps -C $c_audacious` =~ /audacious/) {
 
      if ($data eq "") {
       $witem->print("Use /audacious jump <track> number to jump to it in your playlist.");
@@ -328,7 +340,7 @@ sub cmd_aud_jump {
        # Many thanks to Khisanth for this awesome fix!
        my ( $wtr, $rdr, $err );
        my $pid = open3( $wtr, $rdr, $err,
-       	                'audtool2', '--playlist-jump', $data) or die $!;
+                        $c_audtool, '--playlist-jump', $data) or die $!;
        my $output;
        {
           local $/;
@@ -350,13 +362,16 @@ sub cmd_aud_jump {
     }
    return 1;
    }
+   else {
+      cmd_err();
+   }
 }
 
 sub cmd_aud_playlist {
    my ($data, $server, $witem) = @_;
 	# Displays entire playlist loaded.
-   if (`ps -C audacious2` =~ /audacious/) {
-    my $display = `audtool2 --playlist-display`;
+   if (`ps -C $c_audacious` =~ /audacious/) {
+    my $display = `$c_audtool --playlist-display`;
     chomp($display);
 
     Irssi::print("$display");
@@ -367,19 +382,50 @@ sub cmd_aud_playlist {
    return 1; 
 }
 
+sub cmd_aud_search {
+   my ($data, $server, $witem) = @_;
+
+   if ($witem && ($witem->{type} eq "CHANNEL")) {
+    if (`ps -C $c_audacious` =~ /audacious/) {
+     my $playlist = `$c_audtool --playlist-display`;
+     my @matches;
+
+     for (split /\n/, $playlist) {
+      push @matches, $_ if /$data/i;
+     }
+     if (@matches) {
+      $witem->print("Search Results:");
+      for (@matches) {
+       $_ =~ s/^\s+|\s+$//g;
+       $witem->print("$_");
+      }
+     }
+     else {
+       $witem->print("Couldn't find any match(s) for your keyword '$data'.");
+     }
+    }
+    else {
+      $witem->print("Audacious is not running.");
+    }
+   }
+   else {
+      cmd_err();
+   }
+}
+
+
 sub cmd_aud_details {
    my ($data, $server, $witem) = @_;
-	# Displays current song's details.
+
+   # Displays current song's details.
    if ($witem && ($witem->{type} eq "CHANNEL")) {
-    if (`ps -C audacious2` =~ /audacious/) {
-     my $bitrate = `audtool2 --current-song-bitrate-kbps`;
-     my $frequency = `audtool2 --current-song-frequency-khz`;
-     my $length = `audtool2 --current-song-length`;
-     my $volume = `audtool2 --get-volume`;
-     chomp($bitrate);
-     chomp($frequency);
-     chomp($length);
-     chomp($volume);
+    if (`ps -C $c_audacious` =~ /audacious/) {
+     my ($bitrate, $frequency, $length, $volume);
+
+     chomp($bitrate = `$c_audtool --current-song-bitrate-kbps`);
+     chomp($frequency = `$c_audtool --current-song-frequency-khz`);
+     chomp($length = `$c_audtool --current-song-length`);
+     chomp($volume = `$c_audtool --get-volume`);
 
     $witem->print("Current song details: rate: $bitrate kbps - freq: $frequency KHz - l: $length min - vol: $volume%%");
    }
@@ -388,31 +434,37 @@ sub cmd_aud_details {
     }
    return 1;
   }
+  else {
+     cmd_err();
+  }
 }
 
 sub cmd_aud_version {
    my ($data, $server, $witem) = @_;
-	# Displays version information to the channel.
-   if ($witem && ($witem->{type} eq "CHANNEL")) {
-    if ($data eq "--audtool") {
-      my $audtool = `audtool2 --version`;
-      chop $audtool;
 
+   my ($audtool, $audacious);
+   chop($audtool = `$c_audtool --version`);
+   chop($audacious = `$c_audacious --version`);
+
+   # Displays version information to the channel.
+   if ($witem && ($witem->{type} eq "CHANNEL")) {
+
+    if ($data eq "--audtool") {
       $witem->command("/me is running: Consolidate Irssi Player v$VERSION with $audtool");
     }
     elsif ($data eq "--audacious") {
-      my $audacious = `audacious2 --version`;
-      chop $audacious;
-
       $witem->command("/me is running: Consolidate Irssi Player v$VERSION with $audacious"); 
     }
    return 1;
+  }
+  else {
+     Irssi::print("Consolidate Irssi Player v$VERSION on $audacious with $audtool");
   }
 }
 
 sub cmd_audacious {
    my ($data, $server, $witem) = @_;
-    if ($data =~ m/^[(song)|(next)|(previous)|(play)|(pause)|(stop)|(help)|(volume)|(jump)|(playlist)|(details)|(about)]/i) {
+    if ($data =~ m/^[(song)|(next)|(previous)|(play)|(pause)|(stop)|(help)|(volume)|(jump)|(playlist)|(details)|(about)|(search)]/i) {
       Irssi::command_runsub('audacious', $data, $server, $witem);
     }
     else {
@@ -433,6 +485,7 @@ sub cmd_aud_help {
       Irssi::print("* /audacious volume <value>       - Sets volume [0-100].");
       Irssi::print("* /audacious jump <track>         - Jumps to specified track.");
       Irssi::print("* /audacious playlist             - Displays entire playlist.");
+      Irssi::print("* /audacious search <keyword>     - Searches for the keyword in your playlist and displays the results.");
       Irssi::print("* /audacious details              - Displays current song's details.");
       Irssi::print("* /audacious version --audtool    - Displays version of the script and audtool in the channel.");
       Irssi::print("* /audacious version --audacious  - Displays version of the script and audacious in the channel.");
@@ -481,6 +534,9 @@ sub cmd_moc_song {
      }
      return 1;
     }
+    else {
+       cmd_err();
+    }
 }
 
 sub cmd_moc_next {
@@ -506,6 +562,9 @@ sub cmd_moc_next {
    }
    return 1;
   }
+  else {
+     cmd_err();
+  }
 }
 
 sub cmd_moc_previous {
@@ -530,6 +589,9 @@ sub cmd_moc_previous {
      $witem->print("Can't skip to previous track. Check your MOC Player.");
    }
    return 1;
+  }
+  else {
+     cmd_err();
   }
 }
 
@@ -560,6 +622,9 @@ sub cmd_moc_play_toggle {
     }
     return 1;
    }
+   else {
+      cmd_err();
+   }
 }
 
 sub cmd_moc_pause {
@@ -587,6 +652,9 @@ sub cmd_moc_pause {
       $witem->print("Pause can be only performed when your MOC Player is running.");
     }
    return 1;
+   }
+   else {
+      cmd_err();
    }
 }
 
@@ -616,6 +684,9 @@ sub cmd_moc_unpause {
     }
    return 1;
    }
+   else {
+      cmd_err();
+   }
 }
 
 sub cmd_moc_stop {
@@ -640,6 +711,9 @@ sub cmd_moc_stop {
       $witem->print("This way you can't stop a song. Double check your player.");
     }
    return 1;
+   }
+   else {
+      cmd_err();
    }
 }
 
@@ -669,6 +743,9 @@ sub cmd_moc_volume {
       $witem->print("Volume can't be set when MOC Player is not functioning.");
     }
    return 1;
+   }
+   else {
+      cmd_err();
    }
 }
 
@@ -718,5 +795,8 @@ Irssi::command_bind ('mocp stop', 'cmd_moc_stop');
 Irssi::command_bind ('mocp help', 'cmd_moc_help');
 Irssi::command_bind ('mocp volume', 'cmd_moc_volume');
 Irssi::command_bind ('mocp', 'cmd_moc');
+Irssi::command_bind ('audacious search', 'cmd_aud_search');
 
-Irssi::print("Consolidate Irssi Player v$VERSION is loaded successfully");
+Irssi::print("Consolidate Irssi Player v$VERSION is loaded successfully.");
+
+# vim:set expandtab sw=2 ts=2:
