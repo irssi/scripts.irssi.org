@@ -11,7 +11,6 @@
   default_package: findbot
   description: 'Public command @find script'
   license: GPL
-  modified: '2018-05-22 13:10:54'
   name: Findbot
   url: http://hem.passagen.se/thka2315/
   version: '1.58'

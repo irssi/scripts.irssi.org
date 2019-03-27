@@ -29,7 +29,6 @@
   default_package: nickserv
   description: 'This script will authorize you into NickServ.'
   license: 'GNU General Public License'
-  modified: '2018-06-27 19:10:40'
   name: nickserv.pl
   url: https://github.com/irssi/scripts.irssi.org/blob/master/scripts/nickserv.pl
   version: '1.12'

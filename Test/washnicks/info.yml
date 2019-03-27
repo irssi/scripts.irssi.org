@@ -6,7 +6,6 @@
   default_package: washnicks
   description: 'Removes annoying characters from nicks'
   license: GPL
-  modified: '2018-04-04 21:23:35'
   name: washnicks
   url: n/a
   version: '1.02'

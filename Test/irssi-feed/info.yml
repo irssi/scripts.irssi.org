@@ -9,7 +9,6 @@
   default_package: irssi_feed
   description: 'Parses and announces XML/Atom feeds'
   license: GPLv3
-  modified: '2018-05-27 09:58:35'
   modules:
     - XML::Feed
   name: 'iRSSi feed reader'

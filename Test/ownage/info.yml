@@ -7,6 +7,5 @@
   default_package: ownage
   description: "shows how many channels you're joined and how many in them you're op, and\r\nhow many nicks are in those channels"
   license: ''
-  modified: '2018-07-15 18:05:48'
   name: ownage
   version: '20180715'
