@@ -1,5 +1,10 @@
+use strict;
 use Irssi 20011210.0000 ();
-$VERSION = "1.12";
+use Storable;
+
+use vars qw/$VERSION %IRSSI/;
+
+$VERSION = "1.13";
 %IRSSI = (
     authors     => 'David Leadbeater',
     contact     => 'dgl@dgl.cx',
@@ -9,7 +14,6 @@ $VERSION = "1.12";
     url         => 'http://irssi.dgl.cx/',
 );
 
-use strict;
 my %on;
 
 =head1 on.pl
@@ -31,12 +35,13 @@ automatically saved into a file (usually ~/.irssi/on.save).
 =head1 Usage
 
  /on list
- /on add [-perl] [-server] [-channel #channel]  [-stop] 'signal name' command
+ /on add [-global] [-perl] [-server] [-channel #channel]  [-stop] 'signal name' command
  /on remove signal name
  /on reload
 
 =head2 ON ADD
 
+ -global: run the command with Irssi::command
  -perl: Interpret command as perl instead of the default Irssi
  -server: Only trigger for events from this chat network
  -channel #channel: only trigger for events in #channel 
@@ -63,6 +68,7 @@ want to remove a numeric you must add event eg:
 
 Reloads the saved list from ~/.irssi/on.save into memory, 
 useful if you have to edit it manually (and very useful during debugging :)
+(perl -MStorable -MData::Dumper -e "print Dumper(retrieve('on.save'));")
 
 =head1 Examples
 
@@ -78,17 +84,27 @@ on this chatnet:
  /on add -server 381 /whatever
 
 To automatically move to a window with activtiy in it on a hilight:
- /on add 'window hilight' /window goto active
+ /on add -global 'window hilight' /window goto active
 
 Obviously perl commands could be used here or many different 
 signals (see docs/signals.text in the irssi sources for a list 
 of all the signals)
 
+=head2 more test items
+
+ /on add -perl 'channel topic changed' print "topic changed";
+ /on add -channel #test 'channel topic changed' /echo topic changed
+ /on add -stop 332 /echo event 332
+
 =cut
 
 Irssi::command_bind('on','cmd_on');
+Irssi::command_bind('on add','cmd_on');
+Irssi::command_bind('on remove','cmd_on');
+Irssi::command_bind('on reload','cmd_on');
+Irssi::command_bind('on list','cmd_on');
 # This makes tab completion work :)
-Irssi::command_set_options('on','stop server perl +channel');
+Irssi::command_set_options('on','global stop server perl +channel');
 load();
 add_signals();
 
@@ -96,34 +112,13 @@ add_signals();
 sub load {
    my $file = Irssi::get_irssi_dir . '/on.save';
    return 0 unless -f $file;
-   open(ON, $file) or return 0;
-   while(<ON>) {
-	  chomp;
-      my($event,$chatnet,$settings,$channel,$cmd) = split /\0/;
-	  push(@{$on{$event}},
-	     {
-		    'chatnet' => $chatnet || 'all',
-			'settings' => $settings,
-			'channel' => $channel,
-			'cmd' => $cmd,
-		 }
-	  );
-   }
-   close(ON);
-   return 1;
+   %on = %{retrieve($file)};
 }
 
 # Saves the settings currently in the %on hash into the save file
 sub save {
    my $file = Irssi::get_irssi_dir . '/on.save';
-   open(ON, ">$file") or return 0;
-   for my $event(keys %on) {
-      for(@{$on{$event}}) {
-	     print ON join("\0", $event, @$_{'chatnet','settings','channel','cmd'}) . "\n";
-	  }
-   }
-   close(ON) or return 0;
-   return 1;
+   store(\%on, $file);
 }
 
 # Adds signals from the hash to irssi (only needs to be called once)
@@ -137,6 +132,7 @@ sub add_signals {
 sub signal_handler {
    my($item, @stuff) = @_;
    my $signal = Irssi::signal_get_emitted();
+
 
    if(exists $on{$signal}) {
       for(@{$on{$signal}}) {
@@ -152,7 +148,7 @@ sub signal_handler {
 # Called with the params needed to handle an event from signal_handler
 sub event_handle {
    my($settings,$cmd,$item,@stuff) = @_;
-   my %settings = settings_to_hash($settings);
+   my %settings = %{$settings};
 
    if($settings{type} == 1) {
 	  local @_;
@@ -161,24 +157,14 @@ sub event_handle {
    }else{
 	  $cmd =~ s!\$\$(\d)!(split / /,$stuff[0])[$1]!ge;
 	  $cmd =~ s/\$(\d)/$stuff[$1]/g;
-      $item->command($cmd);
+      if (defined $settings{global}) {
+         Irssi::command($cmd);
+      } else {
+         $item->command($cmd);
+      }
    }
 
    Irssi::signal_stop() if $settings{stop};
-}
-
-# Converts the settings string to a nice hash
-sub settings_to_hash {
-   my $settings = shift;
-   my %settings;
-   @settings{'type','stop'} = split //, $settings;
-   return %settings;
-}
-
-# Converts a hash to the settings string
-sub hash_to_settings {
-   my %settings = @_;
-   return join '', @settings{'type','stop'};
 }
 
 # Called by the /on command
@@ -196,6 +182,7 @@ sub cmd_on {
 		  $channel = $options{channel};
 		  $settings{type} = $options{perl};
 		  $settings{stop} = $options{stop};
+		  $settings{global} = $options{global};
 	      add_on($event,$cmd,$chatnet,$channel,%settings);
 		  save();
 	  }
@@ -213,7 +200,7 @@ sub cmd_on {
 	  Irssi::print( <<EOF
 Usage:
 /on list
-/on add [-perl] [-server] [-channel #channel]  [-stop] 'signal name' command
+/on add [-global] [-perl] [-server] [-channel #channel] [-stop] 'signal name' command
 /on remove signal name
 /on reload
 EOF
@@ -250,7 +237,7 @@ sub add_on {
    push(@{$on{$event}},
 	  {
 	     'chatnet' => $chatnet || 'all',
-	     'settings' => hash_to_settings(%settings),
+	     'settings' => {%settings},
 		 'channel' => $channel,
 	     'cmd' => $cmd,
 	  }
@@ -297,3 +284,4 @@ sub option_parse {
    return ($cmd,%options);
 }
 
+# vim:set ts=4 sw=3 expandtab:
