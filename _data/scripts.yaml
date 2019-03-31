@@ -345,13 +345,13 @@
 -
   authors: 'David Leadbeater'
   contact: dgl@dgl.cx
-  description: 'does an autolimit for a channel, set variables in the script'
+  description: 'does an autolimit for a channel'
   filename: autolimit.pl
   license: 'GNU GPLv2 or later'
-  modified: '2014-10-17 18:30:46'
+  modified: '2019-02-12 20:48:07'
   name: autolimit
   url: http://irssi.dgl.cx/
-  version: '1.00'
+  version: '1.01'
 -
   authors: Juerd
   contact: '#####@juerd.nl'
