@@ -3,8 +3,9 @@
   authors: 'David Leadbeater'
   contact: dgl@dgl.cx
   default_package: autolimit
-  description: 'does an autolimit for a channel, set variables in the script'
+  description: 'does an autolimit for a channel'
   license: 'GNU GPLv2 or later'
+  modified: '2019-02-12 20:48:07'
   name: autolimit
   url: http://irssi.dgl.cx/
-  version: '1.00'
+  version: '1.01'
