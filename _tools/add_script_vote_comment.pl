@@ -71,7 +71,7 @@ for my $sc (sort { $a->{modified} cmp $b->{modified} } @$x) {
 		=> {Accept => "*/*"}
 		=> json
 		=> {
-		    body => "$sc{filename}\n---\n$sc{description}\n\nClick on +😃  to add your votes"
+		    body => "$sc{filename}\n---\n$sc{description}\n\nClick on ![+😃](https://user-images.githubusercontent.com/5665186/52212818-af6a7480-288d-11e9-9e48-4822b0a8efce.png) :+1: :-1: to add your votes"
 		}
 	       );
     say $res->code;

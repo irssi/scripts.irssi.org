@@ -70,7 +70,7 @@ The following keys are recognised in config.yml:
 
 To manually generate the _data/scripts.yaml file, run:
 
-    perl ./_testing/travis/update-scripts-yaml.pl
+    perl ./_testing/update-scripts-yaml.pl
 
 To download the cached test results, run:
 
