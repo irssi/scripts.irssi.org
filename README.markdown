@@ -152,7 +152,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                        efnetorg ](Test/efnetorg/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                           elist ](Test/elist/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                           eliza ](Test/eliza/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                      emaildb1.0 ](Test/emaildb1.0/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
+[                         emaildb ](Test/emaildb/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   
 [                      email_msgs ](Test/email_msgs/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                  email_privmsgs ](Test/email_privmsgs/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                             emo ](Test/emo/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -163,7 +163,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                        fakectcp ](Test/fakectcp/)|  ✔   |  ✔   |  ✔   | 10   |  ✔   | (c)
 [                        fcountry ](Test/fcountry/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                          figlet ](Test/figlet/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
-[                            file ](Test/file/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   
+[                            file ](Test/file/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
 [                         findbot ](Test/findbot/)|  ✔   |  ✔   |  ✔   | 17   |  ✔   | (c)
 [                            find ](Test/find/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                    fix_slackirc ](Test/fix_slackirc/)|  ✔   |  ✔   |  ✔   |  1   |  ✔   | (c)
@@ -529,4 +529,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-5d240cb432ffea6f528d13303f0f155044ee44cf | 1354
+316376732727800de2a60cf4c8463d354d84a1fe | 1355

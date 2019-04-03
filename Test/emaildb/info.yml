@@ -2,11 +2,12 @@
 -
   authors: PrincessLeia2
   contact: 'lyz\@princessleia.com '
-  default_package: emaildb1_0
+  default_package: emaildb
   description: 'a script for accessing an email mysql database through irc'
   license: 'GNU GPL v2 or later'
+  modified: '2019-02-18 23:01:29'
   modules:
     - DBI
   name: emaildb
   url: http://www.princessleia.com/
-  version: '1.0'
+  version: '1.2'
