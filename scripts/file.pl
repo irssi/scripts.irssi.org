@@ -1,5 +1,6 @@
 use strict;
 use vars qw($VERSION %IRSSI);
+use Getopt::Long qw/GetOptionsFromString/;
 
 my $help = <<EOF;
 Usage: (all on one line)
@@ -16,10 +17,10 @@ Usage: (all on one line)
 -prefix: add "text" in front of output
 -postfix: add "text" after output
 
--echo abuses a bug in the script and is useful for testing
+-echo print contents of file to active window
 EOF
 
-$VERSION = 1.0;
+$VERSION = 1.1;
 %IRSSI = (
    authors     => "David Leadbeater",
    name        => "file.pl",
@@ -36,36 +37,44 @@ Irssi::command_bind('file', sub {
       return;
    }
    
-   my($type, $target, $prefix, $postfix);
+   my($type, $target, $prefix, $postfix, $echo);
 
    $type    = 'msg';
    $target  = '*';
    $prefix  = '';
    $postfix = '';
 
-   while($data =~ s/^-([^ ]+) //g) {
-      last if $data eq '-';
+   my ($raw,$command,$msg,$notice,$filename);
 
-      if($1 eq 'msg' || $1 eq 'notice') {
-         $type = $1;
-         next unless $data =~ / /; # >1 params left
-         $data =~ s/^([^ ]+) //;
-         next unless $1;
-         $target = $1;
-      }elsif($1 eq 'prefix') {
-         $data =~ s/^(?:\"([^"]+)\"|([^ ]+)) //;
-         $prefix = $1 || $2 . ' ';
-      }elsif($1 eq 'postfix') {
-         $data =~ s/^(?:\"([^"]+)\"|([^ ]+)) //;
-         $postfix = ' ' . $1 || $2;
-      }else{ # Other options are automatic
-         $type = $1;
+   my ($ret, $args) = GetOptionsFromString($data,
+         'raw' => \$raw,
+         'command' => \$command,
+         'msg:s' => \$msg,
+         'notice:s' => \$notice,
+         'prefix=s' => \$prefix,
+         'postfix=s' => \$postfix,
+         'echo' => \$echo,
+      );
+   $filename = $$args[-1];
+   $type ='raw' if (defined $raw);
+   $type ='command' if (defined $command);
+   $type ='echo' if (defined $echo);
+   if (defined $notice) {
+      $type ='notice';
+      if ($notice ne '') {
+         $target = $notice;
+      }
+   }
+   if (defined $msg) {
+      $type ='msg';
+      if ($msg ne '') {
+         $target = $msg;
       }
    }
 
    # or do borrowed from one of juerd's scripts (needs 5.6 though)
-   open(FILE, "<", $data) or do {
-      print "Error opening '$data': $!";
+   open(FILE, "<", $filename) or do {
+      print "Error opening '$filename': $!";
       return;
    };
 
@@ -76,6 +85,8 @@ Irssi::command_bind('file', sub {
          Irssi::active_server->send_raw($prefix . $_ . $postfix);
       }elsif($type eq 'command') {
          Irssi::active_win->command($prefix . $_ . $postfix);
+      }elsif($type eq 'echo') {
+         Irssi::active_win->print($prefix . $_ . $postfix);
       }else{
          Irssi::active_win->command("$type $target $prefix$_$postfix");
       }
@@ -86,5 +97,6 @@ Irssi::command_bind('file', sub {
 } );
 
 # little known way to get -options to tab complete :)
-Irssi::command_set_options('file','raw command prefix postfix msg notice');
+Irssi::command_set_options('file','raw command prefix postfix msg notice echo');
 
+# vim:set ts=3 sw=3 expandtab:
