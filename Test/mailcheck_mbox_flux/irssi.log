@@ -1,5 +1,3 @@
 * Use of uninitialized value $mtime in numeric ne (!=) at mailcheck_mbox_flux.pl line 70.
 * 
-* Use of uninitialized value $mtime in numeric ne (!=) at mailcheck_mbox_flux.pl line 70.
-* 
 * -!- Irssi: Loaded script mailcheck_mbox_flux

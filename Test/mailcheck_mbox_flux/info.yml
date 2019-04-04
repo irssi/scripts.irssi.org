@@ -1,11 +1,12 @@
 ---
 -
   authors: 'Erkki Seppälä'
-  changed: 'Mon Mar  4 23:25:18 EET 2002'
+  changed: 2019-02-23
   contact: flux@inside.org
   default_package: mailcheck_mbox_flux
   description: 'Polls your unix mailbox for new mail'
   license: 'Public Domain'
+  modified: '2019-02-23 14:25:18'
   name: 'Mail Check'
   url: http://xulfad.inside.org/~flux/software/irssi/
-  version: '0.1'
+  version: '0.2'

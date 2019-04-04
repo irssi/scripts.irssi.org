@@ -152,7 +152,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                        efnetorg ](Test/efnetorg/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                           elist ](Test/elist/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                           eliza ](Test/eliza/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                         emaildb ](Test/emaildb/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   
+[                         emaildb ](Test/emaildb/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
 [                      email_msgs ](Test/email_msgs/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                  email_privmsgs ](Test/email_privmsgs/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                             emo ](Test/emo/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -275,7 +275,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                              ls ](Test/ls/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                            lwho ](Test/lwho/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                  mailcheck_imap ](Test/mailcheck_imap/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
-[             mailcheck_mbox_flux ](Test/mailcheck_mbox_flux/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
+[             mailcheck_mbox_flux ](Test/mailcheck_mbox_flux/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   
 [            mailcheck_pop3_kimmo ](Test/mailcheck_pop3_kimmo/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       mailcount ](Test/mailcount/)|  ✔   |  ✔   |  ✔   | 25   |  ✔   | (c)
 [                            mail ](Test/mail/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
@@ -529,4 +529,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-316376732727800de2a60cf4c8463d354d84a1fe | 1355
+a8a82efa628171dce615252f315c868a8261a3cb | 1356
