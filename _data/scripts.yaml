@@ -4012,10 +4012,10 @@
   description: 'Lets you run commands remotely via /msg and a password'
   filename: remote.pl
   license: 'GNU GPLv2 or later'
-  modified: '2014-10-19 11:54:16'
+  modified: '2019-02-25 21:11:57'
   name: remote
   url: http://irssi.dgl.cx/
-  version: '1'
+  version: '1.1'
 -
   authors: 'Isaac Good'
   commands: 'layout_load layout_save'
