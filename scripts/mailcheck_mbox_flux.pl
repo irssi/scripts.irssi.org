@@ -4,7 +4,7 @@ use strict;
 use Irssi;
 
 use vars qw($VERSION %IRSSI);
-$VERSION = "0.1";
+$VERSION = "0.2";
 %IRSSI = (
     authors     => "Erkki Seppälä",
     contact     => "flux\@inside.org",
@@ -12,7 +12,7 @@ $VERSION = "0.1";
     description => "Polls your unix mailbox for new mail",
     license     => "Public Domain",
     url         => "http://xulfad.inside.org/~flux/software/irssi/",
-    changed     => "Mon Mar  4 23:25:18 EET 2002"
+    changed     => "2019-02-23"
 );
 
 sub getMessages( $ ) {
@@ -89,17 +89,20 @@ sub coalesce {
   return undef;
 }
 
-my @boxes = ("/var/spool/mail/flux", "/home/flux/mail/vv");
+my @boxes;
 my %boxes;
-# ("/var/spool/mail/flux" => {name=>"INBOX", time=>0} );
+sub sig_setup_changed {
+  @boxes =split(/:/,Irssi::settings_get_str('mail_check_paths'));
 
-for (my $c = 0; $c < @boxes; ++$c) {
-  $boxes{$boxes[$c]}->{time} = 0;
-  if ($c == 0) {
-    $boxes{$boxes[$c]}->{name} = "INBOX";
-  } else {
-    my @f = $boxes[$c] =~ /([^\/]*)$/;
-    $boxes{$boxes[$c]}->{name} = $f[0];
+  # ("/var/spool/mail/flux" => {name=>"INBOX", time=>0} );
+  for (my $c = 0; $c < @boxes; ++$c) {
+    $boxes{$boxes[$c]}->{time} = 0;
+    if ($c == 0) {
+      $boxes{$boxes[$c]}->{name} = "INBOX";
+    } else {
+      my @f = $boxes[$c] =~ /([^\/]*)$/;
+      $boxes{$boxes[$c]}->{name} = $f[0];
+    }
   }
 }
 
@@ -113,5 +116,11 @@ sub check {
 }
 
 Irssi::timeout_add(10000, "check", "");
+Irssi::signal_add('setup changed','sig_setup_changed');
 
+Irssi::settings_add_str('mail_check','mail_check_paths','/var/mail/'.$ENV{USER});
+
+sig_setup_changed();
 check();
+
+# vim:set ts=2 sw=2 expandtab:
