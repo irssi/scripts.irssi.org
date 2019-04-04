@@ -275,7 +275,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                              ls ](Test/ls/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                            lwho ](Test/lwho/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                  mailcheck_imap ](Test/mailcheck_imap/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
-[             mailcheck_mbox_flux ](Test/mailcheck_mbox_flux/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   
+[             mailcheck_mbox_flux ](Test/mailcheck_mbox_flux/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
 [            mailcheck_pop3_kimmo ](Test/mailcheck_pop3_kimmo/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       mailcount ](Test/mailcount/)|  ✔   |  ✔   |  ✔   | 25   |  ✔   | (c)
 [                            mail ](Test/mail/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
@@ -311,7 +311,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                      multipaste ](Test/multipaste/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [  munge_own_nickname_to_username ](Test/munge_own_nickname_to_username/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                         my_beep ](Test/my_beep/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                  mysqlurllogger ](Test/mysqlurllogger/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                  mysqlurllogger ](Test/mysqlurllogger/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                            nact ](Test/nact/)|  ✔   |  ✔   |  ✔   | 12   |  ✔   | (c)
 [                       netswitch ](Test/netswitch/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        newsline ](Test/newsline/)|  ✔   |  ✔   |  ✔   | 26   |  ✔   | (c)
@@ -529,4 +529,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-a8a82efa628171dce615252f315c868a8261a3cb | 1356
+46c8b51765eb79ef8bbddbd1e481004176d11f62 | 1357
