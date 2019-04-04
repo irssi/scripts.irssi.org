@@ -2842,10 +2842,10 @@
   description: 'Polls your unix mailbox for new mail'
   filename: mailcheck_mbox_flux.pl
   license: 'Public Domain'
-  modified: '2014-10-19 11:54:16'
+  modified: '2019-02-23 14:25:18'
   name: 'Mail Check'
   url: http://xulfad.inside.org/~flux/software/irssi/
-  version: '0.1'
+  version: '0.2'
 -
   authors: 'Kimmo Lehto'
   commands: mail
