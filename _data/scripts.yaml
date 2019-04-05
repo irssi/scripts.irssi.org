@@ -4993,11 +4993,11 @@
   description: 'logs urls to textfile or/and database, able to list, quote, open or `http head` saved urls.'
   filename: url_log.pl
   license: 'GNU GPLv2 or later'
-  modified: '2014-10-24 23:01:30'
+  modified: '2019-03-02 09:10:49'
   modules: 'DBI HTTP::Status LWP LWP::UserAgent'
   name: url_log
   url: http://irssi.reeler.org/url/
-  version: '0.2'
+  version: '0.3'
 -
   authors: 'Jakub Jankowski'
   contact: shasta@toxcorp.com
