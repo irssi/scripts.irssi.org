@@ -3,11 +3,8 @@
 # this is a VERY experimental code, use at own risk
 #
 # WARNING:
-#  Because of XML::RSS brokeness, this code won't work as expected with
-#  characters codes >127. You might try to workaround it, by adding
-#  binmode(OUT, "encoding($self->{'encoding'})"); to XML/RSS.pm:save()
-#  but even then, UTF8 stuff will break your script.
-#  Somebody should really fix XML::RSS.
+#  I am still not sure of the UTF-8 handling. It may only work if you
+#  are on a UTF-8 terminal, with UTF-8ized settings.
 #
 # TODO:
 #  - make urlfeed_title, urlfeed_link, urlfeed_description work for
@@ -22,9 +19,11 @@ use vars qw($VERSION %IRSSI);
 use POSIX qw(strftime);
 use Irssi;
 use Irssi::Irc;
+use Encode;
 use XML::RSS;
+use Regexp::Common qw /URI/;
 
-$VERSION = '1.28';
+$VERSION = '1.31';
 
 %IRSSI = (
     authors     => 'Jakub Jankowski',
@@ -33,9 +32,10 @@ $VERSION = '1.28';
     description => 'Provides RSS feeds with URLs pasted on your channels.',
     license     => 'GNU GPLv2 or later',
     url         => 'http://toxcorp.com/irc/irssi/urlfeed/',
-    changed     => '$Date: 2008-06-16 20:10:41 +0200 (pon, 16 cze 2008) $'
+    changed     => '2019-03-02'
 );
 
+# These rules apply only to per-channel RSS files, NOT to the bundle!
 # $stripchan is replaced with channel name, BUT with stripped #!&+
 # $chan is replaced with channel name
 # $tag is replaced with server tag
@@ -94,7 +94,7 @@ sub urlfeed_touch_file ($) {
     return 0;
   }
 
-  eval { open(FH, "+<", $f); };
+  eval { open(FH, '+<',$f); };
   if ($@) {
     Irssi::print("URLfeed error: couldn't open $f for writing: $@");
     return 0;
@@ -127,7 +127,8 @@ sub urlfeed_rss_add {
     return 0;
   }
 
-  my $rss = new XML::RSS (version => '1.0', encoding => 'ISO-8859-1');
+  # UTF-8 is the default encoding
+  my $rss = new XML::RSS (version => '1.0' );
   eval { $rss->parsefile($filename); };
   if ($@) {
     Irssi::print("URLfeed notice: rss->parsefile($filename) failed. Creating new RSS") if (Irssi::settings_get_bool('urlfeed_debug'));
@@ -148,7 +149,7 @@ sub urlfeed_rss_add {
     pop(@{$rss->{'items'}});
   }
 
-  $rss->add_item(title => $text,
+  $rss->add_item(title => Encode::decode_utf8($text),
                  link  => $url,
 		 dc    => { creator => $nickname, date => urlfeed_format_time($timestamp) },
                  mode  => 'insert'
@@ -164,14 +165,14 @@ sub urlfeed_rss_add {
     Irssi::print("URLfeed error: Couldn't touch $filename");
     return 0;
   }
-  my $brss = new XML::RSS (version => '1.0', encoding => 'ISO-8859-1');
+  my $brss = new XML::RSS (version => '1.0' );
   eval { $brss->parsefile($filename); };
   if ($@) {
     Irssi::print("URLfeed notice: rss->parsefile($filename) failed. Creating new RSS") if (Irssi::settings_get_bool('urlfeed_debug'));
     $brss->channel(
-      title        => 'URL feed from IRC',
-      link         => 'http://toxcorp.com/irc/irssi/',
-      description  => 'RSS feed with URLs pasted on IRC networks'
+      title        => $rss_title,
+      link         => $rss_link,
+      description  => $rss_description
     );
   }
 
@@ -185,7 +186,7 @@ sub urlfeed_rss_add {
     pop(@{$brss->{'items'}});
   }
 
-  $brss->add_item(title => $text,
+  $brss->add_item(title => Encode::decode_utf8($text),
                  link  => $url,
 		 dc    => { creator => $nickname . " on " . $tag, date => urlfeed_format_time($timestamp) },
                  mode  => 'insert'
@@ -203,7 +204,10 @@ sub urlfeed_find_urls {
   my @urls = ();
 
   foreach my $chunk (@chunks) {
-    if($chunk =~ /((ftp|http|https):\/\/[a-zA-Z0-9\/\\\:\?\%\.\&\;=#\-\_\!\+\~\,]+)/i) {
+    if ($chunk =~ /($RE{URI}{HTTP}{-scheme => qr#https?#})/ ||
+	$chunk =~ /($RE{URI}{FTP})/ ||
+	$chunk =~ /($RE{URI}{NNTP})/ ||
+	$chunk =~ /($RE{URI}{news})/) {
       push(@urls, $1);
     } elsif ($chunk =~ /(www\.[a-zA-Z0-9\/\\\:\?\%\.\&\;=#\-\_\!\+\~\,]+)/i) {
       push(@urls, "http://" . $1);
