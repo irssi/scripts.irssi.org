@@ -5004,11 +5004,11 @@
   description: 'Provides RSS feeds with URLs pasted on your channels.'
   filename: urlfeed.pl
   license: 'GNU GPLv2 or later'
-  modified: '2014-10-24 23:01:30'
-  modules: XML::RSS
+  modified: '2019-03-02 11:01:36'
+  modules: 'Regexp::Common XML::RSS'
   name: URLfeed
   url: http://toxcorp.com/irc/irssi/urlfeed/
-  version: '1.28'
+  version: '1.31'
 -
   authors: 'David Leadbeater'
   commands: url
