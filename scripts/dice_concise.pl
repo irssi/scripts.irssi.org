@@ -70,12 +70,11 @@
 
 use strict;
 use vars qw($VERSION %IRSSI);
-use feature qw(switch);
 use Scalar::Util qw(looks_like_number);
 
 use Irssi qw(command_bind signal_add);
 
-$VERSION = '0.1.5';
+$VERSION = '0.1.6';
 %IRSSI = (
 	authors			=> 'Marcel Kossin, Makaze',
 	contact			=> 'izaya.orihara@gmail',
@@ -94,7 +93,7 @@ sub public_question {
 	question($server, $msg, $nick, $target);
 }
 
-sub question($server, $msg, $nick, $target) {
+sub question {
 	my ($server, $msg, $nick, $target) = @_;
 	$_ = $msg;
 
@@ -130,55 +129,45 @@ sub question($server, $msg, $nick, $target) {
 		}
 
 		if ($dice < 1) {
-			given ($lang) {
-				when ('DE') {
-					$server->command('msg ' . $target . ' ' . $nick  . ' macht nichts... Würfeln funktioniert am besten mit Würfeln.');
-				}
-				when ('EN') {
-					$server->command('msg ' . $target . ' ' . $nick  . ' does nothing... Rolling dice works best with dice.');
-				}
+			if ($lang eq 'DE') {
+				$server->command('msg ' . $target . ' ' . $nick  . ' macht nichts... Würfeln funktioniert am besten mit Würfeln.');
+			}
+			if ($lang eq 'EN') {
+				$server->command('msg ' . $target . ' ' . $nick  . ' does nothing... Rolling dice works best with dice.');
 			}
 			return 0;
 		} elsif ($dice > 100) {
-			given ($lang) {
-				when ('DE') {
-					$server->command('msg ' . $target . ' ' . $nick  . ' scheitert den ' . $roll[1] . ' zu werfen... Versuch es mit weniger Würfeln.');
-				}
-				when ('EN') {
-					$server->command('msg ' . $target . ' ' . $nick  . ' fails to roll the ' . $roll[1] . '... Try fewer dice.');
-				}
+			if ($lang eq 'DE') {
+				$server->command('msg ' . $target . ' ' . $nick  . ' scheitert den ' . $roll[1] . ' zu werfen... Versuch es mit weniger Würfeln.');
+			}
+			if ($lang eq 'EN') {
+				$server->command('msg ' . $target . ' ' . $nick  . ' fails to roll the ' . $roll[1] . '... Try fewer dice.');
 			}
 			return 0;
 		} elsif ($sides <= 1) {
 			if ($sides == 0) {
-				given ($lang) {
-					when ('DE') {
-						$server->command('msg ' . $target . ' ' . $nick  . ' verursacht ein Paradox... Oder hat jemand schon mal einen Würfel ohne Seiten gesehen?');
-					}
-					when ('EN') {
-						$server->command('msg ' . $target . ' ' . $nick  . ' causes a paradox... Or has anybody ever seen a die without sides?');
-					}
+				if ($lang eq 'DE') {
+					$server->command('msg ' . $target . ' ' . $nick  . ' verursacht ein Paradox... Oder hat jemand schon mal einen Würfel ohne Seiten gesehen?');
+				}
+				if ($lang eq 'EN') {
+					$server->command('msg ' . $target . ' ' . $nick  . ' causes a paradox... Or has anybody ever seen a die without sides?');
 				}
 				return 0;
 			} elsif ($sides == 1) {
-				given ($lang) {
-					when ('DE') {
-						$server->command('msg ' . $target . ' ' . $nick  . ' verursacht ein Paradox... Oder hat jemand schon mal einen Würfel mit nur einer Seite gesehen?');
-					}
-					when ('EN') {
-						$server->command('msg ' . $target . ' ' . $nick  . ' causes a paradox... Or has anybody ever seen a die with only one side?');
-					}
+				if ($lang eq 'DE') {
+					$server->command('msg ' . $target . ' ' . $nick  . ' verursacht ein Paradox... Oder hat jemand schon mal einen Würfel mit nur einer Seite gesehen?');
+				}
+				if ($lang eq 'EN') {
+					$server->command('msg ' . $target . ' ' . $nick  . ' causes a paradox... Or has anybody ever seen a die with only one side?');
 				}
 				return 0;
 			}
 		} elsif ($sides > 100) {
-			given ($lang) {
-				when ('DE') {
-					$server->command('msg ' . $target . ' ' . $nick  . ' scheitert den ' . $roll[1] . ' zu werfen... Versuch es mit weniger Augen.');
-				}
-				when ('EN') {
-					$server->command('msg ' . $target . ' ' . $nick  . ' fails to roll the ' . $roll[1] . '... Try fewer sides.');
-				}
+			if ($lang eq 'DE') {
+				$server->command('msg ' . $target . ' ' . $nick  . ' scheitert den ' . $roll[1] . ' zu werfen... Versuch es mit weniger Augen.');
+			}
+			if ($lang eq 'EN') {
+				$server->command('msg ' . $target . ' ' . $nick  . ' fails to roll the ' . $roll[1] . '... Try fewer sides.');
 			}
 			return 0;
 		}
@@ -193,37 +182,31 @@ sub question($server, $msg, $nick, $target) {
 		foreach (@modifiers) {
 			($modifyType) = ($_ =~ /([\+\-\*\/])/);
 			($modifyVal) = ($_ =~ /(\d+)/);
-			given ($modifyType) {
-				when ('*') {
-					$value = $value * $modifyVal;
-				}
-				when ('/') {
-					$value = $value / $modifyVal;
-				}
-				when ('+') {
-					$value = $value + $modifyVal;
-				}
-				when ('-') {
-					$value = $value - $modifyVal;
-				}
+			if ($modifyType eq '*') {
+				$value = $value * $modifyVal;
+			}
+			if ($modifyType eq '/') {
+				$value = $value / $modifyVal;
+			}
+			if ($modifyType eq '+') {
+				$value = $value + $modifyVal;
+			}
+			if ($modifyType eq '-') {
+				$value = $value - $modifyVal;
 			}
 		}
-		given ($lang) {
-			when ('DE') {
-				$server->command('msg ' . $target . ' '. $nick . ' würfelt mit dem ' . $roll[1] . ' und erhält: ' . $value . ' [' . join(', ', @rolls) . ']');
-			}
-			when ('EN') {
-				$server->command('msg ' . $target . ' '. $nick . ' rolls the ' . $roll[1] . ' and gets: ' . $value . ' [' . join(', ', @rolls) . ']');
-			}
+		if ($lang eq 'DE') {
+			$server->command('msg ' . $target . ' '. $nick . ' würfelt mit dem ' . $roll[1] . ' und erhält: ' . $value . ' [' . join(', ', @rolls) . ']');
+		}
+		if ($lang eq 'EN') {
+			$server->command('msg ' . $target . ' '. $nick . ' rolls the ' . $roll[1] . ' and gets: ' . $value . ' [' . join(', ', @rolls) . ']');
 		}
 		if (@modifyErrors) {
-			given ($lang) {
-				when ('DE') {
-					$server->command('msg ' . $target . ' ' . $nick  . ' scheitert ihr Ergebnis zu ändern. Versuch es mit Zahlen. [' . join(', ', @modifyErrors) . ']');
-				}
-				when ('EN') {
-					$server->command('msg ' . $target . ' ' . $nick  . ' fails to modify their result. Try using numbers. [' . join(', ', @modifyErrors) . ']');
-				}
+			if ($lang eq 'DE') {
+				$server->command('msg ' . $target . ' ' . $nick  . ' scheitert ihr Ergebnis zu ändern. Versuch es mit Zahlen. [' . join(', ', @modifyErrors) . ']');
+			}
+			if ($lang eq 'EN') {
+				$server->command('msg ' . $target . ' ' . $nick  . ' fails to modify their result. Try using numbers. [' . join(', ', @modifyErrors) . ']');
 			}
 		}
 		return 1;
@@ -245,3 +228,4 @@ sub question($server, $msg, $nick, $target) {
 
 signal_add('message public', 'public_question');
 signal_add('message own_public', 'own_question');
+
