@@ -390,7 +390,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                    recentdepart ](Test/recentdepart/)|  ✔   |  ✔   |  ✔   |  2   |  ✔   | (c)
 [                        redirect ](Test/redirect/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                            relm ](Test/relm/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                          remote ](Test/remote/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[                          remote ](Test/remote/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                         reorder ](Test/reorder/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                          repeat ](Test/repeat/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                         replace ](Test/replace/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -490,7 +490,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                         urlfeed ](Test/urlfeed/)|  ✔   |  ✔   |  ✔   | 12   |  ✔   | (c)
 [                         urlgrab ](Test/urlgrab/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
 [                         urlinfo ](Test/urlinfo/)|  ✔   |  ✔   |  ✔   |  8   |  ✔   | (c)
-[                         url_log ](Test/url_log/)|  ✔   |  ✔   |  ✔   | 12   |  ✔   | (c)
+[                         url_log ](Test/url_log/)|  ✔   |  ✔   |  ✔   | 12   |  ✔   
 [                         urlplot ](Test/urlplot/)|  ✔   |  ✔   |  ✔   | 86   |  ✔   | (c)
 [                       urlwindow ](Test/urlwindow/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       usercount ](Test/usercount/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -529,4 +529,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-b739a1f0d69d06d254caf58ed23e75a88369211c | 1358
+bd798d03184eb6deb9d396ac76e293272b649079 | 1359
