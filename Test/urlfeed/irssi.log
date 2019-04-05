@@ -1,3 +1,3 @@
-* "my" variable $guard masks earlier declaration in same scope at urlfeed.pl line 183.
+* "my" variable $guard masks earlier declaration in same scope at urlfeed.pl line 184.
 * 
 * -!- Irssi: Loaded script urlfeed

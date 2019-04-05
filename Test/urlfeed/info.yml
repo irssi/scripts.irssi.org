@@ -1,13 +1,15 @@
 ---
 -
   authors: 'Jakub Jankowski'
-  changed: '$Date: 2008-06-16 20:10:41 +0200 (pon, 16 cze 2008) $'
+  changed: 2019-03-02
   contact: shasta@toxcorp.com
   default_package: urlfeed
   description: 'Provides RSS feeds with URLs pasted on your channels.'
   license: 'GNU GPLv2 or later'
+  modified: '2019-03-02 11:01:36'
   modules:
+    - Regexp::Common
     - XML::RSS
   name: URLfeed
   url: http://toxcorp.com/irc/irssi/urlfeed/
-  version: '1.28'
+  version: '1.31'
