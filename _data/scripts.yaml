@@ -1401,9 +1401,9 @@
   description: 'A concise dice simulator for channels.'
   filename: dice_concise.pl
   license: 'GNU GPL v2 or later'
-  modified: '2014-10-30 17:21:08'
+  modified: '2019-03-03 11:25:30'
   name: dice_concise
-  version: 0.1.5
+  version: 0.1.6
 -
   authors: 'Juerd (first version: Timo Sirainen)'
   contact: juerd@juerd.nl
