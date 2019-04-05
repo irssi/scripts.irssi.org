@@ -137,7 +137,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                    deliciousurl ](Test/deliciousurl/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                  desktop-notify ](Test/desktop-notify/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                              df ](Test/df/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
-[                    dice_concise ](Test/dice_concise/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                    dice_concise ](Test/dice_concise/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                            dice ](Test/dice/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
 [                    dictcomplete ](Test/dictcomplete/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                       dim_nicks ](Test/dim_nicks/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
@@ -487,7 +487,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                               u ](Test/u/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                      upsidedown ](Test/upsidedown/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                          uptime ](Test/uptime/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
-[                         urlfeed ](Test/urlfeed/)|  ✔   |  ✔   |  ✔   | 12   |  ✔   
+[                         urlfeed ](Test/urlfeed/)|  ✔   |  ✔   |  ✔   | 12   |  ✔   | (c)
 [                         urlgrab ](Test/urlgrab/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
 [                         urlinfo ](Test/urlinfo/)|  ✔   |  ✔   |  ✔   |  8   |  ✔   | (c)
 [                         url_log ](Test/url_log/)|  ✔   |  ✔   |  ✔   | 12   |  ✔   | (c)
@@ -529,4 +529,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-267deeb55ff34ea3041d473a68d97a97eb2bafae | 1360
+186bc89f2feb3613219a0a1ba25318d542c19155 | 1361
