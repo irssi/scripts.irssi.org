@@ -5263,10 +5263,10 @@
   description: 'A simple word kickbanner'
   filename: wkb.pl
   license: 'Public Domain'
-  modified: '2014-10-24 23:01:30'
+  modified: '2019-03-02 20:57:01'
   name: wkb
   url: http://matin.maapallo.org/softa/irssi
-  version: '1.1'
+  version: '1.2'
 -
   authors: 'Jesper Lindh'
   commands: 'delword sql_connect sql_disconnect'
