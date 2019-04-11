@@ -137,7 +137,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                    deliciousurl ](Test/deliciousurl/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                  desktop-notify ](Test/desktop-notify/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                              df ](Test/df/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
-[                    dice_concise ](Test/dice_concise/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[                    dice_concise ](Test/dice_concise/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                            dice ](Test/dice/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
 [                    dictcomplete ](Test/dictcomplete/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                       dim_nicks ](Test/dim_nicks/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
@@ -513,7 +513,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                 window_switcher ](Test/window_switcher/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                          winnum ](Test/winnum/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       wisestamp ](Test/wisestamp/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
-[                             wkb ](Test/wkb/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                             wkb ](Test/wkb/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                wordcompletition ](Test/wordcompletition/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                    wordscramble ](Test/wordscramble/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                           xauth ](Test/xauth/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
@@ -529,4 +529,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-186bc89f2feb3613219a0a1ba25318d542c19155 | 1361
+37f3ed1127343bbeaa9d4e754ddb81425eb2f2fb | 1362
