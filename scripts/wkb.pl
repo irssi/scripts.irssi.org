@@ -1,7 +1,7 @@
 use strict;
 use Irssi 20020217; # Irssi 0.8.0
 use vars qw($VERSION %IRSSI);
-$VERSION = "1.1";
+$VERSION = "1.2";
 %IRSSI = (
     authors     =>  "Matti 'qvr' Hiljanen",
     contact     =>  "matti\@hiljanen.com",
@@ -13,15 +13,12 @@ $VERSION = "1.1";
 
 use Irssi;
 
-my @channels =
-  qw(#foo #foo2);
+my @channels;
 
-my @words =
-  qw(bad_word bad_word2);
+my @words;
 
-my @gods =
-  qw(qvr other_gods);
-  
+my @gods;
+
 sub sig_public {
     my ($server, $msg, $nick, $address, $target) = @_;
 
@@ -53,6 +50,19 @@ sub sig_public {
     Irssi::print("Word kick: Kicking $nick from $target. (He said $rmsg)");
 }
 
+sub sig_setup_changed {
+    @channels= split(/\s+/, Irssi::settings_get_str($IRSSI{name}.'_channels'));
+    @words= split(/\s+/, Irssi::settings_get_str($IRSSI{name}.'_words'));
+    @gods= split(/\s+/, Irssi::settings_get_str($IRSSI{name}.'_gods'));
+}
+
+Irssi::settings_add_str($IRSSI{name}, $IRSSI{name}.'_channels', '#foo #foo2');
+Irssi::settings_add_str($IRSSI{name}, $IRSSI{name}.'_words', 'bad_word bad_word2');
+Irssi::settings_add_str($IRSSI{name}, $IRSSI{name}.'_gods', 'qvr other_gods');
+
 Irssi::signal_add_last('message public', 'sig_public');
+Irssi::signal_add('setup changed', 'sig_setup_changed');
 
+sig_setup_changed();
 
+# vim:set ts=4 sw=4 expandtab:
