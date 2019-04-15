@@ -3,7 +3,7 @@ use Data::Dumper;
 use vars qw($VERSION %IRSSI);
 use DateTime;
 
-$VERSION = '0.5';
+$VERSION = '0.6';
 %IRSSI = (
     authors	=> 'Tijmen "timing" Ruizendaal',
     contact	=> 'tijmen.ruizendaal@gmail.com',
@@ -94,10 +94,14 @@ sub privmsg {
 			$prev_date = $date;
 			
 			Irssi::settings_set_str('timestamp_format', $time);
+			Irssi::signal_emit('setup changed');
+
 			Irssi::signal_continue($server, $target . ' :' . $text, $nick, $address);
 			my $escaped = $tf;
 			$escaped =~ s/%/%%/g;
+
 			Irssi::settings_set_str('timestamp_format', $tf);
+			Irssi::signal_emit('setup changed');
 		}
 	}
 }
