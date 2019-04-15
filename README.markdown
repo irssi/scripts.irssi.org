@@ -71,12 +71,12 @@ See [the testing read-me](../master/_testing/) for details.
 [                      betterlist ](Test/betterlist/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                          binary ](Test/binary/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                     binary_time ](Test/binary_time/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                   bitlbee_blist ](Test/bitlbee_blist/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   
+[                   bitlbee_blist ](Test/bitlbee_blist/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [           bitlbee_hide_password ](Test/bitlbee_hide_password/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [             bitlbee_join_notice ](Test/bitlbee_join_notice/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [             bitlbee_nick_change ](Test/bitlbee_nick_change/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [          bitlbee_tab_completion ](Test/bitlbee_tab_completion/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[               bitlbee_timestamp ](Test/bitlbee_timestamp/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[               bitlbee_timestamp ](Test/bitlbee_timestamp/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [           bitlbee_typing_notice ](Test/bitlbee_typing_notice/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                         blowjob ](Test/blowjob/)|  ✔   |  ✔   |  ✔   | 22   |  ✔   | (c)
 [                             bmi ](Test/bmi/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -529,4 +529,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-ebd8b1b1142c53eced2ac5362b7996da1a89a188 | 1366
+bea5dd1aae16d101e203fe403c241c863eb5abb6 | 1367
