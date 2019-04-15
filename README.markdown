@@ -71,7 +71,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                      betterlist ](Test/betterlist/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                          binary ](Test/binary/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                     binary_time ](Test/binary_time/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                   bitlbee_blist ](Test/bitlbee_blist/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
+[                   bitlbee_blist ](Test/bitlbee_blist/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   
 [           bitlbee_hide_password ](Test/bitlbee_hide_password/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [             bitlbee_join_notice ](Test/bitlbee_join_notice/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [             bitlbee_nick_change ](Test/bitlbee_nick_change/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -513,7 +513,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                 window_switcher ](Test/window_switcher/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                          winnum ](Test/winnum/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       wisestamp ](Test/wisestamp/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
-[                             wkb ](Test/wkb/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[                             wkb ](Test/wkb/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                wordcompletition ](Test/wordcompletition/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                    wordscramble ](Test/wordscramble/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                           xauth ](Test/xauth/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
@@ -529,4 +529,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-37f3ed1127343bbeaa9d4e754ddb81425eb2f2fb | 1362
+ebd8b1b1142c53eced2ac5362b7996da1a89a188 | 1366
