@@ -767,11 +767,11 @@
   description: "Replace Irssi's timestamps with those sent by BitlBee"
   filename: bitlbee_timestamp.pl
   license: GPLv2
-  modified: '2010-05-01 00:00:00'
+  modified: '2019-03-15 11:01:56'
   modules: DateTime
   name: bitlbee_timestamp
   url: http://the-timing.nl/stuff/irssi-bitlbee
-  version: '0.5'
+  version: '0.6'
 -
   authors: 'Tijmen "timing" Ruizendaal, Matt "f0rked" Sparks'
   commands: db_typing
