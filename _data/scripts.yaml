@@ -714,13 +714,13 @@
   authors: 'Tijmen "timing" Ruizendaal'
   commands: blist
   contact: tijmen.ruizendaal@gmail.com
-  description: '/blist <all|online|offline|away> <word>,  greps <word> from blist for bitlbee'
+  description: "/blist <all|online|offline|away|word> <word>,\tgreps <word> from blist for bitlbee"
   filename: bitlbee_blist.pl
   license: GPLv2
-  modified: '2006-10-27 00:00:00'
+  modified: '2013-12-09 23:09:23'
   name: bitlbee_blist
   url: http://the-timing.nl/stuff/irssi-bitlbee
-  version: '0.4'
+  version: '0.5'
 -
   authors: 'Ævar Arnfjörð Bjarmason'
   contact: avarab@gmail.com
