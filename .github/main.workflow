@@ -1,12 +1,12 @@
-workflow "Check Scripts(M)" {
-  on = "push"
-  resolves = ["update-scripts"]
-}
+# workflow "Check Scripts(M)" {
+#   on = "push"
+#   resolves = ["update-scripts"]
+# }
 
-workflow "Check Scripts" {
-  on = "push"
-  resolves = ["result"]
-}
+# workflow "Check Scripts" {
+#   on = "push"
+#   resolves = ["result"]
+# }
 
 action "On Master Branch" {
   uses = "actions/bin/filter@master"
