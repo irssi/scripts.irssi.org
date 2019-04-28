@@ -40,7 +40,7 @@ install:
 - env -u REPO_LOGIN_TOKEN
   cpanm --quiet --installdeps --notest .
 - env -u REPO_LOGIN_TOKEN
-  ./_testing/travis/autoinstall-perl-prereqs.zsh
+  ./_testing/autoinstall-perl-prereqs.zsh
 - |
   pushd auto
   env -u REPO_LOGIN_TOKEN cpanm --quiet --installdeps --notest .
@@ -61,7 +61,8 @@ after_script:
   ./_testing/travis/show-failures.zsh
 - |
   if [ $TRAVIS_PULL_REQUEST = false ] && $TRAVIS_SECURE_ENV_VARS; then
-    perl ./_testing/travis/update-scripts-yaml.pl
+    env -u REPO_LOGIN_TOKEN perl ./_testing/update-scripts-yaml.pl
+    ./_testing/travis/commit-scripts-yaml.zsh
   fi
 - |
   if [ $TRAVIS_PULL_REQUEST = false ] && $TRAVIS_SECURE_ENV_VARS && [ $EXTRACT_TEST_ARTEFACTS = yes ]; then

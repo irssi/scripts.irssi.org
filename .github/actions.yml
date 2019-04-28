@@ -1,0 +1,52 @@
+addons:
+  apt:
+    packages:
+    # irssi build dependencies
+    - elinks
+    # script test dependencies
+    - zsh
+    # script dependencies
+    - libdb-dev
+    - libaspell-dev
+    - libgirepository1.0-dev
+    - gobject-introspection
+    - gir1.2-notify-0.7 # for desktop-notify
+    - xosd-bin # for osd
+before_install:
+  - wget -nv https://download.opensuse.org/repositories/home:ailin_nemui:irssi-git/Debian_9.0/Release.key -O- | apt-key add -
+  - echo 'deb http://download.opensuse.org/repositories/home:/ailin_nemui:/irssi-git/Debian_9.0/ /' > /etc/apt/sources.list.d/irssi_obs.list
+  - apt-get update -q && apt-get install -y irssi-git
+install:
+  - |
+    if [ "${USE_ARTEFACTS_CACHE:-no}" = yes ] && [ "${EXTRACT_TEST_ARTEFACTS:-no}" = yes ]; then
+      ./_testing/github/load-old-artefacts.zsh
+    fi
+  - ./_testing/autoinstall-perl-prereqs.zsh
+  - cpanm --quiet --installdeps --notest ./auto
+before_script:
+  - ./_testing/run-test.zsh
+  - |
+    if [ "${GITHUB_REF:-}" != refs/heads/master ]; then
+      git diff --stat origin/master
+    fi
+script:
+  - ./_testing/report-test.zsh || rc=$?
+  - echo ${rc:-0} > $HOME/script-rc
+after_script:
+  - ./_testing/github/show-failures.zsh
+  - |
+    if [ "${GITHUB_REF:-}" = refs/heads/master ] && [ -n "${GITHUB_TOKEN:-}" ]; then
+      perl ./_testing/update-scripts-yaml.pl
+      ./_testing/github/commit-scripts-yaml.zsh
+    fi
+  - |
+    if [ "${GITHUB_REF:-}" = refs/heads/master ] && [ -n "${GITHUB_TOKEN:-}" ] && [ "${EXTRACT_TEST_ARTEFACTS:-no}" = yes ]; then
+      ./_testing/github/extract-artefacts.zsh
+    fi
+  - cat /github/home/.git-credential-helper
+script_result:
+  - (exit "$(cat $HOME/script-rc)")
+global_env:
+  - export LANG=C.UTF-8
+  - export USE_ARTEFACTS_CACHE=yes
+  - export EXTRACT_TEST_ARTEFACTS=yes
