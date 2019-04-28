@@ -8,7 +8,6 @@
   default_package: duckduckgo
   description: 'search by https://duckduckgo.com/html/'
   license: lgplv3
-  modified: '2018-09-20 21:18:10'
   modules:
     - HTML::Entities
     - LWP::UserAgent
