@@ -1,6 +1,9 @@
 use strict; use warnings;
 use YAML::Tiny 1.59;
+use Digest::SHA;
+use Digest::file qw(digest_file_hex);
 
+# read config.yml
 my $config = YAML::Tiny::LoadFile('_testing/config.yml');
 my @yaml_keys;
 if ($config) {
@@ -8,16 +11,19 @@ if ($config) {
 }
 die "no keys defined in config.yaml\n" unless @yaml_keys;
 
+# read scripts.yaml
 my @docs;
 { open my $ef, '<:utf8', '_data/scripts.yaml' or die $!;
   @docs = Load(do { local $/; <$ef> });
 }
 
+# index old scripts.yaml
 my %oldmeta;
 for (@{$docs[0]//[]}) {
     $oldmeta{$_->{filename}} = $_;
 }
 
+# read in test results
 my %newmeta;
 for my $file (<scripts/*.pl>) {
     my ($filename, $base) =
@@ -32,6 +38,7 @@ for my $file (<scripts/*.pl>) {
 	    @cdoc=();
 	}
     }
+
     if (@cdoc) {
 	$newmeta{$filename} = $cdoc[0][0];
 	for my $copykey (qw(modified version)) {
@@ -51,7 +58,12 @@ for my $file (<scripts/*.pl>) {
 		if 'ARRAY' eq ref $commands;
 	$newmeta{$filename}{commands} = "@commands"
 	    if @commands;
+	# calculate digest
+	$newmeta{$filename}{sha}= digest_file_hex($file, "SHA");
+	$newmeta{$filename}{size}= -s $file;
     }
+
+    # recycle the old infos
     elsif (exists $oldmeta{$filename}) {
 	print "META-INF FOR $base NOT FOUND\n";
 	system "ls 'Test/$base/'*";
@@ -61,6 +73,8 @@ for my $file (<scripts/*.pl>) {
 	print "MISSING META FOR $base\n";
     }
 }
+
+# remove index and write scripts.yaml
 my @newdoc = map {
     my $v = $newmeta{$_};
     +{
@@ -73,6 +87,12 @@ my @newdoc = map {
 } sort keys %newmeta;
 YAML::Tiny::DumpFile('_data/scripts.yaml', \@newdoc);
 
+# checksum
+open $fa, '>', 'scripts.sha';
+print $fa digest_file_hex('scripts.yaml', "SHA");
+close $fa;
+
+# write config.yml
 if ($config && @{$config->{whitelist}//[]}) {
     my $changed;
     my @wl;
@@ -89,3 +109,5 @@ if ($config && @{$config->{whitelist}//[]}) {
 	YAML::Tiny::DumpFile('_testing/config.yml', $config);
     }
 }
+
+# vim:set ts=8 sw=4:
