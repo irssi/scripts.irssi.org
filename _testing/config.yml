@@ -17,6 +17,8 @@ scripts_yaml_keys:
   - modified
   # special
   - HIDDEN
+  - sha
+  - size
 cpan:
   broken_tests:
     - Geo::Weather
