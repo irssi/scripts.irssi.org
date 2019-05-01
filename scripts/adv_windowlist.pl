@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-our $VERSION = '1.7'; # 9926bc6b1f9d094
+our $VERSION = '1.8'; # 63feb35d8b0a8b6
 our %IRSSI = (
     authors     => 'Nei',
     contact     => 'Nei @ anti@conference.jabber.teamidiot.de',
@@ -647,22 +647,27 @@ sub sb_format_expand { # Irssi::current_theme->format_expand wrapper
 }
 
 { my $term_type = Irssi::version > 20040819 ? 'term_charset' : 'term_type';
-  local $@;
-  eval { require Text::CharWidth; };
-  unless ($@) {
-      *screen_length = sub { Text::CharWidth::mbswidth($_[0]) };
+  if (Irssi->can('string_width')) {
+      *screen_length = sub { Irssi::string_width($_[0]) };
   }
   else {
-      my $err = $@; chomp $err; $err =~ s/\sat .* line \d+\.$//;
-      #Irssi::print("%_$IRSSI{name}: warning:%_ Text::CharWidth module failed to load. Length calculation may be off! Error was:");
-      print "%_$IRSSI{name}:%_ $err";
-      *screen_length = sub {
-	  my $temp = shift;
-	  if (lc Irssi::settings_get_str($term_type) eq 'utf-8') {
-	      Encode::_utf8_on($temp);
-	  }
-	  length($temp)
-      };
+    local $@;
+    eval { require Text::CharWidth; };
+    unless ($@) {
+        *screen_length = sub { Text::CharWidth::mbswidth($_[0]) };
+    }
+    else {
+        my $err = $@; chomp $err; $err =~ s/\sat .* line \d+\.$//;
+        #Irssi::print("%_$IRSSI{name}: warning:%_ Text::CharWidth module failed to load. Length calculation may be off! Error was:");
+        print "%_$IRSSI{name}:%_ $err";
+        *screen_length = sub {
+  	  my $temp = shift;
+  	  if (lc Irssi::settings_get_str($term_type) eq 'utf-8') {
+  	      Encode::_utf8_on($temp);
+  	  }
+  	  length($temp)
+        };
+    }
   }
   sub as_uni {
       no warnings 'utf8';
@@ -2734,6 +2739,9 @@ UNITCHECK
 
 # Changelog
 # =========
+# 1.8
+# - use string_width in Irssi 1.2.0
+#
 # 1.7
 # - fix crash on invalid /set awl_sort, introduced in 1.6, reported by
 #   tpetazzoni
