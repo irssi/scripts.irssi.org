@@ -1,11 +1,10 @@
 # by Stefan "tommie" Tomanek
 #
 # scriptassist.pl
-
-
+#
 use strict;
 
-our $VERSION = '2003020806';
+our $VERSION = '2019042800';
 our %IRSSI = (
     authors     => 'Stefan \'tommie\' Tomanek',
     contact     => 'stefan@pico.ruhr.de',
@@ -13,21 +12,34 @@ our %IRSSI = (
     description => 'keeps your scripts on the cutting edge',
     license     => 'GPLv2',
     url         => 'http://irssi.org/scripts/',
-    modules     => 'Data::Dumper LWP::UserAgent (GnuPG)',
+    modules     => 'Data::Dumper CPAN::Meta::YAML Digest::SHA File::Fetch File::Basename POSIX',
     commands	=> "scriptassist"
 );
 
-our ($forked, %remote_db, $have_gpg, @complist);
+=head1 TODO
+
+ * check sign
+ * rating
+
+=cut
 
 use Irssi 20020324;
 use Data::Dumper;
-use LWP::UserAgent;
+use CPAN::Meta::YAML;
+use Digest::SHA qw/sha1_hex/;
+use File::Fetch;
+use File::Basename;
+use Encode;
 use POSIX;
 
-# GnuPG is not always needed
-$have_gpg = 0;
-eval "use GnuPG qw(:algo :trust);";
-$have_gpg = 1 if not ($@);
+# old datas (sha, ...)
+my %old_data;
+
+# config cache
+my $scriptassist_cache_sources;
+
+#my ($forked, %remote_db, $have_gpg, @complist);
+my ($forked, %remote_db, @complist);
 
 sub show_help {
     my $help = "scriptassist $VERSION
@@ -39,14 +51,10 @@ sub show_help {
     Search the script database
 /scriptassist info <scripts>
     Display information about <scripts>
-".#/scriptassist ratings <scripts>
-#    Retrieve the average ratings of the the scripts
-#/scriptassist top <num>
-#    Retrieve the first <num> top rated scripts
+".
 "/scriptassist new <num>
     Display the newest <num> scripts
-".#/scriptassist rate <script> <stars>
-#    Rate the script with a number of stars ranging from 0-5
+".
 "/scriptassist contact <script>
     Write an email to the author of the script
     (Requires OpenURL)
@@ -64,16 +72,6 @@ sub show_help {
         $text .= $_."\n";
     }
     print CLIENTCRAP &draw_box("ScriptAssist", $text, "scriptassist help", 1);
-    #theme_box("ScriptAssist", $text, "scriptassist help", 1);
-}
-
-sub theme_box {
-    my ($title, $text, $footer, $colour) = @_;
-    Irssi::printformat(MSGLEVEL_CLIENTCRAP, 'box_header', $title);
-    foreach (split(/\n/, $text)) {
-	Irssi::printformat(MSGLEVEL_CLIENTCRAP, 'box_inside', $_);
-    }
-    Irssi::printformat(MSGLEVEL_CLIENTCRAP, 'box_footer', $footer);
 }
 
 sub draw_box {
@@ -85,6 +83,7 @@ sub draw_box {
     }
     $box .= '%R`--<%n'.$footer.'%R>->%n';
     $box =~ s/%.//g unless $colour;
+    $box = encode(Irssi::settings_get_str('term_charset'),$box);
     return $box;
 }
 
@@ -126,6 +125,9 @@ sub bg_do {
 		$result{db} = $remote_db{db};
 		$result{timestamp} = $remote_db{timestamp};
 	    }
+	    if (exists $remote_db{info}) {
+		$result{info} = $remote_db{info};
+	    }
 	    if ($items[0] eq 'check') {
 		$result{data}{check} = check_scripts($xml);
 	    } elsif ($items[0] eq 'update') {
@@ -141,43 +143,23 @@ sub bg_do {
 		$result{data}{install} = install_scripts(\@items, $xml);
 	    } elsif ($items[0] eq 'debug') {
 		shift(@items);
-		$result{data}{debug} = debug_scripts(\@items);
-	    } elsif ($items[0] eq 'ratings') {
-		shift(@items);
-		@items = @{ loaded_scripts() } if $items[0] eq "all";
-		my %ratings = %{ get_ratings(\@items, '') };
-		foreach (keys %ratings) {
-		    $result{data}{rating}{$_}{rating} = $ratings{$_}->[0];
-		    $result{data}{rating}{$_}{votes} = $ratings{$_}->[1];
-		}
-	    } elsif ($items[0] eq 'rate') {
-		$result{data}{rate}{$items[1]} = rate_script($items[1], $items[2]);
+		$result{data}{debug} = debug_scripts(\@items, $xml);
 	    } elsif ($items[0] eq 'info') {
 		shift(@items);
-		$result{data}{info} = script_info(\@items);
-	    } elsif ($items[0] eq 'echo') {
-		$result{data}{echo} = 1;
-	    } elsif ($items[0] eq 'top') {
-		my %ratings = %{ get_ratings([], $items[1]) };
-		foreach (keys %ratings) {
-                    $result{data}{rating}{$_}{rating} = $ratings{$_}->[0];
-                    $result{data}{rating}{$_}{votes} = $ratings{$_}->[1];
-                }
+		$result{data}{info} = script_info(\@items, $xml);
 	    } elsif ($items[0] eq 'new') {
-		my $new = get_new($items[1]);
+		my $new = get_new($items[1], $xml);
 		$result{data}{new} = $new;
 	    } elsif ($items[0] eq 'unknown') {
 		my $cmd = $items[1];
 		$result{data}{unknown}{$cmd} = get_unknown($cmd, $xml);
 	    }
-	    my $dumper = Data::Dumper->new([\%result]);
-	    $dumper->Purity(1)->Deepcopy(1)->Indent(0);
-	    my $data = $dumper->Dump;
-	    print($wh $data);
+	    my $yaml= CPAN::Meta::YAML->new(\%result);
+	    print($wh $yaml->write_string());
 	};
 	if ($@) {
-	    print($wh Data::Dumper->new([+{data=>+{error=>$@}}])
-		      ->Purity(1)->Deepcopy(1)->Indent(0)->Dump);
+	    my $yaml= CPAN::Meta::YAML->new({data=>{error=>$@}});
+	    print($wh $yaml->write_string());
 	}
 	close($wh);
 	POSIX::_exit(1);
@@ -231,12 +213,12 @@ sub get_names {
 }
 
 sub script_info {
-    my ($scripts) = @_;
+    my ($scripts, $xml) = @_;
     my %result;
-    my $xml = get_scripts();
     foreach (@{$scripts}) {
 	my ($sname, $plname, $pname) = get_names($_, $xml);
-	next unless (defined $xml->{$plname} || ( exists $Irssi::Script::{$pname} && exists $Irssi::Script::{$pname}{IRSSI} ));
+	next unless (defined $xml->{$plname} || ( exists $Irssi::Script::{$pname} 
+		&& exists $Irssi::Script::{$pname}{IRSSI} ));
 	$result{$sname}{version} = get_remote_version($sname, $xml);
 	my @headers = ('authors', 'contact', 'description', 'license', 'source');
 	foreach my $entry (@headers) {
@@ -275,45 +257,10 @@ sub script_info {
     return \%result;
 }
 
-sub rate_script {
-    my ($script, $stars) = @_;
-    my $ua = LWP::UserAgent->new(env_proxy=>1, keep_alive=>1, timeout=>30);
-    $ua->agent('ScriptAssist/'.2003020803);
-    my $request = HTTP::Request->new('GET', 'http://ratings.irssi.de/irssirate.pl?&stars='.$stars.'&mode=rate&script='.$script);
-    my $response = $ua->request($request);
-    unless ($response->is_success() && $response->content() =~ /You already rated this script/) {
-	return 1;
-    } else {
-	return 0;
-    }
-}
-
-sub get_ratings {
-    my ($scripts, $limit) = @_;
-    my $ua = LWP::UserAgent->new(env_proxy=>1, keep_alive=>1, timeout=>30);
-    $ua->agent('ScriptAssist/'.2003020803);
-    my $script = join(',', @{$scripts});
-    my $request = HTTP::Request->new('GET', 'http://ratings.irssi.de/irssirate.pl?script='.$script.'&sort=rating&limit='.$limit);
-    my $response = $ua->request($request);
-    my %result;
-    if ($response->is_success()) {
-	foreach (split /\n/, $response->content()) {
-	    if (/<tr><td><a href=".*?">(.*?)<\/a>/) {
-		my $entry = $1;
-		if (/"><\/td><td>([0-9.]+)<\/td><td>(.*?)<\/td><td>/) {
-		    $result{$entry} = [$1, $2];
-		}
-	    }
-	}
-    }
-    return \%result;
-}
-
 sub get_new {
-    my ($num) = @_;
+    my ($num, $xml) = @_;
     my $result;
-    my $xml = get_scripts();
-    foreach (sort {$xml->{$b}{last_modified} cmp $xml->{$a}{last_modified}} keys %$xml) {
+    foreach (sort {$xml->{$b}{modified} cmp $xml->{$a}{modified}} keys %$xml) {
 	my %entry = %{ $xml->{$_} };
 	next if $entry{HIDDEN};
 	$result->{$_} = \%entry;
@@ -322,6 +269,7 @@ sub get_new {
     }
     return $result;
 }
+
 sub module_exist {
     my ($module) = @_;
     $module =~ s/::/\//g;
@@ -332,9 +280,8 @@ sub module_exist {
 }
 
 sub debug_scripts {
-    my ($scripts) = @_;
+    my ($scripts, $xml) = @_;
     my %result;
-    my $xml = get_scripts();
     foreach (@{$scripts}) {
 	my ($sname, $plname) = get_names($_, $xml);
 	if (defined $xml->{$plname}{modules}) {
@@ -427,11 +374,21 @@ sub pipe_input {
 	print CLIENTCRAP "%R<<%n Something weird happend (no text)";
 	return();
     }
-    local our $VAR1;
-    my $incoming = eval($text);
+    utf8::decode($text);
+    my $yaml= CPAN::Meta::YAML->read_string($text);
+    my $incoming = $yaml->[0];
     if ($incoming->{db} && $incoming->{timestamp}) {
     	$remote_db{db} = $incoming->{db};
+	$remote_db{info} = $incoming->{info};
     	$remote_db{timestamp} = $incoming->{timestamp};
+	%old_data= %{$incoming};
+    }
+    if ($incoming->{info}->{error} >0 ) {
+	$incoming->{info}->{error}= 0;
+	foreach (@{$incoming->{info}->{error_texts}}) {
+	    print_error($_);
+	}
+	$incoming->{info}->{error_texts}=[];
     }
     unless (defined $incoming->{data}) {
 	print CLIENTCRAP "%R<<%n Something weird happend (no data)";
@@ -464,18 +421,8 @@ sub pipe_input {
     if (defined $result{debug}) {
 	print_debug(%{ $result{debug} });
     }
-    if (defined $result{rating}) {
-	print_ratings(%{ $result{rating} });
-	push @complist, $_ foreach keys %{ $result{rating} };
-    }
-    if (defined $result{rate}) {
-	print_rate(%{ $result{rate} });
-    }
     if (defined $result{info}) {
 	print_info(%{ $result{info} });
-    }
-    if (defined $result{echo}) {
-	Irssi::print "ECHO";
     }
     if ($result{unknown}) {
         print_unknown($result{unknown});
@@ -500,6 +447,17 @@ sub print_unknown {
 	    my $output = draw_box("ScriptAssist", $text, "'".$_."' missing", 1);
 	    print CLIENTCRAP $output;
 	}
+    }
+}
+
+sub print_error {
+    my ($error_txt) = @_;
+    if ($error_txt =~ m/^(.*?:)(.*)$/) {
+	Irssi::printformat(
+	    MSGLEVEL_CLIENTCRAP, 'error_msg', $1, $2);
+    } else {
+	Irssi::printformat(
+	    MSGLEVEL_CLIENTCRAP, 'error_msg', '', $error_txt);
     }
 }
 
@@ -594,41 +552,10 @@ sub print_info {
     print CLIENTCRAP draw_box('ScriptAssist', $line, 'info', 1) ;
 }
 
-sub print_rate {
-    my (%data) = @_;
-    my $line;
-    foreach my $script (sort keys(%data)) {
-	if ($data{$script}) {
-            $line .= "%go%n %9".$script."%9 has been rated";
-        } else {
-            $line .= "%ro%n %9".$script."%9 : Already rated this script";
-        }
-    }
-    print CLIENTCRAP draw_box('ScriptAssist', $line, 'rating', 1) ;
-}
-
-sub print_ratings {
-    my (%data) = @_;
-    my @table;
-    foreach my $script (sort {$data{$b}{rating}<=>$data{$a}{rating}} keys(%data)) {
-	my @line;
-	if (get_local_version($script)) {
-	    push @line, "%go%n";
-	} else {
-	    push @line, "%yo%n";
-	}
-        push @line, "%9".$script."%9";
-	push @line, $data{$script}{rating};
-	push @line, "[".$data{$script}{votes}." votes]";
-	push @table, \@line;
-    }
-    print CLIENTCRAP draw_box('ScriptAssist', array2table(@table), 'ratings', 1) ;
-}
-
 sub print_new {
     my ($list) = @_;
     my @table;
-    foreach (sort {$list->{$b}{last_modified} cmp $list->{$a}{last_modified}} keys %$list) {
+    foreach (sort {$list->{$b}{modified} cmp $list->{$a}{modified}} keys %$list) {
 	my @line;
 	my ($name) = get_names($_);
         if (get_local_version($name)) {
@@ -637,7 +564,7 @@ sub print_new {
             push @line, "%yo%n";
         }
 	push @line, "%9".$name."%9";
-	push @line, $list->{$_}{last_modified};
+	push @line, $list->{$_}{modified};
 	push @table, \@line;
     }
     print CLIENTCRAP draw_box('ScriptAssist', array2table(@table), 'new scripts', 1) ;
@@ -676,15 +603,7 @@ sub print_install {
 	my $line;
 	if ($data{$script}{installed} == 1) {
 	    my $hacked;
-	    if ($have_gpg && Irssi::settings_get_bool('scriptassist_use_gpg')) {
-		if ($data{$script}{signed} >= 0) {
-		    load_script($script) unless (lc($script) eq lc($IRSSI{name}));
-		} else {
-		    $hacked = 1;
-		}
-	    } else {
-		load_script($script) unless (lc($script) eq lc($IRSSI{name}));
-	    }
+	    load_script($script) unless (lc($script) eq lc($IRSSI{name}));
     	    if (get_local_version($script) && not lc($script) eq lc($IRSSI{name})) {
 		$line .= "%go%n %9".$script."%9 installed\n";
 		push @installed, $script;
@@ -694,18 +613,10 @@ sub print_install {
     		$line .= "%Ro%n %9".$script."%9 fetched, but unable to load\n";
 		$crashed .= $script." " unless $hacked;
 	    }
-	    if ($have_gpg && Irssi::settings_get_bool('scriptassist_use_gpg')) {
-		foreach (split /\n/, check_sig($data{$script})) {
-		    $line .= "  ".$_."\n";
-		}
-	    }
 	} elsif ($data{$script}{installed} == -2) {
 	    $line .= "%ro%n %9".$script."%9 already loaded, please try \"update\"\n";
 	} elsif ($data{$script}{installed} <= 0) {
 	    $line .= "%ro%n %9".$script."%9 not installed\n";
-    	    foreach (split /\n/, check_sig($data{$script})) {
-		$line .= "  ".$_."\n";
-	    }
 	} else {
 	    $line .= "%Ro%n %9".$script."%9 not found on server\n";
 	}
@@ -732,29 +643,6 @@ sub list_sbitems {
     $text .= "\n";
     $text .= "Enter '/statusbar window add <item>' to add an item.";
     print CLIENTCRAP draw_box('ScriptAssist', $text, 'sbitems', 1);
-}
-
-sub check_sig {
-    my ($sig) = @_;
-    my $line;
-    my %trust = ( -1 => 'undefined',
-                   0 => 'never',
-		   1 => 'marginal',
-		   2 => 'fully',
-		   3 => 'ultimate'
-		 );
-    if ($sig->{signed} == 1) {
-	$line .= "Signature found from ".$sig->{sig}{user}."\n";
-	$line .= "Timestamp  : ".$sig->{sig}{date}."\n";
-	$line .= "Fingerprint: ".$sig->{sig}{fingerprint}."\n";
-	$line .= "KeyID      : ".$sig->{sig}{keyid}."\n";
-	$line .= "Trust      : ".$trust{$sig->{sig}{trust}}."\n";
-    } elsif ($sig->{signed} == -1) {
-	$line .= "%1Warning, unable to verify signature%n\n";
-    } elsif ($sig->{signed} == 0) {
-	$line .= "%1No signature found%n\n" unless Irssi::settings_get_bool('scriptassist_install_unsigned_scripts');
-    }
-    return $line;
 }
 
 sub print_search {
@@ -784,9 +672,6 @@ sub print_update {
 	    my $local = $data{$_}{local};
 	    my $remote = $data{$_}{remote};
 	    push @table, ['%yo%n', '%9'.$_.'%9', 'upgraded ('.$local.'->'.$remote.')'];
-	    foreach (split /\n/, check_sig($data{$_})) {
-		push @table, ['', '', $_];
-	    }
 	    if (lc($_) eq lc($IRSSI{name})) {
 		push @table, ['', '', "%R%9Please reload manually%9%n"];
 	    } else {
@@ -794,9 +679,6 @@ sub print_update {
 	    }
 	} elsif ($data{$_}{installed} == 0 || $data{$_}{installed} == -1) {
 	    push @table, ['%yo%n', '%9'.$_.'%9', 'not upgraded'];
-            foreach (split /\n/, check_sig($data{$_})) {
-		push @table, ['', '', $_];
-            }
 	} elsif ($data{$_}{installed} == -2 && $verbose) {
 	    my $local = $data{$_}{local};
 	    push @table, ['%go%n', '%9'.$_.'%9', 'already at the latest version ('.$local.')'];
@@ -820,57 +702,93 @@ sub contact_author {
     }
 }
 
+# get file via url and return the content
+sub get_file {
+    my ($url) =@_;
+    $File::Fetch::USER_AGENT='ScriptAssist/'.$VERSION;
+    $File::Fetch::WARN=0;
+    my $ff= File::Fetch->new(uri=> $url);
+    my $cont;
+    my $w = $ff->fetch(to=>\$cont);
+    if (defined $w) {
+	unlink $w;
+	rmdir dirname($w);
+    }
+    return $cont;
+}
+
+# put the error strings in the remote_db
+sub put_bg_error {
+    my ($error) =@_;
+    if (!exists $remote_db{info}->{error_texts} ) {
+	$remote_db{info}->{error_texts} = [];
+    }
+    push @{$remote_db{info}->{error_texts}}, $error;
+    $remote_db{info}->{error}++;
+}
+
+# get the script datas
 sub get_scripts {
-    my $ua = LWP::UserAgent->new(env_proxy=>1, keep_alive=>1, timeout=>30);
-    $ua->agent('ScriptAssist/'.2003020803);
-    $ua->env_proxy();
     my @mirrors = split(/ /, Irssi::settings_get_str('scriptassist_script_sources'));
     my %sites_db;
-    my $not_modified = 0;
+    my $not_modified = 1;
     my $fetched = 0;
     my @sources;
     my $error;
     foreach my $site (@mirrors) {
-	my $request = HTTP::Request->new('GET', $site);
-	if ($remote_db{timestamp}) {
-	    $request->if_modified_since($remote_db{timestamp});
-	}
-	my $response = $ua->request($request);
-	if ($response->code == 304) { # HTTP_NOT_MODIFIED
-	    $not_modified = 1;
-	    next;
-	}
-	unless ($response->is_success) {
-	    $error = join "\n", $response->status_line(), (grep / at .* line \d+/, split "\n", $response->content()), '';
-	    next;
-	}
-	$fetched = 1;
-	my $data = $response->content();
 	my ($src, $type);
 	if ($site =~ /(.*\/).+\.(.+)/) {
 	    $src = $1;
 	    $type = $2;
 	}
 	push @sources, $src;
-	#my @header = ('name', 'contact', 'authors', 'description', 'version', 'modules', 'last_modified');
-	if ($type eq 'dmp') {
-	    no strict 'vars';
-	    my $new_db = eval "$data";
-	    foreach (keys %$new_db) {
-		if (defined $sites_db{script}{$_}) {
-		    my $old = $sites_db{$_}{version};
-		    my $new = $new_db->{$_}{version};
-		    next if (compare_versions($old, $new) eq 'newer');
-		}
-		#foreach my $key (@header) {
-		foreach my $key (keys %{ $new_db->{$_} }) {
-		    next unless defined $new_db->{$_}{$key};
-		    $sites_db{$_}{$key} = $new_db->{$_}{$key};
-		}
-		$sites_db{$_}{source} = $src;
-	    }
+	$site =~ m/^(.*)\..*?$/;
+	my $site_sum= $1.'.sha';
+	my $site_yaml= $1.'.yaml';
+	my $old_sum;
+	if (exists $remote_db{info}->{$src}) {
+	    $old_sum=$remote_db{info}->{$src}->{sha};
+	}
+	my $new_sum= get_file($site_sum);
+	if (!defined $new_sum) {
+	    put_bg_error("Error: fetch file '$site_sum'");
 	} else {
-	    die("Unknown script database type ($type).\n");
+	    my $new_yaml;
+	    if ( $new_sum ne $old_sum || !$scriptassist_cache_sources) {
+		$new_yaml= get_file($site_yaml);
+		if (!defined $new_yaml) {
+		    put_bg_error("Error: fetch file '$site_yaml'");
+		} else {
+		    if (sha1_hex($new_yaml) ne $new_sum) {
+			put_bg_error("Error: Checksum sha1_hex($site_yaml) ne $site_sum");
+		    } else {
+#my @header = ('name', 'contact', 'authors', 'description', 'version', 'modules', 'modified');
+			$fetched = 1;
+			$remote_db{info}->{$src}->{sha}=$new_sum;
+			utf8::decode($new_yaml);
+			my $new_ydb =CPAN::Meta::YAML->read_string($new_yaml)
+			    or put_bg_error("Error: ".CPAN::Meta::YAML->errstr);
+			# make index
+			my $new_db;
+			foreach (@{$new_ydb->[0]}) {
+			    $new_db->{$_->{filename}}=$_;
+			}
+			#
+			foreach (keys %$new_db) {
+			    if (defined $sites_db{script}{$_}) {
+				my $old = $sites_db{$_}{version};
+				my $new = $new_db->{$_}{version};
+				next if (compare_versions($old, $new) eq 'newer');
+			    }
+			    foreach my $key (keys %{ $new_db->{$_} }) {
+				next unless defined $new_db->{$_}{$key};
+				$sites_db{$_}{$key} = $new_db->{$_}{$key};
+			    }
+			    $sites_db{$_}{source} = $src;
+			}
+		    }
+		}
+	    }
 	}
     }
     if ($fetched) {
@@ -885,12 +803,6 @@ sub get_scripts {
 	}
 	$remote_db{db}{$_} = $sites_db{$_} foreach (keys %sites_db);
 	$remote_db{timestamp} = time();
-    } elsif ($not_modified) {
-	# nothing to do
-    } else {
-	die("No script database sources defined in /set scriptassist_script_sources\n") unless @mirrors;
-	die("Fetching script database failed: $error") if $error;
-	die("Unknown error while fetching script database\n");
     }
     return $remote_db{db};
 }
@@ -968,55 +880,29 @@ sub download_script {
     $result{installed} = 0;
     $result{signed} = 0;
     my $dir = Irssi::get_irssi_dir();
-    my $ua = LWP::UserAgent->new(env_proxy => 1,keep_alive => 1,timeout => 30);
-    $ua->agent('ScriptAssist/'.2003020803);
-    my $request = HTTP::Request->new('GET', $site.'/scripts/'.$script.'.pl');
-    my $response = $ua->request($request);
-    if ($response->is_success()) {
-	my $file = $response->content();
+    my $file= get_file($site.'/scripts/'.$script.'.pl');
+    if (!defined $file) {
+	put_bg_error("Error: can't download the script '$script'");
+    } else {
+	my $size= length($file);
+	my $sha= sha1_hex($file);
+	if ($size != $remote_db{db}->{$plname}->{size}) {
+	    put_bg_error("Error: script '$script' has not the same size (".
+		$size." != ".$remote_db{db}->{$plname}->{size}.")");
+	    $file= undef;
+	}
+	if ($sha ne $remote_db{db}->{$plname}->{sha}) {
+	    put_bg_error("Error: script '$script' sha not correct");
+	    $file= undef;
+	}
+    }
+    if (defined $file) {
 	mkdir $dir.'/scripts/' unless (-e $dir.'/scripts/');
 	open(my $F, '>', $dir.'/scripts/'.$plname.'.new');
 	print $F $file;
 	close($F);
-	if ($have_gpg && Irssi::settings_get_bool('scriptassist_use_gpg')) {
-	    my $ua2 = LWP::UserAgent->new(env_proxy => 1,keep_alive => 1,timeout => 30);
-	    $ua->agent('ScriptAssist/'.2003020803);
-	    my $request2 = HTTP::Request->new('GET', $site.'/signatures/'.$plname.'.asc');
-	    my $response2 = $ua->request($request2);
-	    if ($response2->is_success()) {
-		my $sig_dir = $dir.'/scripts/signatures/';
-		mkdir $sig_dir unless (-e $sig_dir);
-		open(my $S, '>', $sig_dir.$plname.'.asc');
-		my $file2 = $response2->content();
-		print $S $file2;
-		close($S);
-		my $sig;
-		foreach (1..2) {
-		    # FIXME gpg needs two rounds to load the key
-		    my $gpg = new GnuPG();
-		    eval {
-			$sig = $gpg->verify( file => $dir.'/scripts/'.$plname.'.new', signature => $sig_dir.$plname.'.asc' );
-		    };
-		}
-		if (defined $sig->{user}) {
-		    $result{installed} = 1;
-		    $result{signed} = 1;
-		    $result{sig}{$_} = $sig->{$_} foreach (keys %{$sig});
-		} else {
-		    # Signature broken?
-		    $result{installed} = 0;
-		    $result{signed} = -1;
-		}
-	    } else {
-		$result{signed} = 0;
-		$result{installed} = -1;
-		$result{installed} = 1 if Irssi::settings_get_bool('scriptassist_install_unsigned_scripts');
-	    }
-	} else {
-	    $result{signed} = 0;
-	    $result{installed} = -1;
-	    $result{installed} = 1 if Irssi::settings_get_bool('scriptassist_install_unsigned_scripts');
-	}
+	$result{signed} = 0;
+	$result{installed} = 1;
     }
     if ($result{installed}) {
 	my $old_dir = "$dir/scripts/old/";
@@ -1094,7 +980,7 @@ sub missing_module {
 sub cmd_scripassist {
     my ($arg, $server, $witem) = @_;
     my @args = split(/ /, $arg);
-    if ($args[0] eq 'help' || $args[0] eq '-h') {
+    if ($args[0] eq 'help') {
 	show_help();
     } elsif ($args[0] eq 'check') {
 	bg_do("check");
@@ -1109,20 +995,9 @@ sub cmd_scripassist {
 	bg_do("install ".join(' ', @args));
     } elsif ($args[0] eq 'contact' && defined $args[1]) {
 	contact_author($args[1]);
-    } elsif ($args[0] eq 'ratings' && defined $args[1]) {
-	shift @args;
-	bg_do("ratings ".join(' ', @args));
-    } elsif ($args[0] eq 'rate' && defined $args[1] && defined $args[2]) {
-	shift @args;
-	bg_do("rate ".join(' ', @args)) if ($args[2] >= 0 && $args[2] < 6);
     } elsif ($args[0] eq 'info' && defined $args[1]) {
 	shift @args;
 	bg_do("info ".join(' ', @args));
-    } elsif ($args[0] eq 'echo') {
-	bg_do("echo");
-    } elsif ($args[0] eq 'top') {
-	my $number = defined $args[1] ? $args[1] : 10;
-	bg_do("top ".$number);
     } elsif ($args[0] eq 'cpan' && defined $args[1]) {
 	call_openurl('http://search.cpan.org/search?mode=module&query='.$args[1]);
     } elsif ($args[0] eq 'autorun' && defined $args[1]) {
@@ -1160,7 +1035,7 @@ sub sig_default_command {
 
 sub sig_complete {
     my ($list, $window, $word, $linestart, $want_space) = @_;
-    return unless $linestart =~ /^.script(assist)? (install|rate|ratings|update|check|contact|info|autorun)/i;
+    return unless $linestart =~ /^.script(assist)? (install|update|check|contact|info|autorun)/i;
     my @newlist;
     my $str = $word;
     foreach (@complist) {
@@ -1175,6 +1050,42 @@ sub sig_complete {
     Irssi::signal_stop();
 }
 
+sub sig_setup_changed {
+    $scriptassist_cache_sources=Irssi::settings_get_bool('scriptassist_cache_sources');
+}
+
+sub get_old_data {
+    if ($scriptassist_cache_sources) {
+	my $fn= Irssi::get_irssi_dir()."/scriptassist.yaml";
+	if ( -e $fn ) {
+	    my $yaml= CPAN::Meta::YAML->read($fn);
+	    %old_data= %{$yaml->[0]};
+	    $remote_db{db}=$old_data{db};
+	    $remote_db{info}=$old_data{info};
+	}
+    }
+}
+
+sub write_old_data {
+    if ($scriptassist_cache_sources) {
+	my $fn= Irssi::get_irssi_dir()."/scriptassist.yaml";
+	my $fh;
+	delete $old_data{data};
+	my $yaml = CPAN::Meta::YAML->new(\%old_data);
+	#open( $fh, '> :utf8', $fn);
+	#print $fh $yaml->write_string();
+	#close( $fh );
+	$yaml->write($fn);
+    }
+}
+
+sub UNLOAD {
+    write_old_data();
+}
+
+Irssi::theme_register([
+	'error_msg', '{error << }{hilight $0}$1',
+]);
 
 Irssi::settings_add_str($IRSSI{name}, 'scriptassist_script_sources', 'https://scripts.irssi.org/scripts.dmp');
 Irssi::settings_add_bool($IRSSI{name}, 'scriptassist_cache_sources', 1);
@@ -1182,8 +1093,6 @@ Irssi::settings_add_bool($IRSSI{name}, 'scriptassist_update_verbose', 1);
 Irssi::settings_add_bool($IRSSI{name}, 'scriptassist_check_verbose', 1);
 Irssi::settings_add_bool($IRSSI{name}, 'scriptassist_catch_script_errors', 1);
 
-Irssi::settings_add_bool($IRSSI{name}, 'scriptassist_install_unsigned_scripts', 1);
-Irssi::settings_add_bool($IRSSI{name}, 'scriptassist_use_gpg', 1);
 Irssi::settings_add_bool($IRSSI{name}, 'scriptassist_integrate', 1);
 Irssi::settings_add_bool($IRSSI{name}, 'scriptassist_check_unknown_commands', 1);
 
@@ -1191,6 +1100,7 @@ Irssi::signal_add_first("default command", 'sig_default_command');
 Irssi::signal_add_first('complete word', 'sig_complete');
 Irssi::signal_add_first('command script load', 'sig_command_script_load');
 Irssi::signal_add_first('command script unload', 'sig_command_script_load');
+Irssi::signal_add_first('setup changed', 'sig_setup_changed');
 
 Irssi::signal_register({ 'script error' => [ 'Irssi::Script', 'string' ] });
 Irssi::signal_add_last('script error', 'sig_script_error');
@@ -1208,13 +1118,8 @@ foreach my $cmd ( ( 'check',
 		    'update',
 		    'contact',
 		    'search',
-#		    '-h',
 		    'help',
-#		    'ratings',
-#		    'rate',
 		    'info',
-#		    'echo',
-#		    'top',
 		    'cpan',
 		    'autorun',
 		    'new' ) ) {
@@ -1226,4 +1131,9 @@ foreach my $cmd ( ( 'check',
     }
 }
 
+sig_setup_changed();
+get_old_data();
+
 print CLIENTCRAP '%B>>%n '.$IRSSI{name}.' '.$VERSION.' loaded: /scriptassist help for help';
+
+# vim:set ts=8 sw=4:
