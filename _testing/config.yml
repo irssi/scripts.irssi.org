@@ -34,7 +34,6 @@ whitelist:
   - cap_sasl
   - dnsspam
   - idonkey
-  - irc_chess
   - ircgallery
   - irssiq
   - isdn
