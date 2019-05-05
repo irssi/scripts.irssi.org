@@ -5,16 +5,17 @@ mkdir -p auto
 . ./_testing/_get_files_arr.zsh
 
 echo -n ... >&2
-if [[ ${#filelist} -eq 0 ]] {
+
+rfl=()
+for fn ($filelist) {
+    if [[ -f $fn ]] {
+        rfl+=$fn
+    }
+}
+if [[ ${#rfl} -eq 0 ]] {
     touch auto/cpanfile
 } \
 else {
-    rfl=()
-    for fn ($filelist) {
-        if [[ -f $fn ]] {
-            rfl+=$fn
-        }
-    }
     scan-perl-prereqs $rfl > auto/cpanfile
 }
 
@@ -25,8 +26,10 @@ typeset -a sed_del_broken
 for mod (${(k)broken_mods}) { sed_del_broken+=(-e '/^'"$mod"'$/d') }
 
 sed -i \
-    -e '/^Irssi~/d' \
+    -e '/^Irssi$/d' \
     -e '/^Irssi::/d' \
+    -e '/^strict/d' \
+    -e '/^vars/d' \
     $sed_del_broken \
     -e 's/~/"'","'"/g' \
     -e 's,^,'"'"',g' \
@@ -36,3 +39,4 @@ sed -i \
     auto/cpanfile
 
 exit 0
+# vim:set sw=4 et:
