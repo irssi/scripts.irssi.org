@@ -949,17 +949,17 @@
   name: chanpeak
   version: 0.2.2
 -
-  authors: "Stefan 'tommie' Tomanek"
+  authors: "Stefan 'tommie' Tomanek, bw1"
   commands: chansearch
-  contact: stefan@pico.ruhr.de
+  contact: bw1@aol.at
   description: 'searches for specific channels'
   filename: chansearch.pl
   license: GPLv2
-  modified: '2008-05-17 17:39:11'
-  modules: LWP::UserAgent
+  modified: '2019-03-12 17:15:57'
+  modules: 'HTML::Entities LWP::UserAgent'
   name: ChanSearch
   url: http://scripts.irssi.org/
-  version: '20021019'
+  version: '2.0'
 -
   authors: "Timo 'cras' Sirainen"
   commands: chanshare
