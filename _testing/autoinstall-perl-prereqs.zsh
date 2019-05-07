@@ -28,7 +28,7 @@ sed -i \
     -e '/^Irssi~/d' \
     -e '/^Irssi::/d' \
     $sed_del_broken \
-    -e 's/~/"'","'"/g' \
+    -e 's/~/'"','"'/g' \
     -e 's,^,'"'"',g' \
     -e 's,$,'"'"',g' \
     -e 's,^,requires ,g' \
