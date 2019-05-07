@@ -1,10 +1,11 @@
 ---
 -
   authors: "Maciek 'fahren' Freudenheim"
-  changed: 'Sat Apr 13 02:23:37 CEST 2002'
+  changed: 2019-02-27
   contact: fahren@bochnia.pl
   default_package: scripthelp
   description: "Provides access to script's help"
   license: 'GNU GPLv2 or later'
+  modified: '2019-02-27 20:56:42'
   name: 'Scripts help'
-  version: '0.9'
+  version: '0.10'
