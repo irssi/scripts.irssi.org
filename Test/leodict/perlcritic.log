@@ -1,6 +1,5 @@
 Having more than one /x regexp modifier is deprecated at /home/travis/build/irssi/scripts.irssi.org/extlib/lib/perl5/Perl/Critic/Policy/ValuesAndExpressions/RequireInterpolationOfMetachars.pm line 110.
 Code before warnings are enabled at line 7, column 1.  See page 431 of PBP.  (Severity: 4)
-Return value of "close" ignored at line 116, column 2.  Check the return value of "close" for success.  (Severity: 2)
-Return value of "close" ignored at line 131, column 2.  Check the return value of "close" for success.  (Severity: 2)
-Return value of "close" ignored at line 141, column 5.  Check the return value of "close" for success.  (Severity: 2)
-Expression form of "eval" at line 148, column 23.  See page 161 of PBP.  (Severity: 5)
+Return value of "close" ignored at line 179, column 2.  Check the return value of "close" for success.  (Severity: 2)
+Return value of "close" ignored at line 188, column 2.  Check the return value of "close" for success.  (Severity: 2)
+Return value of "close" ignored at line 207, column 5.  Check the return value of "close" for success.  (Severity: 2)

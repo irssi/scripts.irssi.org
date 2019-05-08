@@ -259,7 +259,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                          lastfm ](Test/lastfm/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
 [                       lastspoke ](Test/lastspoke/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                             len ](Test/len/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
-[                         leodict ](Test/leodict/)|  ✔   |  ✔   |  ✔   | 10   |  ✔   | (c)
+[                         leodict ](Test/leodict/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   
 [                      levelclear ](Test/levelclear/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                            licq ](Test/licq/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                      linebuffer ](Test/linebuffer/)|  ✔   |  ✔   |  ✔   |  2   |  ✔   | (c)
@@ -410,7 +410,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                     schwaebisch ](Test/schwaebisch/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                     screen_away ](Test/screen_away/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                    scriptassist ](Test/scriptassist/)|  ✔   |  ✔   |  ✔   | 62   |  ✔   | (c)
-[                      scripthelp ](Test/scripthelp/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[                      scripthelp ](Test/scripthelp/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                      scriptinfo ](Test/scriptinfo/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                      scriptsave ](Test/scriptsave/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        scrmable ](Test/scrmable/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
@@ -529,4 +529,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-5c23afd5ea4ba62a17bbcd900705b096d10051d0 | 1388
+b88016fb66e43f584851473f4e862bfe2a4ccce1 | 1392
