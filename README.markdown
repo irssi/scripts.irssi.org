@@ -247,7 +247,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                            jump ](Test/jump/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                  kban-referrals ](Test/kban-referrals/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                      kblamehost ](Test/kblamehost/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                        keepnick ](Test/keepnick/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
+[                        keepnick ](Test/keepnick/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   
 [                           kenny ](Test/kenny/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                          kernel ](Test/kernel/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        keybinds ](Test/keybinds/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -259,7 +259,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                          lastfm ](Test/lastfm/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
 [                       lastspoke ](Test/lastspoke/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                             len ](Test/len/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
-[                         leodict ](Test/leodict/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   
+[                         leodict ](Test/leodict/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                      levelclear ](Test/levelclear/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                            licq ](Test/licq/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                      linebuffer ](Test/linebuffer/)|  ✔   |  ✔   |  ✔   |  2   |  ✔   | (c)
@@ -529,4 +529,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-b88016fb66e43f584851473f4e862bfe2a4ccce1 | 1392
+9fa387b4c2eeecd4f24fc17067ca41204bd4f591 | 1393
