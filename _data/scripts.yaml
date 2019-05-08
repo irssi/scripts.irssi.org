@@ -2325,14 +2325,15 @@
   version: 0.6.1
 -
   authors: 'kodgehopper (kodgehopper@netscape.net)'
+  commands: end_game
   contact: kodgehopper@netscape.net
   description: 'Chess server for IRC. Allows for multiple 2-player games to be played simultaneously'
   filename: irc_chess.pl
   license: 'GNU GPL'
-  modified: '2014-10-17 22:54:13'
+  modified: '2019-05-04 15:20:01'
   name: IRC-Chess
-  url: 'none as yet'
-  version: '0.1'
+  url: http://irc-chess.sourceforge.net/
+  version: '0.2'
 -
   authors: 'Erkki Seppälä'
   commands: irccomplete_typowords
