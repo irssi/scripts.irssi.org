@@ -1,5 +1,6 @@
 * -!- Irssi: connecting to server
-* -!- Irssi: 
-* -!- Irssi: Error in script irc_chess:
-* connect: Connection refused at irc_chess.pl line 207.
-* BEGIN failed--compilation aborted at irc_chess.pl line 211.
+* -!- Irssi: connect: Connection refused
+* -!- Irssi: Server: 127.0.0.1 Port: 1234
+* -!- Irssi: see: http://irc-chess.sourceforge.net/
+* -!- Irssi: reconnect by reload the script (/run irc_chess.pl) 
+* -!- Irssi: Loaded script irc_chess

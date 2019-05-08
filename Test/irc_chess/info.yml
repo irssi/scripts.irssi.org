@@ -1,9 +1,13 @@
 ---
 -
   authors: 'kodgehopper (kodgehopper@netscape.net)'
+  commands:
+    - end_game
   contact: kodgehopper@netscape.net
+  default_package: irc_chess
   description: 'Chess server for IRC. Allows for multiple 2-player games to be played simultaneously'
   license: 'GNU GPL'
+  modified: '2019-05-04 15:20:01'
   name: IRC-Chess
-  url: 'none as yet'
-  version: '0.1'
+  url: http://irc-chess.sourceforge.net/
+  version: '0.2'
