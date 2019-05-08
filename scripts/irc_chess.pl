@@ -7,7 +7,7 @@ use Irssi::Irc;
 use IO::Socket;
 use vars qw($VERSION %IRSSI);
 
-$VERSION="0.1";
+$VERSION="0.2";
 %IRSSI =
 (
 	authors     => "kodgehopper (kodgehopper\@netscape.net)",
@@ -15,9 +15,11 @@ $VERSION="0.1";
 	name        => "IRC-Chess",
 	description => "Chess server for IRC. Allows for multiple 2-player games to be played simultaneously",
 	license     => "GNU GPL",
-	url         => "none as yet",
+	url         => "http://irc-chess.sourceforge.net/",
 );
 my $gameRunning=0;
+my $SERVER='127.0.0.1';
+my $PORT=1234;
 
 sub processColors
 {
@@ -105,8 +107,10 @@ sub processMsgFromServer
 		{
 			$commonMessageList[$j]=processColors($commonMessageList[$j]);
 
-			$server->command("eval msg $user1 $commonMessageList[$j]"); 
-			$server->command("eval msg $user2 $commonMessageList[$j]"); 
+			if ($commonMessageList[$j] ne '') {
+				$server->command("eval msg $user1 $commonMessageList[$j]"); 
+				$server->command("eval msg $user2 $commonMessageList[$j]"); 
+			}
 		}
 		$server->command("eval msg $user1  \\co"); 
 		$server->command("eval msg $user2  \\co"); 
@@ -193,23 +197,37 @@ sub cmd_endGame
 	$gameRunning=0;
 }#cmd_endGame
 
-BEGIN
+sub connect_server
 {
-	my $PORT=1234;
 	
-	Irssi::print("connecting to server\n");
+	Irssi::print("connecting to server");
 	my $tcpProtocolNumber = getprotobyname('tcp') || 6; 
 
 	socket(SOCKET, PF_INET(), SOCK_STREAM(), $tcpProtocolNumber)
-		or die("socket: $!");
+		or return("socket: $!");
 
-	my $internetPackedAddress = pack('S na4 x8', AF_INET(), $PORT, 127.0.0.1); 
-	connect(SOCKET, $internetPackedAddress) or die("connect: $!");
+	my $internetPackedAddress = pack_sockaddr_in($PORT, inet_aton($SERVER));
+	connect(SOCKET, $internetPackedAddress) or return("connect: $!");
 
 	Irssi::print("Game is now running");
 	$gameRunning=1;
+	return '';
 }
 
+sub cmd_connect_server
+{
+	my $err = connect_server();
+	if ($err ne '') {
+		Irssi::print($err);
+		if ($err =~ m/^connect/) {
+			Irssi::print("Server: $SERVER Port: $PORT");
+			Irssi::print("see: ".$IRSSI{url});
+			Irssi::print("reconnect by reload the script (/run irc_chess.pl) ");
+		}
+	}
+}
+
+cmd_connect_server();
 
 Irssi::signal_add("message private","sig_processPvt");
 Irssi::command_bind("end_game", "cmd_endGame");
