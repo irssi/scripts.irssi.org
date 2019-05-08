@@ -1354,17 +1354,6 @@
   url: http://www.garion.org/irssi/
   version: '1.2'
 -
-  authors: 'Benjamin Reed'
-  contact: ranger@befunk.com
-  description: 'Logs URLs and posts them to del.icio.us'
-  filename: deliciousurl.pl
-  license: GPLv2
-  modified: '2014-10-17 20:34:00'
-  modules: 'Log::Dispatch Log::Dispatch::File Net::Delicious URI::Find::Rule'
-  name: deliciousurl
-  url: http://ranger.befunk.com/
-  version: '0.5'
--
   authors: 'Felipe F. Tonello'
   contact: eu@felipetonello.com
   description: 'Sends notification using the Desktop Notifications Specification.'
