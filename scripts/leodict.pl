@@ -4,27 +4,45 @@
 use strict;
 
 use vars qw($VERSION %IRSSI);
-$VERSION = '20040515';
+$VERSION = '20180321';
 %IRSSI = (
-    authors     => 'Stefan \'tommie\' Tomanek',
-    contact     => 'stefan@pico.ruhr.de',
+    authors     => 'Stefan \'tommie\' Tomanek, bw1',
+    contact     => 'bw1@aol.at',
     name        => 'leodict',
     description => 'translates via dict.leo.org',
     license     => 'GPLv2',
     url         => 'http://irssi.org/scripts/',
-    changed     => $VERSION,
-    modules     => 'LWP::Simple Data::Dumper',
+    modules     => 'Mojo::UserAgent Encode JSON::PP Mojo::DOM Getopt::Long POSIX',
     commands	=> "leodict"
 );
 use vars qw($forked);
+use utf8;
+use Encode;
 use Irssi 20020324;
-use LWP::Simple;
+use JSON::PP;
+use Mojo::DOM;
+use Getopt::Long qw(GetOptionsFromString);
+use Mojo::UserAgent;
 use POSIX;
 
+# global
+my %gresult;
+my $lang;
+my $dlang= 'englisch-deutsch/';
+my $help;
+my $browse;
+my $paste;
+my $word;
+my $dir;
+my $ddir= '';
+
+# for fork
+my $ftext;
+my %fresult;
 
 sub draw_box ($$$$) {
     my ($title, $text, $footer, $colour) = @_;
-    my $box = ''; 
+    my $box = '';
     $box .= '%R,--[%n%9%U'.$title.'%U%9%R]%n'."\n";
     foreach (split(/\n/, $text)) {
         $box .= '%R|%n '.$_."\n";
@@ -36,14 +54,33 @@ sub draw_box ($$$$) {
 
 sub show_help() {
     my $help = "LeoDict $VERSION
-/leodict <word1> <word2>...
+SYNOPSIS
+  /leodict [OPTION] <word> [OPTION]
     searches dict.leo.org for appropiate translations
-/leodict -p <word1>...
+DESCRIPTION
+  -p
     paste the translations to the current channel or query
     The number of translations is limited by the setting
     'leodict_paste_max_translations'
-/leodict -b <word1>...
+  -b
     open dict.leo.org in your web browser (uses openurl.pl)
+
+  -from from German
+  -to   to German
+  -both from and to German
+  -en   English
+  -fr   French
+  -es   Spanish
+  -it   Italian
+  -zh   Chinese
+  -ru   Russian
+  -pt   Portuguese
+  -pl   Polish
+SETTINGS
+  'leodict_default_options'
+    example: -it -from
+  'leodict_paste_max_translations'
+  'leodict_paste_beautify'
 ";
     my $text='';
     foreach (split(/\n/, $help)) {
@@ -53,41 +90,67 @@ sub show_help() {
     print CLIENTCRAP draw_box($IRSSI{name}, $text, "help", 1);
 }
 
+sub parser {
+    my %ignore=(
+	'Suchwort' => 1,
+	'Beispiele' => 1,
+	'Orthographisch ähnliche Wörter' => 1,
+	'Aus dem Umfeld der Suche' => 1,
+	'Forumsdiskussionen, die den Suchbegriff enthalten' =>1,
+	#'Substantive'
+	#'Verben'
+	#'Adjektive / Adverbien'
+	#'Phrasen'
+    );
+    %fresult=();
+
+    # tables
+    return unless (defined $ftext); 
+    my $dom = Mojo::DOM->new($ftext);
+    foreach my $tbl ( $dom->find('table')->each ) {
+
+	# head
+	my $thead =$tbl->at('thead');
+	next unless (defined $thead );
+	my $headname = $thead->descendant_nodes->last->to_string;
+	next if (exists $ignore{ $headname } );
 
 
-sub get_page ($) {
-    my ($word) = @_;
-    return get('http://dict.leo.org/?search='.$word.'&relink=off');
-}
+	# rows
+	my @rows=();
+	foreach my $row ( $tbl->find('tr')->each) {
 
-sub get_words ($) {
-    my ($word) = @_;
-    my @translations;
-    my $data = get_page($word);
-    foreach (split(/\n/, $data)) {
-	if (/(\d+) search results/) {
-	    my $results = $1;
-	    foreach (split(/\<\/TR\>/)) {
-		my @trans;
-		foreach (split(/\<\/TD\>/)) {
-		    $_ =~ s/\<.*?\>//g;
-		    $_ =~ s/^ *//g;
-		    $_ =~ s/ *$//g;
-		    $_ =~ s/&nbsp;//g;
-		    $_ =~ s/^\t*//g;
-		    # Thanks to senneth
-		    $_ =~ s/Direct Matches//g;
-		    next if (/\d+ search results/);
-		    #print $_."\n" if (/\w/);
-		    push @trans, $_ if (/\w/);
-		}
-		if (scalar(@trans) == 2) {
-		    push @translations, \@trans;
+	    # colums
+	    my @columns=();
+	    foreach my $col ( $row->find('td')->each ) {
+		my $co = $col->to_string;
+		$co =~ s/<.*?>//sg;
+		if ( length($co) >2 ) {
+		    push(@columns ,$co);
 		}
 	    }
+	    if ( scalar(@columns) > 0 ) {
+		push(@rows, [@columns]);
+	    }
 	}
+	$fresult{ $headname } = [ @rows ];
     }
-    return \@translations;
+}
+
+sub get_page ($) {
+    my ($url) = @_;
+    #return get('http://dict.leo.org/?search='.$word.'&relink=off');
+    my $ua = Mojo::UserAgent->new;
+    my $res;
+    eval {
+	$res=$ua->get($url)->result;
+    };
+    if (defined $res && $res->is_success) {
+	$ftext = $res->body;
+	utf8::decode($ftext);
+    } else {
+	$ftext=undef;
+    }
 }
 
 sub call_openurl ($) {
@@ -102,7 +165,7 @@ sub call_openurl ($) {
 }
 
 sub translate ($$$) {
-    my ($word,$target,$server) = @_;
+    my ($url, $target, $server) = @_;
     my ($rh, $wh);
     pipe($rh, $wh);
     if ($forked) {
@@ -119,50 +182,57 @@ sub translate ($$$) {
 	my @args = ($rh, \$pipetag, $target, $server);
 	$pipetag = Irssi::input_add(fileno($rh), INPUT_READ, \&pipe_input, \@args);
     } else {
-	eval {
-	    my %result;
-	    $result{trans} = get_words($word);
-	    $result{word} = $word;
-	    my $dumper = Data::Dumper->new([\%result]);
-	    $dumper->Purity(1)->Deepcopy(1)->Indent(0);
-	    my $data = $dumper->Dump;
-	    print($wh $data);
-	};
+	get_page($url);
+	parser();
+	print($wh encode_json(\%fresult));
 	close($wh);
 	POSIX::_exit(1);
     }
 }
 
+sub one_site {
+    my ($site, $cat) = @_;
+    my @res;
+    foreach my $r ( @{$gresult{$cat}} ) {
+	push @res,$r->[$site];
+    }
+    return [@res];
+}
+
 sub pipe_input ($) {
     my ($rh, $pipetag, $target, $tag) = @{$_[0]};
     $forked = 0;
-    my $text;
-    $text .= $_ foreach <$rh>;
+    local $\;
+    my $res=<$rh>;
     close $rh;
+    return if (length($res) <5);
+    %gresult = %{decode_json( $res )};
     Irssi::input_remove($$pipetag);
-    unless ($text) {
-	print CLIENTCRAP "%R<<%n Something weird happend";
-	return(0);
-    }
-    no strict 'vars';
-    my %incoming = %{ eval("$text") };
+
     if ($target eq '') {
-	show_translations($incoming{trans},$incoming{word});
+        show_translations(\%gresult, $word);
     } else {
-	my $server = Irssi::server_find_tag($tag);
-	my $witem = $server->window_item_find($target);
-	paste_translations($incoming{trans}, $incoming{word}, $witem) if $witem;
+        my $server = Irssi::server_find_tag($tag);
+        my $witem = $server->window_item_find($target);
+	paste_translations(\%gresult, $word, $witem) if $witem;
     }
 }
 
 sub show_translations($$) {
-    my @trans = @{$_[0]};
+    my %trans = %{$_[0]};
     my $word = $_[1];
-    if (@trans) {
+    if (%trans) {
 	my $text;
-	foreach (@trans) {
-	    $text .= "%U".$_->[0]."%U \n";
-	    $text .= " `-> ".$_->[1]."\n";
+	foreach my $k (keys %trans) {
+	    $text .= "== $k ==\n";
+	    foreach (@{ $trans{$k} }) {
+		$text .= "%U".$_->[0]."%U \n";
+		$text .= " `-> ".$_->[1]."\n";
+	    }
+	}
+	my $term_charset= Irssi::settings_get_str('term_charset');
+	if ('UTF-8' ne $term_charset) {
+	    $text= encode($term_charset, $text);
 	}
 	print CLIENTCRAP draw_box('LeoDict', $text, $word, 1);
     } else {
@@ -173,66 +243,117 @@ sub show_translations($$) {
 sub paste_translations ($$) {
     my ($trans, $word, $target) = @_;
     return unless ($target->{type} eq "CHANNEL" || $target->{type} eq "QUERY");
-    if (@$trans) {
+    if (%{ $trans }) {
         my $text;
 	my $beauty = Irssi::settings_get_bool('leodict_paste_beautify');
 	my $max = Irssi::settings_get_int('leodict_paste_max_translations');
-       	my $i = 0;
-        foreach (@$trans) {
-	    if ($i < $max || $max == 0) {
-		if ($beauty) {
-		    $text .= $_->[0]." \n";
-		    $text .= " `-> ".$_->[1]."\n";
+	foreach my $k (keys %{ $trans }) {
+	    $text .= "== $k ==\n";
+	    my $i = 0;
+	    foreach (@{ $trans->{$k}}) {
+		if ($i < $max || $max == 0) {
+		    if ($beauty) {
+			$text .= $_->[0]." \n";
+			$text .= " `-> ".$_->[1]."\n";
+		    } else {
+			$text .= $_->[0].' => '.$_->[1]."\n";
+		    }
+		    $i++;
 		} else {
-		    $text .= $_->[0].' => '.$_->[1]."\n";
+		    $text .= '...'."\n";
+		    last;
 		}
-		$i++;
-	    } else {
-		$text .= '...'."\n";
-		last;
 	    }
-        }
+	}
 	my $msg = $text;
         $msg = draw_box('LeoDict', $text, $word, 0) if $beauty;
 	$target->command('MSG '.$target->{name}. ' '.$_) foreach (split(/\n/, $msg));
     }
-
 }
+
+#https://dict.leo.org/englisch-deutsch/word
+#https://dict.leo.org/franz%C3%B6sisch-deutsch/word
+#https://dict.leo.org/spanisch-deutsch/word
+#https://dict.leo.org/italienisch-deutsch/word
+#https://dict.leo.org/chinesisch-deutsch/word
+#https://dict.leo.org/russisch-deutsch/word
+#https://dict.leo.org/portugiesisch-deutsch/word
+#https://dict.leo.org/polnisch-deutsch/word
+#https://dict.leo.org/polnisch-deutsch/word?side=left  pl -> de
+#https://dict.leo.org/polnisch-deutsch/word?side=right pl <- de
+my %options = (
+    "from" => sub {$dir= '?side=right';},
+    "to" => sub {$dir= '?side=left';},
+    "both" => sub {$dir= '';},
+    "en" => sub {$lang = 'englisch-deutsch/'; },
+    "fr" => sub {$lang = 'franz%C3%B6sisch-deutsch/'; },
+    "es" => sub {$lang = 'spanisch-deutsch/'; },
+    "it" => sub {$lang = 'italienisch-deutsch/'; },
+    "zh" => sub {$lang = 'chinesisch-deutsch/'; },
+    "ru" => sub {$lang = 'russisch-deutsch/'; },
+    "pt" => sub {$lang = 'portugiesisch-deutsch/'; },
+    "pl" => sub {$lang = 'polnisch-deutsch/'; },
+    "h" => \$help,
+    "b" => \$browse,
+    "p" => \$paste,
+);
 
 sub cmd_leodict ($$$) {
     my ($args, $server, $witem) = @_;
-    my @arg = split(/ /, $args);
-    my $paste = 0;
-    my $browse = 0;
-    if ($arg[0] eq '-p') {
-	$paste = 1;
-	shift(@arg);
-    } elsif ($arg[0] eq '-b') {
-	$browse = 1;
-	shift(@arg);
-    } elsif ($arg[0] eq '-h') {
-	show_help();
-	return();
+    utf8::decode($args);
+    my $burl= "https://dict.leo.org/";
+    my $url;
+
+    $lang= $dlang;
+    $dir= $ddir;
+    undef $help;
+    undef $browse;
+    undef $paste;
+
+    my ($ret, $arg) = GetOptionsFromString($args, %options);
+
+    $word= $arg->[0];
+    $url=$burl.$lang.$word.$dir;
+
+    if (defined $help) {
+        show_help();
+        return();
     }
-    
-    foreach (@arg) {
-	if ($paste) {
-	    #paste_translations($_, $witem) if $witem;
-	    next unless ref $witem;
-	    next unless ref $server;
-	    translate($_, $witem->{name}, $witem->{server}->{tag});
-	} elsif ($browse) {
-	    call_openurl('http://dict.leo.org/?lang=en&search='.$_);
-	} else {
-	    #show_translations($_);
-	    translate($_,'', '');
-	}
+    if (defined $browse) {
+	call_openurl($url);
+        return();
+    }
+
+    if (defined $paste) {
+	#paste_translations($_, $witem) if $witem;
+	return unless defined $witem;
+	return unless defined $server;
+	translate($url, $witem->{name}, $witem->{server}->{tag});
+    } else {
+	#show_translations($_);
+	translate($url,'', '');
     }
 }
 
+sub sig_setup_changed {
+    my $args =Irssi::settings_get_str('leodict_default_options');
+    my ($ret, $arg) = GetOptionsFromString($args, %options);
+    $dlang=$lang;
+    $ddir=$dir;
+}
+
+Irssi::signal_add('setup changed', 'sig_setup_changed');
+
 Irssi::command_bind('leodict', 'cmd_leodict');
 
+Irssi::command_set_options('leodict', join(" ",keys %options));
+
+Irssi::settings_add_str($IRSSI{'name'}, 'leodict_default_options', '-en -both');
 Irssi::settings_add_int($IRSSI{'name'}, 'leodict_paste_max_translations', 2);
 Irssi::settings_add_bool($IRSSI{'name'}, 'leodict_paste_beautify', 1);
 
+sig_setup_changed();
+
 print CLIENTCRAP "%B>>%n ".$IRSSI{name}." ".$VERSION." loaded: /leodict -h for help";
+
+# vim:set ts=8 sw=4:
