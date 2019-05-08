@@ -2657,17 +2657,17 @@
   name: len
   version: 1.0.0
 -
-  authors: "Stefan 'tommie' Tomanek"
+  authors: "Stefan 'tommie' Tomanek, bw1"
   commands: leodict
-  contact: stefan@pico.ruhr.de
+  contact: bw1@aol.at
   description: 'translates via dict.leo.org'
   filename: leodict.pl
   license: GPLv2
-  modified: '2008-05-17 17:39:11'
-  modules: LWP::Simple
+  modified: '2019-03-21 10:55:22'
+  modules: 'Mojo::DOM Mojo::UserAgent'
   name: leodict
   url: http://irssi.org/scripts/
-  version: '20040515'
+  version: '20180321'
 -
   authors: 'Nico R. Wohlgemuth'
   commands: levelclear
