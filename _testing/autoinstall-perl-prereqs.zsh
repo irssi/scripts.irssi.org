@@ -26,10 +26,8 @@ typeset -a sed_del_broken
 for mod (${(k)broken_mods}) { sed_del_broken+=(-e '/^'"$mod"'$/d') }
 
 sed -i \
-    -e '/^Irssi$/d' \
+    -e '/^Irssi~/d' \
     -e '/^Irssi::/d' \
-    -e '/^strict/d' \
-    -e '/^vars/d' \
     $sed_del_broken \
     -e 's/~/"'","'"/g' \
     -e 's,^,'"'"',g' \
