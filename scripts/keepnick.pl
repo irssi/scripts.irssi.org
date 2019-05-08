@@ -1,8 +1,8 @@
 # keepnick - irssi 0.7.98.CVS 
 #
-#    $Id: keepnick.pl,v 1.17 2003/01/04 10:18:42 peder Exp $
+#    $Id: keepnick.pl,v 1.19 2013/05/23 05:08:34 peder Exp $
 #
-# Copyright (C) 2001, 2002 by Peder Stray <peder@ninja.no>
+# Copyright (C) 2001, 2002, 2006, 2013 by Peder Stray <peder@ninja.no>
 #
 
 use strict;
@@ -12,7 +12,7 @@ use Irssi::Irc;
 # ======[ Script Header ]===============================================
 
 use vars qw{$VERSION %IRSSI};
-($VERSION) = '$Revision: 1.17 $' =~ / (\d+\.\d+) /;
+($VERSION) = '$Revision: 1.19 $' =~ / (\d+\.\d+) /;
 %IRSSI = (
           name        => 'keepnick',
           authors     => 'Peder Stray',
@@ -62,6 +62,7 @@ sub check_nick {
     for $net (keys %getnick) {
 	$server = Irssi::server_find_chatnet($net);
 	next unless $server;
+	next unless ref($server) eq 'Irssi::Irc::Server'; # this only work on IRC
 	$nick = $getnick{$net};
 	if (lc $server->{nick} eq lc $nick) {
 	    delete $getnick{$net};
@@ -280,7 +281,7 @@ sub cmd_keepnick {
     # check that we really have a chatnet
     unless ($chatnet) {
 	Irssi::printformat(MSGLEVEL_CLIENTCRAP, 'keepnick_crap',
-			   "Unable to find a chatnet");
+			   "Unable to find server network, maybe you forgot /server add before connecting?");
 	return;
     }
 	
@@ -454,3 +455,4 @@ load_nicks;
 # header-initial-hide: t
 # mode: header-minor
 # end:
+# vim:set ts=8 sw=4:
