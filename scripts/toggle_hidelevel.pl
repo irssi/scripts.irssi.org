@@ -10,7 +10,7 @@ use Irssi::TextUI;
 use Data::Dumper;
 use vars qw($VERSION %IRSSI);
 
-$VERSION = "0.5.2";
+$VERSION = "0.6.0";
 %IRSSI = (
           authors       => 'Jari Matilainen',
           contact       => 'vague!#irssi@freenode on irc',
@@ -49,9 +49,15 @@ sub set_mode {
   $val = $levels =~ s/(\w+)/sprintf("%s%s", $mode ? '+' : '-', $1)/gre;
   $windows->{$win->{refnum}}{mode} = $mode;
 
-  if($val) {
-    $processing += 1;
-    $win->command("^window hidelevel $val");
+  if($win->view->can('set_hidden_level')) {
+    $win->view->set_hidden_level(Irssi::level2bits($val));
+    $win->view->redraw;
+  }
+  else {
+    if($val) {
+      $processing += 1;
+      $win->command("^window hidelevel $val");
+    }
   }
 }
 
@@ -92,12 +98,12 @@ Irssi::command_bind('window togglelevel' => sub {
 Irssi::command_bind_last('window hidelevel' => sub {
   my ($args, $server, $witem) = @_;
 
-  if($processing) {
+  return unless $witem;
+
+  if(!$witem->window->view->can('set_hidden_level') && $processing) {
     $processing -= 1;
     return;
   }
-
-  return unless $witem;
 
   if($args) {
     my $levels = $witem->window->view->{hidden_level};
