@@ -1513,9 +1513,9 @@
   description: 'This script allow advanced parametrization of the /list command. Accepted parameters are -minusers <#users> and -maxusers <#users>. '
   filename: elist.pl
   license: GPLv2
-  modified: '2008-05-25 14:42:28'
+  modified: '2019-05-09 10:26:14'
   name: 'Enanched LIST'
-  version: '1.0'
+  version: '1.1'
 -
   authors: 'Johan "Ion" Kiviniemi'
   contact: 'ion at hassers.org'
