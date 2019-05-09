@@ -13,7 +13,7 @@ use vars qw($VERSION %IRSSI);
 use Irssi;
 use Getopt::Long;
 
-$VERSION = '1.0';
+$VERSION = '1.1';
 %IRSSI = (
     authors     => 'Ilya Cassina',
     contact     => 'icassina@gmail.com',
