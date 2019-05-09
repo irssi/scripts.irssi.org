@@ -13,7 +13,7 @@ use vars qw($VERSION %IRSSI);
 use Irssi;
 use Getopt::Long;
 
-$VERSION = '1.0';
+$VERSION = '1.1';
 %IRSSI = (
     authors     => 'Ilya Cassina',
     contact     => 'icassina@gmail.com',
@@ -42,6 +42,7 @@ sub elist_config_init {
   %elist_config = (
     mincount => 0,
     maxcount => 10000,
+    yes => "",
     chanmask => ""
   );
 }
@@ -59,6 +60,7 @@ sub elist {
   GetOptions (
     'mincount|m=i' => \$elist_config{"mincount"},
     'maxcount|M=i' => \$elist_config{"maxcount"},
+    'yes|YES' => \$elist_config{"yes"}
   );
  
   ## setting chanmask (remaining argument) ##
@@ -77,7 +79,7 @@ sub elist {
   print "%K[%n".$server->{'tag'}."%K]%n %B<-->%n %m"."elist %n%B(%y"."min=%m".$elist_config{"mincount"}."%n".
                                                      ", %y"."max=%m".$elist_config{"maxcount"}."%n".
                                                      ", %y"."mask=%K'%m".$elist_config{"chanmask"}."%K'%B)";
-  $server->command("LIST " . $elist_config{"chanmask"});
+  $server->command("LIST " . ($elist_config{"yes"} ? "-YES " : "") . $elist_config{"chanmask"});
 }
 
 
