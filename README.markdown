@@ -149,7 +149,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                          dr_who ](Test/dr_who/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                      duckduckgo ](Test/duckduckgo/)|  ✔   |  ✔   |  ✔   | 32   |  ✔   | (c)
 [                        efnetorg ](Test/efnetorg/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
-[                           elist ](Test/elist/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[                           elist ](Test/elist/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                           eliza ](Test/eliza/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                         emaildb ](Test/emaildb/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
 [                      email_msgs ](Test/email_msgs/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -467,7 +467,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                          topics ](Test/topics/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       tordetect ](Test/tordetect/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                      trackbar22 ](Test/trackbar22/)|  ✘   |  ✘   |  ✔   |  5   |  ☡   | (c)
-[                        trackbar ](Test/trackbar/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
+[                        trackbar ](Test/trackbar/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   
 [                       tracknick ](Test/tracknick/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                           track ](Test/track/)|  ✔   |  ✔   |  ✔   | 36   |  ✔   | (c)
 [                        translit ](Test/translit/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -528,4 +528,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-8403b19923f6188703d73f532166a863f5bcb113 | 1403
+e5b49088770cce936305967468fe1418cf1e9a12 | 1404
