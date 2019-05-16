@@ -1409,10 +1409,10 @@
   description: 'Dims nicks that are not in channel anymore.'
   filename: dim_nicks.pl
   license: 'GNU GPLv2 or later'
-  modified: '2016-06-10 17:23:10'
+  modified: '2019-05-16 09:16:26'
   name: dim_nicks
   url: http://anti.teamidiot.de/
-  version: 0.4.8
+  version: 0.4.9
 -
   authors: 'Christoffer Holmberg'
   contact: skug+irssiscripts@skug.fi
