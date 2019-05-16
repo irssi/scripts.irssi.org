@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-our $VERSION = '0.4.8'; # baf75f08d3d32c9
+our $VERSION = '0.4.9';
 our %IRSSI = (
     authors     => 'Nei',
     contact     => 'Nei @ anti@conference.jabber.teamidiot.de',
@@ -69,6 +69,7 @@ my $skip_forms = 1;
 my $search_forms_max = 5;
 my $ignore_hilights = 1;
 my $color_letter = 'K';
+my @color_code = ("\cD8/"); # update this when you change $color_letter
 
 # nick object cache, chan object cache, line id cache, line id -> window map, -> channel, -> nick, -> nickname, channel -> line ids, channel->nickname->departure time, channel->nickname->{parts of line}
 my (%nick_reg, %chan_reg, %history_w, %history_c, %history_n, %history_nn, %history_st, %lost_nicks, %lost_nicks_fs, %lost_nicks_fc, %lost_nicks_bc, %lost_nicks_bs);
@@ -82,8 +83,6 @@ sub msg_line_tag {
     local $nickref = ref $chanref ? $chanref->nick_find($nick) : undef;
     &Irssi::signal_continue;
 }
-
-my @color_code;
 
 sub color_to_code {
     my $win = Irssi::active_win;
@@ -422,6 +421,8 @@ init_dim_nicks();
 
 # Changelog
 # =========
+# 0.4.9
+# - fix default setting not working
 # 0.4.8
 # - optionally ignore hilighted lines
 # 0.4.7
