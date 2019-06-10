@@ -3423,15 +3423,6 @@
   name: notes
   version: '1.0'
 -
-  authors: "Stefan 'tommie' Tomanek"
-  contact: stefan@pico.ruhr.de
-  description: 'Utilizes NoteServ to implement a buddylist'
-  filename: noteserve.pl
-  license: GPLv2
-  modified: '2008-05-17 17:39:11'
-  name: NoteServ
-  version: '2002123101'
--
   authors: 'Ben Klein, based on noticemove by Timo Sirainen'
   contact: shacklein@gmail.com
   description: "Print private notices in query/channel where you're talking to them. Prefers active window if they're there with you."
