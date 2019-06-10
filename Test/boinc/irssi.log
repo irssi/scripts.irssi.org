@@ -1,0 +1,7 @@
+* "my" variable $old masks earlier declaration in same scope at boinc.pl line 167.
+* 
+* Useless use of private variable in void context at boinc.pl line 308.
+* 
+* Use of uninitialized value $time_cycle in numeric ne (!=) at boinc.pl line 503.
+* 
+* -!- Irssi: Loaded script boinc
