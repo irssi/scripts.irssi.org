@@ -23,7 +23,7 @@ use Text::ParseWords;
 use IO::File;
 use vars qw($VERSION %IRSSI);
 
-$VERSION = '1.2.1';
+$VERSION = '1.2.2';
 %IRSSI = (
 	authors     => 'Wouter Coekaerts',
 	contact     => 'wouter@coekaerts.be',
@@ -31,7 +31,7 @@ $VERSION = '1.2.1';
 	description => 'execute a command or replace text, triggered by an event in irssi',
 	license     => 'GPLv2 or later',
 	url         => 'http://wouter.coekaerts.be/irssi/',
-	changed     => '$LastChangedDate: 2009-02-07 21:35:47 +0100 (Sat, 07 Feb 2009) $',
+	changed     => '2019-05-01',
 );
 
 sub cmd_help {
@@ -166,7 +166,7 @@ my @allchanmsg_types = qw(publics pubactions pubnotices pubctcps pubctcpreplies 
 # trigger types with a message
 my @allmsg_types = (@allchanmsg_types, qw(privmsgs privactions privnotices privctcps privctcpreplies dcc_msgs dcc_actions dcc_ctcps quits));
 # trigger types with a channel
-my @allchan_types = (@allchanmsg_types, qw(mode_channel mode_nick joins invites pubflood));
+my @allchan_types = (@allchanmsg_types, qw(mode_channel mode_nick joins invites pubflood send_text));
 # trigger types in -all
 my @all_types = (@allmsg_types, qw(mode_channel mode_nick joins invites nick_changes));
 # trigger types that can use -masks
