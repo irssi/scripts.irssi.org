@@ -80,7 +80,7 @@ See [the testing read-me](../master/_testing/) for details.
 [           bitlbee_typing_notice ](Test/bitlbee_typing_notice/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                         blowjob ](Test/blowjob/)|  ✔   |  ✔   |  ✔   | 22   |  ✔   | (c)
 [                             bmi ](Test/bmi/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                           boinc ](Test/boinc/)|  ✔   |  ✔   |  ✔   | 26   |  ✔   
+[                           boinc ](Test/boinc/)|  ✔   |  ✔   |  ✔   | 26   |  ✔   | (c)
 [                          buffer ](Test/buffer/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                             buf ](Test/buf/)|  ✔   |  ✔   |  ✔   | 11   |  ✔   | (c)
 [                            calc ](Test/calc/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
@@ -246,7 +246,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                        joininfo ](Test/joininfo/)|  ✔   |  ✔   |  ✔   | 11   |  ✔   | (c)
 [                            jump ](Test/jump/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                  kban-referrals ](Test/kban-referrals/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
-[                      kblamehost ](Test/kblamehost/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                      kblamehost ](Test/kblamehost/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                        keepnick ](Test/keepnick/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
 [                           kenny ](Test/kenny/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                          kernel ](Test/kernel/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -527,4 +527,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-1eddf51aad1bf95d715f258c65a914e32c99ba7d | 1424
+e6096bb1492f791af325e18111d8217e74b8f52e | 1429
