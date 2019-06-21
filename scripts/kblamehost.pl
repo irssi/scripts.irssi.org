@@ -5,7 +5,7 @@ use Irssi;
 use Irssi::Irc;
 use vars qw($VERSION %IRSSI); 
 
-$VERSION = "0.0.1";
+$VERSION = "0.0.2";
 %IRSSI = (
     authors     => 'Filippo \'godog\' Giunchedi',
     contact     => 'filippo\@esaurito.net',
@@ -55,7 +55,8 @@ sub event_join
 		if( $#dots >= Irssi::settings_get_str('kblamehost_dots') && $channel_enabled == 1 && $is_friend == 0)
 		{
 			# Irssi::print("lamehost ($hostname) by $_->{nick} detected on $channelName, kicking...");
-			$server->command("kick $channelName $_->{nick} Irssi::settings_get_str('kblamehost_kickmsg')");
+			$server->command("kick $channelName $_->{nick} "
+					.Irssi::settings_get_str('kblamehost_kickmsg'));
 			$server->command("ban $channelName $_->{nick}") if ( Irssi::settings_get_str('kblamehost_ban') );
 		}
 	}
