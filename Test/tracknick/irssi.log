@@ -1,1 +1,7 @@
+* Use of uninitialized value $trackchannel in string ne at tracknick.pl line 172.
+* 
+* Use of uninitialized value $realnick in string ne at tracknick.pl line 177.
+* 
+* Use of uninitialized value $realnick in concatenation (.) or string at tracknick.pl line 178.
+* 
 * -!- Irssi: Loaded script tracknick

@@ -1,13 +1,14 @@
 ---
 -
   authors: 'Timo Sirainen'
-  changed: 2002-03-04T22:47+0100
+  changed: 2019-06-08
   commands:
     - findnick
   contact: tss@iki.fi
   default_package: tracknick
   description: "Are you ever tired of those people who keep changing their nicks? Or maybe you just don't like someone's nick? This script lets you see them with the real nick all the time no matter what nick they're currently using."
   license: 'Public Domain'
-  name: 'track nick'
+  modified: '2019-06-08 16:12:11'
+  name: tracknick
   url: http://irssi.org/
-  version: '0.01'
+  version: '0.02'

@@ -184,7 +184,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                       fullwidth ](Test/fullwidth/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                           getop ](Test/getop/)|  ✔   |  ✔   |  ✔   | 16   |  ✔   | (c)
 [                          gimmie ](Test/gimmie/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                 gitscriptassist ](Test/gitscriptassist/)|  ✔   |  ✔   |  ✔   | 24   |  ✔   
+[                 gitscriptassist ](Test/gitscriptassist/)|  ✔   |  ✔   |  ✔   | 24   |  ✔   | (c)
 [                             go2 ](Test/go2/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                          google ](Test/google/)|  ✔   |  ✔   |  ✔   | 10   |  ✔   | (c)
 [                              go ](Test/go/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -468,7 +468,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                       tordetect ](Test/tordetect/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                      trackbar22 ](Test/trackbar22/)|  ✘   |  ✘   |  ✔   |  5   |  ☡   | (c)
 [                        trackbar ](Test/trackbar/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
-[                       tracknick ](Test/tracknick/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                       tracknick ](Test/tracknick/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                           track ](Test/track/)|  ✔   |  ✔   |  ✔   | 36   |  ✔   | (c)
 [                        translit ](Test/translit/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                         trigger ](Test/trigger/)|  ✔   |  ✔   |  ✔   | 16   |  ✔   | (c)
@@ -528,4 +528,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-5b03dd5d4b4a7c81fd7030b13c62a48b6b086fe1 | 1431
+04aaea99fc0db3dd3dcc195974c6c6fb3e145cb8 | 1432
