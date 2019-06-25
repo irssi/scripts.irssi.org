@@ -1877,6 +1877,17 @@
   url: http://www.princessleia.com/
   version: '1.0'
 -
+  authors: bw1
+  commands: gitscriptassist
+  contact: bw1@aol.at
+  description: 'script management with git'
+  filename: gitscriptassist.pl
+  license: 'Public Domain'
+  modified: '2019-06-04 18:28:11'
+  name: gitscriptassist
+  url: https://scripts.irssi.org/
+  version: '0.1'
+-
   authors: nohar
   commands: go
   contact: nohar@freenode
