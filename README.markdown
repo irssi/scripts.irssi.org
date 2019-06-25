@@ -184,6 +184,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                       fullwidth ](Test/fullwidth/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                           getop ](Test/getop/)|  ✔   |  ✔   |  ✔   | 16   |  ✔   | (c)
 [                          gimmie ](Test/gimmie/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                 gitscriptassist ](Test/gitscriptassist/)|  ✔   |  ✔   |  ✔   | 24   |  ✔   
 [                             go2 ](Test/go2/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                          google ](Test/google/)|  ✔   |  ✔   |  ✔   | 10   |  ✔   | (c)
 [                              go ](Test/go/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -246,7 +247,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                        joininfo ](Test/joininfo/)|  ✔   |  ✔   |  ✔   | 11   |  ✔   | (c)
 [                            jump ](Test/jump/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                  kban-referrals ](Test/kban-referrals/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
-[                      kblamehost ](Test/kblamehost/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[                      kblamehost ](Test/kblamehost/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        keepnick ](Test/keepnick/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
 [                           kenny ](Test/kenny/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                          kernel ](Test/kernel/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -527,4 +528,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-e6096bb1492f791af325e18111d8217e74b8f52e | 1429
+5b03dd5d4b4a7c81fd7030b13c62a48b6b086fe1 | 1431
