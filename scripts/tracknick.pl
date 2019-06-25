@@ -30,51 +30,49 @@ use strict;
 use Irssi;
 use Irssi::Irc;
 use vars qw($VERSION %IRSSI); 
-$VERSION = "0.01";
+$VERSION = "0.02";
 %IRSSI = (
     authors     => "Timo Sirainen",
     contact	=> "tss\@iki.fi", 
-    name        => "track nick",
+    name        => "tracknick",
     description => "Are you ever tired of those people who keep changing their nicks? Or maybe you just don't like someone's nick? This script lets you see them with the real nick all the time no matter what nick they're currently using.",
     license	=> "Public Domain",
     url		=> "http://irssi.org/",
-    changed	=> "2002-03-04T22:47+0100"
+    changed	=> "2019-06-08"
 );
 
-# change these to the values you want them to be
-# change these to the values you want them to be
-my $trackchannel = '#channel';
-my $realnick = 'nick';
-my $address_regexp = 'user@address.fi$';
-my $realname_regexp = 'first.*lastname';
+my $trackchannel;
+my $realnick;
+my $address_regexp;
+my $realname_regexp;
 
 my $fakenick = '';
 
 sub event_nick {
-	my ($newnick, $server, $nick, $address) = @_;
+	my ( $server, $newnick, $nick, $address) = @_;
 	$newnick = substr($newnick, 1) if ($newnick =~ /^:/);
 
 	$fakenick = $newnick if ($nick eq $fakenick)
 }
 
 sub event_join {
-	my ($data, $server, $nick, $address) = @_;
+	my ( $server, $data, $nick, $address) = @_;
 
-	if (!$fakenick && $data eq $trackchannel && 
+	if (!$fakenick && $data =~ m/$trackchannel/ &&
 	    $address =~ /$address_regexp/) {
 		$fakenick = $nick;
 	}
 }
 
 sub event_part {
-	my ($data, $server, $nick, $address) = @_;
+	my ($server, $data, $nick, $address) = @_;
         my ($channel, $reason) = $data =~ /^(\S*)\s:(.*)/;
 
 	$fakenick = '' if ($fakenick eq $nick && $channel eq $trackchannel);
 }
 
 sub event_quit {
-	my ($data, $server, $nick, $address) = @_;
+	my ($server, $data, $nick, $address) = @_;
 
 	$fakenick = '' if ($fakenick eq $nick);
 }
@@ -135,7 +133,9 @@ sub send_real_public
 	# nick mode can be displayed correctly
 	my $newnick = $channel->nick_insert($realnick,
 		$nickrec->{op}, 
-		$nickrec->{voice}, 0);
+		$nickrec->{halfop},
+		$nickrec->{voice},
+		0);
 
 	Irssi::signal_emit("message public", $server, $msg,
 			   $realnick, $address, $target);
@@ -165,9 +165,31 @@ sub cmd_realnick {
 	}
 }
 
-my $channel = Irssi::channel_find($trackchannel);
-find_realnick($channel) if ($channel);
+sub sig_setup_changed {
+	$address_regexp = Irssi::settings_get_str($IRSSI{name}.'_'.'address_regexp');
+	$realname_regexp = Irssi::settings_get_str($IRSSI{name}.'_'.'realname_regexp');
+	my $tc = Irssi::settings_get_str($IRSSI{name}.'_'.'trackchannel');
+	if ( $tc ne $trackchannel) {
+		$fakenick = '';
+		$trackchannel= $tc;
+	}
+	my $rn = Irssi::settings_get_str($IRSSI{name}.'_'.'realnick');
+	if ( $rn ne $realnick) {
+		Irssi::command_unbind("find$realnick", 'cmd_realnick');
+		Irssi::command_bind("find$rn", 'cmd_realnick');
+		$fakenick = '';
+		$realnick= $rn;
+	}
+	my $channel = Irssi::channel_find($trackchannel);
+	find_realnick($channel) if ($channel);
+}
 
+Irssi::settings_add_str($IRSSI{name} ,$IRSSI{name}.'_'.'trackchannel', '#channel');
+Irssi::settings_add_str($IRSSI{name} ,$IRSSI{name}.'_'.'realnick', 'nick');
+Irssi::settings_add_str($IRSSI{name} ,$IRSSI{name}.'_'.'address_regexp', 'user@address.fi$');
+Irssi::settings_add_str($IRSSI{name} ,$IRSSI{name}.'_'.'realname_regexp', 'first.*lastname');
+
+Irssi::signal_add('setup changed', \&sig_setup_changed);
 Irssi::signal_add('event nick', 'event_nick');
 Irssi::signal_add('event join', 'event_join');
 Irssi::signal_add('event part', 'event_part');
@@ -176,4 +198,4 @@ Irssi::signal_add('message public', 'sig_public');
 Irssi::signal_add('send text', 'sig_send_text');
 Irssi::signal_add('channel wholist', 'event_wholist');
 
-Irssi::command_bind("find$realnick", 'cmd_realnick');
+sig_setup_changed();
