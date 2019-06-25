@@ -3,7 +3,7 @@ use warnings;
 use LWP::Simple qw();
 use Irssi;
 
-our $VERSION = '1.2'; # # a3f78214eed2faa
+our $VERSION = '1.3'; # b6350adcd789aa3
 our %IRSSI = (
     authors     => 'Rocco Caputo (dngor), Nei',
     contact     => 'rcaputo@cpan.org, Nei @ anti@conference.jabber.teamidiot.de',
@@ -87,6 +87,7 @@ my %help;
 	    for (@info2) {
 		if (s/%\|\| (.*) \|$/$1/) {
 		    s/ \| / | %|/g;
+		    s/\\([\|]\S+)/$1 /g;
 		    s/\s+$//;
 		}
 	    }
