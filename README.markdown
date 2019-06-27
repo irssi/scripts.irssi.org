@@ -116,6 +116,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                     complete_at ](Test/complete_at/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
 [              complete_lastspoke ](Test/complete_lastspoke/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                      connectcmd ](Test/connectcmd/)|  ✔   |  ✔   |  ✔   | 19   |  ✔   | (c)
+[                            copy ](Test/copy/)|  ✔   |  ✔   |  ✔   | 20   |  ✔   
 [                       countdown ](Test/countdown/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                         country ](Test/country/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                     cp1250_kick ](Test/cp1250_kick/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -420,7 +421,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                     send_scroll ](Test/send_scroll/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                  servercomplete ](Test/servercomplete/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
 [                     server_time ](Test/server_time/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                    settingshelp ](Test/settingshelp/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[                    settingshelp ](Test/settingshelp/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                      shortenurl ](Test/shortenurl/)|  ✔   |  ✔   |  ✔   | 20   |  ✔   | (c)
 [                        shorturl ](Test/shorturl/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                     showhilight ](Test/showhilight/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -528,4 +529,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-17ce19473d58655072245c651089ad620e41a5d8 | 1433
+6b9486c38cb92b8cf24e285315e92a89a9663a43 | 1435

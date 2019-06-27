@@ -1,0 +1,15 @@
+---
+-
+  authors: vague,bw1
+  changed: 2019-06-25
+  commands:
+    - copy
+  contact: bw1@aol.at
+  default_package: copy
+  description: 'copy a line in a paste buffer'
+  license: 'Public Domain'
+  modified: '2019-06-25 17:31:59'
+  modules: MIME::Base64
+  name: copy
+  url: https://scripts.irssi.org/
+  version: '0.03'
