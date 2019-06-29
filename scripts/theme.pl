@@ -80,21 +80,43 @@ sub cmd_show {
 			"-----  $t -- $count  -----",
 			MSGLEVEL_CLIENTCRAP);
 		$witem->command('names');
-		$witem->printformat(MSGLEVEL_CLIENTCRAP, 'theme_pmsg', '@','testnick', $lorem);
-		$witem->printformat(MSGLEVEL_CLIENTCRAP, 'theme_memsg', '@','testnick',
-			'me: '.substr($lorem, 0, 30));
-		$witem->printformat(MSGLEVEL_CLIENTCRAP, 'theme_omsg', '@','me',
-			substr($lorem, 0, 30));
+		core_printformat_module_w($witem,
+			MSGLEVEL_CLIENTCRAP, 'fe-common/core', 'pubmsg', 'testnick', $lorem, '@');
+		core_printformat_module_w($witem,
+			MSGLEVEL_CLIENTCRAP, 'fe-common/core', 'pubmsg_me', 'testnick',
+			'me: '.substr($lorem, 0, 30),'@');
+		core_printformat_module_w($witem,
+			MSGLEVEL_CLIENTCRAP, 'fe-common/core', 'own_msg', 'me',
+			substr($lorem, 0, 30),'@');
 	} else {
 		Irssi::print(
 			"-----  $t  -- $count -----",
 			MSGLEVEL_CLIENTCRAP);
-		Irssi::printformat(MSGLEVEL_CLIENTCRAP, 'theme_pmsg', '@','testnick', $lorem);
-		Irssi::printformat(MSGLEVEL_CLIENTCRAP, 'theme_memsg', '@','testnick',
-			'me: '.substr($lorem, 0, 30));
-		Irssi::printformat(MSGLEVEL_CLIENTCRAP, 'theme_omsg', '@','me',
-			substr($lorem, 0, 30));
+		core_printformat_module(
+			MSGLEVEL_CLIENTCRAP, 'fe-common/core', 'pubmsg', 'testnick', $lorem, '@');
+		core_printformat_module(
+			MSGLEVEL_CLIENTCRAP, 'fe-common/core', 'pubmsg_me', 'testnick',
+			'me: '.substr($lorem, 0, 30),'@');
+		core_printformat_module(
+			MSGLEVEL_CLIENTCRAP, 'fe-common/core', 'own_msg', 'me',
+			substr($lorem, 0, 30),'@');
 	}
+}
+
+sub core_printformat_module {
+  my ($level, $module, $format, @args) = @_;
+  {
+    local *CORE::GLOBAL::caller = sub { $module };
+    Irssi::printformat($level, $format, @args);
+  }
+}
+
+sub core_printformat_module_w {
+  my ($witem, $level, $module, $format, @args) = @_;
+  {
+    local *CORE::GLOBAL::caller = sub { $module };
+    $witem->printformat($level, $format, @args);
+  }
 }
 
 sub cmd_set {
@@ -206,12 +228,6 @@ sub init {
 	}
 	$lorem =~ s/\n/ /g;
 }
-
-Irssi::theme_register([
-	'theme_pmsg', '{pubmsgnick $0 {pubnick $1}} $2',
-	'theme_memsg', '{pubmsgmenick $0 {menick $1}}{default_color $2}',
-	'theme_omsg', '{ownmsgnick $0 {ownnick $1}}{default_color $2}',
-]);
 
 Irssi::signal_add_first('complete word',  \&do_complete);
 Irssi::signal_add('setup changed', \&sig_setup_changed);
