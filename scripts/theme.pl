@@ -7,7 +7,7 @@ use Getopt::Long qw/GetOptionsFromString/;
 
 use Irssi;
 
-$VERSION = '0.01';
+$VERSION = '0.02';
 %IRSSI = (
     authors	=> 'bw1',
     contact	=> 'bw1@aol.at',
@@ -15,7 +15,7 @@ $VERSION = '0.01';
     description	=> 'activate, show or get theme',
     license	=> 'Public Domain',
     url		=> 'https://scripts.irssi.org/',
-    changed	=> '2019-06-11',
+    changed	=> '2019-07-02',
     modules => 'File::Basename File::Fetch File::Glob Getopt::Long',
     commands=> 'theme',
 );
@@ -172,7 +172,7 @@ sub cmd {
 		}
 		$list = undef;
 	}
-	if (defined $phelp) {
+	if (defined $phelp || $args eq '' ) {
 		cmd_help($IRSSI{name}, $server, $witem);
 		$phelp = undef;
 	}
