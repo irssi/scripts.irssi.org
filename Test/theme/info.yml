@@ -1,15 +1,15 @@
 ---
 -
   authors: bw1
-  changed: 2019-06-11
+  changed: 2019-07-02
   commands:
     - theme
   contact: bw1@aol.at
   default_package: theme
   description: 'activate, show or get theme'
   license: 'Public Domain'
-  modified: '2019-06-29 17:46:25'
+  modified: '2019-07-02 17:46:54'
   modules: 'File::Basename File::Fetch File::Glob Getopt::Long'
   name: theme
   url: https://scripts.irssi.org/
-  version: '0.01'
+  version: '0.02'
