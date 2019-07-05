@@ -4667,10 +4667,10 @@
   description: 'activate, show or get theme'
   filename: theme.pl
   license: 'Public Domain'
-  modified: '2019-06-29 17:46:25'
+  modified: '2019-07-02 17:46:54'
   name: theme
   url: https://scripts.irssi.org/
-  version: '0.01'
+  version: '0.02'
 -
   authors: 'Teemu Hjelt'
   commands: 'thistory tinfo topichistory topicinfo'
