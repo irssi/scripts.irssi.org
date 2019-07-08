@@ -1,5 +1,17 @@
 ---
 -
+  authors: bw1
+  commands: 0x0st
+  contact: bw1@aol.at
+  description: 'upload file to https://0x0.st/'
+  filename: 0x0st.pl
+  license: ISC
+  modified: '2019-07-08 11:58:24'
+  modules: 'HTTP::Request::Common LWP::UserAgent'
+  name: 0x0st
+  url: https://scripts.irssi.org/
+  version: '0.01'
+-
   authors: 'Patrik Akerfeldt'
   contact: patrik.akerfeldt@gmail.com
   description: 'Dont like to take decisions? Have the 8-ball do it for you instead.'
