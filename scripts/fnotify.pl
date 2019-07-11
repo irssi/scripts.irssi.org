@@ -3,7 +3,7 @@ use warnings;
 use vars qw($VERSION %IRSSI);
 use Irssi;
 
-$VERSION = '0.0.6';
+$VERSION = '0.0.7';
 %IRSSI = (
 	name => 'fnotify',
 	authors => 'Tyler Abair, Thorsten Leemhuis, James Shubin' .
@@ -26,6 +26,10 @@ $VERSION = '0.0.6';
 
 #
 #	AUTHORS
+#
+# Add self to notification file
+# version 0.0.7
+# Michael Davies <michael@the-davies.net>
 #
 # Ignore hilighted messages with priority = fnotify_ignore_hilight
 # version: 0.0.6
@@ -89,6 +93,19 @@ sub hilight {
 }
 
 #
+#	catch own messages
+#
+sub own_public {
+	my ($dest, $msg, $target) = @_;
+	filewrite($dest->{'nick'} . ' ' .$msg );
+}
+
+sub own_private {
+	my ($dest, $msg, $target, $orig_target) = @_;
+	filewrite($dest->{'nick'} . ' ' .$msg );
+}
+
+#
 #	write to file
 #
 sub filewrite {
@@ -109,4 +126,6 @@ sub filewrite {
 #
 Irssi::signal_add_last("message private", "priv_msg");
 Irssi::signal_add_last("print text", "hilight");
+Irssi::signal_add_last("message own_public", "own_public");
+Irssi::signal_add_last("message own_private", "own_private");
 
