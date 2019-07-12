@@ -1788,9 +1788,9 @@
   description: 'Send a random fortune cookie to an user in channel.'
   filename: fortune.pl
   license: 'Public Domain'
-  modified: '2015-01-26 22:59:40'
+  modified: '2019-05-30 22:59:25'
   name: fortune
-  version: '1.3'
+  version: '1.4'
 -
   authors: "Stefan 'tommie' Tomanek"
   commands: forward
