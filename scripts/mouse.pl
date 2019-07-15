@@ -23,7 +23,7 @@ use Math::Trig;
 
 use vars qw($VERSION %IRSSI);
 
-$VERSION = '1.1.0';
+$VERSION = '1.1.1';
 %IRSSI = (
 	authors  	=> 'Wouter Coekaerts',
 	contact  	=> 'wouter@coekaerts.be',
@@ -132,7 +132,7 @@ sub UNLOAD {
 	mouse_disable();
 }
 
-if ($ENV{"TERM"} !~ /^rxvt|screen|xterm(-(256)?color)?$/) {
+if ($ENV{"TERM"} !~ /^rxvt|screen|xterm(-(256)?(color|kitty))?$/) {
 	die "Your terminal doesn't seem to support this.";
 }
 
