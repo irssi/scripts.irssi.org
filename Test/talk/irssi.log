@@ -1,5 +1,3 @@
-* \1 better written as $1 at talk.pl line 95.
-* 
 * \1 better written as $1 at talk.pl line 96.
 * 
 * \1 better written as $1 at talk.pl line 97.
@@ -14,11 +12,11 @@
 * 
 * \1 better written as $1 at talk.pl line 102.
 * 
-* \1 better written as $1 at talk.pl line 117.
+* \1 better written as $1 at talk.pl line 103.
 * 
-* \2 better written as $2 at talk.pl line 117.
+* \1 better written as $1 at talk.pl line 118.
 * 
-* \1 better written as $1 at talk.pl line 121.
+* \2 better written as $2 at talk.pl line 118.
 * 
 * \1 better written as $1 at talk.pl line 122.
 * 
@@ -30,9 +28,11 @@
 * 
 * \1 better written as $1 at talk.pl line 126.
 * 
-* \1 better written as $1 at talk.pl line 141.
+* \1 better written as $1 at talk.pl line 127.
 * 
-* \2 better written as $2 at talk.pl line 141.
+* \1 better written as $1 at talk.pl line 142.
 * 
-* -!- Talk: Version 1.0 loaded. Type /talk_help, if you have any questions or problems.
+* \2 better written as $2 at talk.pl line 142.
+* 
+* -!- Talk: Version 1.02 loaded. Type /talk_help, if you have any questions or problems.
 * -!- Irssi: Loaded script talk
