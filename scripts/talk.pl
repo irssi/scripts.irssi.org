@@ -3,7 +3,7 @@
 use strict;
 use Irssi;
 use vars qw($VERSION %IRSSI);
-$VERSION = '1.01';
+$VERSION = '1.02';
 %IRSSI = (
     authors     => 'Alexander Mieland',
     contact     => 'dma147\@mieland-programming.de',
@@ -13,15 +13,16 @@ $VERSION = '1.01';
 );
 
 ##########################################################################
+#	view settings with /set Talk
 #
-#	Change your preferred language here
+#	your preferred language
 my $language = "en";	# (en|de)
 #
 #	should I say all of the joins, parts and quits?
-my $sayjpq = "0";		# (1|0)
+my $sayjpq = 0;		# (1|0)
 #
 #	should I say all of the nickchanges?
-my $saynickchg = "0";	# (1|0)
+my $saynickchg = 0;	# (1|0)
 #
 ##########################################################################
 
@@ -32,7 +33,7 @@ Irssi::theme_register(
  '{line_start}{hilight Talk:} $0',
 ]);
 
-Irssi::printformat(MSGLEVEL_CLIENTCRAP, 'talk_loaded', "Version 1.0 loaded. Type /talk_help, if you have any questions or problems.");
+Irssi::printformat(MSGLEVEL_CLIENTCRAP, 'talk_loaded', "Version $VERSION loaded. Type /talk_help, if you have any questions or problems.");
 
 sub cmd_talk_help
 	{
@@ -57,7 +58,7 @@ http://www.linux-magazin.de/Artikel/ausgabe/2000/05/Sprachsynthese/sprachsynthes
 
 Commands:
 
-/say [message]   :  Speaks the given message through your soundcard
+/talk [message]   :  Speaks the given message through your soundcard
 /talk_about      :  Licence and Information about this script
 /talk_help       :  This helptext
 ";
@@ -213,19 +214,61 @@ sub cmd_say
 	return 0;
 	}
 
-Irssi::command_bind('say', 'cmd_say', 'talk.pl');
+sub sig_setup_changed {
+	my $l=Irssi::settings_get_str($IRSSI{name}.'_language');
+	if (!($l eq 'en' || $l eq 'de')) {
+		$l= 'en';
+		Irssi::settings_set_str($IRSSI{name}.'_language', $l);
+	}
+	$language=$l;
+	my $j=Irssi::settings_get_bool($IRSSI{name}.'_sayjpq');
+	if ($sayjpq != $j) {
+		if ($j) {
+			Irssi::signal_add("event join", 'on_join');
+			Irssi::signal_add("event quit", 'on_quit');
+			Irssi::signal_add("event part", 'on_part');
+		} else {
+			Irssi::signal_remove("event join", 'on_join');
+			Irssi::signal_remove("event quit", 'on_quit');
+			Irssi::signal_remove("event part", 'on_part');
+		}
+		$sayjpq = $j;
+	}
+	my $n=Irssi::settings_get_bool($IRSSI{name}.'_saynickchg');
+	if ($saynickchg != $n) {
+		if ($n) {
+			Irssi::signal_add("event nick", 'on_nick');
+		} else {
+			Irssi::signal_remove("event nick", 'on_nick');
+		}
+		$saynickchg= $n;
+	}
+}
+
+sub cmd_help {
+	my ($args, $server, $witem)=@_;
+	$args =~ s/\s+//g;
+	if ($args eq 'talk' || $args eq 'talk_help') {
+		cmd_talk_help();
+		Irssi::signal_stop;
+	}
+	if ($args eq 'talk_about') {
+		cmd_talk_about();
+		Irssi::signal_stop;
+	}
+}
+
+Irssi::settings_add_str($IRSSI{name}, $IRSSI{name}.'_language', 'en');
+Irssi::settings_add_bool($IRSSI{name}, $IRSSI{name}.'_sayjpq', 0);
+Irssi::settings_add_bool($IRSSI{name}, $IRSSI{name}.'_saynickchg', 0);
+
+Irssi::command_bind('talk', 'cmd_say', 'talk.pl');
 Irssi::command_bind('talk_about', 'cmd_talk_about', 'talk.pl');
 Irssi::command_bind('talk_help', 'cmd_talk_help', 'talk.pl');
-Irssi::signal_add("event privmsg", 'on_privmsg');
-if ($sayjpq eq "1")
-	{
-	Irssi::signal_add("event join", 'on_join');
-	Irssi::signal_add("event quit", 'on_quit');
-	Irssi::signal_add("event part", 'on_part');
-	}
-if ($saynickchg eq "1")
-	{
-	Irssi::signal_add("event nick", 'on_nick');
-	}
+Irssi::command_bind('help', 'cmd_help');
 
+Irssi::signal_add("event privmsg", 'on_privmsg');
+Irssi::signal_add('setup changed',\&sig_setup_changed);
+
+sig_setup_changed();
 #end
