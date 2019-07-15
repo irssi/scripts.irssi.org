@@ -4647,9 +4647,9 @@
   description: 'This script talks to you *g*. It reads the chat-msgs for you.'
   filename: talk.pl
   license: GPL2
-  modified: '2014-10-24 23:01:30'
+  modified: '2019-06-07 19:21:24'
   name: Talk
-  version: '1.01'
+  version: '1.02'
 -
   authors: "Stefan 'tommie' Tomanek"
   commands: target
