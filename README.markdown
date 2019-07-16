@@ -282,7 +282,7 @@ See [the testing read-me](../master/_testing/) for details.
 [            mailcheck_pop3_kimmo ](Test/mailcheck_pop3_kimmo/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       mailcount ](Test/mailcount/)|  ✔   |  ✔   |  ✔   | 25   |  ✔   | (c)
 [                            mail ](Test/mail/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
-[                          mangle ](Test/mangle/)|  ✔   |  ✔   |  ✔   | 15   |  ✔   | (c)
+[                          mangle ](Test/mangle/)|  ✔   |  ✔   |  ✔   | 15   |  ✔   
 [                             map ](Test/map/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [            mass_hilight_blocker ](Test/mass_hilight_blocker/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                 messages_bottom ](Test/messages_bottom/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -452,7 +452,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                     sysinfoplus ](Test/sysinfoplus/)|  ✔   |  ✔   |  ✔   | 15   |  ✔   | (c)
 [                 tabcompletenick ](Test/tabcompletenick/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                        tab_stop ](Test/tab_stop/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                            talk ](Test/talk/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[                            talk ](Test/talk/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                          target ](Test/target/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                         thankop ](Test/thankop/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                           theme ](Test/theme/)|  ✔   |  ✔   |  ✔   | 10   |  ✔   | (c)
@@ -531,4 +531,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-f1db8ecae31c6249edf90919bdbb22b007e1a5dd | 1453
+5c7fa65246e01c1c889f6e18784ad3f6c8c51ba3 | 1454
