@@ -2910,10 +2910,10 @@
   description: 'translates your messages into Morse code, rot13 and other sillinesses.'
   filename: mangle.pl
   license: GPLv2
-  modified: '2017-04-07 16:34:31'
+  modified: '2019-07-12 20:41:28'
   name: mangle
   url: http://irssi.org/scripts/
-  version: '2017031701'
+  version: '2019071201'
 -
   authors: 'Petr Baudis'
   contact: pasky@ji.cz
