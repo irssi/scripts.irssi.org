@@ -5,10 +5,10 @@ use Irssi;
 use Irssi::Irc;
 use vars qw($VERSION %IRSSI);
 
-$VERSION = "1.1";
+$VERSION = "1.2";
 %IRSSI = (
-    authors     => ['Nathan Handler', 'Joseph Price'],
-    contact     => ['nathan.handler@gmail.com', 'pricechild@ubuntu.com'],
+    authors     => 'Nathan Handler, Joseph Price',
+    contact     => 'nathan.handler@gmail.com, pricechild@ubuntu.com',
     name        => 'bansearch',
     description => 'Searches for bans, quiets, and channel modes affecting a user',
     license     => 'GPLv3+',
@@ -51,7 +51,7 @@ sub bansearch {
 	Irssi::active_win()->print("\x02Channel\x02: $channel");
 
         #Perform a /who <user> %uhnar
-	$server->redirect_event('who',1, $person, 0, undef,
+	$server->redirect_event('who',1, '', 0, undef,
 	{
 	  'event 352' => 'redir rpl_whoreply',
           'event 354' => 'redir rpl_whospcrpl',
@@ -64,7 +64,7 @@ sub bansearch {
 }	
 #Irssi::signal_add('event empty', 'EMPTY');
 Irssi::signal_add('redir rpl_whoreply', 'RPL_WHOREPLY');
-Irssi::signal_add('redir rpl_whospcrpl', 'RPL_WHOREPLY');
+Irssi::signal_add('redir rpl_whospcrpl', 'RPL_WHOSPCRPL');
 Irssi::signal_add('redir rpl_endofwho', 'RPL_ENDOFWHO');
 Irssi::signal_add('redir err_nosuchnick', 'ERR_NOSUCHNICK');
 Irssi::signal_add('redir err_nosuchchannel', 'ERR_NOSUCHCHANNEL');
@@ -83,94 +83,103 @@ sub EMPTY {
 }
 
 sub RPL_BANLIST {
-	my($server, $data) = @_;
+    my($server, $data) = @_;
 
-        return if(!$running);
+    return if(!$running);
 
-        my($type, $mask, $setby, $banchannel, $jchannel);
-        if($data=~m/^Ban/) {
-        	($type, undef, $banchannel, $mask, $setby, undef) = split(/ /, $data, 6);
-        }
-        elsif($data=~m/^Quiet/) {
-                ($type, undef, $banchannel, undef, $mask, $setby, undef) = split(/ /, $data, 7);
-        }
-	my $maskreg = $mask;
-	$maskreg=~s/\$\#.*$//;	#Support matching ban-forwards
-	$maskreg=~s/\./\\./g;
-	$maskreg=~s/\//\\\//g;
-	$maskreg=~s/\@/\\@/g;
-	$maskreg=~s/\[/\\[/g;
-	$maskreg=~s/\]/\\]/g;
-	$maskreg=~s/\|/\\|/g;
-	$maskreg=~s/\?/\./g;
-	$maskreg=~s/\*/\.\*\?/g;
+    my($type, $mask, $setby, $banchannel, $jchannel);
+    if($data=~m/^Ban/) {
+	($type, undef, $banchannel, $mask, $setby, undef) = split(/ /, $data, 6);
+    }
+    elsif($data=~m/^Quiet/) {
+	($type, undef, $banchannel, undef, $mask, $setby, undef) = split(/ /, $data, 7);
+    }
+    my $maskreg = $mask;
+    $maskreg=~s/\$\#.*$//;	#Support matching ban-forwards
+    $maskreg=~s/\./\\./g;
+    $maskreg=~s/\//\\\//g;
+    $maskreg=~s/\@/\\@/g;
+    $maskreg=~s/\[/\\[/g;
+    $maskreg=~s/\]/\\]/g;
+    $maskreg=~s/\|/\\|/g;
+    $maskreg=~s/\?/\./g;
+    $maskreg=~s/\*/\.\*\?/g;
 
-        #We only want to display who set the ban/quiet if it is listed as a person
-        if($setby=~m/^.*?\.freenode\.net$/i) {
-            $setby='';
-        }
-        else {
-            $setby=" (Set by $setby)";
-        }
+    #We only want to display who set the ban/quiet if it is listed as a person
+    if($setby=~m/^.*?\.freenode\.net$/i) {
+	$setby='';
+    }
+    else {
+	$setby=" (Set by $setby)";
+    }
 
-	if($maskreg=~m/^\$/) {	#extban
-		if($maskreg=~m/^\$a:(.*?)$/i) {
-			if($account=~m/^$1$/i && $account!~m/^0$/) {
-				Irssi::active_win()->print("$type against \x02$mask\x02 in $banchannel matches $account" . $setby);
-				$issues++;
-			}
-			else {
-#				Irssi::active_win()->print("$type against \x02$mask\x02 does NOT match $account" . $setby);
-			}
-		}
-		if($channel == $banchannel) {
-			if($maskreg=~m/^\$j:(.*?)$/i) {
-				$jchannel = $1;
-				if(!($jchannel ~~ @jchannels)) {
-					push(@jchannels, $jchannel);
-					push(@jchannelstocheck, $jchannel);
-					Irssi::active_win()->print("Following bans in " . $jchannel . " will " . $type . " " . $person . " in " . $channel . $setby);
-				}
-			}
-		}
-		if($maskreg=~m/^\$~a$/i) {
-			if($account=~m/^0$/) {
-				Irssi::active_win()->print("$type against \x02$mask\x02 in $banchannel matches unidentified user." . $setby);
-				$issues++;
-			}
-			else {
-#				Irssi::active_win()->print("$type against \x02$mask\x02 does NOT match $account" . $setby);
-			}
-		}
-		if($maskreg=~m/^\$r:(.*?)$/i) {
-			if($real=~m/^$1$/i) {
-				Irssi::active_win()->print("$type against \x02$mask\x02 in $banchannel matches real name of $real" . $setby);
-				$issues++;
-			}
-			else {
-#				Irssi::active_win()->print("$type against \x02$mask\x02 does NOT match real name of $real" . $setby);
-			}
-		}
-		if($maskreg=~m/^\$x:(.*?)$/i) {
-			my $full = "$nick!user\@host\#$real";
-			if($full=~m/^$1$/i) {
-				Irssi::active_win()->print("$type against \x02$mask\x02 in $banchannel matches $full" . $setby);
-				$issues++;
-			}
-			else {
-#				Irssi::active_win()->print("$type against \x02$mask\x02 does NOT match $full" . $setby);
-			}
-		}
+    if($maskreg=~m/^\$/) {	#extban
+	# account
+	if($maskreg=~m/^\$a:(.*?)$/i) {
+	    if($account=~m/^$1$/i && $account!~m/^0$/) {
+		Irssi::active_win()->print("$type against \x02$mask\x02 in $banchannel matches $account" . $setby);
+		$issues++;
+	    }
+	    else {
+#		Irssi::active_win()->print("$type against \x02$mask\x02 does NOT match $account" . $setby);
+	    }
 	}
-	else {	#Normal Ban
-		if($string=~m/^$maskreg$/i) {
-			Irssi::active_win()->print("$type against \x02$mask\x02 in $banchannel matches $string" . $setby);
-			$issues++;
+	# cannot join other channel
+	if($channel == $banchannel) {
+	    if($maskreg=~m/^\$j:(.*?)$/i) {
+		$jchannel = $1;
+		if(!(grep {$jchannel eq $_} @jchannels)) {
+		    push(@jchannels, $jchannel);
+		    push(@jchannelstocheck, $jchannel);
+		    Irssi::active_win()->print("Following bans in " 
+			. $jchannel . " will " . $type . " " . $person . " in " . $channel . $setby);
 		}
-		else {
-#			Irssi::active_win()->print("$type against \x02$mask\x02 does NOT match $string" . $setby);
-		}
+	    }
 	}
+	# any logged-in user
+	if($maskreg=~m/^\$a$/i) {
+	    if($account=~m/^0$/) {
+		Irssi::active_win()->print(
+		    "$type against \x02$mask\x02 in $banchannel matches unidentified user." . $setby);
+		$issues++;
+	    }
+	    else {
+#		Irssi::active_win()->print("$type against \x02$mask\x02 does NOT match $account" . $setby);
+	    }
+	}
+	# ircname
+	if($maskreg=~m/^\$r:(.*?)$/i) {
+	    if($real=~m/^$1$/i) {
+		Irssi::active_win()->print(
+		    "$type against \x02$mask\x02 in $banchannel matches real name of $real" . $setby);
+		$issues++;
+	    }
+	    else {
+#		Irssi::active_win()->print("$type against \x02$mask\x02 does NOT match real name of $real" . $setby);
+	    }
+	}
+	# full match
+	if($maskreg=~m/^\$x:(.*?)$/i) {
+	    my $full = "$nick!user\@host\#$real";
+	    if($full=~m/^$1$/i) {
+		Irssi::active_win()->print(
+		    "$type against \x02$mask\x02 in $banchannel matches $full" . $setby);
+		$issues++;
+	    }
+	    else {
+#		Irssi::active_win()->print("$type against \x02$mask\x02 does NOT match $full" . $setby);
+	    }
+	}
+    }
+    else {	#Normal Ban
+	if($string=~m/^$maskreg$/i) {
+	    Irssi::active_win()->print("$type against \x02$mask\x02 in $banchannel matches $string" . $setby);
+	    $issues++;
+	}
+	else {
+#	    Irssi::active_win()->print("$type against \x02$mask\x02 does NOT match $string" . $setby);
+	}
+    }
 }
 
 sub RPL_ENDOFBANLIST {
@@ -218,7 +227,21 @@ sub RPL_WHOREPLY {
 
         return if(!$running);
 
-        (undef, $user, $host, $nick, $account, $real) = split(/ /, $data, 6);
+	# 0   1 2   3       4               5    6 7  8
+	# bw2 * ~pi rpi1.my irc.example.net rpi1 H :0 pi
+        (undef, undef, $user, $host, undef, $nick, $account, undef, $real) = split(/ /, $data);
+        $real=~s/^://;
+        Irssi::active_win()->print("\x02User\x02: $nick [$account] ($real) $user\@$host");
+}
+
+sub RPL_WHOSPCRPL {
+	my($server, $data) = @_;
+
+        return if(!$running);
+
+	# 0   1    2               3   4   5
+	# bw2 ~bw1 irc.example.net bw1 bw2 :bw1
+        (undef, $user, $host, $nick, $account, $real) = split(/ /, $data);
         $real=~s/^://;
         Irssi::active_win()->print("\x02User\x02: $nick [$account] ($real) $user\@$host");
 }
@@ -379,3 +402,5 @@ sub register_redirects {
 }
 
 Irssi::command_bind('bansearch', 'bansearch');
+
+# vim:set ts=8 sw=4:
