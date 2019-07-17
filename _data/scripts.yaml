@@ -17,9 +17,9 @@
   description: 'Dont like to take decisions? Have the 8-ball do it for you instead.'
   filename: 8-ball.pl
   license: GPL
-  modified: '2015-09-15 19:05:29'
+  modified: '2019-07-16 23:37:33'
   name: 8-ball
-  version: '0.22'
+  version: '0.23'
 -
   authors: 'Dani Soufi (compengi)'
   commands: 'audacious mocp'
