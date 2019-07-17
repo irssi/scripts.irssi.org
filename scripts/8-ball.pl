@@ -29,7 +29,7 @@ use vars qw($VERSION %IRSSI);
 
 use Irssi qw(command_bind signal_add);
 use IO::File;
-$VERSION = '0.22';
+$VERSION = '0.23';
 %IRSSI = (
 	authors		=> 'Patrik Akerfeldt',
 	contact		=> 'patrik.akerfeldt@gmail.com',
@@ -37,6 +37,8 @@ $VERSION = '0.22';
 	description	=> 'Dont like to take decisions? Have the 8-ball do it for you instead.',
 	license		=> 'GPL',
 );
+
+my $filename= Irssi::get_irssi_dir().'/8-ball';
 
 sub own_question {
 	my ($server, $msg, $target) = @_;
@@ -82,13 +84,13 @@ sub question {
                 my ($fh, $count);
                 $fh = new IO::File;
                 $count = 0;
-                if ($fh->open("< .8-ball")){
+                if ($fh->open($filename, 'r')){
                         $count = <$fh>;
                         $fh->close;
                 }
                 $count++;
 		$fh = new IO::File;
-                if ($fh->open("> .8-ball")){
+                if ($fh->open($filename, 'w')){
                         print $fh $count;
                         $fh->close;
                 }else{
@@ -101,7 +103,7 @@ sub question {
 		my ($fh, $count);
                 $fh = new IO::File;
                 $count = 0;
-                if ($fh->open("< .8-ball")){
+                if ($fh->open($filename, 'r')){
                         $count = <$fh>;
                         $server->command('msg '.$target.' 8-ball says: I\'ve got '.$count.' questions so far.');
 			$fh->close;
@@ -125,3 +127,5 @@ sub question {
 
 signal_add("message public", "public_question");
 signal_add("message own_public", "own_question");
+
+# vim:set ts=8 sw=8:
