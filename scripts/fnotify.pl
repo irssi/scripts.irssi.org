@@ -3,11 +3,11 @@ use warnings;
 use vars qw($VERSION %IRSSI);
 use Irssi;
 
-$VERSION = '0.0.6';
+$VERSION = '0.0.7';
 %IRSSI = (
 	name => 'fnotify',
 	authors => 'Tyler Abair, Thorsten Leemhuis, James Shubin' .
-               ', Serge van Ginderachter',
+               ', Serge van Ginderachter, Michael Davies',
 	contact => 'fedora@leemhuis.info, serge@vanginderachter.be',
 	description => 'Write notifications to a file in a consistent format.',
 	license => 'GNU General Public License',
@@ -22,10 +22,15 @@ $VERSION = '0.0.6';
 # irssi> /load perl
 # irssi> /script load fnotify
 # irssi> /set fnotify_ignore_hilight 0 # ignore hilights of priority 0
+# irssi> /set fnotify_own on           # turn on own notifications
 #
 
 #
 #	AUTHORS
+#
+# Add self to notification file
+# version 0.0.7
+# Michael Davies <michael@the-davies.net>
 #
 # Ignore hilighted messages with priority = fnotify_ignore_hilight
 # version: 0.0.6
@@ -59,9 +64,13 @@ my %config;
 Irssi::settings_add_int('fnotify', 'fnotify_ignore_hilight' => -1);
 $config{'ignore_hilight'} = Irssi::settings_get_int('fnotify_ignore_hilight');
 
+Irssi::settings_add_bool('fnotify', 'fnotify_own', 0);
+$config{'own'} = Irssi::settings_get_bool('fnotify_own');
+
 Irssi::signal_add(
     'setup changed' => sub {
         $config{'ignore_hilight'} = Irssi::settings_get_int('fnotify_ignore_hilight');
+        $config{'own'} = Irssi::settings_get_bool('fnotify_own');
     }
 );
 
@@ -89,6 +98,23 @@ sub hilight {
 }
 
 #
+#	catch own messages
+#
+sub own_public {
+	my ($dest, $msg, $target) = @_;
+	if ($config{'own'}) {
+		filewrite($dest->{'nick'} . ' ' .$msg );
+	}
+}
+
+sub own_private {
+	my ($dest, $msg, $target, $orig_target) = @_;
+	if ($config{'own'}) {
+		filewrite($dest->{'nick'} . ' ' .$msg );
+	}
+}
+
+#
 #	write to file
 #
 sub filewrite {
@@ -109,4 +135,6 @@ sub filewrite {
 #
 Irssi::signal_add_last("message private", "priv_msg");
 Irssi::signal_add_last("print text", "hilight");
+Irssi::signal_add_last("message own_public", "own_public");
+Irssi::signal_add_last("message own_private", "own_private");
 
