@@ -1,10 +1,11 @@
 ---
 -
-  authors: 'Tyler Abair, Thorsten Leemhuis, James Shubin, Serge van Ginderachter'
+  authors: 'Tyler Abair, Thorsten Leemhuis, James Shubin, Serge van Ginderachter, Michael Davies'
   contact: 'fedora@leemhuis.info, serge@vanginderachter.be'
   default_package: fnotify
   description: 'Write notifications to a file in a consistent format.'
   license: 'GNU General Public License'
+  modified: '2019-07-22 21:07:28'
   name: fnotify
   url: 'http://www.leemhuis.info/files/fnotify/fnotify https://ttboj.wordpress.com/'
-  version: 0.0.6
+  version: 0.0.7
