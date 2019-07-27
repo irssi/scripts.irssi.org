@@ -18,7 +18,7 @@ use vars qw($VERSION %IRSSI);
 
 use Irssi qw(command_bind signal_add signal_add_first settings_add_str settings_get_str settings_set_str);
 
-our $VERSION = '1.03';
+our $VERSION = '1.04';
 our %IRSSI = (authors => 'Linostar',
           contact => 'linostar@sdf.org',
           name => 'KickBan Referrals Script',
@@ -38,6 +38,7 @@ sub kbanref {
   my $thelist;
   my $subcommand = '';
   my ($command, @args) = split(/\s+/, $data);
+  $command='' unless (defined $command);
   $command = lc($command);
   $_ = lc for @args; #apply lc to all elements in @args
   $subcommand = $args[0] if ($args[0]);
@@ -71,12 +72,12 @@ sub kbanref {
     }
     my @list_arr = split(/\s+/, lc($$thelist));
     splice(@args, 0, 1);
-    foreach (@args) {
-      if ($_ ~~ @list_arr) {
-        print("KBan-Referrals: site $_ is already in the list."); 
+    foreach my $i (@args) {
+      if (grep {$i eq $_} @list_arr) {
+        print("KBan-Referrals: site $i is already in the list.");
       }
       else {
-        $newlist .= ' ' . $_;
+        $newlist .= ' ' . $i;
       }
     }
     if ($newlist && $newlist !~ m/^\s+$/) {
@@ -106,13 +107,13 @@ sub kbanref {
     }
     my @list_arr = split(/\s+/, lc($$thelist));
     splice(@args, 0, 1);
-    foreach (@args) {
-      unless ($_ ~~ @list_arr) {
-        print("KBan-Referrals: site $_ is not in " . $type . 'list.');
+    foreach my $i (@args) {
+      unless (grep {$i eq $_} @list_arr) {
+        print("KBan-Referrals: site $i is not in " . $type . 'list.');
       }
       else {
-        $rmlist .= ' ' . $_;
-        $$thelist =~ s/(\s|^)$_(\s|$)/ /i;
+        $rmlist .= ' ' . $i;
+        $$thelist =~ s/(\s|^)$i(\s|$)/ /i;
       }
     }
     $$thelist =~ s/\s{2,}/ /g;
@@ -161,7 +162,7 @@ sub kbanref {
     splice(@args, 0, 1);
     foreach(@args) {
       $ch = (substr($_, 0, 1) eq '#') ? $_ : '#' . $_;
-      if ($ch ~~ @chans_arr) {
+      if (grep {$ch eq $_} @chans_arr) {
         print("KBan-Referrals: channel $ch is already in the list.");
       }
       else {
@@ -185,7 +186,7 @@ sub kbanref {
     splice(@args, 0, 1);
     foreach (@args) {
       $ch = (substr($_, 0, 1) eq '#') ? $_ : '#' . $_;
-      unless ($ch ~~ @chans_arr) {
+      unless (grep {$ch  eq $_} @chans_arr) {
         print("KBan-Referrals: channel $ch is not in the list.");
         next;
       }
@@ -270,9 +271,12 @@ sub kban_action {
   my @chans_arr = split(/\s+/, lc($chans));
   $mode = 'normal' unless ($mode eq 'paranoid');
   # add a high ticket value to users who post messages without urls so they don't get punished
-  $tickets{ $nick . $target } += 10 if (exists($tickets{ $nick . $target }) && $target ~~ @chans_arr && !contains_url($msg));
+  my $con_url=contains_url($msg);
+  $tickets{ $nick . $target } += 10 if
+    (exists($tickets{ $nick . $target }) &&
+      (grep {$target eq $_} @chans_arr) && !$con_url );
   # otherwise, start the real investigation
-  if ($target ~~ @chans_arr && contains_url($msg)) {
+  if ((grep {$target eq $_} @chans_arr) && $con_url) {
     # paranoid mode
     if ($mode =~ m/^paranoid$/i) {
       my $bad = 1;
@@ -320,7 +324,7 @@ sub ticket_start {
   my ($server, $channel, $nick, $nick_addr) = @_;
   my $chans = settings_get_str('kbanreferrals_channels');
   my @chans_arr = split(/\s+/, lc($chans));
-  if ($channel ~~ @chans_arr) {
+  if (grep {$channel eq $_} @chans_arr) {
     $tickets{ $nick . $channel } = 1;
   }
 }
@@ -329,7 +333,7 @@ sub increase_ticket {
   my ($server, $channel, $nick, $nick_addr, $reason) = @_;
   my $chans = settings_get_str('kbanreferrals_channels');
   my @chans_arr = split(/\s+/, lc($chans));
-  if (exists($tickets{ $nick . $channel }) && $channel ~~ @chans_arr) {
+  if (exists($tickets{ $nick . $channel }) && (grep {$channel eq $_} @chans_arr)) {
     # if the poor bastard only posted one sole message containing a url before leaving
     # then it's probably a referral url, so ban him/her
     if ($tickets{ $nick . $channel } == 2) {
@@ -347,4 +351,22 @@ signal_add('message public', 'kban_action');
 signal_add('message join', 'ticket_start');
 signal_add('message part', 'increase_ticket');
 command_bind(kbanref => \&kbanref);
+command_bind('kbanref mode', \&kbanref);
+command_bind('kbanref help', \&kbanref);
+command_bind('kbanref chan', \&kbanref);
+command_bind('kbanref chan add', \&kbanref);
+command_bind('kbanref chan remove', \&kbanref);
+command_bind('kbanref chan list', \&kbanref);
+command_bind('kbanref chan clear', \&kbanref);
+command_bind('kbanref whitelist', \&kbanref);
+command_bind('kbanref whitelist add', \&kbanref);
+command_bind('kbanref whitelist remove', \&kbanref);
+command_bind('kbanref whitelist list', \&kbanref);
+command_bind('kbanref whitelist clear', \&kbanref);
+command_bind('kbanref blacklist', \&kbanref);
+command_bind('kbanref blacklist add', \&kbanref);
+command_bind('kbanref blacklist remove', \&kbanref);
+command_bind('kbanref blacklist list', \&kbanref);
+command_bind('kbanref blacklist clear', \&kbanref);
 
+# vim:set ts=2 sw=2 expandtab:
