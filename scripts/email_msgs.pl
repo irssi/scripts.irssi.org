@@ -45,7 +45,7 @@ use Email::Sender::Simple qw(try_to_sendmail);
 use Email::Simple;
 use Email::Simple::Creator;
 
-$VERSION = '1.0';
+$VERSION = '1.1';
 %IRSSI = (
 	authors => 'Igor Duarte Cardoso, Adam James',
 	contact => 'igordcard@gmail.com, atj@pulsewidth.org.uk',
@@ -64,45 +64,118 @@ $VERSION = '1.0';
 my $FORMAT = $IRSSI{'name'} . '_crap';
 my $msgs = {};
 
-# user configurable variables (1->yes; 0->no):
 ##############################################
 # your destination email address:
-my $email_addr = 'x@y.z';
+my $to_addr;
+# your sender email address:
+my $from_addr;
+# email subject
+my $subject;
 # whether the script should work only when away:
-my $away_only  = 0;
+my $away_only;
 # include detailed info like the hostname of the sender:
-my $detailed   = 1;
+my $detailed;
 # interval to check for messages (in seconds):
-my $interval   = 300;
+my $interval;
 # whether public messages received (including mentions) should be emailed:
-my $pub_r_msgs = 0;
+my $pub_r_msgs;
 # whether private messages received should be emailed:
-my $pri_r_msgs = 1;
+my $pri_r_msgs;
 # whether public messages sent should be emailed:
-my $pub_s_msgs = 1;
+my $pub_s_msgs;
 # whether private messages sent should be emailed:
-my $pri_s_msgs = 1;
+my $pri_s_msgs;
 # whether public mentions received should be emailed (when $pub_r_msgs=0):
-my $mentions   = 1;
+my $mentions;
 ##############################################
 
 Irssi::settings_add_str('misc', $IRSSI{'name'} . '_from_address',
 	'irssi@' . ($ENV{'HOST'} || 'localhost'));
 Irssi::settings_add_str('misc', $IRSSI{'name'} . '_to_address',
-	$email_addr);
+	'x@y.z');
 Irssi::settings_add_str('misc', $IRSSI{'name'} . '_subject',
 	'IRC Messages');
+Irssi::settings_add_bool('misc', $IRSSI{'name'} . '_away_only', 0);
+Irssi::settings_add_bool('misc', $IRSSI{'name'} . '_detailed', 1);
+Irssi::settings_add_int('misc', $IRSSI{'name'} . '_interval', 300);
+Irssi::settings_add_bool('misc', $IRSSI{'name'} . '_pri_r_msgs', 1);
+Irssi::settings_add_bool('misc', $IRSSI{'name'} . '_pub_s_msgs', 1);
+Irssi::settings_add_bool('misc', $IRSSI{'name'} . '_pri_s_msgs', 1);
+Irssi::settings_add_bool('misc', $IRSSI{'name'} . '_pub_r_msgs', 0);
+Irssi::settings_add_bool('misc', $IRSSI{'name'} . '_mentions', 1);
 
 Irssi::theme_register([
 	$FORMAT,
 	'{line_start}{hilight ' . $IRSSI{'name'} . ':} $0'
 ]);
 
-Irssi::timeout_add($interval*1000, 'check_messages', '');
+my ($timetag, $t_pri_r_msgs, $t_pub_s_msgs, $t_pri_s_msgs, $t_pub_r_msgs);
+Irssi::signal_add('setup changed', \&sig_setup_changed);
 
-my $from_addr = Irssi::settings_get_str($IRSSI{'name'} . '_from_address');
-my $to_addr   = Irssi::settings_get_str($IRSSI{'name'} . '_to_address');
-my $subject   = Irssi::settings_get_str($IRSSI{'name'} . '_subject');
+sig_setup_changed();
+
+sub sig_setup_changed {
+	$from_addr = Irssi::settings_get_str($IRSSI{'name'} . '_from_address');
+	$to_addr   = Irssi::settings_get_str($IRSSI{'name'} . '_to_address');
+	$subject   = Irssi::settings_get_str($IRSSI{'name'} . '_subject');
+	$away_only = Irssi::settings_get_bool($IRSSI{'name'} . '_away_only');
+	$detailed  = Irssi::settings_get_bool($IRSSI{'name'} . '_detailed');
+	my $i  = Irssi::settings_get_int($IRSSI{'name'} . '_interval');
+	if ($i != $interval) {
+		$interval=$i;
+		if (defined $timetag) {
+			Irssi::timeout_remove($timetag);
+		}
+		$timetag= Irssi::timeout_add($interval*1000, 'check_messages', '');
+	}
+	my $pr  = Irssi::settings_get_bool($IRSSI{'name'} . '_pri_r_msgs');
+	if ($pr != $pri_r_msgs) {
+		$pri_r_msgs= $pr;
+		if ($pri_r_msgs) {
+			Irssi::signal_add_last("message private", "handle_privmsg");
+			$t_pri_r_msgs=1;
+		} elsif (defined $t_pri_r_msgs) {
+			Irssi::signal_remove("message private", "handle_privmsg");
+			$t_pri_r_msgs=undef;
+		}
+	}
+	my $pus  = Irssi::settings_get_bool($IRSSI{'name'} . '_pub_s_msgs');
+	if ($pus != $pub_s_msgs) {
+		$pub_s_msgs= $pus;
+		if ($pub_s_msgs) {
+			Irssi::signal_add_last("message own_public", "handle_ownpubmsg");
+			$t_pub_s_msgs=1;
+		} elsif (defined $t_pub_s_msgs) {
+			Irssi::signal_remove("message own_public", "handle_ownpubmsg");
+			$t_pub_s_msgs=undef;
+		}
+	}
+	my $ps  = Irssi::settings_get_bool($IRSSI{'name'} . '_pri_s_msgs');
+	if ($ps != $pri_s_msgs) {
+		$pri_s_msgs= $ps;
+		if ($pri_s_msgs) {
+			Irssi::signal_add_last("message own_private", "handle_ownprivmsg");
+			$t_pri_s_msgs=1;
+		} elsif (defined $t_pri_s_msgs) {
+			Irssi::signal_remove("message own_private", "handle_ownprivmsg");
+			$t_pri_s_msgs=undef;
+		}
+	}
+	my $pur  = Irssi::settings_get_bool($IRSSI{'name'} . '_pub_r_msgs');
+	my $men  = Irssi::settings_get_bool($IRSSI{'name'} . '_mentions');
+	my $pm = $pub_r_msgs || $mentions;
+	$pub_r_msgs= $pur;
+	$mentions= $men;
+	if (($pub_r_msgs || $mentions) != $pm) {
+		if ($pub_r_msgs || $mentions) {
+			Irssi::signal_add_last("message public", "handle_pubmsg");
+			$t_pub_r_msgs=1;
+		} elsif (defined $t_pub_r_msgs) {
+			Irssi::signal_remove("message public", "handle_pubmsg");
+			$t_pub_r_msgs= undef;
+		}
+	}
+}
 
 sub handle_ownprivmsg {
 	my ($server, $message, $target, $orig_target) = @_;
@@ -229,17 +302,4 @@ sub send_email {
 	}
 	Irssi::printformat(MSGLEVEL_CLIENTCRAP, $FORMAT,
 		"A message was sent to your email.");
-}
-
-if ($pub_r_msgs || $mentions) {
-	Irssi::signal_add_last("message public", "handle_pubmsg");
-}
-if ($pri_r_msgs) {
-	Irssi::signal_add_last("message private", "handle_privmsg");
-}
-if ($pub_s_msgs) {
-	Irssi::signal_add_last("message own_public", "handle_ownpubmsg");
-}
-if ($pri_s_msgs) {
-	Irssi::signal_add_last("message own_private", "handle_ownprivmsg");
 }
