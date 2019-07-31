@@ -5,7 +5,7 @@
 use strict;
 
 use vars qw($VERSION %IRSSI);
-$VERSION = '2.0';
+$VERSION = '2.1';
 %IRSSI = (
     authors     => 'Stefan \'tommie\' Tomanek, bw1',
     contact     => 'bw1@aol.at',
@@ -15,6 +15,25 @@ $VERSION = '2.0';
     url         => 'http://scripts.irssi.org/',
     changed     => $VERSION,
 );
+
+my $help = << "END";
+%9Name%9
+  $IRSSI{name}
+%9Version%9
+  $VERSION
+%9Description%9
+  $IRSSI{description}
+%9Usage%9
+  /chansearch [-network|-n <networkname>] [searchstring]
+  /chansearch -help|-h
+  /chansearch -check
+%9Settings%9
+  /set ChanSearch_default_network freenode
+  /set ChanSearch_max_results 50
+  /set ChanSearch_max_columns 0
+%9See also%9
+  https://netsplit.de/
+END
 
 use utf8;
 use Irssi 20020324;
@@ -29,8 +48,8 @@ use vars qw($forked);
 
 $forked = 0;
 my $footer;
-my $default_network;
-my $max_results;
+my ($default_network, $max_results, $max_columns);
+my ($max_columns2);
 my @results;
 
 # ! for the fork
@@ -69,11 +88,12 @@ sub html_to_list {
 	    $h{channel}= dehtml($1);
 	    $' =~ m#<span class="cs-network">(.*?)</span>#p;
 	    $h{network}= dehtml($1);
-	    $' =~ m#<span class="cs-users">(.*?)</span>(.*?)<span class="cs-category"#p;
+	    $' =~ m#<span class="cs-users">(.*?)</span>#p;
+	    my $u=$1;
+	    $' =~ m#class="cs-time">.*?</span>(.*?)<span class="cs-category"#p;
 	    $t= $';
-	    $h{topic}=dehtml($2);
-	    $_=$1;
-	    $_ =~ m/(\d+)/;
+	    $h{topic}=dehtml($1);
+	    $u =~ m/(\d+)/;
 	    $h{users}=$1;
 	    push @clist, {%h};
 	} else {
@@ -133,7 +153,8 @@ sub pipe_input ($$) {
     my $text;
     foreach (@results) {
 	$text .= sprintf("%-".$lnet."s%-".$lchan."s %4i %s\n",
-	    $_->{network}, $_->{channel}, $_->{users},  substr($_->{topic},0,65-$lnet-$lchan));
+	    $_->{network}, $_->{channel}, $_->{users},  substr($_->{topic},0,
+		$max_columns2-$lnet-$lchan));
     }
 
     $forked = 0;
@@ -163,12 +184,22 @@ sub search_channels ($) {
 sub cmd_chansearch ($$$) {
     my ($args, $server, $witem) = @_;
     my $net= $default_network;
+    my $help;
     my ($re, $ar) = GetOptionsFromString($args,
 	'network=s' => \$net,
 	'n=s' => \$net,
+	'help' => \$help,
+	'h' => \$help,
 	'check' => \&self_check_init,
     );
-    fork_search($ar->[0], $net);
+    if ($max_columns==0) {
+	$max_columns2 = Irssi::active_win()->{width} -15;
+    }
+    if (!defined $help) {
+	fork_search($ar->[0], $net);
+    } else {
+	cmd_help($IRSSI{name}, $server, $witem);
+    }
 }
 
 sub self_check_init {
@@ -190,15 +221,27 @@ sub sig_self_check {
 sub sig_setup_changed {
     $default_network= Irssi::settings_get_str($IRSSI{name}.'_default_network');
     $max_results= Irssi::settings_get_int($IRSSI{name}.'_max_results');
+    $max_columns= Irssi::settings_get_int($IRSSI{name}.'_max_columns');
+}
+
+sub cmd_help {
+    my ($args, $server, $witem)=@_;
+    $args=~ s/\s+//g;
+    if (lc($IRSSI{name}) eq lc($args)) {
+	Irssi::print($help, MSGLEVEL_CLIENTCRAP);
+	Irssi::signal_stop();
+    }
 }
 
 Irssi::settings_add_str($IRSSI{name}, $IRSSI{name}.'_default_network', 'freenode' );
 Irssi::settings_add_int($IRSSI{name}, $IRSSI{name}.'_max_results', 50 );
+Irssi::settings_add_int($IRSSI{name}, $IRSSI{name}.'_max_columns', 0 );
 
 Irssi::signal_add('setup changed', "sig_setup_changed");
 
 Irssi::command_bind('chansearch', \&cmd_chansearch);
 Irssi::command_set_options('chansearch', 'network check');
+Irssi::command_bind('help', \&cmd_help);
 
 sig_setup_changed();
 
