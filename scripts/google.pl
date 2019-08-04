@@ -1,22 +1,67 @@
 # - Google.pl
-
-# - You have to modify this line to the path
-# - of your LWP-dir
-
-use lib '/usr/lib/perl5/vendor_perl/5.6.1';
-
 use Irssi;
-use LWP::UserAgent;
+use Getopt::Long qw/GetOptionsFromString/;
+use IPC::Open3;
+use JSON::PP;
 use strict;
 use vars qw($VERSION %IRSSI);
 
-$VERSION = '1.00';
+$VERSION = '2.00';
 %IRSSI = (
-    authors     => 'Oddbjørn Kvalsund',
-    contact     => 'oddbjorn.kvalsund@hiof.no',
-    name        => 'Google',
-    description => 'This script queries google.com and returns the results.',
+    authors     => 'bw1',
+    contact     => 'bw1@aol.at',
+    name        => 'google',
+    description => 'This script queries google.com with googler and returns the results.',
     license     => 'Public Domain',
+    url		=> 'https://scripts.irssi.org/',
+    modules => '',
+    commands=> 'google',
+);
+
+my $help = << "END";
+%9Name%9
+  $IRSSI{name}
+%9Version%9
+  $VERSION
+%9Usage%9
+  /google [-N|-news] [-x|-exact] [-c|-tld TLD] [-l|-lang LANG]
+            [-n|-count N] [-s|-start] <KEYWORD>
+  /google {-h|-help}
+  /google {-p|-say N}
+%9Description%9
+  $IRSSI{description}
+  first author: Oddbjørn Kvalsund
+%9Arguments%9
+  -N|-news      show results from news section
+  -x|-exact     disable automatic spelling correction
+  -c|-tld       country-specific search with top-level domain
+  -l|-lang      display in language LANG
+  -n|-count     show N results (default 10)
+  -s|-start     start at the Nth result
+  -h|-help      show this help message
+  -p|-say       say the N url in channel
+%9See also%9
+  https://github.com/jarun/googler
+END
+
+my ($copt, $tld, $lang, $count, $start, $chelp, $say);
+my %options = (
+	'N'=> sub {$copt .= '--news '},
+	'news'=> sub {$copt .= '--news '},
+	'x'=> sub {$copt .= '--exact '},
+	'exact'=> sub {$copt .= '--exact '},
+	'c=s'=> \$tld,
+	'tld=s'=> \$tld,
+	'l=s'=> \$lang,
+	'lang=s'=> \$lang,
+	'n=o' => \$count,
+	'count=o' => \$count,
+	's=o' => \$start,
+	'start=o' => \$start,
+	'h' => \$chelp,
+	'help' => \$chelp,
+	'p=o' => \$say,
+	'say=o' => \$say,
 );
 
 ## Usage:
@@ -25,84 +70,128 @@ $VERSION = '1.00';
 ## History:
 ## - Sun May 19 2002
 ##   Version 0.1 - Initial release
+## - 2019-08-04
+##   Version 2.0 - Change to googler
 ## -------------------------------
 
-#-------------------------------------------------
-my $nr_sites = 3; # Search-results returned
-my $prefix = ""; # Message printed before results
-#-------------------------------------------------
+my (%readex, $instr, $errstr, @res);
 
-sub cmd_google {
+sub read_exec {
+	my ($cmd, $rfunc) = @_;
 
-        my ($data, $server, $witem) = @_;
-        my $url = "";
-	my $nr_sites = 3;
-	my $i = 0;
-	my (@lines, @pages);
-	my $mode = "quiet";
+	my ($in, $out, $err);
+	use Symbol 'gensym'; $err = gensym;
+	my $pid = open3($in, $out, $err, $cmd);
+	$readex{$pid}->{pid}=$pid;
+	$readex{$pid}->{cmd}=$cmd;
+	$readex{$pid}->{in}=$in;
+	$readex{$pid}->{out}=$out;
+	$readex{$pid}->{err}=$err;
+	$readex{$pid}->{rfunc}=$rfunc;
 
-	# If user supplied nr_sites, activate his setting
-	if ( $data =~ /-(\d\s)/ ) { $nr_sites = $1 };
-	if ($data =~ /-10/) { $nr_sites = 10 };
-	$data =~ s/-\d+//g; # remove nr_sites from $data
+	Irssi::pidwait_add($pid);
+}
 
-	# Switch to public mode
-	# and return error msg if invalid window
-	if ( $data =~ /-p/ ) {
-		$mode = "public";
-		if ( ! $witem ) {
-		  Irssi::active_win()->print("Must be run run in a valid window (CHANNEL|QUERY)");
-		  return;
+sub sig_read_exec {
+	my ($pid, $status) = @_;
+
+	if (defined $readex{$pid} ) {
+		my $out =$readex{$pid}->{out};
+		my $err =$readex{$pid}->{err};
+		my $rfunc =$readex{$pid}->{rfunc};
+
+		delete $readex{$pid};
+
+		my $old = select $out;
+		local $/;
+		$instr = <$out>;
+		select $old;
+
+		my $old = select $err;
+		local $/;
+		$errstr = <$err>;
+		$errstr =~ s/[\n\r]//g;
+		select $old;
+
+		&$rfunc() if (defined $rfunc);
+		if ( scalar(keys(%readex)) == 1 &&
+				exists $readex{job}) {
+			foreach my $j ( @{$readex{job}} ) {
+				if ( ref( $j) eq 'CODE' ) {
+					&$j();
+				} else {
+					eval( $j );
+				}
+			}
+			delete $readex{job};
 		}
-	}
-	$data =~ s/-p//g; # remove -p from $data
-
-	# Format the query-string
-	$data =~ s/\s/+/g;
-	my $query = $data;
-
-	# Initialize LWP
-	my $ua = new LWP::UserAgent;
-	$ua->agent("AgentName/0.1 " . $ua->agent);
-
-	# Do the actual seach
-        my $req = new HTTP::Request GET => "http://www.google.com/search?hl=en&q=$query";
-        my $res = $ua->request($req);
-        my $content = $res->content;
-
-	# Replace <br> with newlines
-	# and remove tags
-        $content =~ s/\<br\>/\n/g;
-        $content =~ s/\<.+?\>//sg;
-
-	# Make array @pages of all search-results
-        @lines = split("\n", $content);
-        @pages = grep (/pages$/, @lines);
-
-	# Remove empty entries in @pages
-	for ($i=0;$i<=$#pages;$i++) {
-		$pages[$i] =~ s/\s+.*//g;
-		if ($pages[$i] =~ /(^\n|\s+\n)/){ splice(@pages, $i, 1) };
-		if ($pages[$i] !~ /\./){ splice(@pages, $i, 1) };
-	}
-
-	if($nr_sites > $#pages) { $nr_sites = $#pages + 1};
-
-	# Print pages to current window if public-mode specified
-	# else display a private notice of returned pages
-	if ( $mode eq "public") {
-	  if ($prefix ne "") { $witem->command("/SAY $prefix") } ;
-          for ($i=0; $i<$nr_sites; $i++) {
-                $pages[$i] =~ s/\s+.*//g;
-		$witem->command("/SAY http://$pages[$i]");
-          }
-	}
-	else {
-	  for ($i=0; $i<$nr_sites; $i++) {
-		$pages[$i] =~ s/\s+.*//g;
-		Irssi::active_win()->print("http://$pages[$i]");
-	  }
+		Irssi::signal_stop();
 	}
 }
 
-Irssi::command_bind('google', 'cmd_google');
+sub cmd {
+	my ($args, $server, $witem)=@_;
+	Getopt::Long::Configure('no_ignore_case');
+	my ($ret, $arg) = GetOptionsFromString($args, %options);
+	if ($ret) {
+		if (defined $chelp) {
+			cmd_help($IRSSI{name}, $server, $witem);
+		} elsif (defined $say) {
+			if ($say >0 && $say <= scalar(@res)) {
+				Irssi::active_win()->command("say $res[$say-1]->{url}");
+			}
+		} else {
+			my $cmd="googler --json ";
+			$cmd .="--tld $tld " if (defined $tld);
+			$cmd .="--lang $lang " if (defined $lang);
+			$cmd .="--count $count " if (defined $count);
+			$cmd .="--start $start " if (defined $start);
+			$cmd .="$copt " if (defined $copt);
+			$cmd .=join(" ",@{$arg});
+			Irssi::print(">$cmd<", MSGLEVEL_CLIENTCRAP);
+			read_exec($cmd ,\&print_all);
+		}
+	}
+	$copt=undef;
+	$tld=undef;
+	$lang=undef;
+	$count=undef;
+	$start=undef;
+	$chelp=undef;
+	$say=undef;
+}
+
+sub print_all {
+	if( length($errstr) <1 ) {
+		@res= @{decode_json($instr)};
+		Irssi::print("/---- google ----", MSGLEVEL_CLIENTCRAP);
+		my $c=1;
+		foreach my $r (@res) {
+			my $s= sprintf("| %3d ",$c) . $r->{title};
+			Irssi::print($s, MSGLEVEL_CLIENTCRAP);
+			$s="|     ". $r->{url};
+			Irssi::print($s, MSGLEVEL_CLIENTCRAP);
+			$c++;
+		}
+		Irssi::print('\---- google ----', MSGLEVEL_CLIENTCRAP);
+	} else {
+		Irssi::print($errstr, MSGLEVEL_CLIENTCRAP);
+	}
+}
+
+sub cmd_help {
+	my ($args, $server, $witem)=@_;
+	$args=~ s/\s+//g;
+	if ($IRSSI{name} eq $args) {
+		Irssi::print($help, MSGLEVEL_CLIENTCRAP);
+		Irssi::signal_stop();
+	}
+}
+
+$ENV{PYTHONIOENCODING}='utf8';
+Irssi::signal_add('pidwait', 'sig_read_exec');
+
+Irssi::command_bind('google', 'cmd');
+my @opt=map {$_ =~ s/=.*$//, $_ } keys %options;
+Irssi::command_set_options($IRSSI{name}, join(" ", @opt));
+Irssi::command_bind('help', \&cmd_help);
