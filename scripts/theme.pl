@@ -39,10 +39,16 @@ my $help = << "END";
   -list|-l      list theme in dir
   -update|-u    download themes.yaml
   -info|-i      print info
+  -fg_color|-f  set or reset the foreground color
+  -bg_color|-b  set or reset the background color
   -help|-h
-%9description%9
+%9Description%9
   $IRSSI{description}
-%9color%9
+%9Settings%9
+  /set theme_source https://irssi-import.github.io/themes/
+  /set theme_local ~/.irssi/
+  /set theme_autocolor off
+%9Color%9
   the script can set
     VT100 text foreground color
     VT100 text background color
@@ -50,11 +56,13 @@ my $help = << "END";
 %9See also%9
   https://irssi-import.github.io/themes/
   https://invisible-island.net/xterm/ctlseqs/ctlseqs.html#h2-Operating-System-Commands
+  https://en.wikipedia.org/wiki/X11_color_names
 END
 
 my (%themes, @dtl);
 my (@tl, $count);
-my ($show, $update, $get, $list, $phelp, $info, $yupdate);
+my ($show, $update, $get, $list, $phelp, $info, $yupdate, $fg_color, $bg_color);
+my ($noxterm);
 my %options = (
 	'n' => sub{ $count++; $update=1},
 	'next' => sub{ $count++; $update=1},
@@ -74,6 +82,10 @@ my %options = (
 	'update' => \$yupdate,
 	'i:s' => \$info,
 	'info:s' => \$info,
+	'f:s' => \$fg_color,
+	'fg_color:s' => \$fg_color,
+	'b:s' => \$bg_color,
+	'bg_color:s' => \$bg_color,
 );
 
 my $lorem = << 'END';
@@ -87,7 +99,7 @@ eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no
 sea takimata sanctus est Lorem ipsum dolor sit amet.
 END
 
-my ($theme_source, $theme_local);
+my ($theme_source, $theme_local, $theme_autocolor);
 my %bg_process= ();
 
 sub background {
@@ -171,18 +183,34 @@ sub core_printformat_module_w {
   }
 }
 
-sub set_color {
-	my ($fg, $bg) = @_;
+sub set_fg_color {
+	my ($fg) = @_;
 	if ($ENV{'TERM'} =~ m/^xterm/) {
-		if ( defined $fg && defined $bg) {
+		if ( defined $fg ) {
 			print STDERR "\033]10;$fg\a";
-			print STDERR "\033]11;$bg\a";
 		} else {
 			print STDERR "\033]110\a";
-			print STDERR "\033]111\a";
 		}
+	} else {
+		$noxterm.=" and " if ($noxterm);
+		$noxterm.="fg_color:$fg";
 	}
 }
+
+sub set_bg_color {
+	my ($bg) = @_;
+	if ($ENV{'TERM'} =~ m/^xterm/) {
+		if ( defined $bg) {
+			print STDERR "\033]11;$bg\a";
+		} else {
+			print STDERR "\033]111\a";
+		}
+	} else {
+		$noxterm.=" and " if ($noxterm);
+		$noxterm.="bg_color:$bg";
+	}
+}
+
 
 sub get_theme {
 	my ($args)=@_;
@@ -212,7 +240,10 @@ sub cmd_set {
 	if (defined $t) {
 		Irssi::settings_set_str('theme',$t);
 		Irssi::signal_emit('setup changed');
-		set_color($themes{$t}->{fgColor}, $themes{$t}->{bgColor});
+		if ($theme_autocolor) {
+			set_fg_color($themes{$t}->{fgColor});
+			set_bg_color($themes{$t}->{bgColor});
+		}
 	}
 }
 
@@ -285,6 +316,31 @@ sub cmd {
 		cmd_help($IRSSI{name}, $server, $witem);
 		$phelp = undef;
 	}
+	if (defined $fg_color) {
+		if (length($fg_color)>0) {
+			set_fg_color($fg_color);
+		} else {
+			set_fg_color();
+		}
+		$fg_color= undef;
+	}
+	if (defined $bg_color) {
+		if (length($bg_color)>0) {
+			set_bg_color($bg_color);
+		} else {
+			set_bg_color();
+		}
+		$bg_color= undef;
+	}
+	if (defined $noxterm) {
+		Irssi::print(
+			"Do not know how to set colour for your terminal ($ENV{TERM})."
+			, MSGLEVEL_CLIENTCRAP);
+		Irssi::print(
+			"Manually configure it for $noxterm"
+			, MSGLEVEL_CLIENTCRAP);
+		$noxterm= undef;
+	}
 }
 
 sub cmd_info {
@@ -312,6 +368,7 @@ sub sig_setup_changed {
 	my $l= Irssi::settings_get_str($IRSSI{name}.'_local');
 	$theme_local= bsd_glob $l;
 	$theme_local.= '/' if $theme_local !~ m#/$#;
+	$theme_autocolor= Irssi::settings_get_bool($IRSSI{name}.'_autocolor');
 }
 
 sub print_result {
@@ -372,6 +429,7 @@ Irssi::signal_add('pidwait', \&sig_pidwait);
 
 Irssi::settings_add_str($IRSSI{name} ,$IRSSI{name}.'_source', 'https://irssi-import.github.io/themes/');
 Irssi::settings_add_str($IRSSI{name} ,$IRSSI{name}.'_local', Irssi::get_irssi_dir());
+Irssi::settings_add_bool($IRSSI{name} ,$IRSSI{name}.'_autocolor', 0);
 
 Irssi::command_bind($IRSSI{name}, \&cmd);
 my @opt=map {s/[=:].*$//, $_}  keys %options;
