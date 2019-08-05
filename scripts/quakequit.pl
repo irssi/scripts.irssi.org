@@ -9,6 +9,11 @@
 # >>> Nick!ident@hos.t has joined #channel
 # +++ *.quakenet.org sets +o Nick #channel
 #####
+# /connect QuakeNet
+# /nick Nick
+# /join #channel
+# /umode +x
+#####
 # Five lines for a single join, ridiculous.
 # This script would make it so you just saw:
 #####
@@ -27,7 +32,7 @@
 use strict;
 use Irssi;
 use vars qw($VERSION %IRSSI);
-$VERSION = "1.0";
+$VERSION = "1.1";
 %IRSSI = (
 	authors		=> "David O\'Rourke",
 	contact		=> "phyber [at] #irssi",
