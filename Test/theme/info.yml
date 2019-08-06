@@ -8,8 +8,9 @@
   default_package: theme
   description: 'activate, show or get theme'
   license: 'Public Domain'
-  modified: '2019-07-02 17:46:54'
-  modules: 'File::Basename File::Fetch File::Glob Getopt::Long'
+  modified: '2019-08-05 16:29:34'
+  modules:
+    - YAML::XS
   name: theme
   url: https://scripts.irssi.org/
-  version: '0.02'
+  version: '0.03'

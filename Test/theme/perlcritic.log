@@ -1,4 +1,10 @@
 Having more than one /x regexp modifier is deprecated at /home/travis/build/irssi/scripts.irssi.org/extlib/lib/perl5/Perl/Critic/Policy/ValuesAndExpressions/RequireInterpolationOfMetachars.pm line 110.
-Code before warnings are enabled at line 10, column 1.  See page 431 of PBP.  (Severity: 4)
-Don't modify $_ in list functions at line 239, column 9.  See page 114 of PBP.  (Severity: 5)
-Comma used to separate statements at line 239, column 14.  See pages 68,71 of PBP.  (Severity: 4)
+Code before warnings are enabled at line 12, column 1.  See page 431 of PBP.  (Severity: 4)
+Return value of "close" ignored at line 114, column 3.  Check the return value of "close" for success.  (Severity: 2)
+Mismatched operator at line 228, column 21.  Numeric/string operators and operands should match.  (Severity: 3)
+Mismatched operator at line 406, column 12.  Numeric/string operators and operands should match.  (Severity: 3)
+Return value of "open" ignored at line 409, column 3.  Check the return value of "open" for success.  (Severity: 3)
+Return value of "close" ignored at line 411, column 3.  Check the return value of "close" for success.  (Severity: 2)
+Don't modify $_ in list functions at line 435, column 9.  See page 114 of PBP.  (Severity: 5)
+Comma used to separate statements at line 435, column 14.  See pages 68,71 of PBP.  (Severity: 4)
+Mismatched operator at line 442, column 22.  Numeric/string operators and operands should match.  (Severity: 3)

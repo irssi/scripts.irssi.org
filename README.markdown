@@ -96,7 +96,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                  chanfull_duden ](Test/chanfull_duden/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        chanfull ](Test/chanfull/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        chanpeak ](Test/chanpeak/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
-[                      chansearch ](Test/chansearch/)|  ✔   |  ✔   |  ✔   | 24   |  ✔   
+[                      chansearch ](Test/chansearch/)|  ✔   |  ✔   |  ✔   | 24   |  ✔   | (c)
 [                       chanshare ](Test/chanshare/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [           chansort_configurable ](Test/chansort_configurable/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                        chansort ](Test/chansort/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -455,7 +455,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                            talk ](Test/talk/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                          target ](Test/target/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                         thankop ](Test/thankop/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                           theme ](Test/theme/)|  ✔   |  ✔   |  ✔   | 10   |  ✔   | (c)
+[                           theme ](Test/theme/)|  ✔   |  ✔   |  ✔   | 20   |  ✔   
 [                        thistory ](Test/thistory/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                           timer ](Test/timer/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                       timezones ](Test/timezones/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
@@ -531,4 +531,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-7c273a08b5b3589ff1c74cfcec8c68fe360218c1 | 1469
+e3fc9d24d6a8eb17cd86dba43363d30b15182839 | 1472
