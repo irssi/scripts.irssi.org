@@ -44,8 +44,9 @@ use warnings;
 
 use Irssi;
 use Irssi::Irc;
+use utf8;
 
-our $VERSION = "1.1";
+our $VERSION = "1.2";
 our %IRSSI = (
     authors     => 'fprintf',
     contact     => 'fprintf@github.com',
@@ -102,6 +103,7 @@ my %tag_registry = (
     'inv' => \&inverse,
 );
 
+my $utf8;
 
 ##############################################################################################
 # Utils
@@ -234,6 +236,9 @@ sub pango {
     }
 
     return unless $dest;
+    if ($utf8) {
+        utf8::decode($text)
+    }
 
     if ($dest->{type} eq "CHANNEL" || $dest->{type} eq "QUERY") {
         $dest->command("/msg " . $dest->{name} . " " . render($text));
@@ -242,3 +247,7 @@ sub pango {
 
 
 Irssi::command_bind("pango", \&pango);
+
+$utf8= Irssi::settings_get_str('term_charset') eq 'UTF-8';
+
+# vim:set ts=4 sw=4 expandtab:
