@@ -1479,17 +1479,6 @@
   url: http://irssi.org/
   version: '2.2'
 -
-  authors: 'Pieter-Bas IJdens'
-  contact: irssi-scripts@nospam.mi4.org.uk
-  description: 'Checks for DNS Spam on JOIN'
-  filename: dnsspam.pl
-  license: 'GPLv2 or later'
-  modified: '2005-03-10 00:00:00'
-  modules: spamcalc::SpamCalc
-  name: dnsspam
-  url: http://pieter-bas.ijdens.com/irssi/
-  version: 1.0.0
--
   authors: FoxMaSk
   contact: 'foxmask@phpfr.org '
   description: 'manage tips ; url ; help in a doc file in the keyword=definition form'
@@ -3459,7 +3448,6 @@
   version: '0.5'
 -
   authors: vague
-  commands: notes
   contact: vague!#irssi@freenode
   description: 'Keeps notes on users and displayes the note in /whois output if the host/nick matches'
   filename: notes.pl
