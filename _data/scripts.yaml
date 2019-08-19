@@ -2545,9 +2545,9 @@
   description: 'Script for kickbanning those who post referral links in a channel'
   filename: kban-referrals.pl
   license: 'New BSD'
-  modified: '2015-02-07 16:26:24'
+  modified: '2019-07-27 18:25:35'
   name: 'KickBan Referrals Script'
-  version: '1.03'
+  version: '1.04'
 -
   authors: "Filippo 'godog' Giunchedi"
   contact: filippo\@esaurito.net
