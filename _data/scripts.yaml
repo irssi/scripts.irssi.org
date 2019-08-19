@@ -3132,10 +3132,10 @@
   description: 'experimental perl version of the irssi mouse patch'
   filename: mouse_soliton.pl
   license: GPLv2
-  modified: '2015-11-16 19:36:52'
-  name: trigger
+  modified: '2019-08-19 17:30:11'
+  name: mouse_soliton
   url: http://wouter.coekaerts.be/irssi/
-  version: 0.0.0
+  version: 0.0.1
 -
   authors: 'Erik Scharwaechter, Tobias Böhm, Mikkel Kroman'
   commands: np
