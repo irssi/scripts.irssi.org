@@ -5,7 +5,6 @@
   default_package: lastspoke
   description: 'Remembers what people said last on what channels'
   license: 'GNU GPLv2 or later'
-  modified: '2019-02-22 00:22:28'
   name: lastspoke
   url: http://irssi.freshdot.net/
   version: '0.3'

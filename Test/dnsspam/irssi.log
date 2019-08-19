@@ -1,2 +1,0 @@
-* -!- Irssi: Error in script dnsspam:
-* Can't locate spamcalc/SpamCalc.pm in @INC (you may need to install the spamcalc::SpamCalc module)  at dnsspam.pl line 16.

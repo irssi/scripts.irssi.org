@@ -6,6 +6,5 @@
   default_package: beepaway
   description: 'Only beep when you are away'
   license: BSD
-  modified: '2018-12-23 22:07:33'
   name: beepaway
   version: '2018122301'

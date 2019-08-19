@@ -1,0 +1,9 @@
+---
+-
+  failed: 1
+  modules:
+    - DBI
+    - DBM::Deep
+    - List::MoreUtils
+    - autovivification
+  name: notes

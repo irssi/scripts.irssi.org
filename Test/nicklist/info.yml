@@ -17,7 +17,6 @@
   default_package: nicklist
   description: 'draws a nicklist to another terminal, or at the right of your irssi in the same terminal'
   license: GPLv2
-  modified: '2018-10-02 22:23:16'
   name: nicklist
   url: http://wouter.coekaerts.be/irssi
   version: 0.4.12
