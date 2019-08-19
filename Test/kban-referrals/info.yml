@@ -3,9 +3,27 @@
   authors: Linostar
   commands:
     - kbanref
+    - 'kbanref blacklist'
+    - 'kbanref blacklist add'
+    - 'kbanref blacklist clear'
+    - 'kbanref blacklist list'
+    - 'kbanref blacklist remove'
+    - 'kbanref chan'
+    - 'kbanref chan add'
+    - 'kbanref chan clear'
+    - 'kbanref chan list'
+    - 'kbanref chan remove'
+    - 'kbanref help'
+    - 'kbanref mode'
+    - 'kbanref whitelist'
+    - 'kbanref whitelist add'
+    - 'kbanref whitelist clear'
+    - 'kbanref whitelist list'
+    - 'kbanref whitelist remove'
   contact: linostar@sdf.org
   default_package: kban_referrals
   description: 'Script for kickbanning those who post referral links in a channel'
   license: 'New BSD'
+  modified: '2019-07-27 18:25:35'
   name: 'KickBan Referrals Script'
-  version: '1.03'
+  version: '1.04'
