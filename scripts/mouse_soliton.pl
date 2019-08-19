@@ -8,11 +8,11 @@ use Math::Trig;
 
 use vars qw($VERSION %IRSSI);
 
-$VERSION = '0.0.0';
+$VERSION = '0.0.1';
 %IRSSI = (
 	authors  	=> 'Wouter Coekaerts',
 	contact  	=> 'wouter@coekaerts.be',
-	name    	=> 'trigger',
+	name    	=> 'mouse_soliton',
 	description 	=> 'experimental perl version of the irssi mouse patch',
 	license 	=> 'GPLv2',
 	url     	=> 'http://wouter.coekaerts.be/irssi/',
