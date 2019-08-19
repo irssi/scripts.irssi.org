@@ -24,7 +24,6 @@ cpan:
   broken_modules:
     - Xmms
     - Xmms::Remote
-    - spamcalc::SpamCalc
     - Net::vICQ
 # This is a whitelist of scripts who are currently allowed to fail
 # testing. They should be fixed and then removed from the whitelist.
@@ -32,7 +31,6 @@ whitelist:
   - amaroknp
   - cap_sasl_fail
   - cap_sasl
-  - dnsspam
   - idonkey
   - ircgallery
   - irssiq
