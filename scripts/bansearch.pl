@@ -228,8 +228,9 @@ sub RPL_WHOREPLY {
         return if(!$running);
 
 	# 0   1 2   3       4               5    6 7  8
-	# bw2 * ~pi rpi1.my irc.example.net rpi1 H :0 pi
-        (undef, undef, $user, $host, undef, $nick, $account, undef, $real) = split(/ /, $data);
+	# bw2 * ~pi rpi1.my irc.example.net rpi1 H :0 real name
+        (undef, undef, $user, $host, undef, $nick, undef, undef, $real) = split(/ /, $data,9);
+        $account='';
         $real=~s/^://;
         Irssi::active_win()->print("\x02User\x02: $nick [$account] ($real) $user\@$host");
 }
@@ -239,9 +240,10 @@ sub RPL_WHOSPCRPL {
 
         return if(!$running);
 
+	# $server->send_raw("WHO $person %uhnar");
 	# 0   1    2               3   4   5
-	# bw2 ~bw1 irc.example.net bw1 bw2 :bw1
-        (undef, $user, $host, $nick, $account, $real) = split(/ /, $data);
+	# bw2 ~bw1 irc.example.net bw1 bw2 :real name
+        (undef, $user, $host, $nick, $account, $real) = split(/ /, $data,6);
         $real=~s/^://;
         Irssi::active_win()->print("\x02User\x02: $nick [$account] ($real) $user\@$host");
 }
