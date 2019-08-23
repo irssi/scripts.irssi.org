@@ -61,9 +61,7 @@ sub _debug {
 }
 
 sub init {
-  for(Irssi::chatnets()) {
-    push @chatnets, $_->{name};
-  }
+  @chatnets = map {$_->{name}} Irssi::chatnets;
   $DEBUG_ENABLED = Irssi::settings_get_bool("notes_verbose");
   my $filename = Irssi::settings_get_str("notes_db") // Irssi::get_irssi_dir() . "/notes.db";
   $filename =~ s,^~,$ENV{HOME},e;
