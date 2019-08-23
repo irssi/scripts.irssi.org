@@ -23,14 +23,14 @@ no autovivification;
 use feature qw(fc);
 use Data::Dumper;
 
-our $VERSION = '1.0';
+our $VERSION = '1.1';
 our %IRSSI = (
     authors     => 'vague',
     contact     => 'vague!#irssi@freenode',
     name        => 'notes',
     description => 'Keeps notes on users and displayes the note in /whois output if the host/nick matches',
     license     => 'GPL2',
-    changed     => '22 Apr 20:00:00 CEST 2017',
+    changed     => '23 Aug 22:30:00 CEST 2019',
 );
 
 my ($notes, $expando);
