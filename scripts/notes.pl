@@ -37,8 +37,6 @@ my ($notes, $expando);
 my @chatnets;
 my $DEBUG_ENABLED;
 
-push @chatnets, $_->{name} for(Irssi::chatnets());
-
 sub DEBUG { $DEBUG_ENABLED }
 
 sub _print {
@@ -63,6 +61,9 @@ sub _debug {
 }
 
 sub init {
+  for(Irssi::chatnets()) {
+    push @chatnets, $_->{name};
+  }
   $DEBUG_ENABLED = Irssi::settings_get_bool("notes_verbose");
   my $filename = Irssi::settings_get_str("notes_db") // Irssi::get_irssi_dir() . "/notes.db";
   $filename =~ s,^~,$ENV{HOME},e;
