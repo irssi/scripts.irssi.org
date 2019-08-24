@@ -167,7 +167,6 @@ See [the testing read-me](../master/_testing/) for details.
 [                            file ](Test/file/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
 [                         findbot ](Test/findbot/)|  ✔   |  ✔   |  ✔   | 17   |  ✔   | (c)
 [                            find ](Test/find/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                    fix_slackirc ](Test/fix_slackirc/)|  ✔   |  ✔   |  ✔   |  1   |  ✔   | (c)
 [                          fleech ](Test/fleech/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                         fnotify ](Test/fnotify/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                          follow ](Test/follow/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -304,7 +303,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                           morse ](Test/morse/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
 [                       mouse-awl ](Test/mouse-awl/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                           mouse ](Test/mouse/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
-[                   mouse_soliton ](Test/mouse_soliton/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   
+[                   mouse_soliton ](Test/mouse_soliton/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                             mpd ](Test/mpd/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
 [                          mpg123 ](Test/mpg123/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
 [                     mqtt-notify ](Test/mqtt-notify/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -530,4 +529,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-3752127620397a069f33ff92f855b7f9ca46f548 | 1481
+96ab44e92ffd11dca772da053bb5ca78bdefb03e | 1487
