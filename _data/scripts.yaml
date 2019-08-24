@@ -1699,16 +1699,6 @@
   url: http://hem.passagen.se/thka2315/
   version: '1.58'
 -
-  authors: Nei
-  contact: 'Nei @ anti@conference.jabber.teamidiot.de'
-  description: 'Some workarounds to improve irssi experience on the Slack IRC gateway'
-  filename: fix_slackirc.pl
-  license: ISC
-  modified: '2016-08-16 22:01:01'
-  name: fix_slackirc
-  url: http://anti.teamidiot.de/
-  version: '0.3'
--
   authors: 'Piotr Krukowiecki'
   commands: fleech
   contact: 'piotr //at// krukowiecki //dot// net'
