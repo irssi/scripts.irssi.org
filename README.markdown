@@ -198,7 +198,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                           hello ](Test/hello/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        hideauth ](Test/hideauth/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                            hide ](Test/hide/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                        hideshow ](Test/hideshow/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
+[                        hideshow ](Test/hideshow/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
 [                        highlite ](Test/highlite/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                         hignore ](Test/hignore/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                      hilightcmd ](Test/hilightcmd/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -529,4 +529,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-96ab44e92ffd11dca772da053bb5ca78bdefb03e | 1487
+e2fdbd2b9d02c02015358426aadd854ef6d2f5cd | 1488
