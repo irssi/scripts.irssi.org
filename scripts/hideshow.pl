@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-our $VERSION = '0.4.4';
+our $VERSION = '0.4.5'; # 701c53e4db98fb0
 our %IRSSI = (
     authors     => 'Nei',
     contact     => 'Nei @ anti@conference.jabber.teamidiot.de',
@@ -48,8 +48,9 @@ use constant IN_IRSSI => __PACKAGE__ ne 'main' || $ENV{IRSSI_MOCK};
 use Irssi;
 use Irssi::TextUI;
 use Encode;
+use version;
 
-
+my $irssi_version = qv(Irssi::parse_special('v$J') =~ s/-.*//r);
 
 sub setc () {
     $IRSSI{name}
@@ -61,7 +62,7 @@ sub set ($) {
 
 my (%hidden);
 
-my $dest;
+my $DEST;
 
 my $HIDE;
 my $hide_level;
@@ -123,13 +124,6 @@ sub hide_win_lines {
 	$view->redraw;
     }
 }
-sub hide_lines {
-    Irssi::signal_remove('gui textbuffer line removed' => 'fix_lines');
-    for my $win (Irssi::windows) {
-	hide_win_lines($win);
-    }
-    Irssi::signal_add_last('gui textbuffer line removed' => 'fix_lines');
-}
 
 my %hideshow_timed;
 sub show_one_timed {
@@ -156,6 +150,17 @@ sub show_one_timed {
     return 1;
 }
 sub hideshow {
+    if ($irssi_version >= v1.1.0) {
+	if ($HIDE) {
+	    my $level = Irssi::bits2level($hide_level | $ext_hidden_level);
+	    Irssi::command("^foreach window ^window hidelevel $level");
+	} else {
+	    Irssi::command('^foreach window ^window hidelevel -all -hidden');
+	}
+	return;
+    }
+
+    # Horrible Pre Irssi 1.1 Code follows
     if (exists $hideshow_timed{_timer}) {
 	Irssi::timeout_remove(delete $hideshow_timed{_timer});
     }
@@ -179,42 +184,59 @@ sub init_hideshow {
 }
 
 sub UNLOAD {
+    if ($irssi_version >= v1.1.0) {
+	if ($irssi_version >= v1.2.0) {
+	    $hide_level = Irssi::settings_get_level('window_default_hidelevel');
+	    my $level = Irssi::bits2level($hide_level);
+	    Irssi::command('^foreach window ^window hidelevel -all -hidden');
+	    Irssi::command("^foreach window ^window hidelevel $level");
+	} else {
+	    Irssi::command('^foreach window ^window hidelevel -all hidden');
+	}
+	return;
+    }
+
     show_lines();
 }
 
 my $multi_msgs_last;
 
 sub prt_text_issue {
-    $dest = $_[0];
+    $DEST = $_[0];
     my $stripd = $_[2];
-    if (ref $dest && $Irssi::scripts::hideshow::hide_next) {
+    if (ref $DEST && $Irssi::scripts::hideshow::hide_next) {
 	$multi_msgs_last = undef;
-	$dest->{hide} = 1;
-	if ($dest->{level} & (MSGLEVEL_QUITS|MSGLEVEL_NICKS)) {
+	$DEST->{hide} = 1;
+	if ($DEST->{level} & (MSGLEVEL_QUITS|MSGLEVEL_NICKS)) {
 	    $multi_msgs_last = $stripd;
 	}
     }
-    elsif (ref $dest && $dest->{level} & (MSGLEVEL_QUITS|MSGLEVEL_NICKS)
+    elsif (ref $DEST && $DEST->{level} & (MSGLEVEL_QUITS|MSGLEVEL_NICKS)
 	       && defined $multi_msgs_last && $multi_msgs_last eq $stripd) {
-	$dest->{hide} = 1;
+	$DEST->{hide} = 1;
     }
     else {
 	$multi_msgs_last = undef;
     }
     $Irssi::scripts::hideshow::hide_next = undef;
+
+    if ($irssi_version >= v1.1.0 && ref $DEST && $DEST->{hide}) {
+	$_[0] = Irssi::Server::format_create_dest($DEST->{server}, $DEST->{target}, $DEST->{level} | $ext_hidden_level, $DEST->{window});
+	&Irssi::signal_continue;
+    }
 }
 
 sub prt_text_ref {
-    return unless ref $dest;
+    return unless ref $DEST;
     my ($win) = @_;
     if ($HIDE) {
 	my $view = $win->view;
 	my $vid = $view->{_irssi};
 	my $lp = $view->{buffer}{cur_line};
 	my $prev = $lp->prev;
-	if ($prev && ($dest->{hide} || $lp->{info}{level} & $hide_level)) {
+	if ($prev && ($DEST->{hide} || $lp->{info}{level} & $hide_level)) {
 	    my $level = $lp->{info}{level};
-	    $level |= $ext_hidden_level if $dest->{hide};
+	    $level |= $ext_hidden_level if $DEST->{hide};
 	    push @{ $hidden{ $vid }
 			{ $prev->{_irssi} }
 		    }, [ $lp->get_text(1), $level, $lp->{info}{time} ];
@@ -226,7 +248,7 @@ sub prt_text_ref {
 	    $view->redraw;
 	}
     }
-    $dest = undef;
+    $DEST = undef;
 }
 
 sub fix_lines {
@@ -248,39 +270,50 @@ Irssi::signal_register({
 
 Irssi::signal_add_last({
     'setup changed'    => 'setup_changed',
-    'gui print text finished' => 'prt_text_ref',
-    'gui textbuffer line removed' => 'fix_lines',
 });
 Irssi::signal_add({
     'print text'	      => 'prt_text_issue',
-    'window destroyed'	      => 'win_del',
 });
+
 Irssi::settings_add_level( setc, set 'level', '' );
 Irssi::settings_add_bool( setc, set 'hide', 1 );
-Irssi::command_bind({
-    'scrollback status' => sub {
-	if ($_[0] =~ /\S/) {
-	    &Irssi::command_runsub('scrollback status', @_);
-	    Irssi::signal_stop;
+
+
+unless ($irssi_version >= v1.1.0) {
+    Irssi::signal_add_last({
+	'gui print text finished' => 'prt_text_ref',
+	'gui textbuffer line removed' => 'fix_lines',
+    });
+    Irssi::signal_add({
+	'window destroyed'	      => 'win_del',
+    });
+
+    Irssi::command_bind({
+	'scrollback status' => sub {
+	    if ($_[0] =~ /\S/) {
+		&Irssi::command_runsub('scrollback status', @_);
+		Irssi::signal_stop;
+	    }
+	},
+	'scrollback status hidden' => sub {
+	    my %vw = map { ($_->view->{_irssi}, $_->{refnum}) } Irssi::windows;
+	    my ($tl, $ta, $td) = (0, 0, 0);
+	    for my $v (keys %hidden) {
+		my $hl = $hidden{$v};
+		my ($lc, $dc, $ac) = (0, 0, scalar keys %$hl);
+		for my $k (keys %$hl) {
+		    my $ls = $hl->{$k};
+		    $lc += @$ls;
+		    $dc += 16 + length $_->[0] for @$ls;
+		}
+		$tl += $lc; $ta += $ac; $td += $dc;
+		print CLIENTCRAP sprintf "Window %d: %d lines hidden, %d anchors, %dkB of data", ($vw{$v}//"??"), $lc, $ac, int($dc/1024);
+	    }
+	    print CLIENTCRAP sprintf "Total: %d lines hidden, %d anchors, %dkB of data", $tl, $ta, int($td/1024);
 	}
-    },
-   'scrollback status hidden' => sub {
-       my %vw = map { ($_->view->{_irssi}, $_->{refnum}) } Irssi::windows;
-       my ($tl, $ta, $td) = (0, 0, 0);
-       for my $v (keys %hidden) {
-	   my $hl = $hidden{$v};
-	   my ($lc, $dc, $ac) = (0, 0, scalar keys %$hl);
-	   for my $k (keys %$hl) {
-	       my $ls = $hl->{$k};
-	       $lc += @$ls;
-	       $dc += 16 + length $_->[0] for @$ls;
-	   }
-	   $tl += $lc; $ta += $ac; $td += $dc;
-	   print CLIENTCRAP sprintf "Window %d: %d lines hidden, %d anchors, %dkB of data", ($vw{$v}//"??"), $lc, $ac, int($dc/1024);
-       }
-       print CLIENTCRAP sprintf "Total: %d lines hidden, %d anchors, %dkB of data", $tl, $ta, int($td/1024);
-   }
-});
+    });
+}
+
 init_hideshow();
 
 { package Irssi::Nick }
