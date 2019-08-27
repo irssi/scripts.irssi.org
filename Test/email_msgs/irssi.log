@@ -1,1 +1,11 @@
+* Use of uninitialized value $interval in numeric ne (!=) at email_msgs.pl line 124.
+* 
+* Use of uninitialized value $pri_r_msgs in numeric ne (!=) at email_msgs.pl line 132.
+* 
+* Use of uninitialized value $pub_s_msgs in numeric ne (!=) at email_msgs.pl line 143.
+* 
+* Use of uninitialized value $pri_s_msgs in numeric ne (!=) at email_msgs.pl line 154.
+* 
+* Use of uninitialized value $pm in numeric ne (!=) at email_msgs.pl line 169.
+* 
 * -!- Irssi: Loaded script email_msgs

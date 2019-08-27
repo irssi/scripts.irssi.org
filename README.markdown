@@ -154,7 +154,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                           elist ](Test/elist/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                           eliza ](Test/eliza/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                         emaildb ](Test/emaildb/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
-[                      email_msgs ](Test/email_msgs/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                      email_msgs ](Test/email_msgs/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                  email_privmsgs ](Test/email_privmsgs/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                             emo ](Test/emo/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                          events ](Test/events/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -198,7 +198,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                           hello ](Test/hello/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        hideauth ](Test/hideauth/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                            hide ](Test/hide/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                        hideshow ](Test/hideshow/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
+[                        hideshow ](Test/hideshow/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                        highlite ](Test/highlite/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                         hignore ](Test/hignore/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                      hilightcmd ](Test/hilightcmd/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -529,4 +529,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-e2fdbd2b9d02c02015358426aadd854ef6d2f5cd | 1488
+236777d1f852e01eb0a5939eb2233ea2045610f7 | 1489
