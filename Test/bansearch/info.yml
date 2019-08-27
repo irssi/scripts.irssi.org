@@ -1,15 +1,12 @@
 ---
 -
-  authors:
-    - 'Nathan Handler'
-    - 'Joseph Price'
+  authors: 'Nathan Handler, Joseph Price'
   commands:
     - bansearch
-  contact:
-    - nathan.handler@gmail.com
-    - pricechild@ubuntu.com
+  contact: 'nathan.handler@gmail.com, pricechild@ubuntu.com'
   default_package: bansearch
   description: 'Searches for bans, quiets, and channel modes affecting a user'
   license: GPLv3+
+  modified: '2019-08-19 15:25:57'
   name: bansearch
-  version: '1.1'
+  version: '1.2'
