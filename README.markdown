@@ -62,7 +62,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                      banaffects ](Test/banaffects/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       bandwidth ](Test/bandwidth/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
 [                             ban ](Test/ban/)|  ✔   |  ✔   |  ✔   | 38   |  ✔   | (c)
-[                       bansearch ](Test/bansearch/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   
+[                       bansearch ](Test/bansearch/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                         bantime ](Test/bantime/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        beepaway ](Test/beepaway/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       beep_beep ](Test/beep_beep/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
