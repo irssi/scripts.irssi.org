@@ -186,7 +186,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                          gimmie ](Test/gimmie/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                 gitscriptassist ](Test/gitscriptassist/)|  ✔   |  ✔   |  ✔   | 24   |  ✔   | (c)
 [                             go2 ](Test/go2/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                          google ](Test/google/)|  ✔   |  ✔   |  ✔   | 10   |  ✔   | (c)
+[                          google ](Test/google/)|  ✔   |  ✔   |  ✔   | 26   |  ✔   
 [                              go ](Test/go/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                    gpgvalidator ](Test/gpgvalidator/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                     greetignore ](Test/greetignore/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -529,4 +529,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-763f8e87535da0a3f23c3b2a98a1cb2e2598e0ce | 1490
+ca61effcc7249d0ef739e6ca8a60f2854aa1d6d8 | 1491

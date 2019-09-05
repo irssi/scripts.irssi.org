@@ -1,13 +1,14 @@
 ---
 -
-  authors: 'Oddbjørn Kvalsund'
+  authors: bw1
   commands:
     - google
-  contact: oddbjorn.kvalsund@hiof.no
+  contact: bw1@aol.at
   default_package: google
-  description: 'This script queries google.com and returns the results.'
+  description: 'This script queries google.com with googler and returns the results.'
   license: 'Public Domain'
-  modules:
-    - LWP::UserAgent
-  name: Google
-  version: '1.00'
+  modified: '2019-08-04 19:27:07'
+  modules: ''
+  name: google
+  url: https://scripts.irssi.org/
+  version: '2.00'

@@ -1,5 +1,9 @@
 Having more than one /x regexp modifier is deprecated at /home/travis/build/irssi/scripts.irssi.org/extlib/lib/perl5/Perl/Critic/Policy/ValuesAndExpressions/RequireInterpolationOfMetachars.pm line 110.
-Code before warnings are enabled at line 13, column 1.  See page 431 of PBP.  (Severity: 4)
-Subroutine "new" called using indirect syntax at line 65, column 11.  See page 349 of PBP.  (Severity: 4)
-Subroutine "new" called using indirect syntax at line 69, column 19.  See page 349 of PBP.  (Severity: 4)
-String delimiter used with "split" at line 79, column 18.  Express it as a regex instead.  (Severity: 2)
+Code before warnings are enabled at line 9, column 1.  See page 431 of PBP.  (Severity: 4)
+One-argument "select" used at line 105, column 13.  See page 224 of PBP.  (Severity: 4)
+One-argument "select" used at line 108, column 3.  See page 224 of PBP.  (Severity: 4)
+One-argument "select" used at line 110, column 13.  See page 224 of PBP.  (Severity: 4)
+One-argument "select" used at line 114, column 3.  See page 224 of PBP.  (Severity: 4)
+Expression form of "eval" at line 123, column 6.  See page 161 of PBP.  (Severity: 5)
+Don't modify $_ in list functions at line 195, column 9.  See page 114 of PBP.  (Severity: 5)
+Comma used to separate statements at line 195, column 14.  See pages 68,71 of PBP.  (Severity: 4)
