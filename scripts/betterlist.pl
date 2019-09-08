@@ -3,13 +3,15 @@ use strict;
 use warnings;
 use Text::ParseWords;
 use vars qw($VERSION %IRSSI); 
-$VERSION = "2.1";
+$VERSION = "2.2";
 %IRSSI = (
   authors     => "Liam Hopkins",
   contact     => "we.hopkins\@gmail.com",
+  commands    => "betterlist",
   name        => "betterlist",
-  description => "/list <perl-regexp>",
+  description => "/betterlist <perl-regexp>",
   license     => "GPL",
+  modules     => "Text::ParseWords",
 );
 
 
@@ -75,3 +77,5 @@ Irssi::signal_add_first ({
 });
 
 Irssi::command_bind("betterlist", \&betterlist);
+
+# vim:set ts=2 sw=2 expandtab:
