@@ -29,6 +29,7 @@ before_install:
 install:
 - |
   pushd irssi-head
+  echo -n "irssi version: ";git describe --tags
   ./autogen.sh --prefix=$HOME/irssi_inst --with-perl=module 2>/dev/null | tail -n 17
   make >/dev/null 2>&1
   make install | grep -C3 \\\.libs\\\|bin/irssi
