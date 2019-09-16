@@ -3434,6 +3434,7 @@
   version: '0.5'
 -
   authors: vague
+  commands: notes
   contact: vague!#irssi@freenode
   description: 'Keeps notes on users and displayes the note in /whois output if the host/nick matches'
   filename: notes.pl
