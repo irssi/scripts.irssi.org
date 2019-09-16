@@ -2,7 +2,14 @@
 -
   authors: vague
   changed: '22 Apr 20:00:00 CEST 2017'
+  commands:
+    - notes
+    - 'notes add'
+    - 'notes del'
+    - 'notes help'
+    - 'notes list'
   contact: vague!#irssi@freenode
+  default_package: notes
   description: 'Keeps notes on users and displayes the note in /whois output if the host/nick matches'
   license: GPL2
   modules:
