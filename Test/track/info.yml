@@ -5,10 +5,16 @@
     - gather
     - import
     - track
+    - 'track help'
+    - 'track host'
+    - 'track ident'
+    - 'track nick'
+    - 'track quiet'
   contact: DALnet
   default_package: track
   description: 'Keeps track of users by building a databaseof online, joining and nickchanges. Regex-cabablefor the most part, AKA import available. Search byident, nick or host'
   license: 'Public Domain'
-  name: track.pl
+  modified: '2019-08-17 21:23:21'
+  name: track
   url: none
-  version: '2.1'
+  version: '2.2'
