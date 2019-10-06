@@ -5,7 +5,9 @@
     - betterlist
   contact: we.hopkins@gmail.com
   default_package: betterlist
-  description: '/list <perl-regexp>'
+  description: '/betterlist <perl-regexp>'
   license: GPL
+  modified: '2019-09-08 18:01:35'
+  modules: Text::ParseWords
   name: betterlist
-  version: '2.1'
+  version: '2.2'
