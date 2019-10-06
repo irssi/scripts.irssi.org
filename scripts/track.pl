@@ -1,15 +1,16 @@
 use Irssi qw(servers);
 use warnings; use strict;
+use File::Glob qw/:bsd_glob/;
 use vars qw($VERSION %IRSSI);
 
 my $quiet     = 0;
 my $dupcount  = 0;
-$VERSION      = "2.1";
+$VERSION      = "2.2";
 
 %IRSSI = (
       authors => "Ziddy",
       contact => "DALnet",
-      name => "track.pl",
+      name => "track",
       description => "Keeps track of users by building a database" .
                      "of online, joining and nickchanges. Regex-cabable" .
                      "for the most part, AKA import available. Search by" .
@@ -18,11 +19,13 @@ $VERSION      = "2.1";
       url => "none"
 );
 
+my $track_file;
+
 sub whois_signal {
     my ($server, $data, $txtserver) = @_;
     my ($me, $nick, $ident, $host) = split(" ", $data);
-    open(my $fh, '>>', Irssi::get_irssi_dir() . "/scripts/track.lst");
-    open(my $fh2, '<', Irssi::get_irssi_dir() . "/scripts/track.lst");
+    open(my $fh, '>>', $track_file);
+    open(my $fh2, '<', $track_file);
     my @list = <$fh2>;
     close($fh2);
     $nick    = conv($nick);
@@ -41,8 +44,8 @@ sub whois_signal {
 
 sub joining {
     my ($server, $channame, $nick, $host) = @_;
-    open(my $fh, '>>', Irssi::get_irssi_dir() . "/scripts/track.lst");
-    open(my $fh2, '<', Irssi::get_irssi_dir() . "/scripts/track.lst");
+    open(my $fh, '>>', $track_file);
+    open(my $fh2, '<', $track_file);
     $nick     = conv($nick);
     my @list  = <$fh2>;
     close($fh2);
@@ -63,11 +66,11 @@ sub joining {
     close($fh);
 
     if ($dupcount >= 100) {
-        open(my $fhr, '<', Irssi::get_irssi_dir() . "/scripts/track.lst");
+        open(my $fhr, '<', $track_file);
         my @list   = <$fhr>;
         close($fhr);
         my @duprem = uniq(@list);
-        open(my $fhw, '>', Irssi::get_irssi_dir() . "/scripts/track.lst");
+        open(my $fhw, '>', $track_file);
         print $fhw @duprem;
         close($fhw);
         $dupcount = 0;
@@ -78,8 +81,8 @@ sub joining {
 
 sub nchange {
     my ($server, $newnick, $oldnick, $host) = @_;
-    open(my $fh, '>>', Irssi::get_irssi_dir() . "/scripts/track.lst");
-    open(my $fh2, '<', Irssi::get_irssi_dir() . "/scripts/track.lst");
+    open(my $fh, '>>', $track_file);
+    open(my $fh2, '<', $track_file);
     $newnick  = conv($newnick);
     my @list  = <$fh2>;
     close($fh2);
@@ -103,11 +106,16 @@ sub track {
     my $input  = $_[0];
     chomp($input);
     my @spl    = split(/\s/, $input);
-    my $type   = $spl[0];
+    my $type;
+	if (defined $spl[0] ) {
+		$type   = $spl[0];
+	} else {
+		$type='';
+	}
     my $data   = $spl[1];
     $data      = conv($data);
     my $match  = 0;
-    open(my $fh, '<', Irssi::get_irssi_dir() . "/scripts/track.lst");
+    open(my $fh, '<', $track_file);
     my @list = <$fh>;
     close($fh);
 
@@ -138,9 +146,9 @@ sub track {
                      "                  all of the nicknames and hosts and fills\n" .
                      "                  in the ident with AKAImport, since AKA does\n" .
                      "                  not keep track of idents\n\nCommon usage:\n" .
-                     "/track ident [input]  -  Search for entries by supplied ident\n" .
-                     "/track nick  [input]  -  Search for entries by supplied nick\n" .
-                     "/track host  [input]  -  Search for entries by supplied " .
+                     "/track ident <input>  -  Search for entries by supplied ident\n" .
+                     "/track nick  <input>  -  Search for entries by supplied nick\n" .
+                     "/track host  <input>  -  Search for entries by supplied " .
                      "IP address\n" . " " x 25 . "or hostmask, IPv4 or IPv6\n" .
                      "\n%RNote%n: Regular expressions are acceptable! Be\n" .
                      "careful though. It has no protection to stop you from \n" .
@@ -151,26 +159,26 @@ sub track {
 
     foreach my $line (@list) {
         my ($unick, $ident, $host);
-        if ($type eq "ident") {
+        if ($type eq "ident" && defined $data) {
             if ($line =~ m/^(.*?);($data);(.*)$/i) {
                 ($unick, $ident, $host) = (unconv($1), unconv($2), $3);
                 Irssi::print("%GIdent[%n$data%G]%n: $unick used $ident on $host");
                 $match = 1;
             }
-        } elsif ($type eq "host") {
+        } elsif ($type eq "host" && defined $data) {
             if ($line =~ m/^(.*?);(.*?);($data)$/i) {
                 ($unick, $ident, $host) = (unconv($1), unconv($2), $3);
                 Irssi::print("%GHost[%n$data%G]%n: $unick used $ident on $host");
                 $match = 1;
             }
-        } elsif ($type eq "nick") {
+        } elsif ($type eq "nick" && defined $data) {
             if ($line =~ m/^($data);(.*?);(.*)$/i) {
                 ($unick, $ident, $host) = (unconv($1), unconv($2), $3);
                 Irssi::print("%GNick[%n$data%G]%n: $unick used $ident on $host");
                 $match = 1;
             }
         } else {
-            Irssi::print("%RUsage%n: /track [ident|host|nick] [input]");
+            Irssi::print("%RUsage%n: /track [{ident|host|nick} <input>]");
             last;
         }
     }
@@ -195,7 +203,7 @@ sub namechan {
             foreach my $nname ($serv->nicks()) {
                 my $nickc = conv($nname->{nick});
                 my $nick  = $nname->{nick};
-                open(my $fh, '<', Irssi::get_irssi_dir() . "/scripts/track.lst");
+                open(my $fh, '<', $track_file);
                 my @list  = <$fh>;
                 close($fh);
 
@@ -262,7 +270,7 @@ sub importAKA {
             }
         }
         my @arrn = split(/;;;/, $string);
-        open(my $fh2, '>>', Irssi::get_irssi_dir() . "scripts/track.lst");
+        open(my $fh2, '>>', $track_file);
         foreach my $out (@arrn) {
             if (length($out) > 1) {
                 $out =~ s/\r//g;
@@ -275,9 +283,28 @@ sub importAKA {
     }
 }
 
+sub sig_setup_changed {
+	$track_file= Irssi::settings_get_str('track_file');
+	$track_file= bsd_glob($track_file);
+	if (! (-e $track_file)) {
+		open my $fa, '>', $track_file;
+		close $fa;
+	}
+}
+
+Irssi::settings_add_str($IRSSI{name} ,'track_file', Irssi::get_irssi_dir() . "/scripts/track.lst");
+
 Irssi::command_bind('track' => \&track);
+Irssi::command_bind('track nick' => \&track);
+Irssi::command_bind('track ident' => \&track);
+Irssi::command_bind('track host' => \&track);
+Irssi::command_bind('track help' => \&track);
+Irssi::command_bind('track quiet' => \&track);
 Irssi::command_bind('gather' => \&namechan);
 Irssi::command_bind('import' => \&importAKA);
 Irssi::signal_add('message join', 'joining');
 Irssi::signal_add('message nick', 'nchange');
 Irssi::signal_add_first('event 311', 'whois_signal');
+Irssi::signal_add('setup changed', \&sig_setup_changed);
+
+sig_setup_changed();
