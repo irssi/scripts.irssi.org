@@ -693,12 +693,12 @@
   authors: 'Liam Hopkins'
   commands: betterlist
   contact: we.hopkins@gmail.com
-  description: '/list <perl-regexp>'
+  description: '/betterlist <perl-regexp>'
   filename: betterlist.pl
   license: GPL
-  modified: '2016-03-19 19:58:23'
+  modified: '2019-09-08 18:01:35'
   name: betterlist
-  version: '2.1'
+  version: '2.2'
 -
   authors: 'Carl Fischer'
   commands: 'binary unbinary'
@@ -3676,9 +3676,9 @@
   description: 'Render text with various color modifications using HTML tag syntax.'
   filename: pangotext.pl
   license: 'GNU GPLv2 or later'
-  modified: '2015-09-19 03:19:49'
+  modified: '2019-08-18 13:24:22'
   name: pangotext
-  version: '1.1'
+  version: '1.2'
 -
   authors: 'Marcin Rozycki, Stanislaw Halik'
   commands: paste
@@ -4798,10 +4798,10 @@
   description: 'Keeps track of users by building a databaseof online, joining and nickchanges. Regex-cabablefor the most part, AKA import available. Search byident, nick or host'
   filename: track.pl
   license: 'Public Domain'
-  modified: '2015-09-19 02:21:41'
-  name: track.pl
+  modified: '2019-08-17 21:23:21'
+  name: track
   url: none
-  version: '2.1'
+  version: '2.2'
 -
   authors: "Peter 'kinlo' Leurs, Uwe Dudenhoeffer, Michiel Holtkamp, Nico R. Wohlgemuth, Geert Hauwaerts"
   commands: 'mark trackbar'
