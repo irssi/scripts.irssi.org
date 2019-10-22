@@ -14,7 +14,7 @@ our %IRSSI = (
 
 # HOWTO:
 #
-#   /script load replace_discord_bridge_nick.pl
+#   /script load replace_bridge_nick.pl
 #   /set bridge_botnick botnick
 #
 
