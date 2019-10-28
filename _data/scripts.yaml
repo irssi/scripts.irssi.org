@@ -5050,7 +5050,7 @@
   description: 'Print urls to window named "urls"'
   filename: urlwindow.pl
   license: 'Public Domain'
-  modified: '2018-09-16 11:31:07'
+  modified: '2019-10-24 21:10:01'
   name: urlwindow
   url: http://irssi.org/
   version: '1.1'
