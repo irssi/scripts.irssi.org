@@ -5,6 +5,7 @@
   default_package: urlwindow
   description: 'Print urls to window named "urls"'
   license: 'Public Domain'
+  modified: '2019-10-24 21:10:01'
   name: urlwindow
   url: http://irssi.org/
   version: '1.1'

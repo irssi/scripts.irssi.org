@@ -357,7 +357,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                     page-c0ffee ](Test/page-c0ffee/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                     page_reeler ](Test/page_reeler/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                           pager ](Test/pager/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                       pangotext ](Test/pangotext/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
+[                       pangotext ](Test/pangotext/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                    paste_derwan ](Test/paste_derwan/)|  ✔   |  ✔   |  ✔   | 53   |  ✔   | (c)
 [                    paste-derwan ](Test/paste-derwan/)|  ✔   |  ✔   |  ✔   | 37   |  ✔   | (c)
 [                    paste_huggie ](Test/paste_huggie/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
@@ -470,7 +470,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                      trackbar22 ](Test/trackbar22/)|  ✘   |  ✘   |  ✔   |  5   |  ☡   | (c)
 [                        trackbar ](Test/trackbar/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                       tracknick ](Test/tracknick/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                           track ](Test/track/)|  ✔   |  ✔   |  ✔   | 39   |  ✔   
+[                           track ](Test/track/)|  ✔   |  ✔   |  ✔   | 39   |  ✔   | (c)
 [                        translit ](Test/translit/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                         trigger ](Test/trigger/)|  ✔   |  ✔   |  ✔   | 16   |  ✔   | (c)
 [                        trustweb ](Test/trustweb/)|  ✔   |  ✔   |  ✔   | 20   |  ✔   | (c)
@@ -492,7 +492,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                         urlinfo ](Test/urlinfo/)|  ✔   |  ✔   |  ✔   |  8   |  ✔   | (c)
 [                         url_log ](Test/url_log/)|  ✔   |  ✔   |  ✔   | 12   |  ✔   | (c)
 [                         urlplot ](Test/urlplot/)|  ✔   |  ✔   |  ✔   | 86   |  ✔   | (c)
-[                       urlwindow ](Test/urlwindow/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                       urlwindow ](Test/urlwindow/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                       usercount ](Test/usercount/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        userhost ](Test/userhost/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                           users ](Test/users/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -529,4 +529,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-2888fb0c6e46d686c62ca36f6e837e70b618f149 | 1498
+803caaddb87078e30fb9e3788a670079b0820c91 | 1502
