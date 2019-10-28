@@ -21,7 +21,8 @@ sub sig_printtext {
     my ($dest, $text, $stripped) = @_;
     
     if(
-        (($dest->{level} & (MSGLEVEL_PUBLIC)) || ($dest->{level} & (MSGLEVEL_MSGS))) && ($text =~ qr#((?:https?://[^\s<>"]+|www\.[-a-z0-9.]+)[^\s.,;<">\):])# ) 
+        (($dest->{level} & (MSGLEVEL_PUBLIC)) || ($dest->{level} & (MSGLEVEL_MSGS))) && ($text =~ qr#((?:(https?|gopher|ftp)://[^\s<>"]+|www\.[-a-z0-9.]+)[^\s.,;<">\):])# )
+
 		) 
 		{
         my $window = Irssi::window_find_name('urls');
