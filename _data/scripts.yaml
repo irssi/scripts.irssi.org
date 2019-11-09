@@ -4571,10 +4571,10 @@
   description: 'Cross-platform/architecture system information script.'
   filename: sysinfo277-irssi.pl
   license: BSD
-  modified: '2017-06-08 16:29:44'
+  modified: '2019-11-08 19:17:17'
   name: SysInfo
   url: http://www.inexistent.com/
-  version: '2.78'
+  version: '2.79'
 -
   authors: 'David Leadbeater'
   commands: sysinfo
