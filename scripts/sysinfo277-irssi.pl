@@ -29,7 +29,7 @@
 
 use strict;
 use vars qw($VERSION %IRSSI);
-$VERSION = '2.78';
+$VERSION = '2.79';
 %IRSSI = (
   authors	=> 'David Rudie',
   contact	=> 'david@inexistent.com',
@@ -37,7 +37,7 @@ $VERSION = '2.78';
   description	=> 'Cross-platform/architecture system information script.',
   license	=> 'BSD',
   url		=> 'http://www.inexistent.com/',
-  changed	=> '2017-06-08',
+  changed	=> '2019-11-08',
   bugs		=> 'Probably some if it cannot read /proc.'
 );
 
@@ -105,6 +105,7 @@ my $irix64	= 1 if $os =~ /^IRIX64$/;
 my $alpha	= 1 if $osm =~ /^alpha$/;
 my $armv4l	= 1 if $osm =~ /^armv4l$/;
 my $armv5l	= 1 if $osm =~ /^armv5l$/;
+my $armv7l	= 1 if $osm =~ /^armv7l$/;
 my $i586	= 1 if $osm =~ /^i586$/;
 my $i686	= 1 if $osm =~ /^i686$/;
 my $ia64	= 1 if $osm =~ /^ia64$/;
@@ -167,7 +168,7 @@ sub cmd_sysinfo {
   }
 
 
-  if($armv4l || $armv5l) {
+  if($armv4l || $armv5l || $armv7l) {
     $df			= 'df -k';
   } else {
     $df			= 'df -lk';
@@ -235,6 +236,9 @@ sub cmd_sysinfo {
       }
       if($armv4l || $armv5l) {
         $cpu		= &cpuinfo("Processor\\s+: ");
+      }
+      if($armv7l) {
+        $cpu		= &cpuinfo("model name\\s+: ");
       }
       if($i686 || $i586 || $x86_64) {
         $cpu		= &cpuinfo("model name\\s+: ");
