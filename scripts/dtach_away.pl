@@ -4,20 +4,21 @@ use FileHandle;
 
 use vars qw($VERSION %IRSSI);
 
-$VERSION = "0.9.8.2";
+$VERSION = "1.0";
 %IRSSI = (
     authors     => 'Andreas \'ads\' Scherbaum <ads@wars-nicht.de>',
-    name        => 'screen_away',
-    description => 'set (un)away, if screen is attached/detached',
+    name        => 'dtach_away',
+    description => 'set (un)away, if dtach is attached/detached',
     license     => 'GPL v2',
     url         => 'none',
 );
 
-# screen_away irssi module
+# dtach_away irssi module
 #
 # written by Andreas 'ads' Scherbaum <ads@ufp.de>
 #
 # changes:
+#  13.11.2019 rewrite to support dtach instead of screen
 #  20.12.2014 fix the bug when screenname is changed during the session
 #  07.02.2004 fix error with away mode
 #             thanks to Michael Schiansky for reporting and fixing this one
@@ -38,16 +39,16 @@ $VERSION = "0.9.8.2";
 #
 # there are 5 settings available:
 #
-# /set screen_away_active ON/OFF/TOGGLE
-# /set screen_away_repeat <integer>
-# /set screen_away_message <string>
-# /set screen_away_window <string>
-# /set screen_away_nick <string>
+# /set dtach_away_active ON/OFF/TOGGLE
+# /set dtach_away_repeat <integer>
+# /set dtach_away_message <string>
+# /set dtach_away_window <string>
+# /set dtach_away_nick <string>
 #
 # active means, that you will be only set away/unaway, if this
 #   flag is set, default is ON
 # repeat is the number of seconds, after the script will check the
-#   screen status again, default is 5 seconds
+#   dtach status again, default is 5 seconds
 # message is the away message sent to the server, default: not here ...
 # window is a window number or name, if set, the script will switch
 #   to this window, if it sets you away, default is '1'
@@ -55,7 +56,7 @@ $VERSION = "0.9.8.2";
 #   will only be used it not empty
 #
 # normal you should be able to rename the script to something other
-# than 'screen_away' (as example, if you dont like the name) by simple
+# than 'dtach_away' (as example, if you dont like the name) by simple
 # changing the 'name' parameter in the %IRSSI hash at the top of this script
 
 
@@ -68,66 +69,9 @@ my %away = ();
 # Register formats
 Irssi::theme_register(
 [
- 'screen_away_crap', 
+ 'dtach_away_crap', 
  '{line_start}{hilight ' . $IRSSI{'name'} . ':} $0'
 ]);
-
-# if we are running
-my $screen_away_used = 0;
-
-# try to find out, if we are running in a screen
-# (see, if $ENV{STY} is set
-if (!defined($ENV{STY})) {
-  # just return, we will never be called again
-  Irssi::printformat(MSGLEVEL_CLIENTCRAP, 'screen_away_crap',
-    "could not open status file for parent process (pid: " . getppid() . "): $!");
-  return;
-}
-
-my ($socket_pid, $socket_name, $socket_path);
-
-# search for socket
-# normal we could search the socket file, ... if we know the path
-# but so we have to call one time the screen executable
-# disable locale
-# the quotes around C force perl 5.005_03 to use the shell
-# thanks to Jilles Tjoelker <jilles@stack.nl> for pointing this out
-my $socket = `LC_ALL="C" screen -ls`;
-
-
-
-my $running_in_screen = 0;
-# locale doesnt seems to be an problem (yet)
-if ($socket !~ /^No Sockets found/s) {
-  # ok, should have only one socket
-  # $STY won't change if sessionname is changed during session
-  # therefore first find the pid and use that to find the actual sessionname
-  $socket_pid = substr($ENV{'STY'}, 0, index($ENV{'STY'}, '.'));
-  $socket_path = $socket;
-  $socket_path =~ s/^.*\d+ Sockets? in ([^\n]+)\..*$/$1/s;
-  $socket_name = $socket;
-  $socket_name =~ s/^.+?($socket_pid\.\S+).+$/$1/s;
-  if (length($socket_path) != length($socket)) {
-    # only activate, if string length is different
-    # (to make sure, we really got a dir name)
-    $screen_away_used = 1;
-  } else {
-    Irssi::printformat(MSGLEVEL_CLIENTCRAP, 'screen_away_crap',
-      "error reading screen informations from:");
-    Irssi::printformat(MSGLEVEL_CLIENTCRAP, 'screen_away_crap',
-      "$socket");
-    return;
-  }
-}
-
-# last check
-if ($screen_away_used == 0) {
-  # we will never be called again
-  return;
-}
-
-# build complete socket name
-$socket = $socket_path . "/" . $socket_name;
 
 # register config variables
 Irssi::settings_add_bool('misc', $IRSSI{'name'} . '_active', 1);
@@ -135,11 +79,21 @@ Irssi::settings_add_int('misc', $IRSSI{'name'} . '_repeat', 5);
 Irssi::settings_add_str('misc', $IRSSI{'name'} . '_message', "not here ...");
 Irssi::settings_add_str('misc', $IRSSI{'name'} . '_window', "1");
 Irssi::settings_add_str('misc', $IRSSI{'name'} . '_nick', "");
+Irssi::settings_add_str('misc', $IRSSI{'name'} . '_socket', "");
+
+my $socket = Irssi::settings_get_str($IRSSI{'name'} . '_socket');
+
+if (!$socket) {
+    # just return, we will never be called again
+    Irssi::printformat(MSGLEVEL_CLIENTCRAP, 'dtach_away_crap',
+                       "need to set the path to the detach socket");
+    return;
+}
 
 # init process
-screen_away();
+dtach_away();
 
-# screen_away()
+# dtach_away()
 #
 # check, set or reset the away status
 #
@@ -147,20 +101,20 @@ screen_away();
 #   none
 # return:
 #   0 (OK)
-sub screen_away {
-  my ($away, @screen, $screen);
+sub dtach_away {
+  my ($away, @dtach, $dtach);
 
   # only run, if activated
   if (Irssi::settings_get_bool($IRSSI{'name'} . '_active') == 1) {
     if ($away_status == 0) {
       # display init message at first time
-      Irssi::printformat(MSGLEVEL_CLIENTCRAP, 'screen_away_crap',
+      Irssi::printformat(MSGLEVEL_CLIENTCRAP, 'dtach_away_crap',
         "activating $IRSSI{'name'} (interval: " . Irssi::settings_get_int($IRSSI{'name'} . '_repeat') . " seconds)");
     }
-    # get actual screen status
-    my @screen = stat($socket);
+    # get actual dtach status
+    my @dtach = stat($socket);
     # 00100 is the mode for "user has execute permissions", see stat.h
-    if (($screen[2] & 00100) == 0) {
+    if (($dtach[2] & 00100) == 0) {
       # no execute permissions, Detached
       $away = 1;
     } else {
@@ -175,7 +129,7 @@ sub screen_away {
         # if length of window is greater then 0, make this window active
         Irssi::command('window goto ' . Irssi::settings_get_str($IRSSI{'name'} . '_window'));
       }
-      Irssi::printformat(MSGLEVEL_CLIENTCRAP, 'screen_away_crap',
+      Irssi::printformat(MSGLEVEL_CLIENTCRAP, 'dtach_away_crap',
         "Set away");
       my $message = Irssi::settings_get_str($IRSSI{'name'} . '_message');
       if (length($message) == 0) {
@@ -205,7 +159,7 @@ sub screen_away {
       $away_status = $away;
     } elsif ($away == 2 and $away_status != 2) {
       # unset away
-      Irssi::printformat(MSGLEVEL_CLIENTCRAP, 'screen_away_crap',
+      Irssi::printformat(MSGLEVEL_CLIENTCRAP, 'dtach_away_crap',
         "Reset away");
       my ($server);
       foreach $server (Irssi::servers()) {
@@ -225,11 +179,11 @@ sub screen_away {
     }
   }
   # but everytimes install a new timer
-  register_screen_away_timer();
+  register_dtach_away_timer();
   return 0;
 }
 
-# register_screen_away_timer()
+# register_dtach_away_timer()
 #
 # remove old timer and install a new one
 #
@@ -237,12 +191,13 @@ sub screen_away {
 #   none
 # return:
 #   none
-sub register_screen_away_timer {
+sub register_dtach_away_timer {
   if (defined($timer_name)) {
     # remove old timer, if defined
     Irssi::timeout_remove($timer_name);
   }
   # add new timer with new timeout (maybe the timeout has been changed)
-  $timer_name = Irssi::timeout_add(Irssi::settings_get_int($IRSSI{'name'} . '_repeat') * 1000, 'screen_away', '');
+  $timer_name = Irssi::timeout_add(Irssi::settings_get_int($IRSSI{'name'} . '_repeat') * 1000, 'dtach_away', '');
 }
+
 
