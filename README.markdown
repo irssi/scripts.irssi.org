@@ -395,6 +395,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                          repeat ](Test/repeat/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                         replace ](Test/replace/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                    resize_split ](Test/resize_split/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                         revolve ](Test/revolve/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   
 [                       rhythmbox ](Test/rhythmbox/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                              rk ](Test/rk/)|  ✔   |  ✔   |  ✔   | 14   |  ✔   | (c)
 [                      romajibind ](Test/romajibind/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -445,7 +446,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                         spotify ](Test/spotify/)|  ✔   |  ✔   |  ✔   | 14   |  ✔   | (c)
 [                       synccheck ](Test/synccheck/)|  ✔   |  ✔   |  ✔   | 37   |  ✔   | (c)
 [                sysinfo270-irssi ](Test/sysinfo270-irssi/)|  ✔   |  ✔   |  ✔   | 26   |  ✔   | (c)
-[                sysinfo277-irssi ](Test/sysinfo277-irssi/)|  ✔   |  ✔   |  ✔   | 15   |  ✔   
+[                sysinfo277-irssi ](Test/sysinfo277-irssi/)|  ✔   |  ✔   |  ✔   | 15   |  ✔   | (c)
 [                      sysinfo_dg ](Test/sysinfo_dg/)|  ✔   |  ✔   |  ✔   | 40   |  ✔   | (c)
 [                     sysinfoplus ](Test/sysinfoplus/)|  ✔   |  ✔   |  ✔   | 15   |  ✔   | (c)
 [                 tabcompletenick ](Test/tabcompletenick/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
@@ -529,4 +530,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-54e6949e35db87a2a6545f88b00c6e2156d2ac9d | 1505
+03a4cd601085b3bcd796aecf17725cd230228c7d | 1507
