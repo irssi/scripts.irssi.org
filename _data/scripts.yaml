@@ -4060,6 +4060,16 @@
   url: http://irssi.dgl.cx/
   version: '1'
 -
+  authors: 'Ryan Freebern'
+  contact: ryan@freebern.org
+  description: 'Summarizes multiple sequential joins/parts/quits.'
+  filename: revolve.pl
+  license: 'GPL v2 or later'
+  modified: '2019-11-13 13:25:29'
+  name: revolve
+  url: http://github.com/rfreebern/irssi-revolving-door
+  version: 0.0.6
+-
   authors: Fogel
   commands: 'mute next np pause play prev rhythmbox_help unmute vdown vol vup'
   contact: fogel@fogel.netmark.pl
