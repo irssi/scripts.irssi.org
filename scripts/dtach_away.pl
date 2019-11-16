@@ -6,7 +6,8 @@ use vars qw($VERSION %IRSSI);
 
 $VERSION = "1.0";
 %IRSSI = (
-    authors     => 'Andreas \'ads\' Scherbaum <ads@wars-nicht.de>',
+    authors     => 'Antoine Beaupré',
+    contact     => 'anarcat@debian.org',
     name        => 'dtach_away',
     description => 'set (un)away, if dtach is attached/detached',
     license     => 'GPL v2',
@@ -15,7 +16,8 @@ $VERSION = "1.0";
 
 # dtach_away irssi module
 #
-# written by Andreas 'ads' Scherbaum <ads@ufp.de>
+# written by Andreas 'ads' Scherbaum <ads@ufp.de>, ported to dtach by
+# anarcat.
 #
 # changes:
 #  13.11.2019 rewrite to support dtach instead of screen
