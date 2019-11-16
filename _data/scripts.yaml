@@ -1505,6 +1505,16 @@
   url: http://beaglebros.com
   version: '1.0'
 -
+  authors: 'Antoine Beaupré'
+  contact: anarcat@debian.org
+  description: 'set (un)away, if dtach is attached/detached'
+  filename: dtach_away.pl
+  license: 'GPL v2'
+  modified: '2019-11-16 09:56:03'
+  name: dtach_away
+  url: none
+  version: '1.0'
+-
   authors: bw1
   commands: ddg
   contact: bw1@aol.at
