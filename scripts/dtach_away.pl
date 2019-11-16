@@ -59,7 +59,11 @@ $VERSION = "1.0";
 #
 # normal you should be able to rename the script to something other
 # than 'dtach_away' (as example, if you dont like the name) by simple
-# changing the 'name' parameter in the %IRSSI hash at the top of this script
+# changing the 'name' parameter in the %IRSSI hash at the top of this
+# script
+#
+# This requires dtach 0.9, as 0.8 and previous do not change the
+# executable bit on the socket.
 
 
 # variables
