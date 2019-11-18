@@ -1788,6 +1788,17 @@
   url: http://irssi.org/scripts/
   version: '2003071904'
 -
+  authors: bw1
+  commands: fpaste
+  contact: bw1@aol.at
+  description: 'copy infos to fpaste'
+  filename: fpaste.pl
+  license: 'Public Domain'
+  modified: '2019-11-05 16:34:33'
+  name: fpaste
+  url: https://scripts.irssi.org/
+  version: '0.01'
+-
   authors: 'Peder Stray'
   commands: 'addfriend friends'
   contact: peder@ninja.no
