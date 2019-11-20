@@ -7,7 +7,7 @@ use LWP::UserAgent;
 use Storable qw/store_fd fd_retrieve/;
 use File::Glob qw/:bsd_glob/;
 
-$VERSION = '0.01';
+$VERSION = '0.02';
 %IRSSI = (
     authors	=> 'bw1',
     contact	=> 'bw1@aol.at',
@@ -15,7 +15,7 @@ $VERSION = '0.01';
     description	=> 'upload file to https://0x0.st/',
     license	=> 'ISC',
     url		=> 'https://scripts.irssi.org/',
-    changed	=> '2019-07-08',
+    changed	=> '2019-11-20',
     modules => 'HTTP::Request::Common LWP::UserAgent Storable File::Glob',
     commands=> '0x0st',
 );
@@ -26,7 +26,7 @@ my $help = << "END";
 %9Version%9
   $VERSION
 %9Syntax%9
-  /0x0st [-p] [-s|-u] [URL|file]
+  /0x0st [-p] [-s <URL> | -u <URL> | file ]
 %9Description%9
   $IRSSI{description}
     -p past url to channel
@@ -88,8 +88,9 @@ sub upload {
 				{file=>[$filename]}
 		);
 		my $res= $re->content;
+		my $code= $re->code();
 		chomp $res;
-		return $res;
+		return $res, $code;
 	}
 }
 
@@ -100,8 +101,9 @@ sub url {
 			{url=> $url}
 	);
 	my $res= $re->content;
+	my $code= $re->code();
 	chomp $res;
-	return $res;
+	return $res, $code;
 }
 
 sub shorten {
@@ -111,14 +113,15 @@ sub shorten {
 			{shorten=> $url}
 	);
 	my $res= $re->content;
+	my $code= $re->code();
 	chomp $res;
-	return $res;
+	return $res, $code;
 }
 
 sub past2channel {
 	my ($cmd) = @_;
 	my $witem = $cmd->{witem};
-	if (defined $witem) {
+	if (defined $witem && (int($cmd->{res}[1] / 100) == 2)) {
 		$witem->command("msg * $cmd->{res}[0]");
 	} else {
 		Irssi::print($cmd->{res}[0],MSGLEVEL_CLIENTCRAP);
