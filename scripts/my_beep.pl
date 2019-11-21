@@ -14,7 +14,7 @@
 
 use strict;
 use vars qw($VERSION %IRSSI);
-$VERSION = "0.9";
+$VERSION = "0.10";
 %IRSSI = (
     authors	=> "Remco den Breeje",
     contact	=> "stacium or stek (most of the time) @ quakenet.org",
@@ -27,30 +27,30 @@ $VERSION = "0.9";
 use Irssi;
 
 my $can_I_beep = 1;
-my ($timeout_tag, $autoaway_to_tag);
+my ($timeout_tag);
 
 sub beep_overflow_timeout() {
 	$can_I_beep = 1;
-	# and kill the loop
-        Irssi::timeout_remove($timeout_tag);
-        $autoaway_to_tag = undef;
 }
 
 sub my_beep() {
 	my $beep_cmd = Irssi::settings_get_str("beep_cmd");
 	if ($beep_cmd) {
 		my $beep_flood = Irssi::settings_get_int('beep_flood');
-                # check on given beep_flood
-                if($beep_flood < 0)
-		{
+		# check on given beep_flood
+		if($beep_flood < 0) {
 			Irssi::print("Warning! Wrong value for beep_flood (time in milisecs)");
 			Irssi::signal_stop();
 			return;
 		}
+		if (defined $timeout_tag) {
+			Irssi::timeout_remove($timeout_tag);
+			$timeout_tag= undef;
+		}
+		$timeout_tag = Irssi::timeout_add_once($beep_flood, 'beep_overflow_timeout', undef);
 		if ($can_I_beep) {
-		        $timeout_tag = Irssi::timeout_add($beep_flood, 'beep_overflow_timeout', undef);
-			system($beep_cmd);
 			$can_I_beep = 0;
+			system($beep_cmd);
 		}
 		Irssi::signal_stop();
 	}
