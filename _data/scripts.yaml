@@ -3222,10 +3222,10 @@
   description: 'runs arbitrary command instead of system beep, includes flood protection'
   filename: my_beep.pl
   license: 'Public Domain'
-  modified: '2016-04-13 20:15:32'
+  modified: '2019-09-08 19:29:19'
   name: my_beep
   url: http://www.xs4all.nl/~stacium/irssi/my_beep.html
-  version: '0.9'
+  version: '0.10'
 -
   authors: 'Riku Voipio, lite'
   contact: riku.voipio@iki.fi
