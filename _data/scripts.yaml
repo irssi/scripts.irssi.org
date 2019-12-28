@@ -6,11 +6,11 @@
   description: 'upload file to https://0x0.st/'
   filename: 0x0st.pl
   license: ISC
-  modified: '2019-07-08 11:58:24'
+  modified: '2019-11-20 22:13:42'
   modules: 'HTTP::Request::Common LWP::UserAgent'
   name: 0x0st
   url: https://scripts.irssi.org/
-  version: '0.01'
+  version: '0.02'
 -
   authors: 'Patrik Akerfeldt'
   contact: patrik.akerfeldt@gmail.com
@@ -1185,10 +1185,10 @@
   description: 'copy a line in a paste buffer'
   filename: copy.pl
   license: 'Public Domain'
-  modified: '2019-06-25 17:31:59'
+  modified: '2019-11-21 17:09:21'
   name: copy
   url: https://scripts.irssi.org/
-  version: '0.03'
+  version: '0.04'
 -
   authors: "Mikko 'Quidz' Salmi"
   contact: mikko@quidz.net
@@ -2929,6 +2929,18 @@
   modified: '2018-11-11 16:14:40'
   name: mass_hilight_blocker
   version: '0.4'
+-
+  authors: bw1
+  commands: matryoshka
+  contact: bw1@aol.at
+  description: 'a password matryoshka'
+  filename: matryoshka.pl
+  license: 'Public Domain'
+  modified: '2019-12-14 13:57:23'
+  modules: 'Crypt::CBC Crypt::Cipher::AES'
+  name: matryoshka
+  url: https://scripts.irssi.org/
+  version: '0.01'
 -
   authors: 'Wouter Coekaerts'
   contact: coekie@irssi.org
@@ -4701,6 +4713,17 @@
   name: 'topic history'
   url: http://www.iki.fi/temex/
   version: '1.05'
+-
+  authors: bw1
+  commands: tictactoe
+  contact: bw1@aol.at
+  description: 'tic-tac-toe game'
+  filename: tictactoe.pl
+  license: LGPLv3
+  modified: '2019-12-23 21:22:43'
+  name: tictactoe
+  url: https://scripts.irssi.org/
+  version: '0.01'
 -
   authors: 'Kimmo Lehto, Marcus Rueckert'
   commands: timer
