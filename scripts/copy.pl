@@ -5,8 +5,9 @@ use Irssi;
 use Irssi::UI;
 use Irssi::TextUI;
 use MIME::Base64;
+use File::Glob qw/:bsd_glob/;
 
-$VERSION = '0.03';
+$VERSION = '0.04';
 %IRSSI = (
 	authors	=> 'vague,bw1',
 	contact	=> 'bw1@aol.at',
@@ -14,8 +15,8 @@ $VERSION = '0.03';
 	description	=> 'copy a line in a paste buffer',
 	license	=> 'Public Domain',
 	url		=> 'https://scripts.irssi.org/',
-	changed	=> '2019-06-25',
-	modules => 'MIME::Base64',
+	changed	=> '2019-11-21',
+	modules => 'MIME::Base64 File::Glob',
 	commands=> 'copy',
 );
 
@@ -45,6 +46,10 @@ my $help = << "END";
     xsel
     screen
     print
+    file
+  $IRSSI{name}_file
+  $IRSSI{name}_file_mode
+  $IRSSI{name}_file_eol
 %9See also%9
   https://www.freecodecamp.org/news/tmux-in-practice-integration-with-system-clipboard-bcd72c62ff7b/
   http://anti.teamidiot.de/static/nei/*/Code/urxvt/
@@ -61,6 +66,7 @@ END
 #   line buffer
 
 my ($copy_selection, $copy_method);
+my ($copy_file, $copy_file_mode, $copy_file_eol);
 
 
 sub cmd_copy {
@@ -123,7 +129,16 @@ sub paste {
 		paste_screen($str, $copy_selection);
 	} elsif ( $copy_method eq 'print' ) {
 		paste_print($str, $copy_selection);
+	} elsif ( $copy_method eq 'file' ) {
+		paste_file($str, $copy_selection);
 	}
+}
+
+sub paste_file {
+	my ($str, $par)= @_;
+	open my $fa, $copy_file_mode, $copy_file;
+	print $fa $str, $copy_file_eol;
+	close $fa;
 }
 
 sub paste_print {
@@ -227,19 +242,30 @@ sub sig_setup_changed {
 		Irssi::settings_set_str($IRSSI{name}.'_selection', $cs);
 	}
 	my $cm= Irssi::settings_get_str($IRSSI{name}.'_method');
-	my %md=(xterm=>1, xclip=>1, xsel=>1, screen=>1, print=>1 );
+	my %md=(xterm=>1, xclip=>1, xsel=>1, screen=>1, print=>1, file=>1 );
 	if (exists $md{$cm} ) {
 		$copy_method= $cm;
 	} else {
 		$cm= $copy_method;
 		Irssi::settings_set_str($IRSSI{name}.'_method', $cm);
 	}
+	my $fn= Irssi::settings_get_str($IRSSI{name}.'_file');
+	$copy_file= bsd_glob($fn);
+	my $fm= Irssi::settings_get_str($IRSSI{name}.'_file_mode');
+	$copy_file_mode= $fm;
+	my $fe= Irssi::settings_get_str($IRSSI{name}.'_file_eol');
+	$fe =~ s/\\n/\n/g;
+	$fe =~ s/\\t/\t/g;
+	$copy_file_eol= $fe;
 }
 
 Irssi::signal_add('setup changed', \&sig_setup_changed);
 
 Irssi::settings_add_str($IRSSI{name} ,$IRSSI{name}.'_selection', '');
 Irssi::settings_add_str($IRSSI{name} ,$IRSSI{name}.'_method', 'xterm');
+Irssi::settings_add_str($IRSSI{name} ,$IRSSI{name}.'_file', '');
+Irssi::settings_add_str($IRSSI{name} ,$IRSSI{name}.'_file_mode', '>');
+Irssi::settings_add_str($IRSSI{name} ,$IRSSI{name}.'_file_eol', '\n');
 
 Irssi::command_bind($IRSSI{name}, \&cmd_copy);
 Irssi::command_bind('help', \&cmd_help);
