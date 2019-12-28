@@ -1,0 +1,29 @@
+---
+-
+  authors: bw1
+  changed: 2019-12-03
+  commands:
+    - matryoshka
+    - 'matryoshka dump'
+    - 'matryoshka expando'
+    - 'matryoshka expando add'
+    - 'matryoshka expando list'
+    - 'matryoshka expando remove'
+    - 'matryoshka expando update'
+    - 'matryoshka save'
+    - 'matryoshka startup'
+    - 'matryoshka startup add'
+    - 'matryoshka startup list'
+    - 'matryoshka startup remove'
+    - 'matryoshka startup run'
+  contact: bw1@aol.at
+  default_package: matryoshka
+  description: 'a password matryoshka'
+  license: 'Public Domain'
+  modified: '2019-12-14 13:57:23'
+  modules:
+    - Crypt::CBC
+    - Crypt::Cipher::AES
+  name: matryoshka
+  url: https://scripts.irssi.org/
+  version: '0.01'

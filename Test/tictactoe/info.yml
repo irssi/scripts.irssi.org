@@ -1,0 +1,15 @@
+---
+-
+  authors: bw1
+  changed: 2019-06-07
+  commands:
+    - tictactoe
+  contact: bw1@aol.at
+  default_package: tictactoe
+  description: 'tic-tac-toe game'
+  license: LGPLv3
+  modified: '2019-12-23 21:22:43'
+  modules: Text::ParseWords
+  name: tictactoe
+  url: https://scripts.irssi.org/
+  version: '0.01'

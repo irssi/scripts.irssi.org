@@ -3,7 +3,7 @@ See [the testing read-me](../master/_testing/) for details.
 ## Irssi Scripts Test Report
 \                                | LOAD | HDR | CRIT | SCORE | PASS
 ----: | :--: | :-: | :--: | ----: | :---:
-[                           0x0st ](Test/0x0st/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
+[                           0x0st ](Test/0x0st/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   
 [                          8-ball ](Test/8-ball/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
 [                          accent ](Test/accent/)|  ✔   |  ✔   |  ✔   | 11   |  ✔   | (c)
 [                     accountname ](Test/accountname/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -117,7 +117,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                     complete_at ](Test/complete_at/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
 [              complete_lastspoke ](Test/complete_lastspoke/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                      connectcmd ](Test/connectcmd/)|  ✔   |  ✔   |  ✔   | 19   |  ✔   | (c)
-[                            copy ](Test/copy/)|  ✔   |  ✔   |  ✔   | 20   |  ✔   | (c)
+[                            copy ](Test/copy/)|  ✔   |  ✔   |  ✔   | 23   |  ✔   
 [                       countdown ](Test/countdown/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                         country ](Test/country/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                     cp1250_kick ](Test/cp1250_kick/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -285,6 +285,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                          mangle ](Test/mangle/)|  ✔   |  ✔   |  ✔   | 15   |  ✔   | (c)
 [                             map ](Test/map/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [            mass_hilight_blocker ](Test/mass_hilight_blocker/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                      matryoshka ](Test/matryoshka/)|  ✔   |  ✔   |  ✔   | 19   |  ✔   
 [                 messages_bottom ](Test/messages_bottom/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                              mg ](Test/mg/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                    mh_hold_mode ](Test/mh_hold_mode/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -313,7 +314,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                msg2notice_regex ](Test/msg2notice_regex/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                      multipaste ](Test/multipaste/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [  munge_own_nickname_to_username ](Test/munge_own_nickname_to_username/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
-[                         my_beep ](Test/my_beep/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[                         my_beep ](Test/my_beep/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                  mysqlurllogger ](Test/mysqlurllogger/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                            nact ](Test/nact/)|  ✔   |  ✔   |  ✔   | 12   |  ✔   | (c)
 [                       netswitch ](Test/netswitch/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -458,6 +459,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                         thankop ](Test/thankop/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                           theme ](Test/theme/)|  ✔   |  ✔   |  ✔   | 20   |  ✔   | (c)
 [                        thistory ](Test/thistory/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                       tictactoe ](Test/tictactoe/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                           timer ](Test/timer/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                       timezones ](Test/timezones/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                         tinyurl ](Test/tinyurl/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -532,4 +534,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-4cc0f5af9641a2093e5c430f7c86915b555f9f59 | 1514
+a080ca53312226007d4d6ba8d53c1e382057a434 | 1522
