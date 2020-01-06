@@ -2475,16 +2475,6 @@
   url: https://github.com/qbit/irssi_logger
   version: '1.0'
 -
-  authors: "Stefan 'tommie' Tomanek"
-  contact: stefan@pico.ruhr.de
-  description: 'integrates ICQ instant-messaging into irssi'
-  filename: irssiq.pl
-  license: GPLv2
-  modified: '2008-05-17 17:39:11'
-  modules: Net::vICQ
-  name: IrssiQ
-  version: '2003231101'
--
   authors: mniip
   commands: 'isbanned islisted ismuted isreset'
   contact: 'mniip @ freenode'
