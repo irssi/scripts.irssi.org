@@ -1,3 +1,0 @@
-* -!- Irssi: Error in script irssiq:
-* Can't locate Net/vICQ.pm in @INC (you may need to install the Net::vICQ module)  at irssiq.pl line 23.
-* BEGIN failed--compilation aborted at irssiq.pl line 23.

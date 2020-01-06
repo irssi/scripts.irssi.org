@@ -1,6 +1,0 @@
----
--
-  failed: 1
-  modules:
-    - Net::vICQ
-  name: irssiq
