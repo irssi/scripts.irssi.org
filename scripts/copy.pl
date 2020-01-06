@@ -7,7 +7,7 @@ use Irssi::TextUI;
 use MIME::Base64;
 use File::Glob qw/:bsd_glob/;
 
-$VERSION = '0.04';
+$VERSION = '0.05';
 %IRSSI = (
 	authors	=> 'vague,bw1',
 	contact	=> 'bw1@aol.at',
@@ -15,7 +15,7 @@ $VERSION = '0.04';
 	description	=> 'copy a line in a paste buffer',
 	license	=> 'Public Domain',
 	url		=> 'https://scripts.irssi.org/',
-	changed	=> '2019-11-21',
+	changed	=> '2020-01-02',
 	modules => 'MIME::Base64 File::Glob',
 	commands=> 'copy',
 );
@@ -47,9 +47,12 @@ my $help = << "END";
     screen
     print
     file
-  $IRSSI{name}_file
-  $IRSSI{name}_file_mode
-  $IRSSI{name}_file_eol
+  $IRSSI{name}_file 
+    filename for method 'file'
+  $IRSSI{name}_file_mode 
+    open mode for method 'file'
+  $IRSSI{name}_file_eol 
+    end of line string for method 'file'
 %9See also%9
   https://www.freecodecamp.org/news/tmux-in-practice-integration-with-system-clipboard-bcd72c62ff7b/
   http://anti.teamidiot.de/static/nei/*/Code/urxvt/
