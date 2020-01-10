@@ -23,7 +23,7 @@ use Text::ParseWords;
 use IO::File;
 use vars qw($VERSION %IRSSI);
 
-$VERSION = '1.2.2';
+$VERSION = '1.2.3';
 %IRSSI = (
 	authors     => 'Wouter Coekaerts',
 	contact     => 'wouter@coekaerts.be',
@@ -31,7 +31,7 @@ $VERSION = '1.2.2';
 	description => 'execute a command or replace text, triggered by an event in irssi',
 	license     => 'GPLv2 or later',
 	url         => 'http://wouter.coekaerts.be/irssi/',
-	changed     => '2019-05-01',
+	changed     => '2020-01-10',
 );
 
 sub cmd_help {
@@ -608,14 +608,14 @@ TRIGGER:
 		$expands->{';'} = ';';
 
 		if (defined($trigger->{'replace'})) { # it's a -replace
-			$message =~ s/$trigger->{'compregexp'}/do_expands($trigger->{'compreplace'},$expands,$message)/ge;
+			$message =~ s/$trigger->{'compregexp'}/do_expands(0,$trigger->{'compreplace'},$expands,$message)/ge;
 			$changed = 1;
 		}
 		
 		if ($trigger->{'command'}) { # it's a (nonempty) -command
 			my $command = $trigger->{'command'};
 			# $1 = the stuff behind the $ we want to expand: a number, or a character from %expands
-			$command = do_expands($command, $expands, $message);
+			$command = do_expands(1, $command, $expands, $message);
 			
 			if (defined($server)) {
 				if (defined($channelname) && $server->channel_find($channelname)) {
@@ -679,19 +679,22 @@ sub filters_for_trigger($) {
 # used in check_signal_message to expand $'s
 # $inthis is a string that can contain $ stuff (like 'foo$1bar$N')
 sub do_expands {
-	my ($inthis, $expands, $from) = @_;
+	my ($escape, $inthis, $expands, $from) = @_;
 	# @+ and @- are copied because there are two s/// nested, and the inner needs the $1 and $2,... of the outer one
 	my @plus = @+;
 	my @min = @-;
 	my $p = \@plus; my $m = \@min;
-	$inthis =~ s/\$(\\*(\d+|[^0-9x{]|x[0-9a-fA-F][0-9a-fA-F]|{.*?}))/expand_and_escape($1,$expands,$m,$p,$from)/ge;	
+	$inthis =~ s/\$(\\*(\d+|[^0-9x{]|x[0-9a-fA-F][0-9a-fA-F]|{.*?}))/expand_and_escape($escape,$1,$expands,$m,$p,$from)/ge;
 	return $inthis;
 }
 
-# \ $ and ; need extra escaping because we use eval
+# \ $ and ; may need extra escaping because we use eval for -command
 sub expand_and_escape {
+	my $escape = shift;
 	my $retval = expand(@_);
-	$retval =~ s/([\\\$;])/\\\1/g;
+	if ($escape) {
+		$retval =~ s/([\\\$;])/\\\1/g;
+	}
 	return $retval;
 }
 
