@@ -4166,18 +4166,6 @@
   name: 'emotes script'
   version: '1.20'
 -
-  authors: "Johan \"Ion\" Kiviniemi, idea taken from Riku Voipio's sana.pl"
-  commands: sana
-  contact: 'ion at hassers.org'
-  description: '/sana command, translates english-finnish-english.'
-  filename: sana_cmd.pl
-  license: 'Public Domain'
-  modified: '2002-03-16 06:20:00'
-  modules: 'HTML::Entities LWP::Simple'
-  name: sana-cmd
-  url: http://ion.amigafin.org/irssi/
-  version: '0.1'
--
   authors: Nei
   contact: 'Nei @ anti@conference.jabber.teamidiot.de'
   description: 'Saves the commands you typed in the input prompt to a history file, so that they persist across /upgrade and restart.'
