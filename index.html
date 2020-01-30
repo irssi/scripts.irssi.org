@@ -13,6 +13,7 @@ layout: default
       <div class="instructions">
         <input id="automatic-instructions" type="radio" checked="checked" name="instructions" />
 	<input id="manual-instructions" type="radio" name="instructions" />
+	<h4>Instructions for using scripts with scriptassist.pl</h4>
         <dl class="automatic-instructions">
             <dt>How do I install scripts?</dt>
             <dd>In Irssi, do <code>/run scriptassist</code> (only once per session), then
@@ -34,6 +35,7 @@ layout: default
             <dt>How do I submit a script to this page?</dt>
             <dd>See information on how to contribute <a href="https://github.com/irssi/scripts.irssi.org">here</a>.</dd>
         </dl>
+	<h4>Manual instructions for using scripts</h4>
         <dl class="manual-instructions">
             <dt>How do I run scripts?</dt>
             <dd>Put them into <code>~/.irssi/scripts/</code> and in irssi do
@@ -66,7 +68,7 @@ layout: default
       </div>
         <hr>
 
-        <input type="search" class="light-table-filter form-control" data-table="sortable" data-name="q" placeholder="Filter" style="width: 100%" autocorrect="off" spellcheck="false">
+        <input type="search" class="light-table-filter form-control" data-table="sortable" data-name="q" placeholder="Filter" style="width: 100%" autocorrect="off" spellcheck="false" autofocus aria-label="Filter scripts">
         <table class="table table-striped table-condensed sortable">
             <thead>
                 <tr>

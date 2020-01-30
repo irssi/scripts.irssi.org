@@ -30,5 +30,7 @@ div.instructions input {
 }
 div.instructions label { display: inline; }
 input#manual-instructions:checked ~ dl.automatic-instructions,
-input#automatic-instructions:checked ~ dl.manual-instructions
+input#automatic-instructions:checked ~ dl.manual-instructions,
+input#manual-instructions:checked ~ h4,
+input#automatic-instructions:checked ~ h4
 { display: none; }
