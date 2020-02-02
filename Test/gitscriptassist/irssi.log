@@ -1,4 +1,4 @@
-* Use of uninitialized value $repo in string ne at gitscriptassist.pl line 535.
+* Use of uninitialized value $repo in string ne at gitscriptassist.pl line 542.
 * 
 * Use of uninitialized value $fn in -e at gitscriptassist.pl line 173.
 * 
