@@ -1902,10 +1902,10 @@
   description: 'script management with git'
   filename: gitscriptassist.pl
   license: 'Public Domain'
-  modified: '2019-06-04 18:28:11'
+  modified: '2019-06-04 19:02:22'
   name: gitscriptassist
   url: https://scripts.irssi.org/
-  version: '0.1'
+  version: '0.2'
 -
   authors: nohar
   commands: go
