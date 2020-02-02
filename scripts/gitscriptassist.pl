@@ -9,7 +9,7 @@ use Text::Wrap;
 use Time::HiRes;
 use File::Glob qw/:bsd_glob/;
 
-$VERSION = '0.1';
+$VERSION = '0.2';
 %IRSSI = (
     authors	=> 'bw1',
     contact	=> 'bw1@aol.at',
@@ -17,7 +17,7 @@ $VERSION = '0.1';
     description	=> 'script management with git',
     license	=> 'Public Domain',
     url		=> 'https://scripts.irssi.org/',
-    changed	=> '2019-06-03',
+    changed	=> '2020-02-02',
     modules => 'IPC::Open3 CPAN::Meta::YAML Text::ParseWords '.
 					'Text::Wrap Time::HiRes',
     commands=> "gitscriptassist"
@@ -39,7 +39,7 @@ my $help= << "END";
   [(status)] /set gitscriptassist_repo ~/foo/scripts.irssi.org
   [(status)] /gitscriptassist search script
   [(status)] /quit
-  \$ echo "/script load ~/foo/scripts.irssi.org/scripts/gitscriptassist.pl" >> \
+  \$ echo "/script load ~/foo/scripts.irssi.org/scripts/gitscriptassist.pl" >> \\
   > ~/.irssi/startup
   \$ irssi
 
@@ -171,6 +171,8 @@ sub load_scripts {
 	my $f  =$repo.'/_data/scripts.yaml';
 	my $fn = bsd_glob $f, GLOB_TILDE;
 	if (-e $fn) {
+		%time_scr= ();
+		%scripts= ();
 		open $fh, "<:utf8", $fn;
 		my $yt = do { local $/; <$fh> };
 		my $yml= CPAN::Meta::YAML->read_string($yt);
@@ -208,16 +210,20 @@ sub sig_run_end {
 
 	if (defined $subproc) {
 		my $old = select $fh_out;
-		local $/;
-		$subproc->{out} = <$fh_out>;
-		$subproc->{out} =~ s/\n$//;
-		select $old;
+		{
+			local $/;
+			$subproc->{out} = <$fh_out>;
+			$subproc->{out} =~ s/\n$//;
+			select $old;
+		}
 
-		select $fh_err;
-		local $/;
-		$subproc->{err} = <$fh_err>;
-		$subproc->{err} =~ s/\n$//;
-		select $old;
+		{
+			select $fh_err;
+			local $/;
+			$subproc->{err} = <$fh_err>;
+			$subproc->{err} =~ s/\n$//;
+			select $old;
+		}
 
 		if (exists $subproc->{next}) {
 			if (ref ($subproc->{next}) eq 'CODE') {
@@ -294,6 +300,7 @@ sub scmd_script_info {
 		push @te, $d;
 		push @te, "filename:    $s->{filename}";
 		push @te, "version:     $s->{version}";
+		push @te, "modified:    $s->{modified}";
 		Irssi::print(
 			draw_box($IRSSI{name}, join( "\n",@te) ,'info' , 1),
 				, MSGLEVEL_CLIENTCRAP);
@@ -481,13 +488,13 @@ sub cmd {
 		run(
 			'cmd' => "git -C $repo status -sbuno",
 			'label'=> 'status',
-			'next' => \&print_msg);
+			'next' => [\&print_msg, \&load_scripts]);
 
 	} elsif ($c eq 'pull') {
 		run(
 			'cmd' => "git -C $repo pull",
 			'label'=> 'pull',
-			'next' => \&print_msg);
+			'next' => [\&print_msg, \&load_scripts]);
 
 	} elsif ($c eq 'fetch') {
 		run(
