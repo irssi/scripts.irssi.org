@@ -822,7 +822,7 @@ sub contact_author {
 
 sub get_scripts {
     my $ua = LWP::UserAgent->new(env_proxy=>1, keep_alive=>1, timeout=>30);
-    $ua->agent('ScriptAssist/'.2003020803);
+    $ua->agent('ScriptAssist/'.$VERSION);
     $ua->env_proxy();
     my @mirrors = split(/ /, Irssi::settings_get_str('scriptassist_script_sources'));
     my %sites_db;
