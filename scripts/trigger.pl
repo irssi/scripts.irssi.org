@@ -90,6 +90,7 @@ All filters except for -pattern and -regexp can also be inversed by prefixing wi
                 %|The following variables are also expanded:
                    $T: %|Server tag
                    $C: %|Channel name
+                   $O: %|Your nick
                    $N: %|Nickname of the person who triggered this command
                    $A: %|His address (foo@bar.com),
                    $I: %|His ident (foo)
@@ -600,6 +601,7 @@ TRIGGER:
 		$expands->{'M'} = $message,;
 		$expands->{'T'} = (defined($server)) ? $server->{'tag'} : '';
 		$expands->{'C'} = $channelname;
+		$expands->{'O'} = (defined($server)) ? $server->{'nick'} : '';
 		$expands->{'N'} = $nickname;
 		$expands->{'A'} = $address;
 		$expands->{'I'} = ((!defined($address)) ? '' : substr($address,0,index($address,'@')));
