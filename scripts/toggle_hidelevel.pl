@@ -41,7 +41,7 @@ sub set_mode_all {
 sub set_mode {
   my ($win, $mode) = @_;
   my $lvlbits = $win->view->{hidden_level} || $windows->{$win->{refnum}}{levels};
-  my $levels = Irssi::bits2level($lvlbits);
+  my $levels = Irssi::bits2level($lvlbits // 0);
   my $val;
 
   $levels = Irssi::settings_get_str('window_default_hidelevel') if $mode && !$lvlbits;
