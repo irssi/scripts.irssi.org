@@ -4778,9 +4778,9 @@
   contact: 'vague!#irssi@freenode on irc'
   description: 'Toggle hidden levels on per window basis'
   filename: toggle_hidelevel.pl
-  modified: '2019-05-09 15:03:08'
+  modified: '2020-03-17 14:17:18'
   name: toggle_hidelevel
-  version: 0.6.0
+  version: 0.6.1
 -
   authors: bcattaneo
   commands: toilet
