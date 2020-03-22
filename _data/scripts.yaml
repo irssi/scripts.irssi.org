@@ -4619,14 +4619,14 @@
   url: http://juerd.nl/irssi/
   version: '2.21'
 -
-  authors: "Stefan 'tommie' Tomanek"
-  contact: stefan@pico.ruhr.de
-  description: "This script replaces the evil inverted 'I' with a configurable number of whitespaces "
+  authors: "Stefan 'tommie' Tomanek, shabble"
+  contact: 'stefan@pico.ruhr.de, shabble@#irssi/Freenode'
+  description: 'Replaces \t TAB characters with contents of /set tabstop_replacement'
   filename: tab_stop.pl
   license: GPLv2
-  modified: '2008-05-17 17:39:11'
+  modified: '2020-03-22 18:15:22'
   name: tab_stop
-  version: '2002123102'
+  version: '2011052400'
 -
   authors: vague
   contact: 'vague!#irssi@freenode on irc'
