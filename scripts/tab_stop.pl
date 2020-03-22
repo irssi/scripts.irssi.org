@@ -1,59 +1,49 @@
-#!/usr/bin/perl
-#
 # Created by Stefan "tommie" Tomanek [stefan@kann-nix.org]
 # to free the world from  the evil inverted I
 #
 # 23.02.2002
 # *First release
 #
-# 01.03.200
+# 01.03.200?
 # *Changed to GPL
+#
+# 24.05.2011
+# * Buggered about with by shabble.
 
 use strict;
-use vars qw($VERSION %IRSSI);
+use warnings;
+
 use Irssi;
 
-$VERSION = "2002123102";
-%IRSSI = (
-    authors     => "Stefan 'tommie' Tomanek",
-    contact     => "stefan\@pico.ruhr.de",
-    name        => "tab_stop",
-    description => "This script replaces the evil inverted 'I' with a configurable number of whitespaces ",
-    license     => "GPLv2",
-    changed     => "$VERSION",
-);
+our $VERSION = "2011052400";
+our %IRSSI = (
+              authors     => "Stefan 'tommie' Tomanek, shabble",
+              contact     => "stefan\@pico.ruhr.de, shabble@#irssi/Freenode",
+              name        => "tab_stop",
+              description => 'Replaces \t TAB characters with '
+                           . 'contents of /set tabstop_replacement',
+              license     => "GPLv2",
+              changed     => "$VERSION",
+             );
 
-sub event_server_incoming {
-    my ($server, $data) = @_;
-    my $newdata;
-    if (has_tab($data)) {
-	$newdata = replace_tabs($data);
-	Irssi::signal_continue($server, $newdata);
-    }
-}
+my $not_tab;
 
-# FIXME Experimental!
 sub sig_gui_print_text {
-    my ($win, $fg, $bg, $flags, $text, $dest) = @_;
-    return unless $text =~ /\t/;
-    my $newtext = replace_tabs($text);
-    Irssi::signal_continue($win, $fg, $bg, $flags, $newtext, $dest);
+    return unless $_[4] =~ /\t/;
+    $_[4] =~ s/\t/$not_tab/g;
+    Irssi::signal_continue(@_);
 }
 
-sub has_tab {
-    my ($text) = @_;
-    return $text =~ /\t/;
-}
+# create an expando $TAB which produces real tabs
+Irssi::expando_create('TAB', sub { "\t" }, { 'gui exit' => 'never' });
 
-sub replace_tabs {
-    my ($text) = @_;
-    my $replacement = Irssi::settings_get_str('tabstop_replacement');
-    $text =~ s/\t/$replacement/g;
-    return($text);
-}
-
-#Irssi::signal_add('gui print text', \&sig_gui_print_text);
-Irssi::signal_add_first('server incoming', \&event_server_incoming);
-
+# then rewrite them just before they're printed.
+Irssi::signal_add_first('gui print text', \&sig_gui_print_text);
+Irssi::signal_add('setup changed', \&sig_setup_changed);
 Irssi::settings_add_str('misc', 'tabstop_replacement', "    ");
 
+sub sig_setup_changed {
+    $not_tab = Irssi::settings_get_str('tabstop_replacement');
+}
+
+sig_setup_changed();
