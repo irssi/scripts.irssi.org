@@ -1,10 +1,11 @@
 ---
 -
-  authors: "Stefan 'tommie' Tomanek"
-  changed: '2002123102'
-  contact: stefan@pico.ruhr.de
+  authors: "Stefan 'tommie' Tomanek, shabble"
+  changed: '2011052400'
+  contact: 'stefan@pico.ruhr.de, shabble@#irssi/Freenode'
   default_package: tab_stop
-  description: "This script replaces the evil inverted 'I' with a configurable number of whitespaces "
+  description: 'Replaces \t TAB characters with contents of /set tabstop_replacement'
   license: GPLv2
+  modified: '2020-03-22 18:15:22'
   name: tab_stop
-  version: '2002123102'
+  version: '2011052400'
