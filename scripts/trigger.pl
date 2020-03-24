@@ -23,7 +23,7 @@ use Text::ParseWords;
 use IO::File;
 use vars qw($VERSION %IRSSI);
 
-$VERSION = '1.2.3';
+$VERSION = '1.2.4';
 %IRSSI = (
 	authors     => 'Wouter Coekaerts',
 	contact     => 'wouter@coekaerts.be',
@@ -31,7 +31,7 @@ $VERSION = '1.2.3';
 	description => 'execute a command or replace text, triggered by an event in irssi',
 	license     => 'GPLv2 or later',
 	url         => 'http://wouter.coekaerts.be/irssi/',
-	changed     => '2020-01-10',
+	changed     => '2020-03-10',
 );
 
 sub cmd_help {
@@ -90,6 +90,7 @@ All filters except for -pattern and -regexp can also be inversed by prefixing wi
                 %|The following variables are also expanded:
                    $T: %|Server tag
                    $C: %|Channel name
+                   $O: %|Your nick
                    $N: %|Nickname of the person who triggered this command
                    $A: %|His address (foo@bar.com),
                    $I: %|His ident (foo)
@@ -600,6 +601,7 @@ TRIGGER:
 		$expands->{'M'} = $message,;
 		$expands->{'T'} = (defined($server)) ? $server->{'tag'} : '';
 		$expands->{'C'} = $channelname;
+		$expands->{'O'} = (defined($server)) ? $server->{'nick'} : '';
 		$expands->{'N'} = $nickname;
 		$expands->{'A'} = $address;
 		$expands->{'I'} = ((!defined($address)) ? '' : substr($address,0,index($address,'@')));
