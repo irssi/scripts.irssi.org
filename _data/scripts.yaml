@@ -4988,6 +4988,16 @@
   url: http://dgl.cx/irssi
   version: '2'
 -
+  authors: 'Gregory Colpart'
+  commands: unread
+  contact: 'reg on #evolix@freenode'
+  description: 'reset window to unread status'
+  filename: unread.pl
+  license: 'GPLv2 or later'
+  modified: '2020-04-01 05:29:42'
+  name: unread
+  version: '0.1'
+-
   authors: 'Peder Stray'
   commands: upgradeinfo
   contact: peder@ninja.no
