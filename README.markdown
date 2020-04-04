@@ -366,7 +366,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                   paste_kimmoke ](Test/paste_kimmoke/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                           pelix ](Test/pelix/)|  ✔   |  ✔   |  ✔   | 25   |  ✔   | (c)
 [                          people ](Test/people/)|  ✔   |  ✔   |  ✔   | 75   |  ✔   | (c)
-[                       perlalias ](Test/perlalias/)|  ✔   |  ✔   |  ✔   |  8   |  ✔   | (c)
+[                       perlalias ](Test/perlalias/)|  ✔   |  ✔   |  ✔   |  8   |  ✔   
 [               per_window_prompt ](Test/per_window_prompt/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                      pggb_sound ](Test/pggb_sound/)|  ✔   |  ✔   |  ✔   | 33   |  ✔   | (c)
 [                          poison ](Test/poison/)|  ✔   |  ✔   |  ✔   | 12   |  ✔   | (c)
@@ -486,7 +486,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                      uberprompt ](Test/uberprompt/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                 UNIBG-autoident ](Test/UNIBG-autoident/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                         unicode ](Test/unicode/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
-[                          unread ](Test/unread/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[                          unread ](Test/unread/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                     upgradeinfo ](Test/upgradeinfo/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                               u ](Test/u/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                      upsidedown ](Test/upsidedown/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -533,4 +533,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-8cbffc31c7ec0a2b87b918b9e54268a9fcf20c95 | 1545
+9dfbd4b0734746bd7df24bd77e4c5fa305a816e1 | 1547
