@@ -366,7 +366,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                   paste_kimmoke ](Test/paste_kimmoke/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                           pelix ](Test/pelix/)|  ✔   |  ✔   |  ✔   | 25   |  ✔   | (c)
 [                          people ](Test/people/)|  ✔   |  ✔   |  ✔   | 75   |  ✔   | (c)
-[                       perlalias ](Test/perlalias/)|  ✔   |  ✔   |  ✔   |  8   |  ✔   
+[                       perlalias ](Test/perlalias/)|  ✔   |  ✔   |  ✔   |  8   |  ✔   | (c)
 [               per_window_prompt ](Test/per_window_prompt/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                      pggb_sound ](Test/pggb_sound/)|  ✔   |  ✔   |  ✔   | 33   |  ✔   | (c)
 [                          poison ](Test/poison/)|  ✔   |  ✔   |  ✔   | 12   |  ✔   | (c)
@@ -533,4 +533,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-9dfbd4b0734746bd7df24bd77e4c5fa305a816e1 | 1547
+cf3be3e1d70e9c3f3dacd4e75ac2621982a22972 | 1548
