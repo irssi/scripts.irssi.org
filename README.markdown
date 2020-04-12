@@ -455,7 +455,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                            talk ](Test/talk/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                          target ](Test/target/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                         thankop ](Test/thankop/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                           theme ](Test/theme/)|  ✔   |  ✔   |  ✔   | 20   |  ✔   | (c)
+[                           theme ](Test/theme/)|  ✔   |  ✔   |  ✔   | 20   |  ✔   
 [                        thistory ](Test/thistory/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       tictactoe ](Test/tictactoe/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                           timer ](Test/timer/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
@@ -533,4 +533,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-cf3be3e1d70e9c3f3dacd4e75ac2621982a22972 | 1548
+2fdb2ee58f49072202e5daef7804fe605fee1d7c | 1550
