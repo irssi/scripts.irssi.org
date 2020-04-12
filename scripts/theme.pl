@@ -1,5 +1,6 @@
 use strict;
 use vars qw($VERSION %IRSSI);
+use POSIX;
 use File::Basename;
 use File::Fetch;
 use File::Glob ':bsd_glob';
@@ -9,7 +10,7 @@ use YAML::XS;
 
 use Irssi;
 
-$VERSION = '0.03';
+$VERSION = '0.04';
 %IRSSI = (
     authors	=> 'bw1',
     contact	=> 'bw1@aol.at',
@@ -17,8 +18,8 @@ $VERSION = '0.03';
     description	=> 'activate, show or get theme',
     license	=> 'Public Domain',
     url		=> 'https://scripts.irssi.org/',
-    changed	=> '2019-07-02',
-    modules => 'File::Basename File::Fetch File::Glob Getopt::Long Storable YAML::XS',
+    changed	=> '2020-04-12',
+    modules => 'POSIX File::Basename File::Fetch File::Glob Getopt::Long Storable YAML::XS',
     commands=> 'theme',
 );
 
