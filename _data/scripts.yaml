@@ -4675,11 +4675,11 @@
   description: 'activate, show or get theme'
   filename: theme.pl
   license: 'Public Domain'
-  modified: '2019-08-05 16:29:34'
+  modified: '2020-04-12 17:43:59'
   modules: YAML::XS
   name: theme
   url: https://scripts.irssi.org/
-  version: '0.03'
+  version: '0.04'
 -
   authors: 'Teemu Hjelt'
   commands: 'thistory tinfo topichistory topicinfo'
