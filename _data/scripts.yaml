@@ -6,11 +6,11 @@
   description: 'upload file to https://0x0.st/'
   filename: 0x0st.pl
   license: ISC
-  modified: '2019-11-20 22:13:42'
+  modified: '2020-04-12 17:56:59'
   modules: 'HTTP::Request::Common LWP::UserAgent'
   name: 0x0st
   url: https://scripts.irssi.org/
-  version: '0.02'
+  version: '0.03'
 -
   authors: 'Patrik Akerfeldt'
   contact: patrik.akerfeldt@gmail.com
