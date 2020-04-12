@@ -1,13 +1,14 @@
 use strict;
 use vars qw($VERSION %IRSSI);
 
+use POSIX;
 use Irssi;
 use HTTP::Request::Common;
 use LWP::UserAgent;
 use Storable qw/store_fd fd_retrieve/;
 use File::Glob qw/:bsd_glob/;
 
-$VERSION = '0.02';
+$VERSION = '0.03';
 %IRSSI = (
     authors	=> 'bw1',
     contact	=> 'bw1@aol.at',
@@ -15,8 +16,8 @@ $VERSION = '0.02';
     description	=> 'upload file to https://0x0.st/',
     license	=> 'ISC',
     url		=> 'https://scripts.irssi.org/',
-    changed	=> '2019-11-20',
-    modules => 'HTTP::Request::Common LWP::UserAgent Storable File::Glob',
+    changed	=> '2020-04-12',
+    modules => 'POSIX HTTP::Request::Common LWP::UserAgent Storable File::Glob',
     commands=> '0x0st',
 );
 
