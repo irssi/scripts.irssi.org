@@ -264,12 +264,12 @@ sub script_info {
 		$result{$sname}{modules}{$mod}{installed} = module_exist($mod);
 	    }
 	}
-	if (defined $xml->{$plname}{depends}) {
-	    my $depends = $xml->{$plname}{depends};
-	    foreach my $dep (split(/ /, $depends)) {
-		$result{$sname}{depends}{$dep}{installed} = 1;
-	    }
-	}
+	# if (defined $xml->{$plname}{depends}) {
+	#     my $depends = $xml->{$plname}{depends};
+	#     foreach my $dep (split(/ /, $depends)) {
+	# 	$result{$sname}{depends}{$dep}{installed} = 1; #(defined ${ 'Irssi::Script::'.$dep });
+	#     }
+	# }
     }
     return \%result;
 }
