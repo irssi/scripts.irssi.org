@@ -188,7 +188,7 @@ sub get_unknown {
     foreach (keys %$db) {
 	next unless defined $db->{$_}{commands};
 	foreach my $item (split / /, $db->{$_}{commands}) {
-	    return { $_ => $db->{$_} } if ($item =~ /^$cmd$/i);
+	    return { $_ => +{%{$db->{$_}}} } if ($item =~ /^$cmd$/i);
 	}
     }
     return undef;
