@@ -5,7 +5,7 @@
 
 use strict;
 
-our $VERSION = '2003020807';
+our $VERSION = '2020042200';
 our %IRSSI = (
     authors     => 'Stefan \'tommie\' Tomanek',
     contact     => 'stefan@pico.ruhr.de',
@@ -23,11 +23,14 @@ use Irssi 20020324;
 use CPAN::Meta::YAML;
 use LWP::UserAgent;
 use POSIX;
+use version;
 
 # GnuPG is not always needed
 $have_gpg = 0;
 eval "use GnuPG qw(:algo :trust);";
 $have_gpg = 1 if not ($@);
+
+my $irssi_version = qv(Irssi::parse_special('v$J') =~ s/-.*//r);
 
 sub show_help {
     my $help = "scriptassist $VERSION
@@ -1158,6 +1161,7 @@ sub sig_command_script_load {
 sub sig_default_command {
     my ($cmd, $server) = @_;
     return unless Irssi::settings_get_bool("scriptassist_check_unknown_commands");
+    return if ($cmd =~ /^\d+$/ && $irssi_version >= v1.2.0 && Irssi::settings_get_bool("window_number_commands"));
     bg_do('unknown '.$cmd);
 }
 
