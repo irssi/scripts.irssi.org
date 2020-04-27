@@ -4231,11 +4231,11 @@
   description: 'keeps your scripts on the cutting edge'
   filename: scriptassist.pl
   license: GPLv2
-  modified: '2020-03-01 23:14:47'
+  modified: '2020-04-27 16:47:51'
   modules: LWP::UserAgent
   name: scriptassist
   url: https://scripts.irssi.org/
-  version: '2003020807'
+  version: '2020042700'
 -
   authors: "Maciek 'fahren' Freudenheim"
   contact: fahren@bochnia.pl
