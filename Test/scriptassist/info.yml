@@ -10,7 +10,10 @@
     - 'script info'
     - 'script install'
     - 'script new'
+    - 'script rate'
+    - 'script ratings'
     - 'script search'
+    - 'script top'
     - 'script update'
     - scriptassist
     - 'scriptassist autorun'
@@ -21,15 +24,18 @@
     - 'scriptassist info'
     - 'scriptassist install'
     - 'scriptassist new'
+    - 'scriptassist rate'
+    - 'scriptassist ratings'
     - 'scriptassist search'
+    - 'scriptassist top'
     - 'scriptassist update'
   contact: stefan@pico.ruhr.de
   default_package: scriptassist
   description: 'keeps your scripts on the cutting edge'
   license: GPLv2
-  modified: '2020-03-01 23:14:47'
+  modified: '2020-04-27 16:47:51'
   modules:
     - LWP::UserAgent
   name: scriptassist
   url: https://scripts.irssi.org/
-  version: '2003020807'
+  version: '2020042700'
