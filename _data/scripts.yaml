@@ -4841,11 +4841,11 @@
   description: 'Shows a bar where you have last read a window.'
   filename: trackbar.pl
   license: 'GNU General Public License'
-  modified: '2019-05-08 14:34:05'
+  modified: '2020-05-08 15:44:31'
   modules: Text::CharWidth
   name: trackbar
   url: http://www.pfoe.be/~peter/trackbar/
-  version: '2.8'
+  version: '2.9'
 -
   HIDDEN: '1'
   description: 'This script has been replaced with trackbar.pl.'
