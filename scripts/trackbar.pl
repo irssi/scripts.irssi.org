@@ -102,7 +102,7 @@ use strict;
 use warnings;
 use vars qw($VERSION %IRSSI);
 
-$VERSION = "2.8"; # 89f27cc2c12368e
+$VERSION = "2.9"; # a4c78e85092a271
 
 %IRSSI = (
     authors     => "Peter 'kinlo' Leurs, Uwe Dudenhoeffer, " .
@@ -123,7 +123,7 @@ $VERSION = "2.8"; # 89f27cc2c12368e
 # Use /SET  to change the value or /TOGGLE to switch it on or off.
 #
 #
-#    Tip:     The command 'trackbar' is very usefull if you bind that to a key,
+#    Tip:     The command 'trackbar' is very useful if you bind that to a key,
 #             so you can easily jump to the trackbar. Please see 'help bind' for
 #             more information about keybindings in Irssi.
 #
@@ -172,6 +172,7 @@ $VERSION = "2.8"; # 89f27cc2c12368e
 
 ## Version history:
 #
+#  2.9: - fix crash on /mark in empty window
 #  2.8: - fix /^join bug
 #  2.7: - add /set trackbar_all_manual option
 #  2.5: - merge back on scripts.irssi.org
@@ -300,12 +301,12 @@ sub add_one_trackbar_pt1 {
     my $win = shift;
     my $view = shift || $win->view;
 
-    my $last_cur_line = $view->{buffer}{cur_line}{_irssi};
+    my $last_cur_line = ($view->{buffer}{cur_line}||+{})->{_irssi};
     $win->print(line($win->{width}), MSGLEVEL_NEVER);
 
-    my $cur_line = $win->view->{buffer}{cur_line}{_irssi}; # get a fresh buffer
+    my $cur_line = ($win->view->{buffer}{cur_line}||+{})->{_irssi}; # get a fresh buffer
 
-    $last_cur_line ne $cur_line # printing was successful
+    ($last_cur_line//'') ne ($cur_line//'') # printing was successful
 }
 
 sub add_one_trackbar_pt2 {
