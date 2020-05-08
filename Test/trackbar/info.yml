@@ -16,10 +16,10 @@
   default_package: trackbar
   description: 'Shows a bar where you have last read a window.'
   license: 'GNU General Public License'
-  modified: '2019-05-08 14:34:05'
+  modified: '2020-05-08 15:44:31'
   modules:
     - Text::CharWidth
   name: trackbar
   patchers: 'Johan Kiviniemi (UTF-8), Uwe Dudenhoeffer (on-upgrade-remove-line)'
   url: http://www.pfoe.be/~peter/trackbar/
-  version: '2.8'
+  version: '2.9'
