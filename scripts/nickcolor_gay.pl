@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-our $VERSION = '0.1'; # fc5429f1bbac061
+our $VERSION = '0.2'; # 89b09c06774210c
 our %IRSSI = (
     name	=> 'nickcolor_gay',
     description	=> 'colourise nicks',
@@ -67,6 +67,16 @@ sub prnt_clear_public {
     }
 }
 
+sub prnt_format_clear_public {
+    return unless defined $lastnick;
+    my ($theme, $module, $dest, $format, $nick, @args) = @_;
+    if ($dest->{level} & MSGLEVEL_PUBLIC) {
+	$nick = rainbow($nick);
+	Irssi::signal_continue($theme, $module, $dest, $format, $nick, @args);
+	clear_ref();
+    }
+}
+
 sub clear_ref {
     $lastnick = undef;
 }
@@ -79,5 +89,13 @@ Irssi::signal_add({
        } qw(irc silc)),
     "message xmpp action"     => 'msg_line_tag_xmppaction',
     "message xmpp own_action" => 'msg_line_clear',
+});
+if ((Irssi::parse_special('$abiversion')||0) >= 28) {
+Irssi::signal_add({
+    'print format'	 => 'prnt_format_clear_public',
+});
+} else {
+Irssi::signal_add({
     'print text'	 => 'prnt_clear_public',
 });
+}
