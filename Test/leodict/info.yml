@@ -7,7 +7,6 @@
   default_package: leodict
   description: 'translates via dict.leo.org'
   license: GPLv2
-  modified: '2019-03-21 10:55:22'
   modules:
     - Mojo::DOM
     - Mojo::UserAgent
