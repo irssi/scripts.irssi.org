@@ -2,7 +2,7 @@ use strict;
 use warnings;
 use Irssi;
 
-our $VERSION = '1.1';
+our $VERSION = '1.2';
 our %IRSSI = (
     authors     => 'Ævar Arnfjörð Bjarmason',
     contact     => 'avarab@gmail.com',
@@ -82,4 +82,27 @@ sub msg_rename_myself_in_printed_text {
     }
 }
 
-Irssi::signal_add_first('print text', 'msg_rename_myself_in_printed_text');
+sub msg_rename_myself_in_printed_format {
+    my ($theme, $module, $tdest, $format, $nick, @args) = @_;
+
+    # (see comments above)
+    my $server = $tdest->{server};
+
+    return unless $server;
+
+    my $server_username = $server->{username};
+    my $server_nick     = $server->{nick};
+
+    return if $server_username eq $server_nick;
+
+    # if format nick is our server nick, change it for the username
+    if ($nick eq $server_nick) {
+	Irssi::signal_continue($theme, $module, $tdest, $format, $server_username, @args);
+    }
+}
+
+if ((Irssi::parse_special('$abiversion')||0) >= 28) {
+    Irssi::signal_add_first('print format', 'msg_rename_myself_in_printed_format');
+} else {
+    Irssi::signal_add_first('print text', 'msg_rename_myself_in_printed_text');
+}
