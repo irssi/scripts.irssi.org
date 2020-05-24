@@ -1,7 +1,7 @@
 #!/usr/bin/env false
 ##############################################################################
 #
-# mh_secureonlychan_489 v1.00
+# mh_secureonlychan_489 v1.01
 #
 # Copyright (c) 2020  Michael Hansen
 #
@@ -48,7 +48,7 @@ use Irssi ();
 #
 ##############################################################################
 
-our $VERSION = '1.00';
+our $VERSION = '1.01';
 our %IRSSI   =
 (
 	'name'        => 'mh_secureonlychan_489',
@@ -91,7 +91,7 @@ sub signal_server_event
 ##############################################################################
 
 # selfdestruct if Irssi is new enough to have the source-code fixed for this issue
-if (Irssi::parse_special('$abiversion') and (Irssi::parse_special('$abiversion') >= 28))
+if (Irssi::parse_special('$abiversion') and (Irssi::parse_special('$abiversion') >= 29))
 {
 	die('The script is not needed for this version of Irssi.' . "\n");
 }
