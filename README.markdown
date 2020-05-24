@@ -291,7 +291,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                       mh_invite ](Test/mh_invite/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                  mh_sbsplitmode ](Test/mh_sbsplitmode/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
 [                   mh_sbuserinfo ](Test/mh_sbuserinfo/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[           mh_secureonlychan_489 ](Test/mh_secureonlychan_489/)|  ✘   |  ✔   |  ✔   |  0   |  ☡   | (c)
+[           mh_secureonlychan_489 ](Test/mh_secureonlychan_489/)|  ✘   |  ✔   |  ✔   |  0   |  ☡   
 [                   mh_userstatus ](Test/mh_userstatus/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                   mh_windowfill ](Test/mh_windowfill/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                          miodek ](Test/miodek/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -313,7 +313,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                      msg2notice ](Test/msg2notice/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                msg2notice_regex ](Test/msg2notice_regex/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                      multipaste ](Test/multipaste/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[  munge_own_nickname_to_username ](Test/munge_own_nickname_to_username/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
+[  munge_own_nickname_to_username ](Test/munge_own_nickname_to_username/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                         my_beep ](Test/my_beep/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                  mysqlurllogger ](Test/mysqlurllogger/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                            nact ](Test/nact/)|  ✔   |  ✔   |  ✔   | 12   |  ✔   | (c)
@@ -534,4 +534,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-459b3e9caa464e02c55d4908862e95f77616a5f8 | 1573
+64b1a74bca96daa0136184d5b74ed66aaa80e188 | 1574
