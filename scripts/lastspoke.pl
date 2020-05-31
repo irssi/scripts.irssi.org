@@ -24,7 +24,7 @@ use utf8;
 use Encode qw/decode encode/;
 use Irssi;
 use Irssi::Irc;
-use JSON::PP;
+use CPAN::Meta::YAML;
 use vars qw($VERSION %IRSSI);
 
 $VERSION = "0.4";
@@ -35,12 +35,13 @@ $VERSION = "0.4";
 	description => 'Remembers what people said last on what channels',
     license     => 'GNU GPLv2 or later',
     url         => 'http://irssi.freshdot.net/',
+	modules		=> 'CPAN::Meta::YAML',
 );
 
 # Storage for the data.
 my %lasthash;
 
-my $filename=Irssi::get_irssi_dir().'/lastspoke.json';
+my $filename=Irssi::get_irssi_dir().'/lastspoke.yaml';
 
 # Calculates the difference between two unix times and returns
 # a string like '15d 23h 42m 15s ago.'
@@ -171,8 +172,9 @@ sub to_term_enc {
 # write the memory to disk
 sub save {
 	my $fa;
-	open($fa, '>', $filename);
-	print $fa encode_json( \%lasthash );
+	open($fa, '>:utf8', $filename);
+	my $yml = CPAN::Meta::YAML->new( \%lasthash );
+	print $fa $yml->write_string();
 	close($fa);
 }
 
@@ -181,8 +183,10 @@ sub load {
 	my $fi;
 	if (-e $filename) {
 		local $/;
-		open($fi, '<', $filename);
-		%lasthash = %{ decode_json <$fi> };
+		open($fi, '<:utf8', $filename);
+		my $s= <$fi>;
+		my $yml= CPAN::Meta::YAML->read_string($s);
+		%lasthash = %{ $yml->[0] };
 		close($fi);
 	}
 }
