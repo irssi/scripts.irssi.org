@@ -20,11 +20,14 @@
 # Triggers on !lastspoke <nick>, !seen <nick> and !lastseen <nick>
 # 
 use strict;
+use utf8;
+use Encode qw/decode encode/;
 use Irssi;
 use Irssi::Irc;
+use CPAN::Meta::YAML;
 use vars qw($VERSION %IRSSI);
 
-$VERSION = "0.3";
+$VERSION = "0.4";
 %IRSSI = (
     authors     => 'Sander Smeenk',
     contact     => 'irssi@freshdot.net',
@@ -32,10 +35,13 @@ $VERSION = "0.3";
 	description => 'Remembers what people said last on what channels',
     license     => 'GNU GPLv2 or later',
     url         => 'http://irssi.freshdot.net/',
+	modules		=> 'CPAN::Meta::YAML',
 );
 
 # Storage for the data.
 my %lasthash;
+
+my $filename=Irssi::get_irssi_dir().'/lastspoke.yaml';
 
 # Calculates the difference between two unix times and returns
 # a string like '15d 23h 42m 15s ago.'
@@ -119,6 +125,7 @@ sub on_part {
 # Only act on channels we are supposed to act on (settings_get_str)
 sub on_public {
 	my ($server, $msg, $nick, $addr, $target) = @_;
+	utf8::decode($msg);
 
 	$target = $nick if ( ! $target );
 	$nick = $server->{'nick'} if ($nick =~ /^#/);
@@ -142,7 +149,9 @@ sub on_public {
 			$lasthash{lc($nick)}{'words'} = "$nick last queried information about " . $parts[1] . " on $target";
 	
 			if (exists $lasthash{lc($parts[1])}) {
-				$server->command("MSG $target " . $lasthash{lc($parts[1])}{'words'} . " " . calcDiff($lasthash{lc($parts[1])}{'last'}));
+				$server->command("MSG $target " . 
+					to_term_enc($lasthash{lc($parts[1])}{'words'}) . 
+						" " . calcDiff($lasthash{lc($parts[1])}{'last'}));
 			} else {
 				$server->command("MSG $target I don't know anything about " . $parts[1]);
 			}
@@ -151,6 +160,40 @@ sub on_public {
 			$lasthash{lc($nick)}{'words'} = "$nick last said '$msg' on $target";
 		}
 	}
+}
+
+# encode the words to term_charset
+sub to_term_enc {
+	my ($words)= @_;
+	my $charset= Irssi::settings_get_str('term_charset');
+	return encode($charset, $words);
+}
+
+# write the memory to disk
+sub save {
+	my $fa;
+	open($fa, '>:utf8', $filename);
+	my $yml = CPAN::Meta::YAML->new( \%lasthash );
+	print $fa $yml->write_string();
+	close($fa);
+}
+
+# read form the disk to memory
+sub load {
+	my $fi;
+	if (-e $filename) {
+		local $/;
+		open($fi, '<:utf8', $filename);
+		my $s= <$fi>;
+		my $yml= CPAN::Meta::YAML->read_string($s);
+		%lasthash = %{ $yml->[0] };
+		close($fi);
+	}
+}
+
+# hook for unload, /quit
+sub UNLOAD {
+	save();
 }
 
 # Put hooks on events
@@ -163,3 +206,5 @@ Irssi::signal_add_last("message nick", "on_nick");
 
 # Add setting
 Irssi::settings_add_str("lastspoke", "lastspoke_channels", '%s');
+
+load();
