@@ -2664,10 +2664,10 @@
   description: 'Remembers what people said last on what channels'
   filename: lastspoke.pl
   license: 'GNU GPLv2 or later'
-  modified: '2019-02-22 00:22:28'
+  modified: '2020-05-31 16:04:00'
   name: lastspoke
   url: http://irssi.freshdot.net/
-  version: '0.3'
+  version: '0.4'
 -
   authors: 'Clemens Heidinger'
   commands: len
