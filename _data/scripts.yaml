@@ -2746,12 +2746,13 @@
 -
   authors: 'Isaac Good'
   contact: irssi@isaacgood.com
+  description: 'Sort the /list output by channel size'
   filename: listsort.pl
   license: BSD
-  modified: '2016-12-07 11:32:54'
+  modified: '2020-07-09 10:29:27'
   name: listsort
   url: https://github.com/IsaacG/irssi-scripts
-  version: '0.1'
+  version: 0.1.1
 -
   authors: aki
   contact: aki@evilbsd.info
