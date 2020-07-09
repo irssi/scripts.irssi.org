@@ -3,12 +3,12 @@ use warnings;
 use Irssi;
 use vars qw/$VERSION %IRSSI/;
 
-$VERSION = '0.1';
+$VERSION = '0.1.1';
 %IRSSI = (
     authors     => 'Isaac Good',
     name        => 'listsort',
     contact     => 'irssi@isaacgood.com',
-    decsription => 'Sort the /list output by channel size',
+    description => 'Sort the /list output by channel size',
     license     => 'BSD',
     url         => 'https://github.com/IsaacG/irssi-scripts',
     created     => '2013/02/23',
