@@ -267,7 +267,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                      linebuffer ](Test/linebuffer/)|  ✔   |  ✔   |  ✔   |  2   |  ✔   | (c)
 [                        linkchan ](Test/linkchan/)|  ✔   |  ✔   |  ✔   | 32   |  ✔   | (c)
 [                          listen ](Test/listen/)|  ✔   |  ✔   |  ✔   | 11   |  ✔   | (c)
-[                        listsort ](Test/listsort/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
+[                        listsort ](Test/listsort/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                         loadavg ](Test/loadavg/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        localize ](Test/localize/)|  ✔   |  ✔   |  ✔   | 25   |  ✔   | (c)
 [                        log2ansi ](Test/log2ansi/)|  ✘   |  ✘   |  ✔   | 15   |  ☡   | (c)
@@ -497,7 +497,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                         urlinfo ](Test/urlinfo/)|  ✔   |  ✔   |  ✔   |  8   |  ✔   | (c)
 [                         url_log ](Test/url_log/)|  ✔   |  ✔   |  ✔   | 12   |  ✔   | (c)
 [                         urlplot ](Test/urlplot/)|  ✔   |  ✔   |  ✔   | 86   |  ✔   | (c)
-[                       urlwindow ](Test/urlwindow/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                       urlwindow ](Test/urlwindow/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                       usercount ](Test/usercount/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        userhost ](Test/userhost/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                           users ](Test/users/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -534,4 +534,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-e8574fac25a7e282d53132d2ef58306ee1191ea5 | 1578
+a8269a304926a4daf11fe5b193bdf505100811c1 | 1580

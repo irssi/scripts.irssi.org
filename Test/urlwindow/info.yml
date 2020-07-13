@@ -1,11 +1,11 @@
 ---
 -
   authors: zdleaf
-  contact: leaf@zincldn.co.uk
+  contact: zdleaf@zinc.london
   default_package: urlwindow
-  description: 'Print urls to window named "urls"'
+  description: 'Log all urls from #channels and /msgs in a separate window'
   license: 'Public Domain'
-  modified: '2019-10-24 21:10:01'
+  modified: '2020-07-13 09:17:33'
   name: urlwindow
   url: http://irssi.org/
-  version: '1.1'
+  version: '1.2'
