@@ -1,5 +1,5 @@
 #
-# Print urls posted to channels or in /msg's to a window named "urls"
+# Logs all urls from #channels and /msgs in a separate window called "urls"
 #
 
 use Irssi;
@@ -7,12 +7,12 @@ use POSIX;
 use vars qw($VERSION %IRSSI);
 use strict;
 
-$VERSION = "1.1";
+$VERSION = "1.2";
 %IRSSI = (
     authors     => "zdleaf",
-    contact     => 'leaf@zincldn.co.uk', 
+    contact     => 'zdleaf@zinc.london', 
     name        => "urlwindow",
-    description => "Print urls to window named \"urls\"",
+    description => "Log all urls from #channels and /msgs in a separate window",
     license     => "Public Domain",
     url         => "http://irssi.org/",
 );
