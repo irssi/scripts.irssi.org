@@ -5099,14 +5099,14 @@
   version: '1.2'
 -
   authors: zdleaf
-  contact: leaf@zincldn.co.uk
-  description: 'Print urls to window named "urls"'
+  contact: zdleaf@zinc.london
+  description: 'Log all urls from #channels and /msgs in a separate window'
   filename: urlwindow.pl
   license: 'Public Domain'
-  modified: '2019-10-24 21:10:01'
+  modified: '2020-07-13 09:17:33'
   name: urlwindow
   url: http://irssi.org/
-  version: '1.1'
+  version: '1.2'
 -
   authors: 'David Leadbeater, Timo Sirainen, Georg Lukas'
   contact: 'dgl@dgl.cx, tss@iki.fi, georg@boerde.de'
