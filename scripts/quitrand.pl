@@ -20,21 +20,17 @@ my $quitfile = glob "~/.irssi/irssi.quit";
 sub cmd_quit {
 	my ($data, $server, $channel) = @_;
 	
-	open(f,"<",$quitfile);
-	my @contenido = <f>;
-	close(f);
+	open(my $fh,"<",$quitfile);
+	my @contenido = <$fh>;
+	close($fh);
 
-	my $numlines = 0;
-	
-	foreach my $nada (@contenido) {
-		$numlines++;
-	}
+	my $numlines = 0+@contenido;
 
 	my $line = int(rand($numlines))+1;
 
 	my $quitmsg = "[IRSSI] ".$contenido[$line];
 
-	chop($quitmsg);
+	chomp($quitmsg);
 
 	print($quitmsg);
 
