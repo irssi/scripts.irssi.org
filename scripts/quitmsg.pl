@@ -12,10 +12,10 @@ $VERSION = "1.01";
     name        => 'quitmsg',
     description => 'Random quit messages',
     license     => 'Public Domain',
-    changed	=> 'Mon Jul 13 18:00 EET 2020'
+    changed	=> 'Mon Jul 22 20:00 EET 2020'
 );
 
-my $quitfile = glob "~/.irssi/irssi.quit";
+my $quitfile = Irssi::get_irssi_dir() . "/irssi.quit";
 
 sub cmd_quit {
 	my ($data, $server, $channel) = @_;
@@ -24,7 +24,7 @@ sub cmd_quit {
 	open (my $fh, "<", $quitfile) || return;
 	my @lines = <$fh>;
 
-	my $quitmsg = $lines[int(rand(@lines))+1];
+	my $quitmsg = $lines[int(rand(@lines))];
 	chomp($quitmsg);
 	close($fh);
 
