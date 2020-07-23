@@ -381,7 +381,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                           query ](Test/query/)|  ✔   |  ✔   |  ✔   | 22   |  ✔   | (c)
 [                     queryresume ](Test/queryresume/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                     query_whois ](Test/query_whois/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                         quitmsg ](Test/quitmsg/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
+[                         quitmsg ](Test/quitmsg/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   
 [                        quitrand ](Test/quitrand/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                          quizgr ](Test/quizgr/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                   quizmaster-fr ](Test/quizmaster-fr/)|  ✔   |  ✔   |  ✔   | 15   |  ✔   | (c)
@@ -497,7 +497,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                         urlinfo ](Test/urlinfo/)|  ✔   |  ✔   |  ✔   |  8   |  ✔   | (c)
 [                         url_log ](Test/url_log/)|  ✔   |  ✔   |  ✔   | 12   |  ✔   | (c)
 [                         urlplot ](Test/urlplot/)|  ✔   |  ✔   |  ✔   | 86   |  ✔   | (c)
-[                       urlwindow ](Test/urlwindow/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[                       urlwindow ](Test/urlwindow/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       usercount ](Test/usercount/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        userhost ](Test/userhost/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                           users ](Test/users/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -534,4 +534,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-a8269a304926a4daf11fe5b193bdf505100811c1 | 1580
+e6e6150e292f1f12d573f09ee9381c72405eea06 | 1585

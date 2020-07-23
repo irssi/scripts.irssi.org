@@ -1,7 +1,1 @@
-* Unquoted string "f" may clash with future reserved word at quitmsg.pl line 24.
-* 
-* Unquoted string "f" may clash with future reserved word at quitmsg.pl line 30.
-* 
-* Unquoted string "f" may clash with future reserved word at quitmsg.pl line 38.
-* 
 * -!- Irssi: Loaded script quitmsg
