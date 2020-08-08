@@ -2,22 +2,19 @@ use strict;
 use warnings;
 use Irssi;
 
-our $VERSION = '1.2';
+our $VERSION = '1.3';
 our %IRSSI = (
     authors     => 'Idiomdrottning',
     contact     => 'sandra.snan@idiomdrottning.org',
     name        => 'discord_unbridge.pl',
-    description => 'In channels with a discord birdge, turns "<bridge> <Sender> Message" into "<Sender> Message", and hides spoilers.',
+    description => 'In channels with a discord bridge, turns "<bridge> <Sender> Message" into "<Sender> Message", and hides spoilers.',
     license     => 'Public Domain',
     url         => 'https://idiomdrottning.org/discord_unbridge.pl',
 );
 
 # HOWTO:
 #
-# optionally, but for better security, change
-#    if ($text) {
-# to
-#    if ($text && "Your Bridge's name goes here" eq $nick) {
+# set $bridgename to your bot's name, default is Yoda50.
 #
 # Regardless, to use the script just
 #   /load discord_unbridge.pl
@@ -30,17 +27,13 @@ our %IRSSI = (
 # Based on discord_unhilight by Christoffer Holmberg, in turn
 # based on slack_strip_auto_cc.pl by Ævar Arnfjörð Bjarmason.
 
-sub msg_bot_clean {
-    my ($server, $data, $nick, $nick_and_address) = @_;
-    my ($target, $message) = split /:/, $data, 2;
-    my ($name, $text) = $message =~ /< *([^>]*)> (.*)/s;
-    if ($text) {
-        $nick = $name;
-        $message = $text;
-    }
+my $bridgename = "Yoda50";
+
+sub bot_nick_change {
+    my($server, $message) = @_;
+    $message =~ s/:$bridgename!~[^ ]* PRIVMSG ([&#][^ ]+) :<([^>]+)> (.*)/:$2!~Yoda50\@ToscheStation PRIVMSG $1 :$3/;
     $message =~ s/\|\|([^|][^|]*)\|\|/1,1$1/;
-    my $data = "$target:$message";
-    Irssi::signal_continue($server, $data, $nick, $nick_and_address);
+    Irssi::signal_continue($server, $message);
 }
 
-Irssi::signal_add('event privmsg', 'msg_bot_clean');
+Irssi::signal_add('server incoming', 'bot_nick_change');
