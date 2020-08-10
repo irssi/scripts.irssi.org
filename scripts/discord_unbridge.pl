@@ -2,7 +2,7 @@ use strict;
 use warnings;
 use Irssi;
 
-our $VERSION = '1.3';
+our $VERSION = '1.5';
 our %IRSSI = (
     authors     => 'Idiomdrottning',
     contact     => 'sandra.snan@idiomdrottning.org',
@@ -29,11 +29,17 @@ our %IRSSI = (
 
 my $bridgename = "Yoda50";
 
-sub bot_nick_change {
-    my($server, $message) = @_;
-    $message =~ s/:$bridgename!~[^ ]* PRIVMSG ([&#][^ ]+) :<([^>]+)> (.*)/:$2!~Yoda50\@ToscheStation PRIVMSG $1 :$3/;
-    $message =~ s/\|\|([^|][^|]*)\|\|/1,1$1/;
-    Irssi::signal_continue($server, $message);
+sub msg_bot_clean {
+    my ($server, $data, $nick, $nick_and_address) = @_;
+    my ($target, $message) = split /:/, $data, 2;
+    my ($name, $text) = $message =~ /< *([^>]*)> (.*)/s;
+    if ($text && $nick eq $bridgename) {
+        $nick = $name;
+        $message = $text;
+    }
+    $message =~ s/\|\|([^|]+)\|\|/1,1$1/g;
+    my $data = "$target:$message";
+    Irssi::signal_continue($server, $data, $nick, $nick_and_address);
 }
 
-Irssi::signal_add('server incoming', 'bot_nick_change');
+Irssi::signal_add('event privmsg', 'msg_bot_clean');
