@@ -1445,6 +1445,16 @@
   url: http://anti.teamidiot.de/
   version: 0.4.9
 -
+  authors: 'Andrew Slice'
+  contact: edward.andrew.slice@gmail.com
+  description: 'Play a given sound when messages come in.'
+  filename: ding.pl
+  license: MIT
+  modified: '2020-08-11 11:55:26'
+  name: ding.pl
+  url: https://bitbucket.org/easlice/irssi-ding
+  version: '0.1'
+-
   authors: 'Christoffer Holmberg'
   contact: skug+irssiscripts@skug.fi
   description: 'Strips the annoying mentions of your nickname via <yournick> on irc<->discord bridge, will work for any bridge using botnick: <yournick>'
