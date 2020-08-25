@@ -1,0 +1,15 @@
+---
+-
+  authors: 'Sebastian Paaske Tørholm'
+  commands:
+    - telegram-notify-activate
+  contact: sebbe@cpan.org
+  default_package: telegram_notify
+  description: 'Send notifications of highlighted messages over Telegram'
+  license: MIT
+  modified: '2020-08-24 22:31:21'
+  modules:
+    - HTML::Entities
+    - WWW::Telegram::BotAPI
+  name: telegram-notify
+  version: '1.00'
