@@ -4679,6 +4679,17 @@
   url: http://scripts.irssi.org
   version: '2003020801'
 -
+  authors: 'Sebastian Paaske Tørholm'
+  commands: telegram-notify-activate
+  contact: sebbe@cpan.org
+  description: 'Send notifications of highlighted messages over Telegram'
+  filename: telegram-notify.pl
+  license: MIT
+  modified: '2020-08-24 22:31:21'
+  modules: 'HTML::Entities WWW::Telegram::BotAPI'
+  name: telegram-notify
+  version: '1.00'
+-
   authors: BC-bd
   commands: thankop
   contact: bd@bc-bd.org
