@@ -1,0 +1,3 @@
+* "my" variable $data masks earlier declaration in same scope at discord_unbridge.pl line 41.
+* 
+* -!- Irssi: Loaded script discord_unbridge

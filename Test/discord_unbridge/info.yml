@@ -1,0 +1,11 @@
+---
+-
+  authors: Idiomdrottning
+  contact: sandra.snan@idiomdrottning.org
+  default_package: discord_unbridge
+  description: 'In channels with a discord bridge, turns "<bridge> <Sender> Message" into "<Sender> Message", and hides spoilers.'
+  license: 'Public Domain'
+  modified: '2020-08-10 11:15:32'
+  name: discord_unbridge.pl
+  url: https://idiomdrottning.org/discord_unbridge.pl
+  version: '1.5'

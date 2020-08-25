@@ -144,6 +144,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                    dictcomplete ](Test/dictcomplete/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                       dim_nicks ](Test/dim_nicks/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
 [                            ding ](Test/ding/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                discord_unbridge ](Test/discord_unbridge/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
 [               discord_unhilight ](Test/discord_unhilight/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                        dispatch ](Test/dispatch/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                             dns ](Test/dns/)|  ✔   |  ✔   |  ✔   |  8   |  ✔   | (c)
@@ -456,7 +457,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                        tab_stop ](Test/tab_stop/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                            talk ](Test/talk/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                          target ](Test/target/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                 telegram-notify ](Test/telegram-notify/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[                 telegram-notify ](Test/telegram-notify/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                         thankop ](Test/thankop/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                           theme ](Test/theme/)|  ✔   |  ✔   |  ✔   | 20   |  ✔   | (c)
 [                        thistory ](Test/thistory/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -536,4 +537,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-bec35d1c1cc7b3fddd4d09817e56a2fedcc8b286 | 1598
+19d15cf36b15eafb9202de9c8e7b2ea4935ed7b3 | 1599
