@@ -144,7 +144,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                    dictcomplete ](Test/dictcomplete/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                       dim_nicks ](Test/dim_nicks/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
 [                            ding ](Test/ding/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                discord_unbridge ](Test/discord_unbridge/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
+[                discord_unbridge ](Test/discord_unbridge/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [               discord_unhilight ](Test/discord_unhilight/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                        dispatch ](Test/dispatch/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                             dns ](Test/dns/)|  ✔   |  ✔   |  ✔   |  8   |  ✔   | (c)
@@ -482,6 +482,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                         trigger ](Test/trigger/)|  ✔   |  ✔   |  ✔   | 16   |  ✔   | (c)
 [                        trustweb ](Test/trustweb/)|  ✔   |  ✔   |  ✔   | 20   |  ✔   | (c)
 [                         tvmusor ](Test/tvmusor/)|  ✔   |  ✘   |  ✔   | 17   |  ☡   | (c)
+[                   twitch_notify ](Test/twitch_notify/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
 [                   twitter_theme ](Test/twitter_theme/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                        twprompt ](Test/twprompt/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       twsocials ](Test/twsocials/)|  ✔   |  ✔   |  ✔   | 16   |  ✔   | (c)
@@ -537,4 +538,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-19d15cf36b15eafb9202de9c8e7b2ea4935ed7b3 | 1599
+0a7a71c139e67eed5967d222e5109f93f2cde0da | 1602
