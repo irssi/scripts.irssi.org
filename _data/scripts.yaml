@@ -4946,6 +4946,15 @@
   modified: '2014-10-24 23:01:30'
   name: tvmusor
 -
+  authors: leocp1
+  commands: twitch_online
+  description: 'Notify when a twitch channel comes onlineUses Twitch v5 API'
+  filename: twitch_notify.pl
+  license: 'Public Domain'
+  modified: '2020-08-29 21:41:38'
+  name: twitch_notify
+  version: 0.0.1
+-
   authors: 'Sam Stoller'
   contact: snstoller@gmail.com
   description: 'Assign colors to tweet message components'
