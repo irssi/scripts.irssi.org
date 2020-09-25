@@ -1,5 +1,5 @@
 # Copyright © 2008 Jakub Jankowski <shasta@toxcorp.com>
-# Copyright © 2012-2019 Jakub Wilk <jwilk@jwilk.net>
+# Copyright © 2012-2020 Jakub Wilk <jwilk@jwilk.net>
 # Copyright © 2012 Gabriel Pettier <gabriel.pettier@gmail.com>
 #
 # This program is free software; you can redistribute it and/or modify
@@ -20,7 +20,7 @@ use Irssi::TextUI;
 use Encode;
 use Text::Aspell;
 
-$VERSION = '0.9';
+$VERSION = '0.9.1';
 %IRSSI = (
     authors     => 'Jakub Wilk, Jakub Jankowski, Gabriel Pettier, Nei',
     name        => 'spellcheck',
@@ -167,9 +167,13 @@ sub spellcheck_key_pressed
 
     # check if inputline starts with any of cmdchars
     # we shouldn't spell-check commands
+    # (except /SAY and /ME)
     my $cmdchars = Irssi::settings_get_str('cmdchars');
-    my $re = qr/^[\Q$cmdchars\E]/;
-    return if ($inputline =~ $re);
+    my $re = qr{^(?:
+        [\Q$cmdchars\E] (?i: say | me ) \s* \S |
+        [^\Q$cmdchars\E]
+    )}x;
+    return if ($inputline !~ $re);
 
     # get last bit from the inputline
     my ($word) = $inputline =~ /\s*(\S+)\s*$/;
