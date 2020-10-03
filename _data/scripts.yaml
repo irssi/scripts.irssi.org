@@ -1185,10 +1185,10 @@
   description: 'copy a line in a paste buffer'
   filename: copy.pl
   license: 'Public Domain'
-  modified: '2020-01-02 16:21:49'
+  modified: '2020-09-26 23:09:04'
   name: copy
   url: https://scripts.irssi.org/
-  version: '0.05'
+  version: '0.10'
 -
   authors: "Mikko 'Quidz' Salmi"
   contact: mikko@quidz.net
