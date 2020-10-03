@@ -7,7 +7,7 @@ use Irssi::TextUI;
 use MIME::Base64;
 use File::Glob qw/:bsd_glob/;
 
-$VERSION = '0.05';
+$VERSION = '0.10';
 %IRSSI = (
 	authors	=> 'vague,bw1',
 	contact	=> 'bw1@aol.at',
@@ -15,7 +15,7 @@ $VERSION = '0.05';
 	description	=> 'copy a line in a paste buffer',
 	license	=> 'Public Domain',
 	url		=> 'https://scripts.irssi.org/',
-	changed	=> '2020-01-02',
+	changed	=> '2020-09-26',
 	modules => 'MIME::Base64 File::Glob',
 	commands=> 'copy',
 );
@@ -26,7 +26,7 @@ my $help = << "END";
 %9Version%9
   $VERSION
 %9Synopsis%9
-  /copy [number]
+  /copy [start [end]]
   /copy <-f word>
 %9Description%9
   $IRSSI{description}
@@ -102,21 +102,33 @@ sub cmd_find {
 sub cmd_num {
 	my ($args, $server, $witem)=@_;
 	my $line=Irssi::active_win->view->{buffer}{cur_line};
-	$args=1 if ($args==0);
-	$args=$args-1;
 	unless (defined $line) {
 		Irssi::print('No Copy!', MSGLEVEL_CLIENTCRAP);
 		return();
 	}
-	for(1..$args) {
-		my $l=$line->prev;
-		if (defined $l) {
-			$line= $l;
-		} else {
-			last;
-		}
+
+	my @arg = split /[\s-]/, $args;
+	if(@arg > 2 || grep {/[^\d]+/} @arg) {
+		Irssi::print('Illegal range!', MSGLEVEL_CLIENTCRAP);
+		return();
 	}
-	my $str=$line->get_text(0);
+
+	$arg[0] = 1 if ($arg[0]==0);
+	$arg[0] -= 1;
+	$arg[1] -= 1 if defined $arg[1];
+
+	for(1..$arg[0]) {
+		last unless $line->prev;
+		$line = $line->prev;
+	}
+
+	my $str;
+	for($arg[0]..($arg[1] // $arg[0])) {
+		$str = join $copy_file_eol, $line->get_text(0), $str;
+
+		last unless $line->prev;
+		$line = $line->prev;
+	}
 	paste ($str);
 }
 
