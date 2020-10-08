@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-our $VERSION = '1.9'; # 32a6d4807a45e71
+our $VERSION = '1.9.1'; # fcc63b8a943723b
 our %IRSSI = (
     authors     => 'Nei',
     contact     => 'Nei @ anti@conference.jabber.teamidiot.de',
@@ -2015,8 +2015,8 @@ awl_init();
 
 # Mouse script based on irssi mouse patch by mirage
 { my $mouse_status = -1; # -1:off 0,1,2:filling mouse_combo
-  my @mouse_combo; # 0:button 1:x 2:y
-  my @mouse_previous; # previous contents of mouse_combo
+  my @mouse_combo = (-1, -1, -1); # 0:button 1:x 2:y
+  my @mouse_previous = (-1, -1, -1); # previous contents of mouse_combo
 
   sub mouse_xterm_off {
       $mouse_status = -1;
@@ -2811,6 +2811,9 @@ UNITCHECK
 
 # Changelog
 # =========
+# 1.9.1
+# - fix crash on mouse click
+#
 # 1.9
 # - add %Z support to viewer
 #
