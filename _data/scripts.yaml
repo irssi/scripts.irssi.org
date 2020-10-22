@@ -135,11 +135,11 @@
   description: 'Adds a permanent advanced window list on the right or in a status bar.'
   filename: adv_windowlist.pl
   license: 'GNU GPLv2 or later'
-  modified: '2020-05-06 18:34:49'
+  modified: '2020-10-08 13:41:57'
   modules: Text::CharWidth
   name: adv_windowlist
   url: http://anti.teamidiot.de/
-  version: '1.9'
+  version: 1.9.1
 -
   authors: BC-bd
   commands: ai
@@ -1658,6 +1658,15 @@
   license: 'GNU GPLv2 or later'
   modified: '2014-10-17 22:54:13'
   name: ExtAway
+  version: '1.0'
+-
+  authors: stryk
+  contact: '$IRSSI{authors} + <Shift-2> + protonmail + <rhymes-with-pot> + <2-char Country Code for Switzerland>'
+  description: 'Provides a single helper function to wrap mIRC-style color codes around strings'
+  filename: ez_color.pl
+  license: 'WTFPL/2 @ http://www.wtfpl.net/about/'
+  modified: '2020-10-09 13:29:18'
+  name: ez_color
   version: '1.0'
 -
   authors: 'Geert Hauwaerts'
