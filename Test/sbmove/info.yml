@@ -1,0 +1,13 @@
+---
+-
+  authors: Nei
+  commands:
+    - 'scrollback move'
+  contact: 'Nei @ anti@conference.jabber.teamidiot.de'
+  default_package: sbmove
+  description: 'move matching lines from scrollback'
+  license: 'GPLv2 or later'
+  modified: '2020-10-22 16:20:48'
+  name: 'sbmove alpha'
+  url: http://anti.teamidiot.de/
+  version: '0.1'

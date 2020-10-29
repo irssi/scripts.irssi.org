@@ -1,0 +1,11 @@
+---
+-
+  authors: Nei
+  contact: 'Nei @ anti@conference.jabber.teamidiot.de'
+  default_package: long_messages
+  description: 'Automatically downloads and displays long messages from matrix.'
+  license: ISC
+  modified: '2020-10-22 16:32:03'
+  name: long_messages
+  url: http://anti.teamidiot.de/
+  version: '0.2'

@@ -14,7 +14,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                   active_notify ](Test/active_notify/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                   activity_file ](Test/activity_file/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
 [                             act ](Test/act/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                  adv_windowlist ](Test/adv_windowlist/)|  ✔   |  ✔   |  ✔   | 36   |  ✔   
+[                  adv_windowlist ](Test/adv_windowlist/)|  ✔   |  ✔   |  ✔   | 36   |  ✔   | (c)
 [                           aidle ](Test/aidle/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                              ai ](Test/ai/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
 [                           akftp ](Test/akftp/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -116,6 +116,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                       colorswap ](Test/colorswap/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                     complete_at ](Test/complete_at/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
 [              complete_lastspoke ](Test/complete_lastspoke/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                         conceal ](Test/conceal/)|  ✔   |  ✔   |  ✔   |  2   |  ✔   
 [                      connectcmd ](Test/connectcmd/)|  ✔   |  ✔   |  ✔   | 19   |  ✔   | (c)
 [                            copy ](Test/copy/)|  ✔   |  ✔   |  ✔   | 23   |  ✔   | (c)
 [                       countdown ](Test/countdown/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -164,7 +165,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                      exec_clean ](Test/exec_clean/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                         execcmd ](Test/execcmd/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                         extaway ](Test/extaway/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
-[                        ez_color ](Test/ez_color/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[                        ez_color ](Test/ez_color/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        fakectcp ](Test/fakectcp/)|  ✔   |  ✔   |  ✔   | 10   |  ✔   | (c)
 [                        fcountry ](Test/fcountry/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                          figlet ](Test/figlet/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
@@ -277,6 +278,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                logcompress_perl ](Test/logcompress_perl/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                     logcompress ](Test/logcompress/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       logresume ](Test/logresume/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                   long_messages ](Test/long_messages/)|  ✔   |  ✔   |  ✔   |  2   |  ✔   
 [                              ls ](Test/ls/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                            lwho ](Test/lwho/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                  mailcheck_imap ](Test/mailcheck_imap/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
@@ -288,6 +290,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                             map ](Test/map/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [            mass_hilight_blocker ](Test/mass_hilight_blocker/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                      matryoshka ](Test/matryoshka/)|  ✔   |  ✔   |  ✔   | 19   |  ✔   | (c)
+[                 merge_resources ](Test/merge_resources/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
 [                 messages_bottom ](Test/messages_bottom/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                              mg ](Test/mg/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                    mh_hold_mode ](Test/mh_hold_mode/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -364,6 +367,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                     page_reeler ](Test/page_reeler/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                           pager ](Test/pager/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       pangotext ](Test/pangotext/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
+[                         partial ](Test/partial/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
 [                    paste_derwan ](Test/paste_derwan/)|  ✔   |  ✔   |  ✔   | 53   |  ✔   | (c)
 [                    paste-derwan ](Test/paste-derwan/)|  ✔   |  ✔   |  ✔   | 37   |  ✔   | (c)
 [                    paste_huggie ](Test/paste_huggie/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
@@ -411,6 +415,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                      rud_emotes ](Test/rud_emotes/)|  ✔   |  ✔   |  ✔   |  2   |  ✔   | (c)
 [                     savecmdhist ](Test/savecmdhist/)|  ✔   |  ✔   |  ✔   |  1   |  ✔   | (c)
 [                    sbclearmatch ](Test/sbclearmatch/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
+[                          sbmove ](Test/sbmove/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
 [                     sb_position ](Test/sb_position/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                       sb_search ](Test/sb_search/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                     schwaebisch ](Test/schwaebisch/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -539,4 +544,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-e560b26dc8030de89dd72c4955e389da2241e706 | 1618
+0a7a19558b39f006fa8215a10f2df94922037956 | 1623
