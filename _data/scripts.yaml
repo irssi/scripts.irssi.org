@@ -1168,6 +1168,16 @@
   name: 'Complete Last-Spoke'
   version: '2.1'
 -
+  authors: Nei
+  contact: 'Nei @ anti@conference.jabber.teamidiot.de'
+  description: 'conceals passwords on the input line'
+  filename: conceal.pl
+  license: ISC
+  modified: '2020-10-22 16:28:09'
+  name: conceal
+  url: http://anti.teamidiot.de/
+  version: '0.1'
+-
   authors: 'Ian Peters'
   commands: connectcmd
   contact: itp@ximian.com
@@ -2844,6 +2854,16 @@
   url: http://explodingferret.com/linux/irssi/logresume.pl
   version: '0.6'
 -
+  authors: Nei
+  contact: 'Nei @ anti@conference.jabber.teamidiot.de'
+  description: 'Automatically downloads and displays long messages from matrix.'
+  filename: long_messages.pl
+  license: ISC
+  modified: '2020-10-22 16:32:03'
+  name: long_messages
+  url: http://anti.teamidiot.de/
+  version: '0.2'
+-
   authors: c0ffee
   commands: ls
   contact: c0ffee@penguin-breeder.org
@@ -2961,6 +2981,17 @@
   name: matryoshka
   url: https://scripts.irssi.org/
   version: '0.01'
+-
+  authors: Nei
+  commands: requery
+  contact: 'Nei @ anti@conference.jabber.teamidiot.de'
+  description: 'Merge queries with multiple resources of the same person.'
+  filename: merge_resources.pl
+  license: 'GNU GPLv2 or later'
+  modified: '2020-10-22 16:34:10'
+  name: merge_resources
+  url: http://anti.teamidiot.de/
+  version: '1.1'
 -
   authors: 'Wouter Coekaerts'
   contact: coekie@irssi.org
@@ -3743,6 +3774,17 @@
   name: pangotext
   version: '1.2'
 -
+  authors: Nei
+  contact: 'Nei @ anti@conference.jabber.teamidiot.de'
+  description: 'partial tab completion for Irssi'
+  filename: partial.pl
+  license: ISC
+  modified: '2020-10-22 16:55:25'
+  modules: Tree::Trie
+  name: partial
+  url: http://anti.teamidiot.de/
+  version: '0.3'
+-
   authors: 'Marcin Rozycki, Stanislaw Halik'
   commands: paste
   contact: derwan@irssi.pl
@@ -4244,6 +4286,16 @@
   name: sbclearmatch
   url: http://anti.teamidiot.de/
   version: '0.2'
+-
+  authors: Nei
+  contact: 'Nei @ anti@conference.jabber.teamidiot.de'
+  description: 'move matching lines from scrollback'
+  filename: sbmove.pl
+  license: 'GPLv2 or later'
+  modified: '2020-10-22 16:20:48'
+  name: 'sbmove alpha'
+  url: http://anti.teamidiot.de/
+  version: '0.1'
 -
   authors: 'Robert Scheck'
   commands: schwäbisch
