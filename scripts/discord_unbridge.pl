@@ -38,8 +38,8 @@ sub msg_bot_clean {
         $message = $text;
     }
     $message =~ s/\|\|([^|]+)\|\|/1,1$1/g;
-    my $data = "$target:$message";
-    Irssi::signal_continue($server, $data, $nick, $nick_and_address);
+    my $new_data = "$target:$message";
+    Irssi::signal_continue($server, $new_data, $nick, $nick_and_address);
 }
 
 Irssi::signal_add('event privmsg', 'msg_bot_clean');
