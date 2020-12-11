@@ -1470,10 +1470,10 @@
   description: 'In channels with a discord bridge, turns "<bridge> <Sender> Message" into "<Sender> Message", and hides spoilers.'
   filename: discord_unbridge.pl
   license: 'Public Domain'
-  modified: '2020-12-11 10:04:28'
+  modified: '2020-12-11 12:11:10'
   name: discord_unbridge.pl
   url: https://idiomdrottning.org/discord_unbridge.pl
-  version: '1.5'
+  version: '1.6'
 -
   authors: 'Christoffer Holmberg'
   contact: skug+irssiscripts@skug.fi
