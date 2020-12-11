@@ -116,7 +116,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                       colorswap ](Test/colorswap/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                     complete_at ](Test/complete_at/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
 [              complete_lastspoke ](Test/complete_lastspoke/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                         conceal ](Test/conceal/)|  ✔   |  ✔   |  ✔   |  2   |  ✔   
+[                         conceal ](Test/conceal/)|  ✔   |  ✔   |  ✔   |  2   |  ✔   | (c)
 [                      connectcmd ](Test/connectcmd/)|  ✔   |  ✔   |  ✔   | 19   |  ✔   | (c)
 [                            copy ](Test/copy/)|  ✔   |  ✔   |  ✔   | 23   |  ✔   | (c)
 [                       countdown ](Test/countdown/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -145,7 +145,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                    dictcomplete ](Test/dictcomplete/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                       dim_nicks ](Test/dim_nicks/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
 [                            ding ](Test/ding/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                discord_unbridge ](Test/discord_unbridge/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
+[                discord_unbridge ](Test/discord_unbridge/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
 [               discord_unhilight ](Test/discord_unhilight/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                        dispatch ](Test/dispatch/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                             dns ](Test/dns/)|  ✔   |  ✔   |  ✔   |  8   |  ✔   | (c)
@@ -278,7 +278,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                logcompress_perl ](Test/logcompress_perl/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                     logcompress ](Test/logcompress/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       logresume ](Test/logresume/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                   long_messages ](Test/long_messages/)|  ✔   |  ✔   |  ✔   |  2   |  ✔   
+[                   long_messages ](Test/long_messages/)|  ✔   |  ✔   |  ✔   |  2   |  ✔   | (c)
 [                              ls ](Test/ls/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                            lwho ](Test/lwho/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                  mailcheck_imap ](Test/mailcheck_imap/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
@@ -290,7 +290,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                             map ](Test/map/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [            mass_hilight_blocker ](Test/mass_hilight_blocker/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                      matryoshka ](Test/matryoshka/)|  ✔   |  ✔   |  ✔   | 19   |  ✔   | (c)
-[                 merge_resources ](Test/merge_resources/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
+[                 merge_resources ](Test/merge_resources/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                 messages_bottom ](Test/messages_bottom/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                              mg ](Test/mg/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                    mh_hold_mode ](Test/mh_hold_mode/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -367,7 +367,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                     page_reeler ](Test/page_reeler/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                           pager ](Test/pager/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       pangotext ](Test/pangotext/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
-[                         partial ](Test/partial/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
+[                         partial ](Test/partial/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                    paste_derwan ](Test/paste_derwan/)|  ✔   |  ✔   |  ✔   | 53   |  ✔   | (c)
 [                    paste-derwan ](Test/paste-derwan/)|  ✔   |  ✔   |  ✔   | 37   |  ✔   | (c)
 [                    paste_huggie ](Test/paste_huggie/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
@@ -415,7 +415,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                      rud_emotes ](Test/rud_emotes/)|  ✔   |  ✔   |  ✔   |  2   |  ✔   | (c)
 [                     savecmdhist ](Test/savecmdhist/)|  ✔   |  ✔   |  ✔   |  1   |  ✔   | (c)
 [                    sbclearmatch ](Test/sbclearmatch/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
-[                          sbmove ](Test/sbmove/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
+[                          sbmove ](Test/sbmove/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                     sb_position ](Test/sb_position/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                       sb_search ](Test/sb_search/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                     schwaebisch ](Test/schwaebisch/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -544,4 +544,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-0a7a19558b39f006fa8215a10f2df94922037956 | 1623
+7e3ec8cdab0e0c1be781292a19ea98f68a34294b | 1624
