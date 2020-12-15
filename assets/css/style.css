@@ -34,3 +34,31 @@ input#automatic-instructions:checked ~ dl.manual-instructions,
 input#manual-instructions:checked ~ h4,
 input#automatic-instructions:checked ~ h4
 { display: none; }
+body {
+    transition: opacity 300ms linear, color 150ms, background-color 150ms, border-color 150ms;
+}
+@media (prefers-color-scheme: dark) {
+    body {
+	background-color: #2e3440;
+	color: #ffffff;
+    }
+    code,
+    pre {
+	background-color: #1d232e;/*#3b4252*/;
+    }
+    .table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th,
+    .form-control {
+	background-color: #3b4252;
+	color: #eceff4;
+    }
+    .btn-link,
+    a {
+	color: #8699bb;
+    }
+    .btn-link:hover,
+    a:hover,
+    a:focus {
+	color: #5e81ac;
+    }
+}
+
