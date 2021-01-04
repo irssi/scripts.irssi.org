@@ -1,16 +1,17 @@
 ---
 -
   authors: "Stefan 'tommie' Tomanek, bw1"
-  changed: '2.1'
+  changed: '2.2'
   commands:
     - chansearch
   contact: bw1@aol.at
   default_package: chansearch
   description: 'searches for specific channels'
   license: GPLv2
+  modified: '2021-01-04 11:07:44'
   modules:
     - HTML::Entities
     - LWP::UserAgent
   name: ChanSearch
   url: http://scripts.irssi.org/
-  version: '2.1'
+  version: '2.2'
