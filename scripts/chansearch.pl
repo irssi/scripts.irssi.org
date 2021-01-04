@@ -5,7 +5,7 @@
 use strict;
 
 use vars qw($VERSION %IRSSI);
-$VERSION = '2.2';
+$VERSION = '2.3';
 %IRSSI = (
     authors     => 'Stefan \'tommie\' Tomanek, bw1',
     contact     => 'bw1@aol.at',
@@ -14,6 +14,7 @@ $VERSION = '2.2';
     license     => 'GPLv2',
     url         => 'http://scripts.irssi.org/',
     changed     => $VERSION,
+    selfcheckcmd=> '/chansearch -check',
 );
 
 my $help = << "END";
@@ -39,6 +40,7 @@ use utf8;
 use Irssi 20020324;
 use open qw/:std :utf8/;
 use LWP::UserAgent;
+use LWP::Protocol::https;
 use HTML::Entities;
 use JSON::PP;
 use Getopt::Long qw(GetOptionsFromString);
@@ -50,11 +52,10 @@ $forked = 0;
 my $footer;
 my ($default_network, $max_results, $max_columns);
 my ($max_columns2);
-my @results;
+my (@results, $resultcount);
 
 # ! for the fork
-my @clist;
-my $t;
+my (@clist, $t, $rcount);
 
 sub draw_box ($$$$) {
     my ($title, $text, $footer, $colour) = @_;
@@ -76,7 +77,7 @@ sub dehtml {
 }
 
 sub get_entries_count {
-    $t =~ m/(\d+) matching entries found/;
+    $t =~ m/(\d+) matching results/;
     return $1;
 }
 
@@ -89,12 +90,13 @@ sub html_to_list {
 	    $' =~ m#<span class="cs-network">(.*?)</span>#p;
 	    $h{network}= dehtml($1);
 	    #$' =~ m#<span class="cs-users">(.*?)</span>#p;
-	    $' =~ m#<span class="cs-details">Chat Room.*?(\d+).*</span>#p;
+	    #$' =~ m#<span class="cs-details">Chat Room.*?(\d+).*?</span>#p;
+	    $' =~ m#<span class="cs-details">Chat Room - (\d+) users - </span>#p;
 	    my $u=$1;
 	    #$' =~ m#class="cs-time">.*?</span>(.*?)<span class="cs-category"#p;
-	    $' =~ m#class="cs-details">current topic:(.*?)<br>#p;
+	    $' =~ m#(current topic:|No topic)(.*?)<br>#p;
 	    $t= $';
-	    $h{topic}=dehtml($1);
+	    $h{topic}=dehtml($2);
 	    $u =~ m/(\d+)/;
 	    $h{users}=$1;
 	    push @clist, {%h};
@@ -121,7 +123,8 @@ sub fork_search {
 	print CLIENTCRAP "%R>>%n Please wait...";
     } else {
 	search_channels($query,$net);
-	my $data = encode_json( \@clist );
+	#my $data = encode_json( \@clist );
+	my $data = encode_json( { clist=>[ @clist ], rcount=>$rcount } );
 	print($wh $data);
 	close($wh);
 	POSIX::_exit(1);
@@ -141,7 +144,9 @@ sub pipe_input ($$) {
     Irssi::input_remove($$pipetag);
     return unless($data);
 
-    @results = @{ decode_json( $data ) };
+    my $res= decode_json( $data );
+    @results = @{ $res->{clist} };
+    $resultcount = $res->{rcount};
 
     my $lnet=0;
     my $lchan=0;
@@ -170,7 +175,6 @@ sub search_channels ($) {
     # http://irc.netsplit.de/channels/?net=IRCnet&chat=linux&num=10
     my $num='';
     my $count=0;
-    my $rcount;
     do {
 	my $page = "http://irc.netsplit.de/channels/?net=$net&chat=$query$num";
 	my $result = $ua->get($page);
@@ -205,19 +209,63 @@ sub cmd_chansearch ($$$) {
 }
 
 sub self_check_init {
-    fork_search('linux','IRCnet');
+    $max_results=30;
+    fork_search('linux','Freenode');
     Irssi::timeout_add_once(5*1000, 'sig_self_check','');
-    Irssi::command_bind('quit', \&cmd_quit_self_check);
+}
+
+sub self_check_quit {
+    my ( $s )=@_;
+    Irssi::command("selfcheckhelperscript $s");
 }
 
 sub sig_self_check {
-    my $min=10;
-    if ( scalar @results > $min) {
+    my ($min, $max);
+    # min result
+    $min=20;
+    if ( scalar @results >= $min) {
 	print "Results: ",scalar @results," check";
     } else {
 	print "Results: ",scalar @results," <$min fail";
-	die("Error: self check fail");
+    	self_check_quit("Error: self check fail (result)");
     }
+    # result more pages
+    if ( $resultcount == scalar @results || $max_results == scalar @results ) {
+    	print "Resultscount: $resultcount check";
+    } else {
+	print "Resultscount: $resultcount  fail";
+    	self_check_quit("Error: self check fail (pages)");
+    }
+    $max_results= Irssi::settings_get_int($IRSSI{name}.'_max_results');
+    # topic
+    $min= 1000;
+    $max= 0;
+    foreach my $n ( @results ) {
+	my $l = length ( $n->{topic} );
+	$min = $l if ($l < $min);
+	$max = $l if ($l > $max);
+    }
+    if ( $min != $max && $max >200 ) {
+	print "Topic min:$min max:$max check"; 
+    } else {
+	print "Topic min:$min max:$max"; 
+    	self_check_quit("Error: self check fail (topic)");
+    }
+    # users
+    $min= 10000;
+    $max= 0;
+    foreach my $n ( @results ) {
+	my $l =  $n->{users} ;
+	$min = $l if ($l < $min);
+	$max = $l if ($l > $max);
+    }
+    if ( $min != $max && $max >200 ) {
+	print "Users min:$min max:$max check"; 
+    } else {
+	print "Users min:$min max:$max"; 
+    	self_check_quit("Error: self check fail (users)");
+    }
+    self_check_quit('ok');
 }
 
 sub sig_setup_changed {
