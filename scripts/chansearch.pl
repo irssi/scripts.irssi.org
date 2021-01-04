@@ -5,7 +5,7 @@
 use strict;
 
 use vars qw($VERSION %IRSSI);
-$VERSION = '2.1';
+$VERSION = '2.2';
 %IRSSI = (
     authors     => 'Stefan \'tommie\' Tomanek, bw1',
     contact     => 'bw1@aol.at',
@@ -71,7 +71,6 @@ sub draw_box ($$$$) {
 sub dehtml {
     my ($text) =@_;
     $text =decode_entities($text);
-    utf8::decode($text);
     $text =~ s/<.*?>//g;
     return $text;
 }
@@ -82,15 +81,18 @@ sub get_entries_count {
 }
 
 sub html_to_list {
+    utf8::decode($t);
     while (length($t) > 0) {
 	my %h;
 	if ($t =~ m#<span class="cs-channel">(.*?)</span>#p) {
 	    $h{channel}= dehtml($1);
 	    $' =~ m#<span class="cs-network">(.*?)</span>#p;
 	    $h{network}= dehtml($1);
-	    $' =~ m#<span class="cs-users">(.*?)</span>#p;
+	    #$' =~ m#<span class="cs-users">(.*?)</span>#p;
+	    $' =~ m#<span class="cs-details">Chat Room.*?(\d+).*</span>#p;
 	    my $u=$1;
-	    $' =~ m#class="cs-time">.*?</span>(.*?)<span class="cs-category"#p;
+	    #$' =~ m#class="cs-time">.*?</span>(.*?)<span class="cs-category"#p;
+	    $' =~ m#class="cs-details">current topic:(.*?)<br>#p;
 	    $t= $';
 	    $h{topic}=dehtml($1);
 	    $u =~ m/(\d+)/;
