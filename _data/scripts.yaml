@@ -975,11 +975,11 @@
   description: 'searches for specific channels'
   filename: chansearch.pl
   license: GPLv2
-  modified: '2021-01-04 11:07:44'
-  modules: 'HTML::Entities LWP::UserAgent'
+  modified: '2021-01-04 15:23:17'
+  modules: 'HTML::Entities LWP::Protocol::https LWP::UserAgent'
   name: ChanSearch
   url: http://scripts.irssi.org/
-  version: '2.2'
+  version: '2.3'
 -
   authors: "Timo 'cras' Sirainen"
   commands: chanshare
