@@ -17,14 +17,15 @@
 use strict;
 use vars qw($VERSION %IRSSI);
 
-$VERSION = "20090904"; # Fixed and enhanced by tsaavik (dave000@hellspark.com)
+$VERSION = "20210108"; # Fixed and enhanced by tsaavik (dave000@hellspark.com)
 %IRSSI = (
 	authors					=>	"eo, tsaavik",
 	contact					=>	'irssi@eosin.org, dave001@hellspark.com',
 	name						=>	"shorturl.pl",
 	description	   		=>	"Private/Public url reduction script.",
 	license					=>	"GPLv2",
-	changed					=>	"$VERSION"
+	changed					=>	"$VERSION",
+	selfcheckcmd			=> 'shorturl_selfcheck',
 );
 
 use Irssi;
@@ -36,15 +37,18 @@ use Irssi::Irc;
 # suitable.
 use LWP::Simple;
 use LWP::UserAgent;
+use LWP::Protocol::https;
 
 # Each one of these have different methods of 
 # getting a url back. So dont go adding any 
 # others unless you wish to write in the retrieval
 # code for it. Or email me. -
-my @lookups = ("tinyurl", "metamark");
+#my @lookups = ("tinyurl", "metamark");
+my @lookups = ("tinyurl");
 
 #these are overwritten by irssi settings via setuphandler()
 my ($min_url_length, $send_to_channel, $debug, $channel_list);
+my ($last_short_url);
 
 sub setuphandler{
    # The script no longers sends translations to channel by default
@@ -93,9 +97,9 @@ sub setuphandler{
 sub InjectUrl {
     # data - contains the parameters for /shorturl
     # server - the active server in window
-    # target - the active window item (eg. channel, query)
+    # witem - the active window item (eg. channel, query)
     #         or undef if the window is empty
-    my ($data, $server, $target) = @_;
+    my ($data, $server, $witem) = @_;
 
     if (!$server || !$server->{connected}) {
       Irssi::print("Not connected to server");
@@ -103,7 +107,7 @@ sub InjectUrl {
     }
 
     if ($data) {
-      GotUrl($server, $data, undef, undef, $target);
+      GotUrl($server, $data, undef, undef, $witem->{name});
     }
 }
 
@@ -190,7 +194,7 @@ sub GotUrl {
 
 sub tinyurl {
 	my ($server, $chan, $longurl) = @_;
-   my $url = 'http://tinyurl.com/api-create.php?url='.$longurl;
+   my $url = 'https://tinyurl.com/api-create.php?url='.$longurl;
    deb("getting url:($url)");
    my $browser = LWP::UserAgent->new;
 	$browser->agent("tinyurl for irssi/0.8.12 ");
@@ -198,12 +202,16 @@ sub tinyurl {
    my $tinyurl = $response->content;
    my $ua = LWP::UserAgent->new;
    if ($response->is_success) {
-	   if ($send_to_channel == 1) {
-	      $server->command("msg $chan $tinyurl");
-      }else{
+		$last_short_url=$tinyurl;
+		if ($send_to_channel == 1) {
+			if ( defined $chan ) {
+				$server->command("msg $chan $tinyurl");
+			} else {
+				Irssi::print("tinyurl: $tinyurl", MSGLEVEL_CLIENTCRAP);
+			}
+		}else{
 			$server->print("$chan", "$tinyurl", MSGLEVEL_CLIENTCRAP);
-	      #Irssi::print("$chan: $tinyurl");
-      }
+		}
    }else{
       deb("ERROR: tinyurl: tinyurl is down or not pingable");
    }
@@ -236,10 +244,33 @@ sub goodchan {
 	return undef;
 }
 
+# self check
+sub cmd_shorturl_selfcheck {
+	my ($data, $server, $witem) = @_;
+	my $old_min_url_length=$min_url_length;
+	$min_url_length=10;
+	my $old_send_to_channel=$send_to_channel;
+	$send_to_channel=1;
+	$last_short_url="";
+	$server= $witem;
+	$server->{connected}=1;
+	InjectUrl("https://scripts.irssi.org/", $server, $witem);
+	my $s="ok";
+	if ($last_short_url !~ m/^http/) {
+		$s="Error: no http in shortlink";
+	}
+	$min_url_length=$old_min_url_length;
+	$send_to_channel=$old_send_to_channel;
+	Irssi::print("shorturl: $s");
+	my $schs_version = $Irssi::Script::selfcheckhelperscript::VERSION;
+	Irssi::command("selfcheckhelperscript $s") if ( defined $schs_version );
+}
+
 setuphandler(); #initilize variables on first run
 Irssi::signal_add("setup changed", "setuphandler");
 Irssi::signal_add_last("message public", "GotUrl");
 Irssi::signal_add_last("ctcp action", "GotUrl");
 Irssi::command_bind('shorturl', 'InjectUrl');
+Irssi::command_bind('shorturl_selfcheck', 'cmd_shorturl_selfcheck');
 
-
+# vim:set ts=4 sw=4:
