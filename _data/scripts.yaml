@@ -2319,14 +2319,15 @@
   version: 1.999999999543675475473856-FDIV-final
 -
   authors: 'Marcus Rueckert'
+  commands: inputlength
   contact: darix@irssi.org
   description: 'adds a statusbar item which show length of the inputline'
   filename: il.pl
   license: 'BSD License or something more liberal'
-  modified: '2017-04-07 16:34:31'
+  modified: '2021-01-11 08:48:06'
   name: inputlength
   url: http://www.irssi.de./
-  version: 0.0.5
+  version: 0.0.6
 -
   authors: 'Eric Jansen'
   contact: chaos@sorcery.net
