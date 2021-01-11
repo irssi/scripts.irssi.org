@@ -1,12 +1,15 @@
 ---
 -
   authors: 'Marcus Rueckert'
-  changed: 2003-01-13T13:17:44Z
+  changed: 2021-01-11
+  commands:
+    - inputlength
   contact: darix@irssi.org
   default_package: il
   description: 'adds a statusbar item which show length of the inputline'
   license: 'BSD License or something more liberal'
+  modified: '2021-01-11 08:48:06'
   name: inputlength
   sbitems: inputlength
   url: http://www.irssi.de./
-  version: 0.0.5
+  version: 0.0.6

@@ -96,7 +96,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                  chanfull_duden ](Test/chanfull_duden/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        chanfull ](Test/chanfull/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        chanpeak ](Test/chanpeak/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
-[                      chansearch ](Test/chansearch/)|  ✔   |  ✔   |  ✔   | 22   |  ✔   
+[                      chansearch ](Test/chansearch/)|  ✔   |  ✔   |  ✔   | 22   |  ✔   | (c)
 [                       chanshare ](Test/chanshare/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [           chansort_configurable ](Test/chansort_configurable/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                        chansort ](Test/chansort/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -226,7 +226,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                      ignore_log ](Test/ignore_log/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
 [                        ignoreoc ](Test/ignoreoc/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       ignorsula ](Test/ignorsula/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                              il ](Test/il/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                              il ](Test/il/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                            imdb ](Test/imdb/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
 [                            iMPD ](Test/iMPD/)|  ✔   |  ✔   |  ✔   | 22   |  ✔   | (c)
 [                       intercept ](Test/intercept/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
@@ -544,4 +544,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-a1af07e3a7a890a41b5559abacae7ac13505aa04 | 1648
+e99c5abc0d4cf5221e40c457278c645a62f076d1 | 1653
