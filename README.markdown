@@ -38,7 +38,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                  autonickprefix ](Test/autonickprefix/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       autoopper ](Test/autoopper/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
 [                          autoop ](Test/autoop/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
-[                    autorealname ](Test/autorealname/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                    autorealname ](Test/autorealname/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                      autorejoin ](Test/autorejoin/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                autorejoinpunish ](Test/autorejoinpunish/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                    autoreminder ](Test/autoreminder/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -226,7 +226,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                      ignore_log ](Test/ignore_log/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
 [                        ignoreoc ](Test/ignoreoc/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       ignorsula ](Test/ignorsula/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                              il ](Test/il/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[                              il ](Test/il/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                            imdb ](Test/imdb/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
 [                            iMPD ](Test/iMPD/)|  ✔   |  ✔   |  ✔   | 22   |  ✔   | (c)
 [                       intercept ](Test/intercept/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
@@ -544,4 +544,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-e99c5abc0d4cf5221e40c457278c645a62f076d1 | 1653
+a063bc7a5f4cddd686488088d46bc0e9d4009801 | 1663
