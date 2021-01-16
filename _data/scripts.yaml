@@ -399,10 +399,10 @@
   description: 'Print realname of everyone who join to channels'
   filename: autorealname.pl
   license: 'GPLv2 or later'
-  modified: '2003-01-24 15:40:22'
+  modified: '2021-01-16 09:14:39'
   name: 'auto realname'
   url: http://irssi.org/
-  version: 0.8.6
+  version: 0.8.7
 -
   authors: "Timo 'cras' Sirainen, Leszek Matok"
   contact: lam@lac.pl
