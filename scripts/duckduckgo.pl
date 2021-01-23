@@ -19,7 +19,7 @@ use LWP::UserAgent;
 use HTML::Entities;
 use URI::Escape;
 
-$VERSION = '0.01';
+$VERSION = '0.02';
 %IRSSI = (
     authors	=> 'bw1',
     contact	=> 'bw1@aol.at',
@@ -27,7 +27,8 @@ $VERSION = '0.01';
     description	=> 'search by https://duckduckgo.com/html/',
     license	=> 'lgplv3',
     url		=> 'http://scripts.irssi.org',
-    changed	=> '2018-09-18',
+    changed	=> '2021-01-23',
+    selfcheckcmd=> 'ddg -check',
 );
 
 my $url="https://duckduckgo.com/html?q={}";
@@ -145,6 +146,10 @@ sub cmd_ddg {
 			cmd_help('ddg');
 		} elsif ($alist[0] eq '-drop') {
 			cmd_drop($alist[1],$witem);
+		} elsif ($alist[0] eq '-check') {
+			@res=();
+			cmd_searchf("irssi");
+			Irssi::timeout_add_once(3000,\&self_check,'');
 		}
 	}
 }
@@ -202,6 +207,23 @@ sub cmd_browser {
 	system($b);
 }
 
+sub self_check {
+	my $s='ok';
+	Irssi::print("Result count: ".scalar(@res));
+	Irssi::print("Result url: ".$res[0]->{url});
+	Irssi::print("Result txt length: ".length($res[0]->{txt}));
+	if ( scalar ( @res ) <20 ) {
+		$s= "Error: result count (".scalar(@res).")";
+	} elsif ( $res[0]->{url} !~ m/^http/ ) {
+		$s= "Error: url  (".$res[0]->{url}.")";
+	} elsif ( length($res[0]->{txt}) < 5 ) {
+		$s= "Error: txt length (".length($res[0]->{txt}).")";
+	}
+	Irssi::print("Selfcheck $s");
+	my $schs_version = $Irssi::Script::selfcheckhelperscript::VERSION;
+	Irssi::command("selfcheckhelperscript $s") if ( defined $schs_version );
+}
+
 sub cmd_help {
 	if ($_[0] eq 'ddg' || $_[0] eq 'duckduckgo') {
 
@@ -210,6 +232,7 @@ my $help = <<'END';
 /ddg -next          display the next results
 /ddg -browser <num> give the url to firefox
 /ddg -drop <num>    drop the url in a channel
+/ddg -check         self check
 
 settings:
   ddg_view_count, 
