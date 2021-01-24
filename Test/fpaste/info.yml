@@ -1,15 +1,16 @@
 ---
 -
   authors: bw1
-  changed: 2019-11-05
+  changed: 2021-01-24
   commands:
     - fpaste
   contact: bw1@aol.at
   default_package: fpaste
   description: 'copy infos to fpaste'
   license: 'Public Domain'
-  modified: '2019-11-05 16:34:33'
+  modified: '2021-01-24 16:18:01'
   modules: 'HTTP::Tiny File::Glob'
   name: fpaste
+  selfcheckcmd: 'fpaste -check'
   url: https://scripts.irssi.org/
-  version: '0.01'
+  version: '0.02'
