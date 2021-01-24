@@ -1833,10 +1833,10 @@
   description: 'copy infos to fpaste'
   filename: fpaste.pl
   license: 'Public Domain'
-  modified: '2019-11-05 16:34:33'
+  modified: '2021-01-24 16:18:01'
   name: fpaste
   url: https://scripts.irssi.org/
-  version: '0.01'
+  version: '0.02'
 -
   authors: 'Peder Stray'
   commands: 'addfriend friends'
