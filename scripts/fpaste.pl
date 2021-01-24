@@ -6,7 +6,7 @@ use vars qw($VERSION %IRSSI);
 
 use Irssi;
 
-$VERSION = '0.01';
+$VERSION = '0.02';
 %IRSSI = (
     authors	=> 'bw1',
     contact	=> 'bw1@aol.at',
@@ -14,9 +14,10 @@ $VERSION = '0.01';
     description	=> 'copy infos to fpaste',
     license	=> 'Public Domain',
     url		=> 'https://scripts.irssi.org/',
-    changed	=> '2019-11-05',
+    changed	=> '2021-01-24',
     modules => 'HTTP::Tiny File::Glob',
     commands=> 'fpaste',
+    selfcheckcmd=> 'fpaste -check',
 );
 
 my $help = << "END";
@@ -32,6 +33,7 @@ my $help = << "END";
   -file     paste the file to fpaste
   -command  run the command and paste the result
   -sysinfo  colletct system infos and load them up
+  -check    self check
 %9See also%9
   http://fpaste.scsys.co.uk/irssi
   https://github.com/rcaputo/bot-pastebot
@@ -41,10 +43,11 @@ my %fpaste_channels =(
 	'#irssi'=>1,
 	'#curl'=>1,
 	'#ledgersmb'=>1,
+	'#mojo'=>1,
 	'#ospkg'=>1,
 	'#perl'=>1,
-	'#perl6'=>1,
 	'#r'=>1,
+	'#raku'=>1,
 );
 
 my $host="http://fpaste.scsys.co.uk";
@@ -176,12 +179,28 @@ sub sysinfo {
 	return $info;
 }
 
+sub self_check {
+	my ( $res ) = @_;
+	my $s="ok";
+	if ( $res !~ m/^http/ ) {
+		$s= "Error: url ($res)";
+	}
+	Irssi::print("fpaste: selfcheck: $s");
+	my $schs_version = $Irssi::Script::selfcheckhelperscript::VERSION;
+	Irssi::command("selfcheckhelperscript $s") if ( defined $schs_version );
+}
+
 sub cmd {
 	my ($args, $server, $witem)=@_;
 	my ($opt, $arg) = Irssi::command_parse_options($IRSSI{name}, $args);
 	my $channel='(none)';
-	my ($nick, $result, $summary, $paste, $run);
-	$nick= Irssi::active_server()->{nick};
+	my ($nick, $result, $summary, $paste, $run, $check);
+	my $serv= Irssi::active_server();
+	if ( defined $serv ){ 
+		$nick= $server->{nick};
+	} else {
+		$nick= Irssi::settings_get_str('nick');
+	}
 	if (defined $witem) {
 		if ($witem->{type} eq 'CHANNEL') {
 			if ( exists $fpaste_channels{$witem->{name}} ) {
@@ -209,8 +228,18 @@ sub cmd {
 	if (exists $opt->{summary}) {
 		$summary=$opt->{summary};
 	}
+	if (exists $opt->{check}) {
+		$summary='check';
+		$paste=sysinfo();
+		$run=1;
+		$check=1;
+	}
 	if ( defined $run ) {
 		$result= paste($channel, $nick, $summary, $paste);
+		if ( $check == 1 ) {
+			self_check($result);
+			$check=0;
+		}
 		if (defined $witem) {
 			$witem->print($result, MSGLEVEL_CLIENTCRAP);
 		} else {
@@ -232,4 +261,4 @@ sub cmd_help {
 
 Irssi::command_bind($IRSSI{name}, \&cmd);
 Irssi::command_bind('help', \&cmd_help);
-Irssi::command_set_options($IRSSI{name}, "+file +command sysinfo +summary help");
+Irssi::command_set_options($IRSSI{name}, "+file +command sysinfo +summary help check");
