@@ -49,7 +49,7 @@ STARTUP
     popd
     logs=(~/irc.log.*(N))
     if [[ $#logs -gt 0 ]] {
-        perl -i -pe 's,\Q$ENV{PWD}/Test/.home/scripts/\E,,g;s,\Q$ENV{PWD}/Test/.home\E,..,g;s,\Q$ENV{PWD}\E,...,g;s,\(\@INC contains:.*? \.\),,g' $logs
+        perl -i -pe 's,\Q$ENV{PWD}/Test/.home/scripts/\E,,g;s,\Q$ENV{PWD}/Test/.home\E,..,g;s,\Q$ENV{PWD}\E,...,g;s,\(\@INC contains: .*?\),,g' $logs
         mv $logs "Test/${scriptfile:t:r}/irssi.log"
     } \
     elif [[ -f stderr.log ]] {
