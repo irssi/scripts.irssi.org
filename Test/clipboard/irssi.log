@@ -1,4 +1,4 @@
-* Subroutine CORE::GLOBAL::exit redefined at .../extlib/lib/perl5/x86_64-linux-thread-multi/Tk.pm line 415.
+* Subroutine CORE::GLOBAL::exit redefined at /home/runner/extlib/lib/perl5/x86_64-linux-gnu-thread-multi/Tk.pm line 415.
 * 
 * Scalar value @_[0] better written as $_[0] at clipboard.pl line 73.
 * 

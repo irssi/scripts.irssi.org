@@ -1,1 +1,3 @@
+* Use of uninitialized value $screenWidth in subtraction (-) at adv_windowlist.pl line 1000.
+* 
 * -!- Irssi: Loaded script adv_windowlist

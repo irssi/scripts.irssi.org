@@ -5,5 +5,5 @@
 * -!- Irssi: Warning: log2ansi should not run from within irssi
 * -!- Irssi: Error in script log2ansi:
 * Suicide to prevent loading
-* Use of uninitialized value $version_code in concatenation (.) or string at .../_testing/_irssi_test.pl line 70.
+* Use of uninitialized value $version_code in concatenation (.) or string at .../_testing/_irssi_test.pl line 71.
 * 

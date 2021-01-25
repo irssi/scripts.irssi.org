@@ -1,6 +1,8 @@
+* Use of uninitialized value $ENV{"MAIL"} in concatenation (.) or string at mail.pl line 387.
+* 
 * Use of uninitialized value $last_refresh_time in numeric eq (==) at mail.pl line 375.
 * 
 * Use of uninitialized value $last_mode in numeric eq (==) at mail.pl line 380.
 * 
-* -!- Mailbox 1 added: /var/mail/travis
+* -!- Mailbox 1 added: 
 * -!- Irssi: Loaded script mail

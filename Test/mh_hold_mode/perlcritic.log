@@ -1,2 +1,1 @@
-Having more than one /x regexp modifier is deprecated at /home/travis/build/irssi/scripts.irssi.org/extlib/lib/perl5/Perl/Critic/Policy/ValuesAndExpressions/RequireInterpolationOfMetachars.pm line 110.
 Code before warnings are enabled at line 141, column 1.  See page 431 of PBP.  (Severity: 4)

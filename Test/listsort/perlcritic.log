@@ -1,2 +1,1 @@
-Having more than one /x regexp modifier is deprecated at /home/travis/build/irssi/scripts.irssi.org/extlib/lib/perl5/Perl/Critic/Policy/ValuesAndExpressions/RequireInterpolationOfMetachars.pm line 110.
 scripts/listsort.pl source OK

@@ -1,55 +1,7 @@
 ---
 -
   authors: Santabutthead
-  commands:
-    - maap
-    - maasp
-    - madd
-    - maddall
-    - mas
-    - masp
-    - mcaap
-    - mcaasp
-    - mcap
-    - mcasp
-    - mclear
-    - mclearback
-    - mdel
-    - mhelp
-    - mhelpadv
-    - mhelpmpdbar
-    - minfo
-    - mloud
-    - mlouder
-    - mls
-    - mmove
-    - mmute
-    - mnext
-    - mpause
-    - mplay
-    - mplaylist
-    - mplaylistload
-    - mplaylistls
-    - mplaylistrm
-    - mplaylistsave
-    - mpls
-    - mprev
-    - mrandom
-    - mrepeat
-    - mrm
-    - msearch
-    - mseek
-    - mshuffle
-    - mstop
-    - mupdate
-    - mvolume
-    - mwa
-    - mwaa
-    - mwaas
-    - mwas
-    - mwipe
   contact: starz@antisocial.com
-  default_package: iMPD
   description: 'This controls Music Player Daemon from the familiar irssi interface'
   license: 'GPL v2'
   name: iMPD

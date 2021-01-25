@@ -1,2 +1,2 @@
-* Error in script 'activity_file': Could not open file /home/travis/.irssi/activity_file for writing!
+* Error in script 'activity_file': Could not open file /home/runner/.irssi/activity_file for writing!
 * -!- Irssi: Loaded script activity_file

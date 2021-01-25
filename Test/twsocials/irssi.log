@@ -212,8 +212,8 @@
 * 
 * closedir() attempted on invalid dirhandle DIR at twsocials.pl line 1087.
 * 
-* Mkdir /home/travis/.irssi/socials.
-* Inserting socials into /home/travis/.irssi/socials.
+* Mkdir /home/runner/.irssi/socials.
+* Inserting socials into /home/runner/.irssi/socials.
 * print() on closed filehandle FILE at twsocials.pl line 1126.
 * 
 * print() on closed filehandle FILE at twsocials.pl line 1126.

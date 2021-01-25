@@ -1,4 +1,4 @@
-Use of uninitialized value $Irssi::Script::awaylogcnt::fname in string eq at /home/travis/build/irssi/scripts.irssi.org/Test/.home/scripts/awaylogcnt.pl line 43.
-Use of uninitialized value $Irssi::Script::awaylogcnt::fname in string eq at /home/travis/build/irssi/scripts.irssi.org/Test/.home/scripts/awaylogcnt.pl line 43.
-Use of uninitialized value $Irssi::Script::awaylogcnt::fname in string eq at /home/travis/build/irssi/scripts.irssi.org/Test/.home/scripts/awaylogcnt.pl line 43.
-Use of uninitialized value $Irssi::Script::awaylogcnt::fname in string eq at /home/travis/build/irssi/scripts.irssi.org/Test/.home/scripts/awaylogcnt.pl line 43.
+Use of uninitialized value $Irssi::Script::awaylogcnt::fname in string eq at /home/runner/work/scripts.irssi.org/scripts.irssi.org/Test/.home/scripts/awaylogcnt.pl line 43.
+Use of uninitialized value $Irssi::Script::awaylogcnt::fname in string eq at /home/runner/work/scripts.irssi.org/scripts.irssi.org/Test/.home/scripts/awaylogcnt.pl line 43.
+Use of uninitialized value $Irssi::Script::awaylogcnt::fname in string eq at /home/runner/work/scripts.irssi.org/scripts.irssi.org/Test/.home/scripts/awaylogcnt.pl line 43.
+Use of uninitialized value $Irssi::Script::awaylogcnt::fname in string eq at /home/runner/work/scripts.irssi.org/scripts.irssi.org/Test/.home/scripts/awaylogcnt.pl line 43.

@@ -1,4 +1,3 @@
-Having more than one /x regexp modifier is deprecated at /home/travis/build/irssi/scripts.irssi.org/extlib/lib/perl5/Perl/Critic/Policy/ValuesAndExpressions/RequireInterpolationOfMetachars.pm line 110.
 "die" used instead of "croak" at line 80, column 2.  See page 283 of PBP.  (Severity: 3)
 "die" used instead of "croak" at line 131, column 3.  See page 283 of PBP.  (Severity: 3)
 "die" used instead of "croak" at line 142, column 3.  See page 283 of PBP.  (Severity: 3)

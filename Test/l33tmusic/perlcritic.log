@@ -1,4 +1,3 @@
-Having more than one /x regexp modifier is deprecated at /home/travis/build/irssi/scripts.irssi.org/extlib/lib/perl5/Perl/Critic/Policy/ValuesAndExpressions/RequireInterpolationOfMetachars.pm line 110.
 Code before warnings are enabled at line 9, column 1.  See page 431 of PBP.  (Severity: 4)
 Mismatched operator at line 70, column 11.  Numeric/string operators and operands should match.  (Severity: 3)
 String delimiter used with "split" at line 187, column 20.  Express it as a regex instead.  (Severity: 2)

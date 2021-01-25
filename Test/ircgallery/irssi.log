@@ -1,4 +1,4 @@
 * Reference found where even-sized list expected at ircgallery.pl line 36.
 * 
 * -!- Irssi: Error in script ircgallery:
-* Can't create cache directory /home/travis/.irssi/ircgallery at ircgallery.pl line 248.
+* Can't create cache directory /home/runner/.irssi/ircgallery at ircgallery.pl line 248.

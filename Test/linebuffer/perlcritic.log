@@ -1,3 +1,2 @@
-Having more than one /x regexp modifier is deprecated at /home/travis/build/irssi/scripts.irssi.org/extlib/lib/perl5/Perl/Critic/Policy/ValuesAndExpressions/RequireInterpolationOfMetachars.pm line 110.
 String delimiter used with "split" at line 147, column 7.  Express it as a regex instead.  (Severity: 2)
 String delimiter used with "split" at line 149, column 11.  Express it as a regex instead.  (Severity: 2)

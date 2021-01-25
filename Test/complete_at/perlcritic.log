@@ -1,2 +1,1 @@
-Having more than one /x regexp modifier is deprecated at /home/travis/build/irssi/scripts.irssi.org/extlib/lib/perl5/Perl/Critic/Policy/ValuesAndExpressions/RequireInterpolationOfMetachars.pm line 110.
 Don't modify $_ in list functions at line 35, column 6.  See page 114 of PBP.  (Severity: 5)

@@ -1,4 +1,3 @@
-Having more than one /x regexp modifier is deprecated at /home/travis/build/irssi/scripts.irssi.org/extlib/lib/perl5/Perl/Critic/Policy/ValuesAndExpressions/RequireInterpolationOfMetachars.pm line 110.
 Code before warnings are enabled at line 30, column 1.  See page 431 of PBP.  (Severity: 4)
 "die" used instead of "croak" at line 48, column 39.  See page 283 of PBP.  (Severity: 3)
 Capture variable used outside conditional at line 54, column 12.  See page 253 of PBP.  (Severity: 3)

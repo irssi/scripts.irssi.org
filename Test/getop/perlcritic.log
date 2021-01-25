@@ -1,4 +1,3 @@
-Having more than one /x regexp modifier is deprecated at /home/travis/build/irssi/scripts.irssi.org/extlib/lib/perl5/Perl/Critic/Policy/ValuesAndExpressions/RequireInterpolationOfMetachars.pm line 110.
 Code before warnings are enabled at line 5, column 1.  See page 431 of PBP.  (Severity: 4)
 Comma used to separate statements at line 196, column 4.  See pages 68,71 of PBP.  (Severity: 4)
 Capture variable used outside conditional at line 262, column 23.  See page 253 of PBP.  (Severity: 3)

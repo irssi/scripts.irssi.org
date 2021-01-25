@@ -1,4 +1,4 @@
-* XDCCGET - Warning: Could open queue file for loading from /home/travis/.irssi/xdccget.queue: No such file or directory
+* XDCCGET - Warning: Could open queue file for loading from /home/runner/.irssi/xdccget.queue: No such file or directory
 * >> xdccget 20141016 loaded: /xdccget help for help
-* Configuration files are stored in /home/travis/.irssi
+* Configuration files are stored in /home/runner/.irssi
 * -!- Irssi: Loaded script xdccget

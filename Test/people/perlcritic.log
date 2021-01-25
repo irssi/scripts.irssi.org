@@ -1,4 +1,3 @@
-Having more than one /x regexp modifier is deprecated at /home/travis/build/irssi/scripts.irssi.org/extlib/lib/perl5/Perl/Critic/Policy/ValuesAndExpressions/RequireInterpolationOfMetachars.pm line 110.
 Return value of "open" ignored at line 1365, column 5.  Check the return value of "open" for success.  (Severity: 3)
 Return value of "close" ignored at line 1400, column 5.  Check the return value of "close" for success.  (Severity: 2)
 "return" statement followed by "sort" at line 1421, column 5.  Behavior is undefined if called in scalar context.  (Severity: 5)

@@ -5,6 +5,5 @@
   default_package: quitmsg
   description: 'Random quit messages'
   license: 'Public Domain'
-  modified: '2020-07-22 19:10:12'
   name: quitmsg
   version: '1.01'

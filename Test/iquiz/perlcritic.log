@@ -1,4 +1,3 @@
-Having more than one /x regexp modifier is deprecated at /home/travis/build/irssi/scripts.irssi.org/extlib/lib/perl5/Perl/Critic/Policy/ValuesAndExpressions/RequireInterpolationOfMetachars.pm line 110.
 Return value of "close" ignored at line 388, column 2.  Check the return value of "close" for success.  (Severity: 2)
 Comma used to separate statements at line 775, column 3.  See pages 68,71 of PBP.  (Severity: 4)
 Comma used to separate statements at line 993, column 2.  See pages 68,71 of PBP.  (Severity: 4)
