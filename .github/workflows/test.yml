@@ -1,0 +1,96 @@
+on:
+  push:
+    branches:
+     - master
+  pull_request:
+name: Check Script
+env:
+  apt_build_deps: irssi-git cpanminus elinks zsh
+  apt_script_deps: libdb-dev libaspell-dev libgirepository1.0-dev gobject-introspection gir1.2-notify-0.7 xosd-bin wbritish
+  USE_ARTEFACTS_CACHE: yes
+  EXTRACT_TEST_ARTEFACTS: yes
+  PERL_MM_NONINTERACTIVE: 1
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@main
+      - uses: mstachniuk/ci-skip@v1
+        with:
+          fail-fast: true
+      - name: prepare required software
+        run: |
+          RELEASE=$(lsb_release -rs)
+          echo "deb http://download.opensuse.org/repositories/home:/ailin_nemui:/irssi-git/xUbuntu_$RELEASE/ /" | sudo tee /etc/apt/sources.list.d/home:ailin_nemui:irssi-git.list
+          curl -fsSL https://download.opensuse.org/repositories/home:ailin_nemui:irssi-git/xUbuntu_$RELEASE/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/home_ailin_nemui_irssi-git.gpg > /dev/null
+          sudo apt -q update
+          sudo apt -q install $apt_build_deps $apt_script_deps
+      - name: cache cpan
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/extlib
+          key: ${{ runner.os }}-cpan-${{ github.sha }}-${{ github.run_number }}
+          restore-keys: |
+            ${{ runner.os }}-cpan-${{ github.sha }}-
+            ${{ runner.os }}-cpan-
+      - name: fetch origin master branch
+        if: ${{ github.event_name == 'pull_request' }}
+        run: |
+          git fetch --depth=1 origin refs/heads/master
+      - name: configure local::lib
+        run: |
+          eval $(perl -Mlocal::lib="$HOME"/extlib)
+          for v in PATH PERL5LIB PERL_LOCAL_LIB_ROOT PERL_MB_OPT PERL_MM_OPT; do
+            eval echo "\$v=\$$v" >> $GITHUB_ENV
+          done
+      - name: fix the broken Encode module
+        run: |
+          cpanm Encode
+      - name: load old artefacts
+        if: ${{ env.USE_ARTEFACTS_CACHE == 'yes' }}
+        run:
+          ./_testing/github/load-old-artefacts.zsh
+      - name: install cpan dependencies
+        run: |
+          cpanm --installdeps --notest .
+          ./_testing/autoinstall-perl-prereqs.zsh
+      - name: auto-install cpan script dependencies
+        run: |
+          pushd auto
+          cpanm --quiet --installdeps --notest .
+          popd
+      - name: run tests
+        run: |
+          ./_testing/run-test.zsh
+      - name: show diffstat
+        if: ${{ github.event_name == 'pull_request' }}
+        run: |
+          git diff --stat origin/master
+      - name: test report
+        run: |
+          ./_testing/report-test.zsh || rc=$?
+          echo "SCRIPT_RC=${rc:-0}" >> $GITHUB_ENV
+      - name: integration report
+        run: |
+          ./_testing/github/show-failures.zsh
+      - name: update scripts.yaml
+        if: ${{ github.event_name == 'push' }}
+        run: |
+          perl ./_testing/update-scripts-yaml.pl
+      - name: commit scripts.yaml
+        if: ${{ github.event_name == 'push' }}
+        run: |
+          ./_testing/github/commit-scripts-yaml.zsh
+      - uses: actions/checkout@main
+        if: ${{ github.event_name == 'push' && env.EXTRACT_TEST_ARTEFACTS == 'yes' }}
+        with:
+          ref: ci-artefacts
+          path: artefacts
+      - name: extract artefacts
+        if: ${{ github.event_name == 'push' && env.EXTRACT_TEST_ARTEFACTS == 'yes' }}
+        run: |
+          ./_testing/github/extract-artefacts.zsh
+      - name: end
+        run: |
+          exit $SCRIPT_RC

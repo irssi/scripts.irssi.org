@@ -60,17 +60,17 @@ for scriptfile ($filelist) {
     perl -ne '$score += $1 -1 if /Severity: (\d+)/; END { printf "%3d", $score }' "Test/${scriptfile:t:r}/perlcritic.log" 2>/dev/null
     print -n '   '$T
     if [[ $pass -lt 3 ]]  {
-	if [[ -n $allow_fail[$scriptfile:t:r] ]] || [[ ! -f scripts/${scriptfile:t:r}.pl ]] {
-	    print -n '  '$skipmark'   '
-	} \
-	else {
-	    print -n '  '$failmark'   '
-	    if [[ $failed -lt 254 ]] { ((++failed)) }
-	}
+        if [[ -n $allow_fail[$scriptfile:t:r] ]] || [[ ! -f scripts/${scriptfile:t:r}.pl ]] {
+            print -n '  '$skipmark'   '
+        } \
+        else {
+            print -n '  '$failmark'   '
+            if [[ $failed -lt 254 ]] { ((++failed)) }
+        }
     } \
     else {
-	print -n '  '$passmark'   '; ((++pass))
-	echo 1>"Test/${scriptfile:t:r}/passed"
+        print -n '  '$passmark'   '; ((++pass))
+        echo 1>"Test/${scriptfile:t:r}/passed"
     }
     if [[ $+cached_run[(r)$scriptfile] -gt 0 ]] {
         print -n $T' (c)'

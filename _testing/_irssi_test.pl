@@ -3,8 +3,8 @@ use warnings;
 
 BEGIN {
     *CORE::GLOBAL::exit = sub (;$) {
-	require Carp;
-	Carp::croak("script tried to call exit @_");
+        require Carp;
+        Carp::croak("script tried to call exit @_");
     };
 }
 
@@ -30,6 +30,7 @@ $Carp::MaxEvalLen = 3;
 require YAML::Tiny;
 YAML::Tiny->VERSION("1.59");
 require Encode;
+die "Broken Encode version (2.88)" if $Encode::VERSION eq '2.88';
 {
     # This is an ugly hack to be `lax' about the encoding. We try to
     # read everything as UTF-8 regardless of declared file encoding
@@ -37,11 +38,11 @@ require Encode;
     my $orig = YAML::Tiny->can("_has_internal_string_value") || die("Error in ".__PACKAGE__);
     no warnings 'redefine';
     *YAML::Tiny::_has_internal_string_value = sub {
-	my $ret = $orig->(@_);
-	use bytes;
-	$_[0] = Encode::decode_utf8($_[0], sub{pack 'U', +shift})
-	    unless Encode::is_utf8($_[0]);
-	$ret
+        my $ret = $orig->(@_);
+        use bytes;
+        $_[0] = Encode::decode_utf8($_[0], sub{pack 'U', +shift})
+            unless Encode::is_utf8($_[0]);
+        $ret
     }
 }
 require Module::CoreList;
@@ -50,8 +51,8 @@ require Perl::PrereqScanner;
 my $prereq_results = Perl::PrereqScanner->new->scan_file("$SWD/scripts/$CURRENT_SCRIPT.pl");
 my @modules = grep {
     $_ ne 'perl' &&
-	$_ ne 'Irssi' && $_ ne 'Irssi::UI' && $_ ne 'Irssi::TextUI' && $_ ne 'Irssi::Irc'
-	&& !Module::CoreList->first_release($_)
+        $_ ne 'Irssi' && $_ ne 'Irssi::UI' && $_ ne 'Irssi::TextUI' && $_ ne 'Irssi::Irc'
+        && !Module::CoreList->first_release($_)
 } sort keys %{ $prereq_results->as_string_hash };
 
 my (%info, $version, @commands);

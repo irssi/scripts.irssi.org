@@ -2,14 +2,19 @@
 local base_path="`pwd`"
 local test_script="$base_path/_testing/_irssi_test.pl"
 
+if [[ $(perl -MEncode -e'print $Encode::VERSION') == 2.88 ]] {
+   echo "Broken Encode version (2.88). Please update the Perl Encode module."
+   exit 4
+}
+
 . ./_testing/_get_files_arr.zsh
 
 for scriptfile ($filelist) {
     rm -rf "Test/${scriptfile:t:r}"
     mkdir -p "Test/${scriptfile:t:r}"
     if [[ ! -f scripts/${scriptfile:t:r}.pl ]] {
-	{echo "command not found: script ${scriptfile:t:r}";echo "test skipped"} >"Test/${scriptfile:t:r}/perlcritic.log"
-	continue
+        {echo "command not found: script ${scriptfile:t:r}";echo "test skipped"} >"Test/${scriptfile:t:r}/perlcritic.log"
+        continue
     }
     perlcritic --theme certrule --exclude RequireEndWithOne -2 scripts/${scriptfile:t:r}.pl >"Test/${scriptfile:t:r}/perlcritic.log" 2>&1
     pushd Test
@@ -38,6 +43,9 @@ STARTUP
     if [[ ! -s stderr.log ]] { rm -f stderr.log }
     popd
     printf . >&2
+    if [[ -n $GITHUB_ACTION ]] {
+        echo /$scriptfile >&2
+    }
     popd
     logs=(~/irc.log.*(N))
     if [[ $#logs -gt 0 ]] {

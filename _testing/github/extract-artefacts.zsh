@@ -1,14 +1,6 @@
 #!/bin/zsh
-if [[ -z $GITHUB_TOKEN || -z $GITHUB_REPOSITORY ]] { exit 1 }
+if [[ -z $GITHUB_REPOSITORY ]] { exit 1 }
 autoload -Uz zargs
-
-if { ! git clone -b ci-artefacts https://github.com/${GITHUB_REPOSITORY}.git artefacts } {
-    mkdir artefacts && git init artefacts
-    pushd artefacts
-    git remote add origin https://github.com/${GITHUB_REPOSITORY}.git
-    git checkout -b ci-artefacts
-    popd
-}
 
 pushd artefacts
 git config user.email "scripts@irssi.org"
@@ -34,6 +26,6 @@ if [[ $USE_ARTEFACTS_CACHE == yes ]] {
 git add .
 git commit -q -m "ci artefacts for $GITHUB_SHA
 
-[skip ci]"
+[ci skip]"
 
 git push -u origin ci-artefacts
