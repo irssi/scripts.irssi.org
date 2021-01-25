@@ -8,7 +8,6 @@
   default_package: 0x0st
   description: 'upload file to https://0x0.st/'
   license: ISC
-  modified: '2020-04-12 17:56:59'
   modules:
     - HTTP::Request::Common
     - LWP::UserAgent

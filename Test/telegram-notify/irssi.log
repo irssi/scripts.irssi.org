@@ -1,1 +1,7 @@
+* Subroutine JSON::PP::Boolean::(0+ redefined at /home/travis/perl5/perlbrew/perls/5.24.3/lib/5.24.3/overload.pm line 50.
+* 
+* Subroutine JSON::PP::Boolean::(-- redefined at /home/travis/perl5/perlbrew/perls/5.24.3/lib/5.24.3/overload.pm line 50.
+* 
+* Subroutine JSON::PP::Boolean::(++ redefined at /home/travis/perl5/perlbrew/perls/5.24.3/lib/5.24.3/overload.pm line 50.
+* 
 * -!- Irssi: Loaded script telegram_notify
