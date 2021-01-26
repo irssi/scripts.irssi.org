@@ -1,6 +1,6 @@
-* Subroutine JSON::PP::Boolean::(++ redefined at /usr/share/perl/5.26/overload.pm line 48.
-* 
 * Subroutine JSON::PP::Boolean::(0+ redefined at /usr/share/perl/5.26/overload.pm line 48.
+* 
+* Subroutine JSON::PP::Boolean::(++ redefined at /usr/share/perl/5.26/overload.pm line 48.
 * 
 * Subroutine JSON::PP::Boolean::(-- redefined at /usr/share/perl/5.26/overload.pm line 48.
 * 

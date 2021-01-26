@@ -1,2 +1,4 @@
-* -!- Irssi: Error in script iMPD:
-* Unescaped left brace in regex is illegal here in regex; marked by <-- HERE in m/\d{ <-- HERE 1-4}/ at iMPD.pl line 354.
+* For usage information on iMPD type /mhelp
+* readline() on closed filehandle CONF at iMPD.pl line 494.
+* 
+* -!- Irssi: Loaded script iMPD

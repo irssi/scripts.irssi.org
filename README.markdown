@@ -218,7 +218,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                           hlbot ](Test/hlbot/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   
 [                        hlscroll ](Test/hlscroll/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                        hostname ](Test/hostname/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   
-[                            iMPD ](Test/iMPD/)|  ✘   |  ✔   |  ✔   | 22   |  ☡   
+[                            iMPD ](Test/iMPD/)|  ✔   |  ✔   |  ✔   | 22   |  ✔   
 [                           ident ](Test/ident/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                          identd ](Test/identd/)|  ✔   |  ✔   |  ✔   |  2   |  ✔   
 [                        idletime ](Test/idletime/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   
@@ -544,4 +544,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 
-f8abdbc310ed40bc653c9c21656026182cbe27fc | 2021-01-25T23:53:41,823573985+00:00
+a350c95fb62dff4054423a624777af1a5230d075 | 2021-01-26T07:02:47,818710682+00:00

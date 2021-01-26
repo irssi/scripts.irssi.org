@@ -1,4 +1,4 @@
-f8abdbc310ed40bc653c9c21656026182cbe27fc __ARTEFACTS_CI__
+a350c95fb62dff4054423a624777af1a5230d075 __ARTEFACTS_CI__
 30dcf329eebc02f9153fa4302b32f2082be1b7e4 0x0st.pl
 cb8a0df78503fa02a5c385e45f439a804bcf8597 8-ball.pl
 92e0b9fccf721d47e48645e4477fbcba024f45be Cirssi.pl
@@ -214,7 +214,7 @@ ffa375ceecbc592d22b6a4cc822a0432612a08db hignore.pl
 1d8cfd69b16cb4d84eede58ab467ca120dd26fc1 hlbot.pl
 30fc3e89a3b8f77d9d6cc5f78c2da3aeff36e5b3 hlscroll.pl
 2dc23bf339fb181acae462e1dea9c08c84f5a28b hostname.pl
-bf17b93609d8c7e146d6bf9b462598cd835167ab iMPD.pl
+687b2bb93bc90a62085a0e14fd82582bc158d012 iMPD.pl
 a4854f2c8e9f3dce91841d2cb40a5a0d6228455b ident.pl
 140dba8c44ee77b12eb98110b27824eef1c958ad identd.pl
 34c5085eb73f8ac8b9c37e17820204c5bfe9df7f idletime.pl
