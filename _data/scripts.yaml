@@ -2221,7 +2221,7 @@
   description: 'This controls Music Player Daemon from the familiar irssi interface'
   filename: iMPD.pl
   license: 'GPL v2'
-  modified: '2017-04-07 16:34:31'
+  modified: '2021-01-25 21:56:36'
   name: iMPD
   url: http://www.musicpd.org
   version: 0.0.0o
@@ -2335,7 +2335,7 @@
   description: 'Automatically lookup IMDB-numbers in nicknames'
   filename: imdb.pl
   license: GPL
-  modified: '2018-06-14 20:57:12'
+  modified: '2021-01-08 17:12:41'
   modules: 'HTML::Entities LWP::UserAgent'
   name: imdb
   url: http://xyrion.org/irssi/
@@ -2522,7 +2522,7 @@
   description: 'freenode-specific script that checks whether someone is banned on some channel'
   filename: isbanned.pl
   license: 'Public domain'
-  modified: 2015-09-14
+  modified: '2015-09-14 14:11:01'
   name: isbanned
   version: 0.7.0
 -
