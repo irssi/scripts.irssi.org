@@ -1972,10 +1972,10 @@
   description: 'This script queries google.com with googler and returns the results.'
   filename: google.pl
   license: 'Public Domain'
-  modified: '2019-08-04 19:27:07'
+  modified: '2021-01-26 13:09:56'
   name: google
   url: https://scripts.irssi.org/
-  version: '2.00'
+  version: '2.01'
 -
   authors: 'original idea by valvoline, irssi porting by pallotron'
   commands: 'about erasepass greets manual setpass validate verify'
