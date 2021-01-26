@@ -1,0 +1,25 @@
+---
+-
+  authors: bw1
+  changed: 2021-01-10
+  commands:
+    - ontv2
+    - 'ontv2 next'
+    - 'ontv2 read'
+    - 'ontv2 search'
+    - 'ontv2 tonight'
+    - 'ontv2 watching'
+  contact: bw1@aol.at
+  default_package: ontv2
+  description: 'turns irssi into a tv program guide'
+  license: GPLv2
+  modified: '2021-01-11 16:49:10'
+  modules:
+    - DateTime
+    - DateTime::Format::Strptime
+    - XML::LibXML::Simple
+    - YAML::XS
+  name: ontv2
+  selfcheckcmd: 'ontv2 check'
+  url: https://scripts.irssi.org/
+  version: '0.01'
