@@ -2330,6 +2330,7 @@
   version: 0.0.6
 -
   authors: 'Eric Jansen'
+  commands: imdb
   contact: chaos@sorcery.net
   description: 'Automatically lookup IMDB-numbers in nicknames'
   filename: imdb.pl
@@ -2338,7 +2339,7 @@
   modules: 'HTML::Entities LWP::UserAgent'
   name: imdb
   url: http://xyrion.org/irssi/
-  version: '1.02'
+  version: '1.03'
 -
   authors: 'Jari Matilainen'
   commands: prompt
