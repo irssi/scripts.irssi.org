@@ -1,16 +1,19 @@
 ---
 -
   authors: 'eo, tsaavik'
-  changed: '20090904'
+  changed: '20210108'
   commands:
     - shorturl
+    - shorturl_selfcheck
   contact: 'irssi@eosin.org, dave001@hellspark.com'
   default_package: shorturl
   description: 'Private/Public url reduction script.'
   license: GPLv2
-  modified: '2014-10-24 23:01:30'
+  modified: '2021-01-08 12:10:55'
   modules:
+    - LWP::Protocol::https
     - LWP::Simple
     - LWP::UserAgent
   name: shorturl.pl
-  version: '20090904'
+  selfcheckcmd: shorturl_selfcheck
+  version: '20210108'

@@ -1,6 +1,6 @@
-* Use of uninitialized value $old_min_url_length in numeric ne (!=) at shorturl.pl line 72.
+* Use of uninitialized value $old_min_url_length in numeric ne (!=) at shorturl.pl line 76.
 * 
 * shorturl: min_url_length sucessfully set to 35
-* Use of uninitialized value $old_debug in numeric ne (!=) at shorturl.pl line 81.
+* Use of uninitialized value $old_debug in numeric ne (!=) at shorturl.pl line 85.
 * 
 * -!- Irssi: Loaded script shorturl
