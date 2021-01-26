@@ -4452,15 +4452,15 @@
   version: 0.7.1
 -
   authors: 'eo, tsaavik'
-  commands: shorturl
+  commands: 'shorturl shorturl_selfcheck'
   contact: 'irssi@eosin.org, dave001@hellspark.com'
   description: 'Private/Public url reduction script.'
   filename: shorturl.pl
   license: GPLv2
-  modified: '2014-10-24 23:01:30'
-  modules: 'LWP::Simple LWP::UserAgent'
+  modified: '2021-01-08 12:10:55'
+  modules: 'LWP::Protocol::https LWP::Simple LWP::UserAgent'
   name: shorturl.pl
-  version: '20090904'
+  version: '20210108'
 -
   authors: "Paweł 'Styx' Chuchmała"
   contact: styx@irc.pl
