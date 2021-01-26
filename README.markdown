@@ -16,7 +16,7 @@ To add or modify a script do the following:
 5. If the script has a ChangeLog, remember to include your modifications.
 6. Commit your changes to Git and push them to Github.
 7. Submit pull request.
-8. [Review the travis report](travis_report.markdown) once it is done.
+8. [Review the Script Check report](script_check_report.markdown) once it is done.
 9. Await review of your changes by one of our developers.
 
 Optionally, to run tests locally, see more information under [_testing](_testing).

@@ -11,12 +11,25 @@ env:
   EXTRACT_TEST_ARTEFACTS: yes
   PERL_MM_NONINTERACTIVE: 1
 jobs:
+  skip:
+    runs-on: ubuntu-latest
+    outputs:
+      skip: ${{ steps.ci-skip-step.outputs.ci-skip }}
+      skip-not: ${{ steps.ci-skip-step.outputs.ci-skip-not }}
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - id: ci-skip-step
+        uses: mstachniuk/ci-skip@v1
   test:
+    needs: skip
+    if: ${{ needs.skip.outputs.skip == 'false' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@main
         with:
-          fetch-depth: '0'
+          fetch-depth: 0
       - uses: mstachniuk/ci-skip@v1
         with:
           fail-fast: true
