@@ -5,6 +5,7 @@
   default_package: settingshelp
   description: 'Irssi 1.3 settings notes and documentation'
   license: 'CC BY-SA 2.5, http://creativecommons.org/licenses/by-sa/2.5/'
+  modified: '2019-06-25 11:25:28'
   modules:
     - LWP::Simple
   name: settingshelp

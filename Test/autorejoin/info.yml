@@ -6,5 +6,6 @@
   default_package: autorejoin
   description: 'Automatically rejoin to channel after being kicked, after a (short) user-defined delay'
   license: GPLv2
+  modified: '2017-09-26 02:40:01'
   name: autorejoin
   version: 1.1.0

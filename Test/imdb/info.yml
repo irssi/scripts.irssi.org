@@ -8,6 +8,7 @@
   default_package: imdb
   description: 'Automatically lookup IMDB-numbers in nicknames'
   license: GPL
+  modified: '2021-01-08 17:12:41'
   modules:
     - HTML::Entities
     - LWP::UserAgent

@@ -7,6 +7,7 @@
   default_package: cubes
   description: '256 colour test script for Irssi.'
   license: 'Public Domain'
+  modified: '2018-10-02 16:00:23'
   name: cubes
   url: https://irssi.org
   version: '1.0'

@@ -5,6 +5,7 @@
   default_package: mysqlurllogger
   description: "logs url's to mysql database"
   license: GPLv2
+  modified: '2019-02-23 17:56:43'
   modules:
     - DBI
   name: myssqlurllogger

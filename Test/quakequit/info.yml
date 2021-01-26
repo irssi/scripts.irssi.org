@@ -6,5 +6,6 @@
   default_package: quakequit
   description: 'Hide the stupid quit/join on QuakeNet when a user registers with nickserv.'
   licence: GPLv2
+  modified: '2015-01-09 16:05:06'
   name: quakequit
   version: '1.0'

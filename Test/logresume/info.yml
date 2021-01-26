@@ -10,6 +10,7 @@
   default_package: logresume
   description: 'print last n lines of logs when opening queries/channels'
   licence: 'Public Domain'
+  modified: '2016-04-04 08:02:24'
   modules: ''
   name: logresume
   settings: 'logresume_channel_lines, logresume_query_lines'

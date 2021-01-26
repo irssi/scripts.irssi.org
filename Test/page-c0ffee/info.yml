@@ -8,6 +8,7 @@
   default_package: page_c0ffee
   description: 'Adds the /PAGE command to page a nick (use /page nick <text>)... to ignore pages /set pager_mode off'
   license: 'Public Domain'
+  modified: '2017-03-12 21:57:08'
   name: 'mIRC pager'
   url: http://www.penguin-breeder.org/?page=irssi
   version: '0.03'

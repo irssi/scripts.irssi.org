@@ -4,6 +4,7 @@
   contact: grawity@gmail.com
   description: 'Implements SASL authentication and enables CAP "multi-prefix"'
   license: GPLv2
+  modified: '2015-12-04 19:11:05'
   modules:
     - Crypt::PK::ECC
   name: cap_sasl.pl

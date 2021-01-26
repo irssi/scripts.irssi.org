@@ -8,5 +8,6 @@
   default_package: listen
   description: 'A simple mp3 display script that will display what mp3 you are playing in which software (mpg123, xmms, mp3blaster, etc) to your active channel or to a query window.'
   license: 'GNU GPLv2 or later'
+  modified: '2019-02-22 12:10:58'
   name: listen
   version: '0.3'

@@ -5,6 +5,7 @@
   default_package: awayproxy
   description: 'Sets nick away when client discconects from the irssi-proxy. If away gathers messages targeted to nick and forwards them to an email address.'
   license: GPLv2
+  modified: '2016-03-21 23:29:10'
   name: awayproxy
   url: http://www.n0-life.com
   version: 0.2e

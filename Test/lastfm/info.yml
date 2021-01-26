@@ -6,6 +6,7 @@
   default_package: lastfm
   description: 'A now-playing-script which uses Last.fm'
   license: BSD
+  modified: '2014-10-17 22:54:13'
   modules:
     - HTML::Entities
     - LWP::UserAgent

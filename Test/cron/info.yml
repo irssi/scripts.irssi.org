@@ -6,6 +6,7 @@
   default_package: cron
   description: 'cron implementation, allows to execute commands at given interval/time'
   license: 'GNU GPLv2'
+  modified: '2014-11-12 12:23:06'
   name: 'cron aka jobs'
   url: http://www.krukowiecki.net/code/irssi/
   version: '0.12'

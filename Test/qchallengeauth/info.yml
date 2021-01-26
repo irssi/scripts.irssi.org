@@ -5,5 +5,6 @@
   default_package: qchallengeauth
   description: "Authenticates you to QuakeNet's Q immediately on connect using CHALLENGEAUTH"
   license: GPLv3+
+  modified: '2014-08-23 12:23:44'
   name: qchallengeauth.pl
   version: '1.0'

@@ -7,5 +7,6 @@
   default_package: autoop
   description: 'Simple auto-op script'
   license: 'Public Domain'
+  modified: '2014-10-24 12:54:12'
   name: autoop
   version: '1.10'

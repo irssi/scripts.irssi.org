@@ -8,6 +8,7 @@
   default_package: dau
   description: 'write like an idiot'
   license: BSD
+  modified: '2017-03-19 21:19:42'
   modules: 'File::Basename File::Path IPC::Open3 POSIX Tie::File'
   name: DAU
   sbitems: daumode

@@ -9,6 +9,7 @@
   default_package: watch
   description: 'Uso del comando watch para irssi.'
   license: BSD
+  modified: '2014-10-24 23:01:30'
   name: 'Watch script'
   url: http://www.nebulosa.org
   version: '1.0'

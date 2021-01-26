@@ -6,6 +6,7 @@
   default_package: autorealname
   description: 'Print realname of everyone who join to channels'
   license: 'GPLv2 or later'
+  modified: '2021-01-16 09:14:39'
   name: 'auto realname'
   url: http://irssi.org/
   version: 0.8.7

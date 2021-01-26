@@ -8,6 +8,7 @@
   default_package: xdcc
   description: 'Run an XDCC file server from irssi.'
   license: 'Jollo LNT license'
+  modified: '2015-06-12 22:16:41'
   name: xdcc.pl
   url: http://asdf.us/xdcc/
   version: '1.0'

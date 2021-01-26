@@ -8,6 +8,7 @@
   default_package: frm_outgmsgs
   description: 'define a permanent text formatting (bold, underline, etc.) for outgoing messages'
   license: 'Public Domain'
+  modified: '2016-06-18 12:01:20'
   name: frm_outgmsgs
   url: http://reirssi.wordpress.com
   version: '1.1'

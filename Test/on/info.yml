@@ -11,6 +11,7 @@
   default_package: on
   description: "/on command - this is very simple and not really designed to be the same as ircII - it tries to fit into Irssi's usage style more than emulating ircII."
   license: 'GNU GPLv2 or later'
+  modified: '2019-02-06 22:21:41'
   name: on.pl
   url: http://irssi.dgl.cx/
   version: '1.13'

@@ -7,6 +7,7 @@
   default_package: linebuffer
   description: 'dump the linebuffer content'
   license: 'GNU GPLv2 or later'
+  modified: '2015-12-03 21:04:35'
   name: linebuffer
   url: http://anti.teamidiot.de/
   version: '0.3'

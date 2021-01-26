@@ -6,6 +6,7 @@
   default_package: dcc_ip
   description: 'This script sets dcc_own_ip when starting a DCC send or chat.set dcc_ip_interface to your external interface, f.e. ppp0.If you are connecting though a router, set it to "router"'
   license: 'Public Domain'
+  modified: '2019-02-17 21:08:42'
   name: dcc_ip
   source: http://hq.kroenk.de/?gnu/irssi/dcc_ip.pl/plaintext
   url: http://hq.kroenk.de/?gnu/irssi

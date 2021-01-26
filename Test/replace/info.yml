@@ -12,6 +12,7 @@
   default_package: replace
   description: 'Replaces regexps with predefined strings'
   license: MIT
+  modified: '2016-03-22 03:23:12'
   name: replace
   url: http://flamero.fi
   version: '1.0'

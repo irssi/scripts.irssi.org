@@ -16,5 +16,6 @@
   default_package: xdccget
   description: 'enhanced downloading, queing, searching from XDCC bots'
   license: GPLv2
+  modified: '2014-10-16 14:47:21'
   name: xdccget
   version: '20141016'

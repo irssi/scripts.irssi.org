@@ -13,6 +13,7 @@
   default_package: autoopper
   description: 'Auto-op script with dynamic address support and random delay'
   license: 'GNU GPLv2 or later'
+  modified: '2014-10-17 18:30:46'
   name: autoopper
   url: http://vinku.dyndns.org/irssi_scripts/
   version: '3.7'

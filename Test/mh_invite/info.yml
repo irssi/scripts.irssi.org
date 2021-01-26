@@ -6,6 +6,7 @@
   default_package: mh_invite
   description: 'print invites in server, channel, query and active window'
   license: BSD
+  modified: '2016-03-05 15:31:20'
   name: mh_invite
   url: 'http://scripts.irssi.org / https://github.com/mh-source/irssi-scripts'
   version: '1.02'

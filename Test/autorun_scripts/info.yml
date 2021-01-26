@@ -6,6 +6,7 @@
   default_package: autorun_scripts
   description: 'Autorun scripts/symlinks created in the scripts/autorun directory'
   license: GPLv2
+  modified: '2016-04-18 15:11:40'
   modules:
     - File::ChangeNotify
   name: autorun_scripts

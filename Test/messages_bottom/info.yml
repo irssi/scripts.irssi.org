@@ -5,6 +5,7 @@
   default_package: messages_bottom
   description: 'makes all window text start at the bottom of windows'
   license: "send-me-beer-or-i'll-sue-you-if-you-use-it license"
+  modified: '2015-11-16 19:36:52'
   name: messages_bottom
   url: http://bugs.irssi.org/index.php?do=details&id=290
   version: '1.0'

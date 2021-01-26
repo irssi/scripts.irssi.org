@@ -8,5 +8,6 @@
   default_package: mailcheck_pop3_kimmo
   description: 'POP3 new mail notification and listing of mailbox contents. Use "/mail help" for instructions. Requires Net::POP3.'
   license: 'Public Domain'
+  modified: '2019-02-23 15:26:32'
   name: Mailcheck-POP3
   version: '0.6'

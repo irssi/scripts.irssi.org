@@ -11,5 +11,6 @@
   default_package: paste_kimmoke
   description: 'Provides /start, /stop, /play <-nopack> <-nospace> paste mechanism - start and stop recording and then replay without linebreaks. Also /see to view what was recorded.'
   license: 'Public Domain'
+  modified: '2014-10-19 11:54:16'
   name: Paste-KimmoKe
   version: '0.1'

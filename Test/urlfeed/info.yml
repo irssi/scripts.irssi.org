@@ -6,6 +6,7 @@
   default_package: urlfeed
   description: 'Provides RSS feeds with URLs pasted on your channels.'
   license: 'GNU GPLv2 or later'
+  modified: '2019-03-02 11:01:36'
   modules:
     - Regexp::Common
     - XML::RSS

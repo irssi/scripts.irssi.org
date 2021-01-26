@@ -6,6 +6,7 @@
   default_package: away_hilight_notice
   description: 'This script will notice your away message in response to a hilight.'
   license: 'GNU General Public License'
+  modified: '2015-06-25 22:51:33'
   name: away_hilight_notice.pl
   url: https://github.com/GeertHauwaerts/irssi-scripts/blob/master/src/away_hilight_notice.pl
   version: 15.01.01

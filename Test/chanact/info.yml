@@ -8,6 +8,7 @@
   default_package: chanact
   description: 'Adds new powerful and customizable [Act: ...] item (chanelnames,modes,alias). Lets you give alias characters to windows so that you can select those with meta-<char>'
   license: 'GNU GPLv2 or later'
+  modified: '2017-02-13 17:21:07'
   name: chanact
   url: http://bc-bd.org/blog/irssi/
   version: 0.6.0

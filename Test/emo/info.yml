@@ -8,5 +8,6 @@
   default_package: emo
   description: 'Outputs various unicode emoticons'
   license: 'Public Domain'
+  modified: '2015-01-18 02:15:41'
   name: emo
   version: 0.0.1

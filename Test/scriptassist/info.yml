@@ -33,6 +33,7 @@
   default_package: scriptassist
   description: 'keeps your scripts on the cutting edge'
   license: GPLv2
+  modified: '2020-04-27 16:47:51'
   modules:
     - LWP::UserAgent
   name: scriptassist

@@ -8,6 +8,7 @@
   default_package: chansearch
   description: 'searches for specific channels'
   license: GPLv2
+  modified: '2021-01-04 15:23:17'
   modules:
     - HTML::Entities
     - LWP::Protocol::https

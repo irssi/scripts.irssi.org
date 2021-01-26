@@ -5,5 +5,6 @@
   default_package: autonickprefix
   description: "Change 'nick: ' prefix if the nick is changed while you're still editing."
   license: 'Any OSI'
+  modified: '2016-02-06 01:40:08'
   name: autonickprefix
   version: '1.00'

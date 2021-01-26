@@ -5,6 +5,7 @@
   default_package: hilightcmd
   description: 'Call a system command when receiving a hilight'
   license: 'GNU GPLv3'
+  modified: '2016-04-26 11:41:22'
   modules:
     - String::ShellQuote
     - Text::Sprintf::Named

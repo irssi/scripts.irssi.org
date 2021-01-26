@@ -8,6 +8,7 @@
   default_package: friends_peder
   description: 'Basicly an autoop script with a nice interface and nick coloring ;)'
   license: GPL
+  modified: '2014-10-17 22:54:13'
   name: friends
   url: http://ninja.no/irssi/friends.pl
   version: '1.34'

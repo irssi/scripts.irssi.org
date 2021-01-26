@@ -6,6 +6,7 @@
   default_package: queryresume
   description: 'restores the last lines of a query on re-creation'
   license: GPLv2
+  modified: '2014-10-19 11:54:16'
   modules:
     - Date::Format
   name: QueryResume

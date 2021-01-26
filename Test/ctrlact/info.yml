@@ -15,5 +15,6 @@
   default_package: ctrlact
   description: 'allows per-channel control over activity indication'
   license: MIT
+  modified: '2017-02-24 07:41:29'
   name: ctrlact
   version: '1.2'

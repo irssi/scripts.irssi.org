@@ -5,6 +5,7 @@
   default_package: oopsie
   description: 'Stops those silly mistakes being sent (spaces at start of line, /1/1 for window changes, etc).'
   license: 'WTFPL <http://dgl.cx/licence>'
+  modified: '2019-02-19 16:46:39'
   name: oopsie
   url: http://dgl.cx/irssi
   version: '1.1'

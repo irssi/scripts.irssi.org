@@ -8,6 +8,7 @@
   default_package: unicode
   description: 'Get infomation about unicode characters'
   license: 'WTFPL <http://dgl.cx/licence>'
+  modified: '2014-10-13 14:00:00'
   name: unicode
   url: http://dgl.cx/irssi
   version: '2'

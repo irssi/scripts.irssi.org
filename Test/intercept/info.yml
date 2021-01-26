@@ -12,6 +12,7 @@
   default_package: intercept
   description: 'Intercept misprinted commands and offer to remove the first character before sending it on'
   license: 'Public Domain'
+  modified: '2015-11-25 14:54:47'
   name: intercept
   url: http://gplus.to/vague
   version: '0.2'

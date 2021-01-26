@@ -8,6 +8,7 @@
   default_package: toilet
   description: 'Simple toilet implementation for Irssi'
   license: 'Public Domain'
+  modified: '2017-12-23 14:14:40'
   name: toilet
   url: http://github.com/bcattaneo
   version: 1.1.0

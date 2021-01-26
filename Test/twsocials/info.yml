@@ -6,6 +6,7 @@
   default_package: twsocials
   description: 'IRC version of Social Commands'
   license: 'Public Domain'
+  modified: '2014-10-24 23:01:30'
   modules:
     - DBI
   name: twsocials.pl

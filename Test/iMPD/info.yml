@@ -52,6 +52,7 @@
   default_package: iMPD
   description: 'This controls Music Player Daemon from the familiar irssi interface'
   license: 'GPL v2'
+  modified: '2021-01-25 21:56:36'
   name: iMPD
   sbitems: mpdbar
   url: http://www.musicpd.org

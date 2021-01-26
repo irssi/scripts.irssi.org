@@ -5,6 +5,7 @@
   default_package: savecmdhist
   description: 'Saves the commands you typed in the input prompt to a history file, so that they persist across /upgrade and restart.'
   license: ISC
+  modified: '2018-11-07 14:02:31'
   name: savecmdhist
   url: http://anti.teamidiot.de/
   version: '1.0'

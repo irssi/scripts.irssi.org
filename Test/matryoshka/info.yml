@@ -20,6 +20,7 @@
   default_package: matryoshka
   description: 'a password matryoshka'
   license: 'Public Domain'
+  modified: '2019-12-14 13:57:23'
   modules:
     - Crypt::CBC
     - Crypt::Cipher::AES

@@ -6,5 +6,6 @@
   default_package: pager
   description: 'Notifies people if they send you a private message or a DCC chat offer while you are away; runs a shell command configurable via /set if they page you'
   license: BSD
+  modified: '2017-03-06 20:58:29'
   name: pager
   version: '1.2'

@@ -6,6 +6,7 @@
   default_package: listsort
   description: 'Sort the /list output by channel size'
   license: BSD
+  modified: '2020-07-09 10:29:27'
   name: listsort
   url: https://github.com/IsaacG/irssi-scripts
   version: 0.1.1

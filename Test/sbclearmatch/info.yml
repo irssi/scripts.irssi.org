@@ -7,6 +7,7 @@
   default_package: sbclearmatch
   description: 'clear matching lines in scrollback'
   license: 'GPLv2 or later'
+  modified: '2015-11-16 19:32:11'
   name: sbclearmatch
   url: http://anti.teamidiot.de/
   version: '0.2'

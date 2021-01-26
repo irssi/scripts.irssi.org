@@ -12,6 +12,7 @@
   default_package: invitejoin
   description: 'This script will join a channel if somebody invites you to it.'
   license: 'Public Domain'
+  modified: '2017-01-17 20:26:41'
   name: invitejoin.pl
   url: https://github.com/irssi/scripts.irssi.org/blob/master/scripts/invitejoin.pl
   version: '0.02'

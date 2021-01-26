@@ -5,6 +5,7 @@
   default_package: doc
   description: 'manage tips ; url ; help in a doc file in the keyword=definition form'
   license: 'GNU GPL'
+  modified: '2016-02-05 11:06:11'
   name: doc
   url: http://team.gcu-squad.org/~odemah/
   version: 0.0.4

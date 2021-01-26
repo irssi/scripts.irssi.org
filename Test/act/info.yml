@@ -10,6 +10,7 @@
   default_package: act
   description: 'Reset window activity status. defines command /act'
   license: 'Public Domain'
+  modified: '2016-05-01 21:05:08'
   name: 'Reset window activity status'
   url: http://www.penguin-breeder.org/irssi/
   version: '0.15'

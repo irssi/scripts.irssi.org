@@ -7,6 +7,7 @@
   default_package: merge_resources
   description: 'Merge queries with multiple resources of the same person.'
   license: 'GNU GPLv2 or later'
+  modified: '2020-10-22 16:34:10'
   name: merge_resources
   url: http://anti.teamidiot.de/
   version: '1.1'

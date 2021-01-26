@@ -5,5 +5,6 @@
   default_package: slack_complete
   description: 'Prefix nicks with @ when completing nicks to match conventions on networks like Slack, Flowdock, Gitter etc'
   license: GPL
+  modified: '2018-08-29 00:46:06'
   name: slack_complete
   version: '2.0'

@@ -18,6 +18,7 @@
   default_package: amarok_ssh
   description: 'Retrievs song infos and controls amaroK via dcop, optionally running on another computer via ssh'
   license: 'Public Domain'
+  modified: '2014-10-17 18:30:46'
   name: 'amaroK (via ssh)'
   url: http://www.codeeye.de/irssi/
   version: '1.0'

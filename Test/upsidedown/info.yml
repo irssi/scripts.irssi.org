@@ -8,6 +8,7 @@
   default_package: upsidedown
   description: 'Plugin to place text upsidedown'
   license: 'GNU GPLv2'
+  modified: '2019-01-30 18:12:38'
   modules:
     - Text::UpsideDown
   name: upsidedown

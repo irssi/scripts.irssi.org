@@ -8,6 +8,7 @@
   default_package: copy
   description: 'copy a line in a paste buffer'
   license: 'Public Domain'
+  modified: '2020-09-26 23:09:04'
   modules: 'MIME::Base64 File::Glob'
   name: copy
   url: https://scripts.irssi.org/

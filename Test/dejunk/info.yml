@@ -11,6 +11,7 @@
   default_package: dejunk
   description: 'Prevents all kinds of junk from showing up'
   license: 'Public Domain'
+  modified: '2018-01-07 11:55:29'
   name: Dejunk
   url: http://www.garion.org/irssi/
   version: '1.2'

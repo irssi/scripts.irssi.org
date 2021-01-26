@@ -8,6 +8,7 @@
   default_package: irccomplete
   description: 'Adds words from IRC to your tab-completion list, plus fixes typos'
   license: 'Public Domain'
+  modified: '2014-10-17 22:54:13'
   name: 'IRC Completion'
   url: http://xulfad.inside.org/~flux/software/irssi/
   version: '0.1'

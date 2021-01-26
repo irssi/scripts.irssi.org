@@ -8,6 +8,7 @@
   default_package: jump
   description: 'Adds a command to navigate to the previously active windows and an optional shortcut to go back when you try to switch to the current window. Think /window last²'
   license: ISC
+  modified: '2018-11-07 12:19:46'
   name: jump
   url: http://anti.teamidiot.de/
   version: '1.1'

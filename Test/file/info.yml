@@ -6,6 +6,7 @@
   default_package: file
   description: 'A command to output content of files in various ways'
   license: 'GNU GPLv2 or later'
+  modified: '2019-02-19 16:17:57'
   name: file.pl
   url: http://irssi.dgl.cx/
   version: 1.1

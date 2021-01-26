@@ -8,6 +8,7 @@
   default_package: fpaste
   description: 'copy infos to fpaste'
   license: 'Public Domain'
+  modified: '2021-01-24 16:18:01'
   modules: 'HTTP::Tiny File::Glob'
   name: fpaste
   selfcheckcmd: 'fpaste -check'

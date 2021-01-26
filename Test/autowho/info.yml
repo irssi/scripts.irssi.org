@@ -5,6 +5,7 @@
   default_package: autowho
   description: 'Periodically sends /who on configured channels to update away state.'
   license: ISC
+  modified: '2016-04-26 23:37:32'
   name: autowho
   url: http://anti.teamidiot.de/
   version: '0.1'

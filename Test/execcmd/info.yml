@@ -4,6 +4,7 @@
   contact: 'Nei @ anti@conference.jabber.teamidiot.de'
   default_package: execcmd
   description: 'Permit to use /EXEC with arbitrary irssi commands.'
+  modified: '2015-11-23 21:39:34'
   name: execcmd
   url: http://anti.teamidiot.de/
   version: '0.1'

@@ -8,6 +8,7 @@
   default_package: paste_derwan
   description: 'Usage: /paste [-all|-msgs|-public] [-c|-b] [-s|-l| where] [lines]'
   license: 'GNU GPL v2'
+  modified: '2014-10-19 11:54:16'
   name: paste
   url: http://derwan.irssi.pl
   version: '0.9'

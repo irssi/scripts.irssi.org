@@ -8,5 +8,6 @@
   default_package: whitelist
   description: 'Whitelist specific nicks or hosts and ignore messages from anyone else.'
   license: GPLv2
+  modified: '2014-08-07 02:00:52'
   name: whitelist
   version: '1.0'

@@ -8,6 +8,7 @@
   default_package: query_whois
   description: 'whois on every query open (and only then)'
   licence: 'Public Domain'
+  modified: '2018-01-11 11:02:11'
   modules: ''
   name: query_whois
   settings: ''

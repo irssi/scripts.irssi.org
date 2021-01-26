@@ -6,6 +6,7 @@
   default_package: mh_userstatus
   description: 'show in channels when users go away/back or oper/deoper'
   license: BSD
+  modified: '2016-03-03 13:39:04'
   name: mh_userstatus
   url: 'http://scripts.irssi.org / https://github.com/mh-source/irssi-scripts'
   version: '1.05'

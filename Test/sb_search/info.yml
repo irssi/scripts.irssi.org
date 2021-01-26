@@ -8,6 +8,7 @@
   default_package: sb_search
   description: 'search in your scrollback, scroll to a match'
   license: 'GPLv2 or later'
+  modified: '2017-11-20 11:40:40'
   name: sb_search
   url: http://wouter.coekaerts.be/irssi/
   version: '1.2'

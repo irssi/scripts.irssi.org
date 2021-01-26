@@ -8,6 +8,7 @@
   default_package: clones_scanner
   description: 'when a nick joins #channel, notifies you if there is (or there has been) someone in #channel with the same hostname'
   license: 'Public Domain'
+  modified: '2016-06-18 12:01:20'
   modules:
     - Devel::Size
   name: clones_scanner

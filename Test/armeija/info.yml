@@ -8,6 +8,7 @@
   default_package: armeija
   description: 'Ignores people bringin up boring/repeated subjects, plus replies.'
   license: 'Public Domain'
+  modified: '2014-10-17 18:30:46'
   name: 'Armeija Ignore'
   url: http://xulfad.inside.org/~flux/software/irssi/
   version: '0.4'

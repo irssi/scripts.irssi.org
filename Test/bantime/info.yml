@@ -8,5 +8,6 @@
   default_package: bantime
   description: 'Print time when ban was set in a nicer way. eg. 23m, 40s ago.'
   license: GPLv2
+  modified: '2015-01-09 19:54:31'
   name: bantime
   version: '1.03'

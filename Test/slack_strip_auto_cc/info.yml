@@ -5,6 +5,7 @@
   default_package: slack_strip_auto_cc
   description: 'Strips the annoying mentions of your nickname on Slack via [cc: <you>]'
   license: 'Public Domain'
+  modified: '2016-03-15 17:52:13'
   name: slack_strip_auto_cc.pl
   url: 'http://scripts.irssi.org & https://github.com/avar/dotfiles/blob/master/.irssi/scripts/slack_strip_auto_cc.pl'
   version: '1.0'

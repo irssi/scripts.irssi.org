@@ -7,5 +7,6 @@
   default_package: fortune
   description: 'Send a random fortune cookie to an user in channel.'
   license: 'Public Domain'
+  modified: '2019-05-30 22:59:25'
   name: fortune
   version: '1.4'

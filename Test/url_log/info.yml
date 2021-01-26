@@ -13,6 +13,7 @@
   default_package: url_log
   description: 'logs urls to textfile or/and database, able to list, quote, open or `http head` saved urls.'
   license: 'GNU GPLv2 or later'
+  modified: '2019-03-02 09:10:49'
   modules:
     - DBI
     - HTTP::Status

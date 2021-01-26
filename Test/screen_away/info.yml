@@ -4,6 +4,7 @@
   default_package: screen_away
   description: 'set (un)away, if screen is attached/detached'
   license: 'GPL v2'
+  modified: '2017-10-30 01:39:53'
   name: screen_away
   url: none
   version: 0.9.8.2

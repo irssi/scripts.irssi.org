@@ -10,6 +10,7 @@
   default_package: linkchan
   description: 'Link several channels on serveral networks'
   license: 'GNU GPL'
+  modified: '2014-10-17 22:54:13'
   name: LinkChan
   url: http://qrnik.knm.org.pl/~qrczak/irssi/linkchan.pl
   version: '1.5'

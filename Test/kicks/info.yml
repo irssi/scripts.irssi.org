@@ -6,6 +6,7 @@
   default_package: kicks
   description: 'Enhances /k /kb and /kn with some nice options.'
   license: 'Public Domain'
+  modified: '2017-04-01 17:30:41'
   name: 'Various kick and ban commands'
   url: http://www.penguin-breeder.org/irssi/
   version: '0.27'

@@ -11,6 +11,7 @@
   default_package: ircsec
   description: 'secures your conversation'
   license: GPLv2
+  modified: '2019-02-11 13:59:43'
   modules:
     - Crypt::CBC
   name: IRCSec

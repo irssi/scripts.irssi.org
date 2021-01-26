@@ -5,6 +5,7 @@
   default_package: wkb
   description: 'A simple word kickbanner'
   license: 'Public Domain'
+  modified: '2019-03-02 20:57:01'
   name: wkb
   url: http://matin.maapallo.org/softa/irssi
   version: '1.2'

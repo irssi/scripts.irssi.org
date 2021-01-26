@@ -6,5 +6,6 @@
   default_package: aidle
   description: 'Antyidler with random time'
   license: 'GNU GPLv2 or later'
+  modified: '2014-10-17 18:30:46'
   name: Antyidler
   version: 1.1b

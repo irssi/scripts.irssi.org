@@ -7,6 +7,7 @@
   default_package: typofix
   description: 'When someone uses s/foo/bar/, this really modifies the text'
   license: 'Same as Irssi'
+  modified: '2015-11-16 19:36:52'
   modules:
     - Algorithm::Diff
   name: Typofix

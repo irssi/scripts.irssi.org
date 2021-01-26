@@ -7,6 +7,7 @@
   default_package: pggb_sound
   description: 'does CTCP SOUNDs and other similar things.'
   license: GPLv2
+  modified: '2014-10-19 11:54:16'
   modules:
     - File::Listing
   name: PGGB_sound

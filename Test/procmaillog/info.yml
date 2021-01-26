@@ -11,6 +11,7 @@
   default_package: procmaillog
   description: 'Gets new mails from procmail.log file'
   license: 'Public Domain'
+  modified: '2014-06-21 08:47:21'
   modules:
     - Log::Procmail
     - MIME::Words

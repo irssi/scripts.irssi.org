@@ -9,6 +9,7 @@
   default_package: keepnick
   description: 'Try to get your nick back when it becomes available.'
   license: GPL
+  modified: '2019-05-04 20:18:06'
   name: keepnick
   url: http://ninja.no/irssi/keepnick.pl
   version: '1.19'

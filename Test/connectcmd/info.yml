@@ -8,6 +8,7 @@
   default_package: connectcmd
   description: 'run arbitrary shell commands while [dis]connecting to a server'
   license: 'Public Domain'
+  modified: '2017-03-18 12:17:25'
   name: 'Connect Command'
   url: http://irssi.org/
   version: '0.2'

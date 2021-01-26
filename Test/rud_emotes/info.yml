@@ -8,5 +8,6 @@
   default_package: rud_emotes
   description: 'Replaces :emote_name: text in your sent messages into pre-defined emotes (unicode mostly).'
   license: GPLv3
+  modified: '2019-03-19 21:57:04'
   name: 'emotes script'
   version: '1.20'

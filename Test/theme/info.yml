@@ -8,6 +8,7 @@
   default_package: theme
   description: 'activate, show or get theme'
   license: 'Public Domain'
+  modified: '2020-04-12 17:43:59'
   modules:
     - YAML::XS
   name: theme

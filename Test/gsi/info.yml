@@ -8,6 +8,7 @@
   default_package: gsi
   description: '/gsi <phone nr> checks number via http://gulesider.no. Norwegian 8-digit numbers only. Nice if you have caller-ID and are as paranoid as me.'
   license: 'Public Domain'
+  modified: '2015-01-18 02:15:41'
   modules:
     - LWP::UserAgent
     - URI::Heuristic

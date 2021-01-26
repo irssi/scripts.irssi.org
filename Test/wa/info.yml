@@ -9,6 +9,7 @@
   default_package: wa
   description: 'shows what WinAmp is playing with /wa command'
   license: 'Public Domain'
+  modified: '2014-10-24 23:01:30'
   name: wa
   url: http://matin.maapallo.org/softa/irssi
   version: 2.3.1

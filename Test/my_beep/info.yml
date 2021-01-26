@@ -5,6 +5,7 @@
   default_package: my_beep
   description: 'runs arbitrary command instead of system beep, includes flood protection'
   license: 'Public Domain'
+  modified: '2019-09-08 19:29:19'
   name: my_beep
   url: http://www.xs4all.nl/~stacium/irssi/my_beep.html
   version: '0.10'

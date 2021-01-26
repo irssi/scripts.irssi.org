@@ -6,6 +6,7 @@
   default_package: clearable
   description: 'make some command output clearable'
   license: ISC
+  modified: '2015-11-16 19:32:11'
   name: clearable
   url: http://anti.teamidiot.de/
   version: '0.1'

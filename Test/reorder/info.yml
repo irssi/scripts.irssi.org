@@ -8,5 +8,6 @@
   default_package: reorder
   description: 'Reordering windows based on a textfile.'
   license: GPL
+  modified: '2016-12-06 18:47:28'
   name: reorder
   version: '1.0'

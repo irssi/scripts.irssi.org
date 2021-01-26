@@ -7,5 +7,6 @@
   default_package: grepbans
   description: 'Greps the ban list for the specified pattern'
   license: GPLv3+
+  modified: '2015-09-11 05:11:39'
   name: grepbans
   version: '1.0'

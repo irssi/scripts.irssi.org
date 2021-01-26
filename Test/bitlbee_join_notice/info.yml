@@ -6,6 +6,7 @@
   default_package: bitlbee_join_notice
   description: '1. Adds an item to the status bar wich shows [joined: <nicks>] when someone is joining &bitlbee. 2. Shows join messages in the query. (For bitlbee v3.0+)'
   license: GPLv2
+  modified: '2017-04-07 16:34:31'
   name: BitlBee_join_notice
   sbitems: join_notice
   url: http://the-timing.nl/stuff/irssi-bitlbee

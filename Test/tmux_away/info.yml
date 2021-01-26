@@ -4,6 +4,7 @@
   default_package: tmux_away
   description: 'set (un)away if tmux session is attached/detached'
   license: 'GPL v2'
+  modified: '2015-11-23 21:28:44'
   name: tmux_away
   url: http://cybione.org
   version: '2.1'

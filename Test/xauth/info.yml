@@ -10,5 +10,6 @@
   default_package: xauth
   description: 'Undernet X Service Authentication Program'
   license: 'GNU GPLv2 or later'
+  modified: '2015-02-02 14:02:20'
   name: xauth
   version: '1.02'

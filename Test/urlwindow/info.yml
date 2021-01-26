@@ -5,6 +5,7 @@
   default_package: urlwindow
   description: 'Log all urls from #channels and /msgs in a separate window'
   license: 'Public Domain'
+  modified: '2020-07-13 09:17:33'
   name: urlwindow
   url: http://irssi.org/
   version: '1.2'

@@ -8,6 +8,7 @@
   default_package: aspell_complete
   description: 'Adds Text::Aspell suggestions to the list of completions'
   license: 'Public Domain'
+  modified: '2016-01-29 08:59:40'
   modules:
     - Text::Aspell
   name: aspell_complete

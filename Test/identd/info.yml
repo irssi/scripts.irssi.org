@@ -6,6 +6,7 @@
   default_package: identd
   description: 'Identd script for irssi'
   license: GPL2
+  modified: '2017-11-23 20:27:26'
   modules:
     - autovivification
   name: identd

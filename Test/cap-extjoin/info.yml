@@ -6,6 +6,7 @@
   default_package: cap_extjoin
   description: 'Print account and realname information on joins where extended-join is available'
   license: GPLv2
+  modified: '2017-12-12 14:37:51'
   name: cap-extjoin
   url: https://github.com/mquin/irssi-scripts
   version: 0.9.0

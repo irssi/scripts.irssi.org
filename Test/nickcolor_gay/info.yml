@@ -3,5 +3,6 @@
   default_package: nickcolor_gay
   description: 'colourise nicks'
   license: ISC
+  modified: '2020-05-15 11:42:24'
   name: nickcolor_gay
   version: '0.2'

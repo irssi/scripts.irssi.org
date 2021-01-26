@@ -8,5 +8,6 @@
   default_package: topicsed
   description: 'editing channel topics by regexps'
   license: 'public domain'
+  modified: '2017-03-18 23:06:54'
   name: topicsed
   version: '0.1'

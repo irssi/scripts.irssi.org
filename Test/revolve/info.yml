@@ -5,6 +5,7 @@
   default_package: revolve
   description: 'Summarizes multiple sequential joins/parts/quits.'
   license: 'GPL v2 or later'
+  modified: '2019-11-13 13:25:29'
   name: revolve
   url: http://github.com/rfreebern/irssi-revolving-door
   version: 0.0.6

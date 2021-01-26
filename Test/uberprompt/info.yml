@@ -12,5 +12,6 @@
   default_package: uberprompt
   description: 'Helper script for dynamically adding text into the input-bar prompt.'
   license: MIT
+  modified: '2016-06-25 15:46:46'
   name: uberprompt
   version: '0.3'

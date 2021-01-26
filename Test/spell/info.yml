@@ -9,6 +9,7 @@
   default_package: spell
   description: 'A spell checker for irssi.  Hit alt+s and your line will echoed to the active window with mistakes underlined and suggestions noted.  /spell is also provided.  Requires Lingua::Ispell and Ispell.'
   license: MIT
+  modified: '2018-09-06 19:23:44'
   modules:
     - Lingua::Ispell
   name: spell

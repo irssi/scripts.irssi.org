@@ -8,6 +8,7 @@
   default_package: autoaway
   description: 'Automatically goes  away after defined inactivity'
   license: BSD
+  modified: '2018-12-02 10:47:21'
   name: 'Automagic away setting'
   url: http://www.flamingpackets.net/~vizzie/irssi/
   version: '0.5'

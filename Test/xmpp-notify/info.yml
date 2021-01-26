@@ -5,6 +5,7 @@
   default_package: xmpp_notify
   description: 'Sends out notifications via XMPP. Based on a script by Peter Krenesky.'
   license: BSD-3-Clause
+  modified: '2015-06-30 12:00:46'
   modules:
     - Net::Jabber
   name: XMPP-notify

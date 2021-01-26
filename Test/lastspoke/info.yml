@@ -5,6 +5,7 @@
   default_package: lastspoke
   description: 'Remembers what people said last on what channels'
   license: 'GNU GPLv2 or later'
+  modified: '2020-05-31 16:04:00'
   modules: CPAN::Meta::YAML
   name: lastspoke
   url: http://irssi.freshdot.net/

@@ -10,6 +10,7 @@
   default_package: wordcompletition
   description: 'Adds words from IRC to your tab-completion list'
   license: 'Public Domain'
+  modified: '2017-03-25 22:50:36'
   modules:
     - DBD::SQLite
     - DBI

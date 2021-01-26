@@ -7,6 +7,7 @@
   default_package: fserve
   description: 'File server for irssi'
   license: 'GPL v2'
+  modified: '2014-10-17 22:54:13'
   name: FServe
   url: http://pingu.ii.uj.edu.pl/~piotr/irssi
   version: 2.0.0

@@ -7,6 +7,7 @@
   default_package: ai
   description: 'Puts people on ignore if they do a public away. See source for options.'
   license: 'GPL v2'
+  modified: '2014-10-17 18:30:46'
   name: ai
   url: https://bc-bd.org/svn/repos/irssi/trunk/
   version: '0.3'

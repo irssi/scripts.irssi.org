@@ -5,6 +5,7 @@
   default_package: discord_unhilight
   description: 'Strips the annoying mentions of your nickname via <yournick> on irc<->discord bridge, will work for any bridge using botnick: <yournick>'
   license: 'Public Domain'
+  modified: '2017-11-25 10:40:23'
   name: discord_unhilight.pl
   url: 'http://scripts.irssi.org & https://github.com/mskug/scrips.irssi.org/blob/master/scripts/discord_unhilight.pl'
   version: 0.1b

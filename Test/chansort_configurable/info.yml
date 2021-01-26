@@ -7,6 +7,7 @@
   default_package: chansort_configurable
   description: "Sort channels & query windows in a configurable way, based on Peder Stray's chansort.pl"
   license: GPL
+  modified: '2016-05-04 11:49:27'
   name: chansort_configurable
   url: 'http://scripts.irssi.org & https://github.com/avar/dotfiles/blob/master/.irssi/scripts/chansort_configurable.pl'
   version: '1.2'

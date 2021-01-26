@@ -5,6 +5,7 @@
   default_package: rotator
   description: 'Displaye a small, changeing statusbar item to show irssi is still running'
   license: 'GPL v2'
+  modified: '2017-04-07 16:34:31'
   name: rotator
   sbitems: rotator
   url: https://bc-bd.org/svn/repos/irssi/trunk/

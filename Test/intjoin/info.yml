@@ -10,6 +10,7 @@
   default_package: intjoin
   description: 'Joins channels with non-utf8 non-ascii names.'
   license: 'Public Domain'
+  modified: '2014-10-17 22:54:13'
   modules:
     - Text::Iconv
   name: 'i18n /join'

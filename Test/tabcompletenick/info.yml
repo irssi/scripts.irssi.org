@@ -6,6 +6,7 @@
   default_package: tabcompletenick
   description: 'tabcomplete, on an empty input buffer, over /set completion_keep_publics nicks in channel, parts for any reason(kick, part, quit) are removed from the tabcomplete list'
   license: GPL2
+  modified: '2015-11-25 11:47:05'
   name: tabcompletenick
   url: http://gplus.to/vague
   version: '1.1'

@@ -6,5 +6,6 @@
   default_package: ez_color
   description: 'Provides a single helper function to wrap mIRC-style color codes around strings'
   license: 'WTFPL/2 @ http://www.wtfpl.net/about/'
+  modified: '2020-10-09 13:29:18'
   name: ez_color
   version: '1.0'

@@ -5,6 +5,7 @@
   default_package: msg2notice_regex
   description: 'For a configured list of nicks or nicks matching a regex, convert all their messages to a notices'
   license: 'Public Domain'
+  modified: '2016-03-15 17:52:13'
   name: msg2notice_regex.pl
   url: 'http://scripts.irssi.org & https://github.com/avar/dotfiles/blob/master/.irssi/scripts/msg2notice_regex.pl & https://github.com/bucciarati/irssi-script-msg_to_notice'
   version: '1.0'

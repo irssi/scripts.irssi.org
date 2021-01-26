@@ -5,6 +5,7 @@
   default_package: noisyquery
   description: 'Prints an info about a newly started Query in your current window and runs a /whois on the nick.'
   license: 'GPL v2'
+  modified: '2014-10-19 11:54:16'
   name: noisyquery
   url: http://bc-bd.org/software.php3#irssi
   version: 0.1.1

@@ -5,5 +5,6 @@
   default_package: ignore_join_blob
   description: 'Ignore the blob of text displayed when (re)joining a channel'
   license: MIT
+  modified: '2019-01-24 09:01:46'
   name: ignore_join_blob
   version: '0.02'

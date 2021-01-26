@@ -5,5 +5,6 @@
   default_package: dice_concise
   description: 'A concise dice simulator for channels.'
   license: 'GNU GPL v2 or later'
+  modified: '2019-03-03 11:25:30'
   name: dice_concise
   version: 0.1.6

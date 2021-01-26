@@ -5,6 +5,7 @@
   default_package: partial
   description: 'partial tab completion for Irssi'
   license: ISC
+  modified: '2020-10-22 16:55:25'
   modules:
     - Tree::Trie
   name: partial

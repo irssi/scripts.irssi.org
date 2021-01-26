@@ -5,6 +5,7 @@
   default_package: cmdind
   description: 'Indicator for input prompt if you are inputting a command or text'
   license: 'GNU GPLv2 or later'
+  modified: '2018-12-18 17:40:02'
   name: cmdind
   url: http://anti.teamidiot.de/
   version: '1.1'

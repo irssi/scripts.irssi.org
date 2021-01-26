@@ -5,6 +5,7 @@
   default_package: per_window_prompt
   description: 'Keeps a prompt per window'
   license: 'GPLv2 or later'
+  modified: '2015-12-09 23:35:34'
   name: per_window_prompt
   url: http://wouter.coekaerts.be/irssi/
   version: '1.1'

@@ -8,6 +8,7 @@
   default_package: il
   description: 'adds a statusbar item which show length of the inputline'
   license: 'BSD License or something more liberal'
+  modified: '2021-01-11 08:48:06'
   name: inputlength
   sbitems: inputlength
   url: http://www.irssi.de./

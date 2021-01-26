@@ -8,6 +8,7 @@
   default_package: dns
   description: '/DNS <nick>|<host>|<ip> ...'
   license: 'Public Domain'
+  modified: '2019-01-24 16:31:43'
   name: dns
   url: http://irssi.org/
   version: '2.2'

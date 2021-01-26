@@ -8,5 +8,6 @@
   default_package: unread
   description: 'reset window to unread status'
   license: 'GPLv2 or later'
+  modified: '2020-04-01 05:29:42'
   name: unread
   version: '0.1'

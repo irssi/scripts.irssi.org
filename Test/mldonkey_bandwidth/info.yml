@@ -8,6 +8,7 @@
   default_package: mldonkey_bandwidth
   description: "Shows your mldonkey's current down- and upload rate"
   license: GPLv2
+  modified: '2018-01-23 14:20:51'
   modules:
     - HTTP::Request::Common
     - LWP::UserAgent

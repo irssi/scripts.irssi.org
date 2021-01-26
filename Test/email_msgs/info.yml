@@ -5,6 +5,7 @@
   default_package: email_msgs
   description: "Emails you messages sent/received while you're away or not. Works for both public mentions and private messages.When away, it is very useful in combination with screen_away. Based on email_privmsgs, with advanced features and options. Requires Email::Sender."
   license: MIT
+  modified: '2019-07-28 13:38:54'
   modules:
     - Email::Sender::Simple
     - Email::Simple

@@ -5,6 +5,7 @@
   default_package: munge_own_nickname_to_username
   description: 'Changes messages from myself to appear to come from my username, not my nickname'
   license: 'Public Domain'
+  modified: '2020-05-15 12:06:55'
   name: munge_own_nickname_to_username.pl
   url: 'http://scripts.irssi.org & https://github.com/avar/dotfiles/blob/master/.irssi/scripts/munge_own_nickname_to_username.pl'
   version: '1.2'

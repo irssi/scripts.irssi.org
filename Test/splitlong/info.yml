@@ -7,5 +7,6 @@
   default_package: splitlong
   description: 'Split overlong PRIVMSGs to msgs with length allowed by ircd'
   license: 'Public Domain'
+  modified: '2014-08-07 02:00:52'
   name: splitlong
   version: '0.20'

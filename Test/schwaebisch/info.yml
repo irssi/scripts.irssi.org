@@ -8,6 +8,7 @@
   default_package: schwaebisch
   description: '/schwäbisch - translates your messages from german to swabian'
   license: 'GNU GPL v2'
+  modified: '2019-01-30 22:52:13'
   modules: ''
   name: Schwaebisch
   url: http://ftp.robert-scheck.de/linux/irssi/scripts/

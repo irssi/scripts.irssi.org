@@ -8,6 +8,7 @@
   default_package: bitlbee_blist
   description: "/blist <all|online|offline|away|word> <word>,\tgreps <word> from blist for bitlbee"
   license: GPLv2
+  modified: '2013-12-09 23:09:23'
   name: bitlbee_blist
   url: http://the-timing.nl/stuff/irssi-bitlbee
   version: '0.5'

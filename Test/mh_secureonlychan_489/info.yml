@@ -5,6 +5,7 @@
   contact: 'mh (IRCnet)'
   description: 'Fix for Irssi not fully supporting numeric 489 ERR_SECUREONLYCHAN'
   license: ISC/BSD
+  modified: '2020-05-16 22:33:56'
   name: mh_secureonlychan_489
   url: https://github.com/irssi/scripts.irssi.org/tree/master/scripts
   version: '1.01'

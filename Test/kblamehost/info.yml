@@ -5,6 +5,7 @@
   default_package: kblamehost
   description: 'Kicks (and bans) people with >= 4 dots in theirs hostname'
   license: 'GNU GPLv2 or later'
+  modified: '2019-06-07 14:41:57'
   name: kblamehost
   url: http://esaurito.net
   version: 0.0.2

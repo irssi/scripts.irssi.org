@@ -6,6 +6,7 @@
   default_package: email_privmsgs
   description: "Emails you private messages sent while you're away. Useful in combination with screen_away. Requires Email::Sender."
   license: MIT
+  modified: '2017-11-21 23:52:33'
   modules:
     - Email::Sender::Simple
     - Email::Simple

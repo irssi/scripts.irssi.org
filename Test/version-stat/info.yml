@@ -8,6 +8,7 @@
   default_package: version_stat
   description: 'shows top[0-9]+ irc client versions in a channel'
   license: 'Public Domain'
+  modified: '2014-10-24 23:01:30'
   name: version-stats
   url: http://www.penguin-breeder.org/?page=irssi
   version: '0.1'

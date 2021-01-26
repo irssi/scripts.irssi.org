@@ -8,6 +8,7 @@
   default_package: dr_who
   description: 'Put a nick list in a statusbar'
   license: BSD
+  modified: '2017-04-07 16:34:31'
   name: dr_who
   sbitems: dr_who
   url: http://beaglebros.com

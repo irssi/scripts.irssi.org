@@ -8,6 +8,7 @@
   default_package: ipupdate
   description: 'Auto "/set dcc_own_ip IP" on connect.'
   license: GPL
+  modified: '2017-11-08 18:41:21'
   modules:
     - HTTP::Request::Common
     - LWP::UserAgent

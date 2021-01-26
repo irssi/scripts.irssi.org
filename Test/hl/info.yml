@@ -5,6 +5,7 @@
   default_package: hl
   description: "responds to \"!hl counterstrike.server \" command on channels/msg's to query counter-strike servers"
   license: GPLv2
+  modified: '2014-10-17 22:54:13'
   name: half-life
   url: http://nchip.ukkosenjyly.mine.nu/irssiscripts/
   version: '1.2'

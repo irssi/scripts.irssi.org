@@ -7,6 +7,7 @@
   default_package: banaffects
   description: 'Shows affected nicks by a ban on a new ban and defends yourself because IRC is serious.'
   licence: GPLv2
+  modified: '2012-10-27 01:57:13'
   name: banaffects_sd
   url: http://nico.lifeisabug.com/irssi/scripts/
   version: '1.2'

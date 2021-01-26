@@ -9,6 +9,7 @@
   default_package: sysinfo270_irssi
   description: 'Cross-platform/architecture system information script.'
   license: BSD
+  modified: '2014-10-24 23:01:30'
   name: SysInfo
   url: http://www.inexistent.com/
   version: '2.70'

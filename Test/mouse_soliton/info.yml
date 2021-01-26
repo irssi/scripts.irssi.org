@@ -8,6 +8,7 @@
   default_package: mouse_soliton
   description: 'experimental perl version of the irssi mouse patch'
   license: GPLv2
+  modified: '2019-08-19 17:30:11'
   name: mouse_soliton
   url: http://wouter.coekaerts.be/irssi/
   version: 0.0.1

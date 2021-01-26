@@ -5,6 +5,7 @@
   default_package: awaybar
   description: 'Provides a menubar item with away message'
   license: 'Public domain'
+  modified: '2017-04-07 16:34:31'
   name: awaybar
   sbitems: awaybar
   version: 0.1.1

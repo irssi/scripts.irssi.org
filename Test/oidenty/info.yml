@@ -5,6 +5,7 @@
   default_package: oidenty
   description: 'oidentd support for irssi'
   license: 'BSD License'
+  modified: '2018-01-21 21:18:19'
   name: oidenty
   url: http://www.irssi.de
   version: 0.0.3

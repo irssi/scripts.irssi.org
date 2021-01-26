@@ -8,6 +8,7 @@
   default_package: urlplot
   description: 'URL grabber with HTML generation and cmd execution'
   license: BSD
+  modified: '2014-10-24 23:01:30'
   name: urlplot
   url: http://www.geekmind.net
   version: '1.2'

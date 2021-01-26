@@ -5,5 +5,6 @@
   default_package: accent
   description: 'This script strips the hungarian accents.'
   license: GPL
+  modified: '2015-01-26 22:59:40'
   name: accent
   version: '1.34'

@@ -7,6 +7,7 @@
   default_package: beforespace
   description: 'Rebind certain keys so that they are inserted before the space'
   license: ISC
+  modified: '2016-04-26 23:42:54'
   name: beforespace
   url: http://anti.teamidiot.de/
   version: '0.1'

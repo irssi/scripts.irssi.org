@@ -7,6 +7,7 @@
   default_package: dictcomplete
   description: 'Caching dictionary based tab completion'
   license: 'Public Domain'
+  modified: '2014-10-17 20:34:00'
   name: 'Dictionary complete'
   url: http://juerd.nl/irssi/
   version: '1.31'

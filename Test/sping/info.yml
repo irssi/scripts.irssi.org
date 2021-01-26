@@ -8,5 +8,6 @@
   default_package: sping
   description: '/SPING [server] - checks latency between current server and [server]'
   license: 'GNU GPLv2 or later'
+  modified: '2014-06-15 19:18:39'
   name: 'Server Ping'
   version: '1.0'

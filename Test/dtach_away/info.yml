@@ -5,6 +5,7 @@
   default_package: dtach_away
   description: 'set (un)away, if dtach is attached/detached'
   license: 'GPL v2'
+  modified: '2019-11-16 09:56:03'
   name: dtach_away
   url: none
   version: '1.0'

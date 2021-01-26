@@ -5,6 +5,7 @@
   default_package: ircuwhois
   description: 'show the accountname (330) and real host on ircu'
   license: GPLv2
+  modified: '2015-11-16 19:36:52'
   name: ircuwhois
   url: http://www.hurzelgnom.homepage.t-online.de/irssi/scripts/quakenet.pl
   version: '1.2'

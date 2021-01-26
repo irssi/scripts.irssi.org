@@ -5,6 +5,7 @@
   default_package: bandwidth
   description: 'shows bandwidth usage in statusbar'
   license: GPLv2
+  modified: '2017-04-07 16:34:31'
   name: bandwidth
   sbitems: stats
   url: http://nchip.ukkosenjyly.mine.nu/irssiscripts/

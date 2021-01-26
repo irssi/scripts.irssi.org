@@ -8,6 +8,7 @@
   default_package: dccstat
   description: 'Shows verbose or short information of dcc send/gets on statusbar (speed, size, eta etc.)'
   license: 'GPL, Version 2'
+  modified: '2014-10-17 20:34:00'
   name: dccstat
   sbitems: dccstat
   url: http://matin.maapallo.org/softa/irssi

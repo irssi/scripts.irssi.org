@@ -6,6 +6,7 @@
   default_package: mood
   description: 'Keeps track of the channel mood'
   license: GPLv2
+  modified: '2019-01-05 10:14:23'
   name: Mood
   sbitems: moodbar
   version: '20190105'

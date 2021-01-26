@@ -5,6 +5,7 @@
   contact: tss@iki.fi
   description: 'Show IRC gallery (http://irc-galleria.net, finnish only) information on /WHOIS or /GALLERY'
   license: 'Public Domain'
+  modified: '2015-02-02 14:02:20'
   name: ircgallery
   url: http://irssi.org/
   version: '1.13'

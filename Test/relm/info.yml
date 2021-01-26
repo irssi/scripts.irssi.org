@@ -8,5 +8,6 @@
   default_package: relm
   description: 'Keeps last 15 messages in cache'
   license: 'GNU GPLv2 or later'
+  modified: '2019-02-25 10:29:22'
   name: 'REdirect Last Message'
   version: '1.1'

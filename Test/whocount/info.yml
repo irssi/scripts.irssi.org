@@ -5,6 +5,7 @@
   default_package: whocount
   description: 'Counts the number of matches in /who lists'
   license: GPL
+  modified: '2015-03-24 12:50:11'
   name: whocount.pl
   url: http://sjk.ankeborg.nu
   version: 0.0.2

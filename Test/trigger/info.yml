@@ -17,6 +17,7 @@
   default_package: trigger
   description: 'execute a command or replace text, triggered by an event in irssi'
   license: 'GPLv2 or later'
+  modified: '2020-03-24 17:19:55'
   name: trigger
   url: http://wouter.coekaerts.be/irssi/
   version: 1.2.4

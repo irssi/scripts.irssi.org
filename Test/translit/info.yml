@@ -5,5 +5,6 @@
   default_package: translit
   description: translitiratar
   license: GPL
+  modified: '2017-03-05 14:29:01'
   name: translit
   version: '0.1'

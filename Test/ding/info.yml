@@ -5,6 +5,7 @@
   default_package: ding
   description: 'Play a given sound when messages come in.'
   license: MIT
+  modified: '2020-08-11 11:55:26'
   name: ding.pl
   url: https://bitbucket.org/easlice/irssi-ding
   version: '0.1'

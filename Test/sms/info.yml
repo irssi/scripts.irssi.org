@@ -15,5 +15,6 @@
   default_package: sms
   description: '/ADDSMS, /DELSMS, /LISTSMS and /SMS - phone address-book with smssender, for now supports only Polish operators'
   license: 'GNU GPLv2 or later'
+  modified: '2014-10-24 23:01:30'
   name: SMS
   version: 1.5b

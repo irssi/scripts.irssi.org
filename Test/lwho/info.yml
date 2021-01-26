@@ -9,6 +9,7 @@
   default_package: lwho
   description: 'Displays users logged on system in current window, simple one'
   license: '-'
+  modified: '2014-10-17 22:54:13'
   name: 'Local who'
   url: '-'
   version: 0.01a

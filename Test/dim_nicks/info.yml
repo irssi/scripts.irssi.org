@@ -5,6 +5,7 @@
   default_package: dim_nicks
   description: 'Dims nicks that are not in channel anymore.'
   license: 'GNU GPLv2 or later'
+  modified: '2019-05-16 09:16:26'
   name: dim_nicks
   url: http://anti.teamidiot.de/
   version: 0.4.9

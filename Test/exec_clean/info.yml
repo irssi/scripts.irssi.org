@@ -6,6 +6,7 @@
   default_package: exec_clean
   description: 'Adds a setting to automatically terminate a process whose parent window has been closed'
   license: BSD
+  modified: '2014-10-17 22:54:13'
   name: exec-clean
   url: http://void.adminz.be/irssi.shtml
   version: '1.01'

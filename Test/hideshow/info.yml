@@ -5,6 +5,7 @@
   default_package: hideshow
   description: 'Removes and re-adds lines to the Irssi buffer view.'
   license: 'GNU GPLv2 or later'
+  modified: '2019-08-23 22:35:23'
   name: hideshow
   url: http://anti.teamidiot.de/
   version: 0.4.5

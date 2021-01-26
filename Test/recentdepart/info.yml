@@ -5,6 +5,7 @@
   default_package: recentdepart
   description: "Filters quit/part/join/nick notices based on time since last message. (Similar to weechat's smartfilter)."
   license: 'GNU GPLv2 or later'
+  modified: '2016-04-26 18:00:41'
   name: 'Recently Departed'
   url: ''
   version: '0.7'

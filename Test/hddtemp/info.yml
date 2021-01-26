@@ -6,6 +6,7 @@
   default_package: hddtemp
   description: 'adds a statusbar item which shows temperatures of harddisks (with multiple hddtemp-hosts support)'
   license: GPLv2
+  modified: '2017-03-17 11:54:11'
   name: hddtemp
   sbitems: hddtemp
   url: http://hurzelgnom.bei.t-online.de/irssi/scripts/hddtemp.pl

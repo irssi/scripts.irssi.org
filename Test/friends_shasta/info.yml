@@ -30,6 +30,7 @@
   default_package: friends_shasta
   description: 'Maintains list of people you know.'
   license: 'GNU GPLv2 or later'
+  modified: '2014-10-17 22:54:13'
   name: Friends
   url: http://toxcorp.com/irc/irssi/friends/
   version: 2.4.9

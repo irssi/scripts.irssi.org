@@ -8,6 +8,7 @@
   default_package: nickcolor
   description: 'assign a different color for each nick'
   license: 'Public Domain'
+  modified: '2018-01-09 10:41:20'
   name: 'Nick Color'
   url: http://irssi.org/
   version: '2.1'

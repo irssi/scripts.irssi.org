@@ -12,5 +12,6 @@
   default_package: toggle_hidelevel
   description: 'Toggle hidden levels on per window basis'
   licence: GPLv2
+  modified: '2020-03-17 14:17:18'
   name: toggle_hidelevel
   version: 0.6.1

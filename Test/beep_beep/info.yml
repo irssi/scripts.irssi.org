@@ -5,6 +5,7 @@
   default_package: beep_beep
   description: 'runs arbitrary command instead of system beep, includes flood protection'
   license: 'Public Domain'
+  modified: '2014-10-17 20:34:00'
   name: beep_beep
   url: http://op-co.de/irssi/
   version: '0.10'

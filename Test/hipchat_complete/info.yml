@@ -5,6 +5,7 @@
   default_package: hipchat_complete
   description: 'Translate nicks to HipChat "mention names"'
   license: BSD
+  modified: '2015-01-18 02:15:41'
   modules:
     - WebService::HipChat
   name: hipchat_complete

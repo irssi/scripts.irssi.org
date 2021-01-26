@@ -8,6 +8,7 @@
   default_package: mqtt_notify
   description: 'Sends out notifications via MQTT'
   license: BSD-3-Clause
+  modified: '2015-06-30 12:01:33'
   name: MQTT-notify
   url: http://github.com/dm8tbr/irssi-mqtt-notify/
   version: '1.0'

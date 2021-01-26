@@ -6,6 +6,7 @@
   default_package: logcompress_perl
   description: "compress logfiles then they're rotated, modified from original logcompress.pl to use perl modules instead"
   license: 'Public Domain'
+  modified: '2017-01-07 11:52:46'
   name: logcompress_perl
   url: http://irssi.org/
   version: '0.02'

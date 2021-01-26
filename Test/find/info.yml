@@ -8,6 +8,7 @@
   default_package: find
   description: "Finds a nick by real name, if he's on a channel with you."
   license: 'Public Domain'
+  modified: '2014-10-17 22:54:13'
   name: Find
   url: http://xulfad.inside.org/~flux/software/irssi/
   version: '0.2'

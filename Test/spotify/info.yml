@@ -49,6 +49,7 @@
   default_package: spotify
   description: 'Lookup spotify uris'
   license: GPLv2
+  modified: '2014-10-13 15:24:27'
   modules:
     - HTTP::Request
     - HTTP::Request::Common

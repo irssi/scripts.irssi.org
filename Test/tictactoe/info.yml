@@ -8,6 +8,7 @@
   default_package: tictactoe
   description: 'tic-tac-toe game'
   license: LGPLv3
+  modified: '2019-12-23 21:22:43'
   modules: Text::ParseWords
   name: tictactoe
   url: https://scripts.irssi.org/

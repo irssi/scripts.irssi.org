@@ -9,6 +9,7 @@
   default_package: mouse_awl
   description: 'control irssi using mouse clicks and gestures'
   license: 'GPLv2 or later'
+  modified: '2015-11-16 19:36:52'
   name: mouse
   url: http://wouter.coekaerts.be/irssi/
   version: 1.0.0-awl

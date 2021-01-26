@@ -6,5 +6,6 @@
   default_package: account_notify
   description: 'Display account identification status changes using CAP account-notify'
   license: 'CC0 1.0 <https://creativecommons.org/publicdomain/zero/1.0/legalcode>'
+  modified: '2017-11-05 00:04:25'
   name: account-notify
   version: '1.01'

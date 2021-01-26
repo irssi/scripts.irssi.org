@@ -8,6 +8,7 @@
   default_package: mpg123
   description: 'Display current mpg123 track'
   license: GPLv2
+  modified: '2014-10-19 11:54:16'
   name: mpg123
   url: http://pwp.netcabo.pt/ricardomesquita/irssi
   version: 0.01+1

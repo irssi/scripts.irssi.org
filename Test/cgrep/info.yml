@@ -8,6 +8,7 @@
   default_package: cgrep
   description: 'Lists users on the channel matching the specified regexp'
   license: 'GPLv2 or later'
+  modified: '2016-09-20 14:26:40'
   name: cgrep
   url: http://pieter-bas.ijdens.com/irssi/
   version: 1.0.0

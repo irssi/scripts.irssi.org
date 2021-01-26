@@ -6,6 +6,7 @@
   default_package: bitlbee_timestamp
   description: "Replace Irssi's timestamps with those sent by BitlBee"
   license: GPLv2
+  modified: '2019-03-15 11:01:56'
   modules:
     - DateTime
   name: bitlbee_timestamp

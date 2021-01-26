@@ -8,6 +8,7 @@
   default_package: hostname
   description: 'Adds a /HOSTNAME command; it will list all IP addresses on all interfaces found on your machine, resolve them, and allow you to choose one easily'
   license: BSD
+  modified: '2014-10-17 22:54:13'
   modules:
     - Socket6
   name: hostname
