@@ -7,8 +7,9 @@
   default_package: google
   description: 'This script queries google.com with googler and returns the results.'
   license: 'Public Domain'
-  modified: '2019-08-04 19:27:07'
+  modified: '2021-01-26 13:09:56'
   modules: ''
   name: google
+  selfcheckcmd: 'google -check'
   url: https://scripts.irssi.org/
-  version: '2.00'
+  version: '2.01'
