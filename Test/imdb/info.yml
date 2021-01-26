@@ -1,7 +1,9 @@
 ---
 -
   authors: 'Eric Jansen'
-  changed: 2018-06-14
+  changed: 2021-01-08
+  commands:
+    - imdb
   contact: chaos@sorcery.net
   default_package: imdb
   description: 'Automatically lookup IMDB-numbers in nicknames'
@@ -10,5 +12,6 @@
     - HTML::Entities
     - LWP::UserAgent
   name: imdb
+  selfcheckcmd: 'imdb check'
   url: http://xyrion.org/irssi/
-  version: '1.02'
+  version: '1.03'
