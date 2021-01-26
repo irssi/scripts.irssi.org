@@ -3623,16 +3623,17 @@
   url: http://irssi.dgl.cx/
   version: '1.13'
 -
-  authors: "Stefan 'tommie' Tomanek"
-  commands: ontv
-  contact: stefan@pico.ruhr.de
+  authors: bw1
+  commands: ontv2
+  contact: bw1@aol.at
   description: 'turns irssi into a tv program guide'
-  filename: ontv.pl
+  filename: ontv2.pl
   license: GPLv2
-  modified: '2008-05-17 17:39:11'
-  modules: 'HTML::Entities LWP::Simple'
-  name: OnTV
-  version: '20050226'
+  modified: '2021-01-11 16:49:10'
+  modules: 'DateTime DateTime::Format::Strptime XML::LibXML::Simple YAML::XS'
+  name: ontv2
+  url: https://scripts.irssi.org/
+  version: '0.01'
 -
   authors: 'bw1 and others'
   contact: bw1@aol.at
