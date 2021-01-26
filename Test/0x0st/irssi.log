@@ -1,3 +1,3 @@
-* "my" variable $filename masks earlier declaration in same scope at 0x0st.pl line 84.
+* "my" variable $filename masks earlier declaration in same scope at 0x0st.pl line 88.
 * 
 * -!- Irssi: Loaded script 0x0st

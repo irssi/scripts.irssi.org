@@ -3,7 +3,7 @@ See [the testing read-me](../master/_testing/) for details.
 ## Irssi Scripts Test Report
 \                                | LOAD | HDR | CRIT | SCORE | PASS
 ----: | :--: | :-: | :--: | ----: | :---:
-[                           0x0st ](Test/0x0st/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
+[                           0x0st ](Test/0x0st/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   
 [                          8-ball ](Test/8-ball/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
 [                          Cirssi ](Test/Cirssi/)|  ✔   |  ✔   |  ✔   | 31   |  ✔   | (c)
 [                 UNIBG-autoident ](Test/UNIBG-autoident/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -154,7 +154,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                    doublefilter ](Test/doublefilter/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                          dr_who ](Test/dr_who/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                      dtach_away ](Test/dtach_away/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                      duckduckgo ](Test/duckduckgo/)|  ✔   |  ✔   |  ✔   | 32   |  ✔   
+[                      duckduckgo ](Test/duckduckgo/)|  ✔   |  ✔   |  ✔   | 32   |  ✔   | (c)
 [                        efnetorg ](Test/efnetorg/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                           elist ](Test/elist/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                           eliza ](Test/eliza/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -544,4 +544,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-ca893c10c6ce8bb71c590c919e73a6cc431fe930 | 2021-01-26T14:18:23,872580554+00:00
+9bc67172e34cf98d3d4a794dca0df81327386c05 | 2021-01-26T14:24:51,006161037+00:00
