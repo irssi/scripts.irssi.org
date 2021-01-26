@@ -15,6 +15,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@main
+        with:
+          fetch-depth: '0'
       - uses: mstachniuk/ci-skip@v1
         with:
           fail-fast: true
@@ -47,6 +49,11 @@ jobs:
       - name: fix the broken Encode module
         run: |
           cpanm Encode
+      - uses: actions/checkout@main
+        if: ${{ env.USE_ARTEFACTS_CACHE == 'yes' }}
+        with:
+          ref: ci-artefacts
+          path: old-artefacts
       - name: load old artefacts
         if: ${{ env.USE_ARTEFACTS_CACHE == 'yes' }}
         run:

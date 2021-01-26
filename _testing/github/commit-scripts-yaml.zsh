@@ -5,7 +5,6 @@
 git config user.email "scripts@irssi.org"
 git config user.name "Irssi Scripts Helper"
 git checkout master
-git config -l --show-origin
 
 if [[ "$(git log -1 --format=%an)" != "$(git config user.name)" &&
       "$(git log -1 --format=%cn)" != "$(git config user.name)" ]] {
