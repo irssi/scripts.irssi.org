@@ -1,4 +1,7 @@
 # vim: set expandtab:
+use strict;
+use warnings;
+no warnings 'closure';
 use vars qw($VERSION %IRSSI);
 $VERSION = "5.9";
 %IRSSI = (
@@ -246,9 +249,6 @@ sub DEBUG {
   Irssi::settings_get_bool("lastfm_debug");
 };
 
-use strict;
-use warnings;
-no warnings 'closure';
 use Data::Dumper;
 use Encode;
 use HTML::Entities;
