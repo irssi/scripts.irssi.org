@@ -1,4 +1,4 @@
 Code before warnings are enabled at line 7, column 1.  See page 431 of PBP.  (Severity: 4)
-Return value of "close" ignored at line 179, column 2.  Check the return value of "close" for success.  (Severity: 2)
-Return value of "close" ignored at line 188, column 2.  Check the return value of "close" for success.  (Severity: 2)
-Return value of "close" ignored at line 207, column 5.  Check the return value of "close" for success.  (Severity: 2)
+Return value of "close" ignored at line 182, column 2.  Check the return value of "close" for success.  (Severity: 2)
+Return value of "close" ignored at line 191, column 2.  Check the return value of "close" for success.  (Severity: 2)
+Return value of "close" ignored at line 210, column 5.  Check the return value of "close" for success.  (Severity: 2)
