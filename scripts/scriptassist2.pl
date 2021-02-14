@@ -60,29 +60,43 @@ sub background {
 		@res= &{$cmd->{cmd}}(@{$cmd->{args}});
 		#store_fd \@res, $fh_w;
 		my $yml=CPAN::Meta::YAML->new(\@res);
+		#my $fh_old = select $fh_w;
+		#local $|=1;
+		#select $fh_old;
 		print $fh_w $yml->write_string();
 		close $fh_w;
 		POSIX::_exit(1);
 	} else {
 		$cmd->{fh_r}=$fh_r;
-		$bg_process{$pid}=$cmd;
-		#Irssi::pidwait_add($pid);
 		my $pipetag;
         my @args = ($pid, \$pipetag );
-        $pipetag = Irssi::input_add(fileno($fh_r), INPUT_READ, \&sig_pidwait, \@args);
+        $pipetag = Irssi::input_add(fileno($fh_r), Irssi::INPUT_READ, \&sig_pipe, \@args);
+		$cmd->{pipetag} = $pipetag;
+		$bg_process{$pid}=$cmd;
+		Irssi::pidwait_add($pid);
+	}
+}
+
+sub sig_pipe {
+	my ($pid, $pipetag) = @{$_[0]};
+	debug "sig_pipe $pid";
+	#debug \%bg_process;
+	if (exists $bg_process{$pid}) {
+		my $fh_r= $bg_process{$pid}->{fh_r};
+		$bg_process{$pid}->{res_str} .= do { local $/; <$fh_r>; };
+	} else {
+		Irssi::input_remove($$pipetag);
 	}
 }
 
 sub sig_pidwait {
-	#my ($pid, $status) = @_;
-	my ($pid, $pipetag) = @{@_[0]};
+	my ($pid, $status) = @_;
+	debug "sig_pidwait $pid";
 	if (exists $bg_process{$pid}) {
 		#my @res= @{ fd_retrieve($bg_process{$pid}->{fh_r})};
-		my $fh_r= $bg_process{$pid}->{fh_r};
-		my $ystr = do { local $/; <$fh_r>; };
-		close $fh_r;
-    	Irssi::input_remove($$pipetag);
-		my $yml = CPAN::Meta::YAML->read_string($ystr);
+		close $bg_process{$pid}->{fh_r};
+		Irssi::input_remove($bg_process{$pid}->{pipetag});
+		my $yml = CPAN::Meta::YAML->read_string($bg_process{$pid}->{res_str});
 		my @res = @{ $yml->[0] };
 		$bg_process{$pid}->{res}=[@res];
 		if (exists $bg_process{$pid}->{last}) {
@@ -164,8 +178,8 @@ sub update {
 	}
 	#my $ser = freeze $d;
 	#return $ser;
-	return $d;
-	#return "hello from uptate";
+	#return $d;
+	return "hello from uptate";
 }
 
 sub print_update {
@@ -251,7 +265,7 @@ Irssi::theme_register([
 ]);
 
 Irssi::signal_add('setup changed', \&sig_setup_changed);
-#Irssi::signal_add('pidwait', \&sig_pidwait);
+Irssi::signal_add('pidwait', \&sig_pidwait);
 
 Irssi::settings_add_str($IRSSI{name} ,$IRSSI{name}.'_path', 'scriptassist2');
 
