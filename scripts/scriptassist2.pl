@@ -7,7 +7,8 @@ use CPAN::Meta::YAML;
 use File::Fetch;
 use Time::Piece;
 use Digest::file qw/digest_file_hex/;
-use Storable qw/store_fd fd_retrieve freeze thaw/;
+use Digest::MD5 qw/md5_hex/;
+use Text::Wrap;
 use debug;
 
 use Irssi;
@@ -32,6 +33,33 @@ my $help = << "END";
   $VERSION
 %9description%9
   $IRSSI{description}
+%9commands%9
+  /scriptassist check
+      Check all loaded scripts for new available versions
+  /scriptassist update <script|all>
+      Update the selected or all script to the newest version
+  /scriptassist search <query>
+      Search the script database
+  /scriptassist info <scripts>
+      Display information about <scripts>
+  /scriptassist ratings <scripts|all>
+      Retrieve the average ratings of the the scripts
+  /scriptassist top <num>
+      Retrieve the first <num> top rated scripts
+  /scriptassist new <num>
+      Display the newest <num> scripts
+  /scriptassist rate <script>
+      Rate the script if you like it
+  /scriptassist contact <script>
+      Write an email to the author of the script
+      (Requires OpenURL)
+  /scriptassist cpan <module>
+      Visit CPAN to look for missing Perl modules
+      (Requires OpenURL)
+  /scriptassist install <script>
+      Retrieve and load the script
+  /scriptassist autorun <script>
+      Toggles automatic loading of <script>
 %9See also%9
   https://perldoc.perl.org/perl.html
   https://github.com/irssi/irssi/blob/master/docs/perl.txt
@@ -45,8 +73,11 @@ my $path;
 # data root
 my $d;
 # ->{rconfig}->@
-# ->{rscripts}
-# ->{rstat}
+# ->{rscripts}->%
+# ->{rstat}->%
+
+# links to $d->{rconfig}->@
+my %source;
 
 my %bg_process= ();
 
@@ -58,11 +89,7 @@ sub background {
 	if ($pid ==0 ) {
 		my @res;
 		@res= &{$cmd->{cmd}}(@{$cmd->{args}});
-		#store_fd \@res, $fh_w;
 		my $yml=CPAN::Meta::YAML->new(\@res);
-		#my $fh_old = select $fh_w;
-		#local $|=1;
-		#select $fh_old;
 		print $fh_w $yml->write_string();
 		close $fh_w;
 		POSIX::_exit(1);
@@ -80,11 +107,9 @@ sub background {
 sub sig_pipe {
 	my ($pid, $pipetag) = @{$_[0]};
 	debug "sig_pipe $pid";
-	#debug \%bg_process;
 	if (exists $bg_process{$pid}) {
 		my $fh_r= $bg_process{$pid}->{fh_r};
 		$bg_process{$pid}->{res_str} .= do { local $/; <$fh_r>; };
-	} else {
 		Irssi::input_remove($$pipetag);
 	}
 }
@@ -93,9 +118,9 @@ sub sig_pidwait {
 	my ($pid, $status) = @_;
 	debug "sig_pidwait $pid";
 	if (exists $bg_process{$pid}) {
-		#my @res= @{ fd_retrieve($bg_process{$pid}->{fh_r})};
 		close $bg_process{$pid}->{fh_r};
 		Irssi::input_remove($bg_process{$pid}->{pipetag});
+		utf8::decode($bg_process{$pid}->{res_str});
 		my $yml = CPAN::Meta::YAML->read_string($bg_process{$pid}->{res_str});
 		my @res = @{ $yml->[0] };
 		$bg_process{$pid}->{res}=[@res];
@@ -122,13 +147,19 @@ sub print_box {
 	Irssi::printformat(MSGLEVEL_CLIENTCRAP, 'box_footer', $foot); 
 }
 
+sub print_short {
+	my ( $str )= @_;
+	Irssi::printformat(MSGLEVEL_CLIENTCRAP, 'short_msg', $str); 
+}
+
 sub init {
 	if ( -e "$path/cache.yml" ) {
 		my $yml= CPAN::Meta::YAML->read("$path/cache.yml");
 		$d= $yml->[0];
 	}
 		
-	if (! exists $d->{rconfig} ) {
+	if ( ref($d) ne 'HASH' || ! exists $d->{rconfig} ) {
+		$d= undef;
 		$d->{rconfig}=();
 		my %n;
 		$n{name}="irssi";
@@ -136,6 +167,10 @@ sub init {
 		$n{url_db}="https://scripts.irssi.org/scripts.yml";
 		$n{url_sc}="https://scripts.irssi.org/scripts";
 		push @{$d->{rconfig}}, {%n};
+	}
+
+	foreach my $n ( @{ $d->{rconfig} } ) {
+		$source{$n->{name}}= $n;
 	}
 }
 
@@ -149,7 +184,8 @@ sub fetch {
 	my $ff = File::Fetch->new (
 		uri => $uri,
 	);
-	my $w= $ff->fetch(to => $path,);
+	my $w;
+	eval { $w = $ff->fetch(to => $path,); };
 	if ( $w ) {
 		return $ff->file;
 	} else {
@@ -158,76 +194,148 @@ sub fetch {
 }
 
 sub update {
+	my @msg;
 	foreach my $n ( @{ $d->{rconfig} } ) {
 		my $fn=fetch( $n->{url_db} );
-		if ( defined $fn && $n->{type} eq 'yaml' ) {
-			my $di=digest_file_hex("$path/$fn", 'MD5');
-			if ( $di ne $d->{rstat}->{$n->{name}}->{digest} ) {
-				my $yml= CPAN::Meta::YAML->read("$path/$fn");
-				my $sl;
-				foreach my $sn ( @{$yml->[0]} ) {
-					$sl->{$sn->{filename}}=$sn;
+		if ( defined $fn ) {
+			if ( $n->{type} eq 'yaml' ) {
+				my $di=digest_file_hex("$path/$fn", 'MD5');
+				if ( $di ne $d->{rstat}->{$n->{name}}->{digest} ) {
+					my $yml= CPAN::Meta::YAML->read("$path/$fn");
+					my $sl;
+					foreach my $sn ( @{$yml->[0]} ) {
+						$sl->{$sn->{filename}}=$sn;
+					}
+					$d->{rscripts}->{$n->{name}}= $sl;
 				}
-				$d->{rscripts}->{$n->{name}}= $sl;
+				my $t=localtime();
+				$d->{rstat}->{$n->{name}}->{last}= $t->epoch;
+				$d->{rstat}->{$n->{name}}->{digest}= $di; 
+				unlink "$path/$fn";
 			}
-			my $t=localtime();
-			$d->{rstat}->{$n->{name}}->{last}= $t->epoch;
-			$d->{rstat}->{$n->{name}}->{digest}= $di; 
-			unlink "$path/$fn";
+		} else {
+			push @msg, "Error: fetch $n->{name} ($n->{url_db})";
 		}
 	}
-	#my $ser = freeze $d;
-	#return $ser;
-	#return $d;
-	return "hello from uptate";
+	return $d, [@msg] ;
 }
 
 sub print_update {
 	my ( $pn ) = @_;
-	debug "func hallo";
-	#debug $pn->{res};
+	# write back to main!
+	$d= $pn->{res}->[0] ;
+	foreach my $n ( @{ $d->{rconfig} } ) {
+		$source{$n->{name}}= $n;
+	}
+	foreach my $s (@{$pn->{res}->[1]} ) {
+		print_short $s; 
+	}
+	print_short "database cache updatet"; 
 }
 
 sub cmd_reload {
 	my ($args, $server, $witem)=@_;
 	init();
+	print_short "reloadet"; 
 }
 
 sub cmd_save {
 	my ($args, $server, $witem)=@_;
 	save();
+	print_short "write to disk"; 
 }
 
-sub cmd_update {
-	my ($args, $server, $witem)=@_;
-	my $ser=update();
-	debug "fine", length $ser;
+# o scriptassist
+#   Version    : 2020042700
+#   Source     : https://scripts.irssi.org/
+#   Installed  : 2020042700
+#   Autorun    : no
+#   Authors    : Stefan 'tommie' Tomanek
+#   Contact    : stefan@pico.ruhr.de
+#   Description: keeps your scripts on the cutting edge
+# 
+#   Needed Perl modules:
+#   -> LWP::UserAgent (found)
+
+sub sinfo {
+	my ( $nl, $name, $value)=@_;
+	my $v;
+	{
+		local $Text::Wrap::columns = 60;
+		local $Text::Wrap::unexpand= 0;
+		$v =wrap('', ' 'x($nl+2+2), $value);
+	}
+	return sprintf "  %-${nl}s: %s", $name, $v;
+}
+
+sub installed_version {
+	my ( $scriptname )= @_;
+	my $r;
+	no strict 'refs';
+	#debug keys (%Irssi::Script::);
+	$r = ${ "Irssi::Script::${scriptname}::VERSION" };
+	return $r;
+}
+
+sub autorun {
+	my ( $filename )= @_;
+	my $r;
+	if ( -e Irssi::get_irssi_dir()."/scripts/autorun/$filename" ) {
+		$r=1;
+	}
+	return $r;
+}
+
+sub cmd_info {
+	my ($args, $server, $witem, @args)=@_;
+	my @r;
+	foreach my $sn ( @args ) {
+		my $fn=$sn;
+		$fn =~ s/$/\.pl/ if ( $sn !~ m/\.pl$/ );
+		foreach my $sl ( keys %{ $d->{rscripts} } ) {
+			if ( exists $d->{rscripts}->{$sl}->{$fn} ) {
+				my $n=$d->{rscripts}->{$sl}->{$fn};
+				my $iver=installed_version($sn);
+				if ( defined $iver ) {
+					push @r, "%go%n $sn";
+				} else {
+					push @r, "%ro%n $sn";
+				}
+				push @r, sinfo 11, "Version", $n->{version};
+				push @r, sinfo 11, "Source", $source{$sl}->{url_sc};
+				push @r, sinfo 11, "Installed", $iver if (defined $iver);
+				if ( defined $iver ) {
+					push @r, sinfo 11, "Autorun", autorun($fn) ? "yes" : "no";
+				}
+				push @r, sinfo 11, "Authors", $n->{authors};
+				push @r, sinfo 11, "Contact", $n->{contact};
+				push @r, sinfo 11, "Description", $n->{description};
+			}
+		}
+	}
+	print_box($IRSSI{name},"info", @r);
 }
 
 sub cmd {
 	my ($args, $server, $witem)=@_;
-	if ($args =~ m/^reload/) {
+	my @args = split /\s+/, $args;
+	my $c = shift @args;
+	if ($c eq 'reload') {
 		cmd_reload( $args, $server, $witem);
-	} elsif ($args =~ m/^save/) {
+	} elsif ($c eq 'save') {
 		cmd_save( $args, $server, $witem);
-	} elsif ($args eq 'update') {
+	} elsif ($c eq 'update') {
+		print_short "Please wait..."; 
 		background({ 
 			cmd => \&update,
 			last => [ \&print_update ],
 		});
-	} elsif ($args =~ m/^update2/) {
-		cmd_update( $args, $server, $witem);
+	} elsif ($c eq 'info') {
+		cmd_info( $args, $server, $witem, @args);
 	} else {
 		$args= $IRSSI{name};
 		cmd_help( $args, $server, $witem);
 	}
-	#if (defined $witem) {
-	#	$witem->printformat(MSGLEVEL_CLIENTCRAP, 'example_theme',
-	#		$path, $path, $path);
-	#} else {
-	#	Irssi::printformat(MSGLEVEL_CLIENTCRAP, 'example_theme',
-	#		$path, $path, $path);
-	#}
 }
 
 sub cmd_help {
@@ -235,7 +343,6 @@ sub cmd_help {
 	$args=~ s/\s+//g;
 	if ($IRSSI{name} eq $args) {
 		print_box($IRSSI{name}, "$IRSSI{name} help", $help);
-		#Irssi::print($help, MSGLEVEL_CLIENTCRAP);
 		Irssi::signal_stop();
 	}
 }
@@ -262,6 +369,7 @@ Irssi::theme_register([
 	'box_header', '%R,--[%n$*%R]%n',
 	#'box_inside', '%R|%n $*',
 	'box_footer', '%R`--<%n$*%R>->%n',
+	'short_msg', '%R>>%n $*',
 ]);
 
 Irssi::signal_add('setup changed', \&sig_setup_changed);
@@ -270,7 +378,7 @@ Irssi::signal_add('pidwait', \&sig_pidwait);
 Irssi::settings_add_str($IRSSI{name} ,$IRSSI{name}.'_path', 'scriptassist2');
 
 Irssi::command_bind($IRSSI{name}, \&cmd);
-my @cmds= qw/reload save update help/;
+my @cmds= qw/reload save update info help/;
 foreach ( @cmds ) {
 	Irssi::command_bind("$IRSSI{name} $_", \&cmd);
 }
@@ -278,3 +386,5 @@ Irssi::command_bind('help', \&cmd_help);
 
 sig_setup_changed();
 init();
+
+Irssi::print "%B>>%n $IRSSI{name} $VERSION loaded: /$IRSSI{name} help for help", MSGLEVEL_CLIENTCRAP;
