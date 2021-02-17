@@ -69,7 +69,6 @@ END
 
 # TODO
 #
-#  /scriptassist check
 #  /scriptassist update <script|all>
 #  		update != upgrade
 #  /scriptassist new <num>
@@ -383,6 +382,59 @@ sub cmd_search {
 	print_box($IRSSI{name},"search", @r);
 }
 
+sub compare_versions {
+	my ($ver1, $ver2) = @_;
+	for ($ver1, $ver2) {
+		$_ = "0:$_" unless /:/;
+	}
+	my @ver1 = split /[.:]/, $ver1;
+	my @ver2 = split /[.:]/, $ver2;
+	my $cmp = 0;
+	### Special thanks to Clemens Heidinger
+	no warnings 'uninitialized';
+	$cmp ||= $ver1[$_] <=> $ver2[$_] || $ver1[$_] cmp $ver2[$_] for 0..scalar(@ver2);
+	return 'newer' if $cmp == 1;
+	return 'older' if $cmp == -1;
+	return 'equal';
+}
+
+sub cmd_check {
+	my ($args, $server, $witem)=@_;
+	my @res;
+	my @sn;
+	my $lm;
+	foreach my $sn (keys %Irssi::Script:: ) {
+		$sn =~ s/:+$//;
+		$lm = length $sn if ( $lm < length $sn);
+		push @sn, $sn;
+	}
+	foreach my $sn (sort @sn ) {
+		my $v = installed_version $sn;
+		my $rv;
+		foreach my $sk ( keys %{ $d->{rscripts} } ) {
+			my $fn = "$sn.pl";
+			if ( exists $d->{rscripts}->{$sk}->{$fn} ) {
+				$rv= $d->{rscripts}->{$sk}->{$fn}->{version};
+			}
+		}
+		my $s;
+		if ( defined $rv ) {
+			my $r= compare_versions $v, $rv;
+			if ( $r eq 'equal' ) {
+				$s = sprintf "%%go%%n %%9%-${lm}s%%9 Up to date. ($v)", $sn;
+			} elsif ( $r eq 'newer') {
+				$s = sprintf "%%bo%%n %%9%-${lm}s%%9 Your version is newer ($v->$rv)", $sn;
+			} elsif ( $r eq 'older') {
+				$s = sprintf "%%ro%%n %%9%-${lm}s%%9 A new version is available ($v->$rv)", $sn;
+			}
+		} else {
+			$s = sprintf "%%mo%%n %%9%-${lm}s%%9 No version information available on network.", $sn;
+		}
+		push @res, $s;
+	}
+	print_box($IRSSI{name},"check", @res);
+}
+
 sub cmd {
 	my ($args, $server, $witem)=@_;
 	my @args = split /\s+/, $args;
@@ -401,6 +453,8 @@ sub cmd {
 		cmd_info( $args, $server, $witem, @args);
 	} elsif ($c eq 'search') {
 		cmd_search( $args, $server, $witem, @args);
+	} elsif ($c eq 'check') {
+		cmd_check( $args, $server, $witem);
 	} else {
 		$args= $IRSSI{name};
 		cmd_help( $args, $server, $witem);
@@ -447,7 +501,7 @@ Irssi::signal_add('pidwait', \&sig_pidwait);
 Irssi::settings_add_str($IRSSI{name} ,$IRSSI{name}.'_path', 'scriptassist2');
 
 Irssi::command_bind($IRSSI{name}, \&cmd);
-my @cmds= qw/reload save update info help/;
+my @cmds= qw/reload save update info search check help/;
 foreach ( @cmds ) {
 	Irssi::command_bind("$IRSSI{name} $_", \&cmd);
 }
