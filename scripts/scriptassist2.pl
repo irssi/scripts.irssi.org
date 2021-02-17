@@ -67,6 +67,21 @@ my $help = << "END";
   https://github.com/irssi/irssi/blob/master/docs/formats.txt
 END
 
+# TODO
+#
+#  /scriptassist check
+#  /scriptassist update <script|all>
+#  		update != upgrade
+#  /scriptassist new <num>
+#  /scriptassist contact <script>
+#  /scriptassist cpan <module>
+#  /scriptassist install <script>
+#  /scriptassist autorun <script>
+#
+#  /scriptassist rate <script>
+#  /scriptassist ratings <scripts|all>
+#  /scriptassist top <num>
+
 # config path
 my $path;
 
@@ -245,18 +260,6 @@ sub cmd_save {
 	print_short "write to disk"; 
 }
 
-# o scriptassist
-#   Version    : 2020042700
-#   Source     : https://scripts.irssi.org/
-#   Installed  : 2020042700
-#   Autorun    : no
-#   Authors    : Stefan 'tommie' Tomanek
-#   Contact    : stefan@pico.ruhr.de
-#   Description: keeps your scripts on the cutting edge
-# 
-#   Needed Perl modules:
-#   -> LWP::UserAgent (found)
-
 sub sinfo {
 	my ( $nl, $name, $value)=@_;
 	my $v;
@@ -277,7 +280,16 @@ sub installed_version {
 	return $r;
 }
 
-sub autorun {
+sub module_exist {
+	my ($module) = @_;
+	$module =~ s/::/\//g;
+	foreach (@INC) {
+		return 1 if (-e $_."/".$module.".pm");
+	}
+	return 0;
+}
+
+sub check_autorun {
 	my ( $filename )= @_;
 	my $r;
 	if ( -e Irssi::get_irssi_dir()."/scripts/autorun/$filename" ) {
@@ -305,15 +317,70 @@ sub cmd_info {
 				push @r, sinfo 11, "Source", $source{$sl}->{url_sc};
 				push @r, sinfo 11, "Installed", $iver if (defined $iver);
 				if ( defined $iver ) {
-					push @r, sinfo 11, "Autorun", autorun($fn) ? "yes" : "no";
+					push @r, sinfo 11, "Autorun", check_autorun($fn) ? "yes" : "no";
 				}
 				push @r, sinfo 11, "Authors", $n->{authors};
 				push @r, sinfo 11, "Contact", $n->{contact};
 				push @r, sinfo 11, "Description", $n->{description};
+				if ( exists $n->{modules} ) {
+					push @r, " ";
+					push @r, "  Needed Perl modules:";
+					foreach my $m ( sort split /\s+/, $n->{modules} ) {
+						if ( module_exist $m ) {
+							push @r, "   %g->%n $m (found)";
+						} else {
+							push @r, "   %r->%n $m (not found)";
+						}
+					}
+				}
+				if ( exists $n->{depends} ) {
+					push @r, " ";
+					push @r, "  Needed Irssi Scripts:";
+					foreach my $d ( sort split /\s+/, $n->{depends} ) {
+						if ( installed_version $d ) {
+							push @r, "   %g->%n $d (loaded)";
+						} else {
+							push @r, "   %r->%n $d (not loaded)";
+						}
+					}
+				}
 			}
 		}
 	}
 	print_box($IRSSI{name},"info", @r);
+}
+
+sub oneline_info {
+	my ( $search, $name, $desc, $aut )=@_;
+	my $d;
+	my $l= length( $name) +3;
+	{
+		local $Text::Wrap::columns = 60;
+		local $Text::Wrap::unexpand= 0;
+		$d =wrap('', ' 'x$l, "$desc ($aut)");
+	}
+	my $p= (installed_version $name) ? "%go%n " : "%yo%n ";
+	my $s= "$name $d";
+	$s =~ s/($search)/%U\1%n/i;
+	return $p.$s;
+}
+
+sub cmd_search {
+	my ($args, $server, $witem, @args)=@_;
+	my @r;
+	foreach my $sk ( keys %{ $d->{rscripts} }) {
+		foreach my $fn ( sort keys %{ $d->{rscripts}->{$sk} } ) {
+		my $n= $d->{rscripts}->{$sk}->{$fn};
+			if ( $fn =~ m/$args[0]/i ||
+				$n->{name} =~ m/$args[0]/i ||
+				$n->{description} =~ m/$args[0]/i ) {
+				my $sn= $fn;
+				$sn=~ s/\.pl$//;
+				push @r, oneline_info( $args[0], $sn, $n->{description}, $n->{authors});
+			}
+		}
+	}
+	print_box($IRSSI{name},"search", @r);
 }
 
 sub cmd {
@@ -332,6 +399,8 @@ sub cmd {
 		});
 	} elsif ($c eq 'info') {
 		cmd_info( $args, $server, $witem, @args);
+	} elsif ($c eq 'search') {
+		cmd_search( $args, $server, $witem, @args);
 	} else {
 		$args= $IRSSI{name};
 		cmd_help( $args, $server, $witem);
