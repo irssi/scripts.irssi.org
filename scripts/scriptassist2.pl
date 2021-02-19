@@ -9,7 +9,7 @@ use Time::Piece;
 use Digest::file qw/digest_file_hex/;
 use Digest::MD5 qw/md5_hex/;
 use Text::Wrap;
-use debug;
+#use debug;
 
 use Irssi;
 
@@ -121,7 +121,6 @@ sub background {
 
 sub sig_pipe {
    my ($pid, $pipetag) = @{$_[0]};
-   debug "sig_pipe $pid";
    if (exists $bg_process{$pid}) {
       my $fh_r= $bg_process{$pid}->{fh_r};
       $bg_process{$pid}->{res_str} .= do { local $/; <$fh_r>; };
@@ -131,7 +130,6 @@ sub sig_pipe {
 
 sub sig_pidwait {
    my ($pid, $status) = @_;
-   debug "sig_pidwait $pid";
    if (exists $bg_process{$pid}) {
       close $bg_process{$pid}->{fh_r};
       Irssi::input_remove($bg_process{$pid}->{pipetag});
@@ -273,7 +271,6 @@ sub installed_version {
    my ( $scriptname )= @_;
    my $r;
    no strict 'refs';
-   #debug keys (%Irssi::Script::);
    $r = ${ "Irssi::Script::${scriptname}::VERSION" };
    return $r;
 }
@@ -433,6 +430,46 @@ sub cmd_check {
    print_box($IRSSI{name},"check", @res);
 }
 
+sub cmd_new {
+   my ( @args )= @_;
+   my $as;
+   foreach my $sk ( keys %{ $d->{rscripts} } ) {
+      foreach my $fn ( keys %{ $d->{rscripts}->{$sk} } ) {
+         if ( exists $as->{$fn} ) {
+            if ( ($as->{$fn}->{modified} cmp $d->{rscripts}->{$sk}->{$fn}->{modified}) == -1) {
+               $as->{$fn}= $d->{rscripts}->{$sk}->{$fn};
+            }
+         } else {
+            $as->{$fn}= $d->{rscripts}->{$sk}->{$fn};
+         }
+      }
+   }
+   my $count = $args[0]*1;
+   $count=5 if ( $count <1 );
+   my @res;
+   my $mlen;
+   foreach ( sort { $as->{$b}->{modified} cmp $as->{$a}->{modified} } keys %$as ) {
+      last if ( $count==0);
+      push @res,$_;
+      $mlen = length $_ if ( $mlen < length $_ );
+      $count--;
+   }
+   my @r;
+   $mlen -= 3;
+   foreach ( @res ) {
+      my $sn=$_;
+      $sn =~ s/\.pl$//i;
+      my $p;
+      if ( installed_version $sn ) {
+         $p = "%go%n ";
+      } else {
+         $p = "%yo%n ";
+      }
+      push @r, $p.sprintf "%%9%-${mlen}s%%9 $as->{$_}->{modified}", $sn;
+   }
+   print_box($IRSSI{name},"new", @r);
+}
+
 sub cmd {
    my ($args, $server, $witem)=@_;
    my @args = split /\s+/, $args;
@@ -453,6 +490,8 @@ sub cmd {
       cmd_search( @args);
    } elsif ($c eq 'check') {
       cmd_check();
+   } elsif ($c eq 'new') {
+      cmd_new( @args );
    } else {
       $args= $IRSSI{name};
       cmd_help( $args, $server, $witem);
@@ -499,7 +538,7 @@ Irssi::signal_add('pidwait', \&sig_pidwait);
 Irssi::settings_add_str($IRSSI{name} ,$IRSSI{name}.'_path', 'scriptassist2');
 
 Irssi::command_bind($IRSSI{name}, \&cmd);
-my @cmds= qw/reload save update info search check help/;
+my @cmds= qw/reload save update info search check new help/;
 foreach ( @cmds ) {
    Irssi::command_bind("$IRSSI{name} $_", \&cmd);
 }
