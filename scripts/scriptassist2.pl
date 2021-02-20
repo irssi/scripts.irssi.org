@@ -9,7 +9,7 @@ use Time::Piece;
 use Digest::file qw/digest_file_hex/;
 use Digest::MD5 qw/md5_hex/;
 use Text::Wrap;
-#use debug;
+use debug;
 
 use Irssi;
 
@@ -71,10 +71,8 @@ END
 #
 #  /scriptassist update <script|all>
 #        update != upgrade
-#  /scriptassist new <num>
 #  /scriptassist contact <script>
 #  /scriptassist cpan <module>
-#  /scriptassist install <script>
 #  /scriptassist autorun <script>
 #
 #  /scriptassist rate <script>
@@ -111,8 +109,8 @@ sub background {
    } else {
       $cmd->{fh_r}=$fh_r;
       my $pipetag;
-        my @args = ($pid, \$pipetag );
-        $pipetag = Irssi::input_add(fileno($fh_r), Irssi::INPUT_READ, \&sig_pipe, \@args);
+      my @args = ($pid, \$pipetag );
+      $pipetag = Irssi::input_add(fileno($fh_r), Irssi::INPUT_READ, \&sig_pipe, \@args);
       $cmd->{pipetag} = $pipetag;
       $bg_process{$pid}=$cmd;
       Irssi::pidwait_add($pid);
@@ -194,16 +192,16 @@ sub save {
 
 sub fetch {
    my ($uri)= @_;
-   my $ff = File::Fetch->new (
+   my ($ff, $w, $res);
+	local $File::Fetch::WARN=0;
+   $ff = File::Fetch->new (
       uri => $uri,
    );
-   my $w;
-   eval { $w = $ff->fetch(to => $path,); };
+   $w = $ff->fetch(to => $path,); 
    if ( $w ) {
-      return $ff->file;
-   } else {
-      return undef;
+      $res= $ff->file;
    }
+   return $res;
 }
 
 sub update {
@@ -470,6 +468,63 @@ sub cmd_new {
    print_box($IRSSI{name},"new", @r);
 }
 
+sub cmd_install {
+   my ( @args )= @_;
+   my @sl;
+   foreach my $sn ( @args ) {
+      $sn =~ s/\.pl$//i;
+      my $fn ="$sn.pl";
+      my $rd;
+      foreach my $rc ( @{ $d->{rconfig} } ) {
+         if ( exists $d->{rscripts}->{$rc->{name}}->{$fn} ) {
+            $rd= $rc;
+         }
+      }
+      if ( defined $rd ) {
+         my $s="$rd->{url_sc}/$fn";
+         push @sl, $s;
+      }
+   }
+   print_short "Please wait..."; 
+   background({ 
+      cmd => \&bg_install,
+      args => [ @sl ],
+      last => [ \&print_install ],
+   });
+}
+
+sub bg_install {
+   my ( @sl )= @_;
+   my @r;
+   foreach my $url ( @sl ) {
+      my $fn=fetch( $url );
+      if (defined $fn ) {
+         if ( -e Irssi::get_irssi_dir()."/scripts/$fn" ) {
+            rename Irssi::get_irssi_dir()."/scripts/$fn", Irssi::get_irssi_dir()."/scripts/$fn.bak";
+         }
+         rename "$path/$fn", Irssi::get_irssi_dir()."/scripts/$fn";
+         push @r, $fn; 
+      }
+   }
+   return @r;
+}
+
+sub print_install {
+   my ( $pn ) = @_;
+   my @res;
+   foreach my $fn ( @{ $pn->{res} } ) {
+      my $sn= $fn;
+      $sn =~ s/\.pl$//i;
+      if ( !installed_version $sn ) {
+         Irssi::command("script load $fn");
+         push @res, "%go%n %9$sn%9 installed";
+      } else {
+         push @res, "%ro%n %9$sn%9 already loaded, please try 'update'";
+      }
+   }
+   print_box($IRSSI{name},"install", @res);
+}
+
 sub cmd {
    my ($args, $server, $witem)=@_;
    my @args = split /\s+/, $args;
@@ -492,6 +547,8 @@ sub cmd {
       cmd_check();
    } elsif ($c eq 'new') {
       cmd_new( @args );
+   } elsif ($c eq 'install') {
+      cmd_install( @args );
    } else {
       $args= $IRSSI{name};
       cmd_help( $args, $server, $witem);
@@ -538,7 +595,7 @@ Irssi::signal_add('pidwait', \&sig_pidwait);
 Irssi::settings_add_str($IRSSI{name} ,$IRSSI{name}.'_path', 'scriptassist2');
 
 Irssi::command_bind($IRSSI{name}, \&cmd);
-my @cmds= qw/reload save update info search check new help/;
+my @cmds= qw/reload save update info search check new install help/;
 foreach ( @cmds ) {
    Irssi::command_bind("$IRSSI{name} $_", \&cmd);
 }
