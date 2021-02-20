@@ -9,7 +9,7 @@ use Time::Piece;
 use Digest::file qw/digest_file_hex/;
 use Digest::MD5 qw/md5_hex/;
 use Text::Wrap;
-use debug;
+#use debug;
 
 use Irssi;
 
@@ -73,7 +73,6 @@ END
 #        update != upgrade
 #  /scriptassist contact <script>
 #  /scriptassist cpan <module>
-#  /scriptassist autorun <script>
 #
 #  /scriptassist rate <script>
 #  /scriptassist ratings <scripts|all>
@@ -163,12 +162,19 @@ sub print_short {
    Irssi::printformat(MSGLEVEL_CLIENTCRAP, 'short_msg', $str); 
 }
 
+sub installed_version {
+   my ( $scriptname )= @_;
+   my $r;
+   no strict 'refs';
+   $r = ${ "Irssi::Script::${scriptname}::VERSION" };
+   return $r;
+}
+
 sub init {
    if ( -e "$path/cache.yml" ) {
       my $yml= CPAN::Meta::YAML->read("$path/cache.yml");
       $d= $yml->[0];
    }
-      
    if ( ref($d) ne 'HASH' || ! exists $d->{rconfig} ) {
       $d= undef;
       $d->{rconfig}=();
@@ -179,9 +185,17 @@ sub init {
       $n{url_sc}="https://scripts.irssi.org/scripts";
       push @{$d->{rconfig}}, {%n};
    }
-
    foreach my $n ( @{ $d->{rconfig} } ) {
       $source{$n->{name}}= $n;
+   }
+   if ( exists $d->{autorun} ) {
+      foreach my $fn ( @{$d->{autorun}} ) {
+         my $sn= $fn;
+         $sn =~ s/\.pl$//i;
+         if (! (installed_version $sn )) {
+            Irssi::command("script load $fn");
+         }
+      }
    }
 }
 
@@ -263,14 +277,6 @@ sub sinfo {
       $v =wrap('', ' 'x($nl+2+2), $value);
    }
    return sprintf "  %-${nl}s: %s", $name, $v;
-}
-
-sub installed_version {
-   my ( $scriptname )= @_;
-   my $r;
-   no strict 'refs';
-   $r = ${ "Irssi::Script::${scriptname}::VERSION" };
-   return $r;
 }
 
 sub module_exist {
@@ -525,6 +531,44 @@ sub print_install {
    print_box($IRSSI{name},"install", @res);
 }
 
+sub cmd_autorun {
+   my ( @args )= @_;
+   foreach my $sn ( @args ){
+      $sn =~ s/\.pl$//i;
+      my $fn = "$sn.pl";
+      my $of=Irssi::get_irssi_dir()."/scripts/$fn";
+      if (Irssi::settings_get_bool($IRSSI{name}.'_autorun_link') ) {
+         my $af=Irssi::get_irssi_dir()."/scripts/autorun/$fn";
+         if (-e $af ) {
+            unlink $af;
+            print_short "Autorun of $sn disabled";
+         } else {
+            if ( -e $of ) {
+               symlink "../$fn", $af;
+               print_short "Autorun of $sn enabled";
+            }
+         }
+      } else {
+         if ( !exists $d->{autorun} ) {
+            $d->{autorun}=[];
+         }
+         my $r;
+         for (my $c=0; $c < scalar( @{ $d->{autorun} } ) ; $c++) {
+            if ($d->{autorun}->[$c] eq $fn) {
+               splice @{ $d->{autorun} } , $c ,1;
+               $r=1;
+               print_short "Autorun of $sn disabled";
+               last;
+            }
+         }
+         if (!$r && -e $of ) {
+            push @{ $d->{autorun} }, $fn;
+            print_short "Autorun of $sn enabled";
+         }
+      }
+   }
+}
+
 sub cmd {
    my ($args, $server, $witem)=@_;
    my @args = split /\s+/, $args;
@@ -549,6 +593,8 @@ sub cmd {
       cmd_new( @args );
    } elsif ($c eq 'install') {
       cmd_install( @args );
+   } elsif ($c eq 'autorun') {
+      cmd_autorun( @args );
    } else {
       $args= $IRSSI{name};
       cmd_help( $args, $server, $witem);
@@ -593,9 +639,10 @@ Irssi::signal_add('setup changed', \&sig_setup_changed);
 Irssi::signal_add('pidwait', \&sig_pidwait);
 
 Irssi::settings_add_str($IRSSI{name} ,$IRSSI{name}.'_path', 'scriptassist2');
+Irssi::settings_add_bool($IRSSI{name} ,$IRSSI{name}.'_autorun_link', 1);
 
 Irssi::command_bind($IRSSI{name}, \&cmd);
-my @cmds= qw/reload save update info search check new install help/;
+my @cmds= qw/reload save update info search check new install autorun help/;
 foreach ( @cmds ) {
    Irssi::command_bind("$IRSSI{name} $_", \&cmd);
 }
