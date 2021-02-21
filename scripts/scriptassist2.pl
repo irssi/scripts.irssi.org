@@ -9,7 +9,7 @@ use Time::Piece;
 use Digest::file qw/digest_file_hex/;
 use Digest::MD5 qw/md5_hex/;
 use Text::Wrap;
-#use debug;
+use debug;
 
 use Irssi;
 
@@ -69,8 +69,6 @@ END
 
 # TODO
 #
-#  /scriptassist update <script|all>
-#        update != upgrade
 #  /scriptassist contact <script>
 #  /scriptassist cpan <module>
 #
@@ -87,6 +85,7 @@ my $d;
 # ->{rconfig}->@
 # ->{rscripts}->%
 # ->{rstat}->%
+# ->{autorun}->@
 
 # links to $d->{rconfig}->@
 my %source;
@@ -218,7 +217,7 @@ sub fetch {
    return $res;
 }
 
-sub update {
+sub getmeta {
    my @msg;
    foreach my $n ( @{ $d->{rconfig} } ) {
       my $fn=fetch( $n->{url_db} );
@@ -245,7 +244,7 @@ sub update {
    return $d, [@msg] ;
 }
 
-sub print_update {
+sub print_getmeta {
    my ( $pn ) = @_;
    # write back to main!
    $d= $pn->{res}->[0] ;
@@ -540,8 +539,12 @@ sub cmd_autorun {
       if (Irssi::settings_get_bool($IRSSI{name}.'_autorun_link') ) {
          my $af=Irssi::get_irssi_dir()."/scripts/autorun/$fn";
          if (-e $af ) {
-            unlink $af;
-            print_short "Autorun of $sn disabled";
+            if ( -l $af ) {
+               unlink $af;
+               print_short "Autorun of $sn disabled";
+            } else {
+               print_short "$fn is not a symlink";
+            }
          } else {
             if ( -e $of ) {
                symlink "../$fn", $af;
@@ -569,6 +572,78 @@ sub cmd_autorun {
    }
 }
 
+sub cmd_update {
+   my ( @args )= @_;
+   my @sn;
+   if ( $args[0] eq 'all' ) {
+      foreach my $sn (keys %Irssi::Script:: ) {
+         $sn =~ s/:+$//;
+         push @sn, $sn;
+      }
+   } else {
+      foreach my $sn ( @args ) {
+         $sn =~ s/\.pl$//i;
+         push @sn, $sn;
+      }
+   }
+   my @r;
+   my @current;
+   foreach my $sn ( @sn ) {
+      my $fn = "$sn.pl";
+      my $iv= installed_version $sn;
+      my $rv;
+      foreach my $n (  @{ $d->{rconfig} } ) {
+         my $sk= $n->{name};
+         if ( exists $d->{rscripts}->{$sk}->{$fn} ) {
+            $rv=$d->{rscripts}->{$sk}->{$fn}->{version};
+            if ( ($iv cmp $rv) == -1 ) {
+               push @r, "$n->{url_sc}/$fn";
+            } else {
+               push @current, $sn;
+            }
+            last;
+         }
+      }
+   }
+   print_short "Please wait..."; 
+   background({ 
+      cmd => \&bg_install,
+      args => [ @r ],
+      current => [ @current ],
+      last => [ \&print_update ],
+   });
+}
+
+sub print_update {
+   my ( $pn ) = @_;
+   my %res;
+   my @r;
+   my $mlen;
+   foreach my $fn ( @{ $pn->{res} } ) {
+      $mlen= length $fn if $mlen < length $fn;
+   }
+   $mlen -= 3;
+   foreach my $sn ( @{ $pn->{current} } ) {
+      $mlen= length $sn if $mlen < length $sn;
+   }
+   foreach my $fn ( @{ $pn->{res} } ) {
+      my $sn= $fn;
+      $sn =~ s/\.pl$//i;
+      my $ov= installed_version $sn;
+      Irssi::command("script load $fn");
+      my $nv= installed_version $sn;
+      $res{$sn}= "%yo%n %9".sprintf("%-${mlen}s",$sn)."%9 upgradet ($ov->$nv)";
+   }
+   foreach my $sn ( @{ $pn->{current} } ) {
+      my $v= installed_version $sn;
+      $res{$sn}= "%go%n %9".sprintf("%-${mlen}s",$sn)."%9 already at the latest version ($v)";
+   }
+   foreach my $sn (sort keys %res ) {
+      push @r, $res{$sn};
+   }
+   print_box($IRSSI{name},"update", @r);
+}
+
 sub cmd {
    my ($args, $server, $witem)=@_;
    my @args = split /\s+/, $args;
@@ -577,11 +652,11 @@ sub cmd {
       cmd_reload( );
    } elsif ($c eq 'save') {
       cmd_save( );
-   } elsif ($c eq 'update') {
+   } elsif ($c eq 'getmeta') {
       print_short "Please wait..."; 
       background({ 
-         cmd => \&update,
-         last => [ \&print_update ],
+         cmd => \&getmeta,
+         last => [ \&print_getmeta ],
       });
    } elsif ($c eq 'info') {
       cmd_info( @args);
@@ -595,6 +670,8 @@ sub cmd {
       cmd_install( @args );
    } elsif ($c eq 'autorun') {
       cmd_autorun( @args );
+   } elsif ($c eq 'update') {
+      cmd_update( @args );
    } else {
       $args= $IRSSI{name};
       cmd_help( $args, $server, $witem);
@@ -642,7 +719,7 @@ Irssi::settings_add_str($IRSSI{name} ,$IRSSI{name}.'_path', 'scriptassist2');
 Irssi::settings_add_bool($IRSSI{name} ,$IRSSI{name}.'_autorun_link', 1);
 
 Irssi::command_bind($IRSSI{name}, \&cmd);
-my @cmds= qw/reload save update info search check new install autorun help/;
+my @cmds= qw/reload save getmeta info search check new install autorun update help/;
 foreach ( @cmds ) {
    Irssi::command_bind("$IRSSI{name} $_", \&cmd);
 }
