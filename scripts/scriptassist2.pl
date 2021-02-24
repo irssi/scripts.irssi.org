@@ -9,7 +9,7 @@ use Time::Piece;
 use Digest::file qw/digest_file_hex/;
 use Digest::MD5 qw/md5_hex/;
 use Text::Wrap;
-use debug;
+#use debug;
 
 use Irssi;
 
@@ -68,9 +68,6 @@ my $help = << "END";
 END
 
 # TODO
-#
-#  /scriptassist contact <script>
-#  /scriptassist cpan <module>
 #
 #  /scriptassist rate <script>
 #  /scriptassist ratings <scripts|all>
@@ -164,9 +161,22 @@ sub print_short {
 sub installed_version {
    my ( $scriptname )= @_;
    my $r;
-   no strict 'refs';
-   $r = ${ "Irssi::Script::${scriptname}::VERSION" };
+   if ( exists $Irssi::Script::{"${scriptname}::"} ) {
+      no strict 'refs';
+      $r = ${ "Irssi::Script::${scriptname}::VERSION" };
+   }
    return $r;
+}
+
+sub call_openurl {
+   my ($url) = @_;
+   # check for a loaded openurl
+   if (my $code = Irssi::Script::openurl::->can('launch_url')) {
+      $code->($url);
+   } else {
+      print_short "Please install openurl.pl";
+      print_short "   or open < $url > manually";
+   }
 }
 
 sub init {
@@ -300,8 +310,8 @@ sub cmd_info {
    my ( @args)=@_;
    my @r;
    foreach my $sn ( @args ) {
-      my $fn=$sn;
-      $fn =~ s/$/\.pl/ if ( $sn !~ m/\.pl$/ );
+      $sn =~ s/\.pl$//i;
+      my $fn="$sn.pl";
       foreach my $sl ( keys %{ $d->{rscripts} } ) {
          if ( exists $d->{rscripts}->{$sl}->{$fn} ) {
             my $n=$d->{rscripts}->{$sl}->{$fn};
@@ -644,6 +654,35 @@ sub print_update {
    print_box($IRSSI{name},"update", @r);
 }
 
+sub cmd_cpan {
+   my ( @args )= @_;
+	call_openurl('http://search.cpan.org/search?mode=module&query='.$args[0]);
+}
+
+sub cmd_contact {
+   my ( @args )= @_;
+   my ($sn)= @args;
+   $sn =~ s/\.pl//i;
+   my $fn= "$sn.pl";
+   my $iv= installed_version $sn;
+   my $aut;
+   foreach my $sk (keys %{ $d->{rscripts}} ) {
+      if ( exists $d->{rscripts}->{$sk}->{$fn} ) {
+         if ( exists $d->{rscripts}->{$sk}->{$fn}->{contact} ) {
+            $aut= $d->{rscripts}->{$sk}->{$fn}->{contact};
+            last;
+         }
+      }
+   }
+   my @ml = $aut =~ m/([\w.]+?@[\w.]+)[\s,>\|]*/g;
+   if ( scalar(@ml) > 0 ) {
+      my $murl = $ml[0];
+      $murl .= "?subject=$sn";
+      $murl .= "_$iv" if (defined $iv);
+      call_openurl $murl;
+   }
+}
+
 sub cmd {
    my ($args, $server, $witem)=@_;
    my @args = split /\s+/, $args;
@@ -672,7 +711,11 @@ sub cmd {
       cmd_autorun( @args );
    } elsif ($c eq 'update') {
       cmd_update( @args );
-   } else {
+   } elsif ($c eq 'cpan') {
+      cmd_cpan( @args );
+   } elsif ($c eq 'contact') {
+      cmd_contact( @args );
+   } elsif ($c eq 'help') {
       $args= $IRSSI{name};
       cmd_help( $args, $server, $witem);
    }
@@ -717,11 +760,18 @@ Irssi::signal_add('pidwait', \&sig_pidwait);
 
 Irssi::settings_add_str($IRSSI{name} ,$IRSSI{name}.'_path', 'scriptassist2');
 Irssi::settings_add_bool($IRSSI{name} ,$IRSSI{name}.'_autorun_link', 1);
+Irssi::settings_add_bool($IRSSI{name}, $IRSSI{name}.'_integrate', 1);
 
+my @cmds= qw/reload save getmeta info search check new install autorun update cpan contact help/;
 Irssi::command_bind($IRSSI{name}, \&cmd);
-my @cmds= qw/reload save getmeta info search check new install autorun update help/;
 foreach ( @cmds ) {
    Irssi::command_bind("$IRSSI{name} $_", \&cmd);
+}
+if ( Irssi::settings_get_bool($IRSSI{name}.'_integrate')) {
+   Irssi::command_bind('script', \&cmd);
+   foreach ( @cmds ) {
+      Irssi::command_bind("script $_", \&cmd);
+   }
 }
 Irssi::command_bind('help', \&cmd_help);
 
