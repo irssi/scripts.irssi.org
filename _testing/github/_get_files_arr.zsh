@@ -5,7 +5,7 @@ if [[ $GITHUB_REF != refs/heads/master ]] {
     scriptfiles=($(git diff --numstat --no-renames origin/master|cut -f3|grep '^scripts/.*\.pl'))
     IFS=$OIFS
     if [[ $#scriptfiles -gt 0 ]] {
-	filelist=($scriptfiles)
+        filelist=($scriptfiles)
     }
 } \
 elif [[ $USE_ARTEFACTS_CACHE = yes ]] {

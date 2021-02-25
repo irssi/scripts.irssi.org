@@ -5,7 +5,7 @@ if [[ $TRAVIS_PULL_REQUEST != false ]] {
     scriptfiles=($(git diff --numstat --no-renames $TRAVIS_BRANCH|cut -f3|grep '^scripts/.*\.pl'))
     IFS=$OIFS
     if [[ $#scriptfiles -gt 0 ]] {
-	filelist=($scriptfiles)
+        filelist=($scriptfiles)
     }
 } \
 elif [[ $USE_ARTEFACTS_CACHE = yes ]] {

@@ -4,7 +4,7 @@
 use strict;
 
 use vars qw($VERSION %IRSSI);
-$VERSION = '20180321';
+$VERSION = '20210126';
 %IRSSI = (
     authors     => 'Stefan \'tommie\' Tomanek, bw1',
     contact     => 'bw1@aol.at',
@@ -13,7 +13,8 @@ $VERSION = '20180321';
     license     => 'GPLv2',
     url         => 'http://irssi.org/scripts/',
     modules     => 'Mojo::UserAgent Encode JSON::PP Mojo::DOM Getopt::Long POSIX',
-    commands	=> "leodict"
+    commands	=> "leodict",
+    selfcheckcmd=> 'leodict -chec',
 );
 use vars qw($forked);
 use utf8;
@@ -35,6 +36,7 @@ my $paste;
 my $word;
 my $dir;
 my $ddir= '';
+my $check;
 
 # for fork
 my $ftext;
@@ -76,6 +78,7 @@ DESCRIPTION
   -ru   Russian
   -pt   Portuguese
   -pl   Polish
+  -chec selfcheck
 SETTINGS
   'leodict_default_options'
     example: -it -from
@@ -221,6 +224,7 @@ sub pipe_input ($) {
 sub show_translations($$) {
     my %trans = %{$_[0]};
     my $word = $_[1];
+    self_check(\%trans) if ( defined $check );
     if (%trans) {
 	my $text;
 	foreach my $k (keys %trans) {
@@ -296,6 +300,7 @@ my %options = (
     "h" => \$help,
     "b" => \$browse,
     "p" => \$paste,
+    "chec" => \$check,
 );
 
 sub cmd_leodict ($$$) {
@@ -309,6 +314,7 @@ sub cmd_leodict ($$$) {
     undef $help;
     undef $browse;
     undef $paste;
+    undef $check;
 
     my ($ret, $arg) = GetOptionsFromString($args, %options);
 
@@ -329,10 +335,33 @@ sub cmd_leodict ($$$) {
 	return unless defined $witem;
 	return unless defined $server;
 	translate($url, $witem->{name}, $witem->{server}->{tag});
+    } elsif (defined $check) {
+	$url=$burl.'englisch-deutsch/'.'tree'.$dir;
+	translate($url,'', '');
     } else {
 	#show_translations($_);
 	translate($url,'', '');
     }
+}
+
+sub self_check {
+    my ( $tr ) =@_;
+    my $s='ok';
+    Irssi::print("selfcheck: categorys ".scalar( keys %$tr ));
+    my $count=0;
+    foreach my $n ( keys %$tr ) {
+	Irssi::print("selfcheck: category $n ".scalar( @{$tr->{$n}} ));
+	$count +=scalar( @{$tr->{$n}} );
+    }
+    Irssi::print("selfcheck: results $count");
+    if ( scalar( keys %$tr ) <4 ) {
+	$s='Error: categorys ('.scalar( keys %$tr ).')';
+    } elsif ( $count < 35 ) {
+	$s="Error: results ($count)";
+    }
+    Irssi::print("selfcheck: $s");
+    my $schs_version = $Irssi::Script::selfcheckhelperscript::VERSION;
+    Irssi::command("selfcheckhelperscript $s") if ( defined $schs_version );
 }
 
 sub sig_setup_changed {

@@ -27,7 +27,7 @@ use Irssi 20021105;
 use Irssi::TextUI;
 
 use vars qw($VERSION %IRSSI);
-$VERSION = '0.0.5';
+$VERSION = '0.0.6';
 %IRSSI = (
     authors     => 'Marcus Rueckert',
     contact     => 'darix@irssi.org',
@@ -36,8 +36,25 @@ $VERSION = '0.0.5';
     sbitems     => 'inputlength',
     license     => 'BSD License or something more liberal',
     url         => 'http://www.irssi.de./',
-    changed     => '2003-01-13T13:17:44Z'
+    changed     => '2021-01-11'
 );
+
+my $help = << "END";
+%9Name%9
+  $IRSSI{name}
+%9Version%9
+  $VERSION
+%9Description%9
+  $IRSSI{description}
+
+  To activate the inputlength indicator do:
+    /STATUSBAR window add inputlength
+  Statusbar syntax was changed in Irssi 1.2.
+    /STATUSBAR ADDITEM inputlength window
+%9Settings%9
+  /set inputlength_width 0
+  /set inputlength_padding_char
+END
 
 sub beancounter {
     my ( $sbItem, $get_size_only ) = @_;
@@ -103,3 +120,14 @@ Irssi::settings_add_str ( 'inputlength', 'inputlength_padding_char', " " );
 #  you can use any char you like here. :) even numbers should work
 #
 
+sub cmd_help {
+	my ($args, $server, $witem)=@_;
+	$args=~ s/\s+//g;
+	if ($IRSSI{name} eq $args) {
+		Irssi::print($help, MSGLEVEL_CLIENTCRAP);
+		Irssi::signal_stop();
+	}
+}
+
+Irssi::command_bind('help', \&cmd_help);
+Irssi::command_bind($IRSSI{name}, sub { cmd_help($IRSSI{name}); } );

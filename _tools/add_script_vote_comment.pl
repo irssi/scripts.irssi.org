@@ -68,12 +68,12 @@ for my $sc (sort { $a->{modified} cmp $b->{modified} } @$x) {
     my %sc = %$sc;
     #sleep 1;
     my $res = p("https://$cred{user}:$cred{pass}\@api.github.com/repos/$cred{user}/scripts.irssi.org/issues/$issue/comments"
-		=> {Accept => "*/*"}
-		=> json
-		=> {
-		    body => "$sc{filename}\n---\n$sc{description}\n\nClick on ![+😃](https://user-images.githubusercontent.com/5665186/52212818-af6a7480-288d-11e9-9e48-4822b0a8efce.png) :+1: :-1: to add your votes"
-		}
-	       );
+                => {Accept => "*/*"}
+                => json
+                => {
+                    body => "$sc{filename}\n---\n$sc{description}\n\nClick on ![+😃](https://user-images.githubusercontent.com/5665186/52212818-af6a7480-288d-11e9-9e48-4822b0a8efce.png) :+1: :-1: to add your votes"
+                }
+               );
     say $res->code;
     unless ($res->code == 201) { say $res->body; exit 1; }
     exit;

@@ -1,13 +1,14 @@
 use strict;
 use vars qw($VERSION %IRSSI);
 
+use POSIX;
 use Irssi;
 use HTTP::Request::Common;
 use LWP::UserAgent;
 use Storable qw/store_fd fd_retrieve/;
 use File::Glob qw/:bsd_glob/;
 
-$VERSION = '0.01';
+$VERSION = '0.04';
 %IRSSI = (
     authors	=> 'bw1',
     contact	=> 'bw1@aol.at',
@@ -15,9 +16,10 @@ $VERSION = '0.01';
     description	=> 'upload file to https://0x0.st/',
     license	=> 'ISC',
     url		=> 'https://scripts.irssi.org/',
-    changed	=> '2019-07-08',
-    modules => 'HTTP::Request::Common LWP::UserAgent Storable File::Glob',
+    changed	=> '2021-01-13',
+    modules => 'POSIX HTTP::Request::Common LWP::UserAgent Storable File::Glob',
     commands=> '0x0st',
+    selfcheckcmd=> '0x0st -c',
 );
 
 my $help = << "END";
@@ -26,12 +28,14 @@ my $help = << "END";
 %9Version%9
   $VERSION
 %9Syntax%9
-  /0x0st [-p] [-s|-u] [URL|file]
+  /0x0st [-p] [-s <URL> | -u <URL> | file ]
+  /0x0st -c
 %9Description%9
   $IRSSI{description}
     -p past url to channel
     -s shorten url
     -u file from url
+    -c self check
 %9See also%9
   https://0x0.st/
   https://github.com/lachs0r/0x0
@@ -42,6 +46,7 @@ my $test_str;
 my $base_uri;
 
 my %bg_process= ();
+my $self_check_timer;
 
 sub background {
 	my ($cmd) =@_;
@@ -88,8 +93,9 @@ sub upload {
 				{file=>[$filename]}
 		);
 		my $res= $re->content;
+		my $code= $re->code();
 		chomp $res;
-		return $res;
+		return $res, $code;
 	}
 }
 
@@ -100,8 +106,9 @@ sub url {
 			{url=> $url}
 	);
 	my $res= $re->content;
+	my $code= $re->code();
 	chomp $res;
-	return $res;
+	return $res, $code;
 }
 
 sub shorten {
@@ -111,14 +118,15 @@ sub shorten {
 			{shorten=> $url}
 	);
 	my $res= $re->content;
+	my $code= $re->code();
 	chomp $res;
-	return $res;
+	return $res, $code;
 }
 
 sub past2channel {
 	my ($cmd) = @_;
 	my $witem = $cmd->{witem};
-	if (defined $witem) {
+	if (defined $witem && (int($cmd->{res}[1] / 100) == 2)) {
 		$witem->command("msg * $cmd->{res}[0]");
 	} else {
 		Irssi::print($cmd->{res}[0],MSGLEVEL_CLIENTCRAP);
@@ -143,6 +151,12 @@ sub cmd {
 			$cmd->{cmd}=\&shorten;
 			$cmd->{args}=[$arg];
 			background( $cmd );
+		} elsif (exists $opt->{c}) {
+			$cmd->{cmd}=\&shorten;
+			$cmd->{args}=['https://scripts.irssi.org/'];
+			$cmd->{last}=[\&self_check];
+			$self_check_timer= Irssi::timeout_add_once(2000, \&self_check, '');
+			background( $cmd );
 		} else {
 			$cmd->{cmd}=\&upload;
 			$cmd->{args}=[$arg];
@@ -151,6 +165,29 @@ sub cmd {
 	} else {
 		cmd_help($IRSSI{'name'});
 	}
+}
+
+sub self_check {
+	my ( $arg )=@_;
+	my $s='ok';
+	my @res;
+	if ( ref($arg) ne 'HASH' ) {
+		$s = 'Error: timeout';
+	} else {
+		@res= @{$arg->{res}};
+		Irssi::timeout_remove($self_check_timer);
+		Irssi::print("0x0st: surl: $res[0] stat: $res[1]", MSGLEVEL_CLIENTCRAP);
+		if ( 2 != scalar (@res ) ) {
+			$s = 'Error: arg count';
+		} elsif ( $res[1] != 200 ) {
+			$s = "Error: HTTP status code ($res[1])";
+		} elsif ( $res[0] !~ m/^http/ ) {
+			$s = "Error: result ($res[0])";
+		}
+	}
+	Irssi::print("0x0st: selfckeck $s", MSGLEVEL_CLIENTCRAP);
+	my $schs_version = $Irssi::Script::selfcheckhelperscript::VERSION;
+	Irssi::command("selfcheckhelperscript $s") if (defined $schs_version);
 }
 
 sub cmd_help {
@@ -173,6 +210,6 @@ Irssi::settings_add_str($IRSSI{name} ,$IRSSI{name}.'_base_uri', 'https://0x0.st/
 
 Irssi::command_bind($IRSSI{name}, \&cmd);
 Irssi::command_bind('help', \&cmd_help);
-Irssi::command_set_options($IRSSI{name},"p u s");
+Irssi::command_set_options($IRSSI{name},"p u s c");
 
 sig_setup_changed();

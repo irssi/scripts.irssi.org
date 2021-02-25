@@ -5,7 +5,7 @@ use Irssi;
 use Irssi::Irc;
 use vars qw($VERSION %IRSSI);
 
-$VERSION = "1.2";
+$VERSION = "1.3";
 %IRSSI = (
     authors     => 'Nathan Handler, Joseph Price',
     contact     => 'nathan.handler@gmail.com, pricechild@ubuntu.com',
@@ -14,7 +14,7 @@ $VERSION = "1.2";
     license     => 'GPLv3+',
 );
 
-my($channel,$person,$nick,$user,$host,$real,$account,$string,$issues,$running,@jchannels,@jchannelstocheck);
+my($channel,$person,$nick,$user,$host,$real,$account,$string,$issues,$running,@jchannels,@jchannelstocheck,$debug);
 
 $running=0;
 
@@ -31,6 +31,7 @@ sub bansearch {
 
         #Clear variables and register redirects
         &reset();
+        $debug = Irssi::settings_get_bool('bansearch_debug');
 
         #Split command arguments into a nick and a channel separated by a space
 	($person,$channel)=split(/ /, $data, 2);
@@ -106,7 +107,7 @@ sub RPL_BANLIST {
     $maskreg=~s/\*/\.\*\?/g;
 
     #We only want to display who set the ban/quiet if it is listed as a person
-    if($setby=~m/^.*?\.freenode\.net$/i) {
+    if($setby!~m/!/) {
 	$setby='';
     }
     else {
@@ -121,7 +122,7 @@ sub RPL_BANLIST {
 		$issues++;
 	    }
 	    else {
-#		Irssi::active_win()->print("$type against \x02$mask\x02 does NOT match $account" . $setby);
+		Irssi::active_win()->print("$type against \x02$mask\x02 in $banchannel does NOT match $account" . $setby) if $debug;
 	    }
 	}
 	# cannot join other channel
@@ -138,13 +139,24 @@ sub RPL_BANLIST {
 	}
 	# any logged-in user
 	if($maskreg=~m/^\$a$/i) {
-	    if($account=~m/^0$/) {
+	    if($account!~m/^0$/) {
 		Irssi::active_win()->print(
-		    "$type against \x02$mask\x02 in $banchannel matches unidentified user." . $setby);
+		    "$type against \x02$mask\x02 in $banchannel matches identified user" . $setby);
 		$issues++;
 	    }
 	    else {
-#		Irssi::active_win()->print("$type against \x02$mask\x02 does NOT match $account" . $setby);
+		Irssi::active_win()->print("$type against \x02$mask\x02 in $banchannel does NOT match unidentified user" . $setby) if $debug;
+	    }
+	}
+	# any unidentified user
+	if($maskreg=~m/^\$\~a$/i) {
+	    if($account=~m/^0$/) {
+		Irssi::active_win()->print(
+		    "$type against \x02$mask\x02 in $banchannel matches unidentified user" . $setby);
+		$issues++;
+	    }
+	    else {
+		Irssi::active_win()->print("$type against \x02$mask\x02 in $banchannel does NOT match identified user" . $setby) if $debug;
 	    }
 	}
 	# ircname
@@ -155,19 +167,19 @@ sub RPL_BANLIST {
 		$issues++;
 	    }
 	    else {
-#		Irssi::active_win()->print("$type against \x02$mask\x02 does NOT match real name of $real" . $setby);
+		Irssi::active_win()->print("$type against \x02$mask\x02 in $banchannel does NOT match real name of $real" . $setby) if $debug;
 	    }
 	}
 	# full match
 	if($maskreg=~m/^\$x:(.*?)$/i) {
-	    my $full = "$nick!user\@host\#$real";
+	    my $full = "$nick!$user\@$host\#$real";
 	    if($full=~m/^$1$/i) {
 		Irssi::active_win()->print(
 		    "$type against \x02$mask\x02 in $banchannel matches $full" . $setby);
 		$issues++;
 	    }
 	    else {
-#		Irssi::active_win()->print("$type against \x02$mask\x02 does NOT match $full" . $setby);
+		Irssi::active_win()->print("$type against \x02$mask\x02 in $banchannel does NOT match $full" . $setby) if $debug;
 	    }
 	}
     }
@@ -177,7 +189,7 @@ sub RPL_BANLIST {
 	    $issues++;
 	}
 	else {
-#	    Irssi::active_win()->print("$type against \x02$mask\x02 does NOT match $string" . $setby);
+	    Irssi::active_win()->print("$type against \x02$mask\x02 in $banchannel does NOT match $string" . $setby) if $debug;
 	}
     }
 }
@@ -199,12 +211,6 @@ sub RPL_ENDOFBANLIST {
 		$server->send_raw("MODE $channel q");
 	}
 	elsif($data=~m/^Quiet/) {
-		$server->redirect_event('mode channel',1, $channel, 0, undef,
-		{
-		  'event 324' => 'redir rpl_channelmodeis',
-		  '' => 'event empty',
-		}
-		);
 		if (@jchannelstocheck) {
 			my $nextchannel = pop(@jchannelstocheck);
 			$server->redirect_event('mode b',1, $nextchannel, 0, undef, 
@@ -217,6 +223,12 @@ sub RPL_ENDOFBANLIST {
 			);
 			$server->send_raw("MODE $nextchannel b");
 		} else {
+			$server->redirect_event('mode channel',1, $channel, 0, undef,
+			{
+			  'event 324' => 'redir rpl_channelmodeis',
+			  '' => 'event empty',
+			}
+			);
 			$server->send_raw("MODE $channel");
 		}
 	}
@@ -404,5 +416,6 @@ sub register_redirects {
 }
 
 Irssi::command_bind('bansearch', 'bansearch');
+Irssi::settings_add_bool('bansearch', 'bansearch_debug', 0);
 
 # vim:set ts=8 sw=4:

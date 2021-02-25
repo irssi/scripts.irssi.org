@@ -6,7 +6,7 @@ use JSON::PP;
 use strict;
 use vars qw($VERSION %IRSSI);
 
-$VERSION = '2.00';
+$VERSION = '2.01';
 %IRSSI = (
     authors     => 'bw1',
     contact     => 'bw1@aol.at',
@@ -16,6 +16,7 @@ $VERSION = '2.00';
     url		=> 'https://scripts.irssi.org/',
     modules => '',
     commands=> 'google',
+    selfcheckcmd=> 'google -check',
 );
 
 my $help = << "END";
@@ -28,6 +29,7 @@ my $help = << "END";
             [-n|-count N] [-s|-start] <KEYWORD>
   /google {-h|-help}
   /google {-p|-say N}
+  /google -check
 %9Description%9
   $IRSSI{description}
   first author: Oddbjørn Kvalsund
@@ -40,11 +42,12 @@ my $help = << "END";
   -s|-start     start at the Nth result
   -h|-help      show this help message
   -p|-say       say the N url in channel
+  -check        self check
 %9See also%9
   https://github.com/jarun/googler
 END
 
-my ($copt, $tld, $lang, $count, $start, $chelp, $say);
+my ($copt, $tld, $lang, $count, $start, $chelp, $say, $check);
 my %options = (
 	'N'=> sub {$copt .= '--news '},
 	'news'=> sub {$copt .= '--news '},
@@ -62,6 +65,7 @@ my %options = (
 	'help' => \$chelp,
 	'p=o' => \$say,
 	'say=o' => \$say,
+	'check' => \$check,
 );
 
 ## Usage:
@@ -72,6 +76,8 @@ my %options = (
 ##   Version 0.1 - Initial release
 ## - 2019-08-04
 ##   Version 2.0 - Change to googler
+## - 2021-01-26
+##   Version 2.01 - self check
 ## -------------------------------
 
 my (%readex, $instr, $errstr, @res);
@@ -146,6 +152,7 @@ sub cmd {
 			$cmd .="--lang $lang " if (defined $lang);
 			$cmd .="--count $count " if (defined $count);
 			$cmd .="--start $start " if (defined $start);
+			$cmd .="irssi " if (defined $check);
 			$cmd .="$copt " if (defined $copt);
 			$cmd .=join(" ",@{$arg});
 			Irssi::print(">$cmd<", MSGLEVEL_CLIENTCRAP);
@@ -161,9 +168,29 @@ sub cmd {
 	$say=undef;
 }
 
+sub self_check {
+	my @r =@_;
+	my $s="ok";
+	$check=undef;
+	Irssi::print("Selfcheck: results: ".scalar @r);
+	Irssi::print("Selfcheck: url: ".$r[0]->{url});
+	Irssi::print("Selfcheck: title: ".$r[0]->{title});
+	if ( scalar(@r) < 6 ) {
+		$s="Error: results (".scalar @r.")";
+	} elsif ( $r[0]->{url} !~ m/^http/ ) {
+		$s="Error: url (".$r[0]->{url}.")";
+	} elsif ( length($r[0]->{title}) < 4) {
+		$s="Error: title (".$r[0]->{title}.")";
+	}
+	Irssi::print("Selfcheck: $s");
+	my $schs_version = $Irssi::Script::selfcheckhelperscript::VERSION;
+	Irssi::command("selfcheckhelperscript $s") if ( defined $schs_version );
+}
+
 sub print_all {
 	if( length($errstr) <1 ) {
 		@res= @{decode_json($instr)};
+		self_check(@res) if (defined $check);
 		Irssi::print("/---- google ----", MSGLEVEL_CLIENTCRAP);
 		my $c=1;
 		foreach my $r (@res) {

@@ -50,6 +50,9 @@ Removes the given alias.
 
 Additionally, all aliases added are linked to perlalias.pl: if it is unloaded, the aliases will be removed.
 
+Note: any signals or commands you add in the alias get removed after the alias finishes executing, similar to /script exec.
+To keep a signal or command registered in your alias, enclose it inside a BEGIN{} or UNITCHECK{} block.
+
 Aliases can be saved and reloaded with the usual /save and /reload (including autosave). Saved aliases are loaded at script load.
 
 =head2 ChangeLog
@@ -72,10 +75,11 @@ use Carp ();
 
 #use Cwd;
 use POSIX qw(strftime);
+use File::Temp;
 
 { package Irssi::Nick; } # Keeps trying to look for this package but for some reason it doesn't get loaded.
 
-our $VERSION = '1.2';
+our $VERSION = '1.3';
 our %IRSSI = (
 	authors => 'aquanight',
 	contact => 'aquanight@gmail.com',
@@ -89,6 +93,8 @@ my %cmds; # Contains command entries. The entry has three items:
 	# textcmd => Plaintext of the command to execute, which is used for loading/saving
 	# cmpcmd => Compiled command, for executing.
 	# tag => Our tag which we need to remove the command
+	# signals => captures signal_add() during script preparation (e.g. BEGIN{} blocks)
+	# commands => capture command_bind() during script preparation (e.g. BEGIN{} blocks)
 
 # Package we execute all the commands within, to keep them away from our bits.
 package Irssi::Script::perlalias::aliaspkg {
@@ -96,6 +102,22 @@ package Irssi::Script::perlalias::aliaspkg {
 
 sub DESTROY {
 	Symbol::delete_package("Irssi::Script::perlalias::aliaspkg::");
+	# Because we capture signal_add/command_bind calls and re-invoke them within our package, we should NOT need to do a general sweep
+	# because irssi should take care of that?
+}
+
+# These capture signal_add* and command_bind* invocations that occur during alias compilation (via BEGIN{}s) and execution.
+
+sub capture_signal_command {
+	my ($cmd, $irssi_proc, $store) = @_;
+	my $capture_handler = sub {
+		#exists $cmds{$cmd} or return;
+		#defined $cmds{$cmd}->{cmpcmd} or return;
+		#Carp::cluck "Capturing attempt to add signal";
+		$irssi_proc->(@_);
+		push @$store, $_[0], $_[1];
+	};
+	return $capture_handler;
 }
 
 # Alias executor
@@ -104,24 +126,74 @@ sub exec_perlalias {
 	exists $cmds{$cmd} or return;
 	defined $cmds{$cmd}->{cmpcmd} or return;
 	local $_ = $data;
+	my @signals;
+	my @commands;
+	no warnings 'redefine'; # Shut up about monkey patching
+	local *Irssi::signal_add = capture_signal_command($cmd, Irssi->can("signal_add"), \@signals);
+	local *Irssi::signal_add_first = capture_signal_command($cmd, Irssi->can("signal_add_first"), \@signals);
+	local *Irssi::signal_add_last = capture_signal_command($cmd, Irssi->can("signal_add_last"), \@signals);
+	local *Irssi::signal_add_priority = capture_signal_command($cmd, Irssi->can("signal_add_priority"), \@signals);
+	local *Irssi::command_bind = capture_signal_command($cmd, Irssi->can("command_bind"), \@commands);
+	local *Irssi::command_bind_first = capture_signal_command($cmd, Irssi->can("command_bind_first"), \@commands);
+	local *Irssi::command_bind_last = capture_signal_command($cmd, Irssi->can("command_bind_last"), \@commands);
 	$cmds{$cmd}->{cmpcmd}->($server, $witem, split / +/, $data);
+	# signals/commands created during this step were not the result of a BEGIN{}/UNITCHECK{}/etc.
+	# These signals get removed after completion!
+	cleanup_signals(\&Irssi::signal_remove, @signals);
+	cleanup_signals(\&Irssi::command_unbind, @commands);
+}
+
+sub cleanup_signals {
+	my ($remove_proc, @signals) = @_;
+	while (scalar(@signals) > 0) {
+		my ($signal, $handler) = splice @signals, 0, 2;
+		defined($signal) or return;
+		$remove_proc->($signal, $handler);
+	}
+}
+
+sub prepare_alias_proc {
+	# Do this with as few lexicals as possible, because lexicals are visible to a string eval.
 }
 
 # Bind a command
 sub setup_command {
 	my ($cmd, $data) = @_;
+	my @signals;
+	my @commands;
+	my $code;
+	my $proc;
 	# Compile the script.
-	my $code = qq{package Irssi::Scripts::perlalias::aliaspkg;\nno warnings;\nsub {my \$server = shift; my \$witem = shift;\n#line 1 "perlalias $cmd"\n$data}\n};
-	my $proc = eval $code;
+	{
+		no warnings 'redefine'; # Shut up about monkey patching.
+		local *Irssi::signal_add = capture_signal_command($cmd, Irssi->can("signal_add"), \@signals);
+		local *Irssi::signal_add_first = capture_signal_command($cmd, Irssi->can("signal_add_first"), \@signals);
+		local *Irssi::signal_add_last = capture_signal_command($cmd, Irssi->can("signal_add_last"), \@signals);
+		local *Irssi::signal_add_priority = capture_signal_command($cmd, Irssi->can("signal_add_priority"), \@signals);
+		local *Irssi::command_bind = capture_signal_command($cmd, Irssi->can("command_bind"), \@commands);
+		local *Irssi::command_bind_first = capture_signal_command($cmd, Irssi->can("command_bind_first"), \@commands);
+		local *Irssi::command_bind_last = capture_signal_command($cmd, Irssi->can("command_bind_last"), \@commands);
+		$code = qq{package Irssi::Scripts::perlalias::aliaspkg;\nno warnings;\nsub {my \$server = shift; my \$witem = shift;\n#line 1 "perlalias $cmd"\n$data}\n};
+		$proc = eval $code;
+		# Signals/commands registered at this point were registered in either a BEGIN or UNITCHECK. These we allow to stick around for
+		# the life of the alias.
+	}
 	if ($@) {
+		my $error = $@;
 		Irssi::printformat(MSGLEVEL_CLIENTERROR, perlalias_compile_error => $cmd);
-		Irssi::print(MSGLEVEL_CLIENTERROR, $@);
+		Irssi::print($error, MSGLEVEL_CLIENTERROR);
+		cleanup_signals(\&Irssi::signal_remove, @signals);
+		cleanup_signals(\&Irssi::command_unbind, @commands);
 		return "";
 	}
 	if (exists($cmds{$cmd})) {
 		my $entry = $cmds{$cmd};
+		cleanup_signals(\&Irssi::signal_remove, @{$entry->{signals}});
+		cleanup_signals(\&Irssi::command_unbind, @{$entry->{commands}});
 		$entry->{textcmd} = $data;
 		$entry->{cmpcmd} = $proc;
+		$entry->{signals} = \@signals;
+		$entry->{commands} = \@commands;
 	}
 	else {
 		my $entry = {};
@@ -135,6 +207,8 @@ sub setup_command {
 		$entry->{textcmd} = $data;
 		$entry->{cmpcmd} = $proc;
 		$entry->{tag} = sub { exec_perlalias $cmd, @_; };
+		$entry->{signals} = \@signals;
+		$entry->{commands} = \@commands;
 		Irssi::command_bind($cmd, $entry->{tag});
 		$cmds{$cmd} = $entry;
 	}
@@ -145,6 +219,8 @@ sub remove_command {
 	my ($cmd) = @_;
 	if (exists($cmds{$cmd})) {
 		my $entry = $cmds{$cmd};
+		cleanup_signals(\&Irssi::signal_remove, @{$entry->{signals}});
+		cleanup_signals(\&Irssi::command_unbind, @{$entry->{commands}});
 		$entry->{tag}//die "Missing the tag we need to remove the alias!!!";
 		Irssi::command_unbind($cmd, $entry->{tag});
 		delete $cmds{$cmd};

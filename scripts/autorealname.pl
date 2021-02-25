@@ -4,7 +4,7 @@
 use Irssi 20011207;
 use strict;
 use vars qw($VERSION %IRSSI); 
-$VERSION = "0.8.6";
+$VERSION = "0.8.7";
 %IRSSI = (
     authors	=> "Timo \'cras\' Sirainen, Bastian Blank",
     contact	=> "tss\@iki.fi, waldi\@debian.org",
@@ -12,9 +12,11 @@ $VERSION = "0.8.6";
     description	=> "Print realname of everyone who join to channels",
     license	=> "GPLv2 or later",
     url		=> "http://irssi.org/",
-    changed	=> "Fri, 24 Jan 2003 15:40:22 +0100"
+    changed	=> "2021-01-16"
 );
 
+# v0.8.7 changes - bw1
+#  - fix Can't call method "nick_find" ... line 282.
 # v0.8.6 changes - Juhamatti Niemelä
 #  - fix join msg printing when there are multiple common channels
 # v0.8.5 changes - Bastian Blank
@@ -211,6 +213,7 @@ sub event_whois {
   else {
     foreach my $channel (@{$rec->{nicks}->{$nick}->{chans_realname}}) {
       my $chanrec = $server->channel_find($channel);
+      next unless (defined $chanrec);
       my $nickrec = $chanrec->nick_find($nick);
       if ($chanrec && $nickrec) {
         $chanrec->printformat(MSGLEVEL_JOINS, 'join_realname_only', $nick, $realname);
@@ -279,6 +282,7 @@ sub timeout_whois {
   my @channels = @{$rec->{nicks}->{$nick}->{chans_join}};
   foreach my $channel (@channels) {
     my $chanrec = $server->channel_find($channel);
+    next unless (defined $chanrec);
     my $nickrec = $chanrec->nick_find($nick);
     if ($nickrec && $chanrec) {
       $chanrec->printformat(MSGLEVEL_JOINS, 'join', $nick, $nickrec->{host}, $channel);
@@ -296,3 +300,5 @@ Irssi::signal_add( {
 	'redir autorealname_whois' => \&event_whois,
 	'redir autorealname_whois_unknown' => \&event_whois_unknown,
 	'redir autorealname_whois_last' => \&event_whois_last });
+
+# vim:set sw=2 ts=8 et:

@@ -6,11 +6,11 @@
   description: 'upload file to https://0x0.st/'
   filename: 0x0st.pl
   license: ISC
-  modified: '2019-07-08 11:58:24'
+  modified: '2021-01-13 17:18:42'
   modules: 'HTTP::Request::Common LWP::UserAgent'
   name: 0x0st
   url: https://scripts.irssi.org/
-  version: '0.01'
+  version: '0.04'
 -
   authors: 'Patrik Akerfeldt'
   contact: patrik.akerfeldt@gmail.com
@@ -135,11 +135,11 @@
   description: 'Adds a permanent advanced window list on the right or in a status bar.'
   filename: adv_windowlist.pl
   license: 'GNU GPLv2 or later'
-  modified: '2019-05-01 17:10:23'
+  modified: '2020-10-08 13:41:57'
   modules: Text::CharWidth
   name: adv_windowlist
   url: http://anti.teamidiot.de/
-  version: '1.8'
+  version: 1.9.1
 -
   authors: BC-bd
   commands: ai
@@ -399,10 +399,10 @@
   description: 'Print realname of everyone who join to channels'
   filename: autorealname.pl
   license: 'GPLv2 or later'
-  modified: '2003-01-24 15:40:22'
+  modified: '2021-01-16 09:14:39'
   name: 'auto realname'
   url: http://irssi.org/
-  version: 0.8.6
+  version: 0.8.7
 -
   authors: "Timo 'cras' Sirainen, Leszek Matok"
   contact: lam@lac.pl
@@ -625,9 +625,9 @@
   description: 'Searches for bans, quiets, and channel modes affecting a user'
   filename: bansearch.pl
   license: GPLv3+
-  modified: '2019-08-19 15:25:57'
+  modified: '2020-08-24 19:15:24'
   name: bansearch
-  version: '1.2'
+  version: '1.3'
 -
   authors: "David O'Rourke"
   commands: bantime
@@ -975,11 +975,11 @@
   description: 'searches for specific channels'
   filename: chansearch.pl
   license: GPLv2
-  modified: '2019-07-31 11:09:49'
-  modules: 'HTML::Entities LWP::UserAgent'
+  modified: '2021-01-04 15:23:17'
+  modules: 'HTML::Entities LWP::Protocol::https LWP::UserAgent'
   name: ChanSearch
   url: http://scripts.irssi.org/
-  version: '2.1'
+  version: '2.3'
 -
   authors: "Timo 'cras' Sirainen"
   commands: chanshare
@@ -1125,10 +1125,10 @@
   description: 'Colourise mention of nicks in the message body.'
   filename: colorize_nicks.pl
   license: 'GNU GPLv2 or later'
-  modified: '2017-06-06 19:12:52'
+  modified: '2020-05-14 02:17:44'
   name: colorize_nicks
   url: http://anti.teamidiot.de/
-  version: 0.3.7
+  version: 0.4.0
 -
   authors: 'Gabor Nyeki'
   contact: bigmac@vim.hu
@@ -1168,6 +1168,16 @@
   name: 'Complete Last-Spoke'
   version: '2.1'
 -
+  authors: Nei
+  contact: 'Nei @ anti@conference.jabber.teamidiot.de'
+  description: 'conceals passwords on the input line'
+  filename: conceal.pl
+  license: ISC
+  modified: '2020-10-22 16:28:09'
+  name: conceal
+  url: http://anti.teamidiot.de/
+  version: '0.1'
+-
   authors: 'Ian Peters'
   commands: connectcmd
   contact: itp@ximian.com
@@ -1185,10 +1195,10 @@
   description: 'copy a line in a paste buffer'
   filename: copy.pl
   license: 'Public Domain'
-  modified: '2019-06-25 17:31:59'
+  modified: '2020-09-26 23:09:04'
   name: copy
   url: https://scripts.irssi.org/
-  version: '0.03'
+  version: '0.10'
 -
   authors: "Mikko 'Quidz' Salmi"
   contact: mikko@quidz.net
@@ -1445,6 +1455,26 @@
   url: http://anti.teamidiot.de/
   version: 0.4.9
 -
+  authors: 'Andrew Slice'
+  contact: edward.andrew.slice@gmail.com
+  description: 'Play a given sound when messages come in.'
+  filename: ding.pl
+  license: MIT
+  modified: '2020-08-11 11:55:26'
+  name: ding.pl
+  url: https://bitbucket.org/easlice/irssi-ding
+  version: '0.1'
+-
+  authors: Idiomdrottning
+  contact: sandra.snan@idiomdrottning.org
+  description: 'In channels with a discord bridge, turns "<bridge> <Sender> Message" into "<Sender> Message", and hides spoilers.'
+  filename: discord_unbridge.pl
+  license: 'Public Domain'
+  modified: '2020-12-11 12:11:10'
+  name: discord_unbridge.pl
+  url: https://idiomdrottning.org/discord_unbridge.pl
+  version: '1.6'
+-
   authors: 'Christoffer Holmberg'
   contact: skug+irssiscripts@skug.fi
   description: 'Strips the annoying mentions of your nickname via <yournick> on irc<->discord bridge, will work for any bridge using botnick: <yournick>'
@@ -1505,17 +1535,27 @@
   url: http://beaglebros.com
   version: '1.0'
 -
+  authors: 'Antoine Beaupré'
+  contact: anarcat@debian.org
+  description: 'set (un)away, if dtach is attached/detached'
+  filename: dtach_away.pl
+  license: 'GPL v2'
+  modified: '2019-11-16 09:56:03'
+  name: dtach_away
+  url: none
+  version: '1.0'
+-
   authors: bw1
   commands: ddg
   contact: bw1@aol.at
   description: 'search by https://duckduckgo.com/html/'
   filename: duckduckgo.pl
   license: lgplv3
-  modified: '2018-09-20 21:18:10'
+  modified: '2021-01-23 16:28:49'
   modules: 'HTML::Entities LWP::UserAgent URI::Escape'
   name: duckduckgo
   url: http://scripts.irssi.org
-  version: '0.01'
+  version: '0.02'
 -
   authors: 'Espen Holm Nilsen'
   contact: holm@blackedge.org
@@ -1628,6 +1668,15 @@
   license: 'GNU GPLv2 or later'
   modified: '2014-10-17 22:54:13'
   name: ExtAway
+  version: '1.0'
+-
+  authors: stryk
+  contact: '$IRSSI{authors} + <Shift-2> + protonmail + <rhymes-with-pot> + <2-char Country Code for Switzerland>'
+  description: 'Provides a single helper function to wrap mIRC-style color codes around strings'
+  filename: ez_color.pl
+  license: 'WTFPL/2 @ http://www.wtfpl.net/about/'
+  modified: '2020-10-09 13:29:18'
+  name: ez_color
   version: '1.0'
 -
   authors: 'Geert Hauwaerts'
@@ -1778,6 +1827,17 @@
   url: http://irssi.org/scripts/
   version: '2003071904'
 -
+  authors: bw1
+  commands: fpaste
+  contact: bw1@aol.at
+  description: 'copy infos to fpaste'
+  filename: fpaste.pl
+  license: 'Public Domain'
+  modified: '2021-01-24 16:18:01'
+  name: fpaste
+  url: https://scripts.irssi.org/
+  version: '0.02'
+-
   authors: 'Peder Stray'
   commands: 'addfriend friends'
   contact: peder@ninja.no
@@ -1881,10 +1941,10 @@
   description: 'script management with git'
   filename: gitscriptassist.pl
   license: 'Public Domain'
-  modified: '2019-06-04 18:28:11'
+  modified: '2019-06-04 19:02:22'
   name: gitscriptassist
   url: https://scripts.irssi.org/
-  version: '0.1'
+  version: '0.2'
 -
   authors: nohar
   commands: go
@@ -1912,10 +1972,10 @@
   description: 'This script queries google.com with googler and returns the results.'
   filename: google.pl
   license: 'Public Domain'
-  modified: '2019-08-04 19:27:07'
+  modified: '2021-01-26 13:09:56'
   name: google
   url: https://scripts.irssi.org/
-  version: '2.00'
+  version: '2.01'
 -
   authors: 'original idea by valvoline, irssi porting by pallotron'
   commands: 'about erasepass greets manual setpass validate verify'
@@ -2161,10 +2221,10 @@
   description: 'This controls Music Player Daemon from the familiar irssi interface'
   filename: iMPD.pl
   license: 'GPL v2'
-  modified: '2017-04-07 16:34:31'
+  modified: '2021-01-25 21:56:36'
   name: iMPD
   url: http://www.musicpd.org
-  version: 0.0.0n
+  version: 0.0.0o
 -
   authors: 'Isaac Good'
   contact: 'irssi@isaacgood.com; irc.freenode.net/yitz'
@@ -2259,25 +2319,27 @@
   version: 1.999999999543675475473856-FDIV-final
 -
   authors: 'Marcus Rueckert'
+  commands: inputlength
   contact: darix@irssi.org
   description: 'adds a statusbar item which show length of the inputline'
   filename: il.pl
   license: 'BSD License or something more liberal'
-  modified: '2017-04-07 16:34:31'
+  modified: '2021-01-11 08:48:06'
   name: inputlength
   url: http://www.irssi.de./
-  version: 0.0.5
+  version: 0.0.6
 -
   authors: 'Eric Jansen'
+  commands: imdb
   contact: chaos@sorcery.net
   description: 'Automatically lookup IMDB-numbers in nicknames'
   filename: imdb.pl
   license: GPL
-  modified: '2018-06-14 20:57:12'
+  modified: '2021-01-08 17:12:41'
   modules: 'HTML::Entities LWP::UserAgent'
   name: imdb
   url: http://xyrion.org/irssi/
-  version: '1.02'
+  version: '1.03'
 -
   authors: 'Jari Matilainen'
   commands: prompt
@@ -2454,23 +2516,13 @@
   url: https://github.com/qbit/irssi_logger
   version: '1.0'
 -
-  authors: "Stefan 'tommie' Tomanek"
-  contact: stefan@pico.ruhr.de
-  description: 'integrates ICQ instant-messaging into irssi'
-  filename: irssiq.pl
-  license: GPLv2
-  modified: '2008-05-17 17:39:11'
-  modules: Net::vICQ
-  name: IrssiQ
-  version: '2003231101'
--
   authors: mniip
   commands: 'isbanned islisted ismuted isreset'
   contact: 'mniip @ freenode'
   description: 'freenode-specific script that checks whether someone is banned on some channel'
   filename: isbanned.pl
   license: 'Public domain'
-  modified: 2015-09-14
+  modified: '2015-09-14 14:11:01'
   name: isbanned
   version: 0.7.0
 -
@@ -2653,10 +2705,10 @@
   description: 'Remembers what people said last on what channels'
   filename: lastspoke.pl
   license: 'GNU GPLv2 or later'
-  modified: '2019-02-22 00:22:28'
+  modified: '2020-05-31 16:04:00'
   name: lastspoke
   url: http://irssi.freshdot.net/
-  version: '0.3'
+  version: '0.4'
 -
   authors: 'Clemens Heidinger'
   commands: len
@@ -2674,11 +2726,11 @@
   description: 'translates via dict.leo.org'
   filename: leodict.pl
   license: GPLv2
-  modified: '2019-03-21 10:55:22'
+  modified: '2021-01-26 16:18:20'
   modules: 'Mojo::DOM Mojo::UserAgent'
   name: leodict
   url: http://irssi.org/scripts/
-  version: '20180321'
+  version: '20210126'
 -
   authors: 'Nico R. Wohlgemuth'
   commands: levelclear
@@ -2735,12 +2787,13 @@
 -
   authors: 'Isaac Good'
   contact: irssi@isaacgood.com
+  description: 'Sort the /list output by channel size'
   filename: listsort.pl
   license: BSD
-  modified: '2016-12-07 11:32:54'
+  modified: '2020-07-09 10:29:27'
   name: listsort
   url: https://github.com/IsaacG/irssi-scripts
-  version: '0.1'
+  version: 0.1.1
 -
   authors: aki
   contact: aki@evilbsd.info
@@ -2802,6 +2855,16 @@
   name: logresume
   url: http://explodingferret.com/linux/irssi/logresume.pl
   version: '0.6'
+-
+  authors: Nei
+  contact: 'Nei @ anti@conference.jabber.teamidiot.de'
+  description: 'Automatically downloads and displays long messages from matrix.'
+  filename: long_messages.pl
+  license: ISC
+  modified: '2020-10-22 16:32:03'
+  name: long_messages
+  url: http://anti.teamidiot.de/
+  version: '0.2'
 -
   authors: c0ffee
   commands: ls
@@ -2909,6 +2972,29 @@
   name: mass_hilight_blocker
   version: '0.4'
 -
+  authors: bw1
+  commands: matryoshka
+  contact: bw1@aol.at
+  description: 'a password matryoshka'
+  filename: matryoshka.pl
+  license: 'Public Domain'
+  modified: '2019-12-14 13:57:23'
+  modules: 'Crypt::CBC Crypt::Cipher::AES'
+  name: matryoshka
+  url: https://scripts.irssi.org/
+  version: '0.01'
+-
+  authors: Nei
+  commands: requery
+  contact: 'Nei @ anti@conference.jabber.teamidiot.de'
+  description: 'Merge queries with multiple resources of the same person.'
+  filename: merge_resources.pl
+  license: 'GNU GPLv2 or later'
+  modified: '2020-10-22 16:34:10'
+  name: merge_resources
+  url: http://anti.teamidiot.de/
+  version: '1.1'
+-
   authors: 'Wouter Coekaerts'
   contact: coekie@irssi.org
   description: 'makes all window text start at the bottom of windows'
@@ -2968,6 +3054,16 @@
   name: mh_sbuserinfo
   url: 'http://scripts.irssi.org / https://github.com/mh-source/irssi-scripts'
   version: '1.06'
+-
+  authors: 'Michael Hansen'
+  contact: 'mh (IRCnet)'
+  description: 'Fix for Irssi not fully supporting numeric 489 ERR_SECUREONLYCHAN'
+  filename: mh_secureonlychan_489.pl
+  license: ISC/BSD
+  modified: '2020-05-16 22:33:56'
+  name: mh_secureonlychan_489
+  url: https://github.com/irssi/scripts.irssi.org/tree/master/scripts
+  version: '1.01'
 -
   authors: 'Michael Hansen'
   contact: 'mh on IRCnet #help'
@@ -3191,20 +3287,20 @@
   description: 'Changes messages from myself to appear to come from my username, not my nickname'
   filename: munge_own_nickname_to_username.pl
   license: 'Public Domain'
-  modified: '2016-03-17 15:07:15'
+  modified: '2020-05-15 12:06:55'
   name: munge_own_nickname_to_username.pl
   url: 'http://scripts.irssi.org & https://github.com/avar/dotfiles/blob/master/.irssi/scripts/munge_own_nickname_to_username.pl'
-  version: '1.1'
+  version: '1.2'
 -
   authors: 'Remco den Breeje'
   contact: 'stacium or stek (most of the time) @ quakenet.org'
   description: 'runs arbitrary command instead of system beep, includes flood protection'
   filename: my_beep.pl
   license: 'Public Domain'
-  modified: '2016-04-13 20:15:32'
+  modified: '2019-09-08 19:29:19'
   name: my_beep
   url: http://www.xs4all.nl/~stacium/irssi/my_beep.html
-  version: '0.9'
+  version: '0.10'
 -
   authors: 'Riku Voipio, lite'
   contact: riku.voipio@iki.fi
@@ -3294,9 +3390,9 @@
   description: 'colourise nicks'
   filename: nickcolor_gay.pl
   license: ISC
-  modified: '2015-11-16 19:36:52'
+  modified: '2020-05-15 11:42:24'
   name: nickcolor_gay
-  version: '0.1'
+  version: '0.2'
 -
   authors: "Kalle 'rpr' Marjola"
   contact: marjola@iki.fi
@@ -3527,16 +3623,17 @@
   url: http://irssi.dgl.cx/
   version: '1.13'
 -
-  authors: "Stefan 'tommie' Tomanek"
-  commands: ontv
-  contact: stefan@pico.ruhr.de
+  authors: bw1
+  commands: ontv2
+  contact: bw1@aol.at
   description: 'turns irssi into a tv program guide'
-  filename: ontv.pl
+  filename: ontv2.pl
   license: GPLv2
-  modified: '2008-05-17 17:39:11'
-  modules: 'HTML::Entities LWP::Simple'
-  name: OnTV
-  version: '20050226'
+  modified: '2021-01-11 16:49:10'
+  modules: 'DateTime DateTime::Format::Strptime XML::LibXML::Simple YAML::XS'
+  name: ontv2
+  url: https://scripts.irssi.org/
+  version: '0.01'
 -
   authors: 'bw1 and others'
   contact: bw1@aol.at
@@ -3680,6 +3777,17 @@
   name: pangotext
   version: '1.2'
 -
+  authors: Nei
+  contact: 'Nei @ anti@conference.jabber.teamidiot.de'
+  description: 'partial tab completion for Irssi'
+  filename: partial.pl
+  license: ISC
+  modified: '2020-10-22 16:55:25'
+  modules: Tree::Trie
+  name: partial
+  url: http://anti.teamidiot.de/
+  version: '0.3'
+-
   authors: 'Marcin Rozycki, Stanislaw Halik'
   commands: paste
   contact: derwan@irssi.pl
@@ -3761,9 +3869,9 @@
   description: 'Quickly create commands from short perl blocks'
   filename: perlalias.pl
   license: 'public domain'
-  modified: '2017-02-19 12:53:47'
+  modified: '2020-04-03 18:04:40'
   name: perlalias
-  version: '1.2'
+  version: '1.3'
 -
   authors: 'Adam Duck'
   commands: sound
@@ -3891,9 +3999,9 @@
   description: 'Random quit messages'
   filename: quitmsg.pl
   license: 'Public Domain'
-  modified: '2014-10-19 11:54:16'
+  modified: '2020-07-22 19:10:12'
   name: quitmsg
-  version: '1.00'
+  version: '1.01'
 -
   authors: 'Fernando J. Pereda'
   contact: ferdy@ferdyx.org
@@ -4060,6 +4168,16 @@
   url: http://irssi.dgl.cx/
   version: '1'
 -
+  authors: 'Ryan Freebern'
+  contact: ryan@freebern.org
+  description: 'Summarizes multiple sequential joins/parts/quits.'
+  filename: revolve.pl
+  license: 'GPL v2 or later'
+  modified: '2019-11-13 13:25:29'
+  name: revolve
+  url: http://github.com/rfreebern/irssi-revolving-door
+  version: 0.0.6
+-
   authors: Fogel
   commands: 'mute next np pause play prev rhythmbox_help unmute vdown vol vup'
   contact: fogel@fogel.netmark.pl
@@ -4133,18 +4251,6 @@
   name: 'emotes script'
   version: '1.20'
 -
-  authors: "Johan \"Ion\" Kiviniemi, idea taken from Riku Voipio's sana.pl"
-  commands: sana
-  contact: 'ion at hassers.org'
-  description: '/sana command, translates english-finnish-english.'
-  filename: sana_cmd.pl
-  license: 'Public Domain'
-  modified: '2002-03-16 06:20:00'
-  modules: 'HTML::Entities LWP::Simple'
-  name: sana-cmd
-  url: http://ion.amigafin.org/irssi/
-  version: '0.1'
--
   authors: Nei
   contact: 'Nei @ anti@conference.jabber.teamidiot.de'
   description: 'Saves the commands you typed in the input prompt to a history file, so that they persist across /upgrade and restart.'
@@ -4184,6 +4290,16 @@
   url: http://anti.teamidiot.de/
   version: '0.2'
 -
+  authors: Nei
+  contact: 'Nei @ anti@conference.jabber.teamidiot.de'
+  description: 'move matching lines from scrollback'
+  filename: sbmove.pl
+  license: 'GPLv2 or later'
+  modified: '2020-10-22 16:20:48'
+  name: 'sbmove alpha'
+  url: http://anti.teamidiot.de/
+  version: '0.1'
+-
   authors: 'Robert Scheck'
   commands: schwäbisch
   contact: irssi@robert-scheck.de
@@ -4210,11 +4326,11 @@
   description: 'keeps your scripts on the cutting edge'
   filename: scriptassist.pl
   license: GPLv2
-  modified: '2018-02-22 15:18:03'
+  modified: '2020-04-27 16:47:51'
   modules: LWP::UserAgent
   name: scriptassist
-  url: http://irssi.org/scripts/
-  version: '2003020806'
+  url: https://scripts.irssi.org/
+  version: '2020042700'
 -
   authors: "Maciek 'fahren' Freudenheim"
   contact: fahren@bochnia.pl
@@ -4337,15 +4453,15 @@
   version: 0.7.1
 -
   authors: 'eo, tsaavik'
-  commands: shorturl
+  commands: 'shorturl shorturl_selfcheck'
   contact: 'irssi@eosin.org, dave001@hellspark.com'
   description: 'Private/Public url reduction script.'
   filename: shorturl.pl
   license: GPLv2
-  modified: '2014-10-24 23:01:30'
-  modules: 'LWP::Simple LWP::UserAgent'
+  modified: '2021-01-08 12:10:55'
+  modules: 'LWP::Protocol::https LWP::Simple LWP::UserAgent'
   name: shorturl.pl
-  version: '20090904'
+  version: '20210108'
 -
   authors: "Paweł 'Styx' Chuchmała"
   contact: styx@irc.pl
@@ -4571,10 +4687,10 @@
   description: 'Cross-platform/architecture system information script.'
   filename: sysinfo277-irssi.pl
   license: BSD
-  modified: '2017-06-08 16:29:44'
+  modified: '2019-11-08 19:17:17'
   name: SysInfo
   url: http://www.inexistent.com/
-  version: '2.78'
+  version: '2.79'
 -
   authors: 'David Leadbeater'
   commands: sysinfo
@@ -4598,14 +4714,14 @@
   url: http://juerd.nl/irssi/
   version: '2.21'
 -
-  authors: "Stefan 'tommie' Tomanek"
-  contact: stefan@pico.ruhr.de
-  description: "This script replaces the evil inverted 'I' with a configurable number of whitespaces "
+  authors: "Stefan 'tommie' Tomanek, shabble"
+  contact: 'stefan@pico.ruhr.de, shabble@#irssi/Freenode'
+  description: 'Replaces \t TAB characters with contents of /set tabstop_replacement'
   filename: tab_stop.pl
   license: GPLv2
-  modified: '2008-05-17 17:39:11'
+  modified: '2020-03-22 18:15:22'
   name: tab_stop
-  version: '2002123102'
+  version: '2011052400'
 -
   authors: vague
   contact: 'vague!#irssi@freenode on irc'
@@ -4637,6 +4753,17 @@
   url: http://scripts.irssi.org
   version: '2003020801'
 -
+  authors: 'Sebastian Paaske Tørholm'
+  commands: telegram-notify-activate
+  contact: sebbe@cpan.org
+  description: 'Send notifications of highlighted messages over Telegram'
+  filename: telegram-notify.pl
+  license: MIT
+  modified: '2020-08-24 22:31:21'
+  modules: 'HTML::Entities WWW::Telegram::BotAPI'
+  name: telegram-notify
+  version: '1.00'
+-
   authors: BC-bd
   commands: thankop
   contact: bd@bc-bd.org
@@ -4654,11 +4781,11 @@
   description: 'activate, show or get theme'
   filename: theme.pl
   license: 'Public Domain'
-  modified: '2019-08-05 16:29:34'
+  modified: '2020-04-12 17:43:59'
   modules: YAML::XS
   name: theme
   url: https://scripts.irssi.org/
-  version: '0.03'
+  version: '0.04'
 -
   authors: 'Teemu Hjelt'
   commands: 'thistory tinfo topichistory topicinfo'
@@ -4670,6 +4797,17 @@
   name: 'topic history'
   url: http://www.iki.fi/temex/
   version: '1.05'
+-
+  authors: bw1
+  commands: tictactoe
+  contact: bw1@aol.at
+  description: 'tic-tac-toe game'
+  filename: tictactoe.pl
+  license: LGPLv3
+  modified: '2019-12-23 21:22:43'
+  name: tictactoe
+  url: https://scripts.irssi.org/
+  version: '0.01'
 -
   authors: 'Kimmo Lehto, Marcus Rueckert'
   commands: timer
@@ -4746,9 +4884,9 @@
   contact: 'vague!#irssi@freenode on irc'
   description: 'Toggle hidden levels on per window basis'
   filename: toggle_hidelevel.pl
-  modified: '2019-05-09 15:03:08'
+  modified: '2020-03-17 14:17:18'
   name: toggle_hidelevel
-  version: 0.6.0
+  version: 0.6.1
 -
   authors: bcattaneo
   commands: toilet
@@ -4809,11 +4947,11 @@
   description: 'Shows a bar where you have last read a window.'
   filename: trackbar.pl
   license: 'GNU General Public License'
-  modified: '2019-05-08 14:34:05'
+  modified: '2020-05-08 15:44:31'
   modules: Text::CharWidth
   name: trackbar
   url: http://www.pfoe.be/~peter/trackbar/
-  version: '2.8'
+  version: '2.9'
 -
   HIDDEN: '1'
   description: 'This script has been replaced with trackbar.pl.'
@@ -4848,10 +4986,10 @@
   description: 'execute a command or replace text, triggered by an event in irssi'
   filename: trigger.pl
   license: 'GPLv2 or later'
-  modified: '2019-05-01 23:12:30'
+  modified: '2020-03-24 17:19:55'
   name: trigger
   url: http://wouter.coekaerts.be/irssi/
-  version: 1.2.2
+  version: 1.2.4
 -
   authors: "Stefan 'tommie' Tomanek"
   commands: trustweb
@@ -4871,6 +5009,15 @@
   license: BSDL
   modified: '2014-10-24 23:01:30'
   name: tvmusor
+-
+  authors: leocp1
+  commands: twitch_online
+  description: 'Notify when a twitch channel comes onlineUses Twitch v5 API'
+  filename: twitch_notify.pl
+  license: 'Public Domain'
+  modified: '2020-08-29 21:41:38'
+  name: twitch_notify
+  version: 0.0.1
 -
   authors: 'Sam Stoller'
   contact: snstoller@gmail.com
@@ -4955,6 +5102,16 @@
   name: unicode
   url: http://dgl.cx/irssi
   version: '2'
+-
+  authors: 'Gregory Colpart'
+  commands: unread
+  contact: 'reg on #evolix@freenode'
+  description: 'reset window to unread status'
+  filename: unread.pl
+  license: 'GPLv2 or later'
+  modified: '2020-04-01 05:29:42'
+  name: unread
+  version: '0.1'
 -
   authors: 'Peder Stray'
   commands: upgradeinfo
@@ -5046,14 +5203,14 @@
   version: '1.2'
 -
   authors: zdleaf
-  contact: leaf@zincldn.co.uk
-  description: 'Print urls to window named "urls"'
+  contact: zdleaf@zinc.london
+  description: 'Log all urls from #channels and /msgs in a separate window'
   filename: urlwindow.pl
   license: 'Public Domain'
-  modified: '2018-09-16 11:31:07'
+  modified: '2020-07-13 09:17:33'
   name: urlwindow
   url: http://irssi.org/
-  version: '1.1'
+  version: '1.2'
 -
   authors: 'David Leadbeater, Timo Sirainen, Georg Lukas'
   contact: 'dgl@dgl.cx, tss@iki.fi, georg@boerde.de'

@@ -5,29 +5,32 @@
 
 use strict;
 
-our $VERSION = '2003020806';
+our $VERSION = '2020042700';
 our %IRSSI = (
     authors     => 'Stefan \'tommie\' Tomanek',
     contact     => 'stefan@pico.ruhr.de',
     name        => 'scriptassist',
     description => 'keeps your scripts on the cutting edge',
     license     => 'GPLv2',
-    url         => 'http://irssi.org/scripts/',
-    modules     => 'Data::Dumper LWP::UserAgent (GnuPG)',
+    url         => 'https://scripts.irssi.org/',
+    modules     => 'CPAN::Meta::YAML LWP::Protocol::https (GnuPG)',
     commands	=> "scriptassist"
 );
 
 our ($forked, %remote_db, $have_gpg, @complist);
 
 use Irssi 20020324;
-use Data::Dumper;
+use CPAN::Meta::YAML;
 use LWP::UserAgent;
 use POSIX;
+use version;
 
 # GnuPG is not always needed
 $have_gpg = 0;
 eval "use GnuPG qw(:algo :trust);";
 $have_gpg = 1 if not ($@);
+
+my $irssi_version = qv(Irssi::parse_special('v$J') =~ s/-.*//r);
 
 sub show_help {
     my $help = "scriptassist $VERSION
@@ -39,15 +42,15 @@ sub show_help {
     Search the script database
 /scriptassist info <scripts>
     Display information about <scripts>
-".#/scriptassist ratings <scripts>
-#    Retrieve the average ratings of the the scripts
-#/scriptassist top <num>
-#    Retrieve the first <num> top rated scripts
-"/scriptassist new <num>
+/scriptassist ratings <scripts|all>
+    Retrieve the average ratings of the the scripts
+/scriptassist top <num>
+    Retrieve the first <num> top rated scripts
+/scriptassist new <num>
     Display the newest <num> scripts
-".#/scriptassist rate <script> <stars>
-#    Rate the script with a number of stars ranging from 0-5
-"/scriptassist contact <script>
+/scriptassist rate <script>
+    Rate the script if you like it
+/scriptassist contact <script>
     Write an email to the author of the script
     (Requires OpenURL)
 /scriptassist cpan <module>
@@ -95,6 +98,7 @@ sub call_openurl {
 	$code->($url);
     } else {
         print CLIENTCRAP "%R>>%n Please install openurl.pl";
+        print CLIENTCRAP "%R>>%n    or open < $url > manually";
     }
 }
 
@@ -170,14 +174,13 @@ sub bg_do {
 		my $cmd = $items[1];
 		$result{data}{unknown}{$cmd} = get_unknown($cmd, $xml);
 	    }
-	    my $dumper = Data::Dumper->new([\%result]);
-	    $dumper->Purity(1)->Deepcopy(1)->Indent(0);
-	    my $data = $dumper->Dump;
+	    my $yaml = CPAN::Meta::YAML->new(\%result);
+	    my $data = $yaml->write_string();
 	    print($wh $data);
 	};
 	if ($@) {
-	    print($wh Data::Dumper->new([+{data=>+{error=>$@}}])
-		      ->Purity(1)->Deepcopy(1)->Indent(0)->Dump);
+	    print($wh CPAN::Meta::YAML->new(+{data=>+{error=>$@}})
+		      ->write_string());
 	}
 	close($wh);
 	POSIX::_exit(1);
@@ -189,7 +192,7 @@ sub get_unknown {
     foreach (keys %$db) {
 	next unless defined $db->{$_}{commands};
 	foreach my $item (split / /, $db->{$_}{commands}) {
-	    return { $_ => $db->{$_} } if ($item =~ /^$cmd$/i);
+	    return { $_ => +{%{$db->{$_}}} } if ($item =~ /^$cmd$/i);
 	}
     }
     return undef;
@@ -265,47 +268,80 @@ sub script_info {
 		$result{$sname}{modules}{$mod}{installed} = module_exist($mod);
 	    }
 	}
-	if (defined $xml->{$plname}{depends}) {
-	    my $depends = $xml->{$plname}{depends};
-	    foreach my $dep (split(/ /, $depends)) {
-		$result{$sname}{depends}{$dep}{installed} = 1;
-	    }
-	}
+	# if (defined $xml->{$plname}{depends}) {
+	#     my $depends = $xml->{$plname}{depends};
+	#     foreach my $dep (split(/ /, $depends)) {
+	# 	$result{$sname}{depends}{$dep}{installed} = 1; #(defined ${ 'Irssi::Script::'.$dep });
+	#     }
+	# }
     }
     return \%result;
 }
 
+sub get_rate_url {
+    my ($src) = @_;
+    my $ua = LWP::UserAgent->new(env_proxy=>1, keep_alive=>1, timeout=>30);
+    $ua->agent('ScriptAssist/'.$VERSION);
+    my $request = HTTP::Request->new('GET', $src);
+    my $response = $ua->request($request);
+    unless ($response->is_success) {
+	my $error = join "\n", $response->status_line(), (grep / at .* line \d+/, split "\n", $response->content()), '';
+	die("Fetching ratings location failed: $error");
+    }
+    my $votes_url;
+    for my $tag ($response->content() =~ /<script([^>]*)>/g) {
+	my $attr = " $tag ";
+	($votes_url = $1) =~ s/\.\w+$/.yml/
+	    if $attr =~ /\sasync\s/ && $attr =~ m{\ssrc="(https?://.*?/votes\.\w+)"\s};
+    }
+    unless ($votes_url) {
+	die("Fetching ratings failed: Could not find votes script\n");
+    }
+    $request = HTTP::Request->new('GET', $votes_url);
+    $response = $ua->request($request);
+    if (!$response->is_success) {
+	my $error = join "\n", $response->status_line(), (grep / at .* line \d+/, split "\n", $response->content()), '';
+	die("Fetching ratings failed: $error");
+    }
+    my $data = $response->content();
+    utf8::decode($data);
+    CPAN::Meta::YAML->read_string($data)->[0];
+}
+
 sub rate_script {
     my ($script, $stars) = @_;
-    my $ua = LWP::UserAgent->new(env_proxy=>1, keep_alive=>1, timeout=>30);
-    $ua->agent('ScriptAssist/'.2003020803);
-    my $request = HTTP::Request->new('GET', 'http://ratings.irssi.de/irssirate.pl?&stars='.$stars.'&mode=rate&script='.$script);
-    my $response = $ua->request($request);
-    unless ($response->is_success() && $response->content() =~ /You already rated this script/) {
-	return 1;
-    } else {
-	return 0;
-    }
+    my $xml = get_scripts();
+    my $votes = get_rate_url(map { $_->{source} } values %$xml);
+    my ($sname, $plname, $pname) = get_names($script, $xml);
+    die "Script $script not found\n" unless $votes->{$plname};
+    return $votes->{$plname}{u}
 }
 
 sub get_ratings {
     my ($scripts, $limit) = @_;
-    my $ua = LWP::UserAgent->new(env_proxy=>1, keep_alive=>1, timeout=>30);
-    $ua->agent('ScriptAssist/'.2003020803);
-    my $script = join(',', @{$scripts});
-    my $request = HTTP::Request->new('GET', 'http://ratings.irssi.de/irssirate.pl?script='.$script.'&sort=rating&limit='.$limit);
-    my $response = $ua->request($request);
-    my %result;
-    if ($response->is_success()) {
-	foreach (split /\n/, $response->content()) {
-	    if (/<tr><td><a href=".*?">(.*?)<\/a>/) {
-		my $entry = $1;
-		if (/"><\/td><td>([0-9.]+)<\/td><td>(.*?)<\/td><td>/) {
-		    $result{$entry} = [$1, $2];
-		}
-	    }
+    my $xml = get_scripts();
+    my $votes = get_rate_url(map { $_->{source} } values %$xml);
+    foreach (keys %{$votes}) {
+	if ($xml->{$_}) {
+	    $xml->{$_}{votes} = $votes->{$_}{v};
 	}
     }
+    my %result;
+    if (@{$scripts}) {
+	foreach (@{$scripts}) {
+	    my ($sname, $plname, $pname) = get_names($_, $xml);
+	    next unless (defined $xml->{$plname} || ( exists $Irssi::Script::{$pname} && exists $Irssi::Script::{$pname}{IRSSI} ));
+	    $result{$plname} = [$xml->{$plname}{votes}];
+	}
+    } else {
+	my @keys = sort { $xml->{$b}{votes} <=> $xml->{$a}{votes}
+		  || $xml->{$b}{modified} cmp $xml->{$a}{modified} }
+	    grep { !$xml->{$_}{HIDDEN} && $xml->{$_}{votes} ne '' } keys %$xml;
+	foreach (splice @keys, 0, $limit) {
+	    $result{$_} = [$xml->{$_}{votes}];
+	}
+    }
+    die "No such script found\n" unless keys %result;
     return \%result;
 }
 
@@ -313,7 +349,7 @@ sub get_new {
     my ($num) = @_;
     my $result;
     my $xml = get_scripts();
-    foreach (sort {$xml->{$b}{last_modified} cmp $xml->{$a}{last_modified}} keys %$xml) {
+    foreach (sort {$xml->{$b}{modified} cmp $xml->{$a}{modified}} keys %$xml) {
 	my %entry = %{ $xml->{$_} };
 	next if $entry{HIDDEN};
 	$result->{$_} = \%entry;
@@ -427,8 +463,8 @@ sub pipe_input {
 	print CLIENTCRAP "%R<<%n Something weird happend (no text)";
 	return();
     }
-    local our $VAR1;
-    my $incoming = eval($text);
+    utf8::decode($text);
+    my $incoming = CPAN::Meta::YAML->read_string($text)->[0];
     if ($incoming->{db} && $incoming->{timestamp}) {
     	$remote_db{db} = $incoming->{db};
     	$remote_db{timestamp} = $incoming->{timestamp};
@@ -598,13 +634,8 @@ sub print_rate {
     my (%data) = @_;
     my $line;
     foreach my $script (sort keys(%data)) {
-	if ($data{$script}) {
-            $line .= "%go%n %9".$script."%9 has been rated";
-        } else {
-            $line .= "%ro%n %9".$script."%9 : Already rated this script";
-        }
+	call_openurl($data{$script});
     }
-    print CLIENTCRAP draw_box('ScriptAssist', $line, 'rating', 1) ;
 }
 
 sub print_ratings {
@@ -618,8 +649,7 @@ sub print_ratings {
 	    push @line, "%yo%n";
 	}
         push @line, "%9".$script."%9";
-	push @line, $data{$script}{rating};
-	push @line, "[".$data{$script}{votes}." votes]";
+	push @line, "[".(length $data{$script}{rating} ? $data{$script}{rating} : 'no')." votes]";
 	push @table, \@line;
     }
     print CLIENTCRAP draw_box('ScriptAssist', array2table(@table), 'ratings', 1) ;
@@ -628,7 +658,7 @@ sub print_ratings {
 sub print_new {
     my ($list) = @_;
     my @table;
-    foreach (sort {$list->{$b}{last_modified} cmp $list->{$a}{last_modified}} keys %$list) {
+    foreach (sort {$list->{$b}{modified} cmp $list->{$a}{modified}} keys %$list) {
 	my @line;
 	my ($name) = get_names($_);
         if (get_local_version($name)) {
@@ -637,7 +667,7 @@ sub print_new {
             push @line, "%yo%n";
         }
 	push @line, "%9".$name."%9";
-	push @line, $list->{$_}{last_modified};
+	push @line, $list->{$_}{modified};
 	push @table, \@line;
     }
     print CLIENTCRAP draw_box('ScriptAssist', array2table(@table), 'new scripts', 1) ;
@@ -822,7 +852,7 @@ sub contact_author {
 
 sub get_scripts {
     my $ua = LWP::UserAgent->new(env_proxy=>1, keep_alive=>1, timeout=>30);
-    $ua->agent('ScriptAssist/'.2003020803);
+    $ua->agent('ScriptAssist/'.$VERSION);
     $ua->env_proxy();
     my @mirrors = split(/ /, Irssi::settings_get_str('scriptassist_script_sources'));
     my %sites_db;
@@ -846,28 +876,32 @@ sub get_scripts {
 	}
 	$fetched = 1;
 	my $data = $response->content();
-	my ($src, $type);
+	my $src = $site;
+	my $type = '';
 	if ($site =~ /(.*\/).+\.(.+)/) {
 	    $src = $1;
 	    $type = $2;
 	}
 	push @sources, $src;
-	#my @header = ('name', 'contact', 'authors', 'description', 'version', 'modules', 'last_modified');
+	#my @header = ('name', 'contact', 'authors', 'description', 'version', 'modules', 'modified');
 	if ($type eq 'dmp') {
-	    no strict 'vars';
-	    my $new_db = eval "$data";
-	    foreach (keys %$new_db) {
-		if (defined $sites_db{script}{$_}) {
-		    my $old = $sites_db{$_}{version};
-		    my $new = $new_db->{$_}{version};
+	    die("Support for $type script database has been removed. Please /set scriptassist_script_sources and change $type -> yml.\n");
+	} elsif ($type eq 'yml') {
+	    utf8::decode($data);
+	    my $new_db = CPAN::Meta::YAML->read_string($data);
+	    foreach (@{$new_db->[0]}) {
+		my $K = $_->{filename};
+		if (defined $sites_db{script}{$K}) {
+		    my $old = $sites_db{$K}{version};
+		    my $new = $_->{version};
 		    next if (compare_versions($old, $new) eq 'newer');
 		}
 		#foreach my $key (@header) {
-		foreach my $key (keys %{ $new_db->{$_} }) {
-		    next unless defined $new_db->{$_}{$key};
-		    $sites_db{$_}{$key} = $new_db->{$_}{$key};
+		foreach my $key (keys %$_) {
+		    next unless defined $_->{$key};
+		    $sites_db{$K}{$key} = $_->{$key};
 		}
-		$sites_db{$_}{source} = $src;
+		$sites_db{$K}{source} = $src;
 	    }
 	} else {
 	    die("Unknown script database type ($type).\n");
@@ -1093,6 +1127,7 @@ sub missing_module {
 
 sub cmd_scripassist {
     my ($arg, $server, $witem) = @_;
+    utf8::decode($arg);
     my @args = split(/ /, $arg);
     if ($args[0] eq 'help' || $args[0] eq '-h') {
 	show_help();
@@ -1112,9 +1147,9 @@ sub cmd_scripassist {
     } elsif ($args[0] eq 'ratings' && defined $args[1]) {
 	shift @args;
 	bg_do("ratings ".join(' ', @args));
-    } elsif ($args[0] eq 'rate' && defined $args[1] && defined $args[2]) {
+    } elsif ($args[0] eq 'rate' && defined $args[1]) {
 	shift @args;
-	bg_do("rate ".join(' ', @args)) if ($args[2] >= 0 && $args[2] < 6);
+	bg_do("rate ".join(' ', @args));
     } elsif ($args[0] eq 'info' && defined $args[1]) {
 	shift @args;
 	bg_do("info ".join(' ', @args));
@@ -1155,6 +1190,7 @@ sub sig_command_script_load {
 sub sig_default_command {
     my ($cmd, $server) = @_;
     return unless Irssi::settings_get_bool("scriptassist_check_unknown_commands");
+    return if ($cmd =~ /^\d+$/ && $irssi_version >= v1.2.0 && Irssi::settings_get_bool("window_number_commands"));
     bg_do('unknown '.$cmd);
 }
 
@@ -1176,7 +1212,7 @@ sub sig_complete {
 }
 
 
-Irssi::settings_add_str($IRSSI{name}, 'scriptassist_script_sources', 'https://scripts.irssi.org/scripts.dmp');
+Irssi::settings_add_str($IRSSI{name}, 'scriptassist_script_sources', 'https://scripts.irssi.org/scripts.yml');
 Irssi::settings_add_bool($IRSSI{name}, 'scriptassist_cache_sources', 1);
 Irssi::settings_add_bool($IRSSI{name}, 'scriptassist_update_verbose', 1);
 Irssi::settings_add_bool($IRSSI{name}, 'scriptassist_check_verbose', 1);
@@ -1210,11 +1246,11 @@ foreach my $cmd ( ( 'check',
 		    'search',
 #		    '-h',
 		    'help',
-#		    'ratings',
-#		    'rate',
+		    'ratings',
+		    'rate',
 		    'info',
 #		    'echo',
-#		    'top',
+		    'top',
 		    'cpan',
 		    'autorun',
 		    'new' ) ) {

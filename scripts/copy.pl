@@ -5,8 +5,9 @@ use Irssi;
 use Irssi::UI;
 use Irssi::TextUI;
 use MIME::Base64;
+use File::Glob qw/:bsd_glob/;
 
-$VERSION = '0.03';
+$VERSION = '0.10';
 %IRSSI = (
 	authors	=> 'vague,bw1',
 	contact	=> 'bw1@aol.at',
@@ -14,8 +15,8 @@ $VERSION = '0.03';
 	description	=> 'copy a line in a paste buffer',
 	license	=> 'Public Domain',
 	url		=> 'https://scripts.irssi.org/',
-	changed	=> '2019-06-25',
-	modules => 'MIME::Base64',
+	changed	=> '2020-09-26',
+	modules => 'MIME::Base64 File::Glob',
 	commands=> 'copy',
 );
 
@@ -25,7 +26,7 @@ my $help = << "END";
 %9Version%9
   $VERSION
 %9Synopsis%9
-  /copy [number]
+  /copy [start [end]]
   /copy <-f word>
 %9Description%9
   $IRSSI{description}
@@ -45,6 +46,13 @@ my $help = << "END";
     xsel
     screen
     print
+    file
+  $IRSSI{name}_file 
+    filename for method 'file'
+  $IRSSI{name}_file_mode 
+    open mode for method 'file'
+  $IRSSI{name}_file_eol 
+    end of line string for method 'file'
 %9See also%9
   https://www.freecodecamp.org/news/tmux-in-practice-integration-with-system-clipboard-bcd72c62ff7b/
   http://anti.teamidiot.de/static/nei/*/Code/urxvt/
@@ -61,6 +69,7 @@ END
 #   line buffer
 
 my ($copy_selection, $copy_method);
+my ($copy_file, $copy_file_mode, $copy_file_eol);
 
 
 sub cmd_copy {
@@ -93,21 +102,33 @@ sub cmd_find {
 sub cmd_num {
 	my ($args, $server, $witem)=@_;
 	my $line=Irssi::active_win->view->{buffer}{cur_line};
-	$args=1 if ($args==0);
-	$args=$args-1;
 	unless (defined $line) {
 		Irssi::print('No Copy!', MSGLEVEL_CLIENTCRAP);
 		return();
 	}
-	for(1..$args) {
-		my $l=$line->prev;
-		if (defined $l) {
-			$line= $l;
-		} else {
-			last;
-		}
+
+	my @arg = split /[\s-]/, $args;
+	if(@arg > 2 || grep {/[^\d]+/} @arg) {
+		Irssi::print('Illegal range!', MSGLEVEL_CLIENTCRAP);
+		return();
 	}
-	my $str=$line->get_text(0);
+
+	$arg[0] = 1 if ($arg[0]==0);
+	$arg[0] -= 1;
+	$arg[1] -= 1 if defined $arg[1];
+
+	for(1..$arg[0]) {
+		last unless $line->prev;
+		$line = $line->prev;
+	}
+
+	my $str;
+	for($arg[0]..($arg[1] // $arg[0])) {
+		$str = join $copy_file_eol, $line->get_text(0), $str;
+
+		last unless $line->prev;
+		$line = $line->prev;
+	}
 	paste ($str);
 }
 
@@ -123,7 +144,16 @@ sub paste {
 		paste_screen($str, $copy_selection);
 	} elsif ( $copy_method eq 'print' ) {
 		paste_print($str, $copy_selection);
+	} elsif ( $copy_method eq 'file' ) {
+		paste_file($str, $copy_selection);
 	}
+}
+
+sub paste_file {
+	my ($str, $par)= @_;
+	open my $fa, $copy_file_mode, $copy_file;
+	print $fa $str, $copy_file_eol;
+	close $fa;
 }
 
 sub paste_print {
@@ -227,19 +257,30 @@ sub sig_setup_changed {
 		Irssi::settings_set_str($IRSSI{name}.'_selection', $cs);
 	}
 	my $cm= Irssi::settings_get_str($IRSSI{name}.'_method');
-	my %md=(xterm=>1, xclip=>1, xsel=>1, screen=>1, print=>1 );
+	my %md=(xterm=>1, xclip=>1, xsel=>1, screen=>1, print=>1, file=>1 );
 	if (exists $md{$cm} ) {
 		$copy_method= $cm;
 	} else {
 		$cm= $copy_method;
 		Irssi::settings_set_str($IRSSI{name}.'_method', $cm);
 	}
+	my $fn= Irssi::settings_get_str($IRSSI{name}.'_file');
+	$copy_file= bsd_glob($fn);
+	my $fm= Irssi::settings_get_str($IRSSI{name}.'_file_mode');
+	$copy_file_mode= $fm;
+	my $fe= Irssi::settings_get_str($IRSSI{name}.'_file_eol');
+	$fe =~ s/\\n/\n/g;
+	$fe =~ s/\\t/\t/g;
+	$copy_file_eol= $fe;
 }
 
 Irssi::signal_add('setup changed', \&sig_setup_changed);
 
 Irssi::settings_add_str($IRSSI{name} ,$IRSSI{name}.'_selection', '');
 Irssi::settings_add_str($IRSSI{name} ,$IRSSI{name}.'_method', 'xterm');
+Irssi::settings_add_str($IRSSI{name} ,$IRSSI{name}.'_file', '');
+Irssi::settings_add_str($IRSSI{name} ,$IRSSI{name}.'_file_mode', '>');
+Irssi::settings_add_str($IRSSI{name} ,$IRSSI{name}.'_file_eol', '\n');
 
 Irssi::command_bind($IRSSI{name}, \&cmd_copy);
 Irssi::command_bind('help', \&cmd_help);

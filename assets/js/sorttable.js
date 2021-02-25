@@ -36,7 +36,14 @@ sorttable = {
         sorttable.makeSortable(table);
       }
     });
-
+    if (window.sortSorttable) {
+      var k;
+      for (k in sortSorttable) {
+        sortSorttable[k]();
+        delete sortSorttable[k];
+      }
+    }
+    sorttable.MADE = true;
   },
 
   makeSortable: function(table) {

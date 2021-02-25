@@ -80,7 +80,7 @@ use Irssi::TextUI;
 use strict;
 use vars qw($VERSION %ENABLED %SAVE_VARS %IRSSI %COUNT %SET);
 
-$VERSION = '0.0.0n';
+$VERSION = '0.0.0o';
 %IRSSI = (
 	  authors     => 'Santabutthead',
 	  contact     => 'starz@antisocial.com',
@@ -351,7 +351,7 @@ sub clearback {
 
 sub crossfade {
     &read_settings;
-    if ($_[0] =~ m/\d{1-4}/) {
+    if ($_[0] =~ m/\d{1,4}/) {
 	&current_window;
 	Irssi::command( "$SET{'intrairssi'} crossfade $_[0]" );
 	&mpdbar_refresh; # Impatience
@@ -926,7 +926,7 @@ sub search {
 
 sub seek {
     &read_settings;
-    if ($_[0] =~ m/\d{1-3}/) {
+    if ($_[0] =~ m/\d{1,3}/) {
 	&current_window;
 	Irssi::command( "$SET{'intrairssi'} seek $_[0]" );
 	&mpdbar_refresh; # Impatience
