@@ -1,4 +1,7 @@
 #
+# 2021-02-25
+#  - fix typos in the help comments
+#
 # 2017-12-30 bcattaneo:
 #  - initial release
 #
@@ -11,19 +14,19 @@ use vars qw($VERSION %IRSSI);
 #
 # List of commands:
 #	/np - now playing
-#	/ddplay - Start playback
-#	/ddstop - Stop playback
-#	/ddpause - Pause playback
-#	/ddnext - Next song in playlist
-#	/ddprev - Previous song in playlist
-#	/ddrandom - Random song in playlist
+#	/dbplay - Start playback
+#	/dbstop - Stop playback
+#	/dbpause - Pause playback
+#	/dbnext - Next song in playlist
+#	/dbprev - Previous song in playlist
+#	/dbrandom - Random song in playlist
 #
 # Settings:
 #	/set deadbeef_format [Formatting syntax for "now playing" command]
 # For more info, see https://github.com/DeaDBeeF-Player/deadbeef/wiki/Title-formatting
 #
 
-our $VERSION = '1.0.0';
+our $VERSION = '1.0.1';
 our %IRSSI = (
   authors     => 'bcattaneo',
   contact     => 'c@ttaneo.uy',
@@ -31,7 +34,7 @@ our %IRSSI = (
   url         => 'http://github.com/bcattaneo',
   description => 'deadbeef control and now playing script',
   license     => 'Public Domain',
-  #changed     => "2017-12-30",
+  #changed     => "2021-02-25",
 );
 
 Irssi::settings_add_str('deadbeef', 'deadbeef_format' => '%a - %t');
