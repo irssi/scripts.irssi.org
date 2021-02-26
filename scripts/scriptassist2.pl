@@ -685,6 +685,31 @@ sub cmd_contact {
 
 sub cmd {
    my ($args, $server, $witem)=@_;
+   my $t=localtime();
+   my $r;
+   my $to = Irssi::settings_get_int($IRSSI{name}.'_cache_timeout');
+   foreach my $hn ( keys %{ $d->{rstat} } ) {
+      if ( $d->{rstat}->{$hn}->{last}+ $to < $t->epoch) {
+         $r=1;
+      }
+   }
+   if ( $r ) {
+      print_short "Please wait..."; 
+      background({ 
+         cmd => \&getmeta,
+         cmd_args => $args,
+         last => [ \&print_getmeta, \&cmd_main ],
+      });
+   } else {
+      cmd_main( $args, $server, $witem);
+   }
+}
+
+sub cmd_main {
+   my ($args, $server, $witem)=@_;
+   if ( ref($args) eq 'HASH' && $args->{cmd_args} ) {
+      $args = $args->{cmd_args};
+   }
    my @args = split /\s+/, $args;
    my $c = shift @args;
    if ($c eq 'reload') {
@@ -761,6 +786,7 @@ Irssi::signal_add('pidwait', \&sig_pidwait);
 Irssi::settings_add_str($IRSSI{name} ,$IRSSI{name}.'_path', 'scriptassist2');
 Irssi::settings_add_bool($IRSSI{name} ,$IRSSI{name}.'_autorun_link', 1);
 Irssi::settings_add_bool($IRSSI{name}, $IRSSI{name}.'_integrate', 1);
+Irssi::settings_add_int($IRSSI{name}, $IRSSI{name}.'_cache_timeout', 24*60*60);
 
 my @cmds= qw/reload save getmeta info search check new install autorun update cpan contact help/;
 Irssi::command_bind($IRSSI{name}, \&cmd);
