@@ -2694,11 +2694,11 @@
   description: 'A now-playing-script which uses Last.fm'
   filename: lastfm.pl
   license: BSD
-  modified: '2014-10-17 22:54:13'
+  modified: '2021-01-31 21:10:49'
   modules: 'HTML::Entities LWP::UserAgent'
   name: lastfm
   url: http://soy.se/code/
-  version: '5.8'
+  version: '5.9'
 -
   authors: 'Sander Smeenk'
   contact: irssi@freshdot.net
@@ -5000,15 +5000,6 @@
   modified: '2008-05-17 17:39:11'
   name: TrustWeb
   version: '2003020801'
--
-  authors: 'Gabor Nyeki'
-  commands: tvmusor
-  contact: bigmac@home.sirklabs.hu
-  description: 'asks for the current tv-lineup from http://www.port.hu/'
-  filename: tvmusor.pl
-  license: BSDL
-  modified: '2014-10-24 23:01:30'
-  name: tvmusor
 -
   authors: leocp1
   commands: twitch_online
