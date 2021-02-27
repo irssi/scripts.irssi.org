@@ -1369,10 +1369,10 @@
   description: 'deadbeef control and now playing script'
   filename: deadbeef.pl
   license: 'Public Domain'
-  modified: '2017-12-30 20:33:13'
+  modified: '2021-02-25 13:33:57'
   name: deadbeef
   url: http://github.com/bcattaneo
-  version: 1.0.0
+  version: 1.0.1
 -
   authors: 'Jakub Jankowski'
   contact: shasta@atn.pl
