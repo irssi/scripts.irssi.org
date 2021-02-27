@@ -13,7 +13,7 @@
   default_package: deadbeef
   description: 'deadbeef control and now playing script'
   license: 'Public Domain'
-  modified: '2017-12-30 20:33:13'
+  modified: '2021-02-25 13:33:57'
   name: deadbeef
   url: http://github.com/bcattaneo
-  version: 1.0.0
+  version: 1.0.1
