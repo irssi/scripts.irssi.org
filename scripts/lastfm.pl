@@ -1,12 +1,14 @@
 # vim: set expandtab:
 use strict;
+use warnings;
+no warnings 'closure';
 use vars qw($VERSION %IRSSI);
-$VERSION = "5.8";
+$VERSION = "5.9";
 %IRSSI = (
         authors     => "Simon 'simmel' Lundström",
         contact     => 'simmel@(freenode|quakenet|efnet) http://last.fm/user/darksoy',
         name        => "lastfm",
-        date        => "20110125",
+        date        => "20120229",
         description => 'A now-playing-script which uses Last.fm',
         license     => "BSD",
         url         => "http://soy.se/code/",
@@ -62,6 +64,11 @@ Irssi::settings_add_bool("lastfm", "lastfm_use_action", 0);
 Irssi::settings_add_bool("lastfm", "lastfm_get_player", 0);
 
 # Changelog#{{{
+
+# 5.9 -- Wed Feb 29 13:13:01 CET 2012
+# * "Fix" problem with /np returning "%( is )np: Rejects-Vision Smashed" when
+# no album was available. This is a "fix", the real fix is to use a real parser
+# and not regex. If you want to help with this, please contact me.
 
 # 5.8 -- Tue Jan 25 16:11:29 CET 2011
 # * Ignore a closure warning
@@ -232,6 +239,7 @@ Irssi::settings_add_bool("lastfm", "lastfm_get_player", 0);
 # }}}
 
 # TODO
+# Displaying track length via track.getinfo requested by rissy@QuakeNet
 # You tell me!
 
 # Move along now, there's nothing here to see.
@@ -241,8 +249,6 @@ sub DEBUG {
   Irssi::settings_get_bool("lastfm_debug");
 };
 
-use warnings;
-no warnings 'closure';
 use Data::Dumper;
 use Encode;
 use HTML::Entities;
@@ -321,7 +327,12 @@ sub lastfm_nowplaying {
 
   print Dumper \%data if DEBUG;
   print Dumper "Output pattern before: $nowplaying" if DEBUG;
-  $nowplaying =~ s/(%\((.*?%(\w+).?)\))/($data{$3} ? $2 : "")/ge;
+  if ($data{'album'}) {
+    $nowplaying =~ s/(%\((.*?%(\w+).*?)\))/($data{$3} ? $2 : "")/ge;
+  }
+  else {
+    $nowplaying =~ s/(%\((.*?%(\w+).?)\))/($data{$3} ? $2 : "")/ge;
+  }
   print Dumper "Output pattern after: $nowplaying" if DEBUG;
   $nowplaying =~ s/%$fields/$data{$1}/ge;
   decode_entities($nowplaying);
