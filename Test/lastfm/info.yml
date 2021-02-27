@@ -2,14 +2,14 @@
 -
   authors: "Simon 'simmel' Lundström"
   contact: 'simmel@(freenode|quakenet|efnet) http://last.fm/user/darksoy'
-  date: '20110125'
+  date: '20120229'
   default_package: lastfm
   description: 'A now-playing-script which uses Last.fm'
   license: BSD
-  modified: '2014-10-17 22:54:13'
+  modified: '2021-01-31 21:10:49'
   modules:
     - HTML::Entities
     - LWP::UserAgent
   name: lastfm
   url: http://soy.se/code/
-  version: '5.8'
+  version: '5.9'

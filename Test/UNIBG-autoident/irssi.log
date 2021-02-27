@@ -1,2 +1,6 @@
+* Old package separator used in string at UNIBG-autoident.pl line 126.
+* 
+* 	(Did you mean "$name\'s" instead?)
+* 
 * -!- autoident: loaded ok
 * -!- Irssi: Loaded script UNIBG_autoident
