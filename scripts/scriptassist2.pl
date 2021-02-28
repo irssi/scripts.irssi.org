@@ -9,6 +9,7 @@ use Time::Piece;
 use Digest::file qw/digest_file_hex/;
 use Digest::MD5 qw/md5_hex/;
 use Text::Wrap;
+use JSON::PP;
 #use debug;
 
 use Irssi;
@@ -69,9 +70,6 @@ END
 
 # TODO
 #
-#  /scriptassist rate <script>
-#  /scriptassist ratings <scripts|all>
-#  /scriptassist top <num>
 #  signature
 
 # config path
@@ -86,6 +84,9 @@ my $d;
 
 # links to $d->{rconfig}->@
 my %source;
+
+# sortet rate;
+my %srate;
 
 my %bg_process= ();
 
@@ -192,10 +193,15 @@ sub init {
       $n{type}="yaml";
       $n{url_db}="https://scripts.irssi.org/scripts.yml";
       $n{url_sc}="https://scripts.irssi.org/scripts";
+      #$n{url_rate}="https://api.github.com/repos/ailin-nemui/scripts.irssi.org/issues?state=closed";
+      $n{url_rate}="https://api.github.com/repos/ailin-nemui/irssi-script-votes/issues?state=closed";
       push @{$d->{rconfig}}, {%n};
    }
    foreach my $n ( @{ $d->{rconfig} } ) {
       $source{$n->{name}}= $n;
+   }
+   if ( exists $d->{rrate} ) {
+      sort_rate();
    }
    if ( exists $d->{autorun} ) {
       foreach my $fn ( @{$d->{autorun}} ) {
@@ -257,7 +263,8 @@ sub getmeta {
 sub print_getmeta {
    my ( $pn ) = @_;
    # write back to main!
-   $d= $pn->{res}->[0] ;
+   $d->{rscripts} = $pn->{res}->[0]->{rscripts} ;
+   $d->{rstat} = $pn->{res}->[0]->{rstat} ;
    foreach my $n ( @{ $d->{rconfig} } ) {
       $source{$n->{name}}= $n;
    }
@@ -705,6 +712,182 @@ sub cmd {
    }
 }
 
+sub fetch_gh_json {
+   my ( $url ) = @_;
+   my $ua = LWP::UserAgent->new(timeout => 10);
+   $ua->env_proxy;
+   $ua->default_header(
+      'Accept' => 'application/vnd.github.squirrel-girl-preview+json',
+      #'Accept'=> 'application/vnd.github.v3+json',
+   );
+   my $response = $ua->get($url );
+   if ($response->is_success) {
+      return decode_json($response->decoded_content);
+   } else {
+      return undef;
+   }
+}
+
+sub get_rate {
+   my %all;
+   my @err;
+   foreach my $n ( reverse  @{$d->{rconfig}} ) {
+      next unless exists( $n->{url_rate} );
+      my $t = fetch_gh_json $n->{url_rate} ;
+      push @err, "error fetch issue list ($n->{url_rate})" unless defined $t;
+      foreach my $is ( @$t ) {
+         my $com = fetch_gh_json $is->{comments_url}.'?per_page=100';
+         push @err, "error fetch comments ($is->{comments_url})" unless defined $com;
+         foreach my $n ( @$com ) {
+            my $b=$n->{body};
+            $b =~ m/([\w-]+\.pl)/;
+            my $fn= $1;
+            my $p = $n->{reactions}->{'+1'} 
+                        + $n->{reactions}->{'hooray'} 
+                        + $n->{reactions}->{'rocket'} 
+                        + $n->{reactions}->{'heart'} ;
+            my $m = $n->{reactions}->{'-1'} 
+                        + $n->{reactions}->{'confused'};
+            my $sum= $p-$m;
+            if ( $p >0 || $m >0) {
+               $all{$fn}->{vote} += $sum;
+            }
+            $all{$fn}->{vote_url}= $n->{html_url};
+         }
+      }
+   }
+   return {%all}, [ @err ] ;
+}
+
+sub sort_rate {
+   %srate=();
+   foreach my $k ( keys %{ $d->{rrate}} ) {
+      if ( exists $d->{rrate}->{$k}->{vote} ) {
+         if ( ! exists $srate{ $d->{rrate}->{$k}->{vote} } ) {
+            $srate{ $d->{rrate}->{$k}->{vote} }=[];
+         }
+         push @{$srate{ $d->{rrate}->{$k}->{vote} }}, $k;
+      }
+   }
+}
+
+sub cmd_getrate {
+   if (!module_exist('LWP::UserAgent')) {
+      print_short 'LWP::UserAgent not exists';
+      return;
+   }
+   use LWP::UserAgent;
+   print_short "Please wait..."; 
+   background({ 
+      cmd => \&get_rate,
+      last => [ \&print_getrate ],
+   });
+}
+
+sub print_getrate {
+   my ( $pn ) = @_;
+   # write back to main!
+   $d->{rrate} = $pn->{res}->[0] ;
+   my $err= $pn->{res}->[1];
+   if (ref($err) eq "ARRAY" && scalar(@$err) >0 ) {
+      foreach ( @$err) {
+         print_short $_;
+      }
+      print_short "rate cache not updatet";
+      return;
+   }
+   sort_rate();
+   my $t=localtime();
+   $d->{rrate_state}->{last}= $t->epoch;
+   print_short "rate cache updatet";
+}
+
+sub cmd_rate {
+   my ( @args )= @_;
+   foreach my $sn ( @args ) {
+      $sn =~ s/\.pl$//i;
+      my $fn = "$sn.pl";
+      if ( exists $d->{rrate}->{$fn} ) {
+         call_openurl $d->{rrate}->{$fn}->{vote_url};
+      }
+   }
+}
+
+sub cmd_ratings {
+   my ( @args )= @_;
+   for(my $c=0; $c<=$#args; $c++) {
+      if ( $args[$c] eq 'all') {
+         splice @args, $c, 1;
+         foreach my $sn (keys %Irssi::Script:: ) {
+            $sn =~ s/:+$//;
+            push @args, $sn;
+         }
+         last;
+      }
+   }
+   my %ra;
+   foreach my $sn ( @args ) {
+      $sn =~ s/\.pl$//i;
+      my $fn = "$sn.pl";
+      my $vote= $d->{rrate}->{$fn}->{vote};
+      $ra{$vote}=[] if !exists($ra{$vote});
+      push @{$ra{$vote}}, $sn;
+   }
+   print_rating('ratings', 0, \%ra);
+}
+
+sub print_rating {
+   my ( $tail, $maxl, $ratings )=@_;
+   my @res;
+   my $lmax;
+   my $max=$maxl;
+   foreach my $r ( sort { $b <=> $a } keys %$ratings ) {
+      foreach my $sn ( sort @{ $ratings->{$r} } ) {
+         $sn =~ s/\.pl$//i;
+         my $fn = "$sn.pl";
+         if ( exists $d->{rrate}->{$fn} ) {
+            $lmax =length $sn if $lmax < length $sn;
+            $max--;
+            last if ( $max == 0 );
+         }
+      }
+      last if ( $max == 0 );
+   }
+   foreach my $r ( sort { $b <=> $a } keys %$ratings ) {
+      foreach my $sn ( sort @{ $ratings->{$r} } ) {
+         $sn =~ s/\.pl$//i;
+         my $fn = "$sn.pl";
+         if ( exists $d->{rrate}->{$fn} ) {
+            my $s;
+            if ( installed_version $sn ) {
+               $s="%go%n %9";
+            } else {
+               $s="%yo%n %9";
+            }
+            my $vote= $d->{rrate}->{$fn}->{vote};
+            if ( $vote == 0 ) {
+               $s .=sprintf("%-${lmax}s",$sn)."%9 [no votes]";
+            } else {
+               $s .=sprintf("%-${lmax}s",$sn)."%9 [$vote votes]";
+            }
+            push @res, $s;
+            $maxl--;
+            last if ( $maxl == 0 );
+         }
+      }
+      last if ( $maxl == 0 );
+   }
+   print_box $IRSSI{name}, $tail, @res;
+}
+
+sub cmd_top {
+   my ( $maxl ) = @_;
+   if ( !defined $maxl || $maxl == 0 ) {
+      $maxl=10;
+   }
+   print_rating 'top', $maxl, \%srate;
+}
+
 sub cmd_main {
    my ($args, $server, $witem)=@_;
    if ( ref($args) eq 'HASH' && $args->{cmd_args} ) {
@@ -740,6 +923,14 @@ sub cmd_main {
       cmd_cpan( @args );
    } elsif ($c eq 'contact') {
       cmd_contact( @args );
+   } elsif ($c eq 'getrate') {
+      cmd_getrate( );
+   } elsif ($c eq 'rate') {
+      cmd_rate( @args );
+   } elsif ($c eq 'ratings') {
+      cmd_ratings( @args );
+   } elsif ($c eq 'top') {
+      cmd_top( @args );
    } elsif ($c eq 'help') {
       $args= $IRSSI{name};
       cmd_help( $args, $server, $witem);
@@ -788,7 +979,8 @@ Irssi::settings_add_bool($IRSSI{name} ,$IRSSI{name}.'_autorun_link', 1);
 Irssi::settings_add_bool($IRSSI{name}, $IRSSI{name}.'_integrate', 1);
 Irssi::settings_add_int($IRSSI{name}, $IRSSI{name}.'_cache_timeout', 24*60*60);
 
-my @cmds= qw/reload save getmeta info search check new install autorun update cpan contact help/;
+my @cmds= qw/reload save getmeta info search check new install autorun update cpan contact/;
+push @cmds, qw/getrate rate ratings top help/;
 Irssi::command_bind($IRSSI{name}, \&cmd);
 foreach ( @cmds ) {
    Irssi::command_bind("$IRSSI{name} $_", \&cmd);
