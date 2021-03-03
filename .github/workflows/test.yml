@@ -40,15 +40,19 @@ jobs:
           curl -fsSL https://download.opensuse.org/repositories/home:ailin_nemui:irssi-git/xUbuntu_$RELEASE/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/home_ailin_nemui_irssi-git.gpg > /dev/null
           sudo apt -q update
           sudo apt -q install $apt_build_deps $apt_script_deps
+      - name: check Perl ver
+        id: perl-ver
+        run: |
+          echo ::set-output name=perl_version::$(perl -e'print $^V')
       - name: cache cpan
         uses: actions/cache@v2
         with:
           path: |
             ~/extlib
-          key: ${{ runner.os }}-cpan-${{ github.sha }}-${{ github.run_number }}
+          key: ${{ runner.os }}-${{ steps.perl-ver.outputs.perl_version }}-cpan-${{ github.sha }}-${{ github.run_number }}
           restore-keys: |
-            ${{ runner.os }}-cpan-${{ github.sha }}-
-            ${{ runner.os }}-cpan-
+            ${{ runner.os }}-${{ steps.perl-ver.outputs.perl_version }}-cpan-${{ github.sha }}-
+            ${{ runner.os }}-${{ steps.perl-ver.outputs.perl_version }}-cpan-
       - name: fetch origin master branch
         if: ${{ github.event_name == 'pull_request' }}
         run: |
