@@ -88,6 +88,8 @@ my %source;
 # sortet rate;
 my %srate;
 
+my %cmds;
+
 my %bg_process= ();
 
 sub background {
@@ -258,6 +260,14 @@ sub getmeta {
       }
    }
    return $d, [@msg] ;
+}
+
+sub cmd_getmeta {
+   print_short "Please wait..."; 
+   background({ 
+      cmd => \&getmeta,
+      last => [ \&print_getmeta ],
+   });
 }
 
 sub print_getmeta {
@@ -690,28 +700,6 @@ sub cmd_contact {
    }
 }
 
-sub cmd {
-   my ($args, $server, $witem)=@_;
-   my $t=localtime();
-   my $r;
-   my $to = Irssi::settings_get_int($IRSSI{name}.'_cache_timeout');
-   foreach my $hn ( keys %{ $d->{rstat} } ) {
-      if ( $d->{rstat}->{$hn}->{last}+ $to < $t->epoch) {
-         $r=1;
-      }
-   }
-   if ( $r ) {
-      print_short "Please wait..."; 
-      background({ 
-         cmd => \&getmeta,
-         cmd_args => $args,
-         last => [ \&print_getmeta, \&cmd_main ],
-      });
-   } else {
-      cmd_main( $args, $server, $witem);
-   }
-}
-
 sub fetch_gh_json {
    my ( $url ) = @_;
    my $ua = LWP::UserAgent->new(timeout => 10);
@@ -776,7 +764,8 @@ sub cmd_getrate {
       print_short 'LWP::UserAgent not exists';
       return;
    }
-   use LWP::UserAgent;
+   #use LWP::UserAgent;
+   require LWP::UserAgent;
    print_short "Please wait..."; 
    background({ 
       cmd => \&get_rate,
@@ -888,52 +877,123 @@ sub cmd_top {
    print_rating 'top', $maxl, \%srate;
 }
 
-sub cmd_main {
+%cmds= (
+   reload=> {
+         cmd=> \&cmd_reload,
+   },
+   save=> {
+         cmd=> \&cmd_save,
+   },
+   getmeta=> {
+         cmd=> \&cmd_getmeta,
+   },
+   info=> {
+         cmd=> \&cmd_info,
+         meta=>1,
+   },
+   search=> {
+         cmd=> \&cmd_search,
+         meta=>1,
+   },
+   check=> {
+         cmd=> \&cmd_check,
+         meta=>1,
+   },
+   new=> {
+         cmd=> \&cmd_new,
+         meta=>1,
+   },
+   install=> {
+         cmd=> \&cmd_install,
+   },
+   autorun=> {
+         cmd=> \&cmd_autorun,
+   },
+   update=> {
+         cmd=> \&cmd_update,
+         meta=>1,
+   },
+   cpan=> {
+         cmd=> \&cmd_cpan,
+         meta=>1,
+   },
+   contact=> {
+         cmd=> \&cmd_contact,
+         meta=>1,
+   },
+   getrate=> {
+         cmd=> \&cmd_getrate,
+   },
+   rate=> {
+         cmd=> \&cmd_rate,
+         rate=>1,
+   },
+   ratings=> {
+         cmd=> \&cmd_ratings,
+         rate=>1,
+   },
+   top=> {
+         cmd=> \&cmd_top,
+         rate=>1,
+   },
+);
+
+sub cmd {
    my ($args, $server, $witem)=@_;
-   if ( ref($args) eq 'HASH' && $args->{cmd_args} ) {
-      $args = $args->{cmd_args};
-   }
    my @args = split /\s+/, $args;
    my $c = shift @args;
-   if ($c eq 'reload') {
-      cmd_reload( );
-   } elsif ($c eq 'save') {
-      cmd_save( );
-   } elsif ($c eq 'getmeta') {
-      print_short "Please wait..."; 
-      background({ 
-         cmd => \&getmeta,
-         last => [ \&print_getmeta ],
-      });
-   } elsif ($c eq 'info') {
-      cmd_info( @args);
-   } elsif ($c eq 'search') {
-      cmd_search( @args);
-   } elsif ($c eq 'check') {
-      cmd_check();
-   } elsif ($c eq 'new') {
-      cmd_new( @args );
-   } elsif ($c eq 'install') {
-      cmd_install( @args );
-   } elsif ($c eq 'autorun') {
-      cmd_autorun( @args );
-   } elsif ($c eq 'update') {
-      cmd_update( @args );
-   } elsif ($c eq 'cpan') {
-      cmd_cpan( @args );
-   } elsif ($c eq 'contact') {
-      cmd_contact( @args );
-   } elsif ($c eq 'getrate') {
-      cmd_getrate( );
-   } elsif ($c eq 'rate') {
-      cmd_rate( @args );
-   } elsif ($c eq 'ratings') {
-      cmd_ratings( @args );
-   } elsif ($c eq 'top') {
-      cmd_top( @args );
-   } elsif ($c eq 'help') {
+   if ( exists $cmds{$c} ) {
+      my $t=localtime();
+      my $to = Irssi::settings_get_int($IRSSI{name}.'_cache_timeout');
+      if (exists $cmds{$c}->{meta} ) {
+         my $r;
+         $r=1 if ( scalar(keys %{ $d->{rstat}})==0 );
+         foreach my $hn ( keys %{ $d->{rstat} } ) {
+            if ( ($d->{rstat}->{$hn}->{last}+ $to) < $t->epoch) {
+               $r=1;
+            }
+         }
+         if ( $r ) {
+            print_short "Please wait..."; 
+            background({ 
+               cmd => \&getmeta,
+               cmd_args => [$c, @args],
+               last => [ \&print_getmeta, \&last_cmd ],
+            });
+         } else {
+            &{$cmds{$c}->{cmd}}(@args);
+         }
+      } elsif (exists $cmds{$c}->{rate} ) {
+         if ( ($d->{rrate_state}->{last}+ $to) < $t->epoch) {
+            if (!module_exist('LWP::UserAgent')) {
+               print_short 'LWP::UserAgent not exists';
+               return;
+            }
+            require LWP::UserAgent;
+            print_short "Please wait..."; 
+            background({ 
+               cmd => \&get_rate,
+               cmd_args => [$c, @args],
+               last => [ \&print_getrate, \&last_cmd ],
+            });
+         } else {
+            &{$cmds{$c}->{cmd}}(@args);
+         }
+      } else {
+         &{$cmds{$c}->{cmd}}(@args);
+      }
+   } elsif ( $c eq 'help' ) {
       $args= $IRSSI{name};
       cmd_help( $args, $server, $witem);
+   }
+}
+
+sub last_cmd {
+   my ($pn)= @_;
+   my @args= @{ $pn->{cmd_args} };
+   my $c = shift @args;
+   if ( exists $cmds{$c} ) {
+      &{$cmds{$c}->{cmd}}(@args);
    }
 }
 
@@ -979,15 +1039,13 @@ Irssi::settings_add_bool($IRSSI{name} ,$IRSSI{name}.'_autorun_link', 1);
 Irssi::settings_add_bool($IRSSI{name}, $IRSSI{name}.'_integrate', 1);
 Irssi::settings_add_int($IRSSI{name}, $IRSSI{name}.'_cache_timeout', 24*60*60);
 
-my @cmds= qw/reload save getmeta info search check new install autorun update cpan contact/;
-push @cmds, qw/getrate rate ratings top help/;
 Irssi::command_bind($IRSSI{name}, \&cmd);
-foreach ( @cmds ) {
+foreach ( 'help', keys %cmds ) {
    Irssi::command_bind("$IRSSI{name} $_", \&cmd);
 }
 if ( Irssi::settings_get_bool($IRSSI{name}.'_integrate')) {
    Irssi::command_bind('script', \&cmd);
-   foreach ( @cmds ) {
+   foreach ( keys %cmds ) {
       Irssi::command_bind("script $_", \&cmd);
    }
 }
