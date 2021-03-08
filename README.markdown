@@ -503,7 +503,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                          uptime ](Test/uptime/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
 [                         url_log ](Test/url_log/)|  ✔   |  ✔   |  ✔   | 12   |  ✔   | (c)
 [                         urlfeed ](Test/urlfeed/)|  ✔   |  ✔   |  ✔   | 12   |  ✔   | (c)
-[                         urlgrab ](Test/urlgrab/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   
+[                         urlgrab ](Test/urlgrab/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
 [                         urlinfo ](Test/urlinfo/)|  ✔   |  ✔   |  ✔   |  8   |  ✔   | (c)
 [                         urlplot ](Test/urlplot/)|  ✔   |  ✔   |  ✔   | 86   |  ✔   | (c)
 [                       urlwindow ](Test/urlwindow/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -543,4 +543,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-c1b931c7d2616472a527a8c27ab90bc9047ec74e | 2021-03-08T10:10:01,367860986+00:00
+9024ed9a9e7242e2809b2d726c5a5346c016b112 | 2021-03-08T17:30:18,541684877+00:00
