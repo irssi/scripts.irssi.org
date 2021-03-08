@@ -32,9 +32,6 @@
 # /sm reject <nick> [message]
 # reject chat from nick
 #
-# /sm clear <nick>
-# clears messages from nick without ignoring
-#
 ##
 
 use strict;
@@ -45,8 +42,8 @@ use Irssi::TextUI;
 
 
 use vars qw($VERSION %IRSSI);
-$VERSION = "2.1";
-my $APPVERSION = "Securemsg v2.1";
+$VERSION = "2.2.1";
+my $APPVERSION = "Securemsg v$VERSION";
 %IRSSI = (
 	  authors	=> "Jari Matilainen, a lot of code borrowed from whitelist.pl by David O\'Rourke and Karl Siegemund",
 	  contact	=> "vague`!#irssi\@freenode on irc ",
@@ -61,6 +58,7 @@ my $whitenick;
 my $whitehost;
 my $tstamp;
 my %messages = ();
+my @nick_index;
 
 # A mapping to convert simple regexp (* and ?) into Perl regexp
 my %htr = ( );
@@ -154,6 +152,10 @@ sub securemsg_check {
     
     my $tmpmsg = $tstamp."<".$nick."!".(($channel)?$channel->{name}:"none")."@".lc($server->{tag})."> ".$msg;
     push @{$messages{$nick}{lc($server->{tag})}{messages}},$tmpmsg;
+    if (@{$messages{$nick}{lc($server->{tag})}{messages}} == 1) {
+	push @nick_index, [ $nick, lc($server->{tag}) ]
+	    unless grep { $_->[0] eq $nick && lc($_->[1]) eq lc($server->{tag}) } @nick_index;
+    }
 
     refresh_securemsg();
     Irssi::command_bind("sm accept $nick",\&cmd_accept);
@@ -173,20 +175,33 @@ sub usage {
     print("Usage: sm add|del <nick>|<host> list of nicks/hosts | sm nicks|hosts | sm accept|reject <nick> [net <chatnet>] [message] | sm show <nick> [net <chatnet>] | sm help");
 }
 
+sub _get_nn {
+    my $args = shift;
+    my ($nick, $net, $rest);
+    if ($args =~ /^(\d+)\s*$/) {
+	if ($1 > 0 && $1 <= @nick_index && $nick_index[ $1 - 1 ]) {
+	    ($nick, $net) = @{$nick_index[ $1 - 1 ]};
+	} else {
+	    ($nick, $net) = ('', '');
+	}
+    } else {
+	my $arg;
+	($nick, $rest) = split /\s+/, $args, 2;
+	if($rest =~ /^net/) {
+	    ($arg, $net) = split /\s+/, $rest, 2;
+	}
+    }
+    $nick = lc($nick);
+    $net = lc($net);
+    ($nick, $net, $rest)
+}
+
 sub cmd_accept {
     my ($args, $active_server, $witem) = @_;
-    my ($nick, $rest) = split /\s+/, $args, 2;
-    my ($arg, $net);
+    my ($nick, $net, $rest) = _get_nn($args);
     my $server;
     my $mmsg          = Irssi::settings_get_str('securemsg_customaccept');
     my $msg;
-
-    if($rest =~ /^net/) {
-	($arg, $net, $rest) = split /\s+/, $rest, 3;
-    }
-
-    $nick = lc($nick);
-    $net = lc($net);
 
     if((!defined $nick) || ($nick eq "")) {
 	usage;
@@ -222,7 +237,7 @@ sub cmd_accept {
 	return;
     }
 
-    $server->command("MSG $nick $rest");
+    $server->command("QUERY $nick $rest");
 
     my $query = $server->query_find($nick);
     $query->set_active();
@@ -251,21 +266,13 @@ sub cmd_accept {
 
 sub cmd_reject {
     my ($args, $active_server, $winit) = @_;
-    my ($nick, $rest) = split /\s+/, $args, 2;
+    my ($nick, $net, $rest) = _get_nn($args);
     my $time          = Irssi::settings_get_str('securemsg_ignoretime');
-    my ($arg, $net);
     my $server;
-
-    if($rest =~ /^net/) {
-        ($arg, $net, $rest) = split /\s+/, $rest, 3;
-    }
 
     if((!defined $time) || ($time eq "") || ($time eq " ")) {
 	$time = "600";
     }
-
-    $nick = lc($nick);
-    $net = lc($net);
 
     if((!defined $nick) || ($nick eq "")) {
 	usage;
@@ -394,26 +401,92 @@ sub cmd_help {
     print ( <<EOF
 Commands:
 SM HELP                                    - SHOWS THIS HELP
-SM ADD NICK|HOST <nicks>|<hosts>           - ADDS/DELETES A SPACE SEPARATED LIST OF NICKS OR HOSTS
+SM ADD|DEL NICK|HOST <nicks>|<hosts>       - ADDS/DELETES A SPACE SEPARATED LIST OF NICKS OR HOSTS
 SM NICKS|HOSTS                             - DISPLAYS THE CURRENT WHITELISTED NICKS OR HOSTS
 SM ACCEPT <nick> [net <chatnet>] [message] - ALLOWS MSG'S FROM nick
 SM REJECT <nick> [net <chatnet>] [message] - DOESN'T ALLOW MESSAGES FROM nick
+SM REJIDX <index>-<index>                  - DOESN'T ALLOW MESSAGES FROM ALL NICKS IN THE GIVEN RANGE
 SM SHOW <nick> [net <chatnet>]             - SHOWS CURRENT MESSAGES FROM nick WITHOUT ACCEPTING OR REJECTING nick
+SM SHOWALL                                 - SHOWS A LIST OF ALL CURRENT MESSAGES FROM ALL NICKS
 EOF
     );
 }
 
+sub _order_nicks {
+    my @m_a = sort map { @{ $messages{$a}{$_}{messages} } } keys %{ $messages{$a} };
+    my @m_b = sort map { @{ $messages{$b}{$_}{messages} } } keys %{ $messages{$b} };
+    $m_a[0] cmp $m_b[0]
+}
+
+sub _order_tags {
+    my $nick = shift;
+    sub {
+	my @m_a = sort map { @{ $messages{$nick}{$a}{messages} } } keys %{ $messages{$nick} };
+	my @m_b = sort map { @{ $messages{$nick}{$b}{messages} } } keys %{ $messages{$nick} };
+	$m_a[0] cmp $m_b[0]
+    }
+}
+
+sub cmd_showall {
+    @nick_index = ();
+    my @printout;
+    foreach my $nick (sort _order_nicks keys %messages) {
+	foreach my $tag (sort ${\&_order_tags($nick)} keys %{$messages{$nick}}) {
+	    my $msg = $messages{$nick}{$tag}{messages}[0];
+	    my $count = @{$messages{$nick}{$tag}{messages}};
+	    if ($count > 1) {
+		$msg .= "%K[%g+$count%K]%n";
+	    }
+	    push @printout, $msg;
+	    push @nick_index, [$nick, $tag];
+	}
+    }
+    my $format = '%' . (length(scalar(@printout))) . 'd';
+    my $i = 1;
+    for my $msg (@printout) {
+	my $num = sprintf $format, $i;
+	print CLIENTCRAP "%B-%W!%B-%n %K[%R$num%K]%n $msg";
+	$i++;
+    }
+    print CLIENTCRAP "%B-%W!%B-%n %rend of securemsg list";
+}
+
+sub cmd_rejidx {
+    my ($args, $active_server, $winit) = @_;
+    my %reject;
+    $args =~ y/,/ /;
+    my @args = split ' ', $args;
+    for my $arg (@args) {
+	if ($arg =~ /^\d+$/) {
+	    $reject{$arg + 0} = 1;
+	}
+	elsif ($arg =~ /^(\d+)(?:-|\.\.)(\d+)$/) {
+	    for ($1 .. $2) {
+		$reject{$_} = 1;
+	    }
+	}
+	else {
+	    $arg =~ s/\@/ net /;
+	    cmd_reject($arg, $active_server, $winit);
+	}
+    }
+    my @not_found;
+    for (sort { $a <=> $b } keys %reject) {
+	if ($_ > 0 && $_ <= @nick_index && $nick_index[ $_ - 1 ]) {
+	    cmd_reject(join ' net ', @{$nick_index[ $_ - 1 ]});
+	} else {
+	    push @not_found, $_ + 0;
+	}
+    }
+    if (@not_found) {
+	print CLIENTCRAP "%B-%W!%B-%n %rcould not reject @{[ join ',', @not_found ]}, they were not in the list";
+    }
+}
+
 sub cmd_show {
     my ($args, $server, $witem) = @_;
-    my ($nick, $rest) = split /\s+/, $args, 2;
-    my ($arg, $net);
+    my ($nick, $net) = _get_nn($args);
     my $server;
-
-    if($rest =~ /^net/) {
-        ($arg, $net) = split /\s+/, $rest, 2;
-    }
-
-    $net = lc($net);
 
     if((!defined $nick) || (!exists $messages{$nick})) {
 	usage;
@@ -447,8 +520,8 @@ sub securemsg {
     my ($item,$get_size_only) = @_;
     my $result = 0;
     my $nicks = "";
-    foreach my $nick (keys %messages) {
-	foreach my $tag (keys %{$messages{$nick}}) {
+    foreach my $nick (sort _order_nicks keys %messages) {
+	foreach my $tag (sort ${\&_order_tags($nick)} keys %{$messages{$nick}}) {
 	    if ($nicks eq "") {
 		if(keys %{$messages{$nick}} > 1) {
 		    $nicks = $nick."@".$tag;
@@ -499,8 +572,10 @@ Irssi::command_bind('sm del',\&cmd_del);
 Irssi::command_bind('sm nicks',\&cmd_nicks);
 Irssi::command_bind('sm hosts',\&cmd_hosts);
 Irssi::command_bind('sm show',\&cmd_show);
+Irssi::command_bind('sm showall',\&cmd_showall);
 Irssi::command_bind('sm accept',\&cmd_accept);
 Irssi::command_bind('sm reject',\&cmd_reject);
+Irssi::command_bind('sm rejidx',\&cmd_rejidx);
 Irssi::command_bind('sm help',\&cmd_help);
 Irssi::command_bind('sm add host',\&cmd_add);
 Irssi::command_bind('sm add nick',\&cmd_add);
