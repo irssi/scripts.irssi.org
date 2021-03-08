@@ -10,6 +10,7 @@ use Digest::file qw/digest_file_hex/;
 use Digest::MD5 qw/md5_hex/;
 use Text::Wrap;
 use JSON::PP;
+use Cwd;
 #use debug;
 
 use Irssi;
@@ -89,6 +90,8 @@ my %source;
 my %srate;
 
 my %cmds;
+
+my ($fetch_system, %fetchsys);
 
 my %bg_process= ();
 
@@ -183,6 +186,10 @@ sub call_openurl {
 }
 
 sub init {
+   if ( $fetch_system eq '' ) {
+      cmd_fetchsearch();
+      $fetch_system='filefetch' if $fetch_system eq '';
+   }
    if ( -e "$path/cache.yml" ) {
       my $yml= CPAN::Meta::YAML->read("$path/cache.yml");
       $d= $yml->[0];
@@ -223,6 +230,12 @@ sub save {
 
 sub fetch {
    my ($uri)= @_;
+   my $fn= &{ $fetchsys{$fetch_system}->{cmd} }($uri);
+   return $fn;
+}
+
+sub fetch_filefetch {
+   my ($uri)= @_;
    my ($ff, $w, $res);
 	local $File::Fetch::WARN=0;
    $ff = File::Fetch->new (
@@ -233,6 +246,61 @@ sub fetch {
       $res= $ff->file;
    }
    return $res;
+}
+
+sub fetch_wget {
+   my ($uri)= @_;
+   my $opwd= getcwd;
+   chdir $path;
+   system('wget', '-q', '--no-check-certificate', '-Ofetch.tmp', $uri);
+   chdir $opwd;
+   if ( $? ==0 ) {
+      return 'fetch.tmp';
+   }
+}
+
+sub fetch_curl {
+   my ($uri)= @_;
+   my $opwd= getcwd;
+   chdir $path;
+   system('curl', '-s', '--insecure', '-ofetch.tmp', $uri);
+   chdir $opwd;
+   if ( $? ==0 ) {
+      return 'fetch.tmp';
+   }
+}
+
+%fetchsys= (
+   filefetch=> {
+      cmd=> \&fetch_filefetch,
+      rate=> 0,
+   },
+   wget=> {
+      cmd=> \&fetch_wget,
+      rate=> 2,
+   },
+   curl=> {
+      cmd=> \&fetch_curl,
+      rate=> 1,
+   },
+);
+
+sub cmd_fetchsearch {
+   my $turl="https://irssi.org/robots.txt";
+   foreach my $k ( sort { $fetchsys{$a}->{rate} <=> $fetchsys{$b}->{rate} } keys %fetchsys ) {
+      print_short "test $k";
+      my $fn= &{ $fetchsys{$k}->{cmd} }($turl);
+      next if $fn eq '' ;
+      open my $fi, "<", "$path/$fn";
+      my @fs = stat $fi;
+      close $fi;
+      unlink "$path/$fn";
+      next if $fs[7] < 7;
+      print_short "set $k";
+      $fetch_system=$k;
+      Irssi::settings_set_str($IRSSI{name}.'_fetch_system', $k);
+      last;
+   }
 }
 
 sub getmeta {
@@ -272,16 +340,18 @@ sub cmd_getmeta {
 
 sub print_getmeta {
    my ( $pn ) = @_;
-   # write back to main!
-   $d->{rscripts} = $pn->{res}->[0]->{rscripts} ;
-   $d->{rstat} = $pn->{res}->[0]->{rstat} ;
-   foreach my $n ( @{ $d->{rconfig} } ) {
-      $source{$n->{name}}= $n;
+   if ( scalar (@{$pn->{res}->[1]}) ==0 ) {
+      # write back to main!
+      $d->{rscripts} = $pn->{res}->[0]->{rscripts} ;
+      $d->{rstat} = $pn->{res}->[0]->{rstat} ;
+      foreach my $n ( @{ $d->{rconfig} } ) {
+         $source{$n->{name}}= $n;
+      }
+      print_short "database cache updatet"; 
    }
    foreach my $s (@{$pn->{res}->[1]} ) {
       print_short $s; 
    }
-   print_short "database cache updatet"; 
 }
 
 sub cmd_reload {
@@ -347,6 +417,7 @@ sub cmd_info {
             push @r, sinfo 11, "Authors", $n->{authors};
             push @r, sinfo 11, "Contact", $n->{contact};
             push @r, sinfo 11, "Description", $n->{description};
+            push @r, sinfo 11, "Modified", $n->{modified};
             if ( exists $n->{modules} ) {
                push @r, " ";
                push @r, "  Needed Perl modules:";
@@ -936,6 +1007,9 @@ sub cmd_top {
          cmd=> \&cmd_top,
          rate=>1,
    },
+   fetchsearch=> {
+         cmd=> \&cmd_fetchsearch,
+   },
 );
 
 sub cmd {
@@ -1016,7 +1090,10 @@ sub sig_setup_changed {
    if ( !-e $path ) {
       mkdir $path;
    }
-
+   my $fs= Irssi::settings_get_str($IRSSI{name}.'_fetch_system');
+   if ( exists $fetchsys{ $fs } ) {
+      $fetch_system= $fs;
+   }
 }
 
 sub UNLOAD {
@@ -1036,7 +1113,8 @@ Irssi::signal_add('pidwait', \&sig_pidwait);
 
 Irssi::settings_add_str($IRSSI{name} ,$IRSSI{name}.'_path', 'scriptassist2');
 Irssi::settings_add_bool($IRSSI{name} ,$IRSSI{name}.'_autorun_link', 1);
-Irssi::settings_add_bool($IRSSI{name}, $IRSSI{name}.'_integrate', 1);
+Irssi::settings_add_bool($IRSSI{name}, $IRSSI{name}.'_integrate', 0);
+Irssi::settings_add_str($IRSSI{name}, $IRSSI{name}.'_fetch_system', '');
 Irssi::settings_add_int($IRSSI{name}, $IRSSI{name}.'_cache_timeout', 24*60*60);
 
 Irssi::command_bind($IRSSI{name}, \&cmd);
