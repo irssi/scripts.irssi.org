@@ -7,12 +7,13 @@
 #
 
 use strict;
+use Time::Piece;
 use Irssi 20010120.0250 ();
 use vars qw($VERSION %IRSSI);
-$VERSION = "0.4";
+$VERSION = "0.5";
 %IRSSI = (
-    authors     => 'David Leadbeater',
-    contact     => 'dgl@dgl.cx',
+    authors     => 'David Leadbeater, Thorsten Scherf',
+    contact     => 'dgl@dgl.cx, tscherf@redhat.com',
     name        => 'urlgrab',
     description => 'Captures urls said in channel and private messages and saves them to a file, also adds a /url command which loads the last said url into a browser.',
     license     => 'GNU GPLv2 or later',
@@ -55,11 +56,12 @@ sub find_url {
 }
 
 sub url_log{
+   my $t = localtime;
    my($where,$channel,$url) = @_;
    return if lc $url eq lc $lasturl; # a tiny bit of protection from spam/flood
    $lasturl = $url;
    open(URLLOG, ">>", $file) or return;
-   print URLLOG time." $where $channel $lasturl\n";
+   print URLLOG $t->datetime . " $where $channel $lasturl\n";
    close(URLLOG);
 }
 
