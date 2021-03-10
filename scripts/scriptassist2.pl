@@ -270,6 +270,17 @@ sub fetch_curl {
    }
 }
 
+sub fetch_fetch {
+   my ($uri)= @_;
+   my $opwd= getcwd;
+   chdir $path;
+   system('fetch','-q', '--no-verify-peer', '--no-verify-hostname', '-ofetch.tmp', $uri);
+   chdir $opwd;
+   if ( $? ==0 ) {
+      return 'fetch.tmp';
+   }
+}
+
 %fetchsys= (
    filefetch=> {
       cmd=> \&fetch_filefetch,
@@ -282,6 +293,10 @@ sub fetch_curl {
    curl=> {
       cmd=> \&fetch_curl,
       rate=> 1,
+   },
+   fetch=> {
+      cmd=> \&fetch_fetch,
+      rate=> 3,
    },
 );
 
