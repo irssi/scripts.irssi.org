@@ -7,8 +7,9 @@ use HTTP::Request::Common;
 use LWP::UserAgent;
 use Storable qw/store_fd fd_retrieve/;
 use File::Glob qw/:bsd_glob/;
+use Digest::MD5 qw/md5_hex/;
 
-$VERSION = '0.04';
+$VERSION = '0.05';
 %IRSSI = (
     authors	=> 'bw1',
     contact	=> 'bw1@aol.at',
@@ -16,8 +17,8 @@ $VERSION = '0.04';
     description	=> 'upload file to https://0x0.st/',
     license	=> 'ISC',
     url		=> 'https://scripts.irssi.org/',
-    changed	=> '2021-01-13',
-    modules => 'POSIX HTTP::Request::Common LWP::UserAgent Storable File::Glob',
+    changed	=> '2025-10-12',
+    modules => 'POSIX HTTP::Request::Common LWP::UserAgent Storable File::Glob Digest::MD5',
     commands=> '0x0st',
     selfcheckcmd=> '0x0st -c',
 );
@@ -33,7 +34,7 @@ my $help = << "END";
 %9Description%9
   $IRSSI{description}
     -p past url to channel
-    -s shorten url
+    -s shorten url (disabled by 0xst)
     -u file from url
     -c self check
 %9See also%9
@@ -44,6 +45,8 @@ END
 my $test_str;
 
 my $base_uri;
+
+my $user_agent='curl/123.123';
 
 my %bg_process= ();
 my $self_check_timer;
@@ -84,8 +87,8 @@ sub sig_pidwait {
 
 sub upload {
 	my ($filename) = @_;
-	my $ua = LWP::UserAgent->new(agent=>'wget');
-	my $filename = bsd_glob $filename;
+	my $ua = LWP::UserAgent->new(agent=>$user_agent);
+	$filename = bsd_glob $filename;
 	if (-e $filename) {
 		my $re = $ua->request(POST $base_uri,
 			Content_Type => 'form-data',
@@ -96,12 +99,14 @@ sub upload {
 		my $code= $re->code();
 		chomp $res;
 		return $res, $code;
+	} else {
+		return 'file not found', 404;
 	}
 }
 
 sub url {
 	my ($url) = @_;
-	my $ua = LWP::UserAgent->new(agent=>'wget');
+	my $ua = LWP::UserAgent->new(agent=>$user_agent);
 	my $re = $ua->request(POST $base_uri,
 			{url=> $url}
 	);
@@ -113,7 +118,7 @@ sub url {
 
 sub shorten {
 	my ($url) = @_;
-	my $ua = LWP::UserAgent->new(agent=>'wget');
+	my $ua = LWP::UserAgent->new(agent=>$user_agent);
 	my $re = $ua->request(POST $base_uri,
 			{shorten=> $url}
 	);
@@ -121,6 +126,14 @@ sub shorten {
 	my $code= $re->code();
 	chomp $res;
 	return $res, $code;
+}
+
+sub getwebsite {
+	my $ua = LWP::UserAgent->new(agent=>$user_agent);
+	my $re = $ua->request(GET $base_uri);
+	my $res= $re->content;
+	my $code= $re->code();
+	return length($res), $code, md5_hex($res);
 }
 
 sub past2channel {
@@ -152,10 +165,9 @@ sub cmd {
 			$cmd->{args}=[$arg];
 			background( $cmd );
 		} elsif (exists $opt->{c}) {
-			$cmd->{cmd}=\&shorten;
-			$cmd->{args}=['https://scripts.irssi.org/'];
+			$cmd->{cmd}=\&getwebsite;
 			$cmd->{last}=[\&self_check];
-			$self_check_timer= Irssi::timeout_add_once(2000, \&self_check, '');
+			$self_check_timer= Irssi::timeout_add_once(20000, \&self_check, '');
 			background( $cmd );
 		} else {
 			$cmd->{cmd}=\&upload;
@@ -176,18 +188,20 @@ sub self_check {
 	} else {
 		@res= @{$arg->{res}};
 		Irssi::timeout_remove($self_check_timer);
-		Irssi::print("0x0st: surl: $res[0] stat: $res[1]", MSGLEVEL_CLIENTCRAP);
-		if ( 2 != scalar (@res ) ) {
+		Irssi::print("0x0st: surl: $res[0] stat: $res[1], digest: $res[2]", MSGLEVEL_CLIENTCRAP);
+		if ( 3 != scalar (@res ) ) {
 			$s = 'Error: arg count';
 		} elsif ( $res[1] != 200 ) {
 			$s = "Error: HTTP status code ($res[1])";
-		} elsif ( $res[0] !~ m/^http/ ) {
-			$s = "Error: result ($res[0])";
+		} elsif ( $res[0] < 2900  ) {
+			$s = "Error: result length ($res[0])";
+		} elsif ( $res[2] ne '6c6c0ea80554f86b41596d2ecdac3482' ) {
+			$s = "Warning: website changed";
 		}
 	}
-	Irssi::print("0x0st: selfcheck $s", MSGLEVEL_CLIENTCRAP);
-	my $schs_version = $Irssi::Script::selfcheckhelperscript::VERSION;
-	Irssi::command("selfcheckhelperscript $s") if (defined $schs_version);
+	Irssi::print("0x0st: selfckeck $s", MSGLEVEL_CLIENTCRAP);
+	my $schs =  exists $Irssi::Script::{'selfcheckhelperscript::'};
+	Irssi::command("selfcheckhelperscript $s") if ( $schs );
 }
 
 sub cmd_help {
