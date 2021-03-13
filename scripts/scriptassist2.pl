@@ -26,6 +26,7 @@ $VERSION = '0.01';
     changed => '2021-02-13',
     modules => '',
     commands=> 'scriptassist2',
+    selfcheckcmd=> 'scriptassist2 selfcheck',
 );
 
 my $help = << "END";
@@ -92,6 +93,7 @@ my %srate;
 my %cmds;
 
 my ($fetch_system, %fetchsys);
+my ($selfcheck);
 
 my %bg_process= ();
 
@@ -975,6 +977,42 @@ sub cmd_top {
    print_rating 'top', $maxl, \%srate;
 }
 
+sub cmd_selfcheck {
+   my $t=19;
+   print_short "start self check ( ${t}s )";
+   $selfcheck->{metalast}= $d->{rstat}->{irssi}->{last};
+   $selfcheck->{metalast}=0 if !defined $selfcheck->{metalast};
+   $selfcheck->{ratelast}= $d->{rrate_state}->{last};
+   $selfcheck->{ratelast}=0 if !defined $selfcheck->{ratelast};
+   cmd_getrate();
+   cmd_getmeta();
+   Irssi::timeout_add_once($t*1000, \&selfcheck, '' );
+}
+
+sub selfcheck {
+   print_short "check results";
+   my $s='ok';
+   if (  ! defined $d->{rstat}->{irssi}->{last} ||
+         $selfcheck->{metalast} == $d->{rstat}->{irssi}->{last} ) {
+      $s= 'Error: fetch getmeta';
+      print_short $s;
+   } elsif (scalar( keys %{$d->{rscripts}->{irssi}} ) < 50 ) {
+      $s= 'Error: meta result count ('.scalar( keys %{$d->{rscripts}->{irssi}} ).')';
+      print_short $s;
+   }
+   if ( !defined $d->{rrate_state}->{last} || 
+         $selfcheck->{ratelast} == $d->{rrate_state}->{last} ) {
+      $s= 'Error: fetch getrate';
+      print_short $s;
+   } elsif ( scalar( keys %srate) <5 ){
+      $s= 'Error: srate result count ('.scalar( keys %srate).')';
+      print_short $s;
+   }
+   print_short "self check ok" if $s eq "ok";
+   my $schs =  exists $Irssi::Script::{'selfcheckhelperscript::'};
+   Irssi::command("selfcheckhelperscript $s") if ( $schs );
+}
+
 %cmds= (
    reload=> {
          cmd=> \&cmd_reload,
@@ -1036,6 +1074,9 @@ sub cmd_top {
    },
    fetchsearch=> {
          cmd=> \&cmd_fetchsearch,
+   },
+   selfcheck=> {
+         cmd=> \&cmd_selfcheck,
    },
 );
 
