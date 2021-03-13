@@ -234,6 +234,15 @@ sub fetch {
    return $fn;
 }
 
+sub url2target {
+   my ( $url )=@_;
+   my $t= "fetch.tmp";
+   if ( $url=~ m#/([^/]*\.pl)$# ) {
+      $t=$1;
+   }
+   return $t;
+}
+
 sub fetch_filefetch {
    my ($uri)= @_;
    my ($ff, $w, $res);
@@ -251,33 +260,36 @@ sub fetch_filefetch {
 sub fetch_wget {
    my ($uri)= @_;
    my $opwd= getcwd;
+   my $t= url2target $uri;
    chdir $path;
-   system('wget', '-q', '--no-check-certificate', '-Ofetch.tmp', $uri);
+   system('wget', '-q', '--no-check-certificate', '-O', $t, $uri);
    chdir $opwd;
    if ( $? ==0 ) {
-      return 'fetch.tmp';
+      return $t;
    }
 }
 
 sub fetch_curl {
    my ($uri)= @_;
    my $opwd= getcwd;
+   my $t= url2target $uri;
    chdir $path;
-   system('curl', '-s', '--insecure', '-ofetch.tmp', $uri);
+   system('curl', '-s', '--insecure', '-o',$t, $uri);
    chdir $opwd;
    if ( $? ==0 ) {
-      return 'fetch.tmp';
+      return $t;
    }
 }
 
 sub fetch_fetch {
    my ($uri)= @_;
    my $opwd= getcwd;
+   my $t= url2target $uri;
    chdir $path;
-   system('fetch','-q', '--no-verify-peer', '--no-verify-hostname', '-ofetch.tmp', $uri);
+   system('fetch','-q', '--no-verify-peer', '--no-verify-hostname', '-o', $t, $uri);
    chdir $opwd;
    if ( $? ==0 ) {
-      return 'fetch.tmp';
+      return $t;
    }
 }
 
