@@ -17,16 +17,17 @@ use Irssi;
 
 $VERSION = '0.01';
 %IRSSI = (
-    authors => 'bw1',
-    contact => 'bw1@aol.at',
-    name => 'scriptassist2',
-    description   => 'This script really does nothing. Sorry.',
-    license => 'lgpl',
-    url     => 'https://scripts.irssi.org/',
-    changed => '2021-02-13',
-    modules => '',
-    commands=> 'scriptassist2',
-    selfcheckcmd=> 'scriptassist2 selfcheck',
+   authors     => 'bw1',
+   contact     => 'bw1@aol.at',
+   name        => 'scriptassist2',
+   description => 'keeps your scripts on the cutting edge',
+   license     => 'lgpl',
+   url         => 'https://scripts.irssi.org/',
+   changed     => '2021-02-13',
+   modules     => 'POSIX File::Glob CPAN::Meta::YAML File::Fetch Time::Piece Digest::file Digest::MD5 Text::Wrap'.
+                  'JSON::PP Cwd',
+   commands    => 'scriptassist2',
+   selfcheckcmd=> 'scriptassist2 selfcheck',
 );
 
 my $help = << "END";
@@ -34,9 +35,9 @@ my $help = << "END";
   $IRSSI{name}
 %9Version%9
   $VERSION
-%9description%9
+%9Description%9
   $IRSSI{description}
-%9commands%9
+%9Commands%9
   /scriptassist check
       Check all loaded scripts for new available versions
   /scriptassist update <script|all>
@@ -63,7 +64,20 @@ my $help = << "END";
       Retrieve and load the script
   /scriptassist autorun <script>
       Toggles automatic loading of <script>
+  /scriptassist reload
+      load config and more from 'cache.yml'
+  /scriptassist save
+      save config and more to 'cache.yml'
+  /scriptassist getmeta
+      download meta data from the web
+  /scriptassist getrate
+      download rating infos from the github
+  /scriptassist fetchsearch
+      autodetect a fetch mechanism
+  /scriptassist selfcheck
+      start a self check
 %9See also%9
+  https://scripts.irssi.org/scripts/scriptassist.pl
   https://perldoc.perl.org/perl.html
   https://github.com/irssi/irssi/blob/master/docs/perl.txt
   https://github.com/irssi/irssi/blob/master/docs/signals.txt
@@ -87,7 +101,7 @@ my $d;
 # links to $d->{rconfig}->@
 my %source;
 
-# sortet rate;
+# sorted rate;
 my %srate;
 
 my %cmds;
@@ -151,19 +165,19 @@ sub sig_pidwait {
 
 sub print_box {
    my ( $head,  $foot, @inside)=@_;
-   Irssi::printformat(MSGLEVEL_CLIENTCRAP, 'box_header', $head); 
+   Irssi::printformat(MSGLEVEL_CLIENTCRAP, 'box_header', $head);
    foreach my $n ( @inside ) {
       foreach ( split /\n/, $n ) {
-         #Irssi::printformat(MSGLEVEL_CLIENTCRAP, 'box_inside', $_); 
-         Irssi::print("%R|%n $_", MSGLEVEL_CLIENTCRAP); 
+         #Irssi::printformat(MSGLEVEL_CLIENTCRAP, 'box_inside', $_);
+         Irssi::print("%R|%n $_", MSGLEVEL_CLIENTCRAP);
       }
    }
-   Irssi::printformat(MSGLEVEL_CLIENTCRAP, 'box_footer', $foot); 
+   Irssi::printformat(MSGLEVEL_CLIENTCRAP, 'box_footer', $foot);
 }
 
 sub print_short {
    my ( $str )= @_;
-   Irssi::printformat(MSGLEVEL_CLIENTCRAP, 'short_msg', $str); 
+   Irssi::printformat(MSGLEVEL_CLIENTCRAP, 'short_msg', $str);
 }
 
 sub installed_version {
@@ -252,7 +266,7 @@ sub fetch_filefetch {
    $ff = File::Fetch->new (
       uri => $uri,
    );
-   $w = $ff->fetch(to => $path,); 
+   $w = $ff->fetch(to => $path,);
    if ( $w ) {
       $res= $ff->file;
    }
@@ -349,7 +363,7 @@ sub getmeta {
             }
             my $t=localtime();
             $d->{rstat}->{$n->{name}}->{last}= $t->epoch;
-            $d->{rstat}->{$n->{name}}->{digest}= $di; 
+            $d->{rstat}->{$n->{name}}->{digest}= $di;
             unlink "$path/$fn";
          }
       } else {
@@ -360,8 +374,8 @@ sub getmeta {
 }
 
 sub cmd_getmeta {
-   print_short "Please wait..."; 
-   background({ 
+   print_short "Please wait...";
+   background({
       cmd => \&getmeta,
       last => [ \&print_getmeta ],
    });
@@ -376,21 +390,21 @@ sub print_getmeta {
       foreach my $n ( @{ $d->{rconfig} } ) {
          $source{$n->{name}}= $n;
       }
-      print_short "database cache updatet"; 
+      print_short "database cache updatet";
    }
    foreach my $s (@{$pn->{res}->[1]} ) {
-      print_short $s; 
+      print_short $s;
    }
 }
 
 sub cmd_reload {
    init();
-   print_short "reloadet"; 
+   print_short "reloadet";
 }
 
 sub cmd_save {
    save();
-   print_short "write to disk"; 
+   print_short "write to disk";
 }
 
 sub sinfo {
@@ -617,8 +631,8 @@ sub cmd_install {
          push @sl, $s;
       }
    }
-   print_short "Please wait..."; 
-   background({ 
+   print_short "Please wait...";
+   background({
       cmd => \&bg_install,
       args => [ @sl ],
       last => [ \&print_install ],
@@ -635,7 +649,7 @@ sub bg_install {
             rename Irssi::get_irssi_dir()."/scripts/$fn", Irssi::get_irssi_dir()."/scripts/$fn.bak";
          }
          rename "$path/$fn", Irssi::get_irssi_dir()."/scripts/$fn";
-         push @r, $fn; 
+         push @r, $fn;
       }
    }
    return @r;
@@ -732,8 +746,8 @@ sub cmd_update {
          }
       }
    }
-   print_short "Please wait..."; 
-   background({ 
+   print_short "Please wait...";
+   background({
       cmd => \&bg_install,
       args => [ @r ],
       current => [ @current ],
@@ -830,11 +844,11 @@ sub get_rate {
             my $b=$n->{body};
             $b =~ m/([\w-]+\.pl)/;
             my $fn= $1;
-            my $p = $n->{reactions}->{'+1'} 
-                        + $n->{reactions}->{'hooray'} 
-                        + $n->{reactions}->{'rocket'} 
+            my $p = $n->{reactions}->{'+1'}
+                        + $n->{reactions}->{'hooray'}
+                        + $n->{reactions}->{'rocket'}
                         + $n->{reactions}->{'heart'} ;
-            my $m = $n->{reactions}->{'-1'} 
+            my $m = $n->{reactions}->{'-1'}
                         + $n->{reactions}->{'confused'};
             my $sum= $p-$m;
             if ( $p >0 || $m >0) {
@@ -866,8 +880,8 @@ sub cmd_getrate {
    }
    #use LWP::UserAgent;
    require LWP::UserAgent;
-   print_short "Please wait..."; 
-   background({ 
+   print_short "Please wait...";
+   background({
       cmd => \&get_rate,
       last => [ \&print_getrate ],
    });
@@ -1000,7 +1014,7 @@ sub selfcheck {
       $s= 'Error: meta result count ('.scalar( keys %{$d->{rscripts}->{irssi}} ).')';
       print_short $s;
    }
-   if ( !defined $d->{rrate_state}->{last} || 
+   if ( !defined $d->{rrate_state}->{last} ||
          $selfcheck->{ratelast} == $d->{rrate_state}->{last} ) {
       $s= 'Error: fetch getrate';
       print_short $s;
@@ -1096,8 +1110,8 @@ sub cmd {
             }
          }
          if ( $r ) {
-            print_short "Please wait..."; 
-            background({ 
+            print_short "Please wait...";
+            background({
                cmd => \&getmeta,
                cmd_args => [$c, @args],
                last => [ \&print_getmeta, \&last_cmd ],
@@ -1112,8 +1126,8 @@ sub cmd {
                return;
             }
             require LWP::UserAgent;
-            print_short "Please wait..."; 
-            background({ 
+            print_short "Please wait...";
+            background({
                cmd => \&get_rate,
                cmd_args => [$c, @args],
                last => [ \&print_getrate, \&last_cmd ],
