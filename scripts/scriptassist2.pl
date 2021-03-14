@@ -308,6 +308,7 @@ sub fetch_wget {
    if ( $? ==0 ) {
       return $t;
    }
+   return undef;
 }
 
 sub fetch_curl {
@@ -315,11 +316,12 @@ sub fetch_curl {
    my $opwd= getcwd;
    my $t= url2target $uri;
    chdir $path;
-   system('curl', '-s', '--insecure', '-o',$t, $uri);
+   system('curl', '-f', '-s', '--insecure', '-o',$t, $uri);
    chdir $opwd;
    if ( $? ==0 ) {
       return $t;
    }
+   return undef;
 }
 
 sub fetch_fetch {
@@ -327,11 +329,12 @@ sub fetch_fetch {
    my $opwd= getcwd;
    my $t= url2target $uri;
    chdir $path;
-   system('fetch','-q', '--no-verify-peer', '--no-verify-hostname', '-o', $t, $uri);
+   system('fetch','-q', '-1', '--no-verify-peer', '--no-verify-hostname', '-o', $t, $uri);
    chdir $opwd;
    if ( $? ==0 ) {
       return $t;
    }
+   return undef;
 }
 
 %fetchsys= (
