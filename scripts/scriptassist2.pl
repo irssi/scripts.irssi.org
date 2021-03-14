@@ -38,43 +38,43 @@ my $help = << "END";
 %9Description%9
   $IRSSI{description}
 %9Commands%9
-  /scriptassist check
+  /$IRSSI{name} check
       Check all loaded scripts for new available versions
-  /scriptassist update <script|all>
+  /$IRSSI{name} update <script|all>
       Update the selected or all script to the newest version
-  /scriptassist search <query>
+  /$IRSSI{name} search <query>
       Search the script database
-  /scriptassist info <scripts>
+  /$IRSSI{name} info <scripts>
       Display information about <scripts>
-  /scriptassist ratings <scripts|all>
+  /$IRSSI{name} ratings <scripts|all>
       Retrieve the average ratings of the the scripts
-  /scriptassist top <num>
+  /$IRSSI{name} top <num>
       Retrieve the first <num> top rated scripts
-  /scriptassist new <num>
+  /$IRSSI{name} new <num>
       Display the newest <num> scripts
-  /scriptassist rate <script>
+  /$IRSSI{name} rate <script>
       Rate the script if you like it
-  /scriptassist contact <script>
+  /$IRSSI{name} contact <script>
       Write an email to the author of the script
       (Requires OpenURL)
-  /scriptassist cpan <module>
+  /$IRSSI{name} cpan <module>
       Visit CPAN to look for missing Perl modules
       (Requires OpenURL)
-  /scriptassist install <script>
+  /$IRSSI{name} install <script>
       Retrieve and load the script
-  /scriptassist autorun <script>
+  /$IRSSI{name} autorun <script>
       Toggles automatic loading of <script>
-  /scriptassist reload
+  /$IRSSI{name} reload
       load config and more from 'cache.yml'
-  /scriptassist save
+  /$IRSSI{name} save
       save config and more to 'cache.yml'
-  /scriptassist getmeta
+  /$IRSSI{name} getmeta
       download meta data from the web
-  /scriptassist getrate
+  /$IRSSI{name} getrate
       download rating infos from the github
-  /scriptassist fetchsearch
+  /$IRSSI{name} fetchsearch
       autodetect a fetch mechanism
-  /scriptassist selfcheck
+  /$IRSSI{name} selfcheck
       start a self check
 %9See also%9
   https://scripts.irssi.org/scripts/scriptassist.pl
@@ -108,6 +108,7 @@ my %cmds;
 
 my ($fetch_system, %fetchsys);
 my ($selfcheck);
+my (@comp_start,%comp_scripts);
 
 my %bg_process= ();
 
@@ -206,9 +207,21 @@ sub init {
       cmd_fetchsearch();
       $fetch_system='filefetch' if $fetch_system eq '';
    }
+   #if ( -e "$path/cache.yml" ) {
+   #   my $yml= CPAN::Meta::YAML->read("$path/cache.yml");
+   #   $d= $yml->[0];
+   #}
+   if ( -e "$path/config.yml" ) {
+      my $yml= CPAN::Meta::YAML->read("$path/config.yml");
+      foreach my $k ( keys %{ $yml->[0] } ) {
+         $d->{$k}= $yml->[0]->{$k};
+      }
+   }
    if ( -e "$path/cache.yml" ) {
       my $yml= CPAN::Meta::YAML->read("$path/cache.yml");
-      $d= $yml->[0];
+      foreach my $k ( keys %{ $yml->[0] } ) {
+         $d->{$k}= $yml->[0]->{$k};
+      }
    }
    if ( ref($d) ne 'HASH' || ! exists $d->{rconfig} ) {
       $d= undef;
@@ -237,10 +250,22 @@ sub init {
          }
       }
    }
+   init_complete();
 }
 
 sub save {
-   my $yml= CPAN::Meta::YAML->new( $d );
+   my $config;
+   $config->{rconfig} = $d->{rconfig};
+   $config->{autorun} = $d->{autorun};
+   my $ymlco= CPAN::Meta::YAML->new( $config );
+   $ymlco->write("$path/config.yml");
+   my $cache;
+   foreach my $k ( keys %$d ) {
+      next if ( $k eq 'rconfig');
+      next if ( $k eq 'autorun');
+      $cache->{$k} = $d->{$k};
+   }
+   my $yml= CPAN::Meta::YAML->new( $cache );
    $yml->write("$path/cache.yml");
 }
 
@@ -1040,6 +1065,7 @@ sub selfcheck {
    info=> {
          cmd=> \&cmd_info,
          meta=>1,
+         complete=>'scripts',
    },
    search=> {
          cmd=> \&cmd_search,
@@ -1055,13 +1081,16 @@ sub selfcheck {
    },
    install=> {
          cmd=> \&cmd_install,
+         complete=>'scripts',
    },
    autorun=> {
          cmd=> \&cmd_autorun,
+         complete=>'scripts',
    },
    update=> {
          cmd=> \&cmd_update,
          meta=>1,
+         complete=>'scripts_all',
    },
    cpan=> {
          cmd=> \&cmd_cpan,
@@ -1070,6 +1099,7 @@ sub selfcheck {
    contact=> {
          cmd=> \&cmd_contact,
          meta=>1,
+         complete=>'scripts',
    },
    getrate=> {
          cmd=> \&cmd_getrate,
@@ -1077,10 +1107,12 @@ sub selfcheck {
    rate=> {
          cmd=> \&cmd_rate,
          rate=>1,
+         complete=>'scripts',
    },
    ratings=> {
          cmd=> \&cmd_ratings,
          rate=>1,
+         complete=>'scripts_all',
    },
    top=> {
          cmd=> \&cmd_top,
@@ -1178,6 +1210,44 @@ sub sig_setup_changed {
    }
 }
 
+sub init_complete {
+   @comp_start=();
+   foreach my $k ( keys %cmds ){
+      next unless exists $cmds{$k}->{complete};
+      my $c="/$IRSSI{name} $k";
+      push @comp_start, $c;
+      if (Irssi::settings_get_bool($IRSSI{name}.'_integrate') ) {
+         my $c="/script $k";
+         push @comp_start, $c;
+      }
+   }
+   %comp_scripts=();
+   foreach my $n ( reverse @{ $d->{rconfig} } ) {
+      foreach my $k ( keys %{ $d->{rscripts}->{$n->{name}} } ) {
+         if ( !exists $comp_scripts{$k} ){
+            $comp_scripts{$k}=[];
+         }
+         push @{$comp_scripts{$k}}, $n->{name};
+      }
+   }
+}
+
+sub do_complete {
+	my ($strings, $window, $word, $linestart, $want_space) = @_;
+	my $ok;
+	foreach (@comp_start) {
+		$ok=1 if ($linestart =~ m/^$_/);
+	}
+	return unless $ok;
+   my @args=split /\s+/, $linestart;
+   my @str;
+   push @str, 'all' if ($cmds{$args[1]}->{complete} eq 'scripts_all');
+   push @str, grep { m/^$word/} keys %comp_scripts;
+   @$strings= @str;
+	$$want_space = 1;
+	Irssi::signal_stop;
+}
+
 sub UNLOAD {
    save();
 }
@@ -1192,6 +1262,7 @@ Irssi::theme_register([
 
 Irssi::signal_add('setup changed', \&sig_setup_changed);
 Irssi::signal_add('pidwait', \&sig_pidwait);
+Irssi::signal_add_first('complete word',  \&do_complete);
 
 Irssi::settings_add_str($IRSSI{name} ,$IRSSI{name}.'_path', 'scriptassist2');
 Irssi::settings_add_bool($IRSSI{name} ,$IRSSI{name}.'_autorun_link', 1);
