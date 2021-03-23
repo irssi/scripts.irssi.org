@@ -1,0 +1,7 @@
+Capture variable used outside conditional at line 411, column 17.  See page 253 of PBP.  (Severity: 3)
+Capture variable used outside conditional at line 418, column 23.  See page 253 of PBP.  (Severity: 3)
+Capture variable used outside conditional at line 449, column 17.  See page 253 of PBP.  (Severity: 3)
+Capture variable used outside conditional at line 456, column 23.  See page 253 of PBP.  (Severity: 3)
+Capture variable used outside conditional at line 617, column 16.  See page 253 of PBP.  (Severity: 3)
+Capture variable used outside conditional at line 796, column 17.  See page 253 of PBP.  (Severity: 3)
+Capture variable used outside conditional at line 812, column 23.  See page 253 of PBP.  (Severity: 3)
