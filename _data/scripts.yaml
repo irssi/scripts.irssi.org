@@ -2984,6 +2984,16 @@
   url: https://scripts.irssi.org/
   version: '0.01'
 -
+  authors: 'Haw Loeung'
+  commands: 'matterircd_complete_msgthreadid_cache_dump matterircd_complete_nick_cache_dump matterircd_complete_replied_cache_dump message_thread_id_search nicknames_search'
+  contact: hloeung/Freenode
+  description: 'Adds tab completion for Matterircd message threads'
+  filename: matterircd_complete.pl
+  license: GPL
+  modified: '2020-12-13 03:22:53'
+  name: 'Matterircd Tab Auto Complete'
+  version: '1.00'
+-
   authors: Nei
   commands: requery
   contact: 'Nei @ anti@conference.jabber.teamidiot.de'
