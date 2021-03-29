@@ -62,6 +62,8 @@ my $help = << "END";
       (Requires OpenURL)
   /$IRSSI{name} install <script>
       Retrieve and load the script
+  /$IRSSI{name} install -auto <script>
+      Retrieve, load the script and add to autorun
   /$IRSSI{name} autorun <script>
       Toggles automatic loading of <script>
   /$IRSSI{name} reload
@@ -645,6 +647,10 @@ sub cmd_new {
 sub cmd_install {
    my ( @args )= @_;
    my @sl;
+   my $auto;
+   if ( $args[0] eq '-auto' ) {
+      $auto= shift @args;
+   }
    foreach my $sn ( @args ) {
       $sn =~ s/\.pl$//i;
       my $fn ="$sn.pl";
@@ -663,6 +669,7 @@ sub cmd_install {
    background({
       cmd => \&bg_install,
       args => [ @sl ],
+      auto => $auto,
       last => [ \&print_install ],
    });
 }
@@ -683,6 +690,48 @@ sub bg_install {
    return @r;
 }
 
+sub autorun {
+   my ( $sn, $on ) =@_;
+   $sn =~ s/\.pl$//i;
+   my $fn = "$sn.pl";
+   my $of=Irssi::get_irssi_dir()."/scripts/$fn";
+   if (Irssi::settings_get_bool($IRSSI{name}.'_autorun_link') ) {
+      my $af=Irssi::get_irssi_dir()."/scripts/autorun/$fn";
+      if (-e $af && !defined $on ) {
+         if ( -l $af ) {
+            unlink $af;
+            print_short "Autorun of $sn disabled";
+         } else {
+            print_short "$fn is not a symlink";
+         }
+      } else {
+         if ( -e $of && !(-e $af) ) {
+            symlink "../$fn", $af;
+            print_short "Autorun of $sn enabled";
+         }
+      }
+   } else {
+      if ( !exists $d->{autorun} ) {
+         $d->{autorun}=[];
+      }
+      my $r;
+      for (my $c=0; $c < scalar( @{ $d->{autorun} } ) ; $c++) {
+         if ($d->{autorun}->[$c] eq $fn) {
+            if ( ! defined $on ) {
+               splice @{ $d->{autorun} } , $c ,1;
+               print_short "Autorun of $sn disabled";
+            }
+            $r=1;
+            last;
+         }
+      }
+      if (!$r && -e $of ) {
+         push @{ $d->{autorun} }, $fn;
+         print_short "Autorun of $sn enabled";
+      }
+   }
+}
+
 sub print_install {
    my ( $pn ) = @_;
    my @res;
@@ -692,6 +741,9 @@ sub print_install {
       if ( !installed_version $sn ) {
          Irssi::command("script load $fn");
          push @res, "%go%n %9$sn%9 installed";
+         if ( $pn->{auto} eq '-auto' ) {
+            autorun $sn, 1;
+         }
       } else {
          push @res, "%ro%n %9$sn%9 already loaded, please try 'update'";
       }
@@ -702,42 +754,7 @@ sub print_install {
 sub cmd_autorun {
    my ( @args )= @_;
    foreach my $sn ( @args ){
-      $sn =~ s/\.pl$//i;
-      my $fn = "$sn.pl";
-      my $of=Irssi::get_irssi_dir()."/scripts/$fn";
-      if (Irssi::settings_get_bool($IRSSI{name}.'_autorun_link') ) {
-         my $af=Irssi::get_irssi_dir()."/scripts/autorun/$fn";
-         if (-e $af ) {
-            if ( -l $af ) {
-               unlink $af;
-               print_short "Autorun of $sn disabled";
-            } else {
-               print_short "$fn is not a symlink";
-            }
-         } else {
-            if ( -e $of ) {
-               symlink "../$fn", $af;
-               print_short "Autorun of $sn enabled";
-            }
-         }
-      } else {
-         if ( !exists $d->{autorun} ) {
-            $d->{autorun}=[];
-         }
-         my $r;
-         for (my $c=0; $c < scalar( @{ $d->{autorun} } ) ; $c++) {
-            if ($d->{autorun}->[$c] eq $fn) {
-               splice @{ $d->{autorun} } , $c ,1;
-               $r=1;
-               print_short "Autorun of $sn disabled";
-               last;
-            }
-         }
-         if (!$r && -e $of ) {
-            push @{ $d->{autorun} }, $fn;
-            print_short "Autorun of $sn enabled";
-         }
-      }
+      autorun $sn;
    }
 }
 
@@ -1084,7 +1101,7 @@ sub selfcheck {
    },
    install=> {
          cmd=> \&cmd_install,
-         complete=>'scripts',
+         complete=>'scripts_auto',
    },
    autorun=> {
          cmd=> \&cmd_autorun,
@@ -1245,7 +1262,9 @@ sub do_complete {
    my @args=split /\s+/, $linestart;
    my @str;
    push @str, 'all' if ($cmds{$args[1]}->{complete} eq 'scripts_all');
-   push @str, grep { m/^$word/} keys %comp_scripts;
+   push @str, '-auto' if ($cmds{$args[1]}->{complete} eq 'scripts_auto' && scalar(@args) == 2);
+   push @str,  sort keys %comp_scripts;
+   @str= grep { m/^$word/} @str;
    @$strings= @str;
 	$$want_space = 1;
 	Irssi::signal_stop;
