@@ -277,7 +277,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                        localize ](Test/localize/)|  ✔   |  ✔   |  ✔   | 25   |  ✔   | (c)
 [                        log2ansi ](Test/log2ansi/)|  ✘   |  ✘   |  ✔   | 15   |  ☡   | (c)
 [                     logcompress ](Test/logcompress/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                logcompress_perl ](Test/logcompress_perl/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
+[                logcompress_perl ](Test/logcompress_perl/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
 [                       logresume ](Test/logresume/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                   long_messages ](Test/long_messages/)|  ✔   |  ✔   |  ✔   |  2   |  ✔   | (c)
 [                              ls ](Test/ls/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -291,7 +291,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                             map ](Test/map/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [            mass_hilight_blocker ](Test/mass_hilight_blocker/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                      matryoshka ](Test/matryoshka/)|  ✔   |  ✔   |  ✔   | 19   |  ✔   | (c)
-[             matterircd_complete ](Test/matterircd_complete/)|  ✔   |  ✔   |  ✔   | 14   |  ✔   
+[             matterircd_complete ](Test/matterircd_complete/)|  ✔   |  ✔   |  ✔   | 14   |  ✔   | (c)
 [                 merge_resources ](Test/merge_resources/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                 messages_bottom ](Test/messages_bottom/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                              mg ](Test/mg/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -544,4 +544,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-86f631b7c770b51245ac1572c3a870a52310a1f4 | 2021-03-23T08:04:58,697831148+00:00
+17843b3d62d75aa776af5e430ad640516d6c99d1 | 2021-04-10T09:40:10,277008947+00:00

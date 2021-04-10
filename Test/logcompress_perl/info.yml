@@ -1,12 +1,12 @@
 ---
 -
   authors: vague
-  changed: 2017-01-07T12:00+0100
+  changed: '2021-04-10 11:00 CEST'
   contact: vague!#irssi@fgreenode
   default_package: logcompress_perl
   description: "compress logfiles then they're rotated, modified from original logcompress.pl to use perl modules instead"
   license: 'Public Domain'
-  modified: '2017-01-07 11:52:46'
+  modified: '2021-04-10 11:12:52'
   name: logcompress_perl
   url: http://irssi.org/
-  version: '0.02'
+  version: '0.03'
