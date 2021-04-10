@@ -4,7 +4,7 @@ use Irssi;
 use IO::Compress::Gzip qw(gzip $GzipError);
 use vars qw($VERSION %IRSSI);
 
-$VERSION = "0.02";
+$VERSION = "0.03";
 %IRSSI = (
     authors	=> 'vague',
     contact	=> 'vague!#irssi@fgreenode',
@@ -12,12 +12,12 @@ $VERSION = "0.02";
     description	=> "compress logfiles then they're rotated, modified from original logcompress.pl to use perl modules instead",
     license	=> "Public Domain",
     url		=> "http://irssi.org/",
-    changed	=> "2017-01-07T12:00+0100"
+    changed	=> "2021-04-10 11:00 CEST"
 );
 
 sub sig_rotate {
     my $input = $_[0]->{real_fname};
-    gzip $input => "$input.gz" or Irssi::print(MSGLEVEL_CLIENTERROR, "gzip failed: $GzipError\n");
+    gzip $input => "$input.gz" or Irssi::print("gzip failed: $GzipError", MSGLEVEL_CLIENTERROR);
     unlink $input if -e "$input.gz";
 }
 
