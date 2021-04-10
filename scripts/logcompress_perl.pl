@@ -12,7 +12,7 @@ $VERSION = "0.03";
     description	=> "compress logfiles then they're rotated, modified from original logcompress.pl to use perl modules instead",
     license	=> "Public Domain",
     url		=> "http://irssi.org/",
-    changed	=> "2017-01-07T12:00+0100"
+    changed	=> "2021-04-10 11:00 CEST"
 );
 
 sub sig_rotate {
