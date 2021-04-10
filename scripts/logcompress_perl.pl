@@ -4,7 +4,7 @@ use Irssi;
 use IO::Compress::Gzip qw(gzip $GzipError);
 use vars qw($VERSION %IRSSI);
 
-$VERSION = "0.02";
+$VERSION = "0.03";
 %IRSSI = (
     authors	=> 'vague',
     contact	=> 'vague!#irssi@fgreenode',
@@ -17,7 +17,7 @@ $VERSION = "0.02";
 
 sub sig_rotate {
     my $input = $_[0]->{real_fname};
-    gzip $input => "$input.gz" or Irssi::print(MSGLEVEL_CLIENTERROR, "gzip failed: $GzipError\n");
+    gzip $input => "$input.gz" or Irssi::print("gzip failed: $GzipError", MSGLEVEL_CLIENTERROR);
     unlink $input if -e "$input.gz";
 }
 
