@@ -4,7 +4,7 @@ use Irssi;
 use IO::Compress::Gzip qw(gzip $GzipError);
 use vars qw($VERSION %IRSSI);
 
-$VERSION = "0.03";
+$VERSION = "0.04";
 %IRSSI = (
     authors	=> 'vague',
     contact	=> 'vague!#irssi@fgreenode',
