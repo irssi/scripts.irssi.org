@@ -3,7 +3,7 @@ use warnings;
 use LWP::Simple qw();
 use Irssi;
 
-our $VERSION = '1.3'; # b6350adcd789aa3
+our $VERSION = '1.3.1'; # 80f55a6e19c8653
 our %IRSSI = (
     authors     => 'Rocco Caputo (dngor), Nei',
     contact     => 'rcaputo@cpan.org, Nei @ anti@conference.jabber.teamidiot.de',
@@ -48,7 +48,7 @@ my %help;
 		$old_setting = $setting;
 		$setting = $1;
 	    }
-	    elsif ($soon == 1 && $line =~ /^(?:` (.*) `|` (.*)` \*\*`(.*)`\*\*)$/) {
+	    elsif ($soon == 1 && $line =~ /^(?:` (.*) `|`(.*)` \*\*`(.*)`\*\*)$/) {
 		$old_val = $val;
 		$val = defined $1 ? $1 : "$2 = $3";
 		$soon++;
