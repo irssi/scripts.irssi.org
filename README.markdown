@@ -277,7 +277,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                        localize ](Test/localize/)|  ✔   |  ✔   |  ✔   | 25   |  ✔   | (c)
 [                        log2ansi ](Test/log2ansi/)|  ✘   |  ✘   |  ✔   | 15   |  ☡   | (c)
 [                     logcompress ](Test/logcompress/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                logcompress_perl ](Test/logcompress_perl/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
+[                logcompress_perl ](Test/logcompress_perl/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                       logresume ](Test/logresume/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                   long_messages ](Test/long_messages/)|  ✔   |  ✔   |  ✔   |  2   |  ✔   | (c)
 [                              ls ](Test/ls/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -433,7 +433,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                     send_scroll ](Test/send_scroll/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                     server_time ](Test/server_time/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                  servercomplete ](Test/servercomplete/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
-[                    settingshelp ](Test/settingshelp/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                    settingshelp ](Test/settingshelp/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                      shortenurl ](Test/shortenurl/)|  ✔   |  ✔   |  ✔   | 20   |  ✔   | (c)
 [                        shorturl ](Test/shorturl/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                     showhilight ](Test/showhilight/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -544,4 +544,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-c88f062abf33078f6afb209731c0ece6bd3d29a8 | 2021-04-10T10:15:21,023390002+00:00
+0a587133ca0a6ad8cdd6160090913ea51c02b84d | 2021-04-12T17:16:23,708753242+00:00
