@@ -172,7 +172,7 @@ sub securemsg_check {
 }
 
 sub usage {
-    print("Usage: sm add|del <nick>|<host> list of nicks/hosts | sm nicks|hosts | sm accept|reject <nick> [net <chatnet>] [message] | sm show <nick> [net <chatnet>] | sm help");
+    print("Usage: sm add|del <nick>|<host> list of nicks/hosts | sm nicks|hosts | sm accept|reject <nick> [net <chatnet>] [message] | sm clear|show <nick> [net <chatnet>] | sm help");
 }
 
 sub _get_nn {
