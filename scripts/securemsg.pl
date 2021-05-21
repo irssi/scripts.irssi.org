@@ -20,6 +20,9 @@
 # /sm del host <list of hosts>
 # removes the hosts from whitelist_hosts
 #
+# /sm clear <nick> [net <network>]
+# clear messages from nick without ignoring
+#
 # /sm nicks
 # shows the current whitelist_nicks
 #
@@ -42,7 +45,7 @@ use Irssi::TextUI;
 
 
 use vars qw($VERSION %IRSSI);
-$VERSION = "2.2.1";
+$VERSION = "2.3.0";
 my $APPVERSION = "Securemsg v$VERSION";
 %IRSSI = (
 	  authors	=> "Jari Matilainen, a lot of code borrowed from whitelist.pl by David O\'Rourke and Karl Siegemund",
@@ -51,7 +54,7 @@ my $APPVERSION = "Securemsg v$VERSION";
 	  description	=> "An irssi adaptation of securequery.mrc found in the Acidmax mIRC script. :), now with multiserver support",
 	  sbitems       => "securemsg",
 	  license	=> "GPLv2",
-	  changed	=> "10.09.2007 11:30pm GST"
+	  changed	=> "17.05.2021 15:00"
 );
 
 my $whitenick;
@@ -172,7 +175,7 @@ sub securemsg_check {
 }
 
 sub usage {
-    print("Usage: sm add|del <nick>|<host> list of nicks/hosts | sm nicks|hosts | sm accept|reject <nick> [net <chatnet>] [message] | sm show <nick> [net <chatnet>] | sm help");
+    print("Usage: sm add|del <nick>|<host> list of nicks/hosts | sm nicks|hosts | sm accept|reject <nick> [net <chatnet>] [message] | sm clear|show <nick> [net <chatnet>] | sm help");
 }
 
 sub _get_nn {
@@ -403,6 +406,7 @@ Commands:
 SM HELP                                    - SHOWS THIS HELP
 SM ADD|DEL NICK|HOST <nicks>|<hosts>       - ADDS/DELETES A SPACE SEPARATED LIST OF NICKS OR HOSTS
 SM NICKS|HOSTS                             - DISPLAYS THE CURRENT WHITELISTED NICKS OR HOSTS
+SM CLEAR <nick> [net <chatnet>]            - CLEAR CURRENT MESSAGES FROM nick WITHOUT ACCEPTING OR REJECTING nick
 SM ACCEPT <nick> [net <chatnet>] [message] - ALLOWS MSG'S FROM nick
 SM REJECT <nick> [net <chatnet>] [message] - DOESN'T ALLOW MESSAGES FROM nick
 SM REJIDX <index>-<index>                  - DOESN'T ALLOW MESSAGES FROM ALL NICKS IN THE GIVEN RANGE
@@ -516,6 +520,38 @@ sub cmd_show {
     }
 }
 
+sub cmd_clear {
+    my ($args, $server, $witem) = @_;
+    my ($nick, $net) = _get_nn($args);
+    my $server;
+
+    if((!defined $nick) || (!exists $messages{$nick})) {
+        usage;
+        return;
+    }
+
+    if(defined $net && !(($net eq " ") || ($net eq ""))) {
+        foreach (keys %{$messages{$nick}}) {
+            if($_ eq $net) {
+                $server = Irssi::server_find_tag($_);
+                last;
+            }
+        }
+    }
+    elsif(keys(%{$messages{$nick}}) == 1) {
+        foreach (keys %{$messages{$nick}}) {
+            $server = Irssi::server_find_tag($_);
+        }
+    }
+    else {
+        print("You have to specify a chatnet, for example /sm clear john net EFNet");
+        return;
+    }
+
+    delete $messages{$nick}{lc($server->{tag})}{messages};
+    refresh_securemsg();
+}
+
 sub securemsg {
     my ($item,$get_size_only) = @_;
     my $result = 0;
@@ -572,6 +608,7 @@ Irssi::command_bind('sm del',\&cmd_del);
 Irssi::command_bind('sm nicks',\&cmd_nicks);
 Irssi::command_bind('sm hosts',\&cmd_hosts);
 Irssi::command_bind('sm show',\&cmd_show);
+Irssi::command_bind('sm clear',\&cmd_clear);
 Irssi::command_bind('sm showall',\&cmd_showall);
 Irssi::command_bind('sm accept',\&cmd_accept);
 Irssi::command_bind('sm reject',\&cmd_reject);
