@@ -1,5 +1,7 @@
-* "my" variable $str masks earlier declaration in same scope at securemsg.pl line 343.
+* "my" variable $str masks earlier declaration in same scope at securemsg.pl line 346.
 * 
-* "my" variable $server masks earlier declaration in same scope at securemsg.pl line 489.
+* "my" variable $server masks earlier declaration in same scope at securemsg.pl line 493.
+* 
+* "my" variable $server masks earlier declaration in same scope at securemsg.pl line 526.
 * 
 * -!- Irssi: Loaded script securemsg

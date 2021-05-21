@@ -428,12 +428,12 @@ See [the testing read-me](../master/_testing/) for details.
 [                      scriptsave ](Test/scriptsave/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        scrmable ](Test/scrmable/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                        scroller ](Test/scroller/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                       securemsg ](Test/securemsg/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
+[                       securemsg ](Test/securemsg/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   
 [                            seen ](Test/seen/)|  ✔   |  ✔   |  ✔   |103   |  ✔   | (c)
 [                     send_scroll ](Test/send_scroll/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                     server_time ](Test/server_time/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                  servercomplete ](Test/servercomplete/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
-[                    settingshelp ](Test/settingshelp/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[                    settingshelp ](Test/settingshelp/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                      shortenurl ](Test/shortenurl/)|  ✔   |  ✔   |  ✔   | 20   |  ✔   | (c)
 [                        shorturl ](Test/shorturl/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                     showhilight ](Test/showhilight/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -544,4 +544,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-0a587133ca0a6ad8cdd6160090913ea51c02b84d | 2021-04-12T17:16:23,708753242+00:00
+db21074dc46f1bd5394c65342bd31ee6b640de96 | 2021-05-21T16:08:27,705585055+00:00
