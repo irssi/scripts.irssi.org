@@ -4395,9 +4395,9 @@
   description: 'An irssi adaptation of securequery.mrc found in the Acidmax mIRC script. :), now with multiserver support'
   filename: securemsg.pl
   license: GPLv2
-  modified: '2021-03-08 18:32:46'
+  modified: '2021-05-18 14:48:18'
   name: securemsg
-  version: 2.2.1
+  version: 2.3.0
 -
   authors: "Marcin 'Qrczak' Kowalczyk"
   commands: 'forget listen say_seen seen'
