@@ -11,7 +11,7 @@ use POSIX;
 #use Data::Dumper;
 
 use vars qw{$VERSION %IRSSI};
-($VERSION) = '$Revision: 1.25 $' =~ / (\d+\.\d+) /;
+($VERSION) = '$Revision: 1.26 $' =~ / (\d+\.\d+) /;
 %IRSSI = (
 	  name	      => 'query',
 	  authors     => 'Peder Stray',
@@ -224,12 +224,14 @@ sub sig_query_created {
 
     $state{$tag}{$nick} = { time => time };
 
-    $serv->redirect_event('userhost', 1, ":$nick", -1, undef,
-			  {
-			   "event 302" => "redir query userhost",
-			   "" => "event empty",
-			  });
-    $serv->send_raw("USERHOST :$nick");
+    if (ref($serv) eq 'Irssi::Irc::Server') {
+	$serv->redirect_event('userhost', 1, ":$nick", -1, undef,
+			      {
+			       "event 302" => "redir query userhost",
+			       "" => "event empty",
+			      });
+	$serv->send_raw("USERHOST :$nick");
+    }
 }
 
 sub sig_query_destroyed {
