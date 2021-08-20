@@ -7,7 +7,7 @@ use Irssi;
 use Irssi::Irc;
 
 use vars qw{$VERSION %IRSSI};
-($VERSION) = ' $Revision: 1.2 $ ' =~ / (\d+\.\d+) /;
+($VERSION) = ' $Revision: 1.3 $ ' =~ / (\d+\.\d+) /;
 %IRSSI = (
 	  name        => 'autochannel',
 	  authors     => 'Peder Stray',
@@ -17,12 +17,13 @@ use vars qw{$VERSION %IRSSI};
 	  description => 'Auto add channels to channel list on join',
 	 );
 
+# "channel joined", channel
+sub sig_channel_joined {
+    my($c) = @_;
 
-# "message join", SERVER_REC, char *channel, char *nick, char *address
-sub sig_message_join {
-    my($server,$channel,$nick,$addr) = @_;
+    my $server  = $c->{server};
+    my $channel = $c->{name};
 
-    return unless $nick eq $server->{nick};
     return unless $server->{chatnet};
     return unless Irssi::settings_get_bool('channel_add_on_join');
 
@@ -64,5 +65,5 @@ Irssi::settings_add_bool('autochannel', 'channel_add_with_auto', 1);
 Irssi::settings_add_bool('autochannel', 'channel_remove_auto_on_part', 1);
 Irssi::settings_add_bool('autochannel', 'channel_remove_on_part', 0);
 
-Irssi::signal_add_last('message join', 'sig_message_join');
+Irssi::signal_add_last('channel joined', 'sig_channel_joined');
 Irssi::signal_add_last('message part', 'sig_message_part');
