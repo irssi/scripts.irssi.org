@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2001-2019 by Peder Stray <peder@ninja.no>
+# Copyright (C) 2001-2021 by Peder Stray <peder.stray@gmail.com>
 #
 
 use strict;
@@ -15,8 +15,8 @@ use vars qw{$VERSION %IRSSI};
 %IRSSI = (
 	  name	      => 'query',
 	  authors     => 'Peder Stray',
-	  contact     => 'peder@ninja.no',
-	  url	      => 'http://ninja.no/irssi/query.pl',
+	  contact     => 'peder.stray@gmail.com',
+	  url	      => 'https://github.com/pstray/irssi-query',
 	  license     => 'GPL',
 	  description => 'Give you more control over when to jump to query windows and when to just tell you one has been created. Enhanced autoclose.',
 	 );
@@ -33,7 +33,7 @@ sub load_defaults {
     local *FILE;
 
     %defaults = ();
-    open FILE, '<',$file;
+    open FILE, "<", $file;
     while (<FILE>) {
 	my($mask,$maxage,$immortal) = split;
 	$defaults{$mask}{maxage}   = $maxage;
@@ -46,7 +46,7 @@ sub save_defaults {
     my $file = Irssi::get_irssi_dir."/query";
     local *FILE;
 
-    open FILE, '>', $file;
+    open FILE, ">", $file;
     for (keys %defaults) {
 	my $d = $defaults{$_};
 	print FILE join("\t", $_,
@@ -257,7 +257,7 @@ sub sig_redir_query_userhost {
 }
 
 sub sig_session_restore {
-    open STATE, sprintf "< %s/query.state", Irssi::get_irssi_dir;
+    open STATE, "<", sprintf "%s/query.state", Irssi::get_irssi_dir;
     %state = ();	# only needed if bound as command
     while (<STATE>) {
 	chomp;
@@ -270,7 +270,7 @@ sub sig_session_restore {
 }
 
 sub sig_session_save {
-    open STATE, sprintf "> %s/query.state", Irssi::get_irssi_dir;
+    open STATE, ">", sprintf "%s/query.state", Irssi::get_irssi_dir;
     for my $tag (keys %state) {
 	for my $nick (keys %{$state{$tag}}) {
 	    print STATE join("\t",$tag,$nick,%{$state{$tag}{$nick}}), "\n";

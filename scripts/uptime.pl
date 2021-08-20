@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2002-2019 by Peder Stray <peder@ninja.no>
+# Copyright (C) 2002-2021 by Peder Stray <peder.stray@gmail.com>
 #
 
 use strict;
@@ -12,8 +12,8 @@ use vars qw{$VERSION %IRSSI};
 %IRSSI = (
 	  name        => 'uptime',
 	  authors     => 'Peder Stray',
-	  contact     => 'peder@ninja.no',
-	  url         => 'http://ninja.no/irssi/uptime.pl',
+	  contact     => 'peder.stray@gmail.com',
+	  url         => 'https://github.com/pstray/irssi-uptime',
 	  license     => 'GPL',
 	  description => 'Try a little harder to figure out client uptime',
 	  sbitem      => 'uptime',

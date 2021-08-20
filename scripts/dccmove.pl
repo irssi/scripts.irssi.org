@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2003 by Peder Stray <peder@ninja.no>
+# Copyright (C) 2003-2021 by Peder Stray <peder.stray@gmail.com>
 #
 
 use strict;
@@ -9,8 +9,8 @@ use vars qw{$VERSION %IRSSI};
 %IRSSI = (
 	  name        => 'dccmove',
 	  authors     => 'Peder Stray',
-	  contact     => 'peder@ninja.no',
-	  url         => 'http://ninja.no/irssi/dccmove.pl',
+	  contact     => 'peder.stray@gmail.com',
+	  url         => 'https://github.com/pstray/irssi-dccmove',
 	  license     => 'GPL',
 	  description => 'Move completed dcc gets to the subfolder done',
 	 );

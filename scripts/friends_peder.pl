@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2001-2021 by Peder Stray <peder@ninja.no>
+# Copyright (C) 2001-2021 by Peder Stray <peder.stray@gmail.com>
 #
 
 use strict;
@@ -12,10 +12,10 @@ use vars qw{$VERSION %IRSSI};
 %IRSSI = (
 	  name        => 'friends',
 	  authors     => 'Peder Stray',
-	  contact     => 'peder@ninja.no',
-	  url         => 'http://ninja.no/irssi/friends.pl',
+	  contact     => 'peder.stray@gmail.com',
+	  url         => 'https://github.com/pstray/irssi-friends',
 	  license     => 'GPL',
-	  description => 'Basicly an autoop script with a nice interface and nick coloring ;)',
+	  description => 'Basically an autoop script with a nice interface and nick coloring ;)',
 	 );
 
 my(%friends, @friends);

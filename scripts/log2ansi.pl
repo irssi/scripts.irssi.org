@@ -1,6 +1,6 @@
 #! /usr/bin/perl
 #
-# Copyright (C) 2002-2019 by Peder Stray <peder.stray@gmail.com>
+# Copyright (C) 2002-2021 by Peder Stray <peder.stray@gmail.com>
 #
 #    This is a standalone perl program and not intended to run within
 #    irssi, it will complain if you try to...

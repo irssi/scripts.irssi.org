@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2002-2019 by Peder Stray <peder@ninja.no>
+# Copyright (C) 2002-2021 by Peder Stray <peder.stray@gmail.com>
 #
 
 use strict;
@@ -11,8 +11,8 @@ use vars qw{$VERSION %IRSSI};
 %IRSSI = (
 	  name        => 'upgradeinfo',
 	  authors     => 'Peder Stray',
-	  contact     => 'peder@ninja.no',
-	  url         => 'http://ninja.no/irssi/upgradeinfo.pl',
+	  contact     => 'peder.stray@gmail.com',
+	  url         => 'https://github.com/pstray/irssi-upgradeinfo',
 	  license     => 'GPL',
 	  description => 'Statusbar item notifying you about updated binary',
 	  sbitems     => 'upgradeinfo',

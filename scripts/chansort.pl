@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2004-2019 by Peder Stray <peder@ninja.no>
+# Copyright (C) 2004-2021 by Peder Stray <peder.stray@gmail.com>
 #
 
 use strict;
@@ -11,8 +11,8 @@ use vars qw{$VERSION %IRSSI};
 %IRSSI = (
 	  name        => 'chansort',
 	  authors     => 'Peder Stray',
-	  contact     => 'peder@ninja.no',
-	  url         => 'http://ninja.no/irssi/chansort.pl',
+	  contact     => 'peder.stray@gmail.com',
+	  url         => 'https://github.com/pstray/irssi-chansort',
 	  license     => 'GPL',
 	  description => 'Sort all channel and query windows',
 	 );

@@ -1,21 +1,18 @@
 #
-# Copyright (C) 2007-2019 by Peder Stray <peder@ninja.no>
+# Copyright (C) 2007-2021 by Peder Stray <peder.stray@gmail.com>
 #
 
 use strict;
 use Irssi;
 use Irssi::Irc;
 
-use Data::Dumper;
-$Data::Dumper::Indent = 1;
-
 use vars qw{$VERSION %IRSSI};
 ($VERSION) = ' $Revision: 1.2 $ ' =~ / (\d+\.\d+) /;
 %IRSSI = (
 	  name        => 'autochannel',
 	  authors     => 'Peder Stray',
-	  contact     => 'peder@ninja.no',
-	  url         => 'http://ninja.no/irssi/autochannel.pl',
+	  contact     => 'peder.stray@gmail.com',
+	  url         => 'https://github.com/pstray/irssi-autochannel',
 	  license     => 'GPL',
 	  description => 'Auto add channels to channel list on join',
 	 );
