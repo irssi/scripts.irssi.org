@@ -324,14 +324,14 @@
   version: '0.5'
 -
   authors: 'Peder Stray'
-  contact: peder@ninja.no
+  contact: peder.stray@gmail.com
   description: 'Auto add channels to channel list on join'
   filename: autochannel.pl
   license: GPL
-  modified: '2007-09-20 08:58:11'
+  modified: '2021-08-20 13:48:48'
   name: autochannel
-  url: http://ninja.no/irssi/autochannel.pl
-  version: '1.2'
+  url: https://github.com/pstray/irssi-autochannel
+  version: '1.3'
 -
   authors: 'Trevor "tee" Slocum'
   commands: 'autocleared cleared'
@@ -994,14 +994,14 @@
 -
   authors: 'Peder Stray'
   commands: chansort
-  contact: peder@ninja.no
+  contact: peder.stray@gmail.com
   description: 'Sort all channel and query windows'
   filename: chansort.pl
   license: GPL
-  modified: '2008-05-17 17:39:09'
+  modified: '2021-08-20 13:49:58'
   name: chansort
-  url: http://ninja.no/irssi/chansort.pl
-  version: '1.4'
+  url: https://github.com/pstray/irssi-chansort
+  version: '1.5'
 -
   authors: 'Ævar Arnfjörð Bjarmason'
   commands: chansort_configurable
@@ -1322,13 +1322,13 @@
   version: '0.6'
 -
   authors: 'Peder Stray'
-  contact: peder@ninja.no
+  contact: peder.stray@gmail.com
   description: 'Move completed dcc gets to the subfolder done'
   filename: dccmove.pl
   license: GPL
-  modified: '2014-10-17 20:34:00'
+  modified: '2021-08-20 13:47:51'
   name: dccmove
-  url: http://ninja.no/irssi/dccmove.pl
+  url: https://github.com/pstray/irssi-dccmove
   version: '1.4'
 -
   authors: Nei
@@ -1840,13 +1840,13 @@
 -
   authors: 'Peder Stray'
   commands: 'addfriend friends'
-  contact: peder@ninja.no
-  description: 'Basicly an autoop script with a nice interface and nick coloring ;)'
+  contact: peder.stray@gmail.com
+  description: 'Basically an autoop script with a nice interface and nick coloring ;)'
   filename: friends_peder.pl
   license: GPL
-  modified: '2014-10-17 22:54:13'
+  modified: '2021-08-20 13:47:51'
   name: friends
-  url: http://ninja.no/irssi/friends.pl
+  url: https://github.com/pstray/irssi-friends
   version: '1.34'
 -
   authors: 'Jakub Jankowski'
@@ -2599,13 +2599,13 @@
 -
   authors: 'Peder Stray'
   commands: 'keepnick listnick unkeepnick'
-  contact: peder@ninja.no
+  contact: peder.stray@gmail.com
   description: 'Try to get your nick back when it becomes available.'
   filename: keepnick.pl
   license: GPL
-  modified: '2019-05-04 20:18:06'
+  modified: '2021-08-20 13:47:51'
   name: keepnick
-  url: http://ninja.no/irssi/keepnick.pl
+  url: https://github.com/pstray/irssi-keepnick
   version: '1.19'
 -
   authors: 'Gerfried Fuchs'
@@ -2817,13 +2817,13 @@
   version: '2017040101'
 -
   authors: 'Peder Stray'
-  contact: peder@ninja.no
-  description: 'convert mirc color and irssi interal formatting to ansi colors, useful for log filtering'
+  contact: peder.stray@gmail.com
+  description: 'Convert various color codes to ANSI colors, useful for log filtering and viewing.'
   filename: log2ansi.pl
   license: GPL
-  modified: '2010-02-13 13:59:47'
+  modified: '2021-08-20 13:53:04'
   name: log2ansi
-  url: http://ninja.no/irssi/log2ansi
+  url: https://github.com/pstray/irssi-log2ansi
   version: '1.9'
 -
   authors: "Timo 'cras' Sirainen"
@@ -3977,14 +3977,14 @@
   version: '1.0'
 -
   authors: 'Peder Stray'
-  contact: peder@ninja.no
+  contact: peder.stray@gmail.com
   description: 'Give you more control over when to jump to query windows and when to just tell you one has been created. Enhanced autoclose.'
   filename: query.pl
   license: GPL
-  modified: '2017-03-20 20:22:57'
+  modified: '2021-08-20 13:57:06'
   name: query
-  url: http://ninja.no/irssi/query.pl
-  version: '1.25'
+  url: https://github.com/pstray/irssi-query
+  version: '1.26'
 -
   authors: ferret
   contact: 'ferret(tA)explodingferret(moCtoD), ferret on irc.freenode.net'
@@ -5116,13 +5116,13 @@
 -
   authors: 'Peder Stray'
   commands: upgradeinfo
-  contact: peder@ninja.no
-  description: 'Statusbaritem notifying you about updated binary'
+  contact: peder.stray@gmail.com
+  description: 'Statusbar item notifying you about updated binary'
   filename: upgradeinfo.pl
   license: GPL
-  modified: '2008-05-17 17:39:09'
+  modified: '2021-08-20 13:47:51'
   name: upgradeinfo
-  url: http://ninja.no/irssi/upgradeinfo.pl
+  url: https://github.com/pstray/irssi-upgradeinfo
   version: '1.7'
 -
   authors: 'Ivo Schooneman'
@@ -5138,13 +5138,13 @@
   version: '0.3'
 -
   authors: 'Peder Stray'
-  contact: peder@ninja.no
+  contact: peder.stray@gmail.com
   description: 'Try a little harder to figure out client uptime'
   filename: uptime.pl
   license: GPL
-  modified: '2014-10-24 23:01:30'
+  modified: '2021-08-20 13:47:51'
   name: uptime
-  url: http://ninja.no/irssi/uptime.pl
+  url: https://github.com/pstray/irssi-uptime
   version: '1.6'
 -
   authors: 'Thomas Graf'
