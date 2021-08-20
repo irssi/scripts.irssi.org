@@ -1,8 +1,6 @@
 #! /usr/bin/perl
 #
-#    $Id: log2ansi,v 1.10 2010/02/13 13:59:47 peder Exp $
-#
-# Copyright (C) 2002, 2003, 2010 by Peder Stray <peder@ninja.no>
+# Copyright (C) 2002-2019 by Peder Stray <peder.stray@gmail.com>
 #
 #    This is a standalone perl program and not intended to run within
 #    irssi, it will complain if you try to...
@@ -16,15 +14,15 @@ use vars qw(@bols @nums @mirc @irssi @mc @mh @ic @ih @cn);
 use vars qw($class $oldclass);
 
 use vars qw{$VERSION %IRSSI};
-($VERSION) = ' $Revision: 1.10 $ ' =~ / (\d+\.\d+) /;
+($VERSION) = '$Revision: 1.10 $' =~ / (\d+\.\d+) /;
 %IRSSI = (
-          name        => 'log2ansi',
-          authors     => 'Peder Stray',
-          contact     => 'peder@ninja.no',
-          url         => 'http://ninja.no/irssi/log2ansi',
-          license     => 'GPL',
-          description => 'convert mirc color and irssi interal formatting to ansi colors, useful for log filtering',
-         );
+	  name        => 'log2ansi',
+	  authors     => 'Peder Stray',
+	  contact     => 'peder.stray@gmail.com',
+	  url         => 'https://github.com/pstray/irssi-log2ansi',
+	  license     => 'GPL',
+	  description => 'Convert various color codes to ANSI colors, useful for log filtering and viewing.',
+	 );
 
 if (__PACKAGE__ =~ /^Irssi/) {
     # we are within irssi... die!
@@ -78,7 +76,7 @@ sub defc {
 
 sub defm {
     my($attr) = shift || \%attr;
-    $attr->{bold} = $attr->{underline} = 
+    $attr->{bold} = $attr->{underline} =
       $attr->{blink} = $attr->{reverse} = 0;
 }
 
@@ -100,10 +98,10 @@ sub emit {
 	# do nothing
     }
     else {
-	
+
 	if ($opt_html) {
 	    my %class;
-	    
+
 	    for (@bols) {
 		$class{$_}++ if $attr{$_};
 	    }
@@ -127,19 +125,19 @@ sub emit {
 			 );
 
 	    $elem{0}++ if @clear;
-	
+
 	    for (@bols) {
-		$elem{$base{$_}}++ 
+		$elem{$base{$_}}++
 		  if $attr{$_} && ($old{$_} != $attr{$_} || $elem{0});
 	    }
-	    
+
 	    for (@nums) {
 		$elem{$base{$_}+$attr{$_}}++
 		  if $attr{$_} >= 0 && ($old{$_} != $attr{$_} || $elem{0});
 	    }
-	    
+
 	    @elem = sort {$a<=>$b} keys %elem;
-	    
+
 	    if (@elem) {
 		@elem = () if @elem == 1 && !$elem[0];
 		printf "\e[%sm", join ";", @elem;
@@ -192,14 +190,14 @@ while (<>) {
 	if (s/^\cB//) {
 	    # toggle bold
 	    $attr{bold} = !$attr{bold};
-	
+
 	} elsif (s/^\cC//) {
 	    # mirc colors
 
 	    if (/^[^\d,]/) {
 		defc;
 	    } else {
-		
+
 		if (s/^(\d\d?)//) {
 		    $attr{fgc} = $mc[$1 % 16];
 		    $attr{fgh} = $mh[$1 % 16];
