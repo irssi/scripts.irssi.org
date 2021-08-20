@@ -8,13 +8,14 @@
 use strict;
 use Getopt::Long;
 use Encode;
+use Pod::Usage;
 
 use vars qw(%ansi %base %attr %old);
 use vars qw(@bols @nums @mirc @irssi @mc @mh @ic @ih @cn);
 use vars qw($class $oldclass);
 
 use vars qw{$VERSION %IRSSI};
-($VERSION) = '$Revision: 1.10 $' =~ / (\d+\.\d+) /;
+($VERSION) = '$Revision: 1.11 $' =~ / (\d+\.\d+) /;
 %IRSSI = (
 	  name        => 'log2ansi',
 	  authors     => 'Peder Stray',
@@ -33,18 +34,35 @@ if (__PACKAGE__ =~ /^Irssi/) {
 my $opt_clear = 0;
 my $opt_html = 0;
 my $opt_utf8 = 0;
+my $opt_help = 0;
 
 GetOptions(
-	   'clear!' => \$opt_clear,
-	   'html!' => \$opt_html,
-	   'utf8!' => \$opt_utf8,
-	  );
+	   'c|clear!' => \$opt_clear,
+	   'h|html!' => \$opt_html,
+	   'u|utf8!' => \$opt_utf8,
+	   'help' => sub { $opt_help = 1 },
+	   'full-help' => sub { $opt_help = 2 },
+	  ) or pod2usage(2);
+
+# show some help if stdin is a tty and no files
+$opt_help = 1 if !$opt_help && -t 0 && !@ARGV;
+
+pod2usage(-verbose => $opt_help,
+	  -exitval => 0,
+	 ) if $opt_help;
 
 for (@ARGV) {
-    if (/\.bz2$/) {
+    if (/\.xz$/) {
+	$_ = "unxz < '$_' |";
+    }
+    elsif (/\.bz2$/) {
 	$_ = "bunzip2 < '$_' |";
-    } elsif (/\.gz$/) {
-        $_ = "gunzip < '$_' |";
+    }
+    elsif (/\.gz$/) {
+	$_ = "gunzip < '$_' |";
+    }
+    elsif (/\.lzma$/) {
+	$_ = "unlzma < '$_' |";
     }
 }
 
@@ -324,3 +342,71 @@ while (<>) {
 if ($opt_html) {
     print "</div>\n";
 }
+
+__END__
+
+=head1 NAME
+
+log2ansi - Convert foo various color escape codes to ANSI (or strip them)
+
+=head1 SYNOPSIS
+
+B<log2ansi>
+[B<-c>|B<--clear>]
+[B<-h>|B<--html>]
+[B<-u>|B<--utf8>]
+[B<--help>]
+[I<logfile ...>]
+
+=head1 OPTIONS
+
+=over
+
+=item B<-c>, B<--clear>
+
+Instructs B<log2ansi> to clear all formatting and output plain text logs.
+
+=item B<-h>, B<--html>
+
+Instructs B<log2ansi> to output a HTML fragment instead of ANSI text.
+
+The whole log will be wrapped in a div with class C<loglines>, each line
+of the log in a div with class C<logline>.  Colors are wrapped in spans,
+with a class name consisting of C<fg> or C<bg>, concatenated with the
+color name, either C<black> or C<white>, or C<r>, C<g>, C<b>, C<c>,
+C<m>, C<y>, or C<gray> prefixed with either C<l> for light, or C<d> for
+dark.
+
+You have to include appropriate CSS yourself to get any colors at all
+when viewing the log.
+
+=item B<-u>, B<--utf8>
+
+This forces output to be UTF-8, and does input decoding of UTF-8 with
+fallback to ISO-8859-1.  Use this if your input logs have mixed UTF-8
+and ISO-8859-1.
+
+=item B<--help>, B<--full-help>
+
+Show help, either just option descriptions or a full man page.
+
+=back
+
+=head1 DESCRIPTION
+
+Use B<log2ansi> to convert logfiles from Irssi with internal escape
+codes, mIRC color codes or ANSI escapes to plain text with ANSI
+formatted color codes for viewing in a terminal.
+
+Use the B<--clear> option to strip all formatting escapes and output
+just plain text.
+
+You can supply input on standard input, or as filenames on the command
+line.  Any file ending in B<.gz>, B<.bz2>, B<.xz> or B<.lzma> will be
+uncompressed automatically before processing.
+
+=head1 AUTHORS
+
+ Peder Stray <peder.stray@gmail.com>
+
+=cut
