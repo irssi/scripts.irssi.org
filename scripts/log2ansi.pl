@@ -15,7 +15,7 @@ use vars qw(@bols @nums @mirc @irssi @mc @mh @ic @ih @cn);
 use vars qw($class $oldclass);
 
 use vars qw{$VERSION %IRSSI};
-($VERSION) = '$Revision: 1.11 $' =~ / (\d+\.\d+) /;
+($VERSION) = '$Revision: 1.11.1 $' =~ / (\d+(\.\d+)+) /;
 %IRSSI = (
 	  name        => 'log2ansi',
 	  authors     => 'Peder Stray',

@@ -7,7 +7,7 @@ use Irssi 20011118.1727;
 use Irssi::Irc;
 
 use vars qw{$VERSION %IRSSI};
-($VERSION) = '$Revision: 1.19 $' =~ / (\d+\.\d+) /;
+($VERSION) = '$Revision: 1.19.1 $' =~ / (\d+(\.\d+)+) /;
 %IRSSI = (
 	  name        => 'keepnick',
 	  authors     => 'Peder Stray',

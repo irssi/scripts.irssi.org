@@ -8,10 +8,8 @@ use Irssi 20020428.1608;
 use Text::Abbrev;
 use POSIX;
 
-#use Data::Dumper;
-
 use vars qw{$VERSION %IRSSI};
-($VERSION) = '$Revision: 1.26 $' =~ / (\d+\.\d+) /;
+($VERSION) = '$Revision: 1.26.1 $' =~ / (\d+(\.\d+)+) /;
 %IRSSI = (
 	  name	      => 'query',
 	  authors     => 'Peder Stray',

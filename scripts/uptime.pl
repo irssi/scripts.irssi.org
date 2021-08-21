@@ -8,7 +8,7 @@ use Irssi::Irc;
 use Irssi::TextUI;
 
 use vars qw{$VERSION %IRSSI};
-($VERSION) = '$Revision: 1.6 $' =~ / (\d+\.\d+) /;
+($VERSION) = '$Revision: 1.6.1 $' =~ / (\d+(\.\d+)+) /;
 %IRSSI = (
 	  name        => 'uptime',
 	  authors     => 'Peder Stray',

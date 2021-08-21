@@ -7,7 +7,7 @@ use Irssi;
 use Irssi::Irc;
 
 use vars qw{$VERSION %IRSSI};
-($VERSION) = ' $Revision: 1.3 $ ' =~ / (\d+\.\d+) /;
+($VERSION) = ' $Revision: 1.3.1 $ ' =~ / (\d+(\.\d+)+) /;
 %IRSSI = (
 	  name        => 'autochannel',
 	  authors     => 'Peder Stray',

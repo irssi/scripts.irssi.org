@@ -7,7 +7,7 @@ use Irssi;
 use Irssi::Irc;
 
 use vars qw{$VERSION %IRSSI};
-($VERSION) = '$Revision: 1.5 $' =~ / (\d+\.\d+) /;
+($VERSION) = '$Revision: 1.5.1 $' =~ / (\d+(\.\d+)+) /;
 %IRSSI = (
 	  name        => 'chansort',
 	  authors     => 'Peder Stray',

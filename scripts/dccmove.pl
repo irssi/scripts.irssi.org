@@ -5,7 +5,7 @@
 use strict;
 use Irssi;
 use vars qw{$VERSION %IRSSI};
-($VERSION) = '$Revision: 1.4 $' =~ / (\d+\.\d+) /;
+($VERSION) = '$Revision: 1.4.1 $' =~ / (\d+(\.\d+)+) /;
 %IRSSI = (
 	  name        => 'dccmove',
 	  authors     => 'Peder Stray',
