@@ -7,7 +7,7 @@ use Irssi 20021204.1123;
 use Irssi::TextUI;
 
 use vars qw{$VERSION %IRSSI};
-($VERSION) = '$Revision: 1.7.1 $' =~ / (\d+(\.\d+) /;
+($VERSION) = '$Revision: 1.7.1 $' =~ / (\d+(\.\d+)+) /;
 %IRSSI = (
 	  name        => 'upgradeinfo',
 	  authors     => 'Peder Stray',
