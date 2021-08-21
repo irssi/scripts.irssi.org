@@ -5115,14 +5115,15 @@
   version: '0.1'
 -
   authors: 'Peder Stray'
+  commands: upgradeinfo
   contact: peder.stray@gmail.com
   description: 'Statusbar item notifying you about updated binary'
   filename: upgradeinfo.pl
   license: GPL
-  modified: '2021-08-21 10:40:50'
+  modified: '2021-08-21 23:56:51'
   name: upgradeinfo
   url: https://github.com/pstray/irssi-upgradeinfo
-  version: '1.7'
+  version: 1.7.1
 -
   authors: 'Ivo Schooneman'
   commands: 'ume usay'
