@@ -2821,10 +2821,10 @@
   description: 'Convert various color codes to ANSI colors, useful for log filtering and viewing.'
   filename: log2ansi.pl
   license: GPL
-  modified: '2021-08-21 10:40:50'
+  modified: '2021-08-22 13:36:53'
   name: log2ansi
   url: https://github.com/pstray/irssi-log2ansi
-  version: '1.9'
+  version: 1.11.1
 -
   authors: "Timo 'cras' Sirainen"
   contact: tss@iki.fi
