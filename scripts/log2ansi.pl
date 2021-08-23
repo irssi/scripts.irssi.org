@@ -25,6 +25,11 @@ use vars qw{$VERSION %IRSSI};
 	  description => 'Convert various color codes to ANSI colors, useful for log filtering and viewing.',
 	 );
 
+my $opt_clear = 0;
+my $opt_html = 0;
+my $opt_utf8 = 0;
+my $opt_help = 0;
+
 if (__PACKAGE__ =~ /^Irssi/) {
     # we are within irssi... die!
     Irssi::print("%RWarning:%n log2ansi should not run from within irssi");
@@ -32,11 +37,6 @@ if (__PACKAGE__ =~ /^Irssi/) {
 else {
     do_convert();
 }
-
-my $opt_clear = 0;
-my $opt_html = 0;
-my $opt_utf8 = 0;
-my $opt_help = 0;
 
 sub defc {
     my($attr) = shift || \%attr;
