@@ -3,11 +3,12 @@
   authors: 'Peder Stray'
   commands:
     - upgradeinfo
-  contact: peder@ninja.no
+  contact: peder.stray@gmail.com
   default_package: upgradeinfo
-  description: 'Statusbaritem notifying you about updated binary'
+  description: 'Statusbar item notifying you about updated binary'
   license: GPL
+  modified: '2021-08-21 23:56:51'
   name: upgradeinfo
   sbitems: upgradeinfo
-  url: http://ninja.no/irssi/upgradeinfo.pl
-  version: '1.7'
+  url: https://github.com/pstray/irssi-upgradeinfo
+  version: 1.7.1

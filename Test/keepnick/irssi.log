@@ -1,4 +1,4 @@
-* readline() on closed filehandle CONF at keepnick.pl line 86.
+* readline() on closed filehandle CONF at keepnick.pl line 71.
 * 
 * -!- Keepnick: Loaded 0 nicks from ../keepnick
 * -!- Irssi: Loaded script keepnick

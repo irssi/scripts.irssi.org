@@ -1,12 +1,12 @@
 ---
 -
   authors: 'Peder Stray'
-  contact: peder@ninja.no
+  contact: peder.stray@gmail.com
   default_package: uptime
   description: 'Try a little harder to figure out client uptime'
   license: GPL
-  modified: '2014-10-24 23:01:30'
+  modified: '2021-08-21 10:40:50'
   name: uptime
-  sbitems: uptime
-  url: http://ninja.no/irssi/uptime.pl
-  version: '1.6'
+  sbitem: uptime
+  url: https://github.com/pstray/irssi-uptime
+  version: 1.6.1

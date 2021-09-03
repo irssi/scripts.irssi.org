@@ -1,4 +1,4 @@
-* readline() on closed filehandle FILE at friends_peder.pl line 60.
+* readline() on closed filehandle FILE at friends_peder.pl line 44.
 * 
 * -!- Friends: Loaded 0 friends from ../friends
 * -!- Irssi: Loaded script friends_peder

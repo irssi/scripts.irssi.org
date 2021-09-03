@@ -3,10 +3,11 @@
   authors: 'Peder Stray'
   commands:
     - chansort
-  contact: peder@ninja.no
+  contact: peder.stray@gmail.com
   default_package: chansort
   description: 'Sort all channel and query windows'
   license: GPL
+  modified: '2021-08-21 10:40:50'
   name: chansort
-  url: http://ninja.no/irssi/chansort.pl
-  version: '1.4'
+  url: https://github.com/pstray/irssi-chansort
+  version: 1.5.1

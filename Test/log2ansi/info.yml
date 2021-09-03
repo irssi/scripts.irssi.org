@@ -1,9 +1,11 @@
 ---
 -
   authors: 'Peder Stray'
-  contact: peder@ninja.no
-  description: 'convert mirc color and irssi interal formatting to ansi colors, useful for log filtering'
+  contact: peder.stray@gmail.com
+  default_package: log2ansi
+  description: 'Convert various color codes to ANSI colors, useful for log filtering and viewing.'
   license: GPL
-  modified: '2010-02-13 13:59:47'
+  modified: '2021-08-23 12:37:45'
   name: log2ansi
-  url: http://ninja.no/irssi/log2ansi
+  url: https://github.com/pstray/irssi-log2ansi
+  version: 1.11.1

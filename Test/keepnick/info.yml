@@ -5,11 +5,11 @@
     - keepnick
     - listnick
     - unkeepnick
-  contact: peder@ninja.no
+  contact: peder.stray@gmail.com
   default_package: keepnick
   description: 'Try to get your nick back when it becomes available.'
   license: GPL
-  modified: '2019-05-04 20:18:06'
+  modified: '2021-08-21 10:40:50'
   name: keepnick
-  url: http://ninja.no/irssi/keepnick.pl
-  version: '1.19'
+  url: https://github.com/pstray/irssi-keepnick
+  version: 1.19.1

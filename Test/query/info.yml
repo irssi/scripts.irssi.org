@@ -1,11 +1,11 @@
 ---
 -
   authors: 'Peder Stray'
-  contact: peder@ninja.no
+  contact: peder.stray@gmail.com
   default_package: query
   description: 'Give you more control over when to jump to query windows and when to just tell you one has been created. Enhanced autoclose.'
   license: GPL
-  modified: '2017-03-20 20:22:57'
+  modified: '2021-08-21 10:40:50'
   name: query
-  url: http://ninja.no/irssi/query.pl
-  version: '1.25'
+  url: https://github.com/pstray/irssi-query
+  version: 1.26.1
