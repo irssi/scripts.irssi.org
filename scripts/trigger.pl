@@ -994,13 +994,13 @@ sub param_to_string {
 sub to_string {
 	my ($trigger, $compat) = @_;
 	my $string;
-	
+
 	foreach my $switch (@trigger_switches) {
 		if ($trigger->{$switch}) {
 			$string .= '-'.$switch.' ';
 		}
 	}
-	
+
 	if ($compat) {
 		foreach my $filter (sort keys(%filters)) {
 			if ($trigger->{$filter}) {
