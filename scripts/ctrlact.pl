@@ -15,7 +15,7 @@
 #
 # For instance, you might never want to be disturbed by activity in any
 # channel, unless someone highlights you. However, you do want all activity
-# in queries (except on efnet, as well as an indication about any chatter in
+# in queries (except on efnet), as well as an indication about any chatter in
 # your company channels. The following ctrlact map would do this for you:
 #
 #	channel			/^#myco-/	messages
@@ -23,11 +23,11 @@
 #	query		efnet	*		messages
 #	query			*		all
 #
-# These three lines would be interpreted/read as:
+# These four lines would be interpreted/read as:
 #  "only messages or higher in a channel matching /^#myco-/ should trigger act"
 #  "in all other channels, only hilights (or higher) should trigger act"
 #  "queries on efnet should only trigger act for messages and higher"
-#  "messages of all levels should trigger act in queries elsewhere"
+#  "privmsgs of all levels should trigger act in queries elsewhere"
 #
 # The activity level in the third column is thus to be interpreted as
 #  "the minimum level of activity that will trigger an indication"
