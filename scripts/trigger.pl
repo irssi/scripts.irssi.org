@@ -1017,6 +1017,7 @@ sub to_string {
 			$string .= '-' . $param . param_to_string($trigger->{$param});
 		}
 	}
+	$string =~ s/\s+$//;
 	return $string;
 }
 
