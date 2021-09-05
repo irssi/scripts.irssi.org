@@ -119,6 +119,7 @@ our %IRSSI = (
     name        => 'ctrlact',
     description => 'allows per-channel control over activity indication',
     license     => 'MIT',
+    url         => 'https://github.com/irssi/scripts.irssi.org/blob/master/scripts/ctrlact.pl',
     changed     => '2017-02-24'
 );
 
