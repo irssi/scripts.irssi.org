@@ -1,6 +1,6 @@
 # ctrlact.pl — Irssi script for fine-grained control of activity indication
 #
-# © 2017 martin f. krafft <madduck@madduck.net>
+# © 2017–2021 martin f. krafft <madduck@madduck.net>
 # Released under the MIT licence.
 #
 ### Usage:
@@ -111,7 +111,7 @@ use Carp qw( croak );
 use Irssi;
 use Text::ParseWords;
 
-our $VERSION = '1.2';
+our $VERSION = '1.3';
 
 our %IRSSI = (
     authors     => 'martin f. krafft',
@@ -120,7 +120,7 @@ our %IRSSI = (
     description => 'allows per-channel control over activity indication',
     license     => 'MIT',
     url         => 'https://github.com/irssi/scripts.irssi.org/blob/master/scripts/ctrlact.pl',
-    changed     => '2017-02-24'
+    changed     => '2021-09-06'
 );
 
 ### DEFAULTS AND SETTINGS ######################################################
