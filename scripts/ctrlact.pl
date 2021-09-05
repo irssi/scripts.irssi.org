@@ -171,6 +171,11 @@ sub error {
 	Irssi::print("ctrlact: ERROR: $msg", MSGLEVEL_CLIENTERROR);
 }
 
+sub info {
+	my ($msg) = @_;
+	Irssi::print("ctrlact: $msg", MSGLEVEL_CRAP);
+}
+
 my @window_thresholds;
 my @channel_thresholds;
 my @query_thresholds;
@@ -227,7 +232,7 @@ sub get_mappings_table {
 	my (@arr) = @_;
 	my @ret = ();
 	for (my $i = 0; $i < @arr; $i++) {
-		push @ret, sprintf("%4d: %-10s %-40s %-10s (line: %3d)",
+		push @ret, sprintf("%7d: %-16s %-32s %-10s (line: %3d)",
 			$i, $arr[$i]->[0], $arr[$i]->[1], $arr[$i]->[2], $arr[$i]->[3]);
 	}
 	return join("\n", @ret);
@@ -275,13 +280,13 @@ sub get_win_threshold {
 
 sub print_levels_for_all {
 	my ($type, @arr) = @_;
-	Irssi::print("ctrlact: $type mappings:");
+	info("$type mappings:");
 	for (my $i = 0; $i < @arr; $i++) {
 		my $name = $arr[$i]->{'name'};
 		my $net = $arr[$i]->{'server'}->{'tag'} // '';
 		my ($t, $tt, $match) = get_specific_threshold($type, $name, $net);
 		my $c = ($type eq 'window') ? $arr[$i]->{'refnum'} : $arr[$i]->window()->{'refnum'};
-		Irssi::print(sprintf("%4d: %-40.40s → %d (%-8s)  match %s", $c, $name, $t, $tt, $match), MSGLEVEL_CRAP);
+		info(sprintf("%4d: %-40.40s → %d (%-8s)  match %s", $c, $name, $t, $tt, $match));
 	}
 }
 
@@ -411,7 +416,7 @@ sub get_mappings_fh {
 
 # vim:noet:tw=0:ts=16
 EOF
-		Irssi::print("ctrlact: created new/empty mappings file: $filename");
+		info("Created new/empty mappings file: $filename");
 		seek($fh, 0, 0) || croak "Cannot rewind $filename.";
 	}
 	return $fh;
@@ -442,6 +447,7 @@ sub load_mappings {
 	}
 	my $linesplitter = '^\s*'.join('\s+', ('(\S+)') x $nrcols).'\s*$';
 	my $l = 1;
+	my $cnt = 0;
 	while (<$fh>) {
 		$l++;
 		next if m/^\s*(?:#|$)/;
@@ -451,13 +457,15 @@ sub load_mappings {
 		push @window_thresholds, [@matchers] if match($type, 'window');
 		push @channel_thresholds, [@matchers] if match($type, 'channel');
 		push @query_thresholds, [@matchers] if match($type, 'query');
+		$cnt += 1;
 	}
 	close($fh) || croak "Cannot close mappings file: $!";
+	return $cnt;
 }
 
 sub cmd_load {
-	Irssi::print("ctrlact: loading mappings from $map_file");
-	load_mappings($map_file);
+	my $cnt = load_mappings($map_file);
+	info("Loaded $cnt mappings from $map_file");
 	$changed_since_last_save = 0;
 }
 
@@ -467,12 +475,9 @@ sub cmd_save {
 }
 
 sub cmd_list {
-	Irssi::print("ctrlact: window mappings");
-	Irssi::print(get_mappings_table(@window_thresholds), MSGLEVEL_CRAP);
-	Irssi::print("ctrlact: channel mappings");
-	Irssi::print(get_mappings_table(@channel_thresholds), MSGLEVEL_CRAP);
-	Irssi::print("ctrlact: query mappings");
-	Irssi::print(get_mappings_table(@query_thresholds), MSGLEVEL_CRAP);
+	info("WINDOW MAPPINGS\n" . get_mappings_table(@window_thresholds));
+	info("CHANNEL MAPPINGS\n" . get_mappings_table(@channel_thresholds));
+	info("QUERY MAPPINGS\n" . get_mappings_table(@query_thresholds));
 }
 
 sub parse_args {
