@@ -221,18 +221,20 @@ sub match {
 
 sub to_data_level {
 	my ($kw) = @_;
-	return $1 if $kw =~ m/^(\d+)$/;
-	foreach my $i (2..4) {
-		my $matcher = qr/^$DATALEVEL_KEYWORDS[5-$i]$/;
-		return 6-$i if $kw =~ m/$matcher/i;
+	my $ret = 0;
+	for my $i (0 .. $#DATALEVEL_KEYWORDS) {
+		if ($kw eq $DATALEVEL_KEYWORDS[$i]) {
+			$ret = $i + 1;
+		}
 	}
-	return 1;
+	return $ret
 }
 
 sub from_data_level {
 	my ($dl) = @_;
-	croak "Invalid numeric data level: $dl" unless $dl =~ m/^([1-4])$/;
-	return $DATALEVEL_KEYWORDS[$dl-1];
+	if ($dl =~ /^[1-4]$/) {
+		return $DATALEVEL_KEYWORDS[$dl-1];
+	}
 }
 
 sub walk_match_array {
