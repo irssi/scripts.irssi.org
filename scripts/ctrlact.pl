@@ -62,6 +62,27 @@
 #	# display the applicable level for each window/channel/query
 #	/ctrlact show [-window|-channel|-query]
 #
+# Or go ahead and define them manually:
+#
+#	# add a mapping for the #debian channel on OFTC (at the top):
+#	/ctrlact -oftc #debian messages
+#
+#	# add a mapping for the #bar channel at position 4:
+#	/ctrlact #bar messages @4
+#
+#	# add a mapping for a query with the user grace:
+#	/ctrlact -query grace all
+#
+#	# remove a mapping
+#	/ctrlact remove -oftc #debian
+#	# or
+#	/ctrlact remove @3
+#
+#	# save mappings
+#	/ctrlact save
+#	# or
+#	/save
+#
 # There's an interplay between window items and windows here, and you can
 # specify mininum activity levels for each. Here are the rules:
 #
@@ -106,7 +127,6 @@
 ### To-do:
 #
 # - figure out interplay with activity_hide_level
-# - /ctrlact add/delete/move
 # - completion for commands
 #
 use strict;
@@ -260,7 +280,7 @@ sub walk_match_array {
 		my $result = to_data_level($quadruplet->[2]);
 		my $tresult = from_data_level($result);
 		$name = '(unnamed)' unless length $name;
-		$match = sprintf('line %3d = net:%s name:%s',
+		$match = sprintf('%s = net:%s name:%s',
 			$quadruplet->[3], $netmatch, $match);
 		return ($result, $tresult, $match)
 	}
@@ -311,6 +331,65 @@ sub get_win_threshold {
 	}
 }
 
+sub set_threshold {
+	my ($arr, $chatnet, $name, $level, $pos) = @_;
+
+	if ($level =~ /^[1-4]$/) {
+		$level = from_data_level($level);
+	}
+	elsif (!to_data_level($level)) {
+		error("Not a valid activity level: $level", 1);
+		return -1;
+	}
+
+	my $found = 0;
+	my $index = 0;
+	for (; $index < scalar @{$arr}; ++$index) {
+		my $item = $arr->[$index];
+		if ($item->[0] eq $chatnet and $item->[1] eq $name) {
+			$found = 1;
+			last;
+		}
+	}
+
+	if ($found) {
+		splice @{$arr}, $index, 1;
+		$pos = $index unless defined $pos;
+	}
+
+	splice @{$arr}, $pos // 0, 0, [$chatnet, $name, $level, 'manual'];
+	$changed_since_last_save = 1;
+	return $found;
+}
+
+sub unset_threshold {
+	my ($arr, $chatnet, $name, $pos) = @_;
+	my $found = 0;
+	if (defined $pos) {
+		if ($pos > $#{$arr}) {
+			warning("There exists no rule \@$pos");
+		}
+		else {
+			splice @{$arr}, $pos, 1;
+			$found = 1;
+		}
+	}
+	else {
+		for (my $i = scalar @{$arr} - 1; $i >= 0; --$i) {
+			my $item = $arr->[$i];
+			if ($item->[0] eq $chatnet and $item->[1] eq $name) {
+				splice @{$arr}, $i, 1;
+				$found = 1;
+			}
+		}
+		if (!$found) {
+			warning("No matching rule found for deletion");
+		}
+	}
+	$changed_since_last_save = $found;
+	return $found;
+}
+
 sub print_levels_for_all {
 	my ($type, @arr) = @_;
 	info(uc("$type mappings:"));
@@ -321,6 +400,36 @@ sub print_levels_for_all {
 		my $c = ($type eq 'window') ? $i->{'refnum'} : $i->window()->{'refnum'};
 		info(sprintf("%4d: %-40.40s → %d (%-8s)  match %s", $c, $name, $t, $tt, $match));
 	}
+}
+
+sub parse_args {
+	my (@args) = @_;
+	my @words = ();
+	my ($tag, $pos);
+	my $max = 0;
+	my $type = undef;
+	foreach my $arg (@args) {
+		if ($arg =~ m/^-(windows?|channels?|quer(?:ys?|ies))/) {
+			if ($type) {
+				error("can't specify -$1 after -$type", 1);
+				return 1;
+			}
+			$type = 'window' if $1 =~ m/^w/;
+			$type = 'channel' if $1 =~ m/^c/;
+			$type = 'query' if $1 =~ m/^q/;
+		}
+		elsif ($arg =~ m/-(\S+)/) {
+			$tag = $1;
+		}
+		elsif ($arg =~ m/@([0-9]+)/) {
+			$pos = $1;
+		}
+		else {
+			push @words, $arg;
+			$max = length $arg if length $arg > $max;
+		}
+	}
+	return ($type, $tag, $pos, $max, @words);
 }
 
 ### HILIGHT SIGNAL HANDLERS ####################################################
@@ -526,45 +635,100 @@ sub cmd_save {
 	autosave();
 }
 
+### OTHER COMMANDS #############################################################
+
+sub cmd_add {
+	my ($data, $server, $witem) = @_;
+	my @args = shellwords($data);
+	my ($type, $tag, $pos, $max, @words) = parse_args(@args);
+	$type = $type // 'channel';
+	$tag = $tag // '*';
+	my ($name, $level);
+
+	for my $item (@words) {
+		if (!$name) {
+			$name = $item;
+		}
+		elsif (!$level) {
+			$level = $item;
+		}
+		else {
+			error("Unexpected argument: $item");
+			return;
+		}
+	}
+
+	if (!$name) {
+		error("Must specify at least a level");
+		return;
+	}
+	elsif (!length $level) {
+		if ($witem) {
+			$level = $name;
+			$name = $witem->{name};
+			$tag = $server->{chatnet} unless $tag;
+		}
+		else {
+			error("No name specified, and no active window item");
+			return;
+		}
+	}
+
+	my $res = set_threshold($THRESHOLDARRAYS{$type}, $tag, $name, $level, $pos);
+	if ($res > 0) {
+		info("Existing rule replaced.");
+	}
+	elsif ($res == 0) {
+		info("Rule added.");
+	}
+}
+
+sub cmd_remove {
+	my ($data, $server, $witem) = @_;
+	my @args = shellwords($data);
+	my ($type, $tag, $pos, $max, @words) = parse_args(@args);
+	$type = $type // 'channel';
+	$tag = $tag // '*';
+	my $name;
+
+	for my $item (@words) {
+		if (!$name) {
+			$name = $item;
+		}
+		else {
+			error("Unexpected argument: $item");
+			return;
+		}
+	}
+
+	if (!defined $pos) {
+		if (!$name) {
+			if ($witem) {
+				$name = $witem->{name};
+				$tag = $server->{chatnet} unless $tag;
+			}
+			else {
+				error("No name specified, and no active window item");
+				return;
+			}
+		}
+	}
+
+	if (unset_threshold($THRESHOLDARRAYS{$type}, $tag, $name, $pos)) {
+		info("Rule removed.");
+	}
+}
+
 sub cmd_list {
 	info("WINDOW MAPPINGS\n" . get_mappings_table(\@window_thresholds));
 	info("CHANNEL MAPPINGS\n" . get_mappings_table(\@channel_thresholds));
 	info("QUERY MAPPINGS\n" . get_mappings_table(\@query_thresholds));
 }
 
-sub parse_args {
-	my (@args) = @_;
-	my @words = ();
-	my $typewasset = 0;
-	my $tag;
-	my $max = 0;
-	my $type = undef;
-	foreach my $arg (@args) {
-		if ($arg =~ m/^-(windows?|channels?|quer(?:ys?|ies))/) {
-			if ($typewasset) {
-				error("can't specify -$1 after -$type", 1);
-				return 1;
-			}
-			$type = 'window' if $1 =~ m/^w/;
-			$type = 'channel' if $1 =~ m/^c/;
-			$type = 'query' if $1 =~ m/^q/;
-			$typewasset = 1
-		}
-		elsif ($arg =~ m/-(\S+)/) {
-			$tag = $1;
-		}
-		else {
-			push @words, $arg;
-			$max = length $arg if length $arg > $max;
-		}
-	}
-	return ($type, $tag, $max, @words);
-}
-
 sub cmd_query {
 	my ($data, $server, $item) = @_;
 	my @args = shellwords($data);
-	my ($type, $tag, $max, @words) = parse_args(@args);
+	my ($type, $tag, $pos, $max, @words) = parse_args(@args);
 	$type = $type // 'channel';
 	$tag = $tag // '*';
 	foreach my $word (@words) {
@@ -576,7 +740,7 @@ sub cmd_query {
 sub cmd_show {
 	my ($data, $server, $item) = @_;
 	my @args = shellwords($data);
-	my ($type, $max, @words) = parse_args(@args);
+	my ($type) = parse_args(@args);
 	$type = $type // 'all';
 
 	if ($type eq 'channel' or $type eq 'all') {
@@ -612,6 +776,8 @@ Irssi::command_bind('ctrlact help',\&cmd_help);
 Irssi::command_bind('ctrlact reload',\&cmd_load);
 Irssi::command_bind('ctrlact load',\&cmd_load);
 Irssi::command_bind('ctrlact save',\&cmd_save);
+Irssi::command_bind('ctrlact add',\&cmd_add);
+Irssi::command_bind('ctrlact remove',\&cmd_remove);
 Irssi::command_bind('ctrlact list',\&cmd_list);
 Irssi::command_bind('ctrlact query',\&cmd_query);
 Irssi::command_bind('ctrlact show',\&cmd_show);
