@@ -159,22 +159,46 @@ my @DATALEVEL_KEYWORDS = ('all', 'messages', 'hilights', 'none');
 
 my $_inhibit_debug_activity = 0;
 use constant DEBUGEVENTFORMAT => "%7s %7.7s %-22.22s  %d %s %d → %-7s  (%-8s ← %s)";
-sub debugprint {
+sub say {
+	my ($msg, $level, $inwin) = @_;
+	$level = $level // MSGLEVEL_CLIENTCRAP;
+	if ($inwin) {
+		Irssi::active_win->print("ctrlact: $msg", $level);
+	}
+	else {
+		Irssi::print("ctrlact: $msg", $level);
+	}
+}
+
+sub debug {
 	return unless $debug;
-	my ($msg, @rest) = @_;
+	my ($msg, $inwin) = @_;
+	$msg = $msg // "";
 	$_inhibit_debug_activity = 1;
-	Irssi::print("ctrlact debug: ".$msg, MSGLEVEL_CRAP);
+	say("DEBUG: ".$msg, MSGLEVEL_CRAP, $inwin);
 	$_inhibit_debug_activity = 0;
 }
 
-sub error {
-	my ($msg) = @_;
-	Irssi::print("ctrlact: ERROR: $msg", MSGLEVEL_CLIENTERROR);
+use Data::Dumper;
+sub dumper {
+	debug(scalar Dumper(@_), 1);
 }
 
 sub info {
-	my ($msg) = @_;
-	Irssi::print("ctrlact: $msg", MSGLEVEL_CRAP);
+	my ($msg, $inwin) = @_;
+	say($msg, MSGLEVEL_CLIENTCRAP, $inwin);
+}
+
+sub warning {
+	my ($msg, $inwin) = @_;
+	$msg = $msg // "";
+	say("WARNING: ".$msg, MSGLEVEL_CLIENTERROR, $inwin);
+}
+
+sub error {
+	my ($msg, $inwin) = @_;
+	$msg = $msg // "";
+	say("ERROR: ".$msg, MSGLEVEL_CLIENTERROR, $inwin);
 }
 
 my @window_thresholds;
@@ -311,7 +335,7 @@ sub maybe_inhibit_witem_hilight {
 	my $witag = $witem->{'server'}->{'tag'} // '';
 	my ($th, $tth, $match) = get_item_threshold($wichattype, $witype, $winame, $witag);
 	my $inhibit = $newlevel > 0 && $newlevel < $th;
-	debugprint(sprintf(DEBUGEVENTFORMAT, lc($witype), $witag, $winame, $newlevel,
+	debug(sprintf(DEBUGEVENTFORMAT, lc($witype), $witag, $winame, $newlevel,
 			$inhibit ? ('<',$th,'inhibit'):('≥',$th,'pass'),
 			$tth, $match));
 	if ($inhibit) {
@@ -348,7 +372,7 @@ sub maybe_inhibit_win_hilight {
 		my $wtag = $win->{'server'}->{'tag'} // '';
 		my ($th, $tth, $match) = get_win_threshold($wname, $wtag);
 		my $inhibit = $newlevel > 0 && $newlevel < $th;
-		debugprint(sprintf(DEBUGEVENTFORMAT, 'window', $wtag,
+		debug(sprintf(DEBUGEVENTFORMAT, 'window', $wtag,
 				$wname?$wname:"$win->{'refnum'}(unnamed)", $newlevel,
 				$inhibit ? ('<',$th,'inhibit'):('≥',$th,'pass'),
 				$tth, $match));
@@ -471,7 +495,7 @@ sub cmd_load {
 }
 
 sub cmd_save {
-	error("saving not yet implemented");
+	error("saving not yet implemented", 1);
 	return 1;
 }
 
@@ -491,7 +515,7 @@ sub parse_args {
 	foreach my $arg (@args) {
 		if ($arg =~ m/^-(windows?|channels?|quer(?:ys?|ies))/) {
 			if ($typewasset) {
-				error("can't specify -$1 after -$type");
+				error("can't specify -$1 after -$type", 1);
 				return 1;
 			}
 			$type = 'window' if $1 =~ m/^w/;
