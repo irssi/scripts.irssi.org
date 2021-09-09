@@ -46,8 +46,8 @@
 #
 # Note that the name is either matched in full and verbatim, or treated like
 # a regular expression, if it starts and ends with the same punctuation
-# character. The asterisk ('*') is special and simply gets translated to /.*/
-# internally. No other wildcards are supported.
+# character. You may also use the asterisk by itself to match everything, or
+# as part of a word, e.g. #debian-*. No other wildcards are supported.
 #
 # Once you defined your mappings, please don't forget to /ctrlact reload them.
 # You can then use the following commands from Irssi to check out the result:
@@ -207,14 +207,15 @@ my @query_thresholds;
 
 sub match {
 	my ($pat, $text) = @_;
-	my $npat = ($pat eq '*') ? '/.*/' : $pat;
-	if ($npat =~ m/^(\W)(.+)\1$/) {
-		my $re = qr/$2/;
-		$pat = $2 unless $pat eq '*';
-		return $pat if $text =~ /$re/i;
+	if ($pat =~ m/^(\W)(.+)\1$/) {
+		return $pat if $text =~ /$2/i;
+	}
+	elsif ($pat =~ m/\*/) {
+		my $rpat = $pat =~ s/\*/.*/gr;
+		return $pat if $text =~ /$rpat/
 	}
 	else {
-		return $pat if lc($text) eq lc($npat);
+		return $pat if lc($text) eq lc($pat);
 	}
 	return 0;
 }
