@@ -238,8 +238,8 @@ sub from_data_level {
 }
 
 sub walk_match_array {
-	my ($name, $net, $type, @arr) = @_;
-	foreach my $quadruplet (@arr) {
+	my ($name, $net, $type, $arr) = @_;
+	foreach my $quadruplet (@{$arr}) {
 		my $netmatch = $net eq '*' ? '(ignored)'
 					: match($quadruplet->[0], $net);
 		my $match = match($quadruplet->[1], $name);
@@ -256,11 +256,11 @@ sub walk_match_array {
 }
 
 sub get_mappings_table {
-	my (@arr) = @_;
+	my ($arr) = @_;
 	my @ret = ();
-	for (my $i = 0; $i < @arr; $i++) {
-		push @ret, sprintf("%7d: %-16s %-32s %-10s (line: %3d)",
-			$i, $arr[$i]->[0], $arr[$i]->[1], $arr[$i]->[2], $arr[$i]->[3]);
+	while (my ($i, $elem) = each @{$arr}) {
+		push @ret, sprintf("%7d: %-16s %-32s %-10s (%s)",
+			$i, $elem->[0], $elem->[1], $elem->[2], $elem->[3]);
 	}
 	return join("\n", @ret);
 }
@@ -269,13 +269,13 @@ sub get_specific_threshold {
 	my ($type, $name, $net) = @_;
 	$type = lc($type);
 	if ($type eq 'window') {
-		return walk_match_array($name, $net, $type, @window_thresholds);
+		return walk_match_array($name, $net, $type, \@window_thresholds);
 	}
 	elsif ($type eq 'channel') {
-		return walk_match_array($name, $net, $type, @channel_thresholds);
+		return walk_match_array($name, $net, $type, \@channel_thresholds);
 	}
 	elsif ($type eq 'query') {
-		return walk_match_array($name, $net, $type, @query_thresholds);
+		return walk_match_array($name, $net, $type, \@query_thresholds);
 	}
 	else {
 		croak "ctrlact: can't look up threshold for type: $type";
@@ -502,9 +502,9 @@ sub cmd_save {
 }
 
 sub cmd_list {
-	info("WINDOW MAPPINGS\n" . get_mappings_table(@window_thresholds));
-	info("CHANNEL MAPPINGS\n" . get_mappings_table(@channel_thresholds));
-	info("QUERY MAPPINGS\n" . get_mappings_table(@query_thresholds));
+	info("WINDOW MAPPINGS\n" . get_mappings_table(\@window_thresholds));
+	info("CHANNEL MAPPINGS\n" . get_mappings_table(\@channel_thresholds));
+	info("QUERY MAPPINGS\n" . get_mappings_table(\@query_thresholds));
 }
 
 sub parse_args {
