@@ -307,12 +307,12 @@ sub get_win_threshold {
 
 sub print_levels_for_all {
 	my ($type, @arr) = @_;
-	info("$type mappings:");
-	for (my $i = 0; $i < @arr; $i++) {
-		my $name = $arr[$i]->{'name'};
-		my $net = $arr[$i]->{'server'}->{'tag'} // '';
+	info(uc("$type mappings:"));
+	for my $i (@arr) {
+		my $name = $i->{'name'};
+		my $net = $i->{'server'}->{'tag'} // '';
 		my ($t, $tt, $match) = get_specific_threshold($type, $name, $net);
-		my $c = ($type eq 'window') ? $arr[$i]->{'refnum'} : $arr[$i]->window()->{'refnum'};
+		my $c = ($type eq 'window') ? $i->{'refnum'} : $i->window()->{'refnum'};
 		info(sprintf("%4d: %-40.40s → %d (%-8s)  match %s", $c, $name, $t, $tt, $match));
 	}
 }
