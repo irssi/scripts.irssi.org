@@ -132,7 +132,10 @@
 ### To-do:
 #
 # - figure out interplay with activity_hide_level
-# - completion for commands
+# - "/ctrlact blind" to forget attention span
+# - "/ctrlact query" should include attention span left
+# - implement "/ctrlact hide"
+# - use Irssi formats
 #
 use strict;
 use warnings;
@@ -152,7 +155,7 @@ our %IRSSI = (
     license     => 'MIT',
     url         => 'https://github.com/irssi/scripts.irssi.org/blob/master/scripts/ctrlact.pl',
     version     => $VERSION,
-    changed     => '2021-09-06'
+    changed     => '2021-09-11'
 );
 
 ### DEFAULTS AND SETTINGS ######################################################
