@@ -134,8 +134,9 @@ use warnings;
 use Carp qw( croak );
 use Irssi;
 use Text::ParseWords;
+use version;
 
-our $VERSION = '1.3';
+our $VERSION = version->parse('1.4');
 
 our %IRSSI = (
     authors     => 'martin f. krafft',
@@ -144,6 +145,7 @@ our %IRSSI = (
     description => 'allows per-channel control over activity indication',
     license     => 'MIT',
     url         => 'https://github.com/irssi/scripts.irssi.org/blob/master/scripts/ctrlact.pl',
+    version     => $VERSION,
     changed     => '2021-09-06'
 );
 
@@ -523,31 +525,33 @@ sub load_mappings {
 	my $firstline = <$fh> || croak "Cannot read from $filename.";;
 	my $version;
 	if ($firstline =~ m/^#+\s+ctrlact mappings file \(version: *([\d.]+)\)/) {
-		$version = $1;
+		$version = version->parse($1);
 	}
 	else {
 		croak "First line of $filename is not a ctrlact header.";
 	}
 
-	my $nrcols = 4;
-	if ($version eq $VERSION) {
-		# current version, i.e. no special handling is required. If
-		# previous versions require special handling, then massage the
-		# data or do whatever is required in the following
-		# elsif-clauses:
-	}
-	elsif ($version eq "1.0") {
+	my $nrcols = 5;
+	if ($version <= version->parse('1.0')) {
 		$nrcols = 3;
 	}
-	my $linesplitter = '^\s*'.join('\s+', ('(\S+)') x $nrcols).'\s*$';
+	elsif ($version <= version->parse('1.3')) {
+		$nrcols = 4;
+	}
 	my $l = 1;
 	my $cnt = 0;
 	while (<$fh>) {
 		$l++;
 		next if m/^\s*(?:#|$)/;
-		my ($type, @matchers) = m/$linesplitter/;
-		@matchers = ['*', @matchers] if ($version eq "1.0");
-		push @matchers, sprintf('line %3d', $l);
+		my ($type, @matchers) = split;
+		if ($#matchers + 2 > $nrcols) {
+			error("Cannot parse $filename:$l: $_");
+			return;
+		}
+		@matchers = ['*', @matchers] if $version <= version->parse('1.0');
+
+		push @matchers, sprintf('line %2d', $l);
+
 		if (exists $THRESHOLDARRAYS{$type}) {
 			push @{$THRESHOLDARRAYS{$type}}, [@matchers];
 			$cnt += 1;
@@ -622,8 +626,13 @@ EOF
 
 sub cmd_load {
 	my $cnt = load_mappings($map_file);
-	info("Loaded $cnt mappings from $map_file");
-	$changed_since_last_save = 0;
+	if (!$cnt) {
+		@window_thresholds = @channel_thresholds = @query_thresholds = ();
+	}
+	else {
+		info("Loaded $cnt mappings from $map_file");
+		$changed_since_last_save = 0;
+	}
 }
 
 sub cmd_save {
