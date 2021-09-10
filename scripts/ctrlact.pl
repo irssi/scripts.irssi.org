@@ -10,26 +10,31 @@
 # If you like a busy activity statusbar, this script is not for you.
 #
 # If, on the other hand, you don't care about most activity, but you do want
-# the ability to define per-item and per-window, what level of activity should
-# trigger a change in the statusbar, then ctrlact might be for you.
+# the ability to define, per-item and per-window, what level of activity should
+# trigger a change in the statusbar, possibily depending on how long ago
+# you yourself were active on the channel, then ctrlact might be for you.
 #
 # For instance, you might never want to be disturbed by activity in any
-# channel, unless someone highlights you. However, you do want all activity
+# channel, unless someone highlights you, or if you've said something yourself
+# in the channel in the past hour. You also want all activity
 # in queries (except on efnet), as well as an indication about any chatter in
 # your company channels. The following ctrlact map would do this for you:
 #
 #	channel		*	/^#myco-/	messages
+#	channel		*	*		messages	3600
 #	channel		*	*		hilights
 #	query		efnet	*		messages
 #	query		*	*		all
 #
-# These four lines would be interpreted/read as:
+# These five lines would be interpreted/read as:
 #  "only messages or higher in a channel matching /^#myco-/ should trigger act"
+#  "in all other channels where I've been active in the last 3600 seconds,
+#   trigger on all messages"
 #  "in all other channels, only hilights (or higher) should trigger act"
 #  "queries on efnet should only trigger act for messages and higher"
 #  "privmsgs of all levels should trigger act in queries elsewhere"
 #
-# The activity level in the third column is thus to be interpreted as
+# The activity level in the fourth column is thus to be interpreted as
 #  "the minimum level of activity that will trigger an indication"
 #
 # Loading this script per-se should not change anything, except it will create
@@ -128,9 +133,11 @@
 #
 # - figure out interplay with activity_hide_level
 # - completion for commands
+# - /ctrlact add needs to be able to specify attention span period
 #
 use strict;
 use warnings;
+use utf8;
 use Carp qw( croak );
 use Irssi;
 use Text::ParseWords;
@@ -192,6 +199,8 @@ my %THRESHOLDARRAYS = ('window'  => \@window_thresholds,
 
 my @DATALEVEL_KEYWORDS = ('all', 'messages', 'hilights', 'none');
 
+my %OWN_ACTIVITY = ();
+
 ### HELPERS ####################################################################
 
 my $_inhibit_debug_activity = 0;
@@ -241,16 +250,16 @@ sub error {
 sub match {
 	my ($pat, $text) = @_;
 	if ($pat =~ m/^(\W)(.+)\1$/) {
-		return $pat if $text =~ /$2/i;
+		return ($pat, $text) if $text =~ /$2/i;
 	}
 	elsif ($pat =~ m/\*/) {
 		my $rpat = $pat =~ s/\*/.*/gr;
-		return $pat if $text =~ /$rpat/
+		return ($pat, $text) if $text =~ /$rpat/
 	}
 	else {
-		return $pat if lc($text) eq lc($pat);
+		return ($pat, $text) if lc($text) eq lc($pat);
 	}
-	return 0;
+	return ();
 }
 
 sub to_data_level {
@@ -273,18 +282,24 @@ sub from_data_level {
 
 sub walk_match_array {
 	my ($name, $net, $type, $arr) = @_;
-	foreach my $quadruplet (@{$arr}) {
-		my $netmatch = $net eq '*' ? '(ignored)'
-					: match($quadruplet->[0], $net);
-		my $match = match($quadruplet->[1], $name);
-		next unless $netmatch and $match;
+	foreach my $rule (@{$arr}) {
+		my ($netpat, $net) = match($rule->[0], $net);
+		my ($namepat, $name) = match($rule->[1], $name);
+		next unless $netpat and $namepat;
 
-		my $result = to_data_level($quadruplet->[2]);
+		my $own = $OWN_ACTIVITY{($net, $name)} // 0;
+		my $span = ($rule->[3] eq '∞') ? 0 : $rule->[3];
+		if ($span > 0 and time() > ($own + $span)) {
+			delete $OWN_ACTIVITY{($net, $name)};
+			next;
+		}
+
+		my $result = to_data_level($rule->[2]);
 		my $tresult = from_data_level($result);
 		$name = '(unnamed)' unless length $name;
-		$match = sprintf('%s = net:%s name:%s',
-			$quadruplet->[3], $netmatch, $match);
-		return ($result, $tresult, $match)
+		my $match = sprintf('%s = net:%s name:%s span:%s',
+			$rule->[4], $netpat, $namepat, $rule->[3]);
+		return ($result, $tresult, $match);
 	}
 	return -1;
 }
@@ -293,8 +308,8 @@ sub get_mappings_table {
 	my ($arr) = @_;
 	my @ret = ();
 	while (my ($i, $elem) = each @{$arr}) {
-		push @ret, sprintf("%7d: %-16s %-32s %-10s (%s)",
-			$i, $elem->[0], $elem->[1], $elem->[2], $elem->[3]);
+		push @ret, sprintf("%7d: %-16s %-32s %-9s %-5s (%s)",
+			$i, @{$elem});
 	}
 	return join("\n", @ret);
 }
@@ -359,7 +374,7 @@ sub set_threshold {
 		$pos = $index unless defined $pos;
 	}
 
-	splice @{$arr}, $pos // 0, 0, [$chatnet, $name, $level, 'manual'];
+	splice @{$arr}, $pos // 0, 0, [$chatnet, $name, $level, '∞', 'manual'];
 	$changed_since_last_save = 1;
 	return $found;
 }
@@ -505,6 +520,16 @@ sub maybe_inhibit_beep {
 }
 Irssi::signal_add_first('beep', \&maybe_inhibit_beep);
 
+###
+
+sub record_own_message {
+	my ($server, $msg, $target) = @_;
+	$OWN_ACTIVITY{($server->{chatnet}, $target)} = time();
+}
+for my $i ('public', 'private') {
+	Irssi::signal_add("message own_$i", \&record_own_message);
+}
+
 ### SAVING AND LOADING #########################################################
 
 sub get_mappings_fh {
@@ -544,11 +569,15 @@ sub load_mappings {
 		$l++;
 		next if m/^\s*(?:#|$)/;
 		my ($type, @matchers) = split;
-		if ($#matchers + 2 > $nrcols) {
+		if (scalar @matchers >= $nrcols) {
 			error("Cannot parse $filename:$l: $_");
 			return;
 		}
 		@matchers = ['*', @matchers] if $version <= version->parse('1.0');
+
+		if (scalar @matchers == $nrcols - 2) {
+			push @matchers, '∞';
+		}
 
 		push @matchers, sprintf('line %2d', $l);
 
@@ -578,14 +607,17 @@ sub save_mappings {
 # server: the server tag (chatnet)
 # name: full name to match, /regexp/, or * (for all)
 # min.level: none, messages, hilights, all, or 1,2,3,4
+# span: "attention span", how many seconds after your own
+#       last message should this rule apply
 #
-# type	server	name	min.level
+# type	server	name	min.level	span
 
 EOF
 	foreach my $type (sort keys %THRESHOLDARRAYS) {
 		foreach my $arr (@{$THRESHOLDARRAYS{$type}}) {
 			print FH "$type\t";
 			print FH join "\t", @{$arr}[0..2];
+			print FH "\t" . @{$arr}[3] if @{$arr}[3] ne '∞';
 			print FH "\n";
 		}
 	}
@@ -604,6 +636,9 @@ EOF
 #
 ### display any text (incl. joins etc.) for the '#madduck' channel:
 # channel	*	#madduck	all
+#
+### display messages in channels in which we were recently (3600s) active:
+# channel	*	*	messages	3600
 #
 ### otherwise ignore everything in channels, unless a hilight is triggered:
 # channel	*	*	hilights
