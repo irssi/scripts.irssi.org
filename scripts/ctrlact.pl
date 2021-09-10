@@ -133,7 +133,6 @@
 #
 # - figure out interplay with activity_hide_level
 # - completion for commands
-# - /ctrlact add needs to be able to specify attention span period
 #
 use strict;
 use warnings;
@@ -349,7 +348,7 @@ sub get_win_threshold {
 }
 
 sub set_threshold {
-	my ($arr, $chatnet, $name, $level, $pos) = @_;
+	my ($arr, $chatnet, $name, $level, $pos, $span) = @_;
 
 	if ($level =~ /^[1-4]$/) {
 		$level = from_data_level($level);
@@ -374,7 +373,7 @@ sub set_threshold {
 		$pos = $index unless defined $pos;
 	}
 
-	splice @{$arr}, $pos // 0, 0, [$chatnet, $name, $level, '∞', 'manual'];
+	splice @{$arr}, $pos // 0, 0, [$chatnet, $name, $level, $span, 'manual'];
 	$changed_since_last_save = 1;
 	return $found;
 }
@@ -718,6 +717,7 @@ sub cmd_add {
 	my $type = $args->{type} // 'channel';
 	my $tag = $args->{tag} // '*';
 	my $pos = $args->{pos};
+	my $span = $args->{span} // '∞';
 	my ($name, $level);
 
 	for my $item (@{$args->{rest}}) {
@@ -749,7 +749,7 @@ sub cmd_add {
 		}
 	}
 
-	my $res = set_threshold($THRESHOLDARRAYS{$type}, $tag, $name, $level, $pos);
+	my $res = set_threshold($THRESHOLDARRAYS{$type}, $tag, $name, $level, $pos, $span);
 	if ($res > 0) {
 		info("Existing rule replaced.");
 	}
