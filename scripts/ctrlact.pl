@@ -420,33 +420,64 @@ sub print_levels_for_all {
 }
 
 sub parse_args {
-	my (@args) = @_;
-	my @words = ();
-	my ($tag, $pos);
+	# type: -window -channel -query
+	# tag: -*
+	# span: +\d
+	# position: @\d
+	# anything else: item
+	my ($data) = @_;
+	my @args = shellwords($data);
+	my ($type, $tag, $pos, $span);
+	my @rest = ();
 	my $max = 0;
-	my $type = undef;
+
 	foreach my $arg (@args) {
 		if ($arg =~ m/^-(windows?|channels?|quer(?:ys?|ies))/) {
 			if ($type) {
-				error("can't specify -$1 after -$type", 1);
+				error("Can't specify $arg after -$type", 1);
 				return 1;
 			}
-			$type = 'window' if $1 =~ m/^w/;
-			$type = 'channel' if $1 =~ m/^c/;
-			$type = 'query' if $1 =~ m/^q/;
+			my $m = $1;
+			$type = 'window' if $m =~ m/^w/;
+			$type = 'channel' if $m =~ m/^c/;
+			$type = 'query' if $m =~ m/^q/;
 		}
-		elsif ($arg =~ m/-(\S+)/) {
+		elsif ($arg =~ m/^-(\S+)/) {
+			if ($tag) {
+				error("Tag -$tag already specified, cannot accept $arg", 1);
+				return 1;
+			}
 			$tag = $1;
 		}
-		elsif ($arg =~ m/@([0-9]+)/) {
+		elsif ($arg =~ m/^@([0-9]+)/) {
+			if ($pos) {
+				error("Position $pos already given, cannot accept $arg", 1);
+				return 1;
+			}
 			$pos = $1;
 		}
+		elsif ($arg =~ m/^\+([0-9]+)/) {
+			if ($span) {
+				error("Span $span already given, cannot accept $arg", 1);
+				return 1;
+			}
+			$span = $1;
+		}
 		else {
-			push @words, $arg;
+			push @rest, $arg;
 			$max = length $arg if length $arg > $max;
 		}
 	}
-	return ($type, $tag, $pos, $max, @words);
+
+	my %args = (
+		type => $type,
+		tag => $tag,
+		pos => $pos,
+		span => $span,
+		rest => \@rest,
+		max => $max
+	);
+	return \%args;
 }
 
 ### HILIGHT SIGNAL HANDLERS ####################################################
@@ -683,13 +714,13 @@ sub cmd_save {
 
 sub cmd_add {
 	my ($data, $server, $witem) = @_;
-	my @args = shellwords($data);
-	my ($type, $tag, $pos, $max, @words) = parse_args(@args);
-	$type = $type // 'channel';
-	$tag = $tag // '*';
+	my $args = parse_args($data);
+	my $type = $args->{type} // 'channel';
+	my $tag = $args->{tag} // '*';
+	my $pos = $args->{pos};
 	my ($name, $level);
 
-	for my $item (@words) {
+	for my $item (@{$args->{rest}}) {
 		if (!$name) {
 			$name = $item;
 		}
@@ -729,13 +760,13 @@ sub cmd_add {
 
 sub cmd_remove {
 	my ($data, $server, $witem) = @_;
-	my @args = shellwords($data);
-	my ($type, $tag, $pos, $max, @words) = parse_args(@args);
-	$type = $type // 'channel';
-	$tag = $tag // '*';
+	my $args = parse_args($data);
+	my $type = $args->{type} // 'channel';
+	my $tag = $args->{tag} // '*';
+	my $pos = $args->{pos};
 	my $name;
 
-	for my $item (@words) {
+	for my $item (@{$args->{rest}}) {
 		if (!$name) {
 			$name = $item;
 		}
@@ -771,21 +802,20 @@ sub cmd_list {
 
 sub cmd_query {
 	my ($data, $server, $item) = @_;
-	my @args = shellwords($data);
-	my ($type, $tag, $pos, $max, @words) = parse_args(@args);
-	$type = $type // 'channel';
-	$tag = $tag // '*';
-	foreach my $word (@words) {
-		my ($t, $tt, $match) = get_specific_threshold($type, $word, $tag);
-		printf CLIENTCRAP "ctrlact $type map: %s %*s → %d (%s, match:%s)", $tag, $max, $word, $t, $tt, $match;
+	my $args = parse_args($data);
+	my $type = $args->{type} // 'channel';
+	my $tag = $args->{tag} // '*';
+	my $max = $args->{max};
+	foreach my $name (@{$args->{rest}}) {
+		my ($t, $tt, $match) = get_specific_threshold($type, $name, $tag);
+		printf CLIENTCRAP "ctrlact $type map: %s %*s → %d (%s, match:%s)", $tag, $max, $name, $t, $tt, $match;
 	}
 }
 
 sub cmd_show {
 	my ($data, $server, $item) = @_;
-	my @args = shellwords($data);
-	my ($type) = parse_args(@args);
-	$type = $type // 'all';
+	my $args = parse_args($data);
+	my $type = $args->{type} // 'all';
 
 	if ($type eq 'channel' or $type eq 'all') {
 		print_levels_for_all('channel', Irssi::channels());
