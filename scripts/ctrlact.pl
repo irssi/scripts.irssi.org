@@ -95,6 +95,10 @@
 #   If an activity wouldn't be indicated, also inhibit the beep/bell. Turn
 #   this off if you want the bell anyway.
 #
+# /set ctrlact_autosave [on]
+#   Unless this is disabled, the rules will be written out to the map file
+#   (and overwriting it) on /save and /ctrlact save.
+#
 # /set ctrlact_debug [off]
 #   Turns on debug output. Not that this may itself be buggy, so please don't
 #   use it unless you really need it.
@@ -102,7 +106,7 @@
 ### To-do:
 #
 # - figure out interplay with activity_hide_level
-# - /ctrlact add/delete/move and /ctrlact save, maybe
+# - /ctrlact add/delete/move
 # - completion for commands
 #
 use strict;
@@ -131,6 +135,7 @@ my $fallback_channel_threshold = 1;
 my $fallback_query_threshold = 1;
 my $fallback_window_threshold = 1;
 my $inhibit_beep = 1;
+my $autosave = 1;
 
 Irssi::settings_add_str('ctrlact', 'ctrlact_map_file', $map_file);
 Irssi::settings_add_bool('ctrlact', 'ctrlact_debug', $debug);
@@ -138,6 +143,7 @@ Irssi::settings_add_int('ctrlact', 'ctrlact_fallback_channel_threshold', $fallba
 Irssi::settings_add_int('ctrlact', 'ctrlact_fallback_query_threshold', $fallback_query_threshold);
 Irssi::settings_add_int('ctrlact', 'ctrlact_fallback_window_threshold', $fallback_window_threshold);
 Irssi::settings_add_bool('ctrlact', 'ctrlact_inhibit_beep', $inhibit_beep);
+Irssi::settings_add_bool('ctrlact', 'ctrlact_autosave', $autosave);
 
 sub sig_setup_changed {
 	$debug = Irssi::settings_get_bool('ctrlact_debug');
@@ -146,6 +152,7 @@ sub sig_setup_changed {
 	$fallback_query_threshold = Irssi::settings_get_int('ctrlact_fallback_query_threshold');
 	$fallback_window_threshold = Irssi::settings_get_int('ctrlact_fallback_window_threshold');
 	$inhibit_beep = Irssi::settings_get_bool('ctrlact_inhibit_beep');
+	$autosave = Irssi::settings_get_bool('ctrlact_autosave');
 }
 Irssi::signal_add('setup changed', \&sig_setup_changed);
 Irssi::signal_add('setup reread', \&sig_setup_changed);
@@ -394,59 +401,11 @@ Irssi::signal_add_first('beep', \&maybe_inhibit_beep);
 sub get_mappings_fh {
 	my ($filename) = @_;
 	my $fh;
-	if (-e $filename) {
-		open($fh, '<', $filename) || croak "Cannot open mappings file: $!";
-	}
-	else {
-		open($fh, '+>', $filename) || croak "Cannot create mappings file: $!";
-
-		my $ftw = from_data_level($fallback_window_threshold);
-		my $ftc = from_data_level($fallback_channel_threshold);
-		my $ftq = from_data_level($fallback_query_threshold);
-		print $fh <<"EOF";
-# ctrlact mappings file (version: $VERSION)
-#
-# type: window, channel, query
-# server: the server tag (chatnet)
-# name: full name to match, /regexp/, or * (for all)
-# min.level: none, messages, hilights, all, or 1,2,3,4
-#
-# type	server	name	min.level
-
-
-# EXAMPLES
-#
-### only indicate activity in the status window if messages were displayed:
-# window	*	(status)	messages
-#
-### never ever indicate activity for any item bound to this window:
-# window	*	oubliette	none
-#
-### indicate activity on all messages in debian-related channels on OFTC:
-# channel	oftc	/^#debian/	messages
-#
-### display any text (incl. joins etc.) for the '#madduck' channel:
-# channel	*	#madduck	all
-#
-### otherwise ignore everything in channels, unless a hilight is triggered:
-# channel	*	*	hilights
-#
-### make somebot only get your attention if they hilight you:
-# query	efnet	somebot	hilights
-#
-### otherwise we want to see everything in queries:
-# query	*	*	all
-
-# DEFAULTS:
-# window	*	*	$ftw
-# channel	*	*	$ftc
-# query	*	*	$ftq
-
-# vim:noet:tw=0:ts=16
-EOF
+	if (! -e $filename) {
+		save_mappings($filename);
 		info("Created new/empty mappings file: $filename");
-		seek($fh, 0, 0) || croak "Cannot rewind $filename.";
 	}
+	open($fh, '<', $filename) || croak "Cannot open mappings file: $!";
 	return $fh;
 }
 
@@ -491,6 +450,73 @@ sub load_mappings {
 	return $cnt;
 }
 
+sub save_mappings {
+	my ($filename) = @_;
+	open(FH, '+>', $filename) || croak "Cannot create mappings file: $!";
+
+	my $ftw = from_data_level($fallback_window_threshold);
+	my $ftc = from_data_level($fallback_channel_threshold);
+	my $ftq = from_data_level($fallback_query_threshold);
+	print FH <<"EOF";
+# ctrlact mappings file (version: $VERSION)
+#
+# WARNING: this file will be overwritten on /save,
+# use "/set ctrlact_autosave off" to avoid.
+#
+# type: window, channel, query
+# server: the server tag (chatnet)
+# name: full name to match, /regexp/, or * (for all)
+# min.level: none, messages, hilights, all, or 1,2,3,4
+#
+# type	server	name	min.level
+
+EOF
+	my %types = (   'window'  => \@window_thresholds,
+			'channel' => \@channel_thresholds,
+			'query'   => \@query_thresholds
+			);
+	while (my ($type, $arr) = each %types) {
+		while (my ($idx, $elem) = each @{$arr}) {
+			print FH "$type\t";
+			print FH join "\t", @{$elem}[0..2];
+			print FH "\n";
+		}
+	}
+	print FH <<"EOF";
+
+# EXAMPLES
+#
+### only indicate activity in the status window if messages were displayed:
+# window	*	(status)	messages
+#
+### never ever indicate activity for any item bound to this window:
+# window	*	oubliette	none
+#
+### indicate activity on all messages in debian-related channels on OFTC:
+# channel	oftc	/^#debian/	messages
+#
+### display any text (incl. joins etc.) for the '#madduck' channel:
+# channel	*	#madduck	all
+#
+### otherwise ignore everything in channels, unless a hilight is triggered:
+# channel	*	*	hilights
+#
+### make somebot only get your attention if they hilight you:
+# query	efnet	somebot	hilights
+#
+### otherwise we want to see everything in queries:
+# query	*	*	all
+
+# DEFAULTS:
+# window	*	*	$ftw
+# channel	*	*	$ftc
+# query	*	*	$ftq
+
+# vim:noet:tw=0:ts=16
+EOF
+	close FH;
+}
+
 sub cmd_load {
 	my $cnt = load_mappings($map_file);
 	info("Loaded $cnt mappings from $map_file");
@@ -498,8 +524,12 @@ sub cmd_load {
 }
 
 sub cmd_save {
-	error("saving not yet implemented", 1);
-	return 1;
+	my ($args) = @_;
+	if (!$changed_since_last_save and $args ne '-force') {
+		info("Not saving unchanged mappings without -force");
+		return;
+	}
+	autosave(1);
 }
 
 sub cmd_list {
@@ -567,7 +597,15 @@ sub cmd_show {
 }
 
 sub autosave {
-	cmd_save() if ($changed_since_last_save);
+	my ($force) = @_;
+	return unless $force or $changed_since_last_save;
+	if (!$autosave) {
+		info("Not saving mappings due to ctrlact_autosave setting");
+		return;
+	}
+	info("Saving mappings to $map_file");
+	save_mappings($map_file);
+	$changed_since_last_save = 0;
 }
 
 sub UNLOAD {
