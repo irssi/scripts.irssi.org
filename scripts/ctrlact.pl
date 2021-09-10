@@ -18,10 +18,10 @@
 # in queries (except on efnet), as well as an indication about any chatter in
 # your company channels. The following ctrlact map would do this for you:
 #
-#	channel			/^#myco-/	messages
-#	channel			*		hilights
+#	channel		*	/^#myco-/	messages
+#	channel		*	*		hilights
 #	query		efnet	*		messages
-#	query			*		all
+#	query		*	*		all
 #
 # These four lines would be interpreted/read as:
 #  "only messages or higher in a channel matching /^#myco-/ should trigger act"
