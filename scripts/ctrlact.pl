@@ -160,6 +160,14 @@ sig_setup_changed();
 
 my $changed_since_last_save = 0;
 
+my @window_thresholds;
+my @channel_thresholds;
+my @query_thresholds;
+my %THRESHOLDARRAYS = ('window'  => \@window_thresholds,
+		 'channel' => \@channel_thresholds,
+		 'query'   => \@query_thresholds
+		);
+
 my @DATALEVEL_KEYWORDS = ('all', 'messages', 'hilights', 'none');
 
 ### HELPERS ####################################################################
@@ -207,10 +215,6 @@ sub error {
 	$msg = $msg // "";
 	say("ERROR: ".$msg, MSGLEVEL_CLIENTERROR, $inwin);
 }
-
-my @window_thresholds;
-my @channel_thresholds;
-my @query_thresholds;
 
 sub match {
 	my ($pat, $text) = @_;
@@ -276,14 +280,8 @@ sub get_mappings_table {
 sub get_specific_threshold {
 	my ($type, $name, $net) = @_;
 	$type = lc($type);
-	if ($type eq 'window') {
-		return walk_match_array($name, $net, $type, \@window_thresholds);
-	}
-	elsif ($type eq 'channel') {
-		return walk_match_array($name, $net, $type, \@channel_thresholds);
-	}
-	elsif ($type eq 'query') {
-		return walk_match_array($name, $net, $type, \@query_thresholds);
+	if (exists $THRESHOLDARRAYS{$type}) {
+		return walk_match_array($name, $net, $type, $THRESHOLDARRAYS{$type});
 	}
 	else {
 		croak "ctrlact: can't look up threshold for type: $type";
@@ -440,11 +438,11 @@ sub load_mappings {
 		next if m/^\s*(?:#|$)/;
 		my ($type, @matchers) = m/$linesplitter/;
 		@matchers = ['*', @matchers] if ($version eq "1.0");
-		push @matchers, $l;
-		push @window_thresholds, [@matchers] if match($type, 'window');
-		push @channel_thresholds, [@matchers] if match($type, 'channel');
-		push @query_thresholds, [@matchers] if match($type, 'query');
-		$cnt += 1;
+		push @matchers, sprintf('line %3d', $l);
+		if (exists $THRESHOLDARRAYS{$type}) {
+			push @{$THRESHOLDARRAYS{$type}}, [@matchers];
+			$cnt += 1;
+		}
 	}
 	close($fh) || croak "Cannot close mappings file: $!";
 	return $cnt;
@@ -471,14 +469,10 @@ sub save_mappings {
 # type	server	name	min.level
 
 EOF
-	my %types = (   'window'  => \@window_thresholds,
-			'channel' => \@channel_thresholds,
-			'query'   => \@query_thresholds
-			);
-	while (my ($type, $arr) = each %types) {
-		while (my ($idx, $elem) = each @{$arr}) {
+	foreach my $type (sort keys %THRESHOLDARRAYS) {
+		foreach my $arr (@{$THRESHOLDARRAYS{$type}}) {
 			print FH "$type\t";
-			print FH join "\t", @{$elem}[0..2];
+			print FH join "\t", @{$arr}[0..2];
 			print FH "\n";
 		}
 	}
