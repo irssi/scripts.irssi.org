@@ -129,6 +129,29 @@
 #   Turns on debug output. Not that this may itself be buggy, so please don't
 #   use it unless you really need it.
 #
+### Changelog:
+#
+#  2021-09-11 : v1.4
+#  * Let rules be defined and removed with /ctrlact add/remove
+#  * Implement saving of map file
+#  * Introduce the concept of attention span
+#  * Wildcard matching on substrings
+#  * Several code refactorings and improvements
+#
+#  2021-09-06 : v1.3
+#  * Maintenance release, minor fixups
+#
+#  2017-02-24 : v1.2
+#  * Fix invocation of '/ctrlact query' without a -tag (#354)
+#
+#  2017-02-15 : v1.1
+#  * Configurable inhibition of beeps
+#  * Re-read configuration properly
+#  * Provide for matching on chatnet/server tag
+#
+#  2017-02-12 : v1.0
+#  * Initial public release
+#
 ### To-do:
 #
 # - figure out interplay with activity_hide_level
