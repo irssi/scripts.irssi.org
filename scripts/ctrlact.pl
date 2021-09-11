@@ -801,14 +801,27 @@ sub cmd_list {
 }
 
 sub cmd_query {
-	my ($data, $server, $item) = @_;
+	my ($data, $server, $witem) = @_;
 	my $args = parse_args($data);
 	my $type = $args->{type} // 'channel';
 	my $tag = $args->{tag} // '*';
 	my $max = $args->{max};
-	foreach my $name (@{$args->{rest}}) {
+	my @words = @{$args->{rest}};
+
+	if (!@words) {
+		if ($witem) {
+			push @words, $witem->{name};
+			$tag = $server->{chatnet} unless $tag ne '*';
+		}
+		else {
+			error("No name specified, and no active window item");
+			return;
+		}
+	}
+
+	foreach my $name (@words) {
 		my ($t, $tt, $match) = get_specific_threshold($type, $name, $tag);
-		printf CLIENTCRAP "ctrlact $type map: %s %*s → %d (%s, match:%s)", $tag, $max, $name, $t, $tt, $match;
+		info(sprintf("%7s: %7s %-22s → %-8s  match: %s", $type, $tag, $name, $tt, $match), 1);
 	}
 }
 
