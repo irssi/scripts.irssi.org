@@ -155,9 +155,7 @@
 ### To-do:
 #
 # - figure out interplay with activity_hide_level
-# - "/ctrlact blind" to forget attention span
 # - "/ctrlact query" should include attention span left
-# - implement "/ctrlact hide"
 # - use Irssi formats
 #
 use strict;
@@ -820,6 +818,42 @@ sub cmd_remove {
 	}
 }
 
+sub cmd_sleep {
+	my ($data, $server, $witem) = @_;
+	my $args = parse_args($data);
+	my $type = $args->{type} // 'channel';
+	my $tag = $args->{tag};
+	my $name;
+
+	for my $item (@{$args->{rest}}) {
+		if (!$name) {
+			$name = $item;
+		}
+		else {
+			error("Unexpected argument: $item");
+			return;
+		}
+	}
+
+	if (!$name) {
+		if ($witem) {
+			$name = $witem->{name};
+			$tag = $server->{chatnet} unless $tag;
+		}
+		else {
+			error("No name specified, and no active window item");
+			return;
+		}
+	}
+
+	my $was = $OWN_ACTIVITY{($tag, $name)};
+	delete $OWN_ACTIVITY{($tag, $name)};
+	if ($was) {
+		$was = time() - $was;
+		info("Back to sleep on $tag/$name (after $was seconds)", 1);
+	}
+}
+
 sub cmd_list {
 	info("WINDOW MAPPINGS\n" . get_mappings_table(\@window_thresholds));
 	info("CHANNEL MAPPINGS\n" . get_mappings_table(\@channel_thresholds));
@@ -892,6 +926,7 @@ Irssi::command_bind('ctrlact load',\&cmd_load);
 Irssi::command_bind('ctrlact save',\&cmd_save);
 Irssi::command_bind('ctrlact add',\&cmd_add);
 Irssi::command_bind('ctrlact remove',\&cmd_remove);
+Irssi::command_bind('ctrlact sleep',\&cmd_sleep);
 Irssi::command_bind('ctrlact list',\&cmd_list);
 Irssi::command_bind('ctrlact query',\&cmd_query);
 Irssi::command_bind('ctrlact show',\&cmd_show);
