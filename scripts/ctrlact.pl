@@ -78,6 +78,15 @@
 #
 ### Changelog:
 #
+#  2021-09-20 : v1.5
+#  * Introduce snoop and sleep. Snooping means ctrlact will apply rules as if
+#    you had just been active on the channel, and sleeping means that ctrlact
+#    applies rules as if you hadn't been active recently.
+#  * Also display the time remaining when an attention-span rule matches
+#  * Sanity checks on the fallback settings
+#  * Implement /ctrlact help
+#  * Fix /ctrlact show with an empty ruleset
+#
 #  2021-09-11 : v1.4
 #  * Let rules be defined and removed with /ctrlact add/remove
 #  * Implement saving of map file
@@ -112,7 +121,7 @@ use Irssi;
 use Text::ParseWords;
 use version;
 
-our $VERSION = version->parse('1.4');
+our $VERSION = version->parse('1.5');
 
 our %IRSSI = (
     authors     => 'martin f. krafft',
@@ -122,7 +131,7 @@ our %IRSSI = (
     license     => 'MIT',
     url         => 'https://github.com/irssi/scripts.irssi.org/blob/master/scripts/ctrlact.pl',
     version     => $VERSION,
-    changed     => '2021-09-11'
+    changed     => '2021-09-20'
 );
 
 ### DEFAULTS AND SETTINGS ######################################################
