@@ -180,6 +180,8 @@ our %IRSSI = (
 
 ### DEFAULTS AND SETTINGS ######################################################
 
+my @DATALEVEL_KEYWORDS = ('all', 'messages', 'hilights', 'none');
+
 my $debug = 0;
 my $map_file = Irssi::get_irssi_dir()."/ctrlact";
 my $fallback_channel_threshold = 1;
@@ -190,18 +192,33 @@ my $autosave = 1;
 
 Irssi::settings_add_str('ctrlact', 'ctrlact_map_file', $map_file);
 Irssi::settings_add_bool('ctrlact', 'ctrlact_debug', $debug);
-Irssi::settings_add_int('ctrlact', 'ctrlact_fallback_channel_threshold', $fallback_channel_threshold);
-Irssi::settings_add_int('ctrlact', 'ctrlact_fallback_query_threshold', $fallback_query_threshold);
-Irssi::settings_add_int('ctrlact', 'ctrlact_fallback_window_threshold', $fallback_window_threshold);
+Irssi::settings_add_str('ctrlact', 'ctrlact_fallback_channel_threshold', $fallback_channel_threshold);
+Irssi::settings_add_str('ctrlact', 'ctrlact_fallback_query_threshold', $fallback_query_threshold);
+Irssi::settings_add_str('ctrlact', 'ctrlact_fallback_window_threshold', $fallback_window_threshold);
 Irssi::settings_add_bool('ctrlact', 'ctrlact_inhibit_beep', $inhibit_beep);
 Irssi::settings_add_bool('ctrlact', 'ctrlact_autosave', $autosave);
+
+sub init_threshold_setting {
+	my ($type, $ref) = @_;
+	my $setting = 'ctrlact_fallback_'.$type.'_threshold';
+	my $th = Irssi::settings_get_str($setting);
+	my $dl = get_data_level($th);
+	if ($dl) {
+		${$ref} = $dl;
+	}
+	else {
+		Irssi::settings_set_str($setting, ${$ref});
+	}
+}
 
 sub sig_setup_changed {
 	$debug = Irssi::settings_get_bool('ctrlact_debug');
 	$map_file = Irssi::settings_get_str('ctrlact_map_file');
-	$fallback_channel_threshold = Irssi::settings_get_int('ctrlact_fallback_channel_threshold');
-	$fallback_query_threshold = Irssi::settings_get_int('ctrlact_fallback_query_threshold');
-	$fallback_window_threshold = Irssi::settings_get_int('ctrlact_fallback_window_threshold');
+
+	init_threshold_setting('channel', \$fallback_channel_threshold);
+	init_threshold_setting('query', \$fallback_query_threshold);
+	init_threshold_setting('window', \$fallback_window_threshold);
+
 	$inhibit_beep = Irssi::settings_get_bool('ctrlact_inhibit_beep');
 	$autosave = Irssi::settings_get_bool('ctrlact_autosave');
 }
@@ -218,8 +235,6 @@ my %THRESHOLDARRAYS = ('window'  => \@window_thresholds,
 		 'channel' => \@channel_thresholds,
 		 'query'   => \@query_thresholds
 		);
-
-my @DATALEVEL_KEYWORDS = ('all', 'messages', 'hilights', 'none');
 
 my %OWN_ACTIVITY = ();
 
@@ -295,10 +310,28 @@ sub to_data_level {
 	return $ret
 }
 
+sub is_data_level {
+	my ($dl) = @_;
+	return $dl =~ /^[1-4]$/;
+}
+
 sub from_data_level {
 	my ($dl) = @_;
-	if ($dl =~ /^[1-4]$/) {
+	if (is_data_level($dl)) {
 		return $DATALEVEL_KEYWORDS[$dl-1];
+	}
+}
+
+sub get_data_level {
+	my ($data) = @_;
+	if (is_data_level($data)) {
+		return $data;
+	}
+	elsif((my $dl = to_data_level($data)) > 0) {
+		return $dl;
+	}
+	else {
+		error("Invalid data level: $data");
 	}
 }
 
