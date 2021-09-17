@@ -54,39 +54,8 @@
 # character. You may also use the asterisk by itself to match everything, or
 # as part of a word, e.g. #debian-*. No other wildcards are supported.
 #
-# Once you defined your mappings, please don't forget to /ctrlact reload them.
-# You can then use the following commands from Irssi to check out the result:
-#
-#	# list all mappings
-#	/ctrlact list
-#
-#	# query the applicable activity levels, possibly limited to
-#	# windows/channels/queries
-#	/ctrlact query name [name, …] [-window|-channel|-query]
-#
-#	# display the applicable level for each window/channel/query
-#	/ctrlact show [-window|-channel|-query]
-#
-# Or go ahead and define them manually:
-#
-#	# add a mapping for the #debian channel on OFTC (at the top):
-#	/ctrlact add -oftc #debian messages
-#
-#	# add a mapping for the #bar channel at position 4:
-#	/ctrlact add #bar messages @4
-#
-#	# add a mapping for a query with the user grace:
-#	/ctrlact add -query grace all
-#
-#	# remove a mapping
-#	/ctrlact remove -oftc #debian
-#	# or
-#	/ctrlact remove @3
-#
-#	# save mappings
-#	/ctrlact save
-#	# or
-#	/save
+# If you change the file, make sure to use /ctrlact reload or else it may get
+# overwritten.
 #
 # There's an interplay between window items and windows here, and you can
 # specify mininum activity levels for each. Here are the rules:
@@ -106,28 +75,6 @@
 # to specify which IRC levels will be considered messages and hilights. Note
 # that if an activity indication is inhibited, then there also won't be
 # a beep (cf. beep_msg_level), unless you toggle ctrlmap_inhibit_beep.
-#
-### Settings:
-#
-# /set ctrlact_map_file [~/.irssi/ctrlact]
-#   Controls where the activity control map will be read from (and saved to)
-#
-# /set ctrlact_fallback_(channel|query|window)_threshold [1]
-#   Controls the lowest data level that will trigger activity for channels,
-#   queries, and windows respectively, if no applicable mapping could be
-#   found.
-#
-# /set ctrlact_inhibit_beep [on]
-#   If an activity wouldn't be indicated, also inhibit the beep/bell. Turn
-#   this off if you want the bell anyway.
-#
-# /set ctrlact_autosave [on]
-#   Unless this is disabled, the rules will be written out to the map file
-#   (and overwriting it) on /save and /ctrlact save.
-#
-# /set ctrlact_debug [off]
-#   Turns on debug output. Not that this may itself be buggy, so please don't
-#   use it unless you really need it.
 #
 ### Changelog:
 #
@@ -980,6 +927,112 @@ sub UNLOAD {
 	autosave();
 }
 
+sub cmd_help {
+	my ($data, $server, $item) = @_;
+	Irssi::print (<<"SCRIPTHELP_EOF", MSGLEVEL_CLIENTCRAP);
+%_ctrlact $VERSION - fine-grained control of activity indication%_
+
+%U%_Synopsis%_%U
+
+%_CTRLACT ADD%_ [<%Umatchspec%U>] [@<%Uposition%U>] [+<%Uspan%U>] <%Ulevel%U>
+%_CTRLACT REMOVE%_ [<%Umatchspec%U>] [@<%Uposition%U>]
+%_CTRLACT QUERY%_ [<%Umatchspec%U>]
+%_CTRLACT SNOOP%_ [<%Umatchspec%U>]
+%_CTRLACT SLEEP%_ [<%Umatchspec%U>]
+%_CTRLACT LIST%_
+%_CTRLACT SHOW%_ [<%Utype%U>]
+%_CTRLACT SAVE%_ [-force]
+%_CTRLACT [RE]LOAD%_
+%_CTRLACT HELP%_
+
+<%Umatchspec%U> %| [-<%Utype%U>] [-<%Utag%U>] <%Uname%U>
+%U%U            %|   (defaults to current window item, if available)
+<%Utype%U>      %| "window"|"channel"|"query"
+%U%U            %|   (default: "channel")
+<%Utag%U>       %| The chat network's tag, e.g. oftc
+<%Uname%U>      %| Name of the channel, query, or window
+%U%U            %|   May include '*', or be a regular expression: /.../
+<%Ulevel%U>     %| Minimum activity level to match:
+%U%U            %|   1, all, 2, messages, 3, highlights, 4, none
+<%Uposition%U>  %| Integer index where to insert new rule, or of rule to remove
+<%Uspan%U>      %| Time in seconds during which this rule applies following own engagement
+
+%U%_Settings%_%U
+
+/set %_ctrlact_map_file%_ [$map_file]
+  %| Controls where the activity control map will be read from (and saved to)
+
+/set %_ctrlact_fallback_channel_threshold%_ [$fallback_channel_threshold]
+/set %_ctrlact_fallback_query_threshold%_ [$fallback_query_threshold]
+/set %_ctrlact_fallback_window_threshold%_ [$fallback_window_threshold]
+  %| Controls the lowest data level that will trigger activity for channels,
+  %| queries, and windows respectively, if no applicable mapping could be
+  %| found. Valid values are 1, all, 2, messages, 3, highlights, 4, none.
+
+/set %_ctrlact_inhibit_beep%_ [$inhibit_beep]
+  %| If an activity wouldn't be indicated, also inhibit the beep/bell. Turn
+  %| this off if you want the bell anyway.
+
+/set %_ctrlact_autosave%_ [$autosave]
+  %| Unless this is disabled, the rules will be written out to the map file
+  %| (and overwriting it) on /save and /ctrlact save.
+
+/set %_ctrlact_debug%_ [$debug]
+  %| Turns on debug output. Not that this may itself be buggy, so please don't
+  %| use it unless you really need it.
+
+%U%_Examples%_%U
+
+Set channel default level to hilights only:
+  %|%#/SET %_ctrlact_fallback_channel_threshold%_ hilights
+
+Show activity for messages in the #irssi channel on LiberaChat:
+  %|%#/%_CTRLACT ADD%_ -LiberaChat #irssi messages
+
+Show all activity for messages on my company's channels:
+  %|%#/%_CTRLACT ADD%_ -channel #myco-* all
+
+Create a rule for the current window item:
+  %|%#/%_CTRLACT ADD%_ all
+
+Insert a rule at position 3 (default is to insert at the top):
+  %|%#/%_CTRLACT ADD%_ @3 #mutt messages
+
+List all mappings:
+  %|%#/%_CTRLACT LIST%_
+
+Remove mapping at position 3:
+  %|%#/%_CTRLACT REMOVE%_ @3
+
+Remove mapping for current window item:
+  %|%#/%_CTRLACT REMOVE%_
+
+Remove mapping for #irssi channel (see above)
+  %|%#/%_CTRLACT REMOVE%_ -LiberaChat #irssi
+
+Save mappings to file ($map_file), using -force to write even if nothing has changed:
+  %|%#/%_CTRLACT SAVE%_ -force
+
+Load mappings from file ($map_file):
+  %|%#/%_CTRLACT LOAD%_
+
+Create a rule to show activity on any channel in which we've engaged in the last hour:
+  %|%#/%_CTRLACT ADD%_ +3600 -* * messages
+
+Pretend that we interacted with the #perl channel, so as to get activity as per the last rule:
+  %|%#/%_CTRLACT SNOOP%_ #perl
+
+Stop activity indication for the current channel after we engaged with it:
+  %|%#/%_CTRLACT SLEEP%_
+
+Query which rule would apply to the current channel:
+  %|%#/%_CTRLACT QUERY%_
+
+Show the matching rule for every query:
+  %|%#/%_CTRLACT SHOW%_ -query
+SCRIPTHELP_EOF
+}
+
 Irssi::signal_add('setup saved', \&autosave);
 Irssi::signal_add('setup reread', \&cmd_load);
 
@@ -996,7 +1049,7 @@ Irssi::command_bind('ctrlact query',\&cmd_query);
 Irssi::command_bind('ctrlact show',\&cmd_show);
 
 Irssi::command_bind('ctrlact' => sub {
-		my ( $data, $server, $item ) = @_;
+		my ($data, $server, $item) = @_;
 		$data =~ s/\s+$//g;
 		if ($data) {
 			Irssi::command_runsub('ctrlact', $data, $server, $item);
@@ -1007,8 +1060,9 @@ Irssi::command_bind('ctrlact' => sub {
 	}
 );
 Irssi::command_bind('help', sub {
-		$_[0] =~ s/\s+$//g;
-		return unless $_[0] eq 'ctrlact';
+		my ($data, $server, $item) = @_;
+		my @words = split /\s+/, $data;
+		return unless shift @words eq 'ctrlact';
 		cmd_help();
 		Irssi::signal_stop();
 	}
