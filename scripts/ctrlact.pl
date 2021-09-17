@@ -240,7 +240,6 @@ my %OWN_ACTIVITY = ();
 
 ### HELPERS ####################################################################
 
-my $_inhibit_debug_activity = 0;
 use constant DEBUGEVENTFORMAT => "%7s %7.7s %-22.22s  %d %s %d → %-7s  (%-8s ← %s)";
 sub say {
 	my ($msg, $level, $inwin) = @_;
@@ -257,9 +256,7 @@ sub debug {
 	return unless $debug;
 	my ($msg, $inwin) = @_;
 	$msg = $msg // "";
-	$_inhibit_debug_activity = 1;
-	say("DEBUG: ".$msg, MSGLEVEL_CRAP, $inwin);
-	$_inhibit_debug_activity = 0;
+	say("DEBUG: ".$msg, MSGLEVEL_CRAP + MSGLEVEL_NO_ACT, $inwin);
 }
 
 use Data::Dumper;
@@ -583,10 +580,7 @@ sub inhibit_win_hilight {
 sub maybe_inhibit_win_hilight {
 	my ($win, $oldlevel) = @_;
 	return unless $win;
-	if ($_inhibit_debug_activity) {
-		inhibit_win_hilight($win);
-	}
-	elsif ($_inhibit_window && $win->{'refnum'} == $_inhibit_window->{'refnum'}) {
+	if ($_inhibit_window && $win->{'refnum'} == $_inhibit_window->{'refnum'}) {
 		inhibit_win_hilight($win);
 	}
 	else {
