@@ -331,12 +331,14 @@ sub walk_match_array {
 }
 
 sub get_mappings_table {
-	my ($arr) = @_;
+	my ($arr, $fallback) = @_;
 	my @ret = ();
 	while (my ($i, $elem) = each @{$arr}) {
 		push @ret, sprintf("%7d: %-16s %-32s %-9s %-5s (%s)",
 			$i, @{$elem});
 	}
+	push @ret, sprintf("%7s: %-16s %-32s %-9s %-5s (%s)",
+		'last', '*', '*', from_data_level($fallback), '∞', 'default');
 	return join("\n", @ret);
 }
 
@@ -889,9 +891,9 @@ sub cmd_sleep {
 }
 
 sub cmd_list {
-	info("WINDOW MAPPINGS\n" . get_mappings_table(\@window_thresholds));
-	info("CHANNEL MAPPINGS\n" . get_mappings_table(\@channel_thresholds));
-	info("QUERY MAPPINGS\n" . get_mappings_table(\@query_thresholds));
+	info("WINDOW MAPPINGS\n" . get_mappings_table(\@window_thresholds, $fallback_window_threshold));
+	info("CHANNEL MAPPINGS\n" . get_mappings_table(\@channel_thresholds, $fallback_channel_threshold));
+	info("QUERY MAPPINGS\n" . get_mappings_table(\@query_thresholds, $fallback_query_threshold));
 }
 
 sub cmd_query {
