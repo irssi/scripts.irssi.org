@@ -155,7 +155,6 @@
 ### To-do:
 #
 # - figure out interplay with activity_hide_level
-# - "/ctrlact query" should include attention span left
 # - use Irssi formats
 #
 use strict;
@@ -311,8 +310,11 @@ sub walk_match_array {
 		next unless $netpat and $namepat;
 
 		my $own = $OWN_ACTIVITY{($net, $name)} // 0;
+		my $time = time();
 		my $span = ($rule->[3] eq '∞') ? 0 : $rule->[3];
-		if ($span > 0 and time() > ($own + $span)) {
+		my $remaining = $own + $span - $time;
+
+		if ($span > 0 and $remaining <= 0) {
 			delete $OWN_ACTIVITY{($net, $name)};
 			next;
 		}
@@ -321,7 +323,8 @@ sub walk_match_array {
 		my $tresult = from_data_level($result);
 		$name = '(unnamed)' unless length $name;
 		my $match = sprintf('%s = net:%s name:%s span:%s',
-			$rule->[4], $netpat, $namepat, $rule->[3]);
+			$rule->[4], $netpat, $namepat,
+			($remaining < 0) ? $rule->[3] : $remaining.'s remain');
 		return ($result, $tresult, $match);
 	}
 	return -1;
