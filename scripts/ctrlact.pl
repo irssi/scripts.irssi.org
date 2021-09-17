@@ -802,7 +802,6 @@ sub cmd_remove {
 			return;
 		}
 	}
-
 	if (!defined $pos) {
 		if (!$name) {
 			if ($witem) {
@@ -819,6 +818,38 @@ sub cmd_remove {
 	if (unset_threshold($THRESHOLDARRAYS{$type}, $tag, $name, $pos)) {
 		info("Rule removed.");
 	}
+}
+
+sub cmd_snoop {
+	my ($data, $server, $witem) = @_;
+	my $args = parse_args($data);
+	my $type = $args->{type} // 'channel';
+	my $tag = $args->{tag};
+	my $name;
+
+	for my $item (@{$args->{rest}}) {
+		if (!$name) {
+			$name = $item;
+		}
+		else {
+			error("Unexpected argument: $item");
+			return;
+		}
+	}
+
+	if (!$name) {
+		if ($witem) {
+			$name = $witem->{name};
+			$tag = $server->{chatnet} unless $tag;
+		}
+		else {
+			error("No name specified, and no active window item");
+			return;
+		}
+	}
+
+	$OWN_ACTIVITY{($tag, $name)} = time();
+	info("Snooping in on $tag/$name", 1);
 }
 
 sub cmd_sleep {
@@ -929,6 +960,7 @@ Irssi::command_bind('ctrlact load',\&cmd_load);
 Irssi::command_bind('ctrlact save',\&cmd_save);
 Irssi::command_bind('ctrlact add',\&cmd_add);
 Irssi::command_bind('ctrlact remove',\&cmd_remove);
+Irssi::command_bind('ctrlact snoop',\&cmd_snoop);
 Irssi::command_bind('ctrlact sleep',\&cmd_sleep);
 Irssi::command_bind('ctrlact list',\&cmd_list);
 Irssi::command_bind('ctrlact query',\&cmd_query);
