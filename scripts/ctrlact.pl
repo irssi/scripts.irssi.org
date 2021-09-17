@@ -70,13 +70,13 @@
 # Or go ahead and define them manually:
 #
 #	# add a mapping for the #debian channel on OFTC (at the top):
-#	/ctrlact -oftc #debian messages
+#	/ctrlact add -oftc #debian messages
 #
 #	# add a mapping for the #bar channel at position 4:
-#	/ctrlact #bar messages @4
+#	/ctrlact add #bar messages @4
 #
 #	# add a mapping for a query with the user grace:
-#	/ctrlact -query grace all
+#	/ctrlact add -query grace all
 #
 #	# remove a mapping
 #	/ctrlact remove -oftc #debian
