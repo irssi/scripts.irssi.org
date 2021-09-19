@@ -431,7 +431,7 @@ sub chankey_save {
 		info("Not saving unchanged mappings without -force");
 		return;
 	}
-	autosave();
+	autosave(1);
 }
 
 sub chankey_goto {
@@ -490,7 +490,8 @@ Irssi::signal_add('channel destroyed' => \&on_channel_destroyed);
 Irssi::signal_add('query destroyed' => \&on_channel_destroyed);
 
 sub autosave {
-	return unless $changed_since_last_save;
+	my ($force) = @_;
+	return unless $changed_since_last_save or $force;
 	if (!$autosave) {
 		info("Not saving mappings due to chankeys_autosave setting");
 		return;
