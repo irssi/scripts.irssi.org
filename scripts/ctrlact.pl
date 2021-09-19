@@ -331,7 +331,7 @@ sub get_specific_threshold {
 }
 
 sub get_item_threshold {
-	my ($chattype, $type, $name, $net) = @_;
+	my ($type, $name, $net) = @_;
 	my ($ret, $tret, $match) = get_specific_threshold($type, $name, $net);
 	return ($ret, $tret, $match) if $ret > 0;
 	if ($type eq 'CHANNEL') {
@@ -418,8 +418,15 @@ sub print_levels_for_all {
 	for my $i (@arr) {
 		my $name = $i->{'name'};
 		my $net = $i->{'server'}->{'tag'} // '';
-		my ($t, $tt, $match) = get_specific_threshold($type, $name, $net);
-		my $c = ($type eq 'window') ? $i->{'refnum'} : $i->window()->{'refnum'};
+		my ($c, $t, $tt, $match);
+		if ($type eq 'window') {
+			($t, $tt, $match) = get_win_threshold($name, $net);
+			$c = $i->{'refnum'};
+		}
+		else {
+			($t, $tt, $match) = get_item_threshold($type, $name, $net);
+			$c = $i->window()->{'refnum'};
+		}
 		info(sprintf("%4d: %-40.40s → %d (%-8s)  match %s", $c, $name, $t, $tt, $match));
 	}
 }
@@ -499,11 +506,10 @@ sub maybe_inhibit_witem_hilight {
 
 	$_inhibit_window = 0;
 	$_inhibit_beep = 0;
-	my $wichattype = $witem->{'chat_type'};
 	my $witype = $witem->{'type'};
 	my $winame = $witem->{'name'};
 	my $witag = $witem->{'server'}->{'tag'} // '';
-	my ($th, $tth, $match) = get_item_threshold($wichattype, $witype, $winame, $witag);
+	my ($th, $tth, $match) = get_item_threshold($witype, $winame, $witag);
 	my $inhibit = $newlevel > 0 && $newlevel < $th;
 	debug(sprintf(DEBUGEVENTFORMAT, lc($witype), $witag, $winame, $newlevel,
 			$inhibit ? ('<',$th,'inhibit'):('≥',$th,'pass'),
