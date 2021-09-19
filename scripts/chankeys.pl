@@ -278,6 +278,12 @@ sub lookup_item_by_keys {
 	return $ret;
 }
 
+sub remove_existing_binds {
+	while (my ($item, $keys) = each %itemmap) {
+		Irssi::command("^bind -delete $keys");
+	}
+}
+
 ### SAVING AND LOADING #########################################################
 
 sub get_mappings_fh {
@@ -404,20 +410,16 @@ sub chankey_list {
 }
 
 sub chankey_load {
+	remove_existing_binds();
 	load_mappings($map_file);
 	my $cnt = scalar(keys %itemmap);
 	info("Loaded $cnt mappings from $map_file");
 
-	my ($arg) = @_;
-	if ($arg) {
-		# only during /reload is $arg set, and only after /reload
-		# do we need to reinit the keybindings, so…
-		foreach my $channel (Irssi::channels, Irssi::queries) {
-			my $name = $channel->{name};
-			my $chatnet = $channel->{server}->{chatnet};
-			if (my @keymap = get_keymap_for_channet_pair($name, $chatnet)) {
-				add_keymapping(@keymap);
-			}
+	foreach my $channel (Irssi::channels, Irssi::queries) {
+		my $name = $channel->{name};
+		my $chatnet = $channel->{server}->{chatnet};
+		if (my @keymap = get_keymap_for_channet_pair($name, $chatnet)) {
+			add_keymapping(@keymap);
 		}
 	}
 	$changed_since_last_save = 0;
