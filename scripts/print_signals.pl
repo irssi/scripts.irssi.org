@@ -270,11 +270,23 @@ my $signals = <<_END;
 "gui textbuffer line removed", TEXTBUFFER_VIEW_REC *view, LINE_REC *line, LINE_REC *prev_line
 _END
 
-foreach my $sigline (split(/\n/, $signals)) {
-	my ($sig, @args) = split(/, /, $sigline);
-	$sig =~ y/"//d;
-	Irssi::signal_add_first($sig, sub {
-			signal_handler($sig, \@args, \@_);
-		}
-	);
-};
+my %handlers = ();
+
+sub load {
+	foreach my $sigline (split(/\n/, $signals)) {
+		my ($sig, @args) = split(/, /, $sigline);
+		$sig =~ y/"//d;
+		my $handler = sub { signal_handler($sig, \@args, \@_); };
+		Irssi::signal_add_first($sig, $handler);
+		$handlers{$sig} = $handler;
+	}
+}
+
+sub UNLOAD {
+	while (my ($sig, $handler) = each %handlers) {
+		Irssi::signal_remove($sig, $handler);
+	}
+	%handlers = ();
+}
+
+load();
