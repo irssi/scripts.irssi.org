@@ -1,6 +1,6 @@
 # print_signals.pl — Irssi script to help with inspecting signals
 #
-# © 2017 martin f. krafft <madduck@madduck.net>
+# © 2017,2021 martin f. krafft <madduck@madduck.net>
 # Released under the MIT licence.
 #
 ### Usage:
@@ -24,6 +24,16 @@
 #   Specify a regexp to exclude signals from being captured. Default is not to
 #   fire on signals about printing text or key presses.
 #
+### Changelog:
+#
+# 2021-09-20 v1.1
+# * Unload signal handlers when script is unloaded
+# * Update list of signals from upstream
+#
+# 2017-02-03 v1.0
+#
+# * Initial release.
+#
 
 use strict;
 use warnings;
@@ -31,7 +41,7 @@ use vars qw($VERSION %IRSSI);
 use Irssi;
 use Data::Dumper;
 
-$VERSION = '1.0';
+$VERSION = '1.1';
 
 %IRSSI = (
     authors     => 'martin f. krafft',
@@ -39,7 +49,7 @@ $VERSION = '1.0';
     name        => 'print signals debugger',
     description => 'hooks into every signal and writes the information provided to a file',
     license     => 'MIT',
-    changed     => '2017-02-03'
+    changed     => '2021-09-20'
 );
 
 Irssi::settings_add_str('print_signals', 'print_signals_to_file', '/tmp/irssi_signals.log');
