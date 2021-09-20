@@ -121,8 +121,6 @@ use Irssi;
 use Text::ParseWords;
 use version;
 
-our $VERSION = version->parse('1.5');
-
 our %IRSSI = (
     authors     => 'martin f. krafft',
     contact     => 'madduck@madduck.net',
@@ -130,9 +128,12 @@ our %IRSSI = (
     description => 'allows per-channel control over activity indication',
     license     => 'MIT',
     url         => 'https://github.com/irssi/scripts.irssi.org/blob/master/scripts/ctrlact.pl',
-    version     => $VERSION,
+    version     => '1.5',
     changed     => '2021-09-20'
 );
+
+our $VERSION = $IRSSI{version};
+my $_VERSION = version->parse($VERSION);
 
 ### DEFAULTS AND SETTINGS ######################################################
 
@@ -646,7 +647,7 @@ sub save_mappings {
 	my $ftc = from_data_level($fallback_channel_threshold);
 	my $ftq = from_data_level($fallback_query_threshold);
 	print FH <<"EOF";
-# ctrlact mappings file (version: $VERSION)
+# ctrlact mappings file (version: $_VERSION)
 #
 # WARNING: this file will be overwritten on /save,
 # use "/set ctrlact_autosave off" to avoid.
@@ -945,7 +946,7 @@ sub UNLOAD {
 sub cmd_help {
 	my ($data, $server, $item) = @_;
 	Irssi::print (<<"SCRIPTHELP_EOF", MSGLEVEL_CLIENTCRAP);
-%_ctrlact $VERSION - fine-grained control of activity indication%_
+%_ctrlact $_VERSION - fine-grained control of activity indication%_
 
 %U%_Synopsis%_%U
 
