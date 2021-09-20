@@ -132,7 +132,7 @@ sub debug {
 	return unless $debug;
 	my ($msg, $inwin) = @_;
 	$msg = $msg // "";
-	say("DEBUG: ".$msg, MSGLEVEL_CRAP, $inwin);
+	say("DEBUG: ".$msg, MSGLEVEL_CRAP + MSGLEVEL_NO_ACT, $inwin);
 }
 
 sub info {
