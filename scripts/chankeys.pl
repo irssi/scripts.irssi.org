@@ -72,17 +72,18 @@ use warnings;
 use Irssi;
 use version;
 
-our $VERSION = version->parse('0.3');
-
 our %IRSSI = (
     authors     => 'martin f. krafft',
     contact     => 'madduck@madduck.net',
     name        => 'chankeys',
     description => 'manage channel keyboard shortcuts',
     license     => 'MIT',
-    version     => $VERSION,
+    version     => '0.3',
     changed     => '2021-09-06'
 );
+
+our $VERSION = $IRSSI{version};
+my $_VERSION = version->parse($VERSION);
 
 ### DEFAULTS AND SETTINGS ######################################################
 
@@ -328,7 +329,7 @@ sub save_mappings {
 	my ($filename) = @_;
 	open(FH, '+>', $filename) || error("Cannot create mappings file: $!");
 	print FH <<"EOF";
-; chankeys keymap file (version: $VERSION)
+; chankeys keymap file (version: $_VERSION)
 ;
 ; WARNING: this file will be overwritten on /save,
 ; use "/set chankey_autosave off" to avoid.
