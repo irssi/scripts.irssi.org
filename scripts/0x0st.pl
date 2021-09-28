@@ -32,7 +32,7 @@ my $help = << "END";
   /0x0st -c
 %9Description%9
   $IRSSI{description}
-    -p past url to channel
+    -p paste url to channel
     -s shorten url
     -u file from url
     -c self check
