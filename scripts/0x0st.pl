@@ -8,7 +8,7 @@ use LWP::UserAgent;
 use Storable qw/store_fd fd_retrieve/;
 use File::Glob qw/:bsd_glob/;
 
-$VERSION = '0.04';
+$VERSION = '0.05';
 %IRSSI = (
     authors	=> 'bw1',
     contact	=> 'bw1@aol.at',
@@ -16,7 +16,7 @@ $VERSION = '0.04';
     description	=> 'upload file to https://0x0.st/',
     license	=> 'ISC',
     url		=> 'https://scripts.irssi.org/',
-    changed	=> '2021-01-13',
+    changed     => '2021-09-28'
     modules => 'POSIX HTTP::Request::Common LWP::UserAgent Storable File::Glob',
     commands=> '0x0st',
     selfcheckcmd=> '0x0st -c',
