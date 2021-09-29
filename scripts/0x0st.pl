@@ -10,12 +10,12 @@ use File::Glob qw/:bsd_glob/;
 
 $VERSION = '0.05';
 %IRSSI = (
-    authors	 => 'bw1',
-    contact	 => 'bw1@aol.at',
-    name	 => '0x0st',
-    description	 => 'upload file to https://0x0.st/',
-    license	 => 'ISC',
-    url		 => 'https://scripts.irssi.org/',
+    authors      => 'bw1',
+    contact      => 'bw1@aol.at',
+    name         => '0x0st',
+    description  => 'upload file to https://0x0.st/',
+    license      => 'ISC',
+    url          => 'https://scripts.irssi.org/',
     changed      => '2021-09-28'
     modules      => 'POSIX HTTP::Request::Common LWP::UserAgent Storable File::Glob',
     commands     => '0x0st',
