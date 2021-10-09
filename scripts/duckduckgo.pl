@@ -19,7 +19,7 @@ use LWP::UserAgent;
 use HTML::Entities;
 use URI::Escape;
 
-$VERSION = '0.02';
+$VERSION = '0.03';
 %IRSSI = (
     authors	=> 'bw1',
     contact	=> 'bw1@aol.at',
@@ -27,7 +27,7 @@ $VERSION = '0.02';
     description	=> 'search by https://duckduckgo.com/html/',
     license	=> 'lgplv3',
     url		=> 'http://scripts.irssi.org',
-    changed	=> '2021-01-23',
+    changed	=> '2021-10-09',
     selfcheckcmd=> 'ddg -check',
 );
 
@@ -67,7 +67,7 @@ sub content2res {
 			$r{index}=$index;
 			# url
 			$_ =~ m/href="(.*?)"/;
-			$1 =~ m/uddg=(.*)$/;
+			$1 =~ m/uddg=(.*)&amp/;
 			my $u=uri_unescape($1);
 			$r{url}=$u;
 			# txt
@@ -212,16 +212,16 @@ sub self_check {
 	Irssi::print("Result count: ".scalar(@res));
 	Irssi::print("Result url: ".$res[0]->{url});
 	Irssi::print("Result txt length: ".length($res[0]->{txt}));
-	if ( scalar ( @res ) <20 ) {
+	if ( scalar ( @res ) <10 ) {
 		$s= "Error: result count (".scalar(@res).")";
-	} elsif ( $res[0]->{url} !~ m/^http/ ) {
+	} elsif ( $res[0]->{url} !~ m/^http.*\/$/ ) {
 		$s= "Error: url  (".$res[0]->{url}.")";
 	} elsif ( length($res[0]->{txt}) < 5 ) {
 		$s= "Error: txt length (".length($res[0]->{txt}).")";
 	}
 	Irssi::print("Selfcheck $s");
-	my $schs_version = $Irssi::Script::selfcheckhelperscript::VERSION;
-	Irssi::command("selfcheckhelperscript $s") if ( defined $schs_version );
+	my $schs =  exists $Irssi::Script::{'selfcheckhelperscript::'};
+	Irssi::command("selfcheckhelperscript $s") if ( $schs );
 }
 
 sub cmd_help {
