@@ -3639,11 +3639,11 @@
   description: 'turns irssi into a tv program guide'
   filename: ontv2.pl
   license: GPLv2
-  modified: '2021-01-11 16:49:10'
+  modified: '2021-02-07 13:56:06'
   modules: 'DateTime DateTime::Format::Strptime XML::LibXML::Simple YAML::XS'
   name: ontv2
   url: https://scripts.irssi.org/
-  version: '0.01'
+  version: '0.02'
 -
   authors: 'bw1 and others'
   contact: bw1@aol.at
