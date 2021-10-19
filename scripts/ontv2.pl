@@ -10,7 +10,7 @@ use DateTime::Format::Strptime;
 use File::Glob qw/:bsd_glob/;
 use Text::Wrap;
 
-$VERSION = '0.01';
+$VERSION = '0.02';
 %IRSSI = (
     authors	=> 'bw1',
     contact	=> 'bw1@aol.at',
@@ -45,6 +45,8 @@ my $help = << "END";
     helper for self check the script
 /ontv2 read
     read the prgram from file
+/ontv2 #xx
+    show details
 
 \$ tv_grab_ch_search --output ~/.xmltv/current.xml --days 2
 
@@ -56,6 +58,7 @@ END
 my $xmltv_file;
 my $data;
 my $test_str;
+my ($prg_count, @prg_list);
 my $tf=DateTime::Format::Strptime->new(pattern=>"%Y%m%d%H%M%S %z");
 my $localTZ =DateTime::TimeZone->new( name => 'local' );
 
@@ -69,6 +72,46 @@ sub print_footer {
 	Irssi::printformat(MSGLEVEL_CLIENTCRAP, 'footer_theme', $footer);
 }
 
+sub clear_prg {
+	@prg_list=();
+	$prg_count=0;
+}
+
+sub to_prg_short {
+	my ($num)= @_;
+	my @cl= (0 .. 9, 'A' .. 'Z');
+	my $d= scalar @cl;
+	my $s;
+	while ($num > 0 ) {
+		my $di= $num % $d;
+		$num = int ( $num / $d);
+		$s .= $cl[$di];
+	}
+	$s = "#$s";
+	return $s;
+}
+
+sub to_prg_num {
+	my ($short)= @_;
+	substr $short, 0, 1, '';
+	$short =uc $short;
+	my $num=0;
+	my @cl= (0 .. 9, 'A' .. 'Z');
+	my $d= scalar @cl;
+	my %cl;
+	my $c=0;
+	foreach ( @cl ) {
+		$cl{$_}=$c;
+		$c++;
+	}
+	while ( length($short) > 0 ) {
+		my $s = substr $short, -1, 1, '';
+		$num *= $d;
+		$num += $cl{$s};
+	}
+	return $num;
+}
+
 sub print_prg {
 	my ($witem, $pn)=@_;
 	my $c=Irssi::active_win()->{width}-20;
@@ -77,11 +120,51 @@ sub print_prg {
 		$pn->{begin}->strftime('%H:%M'), $pn->{ende}->strftime('%H:%M'), 
 		$pn->{title}->{content},
 		$data->{channel}->{$pn->{channel}}->{'display-name'}->{content},
+		to_prg_short($prg_count),
+	);
+	push @prg_list, $pn;
+	$prg_count++;
+	if ($pn->{'sub-title'}->{content} ne '') {
+		my @l = split(/\n/, wrap(' ', ' ' ,$pn->{'sub-title'}->{content}));
+		foreach my $l (@l) {
+			Irssi::printformat(MSGLEVEL_CLIENTCRAP, 'subtitle_theme', $l,);
+		}
+	}
+}
+
+sub print_prg_long {
+	my ($witem, $pn)=@_;
+	my $c=Irssi::active_win()->{width}-20;
+	local $Text::Wrap::columns = $c;
+	Irssi::printformat(MSGLEVEL_CLIENTCRAP, 'title_theme',
+		$pn->{begin}->strftime('%H:%M'), $pn->{ende}->strftime('%H:%M'),
+		$pn->{title}->{content},
+		$data->{channel}->{$pn->{channel}}->{'display-name'}->{content},
 	);
 	if ($pn->{'sub-title'}->{content} ne '') {
 		my @l = split(/\n/, wrap(' ', ' ' ,$pn->{'sub-title'}->{content}));
 		foreach my $l (@l) {
 			Irssi::printformat(MSGLEVEL_CLIENTCRAP, 'subtitle_theme', $l,);
+		}
+	}
+	if ($pn->{'desc'}->{content} ne '') {
+		my @l = split(/\n/, wrap(' ', ' ' ,$pn->{'desc'}->{content}));
+		foreach my $l (@l) {
+			Irssi::printformat(MSGLEVEL_CLIENTCRAP, 'subtitle_theme', $l,);
+		}
+	}
+	if ( exists $pn->{category} ) {
+		if (ref($pn->{category}) eq 'HASH') {
+			Irssi::printformat(MSGLEVEL_CLIENTCRAP, 'tail_theme',
+				$pn->{category}->{content},
+			);
+		}
+		if (ref($pn->{category}) eq 'ARRAY') {
+			my $s;
+			foreach (@{$pn->{category}}) {
+				$s .= $_->{content}." ";
+			}
+			Irssi::printformat(MSGLEVEL_CLIENTCRAP, 'tail_theme', $s);
 		}
 	}
 }
@@ -106,6 +189,7 @@ sub cmd_search {
 	$args =~ s/^search//;
 	$args =~ s/^\s+//;
 	$args =~ s/\s+$//;
+	clear_prg();
 	my $now = DateTime->now();
 	my $nowp = $now->clone->add( hours=>12 );
 	print_head("ontv2 search ($args)");
@@ -125,6 +209,7 @@ sub cmd_watching {
 	$args =~ s/^watching//;
 	$args =~ s/^\s+//;
 	$args =~ s/\s+$//;
+	clear_prg();
 	my $now = DateTime->now();
 	my $nowp = $now->clone->add( hours=>12 );
 	print_head("ontv2 watching ($args)");
@@ -141,6 +226,7 @@ sub cmd_watching {
 
 sub cmd_next {
 	my ($args, $server, $witem)=@_;
+	clear_prg();
 	my $now = DateTime->now();
 	$now->add( minutes=>5);
 	my $nowp = $now->clone->add( minutes=>30 );
@@ -156,6 +242,7 @@ sub cmd_next {
 
 sub cmd_tonight {
 	my ($args, $server, $witem)=@_;
+	clear_prg();
 	my $now = DateTime->now();
 	$now->set_time_zone($localTZ);
 	$now->set_hour(20);
@@ -193,6 +280,7 @@ sub cmd_check {
 
 sub cmd_now {
 	my ($args, $server, $witem)=@_;
+	clear_prg();
 	my $now = DateTime->now();
 	print_head("ontv2 now");
 	foreach my $pn ( @{ $data->{programme} } ) {
@@ -201,6 +289,16 @@ sub cmd_now {
 		}
 	}
 	print_footer("ontv2 now");
+}
+
+sub cmd_long {
+	my ($args, $server, $witem)=@_;
+	$args=~s/\s//g;
+	my $num= to_prg_num($args);
+	my $pn=$prg_list[$num];
+	if (defined $pn ) {
+		print_prg_long($witem, $pn );
+	}
 }
 
 sub cmd {
@@ -217,6 +315,8 @@ sub cmd {
 		cmd_next($args, $server, $witem);
 	} elsif ($args =~ m/^check/) {
 		cmd_check($args, $server, $witem);
+	} elsif ($args =~ m/^#/) {
+		cmd_long($args, $server, $witem);
 	} else {
 		cmd_now($args, $server, $witem);
 	}
@@ -235,10 +335,11 @@ sub sig_setup_changed {
 	$xmltv_file= bsd_glob(Irssi::settings_get_str($IRSSI{name}.'_xmltv_file'));
 }
 
-my $twidth= Irssi::active_win()->{width}-3*6-20;
+my $twidth= Irssi::active_win()->{width}-3*6-20-4;
 Irssi::theme_register([
-	'title_theme', "\$0 \$1 {hilight \$[$twidth]2} \$[18]3",
+	'title_theme', "\$0 \$1 {hilight \$[$twidth]2} \$[18]3 \$[-4]4",
 	'subtitle_theme', ' 'x12 .'$0',
+	'tail_theme', '{hilight $0}',
 	'head_theme',   '%R,--[%n%9%U $0 %U%9%R]%n',
 	'footer_theme', '%R`--<%n $0 %R>->%n',
 ]);
