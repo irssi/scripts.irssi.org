@@ -13,7 +13,7 @@
   default_package: ontv2
   description: 'turns irssi into a tv program guide'
   license: GPLv2
-  modified: '2021-01-11 16:49:10'
+  modified: '2021-02-07 13:56:06'
   modules:
     - DateTime
     - DateTime::Format::Strptime
@@ -22,4 +22,4 @@
   name: ontv2
   selfcheckcmd: 'ontv2 check'
   url: https://scripts.irssi.org/
-  version: '0.01'
+  version: '0.02'

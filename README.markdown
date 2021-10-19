@@ -34,7 +34,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                   auth_quakenet ](Test/auth_quakenet/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                      auto_whois ](Test/auto_whois/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        autoaway ](Test/autoaway/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
-[                     autochannel ](Test/autochannel/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[                     autochannel ](Test/autochannel/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                  autoclearinput ](Test/autoclearinput/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       autocycle ](Test/autocycle/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       autolimit ](Test/autolimit/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -100,7 +100,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                        chanpeak ](Test/chanpeak/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                      chansearch ](Test/chansearch/)|  ✔   |  ✔   |  ✔   | 22   |  ✔   | (c)
 [                       chanshare ](Test/chanshare/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                        chansort ](Test/chansort/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[                        chansort ](Test/chansort/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [           chansort_configurable ](Test/chansort_configurable/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                        chansync ](Test/chansync/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                           chops ](Test/chops/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -132,7 +132,7 @@ See [the testing read-me](../master/_testing/) for details.
 [               dancer_forwardfix ](Test/dancer_forwardfix/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                             dau ](Test/dau/)|  ✔   |  ✔   |  ✔   | 42   |  ✔   | (c)
 [                          dcc_ip ](Test/dcc_ip/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                         dccmove ](Test/dccmove/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[                         dccmove ](Test/dccmove/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        dccrelay ](Test/dccrelay/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
 [                         dccself ](Test/dccself/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                         dccstat ](Test/dccstat/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
@@ -182,7 +182,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                         fortune ](Test/fortune/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                         forward ](Test/forward/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                          fpaste ](Test/fpaste/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
-[                   friends_peder ](Test/friends_peder/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   
+[                   friends_peder ](Test/friends_peder/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
 [                  friends_shasta ](Test/friends_shasta/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
 [                    frm_outgmsgs ](Test/frm_outgmsgs/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                          fserve ](Test/fserve/)|  ✔   |  ✔   |  ✔   | 44   |  ✔   | (c)
@@ -254,7 +254,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                            jump ](Test/jump/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                  kban-referrals ](Test/kban-referrals/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                      kblamehost ](Test/kblamehost/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                        keepnick ](Test/keepnick/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   
+[                        keepnick ](Test/keepnick/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
 [                           kenny ](Test/kenny/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                          kernel ](Test/kernel/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        keybinds ](Test/keybinds/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -275,7 +275,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                        listsort ](Test/listsort/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                         loadavg ](Test/loadavg/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        localize ](Test/localize/)|  ✔   |  ✔   |  ✔   | 25   |  ✔   | (c)
-[                        log2ansi ](Test/log2ansi/)|  ✔   |  ✔   |  ✔   | 14   |  ✔   
+[                        log2ansi ](Test/log2ansi/)|  ✔   |  ✔   |  ✔   | 14   |  ✔   | (c)
 [                     logcompress ](Test/logcompress/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                logcompress_perl ](Test/logcompress_perl/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                       logresume ](Test/logresume/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -354,7 +354,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                          ogg123 ](Test/ogg123/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
 [                         oidenty ](Test/oidenty/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                              on ](Test/on/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
-[                           ontv2 ](Test/ontv2/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                           ontv2 ](Test/ontv2/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                            oops ](Test/oops/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                          oopsie ](Test/oopsie/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                         openurl ](Test/openurl/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
@@ -387,7 +387,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                       pushsafer ](Test/pushsafer/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
 [                  qchallengeauth ](Test/qchallengeauth/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                       quakequit ](Test/quakequit/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                           query ](Test/query/)|  ✔   |  ✔   |  ✔   | 22   |  ✔   
+[                           query ](Test/query/)|  ✔   |  ✔   |  ✔   | 22   |  ✔   | (c)
 [                     query_whois ](Test/query_whois/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                     queryresume ](Test/queryresume/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                         quitmsg ](Test/quitmsg/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
@@ -499,9 +499,9 @@ See [the testing read-me](../master/_testing/) for details.
 [                      uberprompt ](Test/uberprompt/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                         unicode ](Test/unicode/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
 [                          unread ](Test/unread/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                     upgradeinfo ](Test/upgradeinfo/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[                     upgradeinfo ](Test/upgradeinfo/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                      upsidedown ](Test/upsidedown/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                          uptime ](Test/uptime/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   
+[                          uptime ](Test/uptime/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
 [                         url_log ](Test/url_log/)|  ✔   |  ✔   |  ✔   | 12   |  ✔   | (c)
 [                         urlfeed ](Test/urlfeed/)|  ✔   |  ✔   |  ✔   | 12   |  ✔   | (c)
 [                         urlgrab ](Test/urlgrab/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
@@ -544,4 +544,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-d2aada4461ccf8686565dcf87ff7b615aa25de0c | 2021-09-03T11:57:37,696535393+00:00
+af27fb7047ed62e17197c36c088208b457c90dd9 | 2021-10-19T19:04:44,718684736+00:00
