@@ -354,7 +354,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                          ogg123 ](Test/ogg123/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
 [                         oidenty ](Test/oidenty/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                              on ](Test/on/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
-[                           ontv2 ](Test/ontv2/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[                           ontv2 ](Test/ontv2/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                            oops ](Test/oops/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                          oopsie ](Test/oopsie/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                         openurl ](Test/openurl/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
@@ -433,7 +433,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                     send_scroll ](Test/send_scroll/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                     server_time ](Test/server_time/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                  servercomplete ](Test/servercomplete/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
-[                    settingshelp ](Test/settingshelp/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                    settingshelp ](Test/settingshelp/)|  ✔   |  ✔   |  ✔   |  1   |  ✔   
 [                      shortenurl ](Test/shortenurl/)|  ✔   |  ✔   |  ✔   | 20   |  ✔   | (c)
 [                        shorturl ](Test/shorturl/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                     showhilight ](Test/showhilight/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -544,4 +544,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-af27fb7047ed62e17197c36c088208b457c90dd9 | 2021-10-19T19:04:44,718684736+00:00
+233eb16f63159d300a721b930d638d20b7a0a695 | 2021-10-23T09:23:38,031299671+00:00
