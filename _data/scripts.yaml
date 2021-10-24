@@ -1265,9 +1265,10 @@
   description: 'allows per-channel control over activity indication'
   filename: ctrlact.pl
   license: MIT
-  modified: '2017-02-24 07:41:29'
+  modified: '2021-09-20 04:35:50'
   name: ctrlact
-  version: '1.2'
+  url: https://github.com/irssi/scripts.irssi.org/blob/master/scripts/ctrlact.pl
+  version: '1.5'
 -
   authors: 'Irssi staff'
   commands: cubes
