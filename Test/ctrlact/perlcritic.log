@@ -1,3 +1,2 @@
-Capture variable used outside conditional at line 194, column 9.  See page 253 of PBP.  (Severity: 3)
-Capture variable used outside conditional at line 492, column 25.  See page 253 of PBP.  (Severity: 3)
-Capture variable used outside conditional at line 493, column 23.  See page 253 of PBP.  (Severity: 3)
+Subroutine name is a homonym for builtin function say at line 201, column 1.  See page 177 of PBP.  (Severity: 4)
+Return value of "close" ignored at line 708, column 2.  Check the return value of "close" for success.  (Severity: 2)

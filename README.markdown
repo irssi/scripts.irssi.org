@@ -126,7 +126,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                      crapbuster ](Test/crapbuster/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       credstore ](Test/credstore/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                            cron ](Test/cron/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
-[                         ctrlact ](Test/ctrlact/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
+[                         ctrlact ](Test/ctrlact/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   
 [                           cubes ](Test/cubes/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                            cwho ](Test/cwho/)|  ✔   |  ✔   |  ✔   | 18   |  ✔   | (c)
 [               dancer_forwardfix ](Test/dancer_forwardfix/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -433,7 +433,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                     send_scroll ](Test/send_scroll/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                     server_time ](Test/server_time/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                  servercomplete ](Test/servercomplete/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
-[                    settingshelp ](Test/settingshelp/)|  ✔   |  ✔   |  ✔   |  1   |  ✔   
+[                    settingshelp ](Test/settingshelp/)|  ✔   |  ✔   |  ✔   |  1   |  ✔   | (c)
 [                      shortenurl ](Test/shortenurl/)|  ✔   |  ✔   |  ✔   | 20   |  ✔   | (c)
 [                        shorturl ](Test/shorturl/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                     showhilight ](Test/showhilight/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -544,4 +544,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-233eb16f63159d300a721b930d638d20b7a0a695 | 2021-10-23T09:23:38,031299671+00:00
+0dc3a106db672743d242e5bc475ca8d914b8b755 | 2021-10-24T16:03:17,470467580+00:00

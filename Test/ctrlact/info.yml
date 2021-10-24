@@ -1,20 +1,25 @@
 ---
 -
   authors: 'martin f. krafft'
-  changed: 2017-02-24
+  changed: 2021-09-20
   commands:
     - ctrlact
+    - 'ctrlact add'
     - 'ctrlact help'
     - 'ctrlact list'
     - 'ctrlact load'
     - 'ctrlact query'
     - 'ctrlact reload'
+    - 'ctrlact remove'
     - 'ctrlact save'
     - 'ctrlact show'
+    - 'ctrlact sleep'
+    - 'ctrlact snoop'
   contact: madduck@madduck.net
   default_package: ctrlact
   description: 'allows per-channel control over activity indication'
   license: MIT
-  modified: '2017-02-24 07:41:29'
+  modified: '2021-09-20 04:35:50'
   name: ctrlact
-  version: '1.2'
+  url: https://github.com/irssi/scripts.irssi.org/blob/master/scripts/ctrlact.pl
+  version: '1.5'
