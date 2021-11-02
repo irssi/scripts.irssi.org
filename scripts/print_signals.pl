@@ -47,7 +47,7 @@ $VERSION = '1.1';
     authors     => 'martin f. krafft',
     contact     => 'madduck@madduck.net',
     name        => 'print signals debugger',
-    description => 'hooks into every signal and writes the information provided to a file',
+    description => 'hooks into almost every signal and writes the information provided to a file',
     license     => 'MIT',
     changed     => '2021-09-20'
 );
@@ -299,6 +299,7 @@ sub load {
 	foreach my $sigline (split(/\n/, $signals)) {
 		my ($sig, @args) = split(/, /, $sigline);
 		$sig =~ y/"//d;
+		next if ( $sig =~ m/<.*>/ );
 		my $handler = sub { signal_handler($sig, \@args, \@_); };
 		Irssi::signal_add_first($sig, $handler);
 		$handlers{$sig} = $handler;
