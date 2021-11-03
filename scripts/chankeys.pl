@@ -36,6 +36,9 @@
 #   just use /query instead of /window goto
 # * When adding a keymap from /chankey add, if the keymap is already assigned
 #   to another channel, we need to handle this better
+# * check_for_existing_bind really hurts and causes a bit of lag in Irssi that
+#   it doesn't recover from for a few seconds after load. Better to read /bind
+#   output once into a hash and use that.
 #
 use strict;
 use warnings;
@@ -182,10 +185,6 @@ sub check_for_existing_bind {
 }
 
 ## KEYMAP HANDLERS #############################################################
-
-# TODO check_for_existing_bind really hurts and causes a bit of lag in Irssi
-# that it doesn't recover from for a few seconds after load. Better to read
-# /bind output once into a hash and use that.
 
 sub create_keymapping {
 	my ($keys, $name, $chatnet) = @_;
