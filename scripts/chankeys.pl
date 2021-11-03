@@ -114,6 +114,7 @@ sig_setup_changed();
 my $changed_since_last_save = 0;
 
 my %itemmap;
+my %leadkeys;
 
 ### HELPERS ####################################################################
 
@@ -212,7 +213,31 @@ sub check_for_existing_bind {
 
 ## KEYMAP HANDLERS #############################################################
 
+# TODO check_for_existing_bind really hurts and causes a bit of lag in Irssi
+# that it doesn't recover from for a few seconds after load. Better to read
+# /bind output once into a hash and use that.
+
 sub create_keymapping {
+	my ($keys, $name, $chatnet) = @_;
+	my $cmd = 'command ' . get_go_command($name, $chatnet);
+	if ($keys =~ /(meta-.)-.+/ and !exists($leadkeys{$1})) {
+		if (my $bind = check_for_existing_bind($1)) {
+			if ($clear_composites) {
+				warning("Removing bind from $1 to '$bind' as instructed");
+				Irssi::command("^bind -delete $1");
+				$leadkeys{$1} = $bind;
+			}
+			else {
+				error("$1 is bound to '$bind' and cannot be used in composite keybinding", 1);
+				return 0;
+			}
+		}
+	}
+	Irssi::command("^bind $keys $cmd");
+	return 1;
+}
+
+sub check_create_keymapping {
 	my ($keys, $name, $chatnet) = @_;
 	my $cmd = 'command ' . get_go_command($name, $chatnet);
 	my $bind = check_for_existing_bind($keys);
@@ -225,25 +250,12 @@ sub create_keymapping {
 			return 0;
 		}
 	}
-	if ($keys =~ /(meta-.)-.+/) {
-		if (my $bind = check_for_existing_bind($1)) {
-			if ($clear_composites) {
-				warning("Removing bind from $1 to '$bind' as instructed");
-				Irssi::command("^bind -delete $1");
-			}
-			else {
-				error("$1 is bound to '$bind' and cannot be used in composite keybinding", 1);
-				return 0;
-			}
-		}
-	}
-	Irssi::command("^bind $keys $cmd");
-	return 1;
+	return create_keymapping($keys, $name, $chatnet);
 }
 
 sub add_keymapping {
 	my ($keys, $name, $chatnet) = @_;
-	if (create_keymapping($keys, $name, $chatnet)) {
+	if (check_create_keymapping($keys, $name, $chatnet)) {
 		$name = channet_pair_to_string($name, $chatnet);
 		debug("Key binding created: $keys → $name", 1);
 		return 1;
@@ -283,6 +295,7 @@ sub remove_existing_binds {
 	while (my ($item, $keys) = each %itemmap) {
 		Irssi::command("^bind -delete $keys");
 	}
+	%leadkeys = ();
 }
 
 ### SAVING AND LOADING #########################################################
@@ -414,16 +427,15 @@ sub chankey_load {
 	remove_existing_binds();
 	load_mappings($map_file);
 	my $cnt = scalar(keys %itemmap);
-	info("Loaded $cnt mappings from $map_file");
-
 	foreach my $channel (Irssi::channels, Irssi::queries) {
 		my $name = $channel->{name};
 		my $chatnet = $channel->{server}->{chatnet};
 		if (my @keymap = get_keymap_for_channet_pair($name, $chatnet)) {
-			add_keymapping(@keymap);
+			create_keymapping(@keymap);
 		}
 	}
 	$changed_since_last_save = 0;
+	info("Loaded $cnt mappings from $map_file");
 }
 
 sub chankey_save {
