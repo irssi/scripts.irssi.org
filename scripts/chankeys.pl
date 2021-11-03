@@ -12,7 +12,7 @@
 #
 # Let's assume you're in the #irssi channel, then you could issue the command
 #
-#   /chankey meta-s-meta-i
+#   /chankeys add meta-s-meta-i
 #
 # and thenceforth, hitting that key combination will take you to the channel.
 # It's smart enough to check whether a mapping is already in use by chankey,
@@ -22,40 +22,11 @@
 # You can also explicitly specify the name (and chatnet) if you'd like to
 # set up a mapping for another item:
 #
-#   /chankey F12 &bitlbee
+#   /chankeys add F12 &bitlbee
 #
 # Key bindings are removed when you leave a channel or a query is closed, and
 # reinstated when the channel or query is reinstated. They are saved to
 # ~/.irssi/chankeys on /save, and loaded from there on startup and /reload.
-#
-### Settings:
-#
-# /set chankeys_go_command [window goto $C]
-#   The command to use to switch to a matching window item. The only reason
-#   you might need to set this is if you have channels with the same name
-#   across different chatnets. In this case, you need to load the go2.pl
-#   module, and set this to "go $C $chatnet", because "window goto" cannot
-#   incorporate the chatnet (yet). Beware that this will prevent
-#   adv_windowlist.pl from reading out the keybinding to use for the
-#   statusbar.
-#
-# /set chankeys_overwrite_binds [off]
-#   When chankey encounters an existing key mapping, it refuses to overwrite
-#   it unless this is switched on.
-#
-# /set chankeys_clear_composites [off]
-#   A mapping like meta-s-meta-i will not work if meta-s is bound to something
-#   already, and chankey will check and fail in such a case. Setting this
-#   to on will make chankeys remove the existing mapping, such that the
-#   composite mapping works.
-#
-# /set chankeys_autosave [on]
-#   Skip saving/overwriting the chankeys setup to file if you prefer to
-#   maintain the mappings outside of irssi.
-#
-# /set chankeys_debug [off]
-#   Turns on debug output. Not that this may itself be buggy, so please don't
-#   use it unless you really need it.
 #
 ### To-do:
 #
@@ -65,7 +36,6 @@
 #   just use /query instead of /window goto
 # * When adding a keymap from /chankey add, if the keymap is already assigned
 #   to another channel, we need to handle this better
-# * Implement /chankeys help
 #
 use strict;
 use warnings;
@@ -479,6 +449,80 @@ Irssi::command_bind('help', sub {
 		Irssi::signal_stop();
 	}
 );
+
+sub chankey_help {
+	my ($data, $server, $item) = @_;
+	Irssi::print (<<"SCRIPTHELP_EOF", MSGLEVEL_CLIENTCRAP);
+%_chankeys $_VERSION - associate key shortcuts with channels
+
+%U%_Synopsis%_%U
+
+%_CHANKEYS ADD%_ <%Ukeybinding%U> [<%Uchannel%U>] [<%Uchatnet%U>]
+%_CHANKEYS REMOVE%_ <%Ukeybinding%U>
+%_CHANKEYS LIST%_
+%_CHANKEYS [RE]LOAD%_
+%_CHANKEYS SAVE%_ [-force]
+%_CHANKEYS GOTO%_ <%Uchannel%U> [<%Uchatnet%U>]
+%_CHANKEYS HELP%_
+
+<%Ukeybinding%U> %| Key(s) to bind. Refer to %_/HELP BIND%_ for format
+<%Uchannel%U>    %| Channel name to associate. Can include %_/chatnet%.
+<%Uchatnet%U>    %| The chatnet of the channel. Not generally supported.
+
+%U%_Settings%_%U
+
+/set %_chankeys_go_command%_ [$go_command]
+  %| The command to use to switch to a matching window item. The only reason
+  %| you might need to set this is if you have channels with the same name
+  %| across different chatnets. In this case, you need to load the go2.pl
+  %| module, and set this to "go \$C \$chatnet", because "window goto" cannot
+  %| incorporate the chatnet (yet). Beware that this will prevent
+  %| adv_windowlist.pl from reading out the keybinding to use for the
+  %| statusbar.
+
+/set %_chankeys_overwrite_binds%_ [$overwrite_binds]
+  %| When chankey encounters an existing key mapping, it refuses to overwrite
+  %| it unless this is switched on.
+
+/set %_chankeys_clear_composites%_ [$clear_composites]
+  %| A mapping like meta-s-meta-i will not work if meta-s is bound to something
+  %| already, and chankey will check and fail in such a case. Setting this
+  %| to on will make chankeys remove the existing mapping, such that the
+  %| composite mapping works.
+
+/set %_chankeys_autosave%_ [$autosave]
+  %| Skip saving/overwriting the chankeys setup to file if you prefer to
+  %| maintain the mappings outside of irssi.
+
+/set %_chankeys_debug%_ [$debug]
+  %| Turns on debug output. Not that this may itself be buggy, so please don't
+  %| use it unless you really need it.
+
+%U%_Examples%_%U
+
+Associate %_meta-d-meta-d%_ with the current channel
+  %|%#/%_CHANKEYS ADD%_ meta-d-meta-d
+
+Associate F12 with the &bitlbee window
+  %|%#/%_BIND%_ ^[[24~ key F12
+  %|%#/%_CHANKEYS ADD%_ F12 &bitlbee
+
+Associate %_meta-m-meta-m%_ with the #matrix channel on LiberaChat
+  %|%#/%_CHANKEYS ADD%_ meta-m-meta-m #matrix LiberaChat
+
+Alternative form to specify chatnet
+  %|%#/%_CHANKEYS ADD%_ meta-m-meta-m #matrix/LiberaChat
+
+Save mappings to file ($map_file), using -force to write even if nothing has changed:
+  %|%#/%_CHANKEYS SAVE%_ -force
+
+Load mappings from file ($map_file):
+  %|%#/%_CHANKEYS LOAD%_
+
+List all known key associations
+  %|%#/%_CHANKEYS LIST%_
+SCRIPTHELP_EOF
+}
 
 ## SIGNAL HANDLERS #############################################################
 
