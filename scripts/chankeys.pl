@@ -51,8 +51,8 @@ our %IRSSI = (
     name        => 'chankeys',
     description => 'manage channel keyboard shortcuts',
     license     => 'MIT',
-    version     => '0.3',
-    changed     => '2021-09-06'
+    version     => '0.4',
+    changed     => '2021-11-03'
 );
 
 our $VERSION = $IRSSI{version};
