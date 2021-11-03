@@ -26,6 +26,9 @@
 #
 ### Changelog:
 #
+# 2021-11-04 v1.2
+# * Omit signals that cannot be enumerated
+#
 # 2021-09-20 v1.1
 # * Unload signal handlers when script is unloaded
 # * Update list of signals from upstream
@@ -41,7 +44,7 @@ use vars qw($VERSION %IRSSI);
 use Irssi;
 use Data::Dumper;
 
-$VERSION = '1.1';
+$VERSION = '1.2';
 
 %IRSSI = (
     authors     => 'martin f. krafft',
@@ -49,7 +52,7 @@ $VERSION = '1.1';
     name        => 'print signals debugger',
     description => 'hooks into almost every signal and writes the information provided to a file',
     license     => 'MIT',
-    changed     => '2021-09-20'
+    changed     => '2021-11-04'
 );
 
 Irssi::settings_add_str('print_signals', 'print_signals_to_file', '/tmp/irssi_signals.log');
