@@ -960,6 +960,16 @@
   url: ''
   version: '0.1'
 -
+  authors: 'martin f. krafft'
+  commands: chankeys
+  contact: madduck@madduck.net
+  description: 'manage channel keyboard shortcuts'
+  filename: chankeys.pl
+  license: MIT
+  modified: '2021-11-03 02:02:45'
+  name: chankeys
+  version: '0.4'
+-
   authors: "Bjoern 'fuchs' Krombholz"
   contact: bjkro@gmx.de
   description: 'Log maximum number of people ever been in a channel'
