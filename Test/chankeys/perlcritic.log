@@ -1,0 +1,2 @@
+Subroutine name is a homonym for builtin function say at line 94, column 1.  See page 177 of PBP.  (Severity: 4)
+Return value of "close" ignored at line 343, column 2.  Check the return value of "close" for success.  (Severity: 2)
