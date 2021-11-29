@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-our $VERSION = '0.4.0'; # ed9cb119fc4b3d1
+our $VERSION = '0.4.1'; # ed9cb119fc4b3d1
 our %IRSSI = (
     authors     => 'Nei',
     contact     => 'Nei @ anti@conference.jabber.teamidiot.de',
@@ -155,7 +155,8 @@ sub prt_format_issue {
     my $arg = 1;
     $arg++ if $format =~ /_channel/;
     $arg++ if $format =~ /_hilight/;
-
+    return unless @args > $arg;
+    
     utf8::decode($args[$arg]);
     my $text = $args[$arg];
     my $stripped = Irssi::strip_codes($text);
