@@ -5,7 +5,7 @@
   default_package: colorize_nicks
   description: 'Colourise mention of nicks in the message body.'
   license: 'GNU GPLv2 or later'
-  modified: '2020-05-14 02:17:44'
+  modified: '2021-11-29 15:16:31'
   name: colorize_nicks
   url: http://anti.teamidiot.de/
-  version: 0.4.0
+  version: 0.4.1

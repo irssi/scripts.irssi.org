@@ -97,7 +97,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                         chanact ](Test/chanact/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                        chanfull ](Test/chanfull/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                  chanfull_duden ](Test/chanfull_duden/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                        chankeys ](Test/chankeys/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   
+[                        chankeys ](Test/chankeys/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
 [                        chanpeak ](Test/chanpeak/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                      chansearch ](Test/chansearch/)|  ✔   |  ✔   |  ✔   | 22   |  ✔   | (c)
 [                       chanshare ](Test/chanshare/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -113,7 +113,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                          cmdind ](Test/cmdind/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                        cmpchans ](Test/cmpchans/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                     colon_emoji ](Test/colon_emoji/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
-[                  colorize_nicks ](Test/colorize_nicks/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
+[                  colorize_nicks ](Test/colorize_nicks/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
 [                       colorkick ](Test/colorkick/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       colorswap ](Test/colorswap/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                     complete_at ](Test/complete_at/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
@@ -545,4 +545,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-f78e95b5b3d97b553736e459b9a51d3fd2360351 | 2021-11-07T13:39:49,311890963+00:00
+903e6b19fdb6fcb88356dce0bf340c5af1bfe1fb | 2021-12-31T23:52:33,773393926+00:00
