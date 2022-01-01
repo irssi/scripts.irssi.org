@@ -1,6 +1,6 @@
 # print_signals.pl — Irssi script to help with inspecting signals
 #
-# © 2017 martin f. krafft <madduck@madduck.net>
+# © 2017,2021 martin f. krafft <madduck@madduck.net>
 # Released under the MIT licence.
 #
 ### Usage:
@@ -24,6 +24,19 @@
 #   Specify a regexp to exclude signals from being captured. Default is not to
 #   fire on signals about printing text or key presses.
 #
+### Changelog:
+#
+# 2021-11-04 v1.2
+# * Omit signals that cannot be enumerated
+#
+# 2021-09-20 v1.1
+# * Unload signal handlers when script is unloaded
+# * Update list of signals from upstream
+#
+# 2017-02-03 v1.0
+#
+# * Initial release.
+#
 
 use strict;
 use warnings;
@@ -31,15 +44,15 @@ use vars qw($VERSION %IRSSI);
 use Irssi;
 use Data::Dumper;
 
-$VERSION = '1.0';
+$VERSION = '1.2';
 
 %IRSSI = (
     authors     => 'martin f. krafft',
     contact     => 'madduck@madduck.net',
     name        => 'print signals debugger',
-    description => 'hooks into every signal and writes the information provided to a file',
+    description => 'hooks into almost every signal and writes the information provided to a file',
     license     => 'MIT',
-    changed     => '2017-02-03'
+    changed     => '2021-11-04'
 );
 
 Irssi::settings_add_str('print_signals', 'print_signals_to_file', '/tmp/irssi_signals.log');
@@ -71,8 +84,8 @@ sub signal_handler {
 
 # TODO: a programmatic way to extract the list of all signals from Irssi
 # itself, along with descriptive names of the arguments.
-my $signals = <<_END;
 # curl -s https://raw.githubusercontent.com/irssi/irssi/master/docs/signals.txt | sed -rne 's,^ ",",p'
+my $signals = <<_END;
 "gui exit"
 "gui dialog", char *type, char *text
 "send command", char *command, SERVER_REC, WI_ITEM_REC
@@ -109,6 +122,7 @@ my $signals = <<_END;
 "nicklist remove", CHANNEL_REC, NICK_REC
 "nicklist changed", CHANNEL_REC, NICK_REC, char *old_nick
 "nicklist host changed", CHANNEL_REC, NICK_REC
+"nicklist account changed", CHANNEL_REC, NICK_REC, char *account
 "nicklist gone changed", CHANNEL_REC, NICK_REC
 "nicklist serverop changed", CHANNEL_REC, NICK_REC
 "pidwait", int pid, int status
@@ -146,10 +160,14 @@ my $signals = <<_END;
 "event connected", SERVER_REC
 "server cap ack "<cmd>, SERVER_REC
 "server cap nak "<cmd>, SERVER_REC
+"server cap new "<cmd>, SERVER_REC
+"server cap delete "<cmd>, SERVER_REC
 "server cap end", SERVER_REC
+"server cap req", SERVER_REC, char *caps
 "server sasl failure", SERVER_REC, char *reason
 "server sasl success", SERVER_REC
 "server event", SERVER_REC, char *data, char *sender_nick, char *sender_address
+"server event tags", SERVER_REC, char *data, char *sender_nick, char *sender_address, char *tags
 "event "<cmd>, SERVER_REC, char *args, char *sender_nick, char *sender_address
 "default event", SERVER_REC, char *data, char *sender_nick, char *sender_address
 "whois default event", SERVER_REC, char *args, char *sender_nick, char *sender_address
@@ -206,8 +224,8 @@ my $signals = <<_END;
 "proxy client command", CLIENT_REC, char *args, char *data
 "proxy client dump", CLIENT_REC, char *data
 "gui print text", WINDOW_REC, int fg, int bg, int flags, char *text, TEXT_DEST_REC
-"gui print text finished", WINDOW_REC
-"complete word", GList * of char*, WINDOW_REC, char *word, char *linestart, int *want_space
+"gui print text finished", WINDOW_REC, TEXT_DEST_REC
+"complete word", GList * of char *s, WINDOW_REC, char *word, char *linestart, int *want_space
 "irssi init read settings"
 "exec new", PROCESS_REC
 "exec remove", PROCESS_REC, int status
@@ -216,20 +234,27 @@ my $signals = <<_END;
 "message private", SERVER_REC, char *msg, char *nick, char *address, char *target
 "message own_public", SERVER_REC, char *msg, char *target
 "message own_private", SERVER_REC, char *msg, char *target, char *orig_target
-"message join", SERVER_REC, char *channel, char *nick, char *address
+"message join", SERVER_REC, char *channel, char *nick, char *address, char *account, char *realname
 "message part", SERVER_REC, char *channel, char *nick, char *address, char *reason
 "message quit", SERVER_REC, char *nick, char *address, char *reason
 "message kick", SERVER_REC, char *channel, char *nick, char *kicker, char *address, char *reason
 "message nick", SERVER_REC, char *newnick, char *oldnick, char *address
 "message own_nick", SERVER_REC, char *newnick, char *oldnick, char *address
 "message invite", SERVER_REC, char *channel, char *nick, char *address
+"message invite_other", SERVER_REC, char *channel, char *invited, char *nick, char *address
 "message topic", SERVER_REC, char *channel, char *topic, char *nick, char *address
+"message host_changed", SERVER_REC, char *nick, char *newaddress, char *oldaddress
+"message account_changed", SERVER_REC, char *nick, char *address, char *account
+"message away_notify", SERVER_REC, char *nick, char *address, char *awaymsg
 "keyinfo created", KEYINFO_REC
 "keyinfo destroyed", KEYINFO_REC
 "print text", TEXT_DEST_REC *dest, char *text, char *stripped
+"print format", THEME_REC *theme, char *module, TEXT_DEST_REC *dest, formatnum_args
+"print noformat", TEXT_DEST_REC *dest, char *text
 "theme created", THEME_REC
 "theme destroyed", THEME_REC
 "window hilight", WINDOW_REC
+"window hilight check", TEXT_DEST_REC, char *msg, int *data_level, int *should_ignore
 "window dehilight", WINDOW_REC
 "window activity", WINDOW_REC, int old_level
 "window item hilight", WI_ITEM_REC
@@ -266,15 +291,29 @@ my $signals = <<_END;
 "message dcc ctcp", DCC_REC *dcc, char *cmd, char *data
 "gui key pressed", int key
 "beep"
-"gui print text after finished", WINDOW_REC, LINE_REC *line, LINE_REC *prev_line
+"gui print text after finished", WINDOW_REC, LINE_REC *line, LINE_REC *prev_line, TEXT_DEST_REC
 "gui textbuffer line removed", TEXTBUFFER_VIEW_REC *view, LINE_REC *line, LINE_REC *prev_line
+"otr event", SERVER_REC, char *nick, char *status
 _END
 
-foreach my $sigline (split(/\n/, $signals)) {
-	my ($sig, @args) = split(/, /, $sigline);
-	$sig =~ y/"//d;
-	Irssi::signal_add_first($sig, sub {
-			signal_handler($sig, \@args, \@_);
-		}
-	);
-};
+my %handlers = ();
+
+sub load {
+	foreach my $sigline (split(/\n/, $signals)) {
+		my ($sig, @args) = split(/, /, $sigline);
+		$sig =~ y/"//d;
+		next if ( $sig =~ m/<.*>/ );
+		my $handler = sub { signal_handler($sig, \@args, \@_); };
+		Irssi::signal_add_first($sig, $handler);
+		$handlers{$sig} = $handler;
+	}
+}
+
+sub UNLOAD {
+	while (my ($sig, $handler) = each %handlers) {
+		Irssi::signal_remove($sig, $handler);
+	}
+	%handlers = ();
+}
+
+load();
