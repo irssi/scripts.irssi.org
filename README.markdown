@@ -383,7 +383,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                          poison ](Test/poison/)|  ✔   |  ✔   |  ✔   | 12   |  ✔   | (c)
 [                        postpone ](Test/postpone/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                             ppl ](Test/ppl/)|  ✔   |  ✔   |  ✔   | 39   |  ✔   | (c)
-[                   print_signals ](Test/print_signals/)|  ✔   |  ✔   |  ✔   |  1   |  ✔   
+[                   print_signals ](Test/print_signals/)|  ✔   |  ✔   |  ✔   |  1   |  ✔   | (c)
 [                     procmaillog ](Test/procmaillog/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
 [                       pushsafer ](Test/pushsafer/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
 [                  qchallengeauth ](Test/qchallengeauth/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
@@ -488,7 +488,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                      trackbar22 ](Test/trackbar22/)|  ✘   |  ✘   |  ✔   |  5   |  ☡   | (c)
 [                       tracknick ](Test/tracknick/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        translit ](Test/translit/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                         trigger ](Test/trigger/)|  ✔   |  ✔   |  ✔   | 16   |  ✔   | (c)
+[                         trigger ](Test/trigger/)|  ✔   |  ✔   |  ✔   | 16   |  ✔   
 [                        trustweb ](Test/trustweb/)|  ✔   |  ✔   |  ✔   | 20   |  ✔   | (c)
 [                   twitch_notify ](Test/twitch_notify/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                   twitter_theme ](Test/twitter_theme/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
@@ -545,4 +545,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-a71af12aed7507f8137070e74bbc8703f7d5bcfe | 2022-01-01T23:08:11,925837155+00:00
+dbffb5cbdccbdb12a8851f575569812f8aeebd24 | 2022-01-02T10:00:02,498945766+00:00

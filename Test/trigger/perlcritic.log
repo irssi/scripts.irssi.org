@@ -1,5 +1,5 @@
 Code before warnings are enabled at line 26, column 1.  See page 431 of PBP.  (Severity: 4)
 Comma used to separate statements at line 601, column 3.  See pages 68,71 of PBP.  (Severity: 4)
-Subroutine "new" called using indirect syntax at line 877, column 11.  See page 349 of PBP.  (Severity: 4)
-Subroutine "new" called using indirect syntax at line 898, column 11.  See page 349 of PBP.  (Severity: 4)
-Expression form of "eval" at line 916, column 14.  See page 161 of PBP.  (Severity: 5)
+Subroutine "new" called using indirect syntax at line 878, column 11.  See page 349 of PBP.  (Severity: 4)
+Subroutine "new" called using indirect syntax at line 899, column 11.  See page 349 of PBP.  (Severity: 4)
+Expression form of "eval" at line 917, column 14.  See page 161 of PBP.  (Severity: 5)
