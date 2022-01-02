@@ -23,7 +23,7 @@ use Text::ParseWords;
 use IO::File;
 use vars qw($VERSION %IRSSI);
 
-$VERSION = '1.2.4';
+$VERSION = '1.2.5';
 %IRSSI = (
 	authors     => 'Wouter Coekaerts',
 	contact     => 'wouter@coekaerts.be',
@@ -31,7 +31,7 @@ $VERSION = '1.2.4';
 	description => 'execute a command or replace text, triggered by an event in irssi',
 	license     => 'GPLv2 or later',
 	url         => 'http://wouter.coekaerts.be/irssi/',
-	changed     => '2020-03-10',
+	changed     => '2022-01-02',
 );
 
 sub cmd_help {
