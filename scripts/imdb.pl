@@ -4,7 +4,7 @@ use LWP::UserAgent;
 use HTML::Entities;
 use vars qw($VERSION %IRSSI $cache);
 
-$VERSION = '1.03';
+$VERSION = '1.04';
 %IRSSI = (
     authors 	=> 'Eric Jansen',
     contact 	=> 'chaos@sorcery.net',
@@ -13,7 +13,7 @@ $VERSION = '1.03';
     license 	=> 'GPL',
     modules	=> 'LWP::UserAgent HTML::Entities',
     url		=> 'http://xyrion.org/irssi/',
-    changed 	=> '2021-01-08',
+    changed 	=> '2021-10-09',
     selfcheckcmd=> 'imdb check',
 );
 
@@ -45,7 +45,7 @@ sub event_nickchange {
 	else {
 
 	    # Fetch the movie detail page
-	    my $req = new HTTP::Request(GET => "http://www.imdb.com/title/tt$id");
+	    my $req = new HTTP::Request(GET => "http://www.imdb.com/title/tt$id/");
 	    my $res = $ua->request($req);
 
 	    # Get the title and year from the fetched page
@@ -96,8 +96,8 @@ sub cmd {
 	    $s="Error: year ($last_result->{year})";
 	}
 	Irssi::print("imdb: self check: $s");
-	my $schs_version = $Irssi::Script::selfcheckhelperscript::VERSION;
-	Irssi::command("selfcheckhelperscript $s") if ( defined $schs_version );
+	my $schs =  exists $Irssi::Script::{'selfcheckhelperscript::'};
+	Irssi::command("selfcheckhelperscript $s") if ( $schs );
     } elsif ( $args =~ m/\d{7}/ ) {
 	$args =~ s/\s//g;
 	$witem->{'ownnick'}->{'nick'}="sepp";
