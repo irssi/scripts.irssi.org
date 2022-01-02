@@ -1562,11 +1562,11 @@
   description: 'search by https://duckduckgo.com/html/'
   filename: duckduckgo.pl
   license: lgplv3
-  modified: '2021-01-23 16:28:49'
+  modified: '2021-10-09 17:30:32'
   modules: 'HTML::Entities LWP::UserAgent URI::Escape'
   name: duckduckgo
   url: http://scripts.irssi.org
-  version: '0.02'
+  version: '0.03'
 -
   authors: 'Espen Holm Nilsen'
   contact: holm@blackedge.org
