@@ -1,14 +1,14 @@
 ---
 -
   authors: bw1
-  changed: 2021-01-23
+  changed: 2021-10-09
   commands:
     - ddg
   contact: bw1@aol.at
   default_package: duckduckgo
   description: 'search by https://duckduckgo.com/html/'
   license: lgplv3
-  modified: '2021-01-23 16:28:49'
+  modified: '2021-10-09 17:30:32'
   modules:
     - HTML::Entities
     - LWP::UserAgent
@@ -16,4 +16,4 @@
   name: duckduckgo
   selfcheckcmd: 'ddg -check'
   url: http://scripts.irssi.org
-  version: '0.02'
+  version: '0.03'
