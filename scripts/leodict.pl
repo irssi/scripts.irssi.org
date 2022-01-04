@@ -4,7 +4,7 @@
 use strict;
 
 use vars qw($VERSION %IRSSI);
-$VERSION = '20210126';
+$VERSION = '20220104';
 %IRSSI = (
     authors     => 'Stefan \'tommie\' Tomanek, bw1',
     contact     => 'bw1@aol.at',
@@ -347,7 +347,6 @@ my %options = (
 sub cmd_leodict ($$$) {
     my ($args, $server, $witem) = @_;
     utf8::decode($args);
-    #my $burl= "https://dict.leo.org/";
     my $burl = "https://dict.leo.org/";
     my $url;
 
