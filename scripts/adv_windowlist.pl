@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-our $VERSION = '1.9.1'; # fcc63b8a943723b
+our $VERSION = '1.10'; # a643fc45f8a0037
 our %IRSSI = (
     authors     => 'Nei',
     contact     => 'Nei @ anti@conference.jabber.teamidiot.de',
@@ -96,6 +96,9 @@ our %IRSSI = (
 # set it to 0 to show all windows
 #           1 to hide visible windows without items (negative exempt
 #           active window)
+#
+# /set awl_custom_key_re <regex>
+# * regex : which symbolic key names to show in $Q (for example F-keys)
 #
 # /set awl_detach <list>
 # * list of windows that should be hidden from the window list. you
@@ -345,6 +348,7 @@ my %S; # settings
 my $settings_str = '1';
 my $window_sort_func;
 my $custom_xform;
+my $custom_key_re = qr/(?!)/;
 my ($sb_base_width, $sb_base_width_pre, $sb_base_width_post);
 my $print_text_activity;
 my $shade_line_timer;
@@ -511,6 +515,9 @@ sub get_keymap {
 	    while ($combo =~ s/(?:-|^)$one_meta_or_ctrl_key$//) {
 		my ($level, $ctl, $key, $nkey) = ($1, $2, $3, $4);
 		my $numlevel = ($level =~ y/-//);
+		if (not defined $key and $nkey =~ /^($custom_key_re)$/) {
+		    $key = $nkey;
+		}
 		$ctl = '' if !$ctl || $ctl ne '^';
 		$map = ('-' x ($numlevel%2)) . ('+' x ($numlevel/2)) .
 		    $ctl . (defined $key ? $key : "\01$nkey\01") . $map;
@@ -1333,6 +1340,7 @@ sub reset_awl {
     my $was_xform = $S{xform} // '';
     my $was_shared = $S{shared_sbar};
     my $was_no_hint = $S{no_mode_hint};
+    my $was_custom_key = $S{custom_key_re} // '';
     %S = (
 	sort	      => Irssi::settings_get_str( set 'sort'),
 	fancy_abbrev  => Irssi::settings_get_str('fancy_abbrev'),
@@ -1343,6 +1351,7 @@ sub reset_awl {
 	hide_data     => Irssi::settings_get_int( set 'hide_data'),
 	hide_name     => Irssi::settings_get_int( set 'hide_name_data'),
 	hide_empty    => Irssi::settings_get_int( set 'hide_empty'),
+	custom_key_re => Irssi::settings_get_str( set 'custom_key_re'),
 	detach        => Irssi::settings_get_str( set 'detach'),
 	detach_data   => Irssi::settings_get_int( set 'detach_data'),
 	detach_aht    => Irssi::settings_get_bool(set 'detach_aht'),
@@ -1431,6 +1440,20 @@ return sub {
 		$@ =~ /^(.*)/;
 		print '%_'.(set 'custom_xform').'%_ did not compile: '.$1;
 	    }
+	}
+    }
+    if ($was_custom_key ne $S{custom_key_re}) {
+	my $custom_key = $S{custom_key_re};
+	my $was_custom_key_re = $custom_key_re;
+	local $@;
+	eval { $custom_key_re = qr/(?i)$custom_key/; 1 }
+	    or do {
+		print '%_'.(set 'custom_key_re').'%_ did not compile: '
+		    . do { $@ =~ /(.*) at / && $1 };
+		$custom_key_re = qr/(?!)/;
+	    };
+	if ($was_custom_key_re ne $custom_key_re) {
+	    update_keymap();
 	}
     }
 
@@ -1961,6 +1984,7 @@ Irssi::settings_add_str( setc, set 'shared_sbar',    'OFF'); #
 Irssi::settings_add_bool(setc, set 'mouse',          0); #
 Irssi::settings_add_str( setc, set 'path', Irssi::get_irssi_dir . '/_windowlist'); #
 Irssi::settings_add_str( setc, set 'custom_xform',   ''); #
+Irssi::settings_add_str( setc, set 'custom_key_re',  'f\d+'); #
 Irssi::settings_add_time(setc, set 'last_line_shade', '0'); #
 Irssi::settings_add_int( setc, set 'mouse_offset',   1); #
 Irssi::settings_add_int( setc, 'mouse_scroll',       3); #
@@ -2811,6 +2835,10 @@ UNITCHECK
 
 # Changelog
 # =========
+# 1.10
+# - add /set awl_custom_key_re, to display custom keys in the $Q
+#   expando. requested by madduck
+#
 # 1.9.1
 # - fix crash on mouse click
 #
