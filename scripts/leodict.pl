@@ -117,7 +117,10 @@ sub parser {
     %fresult=();
 
     # tables
-    return unless (defined $ftext); 
+    unless (defined $ftext) {
+    	%fresult=('Error'=>[['no data']]);
+	return;
+    }
     my $dom = Mojo::DOM->new($ftext);
     foreach my $tbl ( $dom->find('table')->each ) {
 
@@ -401,8 +404,8 @@ sub self_check {
 	$s="Error: results ($count)";
     }
     Irssi::print("selfcheck: $s");
-    my $schs_version = $Irssi::Script::selfcheckhelperscript::VERSION;
-    Irssi::command("selfcheckhelperscript $s") if ( defined $schs_version );
+    my $schs =  exists $Irssi::Script::{'selfcheckhelperscript::'};
+    Irssi::command("selfcheckhelperscript $s") if ( $schs );
 }
 
 sub sig_setup_changed {
