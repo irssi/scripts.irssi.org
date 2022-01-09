@@ -118,7 +118,7 @@ First version.
 =cut
 
 # This need to be before pragmas, so that the eval runs in a pragma-free state
-sub _clean_eval { eval $_[0]; }
+sub _clean_eval { eval $_[0]; } ## no critic
 
 use 5.22.0;
 use strict;
@@ -154,7 +154,7 @@ package Irssi::Script::perlalias::IrssiVar {
 		return Irssi::Script::perlalias::aliaspkg::parse_special($irssivar);
 	}
 
-	sub STORE { die "Attempt to modify irssi special variable"; }
+	sub STORE { Carp::croak "Attempt to modify irssi special variable"; }
 }
 
 my $_eval_prep;
@@ -260,7 +260,7 @@ sub cmd__alias {
 	my $sig = Irssi::signal_get_emitted();
 	Irssi::signal_stop(); # Don't let any real command catch it.
 	my ($cmd) = ($sig =~ m/^command (.*)$/);
-	defined $cmd or die; # What are we doing here?
+	defined $cmd or Carp::confess "This is weird"; # What are we doing here?
 	execute_alias $cmd, $data, $server, $witem;
 }
 
@@ -314,9 +314,9 @@ sub setup_alias_package {
 		Irssi::printformat(MSGLEVEL_CLIENTERROR, perlalias_warning => $name);
 		Irssi::print($_[0], MSGLEVEL_CLIENTERROR);
 	};
-	my sub failed_alias {
+	my sub failed_alias { ## no critic
 		my $err = shift;
-		$err =~ /^ASSERT/ and die $err;
+		$err =~ /^ASSERT/ and die $err; ## no critic
 		no strict 'refs';
 		undef *{"${package}::invoke"}; # Kill the sub if it compiled but we failed shared-state setup.
 		${"${package}::_error"} = $err;
@@ -777,7 +777,7 @@ sub collect_shared_variables {
 	my $cop;
 
 	my sub op_die {
-		die sprintf("%s at %s line %d.\n", shift, $cop->file, $cop->line);
+		die sprintf("%s at %s line %d.\n", shift, $cop->file, $cop->line); ## no critic
 	}
 
 	my sub op_assert(&$) {
@@ -812,7 +812,7 @@ sub collect_shared_variables {
 			$current = Irssi::Script::perlalias::SharedVar->create($data, generate_state_locker);
 			$Irssi::Script::perlalias::aliaspkg::shared{$name} = $current;
 		}
-		ref $current eq "Irssi::Script::perlalias::SharedVar" or die "Corrupt state in shared table at '$name'";
+		ref $current eq "Irssi::Script::perlalias::SharedVar" or Carp::confess "Corrupt state in shared table at '$name'";
 		for (ref($ref)) {
 			/^SCALAR$/ and do { tie $$ref, "Irssi::Script::perlalias::SharedVar", $current; }, last;
 			/^ARRAY$/ and do { tie @$ref, "Irssi::Script::perlalias::SharedVar", $current; }, last;
