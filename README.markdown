@@ -230,7 +230,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                        ignoreoc ](Test/ignoreoc/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       ignorsula ](Test/ignorsula/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                              il ](Test/il/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                            imdb ](Test/imdb/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   
+[                            imdb ](Test/imdb/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
 [                       intercept ](Test/intercept/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                         intjoin ](Test/intjoin/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
 [                      invitejoin ](Test/invitejoin/)|  ✔   |  ✔   |  ✔   | 13   |  ✔   | (c)
@@ -453,7 +453,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                         spambot ](Test/spambot/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                special_complete ](Test/special_complete/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                           spell ](Test/spell/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                      spellcheck ](Test/spellcheck/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                      spellcheck ](Test/spellcheck/)|  ✔   |  ✔   |  ✔   |  8   |  ✔   
 [                           sping ](Test/sping/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       splitlong ](Test/splitlong/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                         spotify ](Test/spotify/)|  ✔   |  ✔   |  ✔   | 14   |  ✔   | (c)
@@ -545,4 +545,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-0be648a997e97d38b2c8f51a0f31ffc76f5fe7b9 | 2022-01-02T10:10:34,243385722+00:00
+ef2117da7d26a29796d35287c7871461ca31f09c | 2022-01-21T10:14:57,906992190+00:00

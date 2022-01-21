@@ -1,1 +1,4 @@
-Code before warnings are enabled at line 63, column 1.  See page 431 of PBP.  (Severity: 4)
+Capture variable used outside conditional at line 66, column 15.  See page 253 of PBP.  (Severity: 3)
+Capture variable used outside conditional at line 68, column 15.  See page 253 of PBP.  (Severity: 3)
+Private subroutine/method used at line 152, column 9.  Use published APIs.  (Severity: 3)
+Private subroutine/method used at line 225, column 13.  Use published APIs.  (Severity: 3)
