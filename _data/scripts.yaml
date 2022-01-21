@@ -4637,16 +4637,16 @@
   url: http://home.cc.umanitoba.ca/~umkowa17/
   version: '1.1'
 -
-  authors: 'Jakub Jankowski'
-  contact: shasta@toxcorp.com
-  description: 'Checks for spelling errors using Aspell.'
+  authors: 'Jakub Wilk, Jakub Jankowski, Gabriel Pettier, Nei'
+  commands: spellcheck_add
+  description: 'checks for spelling errors using Aspell'
   filename: spellcheck.pl
   license: GPLv2
-  modified: '2015-02-01 12:23:25'
+  modified: '2020-09-25 20:38:34'
   modules: Text::Aspell
-  name: Spellcheck
-  url: http://toxcorp.com/irc/irssi/spellcheck/
-  version: '0.4'
+  name: spellcheck
+  url: http://jwilk.net/software/irssi-spellcheck
+  version: 0.9.1
 -
   authors: "Maciek 'fahren' Freudenheim, David Leadbeater"
   commands: sping
