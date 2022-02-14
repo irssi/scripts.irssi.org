@@ -4,7 +4,7 @@
 use strict;
 
 use vars qw($VERSION %IRSSI);
-$VERSION = '20210126';
+$VERSION = '20220104';
 %IRSSI = (
     authors     => 'Stefan \'tommie\' Tomanek, bw1',
     contact     => 'bw1@aol.at',
@@ -84,6 +84,15 @@ SETTINGS
     example: -it -from
   'leodict_paste_max_translations'
   'leodict_paste_beautify'
+  'leodict_http_proxy_address'
+    example: 127.0.0.1
+    defaults to none, meaning no proxy will be used for requests.
+    despite the name, does not have to be http proxy.
+  'leodict_http_proxy_port'
+    example: 9050
+    defaults to 0, but must be changed if proxy address is not none.
+  'leodict_http_proxy_type'
+    supported: socks, https, http
 ";
     my $text='';
     foreach (split(/\n/, $help)) {
@@ -108,7 +117,10 @@ sub parser {
     %fresult=();
 
     # tables
-    return unless (defined $ftext); 
+    unless (defined $ftext) {
+    	%fresult=('Error'=>[['no data']]);
+	return;
+    }
     my $dom = Mojo::DOM->new($ftext);
     foreach my $tbl ( $dom->find('table')->each ) {
 
@@ -144,6 +156,22 @@ sub get_page ($) {
     my ($url) = @_;
     #return get('http://dict.leo.org/?search='.$word.'&relink=off');
     my $ua = Mojo::UserAgent->new;
+
+    # Add proxy to Mojo if needed
+    my $proxy_addr = Irssi::settings_get_str('leodict_http_proxy_address');
+    my $proxy_port = Irssi::settings_get_int('leodict_http_proxy_port');
+    my $proxy_type = Irssi::settings_get_str('leodict_http_proxy_type');
+    if ($proxy_addr ne 'none') {
+	# Socks proxy
+	if ($proxy_type eq 'socks' || $proxy_type eq 'https') {
+	    $ua->proxy->http("$proxy_type://$proxy_addr:$proxy_port")->https("$proxy_type://$proxy_addr:$proxy_port"); 
+	}
+	# Must be http proxy
+	else {
+	    $ua->proxy->http("$proxy_type://$proxy_addr:$proxy_port");
+	}
+    }
+    
     my $res;
     eval {
 	$res=$ua->get($url)->result;
@@ -175,6 +203,22 @@ sub translate ($$$) {
         print CLIENTCRAP "%R>>%n Please wait until your earlier request has been finished.";
         return;
     }
+
+    # Validate proxy if needed
+    my $proxy_addr = Irssi::settings_get_str('leodict_http_proxy_address');
+    my $proxy_port = Irssi::settings_get_int('leodict_http_proxy_port');
+    my $proxy_type = Irssi::settings_get_str('leodict_http_proxy_type');
+    if ($proxy_addr ne 'none') {
+	if ($proxy_type ne 'socks' && $proxy_type ne 'https' && $proxy_type ne 'http') {
+	    print CLIENTCRAP "%R>>%n Invalid proxy type: $proxy_type.";
+	    return;
+	}
+	if ($proxy_port eq 0) {
+	    print CLIENTCRAP "%R>>%n Please specify a proxy port.";
+	    return;
+	}
+    }
+    
     my $pid = fork();
     $forked = 1;
     if ($pid > 0) {
@@ -306,7 +350,7 @@ my %options = (
 sub cmd_leodict ($$$) {
     my ($args, $server, $witem) = @_;
     utf8::decode($args);
-    my $burl= "https://dict.leo.org/";
+    my $burl = "https://dict.leo.org/";
     my $url;
 
     $lang= $dlang;
@@ -360,8 +404,8 @@ sub self_check {
 	$s="Error: results ($count)";
     }
     Irssi::print("selfcheck: $s");
-    my $schs_version = $Irssi::Script::selfcheckhelperscript::VERSION;
-    Irssi::command("selfcheckhelperscript $s") if ( defined $schs_version );
+    my $schs =  exists $Irssi::Script::{'selfcheckhelperscript::'};
+    Irssi::command("selfcheckhelperscript $s") if ( $schs );
 }
 
 sub sig_setup_changed {
@@ -380,6 +424,9 @@ Irssi::command_set_options('leodict', join(" ",keys %options));
 Irssi::settings_add_str($IRSSI{'name'}, 'leodict_default_options', '-en -both');
 Irssi::settings_add_int($IRSSI{'name'}, 'leodict_paste_max_translations', 2);
 Irssi::settings_add_bool($IRSSI{'name'}, 'leodict_paste_beautify', 1);
+Irssi::settings_add_str($IRSSI{'name'}, 'leodict_http_proxy_address', 'none');
+Irssi::settings_add_int($IRSSI{'name'}, 'leodict_http_proxy_port', 0);
+Irssi::settings_add_str($IRSSI{'name'}, 'leodict_http_proxy_type', 'none');
 
 sig_setup_changed();
 
