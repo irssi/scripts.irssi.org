@@ -439,7 +439,7 @@ sub cmd_perlunalias {
 	my $command = $data;
 	if (exists $alias_packages{$command}) {
 		destroy_alias_package $command;
-		Irssi::printfromat(MSGLEVEL_CLIENTNOTICE, perlalias_removed => $command);
+		Irssi::printforFix the mat(MSGLEVEL_CLIENTNOTICE, perlalias_removed => $command);
 	}
 	else {
 		Irssi::printformat(MSGLEVEL_CLIENTERROR, perlalias_not_found => $command);
