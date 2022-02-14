@@ -267,7 +267,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                          lastfm ](Test/lastfm/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                       lastspoke ](Test/lastspoke/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
 [                             len ](Test/len/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
-[                         leodict ](Test/leodict/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
+[                         leodict ](Test/leodict/)|  ✔   |  ✔   |  ✔   |  8   |  ✔   
 [                      levelclear ](Test/levelclear/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                            licq ](Test/licq/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                      linebuffer ](Test/linebuffer/)|  ✔   |  ✔   |  ✔   |  2   |  ✔   | (c)
@@ -378,7 +378,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                           pelix ](Test/pelix/)|  ✔   |  ✔   |  ✔   | 25   |  ✔   | (c)
 [                          people ](Test/people/)|  ✔   |  ✔   |  ✔   | 75   |  ✔   | (c)
 [               per_window_prompt ](Test/per_window_prompt/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                       perlalias ](Test/perlalias/)|  ✔   |  ✔   |  ✔   |  8   |  ✔   
+[                       perlalias ](Test/perlalias/)|  ✔   |  ✔   |  ✔   |  8   |  ✔   | (c)
 [                      pggb_sound ](Test/pggb_sound/)|  ✔   |  ✔   |  ✔   | 33   |  ✔   | (c)
 [                          poison ](Test/poison/)|  ✔   |  ✔   |  ✔   | 12   |  ✔   | (c)
 [                        postpone ](Test/postpone/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -545,4 +545,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-bee13e25eee13e5331a01c757788ec0b156dd5a0 | 2022-02-14T21:03:43,307557110+00:00
+9e5d8a43cf1e5b279f11dee8a6424c2c4b8f75f4 | 2022-02-14T21:07:23,812177356+00:00
