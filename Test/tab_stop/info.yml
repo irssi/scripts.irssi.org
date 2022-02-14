@@ -1,11 +1,11 @@
 ---
 -
   authors: "Stefan 'tommie' Tomanek, shabble"
-  changed: '2011052400'
+  changed: '2022011900'
   contact: 'stefan@pico.ruhr.de, shabble@#irssi/Freenode'
   default_package: tab_stop
-  description: 'Replaces \t TAB characters with contents of /set tabstop_replacement'
+  description: 'Replaces \t TAB characters to line up with tab stops (default 8) or to contents of /set tabstop_replacement if tabstop_interval is set to 0'
   license: GPLv2
-  modified: '2020-03-22 18:15:22'
+  modified: '2022-01-19 12:27:21'
   name: tab_stop
-  version: '2011052400'
+  version: '2022011900'
