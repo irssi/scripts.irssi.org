@@ -2737,11 +2737,11 @@
   description: 'translates via dict.leo.org'
   filename: leodict.pl
   license: GPLv2
-  modified: '2021-01-26 16:18:20'
+  modified: '2022-01-06 17:24:38'
   modules: 'Mojo::DOM Mojo::UserAgent'
   name: leodict
   url: http://irssi.org/scripts/
-  version: '20210126'
+  version: '20220104'
 -
   authors: 'Nico R. Wohlgemuth'
   commands: levelclear
