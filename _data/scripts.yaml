@@ -3890,9 +3890,9 @@
   description: 'Quickly create commands from short perl blocks'
   filename: perlalias.pl
   license: 'public domain'
-  modified: '2022-01-09 16:59:46'
+  modified: '2022-02-14 07:27:10'
   name: perlalias
-  version: '2.0'
+  version: 2.0.1
 -
   authors: 'Adam Duck'
   commands: sound
