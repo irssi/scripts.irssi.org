@@ -128,7 +128,7 @@ sub sig_send_text {
       Irssi::signal_stop();
       require_confirmation($text);
     }
-    elsif($data =~ /^\s*($cmdregexp)/i) {
+    elsif($data =~ /^\s*($cmdregexp)\b/i) {
       my $text = "The first word, '$1', looks like a command, is this what you wanted? [y/F/c]";
       $isword = 1;
       $pending_input = {
