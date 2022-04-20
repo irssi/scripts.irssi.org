@@ -5,7 +5,7 @@ on:
   pull_request:
 name: Check Script
 env:
-  apt_build_deps: irssi-git cpanminus elinks zsh
+  apt_build_deps: irssi cpanminus elinks zsh
   apt_script_deps: libdb-dev libaspell-dev libgirepository1.0-dev gobject-introspection gir1.2-notify-0.7 xosd-bin wbritish
   USE_ARTEFACTS_CACHE: yes
   EXTRACT_TEST_ARTEFACTS: yes
@@ -36,8 +36,6 @@ jobs:
       - name: prepare required software
         run: |
           RELEASE=$(lsb_release -rs)
-          echo "deb http://download.opensuse.org/repositories/home:/ailin_nemui:/irssi-git/xUbuntu_$RELEASE/ /" | sudo tee /etc/apt/sources.list.d/home:ailin_nemui:irssi-git.list
-          curl -fsSL https://download.opensuse.org/repositories/home:ailin_nemui:irssi-git/xUbuntu_$RELEASE/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/home_ailin_nemui_irssi-git.gpg > /dev/null
           sudo apt -q update
           sudo apt -q install $apt_build_deps $apt_script_deps
       - name: check Perl ver
