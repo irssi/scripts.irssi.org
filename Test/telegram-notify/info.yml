@@ -7,7 +7,7 @@
   default_package: telegram_notify
   description: 'Send notifications of highlighted messages over Telegram'
   license: MIT
-  modified: '2020-08-24 22:31:21'
+  modified: '2017-05-08 11:41:48'
   modules:
     - HTML::Entities
     - WWW::Telegram::BotAPI

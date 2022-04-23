@@ -11,6 +11,6 @@
   default_package: matterircd_complete
   description: 'Adds tab completion for Matterircd message threads'
   license: GPL
-  modified: '2020-12-13 03:22:53'
+  modified: '2017-05-08 11:41:48'
   name: 'Matterircd Tab Auto Complete'
   version: '1.00'

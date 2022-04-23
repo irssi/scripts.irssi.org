@@ -5,6 +5,7 @@
   default_package: format_identify
   description: 'Formats msgs and notices when the identify-msg and/or identify-ctcp capability is available.'
   license: GPL2
+  modified: '2017-05-08 11:41:48'
   name: format_identify
   url: http://ben.reser.org/irssi/
   version: 1.5-dev-coekie
