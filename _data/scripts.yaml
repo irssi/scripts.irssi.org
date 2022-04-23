@@ -1812,7 +1812,7 @@
   description: 'Formats msgs and notices when the identify-msg and/or identify-ctcp capability is available.'
   filename: format_identify.pl
   license: GPL2
-  modified: '2014-04-09 00:18:24'
+  modified: '2017-05-08 11:41:48'
   name: format_identify
   url: http://ben.reser.org/irssi/
   version: 1.5-dev-coekie
@@ -3001,7 +3001,7 @@
   description: 'Adds tab completion for Matterircd message threads'
   filename: matterircd_complete.pl
   license: GPL
-  modified: '2020-12-13 03:22:53'
+  modified: '2017-05-08 11:41:48'
   name: 'Matterircd Tab Auto Complete'
   version: '1.00'
 -
@@ -3431,7 +3431,7 @@
   description: 'draws a nicklist to another terminal, or at the right of your irssi in the same terminal'
   filename: nicklist.pl
   license: GPLv2
-  modified: '2018-10-02 22:23:16'
+  modified: '2017-05-08 11:41:48'
   name: nicklist
   url: http://wouter.coekaerts.be/irssi
   version: 0.4.12
@@ -3975,7 +3975,7 @@
   description: "Authenticates you to QuakeNet's Q immediately on connect using CHALLENGEAUTH"
   filename: qchallengeauth.pl
   license: GPLv3+
-  modified: '2014-08-23 12:23:44'
+  modified: '2017-05-08 11:41:48'
   name: qchallengeauth.pl
   version: '1.0'
 -
@@ -4779,7 +4779,7 @@
   description: 'Send notifications of highlighted messages over Telegram'
   filename: telegram-notify.pl
   license: MIT
-  modified: '2020-08-24 22:31:21'
+  modified: '2017-05-08 11:41:48'
   modules: 'HTML::Entities WWW::Telegram::BotAPI'
   name: telegram-notify
   version: '1.00'
