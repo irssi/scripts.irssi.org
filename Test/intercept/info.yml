@@ -1,18 +1,20 @@
 ---
 -
   authors: 'Jari Matilainen'
-  changed: '24 Nov 16:00:00 CET 2015'
+  changed: '04 Mar 16:00:00 CET 2022'
   commands:
     - prompt
     - 'prompt clear'
     - 'prompt off'
     - 'prompt on'
     - 'prompt set'
-  contact: 'vague!#irssi@freenode on irc'
+  contact: 'vague!#irssi@libera.chat on irc'
   default_package: intercept
   description: 'Intercept misprinted commands and offer to remove the first character before sending it on'
   license: 'Public Domain'
-  modified: '2015-11-25 14:54:47'
+  modified: '2022-03-10 16:43:44'
+  modules:
+    - Data::Munge
   name: intercept
-  url: http://gplus.to/vague
-  version: '0.2'
+  url: https://irssi.org
+  version: '0.3'
