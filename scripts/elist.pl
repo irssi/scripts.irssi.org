@@ -13,7 +13,7 @@ use vars qw($VERSION %IRSSI);
 use Irssi;
 use Getopt::Long;
 
-$VERSION = '1.1';
+$VERSION = '1.2';
 %IRSSI = (
     authors     => 'Ilya Cassina',
     contact     => 'icassina@gmail.com',
@@ -33,6 +33,8 @@ use Irssi qw(
 my %elist_channels = ();
 my %elist_config = ();
 
+### settings
+Irssi::settings_add_bool($IRSSI{'name'}, 'elist_colorized', 1);
 
 sub elist_channels_free {
   %elist_channels = ();
@@ -52,17 +54,17 @@ sub elist {
 
   ### init variables ###
   elist_config_init();
-  
+
   #### processing arguments using Getopt ###
   Getopt::Long::config('permute', 'no_ignore_case');
-  
+
   local(@ARGV) = split(/\s/, $data,);
   GetOptions (
     'mincount|m=i' => \$elist_config{"mincount"},
     'maxcount|M=i' => \$elist_config{"maxcount"},
     'yes|YES' => \$elist_config{"yes"}
   );
- 
+
   ## setting chanmask (remaining argument) ##
   if (@ARGV . length == 0) {
     $elist_config{"chanmask"} = "";
@@ -85,10 +87,15 @@ sub elist {
 
 sub elist_collect {
   my ($server, $data) = @_;
-          
+
   my (undef, $channel, $users, $topic) = split(/\s/, $data, 4);
   $topic = substr($topic, 1);
-                 
+
+  if (!Irssi::settings_get_bool('elist_colorized')) {
+    # code below stolen from script: cleanpublic.pl by Jørgen Tjernø
+    $topic =~ s/\x03\d?\d?(,\d?\d?)?|\x02|\x1f|\x16|\x06|\x07//g;
+  }
+
   if ($users >= $elist_config{"mincount"} and $users <= $elist_config{"maxcount"}) {
     push @{$elist_channels{$users}}, [ $channel, $topic ];
   }
@@ -127,3 +134,4 @@ signal_add('event 323', \&elist_show);
 ##print "Usage: /elist [-min <usercount>] [-max <usercount] [#]<channelmask>"
 
 # EOF #
+# vim: set expandtab tabstop=2 shiftwidth=2:
