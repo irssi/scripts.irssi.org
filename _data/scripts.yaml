@@ -2354,14 +2354,15 @@
 -
   authors: 'Jari Matilainen'
   commands: prompt
-  contact: 'vague!#irssi@freenode on irc'
+  contact: 'vague!#irssi@libera.chat on irc'
   description: 'Intercept misprinted commands and offer to remove the first character before sending it on'
   filename: intercept.pl
   license: 'Public Domain'
-  modified: '2015-11-25 14:54:47'
+  modified: '2022-03-10 16:43:44'
+  modules: Data::Munge
   name: intercept
-  url: http://gplus.to/vague
-  version: '0.2'
+  url: https://irssi.org
+  version: '0.3'
 -
   authors: c0ffee
   commands: 'join18n msg18n part18n'
