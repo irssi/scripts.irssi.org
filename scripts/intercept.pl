@@ -16,24 +16,27 @@ use warnings;
 use Data::Dumper;
 use Carp qw( croak );
 use Irssi;
+use Data::Munge 'list2re';
 
 use vars qw($VERSION %IRSSI);
 
-$VERSION = "0.2";
+$VERSION = "0.3";
 %IRSSI = (
               authors     => "Jari Matilainen",
-              contact     => 'vague!#irssi@freenode on irc',
+              contact     => 'vague!#irssi@libera.chat on irc',
               name        => "intercept",
               description => "Intercept misprinted commands and offer to remove the first character before sending it on",
               license     => "Public Domain",
-              url         => "http://gplus.to/vague",
-              changed     => "24 Nov 16:00:00 CET 2015",
+              url         => "https://irssi.org",
+              changed     => "04 Mar 16:00:00 CET 2022",
              );
 
 my $active = 0;
 my $permit_pending = 0;
 my $pending_input = {};
 my $verbose = 0;
+my $isword = 0;
+my $cmdregexp = list2re map {$_->{cmd}} Irssi::commands();
 
 sub script_is_loaded {
   return exists($Irssi::Script::{$_[0] . '::'});
@@ -89,6 +92,19 @@ sub sig_send_text {
       $server->command($data);
     }
   }
+  elsif($permit_pending == 3) {
+    $pending_input = {};
+    $permit_pending = 0;
+    $isword = 0;
+    Irssi::signal_stop();
+
+    if(ref $witem && $witem->{type} eq 'CHANNEL') {
+      $witem->command($data);
+    }
+    else {
+      $server->command($data);
+    }
+  }
   else {
     (my $cmdchars = Irssi::settings_get_str('cmdchars')) =~ s/(.)(.)/$1|$2/;
     my @exceptions = split / /, Irssi::settings_get_str('intercept_exceptions');
@@ -97,10 +113,24 @@ sub sig_send_text {
       return if($data =~ m{$_}i);
     }
 
+    my ($first) = split ' ', $data;
+
     my $regexp = Irssi::settings_get_str('intercept_linestart');
     $regexp =~ s/(^[\^])|([\$]$)//g;
     if($data =~ /^($regexp)($cmdchars)/i) {
       my $text = "You have " . ($1 eq ' '?'a space':$1) . " infront of your cmdchar '$2', is this what you wanted? [y/F/c]";
+      $pending_input = {
+                         text     => $data,
+                         server   => $server,
+                         win_item => $witem,
+                       };
+
+      Irssi::signal_stop();
+      require_confirmation($text);
+    }
+    elsif($data =~ /^\s*($cmdregexp)\b/i) {
+      my $text = "The first word, '$1', looks like a command, is this what you wanted? [y/F/c]";
+      $isword = 1;
       $pending_input = {
                          text     => $data,
                          server   => $server,
@@ -122,7 +152,7 @@ sub sig_gui_keypress {
 
   # we support f, F, enter for Fix.
   if($char =~ m/^f?$/i) {
-    $permit_pending = 2;
+    $permit_pending = 2 + $isword;
     Irssi::signal_stop();
     Irssi::signal_emit('send text',
                         $pending_input->{text},
@@ -159,6 +189,10 @@ sub sig_gui_keypress {
 sub app_init {
   Irssi::signal_add_first("send text"       => \&sig_send_text);
   Irssi::signal_add_first('gui key pressed' => \&sig_gui_keypress);
+  Irssi::signal_add("commandlist new"       =>
+                     sub {
+                       $cmdregexp = list2re map {$_->{cmd}} Irssi::commands();
+                     });
   Irssi::settings_add_str('Intercept', 'intercept_exceptions', 's/\w+/[\w\s\d]+/');
   Irssi::settings_add_str('Intercept', 'intercept_linestart', '\s');
 }
