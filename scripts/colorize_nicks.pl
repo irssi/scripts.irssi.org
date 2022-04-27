@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-our $VERSION = '0.4.1'; # ed9cb119fc4b3d1
+our $VERSION = '0.4.2'; # ed9cb119fc4b3d1
 our %IRSSI = (
     authors     => 'Nei',
     contact     => 'Nei @ anti@conference.jabber.teamidiot.de',
@@ -51,7 +51,7 @@ use Irssi;
 my $irssi_mumbo = qr/\cD[`-i]|\cD[&-@\xff]./;
 
 my $nickchar = qr/[\]\[[:alnum:]\\|`^{}_-]/;
-my $nick_pat = qr/($nickchar+)/;
+my $nick_pat = qr/(?i)($nickchar+)/;
 
 my @ignore_list;
 
