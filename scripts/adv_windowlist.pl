@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-our $VERSION = '1.10'; # a643fc45f8a0037
+our $VERSION = '1.11'; # 28b8dcf69e0355e
 our %IRSSI = (
     authors     => 'Nei',
     contact     => 'Nei @ anti@conference.jabber.teamidiot.de',
@@ -483,7 +483,7 @@ sub awl {
 { my %killBar;
   sub get_old_status {
       my ($textDest, $cont, $cont_stripped) = @_;
-      if ($textDest->{level} == 524288 and $textDest->{target} eq '' and !defined $textDest->{server}) {
+      if ($textDest->{level} == MSGLEVEL_CLIENTCRAP and $textDest->{target} eq '' and !defined $textDest->{server}) {
 	  my $name = quotemeta(set '');
 	  if ($cont_stripped =~ m/^$name(\d+)\s/) { $killBar{$1} = 1; }
 	  Irssi::signal_stop;
@@ -506,7 +506,7 @@ sub _add_map {
 
 sub get_keymap {
     my ($textDest, undef, $cont_stripped) = @_;
-    if ($textDest->{level} == 524288 and $textDest->{target} eq '' and !defined $textDest->{server}) {
+    if ($textDest->{level} == MSGLEVEL_CLIENTCRAP and $textDest->{target} eq '' and !defined $textDest->{server}) {
 	my $one_meta_or_ctrl_key = qr/((?:meta-)*?)(?:(meta-|\^)(\S)|(\w+))/;
 	$cont_stripped = as_uni($cont_stripped);
 	if ($cont_stripped =~ m/((?:$one_meta_or_ctrl_key-)*$one_meta_or_ctrl_key)\s+(.*)$/) {
@@ -1827,7 +1827,7 @@ sub addPrintTextHook { # update on print text
     return unless defined $^S;
     return if $BLOCK_ALL;
     return unless $print_text_activity;
-    return if $_[0]->{level} == 262144 and $_[0]->{target} eq ''
+    return if $_[0]->{level} == MSGLEVEL_CLIENTNOTICE and $_[0]->{target} eq ''
 	and !defined($_[0]->{server});
     &wl_changed;
 }
@@ -2835,6 +2835,9 @@ UNITCHECK
 
 # Changelog
 # =========
+# 1.11
+# - fix compat with Irssi 1.4
+#
 # 1.10
 # - add /set awl_custom_key_re, to display custom keys in the $Q
 #   expando. requested by madduck
