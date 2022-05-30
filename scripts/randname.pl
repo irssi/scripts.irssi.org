@@ -1,4 +1,4 @@
-# RandName 1.0
+# RandName 1.1
 # 
 # set a random real name taken from a file
 # 
@@ -8,7 +8,7 @@ use strict;
 use Irssi;
 use vars qw($VERSION %IRSSI);
 
-$VERSION = '1.0';
+$VERSION = '1.1';
 %IRSSI = (
         authors         => 'legion',
 	contact         => 'a.lepore(at)email.it',
@@ -20,7 +20,7 @@ $VERSION = '1.0';
 
 sub randname {
 
-	my $namefile = glob Irssi::settings_get_str('random_realname_file');
+	my $namefile = (glob Irssi::settings_get_str('random_realname_file'))[0];
 
 	open (FILE, "<", $namefile) || return;
 	my $lines = 0; while(<FILE>) { $lines++; };
@@ -34,7 +34,7 @@ sub randname {
 		$realname = $_;
 		last;
 	}
-	close(f);
+	close(FILE);
 	
 	Irssi::print("%9RandName.pl%_:", MSGLEVEL_CRAP);
 	Irssi::command("set real_name $realname");
