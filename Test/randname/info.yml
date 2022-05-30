@@ -8,6 +8,6 @@
   default_package: randname
   description: 'Random "/set real_name" taken from a file.'
   license: 'Public Domain'
-  modified: '2014-10-19 11:54:16'
+  modified: '2022-05-24 21:54:06'
   name: RandName
-  version: '1.0'
+  version: '1.1'
