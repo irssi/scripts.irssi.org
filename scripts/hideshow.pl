@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-our $VERSION = '0.4.5'; # 701c53e4db98fb0
+our $VERSION = '0.4.6'; # 4cc7adcb14932da
 our %IRSSI = (
     authors     => 'Nei',
     contact     => 'Nei @ anti@conference.jabber.teamidiot.de',
@@ -50,7 +50,7 @@ use Irssi::TextUI;
 use Encode;
 use version;
 
-my $irssi_version = qv(Irssi::parse_special('v$J') =~ s/-.*//r);
+my $irssi_version = qv('v'.Irssi::parse_special('$J') =~ s/[^.\d].*//r);
 
 sub setc () {
     $IRSSI{name}
