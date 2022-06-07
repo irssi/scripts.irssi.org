@@ -33,7 +33,12 @@ for scriptfile ($filelist) {
 ^set -clear log_day_changed
 ^set -clear log_open_string
 ^set log_timestamp * 
+^load irc
+^load dcc
+^load flood
+^load notifylist
 ^load perl
+^load otr
 ^script exec \$\$^W = 1
 run ${(qqq)test_script}
 ^quit
