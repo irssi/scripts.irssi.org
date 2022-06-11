@@ -2,7 +2,7 @@ use strict;
 use warnings;
 use Irssi;
 
-our $VERSION = '1.4.0'; # 8d8dcd26fee5309
+our $VERSION = '1.4.1'; # 1e49c1df6916d1b
 our %IRSSI = (
     authors     => 'Rocco Caputo (dngor), Nei',
     contact     => 'rcaputo@cpan.org, Nei @ anti@conference.jabber.teamidiot.de',
@@ -120,7 +120,7 @@ Irssi::signal_add_last(
 sub load_help { <<'__HELP__'; }
 # Settings Documentation
 
-Irssi settings notes. Updated for 1.2.2
+Irssi settings notes. Updated for 1.4.0
 
 This is not an attempt to document Irssi completely. It should be used along with the documents at [Documentation](/) for more complete understanding of how Irssi works. For example, the startup HOWTO and tips/tricks show sample uses for these settings, including some very useful stuff.
 
@@ -567,7 +567,7 @@ See the [appendix](#a-credits) for credits and license information of this docum
 : There are times when you want to highlight channel activity in a window. Like when someone sends you a private message, or a DCC message. activity_hilight_level sets the kind of messages you think are extra important.
 
 (activity_msg_level)=
-`activity_msg_level` **`PUBLIC`**
+`activity_msg_level` **`PUBLIC NOTICES`**
 
 : Flag a channel as active when messages of this type are displayed there.
 
@@ -616,6 +616,13 @@ See the [appendix](#a-credits) for credits and license information of this docum
 
   Added in Irssi 0.8.12. Before Irssi 0.8.12, a boolean `actlist_moves` setting existed, which was equivalent to setting actlist_sort to refnum.
 
+(actlist_separator)=
+`actlist_separator` **`,`**
+
+: Which separator to use between windows in the Act: list.
+
+  Added in Irssi 1.4
+
 (autoclose_query)=
 `autoclose_query` **`0`**
 
@@ -632,7 +639,7 @@ See the [appendix](#a-credits) for credits and license information of this docum
 : Turn on to automatically create query windows when you /msg someone.
 
 (autocreate_query_level)=
-`autocreate_query_level` **`MSGS DCCMSGS`**
+`autocreate_query_level` **`MSGS DCCMSGS NOTICES`**
 
 : Automatically create query windows when receiving these types of messages.
 
@@ -836,9 +843,11 @@ See the [appendix](#a-credits) for credits and license information of this docum
 (colors_ansi_24bit)=
 `colors_ansi_24bit` **`OFF`**
 
-: Enable the use of 24-bit color codes, when compiled with `-Denable-true-color=yes`.
+: Enable the use of 24-bit color codes.
 
   Note: not all terminals support this. If yours does not, it may result in horrible screen distortion.
+
+  Irssi up to 1.4 need to be compiled with `-Denable-true-color=yes`.
 
   Added in Irssi 0.8.17
 
@@ -1082,6 +1091,20 @@ See the [appendix](#a-credits) for credits and license information of this docum
 : Whether to store the format and arguments for printed text in the scrollback, or the final rendered text instead. Turning it off restores pre-1.3 behaviour. Some features may not work depending on this setting.
 
   Added in Irssi 1.3
+
+(empty_kill_clears_cutbuffer)=
+`empty_kill_clears_cutbuffer` **`OFF`**
+
+: Whether using erase_line on an empty line should be ignored (default) or instead clear the cutbuffer.
+
+  Added in Irssi 1.4
+
+(glib_log_domains)=
+`glib_log_domains` **`all`**
+
+: Irssi will only show GLib log messages of this domain, or `all` for all log messages. This setting can be used to ignore GLib log messages based on the "log domain". Such log messages may be emitted by third party GLib-based libraries. 
+
+  Added in Irssi 1.4
 
 ##  [misc]
 
@@ -1335,6 +1358,13 @@ See the [appendix](#a-credits) for credits and license information of this docum
 
 : Ask you whether you meant to paste something if it's longer than this many lines.
 
+(paste_ignore_first_nl)=
+`paste_ignore_first_nl` **`OFF`**
+
+: Pasting a single line ending with a line break will remove the line break and insert the line into your input prompt instead of sending it.
+
+  Added in Irssi 1.4
+
 (quit_message)=
 `quit_message` **`leaving`**
 
@@ -1474,9 +1504,9 @@ See the [appendix](#a-credits) for credits and license information of this docum
   Added in Irssi 1.3
 
 (autoload_modules)=
-`autoload_modules` **`perl otr`**
+`autoload_modules` **`irc dcc flood notifylist perl otr`**
 
-: Which modules should be loaded on Irssi start.
+: Which modules should be loaded on Irssi start. Irssi will silently try to /load all these modules in the order given.
 
   Added in Irssi 1.3
 
