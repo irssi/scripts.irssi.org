@@ -3,7 +3,6 @@
   authors: 'Michael Hansen'
   changed: 2020-05-16
   contact: 'mh (IRCnet)'
-  default_package: mh_secureonlychan_489
   description: 'Fix for Irssi not fully supporting numeric 489 ERR_SECUREONLYCHAN'
   license: ISC/BSD
   modified: '2020-05-16 22:33:56'

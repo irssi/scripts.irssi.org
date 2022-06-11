@@ -1,3 +1,254 @@
+* Key                  Action
+* meta-left            key mleft
+* meta2-F              key end
+* ^M                   key return
+* meta2-4;5~           key cend
+* meta2-G              key next
+* meta2-H              key home
+* meta2-I              key prior
+* meta-down            key mdown
+* meta2-7~             key home
+* meta2-1;5~           key chome
+* meta2-5~             key prior
+* meta2-c              key cright
+* meta-[O              key meta2
+* meta2-d              key cleft
+* meta-up              key mup
+* meta2-3~             key delete
+* meta-[               key meta2
+* ^?                   key backspace
+*                      key space
+* meta2-1~             key home
+* meta-O-M             key return
+* meta2-1;5A           key cup
+* meta2-8~             key end
+* meta2-1;5B           key cdown
+* meta-right           key mright
+* ^[                   key meta
+* meta2-1;5C           key cright
+* meta2-1;3A           key mup
+* meta2-5C             key cright
+* meta2-1;5D           key cleft
+* meta2-6~             key next
+* meta2-1;3B           key mdown
+* meta2-5D             key cleft
+* meta2-8;5~           key cend
+* meta2-1;3C           key mright
+* meta2-A              key up
+* meta2-1;5F           key cend
+* ^H                   key backspace
+* meta2-1;3D           key mleft
+* meta2-5F             key cend
+* meta2-4~             key end
+* meta2-B              key down
+* meta2-7;5~           key chome
+* ^I                   key tab
+* meta-O               key meta2
+* meta2-C              key right
+* meta2-1;5H           key chome
+* meta2-Z              key stab
+* ^J                   key return
+* meta2-5H             key chome
+* meta2-D              key left
+* meta2-2~             key insert
+* space                multi check_replaces;insert_text  
+* return               multi check_replaces;send_line
+* ^[[200~              paste_start paste_start
+* paste-^C             paste_cancel 
+* paste-^P             paste_print 
+* paste-^K             paste_send 
+* paste-^E             paste_edit 
+* paste-^U             paste_event 
+* left                 backward_character 
+* right                forward_character 
+* cleft                backward_word 
+* meta-b               backward_word 
+* cright               forward_word 
+* meta-f               forward_word 
+* ^A                   beginning_of_line 
+* home                 beginning_of_line 
+* ^E                   end_of_line 
+* end                  end_of_line 
+* up                   backward_history 
+* down                 forward_history 
+* cup                  backward_global_history 
+* cdown                forward_global_history 
+* backspace            backspace 
+* delete               delete_character 
+* ^D                   delete_character 
+* meta-d               delete_next_word 
+* meta-backspace       delete_previous_word 
+* ^W                   delete_to_previous_space 
+* ^U                   erase_line 
+* ^K                   erase_to_end_of_line 
+* ^Y                   yank_from_cutbuffer 
+* ^T                   transpose_characters 
+* stab                 word_completion_backward 
+* tab                  word_completion 
+* meta-k               erase_completion 
+* ^P                   previous_window 
+* ^N                   next_window 
+* mup                  upper_window 
+* mdown                lower_window 
+* mleft                left_window 
+* mright               right_window 
+* meta-a               active_window 
+* ^X                   next_window_item 
+* ^L                   refresh_screen 
+* meta-p               scroll_backward 
+* prior                scroll_backward 
+* meta-n               scroll_forward 
+* next                 scroll_forward 
+* chome                scroll_start 
+* cend                 scroll_end 
+* meta-i               change_window 18
+* meta-o               change_window 19
+* meta-q               change_window 11
+* meta-r               change_window 14
+* meta-t               change_window 15
+* meta-0               change_window 10
+* meta-u               change_window 17
+* meta-1               change_window 1
+* meta-2               change_window 2
+* meta-w               change_window 12
+* meta-3               change_window 3
+* meta-4               change_window 4
+* meta-y               change_window 16
+* meta-5               change_window 5
+* meta-6               change_window 6
+* meta-7               change_window 7
+* meta-e               change_window 13
+* meta-8               change_window 8
+* meta-9               change_window 9
+* ^Z                   stop_irc 
+* Key                  Action
+* meta-left            key mleft
+* meta2-F              key end
+* ^M                   key return
+* meta2-4;5~           key cend
+* meta2-G              key next
+* meta2-H              key home
+* meta2-I              key prior
+* meta-down            key mdown
+* meta2-7~             key home
+* meta2-1;5~           key chome
+* meta2-5~             key prior
+* meta2-c              key cright
+* meta-[O              key meta2
+* meta2-d              key cleft
+* meta-up              key mup
+* meta2-3~             key delete
+* meta-[               key meta2
+* ^?                   key backspace
+*                      key space
+* meta2-1~             key home
+* meta-O-M             key return
+* meta2-1;5A           key cup
+* meta2-8~             key end
+* meta2-1;5B           key cdown
+* meta-right           key mright
+* ^[                   key meta
+* meta2-1;5C           key cright
+* meta2-1;3A           key mup
+* meta2-5C             key cright
+* meta2-1;5D           key cleft
+* meta2-6~             key next
+* meta2-1;3B           key mdown
+* meta2-5D             key cleft
+* meta2-8;5~           key cend
+* meta2-1;3C           key mright
+* meta2-A              key up
+* meta2-1;5F           key cend
+* ^H                   key backspace
+* meta2-1;3D           key mleft
+* meta2-5F             key cend
+* meta2-4~             key end
+* meta2-B              key down
+* meta2-7;5~           key chome
+* ^I                   key tab
+* meta-O               key meta2
+* meta2-C              key right
+* meta2-1;5H           key chome
+* meta2-Z              key stab
+* ^J                   key return
+* meta2-5H             key chome
+* meta2-D              key left
+* meta2-2~             key insert
+* space                multi check_replaces;insert_text  
+* return               multi check_replaces;send_line
+* ^[[200~              paste_start paste_start
+* paste-^C             paste_cancel 
+* paste-^P             paste_print 
+* paste-^K             paste_send 
+* paste-^E             paste_edit 
+* paste-^U             paste_event 
+* left                 backward_character 
+* right                forward_character 
+* cleft                backward_word 
+* meta-b               backward_word 
+* cright               forward_word 
+* meta-f               forward_word 
+* ^A                   beginning_of_line 
+* home                 beginning_of_line 
+* ^E                   end_of_line 
+* end                  end_of_line 
+* up                   backward_history 
+* down                 forward_history 
+* cup                  backward_global_history 
+* cdown                forward_global_history 
+* backspace            backspace 
+* delete               delete_character 
+* ^D                   delete_character 
+* meta-d               delete_next_word 
+* meta-backspace       delete_previous_word 
+* ^W                   delete_to_previous_space 
+* ^U                   erase_line 
+* ^K                   erase_to_end_of_line 
+* ^Y                   yank_from_cutbuffer 
+* ^T                   transpose_characters 
+* stab                 word_completion_backward 
+* tab                  word_completion 
+* meta-k               erase_completion 
+* ^P                   previous_window 
+* ^N                   next_window 
+* mup                  upper_window 
+* mdown                lower_window 
+* mleft                left_window 
+* mright               right_window 
+* meta-a               active_window 
+* ^X                   next_window_item 
+* ^L                   refresh_screen 
+* meta-p               scroll_backward 
+* prior                scroll_backward 
+* meta-n               scroll_forward 
+* next                 scroll_forward 
+* chome                scroll_start 
+* cend                 scroll_end 
+* meta-i               change_window 18
+* meta-o               change_window 19
+* meta-q               change_window 11
+* meta-r               change_window 14
+* meta-t               change_window 15
+* meta-0               change_window 10
+* meta-u               change_window 17
+* meta-1               change_window 1
+* meta-2               change_window 2
+* meta-w               change_window 12
+* meta-3               change_window 3
+* meta-4               change_window 4
+* meta-y               change_window 16
+* meta-5               change_window 5
+* meta-6               change_window 6
+* meta-7               change_window 7
+* meta-e               change_window 13
+* meta-8               change_window 8
+* meta-9               change_window 9
+* ^Z                   stop_irc 
+* Name                           Type   Placement Position Visible
+* window                         window bottom    1        active
+* window_inact                   window bottom    1        inactive
+* prompt                         root   bottom    100      always
+* topic                          root   top       1        always
 * Use of uninitialized value $screenWidth in subtraction (-) at adv_windowlist.pl line 1007.
 * 
 * -!- Irssi: Loaded script adv_windowlist
