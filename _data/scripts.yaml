@@ -4457,9 +4457,9 @@
   description: 'Irssi settings notes and documentation'
   filename: settingshelp.pl
   license: 'CC BY-SA 2.5, http://creativecommons.org/licenses/by-sa/2.5/'
-  modified: '2021-10-23 02:26:53'
+  modified: '2022-05-31 12:23:24'
   name: settingshelp
-  version: 1.4.0
+  version: 1.4.1
 -
   authors: 'Marcin Rozycki'
   commands: '42.pl shortenurl'
