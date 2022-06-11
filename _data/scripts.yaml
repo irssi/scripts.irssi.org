@@ -135,11 +135,11 @@
   description: 'Adds a permanent advanced window list on the right or in a status bar.'
   filename: adv_windowlist.pl
   license: 'GNU GPLv2 or later'
-  modified: '2022-01-04 08:49:42'
+  modified: '2022-05-23 22:13:43'
   modules: Text::CharWidth
   name: adv_windowlist
   url: http://anti.teamidiot.de/
-  version: '1.10'
+  version: '1.11'
 -
   authors: BC-bd
   commands: ai
