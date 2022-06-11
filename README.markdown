@@ -91,7 +91,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                     cap-extjoin ](Test/cap-extjoin/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                             cap ](Test/cap/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        cap_sasl ](Test/cap_sasl/)|  ✘   |  ✔   |  ✔   |  7   |  ☡   | (c)
-[                   cap_sasl_fail ](Test/cap_sasl_fail/)|  ✘   |  ✔   |  ✔   |  2   |  ☡   | (c)
+[                   cap_sasl_fail ](Test/cap_sasl_fail/)|  ✘   |  ✔   |  ✔   |  2   |  ☡   
 [                       centericq ](Test/centericq/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                           cgrep ](Test/cgrep/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                         chanact ](Test/chanact/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
@@ -206,7 +206,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                           hello ](Test/hello/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                            hide ](Test/hide/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        hideauth ](Test/hideauth/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                        hideshow ](Test/hideshow/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
+[                        hideshow ](Test/hideshow/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
 [                        highlite ](Test/highlite/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                         hignore ](Test/hignore/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                      hilightcmd ](Test/hilightcmd/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -399,7 +399,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                      quizmaster ](Test/quizmaster/)|  ✔   |  ✔   |  ✔   | 15   |  ✔   | (c)
 [                         rainbow ](Test/rainbow/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                        randaway ](Test/randaway/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
-[                        randname ](Test/randname/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   
+[                        randname ](Test/randname/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
 [                    recentdepart ](Test/recentdepart/)|  ✔   |  ✔   |  ✔   |  2   |  ✔   | (c)
 [                        redirect ](Test/redirect/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                            relm ](Test/relm/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -423,7 +423,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                          sbmove ](Test/sbmove/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                     schwaebisch ](Test/schwaebisch/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                     screen_away ](Test/screen_away/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                    scriptassist ](Test/scriptassist/)|  ✔   |  ✔   |  ✔   | 60   |  ✔   | (c)
+[                    scriptassist ](Test/scriptassist/)|  ✔   |  ✔   |  ✔   | 60   |  ✔   
 [                      scripthelp ](Test/scripthelp/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                      scriptinfo ](Test/scriptinfo/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                      scriptsave ](Test/scriptsave/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -545,4 +545,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-c519d04bcf666597ed358cb994c41540fe2ed5bc | 2022-05-30T13:07:02,250362268+00:00
+ed7e4b9dc910c31a3d9a6f6fc55e03dce1a60541 | 2022-06-11T21:09:49,626918533+00:00

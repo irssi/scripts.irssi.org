@@ -33,9 +33,9 @@
   default_package: scriptassist
   description: 'keeps your scripts on the cutting edge'
   license: GPLv2
-  modified: '2020-04-27 16:47:51'
+  modified: '2022-05-31 20:44:38'
   modules:
     - LWP::UserAgent
   name: scriptassist
   url: https://scripts.irssi.org/
-  version: '2020042700'
+  version: '2022053100'
