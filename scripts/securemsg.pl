@@ -20,9 +20,6 @@
 # /sm del host <list of hosts>
 # removes the hosts from whitelist_hosts
 #
-# /sm clear <nick> [net <network>]
-# clear messages from nick without ignoring
-#
 # /sm nicks
 # shows the current whitelist_nicks
 #
@@ -42,10 +39,10 @@ use Irssi;
 use Irssi::Irc;
 use Irssi::UI;
 use Irssi::TextUI;
-
+use Data::Dumper;
 
 use vars qw($VERSION %IRSSI);
-$VERSION = "2.3.0";
+$VERSION = "2.4.0";
 my $APPVERSION = "Securemsg v$VERSION";
 %IRSSI = (
 	  authors	=> "Jari Matilainen, a lot of code borrowed from whitelist.pl by David O\'Rourke and Karl Siegemund",
@@ -54,7 +51,7 @@ my $APPVERSION = "Securemsg v$VERSION";
 	  description	=> "An irssi adaptation of securequery.mrc found in the Acidmax mIRC script. :), now with multiserver support",
 	  sbitems       => "securemsg",
 	  license	=> "GPLv2",
-	  changed	=> "17.05.2021 15:00"
+	  changed	=> "11.07.2022 10:00"
 );
 
 my $whitenick;
@@ -170,6 +167,9 @@ sub securemsg_check {
     Irssi::command_bind("sm show $nick",\&cmd_show);
     Irssi::command_bind("sm show $nick net ",\&cmd_show);
     Irssi::command_bind("sm show $nick net ".lc($server->{tag}),\&cmd_show);
+    Irssi::command_bind("sm clear $nick",\&cmd_clear);
+    Irssi::command_bind("sm clear $nick net ",\&cmd_clear);
+    Irssi::command_bind("sm clear $nick net ".lc($server->{tag}),\&cmd_clear);
     Irssi::signal_stop();
     return;
 }
@@ -264,6 +264,9 @@ sub cmd_accept {
     Irssi::command_unbind("sm show $nick",\&cmd_show);
     Irssi::command_unbind("sm show $nick net ",\&cmd_show);
     Irssi::command_unbind("sm show $nick net ".lc($server->{tag}),\&cmd_show);
+    Irssi::command_unbind("sm clear $nick",\&cmd_clear);
+    Irssi::command_unbind("sm clear $nick net ",\&cmd_clear);
+    Irssi::command_unbind("sm clear $nick net ".lc($server->{tag}),\&cmd_clear);
     refresh_securemsg();
 }
 
@@ -548,7 +551,7 @@ sub cmd_clear {
         return;
     }
 
-    delete $messages{$nick}{lc($server->{tag})}{messages};
+    delete $messages{$nick}{lc($server->{tag})};
     refresh_securemsg();
 }
 
