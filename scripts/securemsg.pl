@@ -42,7 +42,6 @@ use Irssi;
 use Irssi::Irc;
 use Irssi::UI;
 use Irssi::TextUI;
-use Data::Dumper;
 
 use vars qw($VERSION %IRSSI);
 $VERSION = "2.4.0";
