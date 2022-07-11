@@ -20,6 +20,9 @@
 # /sm del host <list of hosts>
 # removes the hosts from whitelist_hosts
 #
+# /sm clear <nick> [net <network>]
+# clear messages from nick without ignoring
+#
 # /sm nicks
 # shows the current whitelist_nicks
 #
