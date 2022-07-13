@@ -1,7 +1,7 @@
 ---
 -
   authors: "Jari Matilainen, a lot of code borrowed from whitelist.pl by David O'Rourke and Karl Siegemund"
-  changed: '17.05.2021 15:00'
+  changed: '11.07.2022 10:00'
   commands:
     - sm
     - 'sm accept'
@@ -23,7 +23,7 @@
   default_package: securemsg
   description: 'An irssi adaptation of securequery.mrc found in the Acidmax mIRC script. :), now with multiserver support'
   license: GPLv2
-  modified: '2021-05-18 14:48:18'
+  modified: '2022-07-11 10:54:46'
   name: securemsg
   sbitems: securemsg
-  version: 2.3.0
+  version: 2.4.0
