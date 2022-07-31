@@ -10,69 +10,68 @@ layout: default
     </div>
 
     <div class="row">
-      <div class="instructions">
-        <input id="automatic-instructions" type="radio" checked="checked" name="instructions" />
-	<input id="manual-instructions" type="radio" name="instructions" />
-	<h4>Instructions for using scripts with scriptassist.pl</h4>
-        <dl class="automatic-instructions">
-            <dt>How do I install scripts?</dt>
-            <dd>In Irssi, do <code>/run scriptassist</code> (only once per session), then
-            <code>/script install <i>scriptname</i></code> .
+        <div class="instructions">
+            <input id="automatic-instructions" type="radio" checked="checked" name="instructions" />
+            <input id="manual-instructions" type="radio" name="instructions" />
+            <h4>Instructions for using scripts with scriptassist.pl</h4>
+            <dl class="automatic-instructions">
+                <dt>How do I install scripts?</dt>
+                <dd>In Irssi, do <code>/run scriptassist</code> (only once per session), then
+                <code>/script install <i>scriptname</i></code> .</dd>
 
-            <dt>How do I rerun scripts?</dt>
-            <dd>Just do <code>/script load <i>scriptname</i></code> .</dd>
+                <dt>How do I rerun scripts?</dt>
+                <dd>Just do <code>/script load <i>scriptname</i></code> .</dd>
 
-            <dt>How do I unload scripts?</dt>
-            <dd>Just do <code>/script unload <i>scriptname</i></code> .</dd>
+                <dt>How do I unload scripts?</dt>
+                <dd>Just do <code>/script unload <i>scriptname</i></code> .</dd>
 
-            <dt>How do I run scripts automatically at startup?</dt>
-            <dd>Just do <code>/script autorun <i>scriptname</i></code> .</dd>
+                <dt>How do I run scripts automatically at startup?</dt>
+                <dd>Just do <code>/script autorun <i>scriptname</i></code> .</dd>
 
-	    <dt>Scriptassist does not work for me / I want to do it myself?</dt>
-	    <dd><label for="manual-instructions" class="btn-link">
-		View manual instructions.</label></dd>
+                <dt>Scriptassist does not work for me / I want to do it myself?</dt>
+                <dd><label for="manual-instructions" class="btn-link">
+                View manual instructions.</label></dd>
 
-            <dt>How do I submit a script to this page?</dt>
-            <dd>See information on how to contribute <a href="https://github.com/irssi/scripts.irssi.org">here</a>.</dd>
-        </dl>
-	<h4>Manual instructions for using scripts</h4>
-        <dl class="manual-instructions">
-            <dt>How do I run scripts?</dt>
-            <dd>Put them into <code>~/.irssi/scripts/</code> and in irssi do
-            <code>/script load script.pl</code> . There is a default alias for
-            <code>/script load</code> to <code>/run</code> in newer versions of
-            irssi.</dd>
+                <dt>How do I submit a script to this page?</dt>
+                <dd>See information on how to contribute <a href="https://github.com/irssi/scripts.irssi.org">here</a>.</dd>
+            </dl>
+            <h4>Manual instructions for using scripts</h4>
+            <dl class="manual-instructions">
+                <dt>How do I run scripts?</dt>
+                <dd>Put them into <code>~/.irssi/scripts/</code> and in irssi do
+                    <code>/script load script.pl</code> . There is a default alias for
+                    <code>/script load</code> to <code>/run</code> in newer versions of
+                irssi.</dd>
 
-            <dt>How do I rerun scripts?</dt>
-            <dd>Just do <code>/script load script.pl</code> .</dd>
+                <dt>How do I rerun scripts?</dt>
+                <dd>Just do <code>/script load script.pl</code> .</dd>
 
-            <dt>How do I unload scripts?</dt>
-            <dd>Just do <code>/script unload script.pl</code> .</dd>
+                <dt>How do I unload scripts?</dt>
+                <dd>Just do <code>/script unload script.pl</code> .</dd>
 
-            <dt>How do I run scripts automatically at startup?</dt>
-            <dd>Put them into <code>~/.irssi/scripts/autorun/</code> directory.
-            Or better would be if you placed them in
-            <code>~/.irssi/scripts/</code> and created symlinks to autorun
-            directory (eg. <code>cd ~/.irssi/scripts/autorun/ ; ln -s
+                <dt>How do I run scripts automatically at startup?</dt>
+                <dd>Put them into <code>~/.irssi/scripts/autorun/</code> directory.
+                    Or better would be if you placed them in
+                    <code>~/.irssi/scripts/</code> and created symlinks to autorun
+                    directory (eg. <code>cd ~/.irssi/scripts/autorun/ ; ln -s
                 ../script.pl .</code>)</dd>
 
-            <dt>Is there an easy way of managing scripts?</dt> <dd>Try
-            <code>scriptassist.pl</code>, it can update and manage your scripts
-            as well as install new ones and search the database.
-	    <label for="automatic-instructions" class="btn-link">
-		View instructions when using scriptassist.pl .</label></dd>
+                <dt>Is there an easy way of managing scripts?</dt> <dd>Try
+                    <code>scriptassist.pl</code>, it can update and manage your scripts
+                    as well as install new ones and search the database.
+                    <label for="automatic-instructions" class="btn-link">
+                View instructions when using scriptassist.pl .</label></dd>
 
-            <dt>How do I submit a script to this page?</dt>
-            <dd>See information on how to contribute <a href="https://github.com/irssi/scripts.irssi.org">here</a>.</dd>
-        </dl>
-      </div>
+                <dt>How do I submit a script to this page?</dt>
+                <dd>See information on how to contribute <a href="https://github.com/irssi/scripts.irssi.org">here</a>.</dd>
+            </dl>
+        </div>
         <hr>
 
         <input type="search" class="light-table-filter form-control" data-table="sortable" data-name="q" placeholder="Filter" style="width: 100%" autocorrect="off" spellcheck="false" autofocus aria-label="Filter scripts">
         <table class="table table-striped table-condensed sortable">
             <thead>
                 <tr>
-                    <th class="sorttable_alpha">Filename</th>
                     <th class="sorttable_alpha">Name</th>
                     <th class="sorttable_alpha">Version</th>
                     <th class="sorttable_alpha">Description</th>
@@ -81,29 +80,36 @@ layout: default
                     <th class="sorttable_numeric" id="th-votes">&hellip;&hellip;</th>
                 </tr>
             </thead>
-            <tbody>
-            {% for script in site.data.scripts %}
-            {% unless script.HIDDEN == "1" %}
-                <tr id="script-{{ script.filename | replace: ".", "_" }}">
-                    <td class="filename">
-                        <a href="scripts/{{ script.filename }}">{{ script.filename }}</a>
-                        <small>
-                           (<a href="https://github.com/irssi/scripts/blob/master/scripts/{{ script.filename }}">Github</a>)
-                        </small>
-                    </td>
-                    <td class="name">{{ script.name }}</td>
-                    <td class="version">{{ script.version }}</td>
-                    <td class="description">{{ script.description | xml_escape | replace: '', '' }}</td>
-                    <td class="authors">{{ script.authors | xml_escape }}</td>
-                    <td class="modified" sorttable_customkey="{{ script.modified | date: "%Y%m%d%H%M%S" }}">
-                        <abbr class="timeago" title="{{ script.modified | date: "%Y-%m-%dT%H:%M:%SZ" }}">
-                            {{ script.modified | date: "%Y-%m-%d" }}
-                        </abbr>
-                    </td>
-		    <td class="votes"></td>
-                </tr>
-            {% endunless %}
-            {% endfor %}
+            <tbody>{%
+                for script in site.data.scripts %}{%
+                    unless script.HIDDEN == "1" %}
+                        <tr id="script-{{ script.filename | replace: ".", "_" }}">
+                            <td class="name">
+                                <span class="filename">
+                                    <a href="scripts/{{ script.filename }}">{{ script.filename }}</a>
+                                    <small>
+                                        (<a href="https://github.com/irssi/scripts/blob/master/scripts/{{ script.filename }}">Github</a>)
+                                    </small>
+                                </span>
+                                <br>
+                                <span class="name">{{ script.name }}</span>
+                            </td>
+                            <td class="version">{{ script.version }}</td>
+                            <td class="description">{{ script.description | xml_escape | replace: '', '' }}{%
+                                if script.commands
+                                    %}<span style="display:none"> <span class="commands">{{ script.commands | xml_escape }}</span></span>{%
+                                endif
+                            %}</td>
+                            <td class="authors">{{ script.authors | xml_escape }}</td>
+                            <td class="modified" sorttable_customkey="{{ script.modified | date: "%Y%m%d%H%M%S" }}">
+                                <abbr class="timeago" title="{{ script.modified | date: "%Y-%m-%dT%H:%M:%SZ" }}">
+                                    {{ script.modified | date: "%Y-%m-%d" }}
+                                </abbr>
+                            </td>
+                            <td class="votes"></td>
+                        </tr>{%
+                    endunless %}{%
+                endfor %}
             </tbody>
         </table>
     </div>
