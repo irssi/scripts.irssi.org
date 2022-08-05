@@ -2,8 +2,8 @@ use strict;
 use warnings;
 use Irssi;
 
-my $VERSION = '1.00';
-my %IRSSI = (
+our $VERSION = '1.00';
+our %IRSSI = (
     authors => 'Mason Loring Bliss',
     contact => 'mason@blisses.org',
     name => 'Graze',
