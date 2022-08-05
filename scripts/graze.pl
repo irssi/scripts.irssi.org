@@ -91,7 +91,7 @@ sub graze
             $prio{$_} = 1;
         }
         $prio{$message} = 1;
-        Irssi::settings_set_str("graze_priority", join(' ', keys %prio));
+        Irssi::settings_set_str("graze_priority", join(' ', sort keys %prio));
         print "priorities:  ${\Irssi::settings_get_str('graze_priority')}";
 
     } elsif ($command eq "deprioritize") {
@@ -100,7 +100,7 @@ sub graze
             $prio{$_} = 1;
         }
         delete $prio{$message};
-        Irssi::settings_set_str("graze_priority", join(' ', keys %prio));
+        Irssi::settings_set_str("graze_priority", join(' ', sort keys %prio));
         print "priorities:  ${\Irssi::settings_get_str('graze_priority')}";
 
     } else {
