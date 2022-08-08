@@ -1,0 +1,11 @@
+---
+-
+  authors: 'Philip Paeps'
+  changed: '20151026'
+  contact: philip@trouble.is
+  default_package: suppress_yubikey_otp
+  description: 'This script stops accidental YubiKey output on IRC'
+  license: BSD
+  modified: '2022-07-29 16:04:28'
+  name: suppress_yubikey_otp
+  version: '20151026'
