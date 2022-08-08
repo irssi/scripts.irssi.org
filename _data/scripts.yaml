@@ -4690,6 +4690,15 @@
   url: https://github.com/op/irssi-spotify
   version: '1.1'
 -
+  authors: 'Philip Paeps'
+  contact: philip@trouble.is
+  description: 'This script stops accidental YubiKey output on IRC'
+  filename: suppress_yubikey_otp.pl
+  license: BSD
+  modified: '2022-07-29 16:04:28'
+  name: suppress_yubikey_otp
+  version: '20151026'
+-
   authors: 'Marcin Rozycki'
   commands: sync-check
   contact: derwan@irssi.pl
