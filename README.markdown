@@ -197,6 +197,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                             go2 ](Test/go2/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                          google ](Test/google/)|  ✔   |  ✔   |  ✔   | 26   |  ✔   | (c)
 [                    gpgvalidator ](Test/gpgvalidator/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                           graze ](Test/graze/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
 [                     greetignore ](Test/greetignore/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                            grep ](Test/grep/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        grepbans ](Test/grepbans/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
@@ -545,4 +546,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-c1786530344c7a516559d1c3cf92270246263822 | 2022-07-31T11:35:34,313176284+00:00
+d00d66c2fef8a2d0cb1e0734a950a89154c60501 | 2022-08-08T20:15:47,989364694+00:00

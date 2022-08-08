@@ -1,0 +1,15 @@
+---
+-
+  authors: 'Mason Loring Bliss'
+  commands:
+    - graze
+    - 'graze deprioritize'
+    - 'graze next'
+    - 'graze prioritize'
+  contact: mason@blisses.org
+  default_package: graze
+  description: 'Follow set order in seeing active channels.'
+  license: CC0
+  modified: '2022-08-08 16:13:05'
+  name: Graze
+  version: '1.00'
