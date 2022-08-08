@@ -1999,6 +1999,16 @@
   url: http://www.freaknet.org/~pallotron
   version: 0.1.3
 -
+  authors: 'Mason Loring Bliss'
+  commands: graze
+  contact: mason@blisses.org
+  description: 'Follow set order in seeing active channels.'
+  filename: graze.pl
+  license: CC0
+  modified: '2022-08-08 16:13:05'
+  name: Graze
+  version: '1.00'
+-
   authors: "David O'Rourke, Nico R. Wohlgemuth"
   contact: nico@lifeisabug.com
   description: 'Hide the stupid "greet messages" posted by some bots after someone joins a channel.'
