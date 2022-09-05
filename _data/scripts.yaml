@@ -4939,6 +4939,15 @@
   url: http://github.com/bcattaneo
   version: 1.1.0
 -
+  authors: 'Pascal Hakim'
+  contact: pasc@redellipse.net
+  description: 'This script shows you changes in the topic. '
+  filename: topic-diff.pl
+  license: GPL
+  modified: '2022-09-05 01:09:35'
+  name: topic-diff
+  version: '1.00'
+-
   authors: "Stefan 'tommie' Tomanek"
   commands: topics
   contact: stefan@pico.ruhr.de
