@@ -1,0 +1,3 @@
+* "my" variable $i masks earlier declaration in same scope at topic-diff.pl line 26.
+* 
+* -!- Irssi: Loaded script topic_diff

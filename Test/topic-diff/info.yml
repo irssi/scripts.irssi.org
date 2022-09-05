@@ -1,0 +1,10 @@
+---
+-
+  authors: 'Pascal Hakim'
+  contact: pasc@redellipse.net
+  default_package: topic_diff
+  description: 'This script shows you changes in the topic. '
+  license: GPL
+  modified: '2022-09-05 01:09:35'
+  name: topic-diff
+  version: '1.00'
