@@ -1,16 +1,17 @@
-# $Id: url.pl,v 1.52 2002/11/21 06:04:52 jylefort Exp $
+use strict;
+use vars qw/$VERSION %IRSSI/;
 
-use Irssi 20020121.2020 ();
-$VERSION = "0.54";
+$VERSION = "0.55";
 %IRSSI = (
 	  authors     => 'Jean-Yves Lefort',
 	  contact     => 'jylefort\@brutele.be, decadix on IRCNet',
 	  name        => 'url',
 	  description => 'An URL grabber for Irssi',
 	  license     => 'BSD',
-	  url         => 'http://void.adminz.be/',
-	  changed     => '$Date: 2002/11/21 06:04:52 $ ',
+	  url         => 'https://scripts.irssi.org/',
+	  changed     => '2022-09-10',
 );
+
 
 # description:
 #
@@ -70,6 +71,10 @@ $VERSION = "0.54";
 #		grabbed URLs will be written and opened.
 #
 # changes:
+#
+# 	2022-09-10	release 0.55
+# 			* move to scripts.irssi.org from https://github.com/irssi/scripts.irssi.org
+# 			* use strict; open, vars
 #
 #	2002-11-21	release 0.54
 #			* added a DTD to the generated HTML file, suggested
@@ -247,7 +252,7 @@ sub print_text {
 sub write_file {
   my $file = shift;
 
-  open(FILE, ">$file") or return $!;
+  open(FILE, ">", $file) or return $!;
 
   print FILE <<'EOF' or return $!;
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -327,3 +332,5 @@ Irssi::settings_add_str('misc', 'url_file', '~/.irc_url_list.html');
 Irssi::signal_add('print text', \&print_text);
 
 Irssi::command_bind('url', \&url);
+
+# vim:set ts=8 sw=2:
