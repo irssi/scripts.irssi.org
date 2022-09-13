@@ -5186,6 +5186,17 @@
   url: https://github.com/pstray/irssi-uptime
   version: 1.6.1
 -
+  authors: 'Jean-Yves Lefort'
+  commands: url
+  contact: 'jylefort\@brutele.be, decadix on IRCNet'
+  description: 'An URL grabber for Irssi'
+  filename: url.pl
+  license: BSD
+  modified: '2022-09-10 12:50:40'
+  name: url
+  url: https://scripts.irssi.org/
+  version: '0.55'
+-
   authors: 'Thomas Graf'
   commands: 'head url'
   contact: irssi@reeler.org
