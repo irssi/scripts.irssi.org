@@ -23,7 +23,7 @@ use Text::ParseWords;
 use IO::File;
 use vars qw($VERSION %IRSSI);
 
-$VERSION = '1.2.5';
+$VERSION = '1.2.6';
 %IRSSI = (
 	authors     => 'Wouter Coekaerts',
 	contact     => 'wouter@coekaerts.be',
@@ -31,7 +31,7 @@ $VERSION = '1.2.5';
 	description => 'execute a command or replace text, triggered by an event in irssi',
 	license     => 'GPLv2 or later',
 	url         => 'http://wouter.coekaerts.be/irssi/',
-	changed     => '2022-01-02',
+	changed     => '2022-09-13',
 );
 
 sub cmd_help {
@@ -994,13 +994,13 @@ sub param_to_string {
 sub to_string {
 	my ($trigger, $compat) = @_;
 	my $string;
-	
+
 	foreach my $switch (@trigger_switches) {
 		if ($trigger->{$switch}) {
 			$string .= '-'.$switch.' ';
 		}
 	}
-	
+
 	if ($compat) {
 		foreach my $filter (sort keys(%filters)) {
 			if ($trigger->{$filter}) {
@@ -1018,6 +1018,7 @@ sub to_string {
 			$string .= '-' . $param . param_to_string($trigger->{$param});
 		}
 	}
+	$string =~ s/\s+$//;
 	return $string;
 }
 
