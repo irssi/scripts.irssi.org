@@ -1,7 +1,7 @@
 ---
 -
   authors: 'Wouter Coekaerts'
-  changed: 2022-01-02
+  changed: 2022-09-13
   commands:
     - 'help trigger'
     - trigger
@@ -17,7 +17,7 @@
   default_package: trigger
   description: 'execute a command or replace text, triggered by an event in irssi'
   license: 'GPLv2 or later'
-  modified: '2022-01-02 04:15:35'
+  modified: '2021-09-04 02:04:55'
   name: trigger
   url: http://wouter.coekaerts.be/irssi/
-  version: 1.2.5
+  version: 1.2.6
