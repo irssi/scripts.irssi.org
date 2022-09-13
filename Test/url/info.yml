@@ -1,0 +1,14 @@
+---
+-
+  authors: 'Jean-Yves Lefort'
+  changed: 2022-09-10
+  commands:
+    - url
+  contact: 'jylefort\@brutele.be, decadix on IRCNet'
+  default_package: url
+  description: 'An URL grabber for Irssi'
+  license: BSD
+  modified: '2022-09-10 12:50:40'
+  name: url
+  url: https://scripts.irssi.org/
+  version: '0.55'
