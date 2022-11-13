@@ -3,7 +3,7 @@ See [the testing read-me](../master/_testing/) for details.
 ## Irssi Scripts Test Report
 \                                | LOAD | HDR | CRIT | SCORE | PASS
 ----: | :--: | :-: | :--: | ----: | :---:
-[                           0x0st ](Test/0x0st/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
+[                           0x0st ](Test/0x0st/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   
 [                          8-ball ](Test/8-ball/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
 [                          Cirssi ](Test/Cirssi/)|  ✔   |  ✔   |  ✔   | 31   |  ✔   | (c)
 [                 UNIBG-autoident ](Test/UNIBG-autoident/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -506,7 +506,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                     upgradeinfo ](Test/upgradeinfo/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                      upsidedown ](Test/upsidedown/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                          uptime ](Test/uptime/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
-[                             url ](Test/url/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[                             url ](Test/url/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                         url_log ](Test/url_log/)|  ✔   |  ✔   |  ✔   | 12   |  ✔   | (c)
 [                         urlfeed ](Test/urlfeed/)|  ✔   |  ✔   |  ✔   | 12   |  ✔   | (c)
 [                         urlgrab ](Test/urlgrab/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
@@ -549,4 +549,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-1e7dadc678027d6bcc515309cec3038aae85b33a | 2022-09-13T09:41:12,578171835+00:00
+2d151d7a91fcac5cef4790c78e5df602f0aadd8e | 2022-11-13T21:17:18,024019117+00:00
