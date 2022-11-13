@@ -185,7 +185,7 @@ sub self_check {
 			$s = "Error: result ($res[0])";
 		}
 	}
-	Irssi::print("0x0st: selfckeck $s", MSGLEVEL_CLIENTCRAP);
+	Irssi::print("0x0st: selfcheck $s", MSGLEVEL_CLIENTCRAP);
 	my $schs_version = $Irssi::Script::selfcheckhelperscript::VERSION;
 	Irssi::command("selfcheckhelperscript $s") if (defined $schs_version);
 }
