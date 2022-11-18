@@ -1,7 +1,7 @@
 ---
 -
   authors: 'martin f. krafft'
-  changed: 2021-11-03
+  changed: 2022-11-18
   commands:
     - chankeys
     - 'chankeys add'
@@ -15,6 +15,6 @@
   default_package: chankeys
   description: 'manage channel keyboard shortcuts'
   license: MIT
-  modified: '2021-11-03 02:02:45'
+  modified: '2022-11-18 13:48:34'
   name: chankeys
-  version: '0.4'
+  version: 0.4.1
