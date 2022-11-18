@@ -322,7 +322,8 @@ sub save_mappings {
 ; item	keys
 
 EOF
-	while (my ($name, $keys) = each %itemmap) {
+	foreach my $name (sort keys(%itemmap)) {
+		my $keys = $itemmap{$name};
 		print FH "$name\t$keys\n";
 	}
 	print FH <<"EOF";
