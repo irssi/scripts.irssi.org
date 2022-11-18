@@ -1,6 +1,6 @@
 # chankeys.pl — Irssi script for associating key shortcuts with channels
 #
-# © 2021 martin f. krafft <madduck@madduck.net>
+# © 2021–22 martin f. krafft <madduck@madduck.net>
 # Released under the MIT licence.
 #
 ### Usage:
@@ -51,8 +51,8 @@ our %IRSSI = (
     name        => 'chankeys',
     description => 'manage channel keyboard shortcuts',
     license     => 'MIT',
-    version     => '0.4',
-    changed     => '2021-11-03'
+    version     => '0.4.1',
+    changed     => '2022-11-18'
 );
 
 our $VERSION = $IRSSI{version};
