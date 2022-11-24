@@ -97,7 +97,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                         chanact ](Test/chanact/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                        chanfull ](Test/chanfull/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                  chanfull_duden ](Test/chanfull_duden/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                        chankeys ](Test/chankeys/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   
+[                        chankeys ](Test/chankeys/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
 [                        chanpeak ](Test/chanpeak/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                      chansearch ](Test/chansearch/)|  ✔   |  ✔   |  ✔   | 22   |  ✔   | (c)
 [                       chanshare ](Test/chanshare/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -512,7 +512,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                         urlgrab ](Test/urlgrab/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
 [                         urlinfo ](Test/urlinfo/)|  ✔   |  ✔   |  ✔   |  8   |  ✔   | (c)
 [                         urlplot ](Test/urlplot/)|  ✔   |  ✔   |  ✔   | 86   |  ✔   | (c)
-[                       urlwindow ](Test/urlwindow/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                       urlwindow ](Test/urlwindow/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                       usercount ](Test/usercount/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        userhost ](Test/userhost/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                           users ](Test/users/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -549,4 +549,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-270de5f1064c9e448828c0ee5e99c08c6f1ab842 | 2022-11-18T14:02:01,981315111+00:00
+af3b60d5e082b84ceab274c68d145de696e8d82e | 2022-11-24T18:07:27,313470578+00:00
