@@ -1244,9 +1244,9 @@
   description: 'Removes CRAP or CLIENTCRAP messages from your buffer'
   filename: crapbuster.pl
   license: GPLv2
-  modified: '2008-05-17 17:39:09'
+  modified: '2022-11-27 20:09:10'
   name: CRAPbuster
-  version: '2003020801'
+  version: '2022112701'
 -
   authors: Benedetto
   commands: credstore
