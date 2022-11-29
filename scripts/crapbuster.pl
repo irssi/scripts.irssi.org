@@ -3,7 +3,7 @@
 use strict;
 
 use vars qw($VERSION %IRSSI);
-$VERSION = "2003020801";
+$VERSION = "2022112701";
 %IRSSI = (
     authors     => "Stefan 'tommie' Tomanek",
     contact     => "stefan\@pico.ruhr.de",
@@ -13,6 +13,8 @@ $VERSION = "2003020801";
     changed     => "$VERSION",
     commands	=> "crapbuster"
 );
+
+# /scrollback levelclear -level crap,clientcrap
 
 use Irssi;
 use Irssi::TextUI;
@@ -30,7 +32,7 @@ sub cmd_crapbuster ($$$) {
 	my $copy = $line;
 	$line = $line->prev;
 	foreach (split / /, Irssi::settings_get_str('crapbuster_levels')) {
-	    next unless ($level == Irssi::level2bits($_));
+	    next unless (($level & Irssi::level2bits($_)) != 0 );
 	    $view->remove_line($copy);
 	    last;
 	}
