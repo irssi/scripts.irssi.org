@@ -1,12 +1,13 @@
 ---
 -
   authors: "Stefan 'tommie' Tomanek"
-  changed: '2003020801'
+  changed: '2022112701'
   commands:
     - crapbuster
   contact: stefan@pico.ruhr.de
   default_package: crapbuster
   description: 'Removes CRAP or CLIENTCRAP messages from your buffer'
   license: GPLv2
+  modified: '2022-11-27 20:09:10'
   name: CRAPbuster
-  version: '2003020801'
+  version: '2022112701'
