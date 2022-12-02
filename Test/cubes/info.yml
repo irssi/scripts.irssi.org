@@ -3,11 +3,12 @@
   authors: 'Irssi staff'
   commands:
     - cubes
+    - cubes_text
   contact: staff@irssi.org
   default_package: cubes
   description: '256 colour test script for Irssi.'
   license: 'Public Domain'
-  modified: '2018-10-02 16:00:23'
+  modified: '2022-12-01 21:22:05'
   name: cubes
   url: https://irssi.org
-  version: '1.0'
+  version: '1.1'

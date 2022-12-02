@@ -124,11 +124,11 @@ See [the testing read-me](../master/_testing/) for details.
 [                       countdown ](Test/countdown/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                         country ](Test/country/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                     cp1250_kick ](Test/cp1250_kick/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                      crapbuster ](Test/crapbuster/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[                      crapbuster ](Test/crapbuster/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       credstore ](Test/credstore/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                            cron ](Test/cron/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                         ctrlact ](Test/ctrlact/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
-[                           cubes ](Test/cubes/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
+[                           cubes ](Test/cubes/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
 [                            cwho ](Test/cwho/)|  ✔   |  ✔   |  ✔   | 18   |  ✔   | (c)
 [               dancer_forwardfix ](Test/dancer_forwardfix/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                             dau ](Test/dau/)|  ✔   |  ✔   |  ✔   | 42   |  ✔   | (c)
@@ -549,4 +549,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-5096538482817781ba15695d109c77153f652567 | 2022-11-29T19:09:01,778972286+00:00
+0d431f832fdccd85bc24ec344dfe8328c988e869 | 2022-12-02T05:41:54,195904671+00:00
