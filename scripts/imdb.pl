@@ -4,7 +4,7 @@ use LWP::UserAgent;
 use HTML::Entities;
 use vars qw($VERSION %IRSSI $cache);
 
-$VERSION = '1.04';
+$VERSION = '1.05';
 %IRSSI = (
     authors 	=> 'Eric Jansen',
     contact 	=> 'chaos@sorcery.net',
@@ -13,12 +13,12 @@ $VERSION = '1.04';
     license 	=> 'GPL',
     modules	=> 'LWP::UserAgent HTML::Entities',
     url		=> 'http://xyrion.org/irssi/',
-    changed 	=> '2021-10-09',
+    changed 	=> '2022-12-09',
     selfcheckcmd=> 'imdb check',
 );
 
 my $ua = new LWP::UserAgent;
-$ua->agent('Irssi; ' . $ua->agent);
+$ua->agent("Irssi/imdb/$VERSION");
 
 # Set the timeout to five second, so it won't freeze the client too long on laggy connections
 $ua->timeout(5);
@@ -50,7 +50,7 @@ sub event_nickchange {
 
 	    # Get the title and year from the fetched page
 	    if($res->is_success
-		&& $res->content  =~ /<title>(.+?) \((.+)\).*<\/title>/) {
+		&& $res->content  =~ /<title>(.+?) \((.+)\).*<\/title>/i) {
 
 	# https://www.imdb.com/title/tt1234567/
 	# <title>&quot;So You Think You Can Dance&quot; The Top 14 Perform (TV Episode 2008) - IMDb</title>
