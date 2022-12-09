@@ -1,18 +1,18 @@
 ---
 -
   authors: 'Eric Jansen'
-  changed: 2021-10-09
+  changed: 2022-12-09
   commands:
     - imdb
   contact: chaos@sorcery.net
   default_package: imdb
   description: 'Automatically lookup IMDB-numbers in nicknames'
   license: GPL
-  modified: '2021-10-09 23:05:22'
+  modified: '2022-12-09 11:28:58'
   modules:
     - HTML::Entities
     - LWP::UserAgent
   name: imdb
   selfcheckcmd: 'imdb check'
   url: http://xyrion.org/irssi/
-  version: '1.04'
+  version: '1.05'
