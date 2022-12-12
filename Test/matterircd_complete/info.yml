@@ -2,15 +2,20 @@
 -
   authors: 'Haw Loeung'
   commands:
+    - matterircd_complete_cache_save
     - matterircd_complete_msgthreadid_cache_dump
     - matterircd_complete_nick_cache_dump
+    - matterircd_complete_replied_cache_clear
     - matterircd_complete_replied_cache_dump
+    - matterircd_complete_stats
+    - matterircd_complete_thread_id_get_color
+    - matterircd_complete_thread_id_get_colors
     - message_thread_id_search
     - nicknames_search
   contact: hloeung/Freenode
   default_package: matterircd_complete
   description: 'Adds tab completion for Matterircd message threads'
   license: GPL
-  modified: '2017-05-08 11:41:48'
+  modified: '2022-12-05 12:25:46'
   name: 'Matterircd Tab Auto Complete'
-  version: '1.00'
+  version: '2.00'
