@@ -62,7 +62,7 @@ require Irssi;
 # Enable for debugging purposes only.
 # use Data::Dumper;
 
-our $VERSION = '2.00';  # e2973ff
+our $VERSION = '2.10';  # 1118e8c
 our %IRSSI = (
     name        => 'Matterircd Tab Auto Complete',
     description => 'Adds tab completion for Matterircd message threads',
@@ -1212,8 +1212,8 @@ sub stats_increment {
 
     # autosave.
     if (($$stats_ref % 100) == 0) {
-        my $output = Irssi::settings_get_bool('matterircd_complete_stats_output');
-        save_cache($output);
+        my $output_stats = Irssi::settings_get_bool('matterircd_complete_stats_output') ? "true" : "false";
+        save_cache($output_stats);
     }
 }
 
@@ -1277,7 +1277,6 @@ sub save_cache {
 
     my %cache = (
         'MSGTHREADID' => \%MSGTHREADID_CACHE,
-        'NICKNAMES' => \%NICKNAMES_CACHE,
         'REPLIED' => \%REPLIED_CACHE,
         );
 
@@ -1293,11 +1292,10 @@ sub save_cache {
     }
     close(FH);
 
-    if ($output_stats == 0) {
-        return;
+    # eq "" so show stats on /matterircd_complete_cache_save command.
+    if ($output_stats eq "true" || $output_stats eq "") {
+        stats_show();
     }
-
-    stats_show();
 }
 Irssi::command_bind('matterircd_complete_cache_save', 'save_cache');
 
@@ -1306,7 +1304,6 @@ sub load_cache {
 
     my %cache = (
         'MSGTHREADID' => \%MSGTHREADID_CACHE,
-        'NICKNAMES' => \%NICKNAMES_CACHE,
         'REPLIED' => \%REPLIED_CACHE,
         );
 
@@ -1330,7 +1327,7 @@ sub UNLOAD {
 
 sub exit_save {
     $exited = 1;
-    save_cache(1)
+    save_cache("true")
 }
 Irssi::signal_add('gui exit', 'exit_save');
 
