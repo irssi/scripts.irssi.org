@@ -23,7 +23,7 @@ use Text::ParseWords;
 use IO::File;
 use vars qw($VERSION %IRSSI);
 
-$VERSION = '1.2.6';
+$VERSION = '1.2.7';
 %IRSSI = (
 	authors     => 'Wouter Coekaerts',
 	contact     => 'wouter@coekaerts.be',
@@ -31,7 +31,7 @@ $VERSION = '1.2.6';
 	description => 'execute a command or replace text, triggered by an event in irssi',
 	license     => 'GPLv2 or later',
 	url         => 'http://wouter.coekaerts.be/irssi/',
-	changed     => '2022-09-13',
+	changed     => '2022-12-28',
 );
 
 sub cmd_help {
@@ -637,7 +637,7 @@ TRIGGER:
 		}
 
 		if ($trigger->{'debug'}) {
-			print("DEBUG: trigger $condition pmesg=$parammessage message=$message server=$server->{tag} channel=$channelname nick=$nickname address=$address " . join(' ',map {$_ . '=' . $extra->{$_}} keys(%$extra)));
+			print("DEBUG: trigger $condition pmesg=$parammessage message=$message server=$server->{tag} channel=$channelname nick=$nickname address=$address " . join(' ',map {$_ . '=' . $extra->{$_}} keys(%$extra)) . " trigger=" . to_string($trigger));
 		}
 		
 		if ($trigger->{'stop'}) {
