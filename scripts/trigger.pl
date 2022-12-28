@@ -23,7 +23,7 @@ use Text::ParseWords;
 use IO::File;
 use vars qw($VERSION %IRSSI);
 
-$VERSION = '1.2.7';
+$VERSION = '1.3.0';
 %IRSSI = (
 	authors     => 'Wouter Coekaerts',
 	contact     => 'wouter@coekaerts.be',
@@ -82,6 +82,10 @@ All filters except for -pattern and -regexp can also be inversed by prefixing wi
      -other_masks
      -other_hasmode
      -other_hasflag: %|Same as above but for the victim for kicks or mode_nick.
+     -prefix: %|For publics, match what prefix the message was sent to (eg statusmsg, +z). Space separated list, use '' to match only messages sent to no prefix (ie, plain publics only)
+              Examples: %|-prefix '@' matches messages sent to @#channel
+                        %|-prefix '@ +' matches messages sent to @#channel or +#channel, but not @+#channel
+                        %|-prefix '' matches only messages sent to #channel, not @#channel or any other
 
 %U%_What to do when it matches%_%U 
      -command: Execute the given Irssi-command
@@ -186,6 +190,17 @@ my @signals = (
 	'types' => ['publics'],
 	'signal' => 'message public',
 	'sub' => sub {check_signal_message(\@_,1,$_[0],$_[4],$_[2],$_[3],'publics');},
+},
+# "message irc op_public", SERVER_REC, char *msg, char *nick, char *address, char *target
+{
+	'types' => ['publics'],
+	'signal' => 'message irc op_public',
+	'sub' => sub {
+		my ($prefix, $channel);
+		$channel = $_[4];
+		$prefix = substr($channel, 0, 1, '');
+		check_signal_message(\@_,1,$_[0],$channel,$_[2],$_[3],'publics',{'prefix'=>$prefix});
+	},
 },
 # "message private", SERVER_REC, char *msg, char *nick, char *address
 {
@@ -527,7 +542,26 @@ my %filters = (
 		my ($param, $signal,$parammessage,$server,$channelname,$nickname,$address,$condition,$extra) = @_;
 		return (($param) eq $extra->{'mode_arg'});
 	}
-}
+},
+'prefix' => {
+	'types' => ['publics'],
+	'sub' => sub {
+		my ($param, $signal,$parammessage,$server,$channelname,$nickname,$address,$condition,$extra) = @_;
+
+		return 0 unless defined($extra->{'prefix'}) || $param eq '';
+		return 1 unless defined($extra->{'prefix'});
+
+		my $matches = 0;
+		foreach my $prefix (split(/ /, $param)) {
+			if ($extra->{'prefix'} eq $prefix) {
+				$matches = 1;
+				last;
+			}
+		}
+
+		return $matches;
+	}
+},
 );
 
 sub get_address {
