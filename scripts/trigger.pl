@@ -631,7 +631,12 @@ TRIGGER:
 		next if ($trigger->{'compregexp'} && ($parammessage == -1 || $message !~ m/$trigger->{'compregexp'}/));
 		
 		# if we got this far, it fully matched, and we need to do the replace/command/stop/once
-		my $expands = $extra;
+		my $expands;
+		if (defined($extra)) {
+			$expands = { %$extra };
+		} else {
+			$expands = { };
+		}
 		$expands->{'M'} = $message,;
 		$expands->{'T'} = (defined($server)) ? $server->{'tag'} : '';
 		$expands->{'C'} = $channelname;
