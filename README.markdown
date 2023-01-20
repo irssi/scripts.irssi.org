@@ -293,7 +293,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                             map ](Test/map/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [            mass_hilight_blocker ](Test/mass_hilight_blocker/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                      matryoshka ](Test/matryoshka/)|  ✔   |  ✔   |  ✔   | 19   |  ✔   | (c)
-[             matterircd_complete ](Test/matterircd_complete/)|  ✔   |  ✔   |  ✔   | 25   |  ✔   
+[             matterircd_complete ](Test/matterircd_complete/)|  ✔   |  ✔   |  ✔   | 25   |  ✔   | (c)
 [                 merge_resources ](Test/merge_resources/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                 messages_bottom ](Test/messages_bottom/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                              mg ](Test/mg/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -491,7 +491,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                      trackbar22 ](Test/trackbar22/)|  ✘   |  ✘   |  ✔   |  5   |  ☡   | (c)
 [                       tracknick ](Test/tracknick/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        translit ](Test/translit/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                         trigger ](Test/trigger/)|  ✔   |  ✔   |  ✔   | 16   |  ✔   | (c)
+[                         trigger ](Test/trigger/)|  ✔   |  ✔   |  ✔   | 16   |  ✔   
 [                        trustweb ](Test/trustweb/)|  ✔   |  ✔   |  ✔   | 20   |  ✔   | (c)
 [                   twitch_notify ](Test/twitch_notify/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                   twitter_theme ](Test/twitter_theme/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
@@ -549,4 +549,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-fc7fdc653b096cfca2cab80f1c821721636c8639 | 2022-12-17T11:33:30,903740827+00:00
+e038994d653f21775e241e4c2db1572ea79edca7 | 2023-01-20T20:52:50,669803492+00:00
