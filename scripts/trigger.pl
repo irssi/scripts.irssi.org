@@ -23,7 +23,7 @@ use Text::ParseWords;
 use IO::File;
 use vars qw($VERSION %IRSSI);
 
-$VERSION = '1.3.0';
+$VERSION = '1.3.1';
 %IRSSI = (
 	authors     => 'Wouter Coekaerts',
 	contact     => 'wouter@coekaerts.be',
@@ -196,9 +196,11 @@ my @signals = (
 	'types' => ['publics'],
 	'signal' => 'message irc op_public',
 	'sub' => sub {
-		my ($prefix, $channel);
+		my ($prefix, $channel, $statusmsg);
 		$channel = $_[4];
-		$prefix = substr($channel, 0, 1, '');
+		$statusmsg = quotemeta($_[0]->isupport('statusmsg') // '@');
+		$channel =~ s/^([$statusmsg]+)//;
+		$prefix = $1;
 		check_signal_message(\@_,1,$_[0],$channel,$_[2],$_[3],'publics',{'prefix'=>$prefix});
 	},
 },
@@ -1177,7 +1179,7 @@ ARGS:	for (my $arg = shift @args; $arg; $arg = shift @args) {
 		}
 		
 		# -no<filter>
-		if ($option =~ /^no(.*)$/ && $filters{$1}) {
+		if ($option =~ /^no((not_)?(.*))$/ && $filters{$3}) {
 			delete $trigger->{'filters'}->{$1};
 		}
 	}
