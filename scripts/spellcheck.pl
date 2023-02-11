@@ -1,5 +1,5 @@
 # Copyright © 2008 Jakub Jankowski <shasta@toxcorp.com>
-# Copyright © 2012-2020 Jakub Wilk <jwilk@jwilk.net>
+# Copyright © 2012-2022 Jakub Wilk <jwilk@jwilk.net>
 # Copyright © 2012 Gabriel Pettier <gabriel.pettier@gmail.com>
 #
 # This program is free software; you can redistribute it and/or modify
@@ -20,13 +20,13 @@ use Irssi::TextUI;
 use Encode;
 use Text::Aspell;
 
-$VERSION = '0.9.1';
+$VERSION = '0.9.2';
 %IRSSI = (
     authors     => 'Jakub Wilk, Jakub Jankowski, Gabriel Pettier, Nei',
     name        => 'spellcheck',
     description => 'checks for spelling errors using Aspell',
     license     => 'GPLv2',
-    url         => 'http://jwilk.net/software/irssi-spellcheck',
+    url         => 'https://jwilk.net/software/irssi-spellcheck',
 );
 
 my %speller;
