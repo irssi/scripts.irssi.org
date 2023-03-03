@@ -4695,9 +4695,9 @@
   description: 'This script stops accidental YubiKey output on IRC'
   filename: suppress_yubikey_otp.pl
   license: BSD
-  modified: '2022-07-29 16:04:28'
+  modified: '2023-03-03 16:08:32'
   name: suppress_yubikey_otp
-  version: '20151026'
+  version: '20230303'
 -
   authors: 'Marcin Rozycki'
   commands: sync-check
