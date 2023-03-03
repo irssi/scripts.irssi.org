@@ -4,7 +4,7 @@ use strict;
 use vars qw($VERSION %IRSSI);
 use Irssi;
 
-$VERSION = "20151026";
+$VERSION = "20230303";
 %IRSSI = (
     authors     => "Philip Paeps",
     contact     => "philip\@trouble.is",
@@ -16,6 +16,7 @@ $VERSION = "20151026";
 
 sub event_send_text {
     my ($line, $server_rec, $wi_item_rec) = @_;
-    Irssi::signal_stop() if $line =~ /^cccccc/;
+    Irssi::signal_stop() if $line =~ /^(cc|vv)[bcdefghijklnrtuv]{42}/;
+
 }
 Irssi::signal_add_first('send text', \&event_send_text);
