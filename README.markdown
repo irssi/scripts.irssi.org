@@ -458,7 +458,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                           sping ](Test/sping/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       splitlong ](Test/splitlong/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                         spotify ](Test/spotify/)|  ✔   |  ✔   |  ✔   | 14   |  ✔   | (c)
-[            suppress_yubikey_otp ](Test/suppress_yubikey_otp/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[            suppress_yubikey_otp ](Test/suppress_yubikey_otp/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                       synccheck ](Test/synccheck/)|  ✔   |  ✔   |  ✔   | 37   |  ✔   | (c)
 [                sysinfo270-irssi ](Test/sysinfo270-irssi/)|  ✔   |  ✔   |  ✔   | 26   |  ✔   | (c)
 [                sysinfo277-irssi ](Test/sysinfo277-irssi/)|  ✔   |  ✔   |  ✔   | 15   |  ✔   | (c)
@@ -491,7 +491,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                      trackbar22 ](Test/trackbar22/)|  ✘   |  ✘   |  ✔   |  5   |  ☡   | (c)
 [                       tracknick ](Test/tracknick/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        translit ](Test/translit/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                         trigger ](Test/trigger/)|  ✔   |  ✔   |  ✔   | 18   |  ✔   
+[                         trigger ](Test/trigger/)|  ✔   |  ✔   |  ✔   | 18   |  ✔   | (c)
 [                        trustweb ](Test/trustweb/)|  ✔   |  ✔   |  ✔   | 20   |  ✔   | (c)
 [                   twitch_notify ](Test/twitch_notify/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                   twitter_theme ](Test/twitter_theme/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
@@ -549,4 +549,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-10ef954a1506fa73feda73d54a2abfa494130f8f | 2023-02-02T16:05:22,130355115+00:00
+7c37c53e3799fc4308764c6cb2f6ca6582c41db9 | 2023-03-03T23:43:12,153792171+00:00
