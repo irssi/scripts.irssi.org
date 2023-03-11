@@ -78,7 +78,10 @@ sub send_push {
             pr => Irssi::settings_get_str('pushsafer_priority'),
             re => Irssi::settings_get_str('pushsafer_retry'),
             ex => Irssi::settings_get_str('pushsafer_expire'),
+            cr => Irssi::settings_get_str('pushsafer_confirm'),
             a => Irssi::settings_get_str('pushsafer_answer'),
+            ao => Irssi::settings_get_str('pushsafer_answeroptions'),
+            af => Irssi::settings_get_str('pushsafer_answerforce'),
             t => $channel
         ]
     );
@@ -299,7 +302,10 @@ Irssi::settings_add_str($IRSSI{'name'}, 'pushsafer_time2live', '');
 Irssi::settings_add_str($IRSSI{'name'}, 'pushsafer_priority', '');
 Irssi::settings_add_str($IRSSI{'name'}, 'pushsafer_retry', '');
 Irssi::settings_add_str($IRSSI{'name'}, 'pushsafer_expire', '');
+Irssi::settings_add_str($IRSSI{'name'}, 'pushsafer_confirm', '');
 Irssi::settings_add_str($IRSSI{'name'}, 'pushsafer_answer', '');
+Irssi::settings_add_str($IRSSI{'name'}, 'pushsafer_answeroptions', '');
+Irssi::settings_add_str($IRSSI{'name'}, 'pushsafer_answerforce', '');
 
 Irssi::command_bind('help pushignore', \&cmd_help);
 Irssi::command_bind('pushignore help', \&cmd_help);
