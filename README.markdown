@@ -386,7 +386,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                             ppl ](Test/ppl/)|  ✔   |  ✔   |  ✔   | 39   |  ✔   | (c)
 [                   print_signals ](Test/print_signals/)|  ✔   |  ✔   |  ✔   |  1   |  ✔   | (c)
 [                     procmaillog ](Test/procmaillog/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
-[                       pushsafer ](Test/pushsafer/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
+[                       pushsafer ](Test/pushsafer/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   
 [                  qchallengeauth ](Test/qchallengeauth/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                       quakequit ](Test/quakequit/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                           query ](Test/query/)|  ✔   |  ✔   |  ✔   | 22   |  ✔   | (c)
@@ -458,7 +458,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                           sping ](Test/sping/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       splitlong ](Test/splitlong/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                         spotify ](Test/spotify/)|  ✔   |  ✔   |  ✔   | 14   |  ✔   | (c)
-[            suppress_yubikey_otp ](Test/suppress_yubikey_otp/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[            suppress_yubikey_otp ](Test/suppress_yubikey_otp/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       synccheck ](Test/synccheck/)|  ✔   |  ✔   |  ✔   | 37   |  ✔   | (c)
 [                sysinfo270-irssi ](Test/sysinfo270-irssi/)|  ✔   |  ✔   |  ✔   | 26   |  ✔   | (c)
 [                sysinfo277-irssi ](Test/sysinfo277-irssi/)|  ✔   |  ✔   |  ✔   | 15   |  ✔   | (c)
@@ -549,4 +549,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-7c37c53e3799fc4308764c6cb2f6ca6582c41db9 | 2023-03-03T23:43:12,153792171+00:00
+74c7781358fc5056b1ca1d1da5d063667f992d3c | 2023-03-12T02:28:20,145756443+00:00
