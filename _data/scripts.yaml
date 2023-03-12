@@ -3975,11 +3975,11 @@
   description: 'Push hilights and private messages when away by the pushsafer.com API'
   filename: pushsafer.pl
   license: BSD
-  modified: '2018-08-21 08:30:47'
+  modified: '2023-03-11 18:05:08'
   modules: LWP::UserAgent
   name: pushsafer
   url: https://www.pushsafer.com
-  version: 0.0.2
+  version: 0.0.3
 -
   authors: 'Doug Freed'
   contact: dwfreed!#irssi@freenode
