@@ -7,7 +7,7 @@ use vars qw($VERSION %IRSSI);
 $VERSION = "0.1";
 %IRSSI = (
   authors     => 'vague',
-  contact     => 'vague!#irssi@freenode on irc',
+  contact     => 'vague!#irssi@libera.chat on irc',
   name        => 'separate_messages',
   description => 'Print a black line between messages from different users',
   license     => 'GPL2',
