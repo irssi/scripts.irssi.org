@@ -4,7 +4,7 @@ use Irssi;
 use feature qw(fc);
 
 use vars qw($VERSION %IRSSI);
-$VERSION = "0.1";
+$VERSION = "0.2";
 %IRSSI = (
   authors     => 'vague',
   contact     => 'vague!#irssi@libera.chat on irc',
@@ -16,14 +16,25 @@ $VERSION = "0.1";
 );
 
 my $prev_sender = {};
-sub sig_message_public {
-  my ($tag, $sender, $target) = (lc $_[0]->{tag}, lc $_[2], lc $_[4]);
+sub separate_messages {
+  my ($tag, $sender, $target) = @_;
   if(exists $prev_sender->{$tag}{$target} && $sender ne $prev_sender->{$tag}{$target}) {
     $_[0]->window_item_find($target)->window->print("") if Irssi::settings_get_bool('separate_user_messages');
   }
   $prev_sender->{$tag}{$target} = $sender;
 }
 
+sub sig_message {
+  separate_messages(lc $_[0]->{tag}, lc $_[2], lc $_[4]);
+}
+
+sub sig_message_own {
+  separate_messages(lc $_[0]->{tag}, lc $_[0]->{nick}, lc $_[2]);
+}
+
 Irssi::settings_add_bool('lookandfeel', 'separate_user_messages', 0);
 
-Irssi::signal_add_first('message public', 'sig_message_public');
+Irssi::signal_add_first('message public', 'sig_message');
+Irssi::signal_add_first('message private', 'sig_message');
+Irssi::signal_add_first('message own_public', 'sig_message_own');
+Irssi::signal_add_first('message own_private', 'sig_message_own');
