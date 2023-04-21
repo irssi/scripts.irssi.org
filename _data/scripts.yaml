@@ -2916,10 +2916,10 @@
   description: 'Fully customizable mail counter statusbar item with multiple mailbox and multiple Maildir support'
   filename: mail.pl
   license: 'Public Domain'
-  modified: '2017-04-07 16:34:31'
+  modified: '2023-04-20 20:37:03'
   name: mail
   url: 'http://irssi.org, http://scripts.irssi.de'
-  version: '2.92'
+  version: '2.93'
 -
   authors: 'David "Legooolas" Gardner'
   commands: 'mailcheck_imap mailcheck_imap_help mailcheck_imap_stop'
