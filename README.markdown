@@ -284,7 +284,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                   long_messages ](Test/long_messages/)|  ✔   |  ✔   |  ✔   |  2   |  ✔   | (c)
 [                              ls ](Test/ls/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                            lwho ](Test/lwho/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                            mail ](Test/mail/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
+[                            mail ](Test/mail/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   
 [                  mailcheck_imap ](Test/mailcheck_imap/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [             mailcheck_mbox_flux ](Test/mailcheck_mbox_flux/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
 [            mailcheck_pop3_kimmo ](Test/mailcheck_pop3_kimmo/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -386,7 +386,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                             ppl ](Test/ppl/)|  ✔   |  ✔   |  ✔   | 39   |  ✔   | (c)
 [                   print_signals ](Test/print_signals/)|  ✔   |  ✔   |  ✔   |  1   |  ✔   | (c)
 [                     procmaillog ](Test/procmaillog/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
-[                       pushsafer ](Test/pushsafer/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   
+[                       pushsafer ](Test/pushsafer/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
 [                  qchallengeauth ](Test/qchallengeauth/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                       quakequit ](Test/quakequit/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                           query ](Test/query/)|  ✔   |  ✔   |  ✔   | 22   |  ✔   | (c)
@@ -549,4 +549,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-74c7781358fc5056b1ca1d1da5d063667f992d3c | 2023-03-12T02:28:20,145756443+00:00
+80b9a8dad1b04a3113f3a0fa34a2218aca78a451 | 2023-04-21T00:55:14,791587698+00:00
