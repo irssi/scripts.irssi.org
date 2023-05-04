@@ -15,7 +15,7 @@ $VERSION = "0.5";
   description => 'Identd script for irssi',
   license     => 'GPL2',
   url         => 'https://vague.se',
-  changed     => "25 Jul 20:00:00 CEST 2017",
+  changed     => "04 May 15:00:00 CEST 2023",
 );
 
 my $handle = undef;
