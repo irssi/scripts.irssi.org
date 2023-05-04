@@ -61,7 +61,7 @@ SCRIPTHELP_EOF
 sub start_ident_server {
   my $port = Irssi::settings_get_int('identd_port') // 8113;
   Irssi::print("Identd - starting...") if VERBOSE;
-  $ident_server = IO::Socket::INET->new( Proto => 'tcp', LocalAddr => '0.0.0.0' , LocalPort => $port, Listen => SOMAXCONN, ReusePort => 1) or print "Cam't bind to port $port, $@";
+  $ident_server = IO::Socket::INET->new( Proto => 'tcp', LocalAddr => '0.0.0.0' , LocalPort => $port, Listen => SOMAXCONN, ReusePort => 1) or print "Can't bind to port $port, $@";
   if(!$ident_server) {
     Irssi::print("Identd - couldn't start server, $@", MSGLEVEL_CLIENTERROR) if VERBOSE;
     $started = 0;
