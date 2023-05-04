@@ -7,7 +7,7 @@ no autovivification;
 use feature qw(fc);
 
 use vars qw($VERSION %IRSSI);
-$VERSION = "0.4";
+$VERSION = "0.5";
 %IRSSI = (
   authors     => 'vague',
   contact     => 'vague!#irssi@freenode on irc',
@@ -61,7 +61,7 @@ SCRIPTHELP_EOF
 sub start_ident_server {
   my $port = Irssi::settings_get_int('identd_port') // 8113;
   Irssi::print("Identd - starting...") if VERBOSE;
-  $ident_server = IO::Socket::INET->new( Proto => 'tcp', LocalAddr => '0.0.0.0' , LocalPort => $port, Listen => SOMAXCONN, ReusePort => 1) or print "Can't bind to port $port, $@";
+  $ident_server = IO::Socket::INET->new( Proto => 'tcp', LocalAddr => '0.0.0.0' , LocalPort => $port, Listen => SOMAXCONN, ReusePort => 1) or print "Cam't bind to port $port, $@";
   if(!$ident_server) {
     Irssi::print("Identd - couldn't start server, $@", MSGLEVEL_CLIENTERROR) if VERBOSE;
     $started = 0;
@@ -73,12 +73,14 @@ sub start_ident_server {
 }
 
 sub handle_connection {
+  return unless $started;
   my $sock = $_[0]->accept;
   my $iaddr = inet_aton($sock->peerhost); # or whatever address
   my $peer  = gethostbyaddr($iaddr, AF_INET) // $sock->peerhost;
-  Irssi::print("Identd - handling connection from $peer") if VERBOSE;
+  Irssi::print(sprintf("Identd - handling connection from %s(%s)", $peer, $sock->peerhost)) if VERBOSE;
   my $strict = Irssi::settings_get_bool('identd_strict_conn');
-  if($strict && !exists $connectrec->{$peer}) {
+  Irssi::print(($peer =~ /(\w+)\.\w+$/i)[0]) if VERBOSE;
+  if($strict && (!exists $connectrec->{($peer =~ /(\w+)\.\w+$/i)[0]} && !exists $connectrec->{$peer})) {
     Irssi::print("Identd - $peer not found in access list");
     close $sock;
     return;
@@ -105,7 +107,6 @@ sub handle_connection {
   $incoming =~ s/\r\n//;
   $incoming =~ s/\s*//g;
   $incoming .= ":USERID:UNIX:" . $username . "\n";
-#  $incoming .= " : USERID : OTHER : " . $username . "\n";
   print $sock $incoming;
   close $sock;
   chomp $incoming;
@@ -116,7 +117,8 @@ sub sig_server_connecting {
   my ($server,$ip) = @_;
 
   Irssi::print("Identd - server connecting: " . $server->{address}) if VERBOSE;
-  $connectrec->{$server->{address}} = $server;
+  $connectrec->{$server->{tag}} = $ip;
+  $connectrec->{$server->{address}} = $ip;
   start_ident_server unless $started++;
 }
 
@@ -125,7 +127,11 @@ sub sig_event_connected {
   my ($server) = @_;
 
   Irssi::print("Identd - server done connecting: " . $server->{address}) if VERBOSE;
+  print Dumper($connectrec) if VERBOSE;
+#  print Dumper($server) if VERBOSE;
+
   delete $connectrec->{$server->{address}};
+  delete $connectrec->{$server->{tag}};
 
   if(!keys %$connectrec) {
     Irssi::print("Identd - shutting down...") if VERBOSE;
