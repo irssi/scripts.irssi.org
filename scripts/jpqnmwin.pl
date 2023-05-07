@@ -1,11 +1,12 @@
 # based on jpq.pl by Maximilian 'sdx23' Voit (max.voit@gmx.net)
+use strict;
 
 use Irssi;
 use Irssi::TextUI;
 use POSIX qw(strftime);
 use vars qw($VERSION %IRSSI); 
 
-$VERSION = "1.2";
+$VERSION = "1.3";
 %IRSSI = (
     authors     => "Maximilian \'sdx23\' Voit, Nico R. Wohlgemuth",
     contact     => "nico\@lifeisabug.com",
@@ -14,7 +15,7 @@ $VERSION = "1.2";
                    " to a window named \"jpqnm\"",
     license     => "GPLv2",
     url         => "http://irssi.org/",
-    changed     => "2012-09-29"
+    changed     => "2023-05-07"
 );
 
 my $lasttext = '';
@@ -37,7 +38,7 @@ sub sig_printtext {
       if ($dest->{level} & MSGLEVEL_JOINS) {
 
          $text =~ /(.+) has joined/;
-         $joiner = $1;
+         my $joiner = $1;
 
          if (($joiner eq $lastjoiner) && ($text ne $lastjoin)) {
 
@@ -61,12 +62,12 @@ sub sig_printtext {
       
       my $text = $ts . $tag . ": " . $text;
 
-      if($text ne $lastext) {
+      if($text ne $lasttext) {
           $window->print($text, MSGLEVEL_NEVER);
           $window->view()->set_bookmark_bottom('ljoin') if ($dest->{level} & MSGLEVEL_JOINS);
       }
    
-      $lastext = $text;
+      $lasttext = $text;
 
       if (Irssi::settings_get_bool("jpqnmwin_stop_signal")) {
          if (!($dest->{level} & MSGLEVEL_KICKS)) {
