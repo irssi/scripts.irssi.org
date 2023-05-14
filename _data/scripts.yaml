@@ -2589,6 +2589,16 @@
   url: http://pieter-bas.ijdens.com/irssi/
   version: 1.0.0
 -
+  authors: "Maximilian 'sdx23' Voit, Nico R. Wohlgemuth"
+  contact: nico@lifeisabug.com
+  description: 'Print join-, part-, quit-, nick- and mode-messages to a window named "jpqnm"'
+  filename: jpqnmwin.pl
+  license: GPLv2
+  modified: '2023-05-07 16:23:01'
+  name: jpqnmwin
+  url: http://irssi.org/
+  version: '1.3'
+-
   authors: Nei
   contact: 'Nei @ anti@conference.jabber.teamidiot.de'
   description: 'Adds a command to navigate to the previously active windows and an optional shortcut to go back when you try to switch to the current window. Think /window last²'
