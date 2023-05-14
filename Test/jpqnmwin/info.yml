@@ -1,0 +1,12 @@
+---
+-
+  authors: "Maximilian 'sdx23' Voit, Nico R. Wohlgemuth"
+  changed: 2023-05-07
+  contact: nico@lifeisabug.com
+  default_package: jpqnmwin
+  description: 'Print join-, part-, quit-, nick- and mode-messages to a window named "jpqnm"'
+  license: GPLv2
+  modified: '2023-05-07 16:23:01'
+  name: jpqnmwin
+  url: http://irssi.org/
+  version: '1.3'
