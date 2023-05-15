@@ -1,10 +1,10 @@
 use strict;
 use warnings;
 
-our $VERSION = '0.3';
+our $VERSION = '0.4';
 our %IRSSI = (
-    authors     => 'Lars Djerf, Nei, Phoenix616',
-    contact     => 'lars.djerf@gmail.com, Nei @ anti@conference.jabber.teamidiot.de, Phoenix616 @ mail@moep.tv',
+    authors     => 'Lars Djerf, Nei, Phoenix616, Rhonda D\'Vine',
+    contact     => 'lars.djerf@gmail.com, Nei @ anti@conference.jabber.teamidiot.de, Phoenix616 @ mail@moep.tv, rhonda @ deb.at',
     name        => 'colon_emoji',
     description => 'Replace words between :...: in messages according to a text file. Was intended for Unicode Emoji on certain proprietary platforms.',
     license     => 'GPLv3',
@@ -36,6 +36,8 @@ our %IRSSI = (
 # Changelog
 # =========
 # 0.2: Handle outgoing messages
+# 0.3: ???
+# 0.4: tab completion added
 #
 
 use File::Basename 'dirname';
@@ -74,6 +76,18 @@ sub sig_send {
         $msg =~ s/$regex/$emojie{$1}/g;
         Irssi::signal_continue($msg, @rest);
     }
+}
+
+sub sig_complete {
+    my ($list, $window, $word, $linestart, $want_space) = @_;
+    return unless $word =~ /^:/i;
+    my @newlist;
+    my ($str) = $word =~ /^:(.*):?$/;
+    foreach (keys %emojie) {
+        push @newlist, $emojie{$_} if /^(\Q$str\E.*)$/;
+    }
+    push @$list, $_ foreach @newlist;
+    Irssi::stop_signal();
 }
 
 sub event_message {
@@ -142,5 +156,6 @@ Irssi::signal_add_first('message public' => 'sig_message_public');
 Irssi::signal_add_first('message private' => 'sig_message_private');
 Irssi::signal_add_first('send command' => 'sig_send');
 Irssi::signal_add_first('send text' => 'sig_send');
+Irssi::signal_add_first('complete word', 'sig_complete');
 
 init();
