@@ -87,7 +87,7 @@ sub sig_complete {
         push @newlist, $emojie{$_} if /^(\Q$str\E.*)$/;
     }
     push @$list, $_ foreach @newlist;
-    Irssi::stop_signal();
+    Irssi::signal_stop();
 }
 
 sub event_message {
