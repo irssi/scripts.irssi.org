@@ -112,7 +112,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                  clones_scanner ](Test/clones_scanner/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                          cmdind ](Test/cmdind/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                        cmpchans ](Test/cmpchans/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
-[                     colon_emoji ](Test/colon_emoji/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
+[                     colon_emoji ](Test/colon_emoji/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
 [                  colorize_nicks ](Test/colorize_nicks/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                       colorkick ](Test/colorkick/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       colorswap ](Test/colorswap/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -253,7 +253,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                           itime ](Test/itime/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                          ixmmsa ](Test/ixmmsa/)|  ✘   |  ✔   |  ✔   |  3   |  ☡   | (c)
 [                        joininfo ](Test/joininfo/)|  ✔   |  ✔   |  ✔   | 11   |  ✔   | (c)
-[                        jpqnmwin ](Test/jpqnmwin/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   
+[                        jpqnmwin ](Test/jpqnmwin/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
 [                            jump ](Test/jump/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                  kban-referrals ](Test/kban-referrals/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                      kblamehost ](Test/kblamehost/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -550,4 +550,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-8123c8abea4f7f048346a78f3c586eece5b4af2f | 2023-05-14T19:47:13,763144584+00:00
+f21e14c43526c2de4077f5a79ef9873b4dd0d3e2 | 2023-05-21T07:48:35,518683514+00:00
