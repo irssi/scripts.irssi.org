@@ -1121,14 +1121,14 @@
   url: http://vague.se
   version: '0.5'
 -
-  authors: 'Lars Djerf, Nei, Phoenix616'
-  contact: 'lars.djerf@gmail.com, Nei @ anti@conference.jabber.teamidiot.de, Phoenix616 @ mail@moep.tv'
+  authors: "Lars Djerf, Nei, Phoenix616, Rhonda D'Vine"
+  contact: 'lars.djerf@gmail.com, Nei @ anti@conference.jabber.teamidiot.de, Phoenix616 @ mail@moep.tv, rhonda @ deb.at'
   description: 'Replace words between :...: in messages according to a text file. Was intended for Unicode Emoji on certain proprietary platforms.'
   filename: colon_emoji.pl
   license: GPLv3
-  modified: '2018-07-10 20:06:14'
+  modified: '2023-05-21 09:47:31'
   name: colon_emoji
-  version: '0.3'
+  version: '0.4'
 -
   authors: Nei
   contact: 'Nei @ anti@conference.jabber.teamidiot.de'
