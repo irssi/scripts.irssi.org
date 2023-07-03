@@ -38,7 +38,7 @@ Irssi::settings_add_int('misc','wormtongue_temperature', 700);
 Irssi::settings_add_bool('misc','wormtongue_debug', 0);
 Irssi::settings_add_str('misc', 'wormtongue_request', 'rephrase the sentence that comes after the question mark and dont change its language?');
 
-sub wormtongue() {
+sub wormtongue {
     my $debug = Irssi::settings_get_bool('wormtongue_debug');
     my $ua = LWP::UserAgent->new;
     my $server_endpoint = "https://api.openai.com/v1/chat/completions";
