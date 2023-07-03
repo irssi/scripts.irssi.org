@@ -16,12 +16,13 @@ our %IRSSI = (
 # /set whereami_frequency sets how often we make the IP query in miliseconds
 # /set whereami_url the url of the service that gives us our IP
 # please note that the default url is being provided by cloudflare
+# the script also provides a expando called whereami
 Irssi::settings_add_int('misc', 'whereami_frequency', 300000);
 Irssi::settings_add_str('misc', 'whereami_url', 'https://icanhazip.com');
 my $whereami_ip = '0.0.0.0';
 my $timeout;
 
-sub whereami() {
+sub whereami {
     my $ua = LWP::UserAgent->new;
     Irssi::timeout_remove($timeout);
     my $server_endpoint = Irssi::settings_get_str('whereami_url');
@@ -38,11 +39,15 @@ sub whereami() {
     $timeout = Irssi::timeout_add_once(Irssi::settings_get_int('whereami_frequency'), 'whereami' , undef);
 }
 
-sub whereamiStatusbar() {
+sub whereamiStatusbar {
   my ($item, $get_size_only) = @_;
 
   $item->default_handler($get_size_only, "{sb ".$whereami_ip."}", undef, 1);
 }
+
+Irssi::expando_create('whereami', sub {
+  return $whereami_ip;
+}, {});
 
 Irssi::command_bind('whereami', \&whereami);
 Irssi::statusbar_item_register('whereami', '{sb $0-}', 'whereamiStatusbar');
