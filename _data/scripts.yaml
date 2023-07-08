@@ -2261,11 +2261,11 @@
   description: 'Identd script for irssi'
   filename: identd.pl
   license: GPL2
-  modified: '2017-11-23 20:27:26'
+  modified: '2023-05-04 20:44:46'
   modules: autovivification
   name: identd
   url: https://vague.se
-  version: '0.4'
+  version: '0.5'
 -
   authors: "Stefan 'tommie' Tomanek"
   commands: idle
