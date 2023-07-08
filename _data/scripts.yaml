@@ -4959,6 +4959,18 @@
   url: http://github.com/bcattaneo
   version: 1.1.0
 -
+  authors: terminaldweller
+  commands: tongueworm
+  contact: https://terminaldweller.com
+  description: 'rewrites the input line using openai chatgpt'
+  filename: tongueworm.pl
+  license: 'GPL3 or newer'
+  modified: '2023-07-03 23:53:33'
+  modules: LWP::UserAgent
+  name: tongueworm
+  url: https://github.com/irssi/scripts.irssi.org
+  version: '0.1'
+-
   authors: 'Pascal Hakim'
   contact: pasc@redellipse.net
   description: 'This script shows you changes in the topic. '
