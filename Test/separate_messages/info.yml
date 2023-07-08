@@ -1,0 +1,12 @@
+---
+-
+  authors: vague
+  changed: '14 Apr 10:00:00 CEST 2023'
+  contact: 'vague!#irssi@libera.chat on irc'
+  default_package: separate_messages
+  description: 'Print a black line between messages from different users'
+  license: GPL2
+  modified: '2023-04-19 17:43:42'
+  name: separate_messages
+  url: https://vague.se
+  version: '0.2'
