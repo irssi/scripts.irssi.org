@@ -1,0 +1,15 @@
+---
+-
+  authors: terminaldweller
+  commands:
+    - tongueworm
+  contact: https://terminaldweller.com
+  default_package: tongueworm
+  description: 'rewrites the input line using openai chatgpt'
+  license: 'GPL3 or newer'
+  modified: '2023-07-03 23:53:33'
+  modules:
+    - LWP::UserAgent
+  name: tongueworm
+  url: https://github.com/irssi/scripts.irssi.org
+  version: '0.1'
