@@ -484,7 +484,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                       tmux_away ](Test/tmux_away/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                toggle_hidelevel ](Test/toggle_hidelevel/)|  ✔   |  ✔   |  ✔   |  2   |  ✔   | (c)
 [                          toilet ](Test/toilet/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
-[                      tongueworm ](Test/tongueworm/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
+[                      tongueworm ](Test/tongueworm/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                      topic-diff ](Test/topic-diff/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                          topics ](Test/topics/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        topicsed ](Test/topicsed/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
@@ -527,6 +527,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                        warnkick ](Test/warnkick/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       washnicks ](Test/washnicks/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                           watch ](Test/watch/)|  ✔   |  ✔   |  ✔   | 33   |  ✔   | (c)
+[                        whereami ](Test/whereami/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                       whitelist ](Test/whitelist/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                        whocount ](Test/whocount/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                           whois ](Test/whois/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -552,4 +553,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-a2565e522a5994089d5b777fe9d0fb23ea9243f7 | 2023-07-08T15:38:41,934738440+00:00
+d00976b27e9a4d2e204a5f2b00ec314ea543a010 | 2023-07-08T16:57:33,926705638+00:00

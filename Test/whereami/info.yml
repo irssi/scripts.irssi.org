@@ -1,0 +1,15 @@
+---
+-
+  authors: terminaldweller
+  commands:
+    - whereami
+  contact: https://terminaldweller.com
+  default_package: whereami
+  description: 'adds a statusbar item that displays your current IP address'
+  license: 'GPL3 or newer'
+  modified: '2023-07-08 20:02:16'
+  modules:
+    - LWP::UserAgent
+  name: whereami
+  url: https://github.com/irssi/scripts.irssi.org
+  version: '0.1'
