@@ -4451,6 +4451,16 @@
   url: http://anti.teamidiot.de/
   version: '0.1'
 -
+  authors: vague
+  contact: 'vague!#irssi@libera.chat on irc'
+  description: 'Print a black line between messages from different users'
+  filename: separate_messages.pl
+  license: GPL2
+  modified: '2023-04-19 17:43:42'
+  name: separate_messages
+  url: https://vague.se
+  version: '0.2'
+-
   authors: 'Adrian Keet & John Sullivan'
   contact: johnsullivan.pem@gmail.com
   description: 'Implements the IRCv3 "server-time" capability'
