@@ -222,7 +222,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                        hostname ](Test/hostname/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            iMPD ](Test/iMPD/)|  ✔   |  ✔   |  ✔   | 22   |  ✔   | (c)
 [                           ident ](Test/ident/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                          identd ](Test/identd/)|  ✔   |  ✔   |  ✔   |  2   |  ✔   | (c)
+[                          identd ](Test/identd/)|  ✔   |  ✔   |  ✔   |  2   |  ✔   
 [                        idletime ](Test/idletime/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                    ido_switcher ](Test/ido_switcher/)|  ✔   |  ✔   |  ✔   |  1   |  ✔   | (c)
 [                         idonkey ](Test/idonkey/)|  ✘   |  ✔   |  ✔   | 13   |  ☡   | (c)
@@ -434,7 +434,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                       securemsg ](Test/securemsg/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                            seen ](Test/seen/)|  ✔   |  ✔   |  ✔   |103   |  ✔   | (c)
 [                     send_scroll ](Test/send_scroll/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
-[               separate_messages ](Test/separate_messages/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
+[               separate_messages ](Test/separate_messages/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                     server_time ](Test/server_time/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                  servercomplete ](Test/servercomplete/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
 [                    settingshelp ](Test/settingshelp/)|  ✔   |  ✔   |  ✔   |  1   |  ✔   | (c)
@@ -551,4 +551,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-d962a27c94fe9dbfd664f39c946098716b441730 | 2023-07-08T15:16:26,108538046+00:00
+a1b2e906b00e19af62c8e8b982dc043261038319 | 2023-07-08T15:21:21,898939149+00:00

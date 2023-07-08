@@ -1,14 +1,14 @@
 ---
 -
   authors: vague
-  changed: '25 Jul 20:00:00 CEST 2017'
+  changed: '04 May 15:00:00 CEST 2023'
   contact: 'vague!#irssi@freenode on irc'
   default_package: identd
   description: 'Identd script for irssi'
   license: GPL2
-  modified: '2017-11-23 20:27:26'
+  modified: '2023-05-04 20:44:46'
   modules:
     - autovivification
   name: identd
   url: https://vague.se
-  version: '0.4'
+  version: '0.5'
