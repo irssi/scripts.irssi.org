@@ -1,5 +1,6 @@
 use Irssi;
 use LWP::UserAgent;
+use Irssi::TextUI;
 use strict;
 
 our $VERSION = "0.1";
