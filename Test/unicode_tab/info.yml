@@ -1,0 +1,9 @@
+---
+-
+  authors: aquanight
+  default_package: unicode_tab
+  description: 'Provides the ability to type in unicode characters via their codepoint, by typing U+XXX and pressing tab.'
+  license: 'public domain'
+  modified: '2023-07-16 00:42:41'
+  name: unicode_tab
+  version: 1

@@ -505,6 +505,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                               u ](Test/u/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                      uberprompt ](Test/uberprompt/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                         unicode ](Test/unicode/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
+[                     unicode_tab ](Test/unicode_tab/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
 [                          unread ](Test/unread/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                     upgradeinfo ](Test/upgradeinfo/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                      upsidedown ](Test/upsidedown/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -527,7 +528,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                        warnkick ](Test/warnkick/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       washnicks ](Test/washnicks/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                           watch ](Test/watch/)|  ✔   |  ✔   |  ✔   | 33   |  ✔   | (c)
-[                        whereami ](Test/whereami/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[                        whereami ](Test/whereami/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       whitelist ](Test/whitelist/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                        whocount ](Test/whocount/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                           whois ](Test/whois/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -553,4 +554,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-d00976b27e9a4d2e204a5f2b00ec314ea543a010 | 2023-07-08T16:57:33,926705638+00:00
+d82891051ec20ded6c11933905eefd39d1fc0985 | 2023-07-16T08:46:35,838728745+00:00
