@@ -5175,6 +5175,14 @@
   url: http://dgl.cx/irssi
   version: '2'
 -
+  authors: aquanight
+  description: 'Provides the ability to type in unicode characters via their codepoint, by typing U+XXX and pressing tab.'
+  filename: unicode_tab.pl
+  license: 'public domain'
+  modified: '2023-07-16 00:42:41'
+  name: unicode_tab
+  version: '1'
+-
   authors: 'Gregory Colpart'
   commands: unread
   contact: 'reg on #evolix@freenode'
