@@ -11,7 +11,7 @@ use vars qw($VERSION %IRSSI);
 # - postgresql
 # - postgresql-contrib (pg_trgm)
 
-$VERSION = "1.0";
+$VERSION = "1.1";
 %IRSSI = (
     authors     => "Aaron Bieber",
     contact     => "deftly\@gmail.com",
@@ -134,6 +134,10 @@ sub log {
     write_db($nick, $message, $target)
 }
 
+sub setup_changed {
+    %blacklist = map{$_ => undef} split /\s+/, Irssi::settings_get_str('il_blacklist');
+}
+
 Irssi::signal_add_last('message public', 'log');
 Irssi::signal_add_last('message own_public', 'log_me');
 
@@ -144,6 +148,9 @@ Irssi::settings_add_str('irssi_logger', 'il_host', "127.0.0.1");
 Irssi::settings_add_str('irssi_logger', 'il_port', "5432");
 # a space separated list of channel names to exclude from logging
 Irssi::settings_add_str('irssi_logger', 'il_blacklist', "");
+
+Irssi::signal_add('setup changed' => 'setup_changed');
+
 
 %blacklist = map{$_ => undef} split /\s+/, Irssi::settings_get_str('il_blacklist');
 Irssi::print("irssi_logger loaded!");
