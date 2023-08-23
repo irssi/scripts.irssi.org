@@ -11,7 +11,7 @@ use vars qw($VERSION %IRSSI);
 # - postgresql
 # - postgresql-contrib (pg_trgm)
 
-$VERSION = "1.0";
+$VERSION = "1.1";
 %IRSSI = (
     authors     => "Aaron Bieber",
     contact     => "deftly\@gmail.com",
@@ -23,6 +23,7 @@ $VERSION = "1.0";
 
 my $user = $ENV{LOGNAME} || $ENV{USER} || getpwuid($<);
 my $dbh;
+my %blacklist = ();
 
 
 my $sql = qq~
@@ -63,8 +64,10 @@ CREATE index logs_nick_idx on logs (nick)
 ~;
 
 sub db_init {
+    my $dbhost = Irssi::settings_get_str('il_host');
+    my $dbport = Irssi::settings_get_str('il_port');
     my ($dbname, $dbuser, $dbpass) = @_;
-    my $mdbh = DBI->connect("dbi:Pg:dbname=$dbname", $dbuser, $dbpass) || Irssi::print("Can't connect to postgres! " . DBI::errstr);
+    my $mdbh = DBI->connect("DBI:Pg:database=$dbname;host=$dbhost;port=$dbport", $dbuser, $dbpass) || Irssi::print("Can't connect to postgres! " . DBI::errstr);
 
     my $sth = $mdbh->prepare($check_db);
     $sth->execute();
@@ -90,29 +93,33 @@ sub connect_db {
     my $dbname = Irssi::settings_get_str('il_dbname') || $user;
     my $dbuser = Irssi::settings_get_str('il_dbuser') || $user;
     my $dbpass = Irssi::settings_get_str('il_dbpass') || "";
+    my $dbhost = Irssi::settings_get_str('il_host');
+    my $dbport = Irssi::settings_get_str('il_port');
 
     db_init($dbname, $dbuser, $dbpass);
 
     Irssi::print("Connecting to the database");
 
-    return DBI->connect("dbi:Pg:dbname=$dbname", $dbuser, $dbpass) || Irssi::print("Can't connect to db!" . DBI::errstr);
+    return DBI->connect("DBI:Pg:database=$dbname;host=$dbhost;port=$dbport", $dbuser, $dbpass) || Irssi::print("Can't connect to db!" . DBI::errstr);
 }
 
 sub write_db {
     my ($nick, $message, $target) = @_;
-    my @vals;
-    my $date = strftime("%Y-%m-%d %H:%M:%S", localtime);
+    if (!exists $blacklist{$target}) {
+        my @vals;
+        my $date = strftime("%Y-%m-%d %H:%M:%S", localtime);
 
-    $dbh = connect_db() unless $dbh;
+        $dbh = connect_db() unless $dbh;
 
-    push(@vals, $date);
-    push(@vals, $nick);
-    push(@vals, $message);
-    push(@vals, $target);
+        push(@vals, $date);
+        push(@vals, $nick);
+        push(@vals, $message);
+        push(@vals, $target);
 
-    defined or $_ = "" for @vals;
+        defined or $_ = "" for @vals;
 
-    $dbh->do($sql, undef, @vals) || Irssi::print("Can't log to DB! " . DBI::errstr);
+        $dbh->do($sql, undef, @vals) || Irssi::print("Can't log to DB! " . DBI::errstr);
+    }
 }
 
 sub log_me {
@@ -125,11 +132,23 @@ sub log {
     write_db($nick, $message, $target)
 }
 
+sub setup_changed {
+    %blacklist = map{$_ => undef} split /\s+/, Irssi::settings_get_str('il_blacklist');
+}
+
 Irssi::signal_add_last('message public', 'log');
 Irssi::signal_add_last('message own_public', 'log_me');
 
 Irssi::settings_add_str('irssi_logger', 'il_dbname', $user);
 Irssi::settings_add_str('irssi_logger', 'il_dbuser', $user);
 Irssi::settings_add_str('irssi_logger', 'il_dbpass', "");
+Irssi::settings_add_str('irssi_logger', 'il_host', "127.0.0.1");
+Irssi::settings_add_str('irssi_logger', 'il_port', "5432");
+# a space separated list of channel names to exclude from logging
+Irssi::settings_add_str('irssi_logger', 'il_blacklist', "");
 
+Irssi::signal_add('setup changed' => 'setup_changed');
+
+
+%blacklist = map{$_ => undef} split /\s+/, Irssi::settings_get_str('il_blacklist');
 Irssi::print("irssi_logger loaded!");
