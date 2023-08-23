@@ -105,9 +105,7 @@ sub connect_db {
 
 sub write_db {
     my ($nick, $message, $target) = @_;
-    if (exists $blacklist{$target}) {
-        # dont log
-    } else {
+    if (!exists $blacklist{$target}) {
         my @vals;
         my $date = strftime("%Y-%m-%d %H:%M:%S", localtime);
 
