@@ -2532,11 +2532,11 @@
   description: 'Logs chats to a PostgreSQL database.'
   filename: irssi_logger.pl
   license: BSD
-  modified: '2015-02-04 11:16:03'
+  modified: '2023-08-23 07:45:50'
   modules: DBI
   name: irssi_logger
   url: https://github.com/qbit/irssi_logger
-  version: '1.0'
+  version: '1.1'
 -
   authors: mniip
   commands: 'isbanned islisted ismuted isreset'
