@@ -5678,3 +5678,10 @@
   name: ziew
   url: http://gj.pointblue.com.pl/projects/ziew
   version: '0.56'
+-
+  description: 'smartfilter.pl reimagined, optimized for unusually flakey networks such as IRC over I2P'
+  filename: zmartfilter.pl
+  license: 'Public Domain'
+  modified: '2023-08-27 22:41:10'
+  name: zmartfilter
+  version: '1.00'
