@@ -1,0 +1,8 @@
+---
+-
+  default_package: zmartfilter
+  description: 'smartfilter.pl reimagined, optimized for unusually flakey networks such as IRC over I2P'
+  license: 'Public Domain'
+  modified: '2023-08-27 22:41:10'
+  name: zmartfilter
+  version: '1.00'

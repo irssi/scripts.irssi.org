@@ -247,7 +247,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                       ircuwhois ](Test/ircuwhois/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                      irssi-feed ](Test/irssi-feed/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                    irssiBlaster ](Test/irssiBlaster/)|  ✔   |  ✔   |  ✔   | 12   |  ✔   | (c)
-[                    irssi_logger ](Test/irssi_logger/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
+[                    irssi_logger ](Test/irssi_logger/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        isbanned ](Test/isbanned/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
 [                            isdn ](Test/isdn/)|  ✘   |  ✔   |  ✘   | 10   |  ☡   | (c)
 [                           itime ](Test/itime/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -553,5 +553,6 @@ See [the testing read-me](../master/_testing/) for details.
 [                     xmpp-notify ](Test/xmpp-notify/)|  ✔   |  ✔   |  ✔   | 21   |  ✔   | (c)
 [                             xqf ](Test/xqf/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                     zmartfilter ](Test/zmartfilter/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 
-7354ec818387f911326954c9c83a4571918fc310 | 2023-08-23T05:28:55,154648996+00:00
+e98be39d7d3b28c1335e47d34dae5d5c9038df9d | 2023-09-06T07:52:54,559192143+00:00
