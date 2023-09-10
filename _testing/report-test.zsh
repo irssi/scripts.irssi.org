@@ -53,14 +53,18 @@ for scriptfile ($filelist) {
 
     # CRIT
     if { grep -qs 'Code before strictures are enabled\|Two-argument "open" used' "Test/${scriptfile:t:r}/perlcritic.log" }  { print -n '  '$failmark'   ' } \
+    elif { grep -qs ': \(E9\|F63\|F7\|F82\)' "Test/${scriptfile:t:r}/flake8.log" }  { print -n '  '$failmark'   ' } \
     elif { grep -qs 'command not found:' "Test/${scriptfile:t:r}/perlcritic.log" } { print -n '  '$skipmark'   ' } \
     else { print -n '  '$passmark'   '; ((++pass)) }; print -n $T
 
     # SCORE
-    perl -ne '$score += $1 -1 if /Severity: (\d+)/; END { printf "%3d", $score }' "Test/${scriptfile:t:r}/perlcritic.log" 2>/dev/null
+    perl -ne 'BEGIN { @fl = ("E9|F63|F7|F82" => 5, "F[0-9]" => 4, "E[0-9]" => 3, "[CW][0-9]" => 2, "N[0-9]" => 1) }
+        $score += $1 -1 if /Severity: (\d+)/;
+        for ($i = 0; $i < @fl; $i += 2) { if (/\d: $fl[$i]/) { $score += $fl[$i + 1]; last } }
+    END { printf "%3d", $score }' "Test/${scriptfile:t:r}/perlcritic.log" "Test/${scriptfile:t:r}/flake8.log" 2>/dev/null
     print -n '   '$T
     if [[ $pass -lt 3 ]]  {
-        if [[ -n $allow_fail[$scriptfile:t:r] ]] || [[ ! -f scripts/${scriptfile:t:r}.pl ]] {
+        if [[ -n $allow_fail[$scriptfile:t:r] ]] || { [[ ! -f scripts/${scriptfile:t:r}.pl ]] && [[ ! -f scripts/${scriptfile:t:r}.py ]] } {
             print -n '  '$skipmark'   '
         } \
         else {

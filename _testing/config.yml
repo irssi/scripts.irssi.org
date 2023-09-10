@@ -9,6 +9,7 @@ scripts_yaml_keys:
   - description
   - license
   # optional
+  - language
   - url
   - commands
   - note

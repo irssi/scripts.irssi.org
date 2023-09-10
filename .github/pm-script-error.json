@@ -1,0 +1,18 @@
+{
+  "problemMatcher": [
+    {
+      "owner": "script-error",
+      "pattern": [
+	{
+	  "regexp": ": Error in script ",
+	},
+	{
+	  "regexp": "^([*] )?(.*) at (.*) line (\\d+)\\.$",
+	  "file": 3,
+	  "line": 4,
+	  "message": 2
+	}
+      ]
+    }
+  ]
+}

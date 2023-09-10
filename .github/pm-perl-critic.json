@@ -1,0 +1,28 @@
+{
+  "problemMatcher": [
+    {
+      "owner": "perl-critic",
+      "severity": "warning",
+      "pattern": [
+	{
+	  "regexp": "^(.*): (.*) at line (\\d+), column (\\d+)\\.  (.*)\\.  \\(Severity: \\d\\)$",
+	  "file": 1,
+	  "line": 3,
+	  "column": 4,
+	  "message": 2,
+	  "code": 5
+	}
+      ]
+    },
+    {
+      "owner": "perl-critic-fail",
+      "pattern": [
+	{
+	  "regexp": "^(.*): (.*)\\. \\(Severity: \\d\\)$",
+	  "file": 1,
+	  "message": 2
+	}
+      ]
+    }
+  ]
+}

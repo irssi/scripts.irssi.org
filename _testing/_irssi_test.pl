@@ -84,12 +84,12 @@ for my $rb (keys %info) {
 
 if (!%info || !defined $info{name}) {
     open my $ef, '>>', "perlcritic.log";
-    print $ef 'No %IRSSI header in script or name not given. (Severity: 6)', "\n";
+    print $ef "scripts/$CURRENT_SCRIPT.pl: ", 'No %IRSSI header in script or name not given. (Severity: 6)', "\n";
     $info{name} //= $CURRENT_SCRIPT;
 }
 if (!defined $version) {
     open my $ef, '>>', "perlcritic.log";
-    print $ef 'Missing $VERSION in script. (Severity: 6)', "\n";
+    print $ef "scripts/$CURRENT_SCRIPT.pl: ", 'Missing $VERSION in script. (Severity: 6)', "\n";
 }
 else {
     $info{version} = $version;
@@ -103,5 +103,6 @@ if ($loginfo) {
 $info{modules} = \@modules if @modules;
 $info{commands} = \@commands if @commands;
 $info{default_package} = $package =~ s/::$//r if $package;
+$info{language} = 'Perl';
 YAML::Tiny::DumpFile("info.yml", [\%info]);
 Irssi::command('^window log off');

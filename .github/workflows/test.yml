@@ -5,34 +5,18 @@ on:
   pull_request:
 name: Check Script
 env:
-  apt_build_deps: irssi-git-an cpanminus elinks zsh
+  apt_build_deps: irssi-git-an irssi-python3 cpanminus elinks flake8 zsh
   apt_script_deps: libdb-dev libaspell-dev libgirepository1.0-dev gobject-introspection gir1.2-notify-0.7 xosd-bin wbritish
   USE_ARTEFACTS_CACHE: yes
   EXTRACT_TEST_ARTEFACTS: yes
   PERL_MM_NONINTERACTIVE: 1
 jobs:
-  skip:
-    runs-on: ubuntu-latest
-    outputs:
-      skip: ${{ steps.ci-skip-step.outputs.ci-skip }}
-      skip-not: ${{ steps.ci-skip-step.outputs.ci-skip-not }}
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-      - id: ci-skip-step
-        uses: mstachniuk/ci-skip@v1
   test:
-    needs: skip
-    if: ${{ needs.skip.outputs.skip == 'false' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@main
         with:
           fetch-depth: 0
-      - uses: mstachniuk/ci-skip@v1
-        with:
-          fail-fast: true
       - name: prepare required software
         run: |
           RELEASE=$(lsb_release -rs)
@@ -40,28 +24,39 @@ jobs:
           curl -fsSL https://download.opensuse.org/repositories/home:ailin_nemui:irssi-git-an/xUbuntu_$RELEASE/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/home_ailin_nemui_irssi-git-an.gpg > /dev/null
           sudo apt -q update
           sudo apt -q install $apt_build_deps $apt_script_deps
-      - name: check Perl ver
-        id: perl-ver
+      - name: Setup flake8 annotations
+        uses: rbialon/flake8-annotations@master
+        if: ${{ github.event_name == 'pull_request' }}
+      - name: Setup local annotations
+        if: ${{ github.event_name == 'pull_request' }}
         run: |
-          echo ::set-output name=perl_version::$(perl -e'print $^V')
+          for pm in "$PWD"/.github/pm-*.json; do
+            echo "::add-matcher::$pm"
+          done
+      - name: check versions
+        id: ver
+        run: |
+          echo "perl_version=$(perl -e'print $^V')" | tee -a "$GITHUB_OUTPUT"
+          echo "python_version=$(python3 -c 'import platform; print(platform.python_version())')" | tee -a "$GITHUB_OUTPUT"
+          echo "irssi_version=$(irssi --version | awk '{print $2}')" | tee -a "$GITHUB_OUTPUT"
       - name: cache cpan
-        uses: actions/cache@v2
+        uses: actions/cache@main
         with:
           path: |
             ~/extlib
-          key: ${{ runner.os }}-${{ steps.perl-ver.outputs.perl_version }}-cpan-${{ github.sha }}-${{ github.run_number }}
+          key: ${{ runner.os }}-${{ steps.ver.outputs.perl_version }}-cpan-${{ github.sha }}-${{ github.run_number }}
           restore-keys: |
-            ${{ runner.os }}-${{ steps.perl-ver.outputs.perl_version }}-cpan-${{ github.sha }}-
-            ${{ runner.os }}-${{ steps.perl-ver.outputs.perl_version }}-cpan-
+            ${{ runner.os }}-${{ steps.ver.outputs.perl_version }}-cpan-${{ github.sha }}-
+            ${{ runner.os }}-${{ steps.ver.outputs.perl_version }}-cpan-
       - name: fetch origin master branch
         if: ${{ github.event_name == 'pull_request' }}
         run: |
-          git fetch --depth=1 origin refs/heads/master
+          git fetch origin refs/heads/master
       - name: configure local::lib
         run: |
           eval $(perl -Mlocal::lib="$HOME"/extlib)
           for v in PATH PERL5LIB PERL_LOCAL_LIB_ROOT PERL_MB_OPT PERL_MM_OPT; do
-            eval echo "\$v=\$$v" >> $GITHUB_ENV
+            eval echo "\$v=\$$v" >> "$GITHUB_ENV"
           done
       - name: fix the broken Encode module
         run: |
@@ -91,17 +86,23 @@ jobs:
         if: ${{ github.event_name == 'pull_request' }}
         run: |
           git diff --stat origin/master
+          MARKDOWN_REPORT=1 ./_testing/report-test.zsh >> "$GITHUB_STEP_SUMMARY" || :
       - name: test report
         run: |
           ./_testing/report-test.zsh || rc=$?
-          echo "SCRIPT_RC=${rc:-0}" >> $GITHUB_ENV
+          echo "SCRIPT_RC=${rc:-0}" >> "$GITHUB_ENV"
       - name: integration report
         run: |
           ./_testing/github/show-failures.zsh
       - name: update scripts.yaml
-        if: ${{ github.event_name == 'push' }}
         run: |
           perl ./_testing/update-scripts-yaml.pl
+      - name: show git changes
+        if: ${{ github.event_name == 'pull_request' }}
+        run: |
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
+          git diff | tee -a "$GITHUB_STEP_SUMMARY"
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
       - name: commit scripts.yaml
         if: ${{ github.event_name == 'push' }}
         run: |

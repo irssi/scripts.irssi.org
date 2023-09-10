@@ -19,9 +19,9 @@ for (@{$docs[0]//[]}) {
 }
 
 my %newmeta;
-for my $file (<scripts/*.pl>) {
-    my ($filename, $base) =
-        $file =~ m,^scripts/((.*)\.pl)$,;
+for my $file (<scripts/*.pl scripts/*.py>) {
+    my ($filename, $base, $ext) =
+        $file =~ m,^scripts/((.*)\.(pl|py))$,;
     my $info_file = "Test/$base/info.yml";
     my @cdoc;
     if (-f $info_file && open my $ef, '<:utf8', $info_file) {
