@@ -5,6 +5,7 @@
   contact: bw1@aol.at
   description: 'upload file to https://0x0.st/'
   filename: 0x0st.pl
+  language: Perl
   license: ISC
   modified: '2022-11-13 13:36:15'
   modules: 'HTTP::Request::Common LWP::UserAgent'
@@ -16,6 +17,7 @@
   contact: patrik.akerfeldt@gmail.com
   description: 'Dont like to take decisions? Have the 8-ball do it for you instead.'
   filename: 8-ball.pl
+  language: Perl
   license: GPL
   modified: '2019-07-16 23:37:33'
   name: 8-ball
@@ -26,6 +28,7 @@
   contact: 'IRC: Freenode network, #ubuntu-lb'
   description: 'Controls Audacious2 and MOCP from Irssi'
   filename: Cirssi.pl
+  language: Perl
   license: 'GNU General Public License'
   modified: '2019-01-20 23:16:01'
   name: 'Consolidate Irssi Player'
@@ -37,6 +40,7 @@
   contact: mr_700@yahoo.com
   description: "Automaticaly \x02/msg ident NS yourpassword\x02 when you connect or services come back from death"
   filename: UNIBG-autoident.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2018-09-10 18:52:09'
   name: UNIBG-autoident
@@ -47,6 +51,7 @@
   contact: toma@rulez.org
   description: 'This script strips the hungarian accents.'
   filename: accent.pl
+  language: Perl
   license: GPL
   modified: '2015-01-26 22:59:40'
   name: accent
@@ -56,6 +61,7 @@
   contact: 'ilbelkyr on freenode, ilbelkyr@shalture.org'
   description: 'Display account identification status changes using CAP account-notify'
   filename: account-notify.pl
+  language: Perl
   license: 'CC0 1.0 <https://creativecommons.org/publicdomain/zero/1.0/legalcode>'
   modified: '2017-11-05 00:04:25'
   name: account-notify
@@ -65,6 +71,7 @@
   contact: chrish@carrier6.com
   description: 'Instead of displaying semi-raw data, a /whois now gives a tidy accountname on Asuka/lain servers (if applicable).'
   filename: accountname.pl
+  language: Perl
   license: 'Feel free to alter anything conform your own liking.'
   modified: '2008-05-17 17:39:09'
   name: accountname
@@ -75,6 +82,7 @@
   contact: rcaputo@cpan.org
   description: 'Jump to the next active window, with tiebreakers.'
   filename: ack.pl
+  language: Perl
   license: Perl
   modified: '2012-03-07 13:20:23'
   name: ack
@@ -86,6 +94,7 @@
   contact: c0ffee@penguin-breeder.org
   description: 'Reset window activity status. defines command /act'
   filename: act.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2016-05-01 21:05:08'
   name: 'Reset window activity status'
@@ -96,6 +105,7 @@
   contact: irssi@kalor.dk
   description: 'Print window activity to a fifo'
   filename: act_fifo.pl
+  language: Perl
   license: GPLv2
   modified: '2014-10-17 18:30:46'
   name: act_fifo
@@ -105,6 +115,7 @@
   contact: geert@hauwaerts.be
   description: 'This script shows incoming notices into the active channel.'
   filename: active_notice.pl
+  language: Perl
   license: 'GNU General Public License'
   modified: '2016-01-20 22:59:49'
   name: active_notice.pl
@@ -115,6 +126,7 @@
   contact: geert@irssi.org
   description: 'This script will display notify messages into the active window or broadcast it so all the windows.'
   filename: active_notify.pl
+  language: Perl
   license: 'GNU General Public License'
   modified: '2003-09-17 23:00:11'
   name: active_notify.pl
@@ -124,6 +136,7 @@
   authors: 'Antti Vähäkotamäki'
   description: 'Maintains a representation of window activity status in a file'
   filename: activity_file.pl
+  language: Perl
   license: 'GNU General Public License'
   modified: '2006-07-19 23:59:00'
   name: activity_file
@@ -134,6 +147,7 @@
   contact: 'Nei @ anti@conference.jabber.teamidiot.de'
   description: 'Adds a permanent advanced window list on the right or in a status bar.'
   filename: adv_windowlist.pl
+  language: Perl
   license: 'GNU GPLv2 or later'
   modified: '2022-05-23 22:13:43'
   modules: Text::CharWidth
@@ -146,6 +160,7 @@
   contact: bd@bc-bd.org
   description: 'Puts people on ignore if they do a public away. See source for options.'
   filename: ai.pl
+  language: Perl
   license: 'GPL v2'
   modified: '2014-10-17 18:30:46'
   name: ai
@@ -156,6 +171,7 @@
   contact: fahren@bochnia.pl
   description: 'Antyidler with random time'
   filename: aidle.pl
+  language: Perl
   license: 'GNU GPLv2 or later'
   modified: '2014-10-17 18:30:46'
   name: Antyidler
@@ -166,6 +182,7 @@
   contact: ocb23@freenet.removethis.de
   description: 'Full configurable FTP advertiser for Irssi'
   filename: akftp.pl
+  language: Perl
   license: GPLv2
   modified: '2008-05-17 17:39:09'
   name: 'ak FTP-Ad'
@@ -177,6 +194,7 @@
   contact: mordeth\@mac.com
   description: 'Converts towards lame speech'
   filename: alame.pl
+  language: Perl
   license: 'GPL v2'
   modified: '2008-05-17 17:39:09'
   name: alame
@@ -188,6 +206,7 @@
   contact: camel69(at)codeeye.de
   description: 'Retrievs song infos and controls amaroK via dcop, optionally running on another computer via ssh'
   filename: amarok_ssh.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2014-10-17 18:30:46'
   name: 'amaroK (via ssh)'
@@ -198,6 +217,7 @@
   contact: 'ragdim at mbnet dot fi'
   description: 'Shows the song playing in amaroK in the active window (channel or query).'
   filename: amaroknp.pl
+  language: Perl
   license: GPL
   modified: '2004-03-30 23:20:00'
   name: amaroknp
@@ -209,6 +229,7 @@
   contact: ms+irssi@quadpoint.org
   description: 'a /names display with away nicks coloured'
   filename: anames.pl
+  language: Perl
   license: GPLv2
   modified: '2018-01-05 13:56:55'
   modules: Text::CharWidth
@@ -220,6 +241,7 @@
   contact: stefan@pico.ruhr.de
   description: 'Another auto away script'
   filename: anotherway.pl
+  language: Perl
   license: GPLv2
   modified: '2008-05-17 17:39:11'
   name: anotherway
@@ -229,6 +251,7 @@
   contact: greg@chown.ath.cx
   description: 'notices users who "plenk"'
   filename: antiplenk.pl
+  language: Perl
   license: BSD
   modified: '2003-02-12 07:00:05'
   name: antiplenk
@@ -239,6 +262,7 @@
   contact: formorer@formorer.de
   description: 'Shows your battery status in your Statusbar'
   filename: apm.pl
+  language: Perl
   license: 'GNU Public License'
   modified: '2017-04-07 16:34:31'
   name: apm
@@ -250,6 +274,7 @@
   contact: flux@inside.org
   description: 'Ignores people bringin up boring/repeated subjects, plus replies.'
   filename: armeija.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2014-10-17 18:30:46'
   name: 'Armeija Ignore'
@@ -261,6 +286,7 @@
   contact: derwan@irssi.pl
   description: 'Ascii-art bassed on figlet. Available commands: /ASCII, /COLSAY, /COLME, /COLTOPIC, /COLKICK, /COLQUIT.'
   filename: ascii.pl
+  language: Perl
   license: 'GNU GPL v2'
   modified: '2002-06-21 17:17:53'
   name: ascii-art
@@ -272,6 +298,7 @@
   contact: 'irssi@isaacgood.com, shabble+irssi@metavore.org'
   description: 'ASpell spellchecking system for Irssi'
   filename: aspell.pl
+  language: Perl
   license: MIT
   modified: '2016-10-06 17:55:58'
   modules: Text::Aspell
@@ -283,6 +310,7 @@
   contact: phaegi\@mimir.ch
   description: 'Adds Text::Aspell suggestions to the list of completions'
   filename: aspell_complete.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2016-01-29 08:59:40'
   modules: Text::Aspell
@@ -295,6 +323,7 @@
   contact: grawity@gmail.com
   description: "Implements QuakeNet's CHALLENGE authentication"
   filename: auth_quakenet.pl
+  language: Perl
   license: 'WTFPL v2 <http://sam.zoy.org/wtfpl/>'
   modified: '2014-12-18 08:54:54'
   modules: 'Digest::HMAC Digest::SHA1'
@@ -306,6 +335,7 @@
   contact: ads@ufp.de
   description: '/WHOIS all the users who send you a private message.'
   filename: auto_whois.pl
+  language: Perl
   license: GPL
   modified: '2014-10-17 18:30:46'
   name: auto_whois
@@ -317,6 +347,7 @@
   contact: vizzie@airmail.net
   description: 'Automatically goes  away after defined inactivity'
   filename: autoaway.pl
+  language: Perl
   license: BSD
   modified: '2018-12-02 10:47:21'
   name: 'Automagic away setting'
@@ -327,6 +358,7 @@
   contact: peder.stray@gmail.com
   description: 'Auto add channels to channel list on join'
   filename: autochannel.pl
+  language: Perl
   license: GPL
   modified: '2021-08-21 10:40:50'
   name: autochannel
@@ -338,6 +370,7 @@
   contact: tslocum@gmail.com
   description: 'Automatically clears pending input when you are away.'
   filename: autoclearinput.pl
+  language: Perl
   license: GPLv3
   modified: '2019-02-11 10:29:06'
   name: AutoClearInput
@@ -349,6 +382,7 @@
   contact: derwan@irssi.pl
   description: 'Auto regain ops in empty opless channels'
   filename: autocycle.pl
+  language: Perl
   license: 'GNU GPL v2'
   modified: '2003-01-03 23:20:06'
   name: autocycle
@@ -359,6 +393,7 @@
   contact: dgl@dgl.cx
   description: 'does an autolimit for a channel'
   filename: autolimit.pl
+  language: Perl
   license: 'GNU GPLv2 or later'
   modified: '2019-02-12 20:48:07'
   name: autolimit
@@ -369,6 +404,7 @@
   contact: '#####@juerd.nl'
   description: "Change 'nick: ' prefix if the nick is changed while you're still editing."
   filename: autonickprefix.pl
+  language: Perl
   license: 'Any OSI'
   modified: '2016-02-06 01:40:08'
   name: autonickprefix
@@ -378,6 +414,7 @@
   commands: autoop
   description: 'Simple auto-op script'
   filename: autoop.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2014-10-24 12:54:12'
   name: autoop
@@ -388,6 +425,7 @@
   contact: Toni@IRCNet
   description: 'Auto-op script with dynamic address support and random delay'
   filename: autoopper.pl
+  language: Perl
   license: 'GNU GPLv2 or later'
   modified: '2014-10-17 18:30:46'
   name: autoopper
@@ -398,6 +436,7 @@
   contact: 'tss@iki.fi, waldi@debian.org'
   description: 'Print realname of everyone who join to channels'
   filename: autorealname.pl
+  language: Perl
   license: 'GPLv2 or later'
   modified: '2021-01-16 09:14:39'
   name: 'auto realname'
@@ -408,6 +447,7 @@
   contact: lam@lac.pl
   description: 'Automatically rejoin to channel after being kicked, after a (short) user-defined delay'
   filename: autorejoin.pl
+  language: Perl
   license: GPLv2
   modified: '2017-09-26 02:40:01'
   name: autorejoin
@@ -417,6 +457,7 @@
   contact: paul\@raade.org
   description: 'Kickbans or knockouts people who use autorejoin on kick.'
   filename: autorejoinpunish.pl
+  language: Perl
   license: BSD
   modified: '2002-05-02 22:04:48'
   name: 'Autorejoin punisher'
@@ -428,6 +469,7 @@
   contact: terry@kryogenic.co.uk
   description: 'This script Reminds people to do stuff! :)'
   filename: autoreminder.pl
+  language: Perl
   license: GPLv2
   modified: '2008-05-17 17:39:11'
   name: 'Auto Reminder'
@@ -437,6 +479,7 @@
   contact: 'vague!#irssi@freenode on irc'
   description: 'Autorun scripts/symlinks created in the scripts/autorun directory'
   filename: autorun_scripts.pl
+  language: Perl
   license: GPLv2
   modified: '2016-04-18 15:11:40'
   modules: File::ChangeNotify
@@ -448,6 +491,7 @@
   contact: '#####@juerd.nl'
   description: 'Save current servers, channels and windows for autoconnect and autojoin'
   filename: autostuff.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2010-10-24 14:35:00'
   name: autostuff
@@ -458,6 +502,7 @@
   contact: chris@mac.ruhr.de
   description: 'Auto-CTCP Verison on every joining nick'
   filename: autoversion.pl
+  language: Perl
   license: GPLv2
   modified: '2002-08-21 00:00:00'
   name: autoversion
@@ -468,6 +513,7 @@
   commands: autovoice
   description: autovoice
   filename: autovoice.pl
+  language: Perl
   license: GPL
   modified: '2019-01-14 16:25:50'
   name: autovoice
@@ -477,6 +523,7 @@
   contact: 'Nei @ anti@conference.jabber.teamidiot.de'
   description: 'Periodically sends /who on configured channels to update away state.'
   filename: autowho.pl
+  language: Perl
   license: ISC
   modified: '2016-04-26 23:37:32'
   name: autowho
@@ -487,6 +534,7 @@
   contact: tss@iki.fi
   description: '/WHOIS all the users who send you a private message.'
   filename: autowhois.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2014-10-17 18:30:46'
   name: autowhois
@@ -497,6 +545,7 @@
   contact: janne@mikola.info
   description: '/WHOIS anyone querying you automatically.'
   filename: autowhois_simple.pl
+  language: Perl
   license: GPL
   modified: '2014-10-17 18:30:46'
   name: autowhois_simple
@@ -507,6 +556,7 @@
   contact: lxsfx3h02@sneakemail.com
   description: 'Automatically wraps long sent messages into multiple shorter sent messages'
   filename: autowrap.pl
+  language: Perl
   license: BSD
   modified: '2008-05-25 14:51:58'
   name: autowrap
@@ -517,6 +567,7 @@
   contact: 'jylefort@brutele.be, vizzie@airmail.net, kc@outflux.net'
   description: 'Away with reason, unaway, and autoaway'
   filename: away.pl
+  language: Perl
   license: BSD
   modified: '2014-10-17 18:30:46'
   name: away
@@ -526,6 +577,7 @@
   contact: sorter.irssi-scripts@okko.net
   description: 'Write /away information to a file to be used on web pages'
   filename: away2web.pl
+  language: Perl
   license: BSD
   modified: '2014-10-17 18:30:46'
   name: away2web
@@ -535,6 +587,7 @@
   contact: geert@hauwaerts.be
   description: 'This script will notice your away message in response to a hilight.'
   filename: away_hilight_notice.pl
+  language: Perl
   license: 'GNU General Public License'
   modified: '2015-06-25 22:51:33'
   name: away_hilight_notice.pl
@@ -545,6 +598,7 @@
   contact: 'vipie@ulyssis.org, wouter@coekaerts.be'
   description: 'A verbose away script, displays a verbose away/back message in the channels you are in. BUT it can limit the channels (not spamming every channel!)'
   filename: away_verbose.pl
+  language: Perl
   license: 'GNU GPL version 2'
   modified: '2004-01-01 00:00:00'
   name: away_verbose
@@ -555,6 +609,7 @@
   contact: http://shine.eu.org/
   description: 'Provides a menubar item with away message'
   filename: awaybar.pl
+  language: Perl
   license: 'Public domain'
   modified: '2017-04-07 16:34:31'
   name: awaybar
@@ -564,6 +619,7 @@
   contact: derwan@irssi.pl
   description: 'Displays in statusbar number of messages in awaylog'
   filename: awaylogcnt.pl
+  language: Perl
   license: 'GNU GPL v2'
   modified: '2017-04-07 16:34:31'
   name: awalogcnt
@@ -574,6 +630,7 @@
   contact: anttip@n0-life.com
   description: 'Sets nick away when client discconects from the irssi-proxy. If away gathers messages targeted to nick and forwards them to an email address.'
   filename: awayproxy.pl
+  language: Perl
   license: GPLv2
   modified: '2016-03-21 23:29:10'
   name: awayproxy
@@ -584,6 +641,7 @@
   contact: fis@ji.cz
   description: 'Configurable badword kickbanning script'
   filename: badword.pl
+  language: Perl
   license: 'GPL v2 and any later'
   modified: '2008-05-17 17:39:09'
   name: badword
@@ -594,6 +652,7 @@
   contact: fahren@bochnia.pl
   description: '/BAN [channel] [-normal|-host|-user|-domain|-crap|-ip|-class -before|-after "cmd" nick|mask] ... - bans several nicks/masks on channel, removes any conflicting bans before banning'
   filename: ban.pl
+  language: Perl
   license: 'GNU GPLv2 or later'
   modified: '2002-11-19 18:11:09'
   name: ban
@@ -604,6 +663,7 @@
   contact: 'senneth@irssi.org, nico@lifeisabug.com'
   description: 'Shows affected nicks by a ban on a new ban and defends yourself because IRC is serious.'
   filename: banaffects.pl
+  language: Perl
   modified: '2012-10-27 01:57:13'
   name: banaffects_sd
   url: http://nico.lifeisabug.com/irssi/scripts/
@@ -613,6 +673,7 @@
   contact: riku.voipio@iki.fi
   description: 'shows bandwidth usage in statusbar'
   filename: bandwidth.pl
+  language: Perl
   license: GPLv2
   modified: '2017-04-07 16:34:31'
   name: bandwidth
@@ -624,6 +685,7 @@
   contact: 'nathan.handler@gmail.com, pricechild@ubuntu.com'
   description: 'Searches for bans, quiets, and channel modes affecting a user'
   filename: bansearch.pl
+  language: Perl
   license: GPLv3+
   modified: '2020-08-24 19:15:24'
   name: bansearch
@@ -634,6 +696,7 @@
   contact: 'phyber [at] #irssi'
   description: 'Print time when ban was set in a nicer way. eg. 23m, 40s ago.'
   filename: bantime.pl
+  language: Perl
   license: GPLv2
   modified: '2015-01-09 19:54:31'
   name: bantime
@@ -643,6 +706,7 @@
   contact: 'jylefort\@brutele.be, decadix on IRCNet'
   description: 'Replaces your terminal bell by a command specified via /set; adds a beep_when_not_away setting'
   filename: beep.pl
+  language: Perl
   license: BSD
   modified: '2014-10-17 20:34:00'
   name: beep
@@ -653,6 +717,7 @@
   contact: georg@op-co.de
   description: 'runs arbitrary command instead of system beep, includes flood protection'
   filename: beep_beep.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2014-10-17 20:34:00'
   name: beep_beep
@@ -663,6 +728,7 @@
   contact: corecode@corecode.ath.cx
   description: 'Only beep when you are away'
   filename: beepaway.pl
+  language: Perl
   license: BSD
   modified: '2018-12-23 22:07:33'
   name: beepaway
@@ -673,6 +739,7 @@
   contact: 'Nei @ anti@conference.jabber.teamidiot.de'
   description: 'Rebind certain keys so that they are inserted before the space'
   filename: beforespace.pl
+  language: Perl
   license: ISC
   modified: '2016-04-26 23:42:54'
   name: beforespace
@@ -684,6 +751,7 @@
   contact: stefan@pico.ruhr.de
   description: 'stoibers your messages'
   filename: bestoiber.pl
+  language: Perl
   license: GPLv2
   modified: '2008-05-17 17:39:09'
   name: BeStoiber
@@ -695,6 +763,7 @@
   contact: we.hopkins@gmail.com
   description: '/betterlist <perl-regexp>'
   filename: betterlist.pl
+  language: Perl
   license: GPL
   modified: '2019-09-08 18:01:35'
   name: betterlist
@@ -705,6 +774,7 @@
   contact: carl.fischer@netcourrier.com
   description: 'adds /binary command that converts what you type into 2-base string representation, also decodes other peoples binary automatically'
   filename: binary.pl
+  language: Perl
   license: GPLv2
   modified: '2008-05-17 17:39:11'
   name: binary
@@ -714,6 +784,7 @@
   contact: 'aaron.toponce@gmail.com, irssi@auvor.no'
   description: 'Prints the timestamp in binary format'
   filename: binary_time.pl
+  language: Perl
   license: GPL
   modified: '2008-06-16 10:12:35'
   name: binary_time
@@ -724,6 +795,7 @@
   contact: tijmen.ruizendaal@gmail.com
   description: "/blist <all|online|offline|away|word> <word>,\tgreps <word> from blist for bitlbee"
   filename: bitlbee_blist.pl
+  language: Perl
   license: GPLv2
   modified: '2013-12-09 23:09:23'
   name: bitlbee_blist
@@ -734,6 +806,7 @@
   contact: avarab@gmail.com
   description: 'Hide your REGISTER and IDENTIFY password lines in &bitlbee from screen & logs '
   filename: bitlbee_hide_password.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2016-03-15 17:52:13'
   name: bitlbee_hide_password.pl
@@ -744,6 +817,7 @@
   contact: tijmen.ruizendaal@gmail.com
   description: '1. Adds an item to the status bar wich shows [joined: <nicks>] when someone is joining &bitlbee. 2. Shows join messages in the query. (For bitlbee v3.0+)'
   filename: bitlbee_join_notice.pl
+  language: Perl
   license: GPLv2
   modified: '2017-04-07 16:34:31'
   name: BitlBee_join_notice
@@ -754,6 +828,7 @@
   contact: tijmen.ruizendaal@gmail.com
   description: 'Shows an IM nickchange in an Irssi way. (in a query and in the bitlbee channel). (For bitlbee 3.0+)'
   filename: bitlbee_nick_change.pl
+  language: Perl
   license: GPLv2
   modified: '2010-07-28 00:00:00'
   name: BitlBee_nick_change
@@ -764,6 +839,7 @@
   contact: tijmen.ruizendaal@gmail.com
   description: 'Intelligent Tab-completion for BitlBee commands.'
   filename: bitlbee_tab_completion.pl
+  language: Perl
   license: GPLv2
   modified: '2009-08-11 00:00:00'
   name: BitlBee_tab_completion
@@ -774,6 +850,7 @@
   contact: tijmen.ruizendaal@gmail.com
   description: "Replace Irssi's timestamps with those sent by BitlBee"
   filename: bitlbee_timestamp.pl
+  language: Perl
   license: GPLv2
   modified: '2019-03-15 11:01:56'
   modules: DateTime
@@ -786,6 +863,7 @@
   contact: 'tijmen.ruizendaal@gmail.com, root@f0rked.com'
   description: "1. Adds an item to the status bar wich shows [typing] when someone is typing a message on the supported IM-networks\t2. Sends typing notices to the supported IM networks (the other way arround). (For bitlbee 3.0+)"
   filename: bitlbee_typing_notice.pl
+  language: Perl
   license: GPLv2
   modified: '2017-11-17 16:21:26'
   name: BitlBee_typing_notice
@@ -797,6 +875,7 @@
   contact: imil@gcu-squad.org,blowjob@reifferscheid.org,#blowtest@freenode
   description: 'Crypt IRC communication with blowfish encryption. Supports public #channels, !channels, +channel, querys and dcc chat. Roadmap for Version 1.0.0 is to get some feedback and cleanup. Join #blowtest on freenode (irc.debian.org) to get latest stuff available. Note to users upgrading from versions prior to 0.8.5: The blowjob.keys format has changed.'
   filename: blowjob.pl
+  language: Perl
   license: 'GNU GPL'
   modified: '2015-04-22 22:27:27'
   modules: 'Crypt::Blowfish Crypt::CBC'
@@ -809,6 +888,7 @@
   contact: 'dkg@con-fuse.org, darix@irssi.org'
   description: 'a simple body mass index calculator for depression ;)'
   filename: bmi.pl
+  language: Perl
   license: GPLv2
   modified: '2008-05-17 17:39:09'
   name: 'BMI Calculator'
@@ -820,6 +900,7 @@
   contact: bw1@aol.at
   description: 'interface to boinc'
   filename: boinc.pl
+  language: Perl
   license: gpl
   modified: '2019-05-29 16:14:16'
   modules: YAML
@@ -831,6 +912,7 @@
   contact: juerd@juerd.nl
   description: 'Saves the buffer for /upgrade, so that no information is lost'
   filename: buf.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2018-03-29 13:14:39'
   name: 'Scroll buffer restorer'
@@ -842,6 +924,7 @@
   contact: pab_24n@outlook.com
   description: 'pastes a buffer into a channel or query window line by line with a specific delay between lines'
   filename: buffer.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2016-06-28 00:45:27'
   name: buffer
@@ -853,6 +936,7 @@
   contact: juerd@juerd.nl
   description: 'Simple /calc mechanism'
   filename: calc.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2002-03-19 11:00:00'
   name: Calculator
@@ -863,6 +947,7 @@
   contact: 'dubkat@dubkat.org (www.dubkat.org)'
   description: "Reformats CallerID (+g) Messages\n               (Also known as Server-Side Ignore)\n               on Hybrid & Ratbox IRCDs (EFnet)\n               to be Easier on the Eyes"
   filename: callerid.pl
+  language: Perl
   license: GPL
   modified: '2008-05-17 17:39:11'
   name: callerid
@@ -873,6 +958,7 @@
   contact: 'mike@elite.uk.com, krytarik@tuxgarage.com'
   description: 'Print account and realname information on joins where extended-join is available'
   filename: cap-extjoin.pl
+  language: Perl
   license: GPLv2
   modified: '2017-12-12 14:37:51'
   name: cap-extjoin
@@ -883,6 +969,7 @@
   contact: dwfreed@mtu.edu
   description: 'Prints caps; derived from cap_sasl.pl by Michael Tharp (gxti), Jilles Tjoelker (jilles), and Mantas Mikulėnas (grawity)'
   filename: cap.pl
+  language: Perl
   license: GPLv2
   modified: '2016-09-13 03:32:53'
   name: cap
@@ -893,6 +980,7 @@
   contact: grawity@gmail.com
   description: 'Implements SASL authentication and enables CAP "multi-prefix"'
   filename: cap_sasl.pl
+  language: Perl
   license: GPLv2
   modified: '2015-12-04 19:11:05'
   modules: Crypt::PK::ECC
@@ -903,6 +991,7 @@
   authors: Nei
   description: 'Disconnect from server if SASL authentication fails.'
   filename: cap_sasl_fail.pl
+  language: Perl
   license: 'GNU GPLv2 or later'
   modified: '2022-05-31 20:44:38'
   name: cap_sasl_fail
@@ -912,6 +1001,7 @@
   contact: joost@carnique.nl
   description: 'Staturbar item which indicates how many new messages you have in your centericq'
   filename: centericq.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2017-04-07 16:34:31'
   name: centericq
@@ -923,6 +1013,7 @@
   contact: irssi-scripts@nospam.mi4.org.uk
   description: 'Lists users on the channel matching the specified regexp'
   filename: cgrep.pl
+  language: Perl
   license: 'GPLv2 or later'
   modified: '2016-09-20 14:26:40'
   name: cgrep
@@ -934,6 +1025,7 @@
   contact: bd@bc-bd.org
   description: 'Adds new powerful and customizable [Act: ...] item (chanelnames,modes,alias). Lets you give alias characters to windows so that you can select those with meta-<char>'
   filename: chanact.pl
+  language: Perl
   license: 'GNU GPLv2 or later'
   modified: '2017-02-13 17:21:07'
   name: chanact
@@ -944,6 +1036,7 @@
   contact: wulf@wulf.eu.org
   description: 'Notifies the user when some channel limit is reached'
   filename: chanfull.pl
+  language: Perl
   license: GPLv2
   modified: '2008-05-17 17:39:09'
   name: chanfull
@@ -954,6 +1047,7 @@
   contact: script@duden.eu.org
   description: 'Notify if Channellimit is reached'
   filename: chanfull_duden.pl
+  language: Perl
   license: GPLv2
   modified: '2003-02-08 18:08:54'
   name: chanfull
@@ -965,6 +1059,7 @@
   contact: madduck@madduck.net
   description: 'manage channel keyboard shortcuts'
   filename: chankeys.pl
+  language: Perl
   license: MIT
   modified: '2022-11-18 13:48:34'
   name: chankeys
@@ -974,6 +1069,7 @@
   contact: bjkro@gmx.de
   description: 'Log maximum number of people ever been in a channel'
   filename: chanpeak.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2002-06-02 17:00:00'
   name: chanpeak
@@ -984,6 +1080,7 @@
   contact: bw1@aol.at
   description: 'searches for specific channels'
   filename: chansearch.pl
+  language: Perl
   license: GPLv2
   modified: '2021-01-04 15:23:17'
   modules: 'HTML::Entities LWP::Protocol::https LWP::UserAgent'
@@ -996,6 +1093,7 @@
   contact: tss@iki.fi
   description: '/CHANSHARE - display people who are in more than one channel with you'
   filename: chanshare.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2019-02-13 21:13:53'
   name: 'chan share'
@@ -1007,6 +1105,7 @@
   contact: peder.stray@gmail.com
   description: 'Sort all channel and query windows'
   filename: chansort.pl
+  language: Perl
   license: GPL
   modified: '2021-08-21 10:40:50'
   name: chansort
@@ -1018,6 +1117,7 @@
   contact: avarab@gmail.com
   description: "Sort channels & query windows in a configurable way, based on Peder Stray's chansort.pl"
   filename: chansort_configurable.pl
+  language: Perl
   license: GPL
   modified: '2016-05-04 11:49:27'
   name: chansort_configurable
@@ -1029,6 +1129,7 @@
   contact: script@duden.eu.org
   description: '/who a channel and optionaly executes a command'
   filename: chansync.pl
+  language: Perl
   license: GPLv2
   modified: '2003-02-09 18:27:51'
   name: chansync
@@ -1040,6 +1141,7 @@
   contact: shasta@atn.pl
   description: "Simulates BitchX's /CHOPS and /NOPS commands."
   filename: chops.pl
+  language: Perl
   license: 'GNU GPLv2 or later'
   modified: '2008-05-17 17:39:11'
   name: chops
@@ -1050,6 +1152,7 @@
   contact: darkthorne@samsen.com
   description: 'Simple script that removes colors and other formatting (bold, etc) from public channels'
   filename: cleanpublic.pl
+  language: Perl
   license: GPL
   modified: '2003-09-24 13:17:15'
   name: CleanPublic
@@ -1060,6 +1163,7 @@
   contact: 'Nei @ anti@conference.jabber.teamidiot.de'
   description: 'make some command output clearable'
   filename: clearable.pl
+  language: Perl
   license: ISC
   modified: '2015-11-16 19:32:11'
   name: clearable
@@ -1071,6 +1175,7 @@
   contact: dominic@battre.de
   description: 'Better quoting of content from clipboard (without leading spaces) -- requires Perl/Tk'
   filename: clipboard.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2002-12-06 23:23:31'
   modules: Tk
@@ -1082,6 +1187,7 @@
   commands: clones
   description: '/CLONES - Display clones in the active channel (with added options)'
   filename: clones.pl
+  language: Perl
   license: 'Same as Irssi'
   modified: '2014-10-17 20:34:00'
   name: clones
@@ -1093,6 +1199,7 @@
   contact: pab_24n@outlook.com
   description: 'when a nick joins #channel, notifies you if there is (or there has been) someone in #channel with the same hostname'
   filename: clones_scanner.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2016-06-18 12:01:20'
   modules: Devel::Size
@@ -1104,6 +1211,7 @@
   contact: 'Nei @ anti@conference.jabber.teamidiot.de'
   description: 'Indicator for input prompt if you are inputting a command or text'
   filename: cmdind.pl
+  language: Perl
   license: 'GNU GPLv2 or later'
   modified: '2018-12-18 17:40:02'
   name: cmdind
@@ -1115,6 +1223,7 @@
   contact: vague@vague.se
   description: 'Compare nicks in two channels'
   filename: cmpchans.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2015-11-16 19:36:52'
   name: cmpchans
@@ -1125,6 +1234,7 @@
   contact: 'lars.djerf@gmail.com, Nei @ anti@conference.jabber.teamidiot.de, Phoenix616 @ mail@moep.tv, rhonda @ deb.at'
   description: 'Replace words between :...: in messages according to a text file. Was intended for Unicode Emoji on certain proprietary platforms.'
   filename: colon_emoji.pl
+  language: Perl
   license: GPLv3
   modified: '2023-05-21 09:47:31'
   name: colon_emoji
@@ -1134,6 +1244,7 @@
   contact: 'Nei @ anti@conference.jabber.teamidiot.de'
   description: 'Colourise mention of nicks in the message body.'
   filename: colorize_nicks.pl
+  language: Perl
   license: 'GNU GPLv2 or later'
   modified: '2021-11-29 15:16:31'
   name: colorize_nicks
@@ -1144,6 +1255,7 @@
   contact: bigmac@vim.hu
   description: 'kicking users for using colors or blinks'
   filename: colorkick.pl
+  language: Perl
   license: 'public domain'
   modified: '2017-03-07 22:28:22'
   name: colorkick
@@ -1153,6 +1265,7 @@
   contact: tss@iki.fi
   description: "Swap between green and white format for public messages. I think this helps readability. Assumes you haven't changed message formats."
   filename: colorswap.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2002-03-04 22:47:00'
   name: colorswap
@@ -1163,6 +1276,7 @@
   contact: 'Nei @ anti@conference.jabber.teamidiot.de'
   description: 'Complete nicks after @ (twitter-style)'
   filename: complete_at.pl
+  language: Perl
   license: ISC
   modified: '2015-11-16 19:32:11'
   name: complete_at
@@ -1173,6 +1287,7 @@
   contact: 'Daenyth /at/ gmail /dot/ com'
   description: 'When using tab completion on an empty input buffer, complete to the nick of the person who spoke most recently.'
   filename: complete_lastspoke.pl
+  language: Perl
   license: GPL2
   modified: '2008-12-07 19:07:31'
   name: 'Complete Last-Spoke'
@@ -1182,6 +1297,7 @@
   contact: 'Nei @ anti@conference.jabber.teamidiot.de'
   description: 'conceals passwords on the input line'
   filename: conceal.pl
+  language: Perl
   license: ISC
   modified: '2020-10-22 16:28:09'
   name: conceal
@@ -1193,6 +1309,7 @@
   contact: itp@ximian.com
   description: 'run arbitrary shell commands while [dis]connecting to a server'
   filename: connectcmd.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2017-03-18 12:17:25'
   name: 'Connect Command'
@@ -1204,6 +1321,7 @@
   contact: bw1@aol.at
   description: 'copy a line in a paste buffer'
   filename: copy.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2020-09-26 23:09:04'
   name: copy
@@ -1214,6 +1332,7 @@
   contact: mikko@quidz.net
   description: 'adds public channel command for counting down something'
   filename: countdown.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2014-11-06 21:34:32'
   name: countdown
@@ -1224,6 +1343,7 @@
   contact: tss@iki.fi
   description: 'Print the country name in /WHOIS replies'
   filename: country.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2002-10-28 00:29:26'
   name: country
@@ -1233,6 +1353,7 @@
   contact: batonik@irc.pl
   description: 'Kicks people using cp1250 charset'
   filename: cp1250_kick.pl
+  language: Perl
   license: GPL
   modified: '2002-09-28 12:58:26'
   name: cp1250_kick
@@ -1243,6 +1364,7 @@
   contact: stefan@pico.ruhr.de
   description: 'Removes CRAP or CLIENTCRAP messages from your buffer'
   filename: crapbuster.pl
+  language: Perl
   license: GPLv2
   modified: '2022-11-27 20:09:10'
   name: CRAPbuster
@@ -1253,6 +1375,7 @@
   contact: dettox@gmail.com
   description: 'store fingerprints of know users so can verify'
   filename: credstore.pl
+  language: Perl
   license: GPLv3+
   modified: '2015-06-12 21:40:32'
   name: credstore
@@ -1263,6 +1386,7 @@
   contact: 'piotr \at/ krukowiecki /dot\ net'
   description: 'cron implementation, allows to execute commands at given interval/time'
   filename: cron.pl
+  language: Perl
   license: 'GNU GPLv2'
   modified: '2014-11-12 12:23:06'
   name: 'cron aka jobs'
@@ -1274,6 +1398,7 @@
   contact: madduck@madduck.net
   description: 'allows per-channel control over activity indication'
   filename: ctrlact.pl
+  language: Perl
   license: MIT
   modified: '2021-09-20 04:35:50'
   name: ctrlact
@@ -1285,6 +1410,7 @@
   contact: staff@irssi.org
   description: '256 colour test script for Irssi.'
   filename: cubes.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2022-12-01 21:22:05'
   name: cubes
@@ -1296,6 +1422,7 @@
   contact: fahren@bochnia.pl
   description: 'Usage: /CWHO [-a | -l | -o | -v ] [ mask ]'
   filename: cwho.pl
+  language: Perl
   license: 'GNU GPLv2 or later'
   modified: '2002-05-06 14:02:25'
   name: 'Cached WHO'
@@ -1305,6 +1432,7 @@
   contact: geert@irssi.org
   description: 'This script will fix the Irssi problem with channel forwarding on the Dancer ircd.'
   filename: dancer_forwardfix.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2004-05-09 01:19:25'
   name: dancer_forwardfix.pl
@@ -1316,6 +1444,7 @@
   contact: heidinger@dau.pl
   description: 'write like an idiot'
   filename: dau.pl
+  language: Perl
   license: BSD
   modified: '2017-03-19 21:19:42'
   name: DAU
@@ -1326,6 +1455,7 @@
   contact: meister@hq.kroenk.remove-this-because-of-spam.de
   description: 'This script sets dcc_own_ip when starting a DCC send or chat.set dcc_ip_interface to your external interface, f.e. ppp0.If you are connecting though a router, set it to "router"'
   filename: dcc_ip.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2019-02-17 21:08:42'
   name: dcc_ip
@@ -1336,6 +1466,7 @@
   contact: peder.stray@gmail.com
   description: 'Move completed dcc gets to the subfolder done'
   filename: dccmove.pl
+  language: Perl
   license: GPL
   modified: '2021-08-21 10:40:50'
   name: dccmove
@@ -1347,6 +1478,7 @@
   contact: 'Nei @ anti@conference.jabber.teamidiot.de'
   description: 'Relays DCC messages. Originally written by greeny & mute for NoNameScript.'
   filename: dccrelay.pl
+  language: Perl
   license: 'GNU GPLv2 or later'
   modified: '2015-11-23 21:36:07'
   name: dccrelay
@@ -1358,6 +1490,7 @@
   contact: dgl@dgl.cx
   description: "/dccself ip port, starts a dcc chat with yourself on that \n\t                host/port, best used with /set dcc_autochat_masks."
   filename: dccself.pl
+  language: Perl
   license: GPL
   modified: '2017-03-05 13:58:24'
   name: dccself
@@ -1368,6 +1501,7 @@
   contact: matti\@hiljanen.com
   description: 'Shows verbose or short information of dcc send/gets on statusbar (speed, size, eta etc.)'
   filename: dccstat.pl
+  language: Perl
   license: 'GPL, Version 2'
   modified: '2014-10-17 20:34:00'
   name: dccstat
@@ -1379,6 +1513,7 @@
   contact: c@ttaneo.uy
   description: 'deadbeef control and now playing script'
   filename: deadbeef.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2021-02-25 13:33:57'
   name: deadbeef
@@ -1389,6 +1524,7 @@
   contact: shasta@atn.pl
   description: 'Allows your client to automatically set desired chanmode upon a join to an empty channel.'
   filename: defaultchanmode.pl
+  language: Perl
   license: 'GNU GPLv2 or later'
   modified: '2008-05-17 17:39:11'
   name: 'Default Chanmode'
@@ -1400,6 +1536,7 @@
   contact: joost@vunderink.net
   description: 'Prevents all kinds of junk from showing up'
   filename: dejunk.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2018-01-07 11:55:29'
   name: Dejunk
@@ -1410,6 +1547,7 @@
   contact: eu@felipetonello.com
   description: 'Sends notification using the Desktop Notifications Specification.'
   filename: desktop-notify.pl
+  language: Perl
   license: 'GPL v3+'
   modified: '2017-01-23 21:52:29'
   modules: 'Glib::Object::Introspection HTML::Entities'
@@ -1421,6 +1559,7 @@
   contact: jochem.meyers@gmail.com
   description: 'Adds an item which displays the current disk usage.'
   filename: df.pl
+  language: Perl
   license: 'GPL v2 or later'
   modified: '2017-04-07 16:34:31'
   name: df
@@ -1431,6 +1570,7 @@
   contact: mkossin@enumerator.org
   description: 'A Dice Simulator for Roleplaying in Channels or just for fun.'
   filename: dice.pl
+  language: Perl
   license: 'GNU GPL Version 2 or later'
   modified: '2008-05-17 17:39:09'
   name: dice
@@ -1441,6 +1581,7 @@
   contact: izaya.orihara@gmail
   description: 'A concise dice simulator for channels.'
   filename: dice_concise.pl
+  language: Perl
   license: 'GNU GPL v2 or later'
   modified: '2019-03-03 11:25:30'
   name: dice_concise
@@ -1450,6 +1591,7 @@
   contact: juerd@juerd.nl
   description: 'Caching dictionary based tab completion'
   filename: dictcomplete.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2014-10-17 20:34:00'
   name: 'Dictionary complete'
@@ -1460,6 +1602,7 @@
   contact: 'Nei @ anti@conference.jabber.teamidiot.de'
   description: 'Dims nicks that are not in channel anymore.'
   filename: dim_nicks.pl
+  language: Perl
   license: 'GNU GPLv2 or later'
   modified: '2019-05-16 09:16:26'
   name: dim_nicks
@@ -1470,6 +1613,7 @@
   contact: edward.andrew.slice@gmail.com
   description: 'Play a given sound when messages come in.'
   filename: ding.pl
+  language: Perl
   license: MIT
   modified: '2020-08-11 11:55:26'
   name: ding.pl
@@ -1480,6 +1624,7 @@
   contact: sandra.snan@idiomdrottning.org
   description: 'In channels with a discord bridge, turns "<bridge> <Sender> Message" into "<Sender> Message", and hides spoilers.'
   filename: discord_unbridge.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2020-12-11 12:11:10'
   name: discord_unbridge.pl
@@ -1490,6 +1635,7 @@
   contact: skug+irssiscripts@skug.fi
   description: 'Strips the annoying mentions of your nickname via <yournick> on irc<->discord bridge, will work for any bridge using botnick: <yournick>'
   filename: discord_unhilight.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2017-11-25 10:40:23'
   name: discord_unhilight.pl
@@ -1500,6 +1646,7 @@
   contact: yathen@web.de
   description: 'This scripts sends unknown commands to the server'
   filename: dispatch.pl
+  language: Perl
   license: 'GNU GPLv2'
   modified: '2002-03-05 14:55:29'
   name: 'Command dispatcher'
@@ -1510,6 +1657,7 @@
   contact: tss@iki.fi
   description: '/DNS <nick>|<host>|<ip> ...'
   filename: dns.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2019-01-24 16:31:43'
   name: dns
@@ -1520,6 +1668,7 @@
   contact: 'foxmask@phpfr.org '
   description: 'manage tips ; url ; help in a doc file in the keyword=definition form'
   filename: doc.pl
+  language: Perl
   license: 'GNU GPL'
   modified: '2016-02-05 11:06:11'
   name: doc
@@ -1530,6 +1679,7 @@
   contact: 'q [at] spuk.de'
   description: 'Filters msgs which appear the same on different channels.'
   filename: doublefilter.pl
+  language: Perl
   license: GPLv2
   modified: '2005-04-22 09:50:00'
   name: doublefilter
@@ -1540,6 +1690,7 @@
   contact: lxsfx3h02@sneakemail.com
   description: 'Put a nick list in a statusbar'
   filename: dr_who.pl
+  language: Perl
   license: BSD
   modified: '2017-04-07 16:34:31'
   name: dr_who
@@ -1550,6 +1701,7 @@
   contact: anarcat@debian.org
   description: 'set (un)away, if dtach is attached/detached'
   filename: dtach_away.pl
+  language: Perl
   license: 'GPL v2'
   modified: '2019-11-16 09:56:03'
   name: dtach_away
@@ -1561,6 +1713,7 @@
   contact: bw1@aol.at
   description: 'search by https://duckduckgo.com/html/'
   filename: duckduckgo.pl
+  language: Perl
   license: lgplv3
   modified: '2021-10-09 17:30:32'
   modules: 'HTML::Entities LWP::UserAgent URI::Escape'
@@ -1572,6 +1725,7 @@
   contact: holm@blackedge.org
   description: 'Print the real IP address of efnet.org clients when they join/part channels, and whois.'
   filename: efnetorg.pl
+  language: Perl
   license: 'GPLv2 or later'
   modified: '2008-05-25 14:59:13'
   name: efnetorg
@@ -1583,6 +1737,7 @@
   contact: icassina@gmail.com
   description: 'This script allow advanced parametrization of the /list command. Accepted parameters are -minusers <#users> and -maxusers <#users>. '
   filename: elist.pl
+  language: Perl
   license: GPLv2
   modified: '2022-02-28 22:36:24'
   name: 'Enanched LIST'
@@ -1592,6 +1747,7 @@
   contact: 'ion at hassers.org'
   description: "Answers to /msg's using Chatbot::Eliza when you're away."
   filename: eliza.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2002-03-14 05:29:00'
   modules: Chatbot::Eliza
@@ -1603,6 +1759,7 @@
   contact: 'igordcard@gmail.com, atj@pulsewidth.org.uk'
   description: "Emails you messages sent/received while you're away or not. Works for both public mentions and private messages.When away, it is very useful in combination with screen_away. Based on email_privmsgs, with advanced features and options. Requires Email::Sender."
   filename: email_msgs.pl
+  language: Perl
   license: MIT
   modified: '2019-07-28 13:38:54'
   modules: 'Email::Sender::Simple Email::Simple Email::Simple::Creator'
@@ -1614,6 +1771,7 @@
   contact: atj@pulsewidth.org.uk
   description: "Emails you private messages sent while you're away. Useful in combination with screen_away. Requires Email::Sender."
   filename: email_privmsgs.pl
+  language: Perl
   license: MIT
   modified: '2017-11-21 23:52:33'
   modules: 'Email::Sender::Simple Email::Simple Email::Simple::Creator'
@@ -1625,6 +1783,7 @@
   contact: 'lyz\@princessleia.com '
   description: 'a script for accessing an email mysql database through irc'
   filename: emaildb.pl
+  language: Perl
   license: 'GNU GPL v2 or later'
   modified: '2019-02-18 23:01:29'
   modules: DBI
@@ -1637,6 +1796,7 @@
   contact: ilkka.pale@gmail.com
   description: 'Outputs various unicode emoticons'
   filename: emo.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2015-01-18 02:15:41'
   name: emo
@@ -1646,6 +1806,7 @@
   contact: dist@sci.fi
   description: 'Expand "event mode" and emit "event mode {channel,user,server} *"'
   filename: events.pl
+  language: Perl
   license: GPLv2
   modified: '2002-05-20 04:04:47'
   name: 'Extended events'
@@ -1656,6 +1817,7 @@
   contact: 'jylefort\@brutele.be, decadix on IRCNet'
   description: 'Adds a setting to automatically terminate a process whose parent window has been closed'
   filename: exec_clean.pl
+  language: Perl
   license: BSD
   modified: '2014-10-17 22:54:13'
   name: exec-clean
@@ -1666,6 +1828,7 @@
   contact: 'Nei @ anti@conference.jabber.teamidiot.de'
   description: 'Permit to use /EXEC with arbitrary irssi commands.'
   filename: execcmd.pl
+  language: Perl
   modified: '2015-11-23 21:39:34'
   name: execcmd
   url: http://anti.teamidiot.de/
@@ -1676,6 +1839,7 @@
   contact: crazycat@c-p-f.org
   description: 'Extended Away & Back programm'
   filename: extaway.pl
+  language: Perl
   license: 'GNU GPLv2 or later'
   modified: '2014-10-17 22:54:13'
   name: ExtAway
@@ -1685,6 +1849,7 @@
   contact: '$IRSSI{authors} + <Shift-2> + protonmail + <rhymes-with-pot> + <2-char Country Code for Switzerland>'
   description: 'Provides a single helper function to wrap mIRC-style color codes around strings'
   filename: ez_color.pl
+  language: Perl
   license: 'WTFPL/2 @ http://www.wtfpl.net/about/'
   modified: '2020-10-09 13:29:18'
   name: ez_color
@@ -1695,6 +1860,7 @@
   contact: geert@irssi.org
   description: 'This script sends fake ctcp replies to a client using a fake ctcp list.'
   filename: fakectcp.pl
+  language: Perl
   license: 'GNU General Public License'
   modified: '2018-09-17 14:39:59'
   name: fakectcp.pl
@@ -1706,6 +1872,7 @@
   contact: stefan.jakobs@rus.uni-stuttgart.de
   description: 'Print the country name in /WHOIS replies'
   filename: fcountry.pl
+  language: Perl
   license: GPLv2
   modified: '2008-05-11 20:20:00'
   modules: 'Geography::Countries IP::Country::Fast'
@@ -1717,6 +1884,7 @@
   contact: juerd@juerd.nl
   description: 'Safe figlet implementation (with color support!)'
   filename: figlet.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2002-03-10 14:46:00'
   name: Figlet
@@ -1727,6 +1895,7 @@
   commands: file
   description: 'A command to output content of files in various ways'
   filename: file.pl
+  language: Perl
   license: 'GNU GPLv2 or later'
   modified: '2019-02-19 16:17:57'
   name: file.pl
@@ -1738,6 +1907,7 @@
   contact: flux@inside.org
   description: "Finds a nick by real name, if he's on a channel with you."
   filename: find.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2014-10-17 22:54:13'
   name: Find
@@ -1749,6 +1919,7 @@
   contact: findbot@planet.eu.org
   description: 'Public command @find script'
   filename: findbot.pl
+  language: Perl
   license: GPL
   modified: '2018-05-22 13:10:54'
   name: Findbot
@@ -1760,6 +1931,7 @@
   contact: 'piotr //at// krukowiecki //dot// net'
   description: 'fserve leecher - helps you download files from file servers'
   filename: fleech.pl
+  language: Perl
   license: 'GNU GPL v2'
   modified: '2014-10-17 22:54:13'
   name: fleech
@@ -1770,6 +1942,7 @@
   contact: 'fedora@leemhuis.info, serge@vanginderachter.be'
   description: 'Write notifications to a file in a consistent format.'
   filename: fnotify.pl
+  language: Perl
   license: 'GNU General Public License'
   modified: '2019-07-22 21:07:28'
   name: fnotify
@@ -1780,6 +1953,7 @@
   contact: juerd@juerd.nl
   description: 'Automatically switch to active windows'
   filename: follow.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2002-03-19 11:00:00'
   name: Follower
@@ -1791,6 +1965,7 @@
   contact: 'juerd@juerd.nl, shiar@shiar.org'
   description: 'Rot n+i encryption and decryption'
   filename: foo.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2003-01-21 01:40:00'
   name: 'UeberRot encryption'
@@ -1801,6 +1976,7 @@
   contact: dgl@dgl.cx
   description: "Extends the /foreach command to have /foreach user \n        (users in a channel).\n        Syntax: /foreach user [hostmask] command."
   filename: foreach_user.pl
+  language: Perl
   license: 'GNU GPLv2 or later'
   modified: '2008-05-17 17:39:11'
   name: 'foreach user'
@@ -1811,6 +1987,7 @@
   contact: ben@reser.org
   description: 'Formats msgs and notices when the identify-msg and/or identify-ctcp capability is available.'
   filename: format_identify.pl
+  language: Perl
   license: GPL2
   modified: '2017-05-08 11:41:48'
   name: format_identify
@@ -1822,6 +1999,7 @@
   contact: eim@cpan.rg
   description: 'Send a random fortune cookie to an user in channel.'
   filename: fortune.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2019-05-30 22:59:25'
   name: fortune
@@ -1832,6 +2010,7 @@
   contact: stefan@pico.ruhr.de
   description: 'forward incoming messages to another nick'
   filename: forward.pl
+  language: Perl
   license: GPLv2
   modified: '2008-05-17 17:39:09'
   name: Forward
@@ -1843,6 +2022,7 @@
   contact: bw1@aol.at
   description: 'copy infos to fpaste'
   filename: fpaste.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2021-01-24 16:18:01'
   name: fpaste
@@ -1854,6 +2034,7 @@
   contact: peder.stray@gmail.com
   description: 'Basically an autoop script with a nice interface and nick coloring ;)'
   filename: friends_peder.pl
+  language: Perl
   license: GPL
   modified: '2021-08-21 10:40:50'
   name: friends
@@ -1865,6 +2046,7 @@
   contact: shasta@toxcorp.com
   description: 'Maintains list of people you know.'
   filename: friends_shasta.pl
+  language: Perl
   license: 'GNU GPLv2 or later'
   modified: '2014-10-17 22:54:13'
   name: Friends
@@ -1876,6 +2058,7 @@
   contact: pab_24n@outlook.com
   description: 'define a permanent text formatting (bold, underline, etc.) for outgoing messages'
   filename: frm_outgmsgs.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2016-06-18 12:01:20'
   name: frm_outgmsgs
@@ -1887,6 +2070,7 @@
   contact: 'piotr at pingu.ii.uj.edu.pl'
   description: 'File server for irssi'
   filename: fserve.pl
+  language: Perl
   license: 'GPL v2'
   modified: '2014-10-17 22:54:13'
   name: FServe
@@ -1898,6 +2082,7 @@
   contact: geert@irssi.org
   description: 'Simulates the BitchX /FUCKEM command. Deop/Dehalfop everyone on the channel including you.'
   filename: fuckem.pl
+  language: Perl
   license: 'GNU General Public License'
   modified: '2003-09-17 23:00:11'
   name: fuckem.pl
@@ -1909,6 +2094,7 @@
   contact: kenneth@jensen.cf
   description: 'Prints colorized fullwidth text'
   filename: fullrain.pl
+  language: Perl
   license: 'GNU GPLv3'
   modified: '2017-03-28 23:10:37'
   name: fullrain
@@ -1920,6 +2106,7 @@
   contact: genunrest@gmail.com
   description: 'talk like some vaporwave cool kid'
   filename: fullwidth.pl
+  language: Perl
   license: 'Apache 2.0'
   modified: '2017-04-11 22:11:42'
   name: fullwidth
@@ -1931,6 +2118,7 @@
   contact: fahren@bochnia.pl
   description: 'Automatically request op from random opped person with specifed command from list after joining channel'
   filename: getop.pl
+  language: Perl
   license: 'GNU GPLv2 or later'
   modified: '2014-10-17 22:54:13'
   name: GetOP
@@ -1940,6 +2128,7 @@
   contact: 'lyz\@princessleia.com '
   description: 'a bot script, using ! followed by anything the script will say (as an action): gets nickname anything'
   filename: gimmie.pl
+  language: Perl
   license: 'GNU GPL v2 or later'
   modified: '2014-10-17 22:54:13'
   name: gimmie
@@ -1951,6 +2140,7 @@
   contact: bw1@aol.at
   description: 'script management with git'
   filename: gitscriptassist.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2019-06-04 19:02:22'
   name: gitscriptassist
@@ -1962,6 +2152,7 @@
   contact: nohar@freenode
   description: 'Implements /go command that activates a window given a name/partial name. It features a nice completion.'
   filename: go.pl
+  language: Perl
   license: 'GPLv2 or later'
   modified: '2019-02-28 07:48:53'
   name: 'go to window'
@@ -1971,6 +2162,7 @@
   contact: cxreg@pobox.com
   description: 'Switch to the window with the given name or item'
   filename: go2.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2017-05-02 11:42:35'
   name: go2
@@ -1982,6 +2174,7 @@
   contact: bw1@aol.at
   description: 'This script queries google.com with googler and returns the results.'
   filename: google.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2021-01-26 13:09:56'
   name: google
@@ -1993,6 +2186,7 @@
   contact: pallotron@freaknet.org
   description: 'Have gpg-based trusting features in your irssi client!'
   filename: gpgvalidator.pl
+  language: Perl
   license: 'GPL v2'
   modified: '2018-12-31 13:43:04'
   name: 'gpgvalidator v. 0.1.3'
@@ -2004,6 +2198,7 @@
   contact: mason@blisses.org
   description: 'Follow set order in seeing active channels.'
   filename: graze.pl
+  language: Perl
   license: CC0
   modified: '2022-08-08 16:13:05'
   name: Graze
@@ -2013,6 +2208,7 @@
   contact: nico@lifeisabug.com
   description: 'Hide the stupid "greet messages" posted by some bots after someone joins a channel.'
   filename: greetignore.pl
+  language: Perl
   license: GPLv2
   modified: '2015-01-18 02:15:41'
   name: greetignore
@@ -2023,6 +2219,7 @@
   contact: 'tss@iki.fi, wouter@coekaerts.be'
   description: '/GREP [-i] [-w] [-v] [-F] <perl-regexp> <command to run>'
   filename: grep.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2014-10-17 22:54:13'
   name: grep
@@ -2034,6 +2231,7 @@
   contact: nathan.handler@gmail.com
   description: 'Greps the ban list for the specified pattern'
   filename: grepbans.pl
+  language: Perl
   license: GPLv3+
   modified: '2015-09-11 05:11:39'
   name: grepbans
@@ -2044,6 +2242,7 @@
   contact: mistr@sensewave.com
   description: '/gsi <phone nr> checks number via http://gulesider.no. Norwegian 8-digit numbers only. Nice if you have caller-ID and are as paranoid as me.'
   filename: gsi.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2015-01-18 02:15:41'
   modules: 'LWP::UserAgent URI::Heuristic'
@@ -2055,6 +2254,7 @@
   contact: juerd@juerd.nl
   description: 'Adds the uppercased version of the tab completes'
   filename: guts.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2002-05-18 21:40:00'
   name: 'German Uppercased Tab Stuff'
@@ -2065,6 +2265,7 @@
   contact: vb@g-23.org
   description: 'adds a statusbar item which shows temperatures of harddisks (with multiple hddtemp-hosts support)'
   filename: hddtemp.pl
+  language: Perl
   license: GPLv2
   modified: '2017-03-17 11:54:11'
   name: hddtemp
@@ -2076,6 +2277,7 @@
   contact: cybertinus@cybertinus.nl
   description: "This script allows you to greet the channel You're joining with the command /hello. The text it shows depends on the time you're living."
   filename: hello.pl
+  language: Perl
   license: GPL2
   modified: '2005-05-25 13:42:00'
   name: Greeter
@@ -2086,6 +2288,7 @@
   contact: darix@irssi.de
   description: "a little interface to irssi's activity_hide_* settings"
   filename: hide.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2002-07-21 06:53:21'
   name: 'hide tools'
@@ -2096,6 +2299,7 @@
   contact: james@jamesoff.net
   description: 'Stops eggdrop passwords showing up'
   filename: hideauth.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2002-06-04 20:56:00'
   name: hideauth
@@ -2106,6 +2310,7 @@
   contact: 'Nei @ anti@conference.jabber.teamidiot.de'
   description: 'Removes and re-adds lines to the Irssi buffer view.'
   filename: hideshow.pl
+  language: Perl
   license: 'GNU GPLv2 or later'
   modified: '2022-05-31 20:44:38'
   name: hideshow
@@ -2116,6 +2321,7 @@
   contact: mantis@inta-link.com
   description: 'shows events happening in all channels you are in that may concern you'
   filename: highlite.pl
+  language: Perl
   license: 'GNU GPL v2'
   modified: '2003-01-03 00:00:00'
   name: highlite
@@ -2127,6 +2333,7 @@
   contact: geert@irssi.org
   description: 'This script will add the HIGNORE command, if you use this command in a query it will ignore the host.'
   filename: hignore.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2003-09-17 23:51:38'
   name: hignore.pl
@@ -2137,6 +2344,7 @@
   contact: contact@ramnes.eu
   description: 'Call a system command when receiving a hilight'
   filename: hilightcmd.pl
+  language: Perl
   license: 'GNU GPLv3'
   modified: '2016-04-26 11:41:22'
   modules: 'String::ShellQuote Text::Sprintf::Named'
@@ -2148,6 +2356,7 @@
   contact: 'tss@iki.fi, znxster@gmail.com, git@zick.kim'
   description: 'Print hilighted messages to window named "hilight"'
   filename: hilightwin.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2018-02-12 13:35:15'
   name: hilightwin
@@ -2158,6 +2367,7 @@
   contact: stefan.heinemann@codedump.ch
   description: 'Simple script that highlights links'
   filename: hilite_url.pl
+  language: Perl
   license: GPL
   modified: '2018-04-03 10:23:02'
   name: HiliteUrl
@@ -2168,6 +2378,7 @@
   contact: jwm@horde.net
   description: 'Translate nicks to HipChat "mention names"'
   filename: hipchat_complete.pl
+  language: Perl
   license: BSD
   modified: '2015-01-18 02:15:41'
   modules: WebService::HipChat
@@ -2179,6 +2390,7 @@
   contact: coekie@irssi.org
   description: 'Search within your typed history as you type (like ctrl-R in bash)'
   filename: history_search.pl
+  language: Perl
   license: 'GPLv2 or later'
   modified: '2015-12-09 23:35:34'
   name: history_search
@@ -2189,6 +2401,7 @@
   contact: 'shrike\@addiktit.net, Shrike on IRCNet/QNet/EFNet/DALNet'
   description: 'Add a apache page hitcounter to statusbar'
   filename: hitcount.pl
+  language: Perl
   license: Free
   modified: '2017-04-07 16:34:31'
   name: hitcount
@@ -2198,6 +2411,7 @@
   contact: riku.voipio@iki.fi
   description: "responds to \"!hl counterstrike.server \" command on channels/msg's to query counter-strike servers"
   filename: hl.pl
+  language: Perl
   license: GPLv2
   modified: '2014-10-17 22:54:13'
   name: half-life
@@ -2208,6 +2422,7 @@
   contact: veli@piipiip.net
   description: 'Floods the channel about things that are hapening in your hl -server. Also enables you to send rcon commands to the server from channel.'
   filename: hlbot.pl
+  language: Perl
   license: GPLv2
   modified: '2015-02-02 14:02:20'
   name: 'HL-log/rcon -bot'
@@ -2218,6 +2433,7 @@
   contact: '#####@juerd.nl'
   description: 'Scrolls to previous or next highlight'
   filename: hlscroll.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2018-02-15 11:19:47'
   name: 'Scroll to hilights'
@@ -2229,6 +2445,7 @@
   contact: 'jylefort\@brutele.be, decadix on IRCNet'
   description: 'Adds a /HOSTNAME command; it will list all IP addresses on all interfaces found on your machine, resolve them, and allow you to choose one easily'
   filename: hostname.pl
+  language: Perl
   license: BSD
   modified: '2014-10-17 22:54:13'
   modules: Socket6
@@ -2241,6 +2458,7 @@
   contact: starz@antisocial.com
   description: 'This controls Music Player Daemon from the familiar irssi interface'
   filename: iMPD.pl
+  language: Perl
   license: 'GPL v2'
   modified: '2021-01-25 21:56:36'
   name: iMPD
@@ -2251,6 +2469,7 @@
   contact: 'irssi@isaacgood.com; irc.freenode.net/yitz'
   description: 'Automatically IDENTIFY when prompted'
   filename: ident.pl
+  language: Perl
   license: MIT
   modified: '2016-12-06 18:45:34'
   name: ident
@@ -2260,6 +2479,7 @@
   contact: 'vague!#irssi@freenode on irc'
   description: 'Identd script for irssi'
   filename: identd.pl
+  language: Perl
   license: GPL2
   modified: '2023-05-04 20:44:46'
   modules: autovivification
@@ -2272,6 +2492,7 @@
   contact: stefan@pico.ruhr.de
   description: 'Retrieves the idletime of any nick'
   filename: idletime.pl
+  language: Perl
   license: GPLv2
   modified: '2008-05-17 17:39:11'
   name: idletime
@@ -2283,6 +2504,7 @@
   contact: 'shabble+irssi@metavore.org, shabble@#irssi/freenode'
   description: 'Select window[-items] using an ido-mode like search interface'
   filename: ido_switcher.pl
+  language: Perl
   license: 'GPLv2 or later'
   modified: '2015-12-09 23:35:34'
   name: ido_switcher
@@ -2293,6 +2515,7 @@
   contact: stefan@pico.ruhr.de
   description: 'equips Irssi with an interface to mldonkey'
   filename: idonkey.pl
+  language: Perl
   license: GPLv2
   modified: '2008-05-17 17:39:11'
   modules: 'HTML::Entities LWP::UserAgent'
@@ -2303,6 +2526,7 @@
   contact: m@japh.se
   description: 'Ignore the blob of text displayed when (re)joining a channel'
   filename: ignore_join_blob.pl
+  language: Perl
   license: MIT
   modified: '2019-01-24 09:01:46'
   name: ignore_join_blob
@@ -2312,6 +2536,7 @@
   contact: jason@nichego.net
   description: 'script to log ignored messages'
   filename: ignore_log.pl
+  language: Perl
   license: GPL
   modified: '2014-10-17 22:54:13'
   name: ignore_log
@@ -2323,6 +2548,7 @@
   contact: flux@inside.org
   description: 'Ignore messages from people not on your channels.Now people you msg are added to bypass-list.'
   filename: ignoreoc.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2014-10-17 22:54:13'
   name: Ignore-OC
@@ -2333,6 +2559,7 @@
   contact: apic@IRCnet
   description: 'script to show ignored message in censored form'
   filename: ignorsula.pl
+  language: Perl
   license: 'public domina'
   modified: '2009-07-26 16:00:03'
   name: ignorsula
@@ -2344,6 +2571,7 @@
   contact: darix@irssi.org
   description: 'adds a statusbar item which show length of the inputline'
   filename: il.pl
+  language: Perl
   license: 'BSD License or something more liberal'
   modified: '2021-01-11 08:48:06'
   name: inputlength
@@ -2355,6 +2583,7 @@
   contact: chaos@sorcery.net
   description: 'Automatically lookup IMDB-numbers in nicknames'
   filename: imdb.pl
+  language: Perl
   license: GPL
   modified: '2022-12-09 11:28:58'
   modules: 'HTML::Entities LWP::UserAgent'
@@ -2367,6 +2596,7 @@
   contact: 'vague!#irssi@libera.chat on irc'
   description: 'Intercept misprinted commands and offer to remove the first character before sending it on'
   filename: intercept.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2022-03-10 16:43:44'
   modules: Data::Munge
@@ -2379,6 +2609,7 @@
   contact: c0ffee@penguin-breeder.org
   description: 'Joins channels with non-utf8 non-ascii names.'
   filename: intjoin.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2014-10-17 22:54:13'
   modules: Text::Iconv
@@ -2391,6 +2622,7 @@
   contact: geert@irssi.org
   description: 'This script will join a channel if somebody invites you to it.'
   filename: invitejoin.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2017-01-17 20:26:41'
   name: invitejoin.pl
@@ -2402,6 +2634,7 @@
   contact: anderfdez@yahoo.es
   description: 'Auto "/set dcc_own_ip IP" on connect.'
   filename: ipupdate.pl
+  language: Perl
   license: GPL
   modified: '2017-11-08 18:41:21'
   modules: 'HTTP::Request::Common LWP::UserAgent'
@@ -2413,6 +2646,7 @@
   contact: http://mail.quizpl.net
   description: 'irssi quiz script'
   filename: iquiz.pl
+  language: Perl
   license: 'GNU GPL v3 or any later version'
   modified: '2017-09-06 20:23:36'
   name: iQuiz
@@ -2423,6 +2657,7 @@
   contact: rumata@dragons.ru
   description: 'IrcNet.ru Auto Identify - changes nick and send identify command, then sets codepage'
   filename: iraident.pl
+  language: Perl
   license: GPLv2
   modified: '2008-05-25 15:05:46'
   name: iraident
@@ -2434,6 +2669,7 @@
   contact: kodgehopper@netscape.net
   description: 'Chess server for IRC. Allows for multiple 2-player games to be played simultaneously'
   filename: irc_chess.pl
+  language: Perl
   license: 'GNU GPL'
   modified: '2019-05-04 15:20:01'
   name: IRC-Chess
@@ -2445,6 +2681,7 @@
   contact: flux@inside.org
   description: 'Adds words from IRC to your tab-completion list, plus fixes typos'
   filename: irccomplete.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2014-10-17 22:54:13'
   name: 'IRC Completion'
@@ -2455,6 +2692,7 @@
   contact: tss@iki.fi
   description: 'Show IRC gallery (http://irc-galleria.net, finnish only) information on /WHOIS or /GALLERY'
   filename: ircgallery.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2015-02-02 14:02:20'
   name: ircgallery
@@ -2466,6 +2704,7 @@
   contact: bcow@iki.fi
   description: 'Tarkistelee irc-galleria.net:iä ja sanoo kun sinulle on uusia viestejä.'
   filename: ircgmessagenotify.pl
+  language: Perl
   license: GPLv2
   modified: '2017-04-07 16:34:31'
   modules: 'HTTP::Cookies LWP::UserAgent'
@@ -2478,6 +2717,7 @@
   contact: bd@bc-bd.org
   description: '/IRCOPS - Display IrcOps in current channel'
   filename: ircops.pl
+  language: Perl
   license: 'GPL v2'
   modified: '2008-06-16 10:46:07'
   name: ircops
@@ -2489,6 +2729,7 @@
   contact: stefan@pico.ruhr.de
   description: 'secures your conversation'
   filename: ircsec.pl
+  language: Perl
   license: GPLv2
   modified: '2019-02-11 13:59:43'
   modules: Crypt::CBC
@@ -2499,6 +2740,7 @@
   contact: vb\@g-23.org
   description: 'show the accountname (330) and real host on ircu'
   filename: ircuwhois.pl
+  language: Perl
   license: GPLv2
   modified: '2015-11-16 19:36:52'
   name: ircuwhois
@@ -2510,6 +2752,7 @@
   contact: iRRSi@liftm.de
   description: 'Parses and announces XML/Atom feeds'
   filename: irssi-feed.pl
+  language: Perl
   license: GPLv3
   modified: '2018-05-27 09:58:35'
   modules: XML::Feed
@@ -2522,6 +2765,7 @@
   contact: a.lepore@email.it
   description: 'Display the song played by mp3blaster in channels and statusbar. See the top of the file for usage.'
   filename: irssiBlaster.pl
+  language: Perl
   license: 'GNU GPLv2 or later'
   modified: '2017-04-07 16:34:31'
   name: irssiBlaster
@@ -2531,6 +2775,7 @@
   contact: deftly@gmail.com
   description: 'Logs chats to a PostgreSQL database.'
   filename: irssi_logger.pl
+  language: Perl
   license: BSD
   modified: '2023-08-23 07:45:50'
   modules: DBI
@@ -2543,6 +2788,7 @@
   contact: 'mniip @ freenode'
   description: 'freenode-specific script that checks whether someone is banned on some channel'
   filename: isbanned.pl
+  language: Perl
   license: 'Public domain'
   modified: '2015-09-14 14:11:01'
   name: isbanned
@@ -2552,6 +2798,7 @@
   contact: f-zappa@irc-muenster.de
   description: 'Displays incoming ISDN calls'
   filename: isdn.pl
+  language: Perl
   license: GPL
   modified: '2014-10-17 22:54:13'
   name: isdn
@@ -2561,6 +2808,7 @@
   contact: 'ion at hassers.org'
   description: 'Internet Time statusbar item. See http://www.timeanddate.com/time/internettime.html'
   filename: itime.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2017-04-07 16:34:31'
   name: itime
@@ -2571,6 +2819,7 @@
   contact: kk@manoli.im-dachgeschoss.de
   description: '/xmms announces which _file_ is currently playing. E.g.  Currently playing: "Kieran Halpin & Band - Mirror Town.mp3"'
   filename: ixmmsa.pl
+  language: Perl
   license: GPL
   modified: '2006-10-27 00:00:00'
   modules: 'Xmms Xmms::Remote'
@@ -2583,6 +2832,7 @@
   contact: irssi-scripts@nospam.mi4.org.uk
   description: 'Reports WHOIS information and channel list for those who join a channel'
   filename: joininfo.pl
+  language: Perl
   license: 'GPLv2 or later'
   modified: '2005-03-10 00:00:00'
   name: joininfo
@@ -2593,6 +2843,7 @@
   contact: nico@lifeisabug.com
   description: 'Print join-, part-, quit-, nick- and mode-messages to a window named "jpqnm"'
   filename: jpqnmwin.pl
+  language: Perl
   license: GPLv2
   modified: '2023-05-07 16:23:01'
   name: jpqnmwin
@@ -2603,6 +2854,7 @@
   contact: 'Nei @ anti@conference.jabber.teamidiot.de'
   description: 'Adds a command to navigate to the previously active windows and an optional shortcut to go back when you try to switch to the current window. Think /window last²'
   filename: jump.pl
+  language: Perl
   license: ISC
   modified: '2018-11-07 12:19:46'
   name: jump
@@ -2614,6 +2866,7 @@
   contact: linostar@sdf.org
   description: 'Script for kickbanning those who post referral links in a channel'
   filename: kban-referrals.pl
+  language: Perl
   license: 'New BSD'
   modified: '2019-07-27 18:25:35'
   name: 'KickBan Referrals Script'
@@ -2623,6 +2876,7 @@
   contact: filippo\@esaurito.net
   description: 'Kicks (and bans) people with >= 4 dots in theirs hostname'
   filename: kblamehost.pl
+  language: Perl
   license: 'GNU GPLv2 or later'
   modified: '2019-06-07 14:41:57'
   name: kblamehost
@@ -2634,6 +2888,7 @@
   contact: peder.stray@gmail.com
   description: 'Try to get your nick back when it becomes available.'
   filename: keepnick.pl
+  language: Perl
   license: GPL
   modified: '2021-08-21 10:40:50'
   name: keepnick
@@ -2645,6 +2900,7 @@
   contact: alfie@channel.debian.de
   description: 'autodekennyfies /kenny, adds /kenny, /dekenny. Based on Jan-Pieter Cornets signature version'
   filename: kenny.pl
+  language: Perl
   license: BSD
   modified: '2002-06-13 00:00:00'
   name: 'kenny speech'
@@ -2656,6 +2912,7 @@
   contact: 'ion at hassers.org'
   description: 'Fetches the version(s) of the latest Linux kernel(s).'
   filename: kernel.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2018-03-11 20:53:39'
   modules: LWP::Simple
@@ -2668,6 +2925,7 @@
   contact: geert@irssi.org
   description: 'This script will set the proper keybindings on /AZERTY and /QWERTY.'
   filename: keybinds.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2018-02-19 23:54:10'
   name: keybindings.pl
@@ -2678,6 +2936,7 @@
   contact: c0ffee@penguin-breeder.org
   description: 'Enhances /k /kb and /kn with some nice options.'
   filename: kicks.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2017-04-01 17:30:41'
   name: 'Various kick and ban commands'
@@ -2687,6 +2946,7 @@
   authors: "Piotr 'Cvbge' Krukowiecki"
   description: 'When new send arrives checks if there are old identical sends (ie from the same nick on the same server and with the same filename) and closes them'
   filename: kill_fake_gets.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2014-10-17 22:54:13'
   name: kill_fake_gets
@@ -2696,6 +2956,7 @@
   authors: 'Timo Sirainen'
   description: 'Displays kills with more understandable messages'
   filename: kills.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2014-10-17 22:54:13'
   name: kills
@@ -2705,6 +2966,7 @@
   contact: geert@irssi.org
   description: 'This script shows a warning in the statuswindow if somebody preforms a /KlINE or /UNKLINE.'
   filename: kline_warning.pl
+  language: Perl
   license: 'GNU General Public License'
   modified: '2003-09-17 23:00:11'
   name: kline_warning.pl
@@ -2715,6 +2977,7 @@
   contact: 'Mikachu @ quakenet|freenode|arcnet|oftc'
   description: 'A script to show playing xmms song in channel or in a statusbar, and also control xmms. Be sure to read through the script to see all features.'
   filename: l33tmusic.pl
+  language: Perl
   license: GPL
   modified: '2008-09-04 21:12:26'
   modules: 'Xmms Xmms::Remote'
@@ -2725,6 +2988,7 @@
   contact: 'simmel@(freenode|quakenet|efnet) http://last.fm/user/darksoy'
   description: 'A now-playing-script which uses Last.fm'
   filename: lastfm.pl
+  language: Perl
   license: BSD
   modified: '2021-01-31 21:10:49'
   modules: 'HTML::Entities LWP::UserAgent'
@@ -2736,6 +3000,7 @@
   contact: irssi@freshdot.net
   description: 'Remembers what people said last on what channels'
   filename: lastspoke.pl
+  language: Perl
   license: 'GNU GPLv2 or later'
   modified: '2020-05-31 16:04:00'
   name: lastspoke
@@ -2747,6 +3012,7 @@
   contact: heidinger@dau.pl
   description: 'If you try to get a nick with 11 characters but only 9 are allowed, this script will prevent the nickchange. The same for too long topics, kickmsgs, partmsgs and quitmsgs.'
   filename: len.pl
+  language: Perl
   license: BSD
   modified: '2006-03-11 19:30:09'
   name: len
@@ -2757,6 +3023,7 @@
   contact: bw1@aol.at
   description: 'translates via dict.leo.org'
   filename: leodict.pl
+  language: Perl
   license: GPLv2
   modified: '2022-01-06 17:24:38'
   modules: 'Mojo::DOM Mojo::UserAgent'
@@ -2769,6 +3036,7 @@
   contact: nico@lifeisabug.com
   description: 'Similar to crapbuster.pl but uses irssis internal scrollback levelclear functionality and is able to clear the previous window automatically after having switched to a new one when levelclear_autoclear is set to true.'
   filename: levelclear.pl
+  language: Perl
   license: WTFPL
   modified: '2014-06-15 17:10:05'
   name: levelclear
@@ -2779,6 +3047,7 @@
   contact: jmn98015@student.mdh.se
   description: 'Licq statusbar thingy'
   filename: licq.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2017-04-07 16:34:31'
   name: licq
@@ -2790,6 +3059,7 @@
   contact: 'Nei @ anti@conference.jabber.teamidiot.de'
   description: 'dump the linebuffer content'
   filename: linebuffer.pl
+  language: Perl
   license: 'GNU GPLv2 or later'
   modified: '2015-12-03 21:04:35'
   name: linebuffer
@@ -2801,6 +3071,7 @@
   contact: qrczak@knm.org.pl
   description: 'Link several channels on serveral networks'
   filename: linkchan.pl
+  language: Perl
   license: 'GNU GPL'
   modified: '2014-10-17 22:54:13'
   name: LinkChan
@@ -2812,6 +3083,7 @@
   contact: lordpyre@negerno.hu
   description: 'A simple mp3 display script that will display what mp3 you are playing in which software (mpg123, xmms, mp3blaster, etc) to your active channel or to a query window.'
   filename: listen.pl
+  language: Perl
   license: 'GNU GPLv2 or later'
   modified: '2019-02-22 12:10:58'
   name: listen
@@ -2821,6 +3093,7 @@
   contact: irssi@isaacgood.com
   description: 'Sort the /list output by channel size'
   filename: listsort.pl
+  language: Perl
   license: BSD
   modified: '2020-07-09 10:29:27'
   name: listsort
@@ -2831,6 +3104,7 @@
   contact: aki@evilbsd.info
   description: 'display a loadavg statusbar item using vm.loadavg mib or /proc/loadavg'
   filename: loadavg.pl
+  language: Perl
   license: 'public domain'
   modified: '2017-04-07 16:34:31'
   name: loadavg
@@ -2841,6 +3115,7 @@
   contact: stefan@pico.ruhr.de
   description: 'Localizes users using traceroute, the localizer database or IP-Atlas'
   filename: localize.pl
+  language: Perl
   license: GPLv2
   modified: '2017-04-01 17:22:26'
   modules: 'HTML::Entities LWP::UserAgent'
@@ -2852,6 +3127,7 @@
   contact: peder.stray@gmail.com
   description: 'Convert various color codes to ANSI colors, useful for log filtering and viewing.'
   filename: log2ansi.pl
+  language: Perl
   license: GPL
   modified: '2021-08-23 12:37:45'
   name: log2ansi
@@ -2862,6 +3138,7 @@
   contact: tss@iki.fi
   description: "compress logfiles then they're rotated"
   filename: logcompress.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2014-10-17 22:54:13'
   name: logcompress
@@ -2872,6 +3149,7 @@
   contact: vague!#irssi@fgreenode
   description: "compress logfiles then they're rotated, modified from original logcompress.pl to use perl modules instead"
   filename: logcompress_perl.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2021-04-10 11:44:52'
   name: logcompress_perl
@@ -2883,6 +3161,7 @@
   contact: 'ferret(tA)explodingferret(moCtoD), ferret on irc.freenode.net'
   description: 'print last n lines of logs when opening queries/channels'
   filename: logresume.pl
+  language: Perl
   modified: '2016-04-04 08:02:24'
   name: logresume
   url: http://explodingferret.com/linux/irssi/logresume.pl
@@ -2892,6 +3171,7 @@
   contact: 'Nei @ anti@conference.jabber.teamidiot.de'
   description: 'Automatically downloads and displays long messages from matrix.'
   filename: long_messages.pl
+  language: Perl
   license: ISC
   modified: '2020-10-22 16:32:03'
   name: long_messages
@@ -2903,6 +3183,7 @@
   contact: c0ffee@penguin-breeder.org
   description: 'Use /ls <regex> to show all nicks (including ident@host) matching regex in the current channel'
   filename: ls.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2017-09-17 06:18:46'
   name: 'List nicks in channel'
@@ -2914,6 +3195,7 @@
   contact: '[Mika] @ IRCnet'
   description: 'Displays users logged on system in current window, simple one'
   filename: lwho.pl
+  language: Perl
   license: '-'
   modified: '2014-10-17 22:54:13'
   name: 'Local who'
@@ -2925,6 +3207,7 @@
   contact: 'tss@iki.fi, matti@hiljanen.com, joost@carnique.nl, bart@dreamflow.nl'
   description: 'Fully customizable mail counter statusbar item with multiple mailbox and multiple Maildir support'
   filename: mail.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2023-04-20 20:37:03'
   name: mail
@@ -2936,6 +3219,7 @@
   contact: irssi@icmfp.com
   description: 'Staturbar item which indicates how many new emails you have in the specified IMAP[S] mailbox'
   filename: mailcheck_imap.pl
+  language: Perl
   license: 'GNU GPLv2'
   modified: '2017-04-07 16:34:31'
   modules: IO::Socket::SSL
@@ -2947,6 +3231,7 @@
   contact: flux@inside.org
   description: 'Polls your unix mailbox for new mail'
   filename: mailcheck_mbox_flux.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2019-02-23 14:25:18'
   name: 'Mail Check'
@@ -2958,6 +3243,7 @@
   contact: kimmo@a-men.org
   description: 'POP3 new mail notification and listing of mailbox contents. Use "/mail help" for instructions. Requires Net::POP3.'
   filename: mailcheck_pop3_kimmo.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2019-02-23 15:26:32'
   name: Mailcheck-POP3
@@ -2967,6 +3253,7 @@
   contact: derwan@irssi.pl
   description: 'Adds statusbar item mailcount and displays info about new mails'
   filename: mailcount.pl
+  language: Perl
   license: 'GNU GPL v2'
   modified: '2017-04-07 16:34:31'
   modules: Mail::MboxParser
@@ -2979,6 +3266,7 @@
   contact: szymon@hell.pl
   description: 'translates your messages into Morse code, rot13 and other sillinesses.'
   filename: mangle.pl
+  language: Perl
   license: GPLv2
   modified: '2019-07-12 20:41:28'
   name: mangle
@@ -2989,6 +3277,7 @@
   contact: pasky@ji.cz
   description: 'Generates simple tree of IRC network based on the output of the LINKS command.'
   filename: map.pl
+  language: Perl
   license: 'GPLv2, not later'
   modified: '2008-05-17 17:39:09'
   name: map
@@ -2999,6 +3288,7 @@
   contact: f-zappa@irc-muenster.de
   description: 'Disables hilighting for messages containing a lot of nicknames'
   filename: mass_hilight_blocker.pl
+  language: Perl
   license: GPL
   modified: '2018-11-11 16:14:40'
   name: mass_hilight_blocker
@@ -3009,6 +3299,7 @@
   contact: bw1@aol.at
   description: 'a password matryoshka'
   filename: matryoshka.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2019-12-14 13:57:23'
   modules: 'Crypt::CBC Crypt::Cipher::AES'
@@ -3021,6 +3312,7 @@
   contact: hloeung/Freenode
   description: 'Adds tab completion for Matterircd message threads'
   filename: matterircd_complete.pl
+  language: Perl
   license: GPL
   modified: '2022-12-14 17:15:39'
   name: 'Matterircd Tab Auto Complete'
@@ -3031,6 +3323,7 @@
   contact: 'Nei @ anti@conference.jabber.teamidiot.de'
   description: 'Merge queries with multiple resources of the same person.'
   filename: merge_resources.pl
+  language: Perl
   license: 'GNU GPLv2 or later'
   modified: '2020-10-22 16:34:10'
   name: merge_resources
@@ -3041,6 +3334,7 @@
   contact: coekie@irssi.org
   description: 'makes all window text start at the bottom of windows'
   filename: messages_bottom.pl
+  language: Perl
   license: "send-me-beer-or-i'll-sue-you-if-you-use-it license"
   modified: '2015-11-16 19:36:52'
   name: messages_bottom
@@ -3052,6 +3346,7 @@
   contact: campanastra@gmail.com
   description: 'DCC MultiGet, for fetching from XDCC bots'
   filename: mg.pl
+  language: Perl
   license: 'ccBSD, http://creativecommons.org/licenses/BSD/'
   modified: '2009-08-13 21:43:12'
   name: mg
@@ -3061,6 +3356,7 @@
   contact: 'mh on IRCnet #help'
   description: 'Emulation of ircII per-window hold_mode'
   filename: mh_hold_mode.pl
+  language: Perl
   license: BSD
   modified: '2017-04-24 10:41:11'
   name: mh_hold_mode
@@ -3071,6 +3367,7 @@
   contact: 'mh on IRCnet #help'
   description: 'print invites in server, channel, query and active window'
   filename: mh_invite.pl
+  language: Perl
   license: BSD
   modified: '2016-03-05 15:31:20'
   name: mh_invite
@@ -3081,6 +3378,7 @@
   contact: 'mh on IRCnet #help'
   description: 'provides a statusbar item showing if your server is in splitmode and /splitmode to show details'
   filename: mh_sbsplitmode.pl
+  language: Perl
   license: BSD
   modified: '2017-04-27 19:01:44'
   name: mh_sbsplitmode
@@ -3091,6 +3389,7 @@
   contact: 'mh on IRCnet #help'
   description: 'statusbar item that shows user count (opers, ops, halfops, voice and total) and limit info (with opless/limit warning) in channels'
   filename: mh_sbuserinfo.pl
+  language: Perl
   license: BSD
   modified: '2017-04-24 09:50:42'
   name: mh_sbuserinfo
@@ -3101,6 +3400,7 @@
   contact: 'mh (IRCnet)'
   description: 'Fix for Irssi not fully supporting numeric 489 ERR_SECUREONLYCHAN'
   filename: mh_secureonlychan_489.pl
+  language: Perl
   license: ISC/BSD
   modified: '2020-05-16 22:33:56'
   name: mh_secureonlychan_489
@@ -3111,6 +3411,7 @@
   contact: 'mh on IRCnet #help'
   description: 'show in channels when users go away/back or oper/deoper'
   filename: mh_userstatus.pl
+  language: Perl
   license: BSD
   modified: '2016-03-03 13:39:04'
   name: mh_userstatus
@@ -3121,6 +3422,7 @@
   contact: 'mh on IRCnet #help'
   description: 'fill windows so scrolling starts bottom-up instead of top-down (screenshots linked in source)'
   filename: mh_windowfill.pl
+  language: Perl
   license: BSD
   modified: '2016-02-07 18:30:57'
   name: mh_windowfill
@@ -3131,6 +3433,7 @@
   contact: lam@lac.pl
   description: 'Simple wordkick system, with extended polish dictionary for channels enforcing correct polish.'
   filename: miodek.pl
+  language: Perl
   license: GPLv2
   modified: '2002-10-03 20:10:00'
   name: miodek
@@ -3140,6 +3443,7 @@
   contact: michael.kowalchuk@gmail.com
   description: 'Shows a mIRC-style colour popup when you hit ^C.'
   filename: mirc_colour_popup.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2017-04-07 16:34:31'
   name: mirc_colour_popup
@@ -3150,6 +3454,7 @@
   contact: derwan@irssi.pl
   description: 'Masskick, usage: /mkick [-aovdln6 (hostmask)] <[:]reason>'
   filename: mkick.pl
+  language: Perl
   license: 'GNU GPL v2'
   modified: '2004-10-06 20:58:38'
   name: mkick
@@ -3161,6 +3466,7 @@
   contact: c-otto@gmx.de
   description: "Shows your mldonkey's current down- and upload rate"
   filename: mldonkey_bandwidth.pl
+  language: Perl
   license: GPLv2
   modified: '2018-01-23 14:20:51'
   modules: 'HTTP::Request::Common LWP::UserAgent'
@@ -3172,6 +3478,7 @@
   commands: mlock
   description: 'Channel mode locking'
   filename: mlock.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2002-03-10 23:18:00'
   name: mlock
@@ -3182,6 +3489,7 @@
   contact: derwan@irssi.pl
   description: 'Cache of invites, ban exceptions and reops in channel. Script commands: /si, /se, /sr, /unexcept, /uninvite, /unreop (version only for ircd >= 2.11.0).'
   filename: modelist-r.pl
+  language: Perl
   license: 'GNU GPL v2'
   modified: '2017-04-07 16:34:31'
   name: modelist-r
@@ -3193,6 +3501,7 @@
   contact: derwan@irssi.pl
   description: 'Cache of invites and ban exceptions in channel. Usage: /si, /se, /unexcept [indexes], /uninvite [indexes]'
   filename: modelist.pl
+  language: Perl
   license: 'GNU GPL v2'
   modified: '2004-06-05 22:38:59'
   name: modelist
@@ -3204,6 +3513,7 @@
   contact: jilles@stack.nl
   description: 'Interface to ratbox 2.1+ /monitor command'
   filename: monitor.pl
+  language: Perl
   license: 'BSD (revised)'
   modified: '2014-10-19 11:54:16'
   name: monitor
@@ -3213,6 +3523,7 @@
   contact: stefan@pico.ruhr.de
   description: 'Keeps track of the channel mood'
   filename: mood.pl
+  language: Perl
   license: GPLv2
   modified: '2019-01-05 10:14:23'
   name: Mood
@@ -3223,6 +3534,7 @@
   contact: stefan@pico.ruhr.de
   description: 'turns your messages into morse or spelling code'
   filename: morse.pl
+  language: Perl
   license: GPLv2
   modified: '2008-05-17 17:39:11'
   name: morse
@@ -3233,6 +3545,7 @@
   contact: wouter@coekaerts.be
   description: 'control irssi using mouse clicks and gestures'
   filename: mouse-awl.pl
+  language: Perl
   license: 'GPLv2 or later'
   modified: '2015-11-16 19:36:52'
   name: mouse
@@ -3244,6 +3557,7 @@
   contact: wouter@coekaerts.be
   description: 'control irssi using mouse clicks and gestures'
   filename: mouse.pl
+  language: Perl
   license: 'GPLv2 or later'
   modified: '2021-03-05 18:26:50'
   name: mouse
@@ -3255,6 +3569,7 @@
   contact: wouter@coekaerts.be
   description: 'experimental perl version of the irssi mouse patch'
   filename: mouse_soliton.pl
+  language: Perl
   license: GPLv2
   modified: '2019-08-19 17:30:11'
   name: mouse_soliton
@@ -3266,6 +3581,7 @@
   contact: 'diozaka@gmx.de, code@aibor.de, mk@maero.dk'
   description: 'print the song you are listening to'
   filename: mpd.pl
+  language: Perl
   license: GPLv2
   modified: '2018-04-28 18:08:24'
   name: mpd
@@ -3276,6 +3592,7 @@
   contact: ricardomesquita@netcabo.pt
   description: 'Display current mpg123 track'
   filename: mpg123.pl
+  language: Perl
   license: GPLv2
   modified: '2014-10-19 11:54:16'
   name: mpg123
@@ -3287,6 +3604,7 @@
   contact: 'thomas@ruecker.fi, tbr on irc.freenode.net'
   description: 'Sends out notifications via MQTT'
   filename: mqtt-notify.pl
+  language: Perl
   license: BSD-3-Clause
   modified: '2015-06-30 12:01:33'
   name: MQTT-notify
@@ -3298,6 +3616,7 @@
   contact: mortenjo@ifi.uio.no
   description: 'For a configured list of nicks, convert all their messages to a notice'
   filename: msg2notice.pl
+  language: Perl
   license: GPL
   modified: '2015-04-29 16:06:27'
   name: msg2notice
@@ -3307,6 +3626,7 @@
   contact: 'irssi@repnz.net & avarab@gmail.com'
   description: 'For a configured list of nicks or nicks matching a regex, convert all their messages to a notices'
   filename: msg2notice_regex.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2016-03-15 17:52:13'
   name: msg2notice_regex.pl
@@ -3318,6 +3638,7 @@
   contact: stefan@pico.ruhr.de
   description: 'Helps pasting multiple lines to a channel'
   filename: multipaste.pl
+  language: Perl
   license: GPLv2
   modified: '2008-05-17 17:39:11'
   name: multipaste
@@ -3328,6 +3649,7 @@
   contact: avarab@gmail.com
   description: 'Changes messages from myself to appear to come from my username, not my nickname'
   filename: munge_own_nickname_to_username.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2020-05-15 12:06:55'
   name: munge_own_nickname_to_username.pl
@@ -3338,6 +3660,7 @@
   contact: 'stacium or stek (most of the time) @ quakenet.org'
   description: 'runs arbitrary command instead of system beep, includes flood protection'
   filename: my_beep.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2019-09-08 19:29:19'
   name: my_beep
@@ -3348,6 +3671,7 @@
   contact: riku.voipio@iki.fi
   description: "logs url's to mysql database"
   filename: mysqlurllogger.pl
+  language: Perl
   license: GPLv2
   modified: '2019-02-23 17:56:43'
   modules: DBI
@@ -3360,6 +3684,7 @@
   contact: bd@bc-bd.org
   description: 'Adds an item which displays the current network activity. Needs /proc/net/dev.'
   filename: nact.pl
+  language: Perl
   license: 'GPL v2 or later'
   modified: '2017-04-07 16:34:31'
   name: nact
@@ -3371,6 +3696,7 @@
   contact: irc@trancer.nl
   description: 'Set all windows not bound to a network to a specified network.'
   filename: netswitch.pl
+  language: Perl
   license: BSD
   modified: '2013-02-19 22:46:58'
   name: netswitch
@@ -3382,6 +3708,7 @@
   contact: derwan@irssi.pl
   description: 'News reader, usage:  /article [-s <server>] [-p <port>] [-P <password> -U <login>] [-l <group> <count>] [-a] [-L <index>] <message-id>'
   filename: news.pl
+  language: Perl
   license: 'GNU GPL v2'
   modified: '2015-02-02 14:02:20'
   modules: News::NNTPClient
@@ -3394,6 +3721,7 @@
   contact: stefan@pico.ruhr.de
   description: 'brings various newstickers to Irssi (Slashdot, Freshmeat, Heise etc.)'
   filename: newsline.pl
+  language: Perl
   license: GPLv2
   modified: '2017-04-04 23:08:20'
   modules: 'LWP::UserAgent Unicode::String XML::RSS'
@@ -3404,6 +3732,7 @@
   contact: irssi@trancer.nl
   description: 'A simple nick banner. If it encounters a nick it bans its host'
   filename: nickban.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2019-02-23 21:37:15'
   name: nickban
@@ -3414,6 +3743,7 @@
   contact: tss@iki.fi
   description: 'assign a different color for each nick'
   filename: nickcolor.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2018-01-09 10:41:20'
   name: 'Nick Color'
@@ -3424,6 +3754,7 @@
   commands: neatcolor
   description: 'colourise nicks'
   filename: nickcolor_expando.pl
+  language: Perl
   license: 'GPL v2'
   modified: '2018-09-06 14:56:14'
   name: nickcolor_expando
@@ -3431,6 +3762,7 @@
 -
   description: 'colourise nicks'
   filename: nickcolor_gay.pl
+  language: Perl
   license: ISC
   modified: '2020-05-15 11:42:24'
   name: nickcolor_gay
@@ -3440,6 +3772,7 @@
   contact: marjola@iki.fi
   description: "Ignores any nick changes when only the case or special characters are modified, like 'rpr -> Rpr' or 'rpr_ -> rpr', with optional pattern for more complicated ignores"
   filename: nickignore.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2003-08-26 00:00:00'
   name: 'ignore (minimal) nick changes'
@@ -3451,6 +3784,7 @@
   contact: coekie@irssi.org
   description: 'draws a nicklist to another terminal, or at the right of your irssi in the same terminal'
   filename: nicklist.pl
+  language: Perl
   license: GPLv2
   modified: '2017-05-08 11:41:48'
   name: nicklist
@@ -3462,6 +3796,7 @@
   contact: c0ffee@penguin-breeder.org
   description: 'Perturbates your nick, use /nickmix nick/len where len is the number of chars you want to keep from your orig nick. use /stopmix to stop. Always issue the commands in a window of the server you want to mix in.'
   filename: nickmix-c0ffee.pl
+  language: Perl
   license: 'GPLv2, not later'
   modified: '2008-06-18 00:09:21'
   name: nickmix-c0ffee
@@ -3473,6 +3808,7 @@
   contact: pasky@ji.cz
   description: 'Perturbates given nick (or just a word) in certain way.'
   filename: nickmix_pasky.pl
+  language: Perl
   license: 'GPLv2, not later'
   modified: '2008-05-17 17:39:09'
   name: nickmix
@@ -3484,6 +3820,7 @@
   contact: geert@irssi.org
   description: 'This script will authorize you into NickServ.'
   filename: nickserv.pl
+  language: Perl
   license: 'GNU General Public License'
   modified: '2018-06-27 19:10:40'
   name: nickserv.pl
@@ -3494,6 +3831,7 @@
   contact: bd@bc-bd.org
   description: 'BitchX like Nickcompletion at line start plus statusbar'
   filename: niq.pl
+  language: Perl
   license: 'GPL v2'
   modified: '2017-04-07 16:34:31'
   name: niq
@@ -3505,6 +3843,7 @@
   contact: bd@bc-bd.org
   description: 'right aligned nicks depending on longest nick'
   filename: nm.pl
+  language: Perl
   license: 'GPL v2'
   modified: '2014-10-19 11:54:16'
   name: nm
@@ -3515,6 +3854,7 @@
   contact: 'Nei @ anti@conference.jabber.teamidiot.de'
   description: 'right aligned nicks depending on longest nick'
   filename: nm2.pl
+  language: Perl
   license: 'GPL v2'
   modified: '2016-04-26 23:30:46'
   name: nm2
@@ -3525,6 +3865,7 @@
   contact: james@jamesoff.net
   description: 'Replaces lines in ALL CAPS with something easier on the eyes'
   filename: nocaps.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2002-03-22 12:34:38'
   name: nocaps
@@ -3535,6 +3876,7 @@
   contact: derwan@irssi.pl
   description: 'Automatically changes nick (to randnick or uid on ircd 2.11) when certain amount of nick colissionstakes place on channel'
   filename: nocollide.pl
+  language: Perl
   license: 'GNU GPL v2'
   modified: '2004-02-16 10:08:59'
   name: nocollide
@@ -3545,6 +3887,7 @@
   contact: bd@bc-bd.org
   description: 'Prints an info about a newly started Query in your current window and runs a /whois on the nick.'
   filename: noisyquery.pl
+  language: Perl
   license: 'GPL v2'
   modified: '2014-10-19 11:54:16'
   name: noisyquery
@@ -3555,6 +3898,7 @@
   contact: 'gophi <at> efnet.pl'
   description: 'Replaces polish national characters with their corresponding letters'
   filename: nopl.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2005-05-10 16:12:32'
   name: nopl
@@ -3565,6 +3909,7 @@
   contact: derwan@irssi.pl
   description: 'stops public repeating'
   filename: norepeat.pl
+  language: Perl
   license: 'GNU GPL v2'
   modified: '2003-09-09 16:34:44'
   name: norepeat
@@ -3576,6 +3921,7 @@
   contact: vague!#irssi@freenode
   description: 'Keeps notes on users and displayes the note in /whois output if the host/nick matches'
   filename: notes.pl
+  language: Perl
   license: GPL2
   modified: '2017-04-24 22:54:06'
   modules: 'DBI DBM::Deep List::MoreUtils autovivification'
@@ -3586,6 +3932,7 @@
   contact: shacklein@gmail.com
   description: "Print private notices in query/channel where you're talking to them. Prefers active window if they're there with you."
   filename: noticelogic.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2014-07-10 09:21:39'
   name: 'notice logic'
@@ -3596,6 +3943,7 @@
   contact: tss@iki.fi
   description: 'Prints private notices from people in the channel where they are joined with you. Useful when you get lots of private notices from some bots.'
   filename: noticemove.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2014-10-19 11:54:16'
   name: 'notice move'
@@ -3607,6 +3955,7 @@
   contact: 'vague!#irssi@freenode on irc'
   description: 'Notify if user has left the channel'
   filename: notifyquit.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2015-11-25 11:42:09'
   name: notifyquit
@@ -3617,6 +3966,7 @@
   contact: 'ion at hassers.org'
   description: "Answers \"$nick: No.\" if you're away and someone asks are you online on a channel"
   filename: notonline.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2002-03-12 22:20:00'
   name: NotOnline
@@ -3627,6 +3977,7 @@
   contact: juerd@juerd.nl
   description: 'This script really does nothing. Sorry.'
   filename: null.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2002-03-10 02:14:00'
   name: 'Nothing at all'
@@ -3638,6 +3989,7 @@
   contact: ricardomesquita@netcabo.pt
   description: 'Display current ogg123 track'
   filename: ogg123.pl
+  language: Perl
   license: GPLv2
   modified: '2017-03-20 14:19:18'
   name: ogg123
@@ -3648,6 +4000,7 @@
   contact: darix@irssi.org
   description: 'oidentd support for irssi'
   filename: oidenty.pl
+  language: Perl
   license: 'BSD License'
   modified: '2018-01-21 21:18:19'
   name: oidenty
@@ -3659,6 +4012,7 @@
   contact: dgl@dgl.cx
   description: "/on command - this is very simple and not really designed to be the same as ircII - it tries to fit into Irssi's usage style more than emulating ircII."
   filename: on.pl
+  language: Perl
   license: 'GNU GPLv2 or later'
   modified: '2019-02-06 22:21:41'
   name: on.pl
@@ -3670,6 +4024,7 @@
   contact: bw1@aol.at
   description: 'turns irssi into a tv program guide'
   filename: ontv2.pl
+  language: Perl
   license: GPLv2
   modified: '2021-02-07 13:56:06'
   modules: 'DateTime DateTime::Format::Strptime XML::LibXML::Simple YAML::XS'
@@ -3681,6 +4036,7 @@
   contact: bw1@aol.at
   description: "turns 'll' and 'ls' in the beginning of a sent line into the names or whois commands"
   filename: oops.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2019-01-15 15:07:59'
   name: oops
@@ -3690,6 +4046,7 @@
   contact: dgl@dgl.cx
   description: 'Stops those silly mistakes being sent (spaces at start of line, /1/1 for window changes, etc).'
   filename: oopsie.pl
+  language: Perl
   license: 'WTFPL <http://dgl.cx/licence>'
   modified: '2019-02-19 16:46:39'
   name: oopsie
@@ -3701,6 +4058,7 @@
   contact: stefan@pico.ruhr.de
   description: 'Stores URLs in a list and launches mail, web or ftp software'
   filename: openurl.pl
+  language: Perl
   license: GPLv2
   modified: '2008-05-17 17:39:11'
   name: OpenURL
@@ -3712,6 +4070,7 @@
   contact: pasky@ucw.cz
   description: 'Perform certain action (invite/op/...) on request authenticated by the IRC operator status.'
   filename: operit.pl
+  language: Perl
   license: BSD
   modified: '2008-05-17 17:39:09'
   name: operit
@@ -3722,6 +4081,7 @@
   contact: pasky@ji.cz
   description: 'Reformats some server notices, which may come i.e. from &clients or &servers at IRCnet. You can turn the script on/off bytoggling variable mangle_server_notices.'
   filename: operview.pl
+  language: Perl
   license: 'GPLv2, not later'
   modified: '2017-04-07 16:34:31'
   name: operview
@@ -3732,6 +4092,7 @@
   commands: o
   contact: terje@darkrealm.no
   filename: opnotice.pl
+  language: Perl
   license: 'GNU GPL v2'
   modified: '2014-10-19 11:54:16'
   name: Opnotice
@@ -3742,6 +4103,7 @@
   contact: fahren@bochnia.pl
   description: 'Hilights window refnumber in statusbar if someone ops/deops you on channel'
   filename: opnotify.pl
+  language: Perl
   license: 'GNU GPLv2 or later'
   modified: '2002-03-15 15:09:42'
   name: opnotify
@@ -3752,6 +4114,7 @@
   contact: wohmatak@iglu.cz
   description: 'Displays the song played by orpheus'
   filename: orphamp.pl
+  language: Perl
   license: GPL
   modified: '2014-10-19 11:54:16'
   name: orphamp
@@ -3762,6 +4125,7 @@
   contact: 'vipie@ulyssis.org, jeroen@coekaerts.be'
   description: "An OnScreenDisplay (osd) it show's who is talking to you, on what IRC Network."
   filename: osd.pl
+  language: Perl
   license: BSD
   modified: '2017-06-12 23:56:49'
   name: osd
@@ -3773,6 +4137,7 @@
   contact: ''
   description: "shows how many channels you're joined and how many in them you're op, and\r\nhow many nicks are in those channels"
   filename: ownage.pl
+  language: Perl
   license: ''
   modified: '2018-07-15 18:05:48'
   name: ownage
@@ -3783,6 +4148,7 @@
   contact: c0ffee@penguin-breeder.org
   description: 'Adds the /PAGE command to page a nick (use /page nick <text>)... to ignore pages /set pager_mode off'
   filename: page-c0ffee.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2017-03-12 21:57:08'
   name: 'mIRC pager'
@@ -3794,6 +4160,7 @@
   contact: irssi@reeler.org
   description: 'display and send CTCP PAGE'
   filename: page_reeler.pl
+  language: Perl
   license: 'GNU GPLv2 or later'
   modified: '2014-10-19 11:54:16'
   name: page
@@ -3804,6 +4171,7 @@
   contact: jylefort\@brutele.be
   description: 'Notifies people if they send you a private message or a DCC chat offer while you are away; runs a shell command configurable via /set if they page you'
   filename: pager.pl
+  language: Perl
   license: BSD
   modified: '2017-03-06 20:58:29'
   name: pager
@@ -3814,6 +4182,7 @@
   contact: fprintf@github.com
   description: 'Render text with various color modifications using HTML tag syntax.'
   filename: pangotext.pl
+  language: Perl
   license: 'GNU GPLv2 or later'
   modified: '2019-08-18 13:24:22'
   name: pangotext
@@ -3823,6 +4192,7 @@
   contact: 'Nei @ anti@conference.jabber.teamidiot.de'
   description: 'partial tab completion for Irssi'
   filename: partial.pl
+  language: Perl
   license: ISC
   modified: '2020-10-22 16:55:25'
   modules: Tree::Trie
@@ -3835,6 +4205,7 @@
   contact: derwan@irssi.pl
   description: 'Usage: /paste [-all|-msgs|-public] [-c|-b] [-s|-l| where] [lines]'
   filename: paste-derwan.pl
+  language: Perl
   license: 'GNU GPL v2'
   modified: '2014-10-19 11:54:16'
   name: paste
@@ -3846,6 +4217,7 @@
   contact: derwan@irssi.pl
   description: 'Pasting lines to specified targets, type "/paste -help" for help'
   filename: paste_derwan.pl
+  language: Perl
   license: 'GNU GPL v2'
   modified: '2018-07-14 17:49:40'
   name: paste
@@ -3857,6 +4229,7 @@
   contact: huggie-irssi@earth.li
   description: 'Paste reformats long pieces of text typically pasted into your client from webpages so that they fit nicely into your channel.  Width of client may be specified'
   filename: paste_huggie.pl
+  language: Perl
   license: GPLv2
   modified: '2002-03-09 10:59:49'
   name: Paste
@@ -3868,6 +4241,7 @@
   contact: kimmo@a-men.org
   description: 'Provides /start, /stop, /play <-nopack> <-nospace> paste mechanism - start and stop recording and then replay without linebreaks. Also /see to view what was recorded.'
   filename: paste_kimmoke.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2014-10-19 11:54:16'
   name: Paste-KimmoKe
@@ -3878,6 +4252,7 @@
   contact: mankeli@einari.org
   description: 'This script allows you flood shit.'
   filename: pelix.pl
+  language: Perl
   license: GNU/GPL
   modified: '2008-05-17 17:39:11'
   name: '#pelix Helpers'
@@ -3888,6 +4263,7 @@
   contact: qrczak@knm.org.pl
   description: 'Userlist with autoopping, autokicking etc.'
   filename: people.pl
+  language: Perl
   license: 'GNU GPL'
   modified: '2015-02-01 18:29:23'
   modules: Crypt::PasswdMD5
@@ -3899,6 +4275,7 @@
   contact: coekie@irssi.org
   description: 'Keeps a prompt per window'
   filename: per_window_prompt.pl
+  language: Perl
   license: 'GPLv2 or later'
   modified: '2015-12-09 23:35:34'
   name: per_window_prompt
@@ -3910,6 +4287,7 @@
   contact: aquanight@gmail.com
   description: 'Quickly create commands from short perl blocks'
   filename: perlalias.pl
+  language: Perl
   license: 'public domain'
   modified: '2022-02-14 07:27:10'
   name: perlalias
@@ -3920,6 +4298,7 @@
   contact: duck@cs.uni-frankfurt.de
   description: 'does CTCP SOUNDs and other similar things.'
   filename: pggb_sound.pl
+  language: Perl
   license: GPLv2
   modified: '2014-10-19 11:54:16'
   modules: File::Listing
@@ -3932,6 +4311,7 @@
   contact: stefan@pico.ruhr.de
   description: 'equips Irssi with an interface to giFT'
   filename: poison.pl
+  language: Perl
   license: GPLv2
   modified: '2008-05-17 17:39:09'
   name: Poison
@@ -3942,6 +4322,7 @@
   contact: stefan@pico.ruhr.de
   description: 'Postpones messages sent to a splitted user and resends them when the nick rejoins'
   filename: postpone.pl
+  language: Perl
   license: GPLv2
   modified: '2017-02-04 02:11:54'
   name: postpone
@@ -3952,6 +4333,7 @@
   contact: 'fahren@bochnia.pl, md@linux.it'
   description: "port of asmodean's /ppl command from skuld3"
   filename: ppl.pl
+  language: Perl
   license: 'GPL v2'
   modified: '2008-05-17 17:39:09'
   name: ppl
@@ -3962,6 +4344,7 @@
   contact: madduck@madduck.net
   description: 'hooks into almost every signal and writes the information provided to a file'
   filename: print_signals.pl
+  language: Perl
   license: MIT
   modified: '2021-11-03 22:37:24'
   name: 'print signals debugger'
@@ -3972,6 +4355,7 @@
   contact: frey@notk.org
   description: 'Gets new mails from procmail.log file'
   filename: procmaillog.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2014-06-21 08:47:21'
   modules: 'Log::Procmail MIME::Words'
@@ -3984,6 +4368,7 @@
   contact: kevinsiml@googlemail.com
   description: 'Push hilights and private messages when away by the pushsafer.com API'
   filename: pushsafer.pl
+  language: Perl
   license: BSD
   modified: '2023-03-11 18:05:08'
   modules: LWP::UserAgent
@@ -3995,6 +4380,7 @@
   contact: dwfreed!#irssi@freenode
   description: "Authenticates you to QuakeNet's Q immediately on connect using CHALLENGEAUTH"
   filename: qchallengeauth.pl
+  language: Perl
   license: GPLv3+
   modified: '2017-05-08 11:41:48'
   name: qchallengeauth.pl
@@ -4004,6 +4390,7 @@
   contact: 'phyber [at] #irssi'
   description: 'Hide the stupid quit/join on QuakeNet when a user registers with nickserv.'
   filename: quakequit.pl
+  language: Perl
   modified: '2015-01-09 16:05:06'
   name: quakequit
   version: '1.0'
@@ -4012,6 +4399,7 @@
   contact: peder.stray@gmail.com
   description: 'Give you more control over when to jump to query windows and when to just tell you one has been created. Enhanced autoclose.'
   filename: query.pl
+  language: Perl
   license: GPL
   modified: '2021-08-21 10:40:50'
   name: query
@@ -4022,6 +4410,7 @@
   contact: 'ferret(tA)explodingferret(moCtoD), ferret on irc.freenode.net'
   description: 'whois on every query open (and only then)'
   filename: query_whois.pl
+  language: Perl
   modified: '2018-01-11 11:02:11'
   name: query_whois
   url: http://explodingferret.com/linux/irssi/query_whois.pl
@@ -4031,6 +4420,7 @@
   contact: stefan@pico.ruhr.de
   description: 'restores the last lines of a query on re-creation'
   filename: queryresume.pl
+  language: Perl
   license: GPLv2
   modified: '2014-10-19 11:54:16'
   modules: Date::Format
@@ -4040,6 +4430,7 @@
   authors: 'Timo Sirainen'
   description: 'Random quit messages'
   filename: quitmsg.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2020-07-22 19:10:12'
   name: quitmsg
@@ -4049,6 +4440,7 @@
   contact: ferdy@ferdyx.org
   description: 'Random quit messages - based on quitmsg (Timo Sirainen)'
   filename: quitrand.pl
+  language: Perl
   license: GPLv2
   modified: '2014-10-19 11:54:16'
   name: quitrand
@@ -4058,6 +4450,7 @@
   contact: huggie-irssi@earth.li
   description: 'Turns irssi into a quiz bot'
   filename: quiz.pl
+  language: Perl
   license: GPLv2
   modified: '2017-04-03 14:51:40'
   name: Quiz
@@ -4068,6 +4461,7 @@
   contact: arvan
   description: 'Turns irssi into a quiz bot. Has greek language and many answers support'
   filename: quizgr.pl
+  language: Perl
   license: GPLv2
   modified: '2017-03-16 17:31:18'
   name: Quizgr
@@ -4079,6 +4473,7 @@
   contact: stefan@pico.ruhr.de
   description: 'Un script de quiz pour irssi'
   filename: quizmaster-fr.pl
+  language: Perl
   license: GPLv2
   modified: '2017-04-03 18:52:16'
   name: quizmaster
@@ -4090,6 +4485,7 @@
   contact: stefan@pico.ruhr.de
   description: 'a trivia script for Irssi'
   filename: quizmaster.pl
+  language: Perl
   license: GPLv2
   modified: '2017-04-03 18:05:34'
   name: quizmaster
@@ -4101,6 +4497,7 @@
   contact: shasta@atn.pl
   description: 'Prints colored text. Rather simple than sophisticated.'
   filename: rainbow.pl
+  language: Perl
   license: 'GNU GPLv2 or later'
   modified: '2015-11-25 15:47:52'
   name: rainbow
@@ -4112,6 +4509,7 @@
   contact: lkarsten@stud.ntnu.no
   description: 'Random away-messages'
   filename: randaway.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2017-03-15 20:28:47'
   name: randaway.pl
@@ -4123,6 +4521,7 @@
   contact: a.lepore(at)email.it
   description: 'Random "/set real_name" taken from a file.'
   filename: randname.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2022-05-24 21:54:06'
   name: RandName
@@ -4132,6 +4531,7 @@
   contact: spiderpigy@yahoo.com
   description: "Filters quit/part/join/nick notices based on time since last message. (Similar to weechat's smartfilter)."
   filename: recentdepart.pl
+  language: Perl
   license: 'GNU GPLv2 or later'
   modified: '2016-04-26 18:00:41'
   name: 'Recently Departed'
@@ -4142,6 +4542,7 @@
   contact: irssi@reeler.org
   description: 'handle 005 and 010 server messages and reconnect to that server'
   filename: redirect.pl
+  language: Perl
   license: 'GNU GPLv2 or later'
   modified: '2014-10-19 11:54:16'
   name: redirect
@@ -4153,6 +4554,7 @@
   contact: fahren@bochnia.pl
   description: 'Keeps last 15 messages in cache'
   filename: relm.pl
+  language: Perl
   license: 'GNU GPLv2 or later'
   modified: '2019-02-25 10:29:22'
   name: 'REdirect Last Message'
@@ -4163,6 +4565,7 @@
   contact: dgl@dgl.cx
   description: 'Lets you run commands remotely via /msg and a password'
   filename: remote.pl
+  language: Perl
   license: 'GNU GPLv2 or later'
   modified: '2019-02-25 21:11:57'
   name: remote
@@ -4174,6 +4577,7 @@
   contact: irssi@isaacgood.com
   description: 'Reordering windows based on a textfile.'
   filename: reorder.pl
+  language: Perl
   license: GPL
   modified: '2016-12-06 18:47:28'
   name: reorder
@@ -4183,6 +4587,7 @@
   contact: bd@bc-bd.org
   description: 'Hide duplicate lines'
   filename: repeat.pl
+  language: Perl
   license: 'GPL v2'
   modified: '2012-08-30 11:52:40'
   name: repeat
@@ -4194,6 +4599,7 @@
   contact: jere@flamero.fi
   description: 'Replaces regexps with predefined strings'
   filename: replace.pl
+  language: Perl
   license: MIT
   modified: '2016-03-22 03:23:12'
   name: replace
@@ -4204,6 +4610,7 @@
   contact: dgl@dgl.cx
   description: 'Resizes a split window when it is made active (see comments in script for details)'
   filename: resize_split.pl
+  language: Perl
   license: 'GNU GPLv2 or later'
   modified: '2008-05-17 17:39:11'
   name: resize_split
@@ -4214,6 +4621,7 @@
   contact: ryan@freebern.org
   description: 'Summarizes multiple sequential joins/parts/quits.'
   filename: revolve.pl
+  language: Perl
   license: 'GPL v2 or later'
   modified: '2019-11-13 13:25:29'
   name: revolve
@@ -4225,6 +4633,7 @@
   contact: fogel@fogel.netmark.pl
   description: 'Rhythmbox now playing script'
   filename: rhythmbox.pl
+  language: Perl
   license: BSD
   modified: '2009-06-16 23:11:03'
   name: rhythmbox
@@ -4236,6 +4645,7 @@
   contact: fahren@bochnia.pl
   description: '/RK [-o | -l | -a] - kicks random nick from ops | lusers | all on channel'
   filename: rk.pl
+  language: Perl
   license: 'GNU GPLv2 or later'
   modified: '2002-03-15 15:09:42'
   name: 'Random kicker'
@@ -4246,6 +4656,7 @@
   contact: v0rbiz@yahoo.com
   description: 'translates romaji to hiragana or katakana in text enclosed in ^R'
   filename: romaji.pl
+  language: Perl
   license: 'BSD 2-clause'
   modified: '2008-05-17 17:39:11'
   name: romaji
@@ -4257,6 +4668,7 @@
   contact: v0rbiz@yahoo.com
   description: 'Dynamic romaji binds'
   filename: romajibind.pl
+  language: Perl
   license: 'BSD 2-clause'
   modified: '2017-04-07 16:34:31'
   name: romajibind
@@ -4268,6 +4680,7 @@
   contact: craig@fish.mac.edu.pl
   description: 'ROT13 encoding and reverse :)'
   filename: rot13.pl
+  language: Perl
   license: GPLv2
   modified: '2008-05-17 17:39:09'
   name: rot13
@@ -4277,6 +4690,7 @@
   contact: bd@bc-bd.org
   description: 'Displaye a small, changeing statusbar item to show irssi is still running'
   filename: rotator.pl
+  language: Perl
   license: 'GPL v2'
   modified: '2017-04-07 16:34:31'
   name: rotator
@@ -4288,6 +4702,7 @@
   contact: 'rud0lf/IRCnet; rud0lf/freenode; xxrud0lf@gmail.com'
   description: 'Replaces :emote_name: text in your sent messages into pre-defined emotes (unicode mostly).'
   filename: rud_emotes.pl
+  language: Perl
   license: GPLv3
   modified: '2019-03-19 21:57:04'
   name: 'emotes script'
@@ -4297,6 +4712,7 @@
   contact: 'Nei @ anti@conference.jabber.teamidiot.de'
   description: 'Saves the commands you typed in the input prompt to a history file, so that they persist across /upgrade and restart.'
   filename: savecmdhist.pl
+  language: Perl
   license: ISC
   modified: '2018-11-07 14:02:31'
   name: savecmdhist
@@ -4307,6 +4723,7 @@
   contact: 'simon@ruderich.org, shabble+irssi@metavore.org'
   description: 'Displays current position in scrollback.'
   filename: sb_position.pl
+  language: Perl
   license: 'GPLv3 or later'
   modified: '2017-04-07 16:34:31'
   name: sb_position
@@ -4316,6 +4733,7 @@
   contact: 'wouter@coekaerts.be, exg@irssi.org'
   description: 'search in your scrollback, scroll to a match'
   filename: sb_search.pl
+  language: Perl
   license: 'GPLv2 or later'
   modified: '2017-11-20 11:40:40'
   name: sb_search
@@ -4326,6 +4744,7 @@
   contact: 'Nei @ anti@conference.jabber.teamidiot.de'
   description: 'clear matching lines in scrollback'
   filename: sbclearmatch.pl
+  language: Perl
   license: 'GPLv2 or later'
   modified: '2015-11-16 19:32:11'
   name: sbclearmatch
@@ -4336,6 +4755,7 @@
   contact: 'Nei @ anti@conference.jabber.teamidiot.de'
   description: 'move matching lines from scrollback'
   filename: sbmove.pl
+  language: Perl
   license: 'GPLv2 or later'
   modified: '2020-10-22 16:20:48'
   name: 'sbmove alpha'
@@ -4347,6 +4767,7 @@
   contact: irssi@robert-scheck.de
   description: '/schwäbisch - translates your messages from german to swabian'
   filename: schwaebisch.pl
+  language: Perl
   license: 'GNU GPL v2'
   modified: '2019-01-30 22:52:13'
   name: Schwaebisch
@@ -4356,6 +4777,7 @@
   authors: "Andreas 'ads' Scherbaum <ads@wars-nicht.de>"
   description: 'set (un)away, if screen is attached/detached'
   filename: screen_away.pl
+  language: Perl
   license: 'GPL v2'
   modified: '2017-10-30 01:39:53'
   name: screen_away
@@ -4367,6 +4789,7 @@
   contact: stefan@pico.ruhr.de
   description: 'keeps your scripts on the cutting edge'
   filename: scriptassist.pl
+  language: Perl
   license: GPLv2
   modified: '2022-05-31 20:44:38'
   modules: LWP::UserAgent
@@ -4378,6 +4801,7 @@
   contact: fahren@bochnia.pl
   description: "Provides access to script's help"
   filename: scripthelp.pl
+  language: Perl
   license: 'GNU GPLv2 or later'
   modified: '2019-02-27 20:56:42'
   name: 'Scripts help'
@@ -4387,6 +4811,7 @@
   contact: juerd@juerd.nl
   description: 'Access script information'
   filename: scriptinfo.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2002-03-19 11:00:00'
   name: 'Script Information'
@@ -4397,6 +4822,7 @@
   contact: 'lasers on freenode'
   description: 'Loads scripts from file instead of autorun directory'
   filename: scriptsave.pl
+  language: Perl
   license: WTFPL
   modified: '2015-01-16 19:38:47'
   name: scriptsave
@@ -4407,6 +4833,7 @@
   contact: 'Mikachu @ freenode'
   description: 'wtires lkie tihs'
   filename: scrmable.pl
+  language: Perl
   license: 'as is'
   modified: '2008-05-17 17:39:11'
   name: scrmable
@@ -4416,6 +4843,7 @@
   contact: demmydemon@gmail.com
   description: 'Scrolls specified text on the status bar'
   filename: scroller.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2017-04-07 16:34:31'
   name: scroller
@@ -4426,6 +4854,7 @@
   contact: 'vague`!#irssi@freenode on irc '
   description: 'An irssi adaptation of securequery.mrc found in the Acidmax mIRC script. :), now with multiserver support'
   filename: securemsg.pl
+  language: Perl
   license: GPLv2
   modified: '2022-07-11 10:54:46'
   name: securemsg
@@ -4436,6 +4865,7 @@
   contact: qrczak@knm.org.pl
   description: 'Tell people when other people were online'
   filename: seen.pl
+  language: Perl
   license: GPL
   modified: '2008-05-17 17:39:11'
   name: Seen
@@ -4445,6 +4875,7 @@
   contact: 'Nei @ anti@conference.jabber.teamidiot.de'
   description: 'Scroll down on enter'
   filename: send_scroll.pl
+  language: Perl
   license: 'GNU GPLv2 or later'
   modified: '2015-01-26 23:46:22'
   name: send_scroll
@@ -4455,6 +4886,7 @@
   contact: 'vague!#irssi@libera.chat on irc'
   description: 'Print a black line between messages from different users'
   filename: separate_messages.pl
+  language: Perl
   license: GPL2
   modified: '2023-04-19 17:43:42'
   name: separate_messages
@@ -4465,6 +4897,7 @@
   contact: johnsullivan.pem@gmail.com
   description: 'Implements the IRCv3 "server-time" capability'
   filename: server_time.pl
+  language: Perl
   license: MIT
   modified: '2018-11-24 12:46:20'
   modules: 'DateTime DateTime::TimeZone'
@@ -4476,6 +4909,7 @@
   contact: dgl@dgl.cx
   description: 'Tab complete servers and userhosts (irc. -> irc server, user@ -> user@host). Useful for lazy ircops for /squit and so on :)'
   filename: servercomplete.pl
+  language: Perl
   license: 'GNU GPLv2 or later'
   modified: '2014-10-24 23:01:30'
   name: servercomplete
@@ -4486,6 +4920,7 @@
   contact: 'rcaputo@cpan.org, Nei @ anti@conference.jabber.teamidiot.de'
   description: 'Irssi settings notes and documentation'
   filename: settingshelp.pl
+  language: Perl
   license: 'CC BY-SA 2.5, http://creativecommons.org/licenses/by-sa/2.5/'
   modified: '2022-05-31 12:23:24'
   name: settingshelp
@@ -4496,6 +4931,7 @@
   contact: derwan@irssi.pl
   description: shortenurl
   filename: shortenurl.pl
+  language: Perl
   license: 'GNU GPL v2'
   modified: '2004-06-26 19:17:02'
   modules: LWP::UserAgent
@@ -4508,6 +4944,7 @@
   contact: 'irssi@eosin.org, dave001@hellspark.com'
   description: 'Private/Public url reduction script.'
   filename: shorturl.pl
+  language: Perl
   license: GPLv2
   modified: '2021-01-08 12:10:55'
   modules: 'LWP::Protocol::https LWP::Simple LWP::UserAgent'
@@ -4518,6 +4955,7 @@
   contact: styx@irc.pl
   description: 'Show hilight messages in active window'
   filename: showhilight.pl
+  language: Perl
   license: 'GNU GPLv2'
   modified: '2017-05-23 10:54:02'
   name: showhilight
@@ -4527,6 +4965,7 @@
   contact: michielv@zeelandnet.nl
   description: 'show host kicks'
   filename: showhost.pl
+  language: Perl
   license: GPL
   modified: '2003-12-08 19:23:51'
   name: showhost
@@ -4536,6 +4975,7 @@
   contact: peter@pfoe.be
   description: 'Show whatever needs your attention in active window, and cleans your windows afterwards.  Also provides a hilight window.  This is a combination of the hilightwin, noisyquery and showhilight scripts'
   filename: showinactive.pl
+  language: Perl
   license: 'GNU GPLv2'
   modified: '2017-09-06 16:07:03'
   name: showinactive
@@ -4545,6 +4985,7 @@
   contact: wouter@coekaerts.be
   description: 'show modes in parts, quits, kicks, topic changes or actions, like show_nickmode does for public messages'
   filename: showmode.pl
+  language: Perl
   license: 'GPLv2 or later'
   modified: '2007-07-28 00:00:00'
   name: showmode
@@ -4553,6 +4994,7 @@
   contact: jwm@horde.net
   description: 'Send highlighted messages via Signal'
   filename: signal_hilight.pl
+  language: Perl
   modified: '2017-03-20 16:27:59'
   name: signal_hilight
   version: '1.0'
@@ -4561,6 +5003,7 @@
   contact: mortenjo@ifi.uio.no
   description: 'Prefix nicks with @ when completing nicks to match conventions on networks like Slack, Flowdock, Gitter etc'
   filename: slack_complete.pl
+  language: Perl
   license: GPL
   modified: '2018-08-29 00:46:06'
   name: slack_complete
@@ -4570,6 +5013,7 @@
   contact: lars.djerf@gmail.com
   description: 'This script converts Slack emoji to smileys.'
   filename: slack_emoji.pl
+  language: Perl
   license: GPLv3
   modified: '2015-01-03 19:42:44'
   name: slack_emoji
@@ -4579,6 +5023,7 @@
   contact: avarab@gmail.com
   description: 'Strips the annoying mentions of your nickname on Slack via [cc: <you>]'
   filename: slack_strip_auto_cc.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2016-03-15 17:52:13'
   name: slack_strip_auto_cc.pl
@@ -4589,6 +5034,7 @@
   contact: irssi-smartfilter@spam.lifeforms.nl
   description: 'Improved smart filter for join, part, quit, nick messages'
   filename: smartfilter.pl
+  language: Perl
   license: BSD
   modified: '2018-01-30 08:20:44'
   name: smartfilter.pl
@@ -4600,6 +5046,7 @@
   contact: jip@loota.org
   description: 'Very useful smiley-flooder'
   filename: smiley.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2008-05-17 17:39:11'
   name: Smiley
@@ -4610,6 +5057,7 @@
   contact: fahren@bochnia.pl
   description: '/ADDSMS, /DELSMS, /LISTSMS and /SMS - phone address-book with smssender, for now supports only Polish operators'
   filename: sms.pl
+  language: Perl
   license: 'GNU GPLv2 or later'
   modified: '2014-10-24 23:01:30'
   name: SMS
@@ -4620,6 +5068,7 @@
   contact: https://github.com/zonidjan/irssi-scripts/issues
   description: 'send highlights via Twilio sms'
   filename: smshilight.pl
+  language: Perl
   license: CC0
   modified: '2018-02-12 03:58:36'
   modules: LWP::UserAgent
@@ -4632,6 +5081,7 @@
   contact: strlen@shellz.nl
   description: "This script queries remote hosts (/snmpup <host1> <host2> <hostN>) running snmpd for it's uptime and cpu usage"
   filename: snmpup.pl
+  language: Perl
   license: GPL/2
   modified: '2002-04-06 17:57:28'
   modules: Net::SNMP
@@ -4641,6 +5091,7 @@
   authors: 'Daemon @ ircd.foxchat.net'
   description: 'Oper script to kill Spam Bots.'
   filename: spambot.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2008-05-17 17:39:09'
   name: 'Spam Bot Killer'
@@ -4650,6 +5101,7 @@
   contact: 'wouter@coekaerts.be, coekie@#irssi'
   description: '(tab)complete irssi special variables (words that start with $) by evaluating them'
   filename: special_complete.pl
+  language: Perl
   license: GPLv2
   modified: '2003-07-28 00:00:00'
   name: special_complete
@@ -4661,6 +5113,7 @@
   contact: michael_kowalchuk@umanitoba.ca
   description: 'A spell checker for irssi.  Hit alt+s and your line will echoed to the active window with mistakes underlined and suggestions noted.  /spell is also provided.  Requires Lingua::Ispell and Ispell.'
   filename: spell.pl
+  language: Perl
   license: MIT
   modified: '2018-09-06 19:23:44'
   modules: Lingua::Ispell
@@ -4672,6 +5125,7 @@
   commands: spellcheck_add
   description: 'checks for spelling errors using Aspell'
   filename: spellcheck.pl
+  language: Perl
   license: GPLv2
   modified: '2020-09-25 20:38:34'
   modules: Text::Aspell
@@ -4684,6 +5138,7 @@
   contact: fahren@bochnia.pl
   description: '/SPING [server] - checks latency between current server and [server]'
   filename: sping.pl
+  language: Perl
   license: 'GNU GPLv2 or later'
   modified: '2014-06-15 19:18:39'
   name: 'Server Ping'
@@ -4693,6 +5148,7 @@
   contact: bjkro@gmx.de
   description: 'Split overlong PRIVMSGs to msgs with length allowed by ircd'
   filename: splitlong.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2014-08-07 02:00:52'
   name: splitlong
@@ -4703,6 +5159,7 @@
   contact: o@42mm.org
   description: 'Lookup spotify uris'
   filename: spotify.pl
+  language: Perl
   license: GPLv2
   modified: '2014-10-13 15:24:27'
   modules: 'HTTP::Request HTTP::Request::Common JSON LWP::UserAgent URI'
@@ -4714,6 +5171,7 @@
   contact: philip@trouble.is
   description: 'This script stops accidental YubiKey output on IRC'
   filename: suppress_yubikey_otp.pl
+  language: Perl
   license: BSD
   modified: '2023-03-03 16:08:32'
   name: suppress_yubikey_otp
@@ -4724,6 +5182,7 @@
   contact: derwan@irssi.pl
   description: 'Script checking channel synchronization. Usage: /sync-check [channel (servers)|-stop]'
   filename: synccheck.pl
+  language: Perl
   license: 'GNU GPL v2'
   modified: '2002-08-09 23:00:00'
   name: sync-check
@@ -4735,6 +5194,7 @@
   contact: david@inexistent.com
   description: 'Cross-platform/architecture system information script.'
   filename: sysinfo270-irssi.pl
+  language: Perl
   license: BSD
   modified: '2014-10-24 23:01:30'
   name: SysInfo
@@ -4746,6 +5206,7 @@
   contact: david@inexistent.com
   description: 'Cross-platform/architecture system information script.'
   filename: sysinfo277-irssi.pl
+  language: Perl
   license: BSD
   modified: '2019-11-08 19:17:17'
   name: SysInfo
@@ -4757,6 +5218,7 @@
   contact: dgl@dgl.cx
   description: 'Adds a /sysinfo command which prints system information (linux only).'
   filename: sysinfo_dg.pl
+  language: Perl
   license: 'GNU GPLv2 or later'
   modified: '2015-01-10 18:02:02'
   name: sysinfo-dg
@@ -4768,6 +5230,7 @@
   contact: trn@iki.fi
   description: 'Linux system information (with vPenis and other stuff)'
   filename: sysinfoplus.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2017-04-02 20:30:12'
   name: SysinfoPlus
@@ -4778,6 +5241,7 @@
   contact: 'stefan@pico.ruhr.de, shabble@#irssi/Freenode'
   description: 'Replaces \t TAB characters to line up with tab stops (default 8) or to contents of /set tabstop_replacement if tabstop_interval is set to 0'
   filename: tab_stop.pl
+  language: Perl
   license: GPLv2
   modified: '2022-01-19 12:27:21'
   name: tab_stop
@@ -4787,6 +5251,7 @@
   contact: 'vague!#irssi@freenode on irc'
   description: 'tabcomplete, on an empty input buffer, over /set completion_keep_publics nicks in channel, parts for any reason(kick, part, quit) are removed from the tabcomplete list'
   filename: tabcompletenick.pl
+  language: Perl
   license: GPL2
   modified: '2015-11-25 11:47:05'
   name: tabcompletenick
@@ -4797,6 +5262,7 @@
   contact: dma147\@mieland-programming.de
   description: 'This script talks to you *g*. It reads the chat-msgs for you.'
   filename: talk.pl
+  language: Perl
   license: GPL2
   modified: '2019-06-07 19:21:24'
   name: Talk
@@ -4807,6 +5273,7 @@
   contact: stefan@pico.ruhr.de
   description: 'advances IRC warfare to the next level ;)'
   filename: target.pl
+  language: Perl
   license: GPLv2
   modified: '2008-05-17 17:39:09'
   name: Target
@@ -4818,6 +5285,7 @@
   contact: sebbe@cpan.org
   description: 'Send notifications of highlighted messages over Telegram'
   filename: telegram-notify.pl
+  language: Perl
   license: MIT
   modified: '2017-05-08 11:41:48'
   modules: 'HTML::Entities WWW::Telegram::BotAPI'
@@ -4829,6 +5297,7 @@
   contact: bd@bc-bd.org
   description: 'Remembers the last person oping you on a channel'
   filename: thankop.pl
+  language: Perl
   license: 'GPL v2'
   modified: '2008-05-22 09:10:50'
   name: thankop
@@ -4840,6 +5309,7 @@
   contact: bw1@aol.at
   description: 'activate, show or get theme'
   filename: theme.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2020-04-12 17:43:59'
   modules: YAML::XS
@@ -4852,6 +5322,7 @@
   contact: temex@iki.fi
   description: 'Keeps information about the most recent topics of the channels you are on.'
   filename: thistory.pl
+  language: Perl
   license: 'GNU GPLv2 or later'
   modified: '2014-10-24 23:01:30'
   name: 'topic history'
@@ -4863,6 +5334,7 @@
   contact: bw1@aol.at
   description: 'tic-tac-toe game'
   filename: tictactoe.pl
+  language: Perl
   license: LGPLv3
   modified: '2019-12-23 21:22:43'
   name: tictactoe
@@ -4874,6 +5346,7 @@
   contact: 'kimmo@a-men.org, darix@irssi.org'
   description: 'Provides /timer command for mIRC/BitchX type timer functionality.'
   filename: timer.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2018-05-20 11:39:42'
   name: Timer
@@ -4883,6 +5356,7 @@
   contact: 'vague!#irssi@freenode on irc'
   description: 'timezones displayer'
   filename: timezones.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2017-04-07 16:34:31'
   modules: DateTime
@@ -4895,6 +5369,7 @@
   contact: atoms@tups.lv
   description: 'create a tinyurl from a long one'
   filename: tinyurl.pl
+  language: Perl
   license: GPL
   modified: '2017-05-08 11:41:48'
   modules: 'WWW::Shorten WWW::Shorten::TinyURL'
@@ -4905,6 +5380,7 @@
   contact: 'tss@iki.fi, dgl@dgl.cx'
   description: 'Display configurable title as XTerm title'
   filename: title.pl
+  language: Perl
   license: 'GNU GPL'
   modified: '2014-10-24 23:01:30'
   name: title
@@ -4916,6 +5392,7 @@
   contact: fahren@bochnia.pl
   description: '/TLOCK [-d] [channel] [topic] - locks current or specified topic on [channel]'
   filename: tlock.pl
+  language: Perl
   license: 'GNU GPLv2 or later'
   modified: '2002-03-15 15:09:42'
   name: 'Topic Lock'
@@ -4925,6 +5402,7 @@
   contact: tpadilha84@gmail.com
   description: 'displays a list of nicks in a separate tmux pane'
   filename: tmux-nicklist-portable.pl
+  language: Perl
   license: WTFPL
   modified: '2019-02-07 00:08:18'
   name: tmux-nicklist
@@ -4933,6 +5411,7 @@
   authors: cdidier
   description: 'set (un)away if tmux session is attached/detached'
   filename: tmux_away.pl
+  language: Perl
   license: 'GPL v2'
   modified: '2015-11-23 21:28:44'
   name: tmux_away
@@ -4944,6 +5423,7 @@
   contact: 'vague!#irssi@freenode on irc'
   description: 'Toggle hidden levels on per window basis'
   filename: toggle_hidelevel.pl
+  language: Perl
   modified: '2020-03-17 14:17:18'
   name: toggle_hidelevel
   version: 0.6.1
@@ -4953,6 +5433,7 @@
   contact: c@ttaneo.uy
   description: 'Simple toilet implementation for Irssi'
   filename: toilet.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2017-12-23 14:14:40'
   name: toilet
@@ -4964,6 +5445,7 @@
   contact: https://terminaldweller.com
   description: 'rewrites the input line using openai chatgpt'
   filename: tongueworm.pl
+  language: Perl
   license: 'GPL3 or newer'
   modified: '2023-07-03 23:53:33'
   modules: LWP::UserAgent
@@ -4975,6 +5457,7 @@
   contact: pasc@redellipse.net
   description: 'This script shows you changes in the topic. '
   filename: topic-diff.pl
+  language: Perl
   license: GPL
   modified: '2022-09-05 01:09:35'
   name: topic-diff
@@ -4985,6 +5468,7 @@
   contact: stefan@pico.ruhr.de
   description: 'records a topic history and locks the channel topic'
   filename: topics.pl
+  language: Perl
   license: GPLv2
   modified: '2008-05-17 17:39:11'
   name: topics
@@ -4996,6 +5480,7 @@
   contact: bigmac@vim.hu
   description: 'editing channel topics by regexps'
   filename: topicsed.pl
+  language: Perl
   license: 'public domain'
   modified: '2017-03-18 23:06:54'
   name: topicsed
@@ -5005,6 +5490,7 @@
   contact: yath+irssiscripts@yath.de
   description: 'This script will automatically detect people using the Tor anonymity network and append ".TOR" to their hostname, to make things like /ignore -time 3600 *!*@*.TOR possible (e.g. when your favourite channel gets flooded).'
   filename: tordetect.pl
+  language: Perl
   license: 'Public domain'
   modified: '2008-06-16 10:12:13'
   modules: Net::DNS
@@ -5016,6 +5502,7 @@
   contact: DALnet
   description: 'Keeps track of users by building a databaseof online, joining and nickchanges. Regex-cabablefor the most part, AKA import available. Search byident, nick or host'
   filename: track.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2019-08-17 21:23:21'
   name: track
@@ -5027,6 +5514,7 @@
   contact: peter@pfoe.be
   description: 'Shows a bar where you have last read a window.'
   filename: trackbar.pl
+  language: Perl
   license: 'GNU General Public License'
   modified: '2020-05-08 15:44:31'
   modules: Text::CharWidth
@@ -5037,6 +5525,7 @@
   HIDDEN: '1'
   description: 'This script has been replaced with trackbar.pl.'
   filename: trackbar22.pl
+  language: Perl
   modified: '2018-02-01 16:16:29'
   name: trackbar22
   version: '2.5'
@@ -5046,6 +5535,7 @@
   contact: tss@iki.fi
   description: "Are you ever tired of those people who keep changing their nicks? Or maybe you just don't like someone's nick? This script lets you see them with the real nick all the time no matter what nick they're currently using."
   filename: tracknick.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2019-06-08 16:12:11'
   name: tracknick
@@ -5056,6 +5546,7 @@
   contact: dreg@fine.lv
   description: translitiratar
   filename: translit.pl
+  language: Perl
   license: GPL
   modified: '2017-03-05 14:29:01'
   name: translit
@@ -5066,6 +5557,7 @@
   contact: wouter@coekaerts.be
   description: 'execute a command or replace text, triggered by an event in irssi'
   filename: trigger.pl
+  language: Perl
   license: 'GPLv2 or later'
   modified: '2023-01-21 09:05:27'
   name: trigger
@@ -5077,6 +5569,7 @@
   contact: stefan@pico.ruhr.de
   description: 'Illustrates the trust between ops'
   filename: trustweb.pl
+  language: Perl
   license: GPLv2
   modified: '2008-05-17 17:39:11'
   name: TrustWeb
@@ -5086,6 +5579,7 @@
   commands: twitch_online
   description: 'Notify when a twitch channel comes onlineUses Twitch v5 API'
   filename: twitch_notify.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2020-08-29 21:41:38'
   name: twitch_notify
@@ -5095,6 +5589,7 @@
   contact: snstoller@gmail.com
   description: 'Assign colors to tweet message components'
   filename: twitter_theme.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2014-11-10 12:02:36'
   name: 'Twitter Theme'
@@ -5105,6 +5600,7 @@
   contact: jengelbr@yahoo.com
   description: "BitchX's CrackRock3 animated prompt bar."
   filename: twprompt.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2017-04-07 16:34:31'
   name: twprompt.pl
@@ -5115,6 +5611,7 @@
   contact: jengelbr@yahoo.com
   description: 'IRC version of Social Commands'
   filename: twsocials.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2014-10-24 23:01:30'
   modules: DBI
@@ -5126,6 +5623,7 @@
   contact: jengelbr@yahoo.com
   description: 'Animated Topic bar.'
   filename: twtopic.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2018-09-08 10:00:39'
   name: twtopic.pl
@@ -5136,6 +5634,7 @@
   contact: 'tss@iki.fi, juerd@juerd.nl, qrczak@knm.org.pl'
   description: 'When someone uses s/foo/bar/, this really modifies the text'
   filename: typofix.pl
+  language: Perl
   license: 'Same as Irssi'
   modified: '2015-11-16 19:36:52'
   modules: Algorithm::Diff
@@ -5148,6 +5647,7 @@
   contact: michiel@dotgeek.org
   description: 'BitchX /u clone. Use /u <regex> to show all nicks (including ident@host) matching regex in the current channel.'
   filename: u.pl
+  language: Perl
   license: 'GNU GPL'
   modified: '2014-10-24 23:01:30'
   name: 'List nicks in channel'
@@ -5159,6 +5659,7 @@
   contact: 'shabble+irssi@metavore.org, shabble@#irssi/Freenode'
   description: 'Helper script for dynamically adding text into the input-bar prompt.'
   filename: uberprompt.pl
+  language: Perl
   license: MIT
   modified: '2016-06-25 15:46:46'
   name: uberprompt
@@ -5169,6 +5670,7 @@
   contact: dgl@dgl.cx
   description: 'Get infomation about unicode characters'
   filename: unicode.pl
+  language: Perl
   license: 'WTFPL <http://dgl.cx/licence>'
   modified: '2014-10-13 14:00:00'
   name: unicode
@@ -5178,6 +5680,7 @@
   authors: aquanight
   description: 'Provides the ability to type in unicode characters via their codepoint, by typing U+XXX and pressing tab.'
   filename: unicode_tab.pl
+  language: Perl
   license: 'public domain'
   modified: '2023-07-16 00:42:41'
   name: unicode_tab
@@ -5188,6 +5691,7 @@
   contact: 'reg on #evolix@freenode'
   description: 'reset window to unread status'
   filename: unread.pl
+  language: Perl
   license: 'GPLv2 or later'
   modified: '2020-04-01 05:29:42'
   name: unread
@@ -5198,6 +5702,7 @@
   contact: peder.stray@gmail.com
   description: 'Statusbar item notifying you about updated binary'
   filename: upgradeinfo.pl
+  language: Perl
   license: GPL
   modified: '2021-08-21 23:56:51'
   name: upgradeinfo
@@ -5209,6 +5714,7 @@
   contact: ivo@schooneman.net
   description: 'Plugin to place text upsidedown'
   filename: upsidedown.pl
+  language: Perl
   license: 'GNU GPLv2'
   modified: '2019-01-30 18:12:38'
   modules: Text::UpsideDown
@@ -5220,6 +5726,7 @@
   contact: peder.stray@gmail.com
   description: 'Try a little harder to figure out client uptime'
   filename: uptime.pl
+  language: Perl
   license: GPL
   modified: '2021-08-21 10:40:50'
   name: uptime
@@ -5231,6 +5738,7 @@
   contact: 'jylefort\@brutele.be, decadix on IRCNet'
   description: 'An URL grabber for Irssi'
   filename: url.pl
+  language: Perl
   license: BSD
   modified: '2022-09-10 12:50:40'
   name: url
@@ -5242,6 +5750,7 @@
   contact: irssi@reeler.org
   description: 'logs urls to textfile or/and database, able to list, quote, open or `http head` saved urls.'
   filename: url_log.pl
+  language: Perl
   license: 'GNU GPLv2 or later'
   modified: '2019-03-02 09:10:49'
   modules: 'DBI HTTP::Status LWP LWP::UserAgent'
@@ -5253,6 +5762,7 @@
   contact: shasta@toxcorp.com
   description: 'Provides RSS feeds with URLs pasted on your channels.'
   filename: urlfeed.pl
+  language: Perl
   license: 'GNU GPLv2 or later'
   modified: '2019-03-02 11:01:36'
   modules: 'Regexp::Common XML::RSS'
@@ -5265,6 +5775,7 @@
   contact: 'dgl@dgl.cx, tscherf@redhat.com'
   description: 'Captures urls said in channel and private messages and saves them to a file, also adds a /url command which loads the last said url into a browser.'
   filename: urlgrab.pl
+  language: Perl
   license: 'GNU GPLv2 or later'
   modified: '2021-02-21 17:38:59'
   name: urlgrab
@@ -5275,6 +5786,7 @@
   contact: dgl@dgl.cx
   description: 'Print short summaries about URLs from known services that are mentioned on IRC. (Including YouTube, etc.)'
   filename: urlinfo.pl
+  language: Perl
   license: 'WTFPL <http://dgl.cx/licence>'
   modified: '2018-02-23 09:46:28'
   modules: 'HTML::TreeBuilder URI'
@@ -5287,6 +5799,7 @@
   contact: bwolf@geekmind.org
   description: 'URL grabber with HTML generation and cmd execution'
   filename: urlplot.pl
+  language: Perl
   license: BSD
   modified: '2014-10-24 23:01:30'
   name: urlplot
@@ -5297,6 +5810,7 @@
   contact: zdleaf@zinc.london
   description: 'Log all urls from #channels and /msgs in a separate window'
   filename: urlwindow.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2022-11-21 21:00:34'
   name: urlwindow
@@ -5306,6 +5820,7 @@
   contact: 'dgl@dgl.cx, tss@iki.fi, georg@boerde.de'
   description: 'Adds a usercount for a channel as a statusbar item'
   filename: usercount.pl
+  language: Perl
   license: 'GNU GPLv2 or later'
   modified: '2018-08-21 10:23:36'
   name: usercount
@@ -5316,6 +5831,7 @@
   contact: 'jylefort\@brutele.be, decadix on IRCNet'
   description: 'Adds a -cmd option to the /USERHOST builtin command'
   filename: userhost.pl
+  language: Perl
   license: BSD
   modified: '2014-10-24 23:01:30'
   name: userhost
@@ -5327,6 +5843,7 @@
   contact: 'jylefort\@brutele.be, decadix on IRCnet'
   description: 'Implements /USERS'
   filename: users.pl
+  language: Perl
   license: BSD
   modified: '2014-10-24 23:01:30'
   name: users
@@ -5337,6 +5854,7 @@
   contact: c0ffee@penguin-breeder.org
   description: 'shows top[0-9]+ irc client versions in a channel'
   filename: version-stat.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2014-10-24 23:01:30'
   name: version-stats
@@ -5348,6 +5866,7 @@
   contact: stefan@pico.ruhr.de
   description: 'Draws a diagram of the used clients in a channel'
   filename: verstats.pl
+  language: Perl
   license: GPLv2
   modified: '2008-05-17 17:39:11'
   name: VerStats
@@ -5359,6 +5878,7 @@
   contact: 'olof@ethup.se, frey@notk.org'
   description: 'Prints some info of a linked video automatically'
   filename: vidinfo.pl
+  language: Perl
   license: GPL
   modified: '2017-10-09 18:50:19'
   modules: 'HTML::Entities JSON::Parse LWP::UserAgent Regexp::Common URI URI::QueryParam XML::Simple'
@@ -5370,6 +5890,7 @@
   contact: shasta@atn.pl
   description: 'Silly script, removes vowels, idea taken from #linuxnews ;-)'
   filename: vowels.pl
+  language: Perl
   license: 'GNU GPLv2 or later'
   modified: '2008-05-17 17:39:11'
   name: vowels
@@ -5381,6 +5902,7 @@
   contact: 'matti@hiljanen.com, pieta@osiedle.net.pl'
   description: 'shows what WinAmp is playing with /wa command'
   filename: wa.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2014-10-24 23:01:30'
   name: wa
@@ -5391,6 +5913,7 @@
   contact: sjk@ankeborg.nu
   description: 'warns you if someone kicks you out of a channel'
   filename: warnkick.pl
+  language: Perl
   license: GPL
   modified: '2004-09-28 03:51:00'
   name: warnkick
@@ -5401,6 +5924,7 @@
   contact: solaris@sundevil.de
   description: 'Removes annoying characters from nicks'
   filename: washnicks.pl
+  language: Perl
   license: GPL
   modified: '2018-04-04 21:23:35'
   name: washnicks
@@ -5412,6 +5936,7 @@
   contact: thebutche@interec.org
   description: 'Uso del comando watch para irssi.'
   filename: watch.pl
+  language: Perl
   license: BSD
   modified: '2014-10-24 23:01:30'
   name: 'Watch script'
@@ -5423,6 +5948,7 @@
   contact: https://terminaldweller.com
   description: 'adds a statusbar item that displays your current IP address'
   filename: whereami.pl
+  language: Perl
   license: 'GPL3 or newer'
   modified: '2023-07-08 20:02:16'
   modules: LWP::UserAgent
@@ -5435,6 +5961,7 @@
   contact: 'phyber [at] #irssi, q [at] spuk.de'
   description: 'Whitelist specific nicks or hosts and ignore messages from anyone else.'
   filename: whitelist.pl
+  language: Perl
   license: GPLv2
   modified: '2014-08-07 02:00:52'
   name: whitelist
@@ -5444,6 +5971,7 @@
   contact: sjk@ankeborg.nu
   description: 'Counts the number of matches in /who lists'
   filename: whocount.pl
+  language: Perl
   license: GPL
   modified: '2015-03-24 12:50:11'
   name: whocount.pl
@@ -5454,6 +5982,7 @@
   contact: fahren@bochnia.pl
   description: "Hilights '@' in whois channel reply"
   filename: whois.pl
+  language: Perl
   license: 'GNU GPLv2 or later'
   modified: '2002-03-15 15:09:42'
   name: cwhois
@@ -5463,6 +5992,7 @@
   contact: michael_kowalchuk@umanitoba.ca
   description: 'Every time a WHOIS or WHOWAS is run, this script checks the ident and realname for a hex encoded IP address, then decodes it, reverses it, and adds it to the printed WHOIS/WHOWAS result. Useful for looking at CGI::IRC clients.'
   filename: whois_hexip.pl
+  language: Perl
   license: MIT
   modified: '2005-12-24 00:00:00'
   name: whois_hexip
@@ -5474,6 +6004,7 @@
   contact: strtok@softhome.net
   description: 'This script allows you to view all users on a specific server.'
   filename: whos.pl
+  language: Perl
   license: GPL
   modified: '2019-02-21 18:32:39'
   name: whos
@@ -5484,6 +6015,7 @@
   contact: lam@lac.pl
   description: 'Provides /wilm and /wiilm commands, which do a whois on a person who sent you last private message'
   filename: wilm.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2002-10-03 14:00:00'
   name: wilm
@@ -5494,6 +6026,7 @@
   contact: coekie@irssi.org
   description: 'makes switching windows easy'
   filename: window_switcher.pl
+  language: Perl
   license: 'GPLv2 or later'
   modified: '2017-04-07 16:34:31'
   name: window_switcher
@@ -5504,6 +6037,7 @@
   contact: tslocum@gmail.com
   description: 'Goto a window by its reference number with /##'
   filename: winnum.pl
+  language: Perl
   license: GPLv3
   modified: '2014-08-01 15:27:47'
   name: WinNum
@@ -5514,6 +6048,7 @@
   contact: antti.ruokomaki@mbnet.fi
   description: 'If timestamp_timeout is used, the text will be indented when the stamp is hidden'
   filename: wisestamp.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2006-04-12 22:46:00'
   name: wisestamp
@@ -5523,6 +6058,7 @@
   contact: matti@hiljanen.com
   description: 'A simple word kickbanner'
   filename: wkb.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2019-03-02 20:57:01'
   name: wkb
@@ -5534,6 +6070,7 @@
   contact: rakblad@midgard.liu.se
   description: 'Adds words from IRC to your tab-completion list'
   filename: wordcompletition.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2017-03-25 22:50:36'
   modules: 'DBD::SQLite DBI'
@@ -5545,6 +6082,7 @@
   contact: vipie@ulyssis.org
   description: 'A script that scrambles all the letters in a word except the first and last.'
   filename: wordscramble.pl
+  language: Perl
   license: 'GNU GPL version 2'
   modified: '2018-05-22 22:22:59'
   name: word_scramble
@@ -5556,6 +6094,7 @@
   contact: t.spoor@gmail.com
   description: 'Undernet X Service Authentication Program'
   filename: xauth.pl
+  language: Perl
   license: 'GNU GPLv2 or later'
   modified: '2015-02-02 14:02:20'
   name: xauth
@@ -5566,6 +6105,7 @@
   contact: clement.hermann@free.fr
   description: "makes Undernet's X commands easier and faster to use"
   filename: xcmd.pl
+  language: Perl
   license: GPLv2
   modified: '2008-05-17 17:39:11'
   name: Xcmd
@@ -5576,6 +6116,7 @@
   contact: ryz@asdf.us
   description: 'Run an XDCC file server from irssi.'
   filename: xdcc.pl
+  language: Perl
   license: 'Jollo LNT license'
   modified: '2015-06-12 22:16:41'
   name: xdcc.pl
@@ -5587,6 +6128,7 @@
   contact: mobilegundamseed@hotmail.com
   description: 'XDCC Autoget, for automated searching and downloading of xdcc packs'
   filename: xdcc_autoget.pl
+  language: Perl
   license: 'BeerWare Version 42'
   modified: '2017-04-07 16:34:31'
   modules: 'File::HomeDir Try::Tiny'
@@ -5598,6 +6140,7 @@
   contact: obfuscoder@obfusco.de
   description: 'enhanced downloading, queing, searching from XDCC bots'
   filename: xdccget.pl
+  language: Perl
   license: GPLv2
   modified: '2014-10-16 14:47:21'
   name: xdccget
@@ -5607,6 +6150,7 @@
   contact: jbg@swznet.de
   description: 'Better readable listing of channel names'
   filename: xlist.pl
+  language: Perl
   license: GPLv2
   modified: '2008-05-17 17:39:09'
   name: xlist
@@ -5618,6 +6162,7 @@
   contact: simon@blueshell.dk
   description: 'XMMS-InfoPipe front-end - allow /np [-help] [dest]'
   filename: xmms.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2015-01-18 02:15:41'
   name: xmms
@@ -5628,6 +6173,7 @@
   contact: simon\@blueshell.dk
   description: 'Returns XMMS-InfoPipe data'
   filename: xmms2.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2014-10-24 23:01:30'
   name: 'XMMS-InfoPipe Script'
@@ -5639,6 +6185,7 @@
   contact: tjormola@cc.hut.fi
   description: "/xmmsinfo to tell what you're currently playing"
   filename: xmmsinfo.pl
+  language: Perl
   license: GPLv2
   modified: '2006-10-27 18:00:00'
   modules: Irssi::XMMSInfo
@@ -5650,6 +6197,7 @@
   contact: 'thomas@ruecker.fi, tbr on irc.freenode.net'
   description: 'Sends out notifications via XMPP. Based on a script by Peter Krenesky.'
   filename: xmpp-notify.pl
+  language: Perl
   license: BSD-3-Clause
   modified: '2015-06-30 12:00:46'
   modules: Net::Jabber
@@ -5662,6 +6210,7 @@
   contact: mizerou@telus.net
   description: 'automatically sends xqf data to irssi and optionally licq'
   filename: xqf.pl
+  language: Perl
   license: GPLv2
   modified: '2014-10-24 23:01:30'
   name: XQF
@@ -5673,6 +6222,7 @@
   contact: gj@pointblue.com.pl
   description: 'yawners toy'
   filename: ziew.pl
+  language: Perl
   license: GPLv2
   modified: '2017-09-02 11:31:26'
   name: ziew
@@ -5681,6 +6231,7 @@
 -
   description: 'smartfilter.pl reimagined, optimized for unusually flakey networks such as IRC over I2P'
   filename: zmartfilter.pl
+  language: Perl
   license: 'Public Domain'
   modified: '2023-08-27 22:41:10'
   name: zmartfilter
