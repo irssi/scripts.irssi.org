@@ -6,6 +6,7 @@
   contact: icassina@gmail.com
   default_package: elist
   description: 'This script allow advanced parametrization of the /list command. Accepted parameters are -minusers <#users> and -maxusers <#users>. '
+  language: Perl
   license: GPLv2
   modified: '2022-02-28 22:36:24'
   name: 'Enanched LIST'

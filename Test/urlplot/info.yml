@@ -7,6 +7,7 @@
   contact: bwolf@geekmind.org
   default_package: urlplot
   description: 'URL grabber with HTML generation and cmd execution'
+  language: Perl
   license: BSD
   modified: '2014-10-24 23:01:30'
   name: urlplot

@@ -5,6 +5,7 @@
     - spellcheck_add
   default_package: spellcheck
   description: 'checks for spelling errors using Aspell'
+  language: Perl
   license: GPLv2
   modified: '2020-09-25 20:38:34'
   modules:

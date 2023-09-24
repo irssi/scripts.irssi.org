@@ -5,6 +5,7 @@
   contact: huggie-irssi@earth.li
   default_package: quiz
   description: 'Turns irssi into a quiz bot'
+  language: Perl
   license: GPLv2
   modified: '2017-04-03 14:51:40'
   name: Quiz

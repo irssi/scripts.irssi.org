@@ -19,6 +19,7 @@
   contact: bw1@aol.at
   default_package: matryoshka
   description: 'a password matryoshka'
+  language: Perl
   license: 'Public Domain'
   modified: '2019-12-14 13:57:23'
   modules:

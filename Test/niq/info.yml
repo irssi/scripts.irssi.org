@@ -4,6 +4,7 @@
   contact: bd@bc-bd.org
   default_package: niq
   description: 'BitchX like Nickcompletion at line start plus statusbar'
+  language: Perl
   license: 'GPL v2'
   modified: '2017-04-07 16:34:31'
   name: niq

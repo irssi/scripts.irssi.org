@@ -5,6 +5,7 @@
   contact: james@jamesoff.net
   default_package: hideauth
   description: 'Stops eggdrop passwords showing up'
+  language: Perl
   license: 'Public Domain'
   name: hideauth
   url: http://www.jamesoff.net

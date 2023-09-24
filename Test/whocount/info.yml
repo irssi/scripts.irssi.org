@@ -4,6 +4,7 @@
   contact: sjk@ankeborg.nu
   default_package: whocount
   description: 'Counts the number of matches in /who lists'
+  language: Perl
   license: GPL
   modified: '2015-03-24 12:50:11'
   name: whocount.pl

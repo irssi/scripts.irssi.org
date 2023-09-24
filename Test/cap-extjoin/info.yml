@@ -5,6 +5,7 @@
   contact: 'mike@elite.uk.com, krytarik@tuxgarage.com'
   default_package: cap_extjoin
   description: 'Print account and realname information on joins where extended-join is available'
+  language: Perl
   license: GPLv2
   modified: '2017-12-12 14:37:51'
   name: cap-extjoin

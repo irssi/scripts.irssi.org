@@ -6,6 +6,7 @@
   contact: we.hopkins@gmail.com
   default_package: betterlist
   description: '/betterlist <perl-regexp>'
+  language: Perl
   license: GPL
   modified: '2019-09-08 18:01:35'
   modules: Text::ParseWords

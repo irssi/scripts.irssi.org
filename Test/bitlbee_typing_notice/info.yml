@@ -6,6 +6,7 @@
   contact: 'tijmen.ruizendaal@gmail.com, root@f0rked.com'
   default_package: bitlbee_typing_notice
   description: "1. Adds an item to the status bar wich shows [typing] when someone is typing a message on the supported IM-networks\t2. Sends typing notices to the supported IM networks (the other way arround). (For bitlbee 3.0+)"
+  language: Perl
   license: GPLv2
   modified: '2017-11-17 16:21:26'
   name: BitlBee_typing_notice

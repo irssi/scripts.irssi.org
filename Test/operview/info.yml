@@ -4,6 +4,7 @@
   contact: pasky@ji.cz
   default_package: operview
   description: 'Reformats some server notices, which may come i.e. from &clients or &servers at IRCnet. You can turn the script on/off bytoggling variable mangle_server_notices.'
+  language: Perl
   license: 'GPLv2, not later'
   modified: '2017-04-07 16:34:31'
   name: operview

@@ -4,6 +4,7 @@
   contact: 'Nei @ anti@conference.jabber.teamidiot.de'
   default_package: hideshow
   description: 'Removes and re-adds lines to the Irssi buffer view.'
+  language: Perl
   license: 'GNU GPLv2 or later'
   modified: '2022-05-31 20:44:38'
   name: hideshow

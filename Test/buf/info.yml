@@ -6,6 +6,7 @@
   contact: juerd@juerd.nl
   default_package: buf
   description: 'Saves the buffer for /upgrade, so that no information is lost'
+  language: Perl
   license: 'Public Domain'
   modified: '2018-03-29 13:14:39'
   name: 'Scroll buffer restorer'

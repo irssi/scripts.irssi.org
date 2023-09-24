@@ -4,6 +4,7 @@
   contact: avarab@gmail.com
   default_package: slack_strip_auto_cc
   description: 'Strips the annoying mentions of your nickname on Slack via [cc: <you>]'
+  language: Perl
   license: 'Public Domain'
   modified: '2016-03-15 17:52:13'
   name: slack_strip_auto_cc.pl

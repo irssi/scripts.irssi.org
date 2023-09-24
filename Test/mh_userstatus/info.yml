@@ -5,6 +5,7 @@
   contact: 'mh on IRCnet #help'
   default_package: mh_userstatus
   description: 'show in channels when users go away/back or oper/deoper'
+  language: Perl
   license: BSD
   modified: '2016-03-03 13:39:04'
   name: mh_userstatus

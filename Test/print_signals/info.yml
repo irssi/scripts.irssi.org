@@ -5,6 +5,7 @@
   contact: madduck@madduck.net
   default_package: print_signals
   description: 'hooks into almost every signal and writes the information provided to a file'
+  language: Perl
   license: MIT
   modified: '2021-11-03 22:37:24'
   name: 'print signals debugger'

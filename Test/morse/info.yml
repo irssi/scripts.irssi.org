@@ -10,6 +10,7 @@
   contact: stefan@pico.ruhr.de
   default_package: morse
   description: 'turns your messages into morse or spelling code'
+  language: Perl
   license: GPLv2
   name: morse
   version: '2004021901'

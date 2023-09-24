@@ -5,6 +5,7 @@
   contact: script@duden.eu.org
   default_package: chanfull_duden
   description: 'Notify if Channellimit is reached'
+  language: Perl
   license: GPLv2
   name: chanfull
   url: ''

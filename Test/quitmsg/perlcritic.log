@@ -1,2 +1,2 @@
-Code before warnings are enabled at line 9, column 1.  See page 431 of PBP.  (Severity: 4)
-Return value of "close" ignored at line 29, column 2.  Check the return value of "close" for success.  (Severity: 2)
+scripts/quitmsg.pl: Code before warnings are enabled at line 9, column 1.  See page 431 of PBP.  (Severity: 4)
+scripts/quitmsg.pl: Return value of "close" ignored at line 29, column 2.  Check the return value of "close" for success.  (Severity: 2)

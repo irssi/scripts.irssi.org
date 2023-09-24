@@ -9,6 +9,7 @@
   contact: 'mniip @ freenode'
   default_package: isbanned
   description: 'freenode-specific script that checks whether someone is banned on some channel'
+  language: Perl
   license: 'Public domain'
   modified: '2015-09-14 14:11:01'
   name: isbanned

@@ -7,6 +7,7 @@
   contact: flux@inside.org
   default_package: ignoreoc
   description: 'Ignore messages from people not on your channels.Now people you msg are added to bypass-list.'
+  language: Perl
   license: 'Public Domain'
   modified: '2014-10-17 22:54:13'
   name: Ignore-OC

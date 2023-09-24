@@ -5,6 +5,7 @@
   contact: lam@lac.pl
   default_package: autorejoin
   description: 'Automatically rejoin to channel after being kicked, after a (short) user-defined delay'
+  language: Perl
   license: GPLv2
   modified: '2017-09-26 02:40:01'
   name: autorejoin

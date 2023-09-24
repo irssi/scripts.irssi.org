@@ -4,6 +4,7 @@
   contact: 'foxmask@phpfr.org '
   default_package: doc
   description: 'manage tips ; url ; help in a doc file in the keyword=definition form'
+  language: Perl
   license: 'GNU GPL'
   modified: '2016-02-05 11:06:11'
   name: doc

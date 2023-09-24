@@ -16,6 +16,7 @@
   contact: fogel@fogel.netmark.pl
   default_package: rhythmbox
   description: 'Rhythmbox now playing script'
+  language: Perl
   license: BSD
   name: rhythmbox
   url: www.fogel.com.pl

@@ -7,6 +7,7 @@
   contact: tss@iki.fi
   default_package: country
   description: 'Print the country name in /WHOIS replies'
+  language: Perl
   license: 'Public Domain'
   name: country
   version: 1.0.1

@@ -4,6 +4,7 @@
   contact: mkossin@enumerator.org
   default_package: dice
   description: 'A Dice Simulator for Roleplaying in Channels or just for fun.'
+  language: Perl
   license: 'GNU GPL Version 2 or later'
   name: dice
   url: http://www.enumerator.org/component/option,com_docman/task,view_category/Itemid,34/subcat,7/

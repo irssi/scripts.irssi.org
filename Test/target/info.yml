@@ -12,6 +12,7 @@
   contact: stefan@pico.ruhr.de
   default_package: target
   description: 'advances IRC warfare to the next level ;)'
+  language: Perl
   license: GPLv2
   name: Target
   sbitems: target

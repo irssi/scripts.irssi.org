@@ -12,6 +12,7 @@
   contact: bw1@aol.at
   default_package: ontv2
   description: 'turns irssi into a tv program guide'
+  language: Perl
   license: GPLv2
   modified: '2021-02-07 13:56:06'
   modules:

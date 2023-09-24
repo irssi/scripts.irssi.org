@@ -7,6 +7,7 @@
   contact: flux@inside.org
   default_package: armeija
   description: 'Ignores people bringin up boring/repeated subjects, plus replies.'
+  language: Perl
   license: 'Public Domain'
   modified: '2014-10-17 18:30:46'
   name: 'Armeija Ignore'

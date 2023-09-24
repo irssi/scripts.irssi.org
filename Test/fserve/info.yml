@@ -6,6 +6,7 @@
   contact: 'piotr at pingu.ii.uj.edu.pl'
   default_package: fserve
   description: 'File server for irssi'
+  language: Perl
   license: 'GPL v2'
   modified: '2014-10-17 22:54:13'
   name: FServe

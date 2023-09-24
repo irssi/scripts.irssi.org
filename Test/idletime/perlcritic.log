@@ -1,2 +1,2 @@
-Code before warnings are enabled at line 12, column 1.  See page 431 of PBP.  (Severity: 4)
-Mismatched operator at line 41, column 17.  Numeric/string operators and operands should match.  (Severity: 3)
+scripts/idletime.pl: Code before warnings are enabled at line 12, column 1.  See page 431 of PBP.  (Severity: 4)
+scripts/idletime.pl: Mismatched operator at line 41, column 17.  Numeric/string operators and operands should match.  (Severity: 3)

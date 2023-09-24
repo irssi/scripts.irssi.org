@@ -1,2 +1,2 @@
-Code before warnings are enabled at line 10, column 1.  See page 431 of PBP.  (Severity: 4)
-Subroutine name is a homonym for builtin function grep at line 67, column 1.  See page 177 of PBP.  (Severity: 4)
+scripts/bitlbee_blist.pl: Code before warnings are enabled at line 10, column 1.  See page 431 of PBP.  (Severity: 4)
+scripts/bitlbee_blist.pl: Subroutine name is a homonym for builtin function grep at line 67, column 1.  See page 177 of PBP.  (Severity: 4)

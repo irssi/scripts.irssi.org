@@ -7,6 +7,7 @@
   contact: 'phyber [at] #irssi, q [at] spuk.de'
   default_package: whitelist
   description: 'Whitelist specific nicks or hosts and ignore messages from anyone else.'
+  language: Perl
   license: GPLv2
   modified: '2014-08-07 02:00:52'
   name: whitelist

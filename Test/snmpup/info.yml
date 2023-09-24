@@ -7,6 +7,7 @@
   contact: strlen@shellz.nl
   default_package: snmpup
   description: "This script queries remote hosts (/snmpup <host1> <host2> <hostN>) running snmpd for it's uptime and cpu usage"
+  language: Perl
   license: GPL/2
   modules:
     - Net::SNMP

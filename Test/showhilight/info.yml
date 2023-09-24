@@ -5,6 +5,7 @@
   contact: styx@irc.pl
   default_package: showhilight
   description: 'Show hilight messages in active window'
+  language: Perl
   license: 'GNU GPLv2'
   modified: '2017-05-23 10:54:02'
   name: showhilight

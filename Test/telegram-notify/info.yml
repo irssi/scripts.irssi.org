@@ -6,6 +6,7 @@
   contact: sebbe@cpan.org
   default_package: telegram_notify
   description: 'Send notifications of highlighted messages over Telegram'
+  language: Perl
   license: MIT
   modified: '2017-05-08 11:41:48'
   modules:

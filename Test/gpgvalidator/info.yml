@@ -12,6 +12,7 @@
   contact: pallotron@freaknet.org
   default_package: gpgvalidator
   description: 'Have gpg-based trusting features in your irssi client!'
+  language: Perl
   license: 'GPL v2'
   modified: '2018-12-31 13:43:04'
   name: 'gpgvalidator v. 0.1.3'

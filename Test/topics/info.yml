@@ -10,6 +10,7 @@
   contact: stefan@pico.ruhr.de
   default_package: topics
   description: 'records a topic history and locks the channel topic'
+  language: Perl
   license: GPLv2
   name: topics
   url: http://irssi.org/scripts/

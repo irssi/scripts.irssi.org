@@ -5,6 +5,7 @@
   contact: batonik@irc.pl
   default_package: cp1250_kick
   description: 'Kicks people using cp1250 charset'
+  language: Perl
   license: GPL
   name: cp1250_kick
   version: '1.3'

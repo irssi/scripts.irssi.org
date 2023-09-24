@@ -5,6 +5,7 @@
   contact: jengelbr@yahoo.com
   default_package: twtopic
   description: 'Animated Topic bar.'
+  language: Perl
   license: 'Public Domain'
   modified: '2018-09-08 10:00:39'
   name: twtopic.pl

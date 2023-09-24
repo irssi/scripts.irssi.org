@@ -5,6 +5,7 @@
   contact: 'Nei @ anti@conference.jabber.teamidiot.de'
   default_package: clearable
   description: 'make some command output clearable'
+  language: Perl
   license: ISC
   modified: '2015-11-16 19:32:11'
   name: clearable

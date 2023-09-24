@@ -4,6 +4,7 @@
   contact: stefan.heinemann@codedump.ch
   default_package: hilite_url
   description: 'Simple script that highlights links'
+  language: Perl
   license: GPL
   modified: '2018-04-03 10:23:02'
   name: HiliteUrl

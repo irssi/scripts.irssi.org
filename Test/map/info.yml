@@ -4,6 +4,7 @@
   contact: pasky@ji.cz
   default_package: map
   description: 'Generates simple tree of IRC network based on the output of the LINKS command.'
+  language: Perl
   license: 'GPLv2, not later'
   name: map
   url: http://pasky.ji.cz/~pasky/dev/irssi/

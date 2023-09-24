@@ -11,6 +11,7 @@
   contact: 'shabble+irssi@metavore.org, shabble@#irssi/Freenode'
   default_package: uberprompt
   description: 'Helper script for dynamically adding text into the input-bar prompt.'
+  language: Perl
   license: MIT
   modified: '2016-06-25 15:46:46'
   name: uberprompt

@@ -10,6 +10,7 @@
   contact: stefan@pico.ruhr.de
   default_package: poison
   description: 'equips Irssi with an interface to giFT'
+  language: Perl
   license: GPLv2
   modules: 'IO::Socket::INET Data::Dumper'
   name: Poison

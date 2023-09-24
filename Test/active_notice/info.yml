@@ -5,6 +5,7 @@
   contact: geert@hauwaerts.be
   default_package: active_notice
   description: 'This script shows incoming notices into the active channel.'
+  language: Perl
   license: 'GNU General Public License'
   modified: '2016-01-20 22:59:49'
   name: active_notice.pl

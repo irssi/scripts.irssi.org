@@ -6,6 +6,7 @@
   contact: 'Nei @ anti@conference.jabber.teamidiot.de'
   default_package: beforespace
   description: 'Rebind certain keys so that they are inserted before the space'
+  language: Perl
   license: ISC
   modified: '2016-04-26 23:42:54'
   name: beforespace

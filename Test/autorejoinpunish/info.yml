@@ -6,6 +6,7 @@
   contact: paul\@raade.org
   default_package: autorejoinpunish
   description: 'Kickbans or knockouts people who use autorejoin on kick.'
+  language: Perl
   license: BSD
   name: 'Autorejoin punisher'
   url: http://www.raade.org/~paul/irssi/scripts/

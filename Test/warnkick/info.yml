@@ -5,6 +5,7 @@
   contact: sjk@ankeborg.nu
   default_package: warnkick
   description: 'warns you if someone kicks you out of a channel'
+  language: Perl
   license: GPL
   name: warnkick
   url: http://ankeborg.nu

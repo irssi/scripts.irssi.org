@@ -5,6 +5,7 @@
   contact: yathen@web.de
   default_package: dispatch
   description: 'This scripts sends unknown commands to the server'
+  language: Perl
   license: 'GNU GPLv2'
   name: 'Command dispatcher'
   version: 0.0.2

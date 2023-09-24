@@ -7,6 +7,7 @@
   contact: derwan@irssi.pl
   default_package: paste_derwan
   description: 'Pasting lines to specified targets, type "/paste -help" for help'
+  language: Perl
   license: 'GNU GPL v2'
   modified: '2018-07-14 17:49:40'
   modules: ''

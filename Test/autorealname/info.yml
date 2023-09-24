@@ -5,6 +5,7 @@
   contact: 'tss@iki.fi, waldi@debian.org'
   default_package: autorealname
   description: 'Print realname of everyone who join to channels'
+  language: Perl
   license: 'GPLv2 or later'
   modified: '2021-01-16 09:14:39'
   name: 'auto realname'

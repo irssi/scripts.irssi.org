@@ -4,6 +4,7 @@
   contact: jmn98015@student.mdh.se
   default_package: licq
   description: 'Licq statusbar thingy'
+  language: Perl
   license: 'Public Domain'
   modified: '2017-04-07 16:34:31'
   name: licq

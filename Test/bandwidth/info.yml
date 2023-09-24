@@ -4,6 +4,7 @@
   contact: riku.voipio@iki.fi
   default_package: bandwidth
   description: 'shows bandwidth usage in statusbar'
+  language: Perl
   license: GPLv2
   modified: '2017-04-07 16:34:31'
   name: bandwidth

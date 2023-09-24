@@ -3,6 +3,7 @@
   authors: 'Daemon @ ircd.foxchat.net'
   default_package: spambot
   description: 'Oper script to kill Spam Bots.'
+  language: Perl
   license: 'Public Domain'
   name: 'Spam Bot Killer'
   version: '1.2'

@@ -7,6 +7,7 @@
   contact: 'wouter@coekaerts.be, exg@irssi.org'
   default_package: sb_search
   description: 'search in your scrollback, scroll to a match'
+  language: Perl
   license: 'GPLv2 or later'
   modified: '2017-11-20 11:40:40'
   name: sb_search

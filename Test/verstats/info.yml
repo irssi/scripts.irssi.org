@@ -7,6 +7,7 @@
   contact: stefan@pico.ruhr.de
   default_package: verstats
   description: 'Draws a diagram of the used clients in a channel'
+  language: Perl
   license: GPLv2
   name: VerStats
   url: http://scripts.irssi.org

@@ -4,6 +4,7 @@
   contact: 'Nei @ anti@conference.jabber.teamidiot.de'
   default_package: dim_nicks
   description: 'Dims nicks that are not in channel anymore.'
+  language: Perl
   license: 'GNU GPLv2 or later'
   modified: '2019-05-16 09:16:26'
   name: dim_nicks

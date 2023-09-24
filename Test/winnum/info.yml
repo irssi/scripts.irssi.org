@@ -5,6 +5,7 @@
   contact: tslocum@gmail.com
   default_package: winnum
   description: 'Goto a window by its reference number with /##'
+  language: Perl
   license: GPLv3
   modified: '2014-08-01 15:27:47'
   name: WinNum

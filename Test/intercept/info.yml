@@ -11,6 +11,7 @@
   contact: 'vague!#irssi@libera.chat on irc'
   default_package: intercept
   description: 'Intercept misprinted commands and offer to remove the first character before sending it on'
+  language: Perl
   license: 'Public Domain'
   modified: '2022-03-10 16:43:44'
   modules:

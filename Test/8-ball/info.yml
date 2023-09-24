@@ -4,6 +4,7 @@
   contact: patrik.akerfeldt@gmail.com
   default_package: 8_ball
   description: 'Dont like to take decisions? Have the 8-ball do it for you instead.'
+  language: Perl
   license: GPL
   modified: '2019-07-16 23:37:33'
   name: 8-ball

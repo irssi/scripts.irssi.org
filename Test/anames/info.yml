@@ -6,6 +6,7 @@
   contact: ms+irssi@quadpoint.org
   default_package: anames
   description: 'a /names display with away nicks coloured'
+  language: Perl
   license: GPLv2
   modified: '2018-01-05 13:56:55'
   modules:

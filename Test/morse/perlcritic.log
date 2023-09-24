@@ -1,4 +1,4 @@
-Code before warnings are enabled at line 4, column 1.  See page 431 of PBP.  (Severity: 4)
-Capture variable used outside conditional at line 260, column 36.  See page 253 of PBP.  (Severity: 3)
-Capture variable used outside conditional at line 260, column 55.  See page 253 of PBP.  (Severity: 3)
-Capture variable used outside conditional at line 260, column 65.  See page 253 of PBP.  (Severity: 3)
+scripts/morse.pl: Code before warnings are enabled at line 4, column 1.  See page 431 of PBP.  (Severity: 4)
+scripts/morse.pl: Capture variable used outside conditional at line 260, column 36.  See page 253 of PBP.  (Severity: 3)
+scripts/morse.pl: Capture variable used outside conditional at line 260, column 55.  See page 253 of PBP.  (Severity: 3)
+scripts/morse.pl: Capture variable used outside conditional at line 260, column 65.  See page 253 of PBP.  (Severity: 3)

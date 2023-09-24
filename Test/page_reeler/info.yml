@@ -6,6 +6,7 @@
   contact: irssi@reeler.org
   default_package: page_reeler
   description: 'display and send CTCP PAGE'
+  language: Perl
   license: 'GNU GPLv2 or later'
   modified: '2014-10-19 11:54:16'
   name: page

@@ -7,6 +7,7 @@
   contact: geert@irssi.org
   default_package: fuckem
   description: 'Simulates the BitchX /FUCKEM command. Deop/Dehalfop everyone on the channel including you.'
+  language: Perl
   license: 'GNU General Public License'
   name: fuckem.pl
   url: http://irssi.hauwaerts.be/fuckem.pl

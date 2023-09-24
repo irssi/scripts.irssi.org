@@ -7,6 +7,7 @@
   contact: flux@inside.org
   default_package: find
   description: "Finds a nick by real name, if he's on a channel with you."
+  language: Perl
   license: 'Public Domain'
   modified: '2014-10-17 22:54:13'
   name: Find

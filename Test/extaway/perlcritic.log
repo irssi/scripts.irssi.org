@@ -1,4 +1,4 @@
-Code before warnings are enabled at line 22, column 1.  See page 431 of PBP.  (Severity: 4)
-Return value of "close" ignored at line 51, column 2.  Check the return value of "close" for success.  (Severity: 2)
-Return value of "close" ignored at line 142, column 2.  Check the return value of "close" for success.  (Severity: 2)
-Return value of "close" ignored at line 158, column 2.  Check the return value of "close" for success.  (Severity: 2)
+scripts/extaway.pl: Code before warnings are enabled at line 22, column 1.  See page 431 of PBP.  (Severity: 4)
+scripts/extaway.pl: Return value of "close" ignored at line 51, column 2.  Check the return value of "close" for success.  (Severity: 2)
+scripts/extaway.pl: Return value of "close" ignored at line 142, column 2.  Check the return value of "close" for success.  (Severity: 2)
+scripts/extaway.pl: Return value of "close" ignored at line 158, column 2.  Check the return value of "close" for success.  (Severity: 2)

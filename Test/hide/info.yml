@@ -16,6 +16,7 @@
   contact: darix@irssi.de
   default_package: hide
   description: "a little interface to irssi's activity_hide_* settings"
+  language: Perl
   license: 'Public Domain'
   name: 'hide tools'
   url: http://scripts.irssi.de/

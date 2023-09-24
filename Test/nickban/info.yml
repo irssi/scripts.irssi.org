@@ -4,6 +4,7 @@
   contact: irssi@trancer.nl
   default_package: nickban
   description: 'A simple nick banner. If it encounters a nick it bans its host'
+  language: Perl
   license: 'Public Domain'
   modified: '2019-02-23 21:37:15'
   name: nickban

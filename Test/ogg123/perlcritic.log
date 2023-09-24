@@ -1,2 +1,2 @@
-Code before warnings are enabled at line 35, column 1.  See page 431 of PBP.  (Severity: 4)
-Return value of "close" ignored at line 89, column 3.  Check the return value of "close" for success.  (Severity: 2)
+scripts/ogg123.pl: Code before warnings are enabled at line 35, column 1.  See page 431 of PBP.  (Severity: 4)
+scripts/ogg123.pl: Return value of "close" ignored at line 89, column 3.  Check the return value of "close" for success.  (Severity: 2)

@@ -5,6 +5,7 @@
   date: '20120229'
   default_package: lastfm
   description: 'A now-playing-script which uses Last.fm'
+  language: Perl
   license: BSD
   modified: '2021-01-31 21:10:49'
   modules:

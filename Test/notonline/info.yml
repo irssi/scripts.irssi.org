@@ -5,6 +5,7 @@
   contact: 'ion at hassers.org'
   default_package: notonline
   description: "Answers \"$nick: No.\" if you're away and someone asks are you online on a channel"
+  language: Perl
   license: 'Public Domain'
   name: NotOnline
   url: http://ion.amigafin.org/irssi/

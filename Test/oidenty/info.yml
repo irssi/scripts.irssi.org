@@ -4,6 +4,7 @@
   contact: darix@irssi.org
   default_package: oidenty
   description: 'oidentd support for irssi'
+  language: Perl
   license: 'BSD License'
   modified: '2018-01-21 21:18:19'
   name: oidenty

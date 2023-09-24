@@ -7,6 +7,7 @@
   contact: irssi-scripts@nospam.mi4.org.uk
   default_package: cgrep
   description: 'Lists users on the channel matching the specified regexp'
+  language: Perl
   license: 'GPLv2 or later'
   modified: '2016-09-20 14:26:40'
   name: cgrep

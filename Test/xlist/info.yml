@@ -4,6 +4,7 @@
   contact: jbg@swznet.de
   default_package: xlist
   description: 'Better readable listing of channel names'
+  language: Perl
   license: GPLv2
   name: xlist
   url: http://jbg.swznet.de/xlist/

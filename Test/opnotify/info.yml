@@ -5,6 +5,7 @@
   contact: fahren@bochnia.pl
   default_package: opnotify
   description: 'Hilights window refnumber in statusbar if someone ops/deops you on channel'
+  language: Perl
   license: 'GNU GPLv2 or later'
   name: opnotify
   version: '1.0'

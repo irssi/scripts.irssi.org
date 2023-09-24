@@ -5,6 +5,7 @@
   contact: greg@chown.ath.cx
   default_package: antiplenk
   description: 'notices users who "plenk"'
+  language: Perl
   license: BSD
   name: antiplenk
   url: http://chown.ath.cx/~greg/antiplenk/

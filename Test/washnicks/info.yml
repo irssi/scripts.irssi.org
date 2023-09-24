@@ -5,6 +5,7 @@
   contact: solaris@sundevil.de
   default_package: washnicks
   description: 'Removes annoying characters from nicks'
+  language: Perl
   license: GPL
   modified: '2018-04-04 21:23:35'
   name: washnicks

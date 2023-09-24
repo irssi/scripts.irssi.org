@@ -4,6 +4,7 @@
   contact: 'stacium or stek (most of the time) @ quakenet.org'
   default_package: my_beep
   description: 'runs arbitrary command instead of system beep, includes flood protection'
+  language: Perl
   license: 'Public Domain'
   modified: '2019-09-08 19:29:19'
   name: my_beep

@@ -7,6 +7,7 @@
   contact: c@ttaneo.uy
   default_package: toilet
   description: 'Simple toilet implementation for Irssi'
+  language: Perl
   license: 'Public Domain'
   modified: '2017-12-23 14:14:40'
   name: toilet

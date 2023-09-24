@@ -9,6 +9,7 @@
   contact: kenneth@jensen.cf
   default_package: fullrain
   description: 'Prints colorized fullwidth text'
+  language: Perl
   license: 'GNU GPLv3'
   modified: '2017-03-28 23:10:37'
   name: fullrain

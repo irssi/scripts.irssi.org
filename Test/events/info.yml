@@ -5,6 +5,7 @@
   contact: dist@sci.fi
   default_package: events
   description: 'Expand "event mode" and emit "event mode {channel,user,server} *"'
+  language: Perl
   license: GPLv2
   name: 'Extended events'
   url: http://scripts.irssi.de

@@ -7,6 +7,7 @@
   contact: cybertinus@cybertinus.nl
   default_package: hello
   description: "This script allows you to greet the channel You're joining with the command /hello. The text it shows depends on the time you're living."
+  language: Perl
   license: GPL2
   name: Greeter
   version: '1.00'

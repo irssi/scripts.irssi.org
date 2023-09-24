@@ -9,6 +9,7 @@
   contact: c0ffee@penguin-breeder.org
   default_package: act
   description: 'Reset window activity status. defines command /act'
+  language: Perl
   license: 'Public Domain'
   modified: '2016-05-01 21:05:08'
   name: 'Reset window activity status'

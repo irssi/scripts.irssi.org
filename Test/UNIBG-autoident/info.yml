@@ -12,6 +12,7 @@
   contact: mr_700@yahoo.com
   default_package: UNIBG_autoident
   description: "Automaticaly \x02/msg ident NS yourpassword\x02 when you connect or services come back from death"
+  language: Perl
   license: 'Public Domain'
   modified: '2018-09-10 18:52:09'
   name: UNIBG-autoident

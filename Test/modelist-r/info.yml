@@ -12,6 +12,7 @@
   contact: derwan@irssi.pl
   default_package: modelist_r
   description: 'Cache of invites, ban exceptions and reops in channel. Script commands: /si, /se, /sr, /unexcept, /uninvite, /unreop (version only for ircd >= 2.11.0).'
+  language: Perl
   license: 'GNU GPL v2'
   modified: '2017-04-07 16:34:31'
   modules: ''

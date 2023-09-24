@@ -4,6 +4,7 @@
   contact: lxsfx3h02@sneakemail.com
   default_package: autowrap
   description: 'Automatically wraps long sent messages into multiple shorter sent messages'
+  language: Perl
   license: BSD
   modules: Text::Wrap
   name: autowrap

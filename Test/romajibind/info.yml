@@ -8,6 +8,7 @@
   contact: v0rbiz@yahoo.com
   default_package: romajibind
   description: 'Dynamic romaji binds'
+  language: Perl
   license: 'BSD 2-clause'
   modified: '2017-04-07 16:34:31'
   name: romajibind

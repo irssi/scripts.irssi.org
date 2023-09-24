@@ -4,6 +4,7 @@
   contact: joost@carnique.nl
   default_package: centericq
   description: 'Staturbar item which indicates how many new messages you have in your centericq'
+  language: Perl
   license: 'Public Domain'
   modified: '2017-04-07 16:34:31'
   name: centericq

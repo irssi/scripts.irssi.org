@@ -8,6 +8,7 @@
   contact: 'irssi@eosin.org, dave001@hellspark.com'
   default_package: shorturl
   description: 'Private/Public url reduction script.'
+  language: Perl
   license: GPLv2
   modified: '2021-01-08 12:10:55'
   modules:

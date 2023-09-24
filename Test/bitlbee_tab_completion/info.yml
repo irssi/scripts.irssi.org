@@ -5,6 +5,7 @@
   contact: tijmen.ruizendaal@gmail.com
   default_package: bitlbee_tab_completion
   description: 'Intelligent Tab-completion for BitlBee commands.'
+  language: Perl
   license: GPLv2
   name: BitlBee_tab_completion
   url: http://the-timing.nl/stuff/irssi-bitlbee

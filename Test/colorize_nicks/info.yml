@@ -4,6 +4,7 @@
   contact: 'Nei @ anti@conference.jabber.teamidiot.de'
   default_package: colorize_nicks
   description: 'Colourise mention of nicks in the message body.'
+  language: Perl
   license: 'GNU GPLv2 or later'
   modified: '2021-11-29 15:16:31'
   name: colorize_nicks

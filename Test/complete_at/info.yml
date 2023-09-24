@@ -4,6 +4,7 @@
   contact: 'Nei @ anti@conference.jabber.teamidiot.de'
   default_package: complete_at
   description: 'Complete nicks after @ (twitter-style)'
+  language: Perl
   license: ISC
   modified: '2015-11-16 19:32:11'
   name: complete_at

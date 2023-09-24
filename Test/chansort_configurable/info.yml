@@ -6,6 +6,7 @@
   contact: avarab@gmail.com
   default_package: chansort_configurable
   description: "Sort channels & query windows in a configurable way, based on Peder Stray's chansort.pl"
+  language: Perl
   license: GPL
   modified: '2016-05-04 11:49:27'
   name: chansort_configurable

@@ -5,6 +5,7 @@
   contact: tss@iki.fi
   default_package: logcompress
   description: "compress logfiles then they're rotated"
+  language: Perl
   license: 'Public Domain'
   modified: '2014-10-17 22:54:13'
   name: logcompress

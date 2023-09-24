@@ -6,6 +6,7 @@
   contact: https://terminaldweller.com
   default_package: whereami
   description: 'adds a statusbar item that displays your current IP address'
+  language: Perl
   license: 'GPL3 or newer'
   modified: '2023-07-08 20:02:16'
   modules:

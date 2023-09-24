@@ -4,6 +4,7 @@
   contact: 'Nei @ anti@conference.jabber.teamidiot.de'
   default_package: partial
   description: 'partial tab completion for Irssi'
+  language: Perl
   license: ISC
   modified: '2020-10-22 16:55:25'
   modules:

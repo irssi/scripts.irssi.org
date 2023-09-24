@@ -5,6 +5,7 @@
   contact: 'jylefort\@brutele.be, decadix on IRCNet'
   default_package: userhost
   description: 'Adds a -cmd option to the /USERHOST builtin command'
+  language: Perl
   license: BSD
   modified: '2014-10-24 23:01:30'
   name: userhost

@@ -6,6 +6,7 @@
   contact: 'piotr //at// krukowiecki //dot// net'
   default_package: fleech
   description: 'fserve leecher - helps you download files from file servers'
+  language: Perl
   license: 'GNU GPL v2'
   modified: '2014-10-17 22:54:13'
   name: fleech

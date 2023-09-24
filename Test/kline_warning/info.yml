@@ -5,6 +5,7 @@
   contact: geert@irssi.org
   default_package: kline_warning
   description: 'This script shows a warning in the statuswindow if somebody preforms a /KlINE or /UNKLINE.'
+  language: Perl
   license: 'GNU General Public License'
   name: kline_warning.pl
   url: http://irssi.hauwaerts.be/kline_warning.pl

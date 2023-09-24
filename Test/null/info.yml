@@ -5,6 +5,7 @@
   contact: juerd@juerd.nl
   default_package: 'null'
   description: 'This script really does nothing. Sorry.'
+  language: Perl
   license: 'Public Domain'
   name: 'Nothing at all'
   url: http://juerd.nl/irssi/

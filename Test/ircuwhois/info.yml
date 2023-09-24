@@ -4,6 +4,7 @@
   contact: vb\@g-23.org
   default_package: ircuwhois
   description: 'show the accountname (330) and real host on ircu'
+  language: Perl
   license: GPLv2
   modified: '2015-11-16 19:36:52'
   name: ircuwhois

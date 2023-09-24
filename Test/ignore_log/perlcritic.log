@@ -1,2 +1,2 @@
-Code before warnings are enabled at line 28, column 1.  See page 431 of PBP.  (Severity: 4)
-Return value of "close" ignored at line 65, column 6.  Check the return value of "close" for success.  (Severity: 2)
+scripts/ignore_log.pl: Code before warnings are enabled at line 28, column 1.  See page 431 of PBP.  (Severity: 4)
+scripts/ignore_log.pl: Return value of "close" ignored at line 65, column 6.  Check the return value of "close" for success.  (Severity: 2)

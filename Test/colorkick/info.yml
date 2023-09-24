@@ -5,6 +5,7 @@
   contact: bigmac@vim.hu
   default_package: colorkick
   description: 'kicking users for using colors or blinks'
+  language: Perl
   license: 'public domain'
   modified: '2017-03-07 22:28:22'
   name: colorkick

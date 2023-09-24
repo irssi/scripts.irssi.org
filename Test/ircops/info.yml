@@ -6,6 +6,7 @@
   contact: bd@bc-bd.org
   default_package: ircops
   description: '/IRCOPS - Display IrcOps in current channel'
+  language: Perl
   license: 'GPL v2'
   name: ircops
   url: https://bc-bd.org/svn/repos/irssi/trunk/

@@ -6,6 +6,7 @@
   contact: mordeth\@mac.com
   default_package: alame
   description: 'Converts towards lame speech'
+  language: Perl
   license: 'GPL v2'
   name: alame
   url: http://

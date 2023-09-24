@@ -7,6 +7,7 @@
   contact: c0ffee@penguin-breeder.org
   default_package: version_stat
   description: 'shows top[0-9]+ irc client versions in a channel'
+  language: Perl
   license: 'Public Domain'
   modified: '2014-10-24 23:01:30'
   name: version-stats

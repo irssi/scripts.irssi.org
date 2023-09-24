@@ -7,6 +7,7 @@
   contact: irc@trancer.nl
   default_package: netswitch
   description: 'Set all windows not bound to a network to a specified network.'
+  language: Perl
   license: BSD
   name: netswitch
   url: http://trancer.nl

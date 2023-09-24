@@ -1,4 +1,4 @@
-Code before warnings are enabled at line 14, column 1.  See page 431 of PBP.  (Severity: 4)
-Return value of "close" ignored at line 46, column 3.  Check the return value of "close" for success.  (Severity: 2)
-Two-argument "open" used at line 51, column 1.  See page 207 of PBP.  (Severity: 5)
-"die" used instead of "croak" at line 51, column 44.  See page 283 of PBP.  (Severity: 3)
+scripts/isdn.pl: Code before warnings are enabled at line 14, column 1.  See page 431 of PBP.  (Severity: 4)
+scripts/isdn.pl: Return value of "close" ignored at line 46, column 3.  Check the return value of "close" for success.  (Severity: 2)
+scripts/isdn.pl: Two-argument "open" used at line 51, column 1.  See page 207 of PBP.  (Severity: 5)
+scripts/isdn.pl: "die" used instead of "croak" at line 51, column 44.  See page 283 of PBP.  (Severity: 3)

@@ -6,6 +6,7 @@
   contact: bd@bc-bd.org
   default_package: thankop
   description: 'Remembers the last person oping you on a channel'
+  language: Perl
   license: 'GPL v2'
   name: thankop
   url: https://bc-bd.org/svn/repos/irssi/trunk/

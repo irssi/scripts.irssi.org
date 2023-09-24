@@ -5,6 +5,7 @@
   contact: stefan@pico.ruhr.de
   default_package: queryresume
   description: 'restores the last lines of a query on re-creation'
+  language: Perl
   license: GPLv2
   modified: '2014-10-19 11:54:16'
   modules:

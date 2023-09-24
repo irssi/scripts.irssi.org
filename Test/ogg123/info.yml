@@ -7,6 +7,7 @@
   contact: ricardomesquita@netcabo.pt
   default_package: ogg123
   description: 'Display current ogg123 track'
+  language: Perl
   license: GPLv2
   modified: '2017-03-20 14:19:18'
   name: ogg123

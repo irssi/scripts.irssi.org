@@ -5,6 +5,7 @@
   contact: philip@trouble.is
   default_package: suppress_yubikey_otp
   description: 'This script stops accidental YubiKey output on IRC'
+  language: Perl
   license: BSD
   modified: '2023-03-03 16:08:32'
   name: suppress_yubikey_otp

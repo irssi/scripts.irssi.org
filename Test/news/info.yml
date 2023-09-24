@@ -7,6 +7,7 @@
   contact: derwan@irssi.pl
   default_package: news
   description: 'News reader, usage:  /article [-s <server>] [-p <port>] [-P <password> -U <login>] [-l <group> <count>] [-a] [-L <index>] <message-id>'
+  language: Perl
   license: 'GNU GPL v2'
   modified: '2015-02-02 14:02:20'
   modules:

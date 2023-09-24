@@ -11,6 +11,7 @@
   contact: 'kimmo@a-men.org, darix@irssi.org'
   default_package: timer
   description: 'Provides /timer command for mIRC/BitchX type timer functionality.'
+  language: Perl
   license: 'Public Domain'
   modified: '2018-05-20 11:39:42'
   name: Timer

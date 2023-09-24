@@ -6,6 +6,7 @@
   contact: ads@ufp.de
   default_package: auto_whois
   description: '/WHOIS all the users who send you a private message.'
+  language: Perl
   license: GPL
   modified: '2014-10-17 18:30:46'
   name: auto_whois

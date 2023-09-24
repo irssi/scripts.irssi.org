@@ -7,6 +7,7 @@
   contact: coekie@irssi.org
   default_package: window_switcher
   description: 'makes switching windows easy'
+  language: Perl
   license: 'GPLv2 or later'
   modified: '2017-04-07 16:34:31'
   name: window_switcher

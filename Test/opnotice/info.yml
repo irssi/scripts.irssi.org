@@ -6,6 +6,7 @@
     - o
   contact: terje@darkrealm.no
   default_package: opnotice
+  language: Perl
   license: 'GNU GPL v2'
   modified: '2014-10-19 11:54:16'
   name: Opnotice

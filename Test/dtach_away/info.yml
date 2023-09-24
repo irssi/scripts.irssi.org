@@ -4,6 +4,7 @@
   contact: anarcat@debian.org
   default_package: dtach_away
   description: 'set (un)away, if dtach is attached/detached'
+  language: Perl
   license: 'GPL v2'
   modified: '2019-11-16 09:56:03'
   name: dtach_away

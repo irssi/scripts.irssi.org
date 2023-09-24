@@ -7,6 +7,7 @@
   contact: kimmo@a-men.org
   default_package: mailcheck_pop3_kimmo
   description: 'POP3 new mail notification and listing of mailbox contents. Use "/mail help" for instructions. Requires Net::POP3.'
+  language: Perl
   license: 'Public Domain'
   modified: '2019-02-23 15:26:32'
   name: Mailcheck-POP3

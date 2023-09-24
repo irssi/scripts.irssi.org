@@ -5,6 +5,7 @@
   contact: juerd@juerd.nl
   default_package: guts
   description: 'Adds the uppercased version of the tab completes'
+  language: Perl
   license: 'Public Domain'
   name: 'German Uppercased Tab Stuff'
   url: http://juerd.nl/irssi/

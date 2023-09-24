@@ -6,6 +6,7 @@
   contact: 'shabble+irssi@metavore.org, shabble@#irssi/freenode'
   default_package: ido_switcher
   description: 'Select window[-items] using an ido-mode like search interface'
+  language: Perl
   license: 'GPLv2 or later'
   modified: '2015-12-09 23:35:34'
   name: ido_switcher

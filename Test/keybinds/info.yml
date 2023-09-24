@@ -8,6 +8,7 @@
   contact: geert@irssi.org
   default_package: keybinds
   description: 'This script will set the proper keybindings on /AZERTY and /QWERTY.'
+  language: Perl
   license: 'Public Domain'
   modified: '2018-02-19 23:54:10'
   name: keybindings.pl

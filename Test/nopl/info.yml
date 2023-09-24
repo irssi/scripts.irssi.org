@@ -5,6 +5,7 @@
   contact: 'gophi <at> efnet.pl'
   default_package: nopl
   description: 'Replaces polish national characters with their corresponding letters'
+  language: Perl
   license: 'Public Domain'
   name: nopl
   url: http://www.gophi.rotfl.pl/

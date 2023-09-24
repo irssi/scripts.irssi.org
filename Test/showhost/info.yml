@@ -5,6 +5,7 @@
   contact: michielv@zeelandnet.nl
   default_package: showhost
   description: 'show host kicks'
+  language: Perl
   license: GPL
   name: showhost
   version: '0.2'

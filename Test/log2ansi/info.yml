@@ -4,6 +4,7 @@
   contact: peder.stray@gmail.com
   default_package: log2ansi
   description: 'Convert various color codes to ANSI colors, useful for log filtering and viewing.'
+  language: Perl
   license: GPL
   modified: '2021-08-23 12:37:45'
   name: log2ansi

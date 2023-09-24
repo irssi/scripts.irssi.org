@@ -6,6 +6,7 @@
   contact: duck@cs.uni-frankfurt.de
   default_package: pggb_sound
   description: 'does CTCP SOUNDs and other similar things.'
+  language: Perl
   license: GPLv2
   modified: '2014-10-19 11:54:16'
   modules:

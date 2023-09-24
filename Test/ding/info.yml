@@ -4,6 +4,7 @@
   contact: edward.andrew.slice@gmail.com
   default_package: ding
   description: 'Play a given sound when messages come in.'
+  language: Perl
   license: MIT
   modified: '2020-08-11 11:55:26'
   name: ding.pl

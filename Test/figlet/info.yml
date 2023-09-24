@@ -8,6 +8,7 @@
   contact: juerd@juerd.nl
   default_package: figlet
   description: 'Safe figlet implementation (with color support!)'
+  language: Perl
   license: 'Public Domain'
   name: Figlet
   url: http://juerd.nl/irssi/

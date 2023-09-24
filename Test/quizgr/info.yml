@@ -5,6 +5,7 @@
   contact: arvan
   default_package: quizgr
   description: 'Turns irssi into a quiz bot. Has greek language and many answers support'
+  language: Perl
   license: GPLv2
   modified: '2017-03-16 17:31:18'
   name: Quizgr

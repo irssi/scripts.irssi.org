@@ -5,6 +5,7 @@
   contact: c0ffee@penguin-breeder.org
   default_package: kicks
   description: 'Enhances /k /kb and /kn with some nice options.'
+  language: Perl
   license: 'Public Domain'
   modified: '2017-04-01 17:30:41'
   name: 'Various kick and ban commands'

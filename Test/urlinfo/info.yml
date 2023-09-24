@@ -4,6 +4,7 @@
   contact: dgl@dgl.cx
   default_package: urlinfo
   description: 'Print short summaries about URLs from known services that are mentioned on IRC. (Including YouTube, etc.)'
+  language: Perl
   license: 'WTFPL <http://dgl.cx/licence>'
   modified: '2018-02-23 09:46:28'
   modules:

@@ -6,6 +6,7 @@
   contact: https://terminaldweller.com
   default_package: tongueworm
   description: 'rewrites the input line using openai chatgpt'
+  language: Perl
   license: 'GPL3 or newer'
   modified: '2023-07-03 23:53:33'
   modules:

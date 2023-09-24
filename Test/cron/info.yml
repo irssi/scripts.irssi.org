@@ -5,6 +5,7 @@
   contact: 'piotr \at/ krukowiecki /dot\ net'
   default_package: cron
   description: 'cron implementation, allows to execute commands at given interval/time'
+  language: Perl
   license: 'GNU GPLv2'
   modified: '2014-11-12 12:23:06'
   name: 'cron aka jobs'

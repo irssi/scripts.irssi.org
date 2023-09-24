@@ -8,6 +8,7 @@
   contact: david@inexistent.com
   default_package: sysinfo277_irssi
   description: 'Cross-platform/architecture system information script.'
+  language: Perl
   license: BSD
   modified: '2019-11-08 19:17:17'
   name: SysInfo

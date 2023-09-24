@@ -7,6 +7,7 @@
   contact: fahren@bochnia.pl
   default_package: rk
   description: '/RK [-o | -l | -a] - kicks random nick from ops | lusers | all on channel'
+  language: Perl
   license: 'GNU GPLv2 or later'
   name: 'Random kicker'
   version: '0.9'

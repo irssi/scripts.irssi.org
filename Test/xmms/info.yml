@@ -10,6 +10,7 @@
   contact: simon@blueshell.dk
   default_package: xmms
   description: 'XMMS-InfoPipe front-end - allow /np [-help] [dest]'
+  language: Perl
   license: 'Public Domain'
   modified: '2015-01-18 02:15:41'
   name: xmms

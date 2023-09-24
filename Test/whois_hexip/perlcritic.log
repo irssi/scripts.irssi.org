@@ -1,4 +1,4 @@
-Code before warnings are enabled at line 43, column 1.  See page 431 of PBP.  (Severity: 4)
-Mismatched operator at line 74, column 53.  Numeric/string operators and operands should match.  (Severity: 3)
-Mismatched operator at line 75, column 63.  Numeric/string operators and operands should match.  (Severity: 3)
-Mismatched operator at line 77, column 38.  Numeric/string operators and operands should match.  (Severity: 3)
+scripts/whois_hexip.pl: Code before warnings are enabled at line 43, column 1.  See page 431 of PBP.  (Severity: 4)
+scripts/whois_hexip.pl: Mismatched operator at line 74, column 53.  Numeric/string operators and operands should match.  (Severity: 3)
+scripts/whois_hexip.pl: Mismatched operator at line 75, column 63.  Numeric/string operators and operands should match.  (Severity: 3)
+scripts/whois_hexip.pl: Mismatched operator at line 77, column 38.  Numeric/string operators and operands should match.  (Severity: 3)

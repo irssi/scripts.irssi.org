@@ -7,6 +7,7 @@
   contact: clement.hermann@free.fr
   default_package: xcmd
   description: "makes Undernet's X commands easier and faster to use"
+  language: Perl
   license: GPLv2
   name: Xcmd
   version: '0.2'

@@ -4,6 +4,7 @@
   contact: 'Nei @ anti@conference.jabber.teamidiot.de'
   default_package: conceal
   description: 'conceals passwords on the input line'
+  language: Perl
   license: ISC
   modified: '2020-10-22 16:28:09'
   name: conceal

@@ -7,6 +7,7 @@
   contact: ricardomesquita@netcabo.pt
   default_package: mpg123
   description: 'Display current mpg123 track'
+  language: Perl
   license: GPLv2
   modified: '2014-10-19 11:54:16'
   name: mpg123

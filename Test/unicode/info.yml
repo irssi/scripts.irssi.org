@@ -7,6 +7,7 @@
   contact: dgl@dgl.cx
   default_package: unicode
   description: 'Get infomation about unicode characters'
+  language: Perl
   license: 'WTFPL <http://dgl.cx/licence>'
   modified: '2014-10-13 14:00:00'
   name: unicode

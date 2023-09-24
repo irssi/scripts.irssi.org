@@ -5,6 +5,7 @@
   contact: 'mh on IRCnet #help'
   default_package: mh_hold_mode
   description: 'Emulation of ircII per-window hold_mode'
+  language: Perl
   license: BSD
   modified: '2017-04-24 10:41:11'
   name: mh_hold_mode

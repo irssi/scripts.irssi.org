@@ -5,6 +5,7 @@
   contact: fahren@bochnia.pl
   default_package: scripthelp
   description: "Provides access to script's help"
+  language: Perl
   license: 'GNU GPLv2 or later'
   modified: '2019-02-27 20:56:42'
   name: 'Scripts help'

@@ -1,1 +1,1 @@
-Capture variable used outside conditional at line 180, column 13.  See page 253 of PBP.  (Severity: 3)
+scripts/rud_emotes.pl: Capture variable used outside conditional at line 180, column 13.  See page 253 of PBP.  (Severity: 3)

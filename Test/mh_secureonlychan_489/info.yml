@@ -4,6 +4,7 @@
   changed: 2020-05-16
   contact: 'mh (IRCnet)'
   description: 'Fix for Irssi not fully supporting numeric 489 ERR_SECUREONLYCHAN'
+  language: Perl
   license: ISC/BSD
   modified: '2020-05-16 22:33:56'
   name: mh_secureonlychan_489

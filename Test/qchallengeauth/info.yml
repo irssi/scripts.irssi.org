@@ -4,6 +4,7 @@
   contact: dwfreed!#irssi@freenode
   default_package: qchallengeauth
   description: "Authenticates you to QuakeNet's Q immediately on connect using CHALLENGEAUTH"
+  language: Perl
   license: GPLv3+
   modified: '2017-05-08 11:41:48'
   name: qchallengeauth.pl

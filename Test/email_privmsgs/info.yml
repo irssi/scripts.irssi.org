@@ -5,6 +5,7 @@
   contact: atj@pulsewidth.org.uk
   default_package: email_privmsgs
   description: "Emails you private messages sent while you're away. Useful in combination with screen_away. Requires Email::Sender."
+  language: Perl
   license: MIT
   modified: '2017-11-21 23:52:33'
   modules:

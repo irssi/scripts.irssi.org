@@ -8,6 +8,7 @@
   contributors: bd@bc-bd.org
   default_package: wa
   description: 'shows what WinAmp is playing with /wa command'
+  language: Perl
   license: 'Public Domain'
   modified: '2014-10-24 23:01:30'
   name: wa

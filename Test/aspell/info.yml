@@ -6,6 +6,7 @@
   contact: 'irssi@isaacgood.com, shabble+irssi@metavore.org'
   default_package: aspell
   description: 'ASpell spellchecking system for Irssi'
+  language: Perl
   license: MIT
   modified: '2016-10-06 17:55:58'
   modules:

@@ -6,6 +6,7 @@
   contact: dgl@dgl.cx
   default_package: sysinfo_dg
   description: 'Adds a /sysinfo command which prints system information (linux only).'
+  language: Perl
   license: 'GNU GPLv2 or later'
   modified: '2015-01-10 18:02:02'
   name: sysinfo-dg

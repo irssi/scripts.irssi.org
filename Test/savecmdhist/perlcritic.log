@@ -1,1 +1,1 @@
-Return value of "close" ignored at line 63, column 5.  Check the return value of "close" for success.  (Severity: 2)
+scripts/savecmdhist.pl: Return value of "close" ignored at line 63, column 5.  Check the return value of "close" for success.  (Severity: 2)

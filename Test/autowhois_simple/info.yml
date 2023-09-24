@@ -6,6 +6,7 @@
   contact: janne@mikola.info
   default_package: autowhois_simple
   description: '/WHOIS anyone querying you automatically.'
+  language: Perl
   license: GPL
   modified: '2014-10-17 18:30:46'
   name: autowhois_simple

@@ -11,6 +11,7 @@
   contact: crazycat@c-p-f.org
   default_package: extaway
   description: 'Extended Away & Back programm'
+  language: Perl
   license: 'GNU GPLv2 or later'
   modified: '2014-10-17 22:54:13'
   name: ExtAway

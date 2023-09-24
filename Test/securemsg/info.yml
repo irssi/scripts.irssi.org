@@ -22,6 +22,7 @@
   contact: 'vague`!#irssi@freenode on irc '
   default_package: securemsg
   description: 'An irssi adaptation of securequery.mrc found in the Acidmax mIRC script. :), now with multiserver support'
+  language: Perl
   license: GPLv2
   modified: '2022-07-11 10:54:46'
   name: securemsg

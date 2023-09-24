@@ -5,6 +5,7 @@
   contact: flux@inside.org
   default_package: mailcheck_mbox_flux
   description: 'Polls your unix mailbox for new mail'
+  language: Perl
   license: 'Public Domain'
   modified: '2019-02-23 14:25:18'
   name: 'Mail Check'

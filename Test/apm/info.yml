@@ -4,6 +4,7 @@
   contact: formorer@formorer.de
   default_package: apm
   description: 'Shows your battery status in your Statusbar'
+  language: Perl
   license: 'GNU Public License'
   modified: '2017-04-07 16:34:31'
   name: apm

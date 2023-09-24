@@ -13,6 +13,7 @@
   contact: a.lepore@email.it
   default_package: irssiBlaster
   description: 'Display the song played by mp3blaster in channels and statusbar. See the top of the file for usage.'
+  language: Perl
   license: 'GNU GPLv2 or later'
   modified: '2017-04-07 16:34:31'
   name: irssiBlaster

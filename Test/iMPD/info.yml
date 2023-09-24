@@ -51,6 +51,7 @@
   contact: starz@antisocial.com
   default_package: iMPD
   description: 'This controls Music Player Daemon from the familiar irssi interface'
+  language: Perl
   license: 'GPL v2'
   modified: '2021-01-25 21:56:36'
   name: iMPD

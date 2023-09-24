@@ -4,6 +4,7 @@
   changed: 2006-1027T18:00+0300
   contact: tjormola@cc.hut.fi
   description: "/xmmsinfo to tell what you're currently playing"
+  language: Perl
   license: GPLv2
   modules:
     - Irssi::XMMSInfo

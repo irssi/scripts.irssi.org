@@ -5,6 +5,7 @@
   contact: tss@iki.fi
   default_package: colorswap
   description: "Swap between green and white format for public messages. I think this helps readability. Assumes you haven't changed message formats."
+  language: Perl
   license: 'Public Domain'
   name: colorswap
   url: http://irssi.org/

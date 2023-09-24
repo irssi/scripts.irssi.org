@@ -4,6 +4,7 @@
   contact: veli@piipiip.net
   default_package: hlbot
   description: 'Floods the channel about things that are hapening in your hl -server. Also enables you to send rcon commands to the server from channel.'
+  language: Perl
   license: GPLv2
   modified: '2015-02-02 14:02:20'
   name: 'HL-log/rcon -bot'

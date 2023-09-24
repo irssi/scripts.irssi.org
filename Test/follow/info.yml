@@ -5,6 +5,7 @@
   contact: juerd@juerd.nl
   default_package: follow
   description: 'Automatically switch to active windows'
+  language: Perl
   license: 'Public Domain'
   name: Follower
   url: http://juerd.nl/irssi/

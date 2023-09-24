@@ -10,6 +10,7 @@
   contact: stefan@pico.ruhr.de
   default_package: ircsec
   description: 'secures your conversation'
+  language: Perl
   license: GPLv2
   modified: '2019-02-11 13:59:43'
   modules:

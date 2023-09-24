@@ -7,6 +7,7 @@
   contact: staff@irssi.org
   default_package: cubes
   description: '256 colour test script for Irssi.'
+  language: Perl
   license: 'Public Domain'
   modified: '2022-12-01 21:22:05'
   name: cubes

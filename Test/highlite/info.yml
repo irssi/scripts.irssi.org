@@ -5,6 +5,7 @@
   contact: mantis@inta-link.com
   default_package: highlite
   description: 'shows events happening in all channels you are in that may concern you'
+  language: Perl
   license: 'GNU GPL v2'
   name: highlite
   url: http://www.inta-link.com/

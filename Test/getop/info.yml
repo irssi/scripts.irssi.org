@@ -10,6 +10,7 @@
   contact: fahren@bochnia.pl
   default_package: getop
   description: 'Automatically request op from random opped person with specifed command from list after joining channel'
+  language: Perl
   license: 'GNU GPLv2 or later'
   modified: '2014-10-17 22:54:13'
   name: GetOP

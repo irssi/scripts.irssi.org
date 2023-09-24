@@ -5,6 +5,7 @@
   contact: 'wouter@coekaerts.be, coekie@#irssi'
   default_package: special_complete
   description: '(tab)complete irssi special variables (words that start with $) by evaluating them'
+  language: Perl
   license: GPLv2
   name: special_complete
   url: http://wouter.coekaerts.be/irssi/

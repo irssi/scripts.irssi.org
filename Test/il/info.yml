@@ -7,6 +7,7 @@
   contact: darix@irssi.org
   default_package: il
   description: 'adds a statusbar item which show length of the inputline'
+  language: Perl
   license: 'BSD License or something more liberal'
   modified: '2021-01-11 08:48:06'
   name: inputlength

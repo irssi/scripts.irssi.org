@@ -6,6 +6,7 @@
   contact: jip@loota.org
   default_package: smiley
   description: 'Very useful smiley-flooder'
+  language: Perl
   license: 'Public Domain'
   name: Smiley
   version: '0.69'

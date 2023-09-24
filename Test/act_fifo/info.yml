@@ -5,6 +5,7 @@
   contact: irssi@kalor.dk
   default_package: act_fifo
   description: 'Print window activity to a fifo'
+  language: Perl
   license: GPLv2
   modified: '2014-10-17 18:30:46'
   name: act_fifo

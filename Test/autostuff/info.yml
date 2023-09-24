@@ -8,6 +8,7 @@
   contact: '#####@juerd.nl'
   default_package: autostuff
   description: 'Save current servers, channels and windows for autoconnect and autojoin'
+  language: Perl
   license: 'Public Domain'
   name: autostuff
   url: http://juerd.nl/site.plp/irssi

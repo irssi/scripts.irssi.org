@@ -7,6 +7,7 @@
   contributors: 'stefan@pico.ruhr.de, dieck@gmx.de, peder@ifi.uio.no'
   default_package: dccstat
   description: 'Shows verbose or short information of dcc send/gets on statusbar (speed, size, eta etc.)'
+  language: Perl
   license: 'GPL, Version 2'
   modified: '2014-10-17 20:34:00'
   name: dccstat

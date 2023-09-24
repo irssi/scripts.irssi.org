@@ -8,6 +8,7 @@
   contact: wohmatak@iglu.cz
   default_package: orphamp
   description: 'Displays the song played by orpheus'
+  language: Perl
   license: GPL
   modified: '2014-10-19 11:54:16'
   name: orphamp

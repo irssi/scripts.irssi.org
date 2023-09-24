@@ -5,6 +5,7 @@
   contact: james@jamesoff.net
   default_package: nocaps
   description: 'Replaces lines in ALL CAPS with something easier on the eyes'
+  language: Perl
   license: 'Public Domain'
   name: nocaps
   url: http://www.jamesoff.net

@@ -9,6 +9,7 @@
   contact: campanastra@gmail.com
   default_package: mg
   description: 'DCC MultiGet, for fetching from XDCC bots'
+  language: Perl
   license: 'ccBSD, http://creativecommons.org/licenses/BSD/'
   name: mg
   version: '20090813'

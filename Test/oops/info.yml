@@ -4,6 +4,7 @@
   contact: bw1@aol.at
   default_package: oops
   description: "turns 'll' and 'ls' in the beginning of a sent line into the names or whois commands"
+  language: Perl
   license: 'Public Domain'
   modified: '2019-01-15 15:07:59'
   name: oops

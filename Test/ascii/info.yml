@@ -12,6 +12,7 @@
   contact: derwan@irssi.pl
   default_package: ascii
   description: 'Ascii-art bassed on figlet. Available commands: /ASCII, /COLSAY, /COLME, /COLTOPIC, /COLKICK, /COLQUIT.'
+  language: Perl
   license: 'GNU GPL v2'
   name: ascii-art
   url: http://derwan.irssi.pl

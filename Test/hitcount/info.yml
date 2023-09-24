@@ -5,6 +5,7 @@
   contact: 'shrike\@addiktit.net, Shrike on IRCNet/QNet/EFNet/DALNet'
   default_package: hitcount
   description: 'Add a apache page hitcounter to statusbar'
+  language: Perl
   license: Free
   modified: '2017-04-07 16:34:31'
   name: hitcount

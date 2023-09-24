@@ -10,6 +10,7 @@
   contact: frey@notk.org
   default_package: procmaillog
   description: 'Gets new mails from procmail.log file'
+  language: Perl
   license: 'Public Domain'
   modified: '2014-06-21 08:47:21'
   modules:

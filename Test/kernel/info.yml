@@ -7,6 +7,7 @@
   contact: 'ion at hassers.org'
   default_package: kernel
   description: 'Fetches the version(s) of the latest Linux kernel(s).'
+  language: Perl
   license: 'Public Domain'
   modified: '2018-03-11 20:53:39'
   modules:

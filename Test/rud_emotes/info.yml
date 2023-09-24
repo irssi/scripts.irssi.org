@@ -7,6 +7,7 @@
   contact: 'rud0lf/IRCnet; rud0lf/freenode; xxrud0lf@gmail.com'
   default_package: rud_emotes
   description: 'Replaces :emote_name: text in your sent messages into pre-defined emotes (unicode mostly).'
+  language: Perl
   license: GPLv3
   modified: '2019-03-19 21:57:04'
   name: 'emotes script'

@@ -5,6 +5,7 @@
   changes: 'added some comments, added $announce_message:_*-stuff'
   contact: kk@manoli.im-dachgeschoss.de
   description: '/xmms announces which _file_ is currently playing. E.g.  Currently playing: "Kieran Halpin & Band - Mirror Town.mp3"'
+  language: Perl
   license: GPL
   modules:
     - Xmms

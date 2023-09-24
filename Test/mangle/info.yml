@@ -14,6 +14,7 @@
   contact: szymon@hell.pl
   default_package: mangle
   description: 'translates your messages into Morse code, rot13 and other sillinesses.'
+  language: Perl
   license: GPLv2
   modified: '2019-07-12 20:41:28'
   modules: Data::Dumper

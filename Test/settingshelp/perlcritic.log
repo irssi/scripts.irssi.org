@@ -1,1 +1,1 @@
-String delimiter used with "split" at line 27, column 15.  Express it as a regex instead.  (Severity: 2)
+scripts/settingshelp.pl: String delimiter used with "split" at line 27, column 15.  Express it as a regex instead.  (Severity: 2)

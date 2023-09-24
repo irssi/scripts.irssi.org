@@ -4,6 +4,7 @@
   contact: fis@ji.cz
   default_package: badword
   description: 'Configurable badword kickbanning script'
+  language: Perl
   license: 'GPL v2 and any later'
   name: badword
   url: http://fis.bofh.cz/devel/irssi/

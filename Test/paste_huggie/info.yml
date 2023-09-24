@@ -8,6 +8,7 @@
   contact: huggie-irssi@earth.li
   default_package: paste_huggie
   description: 'Paste reformats long pieces of text typically pasted into your client from webpages so that they fit nicely into your channel.  Width of client may be specified'
+  language: Perl
   license: GPLv2
   name: Paste
   url: http://the.earth.li/~huggie/irssi/

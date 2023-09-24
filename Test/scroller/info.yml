@@ -4,6 +4,7 @@
   contact: demmydemon@gmail.com
   default_package: scroller
   description: 'Scrolls specified text on the status bar'
+  language: Perl
   license: 'Public Domain'
   modified: '2017-04-07 16:34:31'
   name: scroller

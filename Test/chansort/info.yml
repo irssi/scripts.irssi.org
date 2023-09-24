@@ -6,6 +6,7 @@
   contact: peder.stray@gmail.com
   default_package: chansort
   description: 'Sort all channel and query windows'
+  language: Perl
   license: GPL
   modified: '2021-08-21 10:40:50'
   name: chansort

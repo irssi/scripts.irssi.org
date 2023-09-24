@@ -5,6 +5,7 @@
   contact: 'q [at] spuk.de'
   default_package: doublefilter
   description: 'Filters msgs which appear the same on different channels.'
+  language: Perl
   license: GPLv2
   name: doublefilter
   version: '0.3'

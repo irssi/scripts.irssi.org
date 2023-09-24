@@ -5,6 +5,7 @@
   contact: wulf@wulf.eu.org
   default_package: chanfull
   description: 'Notifies the user when some channel limit is reached'
+  language: Perl
   license: GPLv2
   name: chanfull
   url: ''

@@ -5,6 +5,7 @@
   contact: nico@lifeisabug.com
   default_package: jpqnmwin
   description: 'Print join-, part-, quit-, nick- and mode-messages to a window named "jpqnm"'
+  language: Perl
   license: GPLv2
   modified: '2023-05-07 16:23:01'
   name: jpqnmwin

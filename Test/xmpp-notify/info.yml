@@ -4,6 +4,7 @@
   contact: 'thomas@ruecker.fi, tbr on irc.freenode.net'
   default_package: xmpp_notify
   description: 'Sends out notifications via XMPP. Based on a script by Peter Krenesky.'
+  language: Perl
   license: BSD-3-Clause
   modified: '2015-06-30 12:00:46'
   modules:

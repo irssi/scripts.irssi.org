@@ -5,6 +5,7 @@
   contact: 'simon@ruderich.org, shabble+irssi@metavore.org'
   default_package: sb_position
   description: 'Displays current position in scrollback.'
+  language: Perl
   license: 'GPLv3 or later'
   modified: '2017-04-07 16:34:31'
   name: sb_position

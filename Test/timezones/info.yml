@@ -5,6 +5,7 @@
   contact: 'vague!#irssi@freenode on irc'
   default_package: timezones
   description: 'timezones displayer'
+  language: Perl
   license: 'Public Domain'
   modified: '2017-04-07 16:34:31'
   modules:

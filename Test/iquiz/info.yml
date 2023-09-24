@@ -22,6 +22,7 @@
   contact: http://mail.quizpl.net
   default_package: iquiz
   description: 'irssi quiz script'
+  language: Perl
   license: 'GNU GPL v3 or any later version'
   modified: '2017-09-06 20:23:36'
   name: iQuiz

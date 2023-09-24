@@ -7,6 +7,7 @@
   contact: stefan.jakobs@rus.uni-stuttgart.de
   default_package: fcountry
   description: 'Print the country name in /WHOIS replies'
+  language: Perl
   license: GPLv2
   modules:
     - Geography::Countries

@@ -4,6 +4,7 @@
   changed: 'Wed Jul 19 23:59 EET 2006'
   default_package: activity_file
   description: 'Maintains a representation of window activity status in a file'
+  language: Perl
   license: 'GNU General Public License'
   name: activity_file
   version: '1.00'

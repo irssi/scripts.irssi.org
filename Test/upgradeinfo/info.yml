@@ -6,6 +6,7 @@
   contact: peder.stray@gmail.com
   default_package: upgradeinfo
   description: 'Statusbar item notifying you about updated binary'
+  language: Perl
   license: GPL
   modified: '2021-08-21 23:56:51'
   name: upgradeinfo

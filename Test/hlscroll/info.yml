@@ -9,6 +9,7 @@
   default_package: hlscroll
   description: 'Scrolls to previous or next highlight'
   inspiration: '@eevee on Twitter: "i really want irssi keybindings that will scroll to the next/previous line containing a highlight. why does this not exist"'
+  language: Perl
   license: 'Public Domain'
   modified: '2018-02-15 11:19:47'
   name: 'Scroll to hilights'

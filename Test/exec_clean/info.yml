@@ -5,6 +5,7 @@
   contact: 'jylefort\@brutele.be, decadix on IRCNet'
   default_package: exec_clean
   description: 'Adds a setting to automatically terminate a process whose parent window has been closed'
+  language: Perl
   license: BSD
   modified: '2014-10-17 22:54:13'
   name: exec-clean

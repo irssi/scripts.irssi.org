@@ -8,6 +8,7 @@
   contact: 'dkg@con-fuse.org, darix@irssi.org'
   default_package: bmi
   description: 'a simple body mass index calculator for depression ;)'
+  language: Perl
   license: GPLv2
   name: 'BMI Calculator'
   url: http://dkg.con-fuse.org/irssi/scripts/

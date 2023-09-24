@@ -7,6 +7,7 @@
   contact: script@duden.eu.org
   default_package: chansync
   description: '/who a channel and optionaly executes a command'
+  language: Perl
   license: GPLv2
   name: chansync
   url: ''

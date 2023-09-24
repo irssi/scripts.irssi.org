@@ -9,6 +9,7 @@
   contact: lkarsten@stud.ntnu.no
   default_package: randaway
   description: 'Random away-messages'
+  language: Perl
   license: 'Public Domain'
   modified: '2017-03-15 20:28:47'
   name: randaway.pl

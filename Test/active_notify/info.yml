@@ -5,6 +5,7 @@
   contact: geert@irssi.org
   default_package: active_notify
   description: 'This script will display notify messages into the active window or broadcast it so all the windows.'
+  language: Perl
   license: 'GNU General Public License'
   name: active_notify.pl
   url: http://irssi.hauwaerts.be/active_notify.pl

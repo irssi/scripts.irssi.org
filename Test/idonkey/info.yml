@@ -5,6 +5,7 @@
   commands: idonkey
   contact: stefan@pico.ruhr.de
   description: 'equips Irssi with an interface to mldonkey'
+  language: Perl
   license: GPLv2
   modules:
     - HTML::Entities

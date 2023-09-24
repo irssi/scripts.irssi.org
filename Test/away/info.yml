@@ -5,6 +5,7 @@
   contact: 'jylefort@brutele.be, vizzie@airmail.net, kc@outflux.net'
   default_package: away
   description: 'Away with reason, unaway, and autoaway'
+  language: Perl
   license: BSD
   modified: '2014-10-17 18:30:46'
   name: away

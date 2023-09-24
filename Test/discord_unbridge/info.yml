@@ -4,6 +4,7 @@
   contact: sandra.snan@idiomdrottning.org
   default_package: discord_unbridge
   description: 'In channels with a discord bridge, turns "<bridge> <Sender> Message" into "<Sender> Message", and hides spoilers.'
+  language: Perl
   license: 'Public Domain'
   modified: '2020-12-11 12:11:10'
   name: discord_unbridge.pl

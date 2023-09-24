@@ -6,6 +6,7 @@
   contact: kodgehopper@netscape.net
   default_package: irc_chess
   description: 'Chess server for IRC. Allows for multiple 2-player games to be played simultaneously'
+  language: Perl
   license: 'GNU GPL'
   modified: '2019-05-04 15:20:01'
   name: IRC-Chess

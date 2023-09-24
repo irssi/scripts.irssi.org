@@ -16,6 +16,7 @@
   contact: coekie@irssi.org
   default_package: nicklist
   description: 'draws a nicklist to another terminal, or at the right of your irssi in the same terminal'
+  language: Perl
   license: GPLv2
   modified: '2017-05-08 11:41:48'
   name: nicklist

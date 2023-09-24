@@ -10,6 +10,7 @@
   contact: shasta@atn.pl
   default_package: rainbow
   description: 'Prints colored text. Rather simple than sophisticated.'
+  language: Perl
   license: 'GNU GPLv2 or later'
   modified: '2015-11-25 15:47:52'
   name: rainbow

@@ -4,6 +4,7 @@
   contact: peder.stray@gmail.com
   default_package: query
   description: 'Give you more control over when to jump to query windows and when to just tell you one has been created. Enhanced autoclose.'
+  language: Perl
   license: GPL
   modified: '2021-08-21 10:40:50'
   name: query

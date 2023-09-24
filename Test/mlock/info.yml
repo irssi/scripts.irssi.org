@@ -6,6 +6,7 @@
     - mlock
   default_package: mlock
   description: 'Channel mode locking'
+  language: Perl
   license: 'Public Domain'
   name: mlock
   version: '1.00'

@@ -11,6 +11,7 @@
   contact: stefan@pico.ruhr.de
   default_package: openurl
   description: 'Stores URLs in a list and launches mail, web or ftp software'
+  language: Perl
   license: GPLv2
   name: OpenURL
   url: http://scripts.irssi.org

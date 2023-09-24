@@ -10,6 +10,7 @@
   contact: 'tss@iki.fi, matti@hiljanen.com, joost@carnique.nl, bart@dreamflow.nl'
   default_package: mail
   description: 'Fully customizable mail counter statusbar item with multiple mailbox and multiple Maildir support'
+  language: Perl
   license: 'Public Domain'
   modified: '2023-04-20 20:37:03'
   name: mail

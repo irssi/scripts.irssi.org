@@ -4,6 +4,7 @@
   changed: 'Mon Jul 22 20:00 EET 2020'
   default_package: quitmsg
   description: 'Random quit messages'
+  language: Perl
   license: 'Public Domain'
   modified: '2020-07-22 19:10:12'
   name: quitmsg

@@ -7,6 +7,7 @@
   contact: peder.stray@gmail.com
   default_package: friends_peder
   description: 'Basically an autoop script with a nice interface and nick coloring ;)'
+  language: Perl
   license: GPL
   modified: '2021-08-21 10:40:50'
   name: friends

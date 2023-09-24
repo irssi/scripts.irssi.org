@@ -5,6 +5,7 @@
   contact: fahren@bochnia.pl
   default_package: ban
   description: '/BAN [channel] [-normal|-host|-user|-domain|-crap|-ip|-class -before|-after "cmd" nick|mask] ... - bans several nicks/masks on channel, removes any conflicting bans before banning'
+  language: Perl
   license: 'GNU GPLv2 or later'
   name: ban
   version: 1.4d

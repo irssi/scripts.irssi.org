@@ -7,6 +7,7 @@
   contact: bcow@iki.fi
   default_package: ircgmessagenotify
   description: 'Tarkistelee irc-galleria.net:iä ja sanoo kun sinulle on uusia viestejä.'
+  language: Perl
   license: GPLv2
   modified: '2017-04-07 16:34:31'
   modules:

@@ -7,6 +7,7 @@
   contact: stefan@pico.ruhr.de
   default_package: crapbuster
   description: 'Removes CRAP or CLIENTCRAP messages from your buffer'
+  language: Perl
   license: GPLv2
   modified: '2022-11-27 20:09:10'
   name: CRAPbuster

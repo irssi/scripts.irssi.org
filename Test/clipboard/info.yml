@@ -7,6 +7,7 @@
   contact: dominic@battre.de
   default_package: clipboard
   description: 'Better quoting of content from clipboard (without leading spaces) -- requires Perl/Tk'
+  language: Perl
   license: 'Public Domain'
   modules:
     - Tk

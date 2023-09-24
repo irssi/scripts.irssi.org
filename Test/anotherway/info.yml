@@ -5,6 +5,7 @@
   contact: stefan@pico.ruhr.de
   default_package: anotherway
   description: 'Another auto away script'
+  language: Perl
   license: GPLv2
   name: anotherway
   version: '2003010201'

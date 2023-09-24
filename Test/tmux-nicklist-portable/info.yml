@@ -4,6 +4,7 @@
   contact: tpadilha84@gmail.com
   default_package: tmux_nicklist_portable
   description: 'displays a list of nicks in a separate tmux pane'
+  language: Perl
   license: WTFPL
   modified: '2019-02-07 00:08:18'
   name: tmux-nicklist

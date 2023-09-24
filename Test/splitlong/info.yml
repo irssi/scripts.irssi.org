@@ -6,6 +6,7 @@
   contact: bjkro@gmx.de
   default_package: splitlong
   description: 'Split overlong PRIVMSGs to msgs with length allowed by ircd'
+  language: Perl
   license: 'Public Domain'
   modified: '2014-08-07 02:00:52'
   name: splitlong

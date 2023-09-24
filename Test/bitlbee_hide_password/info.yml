@@ -4,6 +4,7 @@
   contact: avarab@gmail.com
   default_package: bitlbee_hide_password
   description: 'Hide your REGISTER and IDENTIFY password lines in &bitlbee from screen & logs '
+  language: Perl
   license: 'Public Domain'
   modified: '2016-03-15 17:52:13'
   name: bitlbee_hide_password.pl

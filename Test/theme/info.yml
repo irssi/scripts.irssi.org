@@ -7,6 +7,7 @@
   contact: bw1@aol.at
   default_package: theme
   description: 'activate, show or get theme'
+  language: Perl
   license: 'Public Domain'
   modified: '2020-04-12 17:43:59'
   modules:

@@ -4,6 +4,7 @@
   contact: coekie@irssi.org
   default_package: per_window_prompt
   description: 'Keeps a prompt per window'
+  language: Perl
   license: 'GPLv2 or later'
   modified: '2015-12-09 23:35:34'
   name: per_window_prompt

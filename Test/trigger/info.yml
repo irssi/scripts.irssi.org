@@ -16,6 +16,7 @@
   contact: wouter@coekaerts.be
   default_package: trigger
   description: 'execute a command or replace text, triggered by an event in irssi'
+  language: Perl
   license: 'GPLv2 or later'
   modified: '2023-01-21 09:05:27'
   name: trigger

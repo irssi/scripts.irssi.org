@@ -11,6 +11,7 @@
   contact: jere@flamero.fi
   default_package: replace
   description: 'Replaces regexps with predefined strings'
+  language: Perl
   license: MIT
   modified: '2016-03-22 03:23:12'
   name: replace

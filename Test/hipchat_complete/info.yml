@@ -4,6 +4,7 @@
   contact: jwm@horde.net
   default_package: hipchat_complete
   description: 'Translate nicks to HipChat "mention names"'
+  language: Perl
   license: BSD
   modified: '2015-01-18 02:15:41'
   modules:

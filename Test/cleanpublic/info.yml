@@ -5,6 +5,7 @@
   contact: darkthorne@samsen.com
   default_package: cleanpublic
   description: 'Simple script that removes colors and other formatting (bold, etc) from public channels'
+  language: Perl
   license: GPL
   name: CleanPublic
   url: http://mental.mine.nu

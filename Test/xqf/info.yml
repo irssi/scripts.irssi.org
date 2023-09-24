@@ -7,6 +7,7 @@
   contact: mizerou@telus.net
   default_package: xqf
   description: 'automatically sends xqf data to irssi and optionally licq'
+  language: Perl
   license: GPLv2
   modified: '2014-10-24 23:01:30'
   modules: Socket

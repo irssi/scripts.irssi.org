@@ -1,1 +1,1 @@
-Don't modify $_ in list functions at line 315, column 5.  See page 114 of PBP.  (Severity: 5)
+scripts/dim_nicks.pl: Don't modify $_ in list functions at line 315, column 5.  See page 114 of PBP.  (Severity: 5)

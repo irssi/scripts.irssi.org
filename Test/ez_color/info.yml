@@ -5,6 +5,7 @@
   contact: '$IRSSI{authors} + <Shift-2> + protonmail + <rhymes-with-pot> + <2-char Country Code for Switzerland>'
   default_package: ez_color
   description: 'Provides a single helper function to wrap mIRC-style color codes around strings'
+  language: Perl
   license: 'WTFPL/2 @ http://www.wtfpl.net/about/'
   modified: '2020-10-09 13:29:18'
   name: ez_color

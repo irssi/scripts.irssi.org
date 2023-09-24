@@ -30,6 +30,7 @@
   contact: 'IRC: Freenode network, #ubuntu-lb'
   default_package: Cirssi
   description: 'Controls Audacious2 and MOCP from Irssi'
+  language: Perl
   license: 'GNU General Public License'
   modified: '2019-01-20 23:16:01'
   name: 'Consolidate Irssi Player'

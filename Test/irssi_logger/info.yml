@@ -4,6 +4,7 @@
   contact: deftly@gmail.com
   default_package: irssi_logger
   description: 'Logs chats to a PostgreSQL database.'
+  language: Perl
   license: BSD
   modified: '2023-08-23 07:45:50'
   modules:

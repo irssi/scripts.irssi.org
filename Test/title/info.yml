@@ -4,6 +4,7 @@
   contact: 'tss@iki.fi, dgl@dgl.cx'
   default_package: title
   description: 'Display configurable title as XTerm title'
+  language: Perl
   license: 'GNU GPL'
   modified: '2014-10-24 23:01:30'
   name: title

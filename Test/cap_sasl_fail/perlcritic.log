@@ -1,1 +1,1 @@
-"die" used instead of "croak" at line 18, column 1.  See page 283 of PBP.  (Severity: 3)
+scripts/cap_sasl_fail.pl: "die" used instead of "croak" at line 18, column 1.  See page 283 of PBP.  (Severity: 3)

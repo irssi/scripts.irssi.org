@@ -14,6 +14,7 @@
   contact: madduck@madduck.net
   default_package: chankeys
   description: 'manage channel keyboard shortcuts'
+  language: Perl
   license: MIT
   modified: '2022-11-18 13:48:34'
   name: chankeys

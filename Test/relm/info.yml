@@ -7,6 +7,7 @@
   contact: fahren@bochnia.pl
   default_package: relm
   description: 'Keeps last 15 messages in cache'
+  language: Perl
   license: 'GNU GPLv2 or later'
   modified: '2019-02-25 10:29:22'
   name: 'REdirect Last Message'

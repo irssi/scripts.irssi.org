@@ -5,6 +5,7 @@
   contact: wouter@coekaerts.be
   default_package: showmode
   description: 'show modes in parts, quits, kicks, topic changes or actions, like show_nickmode does for public messages'
+  language: Perl
   license: 'GPLv2 or later'
   name: showmode
   version: '0.3'

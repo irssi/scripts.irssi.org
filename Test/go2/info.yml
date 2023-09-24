@@ -5,6 +5,7 @@
   contact: cxreg@pobox.com
   default_package: go2
   description: 'Switch to the window with the given name or item'
+  language: Perl
   license: 'Public Domain'
   modified: '2017-05-02 11:42:35'
   name: go2

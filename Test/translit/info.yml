@@ -4,6 +4,7 @@
   contact: dreg@fine.lv
   default_package: translit
   description: translitiratar
+  language: Perl
   license: GPL
   modified: '2017-03-05 14:29:01'
   name: translit

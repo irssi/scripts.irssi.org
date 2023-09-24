@@ -7,6 +7,7 @@
   contact: pab_24n@outlook.com
   default_package: frm_outgmsgs
   description: 'define a permanent text formatting (bold, underline, etc.) for outgoing messages'
+  language: Perl
   license: 'Public Domain'
   modified: '2016-06-18 12:01:20'
   name: frm_outgmsgs

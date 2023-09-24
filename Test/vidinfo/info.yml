@@ -8,6 +8,7 @@
   contact: 'olof@ethup.se, frey@notk.org'
   default_package: vidinfo
   description: 'Prints some info of a linked video automatically'
+  language: Perl
   license: GPL
   modified: '2017-10-09 18:50:19'
   modules:

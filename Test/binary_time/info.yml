@@ -4,6 +4,7 @@
   contact: 'aaron.toponce@gmail.com, irssi@auvor.no'
   default_package: binary_time
   description: 'Prints the timestamp in binary format'
+  language: Perl
   license: GPL
   name: binary_time
   version: '20060826'

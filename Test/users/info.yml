@@ -7,6 +7,7 @@
   contact: 'jylefort\@brutele.be, decadix on IRCnet'
   default_package: users
   description: 'Implements /USERS'
+  language: Perl
   license: BSD
   modified: '2014-10-24 23:01:30'
   name: users

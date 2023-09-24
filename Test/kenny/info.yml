@@ -8,6 +8,7 @@
   contact: alfie@channel.debian.de
   default_package: kenny
   description: 'autodekennyfies /kenny, adds /kenny, /dekenny. Based on Jan-Pieter Cornets signature version'
+  language: Perl
   license: BSD
   name: 'kenny speech'
   url: http://alfie.ist.org/projects/irssi/scripts/kenny.pl

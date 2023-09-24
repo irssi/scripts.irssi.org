@@ -6,6 +6,7 @@
   contact: tss@iki.fi
   default_package: autowhois
   description: '/WHOIS all the users who send you a private message.'
+  language: Perl
   license: 'Public Domain'
   modified: '2014-10-17 18:30:46'
   name: autowhois

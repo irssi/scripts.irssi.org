@@ -4,6 +4,7 @@
   contact: 'irssi@repnz.net & avarab@gmail.com'
   default_package: msg2notice_regex
   description: 'For a configured list of nicks or nicks matching a regex, convert all their messages to a notices'
+  language: Perl
   license: 'Public Domain'
   modified: '2016-03-15 17:52:13'
   name: msg2notice_regex.pl

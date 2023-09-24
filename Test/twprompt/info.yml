@@ -5,6 +5,7 @@
   contact: jengelbr@yahoo.com
   default_package: twprompt
   description: "BitchX's CrackRock3 animated prompt bar."
+  language: Perl
   license: 'Public Domain'
   modified: '2017-04-07 16:34:31'
   name: twprompt.pl

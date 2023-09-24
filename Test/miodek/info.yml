@@ -5,6 +5,7 @@
   contact: lam@lac.pl
   default_package: miodek
   description: 'Simple wordkick system, with extended polish dictionary for channels enforcing correct polish.'
+  language: Perl
   license: GPLv2
   name: miodek
   version: 1.0.2

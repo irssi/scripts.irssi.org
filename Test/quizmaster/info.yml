@@ -17,6 +17,7 @@
   contact: stefan@pico.ruhr.de
   default_package: quizmaster
   description: 'a trivia script for Irssi'
+  language: Perl
   license: GPLv2
   modified: '2017-04-03 18:05:34'
   modules: Data::Dumper

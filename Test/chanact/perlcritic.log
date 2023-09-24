@@ -1,2 +1,2 @@
-Expression form of "eval" at line 323, column 20.  See page 161 of PBP.  (Severity: 5)
-String delimiter used with "split" at line 465, column 18.  Express it as a regex instead.  (Severity: 2)
+scripts/chanact.pl: Expression form of "eval" at line 323, column 20.  See page 161 of PBP.  (Severity: 5)
+scripts/chanact.pl: String delimiter used with "split" at line 465, column 18.  Express it as a regex instead.  (Severity: 2)

@@ -9,6 +9,7 @@
   contact: juerd@juerd.nl
   default_package: scriptinfo
   description: 'Access script information'
+  language: Perl
   license: 'Public Domain'
   name: 'Script Information'
   url: http://juerd.nl/irssi/

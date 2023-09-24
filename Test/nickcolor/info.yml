@@ -7,6 +7,7 @@
   contact: tss@iki.fi
   default_package: nickcolor
   description: 'assign a different color for each nick'
+  language: Perl
   license: 'Public Domain'
   modified: '2018-01-09 10:41:20'
   name: 'Nick Color'

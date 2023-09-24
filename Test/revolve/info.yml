@@ -4,6 +4,7 @@
   contact: ryan@freebern.org
   default_package: revolve
   description: 'Summarizes multiple sequential joins/parts/quits.'
+  language: Perl
   license: 'GPL v2 or later'
   modified: '2019-11-13 13:25:29'
   name: revolve

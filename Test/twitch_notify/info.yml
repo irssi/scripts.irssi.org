@@ -5,6 +5,7 @@
     - twitch_online
   default_package: twitch_notify
   description: 'Notify when a twitch channel comes onlineUses Twitch v5 API'
+  language: Perl
   license: 'Public Domain'
   modified: '2020-08-29 21:41:38'
   name: twitch_notify

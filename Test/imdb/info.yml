@@ -7,6 +7,7 @@
   contact: chaos@sorcery.net
   default_package: imdb
   description: 'Automatically lookup IMDB-numbers in nicknames'
+  language: Perl
   license: GPL
   modified: '2022-12-09 11:28:58'
   modules:

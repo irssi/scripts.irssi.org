@@ -16,6 +16,7 @@
   contact: qrczak@knm.org.pl
   default_package: people
   description: 'Userlist with autoopping, autokicking etc.'
+  language: Perl
   license: 'GNU GPL'
   modified: '2015-02-01 18:29:23'
   modules:

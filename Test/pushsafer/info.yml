@@ -13,6 +13,7 @@
   contact: kevinsiml@googlemail.com
   default_package: pushsafer
   description: 'Push hilights and private messages when away by the pushsafer.com API'
+  language: Perl
   license: BSD
   modified: '2023-03-11 18:05:08'
   modules:

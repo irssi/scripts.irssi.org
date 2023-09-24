@@ -23,6 +23,7 @@
   contact: linostar@sdf.org
   default_package: kban_referrals
   description: 'Script for kickbanning those who post referral links in a channel'
+  language: Perl
   license: 'New BSD'
   modified: '2019-07-27 18:25:35'
   name: 'KickBan Referrals Script'

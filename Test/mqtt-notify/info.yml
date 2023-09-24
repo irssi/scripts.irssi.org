@@ -7,6 +7,7 @@
   contact: 'thomas@ruecker.fi, tbr on irc.freenode.net'
   default_package: mqtt_notify
   description: 'Sends out notifications via MQTT'
+  language: Perl
   license: BSD-3-Clause
   modified: '2015-06-30 12:01:33'
   name: MQTT-notify

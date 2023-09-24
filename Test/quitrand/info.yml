@@ -4,6 +4,7 @@
   contact: ferdy@ferdyx.org
   default_package: quitrand
   description: 'Random quit messages - based on quitmsg (Timo Sirainen)'
+  language: Perl
   license: GPLv2
   modified: '2014-10-19 11:54:16'
   name: quitrand

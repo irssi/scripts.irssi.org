@@ -4,6 +4,7 @@
   contact: http://shine.eu.org/
   default_package: awaybar
   description: 'Provides a menubar item with away message'
+  language: Perl
   license: 'Public domain'
   modified: '2017-04-07 16:34:31'
   name: awaybar

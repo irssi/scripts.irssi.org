@@ -9,6 +9,7 @@
   contact: 'ferret(tA)explodingferret(moCtoD), ferret on irc.freenode.net'
   default_package: logresume
   description: 'print last n lines of logs when opening queries/channels'
+  language: Perl
   licence: 'Public Domain'
   modified: '2016-04-04 08:02:24'
   modules: ''

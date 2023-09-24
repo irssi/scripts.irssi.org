@@ -6,6 +6,7 @@
   contact: atoms@tups.lv
   default_package: tinyurl
   description: 'create a tinyurl from a long one'
+  language: Perl
   license: GPL
   modified: '2017-05-08 11:41:48'
   modules:

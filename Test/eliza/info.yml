@@ -5,6 +5,7 @@
   contact: 'ion at hassers.org'
   default_package: eliza
   description: "Answers to /msg's using Chatbot::Eliza when you're away."
+  language: Perl
   license: 'Public Domain'
   modules:
     - Chatbot::Eliza

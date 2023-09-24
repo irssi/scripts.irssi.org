@@ -5,6 +5,7 @@
   contact: geert@irssi.org
   default_package: dancer_forwardfix
   description: 'This script will fix the Irssi problem with channel forwarding on the Dancer ircd.'
+  language: Perl
   license: 'Public Domain'
   name: dancer_forwardfix.pl
   url: http://irssi.hauwaerts.be/dancer_forwardfix.pl

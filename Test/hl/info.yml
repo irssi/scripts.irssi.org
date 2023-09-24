@@ -4,6 +4,7 @@
   contact: riku.voipio@iki.fi
   default_package: hl
   description: "responds to \"!hl counterstrike.server \" command on channels/msg's to query counter-strike servers"
+  language: Perl
   license: GPLv2
   modified: '2014-10-17 22:54:13'
   name: half-life

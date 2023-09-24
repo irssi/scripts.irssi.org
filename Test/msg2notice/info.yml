@@ -6,6 +6,7 @@
   contact: mortenjo@ifi.uio.no
   default_package: msg2notice
   description: 'For a configured list of nicks, convert all their messages to a notice'
+  language: Perl
   license: GPL
   modified: '2015-04-29 16:06:27'
   name: msg2notice

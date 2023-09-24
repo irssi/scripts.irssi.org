@@ -7,6 +7,7 @@
   contact: bw1@aol.at
   default_package: boinc
   description: 'interface to boinc'
+  language: Perl
   license: gpl
   modified: '2019-05-29 16:14:16'
   modules:

@@ -4,6 +4,7 @@
   contact: zdleaf@zinc.london
   default_package: urlwindow
   description: 'Log all urls from #channels and /msgs in a separate window'
+  language: Perl
   license: 'Public Domain'
   modified: '2022-11-21 21:00:34'
   name: urlwindow

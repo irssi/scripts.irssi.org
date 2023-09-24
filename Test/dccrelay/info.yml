@@ -6,6 +6,7 @@
   contact: 'Nei @ anti@conference.jabber.teamidiot.de'
   default_package: dccrelay
   description: 'Relays DCC messages. Originally written by greeny & mute for NoNameScript.'
+  language: Perl
   license: 'GNU GPLv2 or later'
   modified: '2015-11-23 21:36:07'
   name: dccrelay

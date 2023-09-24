@@ -4,6 +4,7 @@
   contact: dma147\@mieland-programming.de
   default_package: talk
   description: 'This script talks to you *g*. It reads the chat-msgs for you.'
+  language: Perl
   license: GPL2
   modified: '2019-06-07 19:21:24'
   name: Talk

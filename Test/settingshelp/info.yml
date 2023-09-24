@@ -4,6 +4,7 @@
   contact: 'rcaputo@cpan.org, Nei @ anti@conference.jabber.teamidiot.de'
   default_package: settingshelp
   description: 'Irssi settings notes and documentation'
+  language: Perl
   license: 'CC BY-SA 2.5, http://creativecommons.org/licenses/by-sa/2.5/'
   modified: '2022-05-31 12:23:24'
   name: settingshelp

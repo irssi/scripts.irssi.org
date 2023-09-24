@@ -6,6 +6,7 @@
   contact: nathan.handler@gmail.com
   default_package: grepbans
   description: 'Greps the ban list for the specified pattern'
+  language: Perl
   license: GPLv3+
   modified: '2015-09-11 05:11:39'
   name: grepbans

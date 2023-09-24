@@ -7,6 +7,7 @@
   contact: irssi@robert-scheck.de
   default_package: schwaebisch
   description: '/schwäbisch - translates your messages from german to swabian'
+  language: Perl
   license: 'GNU GPL v2'
   modified: '2019-01-30 22:52:13'
   modules: ''

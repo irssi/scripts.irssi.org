@@ -4,6 +4,7 @@
   contact: matti@hiljanen.com
   default_package: wkb
   description: 'A simple word kickbanner'
+  language: Perl
   license: 'Public Domain'
   modified: '2019-03-02 20:57:01'
   name: wkb

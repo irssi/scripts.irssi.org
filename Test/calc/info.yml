@@ -7,6 +7,7 @@
   contact: juerd@juerd.nl
   default_package: calc
   description: 'Simple /calc mechanism'
+  language: Perl
   license: 'Public Domain'
   name: Calculator
   url: http://juerd.nl/irssi/

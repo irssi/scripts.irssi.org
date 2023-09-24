@@ -4,6 +4,7 @@
   contact: 'fedora@leemhuis.info, serge@vanginderachter.be'
   default_package: fnotify
   description: 'Write notifications to a file in a consistent format.'
+  language: Perl
   license: 'GNU General Public License'
   modified: '2019-07-22 21:07:28'
   name: fnotify

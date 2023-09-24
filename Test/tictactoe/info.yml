@@ -7,6 +7,7 @@
   contact: bw1@aol.at
   default_package: tictactoe
   description: 'tic-tac-toe game'
+  language: Perl
   license: LGPLv3
   modified: '2019-12-23 21:22:43'
   modules: Text::ParseWords

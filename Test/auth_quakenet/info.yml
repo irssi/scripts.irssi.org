@@ -4,6 +4,7 @@
   contact: grawity@gmail.com
   default_package: auth_quakenet
   description: "Implements QuakeNet's CHALLENGE authentication"
+  language: Perl
   license: 'WTFPL v2 <http://sam.zoy.org/wtfpl/>'
   modified: '2014-12-18 08:54:54'
   modules:

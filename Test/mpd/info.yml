@@ -7,6 +7,7 @@
   contact: 'diozaka@gmx.de, code@aibor.de, mk@maero.dk'
   default_package: mpd
   description: 'print the song you are listening to'
+  language: Perl
   license: GPLv2
   modified: '2018-04-28 18:08:24'
   name: mpd

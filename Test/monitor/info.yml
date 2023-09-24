@@ -15,6 +15,7 @@
   contact: jilles@stack.nl
   default_package: monitor
   description: 'Interface to ratbox 2.1+ /monitor command'
+  language: Perl
   license: 'BSD (revised)'
   modified: '2014-10-19 11:54:16'
   name: monitor

@@ -9,6 +9,7 @@
     - 'autovoice remove'
   default_package: autovoice
   description: autovoice
+  language: Perl
   license: GPL
   modified: '2019-01-14 16:25:50'
   name: autovoice

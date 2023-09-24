@@ -7,6 +7,7 @@
   contact: 'tss@iki.fi, wouter@coekaerts.be'
   default_package: grep
   description: '/GREP [-i] [-w] [-v] [-F] <perl-regexp> <command to run>'
+  language: Perl
   license: 'Public Domain'
   modified: '2014-10-17 22:54:13'
   name: grep

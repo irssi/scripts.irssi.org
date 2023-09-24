@@ -9,6 +9,7 @@
   contact: qrczak@knm.org.pl
   default_package: linkchan
   description: 'Link several channels on serveral networks'
+  language: Perl
   license: 'GNU GPL'
   modified: '2014-10-17 22:54:13'
   name: LinkChan

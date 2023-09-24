@@ -6,6 +6,7 @@
   contact: 'tss@iki.fi, juerd@juerd.nl, qrczak@knm.org.pl'
   default_package: typofix
   description: 'When someone uses s/foo/bar/, this really modifies the text'
+  language: Perl
   license: 'Same as Irssi'
   modified: '2015-11-16 19:36:52'
   modules:

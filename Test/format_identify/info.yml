@@ -4,6 +4,7 @@
   contact: ben@reser.org
   default_package: format_identify
   description: 'Formats msgs and notices when the identify-msg and/or identify-ctcp capability is available.'
+  language: Perl
   license: GPL2
   modified: '2017-05-08 11:41:48'
   name: format_identify

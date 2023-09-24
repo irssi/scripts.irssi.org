@@ -11,6 +11,7 @@
   contact: irssi-scripts@nospam.mi4.org.uk
   default_package: joininfo
   description: 'Reports WHOIS information and channel list for those who join a channel'
+  language: Perl
   license: 'GPLv2 or later'
   name: joininfo
   url: http://pieter-bas.ijdens.com/irssi/

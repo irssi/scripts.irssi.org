@@ -7,6 +7,7 @@
   contact: dettox@gmail.com
   default_package: credstore
   description: 'store fingerprints of know users so can verify'
+  language: Perl
   license: GPLv3+
   modified: '2015-06-12 21:40:32'
   name: credstore

@@ -5,6 +5,7 @@
   contact: stefan@pico.ruhr.de
   default_package: mood
   description: 'Keeps track of the channel mood'
+  language: Perl
   license: GPLv2
   modified: '2019-01-05 10:14:23'
   name: Mood

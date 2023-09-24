@@ -7,6 +7,7 @@
   contact: 'ferret(tA)explodingferret(moCtoD), ferret on irc.freenode.net'
   default_package: query_whois
   description: 'whois on every query open (and only then)'
+  language: Perl
   licence: 'Public Domain'
   modified: '2018-01-11 11:02:11'
   modules: ''

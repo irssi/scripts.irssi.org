@@ -4,6 +4,7 @@
   contact: bd@bc-bd.org
   default_package: noisyquery
   description: 'Prints an info about a newly started Query in your current window and runs a /whois on the nick.'
+  language: Perl
   license: 'GPL v2'
   modified: '2014-10-19 11:54:16'
   name: noisyquery

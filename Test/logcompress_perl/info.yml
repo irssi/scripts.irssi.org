@@ -5,6 +5,7 @@
   contact: vague!#irssi@fgreenode
   default_package: logcompress_perl
   description: "compress logfiles then they're rotated, modified from original logcompress.pl to use perl modules instead"
+  language: Perl
   license: 'Public Domain'
   modified: '2021-04-10 11:44:52'
   name: logcompress_perl

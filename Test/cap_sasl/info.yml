@@ -3,6 +3,7 @@
   authors: 'Michael Tharp (gxti), Jilles Tjoelker (jilles), Mantas Mikulėnas (grawity)'
   contact: grawity@gmail.com
   description: 'Implements SASL authentication and enables CAP "multi-prefix"'
+  language: Perl
   license: GPLv2
   modified: '2015-12-04 19:11:05'
   modules:

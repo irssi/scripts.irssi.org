@@ -28,6 +28,7 @@
   contact: geert@irssi.org
   default_package: nickserv
   description: 'This script will authorize you into NickServ.'
+  language: Perl
   license: 'GNU General Public License'
   modified: '2018-06-27 19:10:40'
   name: nickserv.pl

@@ -5,6 +5,7 @@
   contact: antti.ruokomaki@mbnet.fi
   default_package: wisestamp
   description: 'If timestamp_timeout is used, the text will be indented when the stamp is hidden'
+  language: Perl
   license: 'Public Domain'
   name: wisestamp
   version: '1.1'

@@ -6,6 +6,7 @@
   contact: bjkro@gmx.de
   default_package: chanpeak
   description: 'Log maximum number of people ever been in a channel'
+  language: Perl
   license: 'Public Domain'
   name: chanpeak
   version: 0.2.2

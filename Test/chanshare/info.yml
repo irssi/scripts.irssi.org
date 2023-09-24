@@ -7,6 +7,7 @@
   contact: tss@iki.fi
   default_package: chanshare
   description: '/CHANSHARE - display people who are in more than one channel with you'
+  language: Perl
   license: 'Public Domain'
   modified: '2019-02-13 21:13:53'
   name: 'chan share'

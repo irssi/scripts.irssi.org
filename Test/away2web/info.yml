@@ -5,6 +5,7 @@
   contact: sorter.irssi-scripts@okko.net
   default_package: away2web
   description: 'Write /away information to a file to be used on web pages'
+  language: Perl
   license: BSD
   modified: '2014-10-17 18:30:46'
   name: away2web

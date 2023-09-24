@@ -10,6 +10,7 @@
   contact: findbot@planet.eu.org
   default_package: findbot
   description: 'Public command @find script'
+  language: Perl
   license: GPL
   modified: '2018-05-22 13:10:54'
   name: Findbot
