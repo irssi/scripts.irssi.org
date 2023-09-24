@@ -1,0 +1,16 @@
+{
+  "problemMatcher": [
+    {
+      "owner": "perl-warning",
+      "severity": "warning",
+      "pattern": [
+	{
+	  "regexp": "^([*] )?(.*) at (.*) line (\\d+)\\.$",
+	  "file": 3,
+	  "line": 4,
+	  "message": 2
+	}
+      ]
+    }
+  ]
+}
