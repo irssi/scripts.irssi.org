@@ -1,7 +1,7 @@
 import irssi
-import typing
-import urllib
 from urllib import request, parse
+
+__version__ = "0.1.0"
 
 IRSSI = {
     "author": "terminaldweller",
@@ -38,7 +38,6 @@ def gotify_sig_handler(*args, **kwargs) -> None:
     server = args[0]
     msg = args[1]
     nick = args[2]
-    address = args[3]
     target = args[4]
     do_push(msg, target, nick, server)
 
