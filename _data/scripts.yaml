@@ -5542,6 +5542,17 @@
   url: http://irssi.org/
   version: '0.02'
 -
+  authors: terminaldweller
+  contact: https://terminaldweller.com
+  description: 'transforms incoming text in the channel'
+  filename: transformer.py
+  language: Python
+  license: 'GPL3 or newer'
+  modified: '2023-09-25 11:08:02'
+  name: transformer
+  url: https://github.com/irssi/scripts.irssi.org
+  version: 0.1.0
+-
   authors: dreg
   contact: dreg@fine.lv
   description: translitiratar
