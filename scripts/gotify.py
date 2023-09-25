@@ -16,8 +16,8 @@ IRSSI = {
 def do_push(
     content: bytes, target: bytes, nick: bytes, server: irssi.IrcServer
 ) -> None:
-    gotify_token = irssi.settings_get_str(b"gotify_token").decode("utf-8")
     gotify_url = irssi.settings_get_str(b"gotify_server_url").decode("utf-8")
+    gotify_token = irssi.settings_get_str(b"gotify_token").decode("utf-8")
     push_priosity = irssi.settings_get_int(b"gotify_push_priority")
 
     form_fields = {
@@ -42,16 +42,18 @@ def gotify_sig_handler(*args, **kwargs) -> None:
     do_push(msg, target, nick, server)
 
 
+def register_signals():
+    gotify_url = irssi.settings_get_str(b"gotify_server_url").decode("utf-8")
+    if gotify_url != "":
+        irssi.signal_add(b"message private", gotify_sig_handler)
+    irssi.signal_add(b"setup changed", setup_changed)
+
+
 def run_on_script_load() -> None:
-    irssi.settings_add_bool(
-        b"misc",
-        b"transformer_debug",
-        False,
-    )
     irssi.settings_add_str(
         b"misc",
         b"gotify_server_url",
-        b"https://gotify.terminaldweller.com",
+        b"",
     )
     irssi.settings_add_int(
         b"misc",
@@ -64,7 +66,11 @@ def run_on_script_load() -> None:
         b"",
     )
 
-    irssi.signal_add(b"message private", gotify_sig_handler)
+    register_signals()
+
+
+def setup_changed():
+    register_signals()
 
 
 run_on_script_load()
