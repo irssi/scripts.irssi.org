@@ -6,7 +6,7 @@ from urllib import request
 __version__ = "0.1.0"
 
 IRSSI = {
-    "author": "terminaldweller",
+    "authors": "terminaldweller",
     "contact": "https://terminaldweller.com",
     "name": "transformer",
     "description": "transforms incoming text in the channel",
