@@ -1,8 +1,9 @@
 import irssi
 import json
-import typing
 import urllib
-from urllib import request, parse
+from urllib import request
+
+__version__ = "0.1.0"
 
 IRSSI = {
     "author": "terminaldweller",
@@ -18,10 +19,8 @@ def do_post(url: str, content: bytes, target: bytes, nick: bytes) -> None:
     api_key = irssi.settings_get_str(b"transformer_api_key")
     api_key = api_key.decode("utf-8")
     model = irssi.settings_get_str(b"transformer_model")
-    role = irssi.settings_get_str(b"transformer_role")
     temp = irssi.settings_get_int(b"transformer_temperature")
     n = irssi.settings_get_int(b"transformer_n")
-    debug = irssi.settings_get_bool(b"transformer_debug")
     prompt_system = irssi.settings_get_str(b"transformer_prompt_system")
     prompt_user = irssi.settings_get_str(b"transformer_prompt_user")
 
@@ -67,7 +66,6 @@ def transformer_sig_handler(*args, **kwargs) -> None:
     server = args[0]
     msg = args[1]
     nick = args[2]
-    address = args[3]
     target = args[4]
     channels = (
         irssi.settings_get_str(b"transformer_channel_list").decode("utf-8").split(" ")
@@ -111,7 +109,12 @@ def run_on_script_load() -> None:
     irssi.settings_add_str(
         b"misc",
         b"transformer_prompt_system",
-        b"if you can't translate parts of the provided text use the original piece of text. the text will ocassionally inlcude URLs. if the original text is in the target language, return an empty response. Do not ask for follow up question.",
+        (
+            b"if you can't translate parts of the provided text use the original"
+            b" piece of text. the text will ocassionally inlcude URLs. if the original"
+            b" text is in the target language, return an empty response."
+            b" Do not ask for follow up question."
+        ),
     )
     irssi.settings_add_str(
         b"misc",
