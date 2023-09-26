@@ -2181,6 +2181,17 @@
   url: https://scripts.irssi.org/
   version: '2.01'
 -
+  authors: terminaldweller
+  contact: https://terminaldweller.com
+  description: 'sends push notifications via gotify'
+  filename: gotify.py
+  language: Python
+  license: 'GPL3 or newer'
+  modified: '2023-09-26 15:58:55'
+  name: gotify
+  url: https://github.com/irssi/scripts.irssi.org
+  version: 0.1.0
+-
   authors: 'original idea by valvoline, irssi porting by pallotron'
   commands: 'about erasepass greets manual setpass validate verify'
   contact: pallotron@freaknet.org
