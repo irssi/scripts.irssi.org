@@ -226,7 +226,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                    ido_switcher ](Test/ido_switcher/)|  ✔   |  ✔   |  ✔   |  1   |  ✔   | (c)
 [                  email_privmsgs ](Test/email_privmsgs/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                            grep ](Test/grep/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                     transformer ](Test/transformer/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
+[                     transformer ](Test/transformer/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                       twsocials ](Test/twsocials/)|  ✔   |  ✔   |  ✔   | 16   |  ✔   | (c)
 [                     showhilight ](Test/showhilight/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                           eliza ](Test/eliza/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -266,6 +266,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                     screen_away ](Test/screen_away/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        listsort ](Test/listsort/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                     accountname ](Test/accountname/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                          gotify ](Test/gotify/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
 [          bitlbee_tab_completion ](Test/bitlbee_tab_completion/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                  mailcheck_imap ](Test/mailcheck_imap/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                     binary_time ](Test/binary_time/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -556,4 +557,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                          target ](Test/target/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                  mh_sbsplitmode ](Test/mh_sbsplitmode/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
 
-138a93c9ac6c77adaa63eec60d2fbc651c91804e | 2023-09-25T16:30:52,997926463+00:00
+4a33e614ec524fb14e42e4306e4780c6a3dc063c | 2023-09-26T20:02:52,220766085+00:00
