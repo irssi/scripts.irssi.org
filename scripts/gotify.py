@@ -39,14 +39,9 @@ def gotify_sig_handler(*args, **kwargs) -> None:
     msg = args[1]
     nick = args[2]
     target = args[4]
-    do_push(msg, target, nick, server)
-
-
-def register_signals():
     gotify_url = irssi.settings_get_str(b"gotify_server_url").decode("utf-8")
     if gotify_url != "":
-        irssi.signal_add(b"message private", gotify_sig_handler)
-    irssi.signal_add(b"setup changed", setup_changed)
+        do_push(msg, target, nick, server)
 
 
 def run_on_script_load() -> None:
@@ -66,11 +61,7 @@ def run_on_script_load() -> None:
         b"",
     )
 
-    register_signals()
-
-
-def setup_changed():
-    register_signals()
+    irssi.signal_add(b"message private", gotify_sig_handler)
 
 
 run_on_script_load()
