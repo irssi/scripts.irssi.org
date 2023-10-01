@@ -4802,11 +4802,11 @@
   filename: scriptassist.pl
   language: Perl
   license: GPLv2
-  modified: '2022-05-31 20:44:38'
+  modified: '2023-09-24 22:40:13'
   modules: LWP::UserAgent
   name: scriptassist
   url: https://scripts.irssi.org/
-  version: '2022053100'
+  version: '2023091200'
 -
   authors: "Maciek 'fahren' Freudenheim"
   contact: fahren@bochnia.pl
