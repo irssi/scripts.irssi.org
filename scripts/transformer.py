@@ -72,7 +72,6 @@ def do_post(content: bytes, target: bytes, nick: bytes) -> None:
     try:
         resp = request.urlopen(req, timeout=timeout)
         json_response = json.load(resp)
-        print(json_response)
         window = irssi.window_find_item(target)
         trans_header = irssi.settings_get_str(b"transformer_header")
         trans_header = trans_header.decode("utf-8")
