@@ -1,0 +1,10 @@
+---
+-
+  authors: Nei
+  default_package: nickcolor_expando_simple
+  description: 'provide a simple hash based $nickcolor expando'
+  language: Perl
+  license: ISC
+  modified: '2023-10-04 08:19:16'
+  name: nickcolor_expando_simple
+  version: 0.0.2

@@ -1,0 +1,1 @@
+scripts/nickcolor_expando_simple.pl: "die" used instead of "croak" at line 13, column 1.  See page 283 of PBP.  (Severity: 3)

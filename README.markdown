@@ -302,6 +302,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                        iraident ](Test/iraident/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
 [                        showmode ](Test/showmode/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                           query ](Test/query/)|  ✔   |  ✔   |  ✔   | 22   |  ✔   | (c)
+[        nickcolor_expando_simple ](Test/nickcolor_expando_simple/)|  ✔   |  ✔   |  ✔   |  2   |  ✔   
 [            mailcheck_pop3_kimmo ](Test/mailcheck_pop3_kimmo/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                            nact ](Test/nact/)|  ✔   |  ✔   |  ✔   | 12   |  ✔   | (c)
 [                     send_scroll ](Test/send_scroll/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
@@ -391,7 +392,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                         conceal ](Test/conceal/)|  ✔   |  ✔   |  ✔   |  2   |  ✔   | (c)
 [                       securemsg ](Test/securemsg/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                 defaultchanmode ](Test/defaultchanmode/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                        no_opmsg ](Test/no_opmsg/)|  ✔   |  ✔   |  ✔   |  2   |  ✔   
+[                        no_opmsg ](Test/no_opmsg/)|  ✔   |  ✔   |  ✔   |  2   |  ✔   | (c)
 [                       perlalias ](Test/perlalias/)|  ✔   |  ✔   |  ✔   |  8   |  ✔   | (c)
 [                        highlite ](Test/highlite/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                     sb_position ](Test/sb_position/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
@@ -558,4 +559,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                        trackbar ](Test/trackbar/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                     transformer ](Test/transformer/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 
-50dffed7dd9923f3ccd478775d478feede1d3980 | 2023-11-28T19:12:48,502118484+00:00
+db1e41079bd749d268ddcaa5a1541e4ba6927b0e | 2023-11-28T19:16:09,260689910+00:00
