@@ -1,0 +1,12 @@
+---
+-
+  authors: Nei
+  contact: 'Nei @ anti@conference.jabber.teamidiot.de'
+  default_package: no_opmsg
+  description: 'Kill incoming op messages.'
+  language: Perl
+  license: ISC
+  modified: '2023-10-11 15:21:11'
+  name: no_opmsg
+  url: http://anti.teamidiot.de/
+  version: '0.1'

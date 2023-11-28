@@ -276,7 +276,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                         typofix ](Test/typofix/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
 [                      amarok_ssh ](Test/amarok_ssh/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                      scriptsave ](Test/scriptsave/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                          gotify ](Test/gotify/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
+[                          gotify ](Test/gotify/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                     upgradeinfo ](Test/upgradeinfo/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                  friends_shasta ](Test/friends_shasta/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
 [                          Cirssi ](Test/Cirssi/)|  ✔   |  ✔   |  ✔   | 31   |  ✔   | (c)
@@ -391,6 +391,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                         conceal ](Test/conceal/)|  ✔   |  ✔   |  ✔   |  2   |  ✔   | (c)
 [                       securemsg ](Test/securemsg/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                 defaultchanmode ](Test/defaultchanmode/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                        no_opmsg ](Test/no_opmsg/)|  ✔   |  ✔   |  ✔   |  2   |  ✔   
 [                       perlalias ](Test/perlalias/)|  ✔   |  ✔   |  ✔   |  8   |  ✔   | (c)
 [                        highlite ](Test/highlite/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                     sb_position ](Test/sb_position/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
@@ -557,4 +558,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                        trackbar ](Test/trackbar/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                     transformer ](Test/transformer/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 
-eab3803cd7f525d9452c886c3240e99be278f061 | 2023-11-28T19:10:21,982306024+00:00
+50dffed7dd9923f3ccd478775d478feede1d3980 | 2023-11-28T19:12:48,502118484+00:00
