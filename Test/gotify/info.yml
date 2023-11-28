@@ -6,7 +6,7 @@
   description: 'sends push notifications via gotify'
   language: Python
   license: 'GPL3 or newer'
-  modified: '2023-09-26 15:58:55'
+  modified: '2023-11-17 15:58:54'
   name: gotify
   url: https://github.com/irssi/scripts.irssi.org
-  version: 0.1.0
+  version: 0.2.0

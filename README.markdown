@@ -205,7 +205,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                      crapbuster ](Test/crapbuster/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                           theme ](Test/theme/)|  ✔   |  ✔   |  ✔   | 20   |  ✔   | (c)
 [                         awaybar ](Test/awaybar/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                    scriptassist ](Test/scriptassist/)|  ✔   |  ✔   |  ✔   | 60   |  ✔   
+[                    scriptassist ](Test/scriptassist/)|  ✔   |  ✔   |  ✔   | 60   |  ✔   | (c)
 [                         monitor ](Test/monitor/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                       bansearch ](Test/bansearch/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                      uberprompt ](Test/uberprompt/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
@@ -276,7 +276,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                         typofix ](Test/typofix/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
 [                      amarok_ssh ](Test/amarok_ssh/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                      scriptsave ](Test/scriptsave/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                          gotify ](Test/gotify/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
+[                          gotify ](Test/gotify/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
 [                     upgradeinfo ](Test/upgradeinfo/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                  friends_shasta ](Test/friends_shasta/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
 [                          Cirssi ](Test/Cirssi/)|  ✔   |  ✔   |  ✔   | 31   |  ✔   | (c)
@@ -557,4 +557,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                        trackbar ](Test/trackbar/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                     transformer ](Test/transformer/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 
-1d3aeea685281c8375c48b794c5bcf85ed985c7c | 2023-11-28T19:06:08,153304570+00:00
+eab3803cd7f525d9452c886c3240e99be278f061 | 2023-11-28T19:10:21,982306024+00:00
