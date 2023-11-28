@@ -1,5 +1,6 @@
 use Irssi;
 use strict;
+use warnings;
 
 our $VERSION = "1.0.0";
 our %IRSSI = (
@@ -49,5 +50,4 @@ Irssi::settings_add_str('misc','trivia_list','');
 Irssi::signal_add('window changed' => 'window_changed_handler');
 Irssi::signal_add('setup changed' => 'setup_changed');
 
-%trivia_list = map { my @temp = split(',', $_); $temp[0] => $temp[1] } split(' ', Irssi::settings_get_str('trivia_list'));
-Irssi::print(%trivia_list);
+setup_changed
