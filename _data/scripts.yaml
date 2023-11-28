@@ -3872,6 +3872,17 @@
   url: http://anti.teamidiot.de/
   version: '2.1'
 -
+  authors: Nei
+  contact: 'Nei @ anti@conference.jabber.teamidiot.de'
+  description: 'Kill incoming op messages.'
+  filename: no_opmsg.pl
+  language: Perl
+  license: ISC
+  modified: '2023-10-11 15:21:11'
+  name: no_opmsg
+  url: http://anti.teamidiot.de/
+  version: '0.1'
+-
   authors: 'JamesOff, Ion'
   contact: james@jamesoff.net
   description: 'Replaces lines in ALL CAPS with something easier on the eyes'
