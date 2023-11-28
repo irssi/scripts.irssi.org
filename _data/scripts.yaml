@@ -3771,6 +3771,15 @@
   name: nickcolor_expando
   version: 0.4.0
 -
+  authors: Nei
+  description: 'provide a simple hash based $nickcolor expando'
+  filename: nickcolor_expando_simple.pl
+  language: Perl
+  license: ISC
+  modified: '2023-10-04 08:19:16'
+  name: nickcolor_expando_simple
+  version: 0.0.2
+-
   description: 'colourise nicks'
   filename: nickcolor_gay.pl
   language: Perl
