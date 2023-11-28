@@ -1,8 +1,9 @@
 use Irssi;
 use strict;
 use warnings;
+use v5.36;
 
-our $VERSION = "1.0.0";
+our $VERSION = "1.0.1";
 our %IRSSI = (
     authors     => 'terminaldweller',
     contact     => 'https://terminaldweller.com',
@@ -18,9 +19,20 @@ my $trivia = "";
 sub window_changed_handler {
     my $window = Irssi::active_win();
     my $server = Irssi::active_server();
-    my $current_window_item_string = $server->{tag}."/".$window->{active}->{name};
+    my $window_name = "";
+    my $server_tag = "";
 
-    if ($window && $window->{active}->{name} eq "") {
+    if (exists  $server->{tag}) {
+        $server_tag = $server->{tag};
+    }
+    
+    if (exists $window->{active}->{name}) {
+        $window_name = $window->{active}->{name};
+    }
+
+    my $current_window_item_string = $server_tag."/".$window_name;
+
+    if ($window && $window_name eq "") {
         $trivia = "Irssi";
         return;
     }
@@ -50,4 +62,4 @@ Irssi::settings_add_str('misc','trivia_list','');
 Irssi::signal_add('window changed' => 'window_changed_handler');
 Irssi::signal_add('setup changed' => 'setup_changed');
 
-setup_changed
+setup_changed;
