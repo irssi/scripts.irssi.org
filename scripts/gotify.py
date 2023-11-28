@@ -1,7 +1,7 @@
 import irssi
 from urllib import request, parse
 
-__version__ = "0.1.0"
+__version__ = "0.2.0"
 
 IRSSI = {
     "authors": "terminaldweller",
@@ -19,6 +19,7 @@ def do_push(
     gotify_url = irssi.settings_get_str(b"gotify_server_url").decode("utf-8")
     gotify_token = irssi.settings_get_str(b"gotify_token").decode("utf-8")
     push_priosity = irssi.settings_get_int(b"gotify_push_priority")
+    timeout = irssi.settings_get_int(b"gotify_timeout")
 
     form_fields = {
         "title": "irssi",
@@ -31,7 +32,7 @@ def do_push(
     url = gotify_url + f"/message?token={gotify_token}"
 
     req = request.Request(url, data=data, method="POST")
-    request.urlopen(req)
+    request.urlopen(req, timeout=timeout)
 
 
 def gotify_sig_handler(*args, **kwargs) -> None:
@@ -54,6 +55,11 @@ def run_on_script_load() -> None:
         b"misc",
         b"gotify_push_priority",
         10,
+    )
+    irssi.settings_add_int(
+        b"misc",
+        b"gotify_timeout",
+        5,
     )
     irssi.settings_add_str(
         b"misc",
