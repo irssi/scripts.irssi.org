@@ -5,7 +5,7 @@
 
 use strict;
 
-our $VERSION = '2023091200';
+our $VERSION = '2023111700';
 our %IRSSI = (
     authors     => 'Stefan \'tommie\' Tomanek',
     contact     => 'stefan@pico.ruhr.de',
@@ -356,6 +356,8 @@ sub script_info {
 
 sub get_rate_url {
     my ($src) = @_;
+    if (ref $src) { ($src) = grep { $_ } map { $_->{source} } values %$src; }
+    die("No script source address found\n") unless $src;
     my $ua = LWP::UserAgent->new(env_proxy=>1, keep_alive=>1, timeout=>30);
     $ua->agent('ScriptAssist/'.$VERSION);
     my $request = HTTP::Request->new('GET', $src);
@@ -363,6 +365,9 @@ sub get_rate_url {
     unless ($response->is_success) {
 	my $error = join "\n", $response->status_line(), (grep / at .* line \d+/, split "\n", $response->content()), '';
 	die("Fetching ratings location failed: $error");
+    }
+    if (my $error = $response->header('X-Died')) {
+	die("$error\n");
     }
     my $votes_url;
     for my $tag ($response->content() =~ /<script([^>]*)>/g) {
@@ -375,7 +380,7 @@ sub get_rate_url {
     }
     $request = HTTP::Request->new('GET', $votes_url);
     $response = $ua->request($request);
-    if (!$response->is_success) {
+    if (!$response->is_success || $response->header('X-Died')) {
 	my $error = join "\n", $response->status_line(), (grep / at .* line \d+/, split "\n", $response->content()), '';
 	die("Fetching ratings failed: $error");
     }
@@ -387,7 +392,7 @@ sub get_rate_url {
 sub rate_script {
     my ($script, $stars) = @_;
     my $xml = get_scripts();
-    my $votes = get_rate_url(map { $_->{source} } values %$xml);
+    my $votes = get_rate_url($xml);
     my $n = get_names($script, $xml, $votes);
     die "Script $script not found\n" unless $n->{votes};
     return $n->{votes}{u}
@@ -396,7 +401,7 @@ sub rate_script {
 sub get_ratings {
     my ($scripts, $limit) = @_;
     my $xml = get_scripts();
-    my $votes = get_rate_url(map { $_->{source} } values %$xml);
+    my $votes = get_rate_url($xml);
     foreach (keys %{$votes}) {
 	if ($xml->{$_}) {
 	    $xml->{$_}{votes} = $votes->{$_}{v};
@@ -968,6 +973,10 @@ sub get_scripts {
 	    $error = join "\n", $response->status_line(), (grep / at .* line \d+/, split "\n", $response->content()), '';
 	    next;
 	}
+	if (my $died = $response->header('X-Died')) {
+	    $error = $died;
+	    next;
+	}
 	$fetched = 1;
 	my $data = $response->content();
 	my $src = $site;
@@ -1117,7 +1126,7 @@ sub download_script {
     $ua->agent('ScriptAssist/'.2003020803);
     my $request = HTTP::Request->new('GET', $site.'/scripts/'.$n->{plname});
     my $response = $ua->request($request);
-    if ($response->is_success()) {
+    if ($response->is_success() && !$response->header('X-Died')) {
 	my $file = $response->content();
 	mkdir $dir.'/scripts/' unless (-e $dir.'/scripts/');
 	open(my $f, '>', $dir.'/scripts/'.$n->{plname}.'.new');
@@ -1128,7 +1137,7 @@ sub download_script {
 	    $ua->agent('ScriptAssist/'.2003020803);
 	    my $request2 = HTTP::Request->new('GET', $site.'/signatures/'.$n->{plname}.'.asc');
 	    my $response2 = $ua->request($request2);
-	    if ($response2->is_success()) {
+	    if ($response2->is_success() && !$response->header('X-Died')) {
 		my $sig_dir = $dir.'/scripts/signatures/';
 		mkdir $sig_dir unless (-e $sig_dir);
 		open(my $s, '>', $sig_dir.$n->{plname}.'.asc');
