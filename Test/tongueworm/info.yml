@@ -8,9 +8,9 @@
   description: 'rewrites the input line using openai chatgpt'
   language: Perl
   license: 'GPL3 or newer'
-  modified: '2023-07-03 23:53:33'
+  modified: '2023-11-20 19:34:26'
   modules:
     - LWP::UserAgent
   name: tongueworm
   url: https://github.com/irssi/scripts.irssi.org
-  version: '0.1'
+  version: 1.0.0
