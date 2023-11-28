@@ -1,0 +1,25 @@
+scripts/transformer.py:3:1: F401 'typing' imported but unused
+import typing
+^
+scripts/transformer.py:5:1: F401 'urllib.parse' imported but unused
+from urllib import request, parse
+^
+scripts/transformer.py:19:1: C901 'do_post' is too complex (11)
+def do_post(content: bytes, target: bytes, nick: bytes) -> None:
+^
+scripts/transformer.py:23:5: F841 local variable 'debug' is assigned to but never used
+    debug = irssi.settings_get_bool(b"transformer_debug")
+    ^
+scripts/transformer.py:38:9: F841 local variable 'role' is assigned to but never used
+        role = irssi.settings_get_str(b"transformer_role")
+        ^
+scripts/transformer.py:106:5: F841 local variable 'address' is assigned to but never used
+    address = args[3]
+    ^
+scripts/transformer.py:150:128: E501 line too long (243 > 127 characters)
+        b"if you can't translate parts of the provided text use the original piece of text. the text will ocassionally inlcude URLs. if the original text is in the target language, return an empty response. Do not ask for follow up question.",
+                                                                                                                               ^
+1     C901 'do_post' is too complex (11)
+1     E501 line too long (243 > 127 characters)
+2     F401 'typing' imported but unused
+3     F841 local variable 'debug' is assigned to but never used

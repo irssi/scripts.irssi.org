@@ -302,7 +302,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                        iraident ](Test/iraident/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
 [                        showmode ](Test/showmode/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                           query ](Test/query/)|  ✔   |  ✔   |  ✔   | 22   |  ✔   | (c)
-[        nickcolor_expando_simple ](Test/nickcolor_expando_simple/)|  ✔   |  ✔   |  ✔   |  2   |  ✔   
+[        nickcolor_expando_simple ](Test/nickcolor_expando_simple/)|  ✔   |  ✔   |  ✔   |  2   |  ✔   | (c)
 [            mailcheck_pop3_kimmo ](Test/mailcheck_pop3_kimmo/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                            nact ](Test/nact/)|  ✔   |  ✔   |  ✔   | 12   |  ✔   | (c)
 [                     send_scroll ](Test/send_scroll/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
@@ -557,6 +557,6 @@ See [the testing read-me](../master/_testing/) for details.
 [                        scrmable ](Test/scrmable/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                           spell ](Test/spell/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        trackbar ](Test/trackbar/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
-[                     transformer ](Test/transformer/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
+[                     transformer ](Test/transformer/)|  ✔   |  ✔   |  ✔   | 25   |  ✔   
 
-db1e41079bd749d268ddcaa5a1541e4ba6927b0e | 2023-11-28T19:16:09,260689910+00:00
+e1bbfa29e159995ca3a6083918018761162fc1de | 2023-11-28T19:51:32,841571792+00:00
