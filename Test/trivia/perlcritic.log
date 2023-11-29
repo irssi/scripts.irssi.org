@@ -1,0 +1,1 @@
+scripts/trivia.pl: String delimiter used with "split" at line 54, column 37.  Express it as a regex instead.  (Severity: 2)

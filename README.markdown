@@ -29,6 +29,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                        chansync ](Test/chansync/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        chanpeak ](Test/chanpeak/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                      noisyquery ](Test/noisyquery/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                          trivia ](Test/trivia/)|  ✔   |  ✔   |  ✔   |  1   |  ✔   
 [                        quitrand ](Test/quitrand/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                  colorize_nicks ](Test/colorize_nicks/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                            xdcc ](Test/xdcc/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
@@ -557,6 +558,6 @@ See [the testing read-me](../master/_testing/) for details.
 [                        scrmable ](Test/scrmable/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                           spell ](Test/spell/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        trackbar ](Test/trackbar/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
-[                     transformer ](Test/transformer/)|  ✔   |  ✔   |  ✔   | 25   |  ✔   
+[                     transformer ](Test/transformer/)|  ✔   |  ✔   |  ✔   | 25   |  ✔   | (c)
 
-e1bbfa29e159995ca3a6083918018761162fc1de | 2023-11-28T19:51:32,841571792+00:00
+af772f74153fc02c3a5fdd1026dec3f2f720d301 | 2023-11-29T12:45:02,305152558+00:00

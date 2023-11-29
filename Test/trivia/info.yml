@@ -1,0 +1,12 @@
+---
+-
+  authors: terminaldweller
+  contact: https://terminaldweller.com
+  default_package: trivia
+  description: 'lets you add trivial info for a window as a expando'
+  language: Perl
+  license: 'GPL3 or newer'
+  modified: '2023-11-28 18:27:08'
+  name: trivia
+  url: https://github.com/irssi/scripts.irssi.org
+  version: 1.0.1
