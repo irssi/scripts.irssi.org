@@ -5606,6 +5606,17 @@
   url: http://wouter.coekaerts.be/irssi/
   version: 1.3.1
 -
+  authors: terminaldweller
+  contact: https://terminaldweller.com
+  description: 'lets you add trivial info for a window as a expando'
+  filename: trivia.pl
+  language: Perl
+  license: 'GPL3 or newer'
+  modified: '2023-11-28 18:27:08'
+  name: trivia
+  url: https://github.com/irssi/scripts.irssi.org
+  version: 1.0.1
+-
   authors: "Stefan 'tommie' Tomanek"
   commands: trustweb
   contact: stefan@pico.ruhr.de
