@@ -2,7 +2,7 @@ use strict;
 use warnings;
 use Irssi;
 
-our $VERSION = '1.0';
+our $VERSION = '1.1';
 our %IRSSI = (
     authors     => 'Juha Kesti',
     contact     => 'nauski@nauski.com',
@@ -27,21 +27,13 @@ sub bold_first_three {
 
     return join(' ', @processed_words);
 }
-sub outgoing_msg_handler {
-    my ($msg, $server, $witem) = @_;
-    if (defined $witem && ($witem->{type} eq "CHANNEL" || $witem->{type} eq "QUERY")) {
-        my $new_msg = bold_first_three($msg);
-        $witem->command("msg -channel " . $witem->{name} . " $new_msg");
-        Irssi::signal_stop();
-    }
-}
 
-sub incoming_msg_handler {
+sub message_handler {
     my ($server, $msg, $nick, $address, $target) = @_;
     my $new_msg = bold_first_three($msg);
     Irssi::signal_continue($server, $new_msg, $nick, $address, $target);
 }
 
-Irssi::signal_add('send text', 'outgoing_msg_handler');
-Irssi::signal_add('message public', 'incoming_msg_handler');
+Irssi::signal_add_first('message public', 'message_handler');
+Irssi::signal_add_first('message own_public', 'message_handler');
 
