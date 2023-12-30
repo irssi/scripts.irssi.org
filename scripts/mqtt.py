@@ -1,3 +1,4 @@
+"""mqtt.py, sends yur privmsgs over mqtt"""
 import irssi
 import paho.mqtt.client as mqtt
 import threading
@@ -47,11 +48,6 @@ def publish(
     )
     client.on_connect = on_connect
     client.on_message = on_message
-    mqtt_server = irssi.settings_get_str(b"mqtt_server")
-    mqtt_port = irssi.settings_get_int(b"mqtt_port")
-    mqtt_topic = irssi.settings_get_str(b"mqtt_topic")
-    mqtt_pass = irssi.settings_get_str(b"mqtt_pass")
-    mqtt_retain = irssi.settings_get_bool(b"mqtt_retain")
 
     threading.Thread(target=work(client, content)).start()
 
