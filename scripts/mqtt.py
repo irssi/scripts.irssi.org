@@ -1,5 +1,4 @@
 import irssi
-import asyncio
 import paho.mqtt.client as mqtt
 import threading
 
@@ -55,24 +54,6 @@ def publish(
     mqtt_retain = irssi.settings_get_bool(b"mqtt_retain")
 
     threading.Thread(target=work(client, content)).start()
-    # @args = ("mosquitto_pub", "-h", $MQTTServ, "-p", $MQTTPort, "-q", $MQTTQoS, "-I", $MQTTClient, "-u", $MQTTUser, "-P", $MQTTPass, "-t", $MQTTTopic,);
-    # await asyncio.create_subprocess_exec(
-    #     "mosquitto_pub",
-    #     "-h",
-    #     mqtt_server,
-    #     "-p",
-    #     repr(mqtt_port),
-    #     "-P",
-    #     mqtt_pass,
-    #     "-t",
-    #     mqtt_topic.decode("utf-8"),
-    #     "-m",
-    #     content.decode("utf-8"),
-    #     stdout=asyncio.subprocess.PIPE,
-    #     stderr=asyncio.subprocess.PIPE,
-    # )
-    # task = asyncio.create_task(work(client, content))
-    # await asyncio.sleep(0)
 
 
 def mqtt_sig_handler(*args, **kwargs) -> None:
