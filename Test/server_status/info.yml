@@ -1,0 +1,12 @@
+---
+-
+  authors: terminaldweller
+  contact: https://terminaldweller.com
+  default_package: server_status
+  description: 'gives you the count of connected and unconnected servers as an expando'
+  language: Perl
+  license: 'GPL3 or newer'
+  modified: '2023-12-05 23:29:57'
+  name: server_status
+  url: https://github.com/irssi/scripts.irssi.org
+  version: 1.0.0
