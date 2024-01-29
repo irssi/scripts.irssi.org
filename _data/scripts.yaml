@@ -4924,6 +4924,17 @@
   url: https://vague.se
   version: '0.2'
 -
+  authors: terminaldweller
+  contact: https://terminaldweller.com
+  description: 'gives you the count of connected and unconnected servers as an expando'
+  filename: server_status.pl
+  language: Perl
+  license: 'GPL3 or newer'
+  modified: '2023-12-05 23:29:57'
+  name: server_status
+  url: https://github.com/irssi/scripts.irssi.org
+  version: 1.0.0
+-
   authors: 'Adrian Keet & John Sullivan'
   contact: johnsullivan.pem@gmail.com
   description: 'Implements the IRCv3 "server-time" capability'
