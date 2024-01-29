@@ -1,0 +1,15 @@
+scripts/yourls.py:2:1: F401 'asyncio' imported but unused
+import asyncio
+^
+scripts/yourls.py:36:128: E501 line too long (207 > 127 characters)
+        url_pattern = r"(?i)\b((?:https?://|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:'\".,<>?«»“”‘’]))"
+                                                                                                                               ^
+scripts/yourls.py:50:128: E501 line too long (203 > 127 characters)
+    url_pattern = r"(?i)\b((?:https?://|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:'\".,<>?«»“”‘’]))"
+                                                                                                                               ^
+scripts/yourls.py:62:5: F841 local variable 'data' is assigned to but never used
+    data = parse.urlencode(form_fields).encode("utf-8")
+    ^
+2     E501 line too long (207 > 127 characters)
+1     F401 'asyncio' imported but unused
+1     F841 local variable 'data' is assigned to but never used

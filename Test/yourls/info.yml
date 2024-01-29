@@ -1,0 +1,12 @@
+---
+-
+  authors: terminaldweller
+  contact: https://terminaldweller.com
+  default_package: yourls
+  description: 'uses yourls to shorten urls'
+  language: Python
+  license: 'GPL3 or newer'
+  modified: '2023-12-30 10:38:41'
+  name: yourls
+  url: https://github.com/irssi/scripts.irssi.org
+  version: 1.0.0
