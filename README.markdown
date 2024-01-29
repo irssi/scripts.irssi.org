@@ -314,6 +314,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                              ls ](Test/ls/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                            file ](Test/file/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
 [                       beep_beep ](Test/beep_beep/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                       speedread ](Test/speedread/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
 [                         tinyurl ](Test/tinyurl/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        tab_stop ](Test/tab_stop/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                       mouse-awl ](Test/mouse-awl/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -375,7 +376,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                        opnotice ](Test/opnotice/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [            mailcheck_pop3_kimmo ](Test/mailcheck_pop3_kimmo/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                         leodict ](Test/leodict/)|  ✔   |  ✔   |  ✔   |  8   |  ✔   | (c)
-[                          yourls ](Test/yourls/)|  ✔   |  ✔   |  ✔   | 14   |  ✔   
+[                          yourls ](Test/yourls/)|  ✔   |  ✔   |  ✔   | 14   |  ✔   | (c)
 [                             dns ](Test/dns/)|  ✔   |  ✔   |  ✔   |  8   |  ✔   | (c)
 [                  autoclearinput ](Test/autoclearinput/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        linkchan ](Test/linkchan/)|  ✔   |  ✔   |  ✔   | 32   |  ✔   | (c)
@@ -562,4 +563,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                       autostuff ](Test/autostuff/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                      banaffects ](Test/banaffects/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-e02802deabaeda19329a93164aed47ff0b80cc4e | 2024-01-29T15:51:58,700692316+00:00
+a8931f2e751195908f20d41067b276a3c3615960 | 2024-01-29T17:01:10,937766939+00:00
