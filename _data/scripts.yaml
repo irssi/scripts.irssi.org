@@ -3622,6 +3622,17 @@
   url: http://github.com/dm8tbr/irssi-mqtt-notify/
   version: '1.0'
 -
+  authors: terminaldweller
+  contact: https://terminaldweller.com
+  description: 'publish messages on mqtt'
+  filename: mqtt.py
+  language: Python
+  license: 'GPL3 or newer'
+  modified: '2024-01-30 11:53:01'
+  name: mqtt
+  url: https://github.com/irssi/scripts.irssi.org
+  version: 0.1.1
+-
   authors: 'Morten Lied Johansen'
   commands: msg2notice
   contact: mortenjo@ifi.uio.no
