@@ -79,6 +79,11 @@ jobs:
           pushd auto
           cpanm --quiet --installdeps --notest .
           popd
+      - name: auto-install python script dependencies
+        run: |
+          pip install pipreqs
+          ./_testing/autoinstall-python-prereqs.zsh
+          pip install -r pipreqs_scan/requirements.txt
       - name: run tests
         run: |
           ./_testing/run-test.zsh
