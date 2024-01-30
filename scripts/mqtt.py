@@ -3,7 +3,7 @@ import irssi
 import paho.mqtt.client as mqtt
 import threading
 
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 
 IRSSI = {
     "authors": "terminaldweller",
