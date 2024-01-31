@@ -2,12 +2,12 @@ use Irssi;
 use strict;
 use warnings;
 
-our $VERSION = "1.0.0";
+our $VERSION = "1.0.1";
 our %IRSSI = (
     authors     => 'terminaldweller',
     contact     => 'https://terminaldweller.com',
     name        => 'holes',
-    description => 'gives a list of of the open sockets as an expando(this makes sense only if irssi is in a container)',
+    description => 'gives a list of of the open sockets as an expando(this makes sense only if irssi is in an application container)',
     license     => 'GPL3 or newer',
     url         => 'https://github.com/irssi/scripts.irssi.org',
 );
@@ -17,7 +17,7 @@ Irssi::settings_add_str('misc', 'holes_separator', '');
 my $holes = "";
 my $timeout;
 my $holes_cmd = << 'HOLES_CMD';
-lsof | grep socket | awk '{print $4}' | awk 'BEGIN{FS=":"}{print $2}' | tr -d [] | uniq
+netstat -ntap 2>/dev/null | awk '{print $4}' | awk 'BEGIN{FS=":"}{print $2}' | sed '/^$/d'
 HOLES_CMD
 
 sub uniq {
@@ -31,16 +31,15 @@ sub holes_sub {
     my $output = `$holes_cmd`;
     my $sep = Irssi::parse_special(Irssi::settings_get_str('holes_separator'));
     my @lines = split /\n/, $output;
-    my @lines = uniq(@lines);
+    @lines = uniq(@lines);
     $holes = '';
     $result = @lines;
     foreach my $line (@lines) {
-        if ($result == "") {
+        if ($result eq "") {
             $result = $line
         }
         $result = $result.$sep.$line
     }
-    # $result =~ s/^\s+//;
     $holes= $result;
     $timeout = Irssi::timeout_add_once(Irssi::settings_get_int('holes_frequency'), 'holes_sub' , undef);
 }
