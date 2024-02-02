@@ -35,9 +35,6 @@ sub holes_sub {
     $holes = '';
     $result = @lines;
     foreach my $line (@lines) {
-        if ($result eq "") {
-            $result = $line
-        }
         $result = $result.$sep.$line
     }
     $holes= $result;
