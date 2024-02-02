@@ -1,0 +1,12 @@
+---
+-
+  authors: terminaldweller
+  contact: https://terminaldweller.com
+  default_package: holes
+  description: 'gives a list of of the open sockets as an expando(this makes sense only if irssi is in an application container)'
+  language: Perl
+  license: 'GPL3 or newer'
+  modified: '2024-02-01 19:56:47'
+  name: holes
+  url: https://github.com/irssi/scripts.irssi.org
+  version: 1.0.1

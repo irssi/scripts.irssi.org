@@ -410,7 +410,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                        translit ](Test/translit/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                logcompress_perl ](Test/logcompress_perl/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                             cap ](Test/cap/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                            mqtt ](Test/mqtt/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
+[                            mqtt ](Test/mqtt/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                       autostuff ](Test/autostuff/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        localize ](Test/localize/)|  ✔   |  ✔   |  ✔   | 25   |  ✔   | (c)
 [               mirc_colour_popup ](Test/mirc_colour_popup/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
@@ -434,6 +434,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                        beepaway ](Test/beepaway/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        ez_color ](Test/ez_color/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                           xlist ](Test/xlist/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                           holes ](Test/holes/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   
 [                           mkick ](Test/mkick/)|  ✔   |  ✔   |  ✔   | 30   |  ✔   | (c)
 [                              nm ](Test/nm/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
 [                      scripthelp ](Test/scripthelp/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -564,4 +565,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                       netswitch ](Test/netswitch/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                            hide ](Test/hide/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-348b3602d2aa6b81af8eea70f7d5fb8f2be35b1b | 2024-01-30T18:14:29,840073357+00:00
+2e9f65086346292f77a35ed2f60a8647ddb8ce7b | 2024-02-02T09:40:30,639674569+00:00
