@@ -2451,6 +2451,17 @@
   url: http://juerd.nl/site.plp/irssi
   version: '0.03'
 -
+  authors: terminaldweller
+  contact: https://terminaldweller.com
+  description: 'gives a list of of the open sockets as an expando(this makes sense only if irssi is in an application container)'
+  filename: holes.pl
+  language: Perl
+  license: 'GPL3 or newer'
+  modified: '2024-02-01 19:56:47'
+  name: holes
+  url: https://github.com/irssi/scripts.irssi.org
+  version: 1.0.1
+-
   authors: 'Jean-Yves Lefort'
   commands: hostname
   contact: 'jylefort\@brutele.be, decadix on IRCNet'
