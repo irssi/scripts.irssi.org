@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-our $VERSION = '0.1'; # d975c6bb59df06d
+our $VERSION = '0.2'; # e53c766132d8f3a
 our %IRSSI = (
     authors     => 'Nei',
     contact     => 'Nei @ anti@conference.jabber.teamidiot.de',
@@ -11,6 +11,7 @@ our %IRSSI = (
     license     => 'ISC',
    );
 
+use Encode ();
 use Irssi;
 use Irssi::TextUI;
 die "This script requires Irssi 1.2.0\n"
