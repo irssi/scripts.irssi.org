@@ -1299,10 +1299,10 @@
   filename: conceal.pl
   language: Perl
   license: ISC
-  modified: '2020-10-22 16:28:09'
+  modified: '2024-05-21 20:46:25'
   name: conceal
   url: http://anti.teamidiot.de/
-  version: '0.1'
+  version: '0.2'
 -
   authors: 'Ian Peters'
   commands: connectcmd
