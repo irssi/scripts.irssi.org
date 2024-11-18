@@ -4844,7 +4844,7 @@
   filename: scriptassist.pl
   language: Perl
   license: GPLv2
-  modified: '2023-11-17 21:23:58'
+  modified: '2024-11-18 02:39:35'
   modules: LWP::UserAgent
   name: scriptassist
   url: https://scripts.irssi.org/
