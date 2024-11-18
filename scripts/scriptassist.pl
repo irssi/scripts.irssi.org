@@ -45,7 +45,7 @@ sub show_help {
 /scriptassist info <scripts>
     Display information about <scripts>
 /scriptassist ratings <scripts|all>
-    Retrieve the average ratings of the the scripts
+    Retrieve the average ratings of the scripts
 /scriptassist top <num>
     Retrieve the first <num> top rated scripts
 /scriptassist new <num>
