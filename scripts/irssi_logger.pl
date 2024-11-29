@@ -118,7 +118,13 @@ sub write_db {
 
         defined or $_ = "" for @vals;
 
-        $dbh->do($sql, undef, @vals) || Irssi::print("Can't log to DB! " . DBI::errstr);
+        $dbh->do($sql, undef, @vals);
+        if ($dbh->err) {
+            Irssi::print("Can't log to DB! " . DBI::errstr);
+            if (!$dbh->ping) {
+                $dbh->connect();
+            }
+        }
     }
 }
 
