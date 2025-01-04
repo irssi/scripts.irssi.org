@@ -147,7 +147,7 @@ def run_on_script_load() -> None:
     irssi.settings_add_str(
         b"misc",
         b"transformer_prompt_system",
-        b"if you can't translate parts of the provided text use the original piece of text. the text will ocassionally inlcude URLs. if the original text is in the target language, return an empty response. Do not ask for follow up question.",
+        b"if you can't translate parts of the provided text use the original piece of text. the text will ocassionally include URLs. if the original text is in the target language, return an empty response. Do not ask for follow up question.",
     )
     irssi.settings_add_str(
         b"misc",
