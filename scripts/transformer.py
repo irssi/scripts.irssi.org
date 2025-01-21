@@ -4,7 +4,7 @@ import typing
 import urllib
 from urllib import request, parse
 
-__version__ = "1.0.0"
+__version__ = "1.0.1"
 
 IRSSI = {
     "authors": "terminaldweller",
