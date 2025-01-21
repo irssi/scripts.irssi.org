@@ -17,7 +17,7 @@ scripts/transformer.py:106:5: F841 local variable 'address' is assigned to but n
     address = args[3]
     ^
 scripts/transformer.py:150:128: E501 line too long (243 > 127 characters)
-        b"if you can't translate parts of the provided text use the original piece of text. the text will ocassionally inlcude URLs. if the original text is in the target language, return an empty response. Do not ask for follow up question.",
+        b"if you can't translate parts of the provided text use the original piece of text. the text will ocassionally include URLs. if the original text is in the target language, return an empty response. Do not ask for follow up question.",
                                                                                                                                ^
 1     C901 'do_post' is too complex (11)
 1     E501 line too long (243 > 127 characters)

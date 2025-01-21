@@ -6,7 +6,7 @@
   description: 'transforms incoming text in the channel'
   language: Python
   license: 'GPL3 or newer'
-  modified: '2023-11-28 14:39:54'
+  modified: '2025-01-21 02:42:15'
   name: transformer
   url: https://github.com/irssi/scripts.irssi.org
-  version: 1.0.0
+  version: 1.0.1
