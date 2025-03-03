@@ -2169,18 +2169,6 @@
   url: http://genericorp.net/~count/irssi/go
   version: '1.1'
 -
-  authors: bw1
-  commands: google
-  contact: bw1@aol.at
-  description: 'This script queries google.com with googler and returns the results.'
-  filename: google.pl
-  language: Perl
-  license: 'Public Domain'
-  modified: '2021-01-26 13:09:56'
-  name: google
-  url: https://scripts.irssi.org/
-  version: '2.01'
--
   authors: terminaldweller
   contact: https://terminaldweller.com
   description: 'sends push notifications via gotify'
