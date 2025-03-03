@@ -1,8 +1,0 @@
-scripts/google.pl: Code before warnings are enabled at line 9, column 1.  See page 431 of PBP.  (Severity: 4)
-scripts/google.pl: One-argument "select" used at line 111, column 13.  See page 224 of PBP.  (Severity: 4)
-scripts/google.pl: One-argument "select" used at line 114, column 3.  See page 224 of PBP.  (Severity: 4)
-scripts/google.pl: One-argument "select" used at line 116, column 13.  See page 224 of PBP.  (Severity: 4)
-scripts/google.pl: One-argument "select" used at line 120, column 3.  See page 224 of PBP.  (Severity: 4)
-scripts/google.pl: Expression form of "eval" at line 129, column 6.  See page 161 of PBP.  (Severity: 5)
-scripts/google.pl: Don't modify $_ in list functions at line 222, column 9.  See page 114 of PBP.  (Severity: 5)
-scripts/google.pl: Comma used to separate statements at line 222, column 14.  See pages 68,71 of PBP.  (Severity: 4)
