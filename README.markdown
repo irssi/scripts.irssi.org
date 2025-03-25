@@ -229,7 +229,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                            oops ](Test/oops/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        verstats ](Test/verstats/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                             emo ](Test/emo/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                    irssi_logger ](Test/irssi_logger/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
+[                    irssi_logger ](Test/irssi_logger/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   
 [                      trackbar22 ](Test/trackbar22/)|  ✘   |  ✘   |  ✔   |  5   |  ☡   | (c)
 [                         reorder ](Test/reorder/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                      sysinfo_dg ](Test/sysinfo_dg/)|  ✔   |  ✔   |  ✔   | 40   |  ✔   | (c)
@@ -564,4 +564,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                            talk ](Test/talk/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [          bitlbee_tab_completion ](Test/bitlbee_tab_completion/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-075d7ec5d1d1aa2635fd4956dfaeec49650cc655 | 2025-03-03T22:05:55,180609700+00:00
+41a8d8370450866a664a26734f420e34b7e44589 | 2025-03-25T20:08:09,189897022+00:00
