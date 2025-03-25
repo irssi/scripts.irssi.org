@@ -11,7 +11,7 @@ use vars qw($VERSION %IRSSI);
 # - postgresql
 # - postgresql-contrib (pg_trgm)
 
-$VERSION = "1.1";
+$VERSION = "1.2";
 %IRSSI = (
     authors     => "Aaron Bieber",
     contact     => "deftly\@gmail.com",
@@ -118,7 +118,13 @@ sub write_db {
 
         defined or $_ = "" for @vals;
 
-        $dbh->do($sql, undef, @vals) || Irssi::print("Can't log to DB! " . DBI::errstr);
+        $dbh->do($sql, undef, @vals);
+        if ($dbh->err) {
+            Irssi::print("Can't log to DB! " . DBI::errstr);
+            if (!$dbh->ping) {
+                $dbh->connect();
+            }
+        }
     }
 }
 
