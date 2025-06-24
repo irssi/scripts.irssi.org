@@ -2,7 +2,7 @@ use strict;
 use Irssi;
 use vars qw($VERSION %IRSSI);
 
-$VERSION = "1.00";
+$VERSION = "1.01";
 %IRSSI = (
 	name        => "zmartfilter",
 	description => "smartfilter.pl reimagined, optimized for unusually flakey networks such as IRC over I2P",
@@ -169,10 +169,15 @@ sub print_text {
 		return;
 	}
 
-	my ($level, @nicks) = $dest->{level};
+	my ($level, @nicks, %addresses) = $dest->{level};
 	if ($level & (MSGLEVEL_JOINS | MSGLEVEL_PARTS | MSGLEVEL_QUITS)) {
-		if ($stripped =~ /([^ ]+) \[.+\] has (joined|left|quit)/) {
+		if ($stripped =~ /([^ ]+) \[([^]]+)\] has (joined|left|quit)/) {
 			@nicks = ($1);
+			# this nick may have just parted or quit, in which case
+			# we can't rely on the channel->nick->address lookup,
+			# so we need to use the address in the message text
+			# when we can
+			$addresses{$1} = $2;
 		}
 	} elsif ($level & MSGLEVEL_NICKS) {
 		if ($stripped =~ /[^ ]+ is now known as ([^ ]+)/) {
@@ -197,11 +202,14 @@ sub print_text {
 			# it's text that relates to me
 			return;
 		}
-		my $address = $server->channel_find($target);
-		$address = $address->nick_find($nick);
-		$address = $address->{host};
+		my $address = $addresses{$nick};
 		if (!$address) {
-			next;
+			$address = $server->channel_find($target);
+			$address = $address->nick_find($nick);
+			$address = $address->{host};
+			if (!$address) {
+				next;
+			}
 		}
 		if ($server->mask_match_address('*!*@services.*', "", $address)) {
 			# relates to network services
