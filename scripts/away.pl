@@ -1,16 +1,19 @@
-# $Id: away.pl,v 1.6 2003/02/25 08:48:56 nemesis Exp $
-
 use strict;
-use Irssi 20020121.2020 ();
-use vars qw($VERSION %IRSSI);
-$VERSION = "0.23";
-%IRSSI = (
-	  authors     => 'Jean-Yves Lefort, Larry "Vizzie" Daffner, Kees Cook',
-	  contact     => 'jylefort@brutele.be, vizzie@airmail.net, kc@outflux.net',
-	  name        => 'away',
-	  description => 'Away with reason, unaway, and autoaway',
-	  license     => 'BSD',
-	  changed     => '$Date: 2003/02/25 08:48:56 $ ',
+use warnings;
+use POSIX;
+use Irssi;
+
+our $VERSION = "0.40";
+our %IRSSI = (
+    authors     => 'Jean-Yves Lefort, Larry "Vizzie" Daffner, Kees Cook, '
+                   . 'vague, Krytarik Raido',
+    contact     => 'jylefort@brutele.be, vizzie@airmail.net, kc@outflux.net, '
+                   . 'vague!#irssi@freenode, krytarik@tuxgarage.com',
+    url         => 'https://bitbucket.org/krytarik/irssi-scripts',
+    name        => 'Away',
+    description => 'Away with reason, unaway, and autoaway',
+    license     => 'BSD',
+    changed     => '2017-12-07 09:23:04 +0100',
 );
 
 # /SET
@@ -19,39 +22,13 @@ $VERSION = "0.23";
 #				arguments, this string will be used as
 #				your away reason
 #
-#       autoaway                number of seconds before marking away,
-#                               only actions listed in "autounaway_level"
-#                               will reset the timeout.
+#	away_timeout		time before marking away, only actions
+#				listed in "away_activity_level"
+#				will reset the timeout
 #
-#	autounaway_level	if you are away and you type a message
+#	away_activity_level	if you are away and you type a message
 #				belonging to one of these levels, you'll be
 #				automatically unmarked away
-#
-#				levels considered:
-#
-#				DCC		a dcc chat connection has
-#						been established
-#				PUBLICS		a public message from you
-#				MSGS		a private message from you
-#				ACTIONS		an action from you
-#				NOTICES		a notice from you
-#
-# changes:
-#       2003-02-24
-#                       0.23?
-#                       merged with autoaway script
-#
-#	2003-01-09	release 0.22
-#			* command char independed
-#
-#	2002-07-04	release 0.21
-#			* signal_add's uses a reference instead of a string
-#
-# todo:
-#
-#	* rewrite the away command to support -one and -all switches
-#       * make auto-away stuff sane for multiple servers
-#       * make auto-away reason configurable
 #
 # (c) 2003 Jean-Yves Lefort (jylefort@brutele.be)
 #
@@ -64,136 +41,140 @@ $VERSION = "0.23";
 # (c) 2003 Kees Cook (kc@outflux.net)
 #      merged 'autoaway.pl' and 'away.pl'
 #
-# BUGS:
-#  - This only works for the first server
+# (c) 2017 vague (vague!#irssi@freenode)
+#
+# (c) 2017 Krytarik Raido (krytarik@tuxgarage.com)
 
-use Irssi;
-use Irssi::Irc;			# for DCC object
-
-my ($autoaway_sec, $autoaway_to_tag, $am_away);
+my ($reason, $timeout, $actlevel, $timeout_tag);
 
 sub away {
-  my ($args, $server, $item) = @_;
+  my ($args, $server) = @_;
 
-  if ($server)
-  {
-    if (!$server->{usermode_away})
-    {
-      # go away
-      $am_away=1;
+  unless ($server && $server->{connected}) {
+    return;
+  }
 
-      # stop autoaway
-      if (defined($autoaway_to_tag)) {
-        Irssi::timeout_remove($autoaway_to_tag);
-        $autoaway_to_tag = undef();
-      }
-
-      if (!defined($args))
-      {
-        $server->command("AWAY " . Irssi::settings_get_str("away_reason"));
-        Irssi::signal_stop();
-      }
+  if (!$server->{usermode_away}) {
+    # stop autoaway
+    if ($timeout_tag) {
+      Irssi::timeout_remove($timeout_tag);
+      $timeout_tag = 0;
     }
-    else
-    {
-      # come back
-      $am_away=0;
-      reset_timer();
+    # go away
+    unless ($args) {
+      $server->command("AWAY -all " . strftime($reason, localtime));
+      Irssi::signal_stop();
     }
+  }
+  else {
+    # come back
+    reset_timer();
+  }
+}
 
+sub auto_timeout {
+  $timeout_tag = 0;
+
+  foreach my $server (Irssi::servers()) {
+    if ($server->{connected} && !$server->{usermode_away}) {
+      $server->command("AWAY -all " . strftime($reason, localtime));
+      last;
+    }
   }
 }
 
 sub cond_unaway {
   my ($server, $level) = @_;
-  if (Irssi::level2bits(Irssi::settings_get_str("autounaway_level")) & $level)
-  {
-    #if ($server->{usermode_away})
-    if ($am_away)
-    {
+
+  if ($actlevel & $level) {
+    if ($server->{usermode_away}) {
       # come back from away
-      $server->command("AWAY");
+      $server->command("AWAY -all");
     }
-    else
-    {
+    else {
       # bump the autoaway timeout
       reset_timer();
     }
   }
 }
 
-sub dcc_connected {
-  my ($dcc) = @_;
-  cond_unaway($dcc->{server}, MSGLEVEL_DCC) if ($dcc->{type} eq "CHAT");
+sub reset_timer {
+  if ($timeout_tag) {
+    Irssi::timeout_remove($timeout_tag);
+    $timeout_tag = 0;
+  }
+
+  if ($timeout) {
+    $timeout_tag = Irssi::timeout_add_once($timeout, "auto_timeout", "");
+  }
 }
 
 sub message_own_public {
-  my ($server, $msg, $target) = @_;
+  my ($server) = @_;
   cond_unaway($server, MSGLEVEL_PUBLIC);
 }
 
 sub message_own_private {
-  my ($server, $msg, $target, $orig_target) = @_;
+  my ($server) = @_;
   cond_unaway($server, MSGLEVEL_MSGS);
 }
 
 sub message_irc_own_action {
-  my ($server, $msg, $target) = @_;
+  my ($server) = @_;
   cond_unaway($server, MSGLEVEL_ACTIONS);
 }
 
 sub message_irc_own_notice {
-  my ($server, $msg, $target) = @_;
+  my ($server) = @_;
   cond_unaway($server, MSGLEVEL_NOTICES);
 }
 
-#
-# /AUTOAWAY - set the autoaway timeout
-#
-sub away_setupcheck {
-  $autoaway_sec = Irssi::settings_get_int("autoaway");
+sub message_dcc_own {
+  my ($dcc) = @_;
+  cond_unaway($dcc->{server}, MSGLEVEL_DCCMSGS);
+}
+
+sub message_dcc_own_action {
+  my ($dcc) = @_;
+  cond_unaway($dcc->{server}, MSGLEVEL_DCCMSGS | MSGLEVEL_ACTIONS);
+}
+
+sub setup_changed {
+  $reason   = Irssi::settings_get_str("away_reason");
+  if(my $t = Irssi::settings_get_time("autoaway")) {
+    warn("Setting misc/autoaway has been renamed to away/away_timeout");
+    $timeout = $t;
+  }
+  else {
+    $timeout  = Irssi::settings_get_time("away_timeout");
+  }
+  if(my $l = Irssi::settings_get_level("autounaway_level")) {
+    warn("Setting misc/autounaway_level has been renamed to away/away_activity_level");
+    $actlevel = $l;
+  }
+  else {
+    $actlevel = Irssi::settings_get_level("away_activity_level");
+  }
   reset_timer();
 }
 
+Irssi::settings_add_str("misc",   "away_reason", "");
+Irssi::settings_add_time("misc",  "autoaway", "");
+Irssi::settings_add_level("misc", "autounaway_level", "");
+Irssi::settings_add_str("away",   "away_reason", "Away since %F %T %z");
+Irssi::settings_add_time("away",  "away_timeout", "20mins");
+Irssi::settings_add_level("away", "away_activity_level", "PUBLIC MSGS ACTIONS DCCMSGS");
 
-sub auto_timeout {
-  my ($data, $server) = @_;
-  my $msg = "autoaway after $autoaway_sec seconds";
+setup_changed();
 
-  Irssi::timeout_remove($autoaway_to_tag);
-  $autoaway_to_tag=undef;
+Irssi::signal_add({
+  "message own_public"     => "message_own_public",
+  "message own_private"    => "message_own_private",
+  "message irc own_action" => "message_irc_own_action",
+  "message irc own_notice" => "message_irc_own_notice",
+  "message dcc own"        => "message_dcc_own",
+  "message dcc own_action" => "message_dcc_own_action",
+  "setup changed"          => "setup_changed",
+});
 
-  Irssi::print($msg);
-
-  $am_away=1;
-
-  my (@servers) = Irssi::servers();
-  $servers[0]->command("AWAY $msg");
-}
-
-sub reset_timer {
-    if (defined($autoaway_to_tag)) {
-      Irssi::timeout_remove($autoaway_to_tag);
-      $autoaway_to_tag = undef;
-    }
-    if ($autoaway_sec) {
-      $autoaway_to_tag = Irssi::timeout_add($autoaway_sec*1000,
-                                                "auto_timeout", "");
-    }
-}
-
-Irssi::settings_add_str("misc", "away_reason", "not here");
-Irssi::settings_add_str("misc", "autounaway_level", "PUBLIC MSGS ACTIONS DCC");
-Irssi::settings_add_int("misc", "autoaway", 0);
-
-Irssi::signal_add("dcc connected",          \&dcc_connected);
-Irssi::signal_add("message own_public",     \&message_own_public);
-Irssi::signal_add("message own_private",    \&message_own_private);
-Irssi::signal_add("message irc own_action", \&message_irc_own_action);
-Irssi::signal_add("message irc own_notice", \&message_irc_own_notice);
-Irssi::signal_add("setup changed"       =>  \&away_setupcheck);
-
-Irssi::command_bind("away",     "away");
-
-away_setupcheck();
-
+Irssi::command_bind("away", "away");
