@@ -1715,11 +1715,11 @@
   filename: duckduckgo.pl
   language: Perl
   license: lgplv3
-  modified: '2021-10-09 17:30:32'
+  modified: '2025-07-20 20:34:45'
   modules: 'HTML::Entities LWP::UserAgent URI::Escape'
   name: duckduckgo
   url: http://scripts.irssi.org
-  version: '0.03'
+  version: '0.04'
 -
   authors: 'Espen Holm Nilsen'
   contact: holm@blackedge.org
