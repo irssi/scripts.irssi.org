@@ -19,7 +19,7 @@ use LWP::UserAgent;
 use HTML::Entities;
 use URI::Escape;
 
-$VERSION = '0.03';
+$VERSION = '0.04';
 %IRSSI = (
     authors	=> 'bw1',
     contact	=> 'bw1@aol.at',
@@ -27,7 +27,7 @@ $VERSION = '0.03';
     description	=> 'search by https://duckduckgo.com/html/',
     license	=> 'lgplv3',
     url		=> 'http://scripts.irssi.org',
-    changed	=> '2021-10-09',
+    changed	=> '2025-07-20',
     selfcheckcmd=> 'ddg -check',
 );
 
@@ -49,7 +49,7 @@ sub www_get {
 	(my $url) =@_;
 	# Initialize LWP
 	my $ua = new LWP::UserAgent;
-	$ua->agent("duckduckgo.pl/0.1 " . $ua->agent);
+	$ua->agent("duckduckgo.pl");
 	# get 
 	my $req = new HTTP::Request GET =>$url; 
 	my $res = $ua->request($req);
@@ -149,7 +149,7 @@ sub cmd_ddg {
 		} elsif ($alist[0] eq '-check') {
 			@res=();
 			cmd_searchf("irssi");
-			Irssi::timeout_add_once(3000,\&self_check,'');
+			Irssi::timeout_add_once(3500,\&self_check,'');
 		}
 	}
 }
