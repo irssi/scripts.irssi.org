@@ -40,8 +40,11 @@
 # 	? should we remember if the server was given with -server
 #
 # Changelog:
-#       0.12 (2014.11.12)
-#       Automatically load jobs when loaded
+#	0.13 (2025.08.16)
+#	Bugfix: Fix time drifting bug.
+#
+#	0.12 (2014.11.12)
+#	Automatically load jobs when loaded
 #
 #	0.11 (2004.12.12)
 #	Job are executed exactly at the time (+- 1s), not up to 59s late
@@ -84,22 +87,20 @@ $VERSION = "0.12";
 );
 
 my @jobs = ();
-my $seconds = (gmtime(time()))[0];
 my $timeout_tag;
-my $stop_timeout_tag;
-if ($seconds > 0) {
-	$stop_timeout_tag = Irssi::timeout_add((60-$seconds)*1000, 
-		sub { 
-			Irssi::timeout_remove($stop_timeout_tag);
-			$timeout_tag = Irssi::timeout_add(60000, 'sig_timeout', undef);
-		}, undef);
-} else { 
-	$timeout_tag = Irssi::timeout_add(60000, 'sig_timeout', undef);
+sub start_next_timeout {
+	my $seconds = (gmtime(time()))[0];
+	my $delay_ms = (60 - $seconds) * 1000;
+	$delay_ms = 1000 if $delay_ms <= 0;
+	$timeout_tag = Irssi::timeout_add_once($delay_ms, sub {
+		sig_timeout();
+		start_next_timeout();
+	}, undef);
 }
 my $savefile = Irssi::get_irssi_dir() . "/cron.save";
 
 # First arg - current hour or minute.
-# Second arg - hour or minute specyfications.
+# Second arg - hour or minute specifications.
 sub time_matches($$) {
 	my ($current, $spec) = @_;
 	foreach my $h (split(/,/, $spec)) {
@@ -125,7 +126,7 @@ sub time_matches($$) {
 		}
 		if ($h =~ /(\d+)-(\d+)/) { # number-number
 			return 1 if ($current >= $1 and $current <= $2);
-			next
+			next;
 		}
 		return 1 if ($h eq '*' or $h == $current); # '*' or exact hour
 	}
@@ -294,6 +295,7 @@ sub cmd_jobsload {
 }
 
 cmd_jobsload();
+start_next_timeout();
 
 Irssi::command_bind('jobs', 'cmd_jobs', 'Cron');
 Irssi::command_bind('jobadd', 'cmd_jobadd', 'Cron');
