@@ -5,7 +5,7 @@ use Irssi;
 use strict;
 use vars qw($VERSION %IRSSI);
 
-$VERSION = "1.10";
+$VERSION = "1.11";
 %IRSSI = (
     authors     => 'Timo Sirainen & Jostein Kjønigsen',
     name        => 'autoop',
