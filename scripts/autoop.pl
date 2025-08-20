@@ -98,11 +98,11 @@ sub load_autoops {
     %opnicks = ();
     open(CONF, "<", "$file") or return;
     while (my $line = <CONF>) {
-		chomp($line);
-		if ($line !=~ /^\s*$/) {
-			cmd_autoop($line);
-			$count++;
-		}
+        chomp($line);
+        if ($line !~ /^\s*$/) {
+            cmd_autoop($line);
+            $count++;
+        }
     }
     close(CONF);
     
