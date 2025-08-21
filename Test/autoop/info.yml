@@ -8,6 +8,6 @@
   description: 'Simple auto-op script'
   language: Perl
   license: 'Public Domain'
-  modified: '2014-10-24 12:54:12'
+  modified: '2025-08-20 19:00:58'
   name: autoop
-  version: '1.10'
+  version: '1.11'
