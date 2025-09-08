@@ -6328,6 +6328,6 @@
   filename: zmartfilter.pl
   language: Perl
   license: 'Public Domain'
-  modified: '2025-06-24 22:12:35'
+  modified: '2025-08-17 00:47:03'
   name: zmartfilter
-  version: '1.01'
+  version: '1.02'
