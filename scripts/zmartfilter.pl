@@ -2,7 +2,7 @@ use strict;
 use Irssi;
 use vars qw($VERSION %IRSSI);
 
-$VERSION = "1.01";
+$VERSION = "1.02";
 %IRSSI = (
 	name        => "zmartfilter",
 	description => "smartfilter.pl reimagined, optimized for unusually flakey networks such as IRC over I2P",
@@ -26,7 +26,7 @@ Irssi::settings_add_str($IRSSI{name}, "$IRSSI{name}_whitelist_channels", "");
 
 
 Irssi::theme_register([
-	squelched => "{line_start} {channick_hilight \$0} {chanhost_hilight \$1} squelched",
+	squelched => "{channick_hilight \$0} {chanhost_hilight \$1} squelched",
 ]);
 
 
@@ -135,6 +135,21 @@ sub message_kick {
 	activity($server, $channel, undef, $nick);
 }
 
+sub message_nick {
+	my ($server, $newnick, $oldnick) = @_;
+	# if this user recently joined any channels then entries relating to
+	# $oldnick in the tjoined table need to be copied with $newnick; no
+	# reason to bother deleting the $oldnick entries now, they will get
+	# collected after $join_time elapses
+	for my $oldkey (keys %tjoined) {
+		my ($s, $t, $n) = split(/$;/, $oldkey);
+		if ($s eq $server->{tag} && $n eq $oldnick) {
+			my $newkey = join($;, $s, $t, $newnick);
+			$tjoined{$newkey} = $tjoined{$oldkey};
+		}
+	}
+}
+
 sub message_server_channel_nick_address { activity(@_[0, 1, 3, 2]); }
 
 Irssi::signal_add({
@@ -142,6 +157,7 @@ Irssi::signal_add({
 	"message own_public" => \&message_own_public,
 	"message join" => \&message_join,
 	"message kick" => \&message_kick,
+	"message nick" => \&message_nick,
 	"message invite" => \&message_server_channel_nick_address,
 	"message topic" => sub { activity(@_[0, 1, 4]); },
 	"message irc op_public" => \&message_server_x_x_address_target,
@@ -158,20 +174,45 @@ Irssi::signal_add({
 sub print_text {
 	my ($dest, $text, $stripped) = @_;
 
-	# only filter text bound for channel windows
-	my ($now, $server, $target) = ( time(), $dest->{server}, $dest->{target} );
-	if (!$server || !$server->{connected} || !$server->ischannel($target)) {
+	# only filter text bound for a dest with a connected server
+	my ($now, $server) = ( time(), $dest->{server} );
+	if (!$server || !$server->{connected}) {
+		return;
+	}
+
+	my ($level, @targets) = $dest->{level};
+	if ($level & (MSGLEVEL_NICKS | MSGLEVEL_QUITS)) {
+		# nick changes and quits are printed only once per window, so
+		# $dest could reference a channel where this user is considered
+		# inactive when there is another channel in the same window
+		# (e.g., /JOIN -window or /QUERY -window) where the user is
+		# considered active, in which case the text would be
+		# erroneously suppressed; so all further processing must
+		# consider every windowitem associated with this window and
+		# server
+		@targets = grep { $_->{server} && $_->{server}->{tag} eq $server->{tag} } $dest->{window}->items();
+	} else {
+		# other messages are printed for each windowitem, even if
+		# they're in the same window, so @targets includes only the
+		# single relevant windowitem
+		@targets = ( $dest->{window}->item_find($server, $dest->{target}) );
+	}
+
+	# only filter text bound only for channels
+	if (grep { !$server->ischannel($_->{name}) } @targets) {
 		return;
 	}
 
 	# don't filter text bound for channels in the whitelist
-	if (grep { $_ eq $target } @whitelist_channels) {
-		return;
+	for my $target (@targets) {
+		if (grep { $_ eq $target->{name} } @whitelist_channels) {
+			return;
+		}
 	}
 
-	my ($level, @nicks, %addresses) = $dest->{level};
+	my (@nicks, %addresses);
 	if ($level & (MSGLEVEL_JOINS | MSGLEVEL_PARTS | MSGLEVEL_QUITS)) {
-		if ($stripped =~ /([^ ]+) \[([^]]+)\] has (joined|left|quit)/) {
+		if ($stripped =~ /([^ ]+) \[([^]]+)\] has (changed|joined|left|quit)/) {
 			@nicks = ($1);
 			# this nick may have just parted or quit, in which case
 			# we can't rely on the channel->nick->address lookup,
@@ -197,25 +238,25 @@ sub print_text {
 	my $slevel = MSGLEVEL_JOINS | MSGLEVEL_PARTS | MSGLEVEL_QUITS |
 			MSGLEVEL_NICKS | MSGLEVEL_MODES;
 	my ($athreshold, $jthreshold) = ( $now - $allow_time, $now - $join_time );
-	for my $nick (@nicks) {
+	for my $target (@targets) { for my $nick (@nicks) {
 		if ($nick eq $server->{nick}) {
 			# it's text that relates to me
 			return;
 		}
 		my $address = $addresses{$nick};
 		if (!$address) {
-			$address = $server->channel_find($target);
-			$address = $address->nick_find($nick);
+			$address = $target->nick_find($nick);
 			$address = $address->{host};
 			if (!$address) {
 				next;
 			}
+			$addresses{$nick} = $address;  # for future iterations
 		}
 		if ($server->mask_match_address('*!*@services.*', "", $address)) {
 			# relates to network services
 			return;
 		}
-		my $key = join($;, $server->{tag}, $target, $address);
+		my $key = join($;, $server->{tag}, $target->{name}, $address);
 		my $tstamp = $tactive{$key};
 		if ($tstamp && $athreshold < $tstamp) {
 			if (0 < $allow_max && ++$nallowed{$key} <= $allow_max) {
@@ -223,22 +264,22 @@ sub print_text {
 				# squelched by $allow_max yet
 				return;
 			}
-			$server->printformat($target, $slevel, "squelched",
+			$server->printformat($target->{name}, $slevel, "squelched",
 				$nick, $address);
 			delete $tactive{$key};
 			delete $nallowed{$key};
 		}
 		if ($level & MSGLEVEL_MODES) {
-			# also check whether any nicks affected a mode change
-			# were NOT recently joined, in which case this was a
-			# spontaneous mode change (perhaps a new operator
+			# also check whether any nicks affected by a mode
+			# change were NOT recently joined, in which case this
+			# was a spontaneous mode change (perhaps a new operator
 			# elevation) and I want to see it
-			$tstamp = $tjoined{$server->{tag}, $target, $nick};
+			$tstamp = $tjoined{$server->{tag}, $target->{name}, $nick};
 			if (!$tstamp || $tstamp <= $jthreshold) {
 				return;
 			}
 		}
-	}
+	} }
 
 	# if I made it this far it means this text is to be suppressed
 	Irssi::signal_stop();
