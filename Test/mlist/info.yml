@@ -1,0 +1,16 @@
+---
+-
+  authors: Nei
+  commands:
+    - mlist
+  contact: 'Nei @ anti@conference.jabber.teamidiot.de'
+  default_package: mlist
+  description: 'Sortable /(M)LIST.'
+  language: Perl
+  license: ISC
+  modified: '2025-09-08 21:52:52'
+  modules:
+    - Text::CharWidth
+  name: mlist
+  url: http://anti.teamidiot.de/
+  version: '0.3'

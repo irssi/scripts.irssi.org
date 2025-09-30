@@ -1,0 +1,1 @@
+scripts/mlist.pl: String delimiter used with "split" at line 104, column 16.  Express it as a regex instead.  (Severity: 2)
