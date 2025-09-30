@@ -3484,6 +3484,19 @@
   url: http://www.c-otto.de
   version: '20180123'
 -
+  authors: Nei
+  commands: mlist
+  contact: 'Nei @ anti@conference.jabber.teamidiot.de'
+  description: 'Sortable /(M)LIST.'
+  filename: mlist.pl
+  language: Perl
+  license: ISC
+  modified: '2025-09-08 21:52:52'
+  modules: Text::CharWidth
+  name: mlist
+  url: http://anti.teamidiot.de/
+  version: '0.3'
+-
   authors: 'Timo Sirainen'
   commands: mlock
   description: 'Channel mode locking'
