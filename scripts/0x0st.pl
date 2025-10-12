@@ -34,7 +34,7 @@ my $help = << "END";
 %9Description%9
   $IRSSI{description}
     -p past url to channel
-    -s shorten url (disabled by 0xst)
+    -s shorten url (disabled by 0x0st)
     -u file from url
     -c self check
 %9See also%9
