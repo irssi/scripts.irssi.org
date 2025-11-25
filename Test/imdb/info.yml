@@ -1,7 +1,7 @@
 ---
 -
   authors: 'Eric Jansen'
-  changed: 2022-12-09
+  changed: 2025-11-16
   commands:
     - imdb
   contact: chaos@sorcery.net
@@ -9,11 +9,11 @@
   description: 'Automatically lookup IMDB-numbers in nicknames'
   language: Perl
   license: GPL
-  modified: '2022-12-09 11:28:58'
+  modified: '2025-11-23 16:49:51'
   modules:
     - HTML::Entities
     - LWP::UserAgent
   name: imdb
   selfcheckcmd: 'imdb check'
   url: http://xyrion.org/irssi/
-  version: '1.05'
+  version: '1.06'

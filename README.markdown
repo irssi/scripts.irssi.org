@@ -126,7 +126,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                           alame ](Test/alame/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                    gpgvalidator ](Test/gpgvalidator/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                          people ](Test/people/)|  ✔   |  ✔   |  ✔   | 75   |  ✔   | (c)
-[                           0x0st ](Test/0x0st/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   
+[                           0x0st ](Test/0x0st/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
 [                      nickignore ](Test/nickignore/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        userhost ](Test/userhost/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                            isdn ](Test/isdn/)|  ✘   |  ✔   |  ✘   | 10   |  ☡   | (c)
@@ -267,7 +267,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                      duckduckgo ](Test/duckduckgo/)|  ✔   |  ✔   |  ✔   | 32   |  ✔   | (c)
 [               separate_messages ](Test/separate_messages/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                      shortenurl ](Test/shortenurl/)|  ✔   |  ✔   |  ✔   | 20   |  ✔   | (c)
-[                            imdb ](Test/imdb/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
+[                            imdb ](Test/imdb/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   
 [                        grepbans ](Test/grepbans/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
 [                  nickmix-c0ffee ](Test/nickmix-c0ffee/)|  ✔   |  ✔   |  ✔   | 18   |  ✔   | (c)
 [                          ircops ](Test/ircops/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -565,4 +565,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                       netswitch ](Test/netswitch/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                         trigger ](Test/trigger/)|  ✔   |  ✔   |  ✔   | 18   |  ✔   | (c)
 
-bf94efa3482a2aa7e442ab1de96cb3c42bf7ef2d | 2025-11-25T12:41:25,524764353+00:00
+73a0888e8d82e29e2da124f94e4d11dcdd3ee6bb | 2025-11-25T13:19:04,174722273+00:00
