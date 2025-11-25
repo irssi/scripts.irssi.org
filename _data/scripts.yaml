@@ -1388,10 +1388,10 @@
   filename: cron.pl
   language: Perl
   license: 'GNU GPLv2'
-  modified: '2014-11-12 12:23:06'
+  modified: '2025-10-04 20:47:43'
   name: 'cron aka jobs'
   url: http://www.krukowiecki.net/code/irssi/
-  version: '0.12'
+  version: '0.13'
 -
   authors: 'martin f. krafft'
   commands: ctrlact
