@@ -1,7 +1,7 @@
 ---
 -
   authors: bw1
-  changed: 2021-01-13
+  changed: 2025-10-12
   commands:
     - 0x0st
   contact: bw1@aol.at
@@ -9,11 +9,11 @@
   description: 'upload file to https://0x0.st/'
   language: Perl
   license: ISC
-  modified: '2022-11-13 13:36:15'
+  modified: '2025-10-12 16:42:27'
   modules:
     - HTTP::Request::Common
     - LWP::UserAgent
   name: 0x0st
   selfcheckcmd: '0x0st -c'
   url: https://scripts.irssi.org/
-  version: '0.04'
+  version: '0.05'

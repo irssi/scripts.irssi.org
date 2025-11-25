@@ -126,7 +126,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                           alame ](Test/alame/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                    gpgvalidator ](Test/gpgvalidator/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                          people ](Test/people/)|  ✔   |  ✔   |  ✔   | 75   |  ✔   | (c)
-[                           0x0st ](Test/0x0st/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
+[                           0x0st ](Test/0x0st/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   
 [                      nickignore ](Test/nickignore/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                        userhost ](Test/userhost/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                            isdn ](Test/isdn/)|  ✘   |  ✔   |  ✘   | 10   |  ☡   | (c)
@@ -414,7 +414,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                           itime ](Test/itime/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                 window_switcher ](Test/window_switcher/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                              wa ](Test/wa/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
-[                            cron ](Test/cron/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   
+[                            cron ](Test/cron/)|  ✔   |  ✔   |  ✔   |  5   |  ✔   | (c)
 [                      betterlist ](Test/betterlist/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                          toilet ](Test/toilet/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
 [                      romajibind ](Test/romajibind/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -565,4 +565,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                       netswitch ](Test/netswitch/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                         trigger ](Test/trigger/)|  ✔   |  ✔   |  ✔   | 18   |  ✔   | (c)
 
-f5894e06d384564a02929873367f789c8b106bc3 | 2025-11-25T12:26:55,753775612+00:00
+bf94efa3482a2aa7e442ab1de96cb3c42bf7ef2d | 2025-11-25T12:41:25,524764353+00:00
