@@ -7,11 +7,11 @@
   filename: 0x0st.pl
   language: Perl
   license: ISC
-  modified: '2022-11-13 13:36:15'
+  modified: '2025-10-12 16:42:27'
   modules: 'HTTP::Request::Common LWP::UserAgent'
   name: 0x0st
   url: https://scripts.irssi.org/
-  version: '0.04'
+  version: '0.05'
 -
   authors: 'Patrik Akerfeldt'
   contact: patrik.akerfeldt@gmail.com
