@@ -4,7 +4,7 @@ use LWP::UserAgent;
 use HTML::Entities;
 use vars qw($VERSION %IRSSI $cache);
 
-$VERSION = '1.05';
+$VERSION = '1.06';
 %IRSSI = (
     authors 	=> 'Eric Jansen',
     contact 	=> 'chaos@sorcery.net',
@@ -13,12 +13,13 @@ $VERSION = '1.05';
     license 	=> 'GPL',
     modules	=> 'LWP::UserAgent HTML::Entities',
     url		=> 'http://xyrion.org/irssi/',
-    changed 	=> '2022-12-09',
+    changed 	=> '2025-11-16',
     selfcheckcmd=> 'imdb check',
 );
 
 my $ua = new LWP::UserAgent;
-$ua->agent("Irssi/imdb/$VERSION");
+#$ua->agent("Irssi/imdb/$VERSION");
+$ua->agent('Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0');
 
 # Set the timeout to five second, so it won't freeze the client too long on laggy connections
 $ua->timeout(5);
