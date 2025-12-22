@@ -14,10 +14,10 @@ $VERSION = '0.1';
    name         => 'sb_separator',
    description  => 'Displays up to three user defined separators in statusbar',
    modules      => '',
-   sbitems      => 'sb_separator',
+   sbitems      => 'separator separator_2 separator_3',
    license      => 'GNU GPL v2',
-   url          => 'http://derwan.irssi.pl',
-   changed      => 'Wed Oct 27 19:46:28 CEST 2004'
+   url          => 'https://github.com/Hravnkel/irssi-sb_separator',
+   changed      => 'Sun Dec 21 20:24:45 CET 2025'
 );
 
 use Irssi::TextUI;
@@ -58,6 +58,6 @@ sub separator_3 {
    $item->default_handler($get_size_only, $format, undef, 1);
 }
 
-Irssi::statusbar_item_register('separator', undef, 'separator');
-Irssi::statusbar_item_register('separator_2', undef, 'separator_2');
-Irssi::statusbar_item_register('separator_3', undef, 'separator_3');
+Irssi::statusbar_item_register('separator', '', 'separator');
+Irssi::statusbar_item_register('separator_2', '', 'separator_2');
+Irssi::statusbar_item_register('separator_3', '', 'separator_3');
