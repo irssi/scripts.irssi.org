@@ -4,6 +4,7 @@
 #
 
 use strict;
+use warnings;
 use vars qw($VERSION %IRSSI);
 
 use Irssi;
