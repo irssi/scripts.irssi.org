@@ -1,0 +1,15 @@
+---
+-
+  authors: 'Björn Sundberg'
+  changed: 'Sun Dec 21 20:24:45 CET 2025'
+  contact: bjorn@forndata.org
+  default_package: sb_separator
+  description: 'Displays up to three user defined separators in statusbar'
+  language: Perl
+  license: 'GNU GPL v2'
+  modified: '2025-12-23 22:43:53'
+  modules: ''
+  name: sb_separator
+  sbitems: 'separator separator_2 separator_3'
+  url: https://github.com/Hravnkel/irssi-sb_separator
+  version: '0.1'
