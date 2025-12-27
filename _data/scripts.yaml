@@ -4794,6 +4794,17 @@
   url: http://wouter.coekaerts.be/irssi/
   version: '1.2'
 -
+  authors: 'Björn Sundberg'
+  contact: bjorn@forndata.org
+  description: 'Displays up to three user defined separators in statusbar'
+  filename: sb_separator.pl
+  language: Perl
+  license: 'GNU GPL v2'
+  modified: '2025-12-23 22:43:53'
+  name: sb_separator
+  url: https://github.com/Hravnkel/irssi-sb_separator
+  version: '0.1'
+-
   authors: Nei
   contact: 'Nei @ anti@conference.jabber.teamidiot.de'
   description: 'clear matching lines in scrollback'
