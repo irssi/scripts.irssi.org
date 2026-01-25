@@ -278,7 +278,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                         url_log ](Test/url_log/)|  ✔   |  ✔   |  ✔   | 12   |  ✔   | (c)
 [                           morse ](Test/morse/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
 [                autowhois_simple ](Test/autowhois_simple/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
-[                       perlalias ](Test/perlalias/)|  ✔   |  ✔   |  ✔   |  8   |  ✔   
+[                       perlalias ](Test/perlalias/)|  ✔   |  ✔   |  ✔   |  8   |  ✔   | (c)
 [                             map ](Test/map/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                         vidinfo ](Test/vidinfo/)|  ✔   |  ✔   |  ✔   | 12   |  ✔   | (c)
 [                     smartfilter ](Test/smartfilter/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -566,4 +566,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                       netswitch ](Test/netswitch/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                         trigger ](Test/trigger/)|  ✔   |  ✔   |  ✔   | 18   |  ✔   | (c)
 
-f7c956e24d3869c0e5dc733cc3ca07e318a4f764 | 2026-01-25T13:32:32,300542725+00:00
+0fbce6f25def674c1c3a74027f81d5f93e5b753a | 2026-01-25T15:00:15,245049467+00:00
