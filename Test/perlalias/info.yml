@@ -9,6 +9,6 @@
   description: 'Quickly create commands from short perl blocks'
   language: Perl
   license: 'public domain'
-  modified: '2022-02-14 07:27:10'
+  modified: '2026-01-25 14:23:50'
   name: perlalias
-  version: 2.0.1
+  version: 2.0.2
