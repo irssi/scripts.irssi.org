@@ -2,6 +2,9 @@
 -
   authors: 'Jeroen Coekaerts, Koenraad Heijlen'
   changed: 2017-06-12
+  commands:
+    - osd_reload
+    - osd_test
   contact: 'vipie@ulyssis.org, jeroen@coekaerts.be'
   default_package: osd
   description: "An OnScreenDisplay (osd) it show's who is talking to you, on what IRC Network."

@@ -1,6 +1,10 @@
 ---
 -
   authors: 'Alexander Mieland'
+  commands:
+    - talk
+    - talk_about
+    - talk_help
   contact: dma147\@mieland-programming.de
   default_package: talk
   description: 'This script talks to you *g*. It reads the chat-msgs for you.'

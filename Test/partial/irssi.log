@@ -1,1 +1,3 @@
+* Implicit use of @_ in subroutine entry with signatured subroutine is experimental at partial.pl line 153.
+* 
 * -!- Irssi: Loaded script partial

@@ -2,6 +2,16 @@
 -
   authors: 'John Engelbrecht'
   changed: 'Sat Nov 20 18:25:12 CST 2004'
+  commands:
+    - soccolor
+    - social
+    - 'social add'
+    - 'social color'
+    - 'social del'
+    - 'social list'
+    - 'social reset'
+    - 'social set'
+    - soclist
   contact: jengelbr@yahoo.com
   default_package: twsocials
   description: 'IRC version of Social Commands'

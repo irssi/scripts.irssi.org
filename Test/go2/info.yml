@@ -2,6 +2,8 @@
 -
   authors: cxreg
   changed: 2017-05-02
+  commands:
+    - go
   contact: cxreg@pobox.com
   default_package: go2
   description: 'Switch to the window with the given name or item'

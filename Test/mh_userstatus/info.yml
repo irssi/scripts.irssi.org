@@ -2,6 +2,9 @@
 -
   authors: 'Michael Hansen'
   changed: 'Thu Mar  3 13:31:29 CET 2016'
+  commands:
+    - whoa
+    - whoo
   contact: 'mh on IRCnet #help'
   default_package: mh_userstatus
   description: 'show in channels when users go away/back or oper/deoper'

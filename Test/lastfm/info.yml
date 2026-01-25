@@ -1,6 +1,8 @@
 ---
 -
   authors: "Simon 'simmel' Lundström"
+  commands:
+    - np
   contact: 'simmel@(freenode|quakenet|efnet) http://last.fm/user/darksoy'
   date: '20120229'
   default_package: lastfm

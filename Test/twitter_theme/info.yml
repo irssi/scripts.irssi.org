@@ -3,6 +3,7 @@
   authors: 'Sam Stoller'
   changed: 2014-11-10
   commands:
+    - twt
     - 'twt colors'
     - 'twt reset'
   contact: snstoller@gmail.com

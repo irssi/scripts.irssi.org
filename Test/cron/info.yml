@@ -2,6 +2,14 @@
 -
   authors: 'Piotr Krukowiecki'
   changed: 2004.12.12
+  commands:
+    - jobadd
+    - jobdel
+    - jobdisable
+    - jobenable
+    - jobs
+    - jobsload
+    - jobssave
   contact: 'piotr \at/ krukowiecki /dot\ net'
   default_package: cron
   description: 'cron implementation, allows to execute commands at given interval/time'

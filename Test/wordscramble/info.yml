@@ -2,7 +2,8 @@
 -
   authors: 'Koenraad Heijlen'
   changed: 2018-05-11
-  commands: ws
+  commands:
+    - ws
   contact: vipie@ulyssis.org
   default_package: wordscramble
   description: 'A script that scrambles all the letters in a word except the first and last.'

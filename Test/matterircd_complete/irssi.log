@@ -1,3 +1,15 @@
+* Smartmatch is deprecated at matterircd_complete.pl line 506.
+* 
+* Smartmatch is deprecated at matterircd_complete.pl line 726.
+* 
+* Smartmatch is deprecated at matterircd_complete.pl line 764.
+* 
+* Smartmatch is deprecated at matterircd_complete.pl line 849.
+* 
+* Smartmatch is deprecated at matterircd_complete.pl line 869.
+* 
+* Smartmatch is deprecated at matterircd_complete.pl line 1089.
+* 
 * -!- Irssi: [matterircd_complete] Setting allowed colors to all colors
 * -!- Irssi: [matterircd_complete] Thread colors have been set per your config
 * -!- Irssi: [matterircd_complete] You can check colors in use with /matterircd_complete_thread_id_get_colors
