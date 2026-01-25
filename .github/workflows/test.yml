@@ -101,7 +101,7 @@ jobs:
           ./_testing/github/show-failures.zsh
       - name: update scripts.yaml
         run: |
-          perl ./_testing/update-scripts-yaml.pl
+          perl ./_testing/update-scripts-yaml.pl -q
       - name: show git changes
         if: ${{ github.event_name == 'pull_request' }}
         run: |

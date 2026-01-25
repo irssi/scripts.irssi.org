@@ -18,6 +18,8 @@ for (@{$docs[0]//[]}) {
     $oldmeta{$_->{filename}} = $_;
 }
 
+my $quiet_mode = @ARGV && $ARGV[0] eq '-q';
+
 my %newmeta;
 for my $file (<scripts/*.pl scripts/*.py>) {
     my ($filename, $base, $ext) =
@@ -53,8 +55,9 @@ for my $file (<scripts/*.pl scripts/*.py>) {
             if @commands;
     }
     elsif (exists $oldmeta{$filename}) {
-        print "META-INF FOR $base NOT FOUND\n";
-        system "ls 'Test/$base/'*";
+        print "META-INF FOR $base NOT FOUND, not updating\n"
+	    unless $quiet_mode;
+        system "ls 'Test/$base/'* 2>/dev/null";
         $newmeta{$filename} = $oldmeta{$filename};
     }
     else {
