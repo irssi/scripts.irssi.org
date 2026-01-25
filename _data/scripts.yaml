@@ -595,6 +595,7 @@
   version: 15.01.01
 -
   authors: 'Wouter Coekaerts, Koenraad Heijlen'
+  commands: 'awe back gone'
   contact: 'vipie@ulyssis.org, wouter@coekaerts.be'
   description: 'A verbose away script, displays a verbose away/back message in the channels you are in. BUT it can limit the channels (not spamming every channel!)'
   filename: away_verbose.pl
@@ -1066,6 +1067,7 @@
   version: 0.4.1
 -
   authors: "Bjoern 'fuchs' Krombholz"
+  commands: 'chanpeak savepeak'
   contact: bjkro@gmx.de
   description: 'Log maximum number of people ever been in a channel'
   filename: chanpeak.pl
@@ -1383,6 +1385,7 @@
   version: '1.3'
 -
   authors: 'Piotr Krukowiecki'
+  commands: 'jobadd jobdel jobdisable jobenable jobs jobsload jobssave'
   contact: 'piotr \at/ krukowiecki /dot\ net'
   description: 'cron implementation, allows to execute commands at given interval/time'
   filename: cron.pl
@@ -2159,6 +2162,7 @@
   version: 1.1.1
 -
   authors: cxreg
+  commands: go
   contact: cxreg@pobox.com
   description: 'Switch to the window with the given name or item'
   filename: go2.pl
@@ -2995,6 +2999,7 @@
   version: '2.01'
 -
   authors: "Simon 'simmel' Lundström"
+  commands: np
   contact: 'simmel@(freenode|quakenet|efnet) http://last.fm/user/darksoy'
   description: 'A now-playing-script which uses Last.fm'
   filename: lastfm.pl
@@ -3363,6 +3368,7 @@
   version: '20090813'
 -
   authors: 'Michael Hansen'
+  commands: hold_mode
   contact: 'mh on IRCnet #help'
   description: 'Emulation of ircII per-window hold_mode'
   filename: mh_hold_mode.pl
@@ -3385,6 +3391,7 @@
   version: '1.02'
 -
   authors: 'Michael Hansen'
+  commands: splitmode
   contact: 'mh on IRCnet #help'
   description: 'provides a statusbar item showing if your server is in splitmode and /splitmode to show details'
   filename: mh_sbsplitmode.pl
@@ -3418,6 +3425,7 @@
   version: '1.01'
 -
   authors: 'Michael Hansen'
+  commands: 'whoa whoo'
   contact: 'mh on IRCnet #help'
   description: 'show in channels when users go away/back or oper/deoper'
   filename: mh_userstatus.pl
@@ -4176,6 +4184,7 @@
   version: '0.9'
 -
   authors: 'Jeroen Coekaerts, Koenraad Heijlen'
+  commands: 'osd_reload osd_test'
   contact: 'vipie@ulyssis.org, jeroen@coekaerts.be'
   description: "An OnScreenDisplay (osd) it show's who is talking to you, on what IRC Network."
   filename: osd.pl
@@ -5345,6 +5354,7 @@
   version: '1.1'
 -
   authors: 'Alexander Mieland'
+  commands: 'talk talk_about talk_help'
   contact: dma147\@mieland-programming.de
   description: 'This script talks to you *g*. It reads the chat-msgs for you.'
   filename: talk.pl
@@ -5694,6 +5704,7 @@
   version: 0.0.1
 -
   authors: 'Sam Stoller'
+  commands: twt
   contact: snstoller@gmail.com
   description: 'Assign colors to tweet message components'
   filename: twitter_theme.pl
@@ -5716,6 +5727,7 @@
   version: '1.00'
 -
   authors: 'John Engelbrecht'
+  commands: 'soccolor social soclist'
   contact: jengelbr@yahoo.com
   description: 'IRC version of Social Commands'
   filename: twsocials.pl
@@ -6187,6 +6199,7 @@
   version: '0.2'
 -
   authors: 'Koenraad Heijlen'
+  commands: ws
   contact: vipie@ulyssis.org
   description: 'A script that scrambles all the letters in a word except the first and last.'
   filename: wordscramble.pl
