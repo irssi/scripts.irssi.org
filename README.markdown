@@ -3,7 +3,7 @@
 This repository contains scripts available at
 [scripts.irssi.org](http://scripts.irssi.org).
 
-![Build Status](https://github.com/irssi/scripts.irssi.org/workflows/Check%20Script/badge.svg?branch=master&event=push)
+![Build Status](https://github.com/irssi/scripts.irssi.org/actions/workflows/test.yml/badge.svg?branch=master&event=push)
 
 ### Contributing
 
