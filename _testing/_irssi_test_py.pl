@@ -33,10 +33,10 @@ Irssi::command_bind('_irssi_test_py_cb' => sub {
 		      eval { %info = %{$doc->{'IRSSI'}} };
 		      eval { $version = $doc->{'VERSION'} };
 		      eval { $package = $doc->{'package'} };
-		      @commands = sort grep { !$existing_commands{$_} } map { $_->{cmd} } Irssi::commands;
+		      @commands = sort map { $_->{cmd} } grep { !$existing_commands{"$_->{cmd}$;$_->{category}"} } Irssi::commands;
 		    });
 
-%existing_commands = map { ($_->{cmd} => 1) } Irssi::commands;
+%existing_commands = map { ("$_->{cmd}$;$_->{category}" => 1) } Irssi::commands;
 
 Irssi::command('^window log on');
 Irssi::command("py load $CURRENT_SCRIPT");
