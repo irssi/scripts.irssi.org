@@ -1,11 +1,11 @@
 script_pattern='^scripts/.*\.\(pl\|py\)$'
 OIFS=$IFS; IFS=$'\n'
-filelist=($(find scripts -type f | grep $script_pattern))
+filelist=($(find scripts -type f | grep $script_pattern | sort -V))
 IFS=$OIFS
 if [[ $GITHUB_REF != refs/heads/master ]] {
     local -a scriptfiles
     OIFS=$IFS; IFS=$'\n'
-    scriptfiles=($(git diff --numstat --no-renames origin/master | cut -f3 | grep $script_pattern))
+    scriptfiles=($(git diff --numstat --no-renames origin/master | cut -f3 | grep $script_pattern | sort -V))
     IFS=$OIFS
     if [[ $#scriptfiles -gt 0 ]] {
         filelist=($scriptfiles)

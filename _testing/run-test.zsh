@@ -47,7 +47,8 @@ s,\Q$ENV{PWD}/Test/.home/scripts/\E,,g;
 s,\Q$ENV{PWD}/Test/.home\E,..,g;
 s,\Q$ENV{PWD}\E,...,g;
 s,\(\@INC contains: .*?\),,g' $logs
-        mv $logs "Test/${scriptfile:t:r}/irssi.log"
+        cat $logs > "Test/${scriptfile:t:r}/irssi.log"
+        rm -- $logs
     } \
     elif [[ -f stderr.log ]] {
         cat stderr.log

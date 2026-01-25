@@ -12,6 +12,10 @@ my $CURRENT_SCRIPT = $ENV{CURRENT_SCRIPT};
 my $PWD = $ENV{PWD};
 my $SWD = "$PWD/../..";
 Irssi::command('^window log on');
+my %existing_commands;
+%existing_commands = map { ("$_->{cmd}$;$_->{category}" => 1) } Irssi::commands;
+
+
 Irssi::command("script load $CURRENT_SCRIPT");
 
 my (@packages) = grep { !/^_/ } keys %Irssi::Script::;
@@ -51,7 +55,7 @@ require Perl::PrereqScanner;
 my $prereq_results = Perl::PrereqScanner->new->scan_file("$SWD/scripts/$CURRENT_SCRIPT.pl");
 my @modules = grep {
     $_ ne 'perl' &&
-        $_ ne 'Irssi' && $_ ne 'Irssi::UI' && $_ ne 'Irssi::TextUI' && $_ ne 'Irssi::Irc'
+        $_ ne 'Irssi' && $_ ne 'Irssi::UI' && $_ ne 'Irssi::TextUI' && $_ ne 'Irssi::Irc' && $_ ne 'Irssi::Irc::Dcc'
         && !Module::CoreList->first_release($_)
 } sort keys %{ $prereq_results->as_string_hash };
 
@@ -74,7 +78,7 @@ unless (defined $package) {
 else {
     %info = do { no strict 'refs'; %{"Irssi::Script::${package}IRSSI"} };
     $version = do { no strict 'refs'; ${"Irssi::Script::${package}VERSION"} };
-    @commands = sort map { $_->{cmd} } grep { $_->{category} eq "Perl scripts' commands" } Irssi::commands;
+    @commands = sort map { $_->{cmd} } grep { !$existing_commands{"$_->{cmd}$;$_->{category}"} } Irssi::commands;
 }
 delete $info{''};
 for my $rb (keys %info) {
