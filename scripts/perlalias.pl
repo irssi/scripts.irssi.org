@@ -128,10 +128,16 @@ use Irssi::Irc;
 use Carp ();
 
 use B ();
+BEGIN {
+    unless (defined &B::PADNAMEf_OUR) {
+	no strict 'refs';
+	*{"B::".s.t.f.r} = *{"B::$_"} for grep /^PADNAME._/, keys %B::
+    }
+}
 
 { package Irssi::Nick; } # Keeps trying to look for this package but for some reason it doesn't get loaded.
 
-our $VERSION = '2.0.1';
+our $VERSION = '2.0.2';
 our %IRSSI = (
 	authors => 'aquanight',
 	contact => 'aquanight@gmail.com',
@@ -840,11 +846,11 @@ sub collect_shared_variables {
 			unless ($op->private & B::OPpLVAL_INTRO) {
 				op_die "Can't share variable '$name' because of its previous life (are you missing a 'state'?)";
 			}
-			if ($pname->FLAGS & B::PADNAMEt_OUR) {
+			if ($pname->FLAGS & B::PADNAMEf_OUR) {
 				# Sanity check mostly. 'our' variables will look like a global in the optree
 				op_die "Can't share 'our' variable '$name'";
 			}
-			unless ($pname->FLAGS & B::PADNAMEt_STATE) {
+			unless ($pname->FLAGS & B::PADNAMEf_STATE) {
 				op_die "Can't share 'my' variable '$name'";
 			}
 			# It's a properly declared state variable, return the name and reference.
@@ -898,7 +904,7 @@ sub collect_shared_variables {
 			my $pname = padname $svix;
 			my $name = $pname->PVX;
 			# Sanity check:
-			if (($pname->FLAGS & (B::PADNAMEt_OUR | B::PADNAMEt_STATE)) != B::PADNAMEt_STATE) {
+			if (($pname->FLAGS & (B::PADNAMEf_OUR | B::PADNAMEf_STATE)) != B::PADNAMEf_STATE) {
 				op_die "Unexpected non-state variable"; ##### assert
 			}
 			my $ref = $pad->ARRAYelt($svix)->object_2svref;
