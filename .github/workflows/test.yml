@@ -6,7 +6,7 @@ on:
 name: Check Script
 env:
   apt_build_deps: irssi-git-an irssi-python3 cpanminus elinks flake8 zsh
-  apt_script_deps: libdb-dev libaspell-dev libgirepository1.0-dev gobject-introspection gir1.2-notify-0.7 xosd-bin wbritish
+  apt_script_deps: libdb-dev libaspell-dev libgirepository1.0-dev gobject-introspection gir1.2-notify-0.7 xosd-bin wbritish perl-tk
   USE_ARTEFACTS_CACHE: yes
   EXTRACT_TEST_ARTEFACTS: yes
   PERL_MM_NONINTERACTIVE: 1
