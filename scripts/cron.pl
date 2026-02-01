@@ -3,17 +3,18 @@
 # WARNING
 #
 # Short help/usage:
-# /jobadd minute hour day_of_month month day_of_week command
-# Possible switches for jobadd:
-#	-disabled
-#	-server <tag>
-#	-<number>
-# /jobs [-v]
-# /jobdel [-finished] | job_number
-# /jobdisable job_number
-# /jobenable job_number
-# /jobssave
-# /jobsload
+# /jobadd [options] minute hour day_of_month month day_of_week command
+# jobadd options:
+#   -disabled                          - Create job in disabled state
+#   -server <tag>                      - Execute command on specific server or the current
+#                                        server if this option is not used.
+#   -<number>                          - Execute job only <number> times
+# /jobs [-v]                           - List all jobs (use -v to show finished)
+# /jobdel [-finished] | job_number     - Delete a job or all finished jobs
+# /jobdisable job_number               - Disable a job
+# /jobenable job_number                - Enable a job
+# /jobssave                            - Save jobs to file (~/.irssi/cron.save)
+# /jobsload                            - Load jobs from file
 #
 # Examples of usage:
 # /jobadd 45 17 * * * /echo This will be executed at 17:45
@@ -22,10 +23,9 @@
 # /jobadd 0 */6 * * * /echo Execute at 0:0, 6:0, 12:0, 18:0
 # /jobadd */30,45 * * * * /echo Execute every hour at 00, 30, 45 minute
 # /jobadd 1-15/5 * * * * /echo at 1,6,11
-#
-# The servertag in -server usually is name from /ircnet, but
-# should work with servers not in any ircnet (hmm probably)
-#
+# /jobadd -server EFnet 00 17 * * * /echo This will execute on EFnet network at 17:00
+# /jobadd -1 -server foobar 0 0 * * * /echo This will only execute one time on foobar network at 00:00
+
 # The format was taken from crontab(5).
 # The only differences are:
 
@@ -49,6 +49,8 @@
 #	Make backup copy cron.save.backup file of "hour minute" formatted file
 #	/jobadd now requires "minute hour" format
 #	Columns for /jobs for easier readability
+#   /jobadd now uses the connected server for the server if -server option is not used
+#   Fix bug in parsing jobs without a server it made the script think minutes field was the server
 #
 #	0.13 (2025.08.16)
 #	Bugfix: Fix time drifting bug.
@@ -442,22 +444,37 @@ sub cmd_jobenable {
 sub cmd_jobadd {
 	my ($data, $server, $channel) = @_;
 
-	$server = $server->{tag};
+	$server = $server->{tag} if $server;
 	my $disabled = 0;
 	my $repeats = -1;
-	while ($data =~ /^\s*-/) {
-		if ($data =~ s/^\s*-disabled\s+//) {
-			$disabled = 1;
-			next;
-		}
-		if ($data =~ s/^\s*-(\d+)\s+//) {
-			$repeats = $1;
-			next;
-		}
-		my $comm;
-		($comm, $server, $data) = split(' ', $data, 3);
-		if ($comm ne '-server') {
-			Irssi::print("Bad switch: '$comm'");
+
+	# Store original server
+	my $original_server = $server;
+
+	# Check if the line starts with -server followed by two spaces
+	if ($data =~ /^\s*-server\s{2,}/) {
+		# No server specified
+		$data =~ s/^\s*-server\s{2,}//;
+		$server = $original_server;  # Use current server
+	} else {
+		# Parse normally
+		while ($data =~ /^\s*-/) {
+			if ($data =~ s/^\s*-disabled\s+//) {
+				$disabled = 1;
+				next;
+			}
+			if ($data =~ s/^\s*-(\d+)\s+//) {
+				$repeats = $1;
+				next;
+			}
+			if ($data =~ s/^\s*-server\s+//) {
+				# Get the server name
+				my ($srv, $rest) = split(' ', $data, 2);
+				$server = $srv;
+				$data = $rest;
+				next;
+			}
+			Irssi::print("Bad switch in jobadd");
 			return;
 		}
 	}
