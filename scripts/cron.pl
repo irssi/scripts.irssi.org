@@ -4,7 +4,7 @@
 #
 # Short help/usage:
 # /jobadd minute hour day_of_month month day_of_week command
-# Possibile switches for jobadd:
+# Possible switches for jobadd:
 #	-disabled
 #	-server <tag>
 #	-<number>
@@ -87,8 +87,8 @@ use vars qw($VERSION %IRSSI);
 
 $VERSION = "1.0";
 %IRSSI = (
-    authors	=> 'Piotr Krukowiecki',
-    contact	=> 'piotr \at/ krukowiecki /dot\ net',
+    authors	=> 'Piotr Krukowiecki', 'KindOne',
+    contact	=> 'piotr \at/ krukowiecki /dot\ net', 'KindOne @ libera.chat|oftc|efnet',
     name	=> 'cron aka jobs',
     description	=> 'cron implementation, allows to execute commands at given interval/time',
     license	=> 'GNU GPLv2',
