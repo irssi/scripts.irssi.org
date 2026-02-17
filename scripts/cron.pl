@@ -89,8 +89,8 @@ use vars qw($VERSION %IRSSI);
 
 $VERSION = "1.0";
 %IRSSI = (
-    authors	=> 'Piotr Krukowiecki', 'KindOne',
-    contact	=> 'piotr \at/ krukowiecki /dot\ net', 'KindOne @ libera.chat|oftc|efnet',
+    authors	=> 'Piotr Krukowiecki, KindOne',
+    contact	=> 'piotr \at/ krukowiecki /dot\ net, KindOne @ libera.chat|oftc|efnet',
     name	=> 'cron aka jobs',
     description	=> 'cron implementation, allows to execute commands at given interval/time',
     license	=> 'GNU GPLv2',
