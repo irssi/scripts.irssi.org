@@ -46,7 +46,7 @@ my $test_str;
 
 my $base_uri;
 
-my $user_agent='curl/123.123';
+my $user_agent='curl/8.18';
 
 my %bg_process= ();
 my $self_check_timer;
