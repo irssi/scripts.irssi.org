@@ -9,7 +9,7 @@ use Storable qw/store_fd fd_retrieve/;
 use File::Glob qw/:bsd_glob/;
 use Digest::MD5 qw/md5_hex/;
 
-$VERSION = '0.05';
+$VERSION = '0.06';
 %IRSSI = (
     authors	=> 'bw1',
     contact	=> 'bw1@aol.at',
