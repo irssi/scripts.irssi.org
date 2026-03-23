@@ -3,7 +3,7 @@ See [the testing read-me](../master/_testing/) for details.
 ## Irssi Scripts Test Report
 \                                | LOAD | HDR | CRIT | SCORE | PASS
 ----: | :--: | :-: | :--: | ----: | :---:
-[                           0x0st ](Test/0x0st/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
+[                           0x0st ](Test/0x0st/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   
 [                          8-ball ](Test/8-ball/)|  ✔   |  ✔   |  ✔   |  9   |  ✔   | (c)
 [                          Cirssi ](Test/Cirssi/)|  ✔   |  ✔   |  ✔   | 31   |  ✔   | (c)
 [                 UNIBG-autoident ](Test/UNIBG-autoident/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -126,7 +126,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                     cp1250_kick ](Test/cp1250_kick/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                      crapbuster ](Test/crapbuster/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                       credstore ](Test/credstore/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
-[                            cron ](Test/cron/)|  ✔   |  ✔   |  ✔   | 10   |  ✔   
+[                            cron ](Test/cron/)|  ✔   |  ✔   |  ✔   | 10   |  ✔   | (c)
 [                         ctrlact ](Test/ctrlact/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
 [                           cubes ](Test/cubes/)|  ✔   |  ✔   |  ✔   |  0   |  ✔   | (c)
 [                            cwho ](Test/cwho/)|  ✔   |  ✔   |  ✔   | 18   |  ✔   | (c)
@@ -566,4 +566,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                     zmartfilter ](Test/zmartfilter/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-ce2eeb9536dbb1e6b62b16a14c67b1b9e63fbf56 | 2026-02-20T07:54:59,921734391+00:00
+a7c77fe0217b636a3d1b7ca9af6589a3e82f268d | 2026-03-23T20:48:13,511387748+00:00

@@ -9,11 +9,11 @@
   description: 'upload file to https://0x0.st/'
   language: Perl
   license: ISC
-  modified: '2025-10-12 16:42:27'
+  modified: '2026-03-23 21:46:12'
   modules:
     - HTTP::Request::Common
     - LWP::UserAgent
   name: 0x0st
   selfcheckcmd: '0x0st -c'
   url: https://scripts.irssi.org/
-  version: '0.05'
+  version: '0.06'
