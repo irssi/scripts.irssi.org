@@ -1,7 +1,7 @@
 ---
 -
   authors: 'Wouter Coekaerts'
-  changed: 2021-03-05
+  changed: 2026-04-03
   commands:
     - mouse
     - 'mouse tempdisable'
@@ -11,7 +11,7 @@
   description: 'control irssi using mouse clicks and gestures'
   language: Perl
   license: 'GPLv2 or later'
-  modified: '2021-03-05 18:26:50'
+  modified: '2026-04-03 15:18:54'
   name: mouse
   url: http://wouter.coekaerts.be/irssi/
-  version: 1.1.2
+  version: 1.1.3
