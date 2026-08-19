@@ -527,7 +527,7 @@ sub get_keymap {
 		if (/^change_window (\d+)/i) {
 		    _add_map(\%nummap, $1, $map);
 		}
-		elsif (/^(?:command window goto|change_window) (\S+)/i) {
+		elsif (/^(?:command (?:window goto|go)|change_window) (\S+)/i) {
 		    my $window = $1;
 		    if ($window !~ /\D/) {
 			_add_map(\%nummap, $window, $map);
