@@ -1,7 +1,7 @@
 ---
 -
   authors: 'Marcus Rueckert'
-  changed: 2021-01-11
+  changed: 2026-08-15
   commands:
     - inputlength
   contact: darix@irssi.org
@@ -9,8 +9,8 @@
   description: 'adds a statusbar item which show length of the inputline'
   language: Perl
   license: 'BSD License or something more liberal'
-  modified: '2021-01-11 08:48:06'
+  modified: '2026-08-16 10:27:14'
   name: inputlength
   sbitems: inputlength
   url: http://www.irssi.de./
-  version: 0.0.6
+  version: 0.1.0
