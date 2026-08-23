@@ -182,6 +182,12 @@ our %IRSSI = (
 #   last status bar it created if it is empty.
 #   As you might guess, this only makes sense with awl_hide_data > 0 ;)
 #
+# /set awl_visible <ON|OFF>
+# * show or hide the whole window list. When OFF, awl removes all the
+#   status bars it created (or blanks the viewer). The state is saved,
+#   so it persists across restarts. See also /awl visible below to
+#   toggle this from a key binding.
+#
 # /set awl_viewer <ON|OFF>
 # * enable the external viewer script
 #
@@ -277,6 +283,11 @@ our %IRSSI = (
 #
 # /awl restart
 # * restart the connection to the viewer script.
+#
+# /awl visible [show|hide]
+# * toggle the whole window list on or off (updates awl_visible). With
+#   no argument it toggles; "show"/"on" or "hide"/"off" force a state.
+#   Handy to put on a key, e.g. /bind meta-w command awl visible
 
 # Viewer script
 # =============
@@ -1052,6 +1063,11 @@ sub _spread_items {
 }
 
 sub remake {
+    unless ($S{visible}) {
+	@actString = ();
+	@win_items = ();
+	return;
+    }
     my %abbrevList;
     my @wins = window_list();
     if ($VIEWER_MODE or $S{sbar_maxlen} or $S{block} < 0) {
@@ -1361,6 +1377,7 @@ sub reset_awl {
 	maxlines      => Irssi::settings_get_int( set 'maxlines'),
 	maxcolumns    => Irssi::settings_get_int( set 'maxcolumns'),
 	all_disable   => Irssi::settings_get_bool(set 'all_disable'),
+	visible       => Irssi::settings_get_bool(set 'visible'),
 	height_adjust => Irssi::settings_get_int( set 'height_adjust'),
 	mouse_offset  => Irssi::settings_get_int( set 'mouse_offset'),
 	mouse_scroll  => Irssi::settings_get_int( 'mouse_scroll'),
@@ -1519,6 +1536,22 @@ return sub {
     }
 
     $CHANGED{AWINS} = 1;
+}
+
+sub toggle_visibility {
+    my ($data) = @_;
+    $data =~ s/^\s+//; $data =~ s/\s+$//;
+    my $visible;
+    if (lc $data eq 'show' || lc $data eq 'on') {
+	$visible = 1;
+    }
+    elsif (lc $data eq 'hide' || lc $data eq 'off') {
+	$visible = 0;
+    }
+    else {
+	$visible = $S{visible} ? 0 : 1;
+    }
+    Irssi::command('^set '.(set 'visible').' '.($visible ? 'ON' : 'OFF'));
 }
 
 sub hide_window {
@@ -1979,6 +2012,7 @@ Irssi::settings_add_str( setc, set 'sort',           'refnum'); #
 Irssi::settings_add_str( setc, set 'placement',      'bottom'); #
 Irssi::settings_add_int( setc, set 'position',       0); #
 Irssi::settings_add_bool(setc, set 'all_disable',    1); #
+Irssi::settings_add_bool(setc, set 'visible',        1); #
 Irssi::settings_add_bool(setc, set 'viewer',         1); #
 Irssi::settings_add_str( setc, set 'shared_sbar',    'OFF'); #
 Irssi::settings_add_bool(setc, set 'mouse',          0); #
@@ -2025,6 +2059,7 @@ Irssi::command_bind( setc() . ' restart' => 'restartViewerServer' );
 Irssi::command_bind( setc() . ' attach' => 'unhide_window' );
 Irssi::command_bind( setc() . ' detach' => 'hide_window' );
 Irssi::command_bind( setc() . ' ack'    => 'ack_window' );
+Irssi::command_bind( setc() . ' visible' => 'toggle_visibility' );
 
 {
     my $l = set 'shared';
