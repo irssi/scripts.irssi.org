@@ -5,7 +5,7 @@
 
 use strict;
 
-our $VERSION = '2023111700';
+our $VERSION = '2026090900';
 our %IRSSI = (
     authors     => 'Stefan \'tommie\' Tomanek',
     contact     => 'stefan@pico.ruhr.de',
@@ -1307,10 +1307,24 @@ sub sig_command_script_load {
     }
 }
 
+# Track if we are in the default command handler, so we can only run the
+# unknown command search if "error command" is invoked within it. This avoids
+# needing to implement logic to deal with window_number_commands, etc. and
+# doesn't result in trying to find a script for an unknown subcommand like
+# "/window foo".
+my $in_default = 0;
+
 sub sig_default_command {
-    my ($cmd, $server) = @_;
+    $in_default = 1;
+    Irssi::signal_continue(@_);
+    $in_default = 0;
+}
+
+sub sig_error_command {
+    my ($id, $cmd, $server) = @_;
+    return unless $id == 0; # CMDERR_UNKNOWN
+    return unless $in_default;
     return unless Irssi::settings_get_bool("scriptassist_check_unknown_commands");
-    return if ($cmd =~ /^\d+$/ && $irssi_version >= v1.2.0 && Irssi::settings_get_bool("window_number_commands"));
     bg_do('unknown '.$cmd);
 }
 
@@ -1344,6 +1358,7 @@ Irssi::settings_add_bool($IRSSI{name}, 'scriptassist_integrate', 1);
 Irssi::settings_add_bool($IRSSI{name}, 'scriptassist_check_unknown_commands', 1);
 
 Irssi::signal_add_first("default command", 'sig_default_command');
+Irssi::signal_add_last("error command", 'sig_error_command');
 Irssi::signal_add_first('complete word', 'sig_complete');
 Irssi::signal_add_first('command script load', 'sig_command_script_load');
 Irssi::signal_add_first('command script unload', 'sig_command_script_load');
