@@ -1,0 +1,18 @@
+---
+-
+  authors: 'bw1,Eric Jansen'
+  changed: 2026-08-13
+  commands:
+    - omdb
+    - 'omdb search'
+  contact: bw1@aol.at
+  default_package: omdb
+  description: 'Automatically lookup IMDB-numbers in nicknames from omdbapi'
+  language: Perl
+  license: GPL
+  modified: '2026-08-23 19:17:55'
+  modules: ''
+  name: omdb
+  selfcheckcmd: 'omdb check'
+  url: https://scripts.irssi.org/
+  version: '0.1'

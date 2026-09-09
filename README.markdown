@@ -359,6 +359,7 @@ See [the testing read-me](../master/_testing/) for details.
 [                            null ](Test/null/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                          ogg123 ](Test/ogg123/)|  ✔   |  ✔   |  ✔   |  4   |  ✔   | (c)
 [                         oidenty ](Test/oidenty/)|  ✔   |  ✔   |  ✔   |  6   |  ✔   | (c)
+[                            omdb ](Test/omdb/)|  ✔   |  ✔   |  ✔   |  1   |  ✔   
 [                              on ](Test/on/)|  ✔   |  ✔   |  ✔   |  7   |  ✔   | (c)
 [                           ontv2 ](Test/ontv2/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                            oops ](Test/oops/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
@@ -564,4 +565,4 @@ See [the testing read-me](../master/_testing/) for details.
 [                            ziew ](Test/ziew/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 [                     zmartfilter ](Test/zmartfilter/)|  ✔   |  ✔   |  ✔   |  3   |  ✔   | (c)
 
-c439763b5de41d3216c14f7b64092dbc7689e069 | 2026-09-09T00:56:11,750999156+00:00
+9e43a25cbf9bc3e33d9a61970cefb983142b3f70 | 2026-09-09T01:06:24,176159456+00:00
