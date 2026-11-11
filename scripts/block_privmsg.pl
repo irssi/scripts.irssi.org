@@ -78,5 +78,5 @@ sub server_incoming {
 Irssi::signal_add_first('server incoming', 'server_incoming');
 
 Irssi::print("block_privmsg v1.2 loaded - blocking at raw server level");
-Irssi::print("Whitelist: /set block_privmsg_whitelist nick1 nick2!user@host");
+Irssi::print('Whitelist: /set block_privmsg_whitelist nick1 nick2!user@host');
 Irssi::print("Exempt servers: /set block_privmsg_exempt_servers BitlBee");
